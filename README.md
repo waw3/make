@@ -1,5 +1,7 @@
-_s
-===
+TTF Start
+=========
+
+This is a starter template for TTF themes that was forked from [_s](https://github.com/automattic/_s) on January 6th, 2014.
 
 Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
@@ -27,17 +29,3 @@ If you want to set things up manually, download `_s` from github. The first thin
 3. Search for <code>&nbsp;_s</code> (with a space before it) to capture DocBlocks.
 4. Search for `_s-` to capture prefixed handles.
 5. Search for `Text Domain: _s` in style.css.
-
-OR
-
-* Search for: `'_s'` and replace with: `'megatherium'`
-* Search for: `_s_` and replace with: `megatherium_`
-* Search for: <code>&nbsp;_s</code> and replace with: <code>&nbsp;Megatherium</code>
-* Search for: `_s-` and replace with: `megatherium-`
-* Search for: `Text Domain: _s` and replace with: `Text Domain: megatherium` in style.css.
-
-Then, update the stylesheet header in style.css and the links in footer.php with your own information. Next, update or delete this readme.
-
-Now you're ready to go! The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
-
-Good luck!
