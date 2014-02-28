@@ -5,6 +5,16 @@
  * @package _s
  */
 
+function ttf_head_extras() {
+	?>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<?php
+}
+
+add_action( 'wp_head', 'ttf_head_extras', 99 );
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */

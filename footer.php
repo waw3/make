@@ -8,19 +8,27 @@
  */
 ?>
 
-	</div><!-- #content -->
+			</div>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<?php do_action( '_s_credits' ); ?>
-			<a href="http://wordpress.org/" rel="generator"><?php printf( __( 'Proudly powered by %s', '_s' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %1$s by %2$s.', '_s' ), '_s', '<a href="http://automattic.com/" rel="designer">Automattic</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+			<footer id="site-footer" class="site-footer" role="contentinfo">
+				<div class="site-info">
+					<a title="<?php esc_attr_e( 'Theme info', 'oxford' ); ?>" href="https://thethemefoundry.com/wordpress-themes/ttf-start/">
+						<?php
+						printf(
+							__( '%s theme', 'ttf-start' ),
+							'TTF Start'
+						);
+						?>
+					</a>
+					<em class="by"><?php _ex( 'by', 'attribution', 'ttf-start' ); ?></em>
+					<a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'oxford' ); ?>" href="https://thethemefoundry.com/">
+						The Theme Foundry
+					</a>
+				</div>
+			</footer>
+		</div>
 
-<?php wp_footer(); ?>
+		<?php wp_footer(); ?>
 
-</body>
+	</body>
 </html>
