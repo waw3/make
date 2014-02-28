@@ -189,3 +189,16 @@ function _s_category_transient_flusher() {
 }
 add_action( 'edit_category', '_s_category_transient_flusher' );
 add_action( 'save_post',     '_s_category_transient_flusher' );
+
+function ttf_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
+	if ( strpos( $before, '%s' ) ) {
+		$before = sprintf(
+			$before,
+			get_permalink()
+		);
+	}
+
+	$more = apply_filters( 'ttf_read_more_text', __( 'Read more', 'ttf-start' ) );
+
+	return $before . $more . $after;
+}
