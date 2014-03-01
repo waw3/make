@@ -65,13 +65,13 @@ function _s_post_nav() {
 }
 endif;
 
-if ( ! function_exists( '_s_comment' ) ) :
+if ( ! function_exists( 'ttf_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
-function _s_comment( $comment, $args, $depth ) {
+function ttf_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
@@ -83,47 +83,65 @@ function _s_comment( $comment, $args, $depth ) {
 
 	<?php else : ?>
 
-	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'comment-parent' ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-			<footer class="comment-meta">
+			<header class="comment-header">
 				<div class="comment-author vcard">
-					<?php if ( 0 != $args['avatar_size'] ) { echo get_avatar( $comment, $args['avatar_size'] ); } ?>
-					<?php printf( __( '%s <span class="says">says:</span>', '_s' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-				</div><!-- .comment-author -->
+					<?php
+					if ( 0 != $args['avatar_size'] ) :
+						echo get_avatar( $comment, $args['avatar_size'] );
+					endif;
+					?>
+					<?php
+					printf(
+						__( '%s <span class="says">says:</span>', 'ttf-start' ),
+						sprintf(
+							'<cite class="fn">%s</cite>',
+							get_comment_author_link()
+						)
+					);
+					?>
+				</div>
 
-				<div class="comment-metadata">
+				<div class="comment-date">
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
-							<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', '_s' ), get_comment_date(), get_comment_time() ); ?>
+							<?php
+							printf(
+								_x( '%1$s at %2$s', '1: date, 2: time', 'ttf-start' ),
+								get_comment_date(),
+								get_comment_time()
+							);
+							?>
 						</time>
 					</a>
-					<?php edit_comment_link( __( 'Edit', '_s' ), '<span class="edit-link">', '</span>' ); ?>
-				</div><!-- .comment-metadata -->
+				</div>
+
+				<?php edit_comment_link( __( 'Edit', '_s' ), '<span class="edit-link">', '</span>' ); ?>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', '_s' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'ttf-start' ); ?></p>
 				<?php endif; ?>
-			</footer><!-- .comment-meta -->
+			</header>
 
 			<div class="comment-content">
 				<?php comment_text(); ?>
-			</div><!-- .comment-content -->
+			</div>
 
 			<?php
-				comment_reply_link( array_merge( $args, array(
-					'add_below' => 'div-comment',
-					'depth'     => $depth,
-					'max_depth' => $args['max_depth'],
-					'before'    => '<div class="reply">',
-					'after'     => '</div>',
-				) ) );
+			comment_reply_link( array_merge( $args, array(
+				'add_below' => 'div-comment',
+				'depth'     => $depth,
+				'max_depth' => $args['max_depth'],
+				'before'    => '<footer class="comment-reply">',
+				'after'     => '</footer>',
+			) ) );
 			?>
-		</article><!-- .comment-body -->
+		</article>
 
-	<?php
-	endif;
+	<?php endif;
 }
-endif; // ends check for _s_comment()
+endif;
 
 if ( ! function_exists( '_s_posted_on' ) ) :
 /**
