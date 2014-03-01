@@ -1,91 +1,54 @@
 <?php
 /**
- * _s functions and definitions
- *
- * @package _s
+ * @package ttf-start
  */
 
-function ttf_head_extras() {
-	?>
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<?php
-}
-
-add_action( 'wp_head', 'ttf_head_extras', 99 );
-
-
-/**
- * Set the content width based on the theme's design and stylesheet.
- */
-if ( ! isset( $content_width ) ) {
-	$content_width = 640; /* pixels */
-}
-
-if ( ! function_exists( '_s_setup' ) ) :
+if ( ! function_exists( 'ttf_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
  */
-function _s_setup() {
-
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on _s, use a find and replace
-	 * to change '_s' to the name of your theme in all the template files
-	 */
+function ttf_setup() {
+	// Text domain
 	load_theme_textdomain( '_s', get_template_directory() . '/languages' );
 
-	// Add default posts and comments RSS feed links to head.
+	// Feed links
 	add_theme_support( 'automatic-feed-links' );
 
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-	 */
-	//add_theme_support( 'post-thumbnails' );
+	// Featured images
+	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	// Menu locations
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', '_s' ),
+		'primary' => __( 'Primary Menu', 'ttf-start' ),
 	) );
-
-	// Enable support for Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
-
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( '_s_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 }
-endif; // _s_setup
-add_action( 'after_setup_theme', '_s_setup' );
+endif;
 
+add_action( 'after_setup_theme', 'ttf_setup' );
+
+if ( ! function_exists( 'ttf_widgets_init' ) ) :
 /**
- * Register widgetized area and update sidebar with default widgets.
+ * Register widget areas
  */
-function _s_widgets_init() {
+function ttf_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', '_s' ),
+		'name'          => __( 'Sidebar', 'ttf-start' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 }
-add_action( 'widgets_init', '_s_widgets_init' );
+endif;
 
+add_action( 'widgets_init', 'ttf_widgets_init' );
+
+if ( ! function_exists( 'ttf_scripts' ) ) :
 /**
  * Enqueue scripts and styles.
  */
-function _s_scripts() {
+function ttf_scripts() {
 	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
@@ -96,7 +59,28 @@ function _s_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', '_s_scripts' );
+endif;
+
+add_action( 'wp_enqueue_scripts', 'ttf_scripts' );
+
+if ( ! function_exists( 'ttf_head_extras' ) ) :
+/**
+ *
+ */
+function ttf_head_extras() { ?>
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<?php
+}
+endif;
+
+add_action( 'wp_head', 'ttf_head_extras', 99 );
+
+/**
+ * Set the content width based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) ) {
+	$content_width = 640;
+}
 
 /**
  * Implement the Custom Header feature.
