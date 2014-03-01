@@ -10,6 +10,14 @@ if ( isset( $_SERVER['SERVER_NAME'] ) && isset( $_SERVER['REQUEST_URI'] ) ) :
 	$current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 endif;
 
+// Widget args
+$widget_args = array(
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</aside>',
+	'before_title'  => '<h4 class="widget-title">',
+	'after_title'   => '</h4>'
+);
+
 get_header();
 ?>
 
@@ -36,13 +44,13 @@ get_header();
 
 			<?php get_search_form(); ?>
 
-			<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+			<?php the_widget( 'WP_Widget_Recent_Posts', array(), $widget_args ); ?>
 
-			<?php the_widget( 'WP_Widget_Archives', 'dropdown=1' ); ?>
+			<?php the_widget( 'WP_Widget_Archives', 'dropdown=1', $widget_args ); ?>
 
 			<?php if ( ttf_categorized_blog() ) : ?>
-			<div class="widget widget_categories">
-				<h4 class="widgettitle"><?php _e( 'Most Used Categories', 'ttf-start' ); ?></h4>
+			<aside class="widget widget_categories">
+				<h4 class="widget-title"><?php _e( 'Most Used Categories', 'ttf-start' ); ?></h4>
 				<ul>
 					<?php
 					wp_list_categories( array(
@@ -54,10 +62,10 @@ get_header();
 					) );
 					?>
 				</ul>
-			</div>
+			</aside>
 			<?php endif; ?>
 
-			<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+			<?php the_widget( 'WP_Widget_Tag_Cloud', array(), $widget_args ); ?>
 		</div>
 	</article>
 </main>
