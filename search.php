@@ -1,38 +1,30 @@
 <?php
 /**
- * The template for displaying Search Results pages.
- *
- * @package _s
+ * @package ttf-start
  */
 
-get_header(); ?>
+get_header();
+?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<?php if ( have_posts() ) : ?>
 
-		<?php if ( have_posts() ) : ?>
+	<header class="section-header">
+		<?php get_template_part( 'partials/section', 'title' ); ?>
+	</header>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', '_s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+	<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+		<?php get_template_part( 'partials/content', 'search' ); ?>
 
-				<?php get_template_part( 'content', 'search' ); ?>
+	<?php endwhile; ?>
 
-			<?php endwhile; ?>
+	<?php _s_paging_nav(); ?>
 
-			<?php _s_paging_nav(); ?>
+<?php else : ?>
 
-		<?php else : ?>
+	<?php get_template_part( 'partials/content', 'none' ); ?>
 
-			<?php get_template_part( 'content', 'none' ); ?>
-
-		<?php endif; ?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
+<?php endif; ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
