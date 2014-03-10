@@ -104,7 +104,7 @@ if ( ! function_exists( 'ttf_one_customizer_admin_scripts' ) ) :
  * @since 1.0
  */
 function ttf_one_customizer_admin_scripts() {
-	$path = '/inc/customizer/';
+	$path = '/inc/customizer/js/';
 
 	wp_enqueue_script(
 		'ttf-one-customizer-admin',
