@@ -3,6 +3,8 @@
  * @package ttf-one
  */
 
+define( 'TTF_ONE_VERSION', '1.0' );
+
 if ( ! function_exists( 'ttf_one_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
