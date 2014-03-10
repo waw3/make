@@ -26,7 +26,8 @@ module.exports = function( grunt ) {
 			theme: {
 				src: [
 					'src/js/**/*.js',
-					'src/js/**/*.min.js'
+					'!src/js/**/*.min.js',
+					'src/inc/customizer/js/customizer.js'
 				]
 			}
 		},
@@ -36,7 +37,8 @@ module.exports = function( grunt ) {
 			},
 			theme: {
 				files: {
-					'src/js/global.min.js': ['src/js/global.js']
+					'src/js/global.min.js': ['src/js/global.js'],
+					'src/inc/customizer/js/customizer.min.js': ['src/inc/customizer/js/customizer.js']
 				}
 			},
 			other: {
