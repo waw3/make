@@ -28,7 +28,7 @@ blockquote:after {
 	content: none;
 }
 table {
-	border-collapse: collapse;
+	border-collapse: separate;
 	border-spacing: 0;
 }
 
@@ -150,4 +150,21 @@ input[type="search"]:-webkit-search-decoration {
 textarea {
   overflow: auto; // Remove vertical scrollbar in IE6-9
   vertical-align: top; // Readability and alignment cross-browser
+}
+*,
+*:before,
+*:after { // apply a natural box layout model to all elements; see http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+	-webkit-box-sizing: border-box; // Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing
+	-moz-box-sizing:    border-box; // Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing
+	box-sizing:         border-box;
+}
+a:focus {
+	outline: thin dotted;
+}
+a:hover,
+a:active {
+	outline: 0;
+}
+a img {
+	border: 0;
 }
