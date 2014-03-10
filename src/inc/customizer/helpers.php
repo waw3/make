@@ -28,7 +28,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		$setting = $setting->id;
 	}
 
-	$allowed_choices = array();
+	$allowed_choices = array( 0 );
 
 	switch ( $setting ) {
 		case 'site-layout' :
