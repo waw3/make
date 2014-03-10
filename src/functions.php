@@ -3,6 +3,9 @@
  * @package ttf-one
  */
 
+/**
+ * The current version of the theme.
+ */
 define( 'TTF_ONE_VERSION', '1.0' );
 
 if ( ! function_exists( 'ttf_one_setup' ) ) :
