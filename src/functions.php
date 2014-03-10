@@ -11,7 +11,7 @@ define( 'TTF_ONE_VERSION', '1.0' );
 /**
  * The suffix to use for scripts.
  */
-if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || oxford_is_wpcom() ) {
+if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttf_one_is_wpcom() ) {
 	define( 'TTF_ONE_SUFFIX', '' );
 } else {
 	define( 'TTF_ONE_SUFFIX', '.min' );
