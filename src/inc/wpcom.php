@@ -7,19 +7,6 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
-/**
- * Whether or not the current environment is WordPress.com.
- *
- * @since  1.0
- *
- * @return bool
- */
-function ttf_one_is_wpcom() {
-	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
-}
-endif;
-
 /**
  * Adds support for wp.com-specific theme functions.
  *
