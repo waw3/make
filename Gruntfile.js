@@ -24,7 +24,10 @@ module.exports = function( grunt ) {
 				]
 			},
 			theme: {
-				src: []
+				src: [
+					'src/js/**/*.js',
+					'src/js/**/*.min.js'
+				]
 			}
 		},
 		uglify: {
@@ -32,7 +35,9 @@ module.exports = function( grunt ) {
 				files: {}
 			},
 			theme: {
-				files: {}
+				files: {
+					'src/js/global.min.js': ['src/js/global.js']
+				}
 			},
 			other: {
 				files:{}
