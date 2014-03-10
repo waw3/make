@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 ?><!DOCTYPE html>
 <!--[if lte IE 9]><html class="no-js IE9 IE" <?php language_attributes(); ?>><![endif]-->
@@ -29,8 +29,8 @@
 				</div>
 
 				<nav id="site-navigation" class="site-navigation" role="navigation">
-					<span class="menu-toggle"><?php _e( 'Menu', 'ttf-start' ); ?></span>
-					<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'ttf-start' ); ?></a>
+					<span class="menu-toggle"><?php _e( 'Menu', 'ttf-one' ); ?></span>
+					<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'ttf-one' ); ?></a>
 					<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary'

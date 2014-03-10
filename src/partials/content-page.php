@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 ?>
 

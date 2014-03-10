@@ -24,8 +24,8 @@ If you want to keep it simple, head over to http://underscores.me and generate y
 
 If you want to set things up manually, download `_s` from github. The first thing you want to do is copy the `_s` directory and change the name to something else - Like, say, `megatherium` - then you'll need to do a five-step find and replace on the name in all the templates.
 
-1. Search for `'_s'` (inside single quotations) to capture the text domain.
-2. Search for `_s_` to capture all the function names.
+1. Search for `'ttf-one'` (inside single quotations) to capture the text domain.
+2. Search for `ttf_one_` to capture all the function names.
 3. Search for <code>&nbsp;_s</code> (with a space before it) to capture DocBlocks.
-4. Search for `_s-` to capture prefixed handles.
+4. Search for `ttf-one-` to capture prefixed handles.
 5. Search for `Text Domain: _s` in style.css.

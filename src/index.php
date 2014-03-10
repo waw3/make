@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 
 get_header();
@@ -15,7 +15,7 @@ get_header();
 
 	<?php endwhile; ?>
 
-	<?php _s_paging_nav(); ?>
+	<?php ttf_one_paging_nav(); ?>
 
 <?php else : ?>
 

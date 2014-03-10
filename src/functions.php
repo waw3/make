@@ -1,15 +1,15 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_setup' ) ) :
+if ( ! function_exists( 'ttf_one_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  */
-function ttf_setup() {
+function ttf_one_setup() {
 	// Text domain
-	load_theme_textdomain( '_s', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'ttf-one', get_template_directory() . '/languages' );
 
 	// Feed links
 	add_theme_support( 'automatic-feed-links' );
@@ -19,20 +19,20 @@ function ttf_setup() {
 
 	// Menu locations
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'ttf-start' ),
+		'primary' => __( 'Primary Menu', 'ttf-one' ),
 	) );
 }
 endif;
 
-add_action( 'after_setup_theme', 'ttf_setup' );
+add_action( 'after_setup_theme', 'ttf_one_setup' );
 
-if ( ! function_exists( 'ttf_widgets_init' ) ) :
+if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
 /**
  * Register widget areas
  */
-function ttf_widgets_init() {
+function ttf_one_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'ttf-start' ),
+		'name'          => __( 'Sidebar', 'ttf-one' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -42,18 +42,18 @@ function ttf_widgets_init() {
 }
 endif;
 
-add_action( 'widgets_init', 'ttf_widgets_init' );
+add_action( 'widgets_init', 'ttf_one_widgets_init' );
 
-if ( ! function_exists( 'ttf_scripts' ) ) :
+if ( ! function_exists( 'ttf_one_scripts' ) ) :
 /**
  * Enqueue scripts and styles.
  */
-function ttf_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+function ttf_one_scripts() {
+	wp_enqueue_style( 'ttf-one-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'ttf-one-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'ttf-one-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -61,19 +61,19 @@ function ttf_scripts() {
 }
 endif;
 
-add_action( 'wp_enqueue_scripts', 'ttf_scripts' );
+add_action( 'wp_enqueue_scripts', 'ttf_one_scripts' );
 
-if ( ! function_exists( 'ttf_head_extras' ) ) :
+if ( ! function_exists( 'ttf_one_head_extras' ) ) :
 /**
  *
  */
-function ttf_head_extras() { ?>
+function ttf_one_head_extras() { ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 }
 endif;
 
-add_action( 'wp_head', 'ttf_head_extras', 99 );
+add_action( 'wp_head', 'ttf_one_head_extras', 99 );
 
 /**
  * Set the content width based on the theme's design and stylesheet.

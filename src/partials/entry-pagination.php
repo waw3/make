@@ -1,12 +1,12 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 ?>
 
 <?php
 wp_link_pages( array(
-	'before' => '<nav class="entry-pagination">' . __( 'Pages:', 'ttf-start' ),
+	'before' => '<nav class="entry-pagination">' . __( 'Pages:', 'ttf-one' ),
 	'after'  => '</nav>',
 ) );
 ?>

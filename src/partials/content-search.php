@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 ?>
 
@@ -11,7 +11,7 @@
 	</header>
 
 	<div class="entry-content">
-		<?php echo wpautop( get_the_excerpt() . ttf_get_read_more() ); ?>
+		<?php echo wpautop( get_the_excerpt() . ttf_one_get_read_more() ); ?>
 	</div>
 
 	<footer class="entry-footer">

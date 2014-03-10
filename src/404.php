@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 
 // Get current URL
@@ -25,7 +25,7 @@ get_header();
 	<article class="error-404 not-found">
 		<header class="entry-header">
 			<h1 class="entry-title">
-				<?php _e( 'Oops! That page can&rsquo;t be found.', 'ttf-start' ); ?>
+				<?php _e( 'Oops! That page can&rsquo;t be found.', 'ttf-one' ); ?>
 			</h1>
 		</header>
 
@@ -33,13 +33,13 @@ get_header();
 			<p>
 				<?php
 				printf(
-					__( 'Nothing was found at this location: %s', 'ttf-start' ),
+					__( 'Nothing was found at this location: %s', 'ttf-one' ),
 					'<br /><span class="current-url">' . esc_url( $current_url ) . '</span>'
 				);
 				?>
 			</p>
 			<p>
-				<?php _e( 'Maybe try one of the links below or a search?', 'ttf-start' ); ?>
+				<?php _e( 'Maybe try one of the links below or a search?', 'ttf-one' ); ?>
 			</p>
 
 			<?php get_search_form(); ?>
@@ -48,9 +48,9 @@ get_header();
 
 			<?php the_widget( 'WP_Widget_Archives', 'dropdown=1', $widget_args ); ?>
 
-			<?php if ( ttf_categorized_blog() ) : ?>
+			<?php if ( ttf_one_categorized_blog() ) : ?>
 			<aside class="widget widget_categories">
-				<h4 class="widget-title"><?php _e( 'Most Used Categories', 'ttf-start' ); ?></h4>
+				<h4 class="widget-title"><?php _e( 'Most Used Categories', 'ttf-one' ); ?></h4>
 				<ul>
 					<?php
 					wp_list_categories( array(

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 
 get_header();
@@ -13,7 +13,7 @@ get_header();
 
 		<?php get_template_part( 'partials/content', 'page' ); ?>
 
-		<?php _s_post_nav(); ?>
+		<?php ttf_one_post_nav(); ?>
 
 		<?php
 		// If comments are open or we have at least one comment, load up the comment template

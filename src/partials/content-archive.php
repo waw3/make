@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 ?>
 
@@ -13,9 +13,9 @@
 	<div class="entry-content">
 		<?php
 		if ( has_excerpt() ) :
-			echo wpautop( get_the_excerpt() . ttf_get_read_more() );
+			echo wpautop( get_the_excerpt() . ttf_one_get_read_more() );
 		else:
-			the_content( ttf_get_read_more( '', '' ) );
+			the_content( ttf_one_get_read_more( '', '' ) );
 		endif;
 		?>
 	</div>

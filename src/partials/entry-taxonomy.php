@@ -1,10 +1,10 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 ?>
 
-<?php if ( ( has_category() && ttf_categorized_blog() ) || has_tag() ) : ?>
+<?php if ( ( has_category() && ttf_one_categorized_blog() ) || has_tag() ) : ?>
 	<?php
 	$category_list = get_the_category_list();
 	$tag_list = get_the_tag_list();
@@ -12,7 +12,7 @@
 
 	// Categories
 	if ( $category_list ) :
-		$taxonomy_output .= __( 'Posted in: ', 'ttf-start' ) . '%1$s';
+		$taxonomy_output .= __( 'Posted in: ', 'ttf-one' ) . '%1$s';
 	endif;
 
 	// Category / Tag divider
@@ -22,7 +22,7 @@
 
 	// Tags
 	if ( $tag_list ) :
-		$taxonomy_output .= __( 'Tagged: ', 'ttf-start' ) . '%2$s';
+		$taxonomy_output .= __( 'Tagged: ', 'ttf-one' ) . '%2$s';
 	endif;
 
 	// Output

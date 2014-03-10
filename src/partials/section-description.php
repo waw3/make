@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-start
+ * @package ttf-one
  */
 
 if ( is_category() || is_tag() || is_tax() ) :
