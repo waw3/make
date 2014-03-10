@@ -18,7 +18,7 @@ function ttf_one_customizer_init() {
 	}
 
 	// Always load these
-	require_once( get_template_directory() . $path . 'customizer-helpers.php' );
+	require_once( get_template_directory() . $path . 'helpers.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );

@@ -105,7 +105,7 @@ require get_template_directory() . '/inc/extras.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer/customizer-bootstrap.php';
+require get_template_directory() . '/inc/customizer/bootstrap.php';
 
 /**
  * Load Jetpack compatibility file.
