@@ -3,6 +3,19 @@
  * @package ttf-one
  */
 
+if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
+/**
+ * Whether or not the current environment is WordPress.com.
+ *
+ * @since  1.0
+ *
+ * @return bool
+ */
+function ttf_one_is_wpcom() {
+	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
+}
+endif;
+
 /**
  * The current version of the theme.
  */
@@ -95,19 +108,6 @@ add_action( 'wp_head', 'ttf_one_head_extras', 99 );
 if ( ! isset( $content_width ) ) {
 	$content_width = 640;
 }
-
-if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
-/**
- * Whether or not the current environment is WordPress.com.
- *
- * @since  1.0
- *
- * @return bool
- */
-function ttf_one_is_wpcom() {
-	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
-}
-endif;
 
 /**
  * Implement the Custom Header feature.
