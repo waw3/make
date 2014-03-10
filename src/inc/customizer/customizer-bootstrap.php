@@ -14,7 +14,7 @@ function ttf_one_customizer_init() {
 	}
 
 	// Always load these
-	require_once( get_template_directory() . $path . 'customizer.php' );
+	require_once( get_template_directory() . $path . 'customizer-helpers.php' );
 }
 
 add_action( 'after_setup_theme', 'ttf_one_customizer_init' );
