@@ -1,16 +1,79 @@
 /*---------------------------------------------------------
  8. Widgets (_widgets.scss)
 -------------------------------------------------------- */
+.widget-title {
+	font-weight: 700;
+	@include rem('margin', 0 0 $base);
+	@include rem('padding-top', $base);
+	@include rem('font-size', 14px);
+}
 .widget {
-	margin: 0 0 1.5em;
-}
-
-/* Make sure select elements fit in widgets */
-.widget select {
 	max-width: 100%;
+	@include rem('margin-bottom', $base);
+	@include rem('font-size', 14px);
+	.search-form {
+		@include rem('margin-top', $base/2);
+	}
+	select {
+		max-width: 100%;
+	}
+	ul,
+	ol {
+		padding-left: 0; //reset
+	}
+	li {
+		list-style: none;
+		border-bottom: 1px solid $d;
+		@include rem('padding', $base/2 0);
+		&:last-of-type {
+			margin-bottom: 0; //reset
+			padding-bottom: 0; //reset
+			border-bottom: 0; //reset
+		}
+	}
+	.children,
+	.sub-menu {
+		margin-bottom: 0; //reset
+		li:before {
+			content: "\2013  ";
+		}
+	}
 }
-
-/* Search widget */
+.widget_tag_cloud a {
+	display:  inline-block;
+	background-color: $d;
+	text-decoration: none; //reset
+	@include rem('margin-bottom', 5px);
+	@include rem('padding', 8px);
+	@include border-radius;
+	&:hover {
+		text-decoration: underline;
+	}
+}
 .widget_search .search-submit {
 	display: none;
+}
+.widget_rss {
+	.widget-title a {
+		text-decoration: none; //reset
+		color: $b;
+	}
+	img {
+		display: none;
+	}
+	.rss-date,
+	cite {
+		display: block;
+	}
+	.rss-date {
+		font-style: italic;
+		@include rem('margin-bottom', $base/2);
+	}
+	cite {
+		font-style: normal; //reset
+		@include rem('margin', $base/2 0 $base 0);
+		&:before {
+			content: "\2013  ";
+		}
+	}
 }

@@ -478,7 +478,9 @@ hr {
  Lists (_elements.scss)
 -------------------------------------------------------- */
 ul, ol {
-  margin: 0 0 22px 44px; }
+  margin: 0 0 22px 0;
+  padding-left: 20px;
+  padding-left: 1.25rem; }
 
 ul {
   list-style: disc; }
@@ -629,16 +631,76 @@ embed, iframe, object {
 /*---------------------------------------------------------
  8. Widgets (_widgets.scss)
 -------------------------------------------------------- */
+.widget-title {
+  font-weight: 700;
+  margin: 0 0 22px;
+  margin:  0 0 1.375rem;
+  padding-top: 22px;
+  padding-top: 1.375rem;
+  font-size: 14px;
+  font-size: 0.875rem; }
+
 .widget {
-  margin: 0 0 1.5em; }
+  max-width: 100%;
+  margin-bottom: 22px;
+  margin-bottom: 1.375rem;
+  font-size: 14px;
+  font-size: 0.875rem; }
+  .widget .search-form {
+    margin-top: 11px;
+    margin-top: 0.6875rem; }
+  .widget select {
+    max-width: 100%; }
+  .widget ul, .widget ol {
+    padding-left: 0; }
+  .widget li {
+    list-style: none;
+    border-bottom: 1px solid #eeeeee;
+    padding: 11px 0;
+    padding:  0.6875rem 0; }
+    .widget li:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0; }
+  .widget .children, .widget .sub-menu {
+    margin-bottom: 0; }
+    .widget .children li:before, .widget .sub-menu li:before {
+      content: "\2013  "; }
 
-/* Make sure select elements fit in widgets */
-.widget select {
-  max-width: 100%; }
+.widget_tag_cloud a {
+  display: inline-block;
+  background-color: #eeeeee;
+  text-decoration: none;
+  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
+  padding: 8px;
+  padding: 0.5rem;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+  .widget_tag_cloud a:hover {
+    text-decoration: underline; }
 
-/* Search widget */
 .widget_search .search-submit {
   display: none; }
+
+.widget_rss .widget-title a {
+  text-decoration: none;
+  color: #1b1d25; }
+.widget_rss img {
+  display: none; }
+.widget_rss .rss-date, .widget_rss cite {
+  display: block; }
+.widget_rss .rss-date {
+  font-style: italic;
+  margin-bottom: 11px;
+  margin-bottom: 0.6875rem; }
+.widget_rss cite {
+  font-style: normal;
+  margin: 11px 0 22px 0;
+  margin:  0.6875rem 0 1.375rem 0; }
+  .widget_rss cite:before {
+    content: "\2013  "; }
 
 /*---------------------------------------------------------
  9. Comments (_comments.scss)

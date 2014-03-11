@@ -174,7 +174,8 @@ hr {
 -------------------------------------------------------- */
 ul,
 ol {
-	margin: 0 0 $base $base*2;
+	margin: 0 0 $base 0;
+	@include rem('padding-left', 20px);
 }
 ul {
 	list-style: disc;
