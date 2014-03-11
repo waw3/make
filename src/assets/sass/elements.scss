@@ -45,7 +45,7 @@ h6 {
 	@include rem('font-size', 14px);
 }
 /*---------------------------------------------------------
- Content (_elements.scss)
+ Quote (_elements.scss)
 -------------------------------------------------------- */
 blockquote {
 	clear: both;
@@ -71,6 +71,9 @@ q {
 		content: "\201D";
 	}
 }
+/*---------------------------------------------------------
+ Code (_elements.scss)
+-------------------------------------------------------- */
 tt,
 kbd,
 pre,
@@ -90,6 +93,9 @@ pre {
 	@include rem('padding', $base*1.5);
 	@extend .break;
 }
+/*---------------------------------------------------------
+ Details (_elements.scss)
+-------------------------------------------------------- */
 abbr,
 acronym,
 dfn {
@@ -108,6 +114,9 @@ details {
 		outline: none; //reset
 	}
 }
+/*---------------------------------------------------------
+ Marks (_elements.scss)
+-------------------------------------------------------- */
 ins,
 mark {
 	background: #fff9c0;
@@ -126,11 +135,30 @@ ins {
 		@include rem('left', 1px);
 	}
 }
+/*---------------------------------------------------------
+ Sizes (_elements.scss)
+-------------------------------------------------------- */
 small {
 	font-size: 75%;
 }
 big {
 	font-size: 125%;
+}
+/*---------------------------------------------------------
+ Content (_elements.scss)
+-------------------------------------------------------- */
+b,
+strong {
+	font-weight: 700;
+}
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+figure {
+	margin: 0;
 }
 address {
 	@include rem('margin', $base 0);
@@ -141,7 +169,6 @@ hr {
 	height: 1px;
 	margin-bottom: $base;
 }
-
 /*---------------------------------------------------------
  Lists (_elements.scss)
 -------------------------------------------------------- */
@@ -161,19 +188,10 @@ li > ol {
 	margin-left: $indent;
 }
 dt {
-	font-weight: bold;
+	font-weight: 700;
 }
 dd {
-	margin: 0 1.5em 1.5em;
-}
-b, strong {
-	font-weight: bold;
-}
-dfn, cite, em, i {
-	font-style: italic;
-}
-figure {
-	margin: 0;
+	margin: 0 $base $base;
 }
 /*---------------------------------------------------------
  Table (_elements.scss)

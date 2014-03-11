@@ -362,7 +362,7 @@ h6 {
   font-size: 0.875rem; }
 
 /*---------------------------------------------------------
- Content (_elements.scss)
+ Quote (_elements.scss)
 -------------------------------------------------------- */
 blockquote {
   clear: both;
@@ -386,6 +386,9 @@ q:before {
 q:after {
   content: "\201D"; }
 
+/*---------------------------------------------------------
+ Code (_elements.scss)
+-------------------------------------------------------- */
 tt, kbd, pre, code, samp, var {
   font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
   background-color: #eeeeee;
@@ -402,6 +405,9 @@ pre {
   padding: 33px;
   padding: 2.0625rem; }
 
+/*---------------------------------------------------------
+ Details (_elements.scss)
+-------------------------------------------------------- */
 abbr, acronym, dfn {
   cursor: help;
   font-size: 0.95em;
@@ -417,6 +423,9 @@ details summary {
 details :focus {
   outline: none; }
 
+/*---------------------------------------------------------
+ Marks (_elements.scss)
+-------------------------------------------------------- */
 ins, mark {
   background: #fff9c0;
   text-decoration: none; }
@@ -434,11 +443,26 @@ ins {
     left: 1px;
     left: 0.0625rem; }
 
+/*---------------------------------------------------------
+ Sizes (_elements.scss)
+-------------------------------------------------------- */
 small {
   font-size: 75%; }
 
 big {
   font-size: 125%; }
+
+/*---------------------------------------------------------
+ Content (_elements.scss)
+-------------------------------------------------------- */
+b, strong {
+  font-weight: 700; }
+
+dfn, cite, em, i {
+  font-style: italic; }
+
+figure {
+  margin: 0; }
 
 address {
   margin: 22px 0;
@@ -467,19 +491,10 @@ li > ul, li > ol {
   margin-left: 1.5em; }
 
 dt {
-  font-weight: bold; }
+  font-weight: 700; }
 
 dd {
-  margin: 0 1.5em 1.5em; }
-
-b, strong {
-  font-weight: bold; }
-
-dfn, cite, em, i {
-  font-style: italic; }
-
-figure {
-  margin: 0; }
+  margin: 0 22px 22px; }
 
 /*---------------------------------------------------------
  Table (_elements.scss)
