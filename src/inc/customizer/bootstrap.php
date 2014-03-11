@@ -20,9 +20,6 @@ function ttf_one_customizer_init() {
 	// Always load these
 	require_once( get_template_directory() . $path . 'helpers.php' );
 
-	// Load the navigation sections
-	require_once( get_template_directory() . $path . 'navigation.php' );
-
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
 	add_action( 'customize_controls_enqueue_scripts', 'ttf_one_customizer_admin_scripts' );
@@ -44,6 +41,9 @@ if ( ! function_exists( 'ttf_one_customizer_add_sections' ) ) :
  */
 function ttf_one_customizer_add_sections( $wp_customize ) {
 	$path = 'inc/customizer/';
+
+	// Load the navigation sections
+	require_once( get_template_directory() . '/' . $path . 'navigation.php' );
 
 	// List of sections to add
 	$sections = array(
