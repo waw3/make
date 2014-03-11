@@ -22,7 +22,8 @@ function ttf_one_customizer_init() {
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
-	add_action( 'admin_enqueue_scripts', 'ttf_one_customizer_admin_scripts' );
+	add_action( 'customize_controls_enqueue_scripts', 'ttf_one_customizer_admin_scripts' );
+	add_action( 'customize_controls_print_styles', 'ttf_one_customizer_admin_styles' );
 }
 endif;
 
@@ -56,7 +57,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 	$sections = apply_filters( 'ttf_one_customizer_sections', $sections );
 
 	// Priority for first section
-	$priority = 10;
+	$priority = 200;
 
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $title ) {
@@ -88,7 +89,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 				);
 
 				// Increase priority
-				$priority += 10;
+				$priority += 100;
 			}
 		}
 	}
@@ -114,4 +115,19 @@ function ttf_one_customizer_admin_scripts() {
 		true
 	);
 }
+endif;
+
+if ( ! function_exists( 'ttf_one_customizer_admin_styles' ) ) :
+/**
+ * Styles for our Customizer sections and controls. Prints in the <head>
+ *
+ * @since 1.0
+ */
+function ttf_one_customizer_admin_styles() { ?>
+	<style type="text/css">
+		#customize-theme-controls .control-section[id*="ttf-one_"] .accordion-section-title {
+			background-color: #f9f9f9;
+		}
+	</style>
+<?php }
 endif;
