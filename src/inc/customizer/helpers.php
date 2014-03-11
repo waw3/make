@@ -26,6 +26,18 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'site-layout' :
 			$allowed_choices = array( 'full-width', 'boxed' );
 			break;
+		case 'background-size' :
+			$allowed_choices = array( 'actual', 'cover', 'contain' );
+			break;
+		case 'background-repeat' :
+			$allowed_choices = array( 'no-repeat', 'tile', 'tile-h', 'tile-v' );
+			break;
+		case 'background-position' :
+			$allowed_choices = array( 'left', 'center', 'right' );
+			break;
+		case 'background-attachment' :
+			$allowed_choices = array( 'fixed', 'scroll' );
+			break;
 	}
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
