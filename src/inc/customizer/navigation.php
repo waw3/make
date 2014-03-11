@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package ttf-one
+ */
 
 if ( ! function_exists( 'ttf_one_customizer_navigation' ) ) :
 /**
