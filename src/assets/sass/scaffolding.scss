@@ -38,25 +38,24 @@ input,
 select,
 textarea {
 	color: $b;
-	font-family: sans-serif;
-	line-height: 1.5;
+	font-family: $sans;
+	line-height: 1.55;
 }
 
 
 
 /* Links */
 a {
-	color: royalblue;
+	color: $c;
+	&:hover,
+	&:focus,
+	&:active {
+		color: $c;
+	}
+	&:visited {
+		color: purple;
+	}
 }
-a:visited {
-	color: purple;
-}
-a:hover,
-a:focus,
-a:active {
-	color: midnightblue;
-}
-
 /* =Menu
 ----------------------------------------------- */
 

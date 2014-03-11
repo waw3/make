@@ -188,7 +188,7 @@ html {
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-  color: #000000;
+  color: #1b1d25;
   background-color: #ffffff;
   text-rendering: optimizeLegibility; }
 
@@ -204,19 +204,17 @@ pre, code, input, textarea {
   font: inherit; }
 
 body, button, input, select, textarea {
-  color: #000000;
-  font-family: sans-serif;
-  line-height: 1.5; }
+  color: #1b1d25;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.55; }
 
 /* Links */
 a {
-  color: royalblue; }
-
-a:visited {
-  color: purple; }
-
-a:hover, a:focus, a:active {
-  color: midnightblue; }
+  color: #0048ff; }
+  a:hover, a:focus, a:active {
+    color: #0048ff; }
+  a:visited {
+    color: purple; }
 
 /* =Menu
 ----------------------------------------------- */
