@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttf_one_customizer_background' ) ) :
  * @param string $section
  */
 function ttf_one_customizer_background( $wp_customize, $section ) {
-	$priority = 10;
+	$priority = new TTF_One_Prioritizer();
 	$prefix = 'ttf-one_';
 
 	// Background Color
@@ -34,11 +34,10 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Background Color', 'ttf-one' ),
-				'priority' => $priority
+				'priority' => $priority->set()
 			)
 		)
 	);
-	$priority += 10;
 
 	// Background Image
 	$setting_id = 'background-image';
@@ -58,12 +57,11 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Background Image', 'ttf-one' ),
-				'priority' => $priority,
+				'priority' => $priority->set(),
 				'context'  => $prefix . $setting_id
 			)
 		)
 	);
-	$priority += 10;
 
 	// Background Size
 	$setting_id = 'background-size';
@@ -87,10 +85,9 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'cover'   => __( 'Cover', 'ttf-one' ),
 				'contain' => __( 'Contain', 'ttf-one' )
 			),
-			'priority' => $priority
+			'priority' => $priority->set()
 		)
 	);
-	$priority += 10;
 
 	// Background Repeat
 	$setting_id = 'background-repeat';
@@ -115,10 +112,9 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'tile-h'    => __( 'Tile Horizontally', 'ttf-one' ),
 				'tile-v'    => __( 'Tile Vertically', 'ttf-one' )
 			),
-			'priority' => $priority
+			'priority' => $priority->set()
 		)
 	);
-	$priority += 10;
 
 	// Background Position
 	$setting_id = 'background-position';
@@ -142,10 +138,9 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'center' => __( 'Center', 'ttf-one' ),
 				'right'  => __( 'Right', 'ttf-one' )
 			),
-			'priority' => $priority
+			'priority' => $priority->set()
 		)
 	);
-	$priority += 10;
 
 	// Background Attachment
 	$setting_id = 'background-attachment';
@@ -168,9 +163,8 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'fixed'  => __( 'Fixed', 'ttf-one' ),
 				'scroll' => __( 'Scroll', 'ttf-one' )
 			),
-			'priority' => $priority
+			'priority' => $priority->set()
 		)
 	);
-	$priority += 10;
 }
 endif;

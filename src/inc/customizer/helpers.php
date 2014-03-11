@@ -51,9 +51,49 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 }
 endif;
 
+if ( ! class_exists( 'TTF_One_Prioritizer' ) ) :
+/**
+ * Class TTF_One_Prioritizer
+ *
+ * @since 1.0
+ */
+class TTF_One_Prioritizer {
+	public $initial_priority = 0;
+	public $increment = 0;
+	public $current_priority = 0;
+
+	function __construct( $initial_priority = 100, $increment = 100 ) {
+		$this->initial_priority = absint( $initial_priority );
+		$this->increment = absint( $increment );
+		$this->current_priority = $this->initial_priority;
+	}
+
+	public function get() {
+		return absint( $this->current_priority );
+	}
+
+	public function inc( $increment = 0 ) {
+		if ( 0 === $increment ) {
+			$increment = $this->increment;
+		}
+		$this->current_priority += absint( $increment );
+	}
+
+	public function set() {
+		$priority = $this->get();
+		$this->inc();
+		return $priority;
+	}
+
+	public function reboot() {
+		$this->current_priority = $this->initial_priority;
+	}
+}
+endif;
+
 if ( class_exists( 'WP_Customize_Image_Control' ) && ! class_exists( 'TTF_One_Customize_Image_Control' ) ) :
 /**
- * TTF_One_Customize_Image_Control
+ * Class TTF_One_Customize_Image_Control
  *
  * Extend WP_Customize_Image_Control allowing access to uploads made within the same context.
  *

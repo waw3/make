@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttf_one_customizer_general' ) ) :
  * @param string $section
  */
 function ttf_one_customizer_general( $wp_customize, $section ) {
-	$priority = 10;
+	$priority = new TTF_One_Prioritizer();
 	$prefix = 'ttf-one_';
 
 	// Site Layout
@@ -37,10 +37,9 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 				'full-width' => __( 'Full-width', 'ttf-one' ),
 				'boxed'      => __( 'Boxed', 'ttf-one' )
 			),
-			'priority' => $priority
+			'priority' => $priority->set()
 		)
 	);
-	$priority += 10;
 
 
 }
