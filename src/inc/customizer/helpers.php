@@ -79,7 +79,7 @@ class TTF_One_Prioritizer {
 		$this->current_priority += absint( $increment );
 	}
 
-	public function set() {
+	public function add() {
 		$priority = $this->get();
 		$this->inc();
 		return $priority;

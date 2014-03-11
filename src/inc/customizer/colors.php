@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttf_one_customizer_colors' ) ) :
  * @return void
  */
 function ttf_one_customizer_colors( $wp_customize, $section ) {
-	$priority = 10;
+	$priority = new TTF_One_Prioritizer();
 	$prefix = 'ttf-one_';
 
 	// Primary Color
@@ -35,11 +35,10 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Primary Color', 'ttf-one' ),
-				'priority' => $priority
+				'priority' => $priority->add()
 			)
 		)
 	);
-	$priority += 10;
 
 	// Secondary Color
 	$setting_id = 'color-secondary';
@@ -59,11 +58,10 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Secondary Color', 'ttf-one' ),
-				'priority' => $priority
+				'priority' => $priority->add()
 			)
 		)
 	);
-	$priority += 10;
 
 	// Text Color
 	$setting_id = 'color-text';
@@ -83,11 +81,10 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Text Color', 'ttf-one' ),
-				'priority' => $priority
+				'priority' => $priority->add()
 			)
 		)
 	);
-	$priority += 10;
 
 	// Accent Color
 	$setting_id = 'color-accent';
@@ -107,7 +104,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Accent Color', 'ttf-one' ),
-				'priority' => $priority
+				'priority' => $priority->add()
 			)
 		)
 	);

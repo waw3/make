@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttf_one_customizer_logo' ) ) :
  * @return void
  */
 function ttf_one_customizer_logo( $wp_customize, $section ) {
-	$priority = 10;
+	$priority = new TTF_One_Prioritizer();
 	$prefix   = 'ttf-one_';
 
 	// Regular Logo
@@ -35,13 +35,11 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Regular Logo', 'ttf-one' ),
-				'priority' => $priority,
+				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
 			)
 		)
 	);
-
-	$priority += 10;
 
 	// Retina Logo
 	$setting_id = 'retina-logo';
@@ -61,13 +59,11 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Retina Logo', 'ttf-one' ),
-				'priority' => $priority,
+				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
 			)
 		)
 	);
-
-	$priority += 10;
 
 	// Favicon
 	$setting_id = 'favicon';
@@ -87,7 +83,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Favicon', 'ttf-one' ),
-				'priority' => $priority,
+				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
 			)
 		)

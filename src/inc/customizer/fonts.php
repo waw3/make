@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttf_one_customizer_fonts' ) ) :
  * @return void
  */
 function ttf_one_customizer_fonts( $wp_customize, $section ) {
-	$priority = 10;
+	$priority = new TTF_One_Prioritizer();
 	$prefix = 'ttf-one_';
 
 	// Site title font
@@ -35,12 +35,11 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'label'    => __( 'Site Title', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_google_fonts(),
-			'priority' => $priority
+			'priority' => $priority->add()
 		)
 	);
-	$priority += 10;
 
-	// Header font title
+	// Header font
 	$setting_id = 'font-header';
 	$wp_customize->add_setting(
 		$setting_id,
@@ -59,12 +58,11 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'type'     => 'select',
 			'choices'  => ttf_one_get_google_fonts(),
 
-			'priority' => $priority
+			'priority' => $priority->add()
 		)
 	);
-	$priority += 10;
 
-	// Background Size
+	// Body font
 	$setting_id = 'font-body';
 	$wp_customize->add_setting(
 		$setting_id,
@@ -82,7 +80,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'label'    => __( 'Body', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_google_fonts(),
-			'priority' => $priority
+			'priority' => $priority->add()
 		)
 	);
 }

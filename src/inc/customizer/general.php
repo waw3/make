@@ -37,7 +37,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 				'full-width' => __( 'Full-width', 'ttf-one' ),
 				'boxed'      => __( 'Boxed', 'ttf-one' )
 			),
-			'priority' => $priority->set()
+			'priority' => $priority->add()
 		)
 	);
 

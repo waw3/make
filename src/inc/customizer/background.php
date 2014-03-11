@@ -34,7 +34,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Background Color', 'ttf-one' ),
-				'priority' => $priority->set()
+				'priority' => $priority->add()
 			)
 		)
 	);
@@ -57,7 +57,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Background Image', 'ttf-one' ),
-				'priority' => $priority->set(),
+				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
 			)
 		)
@@ -85,7 +85,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'cover'   => __( 'Cover', 'ttf-one' ),
 				'contain' => __( 'Contain', 'ttf-one' )
 			),
-			'priority' => $priority->set()
+			'priority' => $priority->add()
 		)
 	);
 
@@ -112,7 +112,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'tile-h'    => __( 'Tile Horizontally', 'ttf-one' ),
 				'tile-v'    => __( 'Tile Vertically', 'ttf-one' )
 			),
-			'priority' => $priority->set()
+			'priority' => $priority->add()
 		)
 	);
 
@@ -138,7 +138,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'center' => __( 'Center', 'ttf-one' ),
 				'right'  => __( 'Right', 'ttf-one' )
 			),
-			'priority' => $priority->set()
+			'priority' => $priority->add()
 		)
 	);
 
@@ -163,7 +163,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 				'fixed'  => __( 'Fixed', 'ttf-one' ),
 				'scroll' => __( 'Scroll', 'ttf-one' )
 			),
-			'priority' => $priority->set()
+			'priority' => $priority->add()
 		)
 	);
 }
