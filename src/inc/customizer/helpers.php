@@ -38,6 +38,9 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'background-attachment' :
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
+		case 'font-site-title' || 'font-header' || 'font-body' :
+			$allowed_choices = array( '1', '2', '3' );
+			break;
 	}
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
