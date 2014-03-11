@@ -9,12 +9,7 @@ hr {
 	background-color: #ccc;
 	border: 0;
 	height: 1px;
-	margin-bottom: 1.5em;
-}
-
-/* Text elements */
-p {
-	margin-bottom: 1.5em;
+	margin-bottom: $base;
 }
 ul, ol {
 	margin: 0 0 1.5em 3em;
@@ -49,18 +44,17 @@ address {
 	margin: 0 0 1.5em;
 }
 pre {
-	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 1.6;
-	margin-bottom: 1.6em;
+	font-family: $mono;
+	background-color: $d;
+	line-height: 1.7;
 	max-width: 100%;
 	overflow: auto;
-	padding: 1.6em;
+	@include rem('padding', $base*1.5);
 }
 code, kbd, tt, var {
-	font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-family: $mono;
+	background-color: $d;
+	@include rem('padding', 4px 2px);
 }
 abbr, acronym {
 	border-bottom: 1px dotted #666;

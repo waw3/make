@@ -8,11 +8,13 @@
 $white:				#ffffff;
 $black:				#1b1d25;
 $blue:              #0048ff;
+$grey:              #eeeeee;
 
 //Functional colors
 $a:					$white;
 $b:					$black;
 $c:                 $blue;
+$d:                 $grey;
 
 //Fonts
 $sans:        		'Open Sans', Helvetica, Arial, sans-serif;
@@ -24,16 +26,16 @@ $two:				800px;
 $three:				1100px;
 
 //Grid
-$width:				900px;
-$col:				81px;
-$gut:				36px;
+$width:				960px;
+$col:				92px;
+$gut:				32px;
 
 //Baseline
-$base: 				25px;
+$base: 				22px;
 
 //Element
 $indent:			1.5em;
-$rule: 				1px solid $a;
+$rule: 				1px solid $b;
 
 // Mixins
 // --------------------------------------------------

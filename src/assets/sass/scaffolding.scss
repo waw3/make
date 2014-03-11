@@ -15,12 +15,15 @@ body {
 	background-color: $a;
 	text-rendering: optimizeLegibility;
 }
-
+#site-wrapper {
+	max-width: $width;
+	margin: 0 auto;
+}
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
 ul,ol,dl,p,iframe,details,address,.vcard,figure,pre,fieldset,table,dt,dd,hr,.alert {
-	@include rem('margin-bottom', $base/2);
+	@include rem('margin-bottom', $base);
 }
 p,ul,ol,dl,blockquote {
 	@extend .break;
