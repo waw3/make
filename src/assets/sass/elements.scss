@@ -1,9 +1,139 @@
 /*---------------------------------------------------------
  4. Elements (_elements.scss)
 -------------------------------------------------------- */
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	clear: both;
+	@include rem('margin', $base/2 0);
+	@extend .break;
+}
+h1 {
+	font-weight: 700;
+	@include rem('font-size', 50px);
+
+}
+h2 {
+	font-weight: 700;
+	@include rem('font-size', 34px);
+
+}
+h3 {
+	font-weight: 700;
+	@include rem('font-size', 24px);
+
+}
+h4 {
+	font-weight: 400;
+	@include rem('font-size', 24px);
+
+}
+h5 {
+	font-weight: 700;
+	text-transform: uppercase;
+	@include rem('letter-spacing', 1px);
+	@include rem('font-size', 16px);
+
+}
+h6 {
+	font-weight: 400;
+	text-transform: uppercase;
+	@include rem('letter-spacing', 2px);
+	@include rem('font-size', 14px);
+}
+/*---------------------------------------------------------
+ Content (_elements.scss)
+-------------------------------------------------------- */
+blockquote {
+	clear: both;
+	@include rem('margin', $base 0);
+	p {
+		line-height: 1.5;
+		@include rem('font-size', 24px);
+	}
+	cite {
+		font-style: normal; //reset
+		@include rem('margin-bottom', $base);
+		@include rem('font-size', 14px);
+		&:before {
+			content: "\2014";
+		}
+	}
+}
+q {
+	&:before {
+		content: "\201C";
+	}
+	&:after {
+		content: "\201D";
+	}
+}
+tt,
+kbd,
+pre,
+code,
+samp,
+var {
+	font-family: $mono;
+	background-color: $d;
+	@include rem('padding', 4px 2px);
+}
+pre {
+	overflow: auto;
+	white-space: pre-wrap;
+	max-width: 100%;
+	line-height: 1.7;
+	@include rem('margin', $base 0);
+	@include rem('padding', $base*1.5);
+	@extend .break;
+}
+abbr,
+acronym,
+dfn {
+	cursor: help;
+	font-size: .95em;
+	text-transform: uppercase;
+	border-bottom: 1px dotted $b;
+	@include rem('letter-spacing', 1px);
+}
+details {
+	summary {
+		font-weight: 700;
+		@include rem('margin-bottom', $base);
+	}
+	:focus {
+		outline: none; //reset
+	}
+}
+ins,
+mark {
+	background: #fff9c0;
+	text-decoration: none;
+}
+ins {
+	text-decoration: none; //reset
+	&:before {
+		content: "\005B";
+		position: relative;
+		@include rem('right', 1px);
+	}
+	&:after {
+		content: "\005D";
+		position: relative;
+		@include rem('left', 1px);
+	}
+}
+small {
+	font-size: 75%;
+}
+big {
+	font-size: 125%;
+}
+address {
+	@include rem('margin', $base 0);
 }
 hr {
 	background-color: #ccc;
@@ -11,8 +141,13 @@ hr {
 	height: 1px;
 	margin-bottom: $base;
 }
-ul, ol {
-	margin: 0 0 1.5em 3em;
+
+/*---------------------------------------------------------
+ Lists (_elements.scss)
+-------------------------------------------------------- */
+ul,
+ol {
+	margin: 0 0 $base $base*2;
 }
 ul {
 	list-style: disc;
@@ -23,7 +158,7 @@ ol {
 li > ul,
 li > ol {
 	margin-bottom: 0;
-	margin-left: 1.5em;
+	margin-left: $indent;
 }
 dt {
 	font-weight: bold;
@@ -37,60 +172,31 @@ b, strong {
 dfn, cite, em, i {
 	font-style: italic;
 }
-blockquote {
-	margin: 0 1.5em;
-}
-address {
-	margin: 0 0 1.5em;
-}
-pre {
-	font-family: $mono;
-	background-color: $d;
-	line-height: 1.7;
-	max-width: 100%;
-	overflow: auto;
-	@include rem('padding', $base*1.5);
-}
-code, kbd, tt, var {
-	font-family: $mono;
-	background-color: $d;
-	@include rem('padding', 4px 2px);
-}
-abbr, acronym {
-	border-bottom: 1px dotted #666;
-	cursor: help;
-}
-mark, ins {
-	background: #fff9c0;
-	text-decoration: none;
-}
-sup,
-sub {
-	font-size: 75%;
-	height: 0;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-sup {
-	bottom: 1ex;
-}
-sub {
-	top: .5ex;
-}
-small {
-	font-size: 75%;
-}
-big {
-	font-size: 125%;
-}
 figure {
 	margin: 0;
 }
+/*---------------------------------------------------------
+ Table (_elements.scss)
+-------------------------------------------------------- */
 table {
-	margin: 0 0 1.5em;
+	margin: 0 0 $base;
 	width: 100%;
+	@extend .break;
 }
 th {
-	font-weight: bold;
+	font-weight: 700;
+	text-align: left;
+	@include rem('padding', $base/2);
+}
+tr:nth-child(odd) {
+	background-color: $d;
+}
+td {
+	@include rem('padding', $base/2);
+	&[valign="top"] {
+		vertical-align: top;
+	}
+	&[valign="bottom"] {
+		vertical-align: bottom;
+	}
 }

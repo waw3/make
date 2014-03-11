@@ -101,15 +101,17 @@ audio:not([controls]) {
   display: none; }
 
 sub, sup {
+  font-size: 75%;
+  height: 0;
   line-height: 0;
   position: relative;
   vertical-align: baseline; }
 
 sup {
-  top: -0.5em; }
+  bottom: 1ex; }
 
 sub {
-  bottom: -0.25em; }
+  top: 0.5ex; }
 
 img {
   border: 0;
@@ -171,7 +173,7 @@ a img {
   .clear:after {
     clear: both; }
 
-.break, p, ul, ol, dl, blockquote {
+.break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
   word-break: break-word;
   word-wrap: break-word; }
 
@@ -318,9 +320,129 @@ a {
 /*---------------------------------------------------------
  4. Elements (_elements.scss)
 -------------------------------------------------------- */
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
-  clear: both; }
+  clear: both;
+  margin: 11px 0;
+  margin:  0.6875rem 0; }
+
+h1 {
+  font-weight: 700;
+  font-size: 50px;
+  font-size: 3.125rem; }
+
+h2 {
+  font-weight: 700;
+  font-size: 34px;
+  font-size: 2.125rem; }
+
+h3 {
+  font-weight: 700;
+  font-size: 24px;
+  font-size: 1.5rem; }
+
+h4 {
+  font-weight: 400;
+  font-size: 24px;
+  font-size: 1.5rem; }
+
+h5 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
+  font-size: 16px;
+  font-size: 1rem; }
+
+h6 {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+/*---------------------------------------------------------
+ Content (_elements.scss)
+-------------------------------------------------------- */
+blockquote {
+  clear: both;
+  margin: 22px 0;
+  margin:  1.375rem 0; }
+  blockquote p {
+    line-height: 1.5;
+    font-size: 24px;
+    font-size: 1.5rem; }
+  blockquote cite {
+    font-style: normal;
+    margin-bottom: 22px;
+    margin-bottom: 1.375rem;
+    font-size: 14px;
+    font-size: 0.875rem; }
+    blockquote cite:before {
+      content: "\2014"; }
+
+q:before {
+  content: "\201C"; }
+q:after {
+  content: "\201D"; }
+
+tt, kbd, pre, code, samp, var {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+  background-color: #eeeeee;
+  padding: 4px 2px;
+  padding:  0.25rem 0.125rem; }
+
+pre {
+  overflow: auto;
+  white-space: pre-wrap;
+  max-width: 100%;
+  line-height: 1.7;
+  margin: 22px 0;
+  margin:  1.375rem 0;
+  padding: 33px;
+  padding: 2.0625rem; }
+
+abbr, acronym, dfn {
+  cursor: help;
+  font-size: 0.95em;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #1b1d25;
+  letter-spacing: 1px;
+  letter-spacing: 0.0625rem; }
+
+details summary {
+  font-weight: 700;
+  margin-bottom: 22px;
+  margin-bottom: 1.375rem; }
+details :focus {
+  outline: none; }
+
+ins, mark {
+  background: #fff9c0;
+  text-decoration: none; }
+
+ins {
+  text-decoration: none; }
+  ins:before {
+    content: "\005B";
+    position: relative;
+    right: 1px;
+    right: 0.0625rem; }
+  ins:after {
+    content: "\005D";
+    position: relative;
+    left: 1px;
+    left: 0.0625rem; }
+
+small {
+  font-size: 75%; }
+
+big {
+  font-size: 125%; }
+
+address {
+  margin: 22px 0;
+  margin:  1.375rem 0; }
 
 hr {
   background-color: #ccc;
@@ -328,8 +450,11 @@ hr {
   height: 1px;
   margin-bottom: 22px; }
 
+/*---------------------------------------------------------
+ Lists (_elements.scss)
+-------------------------------------------------------- */
 ul, ol {
-  margin: 0 0 1.5em 3em; }
+  margin: 0 0 22px 44px; }
 
 ul {
   list-style: disc; }
@@ -353,63 +478,32 @@ b, strong {
 dfn, cite, em, i {
   font-style: italic; }
 
-blockquote {
-  margin: 0 1.5em; }
-
-address {
-  margin: 0 0 1.5em; }
-
-pre {
-  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
-  background-color: #eeeeee;
-  line-height: 1.7;
-  max-width: 100%;
-  overflow: auto;
-  padding: 33px;
-  padding: 2.0625rem; }
-
-code, kbd, tt, var {
-  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
-  background-color: #eeeeee;
-  padding: 4px 2px;
-  padding:  0.25rem 0.125rem; }
-
-abbr, acronym {
-  border-bottom: 1px dotted #666;
-  cursor: help; }
-
-mark, ins {
-  background: #fff9c0;
-  text-decoration: none; }
-
-sup, sub {
-  font-size: 75%;
-  height: 0;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline; }
-
-sup {
-  bottom: 1ex; }
-
-sub {
-  top: 0.5ex; }
-
-small {
-  font-size: 75%; }
-
-big {
-  font-size: 125%; }
-
 figure {
   margin: 0; }
 
+/*---------------------------------------------------------
+ Table (_elements.scss)
+-------------------------------------------------------- */
 table {
-  margin: 0 0 1.5em;
+  margin: 0 0 22px;
   width: 100%; }
 
 th {
-  font-weight: bold; }
+  font-weight: 700;
+  text-align: left;
+  padding: 11px;
+  padding: 0.6875rem; }
+
+tr:nth-child(odd) {
+  background-color: #eeeeee; }
+
+td {
+  padding: 11px;
+  padding: 0.6875rem; }
+  td[valign="top"] {
+    vertical-align: top; }
+  td[valign="bottom"] {
+    vertical-align: bottom; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)

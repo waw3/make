@@ -88,15 +88,17 @@ audio:not([controls]) {
 // Source: http://github.com/necolas/normalize.css
 sub,
 sup {
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+	font-size: 75%;
+	height: 0;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
 }
 sup {
-  top: -.5em;
+	bottom: 1ex;
 }
 sub {
-  bottom: -.25em;
+	top: .5ex;
 }
 
 // Img border in a's and image quality

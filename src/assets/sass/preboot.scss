@@ -65,13 +65,6 @@ $rule: 				1px solid $b;
 	        box-sizing: $val;
 }
 
-@mixin small-type {
-	@include for(small-screens) {
-        @include rem('font-size', 13px);
-	}
-	@include rem('font-size', 16px);
-}
-
 @mixin for($media) {
 	@if $media == small-screens {
 		@media screen and (min-width: $one) { @content; }
