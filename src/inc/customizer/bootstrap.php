@@ -20,6 +20,9 @@ function ttf_one_customizer_init() {
 	// Always load these
 	require_once( get_template_directory() . $path . 'helpers.php' );
 
+	// Load the navigation sections
+	require_once( get_template_directory() . $path . 'navigation.php' );
+
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
 	add_action( 'customize_controls_enqueue_scripts', 'ttf_one_customizer_admin_scripts' );
@@ -49,7 +52,6 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 		'background' => __( 'Background', 'ttf-one' ),
 		'fonts'      => __( 'Fonts', 'ttf-one' ),
 		'colors'     => __( 'Colors', 'ttf-one' ),
-		'navigation' => __( 'Navigation', 'ttf-one' ),
 		'header'     => __( 'Header', 'ttf-one' ),
 		'footer'     => __( 'Footer', 'ttf-one' ),
 		'social'     => __( 'Social Profiles', 'ttf-one' )
