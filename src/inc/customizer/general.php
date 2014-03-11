@@ -3,12 +3,13 @@
  * @package ttf-one
  */
 
+if ( ! function_exists( 'ttf_one_customizer_general' ) ) :
 /**
  * Configure settings and controls for the General section
  *
  * @since 1.0
  *
- * @param onject $wp_customize
+ * @param object $wp_customize
  * @param string $section
  */
 function ttf_one_customizer_general( $wp_customize, $section ) {
@@ -21,6 +22,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		$setting_id,
 		array(
 			'default'           => 'full-width',
+			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
 	);
@@ -29,7 +31,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Site layout', 'ttf-one' ),
+			'label'    => __( 'Site Layout', 'ttf-one' ),
 			'type'     => 'radio',
 			'choices'  => array(
 				'full-width' => __( 'Full-width', 'ttf-one' ),
@@ -42,3 +44,4 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 
 
 }
+endif;
