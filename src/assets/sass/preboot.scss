@@ -7,7 +7,7 @@
 //Descriptive colors
 $white:				#ffffff;
 $black:				#1b1d25;
-$blue:              #0048ff;
+$blue:              #0036ff;
 $grey:              #eeeeee;
 
 //Functional colors
@@ -47,22 +47,10 @@ $rule: 				1px solid $b;
 	   		user-select: none;
 }
 
-@mixin border-radius($radius: 2px) {
+@mixin border-radius($radius: 3px) {
 	-webkit-border-radius: $radius;
 		 -moz-border-radius: $radius;
 			  border-radius: $radius;
-}
-
-@mixin transform-element($deg: 90deg) {
-    -webkit-transform: rotate($deg);
-        -ms-transform: rotate($deg);
-            transform: rotate($deg);
-}
-
-@mixin box-size($val: border-box) {
-	-webkit-box-sizing: $val;
-	   -moz-box-sizing: $val;
-	        box-sizing: $val;
 }
 
 @mixin for($media) {
