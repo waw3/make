@@ -38,4 +38,4 @@ function ttf_one_customizer_navigation() {
 }
 endif;
 
-add_action( 'init', 'ttf_one_customizer_navigation' );
+add_action( 'customize_register', 'ttf_one_customizer_navigation' );
