@@ -39,7 +39,8 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
 		case 'font-site-title' || 'font-header' || 'font-body' :
-			$allowed_choices = ttf_one_get_google_fonts();
+			$fonts = ttf_one_get_google_fonts();
+			$allowed_choices = array_keys( $fonts );
 			break;
 	}
 
