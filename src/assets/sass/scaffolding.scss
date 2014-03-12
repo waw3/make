@@ -12,12 +12,15 @@ html {
 -------------------------------------------------------- */
 body {
 	color: $b;
-	background-color: $a;
+	background-color: $d;
 	text-rendering: optimizeLegibility;
 }
 #site-wrapper {
-	max-width: $width;
+	max-width: $width+($col*2);
 	margin: 0 auto;
+	background-color: $a;
+	@include rem('padding', $base*2 $col);
+
 }
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
