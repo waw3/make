@@ -134,3 +134,26 @@ function ttf_one_customizer_admin_styles() { ?>
 	</style>
 <?php }
 endif;
+
+if ( ! function_exists( 'ttf_one_display_customizations' ) ) :
+/**
+ * Generates the CSS needed for the theme options.
+ *
+ * By using the "ttf_one_css" filter, different components can print CSS in the header. It is organized this way to
+ * ensure that there is only one "style" tag and not a proliferation of them.
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttf_one_display_customizations() {
+	$css = apply_filters( 'ttf_one_css', '' );
+
+	if ( ! empty( $css ) ) {
+		// Note that the escaping responsibility for $css lies in the functions that filter "ttf_one_css"
+		echo '<style type="text/css">' . $css . '</style>';
+	}
+}
+endif;
+
+add_action( 'wp_head', 'ttf_one_display_customizations', 11 );
