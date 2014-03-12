@@ -113,7 +113,7 @@ function ttf_one_customizer_admin_scripts() {
 
 	wp_enqueue_script(
 		'ttf-one-customizer-admin',
-		get_template_directory() . $path . 'customizer' . TTF_ONE_SUFFIX . '.js',
+		get_template_directory_uri() . $path . 'customizer' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-preview' ),
 		TTF_ONE_VERSION,
 		true
