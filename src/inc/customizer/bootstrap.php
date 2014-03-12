@@ -40,14 +40,15 @@ if ( ! function_exists( 'ttf_one_customizer_add_sections' ) ) :
  * @param object $wp_customize
  */
 function ttf_one_customizer_add_sections( $wp_customize ) {
-	$path = '/inc/customizer/';
+	$path         = '/inc/customizer/';
+	$section_path = $path . 'sections/';
 
 	// Get the custom controls
 	require_once( get_template_directory() . $path . 'controls.php' );
 
 	// Modifications for existing sections
-	require_once( get_template_directory() . $path . 'site-title-tagline.php' );
-	require_once( get_template_directory() . $path . 'navigation.php' );
+	require_once( get_template_directory() . $section_path . 'site-title-tagline.php' );
+	require_once( get_template_directory() . $section_path . 'navigation.php' );
 
 	// List of new sections to add
 	$sections = array(
@@ -68,7 +69,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $title ) {
 		// First load the file
-		if ( '' !== locate_template( $path . $section . '.php', true ) ) {
+		if ( '' !== locate_template( $section_path . $section . '.php', true ) ) {
 			// Then add the section
 			if ( function_exists( 'ttf_one_customizer_' . $section ) ) {
 				$section_id = 'ttf-one_' . esc_attr( $section );
