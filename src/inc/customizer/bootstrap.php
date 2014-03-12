@@ -19,7 +19,7 @@ function ttf_one_customizer_init() {
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
 	add_action( 'customize_register', 'ttf_one_customizer_set_transport' );
 	add_action( 'customize_preview_init', 'ttf_one_customizer_admin_scripts' );
-	//add_action( 'customize_controls_print_styles', 'ttf_one_customizer_admin_styles' );
+	add_action( 'customize_controls_print_styles', 'ttf_one_customizer_admin_styles' );
 }
 endif;
 
@@ -139,8 +139,13 @@ if ( ! function_exists( 'ttf_one_customizer_admin_styles' ) ) :
  */
 function ttf_one_customizer_admin_styles() { ?>
 	<style type="text/css">
+		/*
 		#customize-theme-controls .control-section[id*="ttf-one_"] .accordion-section-title {
 			background-color: #f9f9f9;
+		}
+		*/
+		.customize-control.customize-control-heading {
+			margin-bottom: -2px;
 		}
 	</style>
 <?php }
