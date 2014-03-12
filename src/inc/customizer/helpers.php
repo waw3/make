@@ -42,6 +42,9 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$fonts = ttf_one_get_google_fonts();
 			$allowed_choices = array_keys( $fonts );
 			break;
+		case 'header-layout' :
+			$allowed_choices = array( 'layout-1', 'layout-2', 'layout-3', 'layout-4' );
+			break;
 	}
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
