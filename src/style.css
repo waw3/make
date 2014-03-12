@@ -721,20 +721,16 @@ embed, iframe, object {
 -------------------------------------------------------- */
 .comment {
   list-style: none;
-  margin: 22px 0;
-  margin:  1.375rem 0; }
+  padding: 33px 0 0;
+  padding:  2.0625rem 0 0; }
   .comment:focus {
     outline: none; }
-  .comment:first-of-type {
-    margin-top: 0;
-    padding-top: 0; }
   .comment:last-of-type {
     margin-bottom: 0; }
   .comment .children {
+    margin: 0;
     padding-left: 32px;
-    padding-left: 2rem;
-    margin: 33px 0;
-    margin:  2.0625rem 0; }
+    padding-left: 2rem; }
   .comment .depth-4 .children {
     padding-left: 0; }
   .comment .comment-label:before {
@@ -759,13 +755,15 @@ embed, iframe, object {
 /*---------------------------------------------------------
  Details (_comments.scss)
 -------------------------------------------------------- */
+.comment-content p:last-of-type {
+  margin-bottom: 0; }
 .comment-content a {
   word-wrap: break-word; }
 
 .comment-body {
   border-bottom: 1px solid #eeeeee;
-  padding-bottom: 11px;
-  padding-bottom: 0.6875rem; }
+  padding-bottom: 33px;
+  padding-bottom: 2.0625rem; }
 
 .comment-date {
   font-size: 12px;

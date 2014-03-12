@@ -13,20 +13,16 @@
 -------------------------------------------------------- */
 .comment {
 	list-style: none; //reset
-	@include rem('margin', $base*1 0);
+	@include rem('padding', $base*1.5 0 0);
 	&:focus {
 		outline: none; //reset
-	}
-	&:first-of-type {
-		margin-top: 0; //reset
-		padding-top: 0; //reset
 	}
 	&:last-of-type {
 		margin-bottom: 0; //reset
 	}
 	.children {
+		margin: 0; //reset
 		@include rem('padding-left', $gut);
-		@include rem('margin', $base*1.5 0);
 	}
 	.depth-4 .children {
 		padding-left: 0; //reset
@@ -52,12 +48,17 @@
 /*---------------------------------------------------------
  Details (_comments.scss)
 -------------------------------------------------------- */
-.comment-content a {
-	word-wrap: break-word;
+.comment-content {
+	p:last-of-type {
+		margin-bottom: 0; //reset
+	}
+	a {
+		word-wrap: break-word;
+	}
 }
 .comment-body {
 	border-bottom: 1px solid $d;
-	@include rem('padding-bottom', $base/2);
+	@include rem('padding-bottom', $base*1.5);
 }
 .comment-date {
 	@include rem('font-size', 12px);
