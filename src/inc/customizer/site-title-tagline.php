@@ -5,7 +5,7 @@
 
 if ( ! function_exists( 'ttf_one_customizer_sitetitletagline' ) ) :
 /**
- * Configure settings and controls for the Navigation section.
+ * Configure settings and controls for the Site Title & Tagline section.
  *
  * @since  1.0
  *
