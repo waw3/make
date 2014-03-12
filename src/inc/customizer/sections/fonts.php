@@ -57,7 +57,6 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'label'    => __( 'Header', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_google_fonts(),
-
 			'priority' => $priority->add()
 		)
 	);
