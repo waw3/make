@@ -82,7 +82,8 @@ samp,
 var {
 	font-family: $mono;
 	background-color: $d;
-	@include rem('padding', 4px 2px);
+	@include rem('padding', 4px 6px);
+	@include border-radius;
 }
 pre {
 	overflow: auto;
