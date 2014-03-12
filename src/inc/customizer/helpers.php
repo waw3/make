@@ -780,3 +780,34 @@ function ttf_one_get_google_fonts() {
 	);
 }
 endif;
+
+if ( ! function_exists( 'ttf_one_display_fonts' ) ) :
+/**
+ * Write the CSS to implement the font options.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_fonts( $css ) {
+	$font_site_title = get_theme_mod( 'font-site-title', false );
+	if ( false !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) ) {
+		$css .= '.font-site-title{font-family: ' . $font_site_title . '}';
+	}
+
+	$font_header = get_theme_mod( 'font-header', false );
+	if ( false !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) ) {
+		$css .= '.font-header{font-family: ' . $font_header . '}';
+	}
+
+	$font_body = get_theme_mod( 'font-body', false );
+	if ( false !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) ) {
+		$css .= '.font-body{font-family:' . $font_body . '}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_fonts' );
