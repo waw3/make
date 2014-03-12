@@ -1,52 +1,64 @@
 /*---------------------------------------------------------
  10. Forms (_forms.scss)
 -------------------------------------------------------- */
+textarea,
+input {
+	max-width: 100%;
+	border: 1px solid $e;
+	background-color: transparent; //reset
+	-webkit-appearance: none; //reset
+	@include rem('padding', 6px 8px);
+	@include border-radius;
+}
+textarea {
+	resize: vertical;
+}
+select {
+	max-width: 100%;
+	outline: none; //reset
+}
+/*---------------------------------------------------------
+ Buttons and inputs (_forms.scss)
+-------------------------------------------------------- */
 button,
 input,
 select,
 textarea {
-	font-size: 100%;
-	margin: 0;
+	margin: 0; //reset
 	vertical-align: baseline;
 	*vertical-align: middle;
+	font-size: 100%;
+}
+textarea {
+	overflow: auto;
+	vertical-align: top;
 }
 button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid $d;
+	border: 1px solid;
 	border-color: #ccc #ccc #bbb #ccc;
-	border-radius: 3px;
 	background: #e6e6e6;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-	color: rgba(0, 0, 0, .8);
 	cursor: pointer;
 	-webkit-appearance: button;
-	line-height: 1;
-	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa #bbb;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-}
-button:focus,
-input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-button:active,
-input[type="button"]:active,
-input[type="reset"]:active,
-input[type="submit"]:active {
-	border-color: #aaa #bbb #bbb #bbb;
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
+	@include rem('padding', $base/4 10px);
+	@include rem('font-size', 14px);
+	@include border-radius;
+	&:hover {
+		border-color: #ccc #bbb #aaa #bbb;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
+	}
+	&:focus,
+	&:active {
+		border-color: #aaa #bbb #bbb #bbb;
+		box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
+	}
 }
 input[type="checkbox"],
 input[type="radio"] {
-	padding: 0;
+	padding: 0; //rest
 }
 input[type="search"] {
 	-webkit-appearance: textfield;
@@ -55,41 +67,10 @@ input[type="search"] {
 	box-sizing: content-box;
 }
 input[type="search"]::-webkit-search-decoration {
-	-webkit-appearance: none;
+	-webkit-appearance: none; //reset
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-	border: 0;
-	padding: 0;
-}
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	@include border-radius;
-}
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-textarea:focus {
-	color: #111;
-}
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"] {
-	padding: 3px;
-}
-textarea {
-	overflow: auto;
-	padding-left: 3px;
-	vertical-align: top;
-	width: 98%;
+	border: 0; //reset
+	padding: 0; //reset
 }
