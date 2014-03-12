@@ -3,6 +3,21 @@
  * @package ttf-one
  */
 
+if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
+/**
+ * Sanitize a string to allow only tags in the allowedtags array.
+ *
+ * @since  1.0
+ *
+ * @param  string    $string    The unsanitized string.
+ * @return string               The sanitized string.
+ */
+function ttf_one_sanitize_text( $string ) {
+	global $allowedtags;
+	return wp_kses( $string , $allowedtags );
+}
+endif;
+
 if ( ! function_exists( 'ttf_one_sanitize_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
@@ -42,7 +57,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$fonts = ttf_one_get_google_fonts();
 			$allowed_choices = array_keys( $fonts );
 			break;
-		case 'header-layout' :
+		case 'header-layout' || 'footer-layout' :
 			$allowed_choices = array( 'layout-1', 'layout-2', 'layout-3', 'layout-4' );
 			break;
 	}
