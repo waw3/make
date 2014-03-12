@@ -43,6 +43,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 	$path = 'inc/customizer/';
 
 	// Modifications for existing sections
+	require_once( trailingslashit( get_template_directory() ) . $path . 'site-title-tagline.php' );
 	require_once( trailingslashit( get_template_directory() ) . $path . 'navigation.php' );
 
 	// List of new sections to add
