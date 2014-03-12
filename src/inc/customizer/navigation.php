@@ -14,28 +14,31 @@ if ( ! function_exists( 'ttf_one_customizer_navigation' ) ) :
 function ttf_one_customizer_navigation() {
 	global $wp_customize;
 
-	$priority = 100;
+	$priority = new TTF_One_Prioritizer();
 	$prefix = 'ttf-one_';
 
 	// Menu Label
 	$setting_id = 'navigation-label';
 	$wp_customize->add_setting(
-		$prefix . $setting_id,
+		$setting_id,
 		array(
 			'default'           => __( 'Menu', 'ttf-one' ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_html',
+			'theme_supports'    => 'menus'
 		)
 	);
 	$wp_customize->add_control(
 		$prefix . $setting_id,
 		array(
-			'label'    => __( 'Menu Label', 'ttf-one' ),
+			'settings' => $setting_id,
 			'section'  => 'nav',
-			'priority' => $priority
+			'label'    => __( 'Menu Label', 'ttf-one' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
 		)
 	);
 }
 endif;
 
-add_action( 'customize_register', 'ttf_one_customizer_navigation' );
+add_action( 'customize_register', 'ttf_one_customizer_navigation', 20 );
