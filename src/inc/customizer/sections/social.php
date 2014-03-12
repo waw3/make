@@ -178,66 +178,6 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 
-	// Custom description
-	$setting_id = 'social-custom-description';
-	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'section'     => $section,
-				'type'        => 'text',
-				'description' => __( 'To add a social profile not listed above, enter the complete URL in the field below and then upload an icon for it.', 'ttf-one' ),
-				'priority'    => $priority->add()
-			)
-		)
-	);
-
-	// Custom URL
-	$setting_id = 'social-custom-url';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Custom URL', 'ttf-one' ),
-			'type'     => 'text',
-			'priority' => $priority->add()
-		)
-	);
-
-	// Custom Icon
-	$setting_id = 'social-custom-icon';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
-	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Custom Icon', 'ttf-one' ),
-				'priority' => $priority->add(),
-				'context'  => $prefix . $setting_id
-			)
-		)
-	);
-
 	// Custom alternate
 	$setting_id = 'social-custom-alternate';
 	$wp_customize->add_control(
@@ -248,7 +188,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 				'section'     => $section,
 				'type'        => 'text',
 				'description' => sprintf(
-					__( 'If you would like to add more than one custom social profile, or would like to change the order of the icons, use %s.', 'ttf-one' ),
+					__( 'If you would like to add a social profile that is not listed above, or would like to change the order of the icons, use %s.', 'ttf-one' ),
 					sprintf(
 						'<a href="' . esc_url( '#' ) . '">%s</a>',
 						__( 'this alternate method', 'ttf-one' )
