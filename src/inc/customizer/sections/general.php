@@ -17,7 +17,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 	$prefix = 'ttf-one_';
 
 	// Site Layout
-	$setting_id = 'site-layout';
+	$setting_id = 'general-layout';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(

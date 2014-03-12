@@ -18,7 +18,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	$prefix   = 'ttf-one_';
 
 	// Regular Logo
-	$setting_id = 'regular-logo';
+	$setting_id = 'logo-regular';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -42,7 +42,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	);
 
 	// Retina Logo
-	$setting_id = 'retina-logo';
+	$setting_id = 'logo-retina';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -66,7 +66,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	);
 
 	// Favicon
-	$setting_id = 'favicon';
+	$setting_id = 'logo-favicon';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(

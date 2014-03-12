@@ -17,7 +17,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 	$prefix = 'ttf-one_';
 
 	// Background color
-	$setting_id = 'footer-bg-color';
+	$setting_id = 'footer-background-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
