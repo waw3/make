@@ -136,27 +136,6 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 
-	// Pinterest
-	$setting_id = 'social-pinterest';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => 'Pinterest', // brand names not translated
-			'type'     => 'text',
-			'priority' => $priority->add()
-		)
-	);
-
 	// Flickr
 	$setting_id = 'social-flickr';
 	$wp_customize->add_setting(
@@ -173,6 +152,69 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 			'settings' => $setting_id,
 			'section'  => $section,
 			'label'    => 'Flickr', // brand names not translated
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// YouTube
+	$setting_id = 'social-youtube';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => 'YouTube', // brand names not translated
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Vimeo
+	$setting_id = 'social-vimeo';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => 'Vimeo', // brand names not translated
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Pinterest
+	$setting_id = 'social-pinterest';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => 'Pinterest', // brand names not translated
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -196,6 +238,27 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 				),
 				'priority'    => $priority->add()
 			)
+		)
+	);
+
+	// Email
+	$setting_id = 'social-email';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'sanitize_email',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Email', 'ttf-one' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
 		)
 	);
 
@@ -229,7 +292,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide default RSS feed', 'ttf-one' ),
+			'label'    => __( 'Hide default RSS feed link', 'ttf-one' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
