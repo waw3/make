@@ -23,7 +23,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'default'           => '#ffffff',
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
 	);
 	$wp_customize->add_control(
