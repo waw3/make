@@ -10,16 +10,6 @@ input {
 	@include rem('padding', 6px 8px);
 	@include border-radius;
 }
-textarea {
-	resize: vertical;
-}
-select {
-	max-width: 100%;
-	outline: none; //reset
-}
-/*---------------------------------------------------------
- Buttons and inputs (_forms.scss)
--------------------------------------------------------- */
 button,
 input,
 select,
@@ -30,9 +20,18 @@ textarea {
 	font-size: 100%;
 }
 textarea {
+	resize: vertical;
+}
+select {
+	max-width: 100%;
 	overflow: auto;
 	vertical-align: top;
+	outline: none; //reset
+	@include rem('font-size', 16px);
 }
+/*---------------------------------------------------------
+ Buttons and inputs (_forms.scss)
+-------------------------------------------------------- */
 button,
 input[type="button"],
 input[type="reset"],
@@ -43,7 +42,7 @@ input[type="submit"] {
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
 	cursor: pointer;
 	-webkit-appearance: button;
-	@include rem('padding', $base/4 10px);
+	@include rem('padding', $base/4 $gut/4);
 	@include rem('font-size', 14px);
 	@include border-radius;
 	&:hover {
@@ -65,12 +64,13 @@ input[type="search"] {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
-}
-input[type="search"]::-webkit-search-decoration {
-	-webkit-appearance: none; //reset
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-decoration {
+		-webkit-appearance: none; //reset
+	}
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-	border: 0; //reset
 	padding: 0; //reset
+	border: 0; //reset
 }

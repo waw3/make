@@ -11,7 +11,6 @@ html {
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-	color: $b;
 	background-color: $d;
 	text-rendering: optimizeLegibility;
 }
@@ -22,22 +21,6 @@ body {
 	@include rem('padding', $base*2 $col);
 
 }
-/*---------------------------------------------------------
- Base (_scaffolding.scss)
--------------------------------------------------------- */
-ul,ol,dl,p,iframe,details,address,.vcard,figure,pre,fieldset,table,dt,dd,hr,.alert {
-	@include rem('margin-bottom', $base);
-}
-p,ul,ol,dl,blockquote {
-	@extend .break;
-}
-pre,
-code,
-input,
-textarea {
-	font: inherit;
-}
-
 body,
 button,
 input,
@@ -47,19 +30,30 @@ textarea {
 	font-family: $sans;
 	line-height: 1.55;
 }
-
-
-
-/* Links */
+pre,
+code,
+input,
+textarea {
+	font: inherit;
+}
+/*---------------------------------------------------------
+ Base (_scaffolding.scss)
+-------------------------------------------------------- */
+ul,ol,dl,p,iframe,details,address,.vcard,figure,pre,fieldset,table,dt,dd,hr,.alert {
+	@include rem('margin-bottom', $base);
+}
+p,ul,ol,dl,blockquote {
+	@extend .break;
+}
+/*---------------------------------------------------------
+ Links (_scaffolding.scss)
+-------------------------------------------------------- */
 a {
 	color: $c;
 	&:hover,
 	&:focus,
 	&:active {
 		color: $c;
-	}
-	&:visited {
-		color: purple;
 	}
 }
 /* =Menu

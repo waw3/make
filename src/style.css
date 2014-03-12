@@ -190,7 +190,6 @@ html {
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-  color: #1b1d25;
   background-color: #eeeeee;
   text-rendering: optimizeLegibility; }
 
@@ -201,6 +200,14 @@ body {
   padding: 44px 92px;
   padding:  2.75rem 5.75rem; }
 
+body, button, input, select, textarea {
+  color: #1b1d25;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.55; }
+
+pre, code, input, textarea {
+  font: inherit; }
+
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
@@ -209,21 +216,13 @@ ul, ol, dl, p, iframe, details, address, .vcard, figure, pre, fieldset, table, d
   margin-bottom: 1.375rem; }
 
 
-pre, code, input, textarea {
-  font: inherit; }
-
-body, button, input, select, textarea {
-  color: #1b1d25;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  line-height: 1.55; }
-
-/* Links */
+/*---------------------------------------------------------
+ Links (_scaffolding.scss)
+-------------------------------------------------------- */
 a {
   color: #0036ff; }
   a:hover, a:focus, a:active {
     color: #0036ff; }
-  a:visited {
-    color: purple; }
 
 /* =Menu
 ----------------------------------------------- */
@@ -724,16 +723,6 @@ textarea, input {
   -moz-border-radius: 3px;
   border-radius: 3px; }
 
-textarea {
-  resize: vertical; }
-
-select {
-  max-width: 100%;
-  outline: none; }
-
-/*---------------------------------------------------------
- Buttons and inputs (_forms.scss)
--------------------------------------------------------- */
 button, input, select, textarea {
   margin: 0;
   vertical-align: baseline;
@@ -741,9 +730,19 @@ button, input, select, textarea {
   font-size: 100%; }
 
 textarea {
-  overflow: auto;
-  vertical-align: top; }
+  resize: vertical; }
 
+select {
+  max-width: 100%;
+  overflow: auto;
+  vertical-align: top;
+  outline: none;
+  font-size: 16px;
+  font-size: 1rem; }
+
+/*---------------------------------------------------------
+ Buttons and inputs (_forms.scss)
+-------------------------------------------------------- */
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   border: 1px solid;
   border-color: #ccc #ccc #bbb #ccc;
@@ -751,8 +750,8 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   -webkit-appearance: button;
-  padding: 5.5px 10px;
-  padding:  0.34375rem 0.625rem;
+  padding: 5.5px 8px;
+  padding:  0.34375rem 0.5rem;
   font-size: 14px;
   font-size: 0.875rem;
   -webkit-border-radius: 3px;
@@ -773,13 +772,12 @@ input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box; }
-
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+  input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0; }
+  padding: 0;
+  border: 0; }
 
 /*---------------------------------------------------------
  11. Options (_options.scss)
