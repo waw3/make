@@ -18,6 +18,69 @@ function ttf_one_sanitize_text( $string ) {
 }
 endif;
 
+if ( ! function_exists( 'sanitize_hex_color' ) ) :
+/**
+ * Sanitizes a hex color.
+ *
+ * This is a copy of the core function for use when the customizer is not being shown.
+ *
+ * @since  1.0.0
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function sanitize_hex_color( $color ) {
+	if ( '' === $color )
+		return '';
+
+	// 3 or 6 hex digits, or the empty string.
+	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+		return $color;
+
+	return null;
+}
+endif;
+
+if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
+/**
+ * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
+ *
+ * This is a copy of the core function for use when the customizer is not being shown.
+ *
+ * @since  1.0.0
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function sanitize_hex_color_no_hash( $color ) {
+	$color = ltrim( $color, '#' );
+
+	if ( '' === $color )
+		return '';
+
+	return sanitize_hex_color( '#' . $color ) ? $color : null;
+}
+endif;
+
+if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
+/**
+ * Ensures that any hex color is properly hashed.
+ *
+ * This is a copy of the core function for use when the customizer is not being shown.
+ *
+ * @since  1.0.0
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function maybe_hash_hex_color( $color ) {
+	if ( $unhashed = sanitize_hex_color_no_hash( $color ) )
+		return '#' . $unhashed;
+
+	return $color;
+}
+endif;
+
 if ( ! function_exists( 'ttf_one_sanitize_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
@@ -811,3 +874,24 @@ function ttf_one_display_fonts( $css ) {
 endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_fonts' );
+
+if ( ! function_exists( 'ttf_one_display_background' ) ) :
+/**
+ * Write the CSS to implement the background options.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_background( $css ) {
+	$background_color = get_theme_mod( 'background-color', false );
+	if ( false !== $background_color ) {
+		$css .= 'body{background-color: ' . maybe_hash_hex_color( $background_color ) . '}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_background' );
