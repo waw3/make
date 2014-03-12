@@ -1,5 +1,9 @@
 <?php
-if ( class_exists( 'WP_Customize_Image_Control', false ) && ! class_exists( 'TTF_One_Customize_Image_Control', false ) ) :
+/**
+ * @package ttf-one
+ */
+
+if ( class_exists( 'WP_Customize_Image_Control' ) && ! class_exists( 'TTF_One_Customize_Image_Control' ) ) :
 /**
  * Class TTF_One_Customize_Image_Control
  *
@@ -36,7 +40,7 @@ class TTF_One_Customize_Image_Control extends WP_Customize_Image_Control {
 }
 endif;
 
-if ( class_exists( 'WP_Customize_Control', false ) && ! class_exists( 'TTF_One_Customize_Misc_Control', false ) ) :
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'TTF_One_Customize_Misc_Control' ) ) :
 /**
  * Class TTF_One_Customize_Misc_Control
  *

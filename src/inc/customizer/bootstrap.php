@@ -12,17 +12,13 @@ if ( ! function_exists( 'ttf_one_customizer_init' ) ) :
 function ttf_one_customizer_init() {
 	$path = '/inc/customizer/';
 
-	// Only load these on the backend
-	if ( is_admin() ) {
-		require_once( get_template_directory() . $path . 'customizer.php' );
-	}
-
-	// Always load these
+	// Always load
 	require_once( get_template_directory() . $path . 'helpers.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
-	add_action( 'customize_controls_enqueue_scripts', 'ttf_one_customizer_admin_scripts' );
+	add_action( 'customize_register', 'ttf_one_customizer_set_transport' );
+	add_action( 'customize_preview_init', 'ttf_one_customizer_admin_scripts' );
 	add_action( 'customize_controls_print_styles', 'ttf_one_customizer_admin_styles' );
 }
 endif;
@@ -97,6 +93,20 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 			}
 		}
 	}
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_customizer_set_transport' ) ) :
+/**
+ * Add postMessage support for certain settings in the Theme Customizer.
+ *
+ * @since 1.0
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function ttf_one_customizer_set_transport( $wp_customize ) {
+	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 }
 endif;
 
