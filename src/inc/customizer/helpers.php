@@ -148,6 +148,13 @@ class TTF_One_Customize_Image_Control extends WP_Customize_Image_Control {
 endif;
 
 if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'TTF_One_Customize_Misc_Control' ) ) :
+/**
+ * Class TTF_One_Customize_Misc_Control
+ *
+ * Control for adding arbitrary HTML to a Customizer section.
+ *
+ * @since 1.0
+ */
 class TTF_One_Customize_Misc_Control extends WP_Customize_Control {
 	public $settings = 'blogname';
 	public $description = '';
