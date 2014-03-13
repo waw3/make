@@ -192,6 +192,29 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_colors' );
 
+if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
+/**
+ * Write the favicons to the head to implement the options.
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttf_one_display_favicons() {
+	$logo_favicon = get_theme_mod( 'logo-favicon', false );
+	if ( false !== $logo_favicon ) : ?>
+		<link rel="icon" type="image/png" href="<?php echo esc_url( $logo_favicon ); ?>" />
+	<?php endif;
+
+	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', false );
+	if ( false !== $logo_apple_touch ) : ?>
+		<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
+	<?php endif;
+}
+endif;
+
+add_action( 'wp_head', 'ttf_one_display_favicons' );
+
 if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
