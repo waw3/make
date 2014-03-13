@@ -234,6 +234,25 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
 
+if ( ! function_exists( 'ttf_one_display_footer_background' ) ) :
+/**
+ * Write the CSS to implement the footer background option.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_footer_background( $css ) {
+	$background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', '#ffffff' ) );
+	$css .= '.site-footer{background-color:' . $background_color . ';}';
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
+
 if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
