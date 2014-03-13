@@ -115,7 +115,7 @@ if ( ! function_exists( 'ttf_one_customizer_preview_script' ) ) :
 /**
  * Enqueue customizer preview script
  *
- * Hooked to 'admin_enqueue_scripts' via ttf_one_customizer_init()
+ * Hooked to 'customize_preview_init' via ttf_one_customizer_init()
  *
  * @since 1.0
  */
@@ -136,7 +136,7 @@ if ( ! function_exists( 'ttf_one_customizer_sections_script' ) ) :
 /**
  * Enqueue customizer sections script
  *
- * Hooked to 'admin_enqueue_scripts' via ttf_one_customizer_init()
+ * Hooked to 'customize_controls_enqueue_scripts' via ttf_one_customizer_init()
  *
  * @since 1.0
  */
