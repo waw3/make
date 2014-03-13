@@ -133,6 +133,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
  *
@@ -166,6 +167,7 @@ function ttf_one_css_fonts() {
 
 	return $css;
 }
+endif;
 
 if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
 /**
