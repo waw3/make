@@ -190,9 +190,7 @@ function ttf_one_display_customizations() {
 	if ( ! empty( $css ) ) {
 		// Note that the escaping responsibility for $css lies in the functions that filter "ttf_one_css" ?>
 <!-- Begin TTF_One Custom CSS -->
-<style type="text/css" media="all">
-<?php echo $css; ?>
-</style>
+<style type="text/css" media="all"><?php echo $css; ?></style>
 <!-- End TTF_One Custom CSS -->
 	<?php
 	}
