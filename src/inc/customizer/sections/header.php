@@ -92,7 +92,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 0,
+			'default'           => 1,
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -102,7 +102,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide Social Icons', 'ttf-one' ),
+			'label'    => __( 'Show Social Icons', 'ttf-one' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
