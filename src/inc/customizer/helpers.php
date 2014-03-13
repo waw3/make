@@ -203,7 +203,7 @@ if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
 function ttf_one_display_favicons() {
 	$logo_favicon = get_theme_mod( 'logo-favicon', false );
 	if ( false !== $logo_favicon ) : ?>
-		<link rel="icon" type="image/png" href="<?php echo esc_url( $logo_favicon ); ?>" />
+		<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
 	<?php endif;
 
 	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', false );
