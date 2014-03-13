@@ -82,9 +82,10 @@ a {
 }
 .site-description {
 	display: block;
-	font-style: italic;
-	@include rem('font-size', 14px);
+	text-transform: uppercase;
 	@include rem('margin-bottom', $base);
+	@include rem('font-size', 12px);
+	@include rem('letter-spacing', 1px);
 }
 /*---------------------------------------------------------
  Sub Header (_scaffolding.scss)

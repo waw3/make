@@ -248,11 +248,13 @@ a {
 
 .site-description {
   display: block;
-  font-style: italic;
-  font-size: 14px;
-  font-size: 0.875rem;
+  text-transform: uppercase;
   margin-bottom: 22px;
-  margin-bottom: 1.375rem; }
+  margin-bottom: 1.375rem;
+  font-size: 12px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  letter-spacing: 0.0625rem; }
 
 /*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
