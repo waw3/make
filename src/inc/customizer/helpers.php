@@ -133,6 +133,27 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_display_background' ) ) :
+/**
+ * Write the CSS to implement the background options.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_background( $css ) {
+	$background_color = get_theme_mod( 'background-color', false );
+	if ( false !== $background_color ) {
+		$css .= 'body{background-color: ' . maybe_hash_hex_color( $background_color ) . '}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_background' );
+
 if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
@@ -882,24 +903,3 @@ function ttf_one_get_google_fonts() {
 	);
 }
 endif;
-
-if ( ! function_exists( 'ttf_one_display_background' ) ) :
-/**
- * Write the CSS to implement the background options.
- *
- * @since  1.0.0.
- *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
- */
-function ttf_one_display_background( $css ) {
-	$background_color = get_theme_mod( 'background-color', false );
-	if ( false !== $background_color ) {
-		$css .= 'body{background-color: ' . maybe_hash_hex_color( $background_color ) . '}';
-	}
-
-	return $css;
-}
-endif;
-
-add_filter( 'ttf_one_css', 'ttf_one_display_background' );
