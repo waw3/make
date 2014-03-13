@@ -137,19 +137,18 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @return string
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
  */
-function ttf_one_css_fonts() {
+function ttf_one_css_fonts( $css ) {
 	$font_option_keys = array( 'font-body', 'font-site-title', 'font-header'  );
 	$fonts = array();
 
 	foreach ( $font_option_keys as $key ) {
 		$fonts[$key] = get_theme_mod( $key, 'Open Sans' );
 	}
-
-	$css = "\t/* Fonts */\n";
 
 	foreach ( $fonts as $key => $name ) {
 		switch ( $key ) {
