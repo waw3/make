@@ -133,6 +133,84 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 }
 endif;
 
+/**
+ * Build the CSS rules for the custom fonts
+ *
+ * @since 1.0.0
+ *
+ * @return string
+ */
+function ttf_one_css_fonts() {
+	$font_option_keys = array( 'font-body', 'font-site-title', 'font-header'  );
+	$fonts = array();
+
+	foreach ( $font_option_keys as $key ) {
+		$fonts[$key] = get_theme_mod( $key, 'Open Sans' );
+	}
+
+	$css = "\t/* Fonts */\n";
+
+	foreach ( $fonts as $key => $name ) {
+		switch ( $key ) {
+			case 'font-body' :
+				$css .= "\tbody { font-family: " . esc_html( $name ) . "; }\n";
+				break;
+			case 'font-site-title' :
+				$css .= "\t.site-title { font-family: " . esc_html( $name ) . "; }\n";
+				break;
+			case 'font-header' :
+				$css .= "\th1, h2, h3, h4, h5, h6 { font-family: " . esc_html( $name ) . "; }\n";
+				break;
+		}
+	}
+
+	return $css;
+}
+
+if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
+/**
+ * Build the HTTP request URL for Google fonts
+ *
+ * @since 1.0.0
+ *
+ * @param array $fonts The names of the fonts to include in the request.
+ *
+ * @return string
+ */
+function ttf_one_get_google_font_request( $fonts = array() ) {
+	// Grab the theme options if no fonts are specified
+	if ( empty( $fonts ) ) {
+		$font_option_keys = array( 'font-site-title', 'font-header', 'font-body' );
+		foreach ( $font_option_keys as $key ) {
+			$fonts[] = get_theme_mod( $key, 'Open Sans' );
+		}
+	}
+
+	// De-dupe the fonts
+	$fonts = array_unique( $fonts );
+
+	$allowed_fonts = ttf_one_get_google_fonts();
+	$family = array();
+
+	// Validate each font and convert to URL format
+	foreach ( (array) $fonts as $font ) {
+		$font = trim( $font );
+		if ( in_array( $font, array_keys( $allowed_fonts ) ) ) {
+			$family[] = str_replace( ' ', '+', $font );
+		}
+	}
+
+	$request = '';
+
+	// Convert from array to string
+	if ( ! empty( $family ) ) {
+		$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
+	}
+
+	return esc_url( $request );
+}
+endif;
+
 if ( ! function_exists( 'ttf_one_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.

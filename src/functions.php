@@ -77,19 +77,47 @@ if ( ! function_exists( 'ttf_one_scripts' ) ) :
  * Enqueue scripts and styles.
  */
 function ttf_one_scripts() {
+	$style_dependencies = array();
+
+	// Google fonts
+	if ( '' !== $google_request = ttf_one_get_google_font_request() ) {
+		// Add fonts to head CSS block
+		add_filter( 'ttf_one_css', 'ttf_one_css_fonts' );
+
+		// Enqueue the fonts
+		wp_enqueue_style(
+			'ttf-one-google-fonts',
+			$google_request,
+			array(),
+			TTF_ONE_VERSION
+		);
+		$style_dependencies[] = 'ttf-one-google-fonts';
+	}
+
+	// Main stylesheet
 	wp_enqueue_style(
-		'ttf-one-style',
-		get_stylesheet_uri()
+		'ttf-one-main-style',
+		get_stylesheet_uri(),
+		$style_dependencies,
+		TTF_ONE_VERSION
 	);
 
+	$script_dependencies = array();
+
+	// Scripts that don't need jQuery
+
+	$style_dependencies[] = 'jquery';
+
+	// Global script
 	wp_enqueue_script(
 		'ttf-one-global',
 		get_template_directory_uri() . '/js/global.js',
-		array( 'jquery' ),
+		$script_dependencies,
 		TTF_ONE_VERSION,
 		true
 	);
 
+	// Comment reply script
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

@@ -188,8 +188,13 @@ function ttf_one_display_customizations() {
 	$css = apply_filters( 'ttf_one_css', '' );
 
 	if ( ! empty( $css ) ) {
-		// Note that the escaping responsibility for $css lies in the functions that filter "ttf_one_css"
-		echo '<style type="text/css">' . $css . '</style>';
+		// Note that the escaping responsibility for $css lies in the functions that filter "ttf_one_css" ?>
+<!-- Begin TTF_One Custom CSS -->
+<style type="text/css" media="all">
+<?php echo $css; ?>
+</style>
+<!-- End TTF_One Custom CSS -->
+	<?php
 	}
 }
 endif;
