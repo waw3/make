@@ -22,7 +22,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '#ffffff',
+			'default'           => '#f41811',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -45,7 +45,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '#ffffff',
+			'default'           => '#eeeeee',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -68,7 +68,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '#ffffff',
+			'default'           => '#1b1d25',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -81,29 +81,6 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Text Color', 'ttf-one' ),
-				'priority' => $priority->add()
-			)
-		)
-	);
-
-	// Accent Color
-	$setting_id = 'color-accent';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '#ffffff',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'maybe_hash_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Accent Color', 'ttf-one' ),
 				'priority' => $priority->add()
 			)
 		)
