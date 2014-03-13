@@ -154,13 +154,13 @@ function ttf_one_css_fonts() {
 	foreach ( $fonts as $key => $name ) {
 		switch ( $key ) {
 			case 'font-body' :
-				$css .= "\tbody { font-family: " . esc_html( $name ) . "; }\n";
+				$css .= ".font-body,body{font-family:" . esc_html( $name ) . ";}";
 				break;
 			case 'font-site-title' :
-				$css .= "\t.site-title { font-family: " . esc_html( $name ) . "; }\n";
+				$css .= ".font-site-title,.site-title{font-family:" . esc_html( $name ) . ";}";
 				break;
 			case 'font-header' :
-				$css .= "\th1, h2, h3, h4, h5, h6 { font-family: " . esc_html( $name ) . "; }\n";
+				$css .= ".font-header,h1,h2,h3,h4,h5,h6{font-family:" . esc_html( $name ) . ";}";
 				break;
 		}
 	}
