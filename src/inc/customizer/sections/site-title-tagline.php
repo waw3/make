@@ -16,6 +16,7 @@ function ttf_one_customizer_sitetitletagline() {
 
 	$priority = new TTF_One_Prioritizer( 10, 1 );
 	$prefix = 'ttf-one_';
+	$section = 'title_tagline';
 
 	// Change priority for Site Title
 	$site_title = $wp_customize->get_control( 'blogname' );
@@ -37,7 +38,7 @@ function ttf_one_customizer_sitetitletagline() {
 		$prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
-			'section'  => 'title_tagline',
+			'section'  => $section,
 			'label'    => __( 'Hide Site Title', 'ttf-one' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
@@ -63,7 +64,7 @@ function ttf_one_customizer_sitetitletagline() {
 		$prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
-			'section'  => 'title_tagline',
+			'section'  => $section,
 			'label'    => __( 'Hide Tagline', 'ttf-one' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
