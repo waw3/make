@@ -120,8 +120,11 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$fonts = ttf_one_get_google_fonts();
 			$allowed_choices = array_keys( $fonts );
 			break;
-		case 'header-layout' || 'footer-layout' :
-			$allowed_choices = array( 'layout-1', 'layout-2', 'layout-3', 'layout-4' );
+		case 'header-layout' :
+			$allowed_choices = array( 'header-layout-1', 'header-layout-2', 'header-layout-3', 'header-layout-4' );
+			break;
+		case 'footer-layout' :
+			$allowed_choices = array( 'footer-layout-1', 'footer-layout-2', 'footer-layout-3', 'footer-layout-4' );
 			break;
 	}
 
