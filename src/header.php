@@ -18,14 +18,17 @@
 
 			<header id="site-header" class="site-header" role="banner">
 				<div class="sub-header">
-					<span class="sub-header-content">Content can be added here.</span>
-					<ul class="sub-header-social">
-						<li>A</li>
-						<li>B</li>
-						<li>C</li>
-						<li>D</li>
-					</ul>
+					<div class="container">
+						<span class="sub-header-content">Content can be added here.</span>
+						<ul class="sub-header-social">
+							<li>A</li>
+							<li>B</li>
+							<li>C</li>
+							<li>D</li>
+						</ul>
+					</div>
 				</div>
+				<div class="container">
 				<div class="site-branding">
 					<h1 class="site-title">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -46,6 +49,8 @@
 					) );
 					?>
 				</nav>
+				</div>
 			</header>
 
 			<div id="site-content" class="site-content">
+				<div class="container">

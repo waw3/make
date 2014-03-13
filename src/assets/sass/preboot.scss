@@ -7,17 +7,18 @@
 //Descriptive colors
 $white:				#ffffff;
 $black:				#1b1d25;
-$blue:              #0036ff;
+$accent:            #f41811;
 $grey:              #eeeeee;
 
 //Functional colors
 $a:					$white;
 $b:					$black;
-$c:                 $blue;
+$c:                 $accent;
 $d:                 $grey;
 
 //Fonts
 $sans:        		'Open Sans', Helvetica, Arial, sans-serif;
+$heading:        	'Montserrat', Helvetica, Arial, sans-serif;
 $mono: 				"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 //Break points

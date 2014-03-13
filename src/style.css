@@ -194,14 +194,12 @@ body {
   text-rendering: optimizeLegibility; }
 
 #site-wrapper {
-  max-width: 1144px;
   margin: 0 auto;
-  background-color: #ffffff;
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-  padding: 22px 92px 44px;
-  padding:  1.375rem 5.75rem 2.75rem; }
+  background-color: #ffffff; }
+
+.container {
+  max-width: 960px;
+  margin: 0 auto; }
 
 body, button, input, select, textarea {
   color: #1b1d25;
@@ -223,13 +221,14 @@ ul, ol, dl, p, iframe, details, address, .vcard, figure, pre, fieldset, table, d
  Links (_scaffolding.scss)
 -------------------------------------------------------- */
 a {
-  color: #0036ff; }
+  color: #f41811; }
 
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-header {
   float: left;
+  width: 100%;
   margin-bottom: 44px;
   margin-bottom: 2.75rem; }
 
@@ -261,9 +260,12 @@ a {
 .sub-header {
   float: left;
   width: 100%;
-  border-bottom: 1px solid #eeeeee;
+  color: #ffffff;
+  background-color: #1b1d25;
   margin-bottom: 44px;
-  margin-bottom: 2.75rem; }
+  margin-bottom: 2.75rem;
+  padding: 22px;
+  padding: 1.375rem; }
 
 .sub-header-content {
   float: left;
@@ -273,6 +275,7 @@ a {
 
 .sub-header-social {
   float: right;
+  margin-bottom: 0;
   list-style: none; }
   .sub-header-social li {
     display: inline; }
