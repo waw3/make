@@ -101,7 +101,7 @@ a {
 }
 .sub-header-content {
 	float: left;
-	@include rem('font-size', 14px);
+	@include rem('font-size', 13px);
 }
 .sub-header-social {
 	float: right;
