@@ -38,7 +38,8 @@ module.exports = function( grunt ) {
 			theme: {
 				files: {
 					'src/js/global.min.js': ['src/js/global.js'],
-					'src/inc/customizer/js/customizer.min.js': ['src/inc/customizer/js/customizer.js']
+					'src/inc/customizer/js/customizer-preview.min.js': ['src/inc/customizer/js/customizer-preview.js'],
+					'src/inc/customizer/js/customizer-sections.min.js': ['src/inc/customizer/js/customizer-sections.js']
 				}
 			},
 			other: {

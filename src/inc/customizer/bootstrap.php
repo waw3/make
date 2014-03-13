@@ -18,7 +18,8 @@ function ttf_one_customizer_init() {
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
 	add_action( 'customize_register', 'ttf_one_customizer_set_transport' );
-	add_action( 'customize_preview_init', 'ttf_one_customizer_admin_scripts' );
+	add_action( 'customize_preview_init', 'ttf_one_customizer_preview_script' );
+	add_action( 'customize_controls_enqueue_scripts', 'ttf_one_customizer_sections_script' );
 	add_action( 'customize_controls_print_styles', 'ttf_one_customizer_admin_styles' );
 }
 endif;
@@ -110,22 +111,43 @@ function ttf_one_customizer_set_transport( $wp_customize ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_customizer_admin_scripts' ) ) :
+if ( ! function_exists( 'ttf_one_customizer_preview_script' ) ) :
 /**
- * Enqueue customizer admin scripts
+ * Enqueue customizer preview script
  *
  * Hooked to 'admin_enqueue_scripts' via ttf_one_customizer_init()
  *
  * @since 1.0
  */
-function ttf_one_customizer_admin_scripts() {
+function ttf_one_customizer_preview_script() {
 	$path = '/inc/customizer/js/';
 
 	wp_enqueue_script(
-		'ttf-one-customizer-admin',
-		get_template_directory_uri() . $path . 'customizer' . TTF_ONE_SUFFIX . '.js',
+		'ttf-one-customizer-preview',
+		get_template_directory_uri() . $path . 'customizer-preview' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-preview' ),
-		TTF_ONE_VERSION,
+		time(),
+		true
+	);
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_customizer_sections_script' ) ) :
+/**
+ * Enqueue customizer sections script
+ *
+ * Hooked to 'admin_enqueue_scripts' via ttf_one_customizer_init()
+ *
+ * @since 1.0
+ */
+function ttf_one_customizer_sections_script() {
+	$path = '/inc/customizer/js/';
+
+	wp_enqueue_script(
+		'ttf-one-customizer-sections',
+		get_template_directory_uri() . $path . 'customizer-sections' . TTF_ONE_SUFFIX . '.js',
+		array( 'customize-controls' ),
+		time(),
 		true
 	);
 }
