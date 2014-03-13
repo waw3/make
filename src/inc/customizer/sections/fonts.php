@@ -142,7 +142,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Bodu Font Size (in px)', 'ttf-one' ),
+			'label'    => __( 'Body Font Size (in px)', 'ttf-one' ),
 			'type'     => 'text',
 			'choices'  => ttf_one_get_google_fonts(),
 			'priority' => $priority->add()
