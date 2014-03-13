@@ -165,7 +165,7 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, #comments-nav {
+.clear, .sub-header, #comments-nav {
   zoom: 1; }
   .clear:before, .clear:after {
     display: table;
@@ -246,6 +246,28 @@ a {
   font-size: 0.875rem;
   margin-bottom: 22px;
   margin-bottom: 1.375rem; }
+
+/*---------------------------------------------------------
+ Sub Header (_scaffolding.scss)
+-------------------------------------------------------- */
+.sub-header {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 44px;
+  margin-bottom: 2.75rem; }
+
+.sub-header-content {
+  float: left;
+  font-style: italic;
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.sub-header-social {
+  float: right;
+  list-style: none; }
+  .sub-header-social li {
+    display: inline; }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)

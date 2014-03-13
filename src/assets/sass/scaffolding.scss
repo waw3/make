@@ -74,6 +74,28 @@ a {
 	@include rem('margin-bottom', $base);
 }
 /*---------------------------------------------------------
+ Sub Header (_scaffolding.scss)
+-------------------------------------------------------- */
+.sub-header {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid $d;
+	@include rem('margin-bottom', $base*2);
+	@extend .clear;
+}
+.sub-header-content {
+	float: left;
+	font-style: italic;
+	@include rem('font-size', 14px);
+}
+.sub-header-social {
+	float: right;
+	list-style: none; //reset
+	li {
+		display: inline;
+	}
+}
+/*---------------------------------------------------------
  Navigation (_scaffolding.scss)
 -------------------------------------------------------- */
 .menu-toggle {
