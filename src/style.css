@@ -303,8 +303,8 @@ a {
         border-bottom: 0;
         margin-bottom: 3px;
         margin-bottom: 0.1875rem;
-        padding: 2px 8px;
-        padding:  0.125rem 0.5rem; } }
+        padding: 3px 10.66667px;
+        padding:  0.1875rem 0.66667rem; } }
     #site-navigation li:hover ul {
       display: block; }
     #site-navigation li ul {
@@ -316,8 +316,8 @@ a {
       background-color: #eeeeee;
       min-width: 150px;
       max-width: 350px;
-      margin-left: -8px;
-      margin-left: -0.5rem;
+      margin-left: -10.66667px;
+      margin-left: -0.66667rem;
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px; }

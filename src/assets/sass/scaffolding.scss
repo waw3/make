@@ -124,7 +124,7 @@ a {
 			display: inline-block;
 			border-bottom: 0; //reset
 			@include rem('margin-bottom', 3px);
-			@include rem('padding', 2px $gut/4);
+			@include rem('padding', 3px $gut/3);
 		}
 		border-bottom: 1px solid $d;
 		@include rem('padding', $base/2 $gut/4);
@@ -140,7 +140,7 @@ a {
 			background-color: $d;
 			min-width: 150px;
 			max-width: 350px;
-			@include rem('margin-left', -$gut/4);
+			@include rem('margin-left', -$gut/3);
 			@include border-radius;
 			&.children {
 				@include rem('padding-top', 4px);
