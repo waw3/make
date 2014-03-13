@@ -38,9 +38,7 @@
 		}
 	}
 	.avatar {
-		position: relative;
 		float: left;
-		@include rem('top', 4px);
 		@include rem('margin-right', 10px);
 		@include border-radius(50%);
 	}

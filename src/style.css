@@ -293,6 +293,8 @@ a {
   #site-navigation ul {
     margin: 0;
     list-style: none; }
+  #site-navigation .page_item_has_children:after {
+    content: "*"; }
   #site-navigation li {
     border-bottom: 1px solid #eeeeee;
     padding: 11px 8px;
@@ -811,10 +813,7 @@ embed, iframe, object {
     padding-left: 1px;
     padding-left: 0.0625rem; }
   .comment .avatar {
-    position: relative;
     float: left;
-    top: 4px;
-    top: 0.25rem;
     margin-right: 10px;
     margin-right: 0.625rem;
     -webkit-border-radius: 50%;

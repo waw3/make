@@ -119,6 +119,9 @@ a {
 		margin: 0; //reset
 		list-style: none; //reset
 	}
+	.page_item_has_children:after {
+		content: "*";
+	}
 	li {
 		@include for(medium-screens) {
 			display: inline-block;
