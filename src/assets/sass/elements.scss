@@ -10,6 +10,10 @@ h6 {
 	clear: both;
 	@include rem('margin', $base/2 0);
 	@extend .break;
+	a,
+	a & {
+		text-decoration: none; //reset
+	}
 }
 h1 {
 	font-weight: 700;

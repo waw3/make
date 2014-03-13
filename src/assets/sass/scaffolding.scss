@@ -18,8 +18,10 @@ body {
 	max-width: $width+($col*2);
 	margin: 0 auto;
 	background-color: $a;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 	@include rem('padding', $base*2 $col);
-
 }
 body,
 button,
