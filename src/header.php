@@ -23,9 +23,9 @@
 							<?php bloginfo( 'name' ); ?>
 						</a>
 					</h1>
-					<h2 class="site-description">
+					<span class="site-description">
 						<?php bloginfo( 'description' ); ?>
-					</h2>
+					</span>
 				</div>
 
 				<nav id="site-navigation" class="site-navigation" role="navigation">
