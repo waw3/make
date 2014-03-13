@@ -19,7 +19,7 @@
 			<header id="site-header" class="site-header" role="banner">
 				<div class="sub-header">
 					<div class="container">
-						<span class="sub-header-content">Content can be added here.</span>
+						<span class="sub-header-content">☎ 7291-2827 <br> ★ Content can be added here.</span>
 						<ul class="sub-header-social">
 							<li>A</li>
 							<li>B</li>
