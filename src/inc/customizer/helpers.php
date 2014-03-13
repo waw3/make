@@ -116,7 +116,9 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'background-attachment' :
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
-		case 'font-site-title' || 'font-header' || 'font-body' :
+		case 'font-site-title' :
+		case 'font-header' :
+		case 'font-body' :
 			$fonts = ttf_one_get_google_fonts();
 			$allowed_choices = array_keys( $fonts );
 			break;
@@ -256,8 +258,8 @@ endif;
 add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
 
 function ttf_one_print_layout_classes( $classes ) {
-	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
 	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
+	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
 	return $classes;
 }
 
