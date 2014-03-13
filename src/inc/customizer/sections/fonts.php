@@ -22,7 +22,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'Open Sans',
+			'default'           => 'Montserrat',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
@@ -44,7 +44,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'Open Sans',
+			'default'           => 'Montserrat',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
