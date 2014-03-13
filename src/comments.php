@@ -29,7 +29,8 @@ endif;
 		<ol class="comment-list">
 			<?php
 			wp_list_comments( array(
-				'callback' => 'ttf_one_comment'
+				'avatar_size' => 38,
+				'callback'    => 'ttf_one_comment'
 			) );
 			?>
 		</ol>
