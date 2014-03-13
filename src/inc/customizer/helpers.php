@@ -145,7 +145,12 @@ if ( ! function_exists( 'ttf_one_display_background' ) ) :
 function ttf_one_display_background( $css ) {
 	$background_color = get_theme_mod( 'background-color', false );
 	if ( false !== $background_color ) {
-		$css .= 'body{background-color: ' . maybe_hash_hex_color( $background_color ) . '}';
+		$css .= 'body{background-color: ' . maybe_hash_hex_color( $background_color ) . ';}';
+	}
+
+	$background_image = get_theme_mod( 'background-image', false );
+	if ( false !== $background_image ) {
+		$css .= 'body{background-image: url(' . esc_url( $background_image ) . ');}';
 	}
 
 	return $css;
