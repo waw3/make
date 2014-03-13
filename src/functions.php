@@ -111,7 +111,7 @@ function ttf_one_scripts() {
 	// Global script
 	wp_enqueue_script(
 		'ttf-one-global',
-		get_template_directory_uri() . '/js/global.js',
+		get_template_directory_uri() . '/js/global' . TTF_ONE_SUFFIX . '.js',
 		$script_dependencies,
 		TTF_ONE_VERSION,
 		true
