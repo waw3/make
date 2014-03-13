@@ -14,8 +14,13 @@ if ( ! function_exists( 'ttf_one_customizer_sitetitletagline' ) ) :
 function ttf_one_customizer_sitetitletagline() {
 	global $wp_customize;
 
-	$priority = new TTF_One_Prioritizer();
+	$priority = new TTF_One_Prioritizer( 10, 1 );
 	$prefix = 'ttf-one_';
+
+	// Change priority for Site Title
+	$site_title = $wp_customize->get_control( 'blogname' );
+	$site_title->priority = $priority->add();
+
 
 	// Hide Site Title
 	$setting_id = 'hide-site-title';
@@ -24,7 +29,8 @@ function ttf_one_customizer_sitetitletagline() {
 		array(
 			'default'           => 0,
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint'
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage'
 		)
 	);
 	$wp_customize->add_control(
@@ -38,6 +44,10 @@ function ttf_one_customizer_sitetitletagline() {
 		)
 	);
 
+	// Change priority for Tagline
+	$site_description = $wp_customize->get_control( 'blogdescription' );
+	$site_description->priority = $priority->add();
+
 	// Hide Tagline
 	$setting_id = 'hide-tagline';
 	$wp_customize->add_setting(
@@ -45,7 +55,8 @@ function ttf_one_customizer_sitetitletagline() {
 		array(
 			'default'           => 0,
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint'
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage'
 		)
 	);
 	$wp_customize->add_control(
