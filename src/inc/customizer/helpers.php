@@ -148,23 +148,13 @@ if ( ! function_exists( 'ttf_one_display_background' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_background( $css ) {
-	$background_color = maybe_hash_hex_color( get_theme_mod( 'background-color', '#ffffff' ) );
-
-	$background_image = get_theme_mod( 'background-image', false );
+	$background_image = get_theme_mod( 'background_image', false );
 	if ( false !== $background_image ) {
 		// Get and escape the other properties
-		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'background-size', 'auto' ), 'background-size' );
-		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'background-repeat', 'no-repeat' ), 'background-repeat' );
-		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'background-position', 'center' ), 'background-position' );
-		$background_attachment = ttf_one_sanitize_choice( get_theme_mod( 'background-attachment', 'fixed' ), 'background-attachment' );
-
-		// Escape the image URL properly
-		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
+		$background_size = ttf_one_sanitize_choice( get_theme_mod( 'background_size', 'auto' ), 'background-size' );
 
 		// All variables are escaped at this point
-		$css .= 'body{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ' ' . $background_position . ' ' . $background_attachment . ';background-size:' . $background_size . ';}';
-	} else {
-		$css .= 'body{background-color:' . $background_color . ';}';
+		$css .= 'body{background-size:' . $background_size . ';}';
 	}
 
 	return $css;
