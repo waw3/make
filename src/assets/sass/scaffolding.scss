@@ -56,6 +56,11 @@ a {
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
+.site-title {
+	font-weight: 700;
+	margin: 0; //reset
+	@include rem('font-size', 34px);
+}
 .site-branding {
 	@include for(medium-screens) {
 		float: left;
@@ -115,6 +120,9 @@ a {
 			max-width: 350px;
 			@include rem('margin-left', -$gut/4);
 			@include border-radius;
+			&.children {
+				@include rem('padding-top', 4px);
+			}
 			li {
 				border-bottom: 1px solid rgba(0, 0, 0, .1);
 				@include rem('padding', 0 $gut/4);

@@ -228,6 +228,12 @@ a {
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
+.site-title {
+  font-weight: 700;
+  margin: 0;
+  font-size: 34px;
+  font-size: 2.125rem; }
+
 @media screen and (min-width: 800px) {
   .site-branding {
     float: left;
@@ -293,6 +299,9 @@ a {
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px; }
+      #site-navigation li ul.children {
+        padding-top: 4px;
+        padding-top: 0.25rem; }
       #site-navigation li ul li {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding: 0 8px;
@@ -867,12 +876,6 @@ embed, iframe, object {
   list-style: none; }
   .pingback .comment-body, .trackback .comment-body {
     border-bottom: 0; }
-
-/*---------------------------------------------------------
- Form (_comments.scss)
--------------------------------------------------------- */
-#respond .form-submit, #respond input[type="submit"] {
-  margin-bottom: 0; }
 
 /*---------------------------------------------------------
  10. Forms (_forms.scss)
