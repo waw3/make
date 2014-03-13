@@ -39,6 +39,28 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 
+	// Site title font size
+	$setting_id = 'font-site-title-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '34',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Site Title Font Size (in px)', 'ttf-one' ),
+			'type'     => 'text',
+			'choices'  => ttf_one_get_google_fonts(),
+			'priority' => $priority->add()
+		)
+	);
+
 	// Header font
 	$setting_id = 'font-header';
 	$wp_customize->add_setting(
@@ -61,6 +83,28 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 
+	// Header font size
+	$setting_id = 'font-header-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '24',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Header Font Size (in px)', 'ttf-one' ),
+			'type'     => 'text',
+			'choices'  => ttf_one_get_google_fonts(),
+			'priority' => $priority->add()
+		)
+	);
+
 	// Body font
 	$setting_id = 'font-body';
 	$wp_customize->add_setting(
@@ -78,6 +122,28 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Body', 'ttf-one' ),
 			'type'     => 'select',
+			'choices'  => ttf_one_get_google_fonts(),
+			'priority' => $priority->add()
+		)
+	);
+
+	// Body font size
+	$setting_id = 'font-body-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '50',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Bodu Font Size (in px)', 'ttf-one' ),
+			'type'     => 'text',
 			'choices'  => ttf_one_get_google_fonts(),
 			'priority' => $priority->add()
 		)
