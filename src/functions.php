@@ -47,6 +47,7 @@ function ttf_one_setup() {
 	// Menu locations
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'ttf-one' ),
+		'top'     => __( 'Top Menu', 'ttf-one' )
 	) );
 }
 endif;
