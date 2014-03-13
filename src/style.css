@@ -165,7 +165,7 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .sub-header, #comments-nav {
+.clear, .site-header, .sub-header, #comments-nav {
   zoom: 1; }
   .clear:before, .clear:after {
     display: table;
@@ -200,8 +200,8 @@ body {
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-  padding: 44px 92px;
-  padding:  2.75rem 5.75rem; }
+  padding: 22px 92px 44px;
+  padding:  1.375rem 5.75rem 2.75rem; }
 
 body, button, input, select, textarea {
   color: #1b1d25;
@@ -227,6 +227,14 @@ a {
 
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-header {
+  float: left;
+  margin-bottom: 44px;
+  margin-bottom: 2.75rem; }
+
+/*---------------------------------------------------------
+ Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
   font-weight: 700;

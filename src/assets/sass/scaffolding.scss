@@ -21,7 +21,7 @@ body {
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-	@include rem('padding', $base*2 $col);
+	@include rem('padding', $base $col $base*2);
 }
 body,
 button,
@@ -55,6 +55,14 @@ a {
 }
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-header {
+	float: left;
+	@include rem('margin-bottom', $base*2);
+	@extend .clear;
+}
+/*---------------------------------------------------------
+ Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
 	font-weight: 700;
