@@ -65,7 +65,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'layout-1',
+			'default'           => 'header-layout-1',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
@@ -78,10 +78,10 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'label'    => __( 'Layout', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
-				'layout-1'  => __( 'Layout 1', 'ttf-one' ),
-				'layout-2'  => __( 'Layout 2', 'ttf-one' ),
-				'layout-3'  => __( 'Layout 3', 'ttf-one' ),
-				'layout-4'  => __( 'Layout 4', 'ttf-one' )
+				'header-layout-1'  => __( 'Layout 1', 'ttf-one' ),
+				'header-layout-2'  => __( 'Layout 2', 'ttf-one' ),
+				'header-layout-3'  => __( 'Layout 3', 'ttf-one' ),
+				'header-layout-4'  => __( 'Layout 4', 'ttf-one' )
 			),
 			'priority' => $priority->add()
 		)

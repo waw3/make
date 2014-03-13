@@ -253,6 +253,14 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
 
+function ttf_one_print_layout_classes( $classes ) {
+	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
+	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
+	return $classes;
+}
+
+add_filter( 'body_class', 'ttf_one_print_layout_classes' );
+
 if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
