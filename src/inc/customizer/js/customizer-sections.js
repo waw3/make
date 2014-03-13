@@ -9,8 +9,8 @@
 	 * Visibility toggling for some controls
 	 */
 	$.each({
-		'background-image': {
-			controls: [ 'ttf-one_background-size', 'ttf-one_background-repeat', 'ttf-one_background-position', 'ttf-one_background-attachment' ],
+		'background_image': {
+			controls: [ 'ttf-one_background_size' ],
 			callback: function( to ) { return !! to; }
 		}
 	}, function( settingId, o ) {

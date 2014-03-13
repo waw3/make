@@ -5,66 +5,34 @@
 
 if ( ! function_exists( 'ttf_one_customizer_background' ) ) :
 /**
- * Configure settings and controls for the Background section
+ * Configure settings and controls for the Background section.
  *
- * @since 1.0
+ * @since  1.0
  *
- * @param object $wp_customize
- * @param string $section
+ * @return void
  */
-function ttf_one_customizer_background( $wp_customize, $section ) {
-	$priority = new TTF_One_Prioritizer();
+function ttf_one_customizer_background() {
+	global $wp_customize;
+
+	$priority = new TTF_One_Prioritizer( 10, 5 );
 	$prefix = 'ttf-one_';
+	$section = 'background_image';
 
-	// Background Color
-	$setting_id = 'background-color';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '#ffffff',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'maybe_hash_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Background Color', 'ttf-one' ),
-				'priority' => $priority->add()
-			)
-		)
-	);
+	// Rename Background Image section to Background
+	$wp_customize->get_section( 'background_image' )->title = __( 'Background', 'ttf-one' );
 
-	// Background Image
-	$setting_id = 'background-image';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
-	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Background Image', 'ttf-one' ),
-				'priority' => $priority->add(),
-				'context'  => $prefix . $setting_id
-			)
-		)
-	);
+	// Move Background Color to Background section
+	$wp_customize->get_control( 'background_color' )->section = $section;
+	$wp_customize->get_control( 'background_color' )->priority = $priority->add();
+
+	// Reset priorities on other existing controls
+	$wp_customize->get_control( 'background_image' )->priority = $priority->add();
+	$wp_customize->get_control( 'background_repeat' )->priority = $priority->add();
+	$wp_customize->get_control( 'background_position_x' )->priority = $priority->add();
+	$wp_customize->get_control( 'background_attachment' )->priority = $priority->add();
 
 	// Background Size
-	$setting_id = 'background-size';
+	$setting_id = 'background_size';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -79,7 +47,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 			'settings' => $setting_id,
 			'section'  => $section,
 			'label'    => __( 'Background Size', 'ttf-one' ),
-			'type'     => 'select',
+			'type'     => 'radio',
 			'choices'  => array(
 				'auto'  => __( 'Auto', 'ttf-one' ),
 				'cover'   => __( 'Cover', 'ttf-one' ),
@@ -88,83 +56,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 			'priority' => $priority->add()
 		)
 	);
-
-	// Background Repeat
-	$setting_id = 'background-repeat';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 'no-repeat',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Background Repeat', 'ttf-one' ),
-			'type'     => 'select',
-			'choices'  => array(
-				'no-repeat' => __( 'No Repeat', 'ttf-one' ),
-				'repeat'    => __( 'Tile', 'ttf-one' ),
-				'repeat-x'  => __( 'Tile Horizontally', 'ttf-one' ),
-				'repeat-y'  => __( 'Tile Vertically', 'ttf-one' )
-			),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Background Position
-	$setting_id = 'background-position';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 'center',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Background Position', 'ttf-one' ),
-			'type'     => 'select',
-			'choices'  => array(
-				'left'   => __( 'Left', 'ttf-one' ),
-				'center' => __( 'Center', 'ttf-one' ),
-				'right'  => __( 'Right', 'ttf-one' )
-			),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Background Attachment
-	$setting_id = 'background-attachment';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 'fixed',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Background Attachment', 'ttf-one' ),
-			'type'     => 'select',
-			'choices'  => array(
-				'fixed'  => __( 'Fixed', 'ttf-one' ),
-				'scroll' => __( 'Scroll', 'ttf-one' )
-			),
-			'priority' => $priority->add()
-		)
-	);
 }
 endif;
+
+add_action( 'customize_register', 'ttf_one_customizer_background', 20 );

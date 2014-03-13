@@ -44,14 +44,14 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 	require_once( get_template_directory() . $path . 'controls.php' );
 
 	// Modifications for existing sections
-	require_once( get_template_directory() . $section_path . 'site-title-tagline.php' );
+	require_once( get_template_directory() . $section_path . 'background.php' );
 	require_once( get_template_directory() . $section_path . 'navigation.php' );
+	require_once( get_template_directory() . $section_path . 'site-title-tagline.php' );
 
 	// List of new sections to add
 	$sections = array(
 		'general'    => __( 'General', 'ttf-one' ),
 		'logo'       => __( 'Logo', 'ttf-one' ),
-		'background' => __( 'Background', 'ttf-one' ),
 		'fonts'      => __( 'Fonts', 'ttf-one' ),
 		'colors'     => __( 'Colors', 'ttf-one' ),
 		'header'     => __( 'Header', 'ttf-one' ),

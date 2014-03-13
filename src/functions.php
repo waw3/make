@@ -44,6 +44,11 @@ function ttf_one_setup() {
 	// Featured images
 	add_theme_support( 'post-thumbnails' );
 
+	// Custom Background
+	add_theme_support( 'custom-background', array(
+		'default-color' => '#ffffff'
+	) );
+
 	// Menu locations
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'ttf-one' ),
