@@ -68,7 +68,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'actual',
+			'default'           => 'auto',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
@@ -81,7 +81,7 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 			'label'    => __( 'Background Size', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
-				'actual'  => __( 'Actual Size', 'ttf-one' ),
+				'auto'  => __( 'Auto', 'ttf-one' ),
 				'cover'   => __( 'Cover', 'ttf-one' ),
 				'contain' => __( 'Contain', 'ttf-one' )
 			),
@@ -108,9 +108,9 @@ function ttf_one_customizer_background( $wp_customize, $section ) {
 			'type'     => 'select',
 			'choices'  => array(
 				'no-repeat' => __( 'No Repeat', 'ttf-one' ),
-				'tile'      => __( 'Tile', 'ttf-one' ),
-				'tile-h'    => __( 'Tile Horizontally', 'ttf-one' ),
-				'tile-v'    => __( 'Tile Vertically', 'ttf-one' )
+				'repeat'    => __( 'Tile', 'ttf-one' ),
+				'repeat-x'  => __( 'Tile Horizontally', 'ttf-one' ),
+				'repeat-y'  => __( 'Tile Vertically', 'ttf-one' )
 			),
 			'priority' => $priority->add()
 		)
