@@ -126,7 +126,7 @@ function ttf_one_customizer_preview_script() {
 		'ttf-one-customizer-preview',
 		get_template_directory_uri() . $path . 'customizer-preview' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-preview' ),
-		time(),
+		TTF_ONE_VERSION,
 		true
 	);
 }
@@ -147,7 +147,7 @@ function ttf_one_customizer_sections_script() {
 		'ttf-one-customizer-sections',
 		get_template_directory_uri() . $path . 'customizer-sections' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-controls' ),
-		time(),
+		TTF_ONE_VERSION,
 		true
 	);
 }
