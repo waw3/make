@@ -221,7 +221,7 @@ ul, ol, dl, p, iframe, details, address, .vcard, figure, pre, fieldset, table, d
  Links (_scaffolding.scss)
 -------------------------------------------------------- */
 a {
-  color: #f41811; }
+  color: #0068e0; }
 
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
@@ -271,8 +271,8 @@ a {
 
 .sub-header-content {
   float: left;
-  font-size: 14px;
-  font-size: 0.875rem; }
+  font-size: 13px;
+  font-size: 0.8125rem; }
 
 .sub-header-social {
   float: right;
