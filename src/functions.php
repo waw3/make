@@ -57,6 +57,9 @@ function ttf_one_setup() {
 		'width'              => 1440
 	) );
 
+	// HTML5
+	add_theme_support( 'html5' );
+
 	// Menu locations
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'ttf-one' ),
