@@ -702,3 +702,79 @@ function ttf_one_display_main_background( $css ) {
 endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_main_background' );
+
+if ( ! function_exists( 'ttf_one_get_social_links' ) ) :
+/**
+ * Get the social links from options.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    Keys are service names and the values are links.
+ */
+function ttf_one_get_social_links() {
+	// Define default services; note that these are intentional non-translatable
+	$default_services = array(
+		'facebook' => array(
+			'title' => 'Facebook',
+			'class' => 'fa-facebook',
+		),
+		'twitter' => array(
+			'title' => 'Twitter',
+			'class' => 'fa-twitter',
+		),
+		'google' => array(
+			'title' => 'Google+',
+			'class' => 'fa-google-plus',
+		),
+		'linkedin' => array(
+			'title' => 'LinkedIn',
+			'class' => 'fa-linkedin',
+		),
+		'instagram' => array(
+			'title' => 'Instagram',
+			'class' => 'fa-instagram',
+		),
+		'flickr' => array(
+			'title' => 'Flickr',
+			'class' => 'fa-flickr',
+		),
+		'youtube' => array(
+			'title' => 'Youtube',
+			'class' => 'fa-youtube',
+		),
+		'vimeo' => array(
+			'title' => 'Vimeo',
+			'class' => 'fa-vimeo',
+		),
+		'pinterest' => array(
+			'title' => 'Pinterest',
+			'class' => 'fa-pinterest',
+		),
+		'email' => array(
+			'title' => __( 'Email', 'ttf_one' ),
+			'class' => 'fa-envelope',
+		),
+		'rss' => array(
+			'title' => __( 'RSS', 'ttf_one' ),
+			'class' => 'fa-rss',
+		),
+	);
+
+	// Set up the collector array
+	$services_with_links = array();
+
+	// Get the links for these services
+	foreach ( $default_services as $service => $details ) {
+		$url = get_theme_mod( 'social-' . $service );
+		if ( '' !== $url ) {
+			$services_with_links[ $service ] = array(
+				'title' => $details['title'],
+				'url'   => $url,
+				'class' => $details['class'],
+			);
+		}
+	}
+
+	return apply_filters( 'ttf_one_social_links', $services_with_links );
+}
+endif;

@@ -21,19 +21,18 @@
 					<div class="container">
 						<span class="sub-header-content">Content can be added here</span>
 						<?php get_search_form(); ?>
+						<?php $links = ttf_one_get_social_links(); $hide_social = (int) get_theme_mod( 'header-hide-social', 1 ); ?>
+						<?php if ( ! empty ( $links ) && 1 === $hide_social ) : ?>
 						<ul class="sub-header-social">
-							<li><i class="fa fa-twitter"></i></li>
-							<li><i class="fa fa-facebook"></i></li>
-							<li><i class="fa fa-google-plus-square"></i></li>
-							<li><i class="fa fa-flickr"></i></li>
-							<li><i class="fa fa-pinterest"></i></li>
-							<li><i class="fa fa-instagram"></i></li>
-							<li><i class="fa fa-linkedin"></i></li>
-							<li><i class="fa fa-youtube"></i></li>
-							<li><i class="fa fa-vimeo-square"></i></li>
-							<li><i class="fa fa-envelope"></i></li>
-							<li><i class="fa fa-rss"></i></li>
+							<?php foreach ( $links as $key => $link ) : ?>
+							<li>
+								<a href="<?php echo esc_url( $link['url'] ); ?>">
+									<i class="fa <?php echo esc_attr( $link['class'] ); ?>"></i>
+								</a>
+							</li>
+							<?php endforeach; ?>
 						</ul>
+						<?php endif; ?>
 					</div>
 				</div>
 				<div class="site-header-main">
