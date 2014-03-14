@@ -24,7 +24,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		array(
 			'default'           => 'Montserrat',
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -67,7 +67,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		array(
 			'default'           => 'Montserrat',
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -110,7 +110,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		array(
 			'default'           => 'Open Sans',
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
 		)
 	);
 	$wp_customize->add_control(

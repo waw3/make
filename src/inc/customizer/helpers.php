@@ -118,12 +118,6 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'background-attachment' :
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
-		case 'font-site-title' :
-		case 'font-header' :
-		case 'font-body' :
-			$fonts = ttf_one_get_google_fonts();
-			$allowed_choices = array_keys( $fonts );
-			break;
 		case 'header-layout' :
 			$allowed_choices = array( 'header-layout-1', 'header-layout-2', 'header-layout-3', 'header-layout-4' );
 			break;

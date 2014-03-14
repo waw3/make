@@ -94,6 +94,24 @@ function ttf_one_google_font_choices() {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_sanitize_font_choice' ) ) :
+/**
+ * Sanitize a font choice.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $value    The font choice.
+ * @return string              The sanitized font choice.
+ */
+function ttf_one_sanitize_font_choice( $value ) {
+	if ( array_key_exists( $value, ttf_one_get_google_fonts() ) ) {
+		return $value;
+	} else {
+		return '';
+	}
+}
+endif;
+
 if ( ! function_exists( 'ttf_one_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
