@@ -22,6 +22,8 @@
 						<?php dynamic_sidebar( 'footer-4' ) ?>
 					</section>
 					<div class="site-info">
+						<?php $hide_credit = (int) get_theme_mod( 'footer-hide-credit', 1 ); ?>
+						<?php if ( 1 === $hide_credit ) : ?>
 						<a title="<?php esc_attr_e( 'Theme info', 'oxford' ); ?>" href="https://thethemefoundry.com/wordpress-themes/ttf-one/">
 							<?php
 							printf(
@@ -34,6 +36,7 @@
 						<a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'oxford' ); ?>" href="https://thethemefoundry.com/">
 							The Theme Foundry
 						</a>
+						<?php endif; ?>
 					</div>
 				</div>
 			</footer>
