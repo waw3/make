@@ -30,7 +30,7 @@
 				</div>
 				<div class="container">
 				<div class="site-branding">
-					<h1 class="site-title">
+					<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<?php bloginfo( 'name' ); ?>
 						</a>

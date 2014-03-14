@@ -167,10 +167,10 @@ a img {
 -------------------------------------------------------- */
 .clear, .site-header, .sub-header, #comments-nav {
   zoom: 1; }
-  .clear:before, .clear:after {
+  .clear:before, .site-header:before, .sub-header:before, #comments-nav:before, .clear:after, .site-header:after, .sub-header:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after {
+  .clear:after, .site-header:after, .sub-header:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -255,6 +255,24 @@ a {
   font-size: 0.75rem;
   letter-spacing: 1px;
   letter-spacing: 0.0625rem; }
+
+/*---------------------------------------------------------
+ Custom logo (_scaffolding.scss)
+-------------------------------------------------------- */
+.custom-logo {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 11px; }
+  .custom-logo a {
+    display: block;
+    width: 100%;
+    height: 0;
+    font: 0/0 a;
+    text-decoration: none;
+    text-shadow: none;
+    color: transparent; }
 
 /*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
