@@ -7,7 +7,10 @@
 <header id="site-header" class="site-header site-header-1" role="banner">
 	<div class="sub-header">
 		<div class="container">
-			<span class="sub-header-content">Content can be added here</span>
+			<?php $subheader_text = get_theme_mod( 'header-subheader-text', false ); ?>
+			<?php if ( ! empty( $subheader_text ) ) : ?>
+			<span class="sub-header-content"><?php echo $subheader_text; ?></span>
+			<?php endif; ?>
 			<?php get_search_form(); ?>
 			<?php $links = ttf_one_get_social_links(); $hide_social = (int) get_theme_mod( 'header-hide-social', 1 ); ?>
 			<?php if ( ! empty ( $links ) && 1 === $hide_social ) : ?>
