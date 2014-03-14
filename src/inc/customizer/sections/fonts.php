@@ -130,7 +130,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '24',
+			'default'           => '16',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
