@@ -26,9 +26,8 @@ function ttf_one_customizer_header() {
 	// Remove Display Header Text control
 	$wp_customize->remove_control( 'display_header_text' );
 
-	// Reset priorities on existing controls
+	// Reset priority on header image
 	$wp_customize->get_control( 'header_image' )->priority = $priority->add();
-	$wp_customize->get_control( 'header_textcolor' )->priority = $priority->add();
 
 	// Header Background Color
 	$setting_id = 'header-background-color';
@@ -52,6 +51,9 @@ function ttf_one_customizer_header() {
 			)
 		)
 	);
+
+	// Reset priority on header text color
+	$wp_customize->get_control( 'header_textcolor' )->priority = $priority->add();
 
 	// Sub Header Background color
 	$setting_id = 'header-subheader-background-color';
