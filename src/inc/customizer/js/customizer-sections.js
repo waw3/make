@@ -16,6 +16,10 @@
 		'main-background-image': {
 			controls: [ 'ttf-one_main-background-repeat', 'ttf-one_main-background-position', 'ttf-one_main-background-attachment', 'ttf-one_main-background-size' ],
 			callback: function( to ) { return !! to; }
+		},
+		'footer-background-image': {
+			controls: [ 'ttf-one_footer-background-repeat', 'ttf-one_footer-background-position', 'ttf-one_footer-background-attachment', 'ttf-one_footer-background-size' ],
+			callback: function( to ) { return !! to; }
 		}
 	}, function( settingId, o ) {
 		api( settingId, function( setting ) {

@@ -107,18 +107,22 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( 'full-width', 'boxed' );
 			break;
 		case 'main-background-size' :
+		case 'footer-background-size' :
 		case 'background-size' :
 			$allowed_choices = array( 'auto', 'cover', 'contain' );
 			break;
 		case 'main-background-repeat' :
+		case 'footer-background-repeat' :
 		case 'background-repeat' :
 			$allowed_choices = array( 'no-repeat', 'repeat', 'repeat-x', 'repeat-y' );
 			break;
 		case 'main-background-position' :
+		case 'footer-background-position' :
 		case 'background-position' :
 			$allowed_choices = array( 'left', 'center', 'right' );
 			break;
 		case 'main-background-attachment' :
+		case 'footer-background-attachment' :
 		case 'background-attachment' :
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
@@ -235,25 +239,6 @@ function ttf_one_display_header_background( $css ) {
 endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
-
-if ( ! function_exists( 'ttf_one_display_footer_background' ) ) :
-/**
- * Write the CSS to implement the footer background option.
- *
- * @since  1.0.0
- *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
- */
-function ttf_one_display_footer_background( $css ) {
-	$background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', '#ffffff' ) );
-	$css .= '.site-footer{background-color:' . $background_color . ';}';
-
-	return $css;
-}
-endif;
-
-add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
 
 if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
 /**
@@ -702,6 +687,41 @@ function ttf_one_display_main_background( $css ) {
 endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_main_background' );
+
+if ( ! function_exists( 'ttf_one_display_footer_background' ) ) :
+/**
+ * Write the CSS to implement the background options for the footer area.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_footer_background( $css ) {
+	$background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', '#ffffff' ) );
+
+	$background_image = get_theme_mod( 'footer-background-image', false );
+	if ( ! empty( $background_image ) ) {
+		// Get and escape the other properties
+		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-size', 'auto' ), 'footer-background-size' );
+		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-repeat', 'no-repeat' ), 'footer-background-repeat' );
+		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-position', 'center' ), 'footer-background-position' );
+		$background_attachment = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-attachment', 'fixed' ), 'footer-background-attachment' );
+
+		// Escape the image URL properly
+		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
+
+		// All variables are escaped at this point
+		$css .= '.site-footer{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ' ' . $background_attachment . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
+	} else {
+		$css .= '.site-footer{background-color:' . $background_color . ';}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
 
 if ( ! function_exists( 'ttf_one_get_social_links' ) ) :
 /**
