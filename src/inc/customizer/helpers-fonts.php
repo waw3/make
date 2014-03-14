@@ -71,6 +71,29 @@ function ttf_one_get_google_font_request( $fonts = array() ) {
 		$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
 	}
 
+	// Load the font subset
+	$subset = get_theme_mod( 'font-subset', 'latin' );
+
+	if ( 'all' === $subset ) {
+		$subsets_available = ttf_one_get_google_font_subsets();
+
+		// Remove the all set
+		unset( $subsets_available['all'] );
+
+		// Build the array
+		$subsets = array_keys( $subsets_available );
+	} else {
+		$subsets = array(
+			'latin',
+			$subset,
+		);
+	}
+
+	// Append the subset string
+	if ( ! empty( $subsets ) ) {
+		$request .= '&subset=' . join( ',', $subsets );
+	}
+
 	return esc_url( $request );
 }
 endif;
@@ -116,6 +139,48 @@ function ttf_one_choose_font_variants( $font, $variants = array() ) {
 	}
 
 	return array_unique( $chosen_variants );
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_sanitize_font_subset' ) ) :
+/**
+ * Retrieve the list of available Google font subsets.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $value    The value to sanitize.
+ * @return array               The sanitized value.
+ */
+function ttf_one_sanitize_font_subset( $value ) {
+	if ( ! array_key_exists( $value, ttf_one_get_google_font_subsets() ) ) {
+		$value = 'latin';
+	}
+
+	return $value;
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_google_font_subsets' ) ) :
+/**
+ * Retrieve the list of available Google font subsets.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    The available subsets.
+ */
+function ttf_one_get_google_font_subsets() {
+	return array(
+		'all'          => __( 'All', 'ttf-one' ),
+		'cyrillic'     => __( 'Cyrillic', 'ttf-one' ),
+		'cyrillic-ext' => __( 'Cyrillic Extended', 'ttf-one' ),
+		'devanagari'   => __( 'Devanagari', 'ttf-one' ),
+		'greek'        => __( 'Greek', 'ttf-one' ),
+		'greek-ext'    => __( 'Greek Extended', 'ttf-one' ),
+		'khmer'        => __( 'Khmer', 'ttf-one' ),
+		'latin'        => __( 'Latin', 'ttf-one' ),
+		'latin-ext'    => __( 'Latin Extended', 'ttf-one' ),
+		'vietnamese'   => __( 'Vietnamese', 'ttf-one' ),
+	);
 }
 endif;
 
