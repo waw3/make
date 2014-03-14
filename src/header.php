@@ -38,13 +38,24 @@
 				<div class="container">
 				<div class="site-branding">
 					<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
+						<?php $header_text = get_theme_mod( 'header-text', '' ); ?>
+						<?php $hide_site_title = get_theme_mod( 'hide-site-title', 0 ); ?>
+						<?php if ( false != $hide_site_title ) : ?>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<?php bloginfo( 'name' ); ?>
+							<?php if ( ! empty( $header_text ) ) : ?>
+								<?php echo esc_html( $header_text ); ?>
+							<?php else : ?>
+								<?php bloginfo( 'name' ); ?>
+							<?php endif; ?>
 						</a>
+						<?php endif; ?>
 					</h1>
+					<?php $hide_site_title = (int) get_theme_mod( 'hide-tagline', 0 ); ?>
+					<?php if ( 1 === $hide_site_title ) : ?>
 					<span class="site-description">
 						<?php bloginfo( 'description' ); ?>
 					</span>
+					<?php endif; ?>
 				</div>
 
 				<nav id="site-navigation" class="site-navigation" role="navigation">
