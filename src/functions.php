@@ -109,6 +109,14 @@ function ttf_one_scripts() {
 
 	$script_dependencies = array();
 
+	// Add in Font Awesome
+	wp_enqueue_style(
+		'ttf-one-font-awesome',
+		get_template_directory_uri() . '/css/font-awesome.css',
+		array(),
+		'4.0.3'
+	);
+
 	// Scripts that don't need jQuery
 
 	$style_dependencies[] = 'jquery';
