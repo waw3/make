@@ -23,7 +23,7 @@ function ttf_one_css_fonts( $css ) {
 		}
 
 		if ( $font_size_needed ) {
-			$css .= 'font-size:' . absint( $font_site_title_size ) .'px;';
+			$css .= 'font-size:' . absint( $font_site_title_size ) .'px;font-size:' . ttf_one_convert_px_to_rem( $font_site_title_size ) . 'rem;';
 		}
 
 		$css .= '}';
@@ -39,7 +39,7 @@ function ttf_one_css_fonts( $css ) {
 	}
 
 	if ( $font_size_needed ) {
-		$css .= '.font-header,h1{font-size:' . $font_header_size . 'px;}';
+		$css .= '.font-header,h1{font-size:' . $font_header_size . 'px;font-size:' . ttf_one_convert_px_to_rem( $font_header_size ) . 'rem;}';
 		$css .= 'h2{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 68 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 68 ) ) . 'rem;}';
 		$css .= 'h3{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 48 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 48 ) ) . 'rem;}';
 		$css .= 'h4{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 48 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 48 ) ) . 'rem;}';
@@ -60,7 +60,7 @@ function ttf_one_css_fonts( $css ) {
 		}
 
 		if ( $font_size_needed ) {
-			$css .= 'font-size:' . absint( $font_body_size ) .'px;';
+			$css .= 'font-size:' . absint( $font_body_size ) .'px;font-size:' . ttf_one_convert_px_to_rem( $font_body_size ) . 'rem;';
 		}
 
 		$css .= '}';
