@@ -90,7 +90,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	);
 
 	// Background Position
-	$setting_id = 'main-background-position-x';
+	$setting_id = 'main-background-position';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
