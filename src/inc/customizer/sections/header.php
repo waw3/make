@@ -53,6 +53,7 @@ function ttf_one_customizer_header() {
 	);
 
 	// Reset priority on header text color
+	$wp_customize->get_setting( 'header_textcolor' )->default = '#171717';
 	$wp_customize->get_control( 'header_textcolor' )->priority = $priority->add();
 
 	// Sub Header Background color
@@ -60,7 +61,7 @@ function ttf_one_customizer_header() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '#ffffff',
+			'default'           => '#171717',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
