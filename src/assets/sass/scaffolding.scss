@@ -129,6 +129,9 @@ a {
 	}
 }
 .sub-header-content {
+	@include for(medium-screens) {
+		max-width: 30%;
+	}
 	float: left;
 	@include rem('font-size', 13px);
 }

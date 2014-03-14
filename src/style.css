@@ -167,10 +167,10 @@ a img {
 -------------------------------------------------------- */
 .clear, .site-header, .site-header-main, .sub-header, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, #comments-nav:after {
+  .clear:before, .clear:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, #comments-nav:after {
+  .clear:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -303,6 +303,9 @@ a {
   float: left;
   font-size: 13px;
   font-size: 0.8125rem; }
+  @media screen and (min-width: 800px) {
+    .sub-header-content {
+      max-width: 30%; } }
 
 .sub-header-social {
   float: right;

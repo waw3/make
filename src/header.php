@@ -19,7 +19,7 @@
 			<header id="site-header" class="site-header" role="banner">
 				<div class="sub-header">
 					<div class="container">
-						<span class="sub-header-content"><i class="fa fa-phone"></i> 7291-2827</span>
+						<span class="sub-header-content">Content can be added here</span>
 						<?php get_search_form(); ?>
 						<ul class="sub-header-social">
 							<li><i class="fa fa-twitter"></i></li>
