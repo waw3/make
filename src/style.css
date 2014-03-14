@@ -165,12 +165,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .sub-header, #comments-nav {
+.clear, .site-header, .site-header-main, .sub-header, #comments-nav {
   zoom: 1; }
-  .clear:before, .clear:after {
+  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after {
+  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -245,6 +245,13 @@ a {
   margin-bottom: 44px;
   margin-bottom: 2.75rem; }
 
+.site-header-main {
+  background-size: cover;
+  float: left;
+  width: 100%;
+  padding-top: 44px;
+  padding-top: 2.75rem; }
+
 /*---------------------------------------------------------
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
@@ -276,8 +283,6 @@ a {
   width: 100%;
   color: #ffffff;
   background-color: #171717;
-  margin-bottom: 44px;
-  margin-bottom: 2.75rem;
   padding: 14.66667px;
   padding: 0.91667rem; }
   .sub-header .fa {

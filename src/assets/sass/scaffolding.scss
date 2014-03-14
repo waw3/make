@@ -76,6 +76,13 @@ a {
 	@include rem('margin-bottom', $base*2);
 	@extend .clear;
 }
+.site-header-main {
+	background-size: cover;
+	float: left;
+	width: 100%;
+	@include rem('padding-top', $base*2);
+	@extend .clear;
+}
 /*---------------------------------------------------------
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
@@ -104,7 +111,6 @@ a {
 	width: 100%;
 	color: $a;
 	background-color: $b;
-	@include rem('margin-bottom', $base*2);
 	@include rem('padding', $base/1.5);
 	@extend .clear;
 	.fa {
