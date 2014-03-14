@@ -24,13 +24,13 @@
 						<ul class="sub-header-social">
 							<li><i class="fa fa-twitter"></i></li>
 							<li><i class="fa fa-facebook"></i></li>
-							<li><i class="fa fa-google-plus"></i></li>
+							<li><i class="fa fa-google-plus-square"></i></li>
 							<li><i class="fa fa-flickr"></i></li>
 							<li><i class="fa fa-pinterest"></i></li>
 							<li><i class="fa fa-instagram"></i></li>
 							<li><i class="fa fa-linkedin"></i></li>
 							<li><i class="fa fa-youtube"></i></li>
-							<li><i class="fa fa-vimeo"></i></li>
+							<li><i class="fa fa-vimeo-square"></i></li>
 							<li><i class="fa fa-envelope"></i></li>
 							<li><i class="fa fa-rss"></i></li>
 						</ul>
