@@ -236,6 +236,41 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
 
+if ( ! function_exists( 'ttf_one_display_subheader_styles' ) ) :
+/**
+ * Write the CSS to implement colors for the subheader.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_subheader_styles( $css ) {
+	$background_color        = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', '#171717' ) );
+	$text_color              = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', '#ffffff' ) );
+	$background_color_needed = ( '#171717' !== $background_color );
+	$text_color_needed       = ( '#ffffff' !== $text_color );
+
+	if ( $background_color_needed || $text_color_needed ) {
+		$css .= '.sub-header{';
+
+		if ( $background_color_needed ) {
+			$css .= 'background-color:' . $background_color . ';';
+		}
+
+		if ( $text_color_needed ) {
+			$css .= 'color:' . $text_color . ';';
+		}
+
+		$css .= '}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_subheader_styles' );
+
 if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
 /**
  * Add theme option body classes
