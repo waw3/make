@@ -9,14 +9,28 @@ if ( ! function_exists( 'ttf_one_customizer_header' ) ) :
  *
  * @since 1.0
  *
- * @param object $wp_customize
- * @param string $section
  */
-function ttf_one_customizer_header( $wp_customize, $section ) {
-	$priority = new TTF_One_Prioritizer();
-	$prefix = 'ttf-one_';
+function ttf_one_customizer_header() {
+	global $wp_customize;
 
-	// Background color
+	$priority = new TTF_One_Prioritizer( 10, 5 );
+	$prefix = 'ttf-one_';
+	$section = 'header_image';
+
+	// Rename Header Image section to Header
+	$wp_customize->get_section( $section )->title = __( 'Header', 'ttf-one' );
+
+	// Move Header Text Color to Header section and change default
+	$wp_customize->get_control( 'header_textcolor' )->section = $section;
+
+	// Remove Display Header Text control
+	$wp_customize->remove_control( 'display_header_text' );
+
+	// Reset priorities on existing controls
+	$wp_customize->get_control( 'header_image' )->priority = $priority->add();
+	$wp_customize->get_control( 'header_textcolor' )->priority = $priority->add();
+
+	// Header Background Color
 	$setting_id = 'header-background-color';
 	$wp_customize->add_setting(
 		$setting_id,
@@ -155,3 +169,5 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 }
 endif;
+
+add_action( 'customize_register', 'ttf_one_customizer_header', 20 );

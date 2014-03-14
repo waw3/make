@@ -46,6 +46,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 
 	// Modifications for existing sections
 	require_once( get_template_directory() . $section_path . 'background.php' );
+	require_once( get_template_directory() . $section_path . 'header.php' );
 	require_once( get_template_directory() . $section_path . 'navigation.php' );
 	require_once( get_template_directory() . $section_path . 'site-title-tagline.php' );
 
@@ -55,7 +56,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 		'logo'       => __( 'Logo', 'ttf-one' ),
 		'fonts'      => __( 'Fonts', 'ttf-one' ),
 		'colors'     => __( 'Colors', 'ttf-one' ),
-		'header'     => __( 'Header', 'ttf-one' ),
+		//'header'     => __( 'Header', 'ttf-one' ),
 		'main'       => __( 'Main', 'ttf-one' ),
 		'footer'     => __( 'Footer', 'ttf-one' ),
 		'social'     => __( 'Social Profiles &amp; RSS', 'ttf-one' )

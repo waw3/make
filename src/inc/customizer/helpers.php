@@ -221,8 +221,18 @@ if ( ! function_exists( 'ttf_one_display_header_background' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_header_background( $css ) {
+	$css .= '.site-header{';
+
+	// Background color
 	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', '#ffffff' ) );
-	$css .= '.site-header{background-color:' . $background_color . ';}';
+	$css .= 'background-color:' . $background_color . ';';
+
+	// Background image
+	if ( get_header_image() ) {
+		$css .= 'background-image:url("' . get_header_image() . '");';
+	}
+
+	$css .= '}';
 
 	return $css;
 }
