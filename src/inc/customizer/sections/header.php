@@ -60,6 +60,27 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
+	// Hide social icons
+	$setting_id = 'header-hide-social';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => 1,
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Show Social Icons In Sub Header', 'ttf-one' ),
+			'type'     => 'checkbox',
+			'priority' => $priority->add()
+		)
+	);
+
 	// Header layout
 	$setting_id = 'header-layout';
 	$wp_customize->add_setting(
@@ -83,27 +104,6 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 				'header-layout-3'  => __( 'Layout 3', 'ttf-one' ),
 				'header-layout-4'  => __( 'Layout 4', 'ttf-one' )
 			),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Hide social icons
-	$setting_id = 'header-hide-social';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 1,
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Show Social Icons In Sub Header', 'ttf-one' ),
-			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
 	);
