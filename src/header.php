@@ -38,8 +38,8 @@
 				<div class="container">
 				<div class="site-branding">
 					<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
-						<?php $hide_site_title = get_theme_mod( 'hide-site-title', 0 ); ?>
-						<?php if ( false != $hide_site_title ) : ?>
+						<?php $hide_site_title = (int) get_theme_mod( 'hide-site-title', 0 ); ?>
+						<?php if ( 1 === $hide_site_title ) : ?>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<?php bloginfo( 'name' ); ?>
 						</a>
