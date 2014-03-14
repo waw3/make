@@ -116,31 +116,6 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 		)
 	);
 
-	// Background Attachment
-	$setting_id = 'main-background-attachment';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 'fixed',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Background Attachment', 'ttf-one' ),
-			'type'     => 'radio',
-			'choices'  => array(
-				'fixed'  => __( 'Fixed', 'ttf-one' ),
-				'scroll' => __( 'Scroll', 'ttf-one' )
-			),
-			'priority' => $priority->add()
-		)
-	);
-
 	// Background Size
 	$setting_id = 'main-background-size';
 	$wp_customize->add_setting(

@@ -121,8 +121,6 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'background-position' :
 			$allowed_choices = array( 'left', 'center', 'right' );
 			break;
-		case 'main-background-attachment' :
-		case 'footer-background-attachment' :
 		case 'background-attachment' :
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
