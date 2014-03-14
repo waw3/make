@@ -251,13 +251,25 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
 
-function ttf_one_print_layout_classes( $classes ) {
+if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
+/**
+ * Add theme option body classes
+ *
+ * @since 1.0.0
+ *
+ * @param array $classes
+ *
+ * @return array
+ */
+function ttf_one_body_layout_classes( $classes ) {
+	$classes[] = get_theme_mod( 'site-layout', 'full-width' );
 	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
 	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
 	return $classes;
 }
+endif;
 
-add_filter( 'body_class', 'ttf_one_print_layout_classes' );
+add_filter( 'body_class', 'ttf_one_body_layout_classes' );
 
 if ( ! class_exists( 'TTF_One_Logo' ) ) :
 /**
