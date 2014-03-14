@@ -20,6 +20,7 @@
 				<div class="sub-header">
 					<div class="container">
 						<span class="sub-header-content"><i class="fa fa-phone"></i> 7291-2827</span>
+						<?php get_search_form(); ?>
 						<ul class="sub-header-social">
 							<li><i class="fa fa-twitter"></i></li>
 							<li><i class="fa fa-facebook"></i></li>

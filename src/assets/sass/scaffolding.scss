@@ -110,6 +110,17 @@ a {
 	.fa {
 		@include rem('font-size', 16px);
 	}
+	.search-form {
+		@include rem('padding-left', $gut/2);
+		@include rem('font-size', 14px);
+		float: right;
+		input {
+			background-color: $a;
+		}
+	}
+	.search-submit {
+		display: none;
+	}
 }
 .sub-header-content {
 	float: left;
