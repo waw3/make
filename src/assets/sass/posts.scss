@@ -16,6 +16,34 @@
 	display: block;
 }
 
+.entry-date {
+	@include rem('font-size', 14px);
+}
+.entry-footer {
+	@include rem('font-size', 14px);
+	ol,
+	ul {
+		padding-left: 0; //reset
+		list-style: none; //reset
+		li {
+			display: inline;
+			&:after {
+				content: "\002F";
+				color: $e;
+				@include rem('padding', 0 0 0 4px);
+			}
+			&:last-of-type:after {
+				content: none; //reset
+			}
+		}
+	}
+	a {
+		color: $e;
+		&:hover {
+			color: $c;
+		}
+	}
+}
 .sticky-post-label {
 	text-transform: uppercase;
 	background-color: $d;

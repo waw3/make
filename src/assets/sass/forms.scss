@@ -5,14 +5,12 @@ textarea,
 input {
 	max-width: 100%;
 	border: 0; //reset
-	border: 1px solid rgba(0, 0, 0, .1);
 	background-color: $d;
 	-webkit-appearance: none; //reset
 	@include rem('padding', 4px 6px);
 	@include border-radius;
 	&:focus {
 		outline: none; //reset
-		border: 1px solid rgba(0, 0, 0, .2);
 	}
 }
 button,

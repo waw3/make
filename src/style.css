@@ -754,6 +754,30 @@ embed, iframe, object {
 .infinity-end.neverending .site-footer {
   display: block; }
 
+.entry-date {
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.entry-footer {
+  font-size: 14px;
+  font-size: 0.875rem; }
+  .entry-footer ol, .entry-footer ul {
+    padding-left: 0;
+    list-style: none; }
+    .entry-footer ol li, .entry-footer ul li {
+      display: inline; }
+      .entry-footer ol li:after, .entry-footer ul li:after {
+        content: "\002F";
+        color: #888888;
+        padding: 0 0 0 4px;
+        padding:  0 0 0 0.25rem; }
+      .entry-footer ol li:last-of-type:after, .entry-footer ul li:last-of-type:after {
+        content: none; }
+  .entry-footer a {
+    color: #888888; }
+    .entry-footer a:hover {
+      color: #0068e0; }
+
 .sticky-post-label {
   text-transform: uppercase;
   background-color: #eeeeee;
@@ -975,7 +999,6 @@ embed, iframe, object {
 textarea, input {
   max-width: 100%;
   border: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #eeeeee;
   -webkit-appearance: none;
   padding: 4px 6px;
@@ -984,8 +1007,7 @@ textarea, input {
   -moz-border-radius: 3px;
   border-radius: 3px; }
   textarea:focus, input:focus {
-    outline: none;
-    border: 1px solid rgba(0, 0, 0, 0.2); }
+    outline: none; }
 
 button, input, select, textarea {
   margin: 0;
