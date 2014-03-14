@@ -40,13 +40,12 @@ if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
  * @return string
  */
 function ttf_one_get_google_font_request( $fonts = array() ) {
-	// Grab the theme options if no fonts are specified
-	if ( empty( $fonts ) ) {
-		$font_option_keys = array( 'font-site-title', 'font-header', 'font-body' );
-		foreach ( $font_option_keys as $key ) {
-			$fonts[] = get_theme_mod( $key, 'Open Sans' );
-		}
-	}
+	// Grab the font choices
+	$fonts = array(
+		get_theme_mod( 'font-site-title', 'Montserrat' ),
+		get_theme_mod( 'font-header', 'Montserrat' ),
+		get_theme_mod( 'font-body', 'Open Sans' ),
+	);
 
 	// De-dupe the fonts
 	$fonts = array_unique( $fonts );
@@ -55,10 +54,13 @@ function ttf_one_get_google_font_request( $fonts = array() ) {
 	$family = array();
 
 	// Validate each font and convert to URL format
-	foreach ( (array) $fonts as $font ) {
+	foreach ( $fonts as $font ) {
 		$font = trim( $font );
-		if ( in_array( $font, array_keys( $allowed_fonts ) ) ) {
-			$family[] = str_replace( ' ', '+', $font );
+
+		// Verify that the font exists
+		if ( array_key_exists( $font, $allowed_fonts ) ) {
+			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700"
+			$family[] = str_replace( ' ', '+', $font ) . ':' . join( ',', ttf_one_choose_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) );
 		}
 	}
 
@@ -70,6 +72,50 @@ function ttf_one_get_google_font_request( $fonts = array() ) {
 	}
 
 	return esc_url( $request );
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_choose_font_variants' ) ) :
+/**
+ * Given a font, chose the variants to load for the theme.
+ *
+ * Attempts to load regular, italic, and 700. If regular is not found, the first variant in the family is chosen. italic
+ * and 700 are only loaded if found. No fallbacks are loaded for those fonts.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $font        The font to load variants for.
+ * @param  array     $variants    The variants for the font.
+ * @return array                  The chosen variants.
+ */
+function ttf_one_choose_font_variants( $font, $variants = array() ) {
+	$chosen_variants = array();
+	if ( empty( $variants ) ) {
+		$fonts = ttf_one_get_google_fonts();
+
+		if ( array_key_exists( $font, $fonts ) ) {
+			$variants = $fonts[ $font ]['variants'];
+		}
+	}
+
+	// If a "regular" variant is not found, get the first variant
+	if ( ! in_array( 'regular', $variants ) ) {
+		$chosen_variants[] = $variants[0];
+	} else {
+		$chosen_variants[] = 'regular';
+	}
+
+	// Only add "italic" if it exists
+	if ( in_array( 'italic', $variants ) ) {
+		$chosen_variants[] = 'italic';
+	}
+
+	// Only add "700" if it exists
+	if ( in_array( '700', $variants ) ) {
+		$chosen_variants[] = '700';
+	}
+
+	return array_unique( $chosen_variants );
 }
 endif;
 
