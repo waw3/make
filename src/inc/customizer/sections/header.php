@@ -33,7 +33,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Background Color', 'ttf-one' ),
+				'label'    => __( 'Header Background Color', 'ttf-one' ),
 				'priority' => $priority->add()
 			)
 		)
