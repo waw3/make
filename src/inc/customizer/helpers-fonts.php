@@ -34,18 +34,17 @@ function ttf_one_css_fonts( $css ) {
 	$font_needed      = ( 'Montserrat' !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) );
 	$font_size_needed = ( false !== $font_header_size );
 
-	if ( $font_needed || $font_size_needed ) {
-		$css .= '.font-header,h1,h2,h3,h4,h5,h6{';
+	if ( $font_needed ) {
+		$css .= '.font-header,h1,h2,h3,h4,h5,h6{font-family:' . $font_header . ', Helvetica, Arial, sans-serif;}';
+	}
 
-		if ( $font_needed ) {
-			$css .= 'font-family:' . $font_header . ', Helvetica, Arial, sans-serif;';
-		}
-
-		if ( $font_size_needed ) {
-			$css .= 'font-size:' . absint( $font_header_size ) .'px;';
-		}
-
-		$css .= '}';
+	if ( $font_size_needed ) {
+		$css .= '.font-header,h1{font-size:' . $font_header_size . 'px;}';
+		$css .= 'h2{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 68 ) . 'px;}';
+		$css .= 'h3{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 48 ) . 'px;}';
+		$css .= 'h4{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 48 ) . 'px;}';
+		$css .= 'h5{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 32 ) . 'px;}';
+		$css .= 'h6{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 28 ) . 'px;}';
 	}
 
 	$font_body        = get_theme_mod( 'font-body', 'Open Sans' );
@@ -68,6 +67,19 @@ function ttf_one_css_fonts( $css ) {
 	}
 
 	return $css;
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_relative_font_size' ) ) :
+/**
+ * Convert a font size to a relative size based on a starting value and percentage.
+ *
+ * @param  mixed    $value         The value to base the final value on.
+ * @param  mixed    $percentage    The percentage of change.
+ * @return float                   The converted value.
+ */
+function ttf_one_get_relative_font_size( $value, $percentage ) {
+	return (float) $value * ( $percentage / 100 );
 }
 endif;
 
