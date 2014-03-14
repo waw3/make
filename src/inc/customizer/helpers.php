@@ -266,11 +266,11 @@ if ( ! class_exists( 'TTF_One_Logo' ) ) :
 class TTF_One_Logo {
 
 	/**
-	 * The one instance of Oxford_Logo.
+	 * The one instance of TTF_One_Logo
 	 *
 	 * @since 1.0.
 	 *
-	 * @var   Oxford_Logo
+	 * @var TTF_One_Logo
 	 */
 	private static $instance;
 
@@ -297,11 +297,11 @@ class TTF_One_Logo {
 	var $has_logo_by_type = array();
 
 	/**
-	 * Instantiate or return the one Oxford_Logo instance.
+	 * Instantiate or return the one TTF_One_Logo instance.
 	 *
 	 * @since  1.0.
 	 *
-	 * @return Oxford_Logo
+	 * @return TTF_One_Logo
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) )
@@ -635,11 +635,11 @@ endif;
 
 if ( ! function_exists( 'ttf_one_get_logo' ) ) :
 /**
- * Return the one Oxford_Logo object.
+ * Return the one TTF_One_Logo object.
  *
  * @since  1.0.
  *
- * @return Oxford_Logo    The one Oxford_Logo instance.
+ * @return TTF_One_Logo
  */
 function ttf_one_get_logo() {
 	return TTF_One_Logo::instance();
