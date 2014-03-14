@@ -35,11 +35,9 @@ if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
  *
  * @since 1.0.0
  *
- * @param array $fonts The names of the fonts to include in the request.
- *
  * @return string
  */
-function ttf_one_get_google_font_request( $fonts = array() ) {
+function ttf_one_get_google_font_request() {
 	// Grab the font choices
 	$fonts = array(
 		get_theme_mod( 'font-site-title', 'Montserrat' ),
