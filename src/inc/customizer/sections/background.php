@@ -19,13 +19,13 @@ function ttf_one_customizer_background() {
 	$section = 'background_image';
 
 	// Rename Background Image section to Background
-	$wp_customize->get_section( 'background_image' )->title = __( 'Background', 'ttf-one' );
+	$wp_customize->get_section( $section )->title = __( 'Background', 'ttf-one' );
 
 	// Move Background Color to Background section
 	$wp_customize->get_control( 'background_color' )->section = $section;
-	$wp_customize->get_control( 'background_color' )->priority = $priority->add();
 
-	// Reset priorities on other existing controls
+	// Reset priorities on existing controls
+	$wp_customize->get_control( 'background_color' )->priority = $priority->add();
 	$wp_customize->get_control( 'background_image' )->priority = $priority->add();
 	$wp_customize->get_control( 'background_repeat' )->priority = $priority->add();
 	$wp_customize->get_control( 'background_position_x' )->priority = $priority->add();
