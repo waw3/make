@@ -850,6 +850,11 @@ function ttf_one_get_social_links() {
 		unset( $services_with_links['rss'] );
 	}
 
+	// Properly set the email
+	if ( isset( $services_with_links['email']['url'] ) ) {
+		$services_with_links['email']['url'] = esc_url( 'mailto:' . $services_with_links['email']['url'] );
+	}
+
 	return apply_filters( 'ttf_one_social_links', $services_with_links );
 }
 endif;
