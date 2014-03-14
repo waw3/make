@@ -676,17 +676,17 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
 function ttf_one_css_fonts( $css ) {
 	$font_site_title = get_theme_mod( 'font-site-title', 'Montserrat' );
 	if ( false !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) ) {
-		$css .= '.font-site-title,.site-title{font-family: ' . $font_site_title . '}';
+		$css .= '.font-site-title,.site-title{font-family: ' . $font_site_title . ', Helvetica, Arial, sans-serif;}';
 	}
 
 	$font_header = get_theme_mod( 'font-header', 'Montserrat' );
 	if ( false !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) ) {
-		$css .= '.font-header,h1,h2,h3,h4,h5,h6{font-family: ' . $font_header . '}';
+		$css .= '.font-header,h1,h2,h3,h4,h5,h6{font-family: ' . $font_header . ', Helvetica, Arial, sans-serif;}';
 	}
 
 	$font_body = get_theme_mod( 'font-body', 'Open Sans' );
 	if ( false !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) ) {
-		$css .= '.font-body,body{font-family:' . $font_body . '}';
+		$css .= '.font-body,body{font-family:' . $font_body . ', Helvetica, Arial, sans-serif;}';
 	}
 
 	return $css;
