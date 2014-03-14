@@ -36,33 +36,33 @@
 					</div>
 				</div>
 				<div class="container">
-				<div class="site-branding">
-					<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
-						<?php $hide_site_title = (int) get_theme_mod( 'hide-site-title', 0 ); ?>
+					<div class="site-branding">
+						<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
+							<?php $hide_site_title = (int) get_theme_mod( 'hide-site-title', 0 ); ?>
+							<?php if ( 1 !== $hide_site_title ) : ?>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+							<?php endif; ?>
+						</h1>
+						<?php $hide_site_title = (int) get_theme_mod( 'hide-tagline', 0 ); ?>
 						<?php if ( 1 !== $hide_site_title ) : ?>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<?php bloginfo( 'name' ); ?>
-						</a>
+						<span class="site-description">
+							<?php bloginfo( 'description' ); ?>
+						</span>
 						<?php endif; ?>
-					</h1>
-					<?php $hide_site_title = (int) get_theme_mod( 'hide-tagline', 0 ); ?>
-					<?php if ( 1 !== $hide_site_title ) : ?>
-					<span class="site-description">
-						<?php bloginfo( 'description' ); ?>
-					</span>
-					<?php endif; ?>
-				</div>
+					</div>
 
-				<nav id="site-navigation" class="site-navigation" role="navigation">
-					<?php $menu_label = get_theme_mod( 'navigation-mobile-label', __( 'Menu', 'ttf-one' ) );?>
-					<span class="menu-toggle"><?php echo esc_html( $menu_label ); ?></span>
-					<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'ttf-one' ); ?></a>
-					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'primary'
-					) );
-					?>
-				</nav>
+					<nav id="site-navigation" class="site-navigation" role="navigation">
+						<?php $menu_label = get_theme_mod( 'navigation-mobile-label', __( 'Menu', 'ttf-one' ) );?>
+						<span class="menu-toggle"><?php echo esc_html( $menu_label ); ?></span>
+						<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'ttf-one' ); ?></a>
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'primary'
+						) );
+						?>
+					</nav>
 				</div>
 			</header>
 
