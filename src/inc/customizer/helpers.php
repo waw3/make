@@ -213,29 +213,6 @@ endif;
 
 add_action( 'wp_head', 'ttf_one_display_favicons' );
 
-if ( ! function_exists( 'ttf_one_display_header_background' ) ) :
-/**
- * Write the CSS to implement the header background option.
- *
- * @since  1.0.0
- *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
- */
-function ttf_one_display_header_background( $css ) {
-	// Background color
-	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', '#ffffff' ) );
-	$css .= '.site-header{background-color:' . $background_color . ';}';
-
-	// Background image
-
-
-	return $css;
-}
-endif;
-
-add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
-
 if ( ! function_exists( 'ttf_one_display_subheader_styles' ) ) :
 /**
  * Write the CSS to implement colors for the subheader.
@@ -683,6 +660,40 @@ function ttf_one_get_logo() {
 endif;
 
 add_action( 'init', 'ttf_one_get_logo', 1 );
+
+if ( ! function_exists( 'ttf_one_display_header_background' ) ) :
+/**
+ * Write the CSS to implement the background options for the site header.
+ *
+ * @since  1.0.0
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_header_background( $css ) {
+	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', '#ffffff' ) );
+
+	$background_image = get_theme_mod( 'header-background-image', false );
+	if ( ! empty( $background_image ) ) {
+		// Get and escape the other properties
+		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', 'auto' ), 'header-background-size' );
+		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', 'no-repeat' ), 'header-background-repeat' );
+		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'header-background-position', 'center' ), 'header-background-position' );
+
+		// Escape the image URL properly
+		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
+
+		// All variables are escaped at this point
+		$css .= '.site-header-main{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
+	} else {
+		$css .= '.site-header-main{background-color:' . $background_color . ';}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
 
 if ( ! function_exists( 'ttf_one_display_main_background' ) ) :
 /**

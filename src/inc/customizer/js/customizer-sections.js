@@ -13,6 +13,10 @@
 			controls: [ 'ttf-one_background_size' ],
 			callback: function( to ) { return !! to; }
 		},
+		'header-background-image': {
+			controls: [ 'ttf-one_header-background-repeat', 'ttf-one_header-background-position', 'ttf-one_header-background-size' ],
+			callback: function( to ) { return !! to; }
+		},
 		'main-background-image': {
 			controls: [ 'ttf-one_main-background-repeat', 'ttf-one_main-background-position', 'ttf-one_main-background-size' ],
 			callback: function( to ) { return !! to; }
