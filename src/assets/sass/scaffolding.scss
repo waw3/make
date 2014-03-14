@@ -142,8 +142,19 @@ a {
 		margin: 0; //reset
 		list-style: none; //reset
 	}
-	.page_item_has_children:after {
-		content: "*";
+	.page_item_has_children {
+		&:hover:after {
+			opacity: 1;
+		}
+		&:after {
+			content: "\f078";
+			position: relative;
+			opacity: .3;
+			font-family: FontAwesome;
+			@include rem('top', -1px);
+			@include rem('padding-left', 6px);
+			@include rem('font-size', 12px);
+		}
 	}
 	li {
 		@include for(medium-screens) {

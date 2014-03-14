@@ -312,8 +312,19 @@ a {
   #site-navigation ul {
     margin: 0;
     list-style: none; }
+  #site-navigation .page_item_has_children:hover:after {
+    opacity: 1; }
   #site-navigation .page_item_has_children:after {
-    content: "*"; }
+    content: "\f078";
+    position: relative;
+    opacity: 0.3;
+    font-family: FontAwesome;
+    top: -1px;
+    top: -0.0625rem;
+    padding-left: 6px;
+    padding-left: 0.375rem;
+    font-size: 12px;
+    font-size: 0.75rem; }
   #site-navigation li {
     border-bottom: 1px solid #eeeeee;
     padding: 11px 8px;
