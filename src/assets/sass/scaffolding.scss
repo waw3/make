@@ -96,8 +96,11 @@ a {
 	color: $a;
 	background-color: $b;
 	@include rem('margin-bottom', $base*2);
-	@include rem('padding', $base);
+	@include rem('padding', $base/1.5);
 	@extend .clear;
+	.fa {
+		@include rem('font-size', 16px);
+	}
 }
 .sub-header-content {
 	float: left;
@@ -109,6 +112,10 @@ a {
 	list-style: none; //reset
 	li {
 		display: inline;
+		@include rem('padding', 0 2px);
+		&:hover {
+			opacity: .75;
+		}
 	}
 }
 /*---------------------------------------------------------
@@ -157,16 +164,21 @@ a {
 			margin: 0; //reset
 			padding: 0; //reset
 			background-color: $d;
-			min-width: 150px;
-			max-width: 350px;
+			width: 160px;
 			@include rem('margin-left', -$gut/3);
 			@include border-radius;
 			&.children {
 				@include rem('padding-top', 4px);
+				.page_item_has_children:after {
+					content: none;
+				}
 			}
 			li {
 				border-bottom: 1px solid rgba(0, 0, 0, .1);
 				@include rem('padding', 0 $gut/4);
+				ul {
+					left: 160px;
+				}
 			}
 			li,
 			li a {

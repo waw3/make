@@ -266,8 +266,11 @@ a {
   background-color: #171717;
   margin-bottom: 44px;
   margin-bottom: 2.75rem;
-  padding: 22px;
-  padding: 1.375rem; }
+  padding: 14.66667px;
+  padding: 0.91667rem; }
+  .sub-header .fa {
+    font-size: 16px;
+    font-size: 1rem; }
 
 .sub-header-content {
   float: left;
@@ -279,7 +282,11 @@ a {
   margin-bottom: 0;
   list-style: none; }
   .sub-header-social li {
-    display: inline; }
+    display: inline;
+    padding: 0 2px;
+    padding:  0 0.125rem; }
+    .sub-header-social li:hover {
+      opacity: 0.75; }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
@@ -328,8 +335,7 @@ a {
       margin: 0;
       padding: 0;
       background-color: #eeeeee;
-      min-width: 150px;
-      max-width: 350px;
+      width: 160px;
       margin-left: -10.66667px;
       margin-left: -0.66667rem;
       -webkit-border-radius: 3px;
@@ -338,10 +344,14 @@ a {
       #site-navigation li ul.children {
         padding-top: 4px;
         padding-top: 0.25rem; }
+        #site-navigation li ul.children .page_item_has_children:after {
+          content: none; }
       #site-navigation li ul li {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding: 0 8px;
         padding:  0 0.5rem; }
+        #site-navigation li ul li ul {
+          left: 160px; }
       #site-navigation li ul li, #site-navigation li ul li a {
         float: none;
         display: block;
