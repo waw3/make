@@ -38,15 +38,10 @@
 				<div class="container">
 				<div class="site-branding">
 					<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
-						<?php $header_text = get_theme_mod( 'header-text', '' ); ?>
 						<?php $hide_site_title = get_theme_mod( 'hide-site-title', 0 ); ?>
 						<?php if ( false != $hide_site_title ) : ?>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<?php if ( ! empty( $header_text ) ) : ?>
-								<?php echo esc_html( $header_text ); ?>
-							<?php else : ?>
-								<?php bloginfo( 'name' ); ?>
-							<?php endif; ?>
+							<?php bloginfo( 'name' ); ?>
 						</a>
 						<?php endif; ?>
 					</h1>
