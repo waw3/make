@@ -103,7 +103,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 	$allowed_choices = array( 0 );
 
 	switch ( $setting ) {
-		case 'site-layout' :
+		case 'general-layout' :
 			$allowed_choices = array( 'full-width', 'boxed' );
 			break;
 		case 'background-size' :
@@ -262,7 +262,7 @@ if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
  * @return array
  */
 function ttf_one_body_layout_classes( $classes ) {
-	$classes[] = get_theme_mod( 'site-layout', 'full-width' );
+	$classes[] = get_theme_mod( 'general-layout', 'full-width' );
 	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
 	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
 	return $classes;
