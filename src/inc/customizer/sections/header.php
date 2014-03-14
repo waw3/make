@@ -39,7 +39,53 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
-	// Header text
+	// Sub Header Background color
+	$setting_id = 'header-subheader-background-color';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '#ffffff',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Sub Header Background Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
+	// Sub Header Text color
+	$setting_id = 'header-subheader-text-color';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '#ffffff',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Sub Header Text Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
+	// Sub Header text
 	$setting_id = 'header-subheader-text';
 	$wp_customize->add_setting(
 		$setting_id,
