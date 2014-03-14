@@ -775,6 +775,19 @@ function ttf_one_get_social_links() {
 		}
 	}
 
+	// Special handling for RSS
+	$hide_rss = (int) get_theme_mod( 'social-hide-rss', 0 );
+	if ( 0 === $hide_rss ) {
+		$custom_rss = get_theme_mod( 'social-custom-rss', '' );
+		if ( ! empty( $custom_rss ) ) {
+			$services_with_links['rss']['url'] = $custom_rss;
+		} else {
+			$services_with_links['rss']['url'] = get_feed_link();
+		}
+	} else {
+		unset( $services_with_links['rss'] );
+	}
+
 	return apply_filters( 'ttf_one_social_links', $services_with_links );
 }
 endif;
