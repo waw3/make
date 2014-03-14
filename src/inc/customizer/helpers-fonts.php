@@ -10,19 +10,61 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_css_fonts( $css ) {
-	$font_site_title = get_theme_mod( 'font-site-title', 'Montserrat' );
-	if ( false !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) ) {
-		$css .= '.font-site-title,.site-title{font-family: ' . $font_site_title . ', Helvetica, Arial, sans-serif;}';
+	$font_site_title      = get_theme_mod( 'font-site-title', 'Montserrat' );
+	$font_site_title_size = get_theme_mod( 'font-site-title-size', false );
+	$font_needed          = ( 'Montserrat' !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) );
+	$font_size_needed     = ( false !== $font_site_title_size );
+
+	if ( $font_needed || $font_size_needed ) {
+		$css .= '.font-site-title,.site-title{';
+
+		if ( $font_needed ) {
+			$css .= 'font-family:' . $font_site_title . ', Helvetica, Arial, sans-serif;';
+		}
+
+		if ( $font_size_needed ) {
+			$css .= 'font-size:' . absint( $font_site_title_size ) .'px;';
+		}
+
+		$css .= '}';
 	}
 
-	$font_header = get_theme_mod( 'font-header', 'Montserrat' );
-	if ( false !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) ) {
-		$css .= '.font-header,h1,h2,h3,h4,h5,h6{font-family: ' . $font_header . ', Helvetica, Arial, sans-serif;}';
+	$font_header      = get_theme_mod( 'font-header', 'Montserrat' );
+	$font_header_size = get_theme_mod( 'font-header-size', false );
+	$font_needed      = ( 'Montserrat' !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) );
+	$font_size_needed = ( false !== $font_header_size );
+
+	if ( $font_needed || $font_size_needed ) {
+		$css .= '.font-header,h1,h2,h3,h4,h5,h6{';
+
+		if ( $font_needed ) {
+			$css .= 'font-family:' . $font_header . ', Helvetica, Arial, sans-serif;';
+		}
+
+		if ( $font_size_needed ) {
+			$css .= 'font-size:' . absint( $font_header_size ) .'px;';
+		}
+
+		$css .= '}';
 	}
 
-	$font_body = get_theme_mod( 'font-body', 'Open Sans' );
-	if ( false !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) ) {
-		$css .= '.font-body,body{font-family:' . $font_body . ', Helvetica, Arial, sans-serif;}';
+	$font_body        = get_theme_mod( 'font-body', 'Open Sans' );
+	$font_body_size   = get_theme_mod( 'font-body-size', false );
+	$font_needed      = ( 'Open Sans' !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) );
+	$font_size_needed = ( false !== $font_header_size );
+
+	if ( $font_needed || $font_size_needed ) {
+		$css .= '.font-body,body{';
+
+		if ( $font_needed ) {
+			$css .= 'font-family:' . $font_body . ', Helvetica, Arial, sans-serif;';
+		}
+
+		if ( $font_size_needed ) {
+			$css .= 'font-size:' . absint( $font_body_size ) .'px;';
+		}
+
+		$css .= '}';
 	}
 
 	return $css;
