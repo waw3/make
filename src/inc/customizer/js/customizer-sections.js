@@ -14,7 +14,7 @@
 			callback: function( to ) { return !! to; }
 		},
 		'main-background-image': {
-			controls: [ 'ttf-one_main-background-repeat', 'ttf-one_main-background-position-x', 'ttf-one_main-background-attachment', 'ttf-one_main-background-size' ],
+			controls: [ 'ttf-one_main-background-repeat', 'ttf-one_main-background-position', 'ttf-one_main-background-attachment', 'ttf-one_main-background-size' ],
 			callback: function( to ) { return !! to; }
 		}
 	}, function( settingId, o ) {
