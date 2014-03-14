@@ -40,4 +40,17 @@
 			}
 		} );
 	} );
+	// Sub Header Text
+	api( 'header-subheader-text', function( value ) {
+		value.bind( function( to ) {
+			var $headerText = $('.sub-header-content');
+			if ( ! $headerText.length ) {
+				$('.sub-header .container').prepend('<span class="sub-header-content"></span>');
+			}
+			if ( ! to ) {
+				$headerText.remove();
+			}
+			$( '.sub-header-content' ).text( to );
+		} );
+	} );
 } )( jQuery );
