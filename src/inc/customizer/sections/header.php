@@ -102,7 +102,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Social Icons', 'ttf-one' ),
+			'label'    => __( 'Show Social Icons In Sub Header', 'ttf-one' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
