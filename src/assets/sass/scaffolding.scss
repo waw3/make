@@ -112,6 +112,9 @@ a {
 	background-color: $b;
 	@include rem('padding', $base/1.5);
 	@extend .clear;
+	a {
+		color: inherit;
+	}
 	.fa {
 		@include rem('font-size', 16px);
 	}

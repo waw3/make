@@ -284,6 +284,8 @@ a {
   background-color: #171717;
   padding: 14.66667px;
   padding: 0.91667rem; }
+  .sub-header a {
+    color: inherit; }
   .sub-header .fa {
     font-size: 16px;
     font-size: 1rem; }
