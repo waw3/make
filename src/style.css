@@ -312,12 +312,34 @@ a {
   float: right;
   margin-bottom: 0;
   list-style: none; }
+  .sub-header-social .fa-facebook:hover {
+    color: #3B5999; }
+  .sub-header-social .fa-twitter:hover {
+    color: #4099ff; }
+  .sub-header-social .fa-google-plus-square:hover {
+    color: #d34836; }
+  .sub-header-social .fa-linkedin:hover {
+    color: #007bb6; }
+  .sub-header-social .fa-instagram:hover {
+    color: #517fa4; }
+  .sub-header-social .fa-flickr:hover {
+    color: #ff0084; }
+  .sub-header-social .fa-youtube:hover {
+    color: #e52d27; }
+  .sub-header-social .fa-vimeo-square:hover {
+    color: #aad450; }
+  .sub-header-social .fa-pinterest:hover {
+    color: #c92228; }
+  .sub-header-social .fa-envelope:hover {
+    color: #fff9c0; }
+  .sub-header-social .fa-rss:hover {
+    color: #ff6600; }
+  .sub-header-social a {
+    text-decoration: none; }
   .sub-header-social li {
     display: inline;
     padding: 0 2px;
     padding:  0 0.125rem; }
-    .sub-header-social li:hover {
-      opacity: 0.75; }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)

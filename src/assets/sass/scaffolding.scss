@@ -141,12 +141,45 @@ a {
 	float: right;
 	margin-bottom: 0; //reset
 	list-style: none; //reset
+	.fa-facebook:hover {
+		color: #3B5999;
+	}
+	.fa-twitter:hover {
+		color: #4099ff;
+	}
+	.fa-google-plus-square:hover {
+		color: #d34836;
+	}
+	.fa-linkedin:hover {
+		color: #007bb6;
+	}
+	.fa-instagram:hover {
+		color: #517fa4;
+	}
+	.fa-flickr:hover {
+		color: #ff0084;
+	}
+	.fa-youtube:hover {
+		color: #e52d27;
+	}
+	.fa-vimeo-square:hover {
+		color: #aad450;
+	}
+	.fa-pinterest:hover {
+		color: #c92228;
+	}
+	.fa-envelope:hover {
+		color: #fff9c0;
+	}
+	.fa-rss:hover {
+		color: #ff6600;
+	}
+	a {
+		text-decoration: none; //reset
+	}
 	li {
 		display: inline;
 		@include rem('padding', 0 2px);
-		&:hover {
-			opacity: .75;
-		}
 	}
 }
 /*---------------------------------------------------------
