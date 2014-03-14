@@ -49,14 +49,6 @@ function ttf_one_setup() {
 		'default-color' => '#ffffff'
 	) );
 
-	// Custom header
-	add_theme_support( 'custom-header', array(
-		'default-text-color' => '#0068e0',
-		'flex-height'        => true,
-		'height'             => 300,
-		'width'              => 1440
-	) );
-
 	// HTML5
 	add_theme_support( 'html5' );
 

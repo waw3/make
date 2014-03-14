@@ -230,9 +230,7 @@ function ttf_one_display_header_background( $css ) {
 	$css .= '.site-header{background-color:' . $background_color . ';}';
 
 	// Background image
-	if ( get_header_image() ) {
-		$css .= '.site-header-main{background-image:url("' . get_header_image() . '");}';
-	}
+
 
 	return $css;
 }

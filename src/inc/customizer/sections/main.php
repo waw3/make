@@ -9,7 +9,8 @@ if ( ! function_exists( 'ttf_one_customizer_main' ) ) :
  *
  * @since  1.0
  *
- * @return void
+ * @param object $wp_customize
+ * @param string $section
  */
 function ttf_one_customizer_main( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();

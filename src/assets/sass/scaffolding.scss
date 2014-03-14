@@ -77,7 +77,6 @@ a {
 	@extend .clear;
 }
 .site-header-main {
-	background-size: cover;
 	float: left;
 	width: 100%;
 	@include rem('padding-top', $base*2);
