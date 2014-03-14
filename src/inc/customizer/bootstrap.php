@@ -56,7 +56,6 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 		'logo'       => __( 'Logo', 'ttf-one' ),
 		'fonts'      => __( 'Fonts', 'ttf-one' ),
 		'colors'     => __( 'Colors', 'ttf-one' ),
-		//'header'     => __( 'Header', 'ttf-one' ),
 		'main'       => __( 'Main', 'ttf-one' ),
 		'footer'     => __( 'Footer', 'ttf-one' ),
 		'social'     => __( 'Social Profiles &amp; RSS', 'ttf-one' )
@@ -70,6 +69,13 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 	foreach ( $sections as $section => $title ) {
 		// First load the file
 		if ( '' !== locate_template( $section_path . $section . '.php', true ) ) {
+			// Custom priorities for some built-in sections
+			if ( 'fonts' === $section ) {
+				$wp_customize->get_section( 'background_image' )->priority = $priority->add();
+			} else if ( 'main' === $section ) {
+				$wp_customize->get_section( 'header_image' )->priority = $priority->add();
+			}
+
 			// Then add the section
 			if ( function_exists( 'ttf_one_customizer_' . $section ) ) {
 				$section_id = 'ttf-one_' . esc_attr( $section );
