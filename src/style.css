@@ -167,10 +167,10 @@ a img {
 -------------------------------------------------------- */
 .clear, .site-header, .sub-header, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .sub-header:before, #comments-nav:before, .clear:after, .site-header:after, .sub-header:after, #comments-nav:after {
+  .clear:before, .clear:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .sub-header:after, #comments-nav:after {
+  .clear:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -194,6 +194,7 @@ body {
   text-rendering: optimizeLegibility; }
 
 #site-wrapper {
+  width: 100%;
   margin: 0 auto;
   background-color: #ffffff; }
 
@@ -202,7 +203,7 @@ body {
   margin: 0 auto; }
 
 body, button, input, select, textarea {
-  color: #1b1d25;
+  color: #171717;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   line-height: 1.55; }
 
@@ -257,31 +258,13 @@ a {
   letter-spacing: 0.0625rem; }
 
 /*---------------------------------------------------------
- Custom logo (_scaffolding.scss)
--------------------------------------------------------- */
-.custom-logo {
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: block;
-  max-width: 100%;
-  margin: 0 auto 11px; }
-  .custom-logo a {
-    display: block;
-    width: 100%;
-    height: 0;
-    font: 0/0 a;
-    text-decoration: none;
-    text-shadow: none;
-    color: transparent; }
-
-/*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .sub-header {
   float: left;
   width: 100%;
   color: #ffffff;
-  background-color: #1b1d25;
+  background-color: #171717;
   margin-bottom: 44px;
   margin-bottom: 2.75rem;
   padding: 22px;
@@ -372,7 +355,7 @@ a {
           border-bottom: none; }
   #site-navigation a {
     display: inline;
-    color: #1b1d25;
+    color: #171717;
     text-decoration: none;
     font-size: 16px;
     font-size: 1rem; }
@@ -523,7 +506,7 @@ abbr, acronym, dfn {
   cursor: help;
   font-size: 0.95em;
   text-transform: uppercase;
-  border-bottom: 1px dotted #1b1d25;
+  border-bottom: 1px dotted #171717;
   letter-spacing: 1px;
   letter-spacing: 0.0625rem; }
 
@@ -789,7 +772,7 @@ embed, iframe, object {
 
 .widget_rss .widget-title a {
   text-decoration: none;
-  color: #1b1d25; }
+  color: #171717; }
 .widget_rss img {
   display: none; }
 .widget_rss .rss-date, .widget_rss cite {
@@ -968,7 +951,7 @@ select {
 -------------------------------------------------------- */
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   color: #ffffff;
-  background: #1b1d25;
+  background: #171717;
   cursor: pointer;
   -webkit-appearance: button;
   padding: 5.5px 12px;

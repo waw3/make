@@ -21,10 +21,17 @@
 					<div class="container">
 						<span class="sub-header-content">☎ 7291-2827 <br> ★ Content can be added here.</span>
 						<ul class="sub-header-social">
-							<li>A</li>
-							<li>B</li>
-							<li>C</li>
-							<li>D</li>
+							<li><i class="fa fa-twitter"></i></li>
+							<li><i class="fa fa-facebook"></i></li>
+							<li><i class="fa fa-google-plus"></i></li>
+							<li><i class="fa fa-flickr"></i></li>
+							<li><i class="fa fa-pinterest"></i></li>
+							<li><i class="fa fa-instagram"></i></li>
+							<li><i class="fa fa-linkedin"></i></li>
+							<li><i class="fa fa-youtube"></i></li>
+							<li><i class="fa fa-vimeo"></i></li>
+							<li><i class="fa fa-envelope"></i></li>
+							<li><i class="fa fa-rss"></i></li>
 						</ul>
 					</div>
 				</div>

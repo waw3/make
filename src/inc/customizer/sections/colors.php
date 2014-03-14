@@ -68,7 +68,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '#1b1d25',
+			'default'           => '#171717',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
