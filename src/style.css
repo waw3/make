@@ -192,6 +192,18 @@ html {
 body {
   background-color: #eeeeee;
   text-rendering: optimizeLegibility; }
+  body.boxed {
+    background-color: #eeeeee; }
+    body.boxed .container {
+      max-width: 100%;
+      width: 100%; }
+    body.boxed #site-wrapper {
+      max-width: 1144px;
+      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      padding: 22px 92px 44px;
+      padding:  1.375rem 5.75rem 2.75rem; }
 
 #site-wrapper {
   width: 100%;
@@ -352,11 +364,8 @@ a {
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px; }
-      #site-navigation li ul.children {
-        padding-top: 4px;
-        padding-top: 0.25rem; }
-        #site-navigation li ul.children .page_item_has_children:after {
-          content: none; }
+      #site-navigation li ul.children .page_item_has_children:after {
+        content: none; }
       #site-navigation li ul li {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding: 0 8px;

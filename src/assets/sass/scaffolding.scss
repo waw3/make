@@ -13,16 +13,25 @@ html {
 body {
 	background-color: $d;
 	text-rendering: optimizeLegibility;
+	&.boxed {
+		background-color: $d;
+		.container {
+			max-width: 100%;
+			width: 100%;
+		}
+		#site-wrapper {
+			max-width: $width+($col*2);
+			-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+			-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+			@include rem('padding', $base $col $base*2);
+		}
+	}
 }
 #site-wrapper {
-	//max-width: $width+($col*2);
 	width: 100%;
 	margin: 0 auto;
 	background-color: $a;
-	//-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-	//-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-	//box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-	//@include rem('padding', $base $col $base*2);
 }
 .container {
 	max-width: $width;
@@ -179,7 +188,6 @@ a {
 			@include rem('margin-left', -$gut/3);
 			@include border-radius;
 			&.children {
-				@include rem('padding-top', 4px);
 				.page_item_has_children:after {
 					content: none;
 				}
