@@ -71,7 +71,6 @@ a {
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
-	font-weight: 700;
 	margin: 0; //reset
 	@include rem('font-size', 34px);
 }

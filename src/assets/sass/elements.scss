@@ -8,6 +8,7 @@ h4,
 h5,
 h6 {
 	clear: both;
+	font-weight: bold;
 	@include rem('margin', $base/2 0);
 	@extend .break;
 	a,
@@ -16,34 +17,30 @@ h6 {
 	}
 }
 h1 {
-	font-weight: 700;
 	@include rem('font-size', 50px);
 
 }
 h2 {
-	font-weight: 700;
 	@include rem('font-size', 34px);
 
 }
 h3 {
-	font-weight: 700;
 	@include rem('font-size', 24px);
 
 }
 h4 {
-	font-weight: 400;
+	font-weight: normal;
 	@include rem('font-size', 24px);
 
 }
 h5 {
-	font-weight: 700;
 	text-transform: uppercase;
 	@include rem('letter-spacing', 1px);
 	@include rem('font-size', 16px);
 
 }
 h6 {
-	font-weight: 400;
+	font-weight: normal;
 	text-transform: uppercase;
 	@include rem('letter-spacing', 2px);
 	@include rem('font-size', 14px);
@@ -112,7 +109,7 @@ dfn {
 }
 details {
 	summary {
-		font-weight: 700;
+		font-weight: bold;
 		@include rem('margin-bottom', $base);
 	}
 	:focus {
@@ -154,7 +151,7 @@ big {
 -------------------------------------------------------- */
 b,
 strong {
-	font-weight: 700;
+	font-weight: bold;
 }
 dfn,
 cite,
@@ -194,7 +191,7 @@ li > ol {
 	margin-left: $indent;
 }
 dt {
-	font-weight: 700;
+	font-weight: bold;
 }
 dd {
 	margin: 0 $base $base;
@@ -208,7 +205,7 @@ table {
 	@extend .break;
 }
 th {
-	font-weight: 700;
+	font-weight: bold;
 	text-align: left;
 	@include rem('padding', $base/2);
 }

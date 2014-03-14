@@ -237,7 +237,6 @@ a {
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
-  font-weight: 700;
   margin: 0;
   font-size: 34px;
   font-size: 2.125rem; }
@@ -411,33 +410,30 @@ a {
 -------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
   clear: both;
+  font-weight: bold;
   margin: 11px 0;
   margin:  0.6875rem 0; }
   h1 a, a h1, h2 a, a h2, h3 a, a h3, h4 a, a h4, h5 a, a h5, h6 a, a h6 {
     text-decoration: none; }
 
 h1 {
-  font-weight: 700;
   font-size: 50px;
   font-size: 3.125rem; }
 
 h2 {
-  font-weight: 700;
   font-size: 34px;
   font-size: 2.125rem; }
 
 h3 {
-  font-weight: 700;
   font-size: 24px;
   font-size: 1.5rem; }
 
 h4 {
-  font-weight: 400;
+  font-weight: normal;
   font-size: 24px;
   font-size: 1.5rem; }
 
 h5 {
-  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   letter-spacing: 0.0625rem;
@@ -445,7 +441,7 @@ h5 {
   font-size: 1rem; }
 
 h6 {
-  font-weight: 400;
+  font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 2px;
   letter-spacing: 0.125rem;
@@ -511,7 +507,7 @@ abbr, acronym, dfn {
   letter-spacing: 0.0625rem; }
 
 details summary {
-  font-weight: 700;
+  font-weight: bold;
   margin-bottom: 22px;
   margin-bottom: 1.375rem; }
 details :focus {
@@ -550,7 +546,7 @@ big {
  Content (_elements.scss)
 -------------------------------------------------------- */
 b, strong {
-  font-weight: 700; }
+  font-weight: bold; }
 
 dfn, cite, em, i {
   font-style: italic; }
@@ -587,7 +583,7 @@ li > ul, li > ol {
   margin-left: 1.5em; }
 
 dt {
-  font-weight: 700; }
+  font-weight: bold; }
 
 dd {
   margin: 0 22px 22px; }
@@ -600,7 +596,7 @@ table {
   width: 100%; }
 
 th {
-  font-weight: 700;
+  font-weight: bold;
   text-align: left;
   padding: 11px;
   padding: 0.6875rem; }
@@ -718,7 +714,7 @@ embed, iframe, object {
  8. Widgets (_widgets.scss)
 -------------------------------------------------------- */
 .widget-title {
-  font-weight: 700;
+  font-weight: bold;
   margin: 0 0 22px;
   margin:  0 0 1.375rem;
   padding-top: 22px;
@@ -888,7 +884,7 @@ embed, iframe, object {
   font-size: 0.875rem; }
 
 .fn {
-  font-weight: 700;
+  font-weight: bold;
   font-style: normal; }
 
 .vcard {
