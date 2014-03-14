@@ -14,6 +14,7 @@ function ttf_one_customizer_init() {
 
 	// Always load
 	require_once( get_template_directory() . $path . 'helpers.php' );
+	require_once( get_template_directory() . $path . 'helpers-fonts.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
