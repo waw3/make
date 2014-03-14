@@ -163,9 +163,7 @@ function ttf_one_customizer_header() {
 			'type'     => 'select',
 			'choices'  => array(
 				'header-layout-1'  => __( 'Layout 1', 'ttf-one' ),
-				'header-layout-2'  => __( 'Layout 2', 'ttf-one' ),
-				'header-layout-3'  => __( 'Layout 3', 'ttf-one' ),
-				'header-layout-4'  => __( 'Layout 4', 'ttf-one' )
+				'header-layout-2'  => __( 'Layout 2', 'ttf-one' )
 			),
 			'priority' => $priority->add()
 		)

@@ -123,7 +123,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
 		case 'header-layout' :
-			$allowed_choices = array( 'header-layout-1', 'header-layout-2', 'header-layout-3', 'header-layout-4' );
+			$allowed_choices = array( 'header-layout-1', 'header-layout-2' );
 			break;
 		case 'footer-layout' :
 			$allowed_choices = array( 'footer-layout-1', 'footer-layout-2', 'footer-layout-3', 'footer-layout-4' );
