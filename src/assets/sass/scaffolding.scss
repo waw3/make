@@ -191,6 +191,9 @@ a {
 	li {
 		display: inline;
 		@include rem('padding', 0 2px);
+		&:last-of-type {
+			padding-right: 0; //reset
+		}
 	}
 }
 /*---------------------------------------------------------

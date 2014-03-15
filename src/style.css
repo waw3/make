@@ -352,6 +352,8 @@ a {
     display: inline;
     padding: 0 2px;
     padding:  0 0.125rem; }
+    .sub-header-social li:last-of-type {
+      padding-right: 0; }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
