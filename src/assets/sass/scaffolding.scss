@@ -141,13 +141,17 @@ a {
 	@include for(medium-screens) {
 		max-width: 30%;
 	}
+	position: relative;
 	float: left;
+	@include rem('top', 2px);
 	@include rem('font-size', 13px);
 }
 .sub-header-social {
+	position: relative;
 	float: right;
 	margin-bottom: 0; //reset
 	list-style: none; //reset
+	@include rem('top', 2px);
 	.fa-facebook:hover {
 		color: #3B5999;
 	}

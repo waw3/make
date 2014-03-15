@@ -307,7 +307,10 @@ a {
     display: none; }
 
 .sub-header-content {
+  position: relative;
   float: left;
+  top: 2px;
+  top: 0.125rem;
   font-size: 13px;
   font-size: 0.8125rem; }
   @media screen and (min-width: 800px) {
@@ -315,9 +318,12 @@ a {
       max-width: 30%; } }
 
 .sub-header-social {
+  position: relative;
   float: right;
   margin-bottom: 0;
-  list-style: none; }
+  list-style: none;
+  top: 2px;
+  top: 0.125rem; }
   .sub-header-social .fa-facebook:hover {
     color: #3B5999; }
   .sub-header-social .fa-twitter:hover {
