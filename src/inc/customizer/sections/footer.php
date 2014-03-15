@@ -186,6 +186,34 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		)
 	);
 
+	// Footer widget areas
+	$setting_id = 'footer-widget-areas';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => 3,
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttf_one_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Footer Widget Areas', 'ttf-one' ),
+			'type'     => 'select',
+			'choices'  => array(
+				'0' => '0',
+				'1' => '1',
+				'2' => '2',
+				'3' => '3',
+				'4' => '4'
+			),
+			'priority' => $priority->add()
+		)
+	);
+
 	// Footer layout
 	$setting_id = 'footer-layout';
 	$wp_customize->add_setting(
@@ -201,13 +229,11 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Layout', 'ttf-one' ),
+			'label'    => __( 'Footer Layout', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
 				'footer-layout-1'  => __( 'Layout 1', 'ttf-one' ),
 				'footer-layout-2'  => __( 'Layout 2', 'ttf-one' ),
-				'footer-layout-3'  => __( 'Layout 3', 'ttf-one' ),
-				'footer-layout-4'  => __( 'Layout 4', 'ttf-one' )
 			),
 			'priority' => $priority->add()
 		)

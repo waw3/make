@@ -6,18 +6,20 @@
 
 <footer id="site-footer" class="site-footer" role="contentinfo">
 	<div class="container">
-		<section id="footer-1" class="widget-area <?php echo ( is_active_sidebar( 'footer-1' ) ) ? 'active' : 'inactive'; ?>" role="complementary">
-			<?php dynamic_sidebar( 'footer-1' ) ?>
-		</section>
-		<section id="footer-2" class="widget-area <?php echo ( is_active_sidebar( 'footer-2' ) ) ? 'active' : 'inactive'; ?>" role="complementary">
-			<?php dynamic_sidebar( 'footer-2' ) ?>
-		</section>
-		<section id="footer-3" class="widget-area <?php echo ( is_active_sidebar( 'footer-3' ) ) ? 'active' : 'inactive'; ?>" role="complementary">
-			<?php dynamic_sidebar( 'footer-3' ) ?>
-		</section>
-		<section id="footer-4" class="widget-area <?php echo ( is_active_sidebar( 'footer-4' ) ) ? 'active' : 'inactive'; ?>" role="complementary">
-			<?php dynamic_sidebar( 'footer-4' ) ?>
-		</section>
+		<?php // Footer widget areas
+		$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', '3' );
+		if ( $sidebar_count > 0 ) :
+			$current_sidebar = 1;
+			while ( $current_sidebar <= $sidebar_count ) :
+			?>
+			<section id="footer-<?php echo $current_sidebar; ?>" class="widget-area <?php echo ( is_active_sidebar( 'footer-' . $current_sidebar ) ) ? 'active' : 'inactive'; ?>" role="complementary">
+				<?php dynamic_sidebar( 'footer-' . $current_sidebar ); ?>
+			</section>
+			<?php
+				$current_sidebar++;
+			endwhile;
+		endif; ?>
+
 		<div class="site-info">
 			<?php $hide_credit = (int) get_theme_mod( 'footer-hide-credit', 1 ); ?>
 			<?php if ( 1 === $hide_credit ) : ?>
