@@ -284,8 +284,8 @@ a {
   width: 100%;
   color: #ffffff;
   background-color: #171717;
-  padding: 14.66667px;
-  padding: 0.91667rem; }
+  padding: 5.5px;
+  padding: 0.34375rem; }
   .sub-header a {
     color: inherit; }
   .sub-header .fa {
@@ -311,8 +311,8 @@ a {
 .sub-header-content {
   position: relative;
   float: left;
-  top: 2px;
-  top: 0.125rem;
+  top: 3px;
+  top: 0.1875rem;
   font-size: 13px;
   font-size: 0.8125rem; }
   @media screen and (min-width: 800px) {

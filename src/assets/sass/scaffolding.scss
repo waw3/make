@@ -113,7 +113,7 @@ a {
 	width: 100%;
 	color: $a;
 	background-color: $b;
-	@include rem('padding', $base/1.5);
+	@include rem('padding', $base/4);
 	@extend .clear;
 	a {
 		color: inherit;
@@ -149,7 +149,7 @@ a {
 	}
 	position: relative;
 	float: left;
-	@include rem('top', 2px);
+	@include rem('top', 3px);
 	@include rem('font-size', 13px);
 }
 .sub-header-social {
