@@ -63,7 +63,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 	$sections = apply_filters( 'ttf_one_customizer_sections', $sections );
 
 	// Priority for first section
-	$priority = new TTF_One_Prioritizer( 200 );
+	$priority = new TTF_One_Prioritizer( 200, 50 );
 
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $title ) {
