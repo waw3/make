@@ -113,7 +113,7 @@ a {
 	width: 100%;
 	color: $a;
 	background-color: $b;
-	@include rem('padding', $base/4);
+	@include rem('padding', $base/2);
 	@extend .clear;
 	a {
 		color: inherit;
@@ -159,42 +159,43 @@ a {
 	list-style: none; //reset
 	@include rem('top', 2px);
 	@include no-select;
-	.fa-facebook:hover {
+	.fa-facebook {
 		color: #3B5999;
 	}
-	.fa-twitter:hover {
+	.fa-twitter {
 		color: #4099ff;
 	}
-	.fa-google-plus-square:hover {
+	.fa-google-plus-square {
 		color: #d34836;
 	}
-	.fa-linkedin:hover {
+	.fa-linkedin {
 		color: #007bb6;
 	}
-	.fa-instagram:hover {
+	.fa-instagram {
 		color: #517fa4;
 	}
-	.fa-flickr:hover {
+	.fa-flickr {
 		color: #ff0084;
 	}
-	.fa-youtube:hover {
+	.fa-youtube {
 		color: #e52d27;
 	}
-	.fa-vimeo-square:hover {
+	.fa-vimeo-square {
 		color: #1ab7ea;
 	}
-	.fa-pinterest:hover {
+	.fa-pinterest {
 		color: #c92228;
 	}
-	.fa-rss:hover {
+	.fa-rss {
 		color: #ff6600;
 	}
 	a {
 		text-decoration: none; //reset
 	}
 	li {
-		display: inline;
-		@include rem('padding', 0 2px);
+		display:  inline-block;
+		text-align: center;
+		@include rem('padding', 0 3px);
 		&:last-of-type {
 			padding-right: 0; //reset
 		}
