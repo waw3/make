@@ -127,6 +127,9 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'header-layout' :
 			$allowed_choices = array( 'header-layout-1', 'header-layout-2' );
 			break;
+		case 'header-primary-nav-position' :
+			$allowed_choices = array( 'left', 'right' );
+			break;
 		case 'footer-widget-areas' :
 			$allowed_choices = array( '1', '2', '3', '4' );
 			break;
@@ -265,6 +268,9 @@ function ttf_one_body_layout_classes( $classes ) {
 	$classes[] = get_theme_mod( 'general-layout', 'full-width' );
 	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
 	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
+	if ( 'left' === get_theme_mod( 'header-primary-nav-position' ) ) {
+		$classes[] = 'primary-nav-left';
+	}
 	return $classes;
 }
 endif;

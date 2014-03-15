@@ -290,5 +290,30 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'priority' => $priority->add()
 		)
 	);
+
+	// Show search field
+	$setting_id = 'header-primary-nav-position';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => 'right',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttf_one_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Show Primary Menu On', 'ttf-one' ),
+			'type'     => 'select',
+			'choices'  => array(
+				'right'  => __( 'Right', 'ttf-one' ),
+				'left'  => __( 'Left', 'ttf-one' )
+			),
+			'priority' => $priority->add()
+		)
+	);
 }
 endif;

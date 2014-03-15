@@ -93,6 +93,9 @@ a {
 	@include for(medium-screens) {
 		float: left;
 		max-width: 40%;
+		.primary-nav-left & {
+			float: right;
+		}
 	}
 }
 .site-description {
@@ -210,6 +213,9 @@ a {
 	@include for(medium-screens) {
 		float: right;
 		max-width: 60%;
+		.primary-nav-left & {
+			float: left;
+		}
 	}
 	margin-bottom: 0; //reset
 	@include no-select;
