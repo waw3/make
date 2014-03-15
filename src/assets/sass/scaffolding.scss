@@ -79,7 +79,7 @@ a {
 .site-header-main {
 	float: left;
 	width: 100%;
-	@include rem('padding-top', $base*2);
+	@include rem('padding', $base*2 0);
 	@extend .clear;
 }
 /*---------------------------------------------------------

@@ -248,8 +248,8 @@ a {
 .site-header-main {
   float: left;
   width: 100%;
-  padding-top: 44px;
-  padding-top: 2.75rem; }
+  padding: 44px 0;
+  padding:  2.75rem 0; }
 
 /*---------------------------------------------------------
  Title and tagline (_scaffolding.scss)
