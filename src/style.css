@@ -317,7 +317,10 @@ a {
   font-size: 0.8125rem; }
   @media screen and (min-width: 800px) {
     .sub-header-content {
-      max-width: 30%; } }
+      max-width: 40%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; } }
 
 .sub-header-social {
   position: relative;
@@ -325,7 +328,11 @@ a {
   margin-bottom: 0;
   list-style: none;
   top: 2px;
-  top: 0.125rem; }
+  top: 0.125rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
   .sub-header-social .fa-facebook:hover {
     color: #3B5999; }
   .sub-header-social .fa-twitter:hover {
