@@ -292,11 +292,17 @@ a {
   .sub-header .search-form {
     padding-left: 16px;
     padding-left: 1rem;
-    font-size: 14px;
-    font-size: 0.875rem;
+    font-size: 13px;
+    font-size: 0.8125rem;
     float: right; }
     .sub-header .search-form input {
-      background-color: #ffffff; }
+      background-color: #ffffff;
+      width: 160px;
+      -webkit-transition: width 0.3s;
+      -moz-transition: width 0.3s;
+      transition: width 0.3s; }
+      .sub-header .search-form input:focus {
+        width: 250px; }
   .sub-header .search-submit {
     display: none; }
 
@@ -1078,6 +1084,23 @@ input[type="search"] {
 button::-moz-focus-inner, input::-moz-focus-inner {
   padding: 0;
   border: 0; }
+
+/*---------------------------------------------------------
+ Placeholder text (_forms.scss)
+-------------------------------------------------------- */
+::-webkit-input-placeholder {
+  color: #171717; }
+
+:-moz-placeholder {
+  color: #171717;
+  opacity: 1; }
+
+::-moz-placeholder {
+  color: #171717;
+  opacity: 1; }
+
+:-ms-input-placeholder {
+  color: #171717; }
 
 /*---------------------------------------------------------
  11. Options (_options.scss)

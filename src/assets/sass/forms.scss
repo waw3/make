@@ -66,3 +66,20 @@ input::-moz-focus-inner {
 	padding: 0; //reset
 	border: 0; //reset
 }
+/*---------------------------------------------------------
+ Placeholder text (_forms.scss)
+-------------------------------------------------------- */
+::-webkit-input-placeholder {
+	color: $b;
+}
+:-moz-placeholder {
+	color: $b;
+	opacity: 1;
+}
+::-moz-placeholder {
+	color: $b;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color: $b;
+}

@@ -120,10 +120,17 @@ a {
 	}
 	.search-form {
 		@include rem('padding-left', $gut/2);
-		@include rem('font-size', 14px);
+		@include rem('font-size', 13px);
 		float: right;
 		input {
 			background-color: $a;
+			width: 160px;
+    		-webkit-transition: width .3s;
+    		   -moz-transition: width .3s;
+					transition: width .3s;
+			&:focus {
+				width: 250px;
+			}
 		}
 	}
 	.search-submit {
