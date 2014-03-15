@@ -146,7 +146,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 
-	// Subset
+	// Character Subset
 	$setting_id = 'font-subset';
 	$wp_customize->add_setting(
 		$setting_id,
@@ -161,10 +161,25 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Subset', 'ttf-one' ),
+			'label'    => __( 'Character Subset', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_google_font_subsets(),
 			'priority' => $priority->add()
+		)
+	);
+
+	// Custom alternate
+	$setting_id = 'font-subset-info';
+	$wp_customize->add_control(
+		new TTF_One_Customize_Misc_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'text',
+				'description' => __( '<strong>Note:</strong> not all fonts provide each of these subsets.', 'ttf-one' ),
+				'priority'    => $priority->add()
+			)
 		)
 	);
 }
