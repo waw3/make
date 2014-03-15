@@ -204,20 +204,21 @@ a {
 	@include no-select;
 	ul {
 		margin: 0; //reset
+		padding: 0; //reset
 		list-style: none; //reset
 	}
 	.page_item_has_children {
 		&:hover:after {
-			opacity: 1;
+			color: $b;
 		}
 		&:after {
 			content: "\f078";
 			position: relative;
-			opacity: .3;
+			color: $e;
 			font-family: FontAwesome;
 			@include rem('top', -1px);
 			@include rem('padding-left', 6px);
-			@include rem('font-size', 12px);
+			@include rem('font-size', 10px);
 		}
 	}
 	li {
@@ -225,7 +226,7 @@ a {
 			display: inline-block;
 			border-bottom: 0; //reset
 			@include rem('margin-bottom', 3px);
-			@include rem('padding', 3px $gut/3);
+			@include rem('padding', 3px $gut/3 3px 0);
 		}
 		border-bottom: 1px solid $d;
 		@include rem('padding', $base/2 $gut/4);
@@ -273,12 +274,11 @@ a {
 		text-decoration: none; //reset
 		@include rem('font-size', 16px);
 		&:hover {
-			text-decoration: underline;
+			color: $c;
 		}
 	}
 	.current_page_item {
-		background-color: $d;
-		@include border-radius;
+		font-weight: bold;
 	}
 }
 
