@@ -54,12 +54,25 @@
 			}
 		} );
 	} );
-	// Sub Header Text
+	// Header Text
 	api( 'header-text', function( value ) {
 		value.bind( function( to ) {
 			var $content = $('.sub-header-content');
 			if ( ! $content.length ) {
 				$('.sub-header .container').prepend('<span class="sub-header-content"></span>');
+			}
+			if ( ! to ) {
+				$content.remove();
+			}
+			$content.text( to );
+		} );
+	} );
+	// Footer Text
+	api( 'footer-text', function( value ) {
+		value.bind( function( to ) {
+			var $content = $('.footer-text');
+			if ( ! $content.length ) {
+				$('.site-info').before('<div class="footer-text"></div>');
 			}
 			if ( ! to ) {
 				$content.remove();

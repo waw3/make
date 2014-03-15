@@ -33,7 +33,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Background Color', 'ttf-one' ),
+				'label'    => __( 'Footer Background Color', 'ttf-one' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -56,32 +56,9 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Background Image', 'ttf-one' ),
+				'label'    => __( 'Footer Background Image', 'ttf-one' ),
 				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
-			)
-		)
-	);
-
-	// Background color
-	$setting_id = 'footer-text-color';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => '#171717',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'maybe_hash_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Text Color', 'ttf-one' ),
-				'priority' => $priority->add()
 			)
 		)
 	);
@@ -165,24 +142,26 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		)
 	);
 
-	// Footer text
-	$setting_id = 'footer-text';
+	// Footer text color
+	$setting_id = 'footer-text-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => '#171717',
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_text',
+			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Footer Text', 'ttf-one' ),
-			'type'     => 'text',
-			'priority' => $priority->add()
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Footer Text Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
 		)
 	);
 
@@ -214,6 +193,84 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		)
 	);
 
+	// Footer text
+	$setting_id = 'footer-text';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttf_one_sanitize_text',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Footer Text', 'ttf-one' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Footer options heading
+	$setting_id = 'footer-options-heading';
+	$wp_customize->add_control(
+		new TTF_One_Customize_Misc_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'heading',
+				'label' => __( 'Footer Options', 'ttf-one' ),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
+	// Show social icons
+	$setting_id = 'footer-show-social';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => 1,
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Show Social Icons', 'ttf-one' ),
+			'type'     => 'checkbox',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Show credit line
+	$setting_id = 'footer-show-credit';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => 1,
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Show Credit Line', 'ttf-one' ),
+			'type'     => 'checkbox',
+			'priority' => $priority->add()
+		)
+	);
+
 	// Footer layout
 	$setting_id = 'footer-layout';
 	$wp_customize->add_setting(
@@ -235,48 +292,6 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 				'footer-layout-1'  => __( 'Layout 1', 'ttf-one' ),
 				'footer-layout-2'  => __( 'Layout 2', 'ttf-one' ),
 			),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Hide social icons
-	$setting_id = 'footer-hide-social';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 1,
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Show Social Icons', 'ttf-one' ),
-			'type'     => 'checkbox',
-			'priority' => $priority->add()
-		)
-	);
-
-	// Hide credit line
-	$setting_id = 'footer-hide-credit';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => 1,
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Show Credit Line', 'ttf-one' ),
-			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
 	);
