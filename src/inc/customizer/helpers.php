@@ -765,6 +765,28 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_footer_background' );
 
+if ( ! function_exists( 'ttf_one_display_footer_text_color' ) ) :
+/**
+ * Write the CSS to implement the text color for the footer.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_footer_text_color( $css ) {
+	$text_color = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', '#171717' ) );
+
+	if ( '#171717' !== $text_color ) {
+		$css .= '.site-footer{color:' . $text_color . ';}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_footer_text_color' );
+
 if ( ! function_exists( 'ttf_one_get_social_links' ) ) :
 /**
  * Get the social links from options.

@@ -63,6 +63,29 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		)
 	);
 
+	// Background color
+	$setting_id = 'footer-text-color';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => '#171717',
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Text Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
 	// Background Repeat
 	$setting_id = 'footer-background-repeat';
 	$wp_customize->add_setting(
