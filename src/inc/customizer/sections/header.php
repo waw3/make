@@ -291,7 +291,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
-	// Show search field
+	// Nav position (Layout 1 only)
 	$setting_id = 'header-primary-nav-position';
 	$wp_customize->add_setting(
 		$setting_id,
