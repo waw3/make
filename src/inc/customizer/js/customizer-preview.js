@@ -55,7 +55,7 @@
 		} );
 	} );
 	// Sub Header Text
-	api( 'header-subheader-text', function( value ) {
+	api( 'header-text', function( value ) {
 		value.bind( function( to ) {
 			var $content = $('.sub-header-content');
 			if ( ! $content.length ) {

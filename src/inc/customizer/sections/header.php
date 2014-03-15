@@ -56,7 +56,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Background Image', 'ttf-one' ),
+				'label'    => __( 'Header Background Image', 'ttf-one' ),
 				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
 			)
@@ -188,8 +188,8 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
-	// Sub Header text
-	$setting_id = 'header-subheader-text';
+	// Header text
+	$setting_id = 'header-text';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -203,14 +203,50 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Sub Header Text', 'ttf-one' ),
+			'label'    => __( 'Header Text', 'ttf-one' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
 	);
 
-	// Hide social icons
-	$setting_id = 'header-hide-social';
+	// Header options heading
+	$setting_id = 'header-options-heading';
+	$wp_customize->add_control(
+		new TTF_One_Customize_Misc_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'heading',
+				'label' => __( 'Header Options', 'ttf-one' ),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
+	// Show social icons
+	$setting_id = 'header-show-social';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => 0,
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Show Social Icons In Header', 'ttf-one' ),
+			'type'     => 'checkbox',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Show search field
+	$setting_id = 'header-show-search';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -224,7 +260,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Social Icons In Sub Header', 'ttf-one' ),
+			'label'    => __( 'Show Search Field In Header', 'ttf-one' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -245,7 +281,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Layout', 'ttf-one' ),
+			'label'    => __( 'Header Layout', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
 				'header-layout-1'  => __( 'Layout 1', 'ttf-one' ),
