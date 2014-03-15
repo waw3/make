@@ -17,6 +17,7 @@ h6 {
 	}
 }
 h1 {
+	font-weight: 300;
 	@include rem('font-size', 50px);
 
 }

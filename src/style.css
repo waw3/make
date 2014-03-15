@@ -182,9 +182,6 @@ a img {
 -------------------------------------------------------- */
 html {
   font-size: 93.75%; }
-  @media screen and (min-width: 600px) {
-    html {
-      font-size: 100%; } }
 
 /*---------------------------------------------------------
  Detail (_scaffolding.scss)
@@ -258,6 +255,8 @@ a {
   margin: 0;
   font-size: 34px;
   font-size: 2.125rem; }
+  .site-title a {
+    color: #171717; }
 
 @media screen and (min-width: 800px) {
   .site-branding {
@@ -271,10 +270,10 @@ a {
   text-transform: uppercase;
   margin-bottom: 22px;
   margin-bottom: 1.375rem;
-  font-size: 12px;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  letter-spacing: 0.0625rem; }
+  font-size: 13px;
+  font-size: 0.8125rem;
+  letter-spacing: 2px;
+  letter-spacing: 0.125rem; }
 
 /*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
@@ -284,6 +283,7 @@ a {
   width: 100%;
   color: #ffffff;
   background-color: #171717;
+  border-bottom: 1px solid #eeeeee;
   padding: 11px;
   padding: 0.6875rem; }
   .sub-header a {
@@ -333,26 +333,6 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .sub-header-social .fa-facebook {
-    color: #3B5999; }
-  .sub-header-social .fa-twitter {
-    color: #4099ff; }
-  .sub-header-social .fa-google-plus-square {
-    color: #d34836; }
-  .sub-header-social .fa-linkedin {
-    color: #007bb6; }
-  .sub-header-social .fa-instagram {
-    color: #517fa4; }
-  .sub-header-social .fa-flickr {
-    color: #ff0084; }
-  .sub-header-social .fa-youtube {
-    color: #e52d27; }
-  .sub-header-social .fa-vimeo-square {
-    color: #1ab7ea; }
-  .sub-header-social .fa-pinterest {
-    color: #c92228; }
-  .sub-header-social .fa-rss {
-    color: #ff6600; }
   .sub-header-social a {
     text-decoration: none; }
   .sub-header-social li {
@@ -457,7 +437,14 @@ a {
     #site-navigation a:hover {
       color: #0068e0; }
   #site-navigation .current_page_item {
-    font-weight: bold; }
+    background-color: #0087ef;
+    padding: 2px 8px;
+    padding:  0.125rem 0.5rem;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px; }
+    #site-navigation .current_page_item a {
+      color: #ffffff; }
 
 /* =Content
 ----------------------------------------------- */
@@ -510,6 +497,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none; }
 
 h1 {
+  font-weight: 300;
   font-size: 50px;
   font-size: 3.125rem; }
 
