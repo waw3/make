@@ -722,13 +722,12 @@ function ttf_one_display_main_background( $css ) {
 		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'main-background-size', 'auto' ), 'main-background-size' );
 		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'main-background-repeat', 'no-repeat' ), 'main-background-repeat' );
 		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'main-background-position', 'center' ), 'main-background-position' );
-		$background_attachment = ttf_one_sanitize_choice( get_theme_mod( 'main-background-attachment', 'fixed' ), 'main-background-attachment' );
 
 		// Escape the image URL properly
 		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
 
 		// All variables are escaped at this point
-		$css .= '.site-content{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ' ' . $background_attachment . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
+		$css .= '.site-content{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
 	} else {
 		$css .= '.site-content{background-color:' . $background_color . ';}';
 	}
@@ -757,13 +756,12 @@ function ttf_one_display_footer_background( $css ) {
 		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-size', 'auto' ), 'footer-background-size' );
 		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-repeat', 'no-repeat' ), 'footer-background-repeat' );
 		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-position', 'center' ), 'footer-background-position' );
-		$background_attachment = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-attachment', 'fixed' ), 'footer-background-attachment' );
 
 		// Escape the image URL properly
 		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
 
 		// All variables are escaped at this point
-		$css .= '.site-footer{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ' ' . $background_attachment . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
+		$css .= '.site-footer{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
 	} else {
 		$css .= '.site-footer{background-color:' . $background_color . ';}';
 	}
