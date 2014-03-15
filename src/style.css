@@ -464,7 +464,7 @@ a {
 /* =Navigation
 ----------------------------------------------- */
 .site-main [class*="navigation"] {
-  margin: 0 0 1.5em;
+  padding: 0 0 1.5em;
   overflow: hidden; }
 
 [class*="navigation"] .nav-previous {
