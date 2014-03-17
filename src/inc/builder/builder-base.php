@@ -38,15 +38,6 @@ class TTF_One_Builder_Base {
 	private $_iterator = 0;
 
 	/**
-	 * A variable for tracking the current section being processed.
-	 *
-	 * @since 1.0.
-	 *
-	 * @var   int
-	 */
-	private $_current_section_number = 0;
-
-	/**
 	 * Instantiate or return the one TTF_One_Builder_Base instance.
 	 *
 	 * @since  1.0.
