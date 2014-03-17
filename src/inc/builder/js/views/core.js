@@ -4,5 +4,5 @@ var oneApp = oneApp || {};
 (function ($) {
 	'use strict';
 
-	new oneApp.CoreView();
+	oneApp.CoreView = Backbone.View.extend({});
 })(jQuery);
