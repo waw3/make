@@ -231,7 +231,7 @@ ul, ol, dl, p, iframe, details, address, .vcard, figure, pre, fieldset, table, d
  Links (_scaffolding.scss)
 -------------------------------------------------------- */
 a {
-  color: #0068e0; }
+  color: #0094c5; }
 
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
@@ -435,16 +435,12 @@ a {
     font-size: 16px;
     font-size: 1rem; }
     #site-navigation a:hover {
-      color: #0068e0; }
+      color: #0094c5; }
   #site-navigation .current_page_item {
-    background-color: #0087ef;
-    padding: 2px 8px;
-    padding:  0.125rem 0.5rem;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px; }
+    font-weight: bold; }
     #site-navigation .current_page_item a {
-      color: #ffffff; }
+      color: #171717;
+      border-bottom: 1px solid #0094c5; }
 
 /* =Content
 ----------------------------------------------- */
@@ -673,25 +669,27 @@ dd {
  Table (_elements.scss)
 -------------------------------------------------------- */
 table {
-  margin: 0 0 22px;
-  width: 100%; }
-
-th {
-  font-weight: bold;
+  width: 100%;
   text-align: left;
-  padding: 11px;
-  padding: 0.6875rem; }
-
-tr:nth-child(odd) {
-  background-color: #eeeeee; }
-
-td {
-  padding: 11px;
-  padding: 0.6875rem; }
-  td[valign="top"] {
-    vertical-align: top; }
-  td[valign="bottom"] {
-    vertical-align: bottom; }
+  border: 1px solid #171717;
+  border-left: 0;
+  margin: 22px 0;
+  margin:  1.375rem 0; }
+  table caption {
+    margin-bottom: 22px;
+    margin-bottom: 1.375rem; }
+  table th, table td {
+    padding: 11px 8px;
+    padding:  0.6875rem 0.5rem; }
+  table th {
+    border-left: 1px solid #171717; }
+  table td {
+    border-top: 1px solid #171717;
+    border-left: 1px solid #171717; }
+    table td[valign="top"] {
+      vertical-align: top; }
+    table td[valign="bottom"] {
+      vertical-align: bottom; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)
@@ -810,7 +808,7 @@ embed, iframe, object {
   .entry-footer a {
     color: #888888; }
     .entry-footer a:hover {
-      color: #0068e0; }
+      color: #0094c5; }
 
 .sticky-post-label {
   text-transform: uppercase;

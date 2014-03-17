@@ -271,11 +271,10 @@ a {
 		}
 	}
 	.current_page_item {
-		background-color: #0087ef ;
-		@include rem('padding', 2px 8px);
-		@include border-radius(15px);
+		font-weight: bold;
 		a {
-			color: $a;
+			color: $b;
+			border-bottom: 1px solid $c;
 		}
 	}
 }

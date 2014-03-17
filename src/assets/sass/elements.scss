@@ -201,24 +201,30 @@ dd {
  Table (_elements.scss)
 -------------------------------------------------------- */
 table {
-	margin: 0 0 $base;
 	width: 100%;
-	@extend .break;
-}
-th {
-	font-weight: bold;
 	text-align: left;
-	@include rem('padding', $base/2);
-}
-tr:nth-child(odd) {
-	background-color: $d;
-}
-td {
-	@include rem('padding', $base/2);
-	&[valign="top"] {
-		vertical-align: top;
+	border: $rule;
+	border-left: 0; //reset
+	@include rem('margin', $base 0);
+	@extend .break;
+	caption {
+		@include rem('margin-bottom', $base);
 	}
-	&[valign="bottom"] {
-		vertical-align: bottom;
+	th,
+	td {
+		@include rem('padding', $base/2 $gut/4);
+	}
+	th {
+		border-left: $rule;
+	}
+	td {
+		border-top: $rule;
+		border-left: $rule;
+		&[valign="top"] {
+			vertical-align: top;
+		}
+		&[valign="bottom"] {
+			vertical-align: bottom;
+		}
 	}
 }
