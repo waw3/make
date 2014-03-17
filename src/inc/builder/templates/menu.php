@@ -2,7 +2,7 @@
 <div class="ttf-one-menu ttf-one-menu-<?php echo esc_attr( $class ); ?>" id="ttf-one-menu">
 	<div class="ttf-one-menu-pane">
 		<ul class="ttf-one-menu-list">
-			<?php foreach ( ttf_one_get_builder()->get_menu_items() as $id => $item ) : ?>
+			<?php foreach ( ttf_one_get_builder_base()->get_menu_items() as $id => $item ) : ?>
 				<li class="ttf-one-menu-list-item">
 					<a href="#" title="<?php esc_attr_e( 'Add', 'ttf-one' ); ?>" class="ttf-one-menu-list-item-link" id="ttf-one-menu-list-item-link-<?php echo esc_attr( $id ); ?>" data-section="<?php echo esc_attr( $id ); ?>">
 						<div class="ttf-one-menu-list-item-link-icon-wrapper clear">
