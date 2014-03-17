@@ -296,7 +296,7 @@ a {
     font-size: 0.875rem;
     float: right; }
     .sub-header .search-form input {
-      width: 160px;
+      width: 140px;
       -webkit-transition: width 0.3s;
       -moz-transition: width 0.3s;
       transition: width 0.3s; }
@@ -514,7 +514,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none; }
 
 h1 {
-  font-weight: 300;
+  font-weight: normal;
   font-size: 50px;
   font-size: 3.125rem; }
 
@@ -692,7 +692,7 @@ dd {
 table {
   width: 100%;
   text-align: left;
-  border: 1px solid #171717;
+  border: 1px solid #eeeeee;
   border-left: 0;
   margin: 22px 0;
   margin:  1.375rem 0; }
@@ -703,10 +703,10 @@ table {
     padding: 11px 8px;
     padding:  0.6875rem 0.5rem; }
   table th {
-    border-left: 1px solid #171717; }
+    border-left: 1px solid #eeeeee; }
   table td {
-    border-top: 1px solid #171717;
-    border-left: 1px solid #171717; }
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee; }
     table td[valign="top"] {
       vertical-align: top; }
     table td[valign="bottom"] {

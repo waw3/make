@@ -17,7 +17,7 @@ h6 {
 	}
 }
 h1 {
-	font-weight: 300;
+	font-weight: normal;
 	@include rem('font-size', 50px);
 
 }
@@ -27,7 +27,6 @@ h2 {
 }
 h3 {
 	@include rem('font-size', 24px);
-
 }
 h4 {
 	font-weight: normal;
@@ -203,7 +202,7 @@ dd {
 table {
 	width: 100%;
 	text-align: left;
-	border: $rule;
+	border: 1px solid $d;
 	border-left: 0; //reset
 	@include rem('margin', $base 0);
 	@extend .break;
@@ -215,11 +214,11 @@ table {
 		@include rem('padding', $base/2 $gut/4);
 	}
 	th {
-		border-left: $rule;
+		border-left: 1px solid $d;
 	}
 	td {
-		border-top: $rule;
-		border-left: $rule;
+		border-top: 1px solid $d;
+		border-left: 1px solid $d;
 		&[valign="top"] {
 			vertical-align: top;
 		}
