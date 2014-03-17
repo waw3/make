@@ -25,7 +25,7 @@
 				<?php foreach ( $social_links as $key => $link ) : ?>
 				<li>
 					<a href="<?php echo esc_url( $link['url'] ); ?>">
-						<i class="fa <?php echo esc_attr( $link['class'] ); ?>"></i>
+						<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
 					</a>
 				</li>
 				<?php endforeach; ?>

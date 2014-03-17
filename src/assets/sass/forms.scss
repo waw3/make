@@ -45,7 +45,7 @@ input[type="submit"] {
 	-webkit-appearance: button;
 	@include rem('padding', $base/4 12px);
 	@include rem('font-size', 14px);
-	@include border-radius(15px);
+	@include border-radius;
 }
 input[type="checkbox"],
 input[type="radio"] {

@@ -114,7 +114,6 @@ a {
 	color: $a;
 	background-color: $b;
 	border-bottom: 1px solid $d;
-	@include rem('padding', $base/2);
 	@extend .clear;
 	a {
 		color: inherit;
@@ -123,11 +122,10 @@ a {
 		@include rem('font-size', 16px);
 	}
 	.search-form {
-		@include rem('padding-left', $gut/2);
-		@include rem('font-size', 13px);
+		@include rem('padding', $base/2 0 $base/2 $gut/2);
+		@include rem('font-size', 14px);
 		float: right;
 		input {
-			background-color: $a;
 			width: 160px;
     		-webkit-transition: width .3s;
     		   -moz-transition: width .3s;
@@ -151,6 +149,7 @@ a {
 	position: relative;
 	float: left;
 	@include rem('top', 3px);
+	@include rem('padding-top', $base/2);
 	@include rem('font-size', 13px);
 }
 .sub-header-social {
@@ -160,15 +159,47 @@ a {
 	list-style: none; //reset
 	@include rem('top', 2px);
 	@include no-select;
-	a {
-		text-decoration: none; //reset
-	}
 	li {
+		&:first-of-type {
+			border-left: 1px solid $d;
+		}
+		a {
+			display: block;
+			text-decoration: none; //reset
+			@include rem('padding', $base/2 10px);
+			border-right: 1px solid $d;
+		}
 		display:  inline-block;
 		text-align: center;
-		@include rem('padding', 0 3px);
-		&:last-of-type {
-			padding-right: 0; //reset
+		.fa-facebook:hover {
+			color: #3B5999;
+		}
+		.fa-twitter:hover {
+			color: #4099ff;
+		}
+		.fa-google-plus-square:hover {
+			color: #d34836;
+		}
+		.fa-linkedin:hover {
+			color: #007bb6;
+		}
+		.fa-instagram:hover {
+			color: #517fa4;
+		}
+		.fa-flickr:hover {
+			color: #ff0084;
+		}
+		.fa-youtube:hover {
+			color: #e52d27;
+		}
+		.fa-vimeo-square:hover {
+			color: #1ab7ea;
+		}
+		.fa-pinterest:hover {
+			color: #c92228;
+		}
+		.fa-rss:hover {
+			color: #ff6600;
 		}
 	}
 }

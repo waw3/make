@@ -283,22 +283,19 @@ a {
   width: 100%;
   color: #ffffff;
   background-color: #171717;
-  border-bottom: 1px solid #eeeeee;
-  padding: 11px;
-  padding: 0.6875rem; }
+  border-bottom: 1px solid #eeeeee; }
   .sub-header a {
     color: inherit; }
   .sub-header .fa {
     font-size: 16px;
     font-size: 1rem; }
   .sub-header .search-form {
-    padding-left: 16px;
-    padding-left: 1rem;
-    font-size: 13px;
-    font-size: 0.8125rem;
+    padding: 11px 0 11px 16px;
+    padding:  0.6875rem 0 0.6875rem 1rem;
+    font-size: 14px;
+    font-size: 0.875rem;
     float: right; }
     .sub-header .search-form input {
-      background-color: #ffffff;
       width: 160px;
       -webkit-transition: width 0.3s;
       -moz-transition: width 0.3s;
@@ -313,6 +310,8 @@ a {
   float: left;
   top: 3px;
   top: 0.1875rem;
+  padding-top: 11px;
+  padding-top: 0.6875rem;
   font-size: 13px;
   font-size: 0.8125rem; }
   @media screen and (min-width: 800px) {
@@ -333,15 +332,37 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .sub-header-social a {
-    text-decoration: none; }
   .sub-header-social li {
     display: inline-block;
-    text-align: center;
-    padding: 0 3px;
-    padding:  0 0.1875rem; }
-    .sub-header-social li:last-of-type {
-      padding-right: 0; }
+    text-align: center; }
+    .sub-header-social li:first-of-type {
+      border-left: 1px solid #eeeeee; }
+    .sub-header-social li a {
+      display: block;
+      text-decoration: none;
+      padding: 11px 10px;
+      padding:  0.6875rem 0.625rem;
+      border-right: 1px solid #eeeeee; }
+    .sub-header-social li .fa-facebook:hover {
+      color: #3B5999; }
+    .sub-header-social li .fa-twitter:hover {
+      color: #4099ff; }
+    .sub-header-social li .fa-google-plus-square:hover {
+      color: #d34836; }
+    .sub-header-social li .fa-linkedin:hover {
+      color: #007bb6; }
+    .sub-header-social li .fa-instagram:hover {
+      color: #517fa4; }
+    .sub-header-social li .fa-flickr:hover {
+      color: #ff0084; }
+    .sub-header-social li .fa-youtube:hover {
+      color: #e52d27; }
+    .sub-header-social li .fa-vimeo-square:hover {
+      color: #1ab7ea; }
+    .sub-header-social li .fa-pinterest:hover {
+      color: #c92228; }
+    .sub-header-social li .fa-rss:hover {
+      color: #ff6600; }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
@@ -1070,9 +1091,9 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   padding:  0.34375rem 0.75rem;
   font-size: 14px;
   font-size: 0.875rem;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px; }
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
 
 input[type="checkbox"], input[type="radio"] {
   padding: 0; }
