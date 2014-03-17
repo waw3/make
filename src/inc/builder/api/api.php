@@ -99,3 +99,21 @@ endif;
 function ttf_one_get_sections() {
 	return TTF_One_Sections::instance();
 }
+
+/**
+ * Return the sections.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $id                  Unique ID for the section.
+ * @param  string    $label               Name to display for the section.
+ * @param  string    $description         Section description.
+ * @param  string    $icon                URL to the icon for the display.
+ * @param  string    $save_callback       Function to save the content.
+ * @param  string    $builder_template    Path to the template used in the builder.
+ * @param  string    $display_template    Path to the template used for the frontend.
+ * @return void
+ */
+function ttf_one_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template ) {
+	ttf_one_get_sections()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template );
+}
