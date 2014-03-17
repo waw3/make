@@ -23,26 +23,9 @@ class TTF_One_Sections {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  string              $id                  Unique ID for the section.
-	 * @param  string              $label               Name to display for the section.
-	 * @param  string              $description         Section description.
-	 * @param  string              $icon                URL to the icon for the display.
-	 * @param  string              $save_callback       Function to save the content.
-	 * @param  string              $builder_template    Path to the template used in the builder.
-	 * @param  string              $display_template    Path to the template used for the frontend.
 	 * @return TTF_One_Sections
 	 */
-	public function __constructor( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template ) {
-		$this->_sections[] = array(
-			'id'               => $id,
-			'label'            => $label,
-			'icon'             => $icon,
-			'description'      => $description,
-			'save_callback'    => $save_callback,
-			'builder_template' => $builder_template,
-			'display_template' => $display_template,
-		);
-	}
+	public function __constructor() {}
 
 	/**
 	 * Return the sections.
@@ -53,6 +36,32 @@ class TTF_One_Sections {
 	 */
 	public function get_sections() {
 		return $this->_sections;
+	}
+
+	/**
+	 * Return the sections.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $id                  Unique ID for the section.
+	 * @param  string    $label               Name to display for the section.
+	 * @param  string    $description         Section description.
+	 * @param  string    $icon                URL to the icon for the display.
+	 * @param  string    $save_callback       Function to save the content.
+	 * @param  string    $builder_template    Path to the template used in the builder.
+	 * @param  string    $display_template    Path to the template used for the frontend.
+	 * @return void
+	 */
+	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template ) {
+		$this->_sections[] = array(
+			'id'               => $id,
+			'label'            => $label,
+			'icon'             => $icon,
+			'description'      => $description,
+			'save_callback'    => $save_callback,
+			'builder_template' => $builder_template,
+			'display_template' => $display_template,
+		);
 	}
 }
 endif;
