@@ -713,16 +713,8 @@ if ( ! function_exists( 'TTF_One_Builder' ) ) :
 			// Only load full scripts for WordPress.com and those with SCRIPT_DEBUG set to true
 			if ( ttf_one_is_wpcom() || ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
 				wp_register_script(
-					'ttf-one-builder/js/views/tinymce.js',
-					get_template_directory_uri() . '/inc/builder/js/views/tinymce.js',
-					array(),
-					TTF_ONE_VERSION,
-					true
-				);
-
-				wp_register_script(
-					'ttf-one-builder/js/views/core.js',
-					get_template_directory_uri() . '/inc/builder/js/views/core.js',
+					'ttf-one-builder/js/tinymce.js',
+					get_template_directory_uri() . '/inc/builder/js/tinymce.js',
 					array(),
 					TTF_ONE_VERSION,
 					true
@@ -760,14 +752,13 @@ if ( ! function_exists( 'TTF_One_Builder' ) ) :
 					true
 				);
 
-				wp_register_script(
-					'ttf-one-builder/js/app.js',
+				wp_enqueue_script(
+					'ttf-one-builder',
 					get_template_directory_uri() . '/inc/builder/js/app.js',
 					array_merge(
 						$dependencies,
 						array(
-							'ttf-one-builder/js/views/tinymce.js',
-							'ttf-one-builder/js/views/core.js',
+							'ttf-one-builder/js/tinymce.js',
 							'ttf-one-builder/js/models/section.js',
 							'ttf-one-builder/js/collections/sections.js',
 							'ttf-one-builder/js/views/menu.js',

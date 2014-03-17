@@ -5,5 +5,10 @@ var oneApp = oneApp || {};
 	'use strict';
 
 	// Kickoff Backbone App
-	new oneApp.CoreView();
+	new oneApp.MenuView();
+
+	oneApp.options = {
+		openSpeed: 400,
+		closeSpeed: 250
+	};
 })(jQuery);
