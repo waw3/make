@@ -685,8 +685,6 @@ if ( ! function_exists( 'TTF_One_Builder' ) ) :
 		 * @return void
 		 */
 		public function admin_enqueue_scripts( $hook_suffix ) {
-			global $wp_version;
-
 			// Only load resources if they are needed on the current page
 			if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
 				return;
