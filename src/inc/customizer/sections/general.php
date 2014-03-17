@@ -41,6 +41,25 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		)
 	);
 
-
+	// Sticky label
+	$setting_id = 'general-sticky-label';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => __( 'Featured', 'ttf-one' ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'esc_html',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Sticky Label', 'ttf-one' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
 }
 endif;

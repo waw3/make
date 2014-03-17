@@ -113,10 +113,11 @@ if ( ! function_exists( 'ttf_one_customizer_set_transport' ) ) :
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function ttf_one_customizer_set_transport( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-	$wp_customize->get_setting( 'header-text' )->transport     = 'postMessage';
-	$wp_customize->get_setting( 'footer-text' )->transport     = 'postMessage';
+	$wp_customize->get_setting( 'blogname' )->transport             = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport      = 'postMessage';
+	$wp_customize->get_setting( 'general-sticky-label' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'header-text' )->transport          = 'postMessage';
+	$wp_customize->get_setting( 'footer-text' )->transport          = 'postMessage';
 }
 endif;
 

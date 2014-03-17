@@ -54,6 +54,19 @@
 			}
 		} );
 	} );
+	// Sticky Label
+	api( 'general-sticky-label', function( value ) {
+		value.bind( function( to ) {
+			var $content = $('.sticky-post-label');
+			if ( ! $content.length ) {
+				$('.post .entry-header').append('<span class="sticky-post-label"></span>');
+			}
+			if ( ! to ) {
+				$content.remove();
+			}
+			$content.text( to );
+		} );
+	} );
 	// Header Text
 	api( 'header-text', function( value ) {
 		value.bind( function( to ) {
