@@ -763,13 +763,16 @@ if ( ! function_exists( 'TTF_One_Builder' ) ) :
 				wp_register_script(
 					'ttf-one-builder/js/app.js',
 					get_template_directory_uri() . '/inc/builder/js/app.js',
-					array(
-						'ttf-one-builder/js/views/tinymce.js',
-						'ttf-one-builder/js/views/core.js',
-						'ttf-one-builder/js/models/section.js',
-						'ttf-one-builder/js/collections/sections.js',
-						'ttf-one-builder/js/views/menu.js',
-						'ttf-one-builder/js/views/section.js',
+					array_merge(
+						$dependencies,
+						array(
+							'ttf-one-builder/js/views/tinymce.js',
+							'ttf-one-builder/js/views/core.js',
+							'ttf-one-builder/js/models/section.js',
+							'ttf-one-builder/js/collections/sections.js',
+							'ttf-one-builder/js/views/menu.js',
+							'ttf-one-builder/js/views/section.js',
+						)
 					),
 					TTF_ONE_VERSION,
 					true
