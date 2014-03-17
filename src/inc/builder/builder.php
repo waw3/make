@@ -3,19 +3,19 @@
  * @package One
  */
 
-if ( ! function_exists( 'One_Builder' ) ) :
+if ( ! function_exists( 'TTF_One_Builder' ) ) :
 	/**
 	 * Defines the functionality for the HTML Builder.
 	 *
 	 * @since 1.0.
 	 */
-	class One_Builder {
+	class TTF_One_Builder {
 		/**
-		 * The one instance of One_Builder.
+		 * The one instance of TTF_One_Builder.
 		 *
 		 * @since 1.0.
 		 *
-		 * @var   One_Builder
+		 * @var   TTF_One_Builder
 		 */
 		private static $instance;
 
@@ -47,11 +47,11 @@ if ( ! function_exists( 'One_Builder' ) ) :
 		private $_current_section_number = 0;
 
 		/**
-		 * Instantiate or return the one One_Builder instance.
+		 * Instantiate or return the one TTF_One_Builder instance.
 		 *
 		 * @since  1.0.
 		 *
-		 * @return One_Builder
+		 * @return TTF_One_Builder
 		 */
 		public static function instance() {
 			if ( is_null( self::$instance ) )
@@ -65,7 +65,7 @@ if ( ! function_exists( 'One_Builder' ) ) :
 		 *
 		 * @since  1.0.
 		 *
-		 * @return One_Builder
+		 * @return TTF_One_Builder
 		 */
 		public function __construct() {
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 1 ); // Bias toward top of stack
@@ -1194,14 +1194,14 @@ if ( ! function_exists( 'One_Builder' ) ) :
 endif;
 
 /**
- * Instantiate or return the one One_Builder instance.
+ * Instantiate or return the one TTF_One_Builder instance.
  *
  * @since  1.0.
  *
- * @return One_Builder
+ * @return TTF_One_Builder
  */
 function ttf_one_get_builder() {
-	return One_Builder::instance();
+	return TTF_One_Builder::instance();
 }
 
 add_action( 'admin_init', 'ttf_one_get_builder' );
