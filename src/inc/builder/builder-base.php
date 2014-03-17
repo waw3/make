@@ -62,6 +62,9 @@ class TTF_One_Builder_Base {
 		// Include the API
 		require get_template_directory() . '/inc/builder/api/api.php';
 
+		// Include the API
+		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
+
 		// Set up actions
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 1 ); // Bias toward top of stack
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
