@@ -217,3 +217,10 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load the builder.
+ */
+if ( is_admin() ) {
+	require get_template_directory() . '/inc/builder/builder.php';
+}
