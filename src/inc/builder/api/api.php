@@ -19,6 +19,29 @@ class TTF_One_Sections {
 	private $_sections = array();
 
 	/**
+	 * The one instance of TTF_One_Sections.
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @var   TTF_One_Sections
+	 */
+	private static $instance;
+
+	/**
+	 * Instantiate or return the one TTF_One_Sections instance.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return TTF_One_Sections
+	 */
+	public static function instance() {
+		if ( is_null( self::$instance ) )
+			self::$instance = new self();
+
+		return self::$instance;
+	}
+
+	/**
 	 * Create a new section.
 	 *
 	 * @since  1.0.0.
@@ -65,3 +88,14 @@ class TTF_One_Sections {
 	}
 }
 endif;
+
+/**
+ * Instantiate or return the one TTF_One_Sections instance.
+ *
+ * @since  1.0.
+ *
+ * @return TTF_One_Sections
+ */
+function ttf_one_get_sections() {
+	return TTF_One_Sections::instance();
+}
