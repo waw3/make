@@ -21,7 +21,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'full-width',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
@@ -46,7 +46,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => __( 'Featured', 'ttf-one' ),
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_html',
 			'transport'         => 'postMessage' // Asynchronous preview

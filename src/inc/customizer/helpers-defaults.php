@@ -13,6 +13,10 @@ function ttf_one_option_defaults() {
 		'hide-tagline' => 0,
 		// Navigation
 		'navigation-mobile-label' => __( 'Menu', 'ttf-one' ),
+		// General
+		'general-layout' => 'full-width',
+		'general-sticky-label' => __( 'Featured', 'ttf-one' ),
+		//
 	);
 
 	return apply_filters( 'ttf_one_option_defaults', $defaults );

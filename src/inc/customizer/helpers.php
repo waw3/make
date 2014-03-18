@@ -265,7 +265,7 @@ if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
  * @return array
  */
 function ttf_one_body_layout_classes( $classes ) {
-	$classes[] = get_theme_mod( 'general-layout', 'full-width' );
+	$classes[] = get_theme_mod( 'general-layout', ttf_one_get_default( 'general-layout' ) );
 	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
 	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
 	if ( 'left' === get_theme_mod( 'header-primary-nav-position' ) ) {
