@@ -1081,6 +1081,16 @@ embed, iframe, object {
   margin-bottom: 0; }
 
 /*---------------------------------------------------------
+ Form (_comments.scss)
+-------------------------------------------------------- */
+.comment-form label {
+  display: block;
+  padding-bottom: 7.33333px;
+  padding-bottom: 0.45833rem; }
+.comment-form .required {
+  color: #0094c5; }
+
+/*---------------------------------------------------------
  Navigation (_comments.scss)
 -------------------------------------------------------- */
 #comments-nav {
