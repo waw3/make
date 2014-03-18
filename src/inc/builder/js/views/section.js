@@ -12,9 +12,9 @@
 		$document: $(window.document),
 
 		events: {
-			'click .basis-section-toggle': 'toggleSection',
-			'click .basis-section-remove': 'removeSection',
-			'keyup .basis-section-header-title-input': 'constructHeader',
+			'click .ttf-one-section-toggle': 'toggleSection',
+			'click .ttf-one-section-remove': 'removeSection',
+			'keyup .ttf-one-section-header-title-input': 'constructHeader'
 		},
 
 		initialize: function (options) {
