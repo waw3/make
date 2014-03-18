@@ -161,7 +161,7 @@ function ttf_one_display_background( $css ) {
 	$background_image = get_theme_mod( 'background_image', false );
 	if ( false !== $background_image ) {
 		// Get and escape the other properties
-		$background_size = ttf_one_sanitize_choice( get_theme_mod( 'background_size', 'auto' ), 'background-size' );
+		$background_size = ttf_one_sanitize_choice( get_theme_mod( 'background_size', ttf_one_get_default( 'background_size' ) ), 'background-size' );
 
 		// All variables are escaped at this point
 		$css .= 'body{background-size:' . $background_size . ';}';

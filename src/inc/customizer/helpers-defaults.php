@@ -21,6 +21,13 @@ function ttf_one_option_defaults() {
 		'logo-retina' => '',
 		'logo-favicon' => '',
 		'logo-apple-touch' => '',
+		// Background
+		'background_color' => '#ffffff',
+		'background_image' => '',
+		'background_repeat' => 'repeat',
+		'background_position_x' => 'left',
+		'background_attachment' => 'scroll',
+		'background_size' => 'auto',
 		//
 	);
 

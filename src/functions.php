@@ -62,7 +62,11 @@ function ttf_one_setup() {
 
 	// Custom background
 	add_theme_support( 'custom-background', array(
-		'default-color' => '#ffffff'
+		'default-color'      => ttf_one_get_default( 'background_color' ),
+		'default-image'      => ttf_one_get_default( 'background_image' ),
+		'default-repeat'     => ttf_one_get_default( 'background_repeat' ),
+		'default-position-x' => ttf_one_get_default( 'background_position_x' ),
+		'default-attachment' => ttf_one_get_default( 'background_attachment' ),
 	) );
 
 	// HTML5

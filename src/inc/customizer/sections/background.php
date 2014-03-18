@@ -36,7 +36,7 @@ function ttf_one_customizer_background() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'auto',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_choice',
 		)
