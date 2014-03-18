@@ -15,7 +15,7 @@ get_header();
 
 	<?php endwhile; ?>
 
-	<?php ttf_one_paging_nav(); ?>
+	<?php get_template_part( 'partials/nav', 'paging' ); ?>
 
 <?php else : ?>
 
