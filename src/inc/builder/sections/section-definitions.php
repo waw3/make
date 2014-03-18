@@ -39,7 +39,7 @@ class TTF_One_Section_Definitions {
 	 *
 	 * @return TTF_One_Section_Definitions
 	 */
-	public function __constructor() {
+	public function __construct() {
 		$this->register_blank_section();
 	}
 
