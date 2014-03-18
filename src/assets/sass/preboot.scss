@@ -6,17 +6,17 @@
 
 //Descriptive colors
 $white:				#ffffff;
-$black:				#171717;
-$accent:            #0094c5;
-$grey:              #eaecee;
-$grey2:             #888d91;
+$text:				#171717;
+$primary:           #0094c5;
+$secondary:         #eaecee;
+$detail:            #b9bcbf;
 
 //Functional colors
 $a:					$white;
-$b:					$black;
-$c:                 $accent;
-$d:                 $grey;
-$e:                 $grey2;
+$b:					$text;
+$c:                 $primary;
+$d:                 $secondary;
+$e:                 $detail;
 
 //Fonts
 $sans:        		'Open Sans', Helvetica, Arial, sans-serif;

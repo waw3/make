@@ -321,7 +321,7 @@ a {
 	@include rem('padding', $base 0 $base*2);
 	@extend .clear;
 	* {
-		border-color: #b9bcbf !important;
+		border-color: $e !important;
 	}
 	.widget-area {
 		// 4 width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );

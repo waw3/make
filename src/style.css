@@ -395,7 +395,7 @@ a {
   #site-navigation .page_item_has_children:after {
     content: "\f078";
     position: relative;
-    color: #888d91;
+    color: #b9bcbf;
     font-family: FontAwesome;
     top: -1px;
     top: -0.0625rem;
@@ -862,13 +862,13 @@ embed, iframe, object {
       display: inline; }
       .entry-footer ol li:after, .entry-footer ul li:after {
         content: "\002F";
-        color: #888d91;
+        color: #b9bcbf;
         padding: 0 0 0 4px;
         padding:  0 0 0 0.25rem; }
       .entry-footer ol li:last-of-type:after, .entry-footer ul li:last-of-type:after {
         content: none; }
   .entry-footer a {
-    color: #888d91; }
+    color: #b9bcbf; }
     .entry-footer a:hover {
       color: #0094c5; }
 
