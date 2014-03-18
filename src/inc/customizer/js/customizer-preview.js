@@ -21,16 +21,6 @@
 			$content.text( to );
 		} );
 	} );
-	// Hide Site Title
-	api( 'hide-site-title', function( value ) {
-		value.bind( function( to ) {
-			if ( true === to ) {
-				$( '.site-title a' ).hide();
-			} else {
-				$( '.site-title a' ).show();
-			}
-		} );
-	} );
 	// Tagline
 	api( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
@@ -42,16 +32,6 @@
 				$content.remove();
 			}
 			$content.text( to );
-		} );
-	} );
-	// Hide Tagline
-	api( 'hide-tagline', function( value ) {
-		value.bind( function( to ) {
-			if ( true === to ) {
-				$( '.site-description' ).hide();
-			} else {
-				$( '.site-description' ).show();
-			}
 		} );
 	} );
 	// Sticky Label

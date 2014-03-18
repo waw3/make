@@ -38,14 +38,14 @@
 			<div class="site-branding">
 				<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
 					<?php // Site title
-					if ( 1 !== (int) get_theme_mod( 'hide-site-title', 0 ) && get_bloginfo( 'name' ) ) : ?>
+					if ( 1 !== (int) get_theme_mod( 'hide-site-title', ttf_one_get_default( 'hide-site-title' ) ) && get_bloginfo( 'name' ) ) : ?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 						<?php bloginfo( 'name' ); ?>
 					</a>
 					<?php endif; ?>
 				</h1>
 				<?php // Tagline
-				if ( 1 !== (int) get_theme_mod( 'hide-tagline', 0 ) && get_bloginfo( 'description' ) ) : ?>
+				if ( 1 !== (int) get_theme_mod( 'hide-tagline', ttf_one_get_default( 'hide-tagline' ) ) && get_bloginfo( 'description' ) ) : ?>
 				<span class="site-description">
 					<?php bloginfo( 'description' ); ?>
 				</span>

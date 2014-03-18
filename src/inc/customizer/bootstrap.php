@@ -14,6 +14,7 @@ function ttf_one_customizer_init() {
 
 	// Always load
 	require_once( get_template_directory() . $path . 'helpers.php' );
+	require_once( get_template_directory() . $path . 'helpers-defaults.php' );
 	require_once( get_template_directory() . $path . 'helpers-fonts.php' );
 
 	// Hook up functions
@@ -106,7 +107,7 @@ endif;
 
 if ( ! function_exists( 'ttf_one_customizer_set_transport' ) ) :
 /**
- * Add postMessage support for certain settings in the Theme Customizer.
+ * Add postMessage support for certain built-in settings in the Theme Customizer.
  *
  * @since 1.0
  *

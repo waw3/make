@@ -28,10 +28,9 @@ function ttf_one_customizer_sitetitletagline() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 0,
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
-			'transport'         => 'postMessage'
 		)
 	);
 	$wp_customize->add_control(
@@ -54,10 +53,9 @@ function ttf_one_customizer_sitetitletagline() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 0,
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
-			'transport'         => 'postMessage'
 		)
 	);
 	$wp_customize->add_control(
