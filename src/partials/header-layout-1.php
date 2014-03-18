@@ -53,7 +53,7 @@
 			</div>
 
 			<nav id="site-navigation" class="site-navigation" role="navigation">
-				<?php $menu_label = get_theme_mod( 'navigation-mobile-label', __( 'Menu', 'ttf-one' ) );?>
+				<?php $menu_label = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default( 'navigation-mobile-label' ) );?>
 				<span class="menu-toggle"><?php echo esc_html( $menu_label ); ?></span>
 				<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'ttf-one' ); ?></a>
 				<?php

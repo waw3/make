@@ -11,7 +11,8 @@ function ttf_one_option_defaults() {
 		// Site Title & Tagline
 		'hide-site-title' => 0,
 		'hide-tagline' => 0,
-		//
+		// Navigation
+		'navigation-mobile-label' => __( 'Menu', 'ttf-one' ),
 	);
 
 	return apply_filters( 'ttf_one_option_defaults', $defaults );
