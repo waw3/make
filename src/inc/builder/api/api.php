@@ -73,7 +73,7 @@ class TTF_One_Sections {
 	 * @param  string    $save_callback       Function to save the content.
 	 * @param  string    $builder_template    Path to the template used in the builder.
 	 * @param  string    $display_template    Path to the template used for the frontend.
-	 * @param  string    $order               The order in which to display the item.
+	 * @param  int       $order               The order in which to display the item.
 	 * @return void
 	 */
 	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
@@ -125,7 +125,7 @@ function ttf_one_get_sections() {
  * @param  string    $save_callback       Function to save the content.
  * @param  string    $builder_template    Path to the template used in the builder.
  * @param  string    $display_template    Path to the template used for the frontend.
- * @param  string    $order               The order in which to display the item.
+ * @param  int       $order               The order in which to display the item.
  * @return void
  */
 function ttf_one_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
