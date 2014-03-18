@@ -324,7 +324,10 @@ a {
 		border-color: #b9bcbf !important;
 	}
 	.widget-area {
-		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+		// 4 width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+		width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
+		// 2 width: percentage( ( $width - $gut ) / ( $width*2 ) );
+		// 1 width: 100%;
 		float: left;
 		margin-right: percentage( $gut / $width );
 		&:last-of-type {
