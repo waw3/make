@@ -62,7 +62,7 @@ class TTF_One_Builder_Base {
 		// Include the API
 		require get_template_directory() . '/inc/builder/api/api.php';
 
-		// Include the API
+		// Add the core sections
 		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
 
 		// Set up actions
@@ -109,11 +109,6 @@ class TTF_One_Builder_Base {
 				'label'       => __( 'Profile', 'ttf-one' ),
 				'description' => __( 'Three sortable columns, each featuring an image, title and text.', 'ttf-one' ),
 			),
-			'text'    => array(
-				'id'          => 'text',
-				'label'       => __( 'Text', 'ttf-one' ),
-				'description' => __( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
-			)
 		);
 
 		// Set the instance var

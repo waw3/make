@@ -377,9 +377,6 @@
 #ttf-one-menu-list-item-link-profile .ttf-one-menu-list-item-link-icon-wrapper {
 	background-image: url(images/profiles.png);
 }
-#ttf-one-menu-list-item-link-text .ttf-one-menu-list-item-link-icon-wrapper {
-	background-image: url(images/text.png);
-}
 /*---------------------------------------------------------
  Sortable handle (html-builder.css)
 -------------------------------------------------------- */
