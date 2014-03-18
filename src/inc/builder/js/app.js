@@ -59,7 +59,6 @@ var oneApp = oneApp || {};
 					if ($wrap.hasClass('tmce-active')) {
 						// Restore the content, with pee
 						el.value = switchEditors.wpautop(el.value);
-						console.log(el.value);
 
 						// Activate tinyMCE
 						oneApp.addTinyMCE(id);
