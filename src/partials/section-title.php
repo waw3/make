@@ -38,16 +38,10 @@
 			);
 
 		elseif ( is_author() ) :
-			if ( ! in_the_loop() ) :
-				the_post();
-			endif;
 			printf(
 				__( 'By %s', 'ttf-one' ),
 				'<strong class="vcard">' . get_the_author() . '</strong>'
 			);
-			if ( ! in_the_loop() ) :
-				rewind_posts();
-			endif;
 
 		else :
 			_e( 'Archive', 'ttf-one' );
