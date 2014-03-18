@@ -73,10 +73,11 @@ class TTF_One_Sections {
 	 * @param  string    $save_callback       Function to save the content.
 	 * @param  string    $builder_template    Path to the template used in the builder.
 	 * @param  string    $display_template    Path to the template used for the frontend.
+	 * @param  string    $order               The order in which to display the item.
 	 * @return void
 	 */
-	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template ) {
-		$this->_sections[] = array(
+	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
+		$this->_sections[ $order ] = array(
 			'id'               => $id,
 			'label'            => $label,
 			'icon'             => $icon,
@@ -84,6 +85,7 @@ class TTF_One_Sections {
 			'save_callback'    => $save_callback,
 			'builder_template' => $builder_template,
 			'display_template' => $display_template,
+			'order'            => $order,
 		);
 	}
 }
@@ -92,12 +94,23 @@ endif;
 /**
  * Instantiate or return the one TTF_One_Sections instance.
  *
- * @since  1.0.
+ * @since  1.0.0.
  *
  * @return TTF_One_Sections
  */
-function ttf_one_get_sections() {
+function ttf_one_get_sections_class() {
 	return TTF_One_Sections::instance();
+}
+
+/**
+ * Get the registered sections.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    The list of registered sections.
+ */
+function ttf_one_get_sections() {
+	return ttf_one_get_sections_class()->get_sections();
 }
 
 /**
@@ -112,8 +125,9 @@ function ttf_one_get_sections() {
  * @param  string    $save_callback       Function to save the content.
  * @param  string    $builder_template    Path to the template used in the builder.
  * @param  string    $display_template    Path to the template used for the frontend.
+ * @param  string    $order               The order in which to display the item.
  * @return void
  */
-function ttf_one_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template ) {
-	ttf_one_get_sections()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template );
+function ttf_one_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
+	ttf_one_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order );
 }
