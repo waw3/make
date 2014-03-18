@@ -316,11 +316,12 @@ a {
  Footer (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-footer {
-	color: #4d4d4d;
+	color: #464849;
 	background-color: $c;
+	@include rem('padding', $base 0 $base*2);
 	@extend .clear;
 	* {
-		border-color: #bcbcbc !important;
+		border-color: #b9bcbf !important;
 	}
 	.widget-area {
 		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
@@ -334,9 +335,26 @@ a {
 	input {
 		background-color: $a;
 	}
-	.site-info {
+	.site-info,
+	.footer-text {
 		float: left;
 		clear: both;
+	}
+	.site-info {
+		em {
+			@include rem('padding', 0 4px);
+		}
+		a {
+			font-weight: bold;
+			text-decoration: none; //reset
+			text-transform: uppercase;
+			@include rem('letter-spacing', 2px);
+			@include rem('font-size', 14px);
+		}
+	}
+	.footer-text {
+		@include rem('margin-bottom', $base/4);
+		@include rem('font-size', 14px);
 	}
 }
 
