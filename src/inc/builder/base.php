@@ -235,9 +235,9 @@ class TTF_One_Builder_Base {
 	}
 
 	/**
-	 * Hide the builder metabox and main editor if necessary.
+	 * Print additional, dynamic CSS for the builder interface.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -247,9 +247,13 @@ class TTF_One_Builder_Base {
 			return;
 		}
 
-		$template = get_page_template_slug();
 		?>
 		<style type="text/css">
+			<?php foreach ( ttf_one_get_sections() as $key => $section ) : ?>
+			#ttf-one-menu-list-item-link-<?php echo esc_attr( $section['id'] ); ?> .ttf-one-menu-list-item-link-icon-wrapper {
+				background-image: url(<?php echo addcslashes( esc_url_raw( $section['icon'] ), '"' ); ?>);
+			}
+			<?php endforeach; ?>
 		</style>
 	<?php
 	}
