@@ -98,7 +98,7 @@ function ttf_one_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats );
+		set_transient( 'all_the_cool_cats', $all_the_cool_cats, DAY_IN_SECONDS );
 	}
 
 	if ( '1' != $all_the_cool_cats ) {
