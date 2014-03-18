@@ -85,8 +85,13 @@ function ttf_one_comment( $comment, $args, $depth ) {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_categorized_blog' ) ) :
 /**
  * Returns true if a blog has more than 1 category.
+ *
+ * @since 1.0.0
+ *
+ * @return bool
  */
 function ttf_one_categorized_blog() {
 	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
@@ -109,17 +114,37 @@ function ttf_one_categorized_blog() {
 		return false;
 	}
 }
+endif;
 
+if ( ! function_exists( 'ttf_one_category_transient_flusher' ) ) :
 /**
  * Flush out the transients used in ttf_one_categorized_blog.
+ *
+ * @since 1.0.0
+ *
+ * @return void
  */
 function ttf_one_category_transient_flusher() {
-	// Like, beat it. Dig?
 	delete_transient( 'all_the_cool_cats' );
 }
+endif;
+
 add_action( 'edit_category', 'ttf_one_category_transient_flusher' );
 add_action( 'save_post',     'ttf_one_category_transient_flusher' );
 
+if ( ! function_exists( 'ttf_one_get_read_more' ) ) :
+/**
+ * Return a read more link
+ *
+ * Use '%s' as a placeholder for the post URL.
+ *
+ * @since 1.0.0
+ *
+ * @param string $before
+ * @param string $after
+ *
+ * @return string
+ */
 function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
 	if ( strpos( $before, '%s' ) ) {
 		$before = sprintf(
@@ -132,3 +157,4 @@ function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $af
 
 	return $before . $more . $after;
 }
+endif;
