@@ -318,8 +318,25 @@ a {
 .site-footer {
 	color: #4d4d4d;
 	background-color: $c;
+	@extend .clear;
 	* {
 		border-color: #bcbcbc !important;
+	}
+	.widget-area {
+		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+		float: left;
+		margin-right: percentage( $gut / $width );
+		&:last-of-type {
+			margin-right: 0; //reset
+		}
+	}
+	textarea,
+	input {
+		background-color: $a;
+	}
+	.site-info {
+		float: left;
+		clear: both;
 	}
 }
 

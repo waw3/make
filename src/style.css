@@ -165,12 +165,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .sub-header, #comments-nav {
+.clear, .site-header, .site-header-main, .sub-header, .site-footer, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, #comments-nav:after {
+  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-footer:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, #comments-nav:after {
+  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -473,6 +473,17 @@ a {
   background-color: #0094c5; }
   .site-footer * {
     border-color: #bcbcbc !important; }
+  .site-footer .widget-area {
+    width: 22.5%;
+    float: left;
+    margin-right: 3.33333%; }
+    .site-footer .widget-area:last-of-type {
+      margin-right: 0; }
+  .site-footer textarea, .site-footer input {
+    background-color: #ffffff; }
+  .site-footer .site-info {
+    float: left;
+    clear: both; }
 
 /* =Content
 ----------------------------------------------- */
