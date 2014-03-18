@@ -74,4 +74,6 @@ var oneApp = oneApp || {};
 	oneApp.removeTinyMCE = function (id) {};
 
 	oneApp.addTinyMCE = function (id) {};
+
+	oneApp.initSortables();
 })(jQuery);
