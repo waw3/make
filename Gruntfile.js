@@ -32,12 +32,16 @@ module.exports = function( grunt ) {
 			}
 		},
 		uglify: {
+			options: {
+				preserveComments: 'some'
+			},
 			lib: {
 				files: {}
 			},
 			theme: {
 				files: {
 					'src/js/global.min.js': ['src/js/global.js'],
+					'src/js/libs/fitvids/jquery.fitvids.min.js': ['src/js/libs/fitvids/jquery.fitvids.js'],
 					'src/inc/customizer/js/customizer-preview.min.js': ['src/inc/customizer/js/customizer-preview.js'],
 					'src/inc/customizer/js/customizer-sections.min.js': ['src/inc/customizer/js/customizer-sections.js']
 				}
