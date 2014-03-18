@@ -201,17 +201,17 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			'default'           => '',
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_text',
+			'transport'         => 'postMessage' // Asynchronous preview
 		)
 	);
 	$wp_customize->add_control(
 		$prefix . $setting_id,
 		array(
-			'settings'  => $setting_id,
-			'section'   => $section,
-			'label'     => __( 'Footer Text', 'ttf-one' ),
-			'type'      => 'text',
-			'priority'  => $priority->add(),
-			'transport' => 'postMessage' // Asynchronous preview
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Footer Text', 'ttf-one' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
 		)
 	);
 

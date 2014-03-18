@@ -26,7 +26,8 @@ function ttf_one_customizer_navigation() {
 			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_html',
-			'theme_supports'    => 'menus'
+			'theme_supports'    => 'menus',
+			'transport'         => 'postMessage' // Asynchronous preview
 		)
 	);
 	$wp_customize->add_control(

@@ -34,6 +34,13 @@
 			$content.text( to );
 		} );
 	} );
+	// Mobile Menu Label
+	api( 'navigation-mobile-label', function( value ) {
+		value.bind( function( to ) {
+			var $content = $('.menu-toggle');
+			$content.text( to );
+		} );
+	} );
 	// Sticky Label
 	api( 'general-sticky-label', function( value ) {
 		value.bind( function( to ) {

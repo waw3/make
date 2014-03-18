@@ -49,17 +49,17 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 			'default'           => __( 'Featured', 'ttf-one' ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_html',
+			'transport'         => 'postMessage' // Asynchronous preview
 		)
 	);
 	$wp_customize->add_control(
 		$prefix . $setting_id,
 		array(
-			'settings'  => $setting_id,
-			'section'   => $section,
-			'label'     => __( 'Sticky Label', 'ttf-one' ),
-			'type'      => 'text',
-			'priority'  => $priority->add(),
-			'transport' => 'postMessage' // Asynchronous preview
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Sticky Label', 'ttf-one' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
 		)
 	);
 }
