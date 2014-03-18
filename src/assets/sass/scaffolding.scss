@@ -360,7 +360,12 @@ a {
 		@include rem('font-size', 14px);
 	}
 }
-
+.theme-name {
+	font-weight: bold;
+}
+.theme-by {
+	font-style: italic;
+}
 
 /* =Content
 ----------------------------------------------- */

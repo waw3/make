@@ -503,6 +503,12 @@ a {
     font-size: 14px;
     font-size: 0.875rem; }
 
+.theme-name {
+  font-weight: bold; }
+
+.theme-by {
+  font-style: italic; }
+
 /* =Content
 ----------------------------------------------- */
 

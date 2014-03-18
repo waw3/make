@@ -32,13 +32,13 @@
 			if ( 1 === (int) get_theme_mod( 'footer-show-credit', 1 ) ) :
 				$footer_credit = sprintf(
 					__( '%s theme', 'ttf-one' ),
-					'TTF Start'
+					'<span class="theme-name">One</span>'
 				); ?>
-			<a title="<?php esc_attr_e( 'Theme info', 'oxford' ); ?>" href="https://thethemefoundry.com/wordpress-themes/ttf-one/"><?php echo $footer_credit; ?></a>
-			<em class="by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></em>
-			<a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'oxford' ); ?>" href="https://thethemefoundry.com/">
+			<?php echo $footer_credit; ?>
+			<span class="theme-by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></span>
+			<span class="theme-author"><a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
 				The Theme Foundry
-			</a>
+			</a></span>
 			<?php endif; ?>
 		</div>
 	</div>
