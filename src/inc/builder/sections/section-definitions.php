@@ -52,7 +52,7 @@ class TTF_One_Section_Definitions {
 	 */
 	public function register_blank_section() {
 		ttf_one_add_section(
-			'ttf-one-blank',
+			'blank',
 			_x( 'Blank', 'section name', 'ttf-one' ),
 			get_template_directory_uri() . '/inc/builder/css/images/blank.png',
 			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
