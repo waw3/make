@@ -30,6 +30,22 @@ if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttf_one_is_wpcom(
 	define( 'TTF_ONE_SUFFIX', '.min' );
 }
 
+/**
+ * Includes
+ */
+// Custom template tags
+require get_template_directory() . '/inc/template-tags.php';
+// Custom functions that act independently of the theme templates
+require get_template_directory() . '/inc/extras.php';
+// Customizer additions
+require get_template_directory() . '/inc/customizer/bootstrap.php';
+// Jetpack compatibility file
+require get_template_directory() . '/inc/jetpack.php';
+// Load the builder
+if ( is_admin() ) {
+	require get_template_directory() . '/inc/builder/base.php';
+}
+
 if ( ! function_exists( 'ttf_one_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -240,31 +256,4 @@ add_action( 'wp_head', 'ttf_one_head_extras', 99 );
  */
 if ( ! isset( $content_width ) ) {
 	$content_width = 640;
-}
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer/bootstrap.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';
-
-/**
- * Load the builder.
- */
-if ( is_admin() ) {
-	require get_template_directory() . '/inc/builder/base.php';
 }
