@@ -201,11 +201,12 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		$prefix . $setting_id,
 		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Header Text', 'ttf-one' ),
-			'type'     => 'text',
-			'priority' => $priority->add()
+			'settings'  => $setting_id,
+			'section'   => $section,
+			'label'     => __( 'Header Text', 'ttf-one' ),
+			'type'      => 'text',
+			'priority'  => $priority->add(),
+			'transport' => 'postMessage' // Asynchronous preview
 		)
 	);
 
