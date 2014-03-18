@@ -606,3 +606,29 @@ function ttf_one_get_builder_base() {
 }
 
 add_action( 'admin_init', 'ttf_one_get_builder_base', 1 );
+
+if ( ! function_exists( 'ttf_one_load_section_header' ) ) :
+/**
+ * Load a consistent header for sections.
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttf_one_load_section_header() {
+	get_template( '/inc/builder/template/section', 'header' );
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_load_section_footer' ) ) :
+/**
+ * Load a consistent footer for sections.
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttf_one_load_section_footer() {
+	get_template( '/inc/builder/template/section', 'footer' );
+}
+endif;
