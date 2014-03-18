@@ -1,17 +1,31 @@
-/* global jQuery */
+/*!
+ * Script for initializing globally-used functions and libs.
+ *
+ * @since 1.0.0
+ */
+/* global jQuery, TTFOneFitvids */
 (function($) {
 	'use strict';
 
 	var ttfOne = {
+		/**
+		 *
+		 */
 		cache: {
 			$document: $(document)
 		},
 
+		/**
+		 *
+		 */
 		init: function() {
 			this.cacheElements();
 			this.bindEvents();
 		},
 
+		/**
+		 *
+		 */
 		cacheElements: function() {},
 
 		/**
@@ -23,11 +37,16 @@
 			this.cache.$document.on( 'ready', function() {
 				self.navigationInit();
 				self.skipLinkFocusFix();
+				self.fitVidsInit();
 			} );
 		},
 
 		/**
-		 * Initialize the mobile menu functionality
+		 * Initialize the mobile menu functionality.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		navigationInit: function() {
 			var container, button, menu;
@@ -60,7 +79,11 @@
 		},
 
 		/**
-		 * Fix tab destination after 'Skip to content' link has been clicked
+		 * Fix tab destination after 'Skip to content' link has been clicked.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		skipLinkFocusFix: function() {
 			var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
@@ -80,6 +103,37 @@
 					}
 				}, false );
 			}
+		},
+
+		/**
+		 * Initialize FitVids.
+		 *
+		 * @since  1.0.0
+		 *
+		 * @return void
+		 */
+		fitVidsInit: function() {
+			// Make sure lib is loaded.
+			if (!$.fn.fitVids) {
+				return;
+			}
+
+			// Update the cache
+			this.cache.$container = $('.container');
+
+			var args = {};
+
+			// Get custom selectors
+			if ('object' === typeof TTFOneFitvids) {
+				args.customSelector = TTFOneFitvids.selectors;
+			}
+
+			// Run FitVids
+			this.cache.$container.fitVids(args);
+
+			// Fix padding issue with Blip.tv. Note that this *must* happen after Fitvids runs.
+			// The selector finds the Blip.tv iFrame, then grabs the .fluid-width-video-wrapper div sibling.
+			this.cache.$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
 		}
 	};
 
