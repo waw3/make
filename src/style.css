@@ -486,10 +486,8 @@ a {
   .site-footer .site-info, .site-footer .footer-text {
     float: left;
     clear: both; }
-  .site-footer .site-info em {
-    padding: 0 4px;
-    padding:  0 0.25rem; }
-  .site-footer .site-info a {
+  .site-footer .site-info, .site-footer .site-info a {
+    color: inherit;
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
@@ -497,6 +495,11 @@ a {
     letter-spacing: 0.125rem;
     font-size: 14px;
     font-size: 0.875rem; }
+    .site-footer .site-info .theme-by, .site-footer .site-info a .theme-by {
+      font-weight: normal;
+      text-transform: lowercase;
+      padding: 0 4px;
+      padding:  0 0.25rem; }
   .site-footer .footer-text {
     margin-bottom: 5.5px;
     margin-bottom: 0.34375rem;
@@ -744,6 +747,7 @@ table {
   margin: 22px 0;
   margin:  1.375rem 0; }
   table caption {
+    font-weight: bold;
     margin-bottom: 22px;
     margin-bottom: 1.375rem; }
   table th, table td {

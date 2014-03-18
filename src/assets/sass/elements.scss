@@ -208,6 +208,7 @@ table {
 	@include rem('margin', $base 0);
 	@extend .break;
 	caption {
+		font-weight: bold;
 		@include rem('margin-bottom', $base);
 	}
 	th,
