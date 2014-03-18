@@ -58,7 +58,8 @@ class TTF_One_Section_Definitions {
 			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
 			array( $this, 'save_blank' ),
 			get_template_directory() . '/inc/builder/sections/builder-templates/blank.php',
-			get_template_directory() . '/inc/builder/sections/front-end-templates/blank.php'
+			get_template_directory() . '/inc/builder/sections/front-end-templates/blank.php',
+			400
 		);
 	}
 
