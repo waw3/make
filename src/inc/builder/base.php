@@ -108,7 +108,7 @@ class TTF_One_Builder_Base {
 
 		// Load the boilerplate templates
 		get_template_part( 'inc/builder/templates/menu' );
-		get_template_part( 'inc/builder/templates/stage-header' );
+		get_template_part( 'inc/builder/templates/stage', 'header' );
 
 		$section_ids = array();
 
@@ -119,7 +119,7 @@ class TTF_One_Builder_Base {
 			}
 		}
 
-		get_template_part( 'inc/builder/templates/stage-footer' );
+		get_template_part( 'inc/builder/templates/stage', 'footer' );
 
 		// Generate initial section order input
 		$section_order = '';
