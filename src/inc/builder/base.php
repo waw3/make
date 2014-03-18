@@ -20,15 +20,6 @@ class TTF_One_Builder_Base {
 	private static $instance;
 
 	/**
-	 * Holds the menu item information
-	 *
-	 * @since 1.0.
-	 *
-	 * @var   array    Contains a multidimensional array with menu item information.
-	 */
-	private $_menu_items = array();
-
-	/**
 	 * Holds the iterator for managing sections
 	 *
 	 * @since 1.0.
@@ -79,41 +70,6 @@ class TTF_One_Builder_Base {
 		global $wp_embed;
 		add_filter( 'ttf_one_the_builder_content', array( $wp_embed, 'autoembed' ), 8 );
 		add_filter( 'ttf_one_the_builder_content', 'wpautop' );
-
-		// Setup config
-		$this->_set_menu_items();
-	}
-
-	/**
-	 * Set the menu items.
-	 *
-	 * @since  1.0.
-	 *
-	 * @return array    The menu items array.
-	 */
-	private function _set_menu_items() {
-		// Setup the default menu items
-		$menu_items = array(
-			'banner'  => array(
-				'id'          => 'banner',
-				'label'       => __( 'Banner', 'ttf-one' ),
-				'description' => __( 'A full-width background image with custom text and an optional button.', 'ttf-one' ),
-			),
-			'feature' => array(
-				'id'          => 'feature',
-				'label'       => __( 'Feature', 'ttf-one' ),
-				'description' => __( 'A featured image accompanied on the left or right side by a narrow column of text.', 'ttf-one' ),
-			),
-			'profile' => array(
-				'id'          => 'profile',
-				'label'       => __( 'Profile', 'ttf-one' ),
-				'description' => __( 'Three sortable columns, each featuring an image, title and text.', 'ttf-one' ),
-			),
-		);
-
-		// Set the instance var
-		$this->_menu_items = $menu_items;
-		return $menu_items;
 	}
 
 	/**
@@ -159,9 +115,7 @@ class TTF_One_Builder_Base {
 		// Print the current sections
 		foreach ( $ttf_one_sections as $section ) {
 			if ( isset( $section['section-type'] ) ) {
-				$this->_load_section( $this->get_menu_item( $section['section-type'] ), $section );
-				$section_ids[] = $this->get_iterator();
-				$this->increment_iterator();
+				// Print the saved section
 			}
 		}
 
@@ -377,11 +331,12 @@ class TTF_One_Builder_Base {
 	 *
 	 * @since  1.0.
 	 *
-	 * @param  string    $section    The section data.
-	 * @param  array     $data       The data payload to inject into the section.
+	 * @param  string    $section     The section data.
+	 * @param  array     $data        The data payload to inject into the section.
+	 * @param  string    $template    The template to load.
 	 * @return void
 	 */
-	private function _load_section( $section, $data = array() ) {
+	private function _load_section( $section, $data = array(), $template ) {
 		if ( ! isset( $section['id'] ) ) {
 			return;
 		}
@@ -396,12 +351,12 @@ class TTF_One_Builder_Base {
 			$ttf_one_section_name = 'ttf-one-section[{{{ iterator }}}]';
 			$ttf_one_section_id   = 'ttf-onesection{{{ iterator }}}';
 		} else {
-			$ttf_one_section_name = 'ttf-one-section[' . absint( ttf_one_get_builder()->get_iterator() ) . ']';
-			$ttf_one_section_id   = 'ttf-onesection' . absint( ttf_one_get_builder()->get_iterator() );
+			$ttf_one_section_name = 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']';
+			$ttf_one_section_id   = 'ttf-onesection' . absint( ttf_one_get_builder_base()->get_iterator() );
 		}
 
 		// Include the template
-		get_template_part( 'inc/builder/templates/' . $section['id'] );
+		require $template;
 
 		// Destroy the variable as a good citizen does
 		unset( $GLOBALS['ttf_one_section'] );
@@ -428,31 +383,14 @@ class TTF_One_Builder_Base {
 		}
 
 		// Print the templates
-		foreach ( $this->get_menu_items() as $key => $section ) : ?>
+		foreach ( ttf_one_get_sections() as $key => $section ) : ?>
 			<script type="text/html" id="tmpl-ttf-one-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
-			$builder = ( 'slide' === $section['id'] ) ? 'slideshow' : 'product';
-			$this->_load_section( $section, array(), $builder );
+			$this->_load_section( $section, array(), $section['builder_template'] );
 			$html = ob_get_clean();
 
-			$html = str_replace(
-				array(
-					'name="ttfoneeditortemp' . $section['id'] . '"',
-					'name="ttfoneeditortemp' . $section['id'] . 'left"',
-					'name="ttfoneeditortemp' . $section['id'] . 'middle"',
-					'name="ttfoneeditortemp' . $section['id'] . 'right"',
-					'ttfoneeditortemp' . $section['id']
-				),
-				array(
-					'name="ttf-one-section[{{{ iterator }}}][content]"',
-					'name="ttf-one-section[{{{ iterator }}}][left][content]"',
-					'name="ttf-one-section[{{{ iterator }}}][middle][content]"',
-					'name="ttf-one-section[{{{ iterator }}}][right][content]"',
-					'ttfoneeditor' . $section['id'] . '{{{ iterator }}}',
-				),
-				$html
-			);
+			// @todo: Maybe change TinyMCE input names
 
 			echo $html;
 			?>
@@ -613,36 +551,6 @@ class TTF_One_Builder_Base {
 		}
 
 		return $order;
-	}
-
-	/**
-	 * Retrieve the menu item information.
-	 *
-	 * @since  1.0.
-	 *
-	 * @return array    The menu item information.
-	 */
-	public function get_menu_items() {
-		return $this->_menu_items;
-	}
-
-	/**
-	 * Retrieve an individual menu item's information.
-	 *
-	 * @since  1.0.
-	 *
-	 * @param  string    $id    The section name to return.
-	 * @return array            The menu item information.
-	 */
-	public function get_menu_item( $id ) {
-		$items = $this->_menu_items;
-
-		// Only return an item if it exists
-		if ( array_key_exists( $id, $items ) ) {
-			return $items[ $id ];
-		} else {
-			return array();
-		}
 	}
 
 	/**
