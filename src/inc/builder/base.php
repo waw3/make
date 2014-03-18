@@ -697,4 +697,4 @@ function ttf_one_get_builder_base() {
 	return TTF_One_Builder_Base::instance();
 }
 
-add_action( 'admin_init', 'ttf_one_get_builder_base' );
+add_action( 'admin_init', 'ttf_one_get_builder_base', 1 );
