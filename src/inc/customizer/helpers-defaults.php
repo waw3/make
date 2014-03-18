@@ -16,6 +16,11 @@ function ttf_one_option_defaults() {
 		// General
 		'general-layout' => 'full-width',
 		'general-sticky-label' => __( 'Featured', 'ttf-one' ),
+		// Logo
+		'logo-regular' => '',
+		'logo-retina' => '',
+		'logo-favicon' => '',
+		'logo-apple-touch' => '',
 		//
 	);
 
