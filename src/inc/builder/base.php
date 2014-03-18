@@ -620,7 +620,7 @@ if ( ! function_exists( 'ttf_one_load_section_header' ) ) :
  * @return void
  */
 function ttf_one_load_section_header() {
-	get_template( '/inc/builder/template/section', 'header' );
+	get_template_part( '/inc/builder/template/section', 'header' );
 }
 endif;
 
@@ -633,6 +633,6 @@ if ( ! function_exists( 'ttf_one_load_section_footer' ) ) :
  * @return void
  */
 function ttf_one_load_section_footer() {
-	get_template( '/inc/builder/template/section', 'footer' );
+	get_template_part( '/inc/builder/template/section', 'footer' );
 }
 endif;
