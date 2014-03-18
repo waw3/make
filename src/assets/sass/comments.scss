@@ -128,5 +128,6 @@
 	list-style: none; //reset
 	.comment-body {
 		border-bottom: 0; //reset
+		@include rem('padding-bottom', $base/2);
 	}
 }

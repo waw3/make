@@ -565,6 +565,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-weight: normal;
+  line-height: 1.3;
   font-size: 50px;
   font-size: 3.125rem; }
 
@@ -869,8 +870,12 @@ embed, iframe, object {
   display: block; }
 
 .entry-date {
+  font-style: italic;
   font-size: 14px;
   font-size: 0.875rem; }
+  .entry-date a {
+    color: #171717;
+    text-decoration: none; }
 
 .entry-footer {
   font-size: 14px;
@@ -1115,7 +1120,9 @@ embed, iframe, object {
   padding-top: 0;
   list-style: none; }
   .pingback .comment-body, .trackback .comment-body {
-    border-bottom: 0; }
+    border-bottom: 0;
+    padding-bottom: 11px;
+    padding-bottom: 0.6875rem; }
 
 /*---------------------------------------------------------
  10. Forms (_forms.scss)
