@@ -337,10 +337,9 @@ class TTF_One_Builder_Base {
 	 *
 	 * @param  string    $section     The section data.
 	 * @param  array     $data        The data payload to inject into the section.
-	 * @param  string    $template    The template to load.
 	 * @return void
 	 */
-	private function _load_section( $section, $data = array(), $template ) {
+	private function _load_section( $section, $data = array() ) {
 		if ( ! isset( $section['id'] ) ) {
 			return;
 		}
@@ -360,7 +359,7 @@ class TTF_One_Builder_Base {
 		}
 
 		// Include the template
-		require $template;
+		get_template_part( $section['builder_template'] );
 
 		// Destroy the variable as a good citizen does
 		unset( $GLOBALS['ttf_one_section'] );
@@ -391,7 +390,7 @@ class TTF_One_Builder_Base {
 			<script type="text/html" id="tmpl-ttf-one-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
-			$this->_load_section( $section, array(), $section['builder_template'] );
+			$this->_load_section( $section, array() );
 			$html = ob_get_clean();
 
 			// @todo: Maybe change TinyMCE input names
