@@ -16,7 +16,7 @@ body {
 			max-width: 100%;
 			width: 100%;
 		}
-		#site-wrapper {
+		.site-wrapper {
 			max-width: $width+($col*2);
 			-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 			-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
@@ -25,14 +25,15 @@ body {
 		}
 	}
 }
-#site-wrapper {
+.site-wrapper {
 	width: 100%;
 	margin: 0 auto;
 	background-color: $a;
 }
 .container {
-	max-width: $width;
+	max-width: $width+($gut*2);
 	margin: 0 auto;
+	@include rem('padding', 0 $gut);
 }
 body,
 button,
@@ -122,17 +123,23 @@ a {
 		@include rem('font-size', 16px);
 	}
 	.search-form {
-		@include rem('padding', $base/2 0 $base/2 $gut/2);
-		@include rem('font-size', 14px);
-		float: right;
+		@include for(medium-screens) {
+			@include rem('padding', $base/2 0 $base/2 $gut/2);
+			@include rem('font-size', 14px);
+			float: right;
+		}
+		@include rem('padding', $base/2 0);
 		input {
-			width: 140px;
-    		-webkit-transition: width .3s;
-    		   -moz-transition: width .3s;
-					transition: width .3s;
-			&:focus {
-				width: 250px;
+			@include for(medium-screens) {
+				width: 140px;
+				-webkit-transition: width .3s;
+				   -moz-transition: width .3s;
+						transition: width .3s;
+				&:focus {
+					width: 250px;
+				}
 			}
+			width: 100%;
 		}
 	}
 	.search-submit {
@@ -145,29 +152,36 @@ a {
   		white-space: nowrap;
   		overflow: hidden;
   		text-overflow: ellipsis;
+		position: relative;
+		float: left;
+		@include rem('top', 3px);
 	}
-	position: relative;
-	float: left;
-	@include rem('top', 3px);
 	@include rem('padding-top', $base/2);
 	@include rem('font-size', 13px);
 }
 .sub-header-social {
-	position: relative;
-	float: right;
+	@include for(medium-screens) {
+		position: relative;
+		float: right;
+		@include rem('top', 2px);
+	}
 	margin-bottom: 0; //reset
 	list-style: none; //reset
-	@include rem('top', 2px);
 	@include no-select;
 	li {
-		&:first-of-type {
-			border-left: 1px solid $d;
+		@include for(medium-screens) {
+			&:first-of-type {
+				border-left: 1px solid $d;
+			}
 		}
 		a {
+			@include for(medium-screens) {
+				border-right: 1px solid $d;
+				@include rem('padding', $base/2 10px);
+			}
 			display: block;
 			text-decoration: none; //reset
-			@include rem('padding', $base/2 10px);
-			border-right: 1px solid $d;
+			@include rem('padding', $base/2 4px);
 		}
 		display:  inline-block;
 		text-align: center;
@@ -324,10 +338,13 @@ a {
 		border-color: $e !important;
 	}
 	.widget-area {
-		// 4 width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
-		width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
-		// 2 width: percentage( ( $width - $gut ) / ( $width*2 ) );
-		// 1 width: 100%;
+		@include for(medium-screens) {
+			// 4 width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+			width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
+			// 2 width: percentage( ( $width - $gut ) / ( $width*2 ) );
+			// 1 width: 100%;
+		}
+		width: 100%;
 		float: left;
 		margin-right: percentage( $gut / $width );
 		&:last-of-type {
