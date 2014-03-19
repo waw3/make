@@ -37,7 +37,12 @@
 	<div class="site-header-main">
 		<div class="container">
 			<div class="site-branding">
-				<h1 class="site-title<?php if ( ttf_one_get_logo()->has_logo() ) echo ' custom-logo'; ?>">
+				<?php if ( ttf_one_get_logo()->has_logo() ) : ?>
+				<div class="custom-logo">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"></a>
+				</div>
+				<?php endif; ?>
+				<h1 class="site-title">
 					<?php // Site title
 					if ( 1 !== (int) get_theme_mod( 'hide-site-title', ttf_one_get_default( 'hide-site-title' ) ) && get_bloginfo( 'name' ) ) : ?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
