@@ -19,7 +19,7 @@
 
 		initialize: function (options) {
 			this.model = options.model;
-			this.id = 'ttf-one-section-' + this.model.get('id');
+			this.id = 'ttf-one-section-' + this.model.get('sectionNumber');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
 
 			_.templateSettings = {

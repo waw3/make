@@ -349,7 +349,6 @@ class TTF_One_Builder_Base {
 		$ttf_one_section_data = array(
 			'data'    => $data,
 			'section' => $section,
-			'name'    => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
 		);
 
 		// Include the template
@@ -634,7 +633,7 @@ if ( ! function_exists( 'ttf_one_get_wp_editor_id' ) ) :
  *
  * @param  array     $data              The data for the section.
  * @param  array     $is_js_template    Whether a JS template is being printed or not.
- * @return string
+ * @return string                       The editor ID.
  */
 function ttf_one_get_wp_editor_id( $data, $is_js_template ) {
 	$id_base = 'ttfoneeditor' . $data['section']['id'];
@@ -646,5 +645,28 @@ function ttf_one_get_wp_editor_id( $data, $is_js_template ) {
 	}
 
 	return $id;
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_section_name' ) ) :
+/**
+ * Generate the name of a section.
+ *
+ * @since  1.0.0.
+ *
+ * @param  array     $data              The data for the section.
+ * @param  array     $is_js_template    Whether a JS template is being printed or not.
+ * @return string                       The name of the section.
+ */
+function ttf_one_get_section_name( $data, $is_js_template ) {
+	$name = 'ttf-one-section';
+
+	if ( $is_js_template ) {
+		$name .= '[{{{sectionNumber}}}]';
+	} else {
+		$name .= '[' . $data['data']['section_number'] . ']';
+	}
+
+	return $name;
 }
 endif;
