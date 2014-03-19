@@ -66,7 +66,7 @@ var oneApp = oneApp || {};
 
 		$tinyMCEWrappers.each(function() {
 			var $el = $(this),
-				id = $el.attr('id');
+				id = $el.attr('id').replace('wp-', '').replace('-wrap', '');
 
 			oneApp.initEditor(id, sectionType);
 		});
