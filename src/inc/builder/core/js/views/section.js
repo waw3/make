@@ -59,7 +59,7 @@
 
 		removeSection: function (evt) {
 			evt.preventDefault();
-			//BasisBuilderApp.removeSectionsOrder('basis-section-' + this.model.get('id'), this.model.get('builder'));
+			oneApp.removeSectionOrder(this.model.get('sectionNumber'));
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
 			this.$el.animate({

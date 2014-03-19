@@ -92,6 +92,22 @@ var oneApp = oneApp || {};
 		oneApp.setSectionOrder(currentOrderArray);
 	};
 
+	oneApp.removeSectionOrder = function (id) {
+		var currentOrder = oneApp.cache.$sectionOrder.val(),
+			currentOrderArray;
+
+		if ('' === currentOrder) {
+			currentOrderArray = [];
+		} else {
+			currentOrderArray = currentOrder.split(',');
+			currentOrderArray = _.reject(currentOrderArray, function (item) {
+				return id === parseInt(item, 10);
+			});
+		}
+
+		oneApp.setSectionOrder(currentOrderArray);
+	};
+
 	oneApp.cleanSectionForOrdering = function (value) {
 		return value.replace(/ttf-one-section-/g, '');
 	}
