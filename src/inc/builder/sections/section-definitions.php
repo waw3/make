@@ -54,7 +54,7 @@ class TTF_One_Section_Definitions {
 		ttf_one_add_section(
 			'blank',
 			_x( 'Blank', 'section name', 'ttf-one' ),
-			get_template_directory_uri() . '/inc/builder/css/images/blank.png',
+			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
 			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
 			array( $this, 'save_blank' ),
 			'/inc/builder/sections/builder-templates/blank',

@@ -43,7 +43,7 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
 require get_template_directory() . '/inc/jetpack.php';
 // Load the builder
 if ( is_admin() ) {
-	require get_template_directory() . '/inc/builder/base.php';
+	require get_template_directory() . '/inc/builder/core/base.php';
 }
 
 if ( ! function_exists( 'ttf_one_setup' ) ) :

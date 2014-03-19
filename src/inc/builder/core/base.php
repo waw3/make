@@ -51,7 +51,7 @@ class TTF_One_Builder_Base {
 	 */
 	public function __construct() {
 		// Include the API
-		require get_template_directory() . '/inc/builder/api/api.php';
+		require get_template_directory() . '/inc/builder/core/api.php';
 
 		// Add the core sections
 		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
@@ -107,8 +107,8 @@ class TTF_One_Builder_Base {
 		$ttf_one_sections = ( is_array( $ttf_one_sections ) ) ? $ttf_one_sections : array();
 
 		// Load the boilerplate templates
-		get_template_part( 'inc/builder/templates/menu' );
-		get_template_part( 'inc/builder/templates/stage', 'header' );
+		get_template_part( 'inc/builder/core/templates/menu' );
+		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
 		$section_ids = array();
 
@@ -119,7 +119,7 @@ class TTF_One_Builder_Base {
 			}
 		}
 
-		get_template_part( 'inc/builder/templates/stage', 'footer' );
+		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
 
 		// Generate initial section order input
 		$section_order = '';
@@ -148,7 +148,7 @@ class TTF_One_Builder_Base {
 		// Enqueue the CSS
 		wp_enqueue_style(
 			'ttf-one-builder',
-			get_template_directory_uri() . '/inc/builder/css/builder.css',
+			get_template_directory_uri() . '/inc/builder/core/css/builder.css',
 			array(),
 			TTF_ONE_VERSION
 		);
@@ -169,7 +169,7 @@ class TTF_One_Builder_Base {
 		if ( ttf_one_is_wpcom() || ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
 			wp_register_script(
 				'ttf-one-builder/js/tinymce.js',
-				get_template_directory_uri() . '/inc/builder/js/tinymce.js',
+				get_template_directory_uri() . '/inc/builder/core/js/tinymce.js',
 				array(),
 				TTF_ONE_VERSION,
 				true
@@ -177,7 +177,7 @@ class TTF_One_Builder_Base {
 
 			wp_register_script(
 				'ttf-one-builder/js/models/section.js',
-				get_template_directory_uri() . '/inc/builder/js/models/section.js',
+				get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
 				array(),
 				TTF_ONE_VERSION,
 				true
@@ -185,7 +185,7 @@ class TTF_One_Builder_Base {
 
 			wp_register_script(
 				'ttf-one-builder/js/collections/sections.js',
-				get_template_directory_uri() . '/inc/builder/js/collections/sections.js',
+				get_template_directory_uri() . '/inc/builder/core/js/collections/sections.js',
 				array(),
 				TTF_ONE_VERSION,
 				true
@@ -193,7 +193,7 @@ class TTF_One_Builder_Base {
 
 			wp_register_script(
 				'ttf-one-builder/js/views/menu.js',
-				get_template_directory_uri() . '/inc/builder/js/views/menu.js',
+				get_template_directory_uri() . '/inc/builder/core/js/views/menu.js',
 				array(),
 				TTF_ONE_VERSION,
 				true
@@ -201,7 +201,7 @@ class TTF_One_Builder_Base {
 
 			wp_register_script(
 				'ttf-one-builder/js/views/section.js',
-				get_template_directory_uri() . '/inc/builder/js/views/section.js',
+				get_template_directory_uri() . '/inc/builder/core/js/views/section.js',
 				array(),
 				TTF_ONE_VERSION,
 				true
@@ -209,7 +209,7 @@ class TTF_One_Builder_Base {
 
 			wp_enqueue_script(
 				'ttf-one-builder',
-				get_template_directory_uri() . '/inc/builder/js/app.js',
+				get_template_directory_uri() . '/inc/builder/core/js/app.js',
 				array_merge(
 					$dependencies,
 					array(
@@ -226,7 +226,7 @@ class TTF_One_Builder_Base {
 		} else {
 			wp_enqueue_script(
 				'ttf-one-builder',
-				get_template_directory_uri() . '/inc/builder/js/builder.min.js',
+				get_template_directory_uri() . '/inc/builder/core/js/builder.min.js',
 				$dependencies,
 				TTF_ONE_VERSION,
 				true
@@ -610,7 +610,7 @@ if ( ! function_exists( 'ttf_one_load_section_header' ) ) :
  * @return void
  */
 function ttf_one_load_section_header() {
-	get_template_part( '/inc/builder/templates/section', 'header' );
+	get_template_part( '/inc/builder/core/templates/section', 'header' );
 }
 endif;
 
@@ -623,6 +623,6 @@ if ( ! function_exists( 'ttf_one_load_section_footer' ) ) :
  * @return void
  */
 function ttf_one_load_section_footer() {
-	get_template_part( '/inc/builder/templates/section', 'footer' );
+	get_template_part( '/inc/builder/core/templates/section', 'footer' );
 }
 endif;
