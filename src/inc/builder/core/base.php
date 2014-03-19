@@ -382,7 +382,15 @@ class TTF_One_Builder_Base {
 			$this->_load_section( $section, array() );
 			$html = ob_get_clean();
 
-			// @todo: Maybe change TinyMCE input names
+			$html = str_replace(
+				array(
+					'ttfoneeditor' . $section['id'] . 'temp',
+				),
+				array(
+					'ttfoneeditor' . $section['id'] . '{{{ sectionNumber }}}',
+				),
+				$html
+			);
 
 			echo $html;
 			?>
