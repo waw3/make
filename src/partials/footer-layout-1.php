@@ -4,7 +4,7 @@
  */
 ?>
 
-<footer id="site-footer" class="site-footer" role="contentinfo">
+<footer id="site-footer" class="site-footer site-footer-1" role="contentinfo">
 	<div class="container">
 		<?php // Footer widget areas
 		$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
