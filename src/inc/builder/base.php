@@ -345,28 +345,19 @@ class TTF_One_Builder_Base {
 		}
 
 		// Globalize the data to provide access within the template
-		global $ttf_one_section, $ttf_one_section_data, $ttf_one_section_id, $ttf_one_section_name, $ttf_one_is_js_template;
-		$ttf_one_section      = $section;
-		$ttf_one_section_data = $data;
-
-		// Change the template depending on JS or PHP context
-		if ( true === $ttf_one_is_js_template ) {
-			$ttf_one_section_name = 'ttf-one-section[{{{ iterator }}}]';
-			$ttf_one_section_id   = 'ttf-onesection{{{ iterator }}}';
-		} else {
-			$ttf_one_section_name = 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']';
-			$ttf_one_section_id   = 'ttf-onesection' . absint( ttf_one_get_builder_base()->get_iterator() );
-		}
+		global $ttf_one_section_data;
+		$ttf_one_section_data = array(
+			'data'    => $data,
+			'section' => $section,
+			'id'      => 'ttfonesection' . absint( ttf_one_get_builder_base()->get_iterator() ),
+			'name'    => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
+		);
 
 		// Include the template
 		get_template_part( $section['builder_template'] );
 
 		// Destroy the variable as a good citizen does
-		unset( $GLOBALS['ttf_one_section'] );
-		unset( $GLOBALS['ttf_one_builder'] );
 		unset( $GLOBALS['ttf_one_section_data'] );
-		unset( $GLOBALS['ttf_one_section_id'] );
-		unset( $GLOBALS['ttf_one_section_name'] );
 	}
 
 	/**
