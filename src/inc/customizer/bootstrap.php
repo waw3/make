@@ -171,11 +171,6 @@ if ( ! function_exists( 'ttf_one_customizer_admin_styles' ) ) :
  */
 function ttf_one_customizer_admin_styles() { ?>
 	<style type="text/css">
-		/*
-		#customize-theme-controls .control-section[id*="ttf-one_"] .accordion-section-title {
-			background-color: #f9f9f9;
-		}
-		*/
 		.customize-control.customize-control-heading {
 			margin-bottom: -2px;
 		}
