@@ -353,12 +353,20 @@ a {
 	*:not(select) {
 		border-color: $e !important;
 	}
+	.columns-1 .widget-area {
+		width: 100%;
+	}
+	.columns-2 .widget-area {
+		width: percentage( ( $width - $gut ) / ( $width*2 ) );
+	}
+	.columns-3 .widget-area {
+		width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
+	}
+	.columns-4 .widget-area {
+		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+	}
 	.widget-area {
 		@include for(medium-screens) {
-			// 4 width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
-			width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
-			// 2 width: percentage( ( $width - $gut ) / ( $width*2 ) );
-			// 1 width: 100%;
 			margin-bottom: 0; //reset
 		}
 		width: 100%;
