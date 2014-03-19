@@ -45,7 +45,7 @@ h6 {
 	font-weight: normal;
 	text-transform: uppercase;
 	@include rem('letter-spacing', 2px);
-	@include rem('font-size', 14px);
+	@include rem('font-size', 13px);
 }
 /*---------------------------------------------------------
  Quote (_elements.scss)
@@ -60,7 +60,7 @@ blockquote {
 	cite {
 		font-style: normal; //reset
 		@include rem('margin-bottom', $base);
-		@include rem('font-size', 14px);
+		@include rem('font-size', 13px);
 		&:before {
 			content: "\2014";
 		}

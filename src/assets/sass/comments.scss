@@ -3,7 +3,7 @@
 -------------------------------------------------------- */
 #comments {
 	@include rem('margin-top', $base*2);
-	@include rem('font-size', 14px);
+	@include rem('font-size', 13px);
 }
 .comment-list {
 	padding-left: 0; //reset
@@ -59,7 +59,7 @@
 	@include rem('padding-bottom', $base*1.5);
 }
 .comment-date {
-	@include rem('font-size', 12px);
+	@include rem('font-size', 11px);
 }
 .comment-content,
 .comment-reply-link {
@@ -90,7 +90,7 @@
  Header (_comments.scss)
 -------------------------------------------------------- */
 .comment-metadata time {
-	@include rem('font-size', 14px);
+	@include rem('font-size', 13px);
 }
 .fn {
 	font-weight: bold;
