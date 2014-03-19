@@ -13,15 +13,6 @@ input {
 		outline: none; //reset
 	}
 }
-button,
-input,
-select,
-textarea {
-	margin: 0; //reset
-	vertical-align: baseline;
-	*vertical-align: middle;
-	font-size: 100%;
-}
 textarea {
 	resize: vertical;
 }

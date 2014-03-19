@@ -335,7 +335,8 @@ a {
 		}
 	}
 	textarea,
-	input {
+	input,
+	.widget_tag_cloud a {
 		background-color: $a;
 	}
 	.site-info,

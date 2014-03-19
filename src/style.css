@@ -481,7 +481,7 @@ a {
     margin-right: 3.33333%; }
     .site-footer .widget-area:last-of-type {
       margin-right: 0; }
-  .site-footer textarea, .site-footer input {
+  .site-footer textarea, .site-footer input, .site-footer .widget_tag_cloud a {
     background-color: #ffffff; }
   .site-footer .site-info, .site-footer .footer-text {
     float: left;
@@ -1139,12 +1139,6 @@ textarea, input {
   border-radius: 3px; }
   textarea:focus, input:focus {
     outline: none; }
-
-button, input, select, textarea {
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
-  font-size: 100%; }
 
 textarea {
   resize: vertical; }
