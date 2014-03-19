@@ -24,6 +24,21 @@ function ttf_one_customizer_background() {
 	// Move Background Color to Background section
 	$wp_customize->get_control( 'background_color' )->section = $section;
 
+	// Background note
+	$setting_id = 'background-info';
+	$wp_customize->add_control(
+		new TTF_One_Customize_Misc_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'text',
+				'description' => __( 'With the Site Layout option (under <em>General</em>) set to "Full Width", the background color and image will not be visible.', 'ttf-one' ),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
 	// Reset priorities on existing controls
 	$wp_customize->get_control( 'background_color' )->priority = $priority->add();
 	$wp_customize->get_control( 'background_image' )->priority = $priority->add();

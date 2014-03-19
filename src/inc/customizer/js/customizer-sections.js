@@ -9,6 +9,10 @@
 	 * Visibility toggling for some controls
 	 */
 	$.each({
+		'general-layout': {
+			controls: [ 'ttf-one_background-info' ],
+			callback: function( to ) { return 'full-width' === to; }
+		},
 		'background_image': {
 			controls: [ 'ttf-one_background_size' ],
 			callback: function( to ) { return !! to; }
