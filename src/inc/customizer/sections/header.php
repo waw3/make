@@ -142,6 +142,29 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
+	// Header Text color
+	$setting_id = 'header-text-color';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttf_one_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Header Text Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
 	// Sub Header Background color
 	$setting_id = 'header-subheader-background-color';
 	$wp_customize->add_setting(

@@ -704,6 +704,28 @@ endif;
 
 add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
 
+if ( ! function_exists( 'ttf_one_display_header_text_color' ) ) :
+/**
+ * Write the CSS to implement the text color for the header.
+ *
+ * @since  1.0.0
+ *
+ * @param  string    $css    The current CSS.
+ * @return string            The modified CSS.
+ */
+function ttf_one_display_header_text_color( $css ) {
+	$text_color = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttf_one_get_default( 'header-text-color' ) ) );
+
+	if ( ttf_one_get_default( 'header-text-color' ) !== $text_color ) {
+		$css .= '.site-header{color:' . $text_color . ';}';
+	}
+
+	return $css;
+}
+endif;
+
+add_filter( 'ttf_one_css', 'ttf_one_display_header_text_color' );
+
 if ( ! function_exists( 'ttf_one_display_main_background' ) ) :
 /**
  * Write the CSS to implement the background options for the main content area.

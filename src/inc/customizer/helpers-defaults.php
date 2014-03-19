@@ -52,6 +52,7 @@ function ttf_one_option_defaults() {
 		'header-background-repeat' => 'no-repeat',
 		'header-background-position' => 'center',
 		'header-background-size' => 'cover',
+		'header-text-color' => '#171717',
 		'header-subheader-background-color' => '#ffffff',
 		'header-subheader-text-color' => '#171717',
 		'header-text' => '',

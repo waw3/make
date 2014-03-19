@@ -286,8 +286,8 @@ a {
 .sub-header {
   float: left;
   width: 100%;
-  color: #ffffff;
-  background-color: #171717;
+  color: #171717;
+  background-color: #ffffff;
   border-bottom: 1px solid #eaecee; }
   .sub-header a {
     color: inherit; }

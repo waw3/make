@@ -115,8 +115,8 @@ a {
 .sub-header {
 	float: left;
 	width: 100%;
-	color: $a;
-	background-color: $b;
+	color: $b;
+	background-color: $a;
 	border-bottom: 1px solid $d;
 	@extend .clear;
 	a {
