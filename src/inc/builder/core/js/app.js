@@ -12,6 +12,10 @@ var oneApp = oneApp || {};
 		closeSpeed: 250
 	};
 
+	oneApp.cache = {
+		$sectionOrder: $('#ttf-one-section-order')
+	};
+
 	oneApp.initSortables = function () {
 		$('.ttf-one-stage').sortable({
 			handle: '.ttf-one-section-header',
@@ -39,11 +43,9 @@ var oneApp = oneApp || {};
 				});
 			},
 			stop: function (event, ui) {
-				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-stage'),
-					data = $(this).sortable('toArray');
+				var $item = $(ui.item.get(0));
 
-				oneApp.setSectionOrder();
+				oneApp.setSectionOrder( $(this).sortable('toArray') );
 
 				/**
 				 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
@@ -68,7 +70,15 @@ var oneApp = oneApp || {};
 		});
 	};
 
-	oneApp.setSectionOrder = function () {};
+	oneApp.setSectionOrder = function ( order ) {
+		// Use a comma separated list
+		order = order.join().replace(/ttf-one-section-/g, '');
+
+		console.log( order );
+
+		// Set the val of the input
+		oneApp.cache.$sectionOrder.val(order);
+	};
 
 	oneApp.initSortables();
 })(jQuery);
