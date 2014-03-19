@@ -347,10 +347,10 @@ class TTF_One_Builder_Base {
 		// Globalize the data to provide access within the template
 		global $ttf_one_section_data;
 		$ttf_one_section_data = array(
-			'data'    => $data,
-			'section' => $section,
-			'id'      => 'ttfonesection' . absint( ttf_one_get_builder_base()->get_iterator() ),
-			'name'    => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
+			'data'  => $data,
+			'label' => $section['label'],
+			'id'    => 'ttfonesection' . absint( ttf_one_get_builder_base()->get_iterator() ),
+			'name'  => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
 		);
 
 		// Include the template
