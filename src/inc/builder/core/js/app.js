@@ -72,14 +72,14 @@ var oneApp = oneApp || {};
 
 	oneApp.setSectionOrder = function (order) {
 		// Use a comma separated list
-		order = oneApp.cleanSectionForOrdering(order);
+		order = oneApp.cleanSectionForOrdering(order.join());
 
 		// Set the val of the input
 		oneApp.cache.$sectionOrder.val(order);
 	};
 
-	oneApp.cleanSectionForOrdering = function (order) {
-		return order.join().replace(/ttf-one-section-/g, '');
+	oneApp.cleanSectionForOrdering = function (value) {
+		return value.replace(/ttf-one-section-/g, '');
 	}
 
 	oneApp.initSortables();
