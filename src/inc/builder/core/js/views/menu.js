@@ -34,14 +34,11 @@ var oneApp = oneApp || {};
 			// Add a new model to the collection with the specified section type
 			oneApp.sections.create({
 				sectionType: sectionType,
-				id: new Date().getTime()
+				sectionNumber: new Date().getTime()
 			});
 		},
 
 		addOne: function (section) {
-			var sectionType = section.get('sectionType'),
-				sectionNumber = section.get('sectionNumber');
-
 			// Create view
 			var view = new oneApp.SectionView({
 				model: section
@@ -57,7 +54,7 @@ var oneApp = oneApp || {};
 			}, 800, 'easeOutQuad');
 
 			oneApp.sections.toggleStageClass();
-			oneApp.initAllEditors(view.id, sectionType);
+			oneApp.initAllEditors(view.id, section.get('sectionType'));
 		},
 
 		menuToggle: function(evt) {
