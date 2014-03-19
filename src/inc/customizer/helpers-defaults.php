@@ -74,6 +74,7 @@ function ttf_one_option_defaults() {
 		'footer-background-position' => 'center',
 		'footer-background-size' => 'cover',
 		'footer-text-color' => '#464849',
+		'footer-border-color' => '#eaecee',
 		'footer-widget-areas' => 3,
 		'footer-text' => '',
 		'footer-show-social' => 1,
