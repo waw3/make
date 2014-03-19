@@ -36,7 +36,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -57,7 +57,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -78,7 +78,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -99,7 +99,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -120,7 +120,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -141,7 +141,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -162,7 +162,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -183,7 +183,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -204,7 +204,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -246,7 +246,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'sanitize_email',
 		)
@@ -282,7 +282,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 0,
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint'
 		)
@@ -303,7 +303,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)

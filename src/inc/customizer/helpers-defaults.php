@@ -73,6 +73,18 @@ function ttf_one_option_defaults() {
 		'footer-show-credit' => 1,
 		'footer-layout' => 'footer-layout-1',
 		// Social
+		'social-facebook' => '',
+		'social-twitter' => '',
+		'social-google' => '',
+		'social-linkedin' => '',
+		'social-instagram' => '',
+		'social-flickr' => '',
+		'social-youtube' => '',
+		'social-vimeo' => '',
+		'social-pinterest' => '',
+		'social-email' => '',
+		'social-hide-rss' => 0,
+		'social-custom-rss' => '',
 	);
 
 	return apply_filters( 'ttf_one_option_defaults', $defaults );

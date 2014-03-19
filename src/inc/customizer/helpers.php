@@ -856,7 +856,7 @@ function ttf_one_get_social_links() {
 
 	// Get the links for these services
 	foreach ( $default_services as $service => $details ) {
-		$url = get_theme_mod( 'social-' . $service );
+		$url = get_theme_mod( 'social-' . $service, ttf_one_get_default( 'social-' . $service ) );
 		if ( '' !== $url ) {
 			$services_with_links[ $service ] = array(
 				'title' => $details['title'],
@@ -867,9 +867,9 @@ function ttf_one_get_social_links() {
 	}
 
 	// Special handling for RSS
-	$hide_rss = (int) get_theme_mod( 'social-hide-rss', 0 );
+	$hide_rss = (int) get_theme_mod( 'social-hide-rss', ttf_one_get_default( 'social-hide-rss' ) );
 	if ( 0 === $hide_rss ) {
-		$custom_rss = get_theme_mod( 'social-custom-rss', '' );
+		$custom_rss = get_theme_mod( 'social-custom-rss', ttf_one_get_default( 'social-custom-rss' ) );
 		if ( ! empty( $custom_rss ) ) {
 			$services_with_links['rss']['url'] = $custom_rss;
 		} else {
