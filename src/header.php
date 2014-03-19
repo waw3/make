@@ -16,7 +16,7 @@
 	<body <?php body_class(); ?>>
 		<div id="site-wrapper" class="site-wrapper">
 
-			<?php get_template_part( 'partials/' . get_theme_mod( 'header-layout', 'header-layout-1' ) ); ?>
+			<?php get_template_part( 'partials/' . get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) ) ); ?>
 
 			<div id="site-content" class="site-content">
 				<div class="container">

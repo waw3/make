@@ -223,16 +223,16 @@ if ( ! function_exists( 'ttf_one_display_subheader_styles' ) ) :
 /**
  * Write the CSS to implement colors for the subheader.
  *
- * @since  1.0.0.
+ * @since  1.0.0
  *
  * @param  string    $css    The current CSS.
  * @return string            The modified CSS.
  */
 function ttf_one_display_subheader_styles( $css ) {
-	$background_color        = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', '#171717' ) );
-	$text_color              = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', '#ffffff' ) );
-	$background_color_needed = ( '#171717' !== $background_color );
-	$text_color_needed       = ( '#ffffff' !== $text_color );
+	$background_color        = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', ttf_one_get_default( 'header-subheader-background-color' ) ) );
+	$text_color              = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', ttf_one_get_default( 'header-subheader-text-color' ) ) );
+	$background_color_needed = ( ttf_one_get_default( 'header-subheader-background-color' ) !== $background_color );
+	$text_color_needed       = ( ttf_one_get_default( 'header-subheader-text-color' ) !== $text_color );
 
 	if ( $background_color_needed || $text_color_needed ) {
 		$css .= '.sub-header{';
@@ -266,9 +266,9 @@ if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
  */
 function ttf_one_body_layout_classes( $classes ) {
 	$classes[] = get_theme_mod( 'general-layout', ttf_one_get_default( 'general-layout' ) );
-	$classes[] = get_theme_mod( 'header-layout', 'header-layout-1' );
+	$classes[] = get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) );
 	$classes[] = get_theme_mod( 'footer-layout', 'footer-layout-1' );
-	if ( 'left' === get_theme_mod( 'header-primary-nav-position' ) ) {
+	if ( 'left' === get_theme_mod( 'header-primary-nav-position', ttf_one_get_default( 'header-primary-nav-position' ) ) ) {
 		$classes[] = 'primary-nav-left';
 	}
 	return $classes;
@@ -680,14 +680,14 @@ if ( ! function_exists( 'ttf_one_display_header_background' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_header_background( $css ) {
-	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', '#ffffff' ) );
+	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttf_one_get_default( 'header-background-color' ) ) );
 
 	$background_image = get_theme_mod( 'header-background-image', false );
 	if ( ! empty( $background_image ) ) {
 		// Get and escape the other properties
-		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', 'auto' ), 'header-background-size' );
-		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', 'no-repeat' ), 'header-background-repeat' );
-		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'header-background-position', 'center' ), 'header-background-position' );
+		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', ttf_one_get_default( 'header-background-size' ) ), 'header-background-size' );
+		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', ttf_one_get_default( 'header-background-repeat' ) ), 'header-background-repeat' );
+		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'header-background-position', ttf_one_get_default( 'header-background-position' ) ), 'header-background-position' );
 
 		// Escape the image URL properly
 		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );

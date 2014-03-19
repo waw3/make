@@ -15,11 +15,12 @@
 			</span>
 			<?php endif; ?>
 			<?php // Search form
-			if ( 1 === (int) get_theme_mod( 'header-show-search', 1 ) ) :
+			if ( 1 === (int) get_theme_mod( 'header-show-search', ttf_one_get_default( 'header-show-search' ) ) ) :
 				get_search_form();
 			endif; ?>
 			<?php // Social links
-			$social_links = ttf_one_get_social_links(); $show_social = (int) get_theme_mod( 'header-show-social', 0 );
+			$social_links = ttf_one_get_social_links();
+			$show_social = (int) get_theme_mod( 'header-show-social', ttf_one_get_default( 'header-show-social' ) );
 			if ( ! empty ( $social_links ) && 1 === $show_social ) : ?>
 			<ul class="sub-header-social">
 				<?php foreach ( $social_links as $key => $link ) : ?>

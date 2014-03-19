@@ -41,6 +41,19 @@ function ttf_one_option_defaults() {
 		'color-secondary' => '#eaecee',
 		'color-text' => '#171717',
 		'color-detail' => '#b9bcbf',
+		// Header
+		'header-background-color' => '#ffffff',
+		'header-background-image' => '',
+		'header-background-repeat' => 'no-repeat',
+		'header-background-position' => 'center',
+		'header-background-size' => 'cover',
+		'header-subheader-background-color' => '#ffffff',
+		'header-subheader-text-color' => '#171717',
+		'header-text' => '',
+		'header-show-social' => 0,
+		'header-show-search' => 1,
+		'header-layout' => 'header-layout-1',
+		'header-primary-nav-position' => 'right',
 		//
 	);
 
