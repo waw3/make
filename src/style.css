@@ -882,16 +882,9 @@ embed, iframe, object {
 /*---------------------------------------------------------
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
-/* =Infinite Scroll
------------------------------------------------ */
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .paging-navigation, .infinite-scroll.neverending .site-footer {
-  /* Theme Footer (when set to scrolling) */
-  display: none; }
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
-.infinity-end.neverending .site-footer {
-  display: block; }
+.entry-header {
+  margin-bottom: 22px;
+  margin-bottom: 1.46667rem; }
 
 .entry-date {
   font-style: italic;
@@ -921,6 +914,9 @@ embed, iframe, object {
     .entry-footer a:hover {
       color: #0094c5; }
 
+/*---------------------------------------------------------
+ Sticky label (_posts.scss)
+-------------------------------------------------------- */
 .sticky-post-label {
   text-transform: uppercase;
   background-color: #eaecee;
@@ -936,14 +932,28 @@ embed, iframe, object {
   -moz-border-radius: 3px;
   border-radius: 3px; }
 
+/*---------------------------------------------------------
+ Navigation (_posts.scss)
+-------------------------------------------------------- */
 [class*="navigation"] .nav-previous {
   float: left;
   width: 50%; }
 
 [class*="navigation"] .nav-next {
   float: right;
-  text-align: right;
-  width: 50%; }
+  width: 50%;
+  text-align: right; }
+
+/* =Infinite Scroll
+----------------------------------------------- */
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .paging-navigation, .infinite-scroll.neverending .site-footer {
+  /* Theme Footer (when set to scrolling) */
+  display: none; }
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
+.infinity-end.neverending .site-footer {
+  display: block; }
 
 /*---------------------------------------------------------
  7. Pages (_pages.scss)

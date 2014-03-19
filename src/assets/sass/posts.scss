@@ -1,21 +1,9 @@
 /*---------------------------------------------------------
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
-
-/* =Infinite Scroll
------------------------------------------------ */
-
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
-.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
-	display: none;
+.entry-header {
+	@include rem('margin-bottom', $base);
 }
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
-.infinity-end.neverending .site-footer {
-	display: block;
-}
-
 .entry-date {
 	font-style: italic;
 	@include rem('font-size', 14px);
@@ -49,6 +37,9 @@
 		}
 	}
 }
+/*---------------------------------------------------------
+ Sticky label (_posts.scss)
+-------------------------------------------------------- */
 .sticky-post-label {
 	text-transform: uppercase;
 	background-color: $d;
@@ -58,12 +49,28 @@
 	@include rem('letter-spacing', 1px);
 	@include border-radius;
 }
+/*---------------------------------------------------------
+ Navigation (_posts.scss)
+-------------------------------------------------------- */
 [class*="navigation"] .nav-previous {
 	float: left;
 	width: 50%;
 }
 [class*="navigation"] .nav-next {
 	float: right;
-	text-align: right;
 	width: 50%;
+	text-align: right;
+}
+/* =Infinite Scroll
+----------------------------------------------- */
+
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
+.infinity-end.neverending .site-footer {
+	display: block;
 }
