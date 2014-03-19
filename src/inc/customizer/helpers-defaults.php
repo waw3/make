@@ -22,7 +22,7 @@ function ttf_one_option_defaults() {
 		'logo-favicon' => '',
 		'logo-apple-touch' => '',
 		// Background
-		'background_color' => '#ffffff',
+		'background_color' => '#b9bcbf',
 		'background_image' => '',
 		'background_repeat' => 'repeat',
 		'background_position_x' => 'left',
@@ -37,9 +37,10 @@ function ttf_one_option_defaults() {
 		'font-body-size' => 16,
 		'font-subset' => 'latin',
 		// Colors
-		'color-primary' => '#0068e0',
-		'color-secondary' => '#eeeeee',
+		'color-primary' => '#0094c5',
+		'color-secondary' => '#eaecee',
 		'color-text' => '#171717',
+		'color-detail' => '#b9bcbf',
 		//
 	);
 
