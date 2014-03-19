@@ -19,7 +19,7 @@
 
 		initialize: function (options) {
 			this.model = options.model;
-			this.id = 'basis-section-' + this.model.get('iterator');
+			this.id = 'ttf-one-section-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
 
 			_.templateSettings = {
@@ -58,7 +58,7 @@
 
 		removeSection: function (evt) {
 			evt.preventDefault();
-			//BasisBuilderApp.removeSectionsOrder('basis-section-' + this.model.get('iterator'), this.model.get('builder'));
+			//BasisBuilderApp.removeSectionsOrder('basis-section-' + this.model.get('id'), this.model.get('builder'));
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
 			this.$el.animate({

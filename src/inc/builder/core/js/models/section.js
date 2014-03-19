@@ -8,7 +8,7 @@ var oneApp = oneApp || {};
 		defaults: {
 			sectionType: '',
 			viewName: '',
-			iterator: 0
+			id: ''
 		},
 
 		initialize: function () {

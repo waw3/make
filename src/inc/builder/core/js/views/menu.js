@@ -39,7 +39,7 @@ var oneApp = oneApp || {};
 
 		addOne: function (section) {
 			var sectionType = section.get('sectionType'),
-				iterator = section.get('iterator');
+				id = section.get('id');
 
 			// Create view
 			var view = new oneApp.SectionView({
