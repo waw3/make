@@ -349,7 +349,6 @@ class TTF_One_Builder_Base {
 		$ttf_one_section_data = array(
 			'data'    => $data,
 			'section' => $section,
-			'label'   => $section['label'],
 			'name'    => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
 		);
 
