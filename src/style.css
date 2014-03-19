@@ -311,7 +311,7 @@ a {
   .sub-header .search-form {
     padding: 11px 0;
     padding:  0.73333rem 0; }
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: 1100px) {
       .sub-header .search-form {
         padding: 11px 0 11px 16px;
         padding:  0.73333rem 0 0.73333rem 1.06667rem;
@@ -320,7 +320,7 @@ a {
         float: right; } }
     .sub-header .search-form input {
       width: 100%; }
-      @media screen and (min-width: 800px) {
+      @media screen and (min-width: 1100px) {
         .sub-header .search-form input {
           width: 140px;
           -webkit-transition: width 0.3s;
@@ -330,22 +330,25 @@ a {
             width: 250px; } }
   .sub-header .search-submit {
     display: none; }
+  .sub-header.right-content .sub-header-content {
+    padding-top: 11px;
+    padding-top: 0.73333rem; }
+    @media screen and (min-width: 1100px) {
+      .sub-header.right-content .sub-header-content {
+        max-width: 20%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        top: 3px;
+        top: 0.2rem; } }
 
 .sub-header-content {
-  padding-top: 11px;
-  padding-top: 0.73333rem;
+  float: left;
+  padding: 11px 0;
+  padding:  0.73333rem 0;
   font-size: 12px;
   font-size: 0.8rem; }
-  @media screen and (min-width: 800px) {
-    .sub-header-content {
-      max-width: 20%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      position: relative;
-      float: left;
-      top: 3px;
-      top: 0.2rem; } }
 
 .header-social-links {
   margin-bottom: 0;
@@ -354,13 +357,13 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1100px) {
     .header-social-links {
       float: right; } }
   .header-social-links li {
     display: inline-block;
     text-align: center; }
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: 1100px) {
       .header-social-links li:first-of-type {
         border-left: 1px solid #eaecee; } }
     .header-social-links li a {
@@ -368,7 +371,7 @@ a {
       text-decoration: none;
       padding: 14px 4px;
       padding:  0.93333rem 0.26667rem; }
-      @media screen and (min-width: 800px) {
+      @media screen and (min-width: 1100px) {
         .header-social-links li a {
           border-right: 1px solid #eaecee;
           padding: 14px 10px;

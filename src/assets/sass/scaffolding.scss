@@ -141,14 +141,14 @@ a {
 		color: inherit;
 	}
 	.search-form {
-		@include for(medium-screens) {
+		@include for(large-screens) {
 			@include rem('padding', $base/2 0 $base/2 $gut/2);
 			@include rem('font-size', 13px);
 			float: right;
 		}
 		@include rem('padding', $base/2 0);
 		input {
-			@include for(medium-screens) {
+			@include for(large-screens) {
 				width: 140px;
 				-webkit-transition: width .3s;
 				   -moz-transition: width .3s;
@@ -163,35 +163,38 @@ a {
 	.search-submit {
 		display: none;
 	}
+	&.right-content .sub-header-content {
+		@include for(large-screens) {
+			max-width: 20%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			position: relative;
+			@include rem('top', 3px);
+		}
+		@include rem('padding-top', $base/2);
+	}
 }
 .sub-header-content {
-	@include for(medium-screens) {
-		max-width: 20%;
-  		white-space: nowrap;
-  		overflow: hidden;
-  		text-overflow: ellipsis;
-		position: relative;
-		float: left;
-		@include rem('top', 3px);
-	}
-	@include rem('padding-top', $base/2);
+	float: left;
+	@include rem('padding', $base/2 0);
 	@include rem('font-size', 12px);
 }
 .header-social-links {
-	@include for(medium-screens) {
+	@include for(large-screens) {
 		float: right;
 	}
 	margin-bottom: 0; //reset
 	list-style: none; //reset
 	@include no-select;
 	li {
-		@include for(medium-screens) {
+		@include for(large-screens) {
 			&:first-of-type {
 				border-left: 1px solid $d;
 			}
 		}
 		a {
-			@include for(medium-screens) {
+			@include for(large-screens) {
 				border-right: 1px solid $d;
 				@include rem('padding', 14px 10px);
 			}
