@@ -10,9 +10,10 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_css_fonts( $css ) {
-	$font_site_title      = get_theme_mod( 'font-site-title', 'Montserrat' );
+	// Site Title
+	$font_site_title      = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
 	$font_site_title_size = get_theme_mod( 'font-site-title-size', false );
-	$font_needed          = ( 'Montserrat' !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) );
+	$font_needed          = ( ttf_one_get_default( 'font-site-title' ) !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) );
 	$font_size_needed     = ( false !== $font_site_title_size );
 
 	if ( $font_needed || $font_size_needed ) {
@@ -29,9 +30,10 @@ function ttf_one_css_fonts( $css ) {
 		$css .= '}';
 	}
 
-	$font_header      = get_theme_mod( 'font-header', 'Montserrat' );
+	// Headers
+	$font_header      = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
 	$font_header_size = get_theme_mod( 'font-header-size', false );
-	$font_needed      = ( 'Montserrat' !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) );
+	$font_needed      = ( ttf_one_get_default( 'font-header' ) !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) );
 	$font_size_needed = ( false !== $font_header_size );
 
 	if ( $font_needed ) {
@@ -47,9 +49,10 @@ function ttf_one_css_fonts( $css ) {
 		$css .= 'h6{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 28 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 28 ) ) . 'rem;}';
 	}
 
-	$font_body        = get_theme_mod( 'font-body', 'Open Sans' );
+	// Body
+	$font_body        = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
 	$font_body_size   = get_theme_mod( 'font-body-size', false );
-	$font_needed      = ( 'Open Sans' !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) );
+	$font_needed      = ( ttf_one_get_default( 'font-body' ) !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) );
 	$font_size_needed = ( false !== $font_header_size );
 
 	if ( $font_needed || $font_size_needed ) {
@@ -95,7 +98,10 @@ if ( ! function_exists( 'ttf_one_convert_px_to_rem' ) ) :
  * @param  mixed    $base    The font-size base for the rem conversion.
  * @return float             The converted value.
  */
-function ttf_one_convert_px_to_rem( $px, $base = 16 ) {
+function ttf_one_convert_px_to_rem( $px, $base = 0 ) {
+	if ( 0 === $base ) {
+		$base = get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) );
+	}
 	return (float) $px / $base;
 }
 endif;
@@ -111,9 +117,9 @@ if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
 function ttf_one_get_google_font_request() {
 	// Grab the font choices
 	$fonts = array(
-		get_theme_mod( 'font-site-title', 'Montserrat' ),
-		get_theme_mod( 'font-header', 'Montserrat' ),
-		get_theme_mod( 'font-body', 'Open Sans' ),
+		get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) ),
+		get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) ),
+		get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) ),
 	);
 
 	// De-dupe the fonts
@@ -141,7 +147,7 @@ function ttf_one_get_google_font_request() {
 	}
 
 	// Load the font subset
-	$subset = get_theme_mod( 'font-subset', 'latin' );
+	$subset = get_theme_mod( 'font-subset', ttf_one_get_default( 'font-subset' ) );
 
 	if ( 'all' === $subset ) {
 		$subsets_available = ttf_one_get_google_font_subsets();
@@ -207,15 +213,15 @@ function ttf_one_choose_font_variants( $font, $variants = array() ) {
 		$chosen_variants[] = '700';
 	}
 
-	return array_unique( $chosen_variants );
+	return apply_filters( 'ttf_one_font_variants', array_unique( $chosen_variants ), $font, $variants );
 }
 endif;
 
 if ( ! function_exists( 'ttf_one_sanitize_font_subset' ) ) :
 /**
- * Retrieve the list of available Google font subsets.
+ * Sanitize the Character Subset choice.
  *
- * @since  1.0.0.
+ * @since  1.0.0
  *
  * @param  string    $value    The value to sanitize.
  * @return array               The sanitized value.

@@ -22,7 +22,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'Montserrat',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
 		)
@@ -44,7 +44,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '34',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -65,7 +65,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'Montserrat',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
 		)
@@ -87,7 +87,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '50',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -108,7 +108,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'Open Sans',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
 		)
@@ -130,7 +130,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => '16',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -151,7 +151,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => 'latin',
+			'default'           => ttf_one_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'ttf_one_sanitize_font_subset',
 		)
@@ -177,7 +177,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( '<strong>Note:</strong> not all fonts provide each of these subsets.', 'ttf-one' ),
+				'description' => __( 'Not all fonts provide each of these subsets.', 'ttf-one' ),
 				'priority'    => $priority->add()
 			)
 		)

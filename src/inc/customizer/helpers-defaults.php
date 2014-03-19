@@ -28,6 +28,14 @@ function ttf_one_option_defaults() {
 		'background_position_x' => 'left',
 		'background_attachment' => 'scroll',
 		'background_size' => 'auto',
+		// Fonts
+		'font-site-title' => 'Montserrat',
+		'font-site-title-size' => 34,
+		'font-header' => 'Montserrat',
+		'font-header-size' => 50,
+		'font-body' => 'Open Sans',
+		'font-body-size' => 16,
+		'font-subset' => 'latin',
 		//
 	);
 
