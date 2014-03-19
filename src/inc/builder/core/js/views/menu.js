@@ -33,7 +33,8 @@ var oneApp = oneApp || {};
 
 			// Add a new model to the collection with the specified section type
 			oneApp.sections.create({
-				sectionType: sectionType
+				sectionType: sectionType,
+				id: new Date().getTime()
 			});
 		},
 

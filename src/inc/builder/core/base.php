@@ -347,10 +347,10 @@ class TTF_One_Builder_Base {
 		// Globalize the data to provide access within the template
 		global $ttf_one_section_data;
 		$ttf_one_section_data = array(
-			'data'  => $data,
-			'label' => $section['label'],
-			'id'    => 'ttfonesection' . absint( ttf_one_get_builder_base()->get_iterator() ),
-			'name'  => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
+			'data'    => $data,
+			'section' => $section,
+			'label'   => $section['label'],
+			'name'    => 'ttf-one-section[' . absint( ttf_one_get_builder_base()->get_iterator() ) . ']',
 		);
 
 		// Include the template
@@ -624,5 +624,28 @@ if ( ! function_exists( 'ttf_one_load_section_footer' ) ) :
  */
 function ttf_one_load_section_footer() {
 	get_template_part( '/inc/builder/core/templates/section', 'footer' );
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_wp_editor_id' ) ) :
+/**
+ * Generate the ID for a WP editor based on an existing or future section number.
+ *
+ * @since  1.0.0.
+ *
+ * @param  array     $data              The data for the section.
+ * @param  array     $is_js_template    Whether a JS template is being printed or not.
+ * @return string
+ */
+function ttf_one_get_wp_editor_id( $data, $is_js_template ) {
+	$id_base = 'ttfoneeditor' . $data['section']['id'];
+
+	if ( $is_js_template ) {
+		$id = $id_base . 'temp';
+	} else {
+		$id = $id_base . $data['data']['section_number'];
+	}
+
+	return $id;
 }
 endif;

@@ -8,7 +8,7 @@ var oneApp = oneApp || {};
 	oneApp.initEditor = function (id, type) {
 		var mceInit = {},
 			qtInit = {},
-			tempName = 'ttfoneeditortemp' + type;
+			tempName = 'ttfoneeditor' + type + 'temp';
 
 		/**
 		 * Get the default values for this section type from the pre init object. Store them in a new object with
