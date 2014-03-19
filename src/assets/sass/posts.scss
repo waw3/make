@@ -58,3 +58,12 @@
 	@include rem('letter-spacing', 1px);
 	@include border-radius;
 }
+[class*="navigation"] .nav-previous {
+	float: left;
+	width: 50%;
+}
+[class*="navigation"] .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}

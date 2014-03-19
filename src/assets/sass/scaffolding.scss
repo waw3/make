@@ -28,6 +28,10 @@ body {
 		}
 	}
 }
+.site-main [class*="navigation"] {
+	overflow: hidden;
+	@include rem('padding', 0 0 $base*2);
+}
 .site-wrapper {
 	width: 100%;
 	margin: 0 auto;
@@ -424,57 +428,6 @@ a {
 	@include rem('font-size', 13px);
 }
 .footer-social-links {
+	@include rem('margin', $base 0 0);
 	@include rem('font-size', 18px);
-}
-
-/* =Content
------------------------------------------------ */
-
-.sticky {
-}
-.hentry {
-	margin: 0 0 1.5em;
-}
-.byline,
-.updated {
-	display: none;
-}
-.single .byline,
-.group-blog .byline {
-	display: inline;
-}
-.page-content,
-.entry-content,
-.entry-summary {
-	margin: 1.5em 0 0;
-}
-.page-links {
-	clear: both;
-	margin: 0 0 1.5em;
-}
-
-
-/* =Asides
------------------------------------------------ */
-
-.blog .format-aside .entry-title,
-.archive .format-aside .entry-title {
-	display: none;
-}
-
-/* =Navigation
------------------------------------------------ */
-
-.site-main [class*="navigation"] {
-	padding: 0 0 1.5em;
-	overflow: hidden;
-}
-[class*="navigation"] .nav-previous {
-	float: left;
-	width: 50%;
-}
-[class*="navigation"] .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
 }

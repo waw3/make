@@ -206,6 +206,11 @@ body {
         body.boxed .site-wrapper {
           max-width: 1144px; } }
 
+.site-main [class*="navigation"] {
+  overflow: hidden;
+  padding: 0 0 44px;
+  padding:  0 0 2.93333rem; }
+
 .site-wrapper {
   width: 100%;
   margin: 0 auto;
@@ -565,47 +570,10 @@ a {
   font-size: 0.86667rem; }
 
 .footer-social-links {
+  margin: 22px 0 0;
+  margin:  1.46667rem 0 0;
   font-size: 18px;
   font-size: 1.2rem; }
-
-/* =Content
------------------------------------------------ */
-
-.hentry {
-  margin: 0 0 1.5em; }
-
-.byline, .updated {
-  display: none; }
-
-.single .byline, .group-blog .byline {
-  display: inline; }
-
-.page-content, .entry-content, .entry-summary {
-  margin: 1.5em 0 0; }
-
-.page-links {
-  clear: both;
-  margin: 0 0 1.5em; }
-
-/* =Asides
------------------------------------------------ */
-.blog .format-aside .entry-title, .archive .format-aside .entry-title {
-  display: none; }
-
-/* =Navigation
------------------------------------------------ */
-.site-main [class*="navigation"] {
-  padding: 0 0 1.5em;
-  overflow: hidden; }
-
-[class*="navigation"] .nav-previous {
-  float: left;
-  width: 50%; }
-
-[class*="navigation"] .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%; }
 
 /*---------------------------------------------------------
  4. Elements (_elements.scss)
@@ -967,6 +935,15 @@ embed, iframe, object {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
+
+[class*="navigation"] .nav-previous {
+  float: left;
+  width: 50%; }
+
+[class*="navigation"] .nav-next {
+  float: right;
+  text-align: right;
+  width: 50%; }
 
 /*---------------------------------------------------------
  7. Pages (_pages.scss)
