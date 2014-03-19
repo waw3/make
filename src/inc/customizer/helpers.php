@@ -714,14 +714,14 @@ if ( ! function_exists( 'ttf_one_display_main_background' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_main_background( $css ) {
-	$background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', '#ffffff' ) );
+	$background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttf_one_get_default( 'main-background-color' ) ) );
 
 	$background_image = get_theme_mod( 'main-background-image', false );
 	if ( ! empty( $background_image ) ) {
 		// Get and escape the other properties
-		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'main-background-size', 'auto' ), 'main-background-size' );
-		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'main-background-repeat', 'no-repeat' ), 'main-background-repeat' );
-		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'main-background-position', 'center' ), 'main-background-position' );
+		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'main-background-size', ttf_one_get_default( 'main-background-size' ) ), 'main-background-size' );
+		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'main-background-repeat', ttf_one_get_default( 'main-background-repeat' ) ), 'main-background-repeat' );
+		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'main-background-position', ttf_one_get_default( 'main-background-position' ) ), 'main-background-position' );
 
 		// Escape the image URL properly
 		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );

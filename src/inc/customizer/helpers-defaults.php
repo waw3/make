@@ -54,6 +54,12 @@ function ttf_one_option_defaults() {
 		'header-show-search' => 1,
 		'header-layout' => 'header-layout-1',
 		'header-primary-nav-position' => 'right',
+		// Main
+		'main-background-color' => '#ffffff',
+		'main-background-image' => '',
+		'main-background-repeat' => 'repeat',
+		'main-background-position' => 'left',
+		'main-background-size' => 'auto',
 		//
 	);
 
