@@ -10,7 +10,9 @@
 	$social_links = ttf_one_get_social_links();
 	$show_social = (int) get_theme_mod( 'header-show-social', ttf_one_get_default( 'header-show-social' ) );
 	$show_search = (int) get_theme_mod( 'header-show-search', ttf_one_get_default( 'header-show-search' ) );
-	$subheader_class = ( 1 === $show_social || 1 === $show_search ) ? ' right-content' : ''; ?>
+	$subheader_class = ( 1 === $show_social || 1 === $show_search ) ? ' right-content' : '';
+	// Only show Sub Header if it has content
+	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) ) : ?>
 	<div class="sub-header<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
 			<?php // Header text
@@ -37,6 +39,7 @@
 			<?php endif; ?>
 		</div>
 	</div>
+	<?php endif; ?>
 	<div class="site-header-main">
 		<div class="container">
 			<div class="site-branding">
