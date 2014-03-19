@@ -36,6 +36,10 @@ function ttf_one_option_defaults() {
 		'font-body' => 'Open Sans',
 		'font-body-size' => 16,
 		'font-subset' => 'latin',
+		// Colors
+		'color-primary' => '#0068e0',
+		'color-secondary' => '#eeeeee',
+		'color-text' => '#171717',
 		//
 	);
 

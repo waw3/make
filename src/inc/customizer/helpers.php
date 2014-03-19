@@ -183,9 +183,9 @@ if ( ! function_exists( 'ttf_one_display_colors' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_colors( $css ) {
-	$color_primary   = maybe_hash_hex_color( get_theme_mod( 'color-primary', '#f41811' ) );
-	$color_secondary = maybe_hash_hex_color( get_theme_mod( 'color-secondary', '#eeeeee' ) );
-	$color_text      = maybe_hash_hex_color( get_theme_mod( 'color-text', '#1b1d25' ) );
+	$color_primary   = maybe_hash_hex_color( get_theme_mod( 'color-primary', ttf_one_get_default( 'color-primary' ) ) );
+	$color_secondary = maybe_hash_hex_color( get_theme_mod( 'color-secondary', ttf_one_get_default( 'color-secondary' ) ) );
+	$color_text      = maybe_hash_hex_color( get_theme_mod( 'color-text', ttf_one_get_default( 'color-text' ) ) );
 
 	// All variables are escaped at this point
 	$css .= 'a{color:' . $color_primary . ';}button{color:' . $color_primary . ';}p{color:' . $color_text . ';}';
