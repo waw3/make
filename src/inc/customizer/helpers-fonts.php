@@ -56,6 +56,12 @@ function ttf_one_css_fonts( $css ) {
 	$font_size_needed = ( false !== $font_header_size );
 
 	if ( $font_needed || $font_size_needed ) {
+		if ( $font_size_needed ) {
+			$css .= 'html{';
+			$css .= 'font-size:' . ( absint( $font_body_size ) / 16 * 100 ) . '%;';
+			$css .= '}';
+		}
+
 		$css .= '.font-body,body{';
 
 		if ( $font_needed ) {
