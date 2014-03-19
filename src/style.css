@@ -347,7 +347,7 @@ a {
       top: 3px;
       top: 0.2rem; } }
 
-.sub-header-social {
+.header-social-links {
   margin-bottom: 0;
   list-style: none;
   -webkit-user-select: none;
@@ -355,43 +355,43 @@ a {
   -ms-user-select: none;
   user-select: none; }
   @media screen and (min-width: 800px) {
-    .sub-header-social {
+    .header-social-links {
       float: right; } }
-  .sub-header-social li {
+  .header-social-links li {
     display: inline-block;
     text-align: center; }
     @media screen and (min-width: 800px) {
-      .sub-header-social li:first-of-type {
+      .header-social-links li:first-of-type {
         border-left: 1px solid #eaecee; } }
-    .sub-header-social li a {
+    .header-social-links li a {
       display: block;
       text-decoration: none;
       padding: 14px 4px;
       padding:  0.93333rem 0.26667rem; }
       @media screen and (min-width: 800px) {
-        .sub-header-social li a {
+        .header-social-links li a {
           border-right: 1px solid #eaecee;
           padding: 14px 10px;
           padding:  0.93333rem 0.66667rem; } }
-    .sub-header-social li .fa-facebook:hover {
+    .header-social-links li .fa-facebook:hover {
       color: #3B5999; }
-    .sub-header-social li .fa-twitter:hover {
+    .header-social-links li .fa-twitter:hover {
       color: #4099ff; }
-    .sub-header-social li .fa-google-plus-square:hover {
+    .header-social-links li .fa-google-plus-square:hover {
       color: #d34836; }
-    .sub-header-social li .fa-linkedin:hover {
+    .header-social-links li .fa-linkedin:hover {
       color: #007bb6; }
-    .sub-header-social li .fa-instagram:hover {
+    .header-social-links li .fa-instagram:hover {
       color: #517fa4; }
-    .sub-header-social li .fa-flickr:hover {
+    .header-social-links li .fa-flickr:hover {
       color: #ff0084; }
-    .sub-header-social li .fa-youtube:hover {
+    .header-social-links li .fa-youtube:hover {
       color: #e52d27; }
-    .sub-header-social li .fa-vimeo-square:hover {
+    .header-social-links li .fa-vimeo-square:hover {
       color: #1ab7ea; }
-    .sub-header-social li .fa-pinterest:hover {
+    .header-social-links li .fa-pinterest:hover {
       color: #c92228; }
-    .sub-header-social li .fa-rss:hover {
+    .header-social-links li .fa-rss:hover {
       color: #ff6600; }
 
 /*---------------------------------------------------------

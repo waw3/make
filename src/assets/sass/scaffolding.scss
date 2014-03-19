@@ -177,7 +177,7 @@ a {
 	@include rem('padding-top', $base/2);
 	@include rem('font-size', 12px);
 }
-.sub-header-social {
+.header-social-links {
 	@include for(medium-screens) {
 		float: right;
 	}

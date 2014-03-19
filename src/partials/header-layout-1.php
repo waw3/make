@@ -22,9 +22,9 @@
 			$social_links = ttf_one_get_social_links();
 			$show_social = (int) get_theme_mod( 'header-show-social', ttf_one_get_default( 'header-show-social' ) );
 			if ( ! empty ( $social_links ) && 1 === $show_social ) : ?>
-			<ul class="sub-header-social">
+			<ul class="social-links header-social-links">
 				<?php foreach ( $social_links as $key => $link ) : ?>
-				<li>
+				<li class="<?php echo esc_attr( $key ); ?>">
 					<a href="<?php echo esc_url( $link['url'] ); ?>">
 						<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
 					</a>
