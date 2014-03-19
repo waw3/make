@@ -180,13 +180,57 @@ a {
 	@include rem('padding', $base/2 0);
 	@include rem('font-size', 12px);
 }
+.social-links {
+	list-style: none; //reset
+	@include no-select;
+	li {
+		a {
+			display: block;
+			color: inherit;
+			text-decoration: none; //reset
+		}
+		display:  inline-block;
+		text-align: center;
+		&.facebook a:hover {
+			color: #3B5999;
+		}
+		&.twitter a:hover {
+			color: #4099ff;
+		}
+		&.google a:hover {
+			color: #d34836;
+		}
+		&.linkedin a:hover {
+			color: #007bb6;
+		}
+		&.instagram a:hover {
+			color: #517fa4;
+		}
+		&.flickr a:hover {
+			color: #ff0084;
+		}
+		&.youtube a:hover {
+			color: #e52d27;
+		}
+		&.vimeo a:hover {
+			color: #1ab7ea;
+		}
+		&.pinterest a:hover {
+			color: #c92228;
+		}
+		&.email a:hover {
+			color: #444444;
+		}
+		&.rss a:hover {
+			color: #ff6600;
+		}
+	}
+}
 .header-social-links {
 	@include for(large-screens) {
 		float: right;
 	}
 	margin-bottom: 0; //reset
-	list-style: none; //reset
-	@include no-select;
 	li {
 		@include for(large-screens) {
 			&:first-of-type {
@@ -198,44 +242,7 @@ a {
 				border-right: 1px solid $d;
 				@include rem('padding', 14px 10px);
 			}
-			display: block;
-			text-decoration: none; //reset
 			@include rem('padding', 14px 4px);
-		}
-		display:  inline-block;
-		text-align: center;
-		&.facebook:hover {
-			color: #3B5999;
-		}
-		&.twitter:hover {
-			color: #4099ff;
-		}
-		&.google:hover {
-			color: #d34836;
-		}
-		&.linkedin:hover {
-			color: #007bb6;
-		}
-		&.instagram:hover {
-			color: #517fa4;
-		}
-		&.flickr:hover {
-			color: #ff0084;
-		}
-		&.youtube:hover {
-			color: #e52d27;
-		}
-		&.vimeo:hover {
-			color: #1ab7ea;
-		}
-		&.pinterest:hover {
-			color: #c92228;
-		}
-		&.email:hover {
-			color: #444444;
-		}
-		&.rss:hover {
-			color: #ff6600;
 		}
 	}
 }
