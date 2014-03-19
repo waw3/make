@@ -131,7 +131,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( 'left', 'right' );
 			break;
 		case 'footer-widget-areas' :
-			$allowed_choices = array( '3', '1', '2', '0', '4' );
+			$allowed_choices = array( '0', '1', '2', '3', '4' );
 			break;
 		case 'footer-layout' :
 			$allowed_choices = array( 'footer-layout-1', 'footer-layout-2' );
@@ -139,7 +139,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 	}
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
-		$value = $allowed_choices[0];
+		$value = ttf_one_get_default( $setting );
 	}
 
 	return $value;
@@ -682,7 +682,7 @@ if ( ! function_exists( 'ttf_one_display_header_background' ) ) :
 function ttf_one_display_header_background( $css ) {
 	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttf_one_get_default( 'header-background-color' ) ) );
 
-	$background_image = get_theme_mod( 'header-background-image', false );
+	$background_image = get_theme_mod( 'header-background-image', ttf_one_get_default( 'header-background-image' ) );
 	if ( ! empty( $background_image ) ) {
 		// Get and escape the other properties
 		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', ttf_one_get_default( 'header-background-size' ) ), 'header-background-size' );
@@ -716,7 +716,7 @@ if ( ! function_exists( 'ttf_one_display_main_background' ) ) :
 function ttf_one_display_main_background( $css ) {
 	$background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttf_one_get_default( 'main-background-color' ) ) );
 
-	$background_image = get_theme_mod( 'main-background-image', false );
+	$background_image = get_theme_mod( 'main-background-image', ttf_one_get_default( 'main-background-image' ) );
 	if ( ! empty( $background_image ) ) {
 		// Get and escape the other properties
 		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'main-background-size', ttf_one_get_default( 'main-background-size' ) ), 'main-background-size' );
@@ -748,14 +748,14 @@ if ( ! function_exists( 'ttf_one_display_footer_background' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_footer_background( $css ) {
-	$background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', '#ffffff' ) );
+	$background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttf_one_get_default( 'footer-background-color' ) ) );
 
-	$background_image = get_theme_mod( 'footer-background-image', false );
+	$background_image = get_theme_mod( 'footer-background-image', ttf_one_get_default( 'footer-background-image' ) );
 	if ( ! empty( $background_image ) ) {
 		// Get and escape the other properties
-		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-size', 'auto' ), 'footer-background-size' );
-		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-repeat', 'no-repeat' ), 'footer-background-repeat' );
-		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-position', 'center' ), 'footer-background-position' );
+		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-size', ttf_one_get_default( 'footer-background-size' ) ), 'footer-background-size' );
+		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-repeat', ttf_one_get_default( 'footer-background-repeat' ) ), 'footer-background-repeat' );
+		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-position', ttf_one_get_default( 'footer-background-position' ) ), 'footer-background-position' );
 
 		// Escape the image URL properly
 		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
@@ -782,9 +782,9 @@ if ( ! function_exists( 'ttf_one_display_footer_text_color' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_footer_text_color( $css ) {
-	$text_color = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', '#171717' ) );
+	$text_color = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', ttf_one_get_default( 'footer-text-color' ) ) );
 
-	if ( '#171717' !== $text_color ) {
+	if ( ttf_one_get_default( 'footer-text-color' ) !== $text_color ) {
 		$css .= '.site-footer{color:' . $text_color . ';}';
 	}
 

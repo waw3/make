@@ -60,7 +60,19 @@ function ttf_one_option_defaults() {
 		'main-background-repeat' => 'repeat',
 		'main-background-position' => 'left',
 		'main-background-size' => 'auto',
-		//
+		// Footer
+		'footer-background-color' => '#eaecee',
+		'footer-background-image' => '',
+		'footer-background-repeat' => 'no-repeat',
+		'footer-background-position' => 'center',
+		'footer-background-size' => 'cover',
+		'footer-text-color' => '#464849',
+		'footer-widget-areas' => 3,
+		'footer-text' => '',
+		'footer-show-social' => 1,
+		'footer-show-credit' => 1,
+		'footer-layout' => 'footer-layout-1',
+		// Social
 	);
 
 	return apply_filters( 'ttf_one_option_defaults', $defaults );
