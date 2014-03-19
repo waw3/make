@@ -231,10 +231,12 @@ if ( ! function_exists( 'ttf_one_display_subheader_styles' ) ) :
 function ttf_one_display_subheader_styles( $css ) {
 	$background_color        = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', ttf_one_get_default( 'header-subheader-background-color' ) ) );
 	$text_color              = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', ttf_one_get_default( 'header-subheader-text-color' ) ) );
+	$border_color            = maybe_hash_hex_color( get_theme_mod( 'header-subheader-border-color', ttf_one_get_default( 'header-subheader-border-color' ) ) );
 	$background_color_needed = ( ttf_one_get_default( 'header-subheader-background-color' ) !== $background_color );
 	$text_color_needed       = ( ttf_one_get_default( 'header-subheader-text-color' ) !== $text_color );
+	$border_color_needed     = ( ttf_one_get_default( 'header-subheader-border-color' ) !== $border_color );
 
-	if ( $background_color_needed || $text_color_needed ) {
+	if ( $background_color_needed || $text_color_needed || $border_color_needed ) {
 		$css .= '.sub-header{';
 
 		if ( $background_color_needed ) {
@@ -246,6 +248,12 @@ function ttf_one_display_subheader_styles( $css ) {
 		}
 
 		$css .= '}';
+
+		if ( $border_color_needed ) {
+			$css .= '.sub-header,.header-social-links li:first-of-type,.header-social-links li a{';
+			$css .= 'border-color:' . $border_color . ';';
+			$css .= '}';
+		}
 	}
 
 	return $css;

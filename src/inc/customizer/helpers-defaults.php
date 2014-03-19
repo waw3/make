@@ -55,6 +55,7 @@ function ttf_one_option_defaults() {
 		'header-text-color' => '#171717',
 		'header-subheader-background-color' => '#ffffff',
 		'header-subheader-text-color' => '#171717',
+		'header-subheader-border-color' => '#eaecee',
 		'header-text' => '',
 		'header-show-social' => 0,
 		'header-show-search' => 1,
