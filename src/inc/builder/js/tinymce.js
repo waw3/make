@@ -66,4 +66,20 @@ var oneApp = oneApp || {};
 			wpActiveEditor = evt.data.id;
 		});
 	};
+
+	oneApp.initAllEditors = function(section_id, sectionType) {
+		var $section = $('#' + section_id),
+			$tinyMCEWrappers = $('.wp-editor-wrap', $section);
+
+		$tinyMCEWrappers.each(function() {
+			var $el = $(this),
+				id = $el.attr('id');
+
+			oneApp.initEditor(id, sectionType);
+		});
+	};
+
+	oneApp.removeTinyMCE = function (id) {};
+
+	oneApp.addTinyMCE = function (id) {};
 })(jQuery);
