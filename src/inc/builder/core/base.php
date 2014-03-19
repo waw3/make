@@ -110,7 +110,7 @@ class TTF_One_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/menu' );
 		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
-		$section_ids = array();
+		$section_order = get_post_meta( $post_local->ID, '_ttf-one-section-order', true );
 
 		// Print the current sections
 		foreach ( $ttf_one_sections as $section ) {
@@ -120,14 +120,6 @@ class TTF_One_Builder_Base {
 		}
 
 		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
-
-		// Generate initial section order input
-		$section_order = '';
-		foreach ( $section_ids as $number ) {
-			$section_order .= 'ttf-one-section-' . $number . ',';
-		}
-
-		$section_order = substr( $section_order, 0, -1 );
 
 		// Add the sort input
 		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
