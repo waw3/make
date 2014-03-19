@@ -72,7 +72,11 @@ var oneApp = oneApp || {};
 		});
 	};
 
-	oneApp.removeTinyMCE = function (id) {};
+	oneApp.removeTinyMCE = function (id) {
+		tinyMCE.execCommand( 'mceRemoveEditor', false, id );
+	};
 
-	oneApp.addTinyMCE = function (id) {};
+	oneApp.addTinyMCE = function (id) {
+		tinyMCE.execCommand( 'mceAddEditor', false, id );
+	};
 })(jQuery);
