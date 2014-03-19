@@ -78,6 +78,20 @@ var oneApp = oneApp || {};
 		oneApp.cache.$sectionOrder.val(order);
 	};
 
+	oneApp.addSectionOrder = function (id) {
+		var currentOrder = oneApp.cache.$sectionOrder.val(),
+			currentOrderArray;
+
+		if ('' === currentOrder) {
+			currentOrderArray = [id];
+		} else {
+			currentOrderArray = currentOrder.split(',');
+			currentOrderArray.push(id);
+		}
+
+		oneApp.setSectionOrder(currentOrderArray);
+	};
+
 	oneApp.cleanSectionForOrdering = function (value) {
 		return value.replace(/ttf-one-section-/g, '');
 	}

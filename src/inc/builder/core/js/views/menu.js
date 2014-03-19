@@ -55,6 +55,7 @@ var oneApp = oneApp || {};
 
 			oneApp.sections.toggleStageClass();
 			oneApp.initAllEditors(view.id, section);
+			oneApp.addSectionOrder(section.get('sectionNumber'));
 		},
 
 		menuToggle: function(evt) {
