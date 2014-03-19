@@ -70,15 +70,17 @@ var oneApp = oneApp || {};
 		});
 	};
 
-	oneApp.setSectionOrder = function ( order ) {
+	oneApp.setSectionOrder = function (order) {
 		// Use a comma separated list
-		order = order.join().replace(/ttf-one-section-/g, '');
-
-		console.log( order );
+		order = oneApp.cleanSectionForOrdering(order);
 
 		// Set the val of the input
 		oneApp.cache.$sectionOrder.val(order);
 	};
+
+	oneApp.cleanSectionForOrdering = function (order) {
+		return order.join().replace(/ttf-one-section-/g, '');
+	}
 
 	oneApp.initSortables();
 })(jQuery);
