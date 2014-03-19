@@ -8,7 +8,9 @@
 	<div class="container">
 		<?php // Footer widget areas
 		$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
-		if ( $sidebar_count > 0 ) :
+		if ( $sidebar_count > 0 ) : ?>
+		<div class="footer-widget-container columns-<?php echo esc_attr( $sidebar_count ); ?>">
+			<?php
 			$current_sidebar = 1;
 			while ( $current_sidebar <= $sidebar_count ) :
 			?>
@@ -17,8 +19,9 @@
 			</section>
 			<?php
 				$current_sidebar++;
-			endwhile;
-		endif; ?>
+			endwhile; ?>
+		</div>
+		<?php endif; ?>
 
 		<?php // Footer text
 		if ( $footer_text = get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) ) ) : ?>
