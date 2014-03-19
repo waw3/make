@@ -181,6 +181,7 @@ a {
 	@include rem('font-size', 12px);
 }
 .social-links {
+	padding-left: 0; //reset
 	list-style: none; //reset
 	@include no-select;
 	li {
@@ -396,7 +397,8 @@ a {
 		background-color: $a;
 	}
 	.site-info,
-	.footer-text {
+	.footer-text,
+	.footer-social-links {
 		float: left;
 		clear: both;
 	}
@@ -410,20 +412,19 @@ a {
 		@include rem('font-size', 13px);
 		.theme-by {
 			font-weight: normal;
+			font-style: italic;
 			text-transform: lowercase;
 			@include rem('padding', 0 4px);
+			@include rem('letter-spacing', 1px);
 		}
 	}
-	.footer-text {
-		@include rem('margin-bottom', $base/4);
-		@include rem('font-size', 13px);
-	}
 }
-.theme-name {
-	font-weight: bold;
+.footer-text {
+	@include rem('margin-bottom', $base/4);
+	@include rem('font-size', 13px);
 }
-.theme-by {
-	font-style: italic;
+.footer-social-links {
+	@include rem('font-size', 18px);
 }
 
 /* =Content
