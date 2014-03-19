@@ -60,15 +60,15 @@ var oneApp = oneApp || {};
 		});
 	};
 
-	oneApp.initAllEditors = function(section_id, sectionType) {
+	oneApp.initAllEditors = function(section_id, section) {
 		var $section = $('#' + section_id),
 			$tinyMCEWrappers = $('.wp-editor-wrap', $section);
 
 		$tinyMCEWrappers.each(function() {
 			var $el = $(this),
-				id = $el.attr('id').replace('wp-', '').replace('-wrap', '');
+				id = $el.attr('id').replace('wp-', '').replace('temp-wrap', section.get('sectionType'));
 
-			oneApp.initEditor(id, sectionType);
+			oneApp.initEditor(id, section.get('sectionType'));
 		});
 	};
 

@@ -54,7 +54,7 @@ var oneApp = oneApp || {};
 			}, 800, 'easeOutQuad');
 
 			oneApp.sections.toggleStageClass();
-			oneApp.initAllEditors(view.id, section.get('sectionType'));
+			oneApp.initAllEditors(view.id, section);
 		},
 
 		menuToggle: function(evt) {
