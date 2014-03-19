@@ -3,8 +3,13 @@
  * @package ttf-one
  */
 
+if ( ! function_exists( 'ttf_one_option_defaults' ) ) :
 /**
+ * The big array of global option defaults.
  *
+ * @since 1.0.0
+ *
+ * @return array
  */
 function ttf_one_option_defaults() {
 	$defaults = array(
@@ -89,11 +94,20 @@ function ttf_one_option_defaults() {
 
 	return apply_filters( 'ttf_one_option_defaults', $defaults );
 }
+endif;
 
+if ( ! function_exists( 'ttf_one_get_default' ) ) :
 /**
+ * Return a particular global option default.
  *
+ * @since 1.0.0
+ *
+ * @param string $option The key of the option to return.
+ *
+ * @return mixed
  */
 function ttf_one_get_default( $option ) {
 	$defaults = ttf_one_option_defaults();
 	return ( isset( $defaults[$option] ) ) ? $defaults[$option] : false;
 }
+endif;
