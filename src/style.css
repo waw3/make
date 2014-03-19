@@ -373,25 +373,27 @@ a {
           border-right: 1px solid #eaecee;
           padding: 14px 10px;
           padding:  0.93333rem 0.66667rem; } }
-    .header-social-links li .fa-facebook:hover {
+    .header-social-links li.facebook:hover {
       color: #3B5999; }
-    .header-social-links li .fa-twitter:hover {
+    .header-social-links li.twitter:hover {
       color: #4099ff; }
-    .header-social-links li .fa-google-plus-square:hover {
+    .header-social-links li.google:hover {
       color: #d34836; }
-    .header-social-links li .fa-linkedin:hover {
+    .header-social-links li.linkedin:hover {
       color: #007bb6; }
-    .header-social-links li .fa-instagram:hover {
+    .header-social-links li.instagram:hover {
       color: #517fa4; }
-    .header-social-links li .fa-flickr:hover {
+    .header-social-links li.flickr:hover {
       color: #ff0084; }
-    .header-social-links li .fa-youtube:hover {
+    .header-social-links li.youtube:hover {
       color: #e52d27; }
-    .header-social-links li .fa-vimeo-square:hover {
+    .header-social-links li.vimeo:hover {
       color: #1ab7ea; }
-    .header-social-links li .fa-pinterest:hover {
+    .header-social-links li.pinterest:hover {
       color: #c92228; }
-    .header-social-links li .fa-rss:hover {
+    .header-social-links li.email:hover {
+      color: #444444; }
+    .header-social-links li.rss:hover {
       color: #ff6600; }
 
 /*---------------------------------------------------------

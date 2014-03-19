@@ -201,34 +201,37 @@ a {
 		}
 		display:  inline-block;
 		text-align: center;
-		.fa-facebook:hover {
+		&.facebook:hover {
 			color: #3B5999;
 		}
-		.fa-twitter:hover {
+		&.twitter:hover {
 			color: #4099ff;
 		}
-		.fa-google-plus-square:hover {
+		&.google:hover {
 			color: #d34836;
 		}
-		.fa-linkedin:hover {
+		&.linkedin:hover {
 			color: #007bb6;
 		}
-		.fa-instagram:hover {
+		&.instagram:hover {
 			color: #517fa4;
 		}
-		.fa-flickr:hover {
+		&.flickr:hover {
 			color: #ff0084;
 		}
-		.fa-youtube:hover {
+		&.youtube:hover {
 			color: #e52d27;
 		}
-		.fa-vimeo-square:hover {
+		&.vimeo:hover {
 			color: #1ab7ea;
 		}
-		.fa-pinterest:hover {
+		&.pinterest:hover {
 			color: #c92228;
 		}
-		.fa-rss:hover {
+		&.email:hover {
+			color: #444444;
+		}
+		&.rss:hover {
 			color: #ff6600;
 		}
 	}
