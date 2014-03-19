@@ -110,6 +110,24 @@ a {
 	@include rem('font-size', 13px);
 }
 /*---------------------------------------------------------
+ Custom logo (_scaffolding.scss)
+-------------------------------------------------------- */
+.custom-logo {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	max-width: 100%;
+	a {
+		display: block;
+		width: 100%;
+		height: 0;
+		font: 0/0 a; //reset
+		text-decoration: none; //reset
+		text-shadow: none; //reset
+		color: transparent; //reset
+	}
+}
+/*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .sub-header {
