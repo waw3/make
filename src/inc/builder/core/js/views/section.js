@@ -14,7 +14,8 @@
 		events: {
 			'click .ttf-one-section-toggle': 'toggleSection',
 			'click .ttf-one-section-remove': 'removeSection',
-			'keyup .ttf-one-section-header-title-input': 'constructHeader'
+			'keyup .ttf-one-section-header-title-input': 'constructHeader',
+			'click .basis-media-uploader-remove': 'removeImage'
 		},
 
 		initialize: function (options) {
