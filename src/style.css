@@ -521,14 +521,15 @@ a {
   padding:  1.46667rem 0 2.93333rem; }
   .site-footer *:not(select) {
     border-color: #b9bcbf !important; }
-  .site-footer .columns-1 .widget-area {
-    width: 100%; }
-  .site-footer .columns-2 .widget-area {
-    width: 48.33333%; }
-  .site-footer .columns-3 .widget-area {
-    width: 31.11111%; }
-  .site-footer .columns-4 .widget-area {
-    width: 22.5%; }
+  @media screen and (min-width: 800px) {
+    .site-footer .columns-1 .widget-area {
+      width: 100%; }
+    .site-footer .columns-2 .widget-area {
+      width: 48.33333%; }
+    .site-footer .columns-3 .widget-area {
+      width: 31.11111%; }
+    .site-footer .columns-4 .widget-area {
+      width: 22.5%; } }
   .site-footer .widget-area {
     width: 100%;
     float: left;
@@ -552,8 +553,12 @@ a {
     text-transform: uppercase;
     letter-spacing: 2px;
     letter-spacing: 0.13333rem;
-    font-size: 13px;
-    font-size: 0.86667rem; }
+    font-size: 12px;
+    font-size: 0.8rem; }
+    @media screen and (min-width: 800px) {
+      .site-footer .site-info, .site-footer .site-info a {
+        font-size: 13px;
+        font-size: 0.86667rem; } }
     .site-footer .site-info .theme-by, .site-footer .site-info a .theme-by {
       font-weight: normal;
       font-style: italic;
@@ -566,14 +571,22 @@ a {
 .footer-text {
   margin-bottom: 5.5px;
   margin-bottom: 0.36667rem;
-  font-size: 13px;
-  font-size: 0.86667rem; }
+  font-size: 12px;
+  font-size: 0.8rem; }
+  @media screen and (min-width: 800px) {
+    .footer-text {
+      font-size: 13px;
+      font-size: 0.86667rem; } }
 
 .footer-social-links {
   margin: 22px 0 0;
   margin:  1.46667rem 0 0;
-  font-size: 18px;
-  font-size: 1.2rem; }
+  font-size: 16px;
+  font-size: 1.06667rem; }
+  @media screen and (min-width: 800px) {
+    .footer-social-links {
+      font-size: 18px;
+      font-size: 1.2rem; } }
 
 /*---------------------------------------------------------
  4. Elements (_elements.scss)

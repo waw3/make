@@ -371,17 +371,19 @@ a {
 	*:not(select) {
 		border-color: $e !important;
 	}
-	.columns-1 .widget-area {
-		width: 100%;
-	}
-	.columns-2 .widget-area {
-		width: percentage( ( $width - $gut ) / ( $width*2 ) );
-	}
-	.columns-3 .widget-area {
-		width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
-	}
-	.columns-4 .widget-area {
-		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+	@include for(medium-screens) {
+		.columns-1 .widget-area {
+			width: 100%;
+		}
+		.columns-2 .widget-area {
+			width: percentage( ( $width - $gut ) / ( $width*2 ) );
+		}
+		.columns-3 .widget-area {
+			width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
+		}
+		.columns-4 .widget-area {
+			width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+		}
 	}
 	.widget-area {
 		@include for(medium-screens) {
@@ -408,12 +410,15 @@ a {
 	}
 	.site-info,
 	.site-info a {
+		@include for(medium-screens) {
+			@include rem('font-size', 13px);
+		}
 		color: inherit;
 		font-weight: bold;
 		text-decoration: none; //reset
 		text-transform: uppercase;
 		@include rem('letter-spacing', 2px);
-		@include rem('font-size', 13px);
+		@include rem('font-size', 12px);
 		.theme-by {
 			font-weight: normal;
 			font-style: italic;
@@ -424,10 +429,16 @@ a {
 	}
 }
 .footer-text {
+	@include for(medium-screens) {
+		@include rem('font-size', 13px);
+	}
 	@include rem('margin-bottom', $base/4);
-	@include rem('font-size', 13px);
+	@include rem('font-size', 12px);
 }
 .footer-social-links {
+	@include for(medium-screens) {
+		@include rem('font-size', 18px);
+	}
 	@include rem('margin', $base 0 0);
-	@include rem('font-size', 18px);
+	@include rem('font-size', 16px);
 }
