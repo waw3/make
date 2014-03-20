@@ -114,6 +114,32 @@ function ttf_one_get_sections() {
 }
 
 /**
+ * Get the registered sections by the order parameter.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    The list of registered sections in the parameter order.
+ */
+function ttf_one_get_sections_by_order() {
+	$sections = ttf_one_get_sections_class()->get_sections();
+	usort( $sections, 'ttf_one_sorter' );
+	return $sections;
+}
+
+/**
+ * Callback for `usort()` that sorts sections by order.
+ *
+ * @since  1.0.0.
+ *
+ * @param  mixed    $a    The first element.
+ * @param  mixed    $b    The second element.
+ * @return mixed          The result.
+ */
+function ttf_one_sorter( $a, $b ) {
+	return $a['order'] - $b['order'];
+}
+
+/**
  * Return the sections.
  *
  * @since  1.0.0.
