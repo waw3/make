@@ -208,15 +208,13 @@ class TTF_One_Builder_Save {
 			foreach ( $post_meta as $key => $value ) {
 				// Only consider builder values
 				if ( 0 === strpos( $key, '_ttf-one-builder-' ) ) {
-					foreach ( $ids as $id ) {
-						// Get the ID from the key
-						$pattern = '/_ttf-one-builder-(\d+)-(.*)/';
-						$key_id  = preg_replace( $pattern, '$1', $key );
+					// Get the ID from the key
+					$pattern = '/_ttf-one-builder-(\d+)-(.*)/';
+					$key_id  = preg_replace( $pattern, '$1', $key );
 
-						// If the ID in the key is not one of the whitelisted IDs, delete it
-						if ( ! in_array( $key_id, $ids ) ) {
-							delete_post_meta( $post_id, $key );
-						}
+					// If the ID in the key is not one of the whitelisted IDs, delete it
+					if ( ! in_array( $key_id, $ids ) ) {
+						delete_post_meta( $post_id, $key );
 					}
 				}
 			}
