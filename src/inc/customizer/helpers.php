@@ -131,7 +131,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( 'left', 'right' );
 			break;
 		case 'footer-widget-areas' :
-			$allowed_choices = array( '0', '1', '2', '3', '4' );
+			$allowed_choices = array( 0, 1, 2, 3, 4 );
 			break;
 		case 'footer-layout' :
 			$allowed_choices = array( 1, 2 );

@@ -206,11 +206,11 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			'label'    => __( 'Footer Widget Areas', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
-				'0' => __( '0', 'ttf-one' ),
-				'1' => __( '1', 'ttf-one' ),
-				'2' => __( '2', 'ttf-one' ),
-				'3' => __( '3', 'ttf-one' ),
-				'4' => __( '4', 'ttf-one' )
+				0 => __( '0', 'ttf-one' ),
+				1 => __( '1', 'ttf-one' ),
+				2 => __( '2', 'ttf-one' ),
+				3 => __( '3', 'ttf-one' ),
+				4 => __( '4', 'ttf-one' )
 			),
 			'priority' => $priority->add()
 		)
