@@ -2,12 +2,18 @@
 /**
  * @package ttf-one
  */
+
+// Footer Options
+$sidebar_count      = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
+$footer_text        = get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) );
+$show_footer_credit = (int) get_theme_mod( 'footer-show-credit', ttf_one_get_default( 'footer-show-credit' ) );
+$social_links       = ttf_one_get_social_links();
+$show_social        = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
 ?>
 
 <footer id="site-footer" class="site-footer footer-layout-<?php echo get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) ) ?>" role="contentinfo">
 	<div class="container">
 		<?php // Footer widget areas
-		$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
 		if ( $sidebar_count > 0 ) : ?>
 		<div class="footer-widget-container columns-<?php echo esc_attr( $sidebar_count ); ?>">
 			<?php
@@ -24,7 +30,7 @@
 		<?php endif; ?>
 
 		<?php // Footer text
-		if ( $footer_text = get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) ) ) : ?>
+		if ( $footer_text ) : ?>
 		<div class="footer-text">
 			<?php echo ttf_one_sanitize_text( $footer_text ); ?>
 		</div>
@@ -32,12 +38,12 @@
 
 		<div class="site-info">
 			<?php // Footer credit
-			if ( 1 === (int) get_theme_mod( 'footer-show-credit', ttf_one_get_default( 'footer-show-credit' ) ) ) :
-				$footer_credit = sprintf(
+			if ( 1 === $show_footer_credit ) :
+				printf(
 					__( '%s theme', 'ttf-one' ),
 					'<span class="theme-name">One</span>'
-				); ?>
-			<?php echo $footer_credit; ?>
+				);
+			?>
 			<span class="theme-by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></span>
 			<span class="theme-author"><a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
 				The Theme Foundry
@@ -46,8 +52,6 @@
 		</div>
 
 		<?php // Social links
-		$social_links = ttf_one_get_social_links();
-		$show_social = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
 		if ( ! empty ( $social_links ) && 1 === $show_social ) : ?>
 		<ul class="social-links footer-social-links">
 			<?php foreach ( $social_links as $key => $link ) : ?>
