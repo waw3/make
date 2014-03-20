@@ -291,9 +291,6 @@ class TTF_One_Builder_Save {
 		// Start the output buffer to collect the contents of the templates
 		ob_start();
 
-		global $ttf_one_sanitized_sections;
-		$ttf_one_sanitized_sections = $this->_sanitized_sections;
-
 		// Verify that the section counter is reset
 		$this->_current_section_number = 0;
 
@@ -311,9 +308,6 @@ class TTF_One_Builder_Save {
 			// Cleanup the global
 			unset( $GLOBALS['ttf_one_section_data'] );
 		}
-
-		// Cleanup the global
-		unset( $GLOBALS['ttf_one_sanitized_sections'] );
 
 		// Reset the counter
 		$this->_current_section_number = 0;
@@ -350,14 +344,12 @@ class TTF_One_Builder_Save {
 	 * @return array    The next section's data.
 	 */
 	public function get_next_section_data() {
-		global $ttf_one_sanitized_sections;
-
 		// Get the next section number
 		$section_to_get = $this->_current_section_number + 1;
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $ttf_one_sanitized_sections[ $section_to_get ] ) ) {
-			return $ttf_one_sanitized_sections[ $section_to_get ];
+		if ( isset( $this->_sanitized_sections[ $section_to_get ] ) ) {
+			return $this->_sanitized_sections[ $section_to_get ];
 		} else {
 			return array();
 		}
@@ -371,14 +363,12 @@ class TTF_One_Builder_Save {
 	 * @return array    The previous section's data.
 	 */
 	public function get_prev_section_data() {
-		global $ttf_one_sanitized_sections;
-
 		// Get the next section number
 		$section_to_get = $this->_current_section_number - 1;
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $ttf_one_sanitized_sections[ $section_to_get ] ) ) {
-			return $ttf_one_sanitized_sections[ $section_to_get ];
+		if ( isset( $this->_sanitized_sections[ $section_to_get ] ) ) {
+			return $this->_sanitized_sections[ $section_to_get ];
 		} else {
 			return array();
 		}
@@ -395,10 +385,8 @@ class TTF_One_Builder_Save {
 	 * @return string
 	 */
 	public function section_classes() {
-		global $ttf_one_sanitized_sections;
-
 		// Get the current section type
-		$current = ( isset( $ttf_one_sanitized_sections[ $this->_current_section_number ]['section-type'] ) ) ? $ttf_one_sanitized_sections[ $this->_current_section_number ]['section-type'] : '';
+		$current = ( isset( $this->_sanitized_sections[ $this->_current_section_number ]['section-type'] ) ) ? $this->_sanitized_sections[ $this->_current_section_number ]['section-type'] : '';
 
 		// Get the next section's type
 		$next_data = $this->get_next_section_data();
