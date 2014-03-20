@@ -296,7 +296,7 @@ class TTF_One_Builder_Save {
 			$registered_sections = ttf_one_get_sections();
 
 			// Get the template for the section
-			get_template_part( '_section', $section['section-type'] );
+			get_template_part( $registered_sections[ $section['section-type'] ]['display_template'] );
 
 			// Note the change in section number
 			$this->_current_section_number++;
