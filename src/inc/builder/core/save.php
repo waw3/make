@@ -77,9 +77,9 @@ class TTF_One_Builder_Save {
 		}
 
 		// Run the product builder routine maybe
-		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) ) {
+		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) ) {
 			// Process and save data
-			$sanitized_sections = $this->prepare_data();
+			$sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'] );
 			update_post_meta( $post_id, '_ttf-one-sections', $sanitized_sections );
 
 			// Save the value of the hide/show header variable
@@ -104,16 +104,44 @@ class TTF_One_Builder_Save {
 	 *
 	 * @since  1.0.
 	 *
-	 * @return array    Array of cleaned section data.
+	 * @param  array    $data    The section data submitted to the server.
+	 * @return array             Array of cleaned section data.
 	 */
-	public function prepare_data() {
-		$sections = array();
+	public function prepare_data( $data ) {
+		$clean_sections      = array();
+		$registered_sections = ttf_one_get_sections();
 
-		foreach ( ttf_one_get_sections() as $section ) {
-			$sections[] = call_user_func( $section['save_callback'] );
+		foreach ( $data as $id => $values ) {
+			if ( isset( $registered_sections[ $values['section-type'] ]['save_callback'] ) && true === $this->is_save_callback_callable( $registered_sections[ $values['section-type'] ] ) ) {
+				$clean_sections[ $id ] = call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) );
+			}
 		}
 
-		return $sections;
+		return $clean_sections;
+	}
+
+	/**
+	 * Determine if the specified save_callback is callable.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $section    The registered section data.
+	 * @return bool                 True if callback; false if not callable.
+	 */
+	public function is_save_callback_callable( $section ) {
+		$result = false;
+
+		if( ! empty( $section['save_callback'] ) ) {
+			$callback = $section['save_callback'];
+
+			if ( is_array( $callback ) && isset( $callback[0] ) && isset( $callback[1] ) ) {
+				$result = method_exists( $callback[0], $callback[1] );
+			} elseif ( is_string( $callback ) ) {
+				$result = function_exists( $callback );
+			}
+		}
+
+		return $result;
 	}
 
 	/**

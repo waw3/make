@@ -68,10 +68,11 @@ class TTF_One_Section_Definitions {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return void
+	 * @param  array    $data    The data from the $_POST array for the section.
+	 * @return array             The cleaned data.
 	 */
-	public function save_blank() {
-
+	public function save_blank( $data ) {
+		return $data;
 	}
 }
 endif;
