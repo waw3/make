@@ -53,11 +53,11 @@ class TTF_One_Builder_Base {
 		// Include the API
 		require get_template_directory() . '/inc/builder/core/api.php';
 
-		// Include the save routines
-		require get_template_directory() . '/inc/builder/core/save.php';
-
 		// Add the core sections
 		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
+
+		// Include the save routines
+		require get_template_directory() . '/inc/builder/core/save.php';
 
 		// Set up actions
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 1 ); // Bias toward top of stack
