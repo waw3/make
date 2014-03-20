@@ -897,22 +897,23 @@ embed, iframe, object {
 .entry-footer {
   font-size: 14px;
   font-size: 0.93333rem; }
-  .entry-footer ol, .entry-footer ul {
-    padding-left: 0;
-    list-style: none; }
-    .entry-footer ol li, .entry-footer ul li {
-      display: inline; }
-      .entry-footer ol li:after, .entry-footer ul li:after {
-        content: "\002F";
-        color: #b9bcbf;
-        padding: 0 0 0 4px;
-        padding:  0 0 0 0.26667rem; }
-      .entry-footer ol li:last-of-type:after, .entry-footer ul li:last-of-type:after {
-        content: none; }
   .entry-footer a {
     color: #b9bcbf; }
     .entry-footer a:hover {
       color: #0094c5; }
+
+.post-categories, .post-tags {
+  padding-left: 0;
+  list-style: none; }
+  .post-categories li, .post-tags li {
+    display: inline; }
+    .post-categories li:after, .post-tags li:after {
+      content: "\002F";
+      color: #b9bcbf;
+      padding: 0 0 0 4px;
+      padding:  0 0 0 0.26667rem; }
+    .post-categories li:last-of-type:after, .post-tags li:last-of-type:after {
+      content: none; }
 
 /*---------------------------------------------------------
  Sticky label (_posts.scss)
