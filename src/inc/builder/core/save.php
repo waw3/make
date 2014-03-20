@@ -77,9 +77,9 @@ class TTF_One_Builder_Save {
 		}
 
 		// Run the product builder routine maybe
-		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) ) {
+		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
 			// Process and save data
-			$sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'] );
+			$sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
 			update_post_meta( $post_id, '_ttf-one-sections', $sanitized_sections );
 
 			// Save the value of the hide/show header variable
@@ -104,14 +104,27 @@ class TTF_One_Builder_Save {
 	 *
 	 * @since  1.0.
 	 *
-	 * @param  array    $data    The section data submitted to the server.
-	 * @return array             Array of cleaned section data.
+	 * @param  array     $sections     The section data submitted to the server.
+	 * @param  string    $order        The comma separated list of the section order.
+	 * @return array                   Array of cleaned section data.
 	 */
-	public function prepare_data( $data ) {
+	public function prepare_data( $sections, $order ) {
+		$ordered_sections    = array();
 		$clean_sections      = array();
 		$registered_sections = ttf_one_get_sections();
 
-		foreach ( $data as $id => $values ) {
+		// Get the order in which to process the sections
+		$order = explode( ',', $order );
+
+		// Sort the sections into the proper order
+		foreach ( $order as $value ) {
+			if ( isset( $sections[ $value ] ) ) {
+				$ordered_sections[ $value ] = $sections[ $value ];
+			}
+		}
+
+		// Call the save callback for each section
+		foreach ( $ordered_sections as $id => $values ) {
 			if ( isset( $registered_sections[ $values['section-type'] ]['save_callback'] ) && true === $this->is_save_callback_callable( $registered_sections[ $values['section-type'] ] ) ) {
 				$clean_sections[ $id ] = call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) );
 			}
@@ -142,19 +155,6 @@ class TTF_One_Builder_Save {
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Interpret the order input into meaningful order data.
-	 *
-	 * @since  1.0.
-	 *
-	 * @param  string    $input    The order string.
-	 * @return array               Array of order values.
-	 */
-	public function process_order( $input ) {
-		$input = str_replace( 'ttf-one-section-', '', $input );
-		return explode( ',', $input );
 	}
 
 	/**
