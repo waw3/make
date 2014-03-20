@@ -30,7 +30,7 @@
 			<ul class="social-links header-social-links">
 				<?php foreach ( $social_links as $key => $link ) : ?>
 				<li class="<?php echo esc_attr( $key ); ?>">
-					<a href="<?php echo esc_url( $link['url'] ); ?>">
+					<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( $link['title'] ); ?>">
 						<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
 					</a>
 				</li>

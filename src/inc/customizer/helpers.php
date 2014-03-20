@@ -860,7 +860,7 @@ function ttf_one_get_social_links() {
 			'class' => 'fa-flickr',
 		),
 		'youtube' => array(
-			'title' => 'Youtube',
+			'title' => 'YouTube',
 			'class' => 'fa-youtube',
 		),
 		'vimeo' => array(
