@@ -80,7 +80,7 @@ class TTF_One_Builder_Save {
 		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
 			// Process and save data
 			$sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
-			update_post_meta( $post_id, '_ttf-one-sections', $sanitized_sections );
+			$this->save_data( $sanitized_sections, $post_id );
 
 			// Save the value of the hide/show header variable
 			if ( isset( $_POST['ttf-one-hide-header'] ) ) {
@@ -131,6 +131,48 @@ class TTF_One_Builder_Save {
 		}
 
 		return $clean_sections;
+	}
+
+	/**
+	 * Save an array of data as individual rows in postmeta.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array     $sections    Array of section data.
+	 * @param  string    $post_id     The post ID.
+	 * @return void
+	 */
+	public function save_data( $sections, $post_id ) {
+		/**
+		 * Save each value in the array as a separate row in the `postmeta` table. This avoids the nasty issue with
+		 * array serialization, whereby changing the site domain can lead to the value being unreadable. Instead, each
+		 * value is independent.
+		 */
+		foreach ( $sections as $id => $section ) {
+			foreach ( $section as $field => $value ) {
+				$key = $this->generate_meta_key( $id, $field );
+				update_post_meta( $post_id, $key, $value );
+			}
+		}
+
+		/**
+		 * Save the ids for the sections. This will be used to lookup all of the separate values.
+		 */
+		$section_ids = array_keys( $sections );
+		update_post_meta( $post_id, '_ttf-one-section-ids', $section_ids );
+	}
+
+	/**
+	 * Generate a key for an individual value in the postmeta table.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $id       The section's ID (unix timestamp).
+	 * @param  string    $field    The name of the section's field.
+	 * @return string              The full key value.
+	 */
+	public function generate_meta_key( $id, $field ) {
+		return '_ttf-one-' . $id . '-' . esc_attr( $field );
 	}
 
 	/**
