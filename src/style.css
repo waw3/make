@@ -536,9 +536,6 @@ a {
     margin-right: 3.33333%;
     margin-bottom: 44px;
     margin-bottom: 2.93333rem; }
-    @media screen and (min-width: 800px) {
-      .site-footer .widget-area {
-        margin-bottom: 0; } }
     .site-footer .widget-area:last-of-type {
       margin-right: 0; }
   .site-footer textarea, .site-footer input, .site-footer .widget_tag_cloud a {
@@ -579,14 +576,14 @@ a {
       font-size: 0.86667rem; } }
 
 .footer-social-links {
-  margin: 22px 0 0;
-  margin:  1.46667rem 0 0;
+  margin: 11px 0 0;
+  margin:  0.73333rem 0 0;
   font-size: 16px;
   font-size: 1.06667rem; }
   @media screen and (min-width: 800px) {
     .footer-social-links {
-      font-size: 18px;
-      font-size: 1.2rem; } }
+      font-size: 17px;
+      font-size: 1.13333rem; } }
 
 /*---------------------------------------------------------
  4. Elements (_elements.scss)
