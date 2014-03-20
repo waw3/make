@@ -83,3 +83,43 @@ function ttf_one_setup_author() {
 	}
 }
 add_action( 'wp', 'ttf_one_setup_author' );
+
+function ttf_one_has_sidebar( $location ) {
+	global $wp_registered_sidebars;
+
+	// Validate the sidebar location
+	if ( ! in_array( 'sidebar-' . $location, array_keys( $wp_registered_sidebars ) ) ) {
+		return false;
+	}
+
+	$show_sidebar = false;
+
+	// Post types
+	$post_types = get_post_types(
+		array(
+			'public' => true,
+			'_builtin' => false
+		)
+	);
+	$post_types[] = 'post';
+
+	// Posts and public custom post types
+	if ( is_singular( $post_types ) ) {
+		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-posts', ttf_one_get_default( 'main-sidebar-' . $location . '-posts' ) );
+	}
+	// Pages
+	else if ( is_page() ) {
+		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-pages', ttf_one_get_default( 'main-sidebar-' . $location . '-pages' ) );
+	}
+	// Blog and Archives
+	else if ( is_archive() || is_home() ) {
+		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-archives', ttf_one_get_default( 'main-sidebar-' . $location . '-archives' ) );
+	}
+	// Search results
+	else if ( is_search() ) {
+		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-search', ttf_one_get_default( 'main-sidebar-' . $location . '-search' ) );
+	}
+
+	// Filter and return
+	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location );
+}

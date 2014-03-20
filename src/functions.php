@@ -87,8 +87,16 @@ if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
  */
 function ttf_one_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'ttf-one' ),
-		'id'            => 'sidebar-1',
+		'name'          => __( 'Left Sidebar', 'ttf-one' ),
+		'id'            => 'sidebar-left',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Right Sidebar', 'ttf-one' ),
+		'id'            => 'sidebar-right',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',

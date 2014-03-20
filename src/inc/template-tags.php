@@ -154,3 +154,25 @@ function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $af
 	return $before . $more . $after;
 }
 endif;
+
+function ttf_one_maybe_show_sidebar( $location ) {
+	// Get sidebar status
+	$show_sidebar = ttf_one_has_sidebar( $location );
+
+	// Output the sidebar
+	if ( true === $show_sidebar ) {
+		// Filter sidebar id
+		$sidebar_id = apply_filters( 'ttf_one_sidebar_id', 'sidebar-' . $location, $location );
+
+		// First look for a template file
+		if ( '' !== $template_path = locate_template( $sidebar_id . '.php' ) ) {
+			require_once( $template_path );
+		}
+		// Then fall back to the default markup
+		else { ?>
+		<section id="<?php echo $sidebar_id; ?>" class="widget-area <?php echo ( is_active_sidebar( $sidebar_id ) ) ? 'active' : 'inactive'; ?>" role="complementary">
+			<?php dynamic_sidebar( $sidebar_id ); ?>
+		</section>
+		<?php }
+	}
+}
