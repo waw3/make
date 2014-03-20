@@ -258,9 +258,7 @@ class TTF_One_Builder_Save {
 	 * @return array                Modified post data.
 	 */
 	public function wp_insert_post_data( $data, $postarr ) {
-		$product_submit   = ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) );
-
-		if ( ! $product_submit ) {
+		if ( ! isset( $_POST[ 'ttf-one-builder-nonce' ] ) || ! wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) ) {
 			return $data;
 		}
 
@@ -271,11 +269,6 @@ class TTF_One_Builder_Save {
 
 		// Only check permissions for pages since it can only run on pages
 		if ( ! current_user_can( 'edit_page', get_the_ID() ) ) {
-			return $data;
-		}
-
-		// Verify that the page template param is set
-		if ( ! isset( $_POST['page_template'] ) || ! in_array( $_POST['page_template'], array( 'product.php', 'slideshow.php' ) ) ) {
 			return $data;
 		}
 
