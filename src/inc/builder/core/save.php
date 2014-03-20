@@ -29,6 +29,15 @@ class TTF_One_Builder_Save {
 	private $_current_section_number = 0;
 
 	/**
+	 * Holds the clean section data.
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @var   array
+	 */
+	private $_sanitized_sections = array();
+
+	/**
 	 * Instantiate or return the one TTF_One_Builder_Save instance.
 	 *
 	 * @since  1.0.
@@ -79,8 +88,8 @@ class TTF_One_Builder_Save {
 		// Run the product builder routine maybe
 		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
 			// Process and save data
-			$sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
-			$this->save_data( $sanitized_sections, $post_id );
+			$this->_sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
+			$this->save_data( $this->_sanitized_sections, $post_id );
 
 			// Save the value of the hide/show header variable
 			if ( isset( $_POST['ttf-one-hide-header'] ) ) {
@@ -270,11 +279,8 @@ class TTF_One_Builder_Save {
 			return $data;
 		}
 
-		// Run the product builder routine maybe
-		$sanitized_sections = $this->prepare_data( 'product' );
-
 		// The data has been deleted and can be removed
-		if ( empty( $sanitized_sections ) ) {
+		if ( empty( $this->_sanitized_sections ) ) {
 			$data['post_content'] = '';
 			return $data;
 		}
@@ -286,13 +292,13 @@ class TTF_One_Builder_Save {
 		ob_start();
 
 		global $ttf_one_sanitized_sections;
-		$ttf_one_sanitized_sections = $sanitized_sections;
+		$ttf_one_sanitized_sections = $this->_sanitized_sections;
 
 		// Verify that the section counter is reset
 		$this->_current_section_number = 0;
 
 		// For each sections, render it using the template
-		foreach ( $sanitized_sections as $section ) {
+		foreach ( $this->_sanitized_sections as $section ) {
 			global $ttf_one_section_data;
 			$ttf_one_section_data = $section;
 
