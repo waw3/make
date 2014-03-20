@@ -162,6 +162,9 @@ class TTF_One_Builder_Save {
 		 */
 		$section_ids = array_keys( $sections );
 		update_post_meta( $post_id, '_ttf-one-section-ids', $section_ids );
+
+		// Remove the old section values if necessary
+		$this->prune_abandoned_rows( $post_id );
 	}
 
 	/**
@@ -174,7 +177,42 @@ class TTF_One_Builder_Save {
 	 * @return string              The full key value.
 	 */
 	public function generate_meta_key( $id, $field ) {
-		return '_ttf-one-' . $id . '-' . esc_attr( $field );
+		return '_ttf-one-builder-' . $id . '-' . esc_attr( $field );
+	}
+
+	/**
+	 * Remove deprecated section values.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $post_id    The post to prune the values.
+	 * @return void
+	 */
+	public function prune_abandoned_rows( $post_id ) {
+		// Get all of the metadata associated with the post
+		$post_meta = get_post_meta( $post_id );
+
+		// Get the current keys
+		$ids = get_post_meta( $post_id, '_ttf-one-section-ids', true );
+
+		// Any meta containing the old keys should be deleted
+		if ( is_array( $post_meta ) ) {
+			foreach ( $post_meta as $key => $value ) {
+				// Only consider builder values
+				if ( 0 === strpos( $key, '_ttf-one-builder-' ) ) {
+					foreach ( $ids as $id ) {
+						// Get the ID from the key
+						$pattern = '/_ttf-one-builder-(\d+)-(.*)/';
+						$key_id  = preg_replace( $pattern, '$1', $key );
+
+						// If the ID in the key is not one of the whitelisted IDs, delete it
+						if ( ! in_array( $key_id, $ids ) ) {
+							delete_post_meta( $post_id, $key );
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
