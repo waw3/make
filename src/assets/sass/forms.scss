@@ -40,10 +40,9 @@ input[type="radio"] {
 	padding: 0; //rest
 }
 input[type="search"] {
-	-webkit-appearance: textfield;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+ 	box-sizing: border-box;
 	&::-webkit-search-cancel-button,
 	&::-webkit-search-decoration {
 		-webkit-appearance: none; //reset

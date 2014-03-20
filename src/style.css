@@ -462,8 +462,8 @@ a {
         border-bottom: 0;
         margin-bottom: 3px;
         margin-bottom: 0.2rem;
-        padding: 3px 10.66667px 3px 0;
-        padding:  0.2rem 0.71111rem 0.2rem 0; } }
+        padding: 3px 25px 3px 0;
+        padding:  0.2rem 1.66667rem 0.2rem 0; } }
     #site-navigation li:hover ul {
       display: block; }
     #site-navigation li ul {
@@ -1239,10 +1239,9 @@ input[type="checkbox"], input[type="radio"] {
   padding: 0; }
 
 input[type="search"] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
   input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none; }
 
