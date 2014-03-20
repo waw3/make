@@ -103,12 +103,19 @@ function ttf_one_has_sidebar( $location ) {
 	);
 	$post_types[] = 'post';
 
+	// Post parent
+	$parent_post_type = '';
+	if ( is_attachment() ) {
+		$post_parent = get_post()->post_parent;
+		$parent_post_type = get_post_type( $post_parent );
+	}
+
 	// Posts and public custom post types
-	if ( is_singular( $post_types ) ) {
+	if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
 		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-posts', ttf_one_get_default( 'main-sidebar-' . $location . '-posts' ) );
 	}
 	// Pages
-	else if ( is_page() ) {
+	else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
 		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-pages', ttf_one_get_default( 'main-sidebar-' . $location . '-pages' ) );
 	}
 	// Blog and Archives
