@@ -88,8 +88,7 @@ class TTF_One_Builder_Save {
 		// Run the product builder routine maybe
 		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
 			// Process and save data
-			$this->_sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
-			$this->save_data( $this->_sanitized_sections, $post_id );
+			$this->save_data( $this->get_sanitized_sections(), $post_id );
 
 			// Save the value of the hide/show header variable
 			if ( isset( $_POST['ttf-one-hide-header'] ) ) {
@@ -273,7 +272,8 @@ class TTF_One_Builder_Save {
 		}
 
 		// The data has been deleted and can be removed
-		if ( empty( $this->_sanitized_sections ) ) {
+		$sanitized_sections = $this->get_sanitized_sections();
+		if ( empty( $sanitized_sections ) ) {
 			$data['post_content'] = '';
 			return $data;
 		}
@@ -288,9 +288,12 @@ class TTF_One_Builder_Save {
 		$this->_current_section_number = 0;
 
 		// For each sections, render it using the template
-		foreach ( $this->_sanitized_sections as $section ) {
+		foreach ( $sanitized_sections as $section ) {
 			global $ttf_one_section_data;
 			$ttf_one_section_data = $section;
+
+			// Get the registered sections
+			$registered_sections = ttf_one_get_sections();
 
 			// Get the template for the section
 			get_template_part( '_section', $section['section-type'] );
@@ -341,8 +344,8 @@ class TTF_One_Builder_Save {
 		$section_to_get = $this->_current_section_number + 1;
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $this->_sanitized_sections[ $section_to_get ] ) ) {
-			return $this->_sanitized_sections[ $section_to_get ];
+		if ( isset( $this->get_sanitized_sections()[ $section_to_get ] ) ) {
+			return $this->get_sanitized_sections()[ $section_to_get ];
 		} else {
 			return array();
 		}
@@ -360,8 +363,8 @@ class TTF_One_Builder_Save {
 		$section_to_get = $this->_current_section_number - 1;
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $this->_sanitized_sections[ $section_to_get ] ) ) {
-			return $this->_sanitized_sections[ $section_to_get ];
+		if ( isset( $this->get_sanitized_sections()[ $section_to_get ] ) ) {
+			return $this->get_sanitized_sections()[ $section_to_get ];
 		} else {
 			return array();
 		}
@@ -379,7 +382,7 @@ class TTF_One_Builder_Save {
 	 */
 	public function section_classes() {
 		// Get the current section type
-		$current = ( isset( $this->_sanitized_sections[ $this->_current_section_number ]['section-type'] ) ) ? $this->_sanitized_sections[ $this->_current_section_number ]['section-type'] : '';
+		$current = ( isset( $this->get_sanitized_sections()[ $this->_current_section_number ]['section-type'] ) ) ? $this->get_sanitized_sections()[ $this->_current_section_number ]['section-type'] : '';
 
 		// Get the next section's type
 		$next_data = $this->get_next_section_data();
@@ -431,6 +434,23 @@ class TTF_One_Builder_Save {
 		}
 
 		return $order;
+	}
+
+	/**
+	 * Get the sanitized section data.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return array    The sanitized section data.
+	 */
+	public function get_sanitized_sections() {
+		if ( empty( $this->_sanitized_sections ) ) {
+			if ( isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
+				$this->_sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
+			}
+		}
+
+		return $this->_sanitized_sections;
 	}
 }
 endif;
