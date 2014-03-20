@@ -340,10 +340,11 @@ class TTF_One_Builder_Save {
 	public function get_next_section_data() {
 		// Get the next section number
 		$section_to_get = $this->_current_section_number + 1;
+		$sections       = $this->get_sanitized_sections();
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $this->get_sanitized_sections()[ $section_to_get ] ) ) {
-			return $this->get_sanitized_sections()[ $section_to_get ];
+		if ( isset( $sections[ $section_to_get ] ) ) {
+			return $sections[ $section_to_get ];
 		} else {
 			return array();
 		}
@@ -359,10 +360,11 @@ class TTF_One_Builder_Save {
 	public function get_prev_section_data() {
 		// Get the next section number
 		$section_to_get = $this->_current_section_number - 1;
+		$sections       = $this->get_sanitized_sections();
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $this->get_sanitized_sections()[ $section_to_get ] ) ) {
-			return $this->get_sanitized_sections()[ $section_to_get ];
+		if ( isset( $sections[ $section_to_get ] ) ) {
+			return $sections[ $section_to_get ];
 		} else {
 			return array();
 		}
@@ -379,8 +381,10 @@ class TTF_One_Builder_Save {
 	 * @return string
 	 */
 	public function section_classes() {
+		$sections = $this->get_sanitized_sections();
+
 		// Get the current section type
-		$current = ( isset( $this->get_sanitized_sections()[ $this->_current_section_number ]['section-type'] ) ) ? $this->get_sanitized_sections()[ $this->_current_section_number ]['section-type'] : '';
+		$current = ( isset( $sections[ $this->_current_section_number ]['section-type'] ) ) ? $sections[ $this->_current_section_number ]['section-type'] : '';
 
 		// Get the next section's type
 		$next_data = $this->get_next_section_data();
