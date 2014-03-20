@@ -16,6 +16,52 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();
 	$prefix = 'ttf-one_';
 
+	// Footer text color
+	$setting_id = 'footer-text-color';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttf_one_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Footer Text Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
+	// Footer border color
+	$setting_id = 'footer-border-color';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttf_one_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Footer Border Color', 'ttf-one' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
 	// Background color
 	$setting_id = 'footer-background-color';
 	$wp_customize->add_setting(
@@ -139,52 +185,6 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 				'contain' => __( 'Contain', 'ttf-one' )
 			),
 			'priority' => $priority->add()
-		)
-	);
-
-	// Footer text color
-	$setting_id = 'footer-text-color';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttf_one_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'maybe_hash_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Footer Text Color', 'ttf-one' ),
-				'priority' => $priority->add()
-			)
-		)
-	);
-
-	// Footer border color
-	$setting_id = 'footer-border-color';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttf_one_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'maybe_hash_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Footer Border Color', 'ttf-one' ),
-				'priority' => $priority->add()
-			)
 		)
 	);
 
