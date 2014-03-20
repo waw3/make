@@ -113,19 +113,20 @@ class TTF_One_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/menu' );
 		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
-		$section_order = get_post_meta( $post_local->ID, '_ttf-one-section-order', true );
+		$section_data = $this->get_section_data( $post_local->ID );
 
 		// Print the current sections
-		foreach ( $ttf_one_sections as $section ) {
-			if ( isset( $section['section-type'] ) ) {
+		foreach ( $section_data as $section ) {
+			if ( isset( ttf_one_get_sections()[ $section['section-type'] ]['display_template'] ) ) {
 				// Print the saved section
+				$this->_load_section( ttf_one_get_sections()[ $section['section-type'] ], $section );
 			}
 		}
 
 		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
 
 		// Add the sort input
-		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
+		//echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
 	}
 
 	/**
@@ -520,6 +521,40 @@ class TTF_One_Builder_Base {
 		$content = apply_filters( 'ttf_one_the_builder_content', $content );
 		$content = str_replace( ']]>', ']]&gt;', $content );
 		echo $content;
+	}
+
+	/**
+	 * Retrieve all of the data for the sections.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $post_id    The post to retrieve the data from.
+	 * @return mixed                 The combined data.
+	 */
+	public function get_section_data( $post_id ) {
+		$data      = array();
+		$ids       = get_post_meta( $post_id, '_ttf-one-section-ids', true );
+		$post_meta = get_post_meta( $post_id );
+
+		// Any meta containing the old keys should be deleted
+		if ( is_array( $post_meta ) ) {
+			foreach ( $post_meta as $key => $value ) {
+				// Only consider builder values
+				if ( 0 === strpos( $key, '_ttf-one-builder-' ) ) {
+					// Get the ID from the key
+					$pattern = '/_ttf-one-builder-(\d+)-(.*)/';
+					$key_id  = preg_replace( $pattern, '$1', $key );
+					$name    = str_replace( '_ttf-one-builder-' . $key_id . '-', '', $key );
+
+					// If the ID in the key is not one of the whitelisted IDs, delete it
+					if ( in_array( $key_id, $ids ) ) {
+						$data[ $key_id ][ $name ] = $value[0];
+					}
+				}
+			}
+		}
+
+		return $data;
 	}
 
 	/**
