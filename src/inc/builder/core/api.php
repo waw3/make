@@ -77,7 +77,7 @@ class TTF_One_Sections {
 	 * @return void
 	 */
 	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
-		$this->_sections[ $order ] = array(
+		$this->_sections[ $id ] = array(
 			'id'               => $id,
 			'label'            => $label,
 			'icon'             => $icon,
