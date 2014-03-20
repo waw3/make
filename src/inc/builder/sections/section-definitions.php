@@ -72,7 +72,17 @@ class TTF_One_Section_Definitions {
 	 * @return array             The cleaned data.
 	 */
 	public function save_blank( $data ) {
-		return $data;
+		$clean_data = array();
+
+		if ( isset( $data['title'] ) ) {
+			$clean_data['title'] = sanitize_text_field( $data['title'] );
+		}
+
+		if ( isset( $data['content'] ) ) {
+			$clean_data['content'] = wp_filter_post_kses( $data['content'] );
+		}
+
+		return $clean_data;
 	}
 }
 endif;
