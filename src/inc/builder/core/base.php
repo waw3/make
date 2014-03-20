@@ -113,13 +113,14 @@ class TTF_One_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/menu' );
 		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
-		$section_data = $this->get_section_data( $post_local->ID );
+		$section_data        = $this->get_section_data( $post_local->ID );
+		$registered_sections = ttf_one_get_sections();
 
 		// Print the current sections
 		foreach ( $section_data as $section ) {
-			if ( isset( ttf_one_get_sections()[ $section['section-type'] ]['display_template'] ) ) {
+			if ( isset( $registered_sections[ $section['section-type'] ]['display_template'] ) ) {
 				// Print the saved section
-				$this->_load_section( ttf_one_get_sections()[ $section['section-type'] ], $section );
+				$this->_load_section( $registered_sections[ $section['section-type'] ], $section );
 			}
 		}
 
