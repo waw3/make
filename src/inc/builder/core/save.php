@@ -76,11 +76,6 @@ class TTF_One_Builder_Save {
 			return;
 		}
 
-		// Verify that the page template param is set
-		if ( ! isset( $_POST['page_template'] ) ) {
-			return;
-		}
-
 		// Run the product builder routine maybe
 		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) ) {
 			// Process and save data
@@ -112,20 +107,13 @@ class TTF_One_Builder_Save {
 	 * @return array    Array of cleaned section data.
 	 */
 	public function prepare_data() {
-		$sanitized_sections = array();
+		$sections = array();
 
-		if ( isset( $_POST['ttf-one-section'] ) ) {
-			// Get section order
-			$order = array();
-			if ( isset( $_POST['ttf-one-section-order'] ) ) {
-				$order = $this->process_order( $_POST['ttf-one-section-order'] );
-			}
-
-			// Process and save data
-			$sanitized_sections = $this->process_section_data( $_POST['ttf-one-section'], $order );
+		foreach ( ttf_one_get_sections() as $section ) {
+			$sections[] = call_user_func( $section['save_callback'] );
 		}
 
-		return $sanitized_sections;
+		return $sections;
 	}
 
 	/**
