@@ -1,6 +1,0 @@
-<?php
-/**
- * @package ttf-one
- */
-?>
-

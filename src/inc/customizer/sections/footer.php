@@ -313,8 +313,8 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			'label'    => __( 'Footer Layout', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
-				'footer-layout-1'  => __( 'Layout 1', 'ttf-one' ),
-				'footer-layout-2'  => __( 'Layout 2', 'ttf-one' ),
+				1  => __( 'Layout 1', 'ttf-one' ),
+				2  => __( 'Layout 2', 'ttf-one' ),
 			),
 			'priority' => $priority->add()
 		)

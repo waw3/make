@@ -125,7 +125,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
 		case 'header-layout' :
-			$allowed_choices = array( 'header-layout-1', 'header-layout-2' );
+			$allowed_choices = array( 1, 2, 3 );
 			break;
 		case 'header-primary-nav-position' :
 			$allowed_choices = array( 'left', 'right' );
@@ -134,7 +134,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 			$allowed_choices = array( '0', '1', '2', '3', '4' );
 			break;
 		case 'footer-layout' :
-			$allowed_choices = array( 'footer-layout-1', 'footer-layout-2' );
+			$allowed_choices = array( 1, 2 );
 			break;
 	}
 

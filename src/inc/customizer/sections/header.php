@@ -331,8 +331,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'label'    => __( 'Header Layout', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
-				'header-layout-1'  => __( 'Layout 1', 'ttf-one' ),
-				'header-layout-2'  => __( 'Layout 2', 'ttf-one' )
+				1  => __( 'Layout 1', 'ttf-one' ),
+				2  => __( 'Layout 2', 'ttf-one' ),
+				3  => __( 'Layout 3', 'ttf-one' ),
 			),
 			'priority' => $priority->add()
 		)

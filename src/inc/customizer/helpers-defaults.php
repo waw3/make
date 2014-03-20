@@ -59,7 +59,7 @@ function ttf_one_option_defaults() {
 		'header-text' => '',
 		'header-show-social' => 0,
 		'header-show-search' => 1,
-		'header-layout' => 'header-layout-1',
+		'header-layout' => 1,
 		'header-primary-nav-position' => 'right',
 		// Main
 		'main-background-color' => '#ffffff',
@@ -79,7 +79,7 @@ function ttf_one_option_defaults() {
 		'footer-text' => '',
 		'footer-show-social' => 1,
 		'footer-show-credit' => 1,
-		'footer-layout' => 'footer-layout-1',
+		'footer-layout' => 1,
 		// Social
 		'social-facebook' => '',
 		'social-twitter' => '',

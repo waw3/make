@@ -16,7 +16,12 @@
 	<body <?php body_class(); ?>>
 		<div id="site-wrapper" class="site-wrapper">
 
-			<?php get_template_part( 'partials/' . get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) ) ); ?>
+			<?php // Header partial
+			get_template_part(
+				'partials/header-layout',
+				get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) )
+			);
+			?>
 
 			<div id="site-content" class="site-content">
 				<div class="container">

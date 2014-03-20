@@ -4,7 +4,7 @@
  */
 ?>
 
-<header id="site-header" class="site-header site-header-1" role="banner">
+<header id="site-header" class="site-header header-layout-<?php echo get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) ) ?>" role="banner">
 	<?php // Sub Header elements
 	$header_text = get_theme_mod( 'header-text', false );
 	$social_links = ttf_one_get_social_links();
