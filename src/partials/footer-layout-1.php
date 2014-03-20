@@ -30,21 +30,6 @@
 		</div>
 		<?php endif; ?>
 
-		<?php // Social links
-		$social_links = ttf_one_get_social_links();
-		$show_social = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
-		if ( ! empty ( $social_links ) && 1 === $show_social ) : ?>
-		<ul class="social-links footer-social-links">
-			<?php foreach ( $social_links as $key => $link ) : ?>
-				<li class="<?php echo esc_attr( $key ); ?>">
-					<a href="<?php echo esc_url( $link['url'] ); ?>">
-						<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-		<?php endif; ?>
-
 		<div class="site-info">
 			<?php // Footer credit
 			if ( 1 === (int) get_theme_mod( 'footer-show-credit', ttf_one_get_default( 'footer-show-credit' ) ) ) :
@@ -59,5 +44,20 @@
 			</a></span>
 			<?php endif; ?>
 		</div>
+
+		<?php // Social links
+		$social_links = ttf_one_get_social_links();
+		$show_social = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
+		if ( ! empty ( $social_links ) && 1 === $show_social ) : ?>
+		<ul class="social-links footer-social-links">
+			<?php foreach ( $social_links as $key => $link ) : ?>
+				<li class="<?php echo esc_attr( $key ); ?>">
+					<a href="<?php echo esc_url( $link['url'] ); ?>">
+						<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<?php endif; ?>
 	</div>
 </footer>
