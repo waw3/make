@@ -108,10 +108,12 @@ a {
 	}
 }
 .site-description {
+	color: $e;
 	display: block;
-	font-style: italic;
+	text-transform: uppercase;
 	@include rem('margin-bottom', $base);
-	@include rem('font-size', 13px);
+	@include rem('font-size', 11px);
+	@include rem('letter-spacing', 1px);
 }
 /*---------------------------------------------------------
  Custom logo (_scaffolding.scss)
@@ -245,7 +247,7 @@ a {
 		a {
 			@include for(large-screens) {
 				border-right: 1px solid $d;
-				@include rem('padding', 14px 10px);
+				@include rem('padding', 15px 10px);
 			}
 			@include rem('padding', 14px 4px);
 		}
@@ -300,11 +302,8 @@ a {
 			@include rem('margin-bottom', 3px);
 			@include rem('padding', 3px $gut/3 3px 0);
 		}
-		text-transform: uppercase;
 		border-bottom: 1px solid $d;
 		@include rem('padding', $base/2 $gut/4);
-		@include rem('letter-spacing', 2px);
-
 		&:hover ul {
 			display: block;
 		}
@@ -356,7 +355,7 @@ a {
 		font-weight: bold;
 		a {
 			color: $b;
-			border-bottom: 1px solid $c;
+			border-bottom: 2px solid $b;
 		}
 	}
 }

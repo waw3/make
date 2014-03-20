@@ -5,8 +5,9 @@
 	@include rem('margin-bottom', $base);
 }
 .entry-date {
-	font-style: italic;
-	@include rem('font-size', 14px);
+	text-transform: uppercase;
+	@include rem('font-size', 12px);
+	@include rem('letter-spacing', 1px);
 	a {
 		color: $b;
 		text-decoration: none; //reset

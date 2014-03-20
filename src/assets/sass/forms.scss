@@ -7,8 +7,7 @@ input {
 	border: 0; //reset
 	background-color: $d;
 	-webkit-appearance: none; //reset
-	@include rem('padding', 4px 6px);
-	@include border-radius;
+	@include rem('padding', 6px 8px);
 	&:focus {
 		outline: none; //reset
 	}
@@ -33,9 +32,8 @@ input[type="submit"] {
 	background: $b;
 	cursor: pointer;
 	-webkit-appearance: button;
-	@include rem('padding', $base/4 12px);
+	@include rem('padding', $base/2 12px);
 	@include rem('font-size', 13px);
-	@include border-radius;
 }
 input[type="checkbox"],
 input[type="radio"] {
