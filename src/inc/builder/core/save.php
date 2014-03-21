@@ -86,7 +86,7 @@ class TTF_One_Builder_Save {
 		}
 
 		// Run the product builder routine maybe
-		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
+		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section-order'] ) ) {
 			// Process and save data
 			$this->save_data( $this->get_sanitized_sections(), $post_id );
 
@@ -448,8 +448,9 @@ class TTF_One_Builder_Save {
 	 */
 	public function get_sanitized_sections() {
 		if ( empty( $this->_sanitized_sections ) ) {
-			if ( isset( $_POST['ttf-one-section'] ) && isset( $_POST['ttf-one-section-order'] ) ) {
-				$this->_sanitized_sections = $this->prepare_data( $_POST['ttf-one-section'], $_POST['ttf-one-section-order'] );
+			if ( isset( $_POST['ttf-one-section-order'] ) ) {
+				$data = ( isset( $_POST['ttf-one-section'] ) ) ? $_POST['ttf-one-section'] : array();
+				$this->_sanitized_sections = $this->prepare_data( $data, $_POST['ttf-one-section-order'] );
 			}
 		}
 
