@@ -719,3 +719,18 @@ function ttf_one_get_section_name( $data, $is_js_template ) {
 	return $name;
 }
 endif;
+
+if ( ! function_exists( 'ttf_one_allowed_tags' ) ) :
+/**
+ * Allow only the allowedtags array in a string.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $string    The unsanitized string.
+ * @return string               The sanitized string.
+ */
+function ttf_one_allowed_tags( $string ) {
+	global $allowedtags;
+	return wp_kses( $string , $allowedtags );
+}
+endif;
