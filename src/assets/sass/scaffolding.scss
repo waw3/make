@@ -78,7 +78,7 @@ a {
 .site-header {
 	float: left;
 	width: 100%;
-	@include rem('margin-bottom', $base*2);
+	@include rem('margin-bottom', $base);
 	@extend .clear;
 }
 .site-header-main {

@@ -165,12 +165,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .sub-header, .site-footer, .has-right-sidebar .site-content .container, .has-left-sidebar .site-content .container, .has-left-sidebar.has-right-sidebar .site-content .container, #comments-nav {
+.clear, .site-header, .site-header-main, .sub-header, .site-footer, .site-content .container, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-footer:before, .has-right-sidebar .site-content .container:before, .has-left-sidebar .site-content .container:before, .has-left-sidebar.has-right-sidebar .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, .has-right-sidebar .site-content .container:after, .has-left-sidebar .site-content .container:after, .has-left-sidebar.has-right-sidebar .site-content .container:after, #comments-nav:after {
+  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-footer:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, .site-content .container:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, .has-right-sidebar .site-content .container:after, .has-left-sidebar .site-content .container:after, .has-left-sidebar.has-right-sidebar .site-content .container:after, #comments-nav:after {
+  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, .site-content .container:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -250,8 +250,8 @@ a {
 .site-header {
   float: left;
   width: 100%;
-  margin-bottom: 44px;
-  margin-bottom: 2.93333rem; }
+  margin-bottom: 22px;
+  margin-bottom: 1.46667rem; }
 
 .site-header-main {
   float: left;
@@ -992,46 +992,48 @@ embed, iframe, object {
  7. Pages (_pages.scss)
 -------------------------------------------------------- */
 /*---------------------------------------------------------
- 8. Widgets (_widgets.scss)
+ 8. Sidebars (_sidebars.scss)
 -------------------------------------------------------- */
-.has-right-sidebar .site-main {
-  float: left;
-  width: 64.58333%; }
-.has-right-sidebar .site-content .container {
+#sidebar-left {
+  float: left; }
+
+#sidebar-right {
+  float: right; }
+
+.site-content .container {
   clear: both;
   margin-bottom: 44px;
   margin-bottom: 2.93333rem; }
-.has-right-sidebar #sidebar-right {
-  float: right;
-  width: 25.83333%; }
 
+.site-main {
+  float: left; }
+
+/*---------------------------------------------------------
+ Left and right (_sidebars.scss)
+-------------------------------------------------------- */
 .has-left-sidebar .site-main {
-  float: left;
-  width: 64.58333%;
   margin-left: 9.58333%; }
-.has-left-sidebar .site-content .container {
-  clear: both;
-  margin-bottom: 44px;
-  margin-bottom: 2.93333rem; }
-.has-left-sidebar #sidebar-left {
-  float: left;
+
+.has-right-sidebar .site-main, .has-left-sidebar .site-main {
+  width: 64.58333%; }
+.has-right-sidebar #sidebar-right, .has-left-sidebar #sidebar-right {
   width: 25.83333%; }
 
+/*---------------------------------------------------------
+ Left and right together (_sidebars.scss)
+-------------------------------------------------------- */
+.has-left-sidebar.has-right-sidebar .entry-title {
+  font-size: 34px;
+  font-size: 2.26667rem; }
 .has-left-sidebar.has-right-sidebar .site-main {
-  float: left;
   width: 48.33333%;
   margin-left: 3.33333%; }
-.has-left-sidebar.has-right-sidebar .site-content .container {
-  clear: both;
-  margin-bottom: 44px;
-  margin-bottom: 2.93333rem; }
-.has-left-sidebar.has-right-sidebar #sidebar-left {
-  float: left;
-  width: 22.5%; }
-.has-left-sidebar.has-right-sidebar #sidebar-right {
-  float: right;
+.has-left-sidebar.has-right-sidebar #sidebar-left, .has-left-sidebar.has-right-sidebar #sidebar-right {
   width: 22.5%; }
 
+/*---------------------------------------------------------
+ 8. Widgets (_widgets.scss)
+-------------------------------------------------------- */
 .widget-title {
   font-weight: bold;
   margin: 0 0 22px;
