@@ -112,5 +112,30 @@ var oneApp = oneApp || {};
 		return value.replace(/ttf-one-section-/g, '');
 	}
 
+	oneApp.initViews = function () {
+		$('.ttf-one-section').each(function () {
+			var $section = $(this),
+				id = $section.attr('id'),
+				iterator = $section.attr('data-iterator'),
+				sectionType = $section.attr('data-section-type');
+
+			// Build the model
+			var model = new oneApp.Section({
+				sectionType: sectionType,
+				sectionNumber: iterator
+			});
+
+			console.log( model );
+
+			// Build the view
+			new oneApp.SectionView({
+				model: model,
+				el: $('#' + id),
+				serverRendered: true
+			});
+		});
+	}
+
 	oneApp.initSortables();
+	oneApp.initViews();
 })(jQuery);
