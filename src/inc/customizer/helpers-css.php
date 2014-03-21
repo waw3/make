@@ -51,7 +51,7 @@ class TTF_One_CSS {
 	 *
 	 */
 	function __construct() {
-		// Set line ending
+		// Set line ending and tab
 		if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
 			$this->line_ending = "\n";
 			$this->tab = "\t";
@@ -159,7 +159,7 @@ class TTF_One_CSS {
 	private function parse_selectors( $selectors, $tab = '' ) {
 		$n = $this->line_ending;
 
-		$output = $tab . implode( ", {$n}{$tab}", $selectors );
+		$output = $tab . implode( ",{$n}{$tab}", $selectors );
 
 		return $output;
 	}
