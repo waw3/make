@@ -16,6 +16,7 @@ function ttf_one_customizer_init() {
 	require_once( get_template_directory() . $path . 'helpers.php' );
 	require_once( get_template_directory() . $path . 'helpers-css.php' );
 	require_once( get_template_directory() . $path . 'helpers-defaults.php' );
+	require_once( get_template_directory() . $path . 'helpers-display.php' );
 	require_once( get_template_directory() . $path . 'helpers-fonts.php' );
 	require_once( get_template_directory() . $path . 'helpers-logo.php' );
 

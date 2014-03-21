@@ -165,12 +165,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .sub-header, .site-footer, .site-content .container, #comments-nav {
+.clear, .site-header, .site-header-main, .sub-header, .site-content, .site-footer, .site-content .container, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-footer:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, .site-content .container:after, #comments-nav:after {
+  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-content:before, .site-footer:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .site-content .container:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-footer:after, .site-content .container:after, #comments-nav:after {
+  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .site-content .container:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -248,12 +248,12 @@ a {
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-header {
+  color: #171717;
   float: left;
-  width: 100%;
-  margin-bottom: 22px;
-  margin-bottom: 1.46667rem; }
+  width: 100%; }
 
 .site-header-main {
+  background-color: #ffffff;
   float: left;
   width: 100%;
   padding: 44px 0;
@@ -296,7 +296,7 @@ a {
   font-size: 34px;
   font-size: 2.26667rem; }
   .site-title a {
-    color: #171717; }
+    color: inherit; }
 
 @media screen and (min-width: 800px) {
   .site-branding {
@@ -542,13 +542,25 @@ a {
       border-bottom: 2px solid #171717; }
 
 /*---------------------------------------------------------
+ Main (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-content {
+  background-color: #ffffff;
+  float: left;
+  width: 100%;
+  padding: 22px 0;
+  padding:  1.46667rem 0; }
+
+/*---------------------------------------------------------
  Footer (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-footer {
   color: #464849;
-  background-color: #0094c5;
+  background-color: #eaecee;
   padding: 22px 0 44px;
-  padding:  1.46667rem 0 2.93333rem; }
+  padding:  1.46667rem 0 2.93333rem;
+  float: left;
+  width: 100%; }
   .site-footer *:not(select) {
     border-color: #b9bcbf !important; }
   @media screen and (min-width: 800px) {
