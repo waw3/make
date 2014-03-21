@@ -29,6 +29,11 @@ class TTF_One_CSS {
 	private $line_ending = "";
 
 	/**
+	 *
+	 */
+	private $tab = "";
+
+	/**
 	 * Instantiate or return the one TTF_One_CSS instance.
 	 *
 	 * @since  1.0.0
@@ -49,6 +54,7 @@ class TTF_One_CSS {
 		// Set line ending
 		if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
 			$this->line_ending = "\n";
+			$this->tab = "\t";
 		}
 	}
 
@@ -119,18 +125,18 @@ class TTF_One_CSS {
 			$this->data['all'] = array_reverse( $this->data['all'], true );
 		}
 
-		$output = "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">";
+		$output = "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">$n";
 
-		foreach ( $this->data as $query ) {
+		foreach ( $this->data as $query => $ruleset ) {
 			if ( 'all' !== $query ) {
 				$output .= "@media $query \{$n";
 			}
 
 			// Build each rule
-			foreach ( $query as $rule ) {
-				$output .= $this->parse_selectors( $rule['selectors'] ) . " \{$n";
+			foreach ( $ruleset as $rule ) {
+				$output .= $this->parse_selectors( $rule['selectors'] ) . '{' . $n;
 				$output .= $this->parse_declarations( $rule['declarations'] );
-				$output .= " \}$n";
+				$output .= '}' . $n;
 			}
 
 			if ( 'all' !== $query ) {
@@ -138,7 +144,7 @@ class TTF_One_CSS {
 			}
 		}
 
-		$output .= "<\/style>\n<!-- End One Custom CSS -->\n";
+		$output .= "</style>\n<!-- End One Custom CSS -->\n";
 
 		return $output;
 	}
@@ -149,7 +155,7 @@ class TTF_One_CSS {
 	private function parse_selectors( $selectors ) {
 		$n = $this->line_ending;
 
-		$output = implode( ", $n", $selectors ) . $n;
+		$output = implode( ", $n", $selectors );
 
 		return $output;
 	}
@@ -159,11 +165,12 @@ class TTF_One_CSS {
 	 */
 	private function parse_declarations( $declarations ) {
 		$n = $this->line_ending;
+		$t = $this->tab;
 
 		$output = '';
 
 		foreach ( $declarations as $property => $value ) {
-			$output .= "{$property}: $value;$n";
+			$output .= "{$t}{$property}:{$value};$n";
 		}
 
 		return $output;
