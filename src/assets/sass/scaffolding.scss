@@ -254,6 +254,19 @@ a {
 	}
 }
 /*---------------------------------------------------------
+ Header layout 2 (_scaffolding.scss)
+-------------------------------------------------------- */
+.header-layout-2 {
+	.site-branding,
+	.site-navigation {
+		float: none; //reset
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+}
+/*---------------------------------------------------------
  Navigation (_scaffolding.scss)
 -------------------------------------------------------- */
 .menu-toggle {
@@ -266,7 +279,7 @@ a {
 		display: none;
 	}
 }
-#site-navigation {
+.site-navigation {
 	@include for(medium-screens) {
 		float: right;
 		max-width: 60%;
@@ -304,6 +317,9 @@ a {
 		}
 		border-bottom: 1px solid $d;
 		@include rem('padding', $base/2 $gut/4);
+		&:last-of-type {
+			padding-right: 0; //reset
+		}
 		&:hover ul {
 			display: block;
 		}
