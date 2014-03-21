@@ -214,6 +214,10 @@ class TTF_One_CSS {
 		$output = '';
 
 		foreach ( $declarations as $property => $value ) {
+			// Exception for px/rem font size
+			if ( 'font-size-px' === $property || 'font-size-rem' === $property ) {
+				$property = 'font-size';
+			}
 			$output .= "{$t}{$property}:{$value};$n";
 		}
 
