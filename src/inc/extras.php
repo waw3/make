@@ -154,3 +154,87 @@ function ttf_one_has_sidebar( $location ) {
 	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location );
 }
 endif;
+
+if ( ! function_exists( 'ttf_one_sidebar_description' ) ) :
+/**
+ * Output a sidebar description that reflects its current status.
+ *
+ * @since 1.0.0
+ *
+ * @param string $sidebar_id
+ *
+ * @return string
+ */
+function ttf_one_sidebar_description( $sidebar_id ) {
+	$description = '';
+
+	// Footer sidebars
+	if ( false !== strpos( $sidebar_id, 'footer-' ) ) {
+		$column = (int) str_replace( 'footer-', '', $sidebar_id );
+		$column_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
+
+		if ( $column > $column_count ) {
+			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the Theme Customizer.', 'ttf-one' );
+		}
+	}
+	// Other sidebars
+	else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
+		$location = str_replace( 'sidebar-', '', $sidebar_id );
+
+		$enabled_views = ttf_one_sidebar_list_enabled( $location );
+
+		// Not enabled anywhere
+		if ( empty( $enabled_views ) ) {
+			$description = __( 'This widget area is currently disabled. Enable it in the "Main" section of the Theme Customizer.', 'ttf-one' );
+		}
+		// List enabled views
+		else {
+			$description = sprintf(
+				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Main" section of the Theme Customizer.', 'ttf-one' ),
+				esc_html( implode( _x( ', ', 'list item separator', 'ttf-one' ), $enabled_views ) )
+			);
+		}
+	}
+
+	return esc_html( $description );
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_sidebar_list_enabled' ) ) :
+/**
+ * Compile a list of views where a particular sidebar is enabled.
+ *
+ * @since 1.0.0
+ *
+ * @param string $location
+ *
+ * @return array
+ */
+function ttf_one_sidebar_list_enabled( $location ) {
+	$enabled_views = array();
+
+	$theme_mods = get_theme_mods();
+	foreach ( $theme_mods as $key => $value ) {
+		if ( false !== strpos( $key, 'main-sidebar-' . $location ) ) {
+			if ( 1 === $value ) {
+				switch ( $key ) {
+					case 'main-sidebar-' . $location . '-posts' :
+						$enabled_views[] = __( 'Posts', 'ttf-one' );
+						break;
+					case 'main-sidebar-' . $location . '-pages' :
+						$enabled_views[] = __( 'Pages', 'ttf-one' );
+						break;
+					case 'main-sidebar-' . $location . '-archives' :
+						$enabled_views[] = __( 'Blog Page & Archives', 'ttf-one' );
+						break;
+					case 'main-sidebar-' . $location . '-search' :
+						$enabled_views[] = __( 'Search Results', 'ttf-one' );
+						break;
+				}
+			}
+		}
+	}
+
+	return $enabled_views;
+}
+endif;

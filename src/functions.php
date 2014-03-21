@@ -87,48 +87,54 @@ if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
  */
 function ttf_one_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Left Sidebar', 'ttf-one' ),
 		'id'            => 'sidebar-left',
+		'name'          => __( 'Left Sidebar', 'ttf-one' ),
+		'description'   => ttf_one_sidebar_description( 'sidebar-left' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Right Sidebar', 'ttf-one' ),
 		'id'            => 'sidebar-right',
+		'name'          => __( 'Right Sidebar', 'ttf-one' ),
+		'description'   => ttf_one_sidebar_description( 'sidebar-right' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 1', 'ttf-one' ),
 		'id'            => 'footer-1',
+		'name'          => __( 'Footer 1', 'ttf-one' ),
+		'description'   => ttf_one_sidebar_description( 'footer-1' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 2', 'ttf-one' ),
 		'id'            => 'footer-2',
+		'name'          => __( 'Footer 2', 'ttf-one' ),
+		'description'   => ttf_one_sidebar_description( 'footer-2' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 3', 'ttf-one' ),
 		'id'            => 'footer-3',
+		'name'          => __( 'Footer 3', 'ttf-one' ),
+		'description'   => ttf_one_sidebar_description( 'footer-3' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 4', 'ttf-one' ),
 		'id'            => 'footer-4',
+		'name'          => __( 'Footer 4', 'ttf-one' ),
+		'description'   => ttf_one_sidebar_description( 'footer-4' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
