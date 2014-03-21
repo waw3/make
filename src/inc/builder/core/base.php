@@ -682,7 +682,7 @@ function ttf_one_get_wp_editor_id( $data, $is_js_template ) {
 	if ( $is_js_template ) {
 		$id = $id_base . 'temp';
 	} else {
-		$id = $id_base . $data['data']['section_number'];
+		$id = $id_base . $data['data']['id'];
 	}
 
 	return $id;
@@ -705,7 +705,7 @@ function ttf_one_get_section_name( $data, $is_js_template ) {
 	if ( $is_js_template ) {
 		$name .= '[{{{sectionNumber}}}]';
 	} else {
-		$name .= '[' . $data['data']['section_number'] . ']';
+		$name .= '[' . $data['data']['id'] . ']';
 	}
 
 	return $name;
