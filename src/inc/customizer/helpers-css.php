@@ -19,17 +19,29 @@ class TTF_One_CSS {
 	private static $instance;
 
 	/**
+	 * The array for storing added CSS rule data
 	 *
+	 * @since 1.0.0
+	 *
+	 * @var $data
 	 */
 	public $data = array();
 
 	/**
+	 * Optional line ending character for debug mode
 	 *
+	 * @since 1.0.0
+	 *
+	 * @var $line_ending
 	 */
 	private $line_ending = "";
 
 	/**
+	 * Optional tab character for debug mode
 	 *
+	 * @since 1.0.0
+	 *
+	 * @var $tab
 	 */
 	private $tab = "";
 
@@ -48,7 +60,11 @@ class TTF_One_CSS {
 	}
 
 	/**
+	 * Initialize the object.
 	 *
+	 * @since 1.0.0
+	 *
+	 * @return TTF_One_CSS
 	 */
 	function __construct() {
 		// Set line ending and tab
@@ -59,7 +75,13 @@ class TTF_One_CSS {
 	}
 
 	/**
+	 * Add a new CSS rule to the array.
 	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $data
+	 *
+	 * @return void
 	 */
 	public function add( $data ) {
 		if ( ! isset( $data['selectors'] ) || ! isset( $data['declarations'] ) ) {
@@ -109,7 +131,11 @@ class TTF_One_CSS {
 	}
 
 	/**
+	 * Compile the data array into standard CSS syntax
 	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function build() {
 		if ( empty( $this->data ) ) {
@@ -154,7 +180,14 @@ class TTF_One_CSS {
 	}
 
 	/**
+	 * Compile the selectors in a rule into a string.
 	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $selectors
+	 * @param string $tab
+	 *
+	 * @return string
 	 */
 	private function parse_selectors( $selectors, $tab = '' ) {
 		$n = $this->line_ending;
@@ -165,7 +198,14 @@ class TTF_One_CSS {
 	}
 
 	/**
+	 * Compile the declarations in a rule into a string.
 	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $declarations
+	 * @param string $tab
+	 *
+	 * @return string
 	 */
 	private function parse_declarations( $declarations, $tab = '' ) {
 		$n = $this->line_ending;
@@ -180,8 +220,9 @@ class TTF_One_CSS {
 		return $output;
 	}
 
-}
+} // end class
 
+if ( ! function_exists( 'ttf_one_get_css' ) ) :
 /**
  * Return the one TTF_One_CSS object.
  *
@@ -192,5 +233,8 @@ class TTF_One_CSS {
 function ttf_one_get_css() {
 	return TTF_One_CSS::instance();
 }
-
 endif;
+
+add_action( 'init', 'ttf_one_get_css', 1 );
+
+endif; // end if class_exists
