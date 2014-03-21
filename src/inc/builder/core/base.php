@@ -535,9 +535,10 @@ class TTF_One_Builder_Base {
 	 * @return mixed                 The combined data.
 	 */
 	public function get_section_data( $post_id ) {
-		$data      = array();
-		$ids       = get_post_meta( $post_id, '_ttf-one-section-ids', true );
-		$post_meta = get_post_meta( $post_id );
+		$data         = array();
+		$ordered_data = array();
+		$ids          = get_post_meta( $post_id, '_ttf-one-section-ids', true );
+		$post_meta    = get_post_meta( $post_id );
 
 		// Any meta containing the old keys should be deleted
 		if ( is_array( $post_meta ) ) {
@@ -557,7 +558,14 @@ class TTF_One_Builder_Base {
 			}
 		}
 
-		return $data;
+		// Reorder the data in the order specified by the section IDs
+		foreach ( $ids as $id ) {
+			if ( isset( $data[ $id ] ) ) {
+				$ordered_data[ $id ] = $data[ $id ];
+			}
+		}
+
+		return $ordered_data;
 	}
 
 	/**
