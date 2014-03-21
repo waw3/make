@@ -966,30 +966,18 @@ embed, iframe, object {
   float: left;
   width: 50%; }
   [class*="navigation"] .nav-previous a {
+    color: #171717;
+    font-weight: bold;
     text-decoration: none; }
-    [class*="navigation"] .nav-previous a:before {
-      position: relative;
-      content: "\f053";
-      font-family: FontAwesome;
-      top: 2px;
-      top: 0.13333rem;
-      padding-right: 6px;
-      padding-right: 0.4rem; }
 
 [class*="navigation"] .nav-next {
   float: right;
   width: 50%;
   text-align: right; }
   [class*="navigation"] .nav-next a {
+    color: #171717;
+    font-weight: bold;
     text-decoration: none; }
-    [class*="navigation"] .nav-next a:after {
-      position: relative;
-      content: "\f054";
-      font-family: FontAwesome;
-      top: 2px;
-      top: 0.13333rem;
-      padding-left: 6px;
-      padding-left: 0.4rem; }
 
 /* =Infinite Scroll
 ----------------------------------------------- */
