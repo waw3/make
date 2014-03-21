@@ -137,6 +137,7 @@ class TTF_One_Builder_Save {
 				$clean_sections[ $id ]                 = call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) );
 				$clean_sections[ $id ]['state']        = ( isset( $values['state'] ) ) ? sanitize_key( $values['state'] ) : 'open';
 				$clean_sections[ $id ]['section-type'] = $values['section-type'];
+				$clean_sections[ $id ]['id']           = $id;
 			}
 		}
 
