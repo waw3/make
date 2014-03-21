@@ -4,6 +4,9 @@
 .entry-header {
 	@include rem('margin-bottom', $base);
 }
+.entry-title {
+	@include rem('margin-top', $base/4);
+}
 .entry-date {
 	text-transform: uppercase;
 	@include rem('font-size', 12px);
@@ -20,6 +23,12 @@
 		&:hover {
 			color: $c;
 		}
+	}
+}
+.post {
+	@include rem('margin-top', $base*3);
+	&:first-of-type {
+		margin-top: 0; //reset
 	}
 }
 .post-categories,

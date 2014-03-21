@@ -900,6 +900,10 @@ embed, iframe, object {
   margin-bottom: 22px;
   margin-bottom: 1.46667rem; }
 
+.entry-title {
+  margin-top: 5.5px;
+  margin-top: 0.36667rem; }
+
 .entry-date {
   text-transform: uppercase;
   font-size: 12px;
@@ -917,6 +921,12 @@ embed, iframe, object {
     color: #b9bcbf; }
     .entry-footer a:hover {
       color: #0094c5; }
+
+.post {
+  margin-top: 66px;
+  margin-top: 4.4rem; }
+  .post:first-of-type {
+    margin-top: 0; }
 
 .post-categories, .post-tags {
   padding-left: 0;
