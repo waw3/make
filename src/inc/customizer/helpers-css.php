@@ -90,8 +90,9 @@ class TTF_One_CSS {
 		// Look for matching selector sets
 		$match = false;
 		foreach ( $this->data[$media] as $key => $rule ) {
-			$diff = array_diff( $rule['selectors'], $entry['selectors'] );
-			if ( empty( $diff ) ) {
+			$diff1 = array_diff( $rule['selectors'], $entry['selectors'] );
+			$diff2 = array_diff( $entry['selectors'], $rule['selectors'] );
+			if ( empty( $diff1 ) && empty( $diff2 ) ) {
 				$match = $key;
 				break;
 			}
