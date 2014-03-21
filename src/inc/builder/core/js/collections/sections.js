@@ -5,7 +5,7 @@ var oneApp = oneApp || {};
 	'use strict';
 
 	var Sections = Backbone.Collection.extend({
-		model: oneApp.Section,
+		model: oneApp.SectionModel,
 
 		$stage: $('#ttf-one-stage'),
 

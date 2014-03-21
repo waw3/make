@@ -120,7 +120,7 @@ var oneApp = oneApp || {};
 				sectionType = $section.attr('data-section-type');
 
 			// Build the model
-			var model = new oneApp.Section({
+			var model = new oneApp.SectionModel({
 				sectionType: sectionType,
 				sectionNumber: iterator
 			});
