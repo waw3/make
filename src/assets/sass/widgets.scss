@@ -9,6 +9,10 @@
 	@include rem('margin', 0 0 $base);
 	@include rem('padding-top', $base);
 	@include rem('font-size', 13px);
+	+ ul li:first-of-type,
+	+ ol li:first-of-type {
+		padding-top: 0; //reset
+	}
 }
 .widget {
 	max-width: 100%;

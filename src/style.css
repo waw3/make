@@ -1053,6 +1053,8 @@ embed, iframe, object {
   padding-top: 1.46667rem;
   font-size: 13px;
   font-size: 0.86667rem; }
+  .widget-title + ul li:first-of-type, .widget-title + ol li:first-of-type {
+    padding-top: 0; }
 
 .widget {
   max-width: 100%;
