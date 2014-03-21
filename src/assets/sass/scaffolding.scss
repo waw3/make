@@ -432,9 +432,18 @@ a {
 	@include rem('font-size', 12px);
 }
 .footer-social-links {
-	@include for(medium-screens) {
-		@include rem('font-size', 17px);
-	}
 	@include rem('margin', $base/2 0 0);
 	@include rem('font-size', 16px);
+}
+/*---------------------------------------------------------
+ Footer layout 2 (_scaffolding.scss)
+-------------------------------------------------------- */
+.footer-layout-2 {
+	.site-info,
+	.footer-text,
+	.footer-social-links {
+		float: none; //reset
+		clear: both;
+		text-align: center;
+	}
 }

@@ -580,10 +580,14 @@ a {
   margin:  0.73333rem 0 0;
   font-size: 16px;
   font-size: 1.06667rem; }
-  @media screen and (min-width: 800px) {
-    .footer-social-links {
-      font-size: 17px;
-      font-size: 1.13333rem; } }
+
+/*---------------------------------------------------------
+ Footer layout 2 (_scaffolding.scss)
+-------------------------------------------------------- */
+.footer-layout-2 .site-info, .footer-layout-2 .footer-text, .footer-layout-2 .footer-social-links {
+  float: none;
+  clear: both;
+  text-align: center; }
 
 /*---------------------------------------------------------
  4. Elements (_elements.scss)
