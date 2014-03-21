@@ -127,7 +127,9 @@ class TTF_One_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
 
 		// Add the sort input
-		//echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
+		$section_order = get_post_meta( $post_local->ID, '_ttf-one-section-ids', true );
+		$section_order = ( ! empty( $section_order ) ) ? implode( ',', $section_order ) : '';
+		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
 	}
 
 	/**
