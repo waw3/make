@@ -154,24 +154,26 @@ if ( ! function_exists( 'ttf_one_display_background' ) ) :
  *
  * @since  1.0.0
  *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
+ * @return void
  */
-function ttf_one_display_background( $css ) {
-	$background_image = get_theme_mod( 'background_image', false );
-	if ( false !== $background_image ) {
+function ttf_one_display_background() {
+	$background_image = get_theme_mod( 'background_image', ttf_one_get_default( 'background_image' ) );
+	if ( ! empty( $background_image ) ) {
 		// Get and escape the other properties
 		$background_size = ttf_one_sanitize_choice( get_theme_mod( 'background_size', ttf_one_get_default( 'background_size' ) ), 'background-size' );
 
 		// All variables are escaped at this point
-		$css .= 'body{background-size:' . $background_size . ';}';
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'body' ),
+			'declarations' => array(
+				'background-size' => $background_size
+			)
+		) );
 	}
-
-	return $css;
 }
 endif;
 
-add_filter( 'ttf_one_css', 'ttf_one_display_background' );
+add_action( 'ttf_one_css', 'ttf_one_display_background' );
 
 if ( ! function_exists( 'ttf_one_display_colors' ) ) :
 /**
@@ -183,18 +185,29 @@ if ( ! function_exists( 'ttf_one_display_colors' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_display_colors( $css ) {
+	// Escape values
 	$color_primary   = maybe_hash_hex_color( get_theme_mod( 'color-primary', ttf_one_get_default( 'color-primary' ) ) );
 	$color_secondary = maybe_hash_hex_color( get_theme_mod( 'color-secondary', ttf_one_get_default( 'color-secondary' ) ) );
 	$color_text      = maybe_hash_hex_color( get_theme_mod( 'color-text', ttf_one_get_default( 'color-text' ) ) );
+	$color_detail    = maybe_hash_hex_color( get_theme_mod( 'color-detail', ttf_one_get_default( 'color-detail' ) ) );
 
-	// All variables are escaped at this point
-	$css .= 'a{color:' . $color_primary . ';}button{color:' . $color_primary . ';}p{color:' . $color_text . ';}';
+	ttf_one_get_css()->add( array(
+		'selectors' => array( 'a', 'button' ),
+		'declarations' => array(
+			'color' => $color_primary
+		)
+	) );
 
-	return $css;
+	ttf_one_get_css()->add( array(
+		'selectors' => array( 'p' ),
+		'declarations' => array(
+			'color' => $color_text
+		)
+	) );
 }
 endif;
 
-add_filter( 'ttf_one_css', 'ttf_one_display_colors' );
+add_action( 'ttf_one_css', 'ttf_one_display_colors' );
 
 if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
 /**
@@ -205,12 +218,12 @@ if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
  * @return void
  */
 function ttf_one_display_favicons() {
-	$logo_favicon = get_theme_mod( 'logo-favicon', false );
+	$logo_favicon = get_theme_mod( 'logo-favicon', ttf_one_get_default( 'logo-favicon' ) );
 	if ( false !== $logo_favicon ) : ?>
 		<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
 	<?php endif;
 
-	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', false );
+	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttf_one_get_default( 'logo-apple-touch' ) );
 	if ( false !== $logo_apple_touch ) : ?>
 		<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
 	<?php endif;
@@ -225,10 +238,10 @@ if ( ! function_exists( 'ttf_one_display_subheader_styles' ) ) :
  *
  * @since  1.0.0
  *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
+ * @return voice
  */
-function ttf_one_display_subheader_styles( $css ) {
+function ttf_one_display_subheader_styles() {
+	// Escape values
 	$background_color        = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', ttf_one_get_default( 'header-subheader-background-color' ) ) );
 	$text_color              = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', ttf_one_get_default( 'header-subheader-text-color' ) ) );
 	$border_color            = maybe_hash_hex_color( get_theme_mod( 'header-subheader-border-color', ttf_one_get_default( 'header-subheader-border-color' ) ) );
@@ -236,31 +249,35 @@ function ttf_one_display_subheader_styles( $css ) {
 	$text_color_needed       = ( ttf_one_get_default( 'header-subheader-text-color' ) !== $text_color );
 	$border_color_needed     = ( ttf_one_get_default( 'header-subheader-border-color' ) !== $border_color );
 
-	if ( $background_color_needed || $text_color_needed || $border_color_needed ) {
-		$css .= '.sub-header{';
-
+	if ( $background_color_needed || $text_color_needed ) {
+		$data = array(
+			'selectors' => array( '.sub-header' ),
+			'declarations' => array()
+		);
 		if ( $background_color_needed ) {
-			$css .= 'background-color:' . $background_color . ';';
+			$data['declarations']['background-color'] = $background_color;
 		}
-
 		if ( $text_color_needed ) {
-			$css .= 'color:' . $text_color . ';';
+			$data['declarations']['color'] = $text_color;
 		}
 
-		$css .= '}';
-
-		if ( $border_color_needed ) {
-			$css .= '.sub-header,.header-social-links li:first-of-type,.header-social-links li a{';
-			$css .= 'border-color:' . $border_color . ';';
-			$css .= '}';
-		}
+		ttf_one_get_css()->add( $data );
 	}
 
-	return $css;
+	if ( $border_color_needed ) {
+		$data = array(
+			'selectors' => array( '.sub-header', '.header-social-links li:first-of-type', '.header-social-links li a' ),
+			'declarations' => array(
+				'border-color' => $border_color
+			)
+		);
+
+		ttf_one_get_css()->add( $data );
+	}
 }
 endif;
 
-add_filter( 'ttf_one_css', 'ttf_one_display_subheader_styles' );
+add_action( 'ttf_one_css', 'ttf_one_display_subheader_styles' );
 
 if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
 /**
@@ -346,7 +363,7 @@ class TTF_One_Logo {
 	 * @return TTF_One_Logo
 	 */
 	public function __construct() {
-		add_filter( 'ttf_one_css', array( $this, 'print_logo_css' ) );
+		add_action( 'ttf_one_css', array( $this, 'print_logo_css' ) );
 	}
 
 	/**
@@ -555,11 +572,9 @@ class TTF_One_Logo {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @param string $css
-	 *
-	 * @return string
+	 * @return void
 	 */
-	function print_logo_css( $css ) {
+	function print_logo_css() {
 		$size = apply_filters( 'ttf_one_custom_logo_max_width', '960' );
 
 		// Grab the logo information
@@ -568,60 +583,68 @@ class TTF_One_Logo {
 		// Both logo types are available
 		if ( $this->has_logo_by_type( 'logo-regular' ) && $this->has_logo_by_type( 'logo-retina' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-regular']['width'], $info['logo-regular']['height'], $size, false );
-			ob_start(); ?>
-			.custom-logo {
-				background-image: url("<?php echo addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ); ?>");
-				width: <?php echo absint( $final_dimensions['width'] ); ?>px;
-			}
-			.custom-logo a {
-				padding-bottom: <?php echo absint( $final_dimensions['ratio'] ); ?>%;
-			}
-			@media
-			(-webkit-min-device-pixel-ratio: 1.3),
-			(-o-min-device-pixel-ratio: 2.6/2),
-			(min--moz-device-pixel-ratio: 1.3),
-			(min-device-pixel-ratio: 1.3),
-			(min-resolution: 1.3dppx) {
-				.custom-logo {
-					background-image: url("<?php echo addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ); ?>");
-				}
-			}
-			<?php
-			$css .= ob_get_contents();
-			ob_end_clean();
+
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo' ),
+				'declarations' => array(
+					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ) . '")',
+					'width'            => absint( $final_dimensions['width'] ) . 'px'
+				)
+			) );
+
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo a' ),
+				'declarations' => array(
+					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
+				)
+			) );
+
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo' ),
+				'declarations' => array(
+					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ) . '")'
+				),
+				'media' => '(-webkit-min-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(min--moz-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx)'
+			) );
 		}
 		// Regular logo only
 		else if ( $this->has_logo_by_type( 'logo-regular' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-regular']['width'], $info['logo-regular']['height'], $size );
-			ob_start(); ?>
-			.custom-logo {
-			background-image: url("<?php echo addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ); ?>");
-			width: <?php echo absint( $final_dimensions['width'] ); ?>px;
-			}
-			.custom-logo a {
-			padding-bottom: <?php echo absint( $final_dimensions['ratio'] ); ?>%;
-			}
-			<?php
-			$css .= ob_get_contents();
-			ob_end_clean();
+
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo' ),
+				'declarations' => array(
+					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ) . '")',
+					'width'            => absint( $final_dimensions['width'] ) . 'px'
+				)
+			) );
+
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo a' ),
+				'declarations' => array(
+					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
+				)
+			) );
 		}
 		// Retina logo only
 		else if ( $this->has_logo_by_type( 'logo-retina' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-retina']['width'], $info['logo-retina']['height'], $size, true );
-			ob_start(); ?>
-			.custom-logo {
-				background-image: url("<?php echo addcslashes( esc_url_raw(  $info['logo-retina']['image'] ), '"' ); ?>");
-				width: <?php echo absint( $final_dimensions['width'] ); ?>px;
-			}
-			.custom-logo a {
-				padding-bottom: <?php echo absint( $final_dimensions['ratio'] ); ?>%;
-			}
-			<?php
-			$css .= ob_get_contents();
-			ob_end_clean();
-		}
 
-		return $css;
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo' ),
+				'declarations' => array(
+					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ) . '")',
+					'width'            => absint( $final_dimensions['width'] ) . 'px'
+				)
+			) );
+
+			ttf_one_get_css()->add( array(
+				'selectors' => array( '.custom-logo a' ),
+				'declarations' => array(
+					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
+				)
+			) );
+		}
 	}
 
 	/**
@@ -682,33 +705,48 @@ if ( ! function_exists( 'ttf_one_display_header_background' ) ) :
  *
  * @since  1.0.0
  *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
+ * @return void
  */
-function ttf_one_display_header_background( $css ) {
+function ttf_one_display_header_background() {
 	$background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttf_one_get_default( 'header-background-color' ) ) );
-
+	$background_color_needed = ( ttf_one_get_default( 'header-background-color' ) !== $background_color );
 	$background_image = get_theme_mod( 'header-background-image', ttf_one_get_default( 'header-background-image' ) );
-	if ( ! empty( $background_image ) ) {
-		// Get and escape the other properties
-		$background_size       = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', ttf_one_get_default( 'header-background-size' ) ), 'header-background-size' );
-		$background_repeat     = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', ttf_one_get_default( 'header-background-repeat' ) ), 'header-background-repeat' );
-		$background_position   = ttf_one_sanitize_choice( get_theme_mod( 'header-background-position', ttf_one_get_default( 'header-background-position' ) ), 'header-background-position' );
 
-		// Escape the image URL properly
-		$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
+	if ( $background_color_needed || ! empty( $background_image ) ) {
+		$data = array(
+			'selectors' => array( '.site-header-main' ),
+			'declarations' => array()
+		);
 
-		// All variables are escaped at this point
-		$css .= '.site-header-main{background:' . $background_color . ' url(' . $background_image . ') ' . $background_repeat . ';background-size:' . $background_size . ';background-position:' . $background_position . ' center;}';
-	} else {
-		$css .= '.site-header-main{background-color:' . $background_color . ';}';
+		if ( ! empty( $background_image ) ) {
+			// Get and escape the other properties
+			$background_size     = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', ttf_one_get_default( 'header-background-size' ) ), 'header-background-size' );
+			$background_repeat   = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', ttf_one_get_default( 'header-background-repeat' ) ), 'header-background-repeat' );
+			$background_position = ttf_one_sanitize_choice( get_theme_mod( 'header-background-position', ttf_one_get_default( 'header-background-position' ) ), 'header-background-position' );
+
+			// Escape the image URL properly
+			$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
+
+			// All variables are escaped at this point
+			$background = array(
+				'background-image' => 'url("' . $background_image . '")',
+				'background-repeat' => $background_repeat,
+				'background-size' => $background_size,
+				'background-position' => $background_position . ' center'
+			);
+			$data['declarations'] = array_merge( $data['declarations'], $background );
+		}
+
+		if ( $background_color_needed ) {
+			$data['declarations']['background-color'] = $background_color;
+		}
+
+		ttf_one_get_css()->add( $data );
 	}
-
-	return $css;
 }
 endif;
 
-add_filter( 'ttf_one_css', 'ttf_one_display_header_background' );
+add_action( 'ttf_one_css', 'ttf_one_display_header_background' );
 
 if ( ! function_exists( 'ttf_one_display_header_text_color' ) ) :
 /**

@@ -16,6 +16,7 @@ function ttf_one_customizer_init() {
 	require_once( get_template_directory() . $path . 'helpers.php' );
 	require_once( get_template_directory() . $path . 'helpers-defaults.php' );
 	require_once( get_template_directory() . $path . 'helpers-fonts.php' );
+	require_once( get_template_directory() . $path . 'helpers-css.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
@@ -190,15 +191,9 @@ if ( ! function_exists( 'ttf_one_display_customizations' ) ) :
  * @return void
  */
 function ttf_one_display_customizations() {
-	$css = apply_filters( 'ttf_one_css', '' );
+	do_action( 'ttf_one_css' );
 
-	if ( ! empty( $css ) ) {
-		// Note that the escaping responsibility for $css lies in the functions that filter "ttf_one_css" ?>
-<!-- Begin TTF_One Custom CSS -->
-<style type="text/css" media="all"><?php echo $css; ?></style>
-<!-- End TTF_One Custom CSS -->
-	<?php
-	}
+	echo ttf_one_get_css()->build();
 }
 endif;
 
