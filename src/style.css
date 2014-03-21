@@ -998,7 +998,10 @@ embed, iframe, object {
   float: left; }
 
 #sidebar-right {
-  float: right; }
+  float: left; }
+  @media screen and (min-width: 800px) {
+    #sidebar-right {
+      float: right; } }
 
 .site-content .container {
   clear: both;
@@ -1011,29 +1014,33 @@ embed, iframe, object {
 /*---------------------------------------------------------
  Left and right (_sidebars.scss)
 -------------------------------------------------------- */
-.has-left-sidebar .site-main {
-  margin-left: 9.58333%; }
-
-.has-right-sidebar .site-main, .has-left-sidebar .site-main {
-  width: 64.58333%; }
-.has-right-sidebar #sidebar-right, .has-left-sidebar #sidebar-right {
-  width: 25.83333%; }
+@media screen and (min-width: 800px) {
+  .has-left-sidebar .site-main {
+    margin-left: 9.58333%; }
+  .has-right-sidebar .site-main, .has-left-sidebar .site-main {
+    width: 64.58333%; }
+  .has-right-sidebar #sidebar-right, .has-left-sidebar #sidebar-right {
+    width: 25.83333%; } }
 
 /*---------------------------------------------------------
  Left and right together (_sidebars.scss)
 -------------------------------------------------------- */
-.has-left-sidebar.has-right-sidebar .entry-title {
-  font-size: 34px;
-  font-size: 2.26667rem; }
-.has-left-sidebar.has-right-sidebar .site-main {
-  width: 48.33333%;
-  margin-left: 3.33333%; }
-.has-left-sidebar.has-right-sidebar #sidebar-left, .has-left-sidebar.has-right-sidebar #sidebar-right {
-  width: 22.5%; }
+@media screen and (min-width: 800px) {
+  .has-left-sidebar.has-right-sidebar .entry-title {
+    font-size: 34px;
+    font-size: 2.26667rem; }
+  .has-left-sidebar.has-right-sidebar .site-main {
+    width: 48.33333%;
+    margin-left: 3.33333%; }
+  .has-left-sidebar.has-right-sidebar #sidebar-left, .has-left-sidebar.has-right-sidebar #sidebar-right {
+    width: 22.5%; } }
 
 /*---------------------------------------------------------
  8. Widgets (_widgets.scss)
 -------------------------------------------------------- */
+.widget-area {
+  max-width: 100%; }
+
 .widget-title {
   font-weight: bold;
   margin: 0 0 22px;

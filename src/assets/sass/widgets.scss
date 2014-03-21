@@ -1,6 +1,9 @@
 /*---------------------------------------------------------
  8. Widgets (_widgets.scss)
 -------------------------------------------------------- */
+.widget-area {
+	max-width: 100%;
+}
 .widget-title {
 	font-weight: bold;
 	@include rem('margin', 0 0 $base);
