@@ -14,9 +14,10 @@ function ttf_one_customizer_init() {
 
 	// Always load
 	require_once( get_template_directory() . $path . 'helpers.php' );
+	require_once( get_template_directory() . $path . 'helpers-css.php' );
 	require_once( get_template_directory() . $path . 'helpers-defaults.php' );
 	require_once( get_template_directory() . $path . 'helpers-fonts.php' );
-	require_once( get_template_directory() . $path . 'helpers-css.php' );
+	require_once( get_template_directory() . $path . 'helpers-logo.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttf_one_customizer_add_sections' );
