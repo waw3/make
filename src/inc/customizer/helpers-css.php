@@ -123,25 +123,28 @@ class TTF_One_CSS {
 			$all = $this->data['all'];
 			unset( $this->data['all'] );
 			$this->data['all'] = $all;
-			$this->data['all'] = array_reverse( $this->data['all'], true );
+			$this->data = array_reverse( $this->data );
 		}
 
 		$output = "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">$n";
 
 		foreach ( $this->data as $query => $ruleset ) {
+			$t = '';
+
 			if ( 'all' !== $query ) {
-				$output .= "@media $query \{$n";
+				$output .= '@media ' . $query . '{' . $n;
+				$t = $this->tab;
 			}
 
 			// Build each rule
 			foreach ( $ruleset as $rule ) {
-				$output .= $this->parse_selectors( $rule['selectors'] ) . '{' . $n;
-				$output .= $this->parse_declarations( $rule['declarations'] );
-				$output .= '}' . $n;
+				$output .= $this->parse_selectors( $rule['selectors'], $t ) . '{' . $n;
+				$output .= $this->parse_declarations( $rule['declarations'], $t );
+				$output .= $t . '}' . $n;
 			}
 
 			if ( 'all' !== $query ) {
-				$output .= "\}$n";
+				$output .= '}' . $n;
 			}
 		}
 
@@ -153,10 +156,10 @@ class TTF_One_CSS {
 	/**
 	 *
 	 */
-	private function parse_selectors( $selectors ) {
+	private function parse_selectors( $selectors, $tab = '' ) {
 		$n = $this->line_ending;
 
-		$output = implode( ", $n", $selectors );
+		$output = $tab . implode( ", {$n}{$tab}", $selectors );
 
 		return $output;
 	}
@@ -164,9 +167,9 @@ class TTF_One_CSS {
 	/**
 	 *
 	 */
-	private function parse_declarations( $declarations ) {
+	private function parse_declarations( $declarations, $tab = '' ) {
 		$n = $this->line_ending;
-		$t = $this->tab;
+		$t = $this->tab . $tab;
 
 		$output = '';
 
