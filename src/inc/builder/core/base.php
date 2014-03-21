@@ -386,7 +386,7 @@ class TTF_One_Builder_Base {
 					'ttfoneeditor' . $section['id'] . 'temp',
 				),
 				array(
-					'ttfoneeditor' . $section['id'] . '{{{ sectionNumber }}}',
+					'ttfoneeditor' . $section['id'] . '{{{ id }}}',
 				),
 				$html
 			);
@@ -703,7 +703,7 @@ function ttf_one_get_section_name( $data, $is_js_template ) {
 	$name = 'ttf-one-section';
 
 	if ( $is_js_template ) {
-		$name .= '[{{{sectionNumber}}}]';
+		$name .= '[{{{ id }}}]';
 	} else {
 		$name .= '[' . $data['data']['id'] . ']';
 	}

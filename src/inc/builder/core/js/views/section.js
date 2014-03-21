@@ -20,7 +20,7 @@
 
 		initialize: function (options) {
 			this.model = options.model;
-			this.id = 'ttf-one-section-' + this.model.get('sectionNumber');
+			this.idAttr = 'ttf-one-section-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
 
 			_.templateSettings = {
@@ -32,7 +32,7 @@
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.model.toJSON())).addClass('ttf-one-section-' + this.model.get('sectionType')).attr('id', this.id);
+			this.$el.html(this.template(this.model.toJSON())).addClass('ttf-one-section-' + this.model.get('sectionType')).attr('id', this.idAttr);
 			return this;
 		},
 
@@ -59,7 +59,7 @@
 
 		removeSection: function (evt) {
 			evt.preventDefault();
-			oneApp.removeSectionOrder(this.model.get('sectionNumber'));
+			oneApp.removeSectionOrder(this.model.get('id'));
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
 			this.$el.animate({

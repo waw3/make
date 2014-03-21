@@ -115,14 +115,14 @@ var oneApp = oneApp || {};
 	oneApp.initViews = function () {
 		$('.ttf-one-section').each(function () {
 			var $section = $(this),
-				id = $section.attr('id'),
-				iterator = $section.attr('data-iterator'),
+				idAttr = $section.attr('id'),
+				id = $section.attr('data-iterator'),
 				sectionType = $section.attr('data-section-type');
 
 			// Build the model
 			var model = new oneApp.SectionModel({
 				sectionType: sectionType,
-				sectionNumber: iterator
+				id: id
 			});
 
 			console.log( model );
@@ -130,7 +130,7 @@ var oneApp = oneApp || {};
 			// Build the view
 			new oneApp.SectionView({
 				model: model,
-				el: $('#' + id),
+				el: $('#' + idAttr),
 				serverRendered: true
 			});
 		});

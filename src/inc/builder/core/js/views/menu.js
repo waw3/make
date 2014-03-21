@@ -34,7 +34,7 @@ var oneApp = oneApp || {};
 			// Add a new model to the collection with the specified section type
 			oneApp.sections.create({
 				sectionType: sectionType,
-				sectionNumber: new Date().getTime()
+				id: new Date().getTime()
 			});
 		},
 
@@ -48,14 +48,16 @@ var oneApp = oneApp || {};
 			var html = view.render().el;
 			this.$stage.append(html);
 
+			
+
 			// Scroll to the new section
 			this.$scrollHandle.animate({
-				scrollTop: parseInt($('#' + view.id).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
+				scrollTop: parseInt($('#' + view.idAttr).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
 			}, 800, 'easeOutQuad');
 
 			oneApp.sections.toggleStageClass();
-			oneApp.initAllEditors(view.id, section);
-			oneApp.addSectionOrder(section.get('sectionNumber'));
+			oneApp.initAllEditors(view.idAttr, section);
+			oneApp.addSectionOrder(section.get('id'));
 		},
 
 		menuToggle: function(evt) {
