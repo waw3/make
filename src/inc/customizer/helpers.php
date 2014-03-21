@@ -106,23 +106,21 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'general-layout' :
 			$allowed_choices = array( 'full-width', 'boxed' );
 			break;
+		case 'background_size' :
+		case 'header-background-size' :
 		case 'main-background-size' :
 		case 'footer-background-size' :
-		case 'background-size' :
 			$allowed_choices = array( 'auto', 'cover', 'contain' );
 			break;
+		case 'header-background-repeat' :
 		case 'main-background-repeat' :
 		case 'footer-background-repeat' :
-		case 'background-repeat' :
 			$allowed_choices = array( 'no-repeat', 'repeat', 'repeat-x', 'repeat-y' );
 			break;
+		case 'header-background-position' :
 		case 'main-background-position' :
 		case 'footer-background-position' :
-		case 'background-position' :
 			$allowed_choices = array( 'left', 'center', 'right' );
-			break;
-		case 'background-attachment' :
-			$allowed_choices = array( 'fixed', 'scroll' );
 			break;
 		case 'header-layout' :
 			$allowed_choices = array( 1, 2, 3 );
