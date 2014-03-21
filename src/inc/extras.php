@@ -15,6 +15,7 @@ function ttf_one_page_menu_args( $args ) {
 }
 add_filter( 'wp_page_menu_args', 'ttf_one_page_menu_args' );
 
+if ( ! function_exists( 'ttf_one_body_classes' ) ) :
 /**
  * Adds custom classes to the array of body classes.
  *
@@ -27,8 +28,20 @@ function ttf_one_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
+	// Left Sidebar
+	if ( true === ttf_one_has_sidebar( 'left' ) ) {
+		$classes[] = 'has-left-sidebar';
+	}
+
+	// Right Sidebar
+	if ( true === ttf_one_has_sidebar( 'right' ) ) {
+		$classes[] = 'has-right-sidebar';
+	}
+
 	return $classes;
 }
+endif;
+
 add_filter( 'body_class', 'ttf_one_body_classes' );
 
 /**
