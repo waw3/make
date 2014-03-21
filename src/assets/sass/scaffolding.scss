@@ -88,6 +88,40 @@ a {
 	@extend .clear;
 }
 /*---------------------------------------------------------
+ Header layout 2 (_scaffolding.scss)
+-------------------------------------------------------- */
+.header-layout-2 {
+	.site-branding,
+	.site-navigation {
+		float: none; //reset
+		max-width: 100%;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+}
+/*---------------------------------------------------------
+ Header layout 3 (_scaffolding.scss)
+-------------------------------------------------------- */
+.header-layout-3 {
+	.site-navigation {
+		float: left; //reset
+		max-width: 100%;
+		width: 100%;
+		text-align: left;
+	}
+	.search-form {
+		@include for(medium-screens) {
+			float: right;
+		}
+		@include rem('font-size', 13px);
+	}
+	.search-submit {
+		display: none;
+	}
+}
+/*---------------------------------------------------------
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
@@ -108,7 +142,6 @@ a {
 	}
 }
 .site-description {
-	color: $e;
 	display: block;
 	text-transform: uppercase;
 	@include rem('margin-bottom', $base);
@@ -121,6 +154,7 @@ a {
 .custom-logo {
 	background-repeat: no-repeat;
 	background-size: contain;
+	background-position: center center;
 	display: block;
 	max-width: 100%;
 	a {
@@ -149,9 +183,9 @@ a {
 	.search-form {
 		@include for(large-screens) {
 			@include rem('padding', $base/2 0 $base/2 $gut/2);
-			@include rem('font-size', 13px);
 			float: right;
 		}
+		@include rem('font-size', 13px);
 		@include rem('padding', $base/2 0);
 		input {
 			@include for(large-screens) {
@@ -251,19 +285,6 @@ a {
 			}
 			@include rem('padding', 14px 4px);
 		}
-	}
-}
-/*---------------------------------------------------------
- Header layout 2 (_scaffolding.scss)
--------------------------------------------------------- */
-.header-layout-2 {
-	.site-branding,
-	.site-navigation {
-		float: none; //reset
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
 	}
 }
 /*---------------------------------------------------------

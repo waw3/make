@@ -12,7 +12,7 @@
 }
 .site-content .container {
 	clear: both;
-	@include rem('margin-bottom', $base*2);
+	@include rem('padding-bottom', $base*2);
 	@extend .clear;
 }
 .site-main {
