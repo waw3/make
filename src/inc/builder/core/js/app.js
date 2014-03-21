@@ -125,8 +125,6 @@ var oneApp = oneApp || {};
 				id: id
 			});
 
-			console.log( model );
-
 			// Build the view
 			new oneApp.SectionView({
 				model: model,
