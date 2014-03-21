@@ -155,6 +155,14 @@ function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $af
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_maybe_show_sidebar' ) ) :
+/**
+ * Output the sidebar markup if the current view calls for it.
+ *
+ * @since 1.0.0
+ *
+ * @param $location
+ */
 function ttf_one_maybe_show_sidebar( $location ) {
 	// Get sidebar status
 	$show_sidebar = ttf_one_has_sidebar( $location );
@@ -176,3 +184,4 @@ function ttf_one_maybe_show_sidebar( $location ) {
 		<?php }
 	}
 }
+endif;

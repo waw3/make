@@ -84,6 +84,16 @@ function ttf_one_setup_author() {
 }
 add_action( 'wp', 'ttf_one_setup_author' );
 
+if ( ! function_exists( 'ttf_one_has_sidebar' ) ) :
+/**
+ * Determine if the current view should show a sidebar in the given location.
+ *
+ * @since 1.0.0
+ *
+ * @param string $location
+ *
+ * @return bool
+ */
 function ttf_one_has_sidebar( $location ) {
 	global $wp_registered_sidebars;
 
@@ -130,3 +140,4 @@ function ttf_one_has_sidebar( $location ) {
 	// Filter and return
 	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location );
 }
+endif;
