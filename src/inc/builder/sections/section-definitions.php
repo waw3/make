@@ -41,6 +41,7 @@ class TTF_One_Section_Definitions {
 	 */
 	public function __construct() {
 		$this->register_blank_section();
+		$this->register_gallery_section();
 	}
 
 	/**
@@ -83,6 +84,38 @@ class TTF_One_Section_Definitions {
 		}
 
 		return $clean_data;
+	}
+
+	/**
+	 * Register the gallery section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return void
+	 */
+	public function register_gallery_section() {
+		ttf_one_add_section(
+			'gallery',
+			_x( 'Gallery', 'section name', 'ttf-one' ),
+			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
+			__( 'Display media elements using a modern slider.', 'ttf-one' ),
+			array( $this, 'save_gallery' ),
+			'/inc/builder/sections/builder-templates/gallery',
+			'/inc/builder/sections/front-end-templates/gallery',
+			300
+		);
+	}
+
+	/**
+	 * Save the data for the gallery section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $data    The data from the $_POST array for the section.
+	 * @return array             The cleaned data.
+	 */
+	public function save_gallery( $data ) {
+		return $data;
 	}
 }
 endif;
