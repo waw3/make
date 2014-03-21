@@ -154,12 +154,12 @@ if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
  */
 function ttf_one_display_favicons() {
 	$logo_favicon = get_theme_mod( 'logo-favicon', ttf_one_get_default( 'logo-favicon' ) );
-	if ( false !== $logo_favicon ) : ?>
+	if ( ! empty( $logo_favicon ) ) : ?>
 		<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
 	<?php endif;
 
 	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttf_one_get_default( 'logo-apple-touch' ) );
-	if ( false !== $logo_apple_touch ) : ?>
+	if ( ! empty( $logo_apple_touch ) ) : ?>
 		<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
 	<?php endif;
 }
