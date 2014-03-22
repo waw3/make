@@ -129,6 +129,7 @@ a {
 .site-title {
 	margin: 0; //reset
 	font-weight: bold;
+	font-family: $heading;
 	@include rem('font-size', 34px);
 	a {
 		color: inherit;
