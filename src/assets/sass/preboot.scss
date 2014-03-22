@@ -19,8 +19,8 @@ $d:                 $secondary;
 $e:                 $detail;
 
 //Fonts
-$sans:        		'Open Sans', Helvetica, Arial, sans-serif;
-$heading:        	'Montserrat', Helvetica, Arial, sans-serif;
+$sans:        		Helvetica, Arial, sans-serif;
+$heading:        	Helvetica, Arial, sans-serif;
 $mono: 				"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 //Break points
@@ -68,7 +68,7 @@ $rule: 				1px solid $b;
 	}
 }
 
-$baseline-px: 15px;
+$baseline-px: 16px;
 
 @mixin rem($property, $px-values) {
 	// Convert the baseline into rems

@@ -2,7 +2,7 @@
  3. Scaffolding (_scaffolding.scss)
 -------------------------------------------------------- */
 html {
-	font-size: 93.75%; //15px
+	font-size: 100%; //16px
 }
 /*---------------------------------------------------------
  Detail (_scaffolding.scss)
@@ -71,6 +71,8 @@ p,ul,ol,dl,blockquote {
 -------------------------------------------------------- */
 a {
 	color: $c;
+	font-weight: bold;
+	text-decoration: none; //reset
 }
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
@@ -148,7 +150,7 @@ a {
 	display: block;
 	text-transform: uppercase;
 	@include rem('margin-bottom', $base);
-	@include rem('font-size', 11px);
+	@include rem('font-size', 12px);
 	@include rem('letter-spacing', 1px);
 }
 /*---------------------------------------------------------
@@ -451,10 +453,11 @@ a {
 		background-color: $a;
 	}
 	.site-info,
-	.footer-text,
-	.footer-social-links {
+	.footer-text {
 		float: left;
-		clear: both;
+	}
+	.footer-social-links {
+		float: right;
 	}
 	.site-info,
 	.site-info a {
@@ -464,8 +467,6 @@ a {
 		color: inherit;
 		font-weight: bold;
 		text-decoration: none; //reset
-		text-transform: uppercase;
-		@include rem('letter-spacing', 2px);
 		@include rem('font-size', 12px);
 		.theme-by {
 			font-weight: normal;
@@ -476,6 +477,10 @@ a {
 		}
 	}
 }
+.footer-widget-container {
+	float: left;
+	width: 100%;
+}
 .footer-text {
 	@include for(medium-screens) {
 		@include rem('font-size', 13px);
@@ -484,8 +489,7 @@ a {
 	@include rem('font-size', 12px);
 }
 .footer-social-links {
-	@include rem('margin', $base/2 0 0);
-	@include rem('font-size', 16px);
+	margin: 0; //reset
 }
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)
