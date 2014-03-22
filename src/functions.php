@@ -154,9 +154,6 @@ function ttf_one_scripts() {
 
 	// Google fonts
 	if ( '' !== $google_request = ttf_one_get_google_font_request() ) {
-		// Add fonts to head CSS block
-		add_filter( 'ttf_one_css', 'ttf_one_css_fonts' );
-
 		// Enqueue the fonts
 		wp_enqueue_style(
 			'ttf-one-google-fonts',

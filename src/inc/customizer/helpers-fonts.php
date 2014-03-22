@@ -10,74 +10,152 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
  * @return string            The modified CSS.
  */
 function ttf_one_css_fonts( $css ) {
-	// Site Title
-	$font_site_title      = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
-	$font_site_title_size = get_theme_mod( 'font-site-title-size', false );
-	$font_needed          = ( ttf_one_get_default( 'font-site-title' ) !== $font_site_title && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) );
-	$font_size_needed     = ( false !== $font_site_title_size );
+	/**
+	 * Site Title
+	 */
+	// Get and escape options
+	$font_site_title = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
+	$font_site_title_size = absint( get_theme_mod( 'font-site-title-size', ttf_one_get_default( 'font-site-title-size' ) ) );
 
-	if ( $font_needed || $font_size_needed ) {
-		$css .= '.font-site-title,.site-title{';
-
-		if ( $font_needed ) {
-			$css .= 'font-family:' . $font_site_title . ', Helvetica, Arial, sans-serif;';
-		}
-
-		if ( $font_size_needed ) {
-			$css .= 'font-size:' . absint( $font_site_title_size ) .'px;font-size:' . ttf_one_convert_px_to_rem( $font_site_title_size ) . 'rem;';
-		}
-
-		$css .= '}';
+	// Site Title Font
+	if ( $font_site_title !== ttf_one_get_default( 'font-site-title' ) && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) ) {
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.site-title', '.font-site-title' ),
+			'declarations' => array(
+				'font-family' => "'" . $font_site_title . '\', Helvetica, Arial, sans-serif'
+			)
+		) );
 	}
 
-	// Headers
-	$font_header      = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
-	$font_header_size = get_theme_mod( 'font-header-size', false );
-	$font_needed      = ( ttf_one_get_default( 'font-header' ) !== $font_header && array_key_exists( $font_header, ttf_one_get_google_fonts() ) );
-	$font_size_needed = ( false !== $font_header_size );
-
-	if ( $font_needed ) {
-		$css .= '.font-header,h1,h2,h3,h4,h5,h6{font-family:' . $font_header . ', Helvetica, Arial, sans-serif;}';
+	// Site Title Font Size
+	if ( $font_site_title_size !== ttf_one_get_default( 'font-site-title-size' ) ) {
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.site-title', '.font-site-title' ),
+			'declarations' => array(
+				'font-size-px' => $font_site_title_size . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( $font_site_title_size ) . 'rem'
+			)
+		) );
 	}
 
-	if ( $font_size_needed ) {
-		$css .= '.font-header,h1{font-size:' . $font_header_size . 'px;font-size:' . ttf_one_convert_px_to_rem( $font_header_size ) . 'rem;}';
-		$css .= 'h2{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 68 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 68 ) ) . 'rem;}';
-		$css .= 'h3{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 48 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 48 ) ) . 'rem;}';
-		$css .= 'h4{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 48 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 48 ) ) . 'rem;}';
-		$css .= 'h5{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 32 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 32 ) ) . 'rem;}';
-		$css .= 'h6{font-size:' . ttf_one_get_relative_font_size( $font_header_size, 28 ) . 'px;font-size:' . ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, 28 ) ) . 'rem;}';
+	/**
+	 * Headers
+	 */
+	// Get and escape options
+	$font_header = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
+	$font_header_size = absint( get_theme_mod( 'font-header-size', ttf_one_get_default( 'font-header-size' ) ) );
+
+	// Relative sizes of the headers
+	$percent = array(
+		'h1' => 100,
+		'h2' => 68,
+		'h3' => 48,
+		'h4' => 48,
+		'h5' => 32,
+		'h6' => 28
+	);
+
+	// Header Font
+	if ( $font_header !== ttf_one_get_default( 'font-header' ) && array_key_exists( $font_header, ttf_one_get_google_fonts() ) ) {
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
+			'declarations' => array(
+				'font-family' => "'" . $font_header . '\', Helvetica, Arial, sans-serif'
+			)
+		) );
 	}
 
-	// Body
-	$font_body        = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
-	$font_body_size   = get_theme_mod( 'font-body-size', false );
-	$font_needed      = ( ttf_one_get_default( 'font-body' ) !== $font_body && array_key_exists( $font_body, ttf_one_get_google_fonts() ) );
-	$font_size_needed = ( false !== $font_header_size );
-
-	if ( $font_needed || $font_size_needed ) {
-		if ( $font_size_needed ) {
-			$css .= 'html{';
-			$css .= 'font-size:' . ( absint( $font_body_size ) / 16 * 100 ) . '%;';
-			$css .= '}';
-		}
-
-		$css .= '.font-body,body{';
-
-		if ( $font_needed ) {
-			$css .= 'font-family:' . $font_body . ', Helvetica, Arial, sans-serif;';
-		}
-
-		if ( $font_size_needed ) {
-			$css .= 'font-size:' . absint( $font_body_size ) .'px;font-size:' . ttf_one_convert_px_to_rem( $font_body_size ) . 'rem;';
-		}
-
-		$css .= '}';
+	// Header Font Sizes
+	if ( $font_site_title_size !== ttf_one_get_default( 'font-site-title-size' ) ) {
+		// h1
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h1', '.font-header' ),
+			'declarations' => array(
+				'font-size-px' => $font_header_size . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( $font_header_size ) . 'rem'
+			)
+		) );
+		// h2
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h2' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) ) . 'rem'
+			)
+		) );
+		// h3
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h3' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h3'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h3'] ) ) . 'rem'
+			)
+		) );
+		// h4
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h4' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h4'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h4'] ) ) . 'rem'
+			)
+		) );
+		// h5
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h5' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h5'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h5'] ) ) . 'rem'
+			)
+		) );
+		// h6
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'h6' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) ) . 'rem'
+			)
+		) );
 	}
 
-	return $css;
+	/**
+	 * Body
+	 */
+	// Get and escape options
+	$font_body = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
+	$font_body_size = absint( get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) ) );
+
+	// Body Font
+	if ( $font_body !== ttf_one_get_default( 'font-body' ) && array_key_exists( $font_body, ttf_one_get_google_fonts() ) ) {
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'body', '.font-body' ),
+			'declarations' => array(
+				'font-family' => "'" . $font_body . '\', Helvetica, Arial, sans-serif'
+			)
+		) );
+	}
+
+	// Body Font Size
+	if ( $font_body_size !== ttf_one_get_default( 'font-body-size' ) ) {
+		// html
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'html' ),
+			'declarations' => array(
+				'font-size' => ( absint( $font_body_size ) / 16 * 100 ) . '%'
+			)
+		) );
+		// body
+		ttf_one_get_css()->add( array(
+			'selectors' => array( 'body', '.font-body' ),
+			'declarations' => array(
+				'font-size-px' => $font_body_size . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( $font_body_size ) . 'rem'
+			)
+		) );
+	}
 }
 endif;
+
+add_action( 'ttf_one_css', 'ttf_one_css_fonts' );
 
 if ( ! function_exists( 'ttf_one_get_relative_font_size' ) ) :
 /**
