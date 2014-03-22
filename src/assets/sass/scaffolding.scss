@@ -76,12 +76,14 @@ a {
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-header {
+	color: $b;
 	float: left;
 	width: 100%;
-	@include rem('margin-bottom', $base);
+	//@include rem('margin-bottom', $base);
 	@extend .clear;
 }
 .site-header-main {
+	background-color: $a;
 	float: left;
 	width: 100%;
 	@include rem('padding', $base*2 0);
@@ -129,7 +131,7 @@ a {
 	font-weight: bold;
 	@include rem('font-size', 34px);
 	a {
-		color: $b;
+		color: inherit;
 	}
 }
 .site-branding {
@@ -397,12 +399,24 @@ a {
 	}
 }
 /*---------------------------------------------------------
+ Main (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-content {
+	background-color: $a;
+	float: left;
+	width: 100%;
+	@include rem('padding', $base 0);
+	@extend .clear;
+}
+/*---------------------------------------------------------
  Footer (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-footer {
 	color: #464849;
-	background-color: $c;
+	background-color: $d;
 	@include rem('padding', $base 0 $base*2);
+	float: left;
+	width: 100%;
 	@extend .clear;
 	*:not(select) {
 		border-color: $e !important;
