@@ -77,7 +77,7 @@ function ttf_one_option_defaults() {
 		'main-sidebar-right-search' => 1,
 		// Footer
 		'footer-text-color' => '#464849',
-		'footer-border-color' => '#eaecee',
+		'footer-border-color' => '#b9bcbf',
 		'footer-background-color' => '#eaecee',
 		'footer-background-image' => '',
 		'footer-background-repeat' => 'no-repeat',
