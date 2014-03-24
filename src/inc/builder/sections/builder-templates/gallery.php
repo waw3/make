@@ -30,19 +30,7 @@
 </div>
 
 <div class="ttf-one-gallery-items">
-	<div class="ttf-one-gallery-item">
-		<div class="ttf-one-titlediv">
-			<div class="ttf-one-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="" autocomplete="off" />
-			</div>
-		</div>
-
-		<div class="ttf-one-titlediv">
-			<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[image-link]" class="ttf-one-link widefat" value="" autocomplete="off" />
-		</div>
-
-		<?php ttf_one_get_builder_base()->add_uploader( $section_name, 0 ); ?>
-	</div>
+	<?php get_template_part( '/inc/builder/sections/builder-templates/gallery', 'item' ); ?>
 </div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
