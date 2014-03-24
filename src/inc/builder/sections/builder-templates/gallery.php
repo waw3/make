@@ -28,5 +28,4 @@
 </div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
-
 <?php ttf_one_load_section_footer(); ?>
