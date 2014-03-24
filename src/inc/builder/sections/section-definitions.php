@@ -117,6 +117,38 @@ class TTF_One_Section_Definitions {
 	public function save_gallery( $data ) {
 		return $data;
 	}
+
+	/**
+	 * Register the text section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return void
+	 */
+	public function register_text_section() {
+		ttf_one_add_section(
+			'text',
+			_x( 'Text', 'section name', 'ttf-one' ),
+			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
+			__( 'Organize multiple columns of content.', 'ttf-one' ),
+			array( $this, 'save_gallery' ),
+			'/inc/builder/sections/builder-templates/text',
+			'/inc/builder/sections/front-end-templates/text',
+			100
+		);
+	}
+
+	/**
+	 * Save the data for the text section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $data    The data from the $_POST array for the section.
+	 * @return array             The cleaned data.
+	 */
+	public function save_text( $data ) {
+		return $data;
+	}
 }
 endif;
 
