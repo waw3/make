@@ -586,7 +586,7 @@ a {
       margin-right: 0; }
   .site-footer textarea, .site-footer input, .site-footer .widget_tag_cloud a {
     background-color: #ffffff; }
-  .site-footer .site-info, .site-footer .footer-text {
+  .site-footer .site-info {
     float: left; }
   .site-footer .footer-social-links {
     float: right; }
@@ -614,6 +614,7 @@ a {
   width: 100%; }
 
 .footer-text {
+  clear: both;
   margin-bottom: 5.5px;
   margin-bottom: 0.34375rem;
   font-size: 12px;
@@ -633,6 +634,9 @@ a {
   float: none;
   clear: both;
   text-align: center; }
+.footer-layout-2 .footer-social-links {
+  margin-top: 11px;
+  margin-top: 0.6875rem; }
 
 /*---------------------------------------------------------
  4. Elements (_elements.scss)

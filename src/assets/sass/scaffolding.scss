@@ -453,8 +453,7 @@ a {
 	.widget_tag_cloud a {
 		background-color: $a;
 	}
-	.site-info,
-	.footer-text {
+	.site-info {
 		float: left;
 	}
 	.footer-social-links {
@@ -486,6 +485,7 @@ a {
 	@include for(medium-screens) {
 		@include rem('font-size', 13px);
 	}
+	clear: both;
 	@include rem('margin-bottom', $base/4);
 	@include rem('font-size', 12px);
 }
@@ -502,5 +502,8 @@ a {
 		float: none; //reset
 		clear: both;
 		text-align: center;
+	}
+	.footer-social-links {
+		@include rem('margin-top', $base/2);
 	}
 }
