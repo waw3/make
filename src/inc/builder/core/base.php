@@ -120,7 +120,7 @@ class TTF_One_Builder_Base {
 		foreach ( $section_data as $section ) {
 			if ( isset( $registered_sections[ $section['section-type'] ]['display_template'] ) ) {
 				// Print the saved section
-				$this->_load_section( $registered_sections[ $section['section-type'] ], $section );
+				$this->load_section( $registered_sections[ $section['section-type'] ], $section );
 			}
 		}
 
@@ -338,7 +338,7 @@ class TTF_One_Builder_Base {
 	 * @param  array     $data        The data payload to inject into the section.
 	 * @return void
 	 */
-	private function _load_section( $section, $data = array() ) {
+	public function load_section( $section, $data = array() ) {
 		if ( ! isset( $section['id'] ) ) {
 			return;
 		}
@@ -378,7 +378,7 @@ class TTF_One_Builder_Base {
 			<script type="text/html" id="tmpl-ttf-one-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
-			$this->_load_section( $section, array() );
+			$this->load_section( $section, array() );
 			$html = ob_get_clean();
 
 			$html = str_replace(
