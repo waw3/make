@@ -10,6 +10,7 @@ html {
 body {
 	background-color: $d;
 	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
 	&.boxed {
 		background-color: $d;
 		.container {

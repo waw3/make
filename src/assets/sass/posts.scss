@@ -5,10 +5,12 @@
 	@include rem('margin-bottom', $base);
 }
 .entry-title {
+	font-weight: bold;
 	@include rem('margin-top', $base/4);
 }
 .entry-date {
 	text-transform: uppercase;
+	font-weight: bold;
 	@include rem('font-size', 12px);
 	@include rem('letter-spacing', 1px);
 	a {
