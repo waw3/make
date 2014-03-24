@@ -131,7 +131,7 @@ class TTF_One_Section_Definitions {
 			_x( 'Text', 'section name', 'ttf-one' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
 			__( 'Organize multiple columns of content.', 'ttf-one' ),
-			array( $this, 'save_gallery' ),
+			array( $this, 'save_text' ),
 			'/inc/builder/sections/builder-templates/text',
 			'/inc/builder/sections/front-end-templates/text',
 			100
