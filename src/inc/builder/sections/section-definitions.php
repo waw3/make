@@ -40,10 +40,10 @@ class TTF_One_Section_Definitions {
 	 * @return TTF_One_Section_Definitions
 	 */
 	public function __construct() {
-		$this->register_blank_section();
-		$this->register_gallery_section();
 		$this->register_text_section();
 		$this->register_banner_section();
+		$this->register_gallery_section();
+		$this->register_blank_section();
 	}
 
 	/**
