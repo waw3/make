@@ -2,13 +2,15 @@
 <?php global $ttf_one_section_data, $ttf_one_is_js_template; ?>
 <?php $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template ); ?>
 
-<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
-<select id="ttf-one-gallery-columns">
-	<option value="1">1</option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value="4">4</option>
-</select>
+<div class="ttf-one-columns-select">
+	<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
+	<select id="ttf-one-gallery-columns">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select>
+</div>
 
 <label for="ttf-one-gallery-captions"><?php _e( 'Caption Style', 'ttf-one' ); ?></label>
 <select id="ttf-one-gallery-captions">
