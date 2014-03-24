@@ -44,6 +44,9 @@ class TTF_One_Section_Definitions {
 		$this->register_banner_section();
 		$this->register_gallery_section();
 		$this->register_blank_section();
+
+		// Add the section JS
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
 	/**
@@ -183,6 +186,32 @@ class TTF_One_Section_Definitions {
 
 		return $clean_data;
 	}
+
+	/**
+	 * Enqueue the JS and CSS for the admin.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $hook_suffix    The suffix for the screen.
+	 * @return void
+	 */
+	public function admin_enqueue_scripts( $hook_suffix ) {
+		// Only load resources if they are needed on the current page
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'ttf-section-behaviors',
+			get_template_directory_uri() . '/inc/builder/sections/js/section-behaviors.js',
+			array(
+				'ttf-one-builder',
+			),
+			TTF_ONE_VERSION,
+			true
+		);
+	}
+
 }
 endif;
 
