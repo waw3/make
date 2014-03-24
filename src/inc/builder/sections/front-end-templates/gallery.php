@@ -1,0 +1,1 @@
+<?php global $ttf_one_section_data; ?>
