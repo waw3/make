@@ -47,6 +47,9 @@ class TTF_One_Section_Definitions {
 
 		// Add the section JS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+
+		// Add additional templating
+		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 	}
 
 	/**
@@ -212,6 +215,34 @@ class TTF_One_Section_Definitions {
 		);
 	}
 
+	/**
+	 * Print out the JS section templates
+	 *
+	 * @since  1.0.
+	 *
+	 * @return void
+	 */
+	public function print_templates() {
+		global $hook_suffix, $typenow, $ttf_one_is_js_template;
+		$ttf_one_is_js_template = true;
+
+		// Only show when adding/editing pages
+		if ( 'page' !== $typenow || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
+			return;
+		}
+
+		// Print the templates : ?>
+		<script type="text/html" id="tmpl-ttf-one-gallery-item">
+			<?php
+			ob_start();
+			ttf_one_get_builder_base()->load_section( array( 'id' => 'gallery-item', 'builder_template' => '/inc/builder/sections/builder-templates/gallery-item' ), array() );
+			$html = ob_get_clean();
+			echo $html;
+			?>
+		</script>
+		<?php
+		unset( $GLOBALS['ttf_one_is_js_template'] );
+	}
 }
 endif;
 
