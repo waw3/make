@@ -1,7 +1,7 @@
 /* global Backbone, jQuery, _ */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function (window, Backbone, $, _, oneApp) {
+(function (window, Backbone, $, _, oneApp, $oneApp) {
 	'use strict';
 
 	oneApp.SectionModel = Backbone.Model.extend({
@@ -22,4 +22,4 @@ var oneApp = oneApp || {};
 	oneApp.SectionModel.prototype.sync = function () { return null; };
 	oneApp.SectionModel.prototype.fetch = function () { return null; };
 	oneApp.SectionModel.prototype.save = function () { return null; };
-})(window, Backbone, jQuery, _, oneApp);
+})(window, Backbone, jQuery, _, oneApp, $oneApp);

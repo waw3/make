@@ -1,7 +1,7 @@
 /*global jQuery */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function ($) {
+(function ($, oneApp, $oneApp) {
 	'use strict';
 
 	// Kickoff Backbone App
@@ -136,4 +136,4 @@ var oneApp = oneApp || {};
 
 	oneApp.initSortables();
 	oneApp.initViews();
-})(jQuery);
+})(jQuery, oneApp, $oneApp);

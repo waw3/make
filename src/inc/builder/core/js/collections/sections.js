@@ -1,7 +1,7 @@
 /* global Backbone, jQuery, _ */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function (window, Backbone, $, _, oneApp) {
+(function (window, Backbone, $, _, oneApp, $oneApp) {
 	'use strict';
 
 	var Sections = Backbone.Collection.extend({
@@ -21,4 +21,4 @@ var oneApp = oneApp || {};
 	});
 
 	oneApp.sections = new Sections();
-})(window, Backbone, jQuery, _, oneApp);
+})(window, Backbone, jQuery, _, oneApp, $oneApp);

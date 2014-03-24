@@ -1,5 +1,7 @@
 /* global Backbone, jQuery, _, wp:true, tinyMCE, switchEditors */
-(function (window, Backbone, $, _, oneApp) {
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+
+(function (window, Backbone, $, _, oneApp, $oneApp) {
 	'use strict';
 
 	oneApp.SectionView = Backbone.View.extend({
@@ -183,4 +185,4 @@
 			$set.show();
 		}
 	});
-})(window, Backbone, jQuery, _, oneApp);
+})(window, Backbone, jQuery, _, oneApp, $oneApp);

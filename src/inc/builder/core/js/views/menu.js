@@ -1,7 +1,7 @@
 /* global Backbone, jQuery, _, BasisBuilderApp, setUserSetting, deleteUserSetting, basisHTMLBuilderData */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function (window, Backbone, $, _) {
+(function (window, Backbone, $, _, oneApp, $oneApp) {
 	'use strict';
 
 	oneApp.MenuView = Backbone.View.extend({
@@ -89,4 +89,4 @@ var oneApp = oneApp || {};
 			}
 		}
 	});
-})(window, Backbone, jQuery, _);
+})(window, Backbone, jQuery, _, oneApp, $oneApp);

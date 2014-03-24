@@ -1,7 +1,7 @@
 /*global jQuery */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function ($) {
+(function ($, oneApp, $oneApp) {
 	'use strict';
 
 	// Initiate a new TinyMCE editor instance
@@ -79,4 +79,4 @@ var oneApp = oneApp || {};
 	oneApp.addTinyMCE = function (id) {
 		tinyMCE.execCommand( 'mceAddEditor', false, id );
 	};
-})(jQuery);
+})(jQuery, oneApp, $oneApp);
