@@ -15,7 +15,8 @@
 			'click .ttf-one-section-toggle': 'toggleSection',
 			'click .ttf-one-section-remove': 'removeSection',
 			'keyup .ttf-one-section-header-title-input': 'constructHeader',
-			'click .basis-media-uploader-remove': 'removeImage'
+			'click .ttf-one-media-uploader-add': 'initUploader',
+			'click .ttf-one-media-uploader-remove': 'removeImage'
 		},
 
 		initialize: function (options) {
@@ -95,6 +96,91 @@
 			} else {
 				this.$titlePipe.removeClass('ttf-one-section-header-pipe-hidden');
 			}
+		},
+
+		initUploader: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$parent = $this.parents('.ttf-one-uploader'),
+				$placeholder = $('.ttf-one-media-uploader-placeholder', $parent),
+				$input = $('.ttf-one-media-uploader-value', $parent),
+				$remove = $('.ttf-one-media-uploader-remove', $parent),
+				$add = $('.ttf-one-media-uploader-set-link', $parent);
+
+			var frame = frame || {};
+
+			// If the media frame already exists, reopen it.
+			if ('function' === typeof frame.open) {
+				frame.open();
+				return;
+			}
+
+			// Create the media frame.
+			frame = wp.media.frames.frame = wp.media({
+				title: $this.data('title'),
+				button: {
+					text: $this.data('buttonText')
+				},
+				multiple: false
+			});
+
+			// When an image is selected, run a callback.
+			frame.on('select', function () {
+				// We set multiple to false so only get one image from the uploader
+				var attachment = frame.state().get('selection').first().toJSON();
+
+				// Remove the attachment caption
+				attachment.caption = '';
+
+				// Build the image
+				var props = wp.media.string.props(
+					{},
+					attachment
+				);
+
+				// The URL property is blank, so complete it
+				props.url = attachment.url;
+
+				var image = wp.media.string.image( props );
+
+				// Show the image
+				$placeholder.html(image);
+
+				// Record the chosen value
+				$input.val(attachment.id);
+
+				// Hide the link to set the image
+				$add.hide();
+
+				// Show the remove link
+				$remove.show();
+			});
+
+			// Finally, open the modal
+			frame.open();
+		},
+
+		removeImage: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$parent = $this.parents('.ttf-one-uploader'),
+				$placeholder = $('.ttf-one-media-uploader-placeholder', $parent),
+				$input = $('.ttf-one-media-uploader-value', $parent),
+				$set = $('.ttf-one-media-uploader-add', $parent);
+
+			// Remove the image
+			$placeholder.empty();
+
+			// Remove the value from the input
+			$input.removeAttr('value');
+
+			// Hide the remove link
+			$this.hide();
+
+			// Show the set link
+			$set.show();
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp);
