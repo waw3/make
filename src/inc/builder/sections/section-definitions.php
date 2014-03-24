@@ -168,7 +168,7 @@ class TTF_One_Section_Definitions {
 			array( $this, 'save_banner' ),
 			'/inc/builder/sections/builder-templates/banner',
 			'/inc/builder/sections/front-end-templates/banner',
-			100
+			200
 		);
 	}
 
