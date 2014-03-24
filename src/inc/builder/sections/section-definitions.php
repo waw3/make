@@ -149,6 +149,38 @@ class TTF_One_Section_Definitions {
 	public function save_text( $data ) {
 		return $data;
 	}
+
+	/**
+	 * Register the banner section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return void
+	 */
+	public function register_banner_section() {
+		ttf_one_add_section(
+			'banner',
+			_x( 'Banner', 'section name', 'ttf-one' ),
+			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
+			__( 'Display multiple types of content in a slider.', 'ttf-one' ),
+			array( $this, 'save_banner' ),
+			'/inc/builder/sections/builder-templates/banner',
+			'/inc/builder/sections/front-end-templates/banner',
+			100
+		);
+	}
+
+	/**
+	 * Save the data for the banner section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $data    The data from the $_POST array for the section.
+	 * @return array             The cleaned data.
+	 */
+	public function save_banner( $data ) {
+		return $data;
+	}
 }
 endif;
 
