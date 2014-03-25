@@ -313,7 +313,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Custom RSS URL', 'ttf-one' ),
+			'label'    => __( 'Custom RSS URL (replaces default)', 'ttf-one' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
