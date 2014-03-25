@@ -7,7 +7,6 @@
 .widget-title {
 	font-weight: bold;
 	@include rem('margin', 0 0 $base);
-	@include rem('padding-top', $base);
 	@include rem('font-size', 13px);
 	+ ul li:first-of-type,
 	+ ol li:first-of-type {
@@ -16,7 +15,7 @@
 }
 .widget {
 	max-width: 100%;
-	@include rem('margin-bottom', $base);
+	@include rem('margin-bottom', $base*2);
 	@include rem('font-size', 13px);
 	.search-form {
 		@include rem('margin-top', $base/2);
