@@ -13,7 +13,7 @@
 		value.bind( function( to ) {
 			var $content = $('.site-title a');
 			if ( ! $content.length ) {
-				$('.site-title').prepend('<a></a>');
+				$('.site-title').prepend('<a>' + to + '</a>');
 			}
 			if ( ! to ) {
 				$content.remove();
@@ -26,7 +26,7 @@
 		value.bind( function( to ) {
 			var $content = $('.site-description');
 			if ( ! $content.length ) {
-				$('.site-branding').append('<span class="site-description"></span>');
+				$('.site-branding').append('<span class="site-description">' + to + '</span>');
 			}
 			if ( ! to ) {
 				$content.remove();
@@ -46,7 +46,7 @@
 		value.bind( function( to ) {
 			var $content = $('.sticky-post-label');
 			if ( ! $content.length ) {
-				$('.post .entry-header').append('<span class="sticky-post-label"></span>');
+				$('.post .entry-header').append('<span class="sticky-post-label">' + to + '</span>');
 			}
 			if ( ! to ) {
 				$content.remove();
@@ -59,7 +59,13 @@
 		value.bind( function( to ) {
 			var $content = $('.header-text');
 			if ( ! $content.length ) {
-				$('.sub-header .container').prepend('<span class="header-text"></span>');
+				// Check for sub header
+				var $container = $('.sub-header');
+				if ( ! $container.length ) {
+					$('#site-header').prepend('<div class="sub-header"><div class="container"></div></div>');
+				}
+
+				$('.sub-header .container').prepend('<span class="header-text">' + to + '</span>');
 			}
 			if ( ! to ) {
 				$content.remove();
@@ -72,7 +78,7 @@
 		value.bind( function( to ) {
 			var $content = $('.footer-text');
 			if ( ! $content.length ) {
-				$('.site-info').before('<div class="footer-text"></div>');
+				$('.site-info').before('<div class="footer-text">' + to + '</div>');
 			}
 			if ( ! to ) {
 				$content.remove();
