@@ -29,11 +29,26 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	color: $a;
+	border: 0; //reset
 	background: $b;
 	cursor: pointer;
 	-webkit-appearance: button;
-	@include rem('padding', $base/2 12px);
+	@include rem('padding', $base/2 14px);
 	@include rem('font-size', 13px);
+	@include border-radius;
+	&.with-color {
+		background: $c;
+	}
+	&.with-large {
+		@include rem('font-size', 16px);
+		@include rem('padding', $base/2 18px);
+	}
+	&.with-error {
+		background: red;
+	}
+	&.with-success {
+		background: green;
+	}
 }
 input[type="checkbox"],
 input[type="radio"] {

@@ -1339,13 +1339,28 @@ select {
 -------------------------------------------------------- */
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   color: #ffffff;
+  border: 0;
   background: #171717;
   cursor: pointer;
   -webkit-appearance: button;
-  padding: 11px 12px;
-  padding:  0.6875rem 0.75rem;
+  padding: 11px 14px;
+  padding:  0.6875rem 0.875rem;
   font-size: 13px;
-  font-size: 0.8125rem; }
+  font-size: 0.8125rem;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+  button.with-color, input[type="button"].with-color, input[type="reset"].with-color, input[type="submit"].with-color {
+    background: #0094c5; }
+  button.with-large, input[type="button"].with-large, input[type="reset"].with-large, input[type="submit"].with-large {
+    font-size: 16px;
+    font-size: 1rem;
+    padding: 11px 18px;
+    padding:  0.6875rem 1.125rem; }
+  button.with-error, input[type="button"].with-error, input[type="reset"].with-error, input[type="submit"].with-error {
+    background: red; }
+  button.with-success, input[type="button"].with-success, input[type="reset"].with-success, input[type="submit"].with-success {
+    background: green; }
 
 input[type="checkbox"], input[type="radio"] {
   padding: 0; }
