@@ -21,7 +21,7 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default
 		<div class="container">
 			<?php // Header text
 			if ( ! empty( $header_text ) ) : ?>
-			<span class="sub-header-content">
+			<span class="header-text">
 				<?php echo ttf_one_sanitize_text( $header_text ); ?>
 			</span>
 			<?php endif; ?>

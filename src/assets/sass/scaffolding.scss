@@ -209,7 +209,7 @@ a {
 	.search-submit {
 		display: none;
 	}
-	&.right-content .sub-header-content {
+	&.right-content .header-text {
 		@include for(large-screens) {
 			max-width: 20%;
 			white-space: nowrap;
@@ -221,7 +221,7 @@ a {
 		@include rem('padding-top', $base/2);
 	}
 }
-.sub-header-content {
+.header-text {
 	float: left;
 	@include rem('padding', $base/2 0);
 	@include rem('font-size', 12px);

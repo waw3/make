@@ -57,9 +57,9 @@
 	// Header Text
 	api( 'header-text', function( value ) {
 		value.bind( function( to ) {
-			var $content = $('.sub-header-content');
+			var $content = $('.header-text');
 			if ( ! $content.length ) {
-				$('.sub-header .container').prepend('<span class="sub-header-content"></span>');
+				$('.sub-header .container').prepend('<span class="header-text"></span>');
 			}
 			if ( ! to ) {
 				$content.remove();
