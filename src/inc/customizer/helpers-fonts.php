@@ -68,7 +68,7 @@ function ttf_one_css_fonts( $css ) {
 	}
 
 	// Header Font Sizes
-	if ( $font_site_title_size !== ttf_one_get_default( 'font-site-title-size' ) ) {
+	if ( $font_header_size !== ttf_one_get_default( 'font-header-size' ) ) {
 		// h1
 		ttf_one_get_css()->add( array(
 			'selectors' => array( 'h1', '.font-header' ),
@@ -116,6 +116,15 @@ function ttf_one_css_fonts( $css ) {
 				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) . 'px',
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) ) . 'rem'
 			)
+		) );
+		// Special post title exception
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) ) . 'rem'
+			),
+			'media' => 'screen and (min-width: 800px)'
 		) );
 	}
 
