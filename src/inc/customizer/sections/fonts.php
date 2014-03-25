@@ -34,7 +34,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Site Title', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_google_font_choices(),
+			'choices'  => ttf_one_all_font_choices(),
 			'priority' => $priority->add()
 		)
 	);
@@ -77,7 +77,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Header', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_google_font_choices(),
+			'choices'  => ttf_one_all_font_choices(),
 			'priority' => $priority->add()
 		)
 	);
@@ -120,7 +120,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Body', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_google_font_choices(),
+			'choices'  => ttf_one_all_font_choices(),
 			'priority' => $priority->add()
 		)
 	);

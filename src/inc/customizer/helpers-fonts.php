@@ -15,14 +15,15 @@ function ttf_one_css_fonts( $css ) {
 	 */
 	// Get and escape options
 	$font_site_title = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
+	$font_site_title_stack = ttf_one_get_font_stack( $font_site_title );
 	$font_site_title_size = absint( get_theme_mod( 'font-site-title-size', ttf_one_get_default( 'font-site-title-size' ) ) );
 
 	// Site Title Font
-	if ( $font_site_title !== ttf_one_get_default( 'font-site-title' ) && array_key_exists( $font_site_title, ttf_one_get_google_fonts() ) ) {
+	if ( $font_site_title !== ttf_one_get_default( 'font-site-title' ) && '' !== $font_site_title_stack ) {
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.site-title', '.font-site-title' ),
 			'declarations' => array(
-				'font-family' => "'" . $font_site_title . '\', Helvetica, Arial, sans-serif'
+				'font-family' => $font_site_title_stack
 			)
 		) );
 	}
@@ -43,6 +44,7 @@ function ttf_one_css_fonts( $css ) {
 	 */
 	// Get and escape options
 	$font_header = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
+	$font_header_stack = ttf_one_get_font_stack( $font_header );
 	$font_header_size = absint( get_theme_mod( 'font-header-size', ttf_one_get_default( 'font-header-size' ) ) );
 
 	// Relative sizes of the headers
@@ -56,11 +58,11 @@ function ttf_one_css_fonts( $css ) {
 	);
 
 	// Header Font
-	if ( $font_header !== ttf_one_get_default( 'font-header' ) && array_key_exists( $font_header, ttf_one_get_google_fonts() ) ) {
+	if ( $font_header !== ttf_one_get_default( 'font-header' ) && '' !== $font_header_stack ) {
 		ttf_one_get_css()->add( array(
 			'selectors' => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
 			'declarations' => array(
-				'font-family' => "'" . $font_header . '\', Helvetica, Arial, sans-serif'
+				'font-family' => $font_header_stack
 			)
 		) );
 	}
@@ -122,14 +124,15 @@ function ttf_one_css_fonts( $css ) {
 	 */
 	// Get and escape options
 	$font_body = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
+	$font_body_stack = ttf_one_get_font_stack( $font_body );
 	$font_body_size = absint( get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) ) );
 
 	// Body Font
-	if ( $font_body !== ttf_one_get_default( 'font-body' ) && array_key_exists( $font_body, ttf_one_get_google_fonts() ) ) {
+	if ( $font_body !== ttf_one_get_default( 'font-body' ) && '' !== $font_body_stack ) {
 		ttf_one_get_css()->add( array(
 			'selectors' => array( 'body', '.font-body' ),
 			'declarations' => array(
-				'font-family' => "'" . $font_body . '\', Helvetica, Arial, sans-serif'
+				'font-family' => $font_body_stack
 			)
 		) );
 	}
@@ -156,6 +159,38 @@ function ttf_one_css_fonts( $css ) {
 endif;
 
 add_action( 'ttf_one_css', 'ttf_one_css_fonts' );
+
+if ( ! function_exists( 'ttf_one_get_font_stack' ) ) :
+/**
+ * Validate the font choice and get a font stack for it.
+ *
+ * @since 1.0.0
+ *
+ * @param string $font
+ *
+ * @return string
+ */
+function ttf_one_get_font_stack( $font ) {
+	$all_fonts = ttf_one_get_all_fonts();
+	$stack = '';
+
+	// Validate font choice
+	if ( ! array_key_exists( $font, $all_fonts ) ) {
+		return '';
+	}
+
+	// Standard font
+	if ( isset( $all_fonts[$font]['stack'] ) && ! empty( $all_fonts[$font]['stack'] ) ) {
+		$stack = $all_fonts[$font]['stack'];
+	}
+	// Google font or no specified stack
+	else {
+		$stack = '"' . $font . '","Helvetica Neue",Helvetica,Arial,sans-serif';
+	}
+
+	return $stack;
+}
+endif;
 
 if ( ! function_exists( 'ttf_one_get_relative_font_size' ) ) :
 /**
@@ -219,14 +254,16 @@ function ttf_one_get_google_font_request() {
 		// Verify that the font exists
 		if ( array_key_exists( $font, $allowed_fonts ) ) {
 			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700"
-			$family[] = str_replace( ' ', '+', $font ) . ':' . join( ',', ttf_one_choose_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) );
+			$family[] = str_replace( ' ', '+', $font ) . ':' . join( ',', ttf_one_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) );
 		}
 	}
 
 	$request = '';
 
 	// Convert from array to string
-	if ( ! empty( $family ) ) {
+	if ( empty( $family ) ) {
+		return '';
+	} else {
 		$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
 	}
 
@@ -257,7 +294,7 @@ function ttf_one_get_google_font_request() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_choose_font_variants' ) ) :
+if ( ! function_exists( 'ttf_one_choose_google_font_variants' ) ) :
 /**
  * Given a font, chose the variants to load for the theme.
  *
@@ -270,7 +307,7 @@ if ( ! function_exists( 'ttf_one_choose_font_variants' ) ) :
  * @param  array     $variants    The variants for the font.
  * @return array                  The chosen variants.
  */
-function ttf_one_choose_font_variants( $font, $variants = array() ) {
+function ttf_one_choose_google_font_variants( $font, $variants = array() ) {
 	$chosen_variants = array();
 	if ( empty( $variants ) ) {
 		$fonts = ttf_one_get_google_fonts();
@@ -343,7 +380,7 @@ function ttf_one_get_google_font_subsets() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_google_font_choices' ) ) :
+if ( ! function_exists( 'ttf_one_all_font_choices' ) ) :
 /**
  * Packages the font choices into value/label pairs for use with the customizer.
  *
@@ -351,8 +388,8 @@ if ( ! function_exists( 'ttf_one_google_font_choices' ) ) :
  *
  * @return array    The fonts in value/label pairs.
  */
-function ttf_one_google_font_choices() {
-	$fonts = ttf_one_get_google_fonts();
+function ttf_one_all_font_choices() {
+	$fonts = ttf_one_get_all_fonts();
 	$choices = array();
 
 	// Repackage the fonts into value/label pairs
@@ -374,11 +411,53 @@ if ( ! function_exists( 'ttf_one_sanitize_font_choice' ) ) :
  * @return string              The sanitized font choice.
  */
 function ttf_one_sanitize_font_choice( $value ) {
-	if ( array_key_exists( $value, ttf_one_get_google_fonts() ) ) {
+	if ( array_key_exists( $value, ttf_one_get_all_fonts() ) ) {
 		return $value;
 	} else {
 		return '';
 	}
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_all_fonts' ) ) :
+/**
+ * Compile font options from different sources.
+ *
+ * @since 1.0.0
+ *
+ * @return array    All available fonts.
+ */
+function ttf_one_get_all_fonts() {
+	$standard_fonts = ttf_one_get_standard_fonts();
+	$google_fonts   = ttf_one_get_google_fonts();
+
+	return array_merge( $standard_fonts, $google_fonts );
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_standard_fonts' ) ) :
+/**
+ * Return an array of standard websafe fonts.
+ *
+ * @since  1.0.0
+ *
+ * @return array    Standard websafe fonts.
+ */
+function ttf_one_get_standard_fonts() {
+	return array(
+		'serif' => array(
+			'label' => _x( 'Serif', 'font style', 'ttf-one' ),
+			'stack' => 'Georgia,Times,"Times New Roman",serif'
+		),
+		'sans-serif' => array(
+			'label' => _x( 'Sans Serif', 'font style', 'ttf-one' ),
+			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
+		),
+		'monospace' => array(
+			'label' => _x( 'Monospaced', 'font style', 'ttf-one' ),
+			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
+		)
+	);
 }
 endif;
 

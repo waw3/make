@@ -34,9 +34,9 @@ function ttf_one_option_defaults() {
 		'background_attachment' => 'scroll',
 		'background_size' => 'auto',
 		// Fonts
-		'font-site-title' => 'Montserrat',
+		'font-site-title' => 'sans-serif',
 		'font-site-title-size' => 34,
-		'font-header' => 'Montserrat',
+		'font-header' => 'sans-serif',
 		'font-header-size' => 50,
 		'font-body' => 'Open Sans',
 		'font-body-size' => 16,
