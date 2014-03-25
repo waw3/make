@@ -49,12 +49,14 @@ function ttf_one_css_fonts( $css ) {
 
 	// Relative sizes of the headers
 	$percent = array(
-		'h1' => 100,
-		'h2' => 68,
-		'h3' => 48,
-		'h4' => 48,
-		'h5' => 32,
-		'h6' => 28
+		'h1'           => 100,
+		'h2'           => 68,
+		'h3'           => 48,
+		'h4'           => 48,
+		'h5'           => 32,
+		'h6'           => 28,
+		'post-title'   => 68,
+		'widget-title' => 26
 	);
 
 	// Header Font
@@ -117,14 +119,22 @@ function ttf_one_css_fonts( $css ) {
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) ) . 'rem'
 			)
 		) );
-		// Special post title exception
+		// Post title with two sidebars
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) ) . 'rem'
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['post-title'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['post-title'] ) ) . 'rem'
 			),
 			'media' => 'screen and (min-width: 800px)'
+		) );
+		// Widget title
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.widget-title' ),
+			'declarations' => array(
+				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['widget-title'] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['widget-title'] ) ) . 'rem'
+			)
 		) );
 	}
 
