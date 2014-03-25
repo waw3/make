@@ -339,5 +339,41 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			'priority' => $priority->add()
 		)
 	);
+
+	// Content options heading
+	$setting_id = 'main-content-heading';
+	$wp_customize->add_control(
+		new TTF_One_Customize_Misc_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'heading',
+				'label' => __( 'Content Options', 'ttf-one' ),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
+	// Underline content links
+	$setting_id = 'main-content-link-underline';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttf_one_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Underline links in content', 'ttf-one' ),
+			'type'     => 'checkbox',
+			'priority' => $priority->add()
+		)
+	);
 }
 endif;

@@ -162,6 +162,7 @@ function ttf_one_css_add_rules() {
 	// Get and escape options
 	$main_background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttf_one_get_default( 'main-background-color' ) ) );
 	$main_background_image = get_theme_mod( 'main-background-image', ttf_one_get_default( 'main-background-image' ) );
+	$main_content_link_underline = absint( get_theme_mod( 'main-content-link-underline', ttf_one_get_default( 'main-content-link-underline' ) ) );
 
 	// Main background color
 	if ( $main_background_color !== ttf_one_get_default( 'main-background-color' ) ) {
@@ -191,6 +192,16 @@ function ttf_one_css_add_rules() {
 				'background-size' => $main_background_size,
 				'background-repeat' => $main_background_repeat,
 				'background-position' => $main_background_position . ' top'
+			)
+		) );
+	}
+
+	// Main Content Link Underline
+	if ( 1 === $main_content_link_underline ) {
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.entry-content a' ),
+			'declarations' => array(
+				'text-decoration' => 'underline'
 			)
 		) );
 	}
