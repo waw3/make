@@ -12,12 +12,12 @@
 
 	// Categories
 	if ( $category_list ) :
-		$taxonomy_output .= __( 'Posted in: ', 'ttf-one' ) . '%1$s';
+		$taxonomy_output .= __( '<i class="fa fa-file"></i> ', 'ttf-one' ) . '%1$s';
 	endif;
 
 	// Tags
 	if ( $tag_list ) :
-		$taxonomy_output .= __( 'Tagged: ', 'ttf-one' ) . '%2$s';
+		$taxonomy_output .= __( '<i class="fa fa-tag"></i> ', 'ttf-one' ) . '%2$s';
 	endif;
 
 	// Output

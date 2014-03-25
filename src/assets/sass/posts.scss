@@ -22,9 +22,17 @@
 	@include rem('font-size', 14px);
 	a {
 		color: $e;
+		font-weight: 400; //reset
 		&:hover {
 			color: $c;
 		}
+	}
+	.fa {
+		position: relative;
+		float: left;
+		color: $e;
+		@include rem('top', 4px);
+		@include rem('padding-right', $gut/4);
 	}
 }
 .post {
@@ -37,6 +45,7 @@
 .post-tags {
 	padding-left: 0; //reset
 	list-style: none; //reset
+	@include rem('margin-bottom', $base/2);
 	li {
 		display: inline;
 		&:after {

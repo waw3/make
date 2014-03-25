@@ -970,9 +970,18 @@ embed, iframe, object {
   font-size: 14px;
   font-size: 0.875rem; }
   .entry-footer a {
-    color: #b9bcbf; }
+    color: #b9bcbf;
+    font-weight: 400; }
     .entry-footer a:hover {
       color: #0094c5; }
+  .entry-footer .fa {
+    position: relative;
+    float: left;
+    color: #b9bcbf;
+    top: 4px;
+    top: 0.25rem;
+    padding-right: 8px;
+    padding-right: 0.5rem; }
 
 .post {
   margin-top: 66px;
@@ -982,7 +991,9 @@ embed, iframe, object {
 
 .post-categories, .post-tags {
   padding-left: 0;
-  list-style: none; }
+  list-style: none;
+  margin-bottom: 11px;
+  margin-bottom: 0.6875rem; }
   .post-categories li, .post-tags li {
     display: inline; }
     .post-categories li:after, .post-tags li:after {
