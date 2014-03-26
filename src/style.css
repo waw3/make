@@ -234,7 +234,7 @@ pre, code, input, textarea {
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
-ul, ol, dl, p, iframe, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr, .alert {
+ul, ol, dl, p, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr, .alert {
   margin-bottom: 22px;
   margin-bottom: 1.375rem; }
 
@@ -978,6 +978,13 @@ img.wp-smiley {
 
 embed, iframe, object {
   max-width: 100%; }
+
+iframe[src*="google.com/maps"] {
+  width: 100%;
+  height: 300px; }
+  @media screen and (min-width: 800px) {
+    iframe[src*="google.com/maps"] {
+      height: 600px; } }
 
 /*---------------------------------------------------------
  6. Posts (_posts.scss)
