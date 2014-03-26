@@ -796,10 +796,14 @@ address {
   margin:  1.375rem 0; }
 
 hr {
-  background-color: #ccc;
   border: 0;
+  border-top: 2px solid #eaecee;
   height: 1px;
   margin-bottom: 22px; }
+  hr.variant-1 {
+    border-top: 2px dashed #eaecee; }
+  hr.variant-2 {
+    border-top: thick double #eaecee; }
 
 /*---------------------------------------------------------
  Lists (_elements.scss)
@@ -895,7 +899,10 @@ table {
   padding: 33px 32px;
   padding:  2.0625rem 2rem;
   font-size: 14px;
-  font-size: 0.875rem; }
+  font-size: 0.875rem;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
   .alert.error {
     background-color: #ff9b9b;
     color: #4e0000; }

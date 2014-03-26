@@ -169,11 +169,18 @@ address {
 	@include rem('margin', $base 0);
 }
 hr {
-	background-color: #ccc;
-	border: 0;
+	border: 0; //reset
+	border-top: 2px solid $d;
 	height: 1px;
 	margin-bottom: $base;
+	&.variant-1 {
+		border-top: 2px dashed $d;
+	}
+	&.variant-2 {
+    	border-top: thick double $d;
+	}
 }
+
 /*---------------------------------------------------------
  Lists (_elements.scss)
 -------------------------------------------------------- */
@@ -293,6 +300,7 @@ table {
 	background-color: $d;
 	@include rem('padding', $base*1.5 $gut);
 	@include rem('font-size', 14px);
+	@include border-radius;
 	&.error {
 		background-color: #ff9b9b;
 		color: darken(#ff9b9b, 65);
