@@ -897,11 +897,14 @@ table {
   font-size: 14px;
   font-size: 0.875rem; }
   .alert.error {
-    background-color: red; }
+    background-color: #ff9b9b;
+    color: #4e0000; }
   .alert.success {
-    background-color: green; }
+    background-color: #d3faa4;
+    color: #2d4e04; }
   .alert.important {
-    background-color: yellow; }
+    background-color: #fff99b;
+    color: #4e4900; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)
@@ -1373,10 +1376,18 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
     font-size: 1rem;
     padding: 11px 18px;
     padding:  0.6875rem 1.125rem; }
-  button.with-error, input[type="button"].with-error, input[type="reset"].with-error, input[type="submit"].with-error {
-    background: red; }
+  button.with-alert, input[type="button"].with-alert, input[type="reset"].with-alert, input[type="submit"].with-alert {
+    background: #eaecee;
+    color: #171717; }
   button.with-success, input[type="button"].with-success, input[type="reset"].with-success, input[type="submit"].with-success {
-    background: green; }
+    background: #d3faa4;
+    color: #2d4e04; }
+  button.with-error, input[type="button"].with-error, input[type="reset"].with-error, input[type="submit"].with-error {
+    background-color: #ff9b9b;
+    color: #4e0000; }
+  button.with-important, input[type="button"].with-important, input[type="reset"].with-important, input[type="submit"].with-important {
+    background-color: #fff99b;
+    color: #4e4900; }
 
 input[type="checkbox"], input[type="radio"] {
   padding: 0; }

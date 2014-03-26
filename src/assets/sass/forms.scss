@@ -43,11 +43,21 @@ input[type="submit"] {
 		@include rem('font-size', 16px);
 		@include rem('padding', $base/2 18px);
 	}
-	&.with-error {
-		background: red;
+	&.with-alert {
+		background: $d;
+		color: $b;
 	}
 	&.with-success {
-		background: green;
+		background: #d3faa4;
+		color: darken(#d3faa4, 65);
+	}
+	&.with-error {
+		background-color: #ff9b9b;
+		color: darken(#ff9b9b, 65);
+	}
+	&.with-important {
+		background-color: #fff99b;
+		color: darken(#fff99b, 65);
 	}
 }
 input[type="checkbox"],

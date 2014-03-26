@@ -294,12 +294,15 @@ table {
 	@include rem('padding', $base*1.5 $gut);
 	@include rem('font-size', 14px);
 	&.error {
-		background-color: red;
+		background-color: #ff9b9b;
+		color: darken(#ff9b9b, 65);
 	}
 	&.success {
-		background-color: green;
+		background-color: #d3faa4;
+		color: darken(#d3faa4, 65);
 	}
 	&.important {
-		background-color: yellow;
+		background-color: #fff99b;
+		color: darken(#fff99b, 65);
 	}
 }
