@@ -188,6 +188,20 @@ ul,
 ol {
 	margin: 0 0 $base 0;
 	@include rem('padding-left', 20px);
+	&.fa-ul {
+		&.list-check i,
+		&.list-check2 i,
+		&.list-check3 i{
+			color: darken(#d3faa4, 45);
+		}
+		&.list-star i {
+			color: gold;
+		}
+		&.list-dot i,
+		&.list-dot2 i {
+			color: $c;
+		}
+	}
 }
 ul {
 	list-style: disc;

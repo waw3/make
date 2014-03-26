@@ -812,6 +812,12 @@ ul, ol {
   margin: 0 0 22px 0;
   padding-left: 20px;
   padding-left: 1.25rem; }
+  ul.fa-ul.list-check i, ul.fa-ul.list-check2 i, ul.fa-ul.list-check3 i, ol.fa-ul.list-check i, ol.fa-ul.list-check2 i, ol.fa-ul.list-check3 i {
+    color: #65af0a; }
+  ul.fa-ul.list-star i, ol.fa-ul.list-star i {
+    color: gold; }
+  ul.fa-ul.list-dot i, ul.fa-ul.list-dot2 i, ol.fa-ul.list-dot i, ol.fa-ul.list-dot2 i {
+    color: #0094c5; }
 
 ul {
   list-style: disc; }
