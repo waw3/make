@@ -888,6 +888,22 @@ table {
     margin-right: 0 !important; }
 
 /*---------------------------------------------------------
+ Note (_elements.scss)
+-------------------------------------------------------- */
+.alert {
+  background-color: #eaecee;
+  padding: 33px 32px;
+  padding:  2.0625rem 2rem;
+  font-size: 14px;
+  font-size: 0.875rem; }
+  .alert.error {
+    background-color: red; }
+  .alert.success {
+    background-color: green; }
+  .alert.important {
+    background-color: yellow; }
+
+/*---------------------------------------------------------
  5. Patterns (_patterns.scss)
 -------------------------------------------------------- */
 img {

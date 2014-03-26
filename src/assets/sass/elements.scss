@@ -286,3 +286,20 @@ table {
 		margin-right: 0 !important; //reset
 	}
 }
+/*---------------------------------------------------------
+ Note (_elements.scss)
+-------------------------------------------------------- */
+.alert {
+	background-color: $d;
+	@include rem('padding', $base*1.5 $gut);
+	@include rem('font-size', 14px);
+	&.error {
+		background-color: red;
+	}
+	&.success {
+		background-color: green;
+	}
+	&.important {
+		background-color: yellow;
+	}
+}
