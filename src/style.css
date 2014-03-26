@@ -896,6 +896,7 @@ table {
 -------------------------------------------------------- */
 .alert {
   background-color: #eaecee;
+  border-bottom: 3px solid #b9bcbf;
   padding: 33px 32px;
   padding:  2.0625rem 2rem;
   font-size: 14px;
@@ -905,13 +906,16 @@ table {
   border-radius: 3px; }
   .alert.error {
     background-color: #ff9b9b;
-    color: #4e0000; }
+    color: #4e0000;
+    border-bottom: 3px solid #e80000; }
   .alert.success {
     background-color: #d3faa4;
-    color: #2d4e04; }
+    color: #2d4e04;
+    border-bottom: 3px solid #80df0c; }
   .alert.important {
     background-color: #fff99b;
-    color: #4e4900; }
+    color: #4e4900;
+    border-bottom: 3px solid #e8d800; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)

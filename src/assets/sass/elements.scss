@@ -298,19 +298,23 @@ table {
 -------------------------------------------------------- */
 .alert {
 	background-color: $d;
+	border-bottom: 3px solid $e;
 	@include rem('padding', $base*1.5 $gut);
 	@include rem('font-size', 14px);
 	@include border-radius;
 	&.error {
 		background-color: #ff9b9b;
 		color: darken(#ff9b9b, 65);
+		border-bottom: 3px solid darken(#ff9b9b, 35);
 	}
 	&.success {
 		background-color: #d3faa4;
 		color: darken(#d3faa4, 65);
+		border-bottom: 3px solid darken(#d3faa4, 35);
 	}
 	&.important {
 		background-color: #fff99b;
 		color: darken(#fff99b, 65);
+		border-bottom: 3px solid darken(#fff99b, 35);
 	}
 }
