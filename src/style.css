@@ -327,7 +327,9 @@ a {
   background-size: contain;
   background-position: center center;
   display: block;
-  max-width: 100%; }
+  max-width: 100%;
+  margin-bottom: 11px;
+  margin-bottom: 0.6875rem; }
   .custom-logo a {
     display: block;
     width: 100%;
@@ -957,6 +959,9 @@ img.wp-smiley {
   padding: 0;
   border: none; }
 
+/*---------------------------------------------------------
+ Captions (_patterns.scss)
+-------------------------------------------------------- */
 .wp-caption {
   max-width: 100%;
   margin-bottom: 22px;
@@ -976,9 +981,15 @@ img.wp-smiley {
   margin: 11px 0;
   margin:  0.6875rem 0; }
 
+/*---------------------------------------------------------
+ Embeds (_patterns.scss)
+-------------------------------------------------------- */
 embed, iframe, object {
   max-width: 100%; }
 
+/*---------------------------------------------------------
+ google maps (_patterns.scss)
+-------------------------------------------------------- */
 iframe[src*="google.com/maps"] {
   width: 100%;
   height: 300px; }

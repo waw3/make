@@ -163,6 +163,7 @@ a {
 	background-position: center center;
 	display: block;
 	max-width: 100%;
+	@include rem('margin-bottom', $base/2);
 	a {
 		display: block;
 		width: 100%;
