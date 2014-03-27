@@ -366,18 +366,6 @@
 	text-decoration: none;
 }
 /*---------------------------------------------------------
- Menu icons (html-builder.css)
--------------------------------------------------------- */
-#ttf-one-menu-list-item-link-banner .ttf-one-menu-list-item-link-icon-wrapper {
-	background-image: url(images/banner.png);
-}
-#ttf-one-menu-list-item-link-feature .ttf-one-menu-list-item-link-icon-wrapper {
-	background-image: url(images/feature.png);
-}
-#ttf-one-menu-list-item-link-profile .ttf-one-menu-list-item-link-icon-wrapper {
-	background-image: url(images/profiles.png);
-}
-/*---------------------------------------------------------
  Sortable handle (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-stage .sortable-placeholder {
