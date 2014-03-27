@@ -30,6 +30,9 @@ img.wp-smiley {
 	padding: 0; //reset
 	border: none;
 }
+/*---------------------------------------------------------
+ Captions (_patterns.scss)
+-------------------------------------------------------- */
 .wp-caption {
 	max-width: 100%;
 	@include rem('margin-bottom', $base);
@@ -46,11 +49,17 @@ img.wp-smiley {
 .wp-caption .wp-caption-text {
 	@include rem('margin', $base/2 0);
 }
+/*---------------------------------------------------------
+ Embeds (_patterns.scss)
+-------------------------------------------------------- */
 embed,
 iframe,
 object {
 	max-width: 100%;
 }
+/*---------------------------------------------------------
+ google maps (_patterns.scss)
+-------------------------------------------------------- */
 iframe[src*="google.com/maps"] {
 	@include for(medium-screens) {
 		height: 600px;
