@@ -305,15 +305,15 @@ a {
 @media screen and (min-width: 800px) {
   .site-branding {
     float: left;
-    max-width: 40%; }
+    max-width: 50%; }
     .primary-nav-left .site-branding {
       float: right; } }
 
 .site-description {
   display: block;
   text-transform: uppercase;
-  margin-bottom: 22px;
-  margin-bottom: 1.375rem;
+  margin: 11px 0 22px;
+  margin:  0.6875rem 0 1.375rem;
   font-size: 12px;
   font-size: 0.75rem;
   letter-spacing: 1px;
@@ -466,7 +466,7 @@ a {
   @media screen and (min-width: 800px) {
     .site-navigation {
       float: right;
-      max-width: 60%; }
+      max-width: 50%; }
       .primary-nav-left .site-navigation {
         float: left; } }
   .site-navigation ul {
