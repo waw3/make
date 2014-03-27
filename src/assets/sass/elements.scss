@@ -66,6 +66,32 @@ blockquote {
 			content: "\2014";
 		}
 	}
+	&.variant-1 {
+		line-height: 0; //reset
+		background-color: $d;
+		@include rem('padding', $base*1.5 $gut);
+		p {
+			margin-bottom: 0; // reset
+		}
+		cite {
+			display: block;
+			margin-bottom: 0; // reset
+			font-weight: bold;
+			@include rem('padding', $base/2 0);
+			@include rem('font-size', 14px);
+		}
+		&:after {
+			content: "";
+			position: relative;
+			bottom: -($base*3);
+			width: 0; //reset
+			height: 0; //reset
+			border-left: 22px solid transparent;
+			border-right: 22px solid transparent;
+			border-top: 22px solid $d;
+			@include rem('left', 5px);
+		}
+	}
 }
 q {
 	&:before {

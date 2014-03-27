@@ -706,6 +706,32 @@ blockquote {
     font-size: 0.8125rem; }
     blockquote cite:before {
       content: "\2014"; }
+  blockquote.variant-1 {
+    line-height: 0;
+    background-color: #eaecee;
+    padding: 33px 32px;
+    padding:  2.0625rem 2rem; }
+    blockquote.variant-1 p {
+      margin-bottom: 0; }
+    blockquote.variant-1 cite {
+      display: block;
+      margin-bottom: 0;
+      font-weight: bold;
+      padding: 11px 0;
+      padding:  0.6875rem 0;
+      font-size: 14px;
+      font-size: 0.875rem; }
+    blockquote.variant-1:after {
+      content: "";
+      position: relative;
+      bottom: -66px;
+      width: 0;
+      height: 0;
+      border-left: 22px solid transparent;
+      border-right: 22px solid transparent;
+      border-top: 22px solid #eaecee;
+      left: 5px;
+      left: 0.3125rem; }
 
 q:before {
   content: "\201C"; }
