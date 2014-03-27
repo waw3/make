@@ -382,8 +382,8 @@ a {
         overflow: hidden;
         text-overflow: ellipsis;
         position: relative;
-        top: 3px;
-        top: 0.1875rem; } }
+        top: 5px;
+        top: 0.3125rem; } }
 
 .header-text {
   float: left;

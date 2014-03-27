@@ -216,7 +216,7 @@ a {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			position: relative;
-			@include rem('top', 3px);
+			@include rem('top', 5px);
 		}
 		@include rem('padding-top', $base/2);
 	}
