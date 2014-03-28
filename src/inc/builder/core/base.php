@@ -535,7 +535,6 @@ class TTF_One_Builder_Base {
 	 * @return mixed                 The combined data.
 	 */
 	public function get_section_data( $post_id ) {
-		$data         = array();
 		$ordered_data = array();
 		$ids          = get_post_meta( $post_id, '_ttfob-section-ids', true );
 		$post_meta    = get_post_meta( $post_id );
