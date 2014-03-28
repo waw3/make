@@ -16,12 +16,22 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Create view
 			var view = new oneApp.GalleryItemView({
-				model: new oneApp.GalleryItemModel({ id: new Date().getTime() })
+				model: new oneApp.GalleryItemModel({
+					id: new Date().getTime(),
+					parentID: this.getParentID()
+				})
 			});
 
 			// Append view
 			var html = view.render().el;
 			$('.ttf-one-gallery-items').append(html);
+		},
+
+		getParentID: function() {
+			var idAttr = this.$el.attr('id'),
+				id = idAttr.replace('ttf-one-section-', '');
+
+			return parseInt(id, 10);
 		}
 	});
 })(window, jQuery, _, oneApp, $oneApp);

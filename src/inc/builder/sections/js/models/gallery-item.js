@@ -6,7 +6,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	oneApp.GalleryItemModel = Backbone.Model.extend({
 		defaults: {
-			id: ''
+			id: '',
+			parentID: ''
 		}
 	});
 
