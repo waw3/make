@@ -250,7 +250,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Header Text', 'ttf-one' ),
+			'label'    => __( 'Sub Header Text', 'ttf-one' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
