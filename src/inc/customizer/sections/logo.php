@@ -58,7 +58,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Retina Logo', 'ttf-one' ),
+				'label'    => __( 'Retina Logo (2x)', 'ttf-one' ),
 				'priority' => $priority->add(),
 				'context'  => $prefix . $setting_id
 			)
@@ -74,7 +74,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'The Retina Logo should be twice as big as the Regular Logo. So, if the regular version is 320px x 240px, the retina version should be 640px x 480px.', 'ttf-one' ),
+				'description' => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'ttf-one' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -114,7 +114,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'The Favicon must be <strong>.png</strong> or <strong>.ico</strong> format. The optimal dimensions are <strong>32px x 32px</strong>.', 'ttf-one' ),
+				'description' => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'ttf-one' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -154,7 +154,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'The Apple Touch Icon must be <strong>.png</strong> format. The optimal dimensions are <strong>152px x 152px</strong>.', 'ttf-one' ),
+				'description' => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'ttf-one' ),
 				'priority'    => $priority->add()
 			)
 		)
