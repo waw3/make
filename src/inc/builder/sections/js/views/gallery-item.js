@@ -8,7 +8,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		template: '',
 		className: 'ttf-one-gallery-item',
 
-		events: {},
+		events: {
+			'click .ttf-one-gallery-item-remove': 'removeItem'
+		},
 
 		initialize: function (options) {
 			this.model = options.model;
@@ -20,6 +22,18 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON())).attr('id', this.idAttr);
 			return this;
+		},
+
+		removeItem: function (evt) {
+			evt.preventDefault();
+
+			// Fade and slide out the section, then cleanup view
+			this.$el.animate({
+				opacity: 'toggle',
+				height: 'toggle'
+			}, oneApp.options.closeSpeed, function() {
+				this.remove();
+			}.bind(this));
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);
