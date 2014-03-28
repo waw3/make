@@ -147,6 +147,18 @@ class TTF_One_Section_Definitions {
 	public function save_gallery( $data ) {
 		$clean_data = array();
 
+		if ( isset( $data['columns'] ) ) {
+			if ( in_array( $data['columns'], range( 1, 4 ) ) ) {
+				$clean_data['columns'] = $data['columns'];
+			}
+		}
+
+		if ( isset( $data['captions'] ) ) {
+			if ( in_array( $data['captions'], array( 'none', 'basic', 'fancy' ) ) ) {
+				$clean_data['captions'] = $data['captions'];
+			}
+		}
+
 		if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
 			foreach ( $data['gallery-items'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {

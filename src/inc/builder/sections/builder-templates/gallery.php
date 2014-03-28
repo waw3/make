@@ -4,7 +4,7 @@
 
 <div class="ttf-one-columns-select-wrapper">
 	<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
-	<select id="ttf-one-gallery-columns">
+	<select id="ttf-one-gallery-columns" name="<?php echo $section_name; ?>[columns]">
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
@@ -14,7 +14,7 @@
 
 <div class="ttf-one-captions-select-wrapper">
 	<label for="ttf-one-gallery-captions"><?php _e( 'Caption Style', 'ttf-one' ); ?></label>
-	<select id="ttf-one-gallery-captions">
+	<select id="ttf-one-gallery-captions" name="<?php echo $section_name; ?>[captions]">
 		<option value="none"><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 		<option value="basic"><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
 		<option value="fancy"><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
