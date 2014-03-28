@@ -39,16 +39,21 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		},
 
 		addOne: function (section) {
+			// View name for section
+			var sectionType = section.get('sectionType'),
+				viewName = sectionType.charAt(0).toUpperCase() + sectionType.slice(1) + 'View',
+
+				// Ensure that a view exists for the section, otherwise show the generic view
+				viewNameFinal = (true === oneApp.hasOwnProperty(viewName)) ? viewName : 'SectionView';
+
 			// Create view
-			var view = new oneApp.SectionView({
+			var view = new oneApp[viewNameFinal]({
 				model: section
 			});
 
 			// Append view
 			var html = view.render().el;
 			this.$stage.append(html);
-
-			
 
 			// Scroll to the new section
 			this.$scrollHandle.animate({
