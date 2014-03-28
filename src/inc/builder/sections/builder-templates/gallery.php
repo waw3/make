@@ -33,7 +33,14 @@ $captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_se
 	<a href="#" class="ttf-one-gallery-add-item"><?php _e( 'Add a new gallery item', 'ttf-one' ); ?></a>
 </div>
 
-<div class="ttf-one-gallery-items"></div>
+<div class="ttf-one-gallery-items">
+	<?php if ( isset( $ttf_one_section_data['data']['gallery-items'] ) && is_array( $ttf_one_section_data['data']['gallery-items'] ) ) : ?>
+		<?php foreach ( $ttf_one_section_data['data']['gallery-items'] as $id => $item ) : ?>
+			<?php global $ttf_one_gallery_id; $ttf_one_gallery_id = $id; ?>
+			<?php get_template_part( '/inc/builder/sections/builder-templates/gallery', 'item' ); ?>
+		<?php endforeach; ?>
+	<?php endif; ?>
+</div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttf_one_load_section_footer(); ?>
