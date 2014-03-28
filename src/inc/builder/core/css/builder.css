@@ -442,6 +442,12 @@
 	margin: 11px 0;
 }
 /*---------------------------------------------------------
+ Banner section (html-builder.css)
+-------------------------------------------------------- */
+.ttf-one-section-banner .ttf-one-section-body {
+	background-color: #ffffff;
+}
+/*---------------------------------------------------------
  MP6 styles (html-builder-mp6.css)
 -------------------------------------------------------- */
 /* Custom breakpoints for new sidebar width */
