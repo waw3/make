@@ -84,6 +84,9 @@ function ttf_one_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'ttf-one' ),
 	) );
+
+	// Editor styles
+	add_editor_style( 'css/editor-style.css' );
 }
 endif;
 
