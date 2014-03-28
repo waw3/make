@@ -1,0 +1,25 @@
+/* global Backbone, jQuery, _, wp:true, tinyMCE, switchEditors */
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+
+(function (window, Backbone, $, _, oneApp, $oneApp) {
+	'use strict';
+
+	oneApp.GalleryItemView = Backbone.View.extend({
+		template: '',
+		className: 'ttf-one-gallery-item',
+
+		events: {},
+
+		initialize: function (options) {
+			this.model = options.model;
+			this.idAttr = 'ttf-one-gallery-item-' + this.model.get('id');
+			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
+			this.template = _.template($('#tmpl-ttf-one-gallery-item').html());
+		},
+
+		render: function () {
+			this.$el.html(this.template(this.model.toJSON())).attr('id', this.idAttr);
+			return this;
+		}
+	});
+})(window, Backbone, jQuery, _, oneApp, $oneApp);

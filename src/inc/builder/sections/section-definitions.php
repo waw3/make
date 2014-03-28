@@ -204,11 +204,29 @@ class TTF_One_Section_Definitions {
 			return;
 		}
 
+		wp_register_script(
+			'ttf-one-sections/js/models/gallery-item.js',
+			get_template_directory_uri() . '/inc/builder/sections/js/models/gallery-item.js',
+			array(),
+			TTF_ONE_VERSION,
+			true
+		);
+
+		wp_register_script(
+			'ttf-one-sections/js/views/gallery-item.js',
+			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery-item.js',
+			array(),
+			TTF_ONE_VERSION,
+			true
+		);
+
 		wp_enqueue_script(
 			'ttf-section-behaviors',
 			get_template_directory_uri() . '/inc/builder/sections/js/section-behaviors.js',
 			array(
 				'ttf-one-builder',
+				'ttf-one-sections/js/models/gallery-item.js',
+				'ttf-one-sections/js/views/gallery-item.js',
 			),
 			TTF_ONE_VERSION,
 			true
