@@ -45,6 +45,10 @@ require get_template_directory() . '/inc/jetpack.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/tinymce.php';
 }
+// Page customizations
+if ( is_admin() ) {
+	require get_template_directory() . '/inc/edit-page.php';
+}
 // Load the builder
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/builder/core/base.php';
