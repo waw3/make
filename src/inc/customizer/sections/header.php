@@ -313,6 +313,31 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
+	// Sub Header content layout
+	$setting_id = 'header-subheader-content-layout';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttf_one_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttf_one_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Sub Header Content Layout', 'ttf-one' ),
+			'type'     => 'select',
+			'choices'  => array(
+				'default' => __( 'Default', 'ttf-one' ),
+				'flipped' => __( 'Flipped', 'ttf-one' )
+			),
+			'priority' => $priority->add()
+		)
+	);
+
 	// Header layout
 	$setting_id = 'header-layout';
 	$wp_customize->add_setting(
@@ -339,7 +364,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 
-	// Nav position (Layout 1 only)
+	// Branding position (Layouts 1 & 3 only)
 	$setting_id = 'header-branding-position';
 	$wp_customize->add_setting(
 		$setting_id,

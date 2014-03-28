@@ -122,6 +122,9 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'footer-background-position' :
 			$allowed_choices = array( 'left', 'center', 'right' );
 			break;
+		case 'header-subheader-content-layout' :
+			$allowed_choices = array( 'default', 'flipped' );
+			break;
 		case 'header-layout' :
 			$allowed_choices = array( 1, 2, 3 );
 			break;
@@ -183,6 +186,10 @@ function ttf_one_body_layout_classes( $classes ) {
 	// Header branding position
 	if ( 'right' === get_theme_mod( 'header-branding-position', ttf_one_get_default( 'header-branding-position' ) ) ) {
 		$classes[] = 'branding-right';
+	}
+	// Sub Header text position
+	if ( 'flipped' === get_theme_mod( 'header-subheader-content-layout', ttf_one_get_default( 'header-subheader-content-layout' ) ) ) {
+		$classes[] = 'subheader-flipped';
 	}
 
 	return $classes;

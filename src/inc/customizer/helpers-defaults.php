@@ -59,6 +59,7 @@ function ttf_one_option_defaults() {
 		'header-text' => '',
 		'header-show-social' => 0,
 		'header-show-search' => 1,
+		'header-subheader-content-layout' => 'default',
 		'header-layout' => 1,
 		'header-branding-position' => 'left',
 		// Main
