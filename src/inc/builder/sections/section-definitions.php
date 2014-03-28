@@ -145,7 +145,25 @@ class TTF_One_Section_Definitions {
 	 * @return array             The cleaned data.
 	 */
 	public function save_gallery( $data ) {
-		return $data;
+		$clean_data = array();
+
+		if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
+			foreach ( $data['gallery-items'] as $id => $item ) {
+				if ( isset( $item['title'] ) ) {
+					$clean_data['gallery-items'][ $id ]['title'] = sanitize_text_field( $item['title'] );
+				}
+
+				if ( isset( $item['link'] ) ) {
+					$clean_data['gallery-items'][ $id ]['link'] = esc_url_raw( $item['link'] );
+				}
+
+				if ( isset( $item['image-id'] ) ) {
+					$clean_data['gallery-items'][ $id ]['image-id'] = absint( $item['image-id'] );
+				}
+			}
+		}
+
+		return $clean_data;
 	}
 
 	/**

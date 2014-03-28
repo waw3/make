@@ -127,7 +127,7 @@ class TTF_One_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
 
 		// Add the sort input
-		$section_order = get_post_meta( $post_local->ID, '_ttf-one-section-ids', true );
+		$section_order = get_post_meta( $post_local->ID, '_ttfob-section-ids', true );
 		$section_order = ( ! empty( $section_order ) ) ? implode( ',', $section_order ) : '';
 		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
 	}
@@ -537,26 +537,25 @@ class TTF_One_Builder_Base {
 	public function get_section_data( $post_id ) {
 		$data         = array();
 		$ordered_data = array();
-		$ids          = get_post_meta( $post_id, '_ttf-one-section-ids', true );
+		$ids          = get_post_meta( $post_id, '_ttfob-section-ids', true );
 		$post_meta    = get_post_meta( $post_id );
+
+		// Temp array of hashed keys
+		$temp_data = array();
 
 		// Any meta containing the old keys should be deleted
 		if ( is_array( $post_meta ) ) {
 			foreach ( $post_meta as $key => $value ) {
 				// Only consider builder values
-				if ( 0 === strpos( $key, '_ttf-one-builder-' ) ) {
-					// Get the ID from the key
-					$pattern = '/_ttf-one-builder-(\d+)-(.*)/';
-					$key_id  = preg_replace( $pattern, '$1', $key );
-					$name    = str_replace( '_ttf-one-builder-' . $key_id . '-', '', $key );
-
-					// If the ID in the key is not one of the whitelisted IDs, delete it
-					if ( in_array( $key_id, $ids ) ) {
-						$data[ $key_id ][ $name ] = $value[0];
-					}
+				if ( 0 === strpos( $key, '_ttfob:' ) ) {
+					// Get the individual pieces
+					$temp_data[ str_replace( '_ttfob:', '', $key ) ] = $value[0];
 				}
 			}
 		}
+
+		// Create multidimensional array from postmeta
+		$data = $this->create_array_from_meta_keys( $temp_data );
 
 		// Reorder the data in the order specified by the section IDs
 		foreach ( $ids as $id ) {
@@ -566,6 +565,46 @@ class TTF_One_Builder_Base {
 		}
 
 		return $ordered_data;
+	}
+
+	/**
+	 * Convert an array with array keys that map to a multidimensional array to the array.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $arr    The array to convert.
+	 * @return array            The converted array.
+	 */
+	function create_array_from_meta_keys( $arr ) {
+		// The new multidimensional array we will return
+		$result = array();
+
+		// Process each item of the input array
+		foreach ( $arr as $key => $value ) {
+			// Store a reference to the root of the array
+			$current = & $result;
+
+			// Split up the current item's key into its pieces
+			$pieces = explode( ':', $key );
+
+			/**
+			 * For all but the last piece of the key, create a new sub-array (if necessary), and update the $current
+			 * variable to a reference of that sub-array.
+			 */
+			for ( $i = 0; $i < count( $pieces ) - 1; $i++ ) {
+				$step = $pieces[ $i ];
+				if ( ! isset( $current[ $step ] ) ) {
+					$current[ $step ] = array();
+				}
+				$current = & $current[ $step ];
+			}
+
+			// Add the current value into the final nested sub-array
+			$current[ $pieces[ $i ] ] = $value;
+		}
+
+		// Return the result array
+		return $result;
 	}
 
 	/**

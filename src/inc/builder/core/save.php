@@ -159,34 +159,20 @@ class TTF_One_Builder_Save {
 		 * array serialization, whereby changing the site domain can lead to the value being unreadable. Instead, each
 		 * value is independent.
 		 */
-		foreach ( $sections as $id => $section ) {
-			foreach ( $section as $field => $value ) {
-				$key = $this->generate_meta_key( $id, $field );
-				update_post_meta( $post_id, $key, $value );
-			}
+		$values_to_save = $this->flatten_array( $sections, '_ttfob:', ':' );
+
+		foreach ( $values_to_save as $key => $value ) {
+			update_post_meta( $post_id, $key, $value );
 		}
 
 		/**
 		 * Save the ids for the sections. This will be used to lookup all of the separate values.
 		 */
 		$section_ids = array_keys( $sections );
-		update_post_meta( $post_id, '_ttf-one-section-ids', $section_ids );
+		update_post_meta( $post_id, '_ttfob-section-ids', $section_ids );
 
 		// Remove the old section values if necessary
 		$this->prune_abandoned_rows( $post_id );
-	}
-
-	/**
-	 * Generate a key for an individual value in the postmeta table.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  string    $id       The section's ID (unix timestamp).
-	 * @param  string    $field    The name of the section's field.
-	 * @return string              The full key value.
-	 */
-	public function generate_meta_key( $id, $field ) {
-		return '_ttf-one-builder-' . $id . '-' . esc_attr( $field );
 	}
 
 	/**
@@ -202,7 +188,7 @@ class TTF_One_Builder_Save {
 		$post_meta = get_post_meta( $post_id );
 
 		// Get the current keys
-		$ids = get_post_meta( $post_id, '_ttf-one-section-ids', true );
+		$ids = get_post_meta( $post_id, '_ttfob-section-ids', true );
 
 		// Any meta containing the old keys should be deleted
 		if ( is_array( $post_meta ) ) {
@@ -220,6 +206,30 @@ class TTF_One_Builder_Save {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Flatten a multidimensional array.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param  array     $array        Array to transform.
+	 * @param  string    $prefix       The beginning key value.
+	 * @param  string    $separator    The value to place between key values.
+	 * @return array                   Flattened array.
+	 */
+	public function flatten_array( $array, $prefix = '', $separator = ':' ) {
+		$result = array();
+		foreach ( $array as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$result = $result + $this->flatten_array( $value, $prefix . $key . $separator, $separator );
+			}
+			else {
+				$result[ $prefix . $key ] = $value;
+			}
+		}
+
+		return $result;
 	}
 
 	/**
