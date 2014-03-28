@@ -191,6 +191,16 @@ function ttf_one_scripts() {
 		$style_dependencies,
 		TTF_ONE_VERSION
 	);
+	$style_dependencies[] = 'ttf-one-main-style';
+
+	// Print stylesheet
+	wp_enqueue_style(
+		'ttf-one-print-style',
+		get_template_directory_uri() . '/css/print.css',
+		$style_dependencies,
+		TTF_ONE_VERSION,
+		'print'
+	);
 
 	$script_dependencies = array();
 
