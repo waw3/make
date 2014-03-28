@@ -557,9 +557,11 @@ class TTF_One_Builder_Base {
 		$data = $this->create_array_from_meta_keys( $temp_data );
 
 		// Reorder the data in the order specified by the section IDs
-		foreach ( $ids as $id ) {
-			if ( isset( $data[ $id ] ) ) {
-				$ordered_data[ $id ] = $data[ $id ];
+		if ( is_array( $ids ) ) {
+			foreach ( $ids as $id ) {
+				if ( isset( $data[ $id ] ) ) {
+					$ordered_data[ $id ] = $data[ $id ];
+				}
 			}
 		}
 
