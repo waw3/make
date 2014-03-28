@@ -214,19 +214,29 @@ ul,
 ol {
 	margin: 0 0 $base 0;
 	@include rem('padding-left', 20px);
-	&.fa-ul {
-		&.list-check i,
-		&.list-check2 i,
-		&.list-check3 i{
-			color: darken(#d3faa4, 45);
-		}
-		&.list-star i {
-			color: gold;
-		}
-		&.list-dot i,
-		&.list-dot2 i {
-			color: $c;
-		}
+	&.ttf-one-list {
+			padding-left: 0; //reset
+			list-style: none;
+			li:before {
+				font-family: FontAwesome;
+				@include rem('padding-right', 10px);
+			}
+	}
+	&.ttf-one-list-check li:before {
+		content: "\f14a";
+		color: darken(#d3faa4, 45);
+	}
+	&.ttf-one-list-check2 li:before {
+		content: "\f046";
+		color: darken(#d3faa4, 45);
+	}
+	&.ttf-one-list-star li:before {
+		content: "\f005";
+		color: gold;
+	}
+	&.ttf-one-list-dot li:before {
+		content: "\f192";
+		color: $c;
 	}
 }
 ul {
