@@ -17,7 +17,7 @@ if ( true === $ttf_one_is_js_template ) {
 	</div>
 
 	<div class="ttf-one-titlediv">
-		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[image-link]" class="ttf-one-link widefat" value="" autocomplete="off" />
+		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link widefat" value="" autocomplete="off" />
 	</div>
 
 	<?php ttf_one_get_builder_base()->add_uploader( $section_name, 0 ); ?>
