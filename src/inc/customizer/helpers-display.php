@@ -46,22 +46,51 @@ function ttf_one_css_add_rules() {
 	// Primary color
 	if ( $color_primary !== ttf_one_get_default( 'color-primary' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'a', 'button' ),
+			'selectors' => array( '.color-primary-text', 'a' ),
 			'declarations' => array(
 				'color' => $color_primary
+			)
+		) );
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-primary-background' ),
+			'declarations' => array(
+				'background-color' => $color_primary
+			)
+		) );
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-primary-border' ),
+			'declarations' => array(
+				'border-color' => $color_primary
 			)
 		) );
 	}
 
 	// Secondary color
 	if ( $color_secondary !== ttf_one_get_default( 'color-secondary' ) ) {
-		//
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-secondary-text' ),
+			'declarations' => array(
+				'color' => $color_primary
+			)
+		) );
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-secondary-background' ),
+			'declarations' => array(
+				'background-color' => $color_primary
+			)
+		) );
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-secondary-border' ),
+			'declarations' => array(
+				'border-color' => $color_primary
+			)
+		) );
 	}
 
 	// Text color
 	if ( $color_text !== ttf_one_get_default( 'color-text' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'p' ),
+			'selectors' => array( '.color-text', 'body' ),
 			'declarations' => array(
 				'color' => $color_text
 			)
@@ -70,7 +99,24 @@ function ttf_one_css_add_rules() {
 
 	// Detail color
 	if ( $color_detail !== ttf_one_get_default( 'color-detail' ) ) {
-		//
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-detail-text' ),
+			'declarations' => array(
+				'color' => $color_primary
+			)
+		) );
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-detail-background' ),
+			'declarations' => array(
+				'background-color' => $color_primary
+			)
+		) );
+		ttf_one_get_css()->add( array(
+			'selectors' => array( '.color-detail-border' ),
+			'declarations' => array(
+				'border-color' => $color_primary
+			)
+		) );
 	}
 
 	/**
