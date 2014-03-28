@@ -221,8 +221,8 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_enqueue_script(
-			'ttf-section-behaviors',
-			get_template_directory_uri() . '/inc/builder/sections/js/section-behaviors.js',
+			'ttf-one-sections/js/views/gallery.js',
+			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery.js',
 			array(
 				'ttf-one-builder',
 				'ttf-one-sections/js/models/gallery-item.js',
