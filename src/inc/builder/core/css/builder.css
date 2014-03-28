@@ -405,8 +405,8 @@
 	opacity: .5;
 	background: url(images/sortable-background.png) center center repeat-x;
 }
-.ttf-one-profile-column:hover .sortable-background,
-.ttf-one-feature-column:hover .sortable-background {
+.ttf-one-text-column:hover .sortable-background,
+.ttf-one-gallery-column:hover .sortable-background {
 	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------
