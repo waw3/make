@@ -2,20 +2,20 @@
 <?php global $ttf_one_section_data, $ttf_one_is_js_template; ?>
 <?php $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template ); ?>
 
-<div class="ttf-one-columns-select">
-	<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
-	<select id="ttf-one-gallery-columns">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-	</select>
-</div>
-
 <div class="ttf-one-section-sortable-stage">
 	<div class="ttf-one-text-column">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 			<div class="sortable-background"></div>
+		</div>
+
+		<div class="ttf-one-columns-select ttf-one-select">
+			<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
+			<select id="ttf-one-gallery-columns">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
 		</div>
 
 		<div class="ttf-one-titlediv">

@@ -37,6 +37,10 @@
 .ttf-one-stage-closed {
 	padding-top: 0; /*reset*/
 }
+.ttf-one-select {
+	text-align: right;
+	padding: 2px 0 8px;
+}
 /*---------------------------------------------------------
  Sections (html-builder.css)
 -------------------------------------------------------- */
@@ -138,6 +142,16 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+.ttf-one-media-uploader-placeholder:before {
+	content: "\f104";
+	display: block;
+	opacity: .15;
+	font: 60px/228px dashicons;
+	text-align: center;
+}
+.ttf-one-media-uploader-placeholder:hover:before {
+	opacity: .2;
 }
 .ttf-one-media-uploader-placeholder img {
 	position: absolute;
