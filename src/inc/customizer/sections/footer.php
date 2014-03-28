@@ -274,27 +274,6 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		)
 	);
 
-	// Show credit line
-	$setting_id = 'footer-show-credit';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttf_one_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Show Credit Line', 'ttf-one' ),
-			'type'     => 'checkbox',
-			'priority' => $priority->add()
-		)
-	);
-
 	// Footer layout
 	$setting_id = 'footer-layout';
 	$wp_customize->add_setting(

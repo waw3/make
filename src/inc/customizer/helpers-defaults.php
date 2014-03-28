@@ -87,7 +87,6 @@ function ttf_one_option_defaults() {
 		'footer-widget-areas' => 3,
 		'footer-text' => '',
 		'footer-show-social' => 1,
-		'footer-show-credit' => 1,
 		'footer-layout' => 1,
 		// Social
 		'social-facebook' => '',

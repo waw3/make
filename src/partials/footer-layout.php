@@ -38,17 +38,15 @@ $show_social        = (int) get_theme_mod( 'footer-show-social', ttf_one_get_def
 
 		<div class="site-info">
 			<?php // Footer credit
-			if ( 1 === $show_footer_credit ) :
-				printf(
-					__( '%s theme', 'ttf-one' ),
-					'<span class="theme-name">One</span>'
-				);
+			printf(
+				__( '%s theme', 'ttf-one' ),
+				'<span class="theme-name">One</span>'
+			);
 			?>
 			<span class="theme-by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></span>
 			<span class="theme-author"><a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
 				The Theme Foundry
 			</a></span>
-			<?php endif; ?>
 		</div>
 
 		<?php // Social links
