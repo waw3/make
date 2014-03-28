@@ -2,7 +2,7 @@
 <?php
 $section_name = 'ttf-one-section';
 if ( true === $ttf_one_is_js_template ) {
-	$section_name .= '[{{{ parentID }}}][galery-items][{{{ id }}}]';
+	$section_name .= '[{{{ parentID }}}][gallery-items][{{{ id }}}]';
 } else {
 	$section_name .= '[' . $data['data']['id'] . '][gallery-items][]';
 }
