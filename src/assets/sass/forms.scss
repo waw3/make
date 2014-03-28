@@ -24,6 +24,7 @@ select {
 /*---------------------------------------------------------
  Buttons and inputs (_forms.scss)
 -------------------------------------------------------- */
+a.ttf-one-button,
 button,
 input[type="button"],
 input[type="reset"],
@@ -36,26 +37,26 @@ input[type="submit"] {
 	@include rem('padding', $base/2 14px);
 	@include rem('font-size', 13px);
 	@include border-radius;
-	&.with-color {
-		background: $c;
+	&.color-primary-background {
+		background-color: $c;
 	}
-	&.with-large {
+	&.ttf-one-button-large {
 		@include rem('font-size', 16px);
 		@include rem('padding', $base/2 18px);
 	}
-	&.with-alert {
+	&.ttf-one-alert {
 		background: $d;
 		color: $b;
 	}
-	&.with-success {
+	&.ttf-one-success {
 		background: #d3faa4;
 		color: darken(#d3faa4, 65);
 	}
-	&.with-error {
+	&.ttf-one-error {
 		background-color: #ff9b9b;
 		color: darken(#ff9b9b, 65);
 	}
-	&.with-important {
+	&.ttf-one-important {
 		background-color: #fff99b;
 		color: darken(#fff99b, 65);
 	}

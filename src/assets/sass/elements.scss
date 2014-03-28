@@ -66,7 +66,7 @@ blockquote {
 			content: "\2014";
 		}
 	}
-	&.variant-1 {
+	&.ttf-one-testimonial {
 		line-height: 0; //reset
 		background-color: $d;
 		@include rem('padding', $base*1.5 $gut);
@@ -199,10 +199,10 @@ hr {
 	border-top: 2px solid $d;
 	height: 1px;
 	margin-bottom: $base;
-	&.variant-1 {
+	&.ttf-one-line-dashed {
 		border-top: 2px dashed $d;
 	}
-	&.variant-2 {
+	&.ttf-one-line-double {
     	border-top: thick double $d;
 	}
 }
@@ -336,23 +336,23 @@ table {
 /*---------------------------------------------------------
  Note (_elements.scss)
 -------------------------------------------------------- */
-.alert {
+.ttf-one-alert {
 	background-color: $d;
 	border-bottom: 3px solid $e;
 	@include rem('padding', $base*1.5 $gut);
 	@include rem('font-size', 14px);
 	@include border-radius;
-	&.error {
+	&.ttf-one-error {
 		background-color: #ff9b9b;
 		color: darken(#ff9b9b, 65);
 		border-bottom: 3px solid darken(#ff9b9b, 35);
 	}
-	&.success {
+	&.ttf-one-success {
 		background-color: #d3faa4;
 		color: darken(#d3faa4, 65);
 		border-bottom: 3px solid darken(#d3faa4, 35);
 	}
-	&.important {
+	&.ttf-one-important {
 		background-color: #fff99b;
 		color: darken(#fff99b, 65);
 		border-bottom: 3px solid darken(#fff99b, 35);

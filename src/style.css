@@ -234,7 +234,7 @@ pre, code, input, textarea {
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
-ul, ol, dl, p, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr, .alert {
+ul, ol, dl, p, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr, .ttf-one-alert {
   margin-bottom: 22px;
   margin-bottom: 1.375rem; }
 
@@ -706,14 +706,14 @@ blockquote {
     font-size: 0.8125rem; }
     blockquote cite:before {
       content: "\2014"; }
-  blockquote.variant-1 {
+  blockquote.ttf-one-testimonial {
     line-height: 0;
     background-color: #eaecee;
     padding: 33px 32px;
     padding:  2.0625rem 2rem; }
-    blockquote.variant-1 p {
+    blockquote.ttf-one-testimonial p {
       margin-bottom: 0; }
-    blockquote.variant-1 cite {
+    blockquote.ttf-one-testimonial cite {
       display: block;
       margin-bottom: 0;
       font-weight: bold;
@@ -721,7 +721,7 @@ blockquote {
       padding:  0.6875rem 0;
       font-size: 14px;
       font-size: 0.875rem; }
-    blockquote.variant-1:after {
+    blockquote.ttf-one-testimonial:after {
       content: "";
       position: relative;
       bottom: -66px;
@@ -828,9 +828,9 @@ hr {
   border-top: 2px solid #eaecee;
   height: 1px;
   margin-bottom: 22px; }
-  hr.variant-1 {
+  hr.ttf-one-line-dashed {
     border-top: 2px dashed #eaecee; }
-  hr.variant-2 {
+  hr.ttf-one-line-double {
     border-top: thick double #eaecee; }
 
 /*---------------------------------------------------------
@@ -928,7 +928,7 @@ table {
 /*---------------------------------------------------------
  Note (_elements.scss)
 -------------------------------------------------------- */
-.alert {
+.ttf-one-alert {
   background-color: #eaecee;
   border-bottom: 3px solid #b9bcbf;
   padding: 33px 32px;
@@ -938,15 +938,15 @@ table {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
-  .alert.error {
+  .ttf-one-alert.ttf-one-error {
     background-color: #ff9b9b;
     color: #4e0000;
     border-bottom: 3px solid #e80000; }
-  .alert.success {
+  .ttf-one-alert.ttf-one-success {
     background-color: #d3faa4;
     color: #2d4e04;
     border-bottom: 3px solid #80df0c; }
-  .alert.important {
+  .ttf-one-alert.ttf-one-important {
     background-color: #fff99b;
     color: #4e4900;
     border-bottom: 3px solid #e8d800; }
@@ -1417,7 +1417,7 @@ select {
 /*---------------------------------------------------------
  Buttons and inputs (_forms.scss)
 -------------------------------------------------------- */
-button, input[type="button"], input[type="reset"], input[type="submit"] {
+a.ttf-one-button, button, input[type="button"], input[type="reset"], input[type="submit"] {
   color: #ffffff;
   border: 0;
   background: #171717;
@@ -1430,23 +1430,23 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
-  button.with-color, input[type="button"].with-color, input[type="reset"].with-color, input[type="submit"].with-color {
-    background: #0094c5; }
-  button.with-large, input[type="button"].with-large, input[type="reset"].with-large, input[type="submit"].with-large {
+  a.ttf-one-button.color-primary-background, button.color-primary-background, input[type="button"].color-primary-background, input[type="reset"].color-primary-background, input[type="submit"].color-primary-background {
+    background-color: #0094c5; }
+  a.ttf-one-button.ttf-one-button-large, button.ttf-one-button-large, input[type="button"].ttf-one-button-large, input[type="reset"].ttf-one-button-large, input[type="submit"].ttf-one-button-large {
     font-size: 16px;
     font-size: 1rem;
     padding: 11px 18px;
     padding:  0.6875rem 1.125rem; }
-  button.with-alert, input[type="button"].with-alert, input[type="reset"].with-alert, input[type="submit"].with-alert {
+  a.ttf-one-button.ttf-one-alert, button.ttf-one-alert, input[type="button"].ttf-one-alert, input[type="reset"].ttf-one-alert, input[type="submit"].ttf-one-alert {
     background: #eaecee;
     color: #171717; }
-  button.with-success, input[type="button"].with-success, input[type="reset"].with-success, input[type="submit"].with-success {
+  a.ttf-one-button.ttf-one-success, button.ttf-one-success, input[type="button"].ttf-one-success, input[type="reset"].ttf-one-success, input[type="submit"].ttf-one-success {
     background: #d3faa4;
     color: #2d4e04; }
-  button.with-error, input[type="button"].with-error, input[type="reset"].with-error, input[type="submit"].with-error {
+  a.ttf-one-button.ttf-one-error, button.ttf-one-error, input[type="button"].ttf-one-error, input[type="reset"].ttf-one-error, input[type="submit"].ttf-one-error {
     background-color: #ff9b9b;
     color: #4e0000; }
-  button.with-important, input[type="button"].with-important, input[type="reset"].with-important, input[type="submit"].with-important {
+  a.ttf-one-button.ttf-one-important, button.ttf-one-important, input[type="button"].ttf-one-important, input[type="reset"].ttf-one-important, input[type="submit"].ttf-one-important {
     background-color: #fff99b;
     color: #4e4900; }
 
