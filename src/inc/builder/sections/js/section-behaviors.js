@@ -1,20 +1,19 @@
 /* global jQuery, _ */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function (window, $, _, oneApp) {
+(function (window, $, _, oneApp, $oneApp) {
 	'use strict';
 
-	$oneApp.on('viewInit', function(evt, view){
-		var sectionType = view.model.get('sectionType');
+	oneApp.GalleryView = oneApp.SectionView.extend({
+		events: function() {
+			return _.extend({}, oneApp.SectionView.prototype.events, {
+				'click .ttf-one-gallery-background' : 'addGalleryItem'
+			});
+		},
 
-		// Append the additional event to the view
-		view.events = _.extend(view.events, {
-			'click .ttf-one-gallery-add-item a': 'addItem'
-		});
-
-		// Append the needed function to the view
-		view.addItem = function(evt){
+		addGalleryItem : function (evt) {
 			evt.preventDefault();
+
 		}
 	});
-})(window, jQuery, _, oneApp);
+})(window, jQuery, _, oneApp, $oneApp);
