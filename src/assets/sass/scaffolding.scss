@@ -118,6 +118,9 @@ a {
 	.search-form {
 		@include for(medium-screens) {
 			float: right;
+			.branding-right & {
+				float: left;
+			}
 		}
 		@include rem('font-size', 13px);
 	}
@@ -141,7 +144,7 @@ a {
 	@include for(medium-screens) {
 		float: left;
 		max-width: 50%;
-		.primary-nav-left & {
+		.branding-right & {
 			float: right;
 		}
 	}
@@ -310,7 +313,7 @@ a {
 	@include for(medium-screens) {
 		float: right;
 		max-width: 50%;
-		.primary-nav-left & {
+		.header-layout-1.branding-right & {
 			float: left;
 		}
 	}

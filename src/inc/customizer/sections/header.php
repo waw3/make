@@ -340,7 +340,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Nav position (Layout 1 only)
-	$setting_id = 'header-primary-nav-position';
+	$setting_id = 'header-branding-position';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -354,11 +354,11 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Primary Menu On', 'ttf-one' ),
+			'label'    => __( 'Show Title/Logo On', 'ttf-one' ),
 			'type'     => 'select',
 			'choices'  => array(
-				'right'  => __( 'Right', 'ttf-one' ),
-				'left'  => __( 'Left', 'ttf-one' )
+				'left'  => __( 'Left', 'ttf-one' ),
+				'right' => __( 'Right', 'ttf-one' )
 			),
 			'priority' => $priority->add()
 		)

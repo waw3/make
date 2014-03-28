@@ -125,7 +125,7 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		case 'header-layout' :
 			$allowed_choices = array( 1, 2, 3 );
 			break;
-		case 'header-primary-nav-position' :
+		case 'header-branding-position' :
 			$allowed_choices = array( 'left', 'right' );
 			break;
 		case 'footer-widget-areas' :
@@ -178,10 +178,13 @@ if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
  * @return array
  */
 function ttf_one_body_layout_classes( $classes ) {
+	// Full-width vs Boxed
 	$classes[] = get_theme_mod( 'general-layout', ttf_one_get_default( 'general-layout' ) );
-	if ( 'left' === get_theme_mod( 'header-primary-nav-position', ttf_one_get_default( 'header-primary-nav-position' ) ) ) {
-		$classes[] = 'primary-nav-left';
+	// Header branding position
+	if ( 'right' === get_theme_mod( 'header-branding-position', ttf_one_get_default( 'header-branding-position' ) ) ) {
+		$classes[] = 'branding-right';
 	}
+
 	return $classes;
 }
 endif;

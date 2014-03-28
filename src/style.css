@@ -286,7 +286,9 @@ a {
   font-size: 0.8125rem; }
   @media screen and (min-width: 800px) {
     .header-layout-3 .search-form {
-      float: right; } }
+      float: right; }
+      .branding-right .header-layout-3 .search-form {
+        float: left; } }
 .header-layout-3 .search-submit {
   display: none; }
 
@@ -306,7 +308,7 @@ a {
   .site-branding {
     float: left;
     max-width: 50%; }
-    .primary-nav-left .site-branding {
+    .branding-right .site-branding {
       float: right; } }
 
 .site-description {
@@ -467,7 +469,7 @@ a {
     .site-navigation {
       float: right;
       max-width: 50%; }
-      .primary-nav-left .site-navigation {
+      .header-layout-1.branding-right .site-navigation {
         float: left; } }
   .site-navigation ul {
     margin: 0;

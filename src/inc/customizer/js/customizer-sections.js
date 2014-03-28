@@ -22,8 +22,8 @@
 			callback: function( to ) { return !! to; }
 		},
 		'header-layout': {
-			controls: [ 'ttf-one_header-primary-nav-position' ],
-			callback: function( to ) { return '1' == to; }
+			controls: [ 'ttf-one_header-branding-position' ],
+			callback: function( to ) { return ( '1' == to || '3' == to ); }
 		},
 		'main-background-image': {
 			controls: [ 'ttf-one_main-background-repeat', 'ttf-one_main-background-position', 'ttf-one_main-background-size' ],

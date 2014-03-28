@@ -60,7 +60,7 @@ function ttf_one_option_defaults() {
 		'header-show-social' => 0,
 		'header-show-search' => 1,
 		'header-layout' => 1,
-		'header-primary-nav-position' => 'right',
+		'header-branding-position' => 'left',
 		// Main
 		'main-background-color' => '#ffffff',
 		'main-background-image' => '',
