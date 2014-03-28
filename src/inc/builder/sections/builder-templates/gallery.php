@@ -29,7 +29,9 @@
 	<a href="#" class="ttf-one-gallery-add-item"><?php _e( 'Add a new gallery item', 'ttf-one' ); ?></a>
 </div>
 
-<div class="ttf-one-gallery-items"></div>
+<div class="ttf-one-gallery-items">
+	<?php get_template_part( '/inc/builder/sections/builder-templates/gallery', 'item' ); ?>
+</div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttf_one_load_section_footer(); ?>
