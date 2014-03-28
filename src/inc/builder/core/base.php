@@ -703,12 +703,21 @@ if ( ! function_exists( 'ttf_one_get_section_name' ) ) :
  *
  * @since  1.0.0.
  *
- * @param  array     $data              The data for the section.
- * @param  array     $is_js_template    Whether a JS template is being printed or not.
- * @return string                       The name of the section.
+ * @param  array            $data              The data for the section.
+ * @param  array            $is_js_template    Whether a JS template is being printed or not.
+ * @param  null|int|bool    $parent_id         Adds a placeholder for a parent ID, or adds a parentID.
+ * @return string                              The name of the section.
  */
-function ttf_one_get_section_name( $data, $is_js_template ) {
+function ttf_one_get_section_name( $data, $is_js_template, $parent_id = null ) {
 	$name = 'ttf-one-section';
+
+	if ( ! is_null( $parent_id ) ) {
+		if ( $is_js_template ) {
+			$name .= '[{{{ parentID }}}]';
+		} else {
+			$name .= '[' . $parent_id . ']';
+		}
+	}
 
 	if ( $is_js_template ) {
 		$name .= '[{{{ id }}}]';
