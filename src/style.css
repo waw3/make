@@ -944,8 +944,8 @@ table {
  Note (_elements.scss)
 -------------------------------------------------------- */
 .ttf-one-alert {
+  border: 1px solid #c0c6cc;
   background-color: #eaecee;
-  border-bottom: 3px solid #b9bcbf;
   padding: 33px 32px;
   padding:  2.0625rem 2rem;
   font-size: 14px;
@@ -953,18 +953,28 @@ table {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
+  .ttf-one-alert:before {
+    content: "\f071";
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    line-height: 1;
+    padding-right: 32px;
+    padding-right: 2rem;
+    font-size: 24px;
+    font-size: 1.5rem; }
   .ttf-one-alert.ttf-one-error {
-    background-color: #ff9b9b;
-    color: #4e0000;
-    border-bottom: 3px solid #e80000; }
+    color: #d04242;
+    border: 1px solid #dfbaba;
+    background-color: #f7eeee; }
   .ttf-one-alert.ttf-one-success {
-    background-color: #d3faa4;
-    color: #2d4e04;
-    border-bottom: 3px solid #80df0c; }
+    color: #339d56;
+    border: 1px solid #badfc6;
+    background: #eef7f1; }
   .ttf-one-alert.ttf-one-important {
-    background-color: #fff99b;
-    color: #4e4900;
-    border-bottom: 3px solid #e8d800; }
+    color: #ea8501;
+    border: 1px solid #fff265;
+    background-color: #fffde5; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)
@@ -1456,14 +1466,17 @@ a.ttf-one-button, button, input[type="button"], input[type="reset"], input[type=
     background: #eaecee;
     color: #171717; }
   a.ttf-one-button.ttf-one-success, button.ttf-one-success, input[type="button"].ttf-one-success, input[type="reset"].ttf-one-success, input[type="submit"].ttf-one-success {
-    background: #d3faa4;
-    color: #2d4e04; }
+    color: #339d56;
+    border: 1px solid #badfc6;
+    background: #eef7f1; }
   a.ttf-one-button.ttf-one-error, button.ttf-one-error, input[type="button"].ttf-one-error, input[type="reset"].ttf-one-error, input[type="submit"].ttf-one-error {
-    background-color: #ff9b9b;
-    color: #4e0000; }
+    color: #d04242;
+    border: 1px solid #dfbaba;
+    background-color: #f7eeee; }
   a.ttf-one-button.ttf-one-important, button.ttf-one-important, input[type="button"].ttf-one-important, input[type="reset"].ttf-one-important, input[type="submit"].ttf-one-important {
-    background-color: #fff99b;
-    color: #4e4900; }
+    color: #ea8501;
+    border: 1px solid #fff265;
+    background-color: #fffde5; }
   a.ttf-one-button.ttf-one-download:after, button.ttf-one-download:after, input[type="button"].ttf-one-download:after, input[type="reset"].ttf-one-download:after, input[type="submit"].ttf-one-download:after {
     content: "\f0ab";
     font-family: FontAwesome;

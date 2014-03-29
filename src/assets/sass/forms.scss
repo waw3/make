@@ -49,16 +49,19 @@ input[type="submit"] {
 		color: $b;
 	}
 	&.ttf-one-success {
-		background: #d3faa4;
-		color: darken(#d3faa4, 65);
+		color: #339d56;
+		border: 1px solid darken(#eef7f1, 15);
+		background: #eef7f1;
 	}
 	&.ttf-one-error {
-		background-color: #ff9b9b;
-		color: darken(#ff9b9b, 65);
+		color: #d04242;
+		border: 1px solid darken(#f7eeee, 15);
+		background-color: #f7eeee;
 	}
 	&.ttf-one-important {
-		background-color: #fff99b;
-		color: darken(#fff99b, 65);
+		color: #ea8501;
+		border: 1px solid darken(#fffde5, 25);
+		background-color: #fffde5;
 	}
 	&.ttf-one-download:after {
 		content: "\f0ab";
