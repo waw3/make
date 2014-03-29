@@ -213,6 +213,11 @@ if ( ! function_exists( 'ttf_one_ajax_display_customizations' ) ) :
  * @return void
  */
 function ttf_one_ajax_display_customizations() {
+	// Make sure this is an Ajax request
+	if ( ! defined( 'DOING_AJAX' ) || true !== DOING_AJAX ) {
+		return;
+	}
+
 	do_action( 'ttf_one_css' );
 
 	// Set the content type
