@@ -954,7 +954,7 @@ table {
   -moz-border-radius: 3px;
   border-radius: 3px; }
   .ttf-one-alert:before {
-    content: "\f071";
+    content: "\f05a";
     display: block;
     float: left;
     font-family: FontAwesome;
@@ -967,14 +967,20 @@ table {
     color: #d04242;
     border: 1px solid #dfbaba;
     background-color: #f7eeee; }
+    .ttf-one-alert.ttf-one-error:before {
+      content: "\f071"; }
   .ttf-one-alert.ttf-one-success {
     color: #339d56;
     border: 1px solid #badfc6;
     background: #eef7f1; }
+    .ttf-one-alert.ttf-one-success:before {
+      content: "\f14a"; }
   .ttf-one-alert.ttf-one-important {
     color: #ea8501;
     border: 1px solid #fff265;
     background-color: #fffde5; }
+    .ttf-one-alert.ttf-one-important:before {
+      content: "\f071"; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)

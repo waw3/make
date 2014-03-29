@@ -353,7 +353,7 @@ table {
 	@include rem('font-size', 14px);
 	@include border-radius;
 	&:before {
-		content: "\f071";
+		content: "\f05a";
 		display: block;
 		float: left;
 		font-family: FontAwesome;
@@ -365,15 +365,24 @@ table {
 		color: #d04242;
 		border: 1px solid darken(#f7eeee, 15);
 		background-color: #f7eeee;
+		&:before {
+			content: "\f071";
+		}
 	}
 	&.ttf-one-success {
 		color: #339d56;
 		border: 1px solid darken(#eef7f1, 15);
 		background: #eef7f1;
+		&:before {
+			content: "\f14a";
+		}
 	}
 	&.ttf-one-important {
 		color: #ea8501;
 		border: 1px solid darken(#fffde5, 25);
 		background-color: #fffde5;
+		&:before {
+			content: "\f071";
+		}
 	}
 }
