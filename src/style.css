@@ -851,13 +851,13 @@ ul, ol {
       padding-right: 0.625rem; }
   ul.ttf-one-list-check li:before, ol.ttf-one-list-check li:before {
     content: "\f14a";
-    color: #65af0a; }
+    color: #339d56; }
   ul.ttf-one-list-check2 li:before, ol.ttf-one-list-check2 li:before {
     content: "\f046";
-    color: #65af0a; }
+    color: #339d56; }
   ul.ttf-one-list-star li:before, ol.ttf-one-list-star li:before {
     content: "\f005";
-    color: gold; }
+    color: #ea8501; }
   ul.ttf-one-list-dot li:before, ol.ttf-one-list-dot li:before {
     content: "\f192";
     color: #0094c5; }
