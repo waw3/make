@@ -83,7 +83,7 @@ ol {
 	list-style: decimal;
 }
 /*---------------------------------------------------------
- Extras (editor-style.css)
+ Alerts (editor-style.css)
 -------------------------------------------------------- */
 .ttf-one-alert {
 	background-color: #eaecee;
@@ -119,4 +119,48 @@ ol {
 }
 .ttf-one-alert.ttf-one-important:before {
 	content: "\f071";
+}
+/*---------------------------------------------------------
+ Buttons (editor-style.css)
+-------------------------------------------------------- */
+a.ttf-one-button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	color: #ffffff;
+	border: 0;
+	background: #171717;
+	cursor: pointer;
+	-webkit-appearance: button;
+	padding: 11px 14px;
+	font-size: 13px;
+}
+.color-primary-background {
+	background-color: #0094c5;
+}
+.ttf-one-button-large {
+	font-size: 16px;
+	padding: 11px 18px;
+}
+.ttf-one-alert {
+	background: #eaecee;
+	color: #171717;
+}
+.ttf-one-success {
+	color: #339d56;
+	background: #eef7f1;
+}
+.ttf-one-error {
+	color: #d04242;
+	background-color: #f7eeee;
+}
+.ttf-one-important {
+	color: #ea8501;
+	background-color: #fffde5;
+}
+.ttf-one-download:after {
+	content: "\f0ab";
+	font-family: FontAwesome;
+	padding-left: 6px;
 }
