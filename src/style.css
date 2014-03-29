@@ -712,7 +712,10 @@ blockquote {
     line-height: 0;
     background-color: #eaecee;
     padding: 33px 32px;
-    padding:  2.0625rem 2rem; }
+    padding:  2.0625rem 2rem;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; }
     blockquote.ttf-one-testimonial p {
       margin-bottom: 0; }
     blockquote.ttf-one-testimonial cite {
@@ -784,7 +787,7 @@ details :focus {
  Marks (_elements.scss)
 -------------------------------------------------------- */
 ins, mark {
-  background: #fff9c0;
+  background-color: #fff9c0;
   text-decoration: none; }
 
 ins {

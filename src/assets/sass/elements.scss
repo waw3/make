@@ -70,6 +70,7 @@ blockquote {
 		line-height: 0; //reset
 		background-color: $d;
 		@include rem('padding', $base*1.5 $gut);
+		@include border-radius;
 		p {
 			margin-bottom: 0; // reset
 		}
@@ -150,7 +151,7 @@ details {
 -------------------------------------------------------- */
 ins,
 mark {
-	background: #fff9c0;
+	background-color: #fff9c0;
 	text-decoration: none;
 }
 ins {

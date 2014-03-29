@@ -1,0 +1,122 @@
+/*---------------------------------------------------------
+ Body (editor-style.css)
+-------------------------------------------------------- */
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 100%; /* 16px */
+	line-height: 1.5;
+	color: #171717;
+}
+/*---------------------------------------------------------
+ Code (editor-style.css)
+-------------------------------------------------------- */
+tt,
+kbd,
+pre,
+code,
+samp {
+	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+}
+/*---------------------------------------------------------
+ Elements (editor-style.css)
+-------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+}
+h4 {
+	text-transform: uppercase;
+}
+h6 {
+	text-transform: uppercase;
+}
+blockquote p {
+	font-size: 135%; /* 20px */
+	line-height: 1.25;
+}
+tt,
+kbd,
+pre,
+code,
+samp {
+	background-color: #eaecee;
+	padding: 4px;
+	font-size: 93.75%; /* 15px */
+}
+pre {
+	padding: 10px;
+	font-size: 93.75%; /* 15px */
+}
+ins,
+mark {
+	background-color: #fff9c0;
+	text-decoration: none;
+}
+ins {
+	color: inherit; /* reset */
+}
+ins:before {
+	content: "\005B";
+	position: relative;
+}
+ins:after {
+	content: "\005D";
+	position: relative;
+}
+/*---------------------------------------------------------
+ Media (editor-style.css)
+-------------------------------------------------------- */
+* {
+	max-width: 100%;
+}
+/*---------------------------------------------------------
+ Lists (editor-style.css)
+-------------------------------------------------------- */
+ul {
+	list-style: disc;
+}
+ol {
+	list-style: decimal;
+}
+/*---------------------------------------------------------
+ Extras (editor-style.css)
+-------------------------------------------------------- */
+.ttf-one-alert {
+	background-color: #eaecee;
+	padding: 33px 32px;
+	font-size: 14px;
+}
+.ttf-one-alert:before {
+	content: "\f05a";
+	display: block;
+	float: left;
+	font-family: FontAwesome;
+	line-height: 1; //reset
+	padding-right: 32px;
+	font-size: 24px;
+}
+.ttf-one-alert.ttf-one-error {
+	color: #d04242;
+	background-color: #f7eeee;
+}
+.ttf-one-alert.ttf-one-error:before {
+	content: "\f071";
+}
+.ttf-one-alert.ttf-one-success {
+	color: #339d56;
+	background: #eef7f1;
+}
+.ttf-one-alert.ttf-one-success:before {
+	content: "\f14a";
+}
+.ttf-one-alert.ttf-one-important {
+	color: #ea8501;
+	background-color: #fffde5;
+}
+.ttf-one-alert.ttf-one-important:before {
+	content: "\f071";
+}
