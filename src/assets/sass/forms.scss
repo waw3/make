@@ -60,6 +60,11 @@ input[type="submit"] {
 		background-color: #fff99b;
 		color: darken(#fff99b, 65);
 	}
+	&.download-button:after {
+		content: "\f0ab";
+		font-family: FontAwesome;
+		@include rem('padding-left', 6px);
+	}
 }
 input[type="checkbox"],
 input[type="radio"] {
