@@ -183,7 +183,7 @@ endif;
 
 if ( ! function_exists( 'ttf_one_display_customizations' ) ) :
 /**
- * Generates the CSS needed for the theme options.
+ * Generates the style tag and CSS needed for the theme options.
  *
  * By using the "ttf_one_css" filter, different components can print CSS in the header. It is organized this way to
  * ensure that there is only one "style" tag and not a proliferation of them.
@@ -195,8 +195,35 @@ if ( ! function_exists( 'ttf_one_display_customizations' ) ) :
 function ttf_one_display_customizations() {
 	do_action( 'ttf_one_css' );
 
+	// Echo the rules
+	echo "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">\n";
 	echo ttf_one_get_css()->build();
+	echo "\n</style>\n<!-- End One Custom CSS -->\n";
 }
 endif;
 
 add_action( 'wp_head', 'ttf_one_display_customizations', 11 );
+
+if ( ! function_exists( 'ttf_one_ajax_display_customizations' ) ) :
+/**
+ * Generates the theme option CSS as an Ajax response
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function ttf_one_ajax_display_customizations() {
+	do_action( 'ttf_one_css' );
+
+	// Set the content type
+	header( "Content-Type: text/css" );
+
+	// Echo the rules
+	echo ttf_one_get_css()->build();
+
+	// End the Ajax response
+	die();
+}
+endif;
+
+add_action( 'wp_ajax_ttf-one-css', 'ttf_one_ajax_display_customizations' );

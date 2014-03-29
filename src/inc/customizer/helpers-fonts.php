@@ -306,7 +306,7 @@ function ttf_one_get_google_font_request() {
 
 	// Append the subset string
 	if ( ! empty( $subsets ) ) {
-		$request .= '&subset=' . join( ',', $subsets );
+		$request .= '&subset=' . join( '%2C', $subsets );
 	}
 
 	return esc_url( $request );

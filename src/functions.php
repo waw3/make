@@ -86,7 +86,13 @@ function ttf_one_setup() {
 	) );
 
 	// Editor styles
-	add_editor_style( 'css/editor-style.css' );
+	$editor_styles = array();
+	if ( '' !== $google_request = ttf_one_get_google_font_request() ) {
+		$editor_styles[] = $google_request;
+	}
+	$editor_styles[] = 'css/editor-style.css';
+	$editor_styles[] = add_query_arg( 'action', 'ttf-one-css', admin_url( 'admin-ajax.php' ) );
+	add_editor_style( $editor_styles );
 }
 endif;
 

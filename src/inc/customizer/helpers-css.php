@@ -152,7 +152,7 @@ class TTF_One_CSS {
 			$this->data = array_reverse( $this->data );
 		}
 
-		$output = "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">$n";
+		$output = '';
 
 		foreach ( $this->data as $query => $ruleset ) {
 			$t = '';
@@ -173,8 +173,6 @@ class TTF_One_CSS {
 				$output .= '}' . $n;
 			}
 		}
-
-		$output .= "</style>\n<!-- End One Custom CSS -->\n";
 
 		return $output;
 	}
