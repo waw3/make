@@ -1464,7 +1464,7 @@ a.ttf-one-button, button, input[type="button"], input[type="reset"], input[type=
   a.ttf-one-button.ttf-one-important, button.ttf-one-important, input[type="button"].ttf-one-important, input[type="reset"].ttf-one-important, input[type="submit"].ttf-one-important {
     background-color: #fff99b;
     color: #4e4900; }
-  a.ttf-one-button.download-button:after, button.download-button:after, input[type="button"].download-button:after, input[type="reset"].download-button:after, input[type="submit"].download-button:after {
+  a.ttf-one-button.ttf-one-download:after, button.ttf-one-download:after, input[type="button"].ttf-one-download:after, input[type="reset"].ttf-one-download:after, input[type="submit"].ttf-one-download:after {
     content: "\f0ab";
     font-family: FontAwesome;
     padding-left: 6px;
