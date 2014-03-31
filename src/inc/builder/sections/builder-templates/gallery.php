@@ -4,6 +4,7 @@ global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 1 ;
 $captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'none' ;
+$section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
 
 <div class="ttf-one-columns-select-wrapper">
@@ -35,14 +36,14 @@ $captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_se
 
 <div class="ttf-one-gallery-items">
 	<div class="ttf-one-gallery-items-stage">
-		<?php if ( isset( $ttf_one_section_data['data']['gallery-items'] ) && is_array( $ttf_one_section_data['data']['gallery-items'] ) ) : ?>
-			<?php foreach ( $ttf_one_section_data['data']['gallery-items'] as $id => $item ) : ?>
-				<?php global $ttf_one_gallery_id; $ttf_one_gallery_id = $id; ?>
+		<?php foreach ( $section_order as $key => $section_id  ) : ?>
+			<?php if ( isset( $ttf_one_section_data['data']['gallery-items'][ $section_id ] ) ) : ?>
+				<?php global $ttf_one_gallery_id; $ttf_one_gallery_id = $section_id; ?>
 				<?php get_template_part( '/inc/builder/sections/builder-templates/gallery', 'item' ); ?>
-			<?php endforeach; ?>
-		<?php endif; ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
 	</div>
-	<input type="hidden" value="" name="<?php echo $section_name; ?>[gallery-item-order]" class="ttf-one-gallery-item-order" />
+	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[gallery-item-order]" class="ttf-one-gallery-item-order" />
 </div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
