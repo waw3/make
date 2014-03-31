@@ -92,6 +92,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				serverRendered: true
 			});
 		});
+
+		oneApp.initializeGalleryItemSortables();
 	};
 
 	// Initialize the views when the app starts up
