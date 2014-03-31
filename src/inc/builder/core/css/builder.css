@@ -421,11 +421,16 @@
 	}
 }
 .ttf-one-section #insert-media-button {
-	padding-right: 5px;
+	padding-right: 7px;
 }
 @media screen and (min-width: 1160px) {
 	.ttf-one-section #insert-media-button {
-		padding-right: 10px;
+		padding-right: 7px;
+	}
+}
+@media screen and ( max-width: 782px ) {
+	.ttf-one-section .wp-media-buttons span.wp-media-buttons-icon {
+		padding-left: 7px !important;
 	}
 }
 /*---------------------------------------------------------
