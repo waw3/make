@@ -63,10 +63,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		});
 	};
 
-	// Initialize the
+	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
 			oneApp.initializeGalleryItemSortables();
 		}
 	});
+
+	//
 })(window, jQuery, _, oneApp, $oneApp);
