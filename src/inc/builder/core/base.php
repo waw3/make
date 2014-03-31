@@ -61,7 +61,7 @@ class TTF_One_Builder_Base {
 
 		// Set up actions
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 1 ); // Bias toward top of stack
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 11 );
 		add_action( 'admin_print_styles-post.php', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_print_styles-post-new.php', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
@@ -209,14 +209,17 @@ class TTF_One_Builder_Base {
 			wp_enqueue_script(
 				'ttf-one-builder',
 				get_template_directory_uri() . '/inc/builder/core/js/app.js',
-				array_merge(
-					$dependencies,
-					array(
-						'ttf-one-builder/js/tinymce.js',
-						'ttf-one-builder/js/models/section.js',
-						'ttf-one-builder/js/collections/sections.js',
-						'ttf-one-builder/js/views/menu.js',
-						'ttf-one-builder/js/views/section.js',
+				apply_filters(
+					'ttf_one_builder_js_dependencies',
+					array_merge(
+						$dependencies,
+						array(
+							'ttf-one-builder/js/tinymce.js',
+							'ttf-one-builder/js/models/section.js',
+							'ttf-one-builder/js/collections/sections.js',
+							'ttf-one-builder/js/views/menu.js',
+							'ttf-one-builder/js/views/section.js',
+						)
 					)
 				),
 				TTF_ONE_VERSION,
@@ -225,7 +228,10 @@ class TTF_One_Builder_Base {
 		} else {
 			wp_enqueue_script(
 				'ttf-one-builder',
-				get_template_directory_uri() . '/inc/builder/core/js/builder.min.js',
+				apply_filters(
+					'ttf_one_builder_js_dependencies',
+					get_template_directory_uri() . '/inc/builder/core/js/builder.min.js'
+				),
 				$dependencies,
 				TTF_ONE_VERSION,
 				true
