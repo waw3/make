@@ -254,17 +254,32 @@ class TTF_One_Section_Definitions {
 			true
 		);
 
-		wp_enqueue_script(
+		wp_register_script(
 			'ttf-one-sections/js/views/gallery.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery.js',
-			array(
-				'ttf-one-builder',
-				'ttf-one-sections/js/models/gallery-item.js',
-				'ttf-one-sections/js/views/gallery-item.js',
-			),
+			array(),
 			TTF_ONE_VERSION,
 			true
 		);
+
+		// Add additional dependencies to the Builder JS
+		add_filter( 'ttf_one_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
+	}
+
+	/**
+	 * Append more JS to the list of JS deps.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $deps    The current deps.
+	 * @return array             The modified deps.
+	 */
+	public function add_js_dependencies( $deps ) {
+		return array_merge( $deps, array(
+			'ttf-one-sections/js/models/gallery-item.js',
+			'ttf-one-sections/js/views/gallery-item.js',
+			'ttf-one-sections/js/views/gallery.js',
+		) );
 	}
 
 	/**
