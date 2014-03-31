@@ -40,7 +40,7 @@ $captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_se
 			<?php get_template_part( '/inc/builder/sections/builder-templates/gallery', 'item' ); ?>
 		<?php endforeach; ?>
 	<?php endif; ?>
-	<input type="hidden" value="" name="ttf-one-gallery-item-order" />
+	<input type="hidden" value="" name="ttf-one-gallery-item-order" class="ttf-one-gallery-item-order" />
 </div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />

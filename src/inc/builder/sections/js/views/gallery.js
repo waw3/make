@@ -50,14 +50,20 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 				$('.sortable-placeholder', $stage).height($item.height());
 			},
-			stop: function () {
-				oneApp.setOrder( $(this).sortable('toArray') );
+			stop: function (event, ui) {
+				var $item = $(ui.item.get(0)),
+					$stage = $item.parents('.ttf-one-gallery-items-stage'),
+					$orderInput = $('.ttf-one-gallery-item-order', $stage);
+
+				oneApp.setOrder($(this).sortable('toArray'), $orderInput);
 			}
 		});
 	}
 
 	// Initialize the
-	$oneApp.on('afterSectionViewAdded', function(view) {
-		oneApp.initializeGalleryItemSortables();
+	$oneApp.on('afterSectionViewAdded', function(evt, view) {
+		if ('gallery' === view.model.get('sectionType')) {
+			oneApp.initializeGalleryItemSortables();
+		}
 	})
 })(window, jQuery, _, oneApp, $oneApp);
