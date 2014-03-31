@@ -12,7 +12,7 @@ $link     = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_ga
 $image_id = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['image-id'] ) ) ? $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['image-id'] : 0;
 ?>
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
-<div class="ttf-one-gallery-item" id="ttf-one-gallery-item-<?php echo esc_attr( $ttf_one_gallery_id ); ?>">
+<div class="ttf-one-gallery-item" id="ttf-one-gallery-item-<?php echo esc_attr( $ttf_one_gallery_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_gallery_id ); ?>">
 <?php endif; ?>
 	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 		<div class="sortable-background"></div>
