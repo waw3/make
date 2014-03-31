@@ -159,6 +159,10 @@ class TTF_One_Section_Definitions {
 			}
 		}
 
+		if ( isset( $data['gallery-item-order'] ) ) {
+			$clean_data['gallery-item-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['gallery-item-order'] ) );
+		}
+
 		if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
 			foreach ( $data['gallery-items'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {

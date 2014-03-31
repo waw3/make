@@ -466,6 +466,18 @@ class TTF_One_Builder_Save {
 
 		return $this->_sanitized_sections;
 	}
+
+	/**
+	 * Sanitizes a string to only return numbers.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $id    The section ID.
+	 * @return string           The sanitized ID.
+	 */
+	public static function clean_section_id( $id ) {
+		return preg_replace( '/[^0-9]/', '', $id );
+	}
 }
 endif;
 
