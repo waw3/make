@@ -70,5 +70,30 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 	});
 
-	//
+	// Initialize available gallery items
+	oneApp.initGalleryItemViews = function () {
+		$('.ttf-one-gallery-item').each(function () {
+			var $item = $(this),
+				idAttr = $item.attr('id'),
+				id = $item.attr('data-id'),
+				$section = $item.parents('.ttf-one-section'),
+				parentID = $section.attr('data-id');
+
+			// Build the model
+			var model = new oneApp.GalleryItemModel({
+				id: id,
+				parentID: parentID
+			});
+
+			// Build the view
+			new oneApp.GalleryItemView({
+				model: model,
+				el: $('#' + idAttr),
+				serverRendered: true
+			});
+		});
+	};
+
+	// Initialize the views when the app starts up
+	oneApp.initGalleryItemViews();
 })(window, jQuery, _, oneApp, $oneApp);
