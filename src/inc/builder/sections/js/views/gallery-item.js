@@ -20,7 +20,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.model.toJSON())).attr('id', this.idAttr);
+			this.$el.html(this.template(this.model.toJSON()))
+				.attr('id', this.idAttr)
+				.attr('data-id', this.model.get('id'));
 			return this;
 		},
 

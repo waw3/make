@@ -24,7 +24,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Append view
 			var html = view.render().el;
-			$('.ttf-one-gallery-items').append(html);
+			$('.ttf-one-gallery-items-stage').append(html);
 
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-gallery-item-order', $(view.$el).parents('.ttf-one-gallery-items')));
@@ -55,7 +55,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-gallery-items-stage'),
+					$stage = $item.parents('.ttf-one-gallery-items'),
 					$orderInput = $('.ttf-one-gallery-item-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
