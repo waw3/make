@@ -14,6 +14,10 @@ $image_id = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_ga
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
 <div class="ttf-one-gallery-item" id="ttf-one-gallery-item-<?php echo esc_attr( $ttf_one_gallery_id ); ?>">
 <?php endif; ?>
+	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
+		<div class="sortable-background"></div>
+	</div>
+
 	<div class="ttf-one-titlediv">
 		<div class="ttf-one-titlewrap">
 			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo sanitize_text_field( $title ); ?>" autocomplete="off" />

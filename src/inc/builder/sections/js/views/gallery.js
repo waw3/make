@@ -34,4 +34,30 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			return parseInt(id, 10);
 		}
 	});
+
+	// Makes gallery items sortable
+	oneApp.initializeGalleryItemSortables = function() {
+		$('.ttf-one-gallery-items-stage').sortable({
+			handle: '.ttf-one-sortable-handle',
+			placeholder: 'sortable-placeholder',
+			forcePlaceholderSizeType: true,
+			distance: 2,
+			tolerance: 'pointer',
+			start: function (event, ui) {
+				// Set the height of the placeholder to that of the sorted item
+				var $item = $(ui.item.get(0)),
+					$stage = $item.parents('.ttf-one-gallery-items-stage');
+
+				$('.sortable-placeholder', $stage).height($item.height());
+			},
+			stop: function () {
+				oneApp.setSectionOrder( $(this).sortable('toArray') );
+			}
+		});
+	}
+
+	// Initialize the
+	$oneApp.on('afterSectionViewAdded', function(view) {
+		oneApp.initializeGalleryItemSortables();
+	})
 })(window, jQuery, _, oneApp, $oneApp);

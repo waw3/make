@@ -52,6 +52,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var html = view.render().el;
 			this.$stage.append(html);
 
+			$oneApp.trigger('afterSectionViewAdded', this);
+
 			// Scroll to the new section
 			this.$scrollHandle.animate({
 				scrollTop: parseInt($('#' + view.idAttr).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
