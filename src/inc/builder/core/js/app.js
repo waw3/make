@@ -128,7 +128,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				serverRendered: true
 			});
 		});
-	}
+	};
 
 	oneApp.initSortables();
 	oneApp.initViews();
