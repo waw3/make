@@ -45,7 +45,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0));
 
-				oneApp.setOrder( $(this).sortable('toArray'), oneApp.cache.$sectionOrder );
+				oneApp.setOrder( $(this).sortable('toArray', {attribute: 'data-id'}), oneApp.cache.$sectionOrder );
 
 				/**
 				 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
@@ -72,7 +72,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	oneApp.setOrder = function (order, $input) {
 		// Use a comma separated list
-		order = oneApp.cleanSectionForOrdering(order.join());
+		order = order.join();
 
 		// Set the val of the input
 		$input.val(order);
@@ -107,10 +107,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		oneApp.setOrder(currentOrderArray, $input);
 	};
-
-	oneApp.cleanSectionForOrdering = function (value) {
-		return value.replace(/ttf-one-section-/g, '');
-	}
 
 	oneApp.initViews = function () {
 		$('.ttf-one-section').each(function () {

@@ -38,7 +38,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.model.toJSON())).addClass('ttf-one-section-' + this.model.get('sectionType')).attr('id', this.idAttr);
+			this.$el.html(this.template(this.model.toJSON()))
+				.addClass('ttf-one-section-' + this.model.get('sectionType'))
+				.attr('id', this.idAttr)
+				.attr('data-id', this.model.get('id'))
+				.attr('data-section-type', this.model.get('sectionType'));
 			return this;
 		},
 
