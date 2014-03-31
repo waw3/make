@@ -52,7 +52,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var html = view.render().el;
 			this.$stage.append(html);
 
-			$oneApp.trigger('afterSectionViewAdded', this);
+			$oneApp.trigger('afterSectionViewAdded', view);
 
 			// Scroll to the new section
 			this.$scrollHandle.animate({
