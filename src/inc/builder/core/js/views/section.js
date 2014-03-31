@@ -65,7 +65,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		removeSection: function (evt) {
 			evt.preventDefault();
-			oneApp.removeSectionOrder(this.model.get('id'));
+			oneApp.removeOrderValue(this.model.get('id'), '#ttf-one-section-order');
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
 			this.$el.animate({

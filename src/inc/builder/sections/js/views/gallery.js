@@ -51,7 +51,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$('.sortable-placeholder', $stage).height($item.height());
 			},
 			stop: function () {
-				oneApp.setSectionOrder( $(this).sortable('toArray') );
+				oneApp.setOrder( $(this).sortable('toArray') );
 			}
 		});
 	}
