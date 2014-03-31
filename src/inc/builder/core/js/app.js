@@ -116,7 +116,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		$('.ttf-one-section').each(function () {
 			var $section = $(this),
 				idAttr = $section.attr('id'),
-				id = $section.attr('data-iterator'),
+				id = $section.attr('data-id'),
 				sectionType = $section.attr('data-section-type');
 
 			// Build the model
