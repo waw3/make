@@ -61,7 +61,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			oneApp.sections.toggleStageClass();
 			oneApp.initAllEditors(view.idAttr, section);
-			oneApp.addOrderValue(section.get('id'), '#ttf-one-section-order');
+			oneApp.addOrderValue(section.get('id'), oneApp.cache.$sectionOrder);
 		},
 
 		menuToggle: function(evt) {

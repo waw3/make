@@ -45,7 +45,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0));
 
-				oneApp.setOrder( $(this).sortable('toArray'), '#ttf-one-section-order' );
+				oneApp.setOrder( $(this).sortable('toArray'), oneApp.cache.$sectionOrder );
 
 				/**
 				 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
@@ -70,16 +70,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		});
 	};
 
-	oneApp.setOrder = function (order, inputID) {
+	oneApp.setOrder = function (order, $input) {
 		// Use a comma separated list
 		order = oneApp.cleanSectionForOrdering(order.join());
 
 		// Set the val of the input
-		$(inputID).val(order);
+		$input.val(order);
 	};
 
-	oneApp.addOrderValue = function (id, inputID) {
-		var currentOrder = $(inputID).val(),
+	oneApp.addOrderValue = function (id, $input) {
+		var currentOrder = $input.val(),
 			currentOrderArray;
 
 		if ('' === currentOrder) {
@@ -89,11 +89,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			currentOrderArray.push(id);
 		}
 
-		oneApp.setOrder(currentOrderArray, inputID);
+		oneApp.setOrder(currentOrderArray, $input);
 	};
 
-	oneApp.removeOrderValue = function (id, inputID) {
-		var currentOrder = $(inputID).val(),
+	oneApp.removeOrderValue = function (id, $input) {
+		var currentOrder = $input.val(),
 			currentOrderArray;
 
 		if ('' === currentOrder) {
@@ -105,7 +105,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			});
 		}
 
-		oneApp.setOrder(currentOrderArray, inputID);
+		oneApp.setOrder(currentOrderArray, $input);
 	};
 
 	oneApp.cleanSectionForOrdering = function (value) {
