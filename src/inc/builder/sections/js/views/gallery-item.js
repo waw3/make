@@ -29,6 +29,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		removeItem: function (evt) {
 			evt.preventDefault();
 
+			var $stage = this.$el.parents('.ttf-one-gallery-items'),
+				$orderInput = $('.ttf-one-gallery-item-order', $stage);
+
+			oneApp.removeOrderValue(this.model.get('id'), $orderInput);
+
 			// Fade and slide out the section, then cleanup view
 			this.$el.animate({
 				opacity: 'toggle',
