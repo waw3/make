@@ -2,7 +2,7 @@
 <?php $id = ( isset( $ttf_one_is_js_template ) && true === $ttf_one_is_js_template ) ? 'ttf-one-section-{{{ iterator }}}' : 'ttf-one-section-' . esc_attr( $ttf_one_section_data['data']['id'] ); ?>
 
 <?php if ( ! isset( $ttf_one_is_js_template ) || true !== $ttf_one_is_js_template ) : ?>
-<div class="ttf-one-section <?php if ( isset( $ttf_one_section_data['data']['state'] ) && 'open' === $ttf_one_section_data['data']['state'] ) echo 'ttf-one-section-open'; ?> ttf-one-section-<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>" id="<?php echo esc_attr( $id ); ?>" data-iterator="<?php echo esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>" data-iterator="<?php echo esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>">
+<div class="ttf-one-section <?php if ( isset( $ttf_one_section_data['data']['state'] ) && 'open' === $ttf_one_section_data['data']['state'] ) echo 'ttf-one-section-open'; ?> ttf-one-section-<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>" id="<?php echo esc_attr( $id ); ?>" data-iterator="<?php echo esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>">
 <?php endif; ?>
 	<div class="ttf-one-section-header">
 		<?php
