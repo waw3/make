@@ -61,12 +61,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
 			}
 		});
-	}
+	};
 
 	// Initialize the
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
 			oneApp.initializeGalleryItemSortables();
 		}
-	})
+	});
 })(window, jQuery, _, oneApp, $oneApp);
