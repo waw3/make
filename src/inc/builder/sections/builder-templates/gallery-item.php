@@ -31,7 +31,7 @@ $image_id = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_ga
 	<?php ttf_one_get_builder_base()->add_uploader( $section_name, absint( $image_id ) ); ?>
 
 	<a href="#" class="ttf-one-gallery-item-remove">
-		<?php _e( 'Remove', 'ttf-one' ); ?>
+		<?php _e( 'Remove this gallery item', 'ttf-one' ); ?>
 	</a>
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
 </div>
