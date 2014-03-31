@@ -321,6 +321,7 @@
 	width: 88px;
 	height: 78px;
 	background: url(images/section-icons-hover.png) center center no-repeat;
+	background-size: 36px 36px;
 	-webkit-transition: opacity .15s ease-in-out;
 	transition: opacity .15s ease-in-out;
 	-webkit-transition-delay: .05s;
