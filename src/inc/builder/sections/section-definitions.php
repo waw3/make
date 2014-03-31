@@ -100,7 +100,7 @@ class TTF_One_Section_Definitions {
 			array( $this, 'save_banner' ),
 			'/inc/builder/sections/builder-templates/banner',
 			'/inc/builder/sections/front-end-templates/banner',
-			200
+			300
 		);
 	}
 
@@ -132,7 +132,7 @@ class TTF_One_Section_Definitions {
 			array( $this, 'save_gallery' ),
 			'/inc/builder/sections/builder-templates/gallery',
 			'/inc/builder/sections/front-end-templates/gallery',
-			300
+			400
 		);
 	}
 
@@ -198,7 +198,7 @@ class TTF_One_Section_Definitions {
 			array( $this, 'save_blank' ),
 			'/inc/builder/sections/builder-templates/blank',
 			'/inc/builder/sections/front-end-templates/blank',
-			400
+			200
 		);
 	}
 
