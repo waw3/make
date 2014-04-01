@@ -39,8 +39,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	});
 
 	// Makes gallery items sortable
-	oneApp.initializeGalleryItemSortables = function() {
-		$('.ttf-one-gallery-items-stage').sortable({
+	oneApp.initializeGalleryItemSortables = function(view) {
+		$('.ttf-one-gallery-items-stage', view).sortable({
 			handle: '.ttf-one-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
@@ -63,10 +63,27 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		});
 	};
 
+	// Initialize the color picker
+	oneApp.initializeColorPicker = function (view) {
+		var $selector;
+		view = view || '';
+
+		if (view.$el) {
+			$selector = $('.ttf-one-gallery-background-color', view.$el);
+		} else {
+			$selector = $('.ttf-one-gallery-background-color');
+		}
+
+		$selector.wpColorPicker({
+			defaultColor: '#ffffff'
+		});
+	};
+
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
 			oneApp.initializeGalleryItemSortables();
+			oneApp.initializeColorPicker(view);
 		}
 	});
 
@@ -94,6 +111,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		});
 
 		oneApp.initializeGalleryItemSortables();
+		oneApp.initializeColorPicker();
 	};
 
 	// Initialize the views when the app starts up

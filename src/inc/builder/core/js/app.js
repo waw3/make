@@ -125,8 +125,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var modelViewName = sectionModel.get('viewName') + 'View',
 				viewName = (true === oneApp.hasOwnProperty(modelViewName)) ? modelViewName : 'SectionView';
 
-			console.log(modelViewName, oneApp.hasOwnProperty(modelViewName));
-
 			// Create view
 			var view = new oneApp[viewName]({
 				model: sectionModel,

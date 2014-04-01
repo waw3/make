@@ -2,8 +2,10 @@
 ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
-$columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 1 ;
-$captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'none' ;
+$columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 1;
+$captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'none';
+$background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
+$background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
 $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
 
@@ -26,8 +28,24 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 	</select>
 </div>
 
-<div class="ttf-one-gallery-background-wrapper">
-	<a href="#" class="ttf-one-gallery-background"><?php _e( 'Set a background image or color', 'ttf-one' ); ?></a>
+<div class="ttf-one-gallery-background-image-wrapper">
+	<?php
+		ttf_one_get_builder_base()->add_uploader(
+			$section_name . '[background-image]',
+			$background_image,
+			array(
+				'add'    => __( 'Set background image', 'ttf-one' ),
+				'remove' => __( 'Remove background image', 'ttf-one' ),
+				'title'  => __( 'Background image', 'ttf-one' ),
+				'button' => __( 'Use as Background Image', 'ttf-one' ),
+			)
+		);
+	?>
+</div>
+
+<div class="ttf-one-gallery-background-color-wrapper">
+	<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
+	<input type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo $background_color; ?>" />
 </div>
 
 <div class="ttf-one-gallery-add-item-wrapper">
