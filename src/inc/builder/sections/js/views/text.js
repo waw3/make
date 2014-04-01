@@ -46,6 +46,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage = $item.parents('.ttf-one-text-columns-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
+				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
@@ -53,6 +54,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$orderInput = $('.ttf-one-text-columns-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
+				oneApp.enableEditors($item);
 			}
 		});
 	};
