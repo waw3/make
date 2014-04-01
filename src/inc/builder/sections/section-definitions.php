@@ -127,7 +127,7 @@ class TTF_One_Section_Definitions {
 		ttf_one_add_section(
 			'banner',
 			_x( 'Banner', 'section name', 'ttf-one' ),
-			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
+			get_template_directory_uri() . '/inc/builder/sections/css/images/banner@2x.png',
 			__( 'Display multiple types of content in a slider.', 'ttf-one' ),
 			array( $this, 'save_banner' ),
 			'/inc/builder/sections/builder-templates/banner',
