@@ -83,9 +83,9 @@ class TTF_One_Section_Definitions {
 	public function save_text( $data ) {
 		$clean_data = array();
 
-		if ( isset( $data['columns'] ) ) {
-			if ( in_array( $data['columns'], range( 1, 4 ) ) ) {
-				$clean_data['columns'] = $data['columns'];
+		if ( isset( $data['columns-number'] ) ) {
+			if ( in_array( $data['columns-number'], range( 1, 4 ) ) ) {
+				$clean_data['columns-number'] = $data['columns-number'];
 			}
 		}
 
@@ -99,8 +99,8 @@ class TTF_One_Section_Definitions {
 					$clean_data['columns'][ $id ]['title'] = sanitize_text_field( $item['title'] );
 				}
 
-				if ( isset( $item['link'] ) ) {
-					$clean_data['columns'][ $id ]['link'] = esc_url_raw( $item['link'] );
+				if ( isset( $item['image-link'] ) ) {
+					$clean_data['columns'][ $id ]['image-link'] = esc_url_raw( $item['image-link'] );
 				}
 
 				if ( isset( $item['image-id'] ) ) {
