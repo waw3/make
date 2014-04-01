@@ -24,7 +24,7 @@
 			<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttf-one-link widefat" value="" autocomplete="off" />
 		</div>
 
-		<?php ttf_one_get_builder_base()->add_uploader( $column_name . '[image-id]', 0 ); ?>
+		<?php ttf_one_get_builder_base()->add_uploader( $column_name, 0 ); ?>
 
 		<div class="ttf-one-titlediv">
 			<div class="ttf-one-titlewrap">

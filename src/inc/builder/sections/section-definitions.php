@@ -81,7 +81,39 @@ class TTF_One_Section_Definitions {
 	 * @return array             The cleaned data.
 	 */
 	public function save_text( $data ) {
-		return $data;
+		$clean_data = array();
+
+		if ( isset( $data['columns'] ) ) {
+			if ( in_array( $data['columns'], range( 1, 4 ) ) ) {
+				$clean_data['columns'] = $data['columns'];
+			}
+		}
+
+		if ( isset( $data['columns-order'] ) ) {
+			$clean_data['columns-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['columns-order'] ) );
+		}
+
+		if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
+			foreach ( $data['columns'] as $id => $item ) {
+				if ( isset( $item['title'] ) ) {
+					$clean_data['columns'][ $id ]['title'] = sanitize_text_field( $item['title'] );
+				}
+
+				if ( isset( $item['link'] ) ) {
+					$clean_data['columns'][ $id ]['link'] = esc_url_raw( $item['link'] );
+				}
+
+				if ( isset( $item['image-id'] ) ) {
+					$clean_data['columns'][ $id ]['image-id'] = absint( $item['image-id'] );
+				}
+
+				if ( isset( $item['content'] ) ) {
+					$clean_data['columns'][ $id ]['content'] = wp_filter_post_kses( $item['content'] );
+				}
+			}
+		}
+
+		return $clean_data;
 	}
 
 	/**
