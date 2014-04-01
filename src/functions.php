@@ -298,3 +298,72 @@ add_action( 'wp_head', 'ttf_one_head_extras', 99 );
 if ( ! isset( $content_width ) ) {
 	$content_width = 640;
 }
+
+if ( ! function_exists( 'ttf_one_sanitize_hex_color' ) ) :
+/**
+ * Validates a hex color.
+ *
+ * Returns either '', a 3 or 6 digit hex color (with #), or null.
+ * For validating values without a #, see sanitize_hex_color_no_hash().
+ *
+ * @since  1.0.0.
+ *
+ * @param  string         $color    Hexidecimal value to sanitize.
+ * @return string|null              Sanitized value.
+ */
+function ttf_one_sanitize_hex_color( $color ) {
+	if ( '' === $color )
+		return '';
+
+	// 3 or 6 hex digits, or the empty string.
+	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+		return $color;
+
+	return null;
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_sanitize_hex_color_no_hash' ) ) :
+/**
+ * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
+ *
+ * Saving hex colors without a hash puts the burden of adding the hash on the
+ * UI, which makes it difficult to use or upgrade to other color types such as
+ * rgba, hsl, rgb, and html color names.
+ *
+ * Returns either '', a 3 or 6 digit hex color (without a #), or null.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string         $color    Hexidecimal value to sanitize.
+ * @return string|null              Sanitized value.
+ */
+function ttf_one_sanitize_hex_color_no_hash( $color ) {
+	$color = ltrim( $color, '#' );
+
+	if ( '' === $color )
+		return '';
+
+	return ttf_one_sanitize_hex_color( '#' . $color ) ? $color : null;
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_maybe_hash_hex_color' ) ) :
+/**
+ * Ensures that any hex color is properly hashed.
+ * Otherwise, returns value untouched.
+ *
+ * This method should only be necessary if using sanitize_hex_color_no_hash().
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $color    Hexidecimal value to sanitize.
+ * @return string              Sanitized value.
+ */
+function ttf_one_maybe_hash_hex_color( $color ) {
+	if ( $unhashed = ttf_one_sanitize_hex_color_no_hash( $color ) )
+		return '#' . $unhashed;
+
+	return $color;
+}
+endif;

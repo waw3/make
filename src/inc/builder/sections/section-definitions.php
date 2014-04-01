@@ -159,6 +159,14 @@ class TTF_One_Section_Definitions {
 			}
 		}
 
+		if ( isset( $data['background-image']['image-id'] ) ) {
+			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
+		}
+
+		if ( isset( $data['background-color'] ) ) {
+			$clean_data['background-color'] = ttf_one_maybe_hash_hex_color( $data['background-color'] );
+		}
+
 		if ( isset( $data['gallery-item-order'] ) ) {
 			$clean_data['gallery-item-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['gallery-item-order'] ) );
 		}

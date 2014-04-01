@@ -45,7 +45,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 
 <div class="ttf-one-gallery-background-color-wrapper">
 	<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
-	<input type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo $background_color; ?>" />
+	<input type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
 </div>
 
 <div class="ttf-one-gallery-add-item-wrapper">
