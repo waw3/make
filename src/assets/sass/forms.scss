@@ -34,7 +34,7 @@ input[type="submit"] {
 	background: $b;
 	cursor: pointer;
 	-webkit-appearance: button;
-	@include rem('padding', $base/2 14px);
+	@include rem('padding', 10px 14px);
 	@include rem('font-size', 13px);
 	@include border-radius;
 	&.color-primary-background {

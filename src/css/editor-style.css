@@ -133,7 +133,7 @@ input[type="submit"] {
 	background: #171717;
 	cursor: pointer;
 	-webkit-appearance: button;
-	padding: 11px 14px;
+	padding: 10px 14px;
 	font-size: 13px;
 }
 .color-primary-background {
