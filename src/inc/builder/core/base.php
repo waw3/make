@@ -389,10 +389,10 @@ class TTF_One_Builder_Base {
 
 			$html = str_replace(
 				array(
-					'ttfoneeditor' . $section['id'] . 'temp',
+					'temp',
 				),
 				array(
-					'ttfoneeditor' . $section['id'] . '{{{ id }}}',
+					'{{{ id }}}',
 				),
 				$html
 			);
