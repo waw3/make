@@ -273,7 +273,7 @@ function ttf_one_get_google_font_request() {
 		// Verify that the font exists
 		if ( array_key_exists( $font, $allowed_fonts ) ) {
 			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700"
-			$family[] = str_replace( ' ', '+', $font ) . ':' . join( ',', ttf_one_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) );
+			$family[] = urlencode( $font . ':' . join( ',', ttf_one_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
 		}
 	}
 
@@ -283,6 +283,7 @@ function ttf_one_get_google_font_request() {
 	if ( empty( $family ) ) {
 		return '';
 	} else {
+		$protocol = ( is_ssl() ) ? 'https:' : 'http:';
 		$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
 	}
 
@@ -306,7 +307,7 @@ function ttf_one_get_google_font_request() {
 
 	// Append the subset string
 	if ( ! empty( $subsets ) ) {
-		$request .= '&subset=' . join( '%2C', $subsets );
+		$request .= urlencode( '&subset=' . join( ',', $subsets ) );
 	}
 
 	return esc_url( $request );
