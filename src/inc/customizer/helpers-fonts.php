@@ -283,7 +283,6 @@ function ttf_one_get_google_font_request() {
 	if ( empty( $family ) ) {
 		return '';
 	} else {
-		$protocol = ( is_ssl() ) ? 'https:' : 'http:';
 		$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
 	}
 
