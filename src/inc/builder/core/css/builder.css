@@ -127,7 +127,8 @@
 	border-bottom: 1px solid #f00;
 	text-decoration: none;
 }
-.ttf-one-section-remove:hover {
+.ttf-one-section-remove:hover,
+.ttf-one-section-remove:focus {
 	color: #ffffff;
 	background: #f00;
 }
@@ -153,7 +154,8 @@
 	font: 60px/228px dashicons;
 	text-align: center;
 }
-.ttf-one-media-uploader-placeholder:hover:before {
+.ttf-one-media-uploader-placeholder:hover:before,
+.ttf-one-media-uploader-placeholder:focus:before {
 	opacity: .2;
 }
 .ttf-one-media-uploader-placeholder img {
@@ -266,7 +268,7 @@
 	margin-top: -6px;
 }
 .ttf-one-menu-pane {
-	padding: 0 18px;
+	padding: 0 20px;
 	border: 1px solid #dfdfdf;
 	border-top: none;
 	border-radius: 0 0 3px 3px;
@@ -278,7 +280,7 @@
 .ttf-one-menu-list {
 	display: inline-block;
 	width: 100%;
-	margin-top: 18px;
+	margin-top: 20px;
 	margin-bottom: 0; /*reset*/
 }
 .ttf-one-menu-list h4,
@@ -292,7 +294,8 @@
 	text-decoration: none; /*reset*/
 	color: #777777 !important;
 }
-.ttf-one-menu-list a:hover {
+.ttf-one-menu-list a:hover,
+.ttf-one-menu-list a:focus {
 	color: #333333 !important;
 }
 .ttf-one-menu-list-item {
@@ -312,7 +315,8 @@
 .ttf-one-menu-list-item a {
 	color: #21759b;
 }
-.ttf-one-menu-list-item a:hover {
+.ttf-one-menu-list-item a:hover,
+.ttf-one-menu-list-item a:focus {
 	color: #d54e21;
 }
 .ttf-one-menu-list-item:last-of-type {
@@ -330,7 +334,8 @@
 	-webkit-transition-delay: .05s;
 	transition-delay: .05s;
 }
-.ttf-one-menu-list a:hover .ttf-one-menu-list-item-link-icon {
+.ttf-one-menu-list a:hover .ttf-one-menu-list-item-link-icon,
+.ttf-one-menu-list a:focus .ttf-one-menu-list-item-link-icon {
 	opacity: 1;
 }
 .ttf-one-menu-list-item-link-icon-wrapper {
@@ -346,7 +351,8 @@
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-.ttf-one-menu-list-item:hover .ttf-one-menu-list-item-link-icon-wrapper {
+.ttf-one-menu-list-item:hover .ttf-one-menu-list-item-link-icon-wrapper,
+.ttf-one-menu-list-item:focus .ttf-one-menu-list-item-link-icon-wrapper {
 	border-color: #bbbbbb;
 }
 /*---------------------------------------------------------
@@ -371,7 +377,8 @@
 .ttf-one-menu-closed .ttf-one-menu-tab-link span:after {
 	content: "\25BC";
 }
-.ttf-one-menu-tab-link:hover span:after {
+.ttf-one-menu-tab-link:hover span:after,
+.ttf-one-menu-tab-link:focus span:after {
 	color: #cccccc;
 }
 .ttf-one-menu-tab-link {
@@ -383,6 +390,11 @@
 	background: #ffffff;
 	color: #333;
 	text-decoration: none;
+}
+@media screen and ( max-width: 782px ) {
+	.ttf-one-menu-tab-link {
+		padding: 10px 20px;
+	}
 }
 /*---------------------------------------------------------
  Sortable handle (html-builder.css)
@@ -435,7 +447,7 @@
 }
 @media screen and ( max-width: 782px ) {
 	.ttf-one-section .wp-media-buttons span.wp-media-buttons-icon {
-		padding-left: 7px !important;
+		padding-left: 10px !important;
 	}
 }
 /*---------------------------------------------------------
@@ -485,7 +497,7 @@
 /* Removing links */
 .wp-admin .ttf-one-section-remove,
 .ttf-one-gallery-item-remove {
-	color: #a00;
+	margin-top: 20px;
 	padding: 0;
 	color: #a00;
 	border-bottom: 0;
