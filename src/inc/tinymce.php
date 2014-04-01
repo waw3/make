@@ -176,6 +176,38 @@ function ttf_one_mce_before_init( $settings ) {
 				'class' => 'ttf-one-button ttf-one-download color-primary-background' // Replace existing classes instead of adding
 			)
 		),
+		// List: check 1
+		array(
+			'title' => __( 'List: checkmark 1', 'ttf-one' ),
+			'selector' => 'ul',
+			'attributes' => array(
+				'class' => 'ttf-one-list ttf-one-list-check' // Replace existing classes instead of adding
+			)
+		),
+		// List: check 2
+		array(
+			'title' => __( 'List: checkmark 2', 'ttf-one' ),
+			'selector' => 'ul',
+			'attributes' => array(
+				'class' => 'ttf-one-list ttf-one-list-check2' // Replace existing classes instead of adding
+			)
+		),
+		// List: star
+		array(
+			'title' => __( 'List: star', 'ttf-one' ),
+			'selector' => 'ul',
+			'attributes' => array(
+				'class' => 'ttf-one-list ttf-one-list-star' // Replace existing classes instead of adding
+			)
+		),
+		// List: dot
+		array(
+			'title' => __( 'List: dot', 'ttf-one' ),
+			'selector' => 'ul',
+			'attributes' => array(
+				'class' => 'ttf-one-list ttf-one-list-dot' // Replace existing classes instead of adding
+			)
+		),
 	);
 
 	// Allow styles to be customized
