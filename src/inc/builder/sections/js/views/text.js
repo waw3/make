@@ -25,7 +25,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Makes gallery items sortable
 	oneApp.initializeTextColumnSortables = function(view) {
-		$('.ttf-one-text-columns-stage', view.$el).sortable({
+		var $selector;
+		view = view || '';
+
+		if (view.$el) {
+			$selector = $('.ttf-one-text-columns-stage', view.$el);
+		} else {
+			$selector = $('.ttf-one-text-columns-stage');
+		}
+
+		$selector.sortable({
 			handle: '.ttf-one-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
@@ -54,4 +63,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.initializeTextColumnSortables(view);
 		}
 	});
+
+	// Initialize sortables for current columns
+	oneApp.initializeTextColumnSortables();
 })(window, jQuery, _, oneApp, $oneApp);
