@@ -41,10 +41,14 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) 
 			</div>
 		</div>
 
+		<?php
+		$editor_settings = array( 'textarea_name' => $column_name . '[content]' );
+		?>
+
 		<?php if ( true === $ttf_one_is_js_template ) : ?>
-			<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditortemptext' . $i ); ?>
+			<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditortexttemp', $editor_settings ); ?>
 		<?php else : ?>
-			<?php ttf_one_get_builder_base()->wp_editor( $content, $column_name . '[content]' ); ?>
+			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditortext' . $ttf_one_section_data['data']['id'] . $i, $editor_settings ); ?>
 		<?php endif; ?>
 	</div>
 	<?php endfor; ?>
