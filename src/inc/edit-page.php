@@ -3,20 +3,22 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_page_support' ) ) :
+if ( ! function_exists( 'ttf_one_page_template_default' ) ) :
 /**
- * Modify the edit screen features supported by the Page post type
+ * Change the default page template on the Add New Page screen.
  *
  * @since 1.0.0
  *
  * @return void
  */
-function ttf_one_page_support() {
-	// Remove the editor if the Page Builder is enabled
-	if ( class_exists( 'TTF_One_Builder_Base' ) ) {
-		remove_post_type_support( 'page', 'editor' );
+function ttf_one_page_template_default() {
+	global $typenow, $pagenow, $post;
+
+	// If this is a new page, set the default page template
+	if ( 'page' === $typenow && 'post-new.php' === $pagenow ) {
+		$post->page_template = 'template-builder.php';
 	}
 }
 endif;
 
-add_action( 'admin_init', 'ttf_one_page_support' );
+add_action( 'admin_head', 'ttf_one_page_template_default' );
