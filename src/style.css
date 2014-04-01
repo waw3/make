@@ -1470,17 +1470,11 @@ a.ttf-one-button, button, input[type="button"], input[type="reset"], input[type=
     background: #eaecee;
     color: #171717; }
   a.ttf-one-button.ttf-one-success, button.ttf-one-success, input[type="button"].ttf-one-success, input[type="reset"].ttf-one-success, input[type="submit"].ttf-one-success {
-    color: #339d56;
-    border: 1px solid #badfc6;
-    background: #eef7f1; }
+    background: #339d56; }
   a.ttf-one-button.ttf-one-error, button.ttf-one-error, input[type="button"].ttf-one-error, input[type="reset"].ttf-one-error, input[type="submit"].ttf-one-error {
-    color: #d04242;
-    border: 1px solid #dfbaba;
-    background-color: #f7eeee; }
+    background: #d04242; }
   a.ttf-one-button.ttf-one-important, button.ttf-one-important, input[type="button"].ttf-one-important, input[type="reset"].ttf-one-important, input[type="submit"].ttf-one-important {
-    color: #ea8501;
-    border: 1px solid #fff265;
-    background-color: #fffde5; }
+    background: #ea8501; }
   a.ttf-one-button.ttf-one-download:after, button.ttf-one-download:after, input[type="button"].ttf-one-download:after, input[type="reset"].ttf-one-download:after, input[type="submit"].ttf-one-download:after {
     content: "\f0ab";
     font-family: FontAwesome;

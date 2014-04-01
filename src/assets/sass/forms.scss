@@ -45,19 +45,13 @@ input[type="submit"] {
 		color: $b;
 	}
 	&.ttf-one-success {
-		color: #339d56;
-		border: 1px solid darken(#eef7f1, 15);
-		background: #eef7f1;
+		background: #339d56;
 	}
 	&.ttf-one-error {
-		color: #d04242;
-		border: 1px solid darken(#f7eeee, 15);
-		background-color: #f7eeee;
+		background: #d04242;
 	}
 	&.ttf-one-important {
-		color: #ea8501;
-		border: 1px solid darken(#fffde5, 25);
-		background-color: #fffde5;
+		background: #ea8501;
 	}
 	&.ttf-one-download:after {
 		content: "\f0ab";
