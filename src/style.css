@@ -1466,11 +1466,6 @@ a.ttf-one-button, button, input[type="button"], input[type="reset"], input[type=
   border-radius: 3px; }
   a.ttf-one-button.color-primary-background, button.color-primary-background, input[type="button"].color-primary-background, input[type="reset"].color-primary-background, input[type="submit"].color-primary-background {
     background-color: #0094c5; }
-  a.ttf-one-button.ttf-one-button-large, button.ttf-one-button-large, input[type="button"].ttf-one-button-large, input[type="reset"].ttf-one-button-large, input[type="submit"].ttf-one-button-large {
-    font-size: 16px;
-    font-size: 1rem;
-    padding: 11px 18px;
-    padding:  0.6875rem 1.125rem; }
   a.ttf-one-button.ttf-one-alert, button.ttf-one-alert, input[type="button"].ttf-one-alert, input[type="reset"].ttf-one-alert, input[type="submit"].ttf-one-alert {
     background: #eaecee;
     color: #171717; }

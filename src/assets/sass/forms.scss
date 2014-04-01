@@ -40,10 +40,6 @@ input[type="submit"] {
 	&.color-primary-background {
 		background-color: $c;
 	}
-	&.ttf-one-button-large {
-		@include rem('font-size', 16px);
-		@include rem('padding', $base/2 18px);
-	}
 	&.ttf-one-alert {
 		background: $d;
 		color: $b;
