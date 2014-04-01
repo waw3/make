@@ -1,7 +1,7 @@
 <?php ttf_one_load_section_header(); ?>
 <?php global $ttf_one_section_data, $ttf_one_is_js_template; ?>
 <?php $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template ); ?>
-<?php $section_order = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) ? $ttf_one_section_data['data']['columns-order'] : array(); ?>
+<?php $section_order = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) ? $ttf_one_section_data['data']['columns-order'] : range(1, 4); ?>
 
 <div class="ttf-one-columns-select ttf-one-select">
 	<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
@@ -15,7 +15,7 @@
 
 <div class="ttf-one-text-columns-stage">
 	<?php for ( $i = 1; $i <= 4; $i ++ ) : $column_name = $section_name . '[columns][' . $i . ']'; ?>
-	<div class="ttf-one-text-column">
+	<div class="ttf-one-text-column" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 			<div class="sortable-background"></div>
 		</div>
@@ -40,8 +40,8 @@
 		<?php endif; ?>
 	</div>
 	<?php endfor; ?>
-	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttf-one-text-columns-order" />
 </div>
 
+<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttf-one-text-columns-order" />
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttf_one_load_section_footer(); ?>

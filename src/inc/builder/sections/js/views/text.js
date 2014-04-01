@@ -40,7 +40,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-text-columns-stage'),
+					$stage = $item.parents('.ttf-one-section-body'),
 					$orderInput = $('.ttf-one-text-columns-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
