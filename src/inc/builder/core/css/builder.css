@@ -55,6 +55,9 @@
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+.ttf-one-section:last-of-type {
+	margin-bottom: 0; /*reset*/
+}
 .ttf-one-section-body {
 	display: none;
 	float: left;
@@ -352,6 +355,7 @@
 .ttf-one-menu-tab {
 	clear: both;
 	margin-top: -1px;
+	margin-bottom: 20px;
 	text-align: center;
 }
 .ttf-one-menu-tab-link span:after {
