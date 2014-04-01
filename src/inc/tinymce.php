@@ -179,7 +179,7 @@ function ttf_one_mce_before_init( $settings ) {
 		// List: check 1
 		array(
 			'title' => __( 'List: checkmark 1', 'ttf-one' ),
-			'selector' => 'ul',
+			'selector' => 'ul,ol',
 			'attributes' => array(
 				'class' => 'ttf-one-list ttf-one-list-check' // Replace existing classes instead of adding
 			)
@@ -187,7 +187,7 @@ function ttf_one_mce_before_init( $settings ) {
 		// List: check 2
 		array(
 			'title' => __( 'List: checkmark 2', 'ttf-one' ),
-			'selector' => 'ul',
+			'selector' => 'ul,ol',
 			'attributes' => array(
 				'class' => 'ttf-one-list ttf-one-list-check2' // Replace existing classes instead of adding
 			)
@@ -195,7 +195,7 @@ function ttf_one_mce_before_init( $settings ) {
 		// List: star
 		array(
 			'title' => __( 'List: star', 'ttf-one' ),
-			'selector' => 'ul',
+			'selector' => 'ul,ol',
 			'attributes' => array(
 				'class' => 'ttf-one-list ttf-one-list-star' // Replace existing classes instead of adding
 			)
@@ -203,7 +203,7 @@ function ttf_one_mce_before_init( $settings ) {
 		// List: dot
 		array(
 			'title' => __( 'List: dot', 'ttf-one' ),
-			'selector' => 'ul',
+			'selector' => 'ul,ol',
 			'attributes' => array(
 				'class' => 'ttf-one-list ttf-one-list-dot' // Replace existing classes instead of adding
 			)

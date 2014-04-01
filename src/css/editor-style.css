@@ -164,3 +164,29 @@ input[type="submit"] {
 	font-family: FontAwesome;
 	padding-left: 6px;
 }
+/*---------------------------------------------------------
+ Lists (editor-style.css)
+-------------------------------------------------------- */
+ul, ol {
+	margin: 0 0 22px 0;
+	padding-left: 20px;
+	padding-left: 1.25rem; }
+ul.ttf-one-list, ol.ttf-one-list {
+	padding-left: 0;
+	list-style: none; }
+ul.ttf-one-list li:before, ol.ttf-one-list li:before {
+	font-family: FontAwesome;
+	padding-right: 10px;
+	padding-right: 0.625rem; }
+ul.ttf-one-list-check li:before, ol.ttf-one-list-check li:before {
+	content: "\f14a";
+	color: #339d56; }
+ul.ttf-one-list-check2 li:before, ol.ttf-one-list-check2 li:before {
+	content: "\f046";
+	color: #339d56; }
+ul.ttf-one-list-star li:before, ol.ttf-one-list-star li:before {
+	content: "\f005";
+	color: #ea8501; }
+ul.ttf-one-list-dot li:before, ol.ttf-one-list-dot li:before {
+	content: "\f192";
+	color: #0094c5; }
