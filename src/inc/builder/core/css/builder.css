@@ -454,6 +454,12 @@
 	background-color: #ffffff;
 }
 /*---------------------------------------------------------
+ Gallery section (html-builder.css)
+-------------------------------------------------------- */
+.ttf-one-gallery-item {
+	margin-bottom: 40px;
+}
+/*---------------------------------------------------------
  MP6 styles (html-builder-mp6.css)
 -------------------------------------------------------- */
 /* Custom breakpoints for new sidebar width */
@@ -473,7 +479,8 @@
 	border-radius: 0;
 }
 /* Removing links */
-.wp-admin .ttf-one-section-remove {
+.wp-admin .ttf-one-section-remove,
+.ttf-one-gallery-item-remove {
 	color: #a00;
 	padding: 0;
 	color: #a00;
@@ -481,7 +488,8 @@
 	text-decoration: none;
 }
 /* Removing links hover state */
-.wp-admin .ttf-one-section-remove:hover {
+.wp-admin .ttf-one-section-remove:hover,
+.ttf-one-gallery-item-remove:hover {
 	color: #ff0000;
 	background: none;
 }
