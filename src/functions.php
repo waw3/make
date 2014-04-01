@@ -294,11 +294,42 @@ endif;
 add_action( 'wp_head', 'ttf_one_head_extras', 99 );
 
 /**
- * Set the content width based on the theme's design and stylesheet.
+ * Initial content width
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 640;
+	$content_width = 620;
 }
+
+if ( ! function_exists( 'ttf_one_content_width' ) ) :
+/**
+ * Set the content width based on current layout
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function ttf_one_content_width() {
+	global $content_width;
+
+	$left = ttf_one_has_sidebar( 'left' );
+	$right = ttf_one_has_sidebar( 'right' );
+
+	// No sidebars
+	if ( ! $left && ! $right ) {
+		$content_width = 960;
+	}
+	// Both sidebars
+	else if ( $left && $right ) {
+		$content_width = 464;
+	}
+	// One sidebar
+	else if ( $left || $right ) {
+		$content_width = 620;
+	}
+}
+endif;
+
+add_action( 'template_redirect', 'ttf_one_content_width' );
 
 if ( ! function_exists( 'ttf_one_sanitize_hex_color' ) ) :
 /**
