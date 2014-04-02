@@ -194,9 +194,9 @@ class TTF_One_Builder_Save {
 		if ( is_array( $post_meta ) ) {
 			foreach ( $post_meta as $key => $value ) {
 				// Only consider builder values
-				if ( 0 === strpos( $key, '_ttf-one-builder-' ) ) {
+				if ( 0 === strpos( $key, '_ttfob:' ) ) {
 					// Get the ID from the key
-					$pattern = '/_ttf-one-builder-(\d+)-(.*)/';
+					$pattern = '/_ttfob:(\d+):(.*)/';
 					$key_id  = preg_replace( $pattern, '$1', $key );
 
 					// If the ID in the key is not one of the whitelisted IDs, delete it
