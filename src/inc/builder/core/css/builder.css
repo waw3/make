@@ -191,6 +191,10 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+.ttf-one-text-columns-3 .wp-editor-area,
+.ttf-one-text-columns-4 .wp-editor-area {
+	height: 250px !important;
+}
 /*---------------------------------------------------------
  Text: One column (html-builder.css)
 -------------------------------------------------------- */
