@@ -163,7 +163,7 @@ class TTF_One_Builder_Save {
 		update_post_meta( $post_id, '_ttfob-section-ids', $section_ids );
 
 		// Remove the old section values if necessary
-		$this->prune_abandoned_rows( $post_id );
+		$this->prune_abandoned_rows( $post_id, $values_to_save );
 	}
 
 	/**
@@ -171,27 +171,20 @@ class TTF_One_Builder_Save {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  string    $post_id    The post to prune the values.
+	 * @param  string    $post_id           The post to prune the values.
+	 * @param  array     $current_values    The current values that *should* be in the post's postmeta.
 	 * @return void
 	 */
-	public function prune_abandoned_rows( $post_id ) {
+	public function prune_abandoned_rows( $post_id, $current_values ) {
 		// Get all of the metadata associated with the post
 		$post_meta = get_post_meta( $post_id );
 
-		// Get the current keys
-		$ids = get_post_meta( $post_id, '_ttfob-section-ids', true );
-
 		// Any meta containing the old keys should be deleted
-		if ( is_array( $post_meta ) ) {
+		if ( is_array( $post_meta ) && ! empty( $post_meta ) ) {
 			foreach ( $post_meta as $key => $value ) {
 				// Only consider builder values
 				if ( 0 === strpos( $key, '_ttfob:' ) ) {
-					// Get the ID from the key
-					$pattern = '/_ttfob:(\d+):(.*)/';
-					$key_id  = preg_replace( $pattern, '$1', $key );
-
-					// If the ID in the key is not one of the whitelisted IDs, delete it
-					if ( ! in_array( $key_id, $ids ) ) {
+					if ( ! isset( $current_values[ $key ] ) ) {
 						delete_post_meta( $post_id, $key );
 					}
 				}
