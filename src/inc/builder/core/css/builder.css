@@ -183,6 +183,15 @@
 	line-height: 1.35;
 }
 /*---------------------------------------------------------
+ Text section (html-builder.css)
+-------------------------------------------------------- */
+.ttf-one-section-text .ttf-one-text-column:nth-child(4) {
+    display: none;
+}
+.ttf-one-text-column {
+	margin-bottom: 20px;
+}
+/*---------------------------------------------------------
  Banner section (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-banner-column {
