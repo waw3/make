@@ -225,6 +225,9 @@
 .ttf-one-text-columns-2 .ttf-one-text-column:nth-child(2) {
 	padding-right: 0; /*reset*/
 }
+.ttf-one-text-columns-stage.ttf-one-text-columns-2 .sortable-placeholder {
+	width: 50%;
+}
 /*---------------------------------------------------------
  Text: Three column (html-builder.css)
 -------------------------------------------------------- */
@@ -241,6 +244,9 @@
 .ttf-one-text-columns-3 .ttf-one-text-column:nth-child(3) {
 	padding-right: 0; /*reset*/
 }
+.ttf-one-text-columns-stage.ttf-one-text-columns-3 .sortable-placeholder {
+	width: 33.3333%;
+}
 /*---------------------------------------------------------
  Text: Four column (html-builder.css)
 -------------------------------------------------------- */
@@ -253,6 +259,9 @@
 }
 .ttf-one-text-columns-4 .ttf-one-text-column:nth-child(4) {
 	padding-right: 0; /*reset*/
+}
+.ttf-one-text-columns-stage.ttf-one-text-columns-4 .sortable-placeholder {
+	width: 25%;
 }
 /*---------------------------------------------------------
  Editor (html-builder.css)
