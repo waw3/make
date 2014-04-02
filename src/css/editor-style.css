@@ -28,9 +28,12 @@ h5,
 h6 {
 	clear: both;
 }
-h4 {
-	text-transform: uppercase;
+h1,
+h4,
+h6 {
+	font-weight: normal;
 }
+h5,
 h6 {
 	text-transform: uppercase;
 }
