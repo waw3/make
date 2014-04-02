@@ -16,7 +16,7 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) 
 </div>
 
 <div class="ttf-one-text-columns-stage">
-	<?php for ( $i = 1; $i <= 4; $i ++ ) : ?>
+	<?php foreach ( $section_order as $key => $i ) : ?>
 	<?php
 		$column_name = $section_name . '[columns][' . $i . ']';
 		$link     = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['image-link'] : '';
@@ -51,7 +51,7 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) 
 			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditortext' . $ttf_one_section_data['data']['id'] . $i, $editor_settings ); ?>
 		<?php endif; ?>
 	</div>
-	<?php endfor; ?>
+	<?php endforeach; ?>
 </div>
 
 <input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttf-one-text-columns-order" />
