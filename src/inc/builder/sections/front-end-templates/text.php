@@ -4,8 +4,32 @@
  */
 
 global $ttf_one_section_data;
+$text_columns = ttf_one_builder_get_text_array( $ttf_one_section_data );
 ?>
 
-<section class="builder-section <?php echo esc_attr( ttf_one_get_builder_save()->section_classes( $ttf_one_section_data ) ); ?>">
-
+<section class="builder-section<?php echo esc_attr( ttf_one_builder_get_text_class( $ttf_one_section_data ) ); ?>">
+	<div class="builder-section-content">
+		<?php if ( ! empty( $text_columns ) ) : foreach ( $text_columns as $column ) :
+			$link_front = '';
+			$link_back = '';
+			if ( '' !== $column['image-link'] ) :
+				$link_front = '<a href="' . esc_url( $column['image-link'] ) . '">';
+				$link_back = '</a>';
+			endif;
+			?>
+		<div class="builder-text-column">
+			<?php if ( 0 !== absint( $column['image-id'] ) ) : ?>
+			<figure class="builder-text-image">
+				<?php echo $link_front . wp_get_attachment_image( $column['image-id'], 'large' ) . $link_back; ?>
+			</figure>
+			<?php endif; ?>
+			<?php if ( '' !== $column['title'] ) : ?>
+			<h3 class="builder-text-title">
+				<?php echo ttf_one_sanitize_text( $column['title'] ); ?>
+			</h3>
+			<?php endif; ?>
+			<?php ttf_one_get_builder_save()->the_builder_content( $column['content'] ); ?>
+		</div>
+		<?php endforeach; endif; ?>
+	</div>
 </section>

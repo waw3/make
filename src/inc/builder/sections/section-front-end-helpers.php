@@ -64,9 +64,8 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 	$gallery_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
 
 	// Columns
-	if ( isset( $ttf_one_section_data['columns'] ) && ! empty( $ttf_one_section_data['columns'] ) ) {
-		$gallery_class .= ' builder-gallery-columns-' . $ttf_one_section_data['columns'];
-	}
+	$gallery_columns = ( isset( $ttf_one_section_data['columns'] ) ) ? absint( $ttf_one_section_data['columns'] ) : 1;
+	$gallery_class .= ' builder-gallery-columns-' . $gallery_columns;
 
 	// Captions
 	if ( isset( $ttf_one_section_data['captions'] ) && ! empty( $ttf_one_section_data['captions'] ) ) {
@@ -102,4 +101,63 @@ function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
 	}
 
 	return $gallery_style;
+}
+
+/**
+ * @param $ttf_one_section_data
+ *
+ * @return array
+ */
+function ttf_one_builder_get_text_array( $ttf_one_section_data ) {
+	if ( ! ttf_one_builder_is_section_type( 'text' ) ) {
+		return array();
+	}
+
+	$columns_number = ( isset( $ttf_one_section_data['columns-number'] ) ) ? absint( $ttf_one_section_data['columns-number'] ) : 1;
+
+	$columns_order = array();
+	if ( isset( $ttf_one_section_data['columns-order'] ) ) {
+		$columns_order = $ttf_one_section_data['columns-order'];
+	}
+
+	$columns_data = array();
+	if ( isset( $ttf_one_section_data['columns'] ) ) {
+		$columns_data = $ttf_one_section_data['columns'];
+	}
+
+	$columns_array = array();
+	if ( ! empty( $columns_order ) && ! empty( $columns_data ) ) {
+		$count = 0;
+		foreach ( $columns_order as $order => $key ) {
+			$columns_array[$order] = $columns_data[$key];
+			$count++;
+			if ( $count >= $columns_number ) {
+				break;
+			}
+		}
+	}
+
+	return $columns_array;
+}
+
+/**
+ * @param $ttf_one_section_data
+ *
+ * @return string
+ */
+function ttf_one_builder_get_text_class( $ttf_one_section_data ) {
+	if ( ! ttf_one_builder_is_section_type( 'text' ) ) {
+		return '';
+	}
+
+	$text_class = ' ';
+
+	// Section classes
+	$text_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
+
+	// Columns
+	$columns_number = ( isset( $ttf_one_section_data['columns-number'] ) ) ? absint( $ttf_one_section_data['columns-number'] ) : 1;
+	$text_class .= ' builder-text-columns-' . $columns_number;
+
+	return $text_class;
 }
