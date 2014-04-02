@@ -344,11 +344,11 @@
 	padding: 5px 10px;
 	display: inline-block;
 	border: 1px solid #dfdfdf;
-	border-top: none;
+	border-top: none;  /*reset*/
 	border-radius: 0 0 3px 3px;
 	background: #ffffff;
 	color: #333;
-	text-decoration: none;
+	text-decoration: none;  /*reset*/
 }
 @media screen and ( max-width: 782px ) {
 	.ttf-one-menu-tab-link {
@@ -389,7 +389,7 @@
  Media button (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-media-button-text {
-	display: none;
+	display: none;  /*reset*/
 }
 @media screen and (min-width: 1160px) {
 	.ttf-one-media-button-text {
@@ -410,31 +410,6 @@
 	}
 }
 /*---------------------------------------------------------
- Slideshow builder (html-builder.css)
--------------------------------------------------------- */
-#ttf_one_builder_slideshow {
-	padding-bottom: 2px;
-	background: #ffffff;
-}
-#ttf_one_builder_slideshow.closed {
-	padding-bottom: 0;
-}
-.ttf-one-menu-slideshow {
-	margin: 11px 0;
-}
-/*---------------------------------------------------------
- Banner section (html-builder.css)
--------------------------------------------------------- */
-.ttf-one-section-banner .ttf-one-section-body {
-	background-color: #ffffff;
-}
-/*---------------------------------------------------------
- Gallery section (html-builder.css)
--------------------------------------------------------- */
-.ttf-one-gallery-item {
-	margin-bottom: 40px;
-}
-/*---------------------------------------------------------
  MP6 styles (html-builder-mp6.css)
 -------------------------------------------------------- */
 /* Custom breakpoints for new sidebar width */
@@ -451,22 +426,22 @@
 /* Removing border radius from all elements */
 .wp-admin #ttf_one_builder_product *,
 .wp-admin #ttf_one_builder_slideshow * {
-	border-radius: 0;
+	border-radius: 0;  /*reset*/
 }
 /* Removing links */
 .wp-admin .ttf-one-section-remove,
 .ttf-one-gallery-item-remove {
 	margin-top: 20px;
-	padding: 0;
+	padding: 0;  /*reset*/
 	color: #a00;
-	border-bottom: 0;
-	text-decoration: none;
+	border-bottom: 0;  /*reset*/
+	text-decoration: none;  /*reset*/
 }
 /* Removing links hover state */
 .wp-admin .ttf-one-section-remove:hover,
 .ttf-one-gallery-item-remove:hover {
 	color: #ff0000;
-	background: none;
+	background: none;  /*reset*/
 }
 /* Placeholder text */
 .wp-admin ::-webkit-input-placeholder {
@@ -488,7 +463,7 @@
 }
 /* Removing background arrow for handle */
 .wp-admin.js .meta-box-sortables .postbox .ttf-one-section .handlediv {
-	background: none;
+	background: none;  /*reset*/
 }
 /* Section toggle arrow styling */
 .wp-admin .meta-box-sortables .postbox .ttf-one-stage .handlediv:before {
@@ -501,5 +476,5 @@
 	content: '\f142';
 }
 .wp-admin .ttf-one-section-toggle .handlediv {
-	right: 0;
+	right: 0;  /*reset*/
 }
