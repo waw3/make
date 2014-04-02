@@ -1,7 +1,7 @@
 <?php ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name   = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
-$columns_number = ( isset( $ttf_one_section_data['data']['columns-number'] ) ) ? $ttf_one_section_data['data']['columns-number'] : 1;
+$columns_number = ( isset( $ttf_one_section_data['data']['columns-number'] ) ) ? $ttf_one_section_data['data']['columns-number'] : 3;
 $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) ? $ttf_one_section_data['data']['columns-order'] : range(1, 4);
 $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_one_is_js_template ) ? $columns_number : 3;
 ?>
