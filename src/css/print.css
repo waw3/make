@@ -3,25 +3,28 @@
 -------------------------------------------------------- */
 * {
 	color: #000000 !important;
-	text-shadow: none !important;
-	box-shadow: none !important;
+	text-shadow: none !important; /*reset*/
+	box-shadow: none !important; /*reset*/
 	font-family: Georgia, Times, "Times New Roman", serif !important;
 	font-size: 12px !important;
-	word-spacing: 0 !important;
+	word-spacing: 0 !important; /*reset*/
+	border-color: #cccccc !important;
 }
 *:before {
-	content: "" !important;
-	padding-right: 0 !important;
+	content: "" !important; /*reset*/
+	padding: 0 !important; /*reset*/
 }
 *:after {
-	content: "" !important;
-	padding-left: 0 !important;
+	content: "" !important; /*reset*/
+	padding: 0 !important; /*reset*/
 }
 button {
-	border: 0 !important;
+	border: 0 !important; /*reset*/
 }
 a {
-	text-decoration: underline;
+	color: blue !important;
+	font-weight: normal !important;
+	text-decoration: underline !important;
 }
 .entry-content p a[href]:after,
 .entry-content div a[href]:after,
@@ -32,7 +35,13 @@ img {
 	max-width: 100% !important;
 }
 /*---------------------------------------------------------
- Hide (_sidebar.scss)
+ Reset styles (_sidebar.scss)
+-------------------------------------------------------- */
+blockquote.ttf-one-testimonial:after {
+	content: none !important;
+}
+/*---------------------------------------------------------
+ Hide elements (_sidebar.scss)
 -------------------------------------------------------- */
 #site-navigation,
 #respond,
