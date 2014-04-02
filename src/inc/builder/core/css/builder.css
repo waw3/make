@@ -185,7 +185,16 @@
 /*---------------------------------------------------------
  Text section (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-section-text .ttf-one-text-column:nth-child(4) {
+.ttf-one-text-columns-1 .ttf-one-text-column:nth-child(2),
+.ttf-one-text-columns-1 .ttf-one-text-column:nth-child(3),
+.ttf-one-text-columns-1 .ttf-one-text-column:nth-child(4) {
+    display: none;
+}
+.ttf-one-text-columns-2 .ttf-one-text-column:nth-child(3),
+.ttf-one-text-columns-2 .ttf-one-text-column:nth-child(4) {
+    display: none;
+}
+.ttf-one-text-columns-3 .ttf-one-text-column:nth-child(4) {
     display: none;
 }
 .ttf-one-text-column {
