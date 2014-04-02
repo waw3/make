@@ -25,10 +25,10 @@
 	background: #ffffff;
 }
 #ttf_one_builder.closed {
-	padding-bottom: 0;
+	padding-bottom: 0; /*reset*/
 }
 #ttf_one_builder a {
-	outline: 0;
+	outline: 0; /*reset*/
 }
 .ttf-one-stage {
 	clear: both;
@@ -39,7 +39,7 @@
 }
 .ttf-one-select {
 	text-align: right;
-	padding: 2px 0 8px;
+	padding: 0 0 12px;
 }
 /*---------------------------------------------------------
  Sections (html-builder.css)
@@ -192,60 +192,14 @@
 	margin-bottom: 20px;
 }
 /*---------------------------------------------------------
- Banner section (html-builder.css)
--------------------------------------------------------- */
-.ttf-one-banner-column {
-	float: left;
-	width: 50%;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttf-one-banner-column-left {
-	padding-right: 10px;
-}
-.ttf-one-banner-column-right {
-	padding-left: 10px;
-}
-/*---------------------------------------------------------
- Feature section (html-builder.css)
--------------------------------------------------------- */
-.ttf-one-feature-column {
-	float: left;
-	width: 49.5%;
-	padding: 0 10px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttf-one-feature-column h4 {
-	margin-top: 0;
-}
-.ttf-one-section-sortable-stage-feature .sortable-placeholder {
-	width: 49.5%;
-}
-/*---------------------------------------------------------
- Profile section (html-builder.css)
--------------------------------------------------------- */
-.ttf-one-profile-column {
-	float: left;
-	width: 33%;
-	padding: 0 10px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttf-one-section-profile .ttf-one-titlediv {
-	margin-top: 8px;
-}
-.ttf-one-section-sortable-stage-profile .sortable-placeholder {
-	width: 33%;
-}
-/*---------------------------------------------------------
  Editor (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-section .wp_themeSkin table.mceToolbar {
 	padding: 1px;
+}
+.ttf-one-section #insert-jetpack-contact-form,
+.ttf-one-section #add_poll {
+	display: none;
 }
 /*---------------------------------------------------------
  Open state (html-builder.css)
@@ -263,11 +217,6 @@
 	display: block;
 }
 .ttf-one-hide {
-	display: none;
-}
-/* Hide extra buttons in the section editors */
-.ttf-one-section #insert-jetpack-contact-form,
-.ttf-one-section #add_poll {
 	display: none;
 }
 /*---------------------------------------------------------
