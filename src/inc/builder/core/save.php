@@ -421,32 +421,6 @@ class TTF_One_Builder_Save {
 	}
 
 	/**
-	 * Get the order for a feature section.
-	 *
-	 * @since  1.0.
-	 *
-	 * @param  array    $data    The section data.
-	 * @return array             The desired order.
-	 */
-	public function get_featured_section_order( $data ) {
-		$order = array(
-			'image' => 'left',
-			'text'  => 'right',
-		);
-
-		if ( isset( $data['order'] ) ) {
-			if ( isset( $data['order'][0] ) && false !== strpos( $data['order'][0], 'text' ) ) {
-				$order = array(
-					'image' => 'right',
-					'text'  => 'left',
-				);
-			}
-		}
-
-		return $order;
-	}
-
-	/**
 	 * Get the sanitized section data.
 	 *
 	 * @since  1.0.0.
