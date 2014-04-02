@@ -14,7 +14,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		handleColumns : function (evt) {
 			evt.preventDefault();
 
-			var columns = $(evt.target).val();
+			var columns = $(evt.target).val(),
+				$stage = $('.ttf-one-text-columns-stage', this.$el);
+
+			$stage.removeClass('ttf-one-text-columns-1 ttf-one-text-columns-2 ttf-one-text-columns-3 ttf-one-text-columns-4');
+			$stage.addClass('ttf-one-text-columns-' + parseInt(columns, 10));
 		}
 	});
 
