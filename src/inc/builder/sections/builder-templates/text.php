@@ -42,10 +42,20 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) 
 		</div>
 
 		<?php
-		$editor_settings = array( 'textarea_name' => $column_name . '[content]' );
-		?>
+		$editor_settings = array(
+			'tinymce'       => array(
+				'toolbar1' => 'bold,italic,link',
+				'toolbar2' => '',
+				'toolbar3' => '',
+				'toolbar4' => '',
+			),
+			'quicktags'     => array(
+				'buttons' => 'strong,em,link',
+			),
+			'textarea_name' => $column_name . '[content]'
+		);
 
-		<?php if ( true === $ttf_one_is_js_template ) : ?>
+		if ( true === $ttf_one_is_js_template ) : ?>
 			<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditortextcolumn' . $i . 'temp', $editor_settings ); ?>
 		<?php else : ?>
 			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditortext' . $ttf_one_section_data['data']['id'] . $i, $editor_settings ); ?>
