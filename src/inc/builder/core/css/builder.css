@@ -210,10 +210,12 @@
 .ttf-one-text-columns-2 .ttf-one-text-column:nth-child(4) {
     display: none;
 }
-.ttf-one-text-columns-2 .ttf-one-text-column {
-	width: 50%;
-	float: left;
-	padding-right: 20px;
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-text-columns-2 .ttf-one-text-column {
+		width: 50%;
+		float: left;
+		padding-right: 20px;
+	}
 }
 .ttf-one-text-columns-2 .ttf-one-text-column:nth-child(2) {
 	padding-right: 0; /*reset*/
@@ -224,10 +226,12 @@
 .ttf-one-text-columns-3 .ttf-one-text-column:nth-child(4) {
     display: none;
 }
-.ttf-one-text-columns-3 .ttf-one-text-column {
-	width: 33.333333%;
-	float: left;
-	padding-right: 20px;
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-text-columns-3 .ttf-one-text-column {
+		width: 33.3333%;
+		float: left;
+		padding-right: 20px;
+	}
 }
 .ttf-one-text-columns-3 .ttf-one-text-column:nth-child(3) {
 	padding-right: 0; /*reset*/
@@ -235,10 +239,12 @@
 /*---------------------------------------------------------
  Text: Four column (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-text-columns-4 .ttf-one-text-column {
-	width: 25%;
-	float: left;
-	padding-right: 20px;
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-text-columns-4 .ttf-one-text-column {
+		width: 25%;
+		float: left;
+		padding-right: 20px;
+	}
 }
 .ttf-one-text-columns-4 .ttf-one-text-column:nth-child(4) {
 	padding-right: 0; /*reset*/
