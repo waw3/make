@@ -373,6 +373,15 @@ class TTF_One_Builder_Save {
 		}
 	}
 
+	/**
+	 * Set the pointer position in an array to a specified key.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $key      The key position to set the array to.
+	 * @param  array     $array    The array to set. Passed by reference to affect the array outside of the function scope.
+	 * @return void
+	 */
 	public function set_array_pointer( $key, &$array ) {
 		while ( key( $array ) !== $key ) {
 			next( $array );
