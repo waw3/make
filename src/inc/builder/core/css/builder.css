@@ -186,10 +186,15 @@
  Text section (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-text-column {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-text-column {
+		margin-bottom: 0; /*reset*/
+	}
 }
 .ttf-one-text-columns-3 .wp-editor-area,
 .ttf-one-text-columns-4 .wp-editor-area {
