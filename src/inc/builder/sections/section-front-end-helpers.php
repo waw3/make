@@ -61,7 +61,7 @@ function ttf_one_builder_get_gallery_style() {
 	$gallery_style = '';
 
 	// Background color
-	if ( isset( $ttf_one_section_data['background-color'] ) && '' !== $ttf_one_section_data['background-color'] ) {
+	if ( isset( $ttf_one_section_data['background-color'] ) && ! empty( $ttf_one_section_data['background-color'] ) ) {
 		$gallery_style .= 'background-color:' . maybe_hash_hex_color( $ttf_one_section_data['background-color'] ) . ';';
 	}
 
