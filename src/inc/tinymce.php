@@ -33,6 +33,16 @@ if ( ! function_exists( 'ttf_one_mce_before_init' ) ) :
  */
 function ttf_one_mce_before_init( $settings ) {
 	$style_formats = array(
+		// Big (big)
+		array(
+			'title' => __( 'Big', 'ttf-one' ),
+			'inline' => 'big'
+		),
+		// Small (small)
+		array(
+			'title' => __( 'Small', 'ttf-one' ),
+			'inline' => 'small'
+		),
 		// Citation (cite)
 		array(
 			'title' => __( 'Citation', 'ttf-one' ),
@@ -112,69 +122,41 @@ function ttf_one_mce_before_init( $settings ) {
 				'class' => 'ttf-one-button' // Replace existing classes instead of adding
 			)
 		),
-		// Button color (a)
-		array(
-			'title' => __( 'Button: color', 'ttf-one' ),
-			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button color-primary-background' // Replace existing classes instead of adding
-			)
-		),
-		// Button large (a)
-		array(
-			'title' => __( 'Button: large', 'ttf-one' ),
-			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-button-large' // Replace existing classes instead of adding
-			)
-		),
-		// Button large color (a)
-		array(
-			'title' => __( 'Button: large, color', 'ttf-one' ),
-			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-button-large color-primary-background' // Replace existing classes instead of adding
-			)
-		),
 		// Button alert (a)
 		array(
 			'title' => __( 'Button: alert', 'ttf-one' ),
 			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-alert' // Replace existing classes instead of adding
-			)
-		),
-		// Button alert success (a)
-		array(
-			'title' => __( 'Button: success', 'ttf-one' ),
-			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-alert ttf-one-success' // Replace existing classes instead of adding
-			)
-		),
-		// Button alert error (a)
-		array(
-			'title' => __( 'Button: error', 'ttf-one' ),
-			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-alert ttf-one-error' // Replace existing classes instead of adding
-			)
-		),
-		// Button alert important (a)
-		array(
-			'title' => __( 'Button: important', 'ttf-one' ),
-			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-alert ttf-one-important' // Replace existing classes instead of adding
-			)
+			'classes' => 'ttf-one-alert'
 		),
 		// Button download (a)
 		array(
 			'title' => __( 'Button: download', 'ttf-one' ),
 			'selector' => 'a,button',
-			'attributes' => array(
-				'class' => 'ttf-one-button ttf-one-download color-primary-background' // Replace existing classes instead of adding
-			)
+			'classes' => 'ttf-one-download'
+		),
+		// Button primary color (a)
+		array(
+			'title' => __( 'Button: primary color', 'ttf-one' ),
+			'selector' => 'a,button',
+			'classes' => 'color-primary-background'
+		),
+		// Button green (a)
+		array(
+			'title' => __( 'Button: green', 'ttf-one' ),
+			'selector' => 'a,button',
+			'classes' => 'ttf-one-success'
+		),
+		// Button red (a)
+		array(
+			'title' => __( 'Button: red', 'ttf-one' ),
+			'selector' => 'a,button',
+			'classes' => 'ttf-one-error'
+		),
+		// Button orange (a)
+		array(
+			'title' => __( 'Button: orange', 'ttf-one' ),
+			'selector' => 'a,button',
+			'classes' => 'ttf-one-important'
 		),
 		// List: check 1
 		array(
