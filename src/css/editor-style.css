@@ -38,6 +38,10 @@ blockquote p {
 	font-size: 135%; /* 20px */
 	line-height: 1.25;
 }
+blockquote p cite,
+blockquote cite {
+	font-size: 75%; /* 12px */
+}
 tt,
 kbd,
 pre,
@@ -67,11 +71,27 @@ ins:after {
 	content: "\005D";
 	position: relative;
 }
+dt {
+	font-weight: bold;
+}
+del,
+strike {
+	color: inherit;
+}
 /*---------------------------------------------------------
  Media (editor-style.css)
 -------------------------------------------------------- */
 * {
 	max-width: 100%;
+}
+/*---------------------------------------------------------
+ Rules (editor-style.css)
+-------------------------------------------------------- */
+hr.ttf-one-line-dashed {
+	border-top: 2px dashed #eaecee;
+}
+hr.ttf-one-line-double {
+	border-top: thick double #eaecee;
 }
 /*---------------------------------------------------------
  Lists (editor-style.css)
@@ -139,25 +159,14 @@ input[type="submit"] {
 .color-primary-background {
 	background-color: #0094c5;
 }
-.ttf-one-button-large {
-	font-size: 16px;
-	padding: 11px 18px;
-}
-.ttf-one-alert {
-	background: #eaecee;
-	color: #171717;
-}
 .ttf-one-success {
-	color: #339d56;
-	background: #eef7f1;
+	background: #339d56;
 }
 .ttf-one-error {
-	color: #d04242;
-	background-color: #f7eeee;
+	background: #d04242;
 }
 .ttf-one-important {
-	color: #ea8501;
-	background-color: #fffde5;
+	background: #ea8501;
 }
 .ttf-one-download:after {
 	content: "\f0ab";
