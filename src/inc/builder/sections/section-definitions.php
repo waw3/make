@@ -213,6 +213,10 @@ class TTF_One_Section_Definitions {
 					$clean_data['gallery-items'][ $id ]['link'] = esc_url_raw( $item['link'] );
 				}
 
+				if ( isset( $item['description'] ) ) {
+					$clean_data['gallery-items'][ $id ]['description'] = wp_filter_post_kses( $item['description'] );
+				}
+
 				if ( isset( $item['image-id'] ) ) {
 					$clean_data['gallery-items'][ $id ]['image-id'] = absint( $item['image-id'] );
 				}
