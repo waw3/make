@@ -3,6 +3,7 @@ global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name   = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $columns_number = ( isset( $ttf_one_section_data['data']['columns-number'] ) ) ? $ttf_one_section_data['data']['columns-number'] : 1;
 $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) ? $ttf_one_section_data['data']['columns-order'] : range(1, 4);
+$columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_one_is_js_template ) ? $columns_number : 3;
 ?>
 
 <div class="ttf-one-columns-select ttf-one-select">
@@ -15,7 +16,7 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) 
 	</select>
 </div>
 
-<div class="ttf-one-text-columns-stage">
+<div class="ttf-one-text-columns-stage ttf-one-text-columns-<?php echo $columns_class; ?>">
 	<?php foreach ( $section_order as $key => $i ) : ?>
 	<?php
 		$column_name = $section_name . '[columns][' . $i . ']';
