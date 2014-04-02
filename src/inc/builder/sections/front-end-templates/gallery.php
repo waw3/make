@@ -3,10 +3,11 @@
  * @package ttf-one
  */
 
-$gallery = ttf_one_builder_get_gallery_array();
+global $ttf_one_section_data;
+$gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 ?>
 
-<section class="builder-section <?php echo esc_attr( ttf_one_builder_get_gallery_class() ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style() ); ?>">
+<section class="builder-section <?php echo esc_attr( ttf_one_builder_get_gallery_class( $ttf_one_section_data ) ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style() ); ?>">
 	<div class="builder-section-content">
 		<?php if ( ! empty( $gallery ) ) : foreach ( $gallery as $item ) :
 			$link_front = '';

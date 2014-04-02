@@ -20,15 +20,6 @@ class TTF_One_Builder_Save {
 	private static $instance;
 
 	/**
-	 * A variable for tracking the current section being processed.
-	 *
-	 * @since 1.0.
-	 *
-	 * @var   int
-	 */
-	private $_current_section_number = 0;
-
-	/**
 	 * Holds the clean section data.
 	 *
 	 * @since 1.0.0.
@@ -293,9 +284,6 @@ class TTF_One_Builder_Save {
 		// Start the output buffer to collect the contents of the templates
 		ob_start();
 
-		// Verify that the section counter is reset
-		$this->_current_section_number = 0;
-
 		// For each sections, render it using the template
 		foreach ( $sanitized_sections as $section ) {
 			global $ttf_one_section_data;
@@ -307,15 +295,9 @@ class TTF_One_Builder_Save {
 			// Get the template for the section
 			get_template_part( $registered_sections[ $section['section-type'] ]['display_template'] );
 
-			// Note the change in section number
-			$this->_current_section_number++;
-
 			// Cleanup the global
 			unset( $GLOBALS['ttf_one_section_data'] );
 		}
-
-		// Reset the counter
-		$this->_current_section_number = 0;
 
 		// Get the rendered templates from the output buffer
 		$post_content = ob_get_clean();
@@ -344,18 +326,23 @@ class TTF_One_Builder_Save {
 	/**
 	 * Get the next section's data.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
-	 * @return array    The next section's data.
+	 * @param  array    $current_section    The current section's data.
+	 * @return array                        The next section's data.
 	 */
-	public function get_next_section_data() {
-		// Get the next section number
-		$section_to_get = $this->_current_section_number + 1;
-		$sections       = $this->get_sanitized_sections();
+	public function get_next_section_data( $current_section ) {
+		$sections = $this->get_sanitized_sections();
+
+		// Move the pointer to the current section
+		$this->set_array_pointer( $current_section['id'], $sections );
+
+		// Move pointer to the next item
+		$next_section = next( $sections );
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $sections[ $section_to_get ] ) ) {
-			return $sections[ $section_to_get ];
+		if ( $next_section ) {
+			return $next_section;
 		} else {
 			return array();
 		}
@@ -364,20 +351,31 @@ class TTF_One_Builder_Save {
 	/**
 	 * Get the previous section's data.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
-	 * @return array    The previous section's data.
+	 * @param  array    $current_section    The current section's data.
+	 * @return array                        The previous section's data.
 	 */
-	public function get_prev_section_data() {
-		// Get the next section number
-		$section_to_get = $this->_current_section_number - 1;
-		$sections       = $this->get_sanitized_sections();
+	public function get_prev_section_data( $current_section ) {
+		$sections = $this->get_sanitized_sections();
+
+		// Move the pointer to the current section
+		$this->set_array_pointer( $current_section['id'], $sections );
+
+		// Move pointer to the next item
+		$previous_section = prev( $sections );
 
 		// If the section does not exist, the current section is the last section
-		if ( isset( $sections[ $section_to_get ] ) ) {
-			return $sections[ $section_to_get ];
+		if ( $previous_section ) {
+			return $previous_section;
 		} else {
 			return array();
+		}
+	}
+
+	public function set_array_pointer( $key, &$array ) {
+		while ( key( $array ) !== $key ) {
+			next( $array );
 		}
 	}
 
@@ -387,22 +385,21 @@ class TTF_One_Builder_Save {
 	 * Includes the name of the current section type, the next section type and the previous section type. It will also
 	 * denote if a section is the first or last section.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
-	 * @return string
+	 * @param  array     $current_section    The current section's data.
+	 * @return string                        The class string.
 	 */
-	public function section_classes() {
-		$sections = $this->get_sanitized_sections();
-
+	public function section_classes( $current_section ) {
 		// Get the current section type
-		$current = ( isset( $sections[ $this->_current_section_number ]['section-type'] ) ) ? $sections[ $this->_current_section_number ]['section-type'] : '';
+		$current = ( isset( $current_section['section-type'] ) ) ? $current_section['section-type'] : '';
 
 		// Get the next section's type
-		$next_data = $this->get_next_section_data();
+		$next_data = $this->get_next_section_data( $current_section );
 		$next = ( ! empty( $next_data ) && isset( $next_data['section-type'] ) ) ? 'next-' . $next_data['section-type'] : 'last';
 
 		// Get the previous section's type
-		$prev_data = $this->get_prev_section_data();
+		$prev_data = $this->get_prev_section_data( $current_section );
 		$prev = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? 'prev-' . $prev_data['section-type'] : 'first';
 
 		// Return the values as a single string
