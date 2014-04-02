@@ -51,6 +51,34 @@ function ttf_one_builder_get_gallery_array() {
 /**
  * @return string
  */
+function ttf_one_builder_get_gallery_class() {
+	global $ttf_one_section_data;
+
+	if ( ! ttf_one_builder_is_section_type( 'gallery' ) ) {
+		return '';
+	}
+
+	$gallery_class = ' ';
+
+	// Section classes
+	$gallery_class .= ttf_one_get_builder_save()->section_classes();
+
+	// Columns
+	if ( isset( $ttf_one_section_data['columns'] ) && ! empty( $ttf_one_section_data['columns'] ) ) {
+		$gallery_class .= ' builder-gallery-columns-' . $ttf_one_section_data['columns'];
+	}
+
+	// Captions
+	if ( isset( $ttf_one_section_data['captions'] ) && ! empty( $ttf_one_section_data['captions'] ) ) {
+		$gallery_class .= ' builder-gallery-captions-' . $ttf_one_section_data['captions'];
+	}
+
+	return $gallery_class;
+}
+
+/**
+ * @return string
+ */
 function ttf_one_builder_get_gallery_style() {
 	global $ttf_one_section_data;
 
@@ -71,10 +99,6 @@ function ttf_one_builder_get_gallery_style() {
 		if ( isset( $image_src[0] ) ) {
 			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
-	}
-
-	if ( '' !== $gallery_style ) {
-		$gallery_style = ' style="' . $gallery_style . '"';
 	}
 
 	return $gallery_style;

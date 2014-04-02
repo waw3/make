@@ -6,7 +6,7 @@
 $gallery = ttf_one_builder_get_gallery_array();
 ?>
 
-<section class="builder-section <?php echo esc_attr( ttf_one_get_builder_save()->section_classes() ); ?>"<?php echo ttf_one_builder_get_gallery_style(); ?>>
+<section class="builder-section <?php echo esc_attr( ttf_one_builder_get_gallery_class() ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style() ); ?>">
 	<div class="builder-section-content">
 		<?php if ( ! empty( $gallery ) ) : foreach ( $gallery as $item ) :
 			$link_front = '';
