@@ -54,6 +54,11 @@ class TTF_One_Builder_Save {
 
 		// Combine the input into the post's content
 		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 30, 2 );
+
+		// Filter the content displayed in templates
+		global $wp_embed;
+		add_filter( 'ttf_one_the_builder_content', array( $wp_embed, 'autoembed' ), 8 );
+		add_filter( 'ttf_one_the_builder_content', 'wpautop' );
 	}
 
 	/**

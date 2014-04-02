@@ -71,11 +71,6 @@ class TTF_One_Builder_Base {
 		add_action( 'admin_footer', array( $this, 'add_js_data' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
 		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
-
-		// Filter the content displayed in templates
-		global $wp_embed;
-		add_filter( 'ttf_one_the_builder_content', array( $wp_embed, 'autoembed' ), 8 );
-		add_filter( 'ttf_one_the_builder_content', 'wpautop' );
 	}
 
 	/**
@@ -506,20 +501,6 @@ class TTF_One_Builder_Base {
 			var ttfOneMCE = '<?php echo esc_js( wp_default_editor() ); ?>';
 		</script>
 	<?php
-	}
-
-	/**
-	 * Duplicate of "the_content" with custom filter name for generating content in builder templates.
-	 *
-	 * @since  1.0.
-	 *
-	 * @param  string    $content    The original content.
-	 * @return void
-	 */
-	public function the_builder_content( $content ) {
-		$content = apply_filters( 'ttf_one_the_builder_content', $content );
-		$content = str_replace( ']]>', ']]&gt;', $content );
-		echo $content;
 	}
 
 	/**
