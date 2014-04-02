@@ -327,6 +327,10 @@ class TTF_One_Section_Definitions {
 	 * @return array             The modified deps.
 	 */
 	public function add_js_dependencies( $deps ) {
+		if ( ! is_array( $deps ) ) {
+			$deps = array();
+		}
+
 		return array_merge( $deps, array(
 			'ttf-one-sections/js/models/gallery-item.js',
 			'ttf-one-sections/js/views/gallery-item.js',
