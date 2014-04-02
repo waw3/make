@@ -6,8 +6,8 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['columns-order'] ) ) 
 ?>
 
 <div class="ttf-one-columns-select ttf-one-select">
-	<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
-	<select id="ttf-one-gallery-columns" name="<?php echo $section_name; ?>[columns-number]">
+	<label><?php _e( 'Columns', 'ttf-one' ); ?></label>
+	<select class="ttf-one-gallery-columns" name="<?php echo $section_name; ?>[columns-number]">
 		<option value="1"<?php selected( 1, $columns_number ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns_number ); ?>>2</option>
 		<option value="3"<?php selected( 3, $columns_number ); ?>>3</option>

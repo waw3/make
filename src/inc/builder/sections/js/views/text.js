@@ -7,12 +7,14 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.TextView = oneApp.SectionView.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttf-one-gallery-add-item' : 'handleColumns'
+				'change .ttf-one-gallery-columns' : 'handleColumns'
 			});
 		},
 
-		addColumn : function (evt) {
+		handleColumns : function (evt) {
 			evt.preventDefault();
+
+			var columns = $(evt.target).val();
 		}
 	});
 
