@@ -5,17 +5,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	'use strict';
 
 	// Initiate a new TinyMCE editor instance
-	oneApp.initEditor = function (id, type) {
+	oneApp.initEditor = function (editorID, tempEditorID, type) {
 		var mceInit = {},
-			qtInit = {},
-			tempName = 'ttfoneeditor' + type + 'temp';
+			qtInit = {};
 
 		/**
 		 * Get the default values for this section type from the pre init object. Store them in a new object with
 		 * the id of the section as the key.
 		 */
-		mceInit[id] = tinyMCEPreInit.mceInit[tempName];
-		qtInit[id] = tinyMCEPreInit.qtInit[tempName];
+		mceInit[editorID] = tinyMCEPreInit.mceInit[tempEditorID];
+		qtInit[editorID] = tinyMCEPreInit.qtInit[tempEditorID];
 
 		/**
 		 * Append the new object to the pre init object. Doing so will provide the TinyMCE and quicktags code with
@@ -25,13 +24,13 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		tinyMCEPreInit.qtInit = $.extend(tinyMCEPreInit.qtInit, qtInit);
 
 		// Change the ID within the settings to correspond to the section ID
-		tinyMCEPreInit.mceInit[id].elements = id;
-		tinyMCEPreInit.qtInit[id].id = id;
-		tinyMCEPreInit.mceInit[id].selector = '#' + id;
+		tinyMCEPreInit.mceInit[editorID].elements = editorID;
+		tinyMCEPreInit.qtInit[editorID].id = editorID;
+		tinyMCEPreInit.mceInit[editorID].selector = '#' + editorID;
 
 		// Only display the tinyMCE instance if in that mode. Else, the buttons will display incorrectly.
 		if ('tinymce' === ttfOneMCE) {
-			tinyMCE.init(tinyMCEPreInit.mceInit[id]);
+			tinyMCE.init(tinyMCEPreInit.mceInit[editorID]);
 		}
 
 		/**
@@ -42,33 +41,35 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		QTags.instances[0] = false;
 
 		// Init the quicktags
-		quicktags(tinyMCEPreInit.qtInit[id]);
+		quicktags(tinyMCEPreInit.qtInit[editorID]);
 
 		/**
 		 * When using the different editors, the wpActiveEditor variables needs to be set. If it is not set, the
 		 * Add Media buttons, as well as some other buttons will add content to the wrong editors. This strategy
 		 * assumes that if you are clicking on the editor, it is the active editor.
 		 */
-		var $wrapper = $('#wp-' + id + '-wrap');
+		var $wrapper = $('#wp-' + editorID + '-wrap');
 
-		$wrapper.on('click', '.add_media', {id: id}, function (evt) {
+		$wrapper.on('click', '.add_media', {id: editorID}, function (evt) {
 			wpActiveEditor = evt.data.id;
 		});
 
-		$wrapper.on('click', {id: id}, function (evt) {
+		$wrapper.on('click', {id: editorID}, function (evt) {
 			wpActiveEditor = evt.data.id;
 		});
 	};
 
 	oneApp.initAllEditors = function(section_id, section) {
 		var $section = $('#' + section_id),
-			$tinyMCEWrappers = $('.wp-editor-wrap', $section);
+			$tinyMCEWrappers = $('.wp-editor-wrap', $section),
+			sectionID = section.get('id');
 
 		$tinyMCEWrappers.each(function() {
 			var $el = $(this),
-				id = $el.attr('id').replace('wp-', '').replace('temp-wrap', section.get('sectionType')).replace('-wrap', '');
+				editorID = $el.attr('id').replace('wp-', '').replace('temp-wrap', section.get('sectionType')).replace('-wrap', ''),
+				tempEditorID = editorID.replace(sectionID, '') + 'temp';
 
-			oneApp.initEditor(id, section.get('sectionType'));
+			oneApp.initEditor(editorID, tempEditorID, section.get('sectionType'));
 		});
 	};
 
