@@ -208,6 +208,9 @@
 .ttf-one-text-columns-1 .ttf-one-text-column:nth-child(4) {
     display: none;
 }
+.ttf-one-text-columns-1 .ttf-one-sortable-handle {
+	visibility: hidden;
+}
 /*---------------------------------------------------------
  Text: Two column (html-builder.css)
 -------------------------------------------------------- */
