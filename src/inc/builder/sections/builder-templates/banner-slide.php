@@ -7,8 +7,6 @@ if ( true === $ttf_one_is_js_template ) {
 	$section_name .= '[' . $ttf_one_section_data['data']['id'] . '][banner-slides][' . $ttf_one_slide_id . ']';
 }
 
-$title            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['title'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['title'] : '';
-$link             = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['link'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['link'] : '';
 $content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] : '';
 $background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] : '#ffffff';
 $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] : 'left';
@@ -18,16 +16,6 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 <?php endif; ?>
 	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 		<div class="sortable-background"></div>
-	</div>
-
-	<div class="ttf-one-titlediv">
-		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
-	</div>
-
-	<div class="ttf-one-titlediv">
-		<div class="ttf-one-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo sanitize_text_field( $title ); ?>" autocomplete="off" />
-		</div>
 	</div>
 
 	<?php

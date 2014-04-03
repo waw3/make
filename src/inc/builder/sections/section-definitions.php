@@ -165,13 +165,6 @@ class TTF_One_Section_Definitions {
 
 		if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
 			foreach ( $data['banner-slides'] as $id => $slide ) {
-				if ( isset( $slide['title'] ) ) {
-					$clean_data['banner-slides'][ $id ]['title'] = sanitize_text_field( $slide['title'] );
-				}
-
-				if ( isset( $slide['link'] ) ) {
-					$clean_data['banner-slides'][ $id ]['link'] = esc_url_raw( $slide['link'] );
-				}
 
 				if ( isset( $slide['content'] ) ) {
 					$clean_data['banner-slides'][ $id ]['content'] = wp_filter_post_kses( $slide['content'] );
