@@ -1,5 +1,5 @@
-<?php global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_banner_id; ?>
 <?php
+global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_banner_id;
 $section_name = 'ttf-one-section';
 if ( true === $ttf_one_is_js_template ) {
 	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
@@ -13,3 +13,40 @@ $content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 $background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['background-color'] : '#ffffff';
 $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['alignment'] : 'left';
 ?>
+<?php if ( true !== $ttf_one_is_js_template ) : ?>
+<div class="ttf-one-banner-slide" id="ttf-one-banner-slide-<?php echo esc_attr( $ttf_one_banner_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_banner_id ); ?>">
+<?php endif; ?>
+	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
+		<div class="sortable-background"></div>
+	</div>
+
+	<div class="ttf-one-titlediv">
+		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
+	</div>
+
+	<div class="ttf-one-titlediv">
+		<div class="ttf-one-titlewrap">
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo sanitize_text_field( $title ); ?>" autocomplete="off" />
+		</div>
+	</div>
+
+	<div class="ttf-one-banner-slide-background-color-wrapper">
+		<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
+		<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+	</div>
+
+	<div class="ttf-one-banner-slide-alignment-wrapper">
+		<label><?php _e( 'Columns', 'ttf-one' ); ?></label>
+		<select name="<?php echo $section_name; ?>[alignment]">
+			<option value="left"<?php selected( 1, $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
+			<option value="center"<?php selected( 2, $alignment ); ?>><?php _e( 'Center', 'ttf-one' ); ?></option>
+			<option value="right"<?php selected( 3, $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
+		</select>
+	</div>
+
+	<a href="#" class="ttf-one-banner-slide-remove">
+		<?php _e( 'Remove this slide', 'ttf-one' ); ?>
+	</a>
+<?php if ( true !== $ttf_one_is_js_template ) : ?>
+</div>
+<?php endif; ?>

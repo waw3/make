@@ -315,6 +315,22 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
+			'ttf-one-sections/js/models/banner-slide.js',
+			get_template_directory_uri() . '/inc/builder/sections/js/models/banner-slide.js',
+			array(),
+			TTF_ONE_VERSION,
+			true
+		);
+
+		wp_register_script(
+			'ttf-one-sections/js/views/banner-slide.js',
+			get_template_directory_uri() . '/inc/builder/sections/js/views/banner-slide.js',
+			array(),
+			TTF_ONE_VERSION,
+			true
+		);
+
+		wp_register_script(
 			'ttf-one-sections/js/views/banner.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/banner.js',
 			array(),
@@ -350,9 +366,11 @@ class TTF_One_Section_Definitions {
 
 		return array_merge( $deps, array(
 			'ttf-one-sections/js/models/gallery-item.js',
+			'ttf-one-sections/js/models/banner-slide.js',
 			'ttf-one-sections/js/views/gallery-item.js',
 			'ttf-one-sections/js/views/gallery.js',
 			'ttf-one-sections/js/views/text.js',
+			'ttf-one-sections/js/views/banner-slide.js',
 			'ttf-one-sections/js/views/banner.js',
 		) );
 	}
@@ -373,16 +391,29 @@ class TTF_One_Section_Definitions {
 			return;
 		}
 
-		// Print the templates : ?>
-		<script type="text/html" id="tmpl-ttf-one-gallery-item">
+		// Define the templates to print
+		$templates = array(
+			array(
+				'id' => 'gallery-item',
+				'builder_template' => '/inc/builder/sections/builder-templates/gallery-item',
+			),
+			array(
+				'id' => 'banner-slide',
+				'builder_template' => '/inc/builder/sections/builder-templates/banner-slide',
+			),
+		);
+
+		// Print the templates
+		foreach ( $templates as $template ) : ?>
+		<script type="text/html" id="tmpl-ttf-one-<?php echo $template['id']; ?>">
 			<?php
 			ob_start();
-			ttf_one_get_builder_base()->load_section( array( 'id' => 'gallery-item', 'builder_template' => '/inc/builder/sections/builder-templates/gallery-item' ), array() );
+			ttf_one_get_builder_base()->load_section( $template, array() );
 			$html = ob_get_clean();
 			echo $html;
 			?>
 		</script>
-		<?php
+		<?php endforeach;
 		unset( $GLOBALS['ttf_one_is_js_template'] );
 	}
 }
