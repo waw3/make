@@ -947,6 +947,8 @@ table {
  Note (_elements.scss)
 -------------------------------------------------------- */
 .ttf-one-alert {
+  position: relative;
+  overflow: hidden;
   border: 1px solid #c0c6cc;
   background-color: #eaecee;
   padding: 33px 32px;
@@ -959,31 +961,34 @@ table {
   .ttf-one-alert:before {
     content: "\f05a";
     display: block;
-    float: left;
+    position: absolute;
+    opacity: 0.1;
     font-family: FontAwesome;
     line-height: 1;
-    padding-right: 32px;
-    padding-right: 2rem;
-    font-size: 24px;
-    font-size: 1.5rem; }
+    bottom: -12px;
+    bottom: -0.75rem;
+    right: -12px;
+    right: -0.75rem;
+    font-size: 72px;
+    font-size: 4.5rem; }
   .ttf-one-alert.ttf-one-error {
     color: #d04242;
     border: 1px solid #dfbaba;
     background-color: #f7eeee; }
     .ttf-one-alert.ttf-one-error:before {
-      content: "\f071"; }
+      content: "\f06a"; }
   .ttf-one-alert.ttf-one-success {
     color: #339d56;
     border: 1px solid #badfc6;
     background: #eef7f1; }
     .ttf-one-alert.ttf-one-success:before {
-      content: "\f14a"; }
+      content: "\f058"; }
   .ttf-one-alert.ttf-one-important {
     color: #ea8501;
     border: 1px solid #fff265;
     background-color: #fffde5; }
     .ttf-one-alert.ttf-one-important:before {
-      content: "\f071"; }
+      content: "\f06a"; }
 
 /*---------------------------------------------------------
  5. Patterns (_patterns.scss)
