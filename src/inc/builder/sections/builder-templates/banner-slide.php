@@ -21,15 +21,8 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 
 	<?php
 	$editor_settings = array(
-		'tinymce'       => array(
-			'toolbar1' => 'bold,italic,link',
-			'toolbar2' => '',
-			'toolbar3' => '',
-			'toolbar4' => '',
-		),
-		'quicktags'     => array(
-			'buttons' => 'strong,em,link',
-		),
+		'tinymce'       => true,
+		'quicktags'     => true,
 		'textarea_name' => $section_name . '[content]'
 	);
 
