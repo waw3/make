@@ -47,7 +47,7 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	if ( true === $ttf_one_is_js_template ) : ?>
 		<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
 	<?php else : ?>
-		<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_section_data['data']['id'], $editor_settings ); ?>
+		<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_slide_id, $editor_settings ); ?>
 	<?php endif; ?>
 
 	<div class="ttf-one-banner-slide-background-color-wrapper">
