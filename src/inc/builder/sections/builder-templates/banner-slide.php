@@ -1,20 +1,20 @@
 <?php
-global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_banner_id;
+global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_slide_id;
 $section_name = 'ttf-one-section';
 if ( true === $ttf_one_is_js_template ) {
 	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
 } else {
-	$section_name .= '[' . $ttf_one_section_data['data']['id'] . '][banner-slides][' . $ttf_one_banner_id . ']';
+	$section_name .= '[' . $ttf_one_section_data['data']['id'] . '][banner-slides][' . $ttf_one_slide_id . ']';
 }
 
-$title            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['title'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['title'] : '';
-$link             = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['link'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['link'] : '';
-$content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['content'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['content'] : '';
-$background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['background-color'] : '#ffffff';
-$alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_banner_id ]['alignment'] : 'left';
+$title            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['title'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['title'] : '';
+$link             = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['link'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['link'] : '';
+$content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] : '';
+$background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] : '#ffffff';
+$alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] : 'left';
 ?>
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
-<div class="ttf-one-banner-slide" id="ttf-one-banner-slide-<?php echo esc_attr( $ttf_one_banner_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_banner_id ); ?>">
+<div class="ttf-one-banner-slide" id="ttf-one-banner-slide-<?php echo esc_attr( $ttf_one_slide_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_slide_id ); ?>">
 <?php endif; ?>
 	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 		<div class="sortable-background"></div>
@@ -58,9 +58,9 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	<div class="ttf-one-banner-slide-alignment-wrapper">
 		<label><?php _e( 'Columns', 'ttf-one' ); ?></label>
 		<select name="<?php echo $section_name; ?>[alignment]">
-			<option value="left"<?php selected( 1, $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
-			<option value="center"<?php selected( 2, $alignment ); ?>><?php _e( 'Center', 'ttf-one' ); ?></option>
-			<option value="right"<?php selected( 3, $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
+			<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
+			<option value="center"<?php selected( 'center', $alignment ); ?>><?php _e( 'Center', 'ttf-one' ); ?></option>
+			<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
 		</select>
 	</div>
 
