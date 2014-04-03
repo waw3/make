@@ -45,6 +45,10 @@ blockquote p cite,
 blockquote cite {
 	font-size: 75%; /* 12px */
 }
+.ttf-one-testimonial {
+	background-color: #eaecee;
+	padding: 33px 32px;
+}
 tt,
 kbd,
 pre,
