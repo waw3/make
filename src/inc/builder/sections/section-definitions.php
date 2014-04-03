@@ -314,6 +314,14 @@ class TTF_One_Section_Definitions {
 			true
 		);
 
+		wp_register_script(
+			'ttf-one-sections/js/views/banner.js',
+			get_template_directory_uri() . '/inc/builder/sections/js/views/banner.js',
+			array(),
+			TTF_ONE_VERSION,
+			true
+		);
+
 		// Add additional dependencies to the Builder JS
 		add_filter( 'ttf_one_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 
@@ -345,6 +353,7 @@ class TTF_One_Section_Definitions {
 			'ttf-one-sections/js/views/gallery-item.js',
 			'ttf-one-sections/js/views/gallery.js',
 			'ttf-one-sections/js/views/text.js',
+			'ttf-one-sections/js/views/banner.js',
 		) );
 	}
 
