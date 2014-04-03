@@ -206,7 +206,7 @@
 .ttf-one-text-columns-1 .ttf-one-text-column:nth-child(2),
 .ttf-one-text-columns-1 .ttf-one-text-column:nth-child(3),
 .ttf-one-text-columns-1 .ttf-one-text-column:nth-child(4) {
-    display: none;
+	display: none;
 }
 .ttf-one-text-columns-1 .ttf-one-sortable-handle {
 	visibility: hidden;
@@ -216,17 +216,14 @@
 -------------------------------------------------------- */
 .ttf-one-text-columns-2 .ttf-one-text-column:nth-child(3),
 .ttf-one-text-columns-2 .ttf-one-text-column:nth-child(4) {
-    display: none;
+	display: none;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttf-one-text-columns-2 .ttf-one-text-column {
 		width: 50%;
 		float: left;
-		padding-right: 20px;
+		padding: 0 10px;
 	}
-}
-.ttf-one-text-columns-2 .ttf-one-text-column:nth-child(2) {
-	padding-right: 0; /*reset*/
 }
 .ttf-one-text-columns-stage.ttf-one-text-columns-2 .sortable-placeholder {
 	width: 50%;
@@ -235,17 +232,14 @@
  Text: Three column (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-text-columns-3 .ttf-one-text-column:nth-child(4) {
-    display: none;
+	display: none;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttf-one-text-columns-3 .ttf-one-text-column {
 		width: 33.3333%;
 		float: left;
-		padding-right: 20px;
+		padding: 0 10px;
 	}
-}
-.ttf-one-text-columns-3 .ttf-one-text-column:nth-child(3) {
-	padding-right: 0; /*reset*/
 }
 .ttf-one-text-columns-stage.ttf-one-text-columns-3 .sortable-placeholder {
 	width: 33.3333%;
