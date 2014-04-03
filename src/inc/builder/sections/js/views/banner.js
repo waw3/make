@@ -58,6 +58,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage = $item.parents('.ttf-one-banner-slides-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
+				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
@@ -65,6 +66,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$orderInput = $('.ttf-one-banner-slide-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
+				oneApp.enableEditors($item);
 			}
 		});
 	};
