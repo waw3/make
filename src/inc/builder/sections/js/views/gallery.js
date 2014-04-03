@@ -64,7 +64,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	};
 
 	// Initialize the color picker
-	oneApp.initializeColorPicker = function (view) {
+	oneApp.initializeGalleryItemColorPicker = function (view) {
 		var $selector;
 		view = view || '';
 
@@ -83,7 +83,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
 			oneApp.initializeGalleryItemSortables();
-			oneApp.initializeColorPicker(view);
+			oneApp.initializeGalleryItemColorPicker(view);
 		}
 	});
 
@@ -111,7 +111,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		});
 
 		oneApp.initializeGalleryItemSortables();
-		oneApp.initializeColorPicker();
+		oneApp.initializeGalleryItemColorPicker();
 	};
 
 	// Initialize the views when the app starts up
