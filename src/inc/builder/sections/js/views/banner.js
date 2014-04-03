@@ -46,7 +46,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Makes banner slides sortable
 	oneApp.initializeBannerSlidesSortables = function(view) {
-		$('.ttf-one-banner-slides-stage', view.$el).sortable({
+		var $selector;
+		view = view || '';
+
+		if (view.$el) {
+			$selector = $('.ttf-one-banner-slides-stage', view.$el);
+		} else {
+			$selector = $('.ttf-one-banner-slides-stage');
+		}
+
+		$selector.sortable({
 			handle: '.ttf-one-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
@@ -93,4 +102,35 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.initializeBannerSlidesSortables(view);
 		}
 	});
+
+	// Initialize available slides
+	oneApp.initBannerSlideViews = function () {
+		$('.ttf-one-banner-slide').each(function () {
+			var $item = $(this),
+				idAttr = $item.attr('id'),
+				id = $item.attr('data-id'),
+				$section = $item.parents('.ttf-one-section'),
+				parentID = $section.attr('data-id');
+
+			// Build the model
+			var model = new oneApp.BannerSlideModel({
+				id: id,
+				parentID: parentID
+			});
+
+			// Build the view
+			var view = new oneApp.BannerSlideView({
+				model: model,
+				el: $('#' + idAttr),
+				serverRendered: true
+			});
+
+			oneApp.initializeBannerSlidesColorPicker(view);
+		});
+
+		oneApp.initializeBannerSlidesSortables();
+	};
+
+	// Initialize the views when the app starts up
+	oneApp.initBannerSlideViews();
 })(window, jQuery, _, oneApp, $oneApp);
