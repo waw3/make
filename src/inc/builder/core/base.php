@@ -403,10 +403,10 @@ class TTF_One_Builder_Base {
 	public function wp_editor( $content, $name, $settings = array() ) {
 		$settings = wp_parse_args( $settings, array(
 			'tinymce'   => array(
-				'toolbar1'                => 'bold,italic,link,unlink',
-				'toolbar2'                => '',
-				'toolbar3'                => '',
-				'toolbar4'                => '',
+				'toolbar1' => 'bold,italic,link,unlink',
+				'toolbar2' => '',
+				'toolbar3' => '',
+				'toolbar4' => '',
 			),
 			'quicktags' => array(
 				'buttons' => 'strong,em,link',
