@@ -316,6 +316,15 @@ class TTF_One_Section_Definitions {
 
 		// Add additional dependencies to the Builder JS
 		add_filter( 'ttf_one_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
+
+		// Add the section CSS
+		wp_enqueue_style(
+			'ttf-one-sections/css/sections.css',
+			get_template_directory_uri() . '/inc/builder/sections/css/sections.css',
+			array(),
+			TTF_ONE_VERSION,
+			'all'
+		);
 	}
 
 	/**
