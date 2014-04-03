@@ -38,6 +38,31 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 	});
 
+	// Makes banner slides sortable
+	oneApp.initializeBannerSlidesSortables = function(view) {
+		$('.ttf-one-banner-slides-stage', view.$el).sortable({
+			handle: '.ttf-one-sortable-handle',
+			placeholder: 'sortable-placeholder',
+			forcePlaceholderSizeType: true,
+			distance: 2,
+			tolerance: 'pointer',
+			start: function (event, ui) {
+				// Set the height of the placeholder to that of the sorted item
+				var $item = $(ui.item.get(0)),
+					$stage = $item.parents('.ttf-one-banner-slides-stage');
+
+				$('.sortable-placeholder', $stage).height($item.height());
+			},
+			stop: function (event, ui) {
+				var $item = $(ui.item.get(0)),
+					$stage = $item.parents('.ttf-one-banner-slides'),
+					$orderInput = $('.ttf-one-banner-slide-order', $stage);
+
+				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
+			}
+		});
+	};
+
 	// Initialize the color picker
 	oneApp.initializeBannerItemColorPicker = function (view) {
 		var $selector;
@@ -57,7 +82,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('banner' === view.model.get('sectionType')) {
-			oneApp.initializeBannerItemColorPicker(view);
+			oneApp.initializeBannerSlidesSortables(view);
 		}
 	});
 })(window, jQuery, _, oneApp, $oneApp);
