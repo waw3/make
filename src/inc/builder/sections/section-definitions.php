@@ -145,7 +145,47 @@ class TTF_One_Section_Definitions {
 	 * @return array             The cleaned data.
 	 */
 	public function save_banner( $data ) {
-		return $data;
+		$clean_data = array();
+
+		$clean_data['display-arrows'] = ( isset( $data['display-arrows'] ) && 1 === (int) $data['display-arrows'] ) ? 1 : 0;
+		$clean_data['display-dots']   = ( isset( $data['display-dots'] ) && 1 === (int) $data['display-dots'] ) ? 1 : 0;
+
+		if ( isset( $data['captions'] ) ) {
+			if ( in_array( $data['captions'], array( 'none', 'basic', 'fancy' ) ) ) {
+				$clean_data['captions'] = $data['captions'];
+			}
+		}
+
+		if ( isset( $data['background-image']['image-id'] ) ) {
+			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
+		}
+		if ( isset( $data['banner-slide-order'] ) ) {
+			$clean_data['banner-slide-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
+		}
+
+		if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
+			foreach ( $data['banner-slides'] as $id => $slide ) {
+				if ( isset( $slide['title'] ) ) {
+					$clean_data['banner-slides'][ $id ]['title'] = sanitize_text_field( $slide['title'] );
+				}
+
+				if ( isset( $slide['link'] ) ) {
+					$clean_data['banner-slides'][ $id ]['link'] = esc_url_raw( $slide['link'] );
+				}
+
+				if ( isset( $slide['content'] ) ) {
+					$clean_data['banner-slides'][ $id ]['content'] = wp_filter_post_kses( $slide['content'] );
+				}
+
+				if ( isset( $slide['background-color'] ) ) {
+					$clean_data['banner-slides'][ $id ]['background-color'] = ttf_one_maybe_hash_hex_color( $slide['background-color'] );
+				}
+
+				$clean_data['banner-slides'][ $id ]['alignment'] = ( isset( $slide['alignment'] ) && in_array( $slide['alignment'], array( 'left', 'center', 'right' ) ) ) ? $slide['alignment'] : 'left';
+			}
+		}
+
+		return $clean_data;
 	}
 
 	/**
