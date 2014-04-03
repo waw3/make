@@ -4,7 +4,8 @@ global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $display_arrows = ( ! empty( $ttf_one_section_data['data']['display-arrows'] ) ) ? $ttf_one_section_data['data']['display-arrows'] : 0;
 $display_dots   = ( ! empty( $ttf_one_section_data['data']['display-dots'] ) ) ? $ttf_one_section_data['data']['display-dots'] : 0;
-$section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
+$height         = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 600;
+$section_order  = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
 ?>
 
 <div class="ttf-one-add-slide-wrapper">
@@ -22,6 +23,10 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 			<?php _e( 'Display navigation dots', 'ttf-one' ); ?>
 		</label>
 	</p>
+</div>
+
+<div class="ttf-one-banner-height-wrapper">
+	<label>Section height</label> <input type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
 </div>
 
 <div class="ttf-one-banner-slides">

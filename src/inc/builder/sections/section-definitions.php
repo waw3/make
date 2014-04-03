@@ -150,8 +150,8 @@ class TTF_One_Section_Definitions {
 		$clean_data['display-arrows'] = ( isset( $data['display-arrows'] ) && 1 === (int) $data['display-arrows'] ) ? 1 : 0;
 		$clean_data['display-dots']   = ( isset( $data['display-dots'] ) && 1 === (int) $data['display-dots'] ) ? 1 : 0;
 
-		if ( isset( $data['background-image']['image-id'] ) ) {
-			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
+		if ( isset( $data['height'] ) ) {
+			$clean_data['height'] = absint( $data['height'] );
 		}
 
 		if ( isset( $data['banner-slide-order'] ) ) {
