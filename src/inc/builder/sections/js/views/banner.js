@@ -29,6 +29,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Initiate the color picker
 			oneApp.initializeBannerSlidesColorPicker(view);
 
+			// Initiate the text editor
+			oneApp.initAllEditors(view.idAttr, view.model);
+
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-banner-slide-order', $(view.$el).parents('.ttf-one-banner-slides')));
 		},

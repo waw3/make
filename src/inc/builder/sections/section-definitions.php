@@ -410,6 +410,15 @@ class TTF_One_Section_Definitions {
 			ob_start();
 			ttf_one_get_builder_base()->load_section( $template, array() );
 			$html = ob_get_clean();
+			$html = str_replace(
+				array(
+					'temp',
+				),
+				array(
+					'{{{ id }}}',
+				),
+				$html
+			);
 			echo $html;
 			?>
 		</script>

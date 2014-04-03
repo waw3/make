@@ -30,6 +30,26 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		</div>
 	</div>
 
+	<?php
+	$editor_settings = array(
+		'tinymce'       => array(
+			'toolbar1' => 'bold,italic,link',
+			'toolbar2' => '',
+			'toolbar3' => '',
+			'toolbar4' => '',
+		),
+		'quicktags'     => array(
+			'buttons' => 'strong,em,link',
+		),
+		'textarea_name' => $section_name . '[content]'
+	);
+
+	if ( true === $ttf_one_is_js_template ) : ?>
+		<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
+	<?php else : ?>
+		<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_section_data['data']['id'], $editor_settings ); ?>
+	<?php endif; ?>
+
 	<div class="ttf-one-banner-slide-background-color-wrapper">
 		<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
 		<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />

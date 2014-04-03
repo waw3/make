@@ -7,7 +7,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.BannerSlideModel = Backbone.Model.extend({
 		defaults: {
 			id: '',
-			parentID: ''
+			parentID: '',
+			sectionType: 'bannerslide'
 		}
 	});
 
