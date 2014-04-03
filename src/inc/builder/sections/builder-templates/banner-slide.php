@@ -60,7 +60,7 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	</div>
 
 	<div class="ttf-one-banner-slide-alignment-wrapper">
-		<label><?php _e( 'Columns', 'ttf-one' ); ?></label>
+		<label><?php _e( 'Content position', 'ttf-one' ); ?></label>
 		<select name="<?php echo $section_name; ?>[alignment]">
 			<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
 			<option value="center"<?php selected( 'center', $alignment ); ?>><?php _e( 'Center', 'ttf-one' ); ?></option>
