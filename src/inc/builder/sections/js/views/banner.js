@@ -26,6 +26,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var html = view.render().el;
 			$('.ttf-one-banner-slides-stage').append(html);
 
+			// Initiate the color picker
+			oneApp.initializeBannerSlidesColorPicker(view);
+
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-banner-slide-order', $(view.$el).parents('.ttf-one-banner-slides')));
 		},
@@ -64,7 +67,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	};
 
 	// Initialize the color picker
-	oneApp.initializeBannerItemColorPicker = function (view) {
+	oneApp.initializeBannerSlidesColorPicker = function (view) {
 		var $selector;
 		view = view || '';
 
