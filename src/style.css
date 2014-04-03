@@ -711,6 +711,8 @@ blockquote {
   blockquote.ttf-one-testimonial {
     line-height: 0;
     background-color: #eaecee;
+    margin-bottom: 44px;
+    margin-bottom: 2.75rem;
     padding: 33px 32px;
     padding:  2.0625rem 2rem;
     -webkit-border-radius: 3px;
