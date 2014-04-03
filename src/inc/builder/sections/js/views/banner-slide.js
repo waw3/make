@@ -9,7 +9,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		className: 'ttf-one-banner-slide',
 
 		events: {
-			'click .ttf-one-slide-remove': 'removeItem'
+			'click .ttf-one-banner-slide-remove': 'removeItem'
 		},
 
 		initialize: function (options) {
