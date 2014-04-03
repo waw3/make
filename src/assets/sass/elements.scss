@@ -233,7 +233,7 @@ ol {
 	}
 	&.ttf-one-list-star li:before {
 		content: "\f005";
-		color: #ea8501;
+		color: #f89e01;
 	}
 	&.ttf-one-list-dot li:before {
 		content: "\f192";
@@ -383,7 +383,7 @@ table {
 		}
 	}
 	&.ttf-one-important {
-		color: #ea8501;
+		color: #f89e01;
 		border: 1px solid darken(#fffde5, 25);
 		background-color: #fffde5;
 		&:before {

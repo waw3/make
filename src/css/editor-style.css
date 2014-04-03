@@ -113,35 +113,17 @@ ol {
 	padding: 33px 32px;
 	font-size: 14px;
 }
-.ttf-one-alert:before {
-	content: "\f05a";
-	display: block;
-	float: left;
-	font-family: FontAwesome;
-	line-height: 1; //reset
-	padding-right: 32px;
-	font-size: 24px;
-}
 .ttf-one-alert.ttf-one-error {
 	color: #d04242;
 	background-color: #f7eeee;
-}
-.ttf-one-alert.ttf-one-error:before {
-	content: "\f071";
 }
 .ttf-one-alert.ttf-one-success {
 	color: #339d56;
 	background: #eef7f1;
 }
-.ttf-one-alert.ttf-one-success:before {
-	content: "\f14a";
-}
 .ttf-one-alert.ttf-one-important {
-	color: #ea8501;
+	color: #f89e01;
 	background-color: #fffde5;
-}
-.ttf-one-alert.ttf-one-important:before {
-	content: "\f071";
 }
 /*---------------------------------------------------------
  Buttons (editor-style.css)
@@ -169,7 +151,7 @@ input[type="submit"] {
 	background: #d04242;
 }
 .ttf-one-important {
-	background: #ea8501;
+	background: #f89e01;
 }
 .ttf-one-download:after {
 	content: "\f0ab";
@@ -198,7 +180,7 @@ ul.ttf-one-list-check2 li:before, ol.ttf-one-list-check2 li:before {
 	color: #339d56; }
 ul.ttf-one-list-star li:before, ol.ttf-one-list-star li:before {
 	content: "\f005";
-	color: #ea8501; }
+	color: #f89e01; }
 ul.ttf-one-list-dot li:before, ol.ttf-one-list-dot li:before {
 	content: "\f192";
 	color: #0094c5; }
