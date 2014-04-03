@@ -9,6 +9,7 @@ if ( true === $ttf_one_is_js_template ) {
 
 $content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] : '';
 $background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] : '#ffffff';
+$image_id         = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['image-id'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['image-id'] : 0;
 $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] : 'left';
 ?>
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
@@ -41,6 +42,21 @@ $alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	<div class="ttf-one-banner-slide-background-color-wrapper">
 		<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
 		<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+	</div>
+
+	<div class="ttf-one-banner-slide-background-image-wrapper">
+		<?php
+		ttf_one_get_builder_base()->add_uploader(
+			$section_name,
+			$image_id,
+			array(
+				'add'    => __( 'Set background image', 'ttf-one' ),
+				'remove' => __( 'Remove background image', 'ttf-one' ),
+				'title'  => __( 'Background image', 'ttf-one' ),
+				'button' => __( 'Use as Background Image', 'ttf-one' ),
+			)
+		);
+		?>
 	</div>
 
 	<div class="ttf-one-banner-slide-alignment-wrapper">

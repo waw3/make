@@ -150,15 +150,10 @@ class TTF_One_Section_Definitions {
 		$clean_data['display-arrows'] = ( isset( $data['display-arrows'] ) && 1 === (int) $data['display-arrows'] ) ? 1 : 0;
 		$clean_data['display-dots']   = ( isset( $data['display-dots'] ) && 1 === (int) $data['display-dots'] ) ? 1 : 0;
 
-		if ( isset( $data['captions'] ) ) {
-			if ( in_array( $data['captions'], array( 'none', 'basic', 'fancy' ) ) ) {
-				$clean_data['captions'] = $data['captions'];
-			}
-		}
-
 		if ( isset( $data['background-image']['image-id'] ) ) {
 			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
 		}
+
 		if ( isset( $data['banner-slide-order'] ) ) {
 			$clean_data['banner-slide-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
 		}
@@ -172,6 +167,10 @@ class TTF_One_Section_Definitions {
 
 				if ( isset( $slide['background-color'] ) ) {
 					$clean_data['banner-slides'][ $id ]['background-color'] = ttf_one_maybe_hash_hex_color( $slide['background-color'] );
+				}
+
+				if ( isset( $slide['image-id'] ) ) {
+					$clean_data['banner-slides'][ $id ]['image-id'] = absint( $slide['image-id'] );
 				}
 
 				$clean_data['banner-slides'][ $id ]['alignment'] = ( isset( $slide['alignment'] ) && in_array( $slide['alignment'], array( 'left', 'center', 'right' ) ) ) ? $slide['alignment'] : 'left';
