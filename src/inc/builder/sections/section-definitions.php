@@ -62,7 +62,7 @@ class TTF_One_Section_Definitions {
 	public function register_text_section() {
 		ttf_one_add_section(
 			'text',
-			_x( 'text', 'section name', 'ttf-one' ),
+			_x( 'Text', 'section name', 'ttf-one' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
 			__( 'Organize multiple columns of content.', 'ttf-one' ),
 			array( $this, 'save_text' ),
@@ -126,7 +126,7 @@ class TTF_One_Section_Definitions {
 	public function register_banner_section() {
 		ttf_one_add_section(
 			'banner',
-			_x( 'banner', 'section name', 'ttf-one' ),
+			_x( 'Banner', 'section name', 'ttf-one' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
 			__( 'Display multiple types of content in a slider.', 'ttf-one' ),
 			array( $this, 'save_banner' ),
@@ -203,7 +203,7 @@ class TTF_One_Section_Definitions {
 	public function register_gallery_section() {
 		ttf_one_add_section(
 			'gallery',
-			_x( 'gallery', 'section name', 'ttf-one' ),
+			_x( 'Gallery', 'section name', 'ttf-one' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
 			__( 'Display media elements using a modern slider.', 'ttf-one' ),
 			array( $this, 'save_gallery' ),
@@ -281,7 +281,7 @@ class TTF_One_Section_Definitions {
 	public function register_blank_section() {
 		ttf_one_add_section(
 			'blank',
-			_x( 'blank', 'section name', 'ttf-one' ),
+			_x( 'Blank', 'section name', 'ttf-one' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
 			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
 			array( $this, 'save_blank' ),
