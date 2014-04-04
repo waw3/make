@@ -82,6 +82,21 @@
 .ttf-one-banner-slide {
 	margin: 40px 0;
 }
+.ttf-one-banner-background-option-wrapper {
+	width: 50%;
+	float: right;
+	padding-left: 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ttf-one-banner-slide-background-image-wrapper {
+	width: 50%;
+	float: left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 .ttf-one-banner-slide-alignment-wrapper {
 	margin-top: 15px;
 	display: block;

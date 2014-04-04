@@ -21,9 +21,20 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	</div>
 
 	<div class="ttf-one-banner-slide-body">
-		<div class="ttf-one-banner-slide-background-color-wrapper">
-			<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
-			<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+
+		<div class="ttf-one-banner-background-option-wrapper">
+			<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
+			<p>
+				<input type="checkbox">
+				<label>
+					<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
+				</label>
+			</p>
+
+			<div class="ttf-one-banner-slide-background-color-wrapper">
+				<h4><?php _e( 'Background color', 'ttf-one' ); ?></h4>
+				<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+			</div>
 		</div>
 
 		<div class="ttf-one-banner-slide-background-image-wrapper">
@@ -40,6 +51,8 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 			);
 			?>
 		</div>
+
+		<div class="clear"></div>
 
 		<?php
 		$editor_settings = array(
