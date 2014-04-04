@@ -31,14 +31,28 @@ module.exports = function( grunt ) {
 				]
 			}
 		},
+		concat: {
+			options: {
+				banner: '/*! <%= pkg.version %> */\n',
+				separator: ';'
+			},
+			cycle2: {
+				src: [
+					'src/js/libs/cycle2/jquery.cycle2.js',
+					'src/js/libs/cycle2/jquery.cycle2.center.js',
+					'src/js/libs/cycle2/jquery.cycle2.swipe.js'
+				],
+				dest: 'src/js/libs/cycle2/jquery.cycle2.min.js'
+			}
+		},
 		uglify: {
 			options: {
 				preserveComments: 'some'
 			},
 			libs: {
 				files: {
-					'src/js/libs/cycle2/jquery.cycle2.min.js': ['src/js/libs/cycle2/jquery.cycle2.js'],
-					'src/js/libs/cycle2/jquery.cycle2.swipe.min.js': ['src/js/libs/cycle2/jquery.cycle2.swipe.js'],
+					// Cycle2 source filename already has '.min' because of concat
+					'src/js/libs/cycle2/jquery.cycle2.min.js': ['src/js/libs/cycle2/jquery.cycle2.min.js'],
 					'src/js/libs/fitvids/jquery.fitvids.min.js': ['src/js/libs/fitvids/jquery.fitvids.js']
 				}
 			},
@@ -179,7 +193,7 @@ module.exports = function( grunt ) {
 	} );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'sass', 'uglify' ] );
+	grunt.registerTask( 'default', [ 'sass', 'concat', 'uglify' ] );
 
 	// Bump the version to the specified value; e.g., "grunt bumpto:patch"
 	grunt.registerTask( 'bumpto', function( releaseType ) {

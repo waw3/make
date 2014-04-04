@@ -224,6 +224,9 @@ class TTF_One_Gallery_Slider {
 
 			// Data attributes
 			$data_attributes = ' data-cycle-slides="figure"';
+			$data_attributes .= ' data-cycle-auto-height="calc"';
+			$data_attributes .= ' data-cycle-center-horz="true"';
+    		$data_attributes .= ' data-cycle-center-vert="true"';
 
 			// Autoplay
 			$autoplay = (bool) $ttf_one_autoplay;

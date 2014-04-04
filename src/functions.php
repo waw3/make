@@ -218,22 +218,8 @@ function ttf_one_scripts() {
 	$script_dependencies[] = 'jquery';
 
 	// Cycle2
-	wp_enqueue_script(
-		'ttf-one-cycle2',
-		get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTF_ONE_SUFFIX . '.js',
-		$script_dependencies,
-		'2.1.3',
-		true
-	);
+	ttf_one_cycle2_script_setup( $script_dependencies );
 	$script_dependencies[] = 'ttf-one-cycle2';
-	wp_enqueue_script(
-		'ttf-one-cycle2-swipe',
-		get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe' . TTF_ONE_SUFFIX . '.js',
-		$script_dependencies,
-		'20121120',
-		true
-	);
-	$script_dependencies[] = 'ttf-one-cycle2-swipe';
 
 	// FitVids
 	wp_enqueue_script(
@@ -264,7 +250,52 @@ endif;
 
 add_action( 'wp_enqueue_scripts', 'ttf_one_scripts' );
 
-if ( ! function_exists( 'ttf_one_fitvids_script_setup' ) ) :
+if ( ! function_exists( 'ttf_one_cycle2_script_setup' ) ) :
+/**
+ * Enqueue Cycle2 scripts
+ *
+ * @since 1.0.0
+ *
+ * @param array $script_dependencies
+ *
+ * @return void
+ */
+function ttf_one_cycle2_script_setup( $script_dependencies ) {
+	if ( defined( 'TTF_ONE_SUFFIX' ) && '.min' === TTF_ONE_SUFFIX ) {
+		wp_enqueue_script(
+			'ttf-one-cycle2',
+			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTF_ONE_SUFFIX . '.js',
+			$script_dependencies,
+			TTF_ONE_VERSION,
+			true
+		);
+	} else {
+		wp_enqueue_script(
+			'ttf-one-cycle2',
+			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
+			$script_dependencies,
+			'2.1.3',
+			true
+		);
+		wp_enqueue_script(
+			'ttf-one-cycle2-center',
+			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
+			'ttf-one-cycle2',
+			'20140121',
+			true
+		);
+		wp_enqueue_script(
+			'ttf-one-cycle2-swipe',
+			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
+			'ttf-one-cycle2',
+			'20121120',
+			true
+		);
+	}
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_localize_fitvids' ) ) :
 /**
  * Localize FitVids script.
  *
