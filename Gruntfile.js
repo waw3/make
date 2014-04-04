@@ -35,7 +35,7 @@ module.exports = function( grunt ) {
 			options: {
 				preserveComments: 'some'
 			},
-			lib: {
+			libs: {
 				files: {
 					'src/js/libs/cycle2/jquery.cycle2.min.js': ['src/js/libs/cycle2/jquery.cycle2.js'],
 					'src/js/libs/cycle2/jquery.cycle2.swipe.min.js': ['src/js/libs/cycle2/jquery.cycle2.swipe.js'],
@@ -44,13 +44,19 @@ module.exports = function( grunt ) {
 			},
 			theme: {
 				files: {
-					'src/js/global.min.js': ['src/js/global.js'],
+					'src/js/global.min.js': ['src/js/global.js']
+				}
+			},
+			customizer: {
+				files:{
 					'src/inc/customizer/js/customizer-preview.min.js': ['src/inc/customizer/js/customizer-preview.js'],
 					'src/inc/customizer/js/customizer-sections.min.js': ['src/inc/customizer/js/customizer-sections.js']
 				}
 			},
-			other: {
-				files:{}
+			admin: {
+				files:{
+					'src/js/admin/edit-page.min.js': ['src/js/admin/edit-page.js']
+				}
 			}
 		},
 		shell: {
