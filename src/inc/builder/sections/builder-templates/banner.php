@@ -6,8 +6,8 @@ $hide_arrows   = ( ! empty( $ttf_one_section_data['data']['hide-arrows'] ) ) ? $
 $hide_dots     = ( ! empty( $ttf_one_section_data['data']['hide-dots'] ) ) ? $ttf_one_section_data['data']['hide-dots'] : 0;
 $autoplay      = ( ! empty( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 0;
 $transition    = ( ! empty( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'cross-fade';
-$delay         = ( ! empty( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 400;
-$height        = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 600;
+$delay         = ( ! empty( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 4000;
+$height        = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 500;
 $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
 ?>
 
