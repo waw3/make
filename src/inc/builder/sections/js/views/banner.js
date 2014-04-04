@@ -99,6 +99,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('banner' === view.model.get('sectionType')) {
+			// Add an initial slide item
+			$('.ttf-one-add-slide', view.$el).click();
+
+			// Initialize the sortables
 			oneApp.initializeBannerSlidesSortables(view);
 		}
 	});

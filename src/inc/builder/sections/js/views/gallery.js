@@ -82,6 +82,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
+			// Add an initial gallery item
+			$('.ttf-one-gallery-add-item', view.$el).click();
+
+			// Initialize the sortables and picker
 			oneApp.initializeGalleryItemSortables();
 			oneApp.initializeGalleryItemColorPicker(view);
 		}
