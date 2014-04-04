@@ -41,6 +41,8 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer/bootstrap.php';
 // Jetpack compatibility file
 require get_template_directory() . '/inc/jetpack.php';
+// Gallery slider
+require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
 // TinyMCE customizations
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/tinymce.php';
