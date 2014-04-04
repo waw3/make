@@ -155,6 +155,10 @@ class TTF_One_Section_Definitions {
 			$clean_data['transition'] = ( in_array( $data['transition'], array( 'cross-fade', 'fade', 'slide-horizontal', 'none' ) ) )  ? $data['transition'] : 'cross-fade';
 		}
 
+		if ( isset( $data['delay'] ) ) {
+			$clean_data['delay'] = absint( $data['delay'] );
+		}
+
 		if ( isset( $data['height'] ) ) {
 			$clean_data['height'] = absint( $data['height'] );
 		}

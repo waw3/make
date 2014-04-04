@@ -6,6 +6,7 @@ $display_arrows = ( ! empty( $ttf_one_section_data['data']['display-arrows'] ) )
 $display_dots   = ( ! empty( $ttf_one_section_data['data']['display-dots'] ) ) ? $ttf_one_section_data['data']['display-dots'] : 0;
 $autoplay       = ( ! empty( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 0;
 $transition     = ( ! empty( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'cross-fade';
+$delay          = ( ! empty( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 400;
 $height         = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 600;
 $section_order  = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
 ?>
@@ -40,7 +41,14 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['banner-slide-order']
 		<option value="none"<?php selected( 'none', $transition ); ?>><?php echo _x( 'None', 'transition effect', 'ttf-one' ); ?></option>
 	</select>
 
-	<label>Section height</label>
+	<label>
+		<?php _e( 'Time between slides (in ms)', 'ttf-one' ); ?>
+	</label>
+	<input type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
+
+	<label>
+		<?php _e( 'Section height', 'ttf-one' ); ?>
+	</label>
 	<input type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
 </div>
 
