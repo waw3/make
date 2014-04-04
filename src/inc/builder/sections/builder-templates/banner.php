@@ -2,13 +2,13 @@
 ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
-$display_arrows = ( ! empty( $ttf_one_section_data['data']['display-arrows'] ) ) ? $ttf_one_section_data['data']['display-arrows'] : 0;
-$display_dots   = ( ! empty( $ttf_one_section_data['data']['display-dots'] ) ) ? $ttf_one_section_data['data']['display-dots'] : 0;
-$autoplay       = ( ! empty( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 0;
-$transition     = ( ! empty( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'cross-fade';
-$delay          = ( ! empty( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 400;
-$height         = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 600;
-$section_order  = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
+$hide_arrows   = ( ! empty( $ttf_one_section_data['data']['hide-arrows'] ) ) ? $ttf_one_section_data['data']['hide-arrows'] : 0;
+$hide_dots     = ( ! empty( $ttf_one_section_data['data']['hide-dots'] ) ) ? $ttf_one_section_data['data']['hide-dots'] : 0;
+$autoplay      = ( ! empty( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 0;
+$transition    = ( ! empty( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'cross-fade';
+$delay         = ( ! empty( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 400;
+$height        = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 600;
+$section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
 ?>
 
 <div class="ttf-one-add-slide-wrapper">
@@ -18,12 +18,12 @@ $section_order  = ( ! empty( $ttf_one_section_data['data']['banner-slide-order']
 <div class="ttf-one-banner-options">
 	<input type="checkbox" name="<?php echo $section_name; ?>[display-arrows]" value="1"<?php checked( $display_arrows ); ?> />
 	<label>
-		<?php _e( 'Display navigation arrows', 'ttf-one' ); ?>
+		<?php _e( 'Hide navigation arrows', 'ttf-one' ); ?>
 	</label>
 
 	<input type="checkbox" name="<?php echo $section_name; ?>[display-dots]" value="1"<?php checked( $display_dots ); ?> />
 	<label>
-		<?php _e( 'Display navigation dots', 'ttf-one' ); ?>
+		<?php _e( 'Hide navigation dots', 'ttf-one' ); ?>
 	</label>
 
 	<input type="checkbox" name="<?php echo $section_name; ?>[autoplay]" value="1"<?php checked( $autoplay ); ?> />
