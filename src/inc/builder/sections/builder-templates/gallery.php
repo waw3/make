@@ -10,7 +10,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 ?>
 
 <div class="ttf-one-columns-select-wrapper">
-	<label for="ttf-one-gallery-columns"><?php _e( 'Columns', 'ttf-one' ); ?></label>
+	<label for="ttf-one-gallery-columns"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
 	<select id="ttf-one-gallery-columns" name="<?php echo $section_name; ?>[columns]">
 		<option value="1"<?php selected( 1, $columns ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns ); ?>>2</option>
@@ -20,7 +20,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 </div>
 
 <div class="ttf-one-captions-select-wrapper">
-	<label for="ttf-one-gallery-captions"><?php _e( 'Caption Style', 'ttf-one' ); ?></label>
+	<label for="ttf-one-gallery-captions"><?php _e( 'Caption Style:', 'ttf-one' ); ?></label>
 	<select id="ttf-one-gallery-captions" name="<?php echo $section_name; ?>[captions]">
 		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
