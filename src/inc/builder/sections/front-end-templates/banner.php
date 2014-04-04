@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-global $ttf_one_section_data; var_dump($ttf_one_section_data);
+global $ttf_one_section_data;
 $banner = ttf_one_builder_get_banner_array( $ttf_one_section_data );
 $is_slider = ( count( $banner ) > 1 ) ? true : false;
 ?>
