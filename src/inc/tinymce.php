@@ -73,46 +73,6 @@ function ttf_one_mce_before_init( $settings ) {
 			),
 			'exact' => true
 		),
-		// Alert (div)
-		array(
-			'title' => __( 'Alert', 'ttf-one' ),
-			'block' => 'div',
-			'selector' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert' // Replace existing classes instead of adding
-			),
-			'wrapper' => true
-		),
-		// Alert success (div)
-		array(
-			'title' => __( 'Alert: success', 'ttf-one' ),
-			'block' => 'div',
-			'selector' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert ttf-one-success' // Replace existing classes instead of adding
-			),
-			'wrapper' => true
-		),
-		// Alert error (div)
-		array(
-			'title' => __( 'Alert: error', 'ttf-one' ),
-			'block' => 'div',
-			'selector' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert ttf-one-error' // Replace existing classes instead of adding
-			),
-			'wrapper' => true
-		),
-		// Alert important (div)
-		array(
-			'title' => __( 'Alert: important', 'ttf-one' ),
-			'block' => 'div',
-			'selector' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert ttf-one-important' // Replace existing classes instead of adding
-			),
-			'wrapper' => true
-		),
 		// Button (a)
 		array(
 			'title' => __( 'Button', 'ttf-one' ),
@@ -188,6 +148,38 @@ function ttf_one_mce_before_init( $settings ) {
 			'attributes' => array(
 				'class' => 'ttf-one-list ttf-one-list-dot' // Replace existing classes instead of adding
 			)
+		),
+		// Alert (div)
+		array(
+			'title' => __( 'Alert', 'ttf-one' ),
+			'block' => 'div',
+			'attributes' => array(
+				'class' => 'ttf-one-alert' // Replace existing classes instead of adding
+			),
+		),
+		// Alert success (div)
+		array(
+			'title' => __( 'Alert: success', 'ttf-one' ),
+			'block' => 'div',
+			'attributes' => array(
+				'class' => 'ttf-one-alert ttf-one-success' // Replace existing classes instead of adding
+			),
+		),
+		// Alert error (div)
+		array(
+			'title' => __( 'Alert: error', 'ttf-one' ),
+			'block' => 'div',
+			'attributes' => array(
+				'class' => 'ttf-one-alert ttf-one-error' // Replace existing classes instead of adding
+			),
+		),
+		// Alert important (div)
+		array(
+			'title' => __( 'Alert: important', 'ttf-one' ),
+			'block' => 'div',
+			'attributes' => array(
+				'class' => 'ttf-one-alert ttf-one-important' // Replace existing classes instead of adding
+			),
 		),
 	);
 
