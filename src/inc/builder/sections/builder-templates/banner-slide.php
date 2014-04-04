@@ -26,19 +26,6 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	</div>
 
 	<div class="ttf-one-banner-slide-body">
-		<?php
-		$editor_settings = array(
-			'tinymce'       => true,
-			'quicktags'     => true,
-			'textarea_name' => $section_name . '[content]'
-		);
-
-		if ( true === $ttf_one_is_js_template ) : ?>
-			<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
-		<?php else : ?>
-			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_slide_id, $editor_settings ); ?>
-		<?php endif; ?>
-
 		<div class="ttf-one-banner-slide-background-color-wrapper">
 			<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
 			<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
@@ -62,11 +49,25 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<div class="ttf-one-banner-slide-alignment-wrapper">
 			<label><?php _e( 'Content position', 'ttf-one' ); ?></label>
 			<select name="<?php echo $section_name; ?>[alignment]">
+				<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
+
 				<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
-				<option value="center"<?php selected( 'center', $alignment ); ?>><?php _e( 'Center', 'ttf-one' ); ?></option>
 				<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
 			</select>
 		</div>
+
+		<?php
+		$editor_settings = array(
+			'tinymce'       => true,
+			'quicktags'     => true,
+			'textarea_name' => $section_name . '[content]'
+		);
+
+		if ( true === $ttf_one_is_js_template ) : ?>
+			<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
+		<?php else : ?>
+			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_slide_id, $editor_settings ); ?>
+		<?php endif; ?>
 
 		<a href="#" class="ttf-one-banner-slide-remove">
 			<?php _e( 'Remove this slide', 'ttf-one' ); ?>

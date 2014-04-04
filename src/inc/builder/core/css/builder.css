@@ -134,7 +134,8 @@
 	cursor: pointer;
 }
 .ttf-one-section-remove,
-.ttf-one-gallery-item-remove {
+.ttf-one-gallery-item-remove,
+.ttf-one-banner-slide-remove {
 	display: inline-block;
 	float: left;
 	clear: both;
@@ -146,9 +147,8 @@
 	text-decoration: none;  /*reset*/
 }
 .ttf-one-section-remove:hover,
-.ttf-one-section-remove:focus,
 .ttf-one-gallery-item-remove:hover,
-.ttf-one-gallery-item-remove:focus {
+.ttf-one-banner-slide-remove:hover {
 	color: #ff0000;
 }
 .ttf-one-uploader {
@@ -173,8 +173,7 @@
 	font: 60px/228px dashicons;
 	text-align: center;
 }
-.ttf-one-media-uploader-placeholder:hover:before,
-.ttf-one-media-uploader-placeholder:focus:before {
+.ttf-one-media-uploader-placeholder:hover:before {
 	opacity: .2;
 }
 .ttf-one-media-uploader-placeholder img {
@@ -272,8 +271,7 @@
 	text-decoration: none; /*reset*/
 	color: #777777 !important;
 }
-.ttf-one-menu-list a:hover,
-.ttf-one-menu-list a:focus {
+.ttf-one-menu-list a:hover {
 	color: #333333 !important;
 }
 .ttf-one-menu-list-item {
@@ -293,8 +291,7 @@
 .ttf-one-menu-list-item a {
 	color: #21759b;
 }
-.ttf-one-menu-list-item a:hover,
-.ttf-one-menu-list-item a:focus {
+.ttf-one-menu-list-item a:hover {
 	color: #d54e21;
 }
 .ttf-one-menu-list-item:last-of-type {
@@ -312,8 +309,7 @@
 	-webkit-transition-delay: .05s;
 	transition-delay: .05s;
 }
-.ttf-one-menu-list a:hover .ttf-one-menu-list-item-link-icon,
-.ttf-one-menu-list a:focus .ttf-one-menu-list-item-link-icon {
+.ttf-one-menu-list a:hover .ttf-one-menu-list-item-link-icon {
 	opacity: 1;
 }
 .ttf-one-menu-list-item-link-icon-wrapper {
@@ -327,8 +323,7 @@
 	background-size: 70px 60px;
 	border: 1px solid #dfdfdf;
 }
-.ttf-one-menu-list-item:hover .ttf-one-menu-list-item-link-icon-wrapper,
-.ttf-one-menu-list-item:focus .ttf-one-menu-list-item-link-icon-wrapper {
+.ttf-one-menu-list-item:hover .ttf-one-menu-list-item-link-icon-wrapper {
 	border-color: #bbbbbb;
 }
 /*---------------------------------------------------------
@@ -353,8 +348,7 @@
 .ttf-one-menu-closed .ttf-one-menu-tab-link span:after {
 	content: "\25BC";
 }
-.ttf-one-menu-tab-link:hover span:after,
-.ttf-one-menu-tab-link:focus span:after {
+.ttf-one-menu-tab-link:hover span:after {
 	color: #cccccc;
 }
 .ttf-one-menu-tab-link {
