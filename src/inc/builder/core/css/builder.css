@@ -103,9 +103,8 @@
 }
 .ttf-one-section-header em {
 	font-weight: 400 !important;
-	color: #777777;
+	color: #999999;
 	margin-left: 6px;
-	font-style: normal; /*reset*/
 }
 .ttf-one-section .handlediv {
 	position: relative;
