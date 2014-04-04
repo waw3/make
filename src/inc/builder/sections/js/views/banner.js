@@ -56,7 +56,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 
 		$selector.sortable({
-			handle: '.ttf-one-sortable-handle',
+			handle: '.ttf-one-banner-slide-header',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
 			distance: 2,
