@@ -3,7 +3,7 @@
 -------------------------------------------------------- */
 .ttf-one-titlediv {
 	position: relative;
-	margin-bottom: 8px;
+	margin-bottom: 15px;
 }
 .ttf-one-titlediv .ttf-one-title {
 	width: 100%;
@@ -104,20 +104,19 @@
 .ttf-one-section-header em {
 	font-weight: 400 !important;
 	color: #777777;
-	margin-left: 4px;
+	margin-left: 6px;
 	font-style: normal; /*reset*/
 }
 .ttf-one-section .handlediv {
 	position: relative;
-	top: -33px;
-	margin-bottom: -33px;
 }
 .ttf-one-section-toggle:focus {
 	border: none !important;
 }
 .ttf-one-section-toggle .handlediv {
-	top: -36px;
+	top: -38px;
 	right: 0; /*reset*/
+	margin-bottom: -38px;
 }
 .wp-admin .meta-box-sortables .postbox .ttf-one-stage .ttf-one-section .ttf-one-section-header .handlediv:before {
 	content: '\f140';
