@@ -215,6 +215,24 @@ function ttf_one_scripts() {
 
 	$script_dependencies[] = 'jquery';
 
+	// Cycle2
+	wp_enqueue_script(
+		'ttf-one-cycle2',
+		get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTF_ONE_SUFFIX . '.js',
+		$script_dependencies,
+		'2.1.3',
+		true
+	);
+	$script_dependencies[] = 'ttf-one-cycle2';
+	wp_enqueue_script(
+		'ttf-one-cycle2-swipe',
+		get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe' . TTF_ONE_SUFFIX . '.js',
+		$script_dependencies,
+		'20121120',
+		true
+	);
+	$script_dependencies[] = 'ttf-one-cycle2-swipe';
+
 	// FitVids
 	wp_enqueue_script(
 		'ttf-one-fitvids',
