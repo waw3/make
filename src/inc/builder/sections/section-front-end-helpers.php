@@ -291,7 +291,7 @@ function ttf_one_builder_banner_slide_style( $slide, $ttf_one_section_data ) {
 		$height = 500;
 	}
 	$ratio = ( $height / 960 ) * 100;
-	$slide_style .= 'position:relative;height:0;padding-bottom:' . $ratio . '%;';
+	$slide_style .= 'position:relative;width:100%;height:0;padding-bottom:' . $ratio . '%;';
 
 	return esc_attr( $slide_style );
 }
