@@ -79,6 +79,14 @@
 /*---------------------------------------------------------
  Banner
 -------------------------------------------------------- */
+.ttf-one-banner-slide {
+	margin: 40px 0;
+}
+.ttf-one-banner-slide-alignment-wrapper {
+	margin-top: 15px;
+	display: block;
+	float: right;
+}
 .ttf-one-banner-slide .ttf-one-banner-slide-body {
 	display: none;
 }

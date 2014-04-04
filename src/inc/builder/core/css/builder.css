@@ -137,8 +137,8 @@
 .ttf-one-gallery-item-remove,
 .ttf-one-banner-slide-remove {
 	display: inline-block;
-	float: left;
 	clear: both;
+	width: 100%;
 	margin-top: 20px;
 	margin-bottom: 8px;
 	padding: 0;  /*reset*/

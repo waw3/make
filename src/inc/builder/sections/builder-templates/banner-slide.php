@@ -16,13 +16,8 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
 <div class="ttf-one-banner-slide<?php if ( 'open' === $state ) echo ' ttf-one-banner-slide-open'; ?>" id="ttf-one-banner-slide-<?php echo esc_attr( $ttf_one_slide_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_slide_id ); ?>">
 <?php endif; ?>
-	<div class="ttf-one-banner-slide-header">
-		<h3>
-			<em><?php _e( 'Slide', 'ttf-one' ); ?></em>
-		</h3>
-		<a href="#" class="ttf-one-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'ttf-one' ); ?>">
-			<div class="handlediv"></div>
-		</a>
+	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
+		<div class="sortable-background"></div>
 	</div>
 
 	<div class="ttf-one-banner-slide-body">
@@ -46,16 +41,6 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 			?>
 		</div>
 
-		<div class="ttf-one-banner-slide-alignment-wrapper">
-			<label><?php _e( 'Content position', 'ttf-one' ); ?></label>
-			<select name="<?php echo $section_name; ?>[alignment]">
-				<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
-
-				<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
-				<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
-			</select>
-		</div>
-
 		<?php
 		$editor_settings = array(
 			'tinymce'       => true,
@@ -68,6 +53,16 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<?php else : ?>
 			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_slide_id, $editor_settings ); ?>
 		<?php endif; ?>
+
+		<div class="ttf-one-banner-slide-alignment-wrapper">
+			<label><?php _e( 'Content position', 'ttf-one' ); ?></label>
+			<select name="<?php echo $section_name; ?>[alignment]">
+				<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
+
+				<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
+				<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
+			</select>
+		</div>
 
 		<a href="#" class="ttf-one-banner-slide-remove">
 			<?php _e( 'Remove this slide', 'ttf-one' ); ?>
