@@ -18,7 +18,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttf-one-section-remove': 'removeSection',
 			'keyup .ttf-one-section-header-title-input': 'constructHeader',
 			'click .ttf-one-media-uploader-add': 'initUploader',
-			'click .ttf-one-media-uploader-remove': 'removeImage'
+			'click .ttf-one-media-uploader-remove': 'removeImage',
+			'click .wp-switch-editor': 'adjustEditorHeightOnClick'
 		},
 
 		initialize: function (options) {
@@ -190,6 +191,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Show the set link
 			$set.show();
+		},
+
+		adjustEditorHeightOnClick: function (evt) {
+			oneApp.adjustEditorHeightOnClick(evt);
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);

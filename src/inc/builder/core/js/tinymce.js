@@ -80,4 +80,31 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.addTinyMCE = function (id) {
 		tinyMCE.execCommand( 'mceAddEditor', false, id );
 	};
+
+	oneApp.syncEditorHeight = function(evt, baseEl) {
+		baseEl = baseEl || 'iframe';
+
+		var $this = $(evt.target),
+			$parent = $this.parents('.wp-editor-wrap'),
+			$iframe = $('.mceIframeContainer iframe', $parent),
+			iframeHeight = $iframe.height(),
+			$textarea = $('textarea', $parent),
+			textareaHeight = $textarea.height();
+
+		if ('iframe' === baseEl) {
+			$textarea.height(parseInt(iframeHeight, 10) + 1);
+		} else {
+			$iframe.height(parseInt(textareaHeight, 10) - 1);
+		}
+	};
+
+	oneApp.adjustEditorHeightOnClick = function(evt) {
+		evt.preventDefault();
+
+		var $this = $(evt.target),
+			baseEl = ($this.hasClass('switch-html')) ? 'iframe' : 'textarea';
+
+		this.syncEditorHeight(evt, baseEl);
+	};
+
 })(jQuery, oneApp, $oneApp);
