@@ -10,7 +10,7 @@ if ( true === $ttf_one_is_js_template ) {
 $content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] : '';
 $background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] : '#ffffff';
 $image_id         = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['image-id'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['image-id'] : 0;
-$alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] : 'left';
+$alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] : 'none';
 $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['state'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['state'] : 'open';
 ?>
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
