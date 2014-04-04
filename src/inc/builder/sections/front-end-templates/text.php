@@ -28,7 +28,11 @@ $text_columns = ttf_one_builder_get_text_array( $ttf_one_section_data );
 				<?php echo ttf_one_sanitize_text( $column['title'] ); ?>
 			</h3>
 			<?php endif; ?>
-			<?php ttf_one_get_builder_save()->the_builder_content( $column['content'] ); ?>
+			<?php if ( '' !== $column['content'] ) : ?>
+			<div class="builder-text-content">
+				<?php ttf_one_get_builder_save()->the_builder_content( $column['content'] ); ?>
+			</div>
+			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
 	</div>

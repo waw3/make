@@ -28,6 +28,11 @@ $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 				<?php echo $link_front . ttf_one_sanitize_text( $item['title'] ) . $link_back; ?>
 			</h4>
 			<?php endif; ?>
+			<?php if ( '' !== $item['description'] ) : ?>
+			<div class="builder-gallery-description">
+				<?php ttf_one_get_builder_save()->the_builder_content( $item['description'] ); ?>
+			</div>
+			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
 	</div>

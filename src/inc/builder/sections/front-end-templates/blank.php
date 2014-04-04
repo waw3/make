@@ -17,7 +17,11 @@ global $ttf_one_section_data;
 
 	<?php if ( ! empty( $ttf_one_section_data['content'] ) ) : ?>
 	<div class="builder-section-content">
-		<?php ttf_one_get_builder_save()->the_builder_content( $ttf_one_section_data['content'] ); ?>
+		<?php if ( '' !== $ttf_one_section_data['content'] ) : ?>
+		<div class="builder-blank-content">
+			<?php ttf_one_get_builder_save()->the_builder_content( $ttf_one_section_data['content'] ); ?>
+		</div>
+		<?php endif; ?>
 	</div>
 	<?php endif; ?>
 </section>
