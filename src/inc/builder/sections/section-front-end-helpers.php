@@ -161,3 +161,137 @@ function ttf_one_builder_get_text_class( $ttf_one_section_data ) {
 
 	return $text_class;
 }
+
+/**
+ * @param $ttf_one_section_data
+ *
+ * @return array
+ */
+function ttf_one_builder_get_banner_array( $ttf_one_section_data ) {
+	if ( ! ttf_one_builder_is_section_type( 'banner' ) ) {
+		return array();
+	}
+
+	$banner_order = array();
+	if ( isset( $ttf_one_section_data['banner-slide-order'] ) ) {
+		$banner_order = $ttf_one_section_data['banner-slide-order'];
+	}
+
+	$banner_slides = array();
+	if ( isset( $ttf_one_section_data['banner-slides'] ) ) {
+		$banner_slides = $ttf_one_section_data['banner-slides'];
+	}
+
+	$banner_array = array();
+	if ( ! empty( $banner_order ) && ! empty( $banner_slides ) ) {
+		foreach ( $banner_order as $order => $key ) {
+			$banner_array[$order] = $banner_slides[$key];
+		}
+	}
+
+	return $banner_array;
+}
+
+/**
+ * @param array $ttf_one_section_data
+ *
+ * @return string
+ */
+function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
+	if ( ! ttf_one_builder_is_section_type( 'banner' ) ) {
+		return '';
+	}
+
+	$atts = shortcode_atts( array(
+		'height'     => 500,
+		'autoplay'   => true,
+		'transition' => 'fade',
+		'delay'      => 4000
+	), $ttf_one_section_data );
+
+	// Data attributes
+	$data_attributes = ' data-cycle-log="true"';
+	$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
+
+	// Height / Aspect ratio
+	$height = absint( $atts['height'] );
+	if ( 0 === $height ) {
+		$height = 500;
+	}
+	$data_attributes .= ' data-cycle-auto-height="960:' . $height . '"';
+
+	// Autoplay
+	$autoplay = (bool) $atts['autoplay'];
+	if ( false === $autoplay ) {
+		$data_attributes .= ' data-cycle-paused="true"';
+	}
+
+	// Delay
+	$delay = absint( $atts['delay'] );
+	if ( 0 === $delay ) {
+		$delay = 4000;
+	}
+	if ( 4000 !== $delay ) {
+		$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
+	}
+
+	// Effect
+	$effect = trim( $atts['transition'] );
+	if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
+		$effect = 'fade';
+	}
+	if ( 'fade' !== $effect ) {
+		$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
+	}
+
+	return $data_attributes;
+}
+
+/**
+ * @param array $slide
+ *
+ * @return string
+ */
+function ttf_one_builder_banner_slide_class( $slide ) {
+	$slide_class = '';
+
+	// Content position
+	if ( isset( $slide['alignment'] ) && '' !== $slide['alignment'] ) {
+		$slide_class .= ' ' . sanitize_html_class( 'content-position-' . $slide['alignment'] );
+	}
+
+	return $slide_class;
+}
+
+/**
+ * @param array $slide
+ * @param array $ttf_one_section_data
+ *
+ * @return string
+ */
+function ttf_one_builder_banner_slide_style( $slide, $ttf_one_section_data ) {
+	$slide_style = '';
+
+	// Background color
+	if ( isset( $slide['background-color'] ) && '' !== $slide['background-color'] ) {
+		$slide_style .= 'background-color:' . maybe_hash_hex_color( $slide['background-color'] ) . ';';
+	}
+
+	// Background image
+	if ( isset( $slide['image-id'] ) && 0 !== absint( $slide['image-id'] ) ) {
+		$image_src = wp_get_attachment_image_src( $slide['image-id'], 'full' );
+		if ( isset( $image_src[0] ) ) {
+			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+		}
+	}
+
+	// Height
+	$height = absint( $ttf_one_section_data['height'] );
+	if ( 0 === $height ) {
+		$height = 500;
+	}
+	$ratio = ( $height / 960 ) * 100;
+	$slide_style .= 'position:relative;height:0;padding-bottom:' . $ratio . '%;';
+
+	return esc_attr( $slide_style );
+}
