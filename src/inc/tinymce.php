@@ -52,7 +52,6 @@ function ttf_one_mce_before_init( $settings ) {
 		array(
 			'title' => __( 'Blockquote: testimonial', 'ttf-one' ),
 			'block' => 'blockquote',
-			'selector' => 'blockquote',
 			'classes' => 'ttf-one-testimonial',
 			'wrapper' => true
 		),
