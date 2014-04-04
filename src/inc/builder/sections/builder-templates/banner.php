@@ -12,12 +12,12 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 ?>
 
 <div class="ttf-one-banner-options">
-	<input type="checkbox" name="<?php echo $section_name; ?>[display-arrows]" value="1"<?php checked( $display_arrows ); ?> />
+	<input type="checkbox" name="<?php echo $section_name; ?>[display-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
 	<label>
 		<?php _e( 'Hide navigation arrows', 'ttf-one' ); ?>
 	</label>
 
-	<input type="checkbox" name="<?php echo $section_name; ?>[display-dots]" value="1"<?php checked( $display_dots ); ?> />
+	<input type="checkbox" name="<?php echo $section_name; ?>[display-dots]" value="1"<?php checked( $hide_dots ); ?> />
 	<label>
 		<?php _e( 'Hide navigation dots', 'ttf-one' ); ?>
 	</label>
