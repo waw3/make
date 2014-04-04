@@ -31,9 +31,12 @@
 			// pager
 			media.gallery.defaults.ttf_one_pager = false;
 			this.update.apply( this, ['ttf_one_pager'] );
-			// transition
-			media.gallery.defaults.ttf_one_transition = 4000;
-			this.update.apply( this, ['ttf_one_transition'] );
+			// delay
+			media.gallery.defaults.ttf_one_delay = 4000;
+			this.update.apply( this, ['ttf_one_delay'] );
+			// effect
+			media.gallery.defaults.ttf_one_effect = 'fade';
+			this.update.apply( this, ['ttf_one_effect'] );
 
 			// Toggle slider settings
 			if ('undefined' === typeof atts.ttf_one_slider || false == atts.ttf_one_slider) {

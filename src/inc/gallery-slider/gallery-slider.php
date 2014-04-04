@@ -105,8 +105,17 @@ class TTF_One_Gallery_Slider {
 					<input type="checkbox" data-setting="ttf_one_pager" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Transition', 'ttf-one' ); ?></span>
-					<input type="text" data-setting="ttf_one_transition" />
+					<span><?php _e( 'Delay (milliseconds)', 'ttf-one' ); ?></span>
+					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" value="4000" />
+				</label>
+				<label class="setting">
+					<span><?php _e( 'Effect', 'ttf-one' ); ?></span>
+					<select data-setting="ttf_one_effect">
+						<option value="fade" selected="selected"><?php _e( 'Cross-fade', 'ttf-one' ); ?></option>
+						<option value="fadeout"><?php _e( 'Fade out', 'ttf-one' ); ?></option>
+						<option value="scrollHorz"><?php _e( 'Horizontal slide', 'ttf-one' ); ?></option>
+						<option value="none"><?php _e( 'None', 'ttf-one' ); ?></option>
+					</select>
 				</label>
 			</div>
 		</script>
@@ -151,11 +160,12 @@ class TTF_One_Gallery_Slider {
 				'exclude'    => '',
 				'link'       => '',
 				// ttf-one slider
-				'ttf_one_slider'     => true,
-				'ttf_one_autoplay'   => false,
-				'ttf_one_prevnext'   => false,
-				'ttf_one_pager'      => false,
-				'ttf_one_transition' => 4000
+				'ttf_one_slider'   => true,
+				'ttf_one_autoplay' => false,
+				'ttf_one_prevnext' => false,
+				'ttf_one_pager'    => false,
+				'ttf_one_delay'    => 4000,
+				'ttf_one_effect'   => 'fade'
 			), $attr, 'gallery') );
 
 			$id = intval( $id );
@@ -209,23 +219,37 @@ class TTF_One_Gallery_Slider {
 				return $output;
 			}
 
+			// Classes
 			$classes = sanitize_html_class( 'cycle-slideshow' );
 
+			// Data attributes
 			$data_attributes = ' data-cycle-slides="figure"';
 
+			// Autoplay
 			$autoplay = (bool) $ttf_one_autoplay;
 			if ( false === $autoplay ) {
 				$data_attributes .= ' data-cycle-paused="true"';
 			}
 
-			$transition = absint( $ttf_one_transition );
-			if ( 0 === $transition ) {
-				$transition = 4000;
+			// Delay
+			$delay = absint( $ttf_one_delay );
+			if ( 0 === $delay ) {
+				$delay = 4000;
 			}
-			if ( 4000 !== $transition ) {
-				$data_attributes .= ' data-cycle-timeout="' . esc_attr( $transition ) . '"';
+			if ( 4000 !== $delay ) {
+				$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
 			}
 
+			// Effect
+			$effect = trim( $ttf_one_effect );
+			if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
+				$effect = 'fade';
+			}
+			if ( 'fade' !== $effect ) {
+				$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
+			}
+
+			// Markup
 			ob_start(); ?>
 			<div class="<?php echo esc_attr( $classes ); ?>"<?php echo $data_attributes; ?>>
 				<?php foreach ( $attachments as $id => $attachment ) : ?>
