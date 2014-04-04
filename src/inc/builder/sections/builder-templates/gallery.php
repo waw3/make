@@ -3,7 +3,7 @@ ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 1;
-$captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'none';
+$captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'basic';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
 $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
@@ -20,7 +20,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 </div>
 
 <div class="ttf-one-captions-select-wrapper">
-	<label for="ttf-one-gallery-captions"><?php _e( 'Caption Style:', 'ttf-one' ); ?></label>
+	<label for="ttf-one-gallery-captions"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
 	<select id="ttf-one-gallery-captions" name="<?php echo $section_name; ?>[captions]">
 		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
