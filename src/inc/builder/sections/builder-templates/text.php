@@ -31,7 +31,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 		</div>
 
 		<div class="ttf-one-titlediv">
-			<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttf-one-link widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
+			<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
 		</div>
 
 		<?php ttf_one_get_builder_base()->add_uploader( $column_name, absint( $image_id ) ); ?>
