@@ -49,15 +49,16 @@
 	width: 100%;
 	margin-bottom: 9px;
 	background-color: #ffffff;
-	border: 1px solid #e5e5e5;
+	border: 1px solid #dfdfdf;
+	border-bottom: 0;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 }
 .ttf-one-section:hover {
-	border-color: #999999;
+	border: 1px solid #999999;
 }
 .ttf-one-section-open:hover {
-	border-color: #e5e5e5;
+	border-color: #dfdfdf;
 }
 .ttf-one-section:last-of-type {
 	margin-bottom: 0; /*reset*/
@@ -90,6 +91,7 @@
 	font-family: 'Open Sans', sans-serif !important;
 	line-height: 1.7 !important;
 	background-color: #fafafa;
+	border-bottom: 1px solid #dfdfdf;
 }
 .ttf-one-section-header span {
 	font-weight: 700;
