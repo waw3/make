@@ -76,3 +76,12 @@
 .ttf-one-text-columns-stage.ttf-one-text-columns-4 .sortable-placeholder {
 	width: 25%;
 }
+/*---------------------------------------------------------
+ Banner
+-------------------------------------------------------- */
+.ttf-one-banner-slide .ttf-one-banner-slide-body {
+	display: none;
+}
+.ttf-one-banner-slide.ttf-one-banner-slide-open .ttf-one-banner-slide-body {
+	display: block;
+}

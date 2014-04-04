@@ -6,10 +6,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	oneApp.BannerSlideView = Backbone.View.extend({
 		template: '',
-		className: 'ttf-one-banner-slide',
+		className: 'ttf-one-banner-slide ttf-one-banner-slide-open',
 
 		events: {
-			'click .ttf-one-banner-slide-remove': 'removeItem'
+			'click .ttf-one-banner-slide-remove': 'removeItem',
+			'click .ttf-one-banner-slide-toggle': 'toggleSection'
 		},
 
 		initialize: function (options) {
@@ -41,6 +42,27 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}, oneApp.options.closeSpeed, function() {
 				this.remove();
 			}.bind(this));
+		},
+
+		toggleSection: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$section = $this.parents('.ttf-one-banner-slide'),
+				$sectionBody = $('.ttf-one-banner-slide-body', $section),
+				$input = $('.ttf-one-banner-slide-state', this.$el);
+
+			if ($section.hasClass('ttf-one-banner-slide-open')) {
+				$sectionBody.slideUp(oneApp.options.closeSpeed, function() {
+					$section.removeClass('ttf-one-banner-slide-open');
+					$input.val('closed');
+				});
+			} else {
+				$sectionBody.slideDown(oneApp.options.openSpeed, function() {
+					$section.addClass('ttf-one-banner-slide-open');
+					$input.val('open');
+				});
+			}
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);
