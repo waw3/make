@@ -362,6 +362,7 @@
 	background: #ffffff;
 	color: #333;
 	text-decoration: none;  /*reset*/
+	outline: none !important; /*reset*/
 }
 @media screen and ( max-width: 782px ) {
 	.ttf-one-menu-tab-link {
