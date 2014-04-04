@@ -58,6 +58,9 @@
 	border: 1px solid #999999;
 	border-bottom: 0; /*reset*/
 }
+.ttf-one-section-open:hover {
+	border: 1px solid #999999;
+}
 .ttf-one-section:hover .ttf-one-section-header h3 {
 	border-bottom: 1px solid #999999;
 }
