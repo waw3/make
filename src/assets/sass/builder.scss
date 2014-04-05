@@ -1,0 +1,18 @@
+/*---------------------------------------------------------
+ 7. Builder (_builder.scss)
+-------------------------------------------------------- */
+
+/*---------------------------------------------------------
+ Banner section (_builder.scss)
+-------------------------------------------------------- */
+.builder-banner-slide {
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 0;
+	position: relative;
+	width: 100%;
+}
+.builder-banner-content {
+	position: absolute;
+	top: 0;
+}
