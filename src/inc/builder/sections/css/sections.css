@@ -79,8 +79,8 @@
 /*---------------------------------------------------------
  Banner
 -------------------------------------------------------- */
-.ttf-one-banner-slide {
-	margin: 40px 0;
+.ttf-one-banner-slide-body {
+	padding: 12px;
 }
 .ttf-one-banner-background-option-wrapper {
 	width: 50%;

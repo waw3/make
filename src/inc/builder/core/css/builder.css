@@ -44,7 +44,8 @@
 /*---------------------------------------------------------
  Sections (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-section {
+.ttf-one-section,
+.ttf-one-banner-slide {
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: 9px;
@@ -60,6 +61,9 @@
 }
 .ttf-one-section-open:hover {
 	border: 1px solid #999999;
+}
+.ttf-one-banner-slide-open {
+	border: 1px solid #dfdfdf;
 }
 .ttf-one-section:hover .ttf-one-section-header h3 {
 	border-bottom: 1px solid #999999;
@@ -90,7 +94,8 @@
 .ttf-one-section h4 {
 	font-size: 14px;
 }
-.ttf-one-section-header h3 {
+.ttf-one-section-header h3,
+.ttf-one-banner-slide-header h3 {
 	float: left;
 	width: 100%;
 	color: #222222;
@@ -100,6 +105,9 @@
 	line-height: 1.7 !important;
 	background-color: #fafafa;
 	border-bottom: 1px solid #dfdfdf;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .ttf-one-section-header span {
 	font-weight: 700;
@@ -115,7 +123,8 @@
 .ttf-one-section-toggle:focus {
 	border: none !important;
 }
-.ttf-one-section-toggle .handlediv {
+.ttf-one-section-toggle .handlediv,
+.ttf-one-banner-slide-toggle .handlediv {
 	top: -38px;
 	right: 0; /*reset*/
 	margin-bottom: -38px;
