@@ -31,9 +31,9 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 		<?php _e( 'Transition effect', 'ttf-one' ); ?>
 	</label>
 	<select name="<?php echo $section_name; ?>[transition]">
-		<option value="cross-fade"<?php selected( 'cross-fade', $transition ); ?>><?php _e( 'Cross fade', 'ttf-one' ); ?></option>
-		<option value="fade"<?php selected( 'fade', $transition ); ?>><?php _e( 'Fade', 'ttf-one' ); ?></option>
-		<option value="slide-horizontal"<?php selected( 'slide-horizontal', $transition ); ?>><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
+		<option value="fade"<?php selected( 'cross-fade', $transition ); ?>><?php _e( 'Cross fade', 'ttf-one' ); ?></option>
+		<option value="fadeout"<?php selected( 'fade', $transition ); ?>><?php _e( 'Fade', 'ttf-one' ); ?></option>
+		<option value="scrollHorz"<?php selected( 'slide-horizontal', $transition ); ?>><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
 		<option value="none"<?php selected( 'none', $transition ); ?>><?php echo _x( 'None', 'transition effect', 'ttf-one' ); ?></option>
 	</select>
 
