@@ -16,8 +16,13 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
 <div class="ttf-one-banner-slide<?php if ( 'open' === $state ) echo ' ttf-one-banner-slide-open'; ?>" id="ttf-one-banner-slide-<?php echo esc_attr( $ttf_one_slide_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_slide_id ); ?>">
 <?php endif; ?>
-	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
-		<div class="sortable-background"></div>
+	<div class="ttf-one-banner-slide-header">
+		<h3>
+			<em><?php _e( 'Slide', 'ttf-one' ); ?></em>
+		</h3>
+		<a href="#" class="ttf-one-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'ttf-one' ); ?>">
+			<div class="handlediv"></div>
+		</a>
 	</div>
 
 	<div class="ttf-one-banner-slide-body">
