@@ -178,6 +178,8 @@ class TTF_One_Section_Definitions {
 					$clean_data['banner-slides'][ $id ]['background-color'] = ttf_one_maybe_hash_hex_color( $slide['background-color'] );
 				}
 
+				$clean_data['banner-slides'][ $id ]['darken'] = ( isset( $slide['darken'] ) && 1 === (int) $slide['darken'] ) ? 1 : 0;
+
 				if ( isset( $slide['image-id'] ) ) {
 					$clean_data['banner-slides'][ $id ]['image-id'] = absint( $slide['image-id'] );
 				}
