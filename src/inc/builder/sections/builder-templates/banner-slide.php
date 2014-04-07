@@ -26,6 +26,8 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		</a>
 	</div>
 
+	<div class="clear"></div>
+
 	<div class="ttf-one-banner-slide-body">
 
 		<div class="ttf-one-banner-background-option-wrapper">
