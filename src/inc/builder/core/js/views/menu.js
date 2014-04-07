@@ -58,7 +58,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			this.$scrollHandle.animate({
 				scrollTop: parseInt($('#' + view.idAttr).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
 			}, 800, 'easeOutQuad', function() {
-				$('input[type="text"]', view.$el).first().focus();
+				$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
 			});
 
 			oneApp.sections.toggleStageClass();
