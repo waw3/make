@@ -57,7 +57,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Scroll to the new section
 			this.$scrollHandle.animate({
 				scrollTop: parseInt($('#' + view.idAttr).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
-			}, 800, 'easeOutQuad');
+			}, 800, 'easeOutQuad', function() {
+				$('input[type="text"]', view.$el).first().focus();
+			});
 
 			oneApp.sections.toggleStageClass();
 			oneApp.initAllEditors(view.idAttr, section);
