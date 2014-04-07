@@ -72,7 +72,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		} else {
 			currentOrderArray = currentOrder.split(',');
 			currentOrderArray = _.reject(currentOrderArray, function (item) {
-				return id === parseInt(item, 10);
+				return parseInt(id, 10) === parseInt(item, 10);
 			});
 		}
 
