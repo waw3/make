@@ -12,13 +12,13 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 ?>
 
 <div class="ttf-one-banner-options">
-	<input id="<?php echo $section_name; ?>[display-arrows]" type="checkbox" name="<?php echo $section_name; ?>[display-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
-	<label for="<?php echo $section_name; ?>[display-arrows]">
+	<input id="<?php echo $section_name; ?>[hide-arrows]" type="checkbox" name="<?php echo $section_name; ?>[hide-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
+	<label for="<?php echo $section_name; ?>[hide-arrows]">
 		<?php _e( 'Hide navigation arrows', 'ttf-one' ); ?>
 	</label>
 
-	<input id="<?php echo $section_name; ?>[display-dots]" type="checkbox" name="<?php echo $section_name; ?>[display-dots]" value="1"<?php checked( $hide_dots ); ?> />
-	<label for="<?php echo $section_name; ?>[display-dots]">
+	<input id="<?php echo $section_name; ?>[hide-dots]" type="checkbox" name="<?php echo $section_name; ?>[hide-dots]" value="1"<?php checked( $hide_dots ); ?> />
+	<label for="<?php echo $section_name; ?>[hide-dots]">
 		<?php _e( 'Hide navigation dots', 'ttf-one' ); ?>
 	</label>
 
