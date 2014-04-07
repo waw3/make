@@ -13,7 +13,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	};
 
 	oneApp.cache = {
-		$sectionOrder: $('#ttf-one-section-order')
+		$sectionOrder: $('#ttf-one-section-order'),
+		$scrollHandle: $('html, body')
 	};
 
 	oneApp.initSortables = function () {
@@ -138,6 +139,19 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				serverRendered: true
 			});
 		});
+	};
+
+	oneApp.scrollToAddedView = function (view) {
+		// Scroll to the new section
+		oneApp.cache.$scrollHandle.animate({
+			scrollTop: parseInt($('#' + view.idAttr).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
+		}, 800, 'easeOutQuad', function() {
+			oneApp.focusFirstInput(view);
+		});
+	};
+
+	oneApp.focusFirstInput = function (view) {
+		$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
 	};
 
 	oneApp.initSortables();

@@ -26,9 +26,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var html = view.render().el;
 			$('.ttf-one-gallery-items-stage').append(html);
 
-			// Only focus the element if not being triggered by the "pseudo" click event
+			// Only scroll and focus if not triggered by the pseudo event
 			if ( ! params ) {
-				$('input[type="text"]', view.$el).first().focus();
+				// Scroll to added view and focus first input
+				oneApp.scrollToAddedView(view);
 			}
 
 			// Add the section value to the sortable order

@@ -11,7 +11,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			});
 		},
 
-		addSlide: function (evt) {
+		addSlide: function (evt, params) {
 			evt.preventDefault();
 
 			// Create view
@@ -25,6 +25,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Append view
 			var html = view.render().el;
 			$('.ttf-one-banner-slides-stage').append(html);
+
+			// Only scroll and focus if not triggered by the pseudo event
+			if ( ! params ) {
+				// Scroll to added view and focus first input
+				oneApp.scrollToAddedView(view);
+			}
 
 			// Initiate the color picker
 			oneApp.initializeBannerSlidesColorPicker(view);
@@ -100,7 +106,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('banner' === view.model.get('sectionType')) {
 			// Add an initial slide item
-			$('.ttf-one-add-slide', view.$el).click();
+			$('.ttf-one-add-slide', view.$el).trigger('click', {type: 'pseudo'});
 
 			// Initialize the sortables
 			oneApp.initializeBannerSlidesSortables(view);

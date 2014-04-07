@@ -54,12 +54,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			$oneApp.trigger('afterSectionViewAdded', view);
 
-			// Scroll to the new section
-			this.$scrollHandle.animate({
-				scrollTop: parseInt($('#' + view.idAttr).offset().top, 10) - 32 - 9 // Offset + admin bar height + margin
-			}, 800, 'easeOutQuad', function() {
-				$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
-			});
+			// Scroll to added view and focus first input
+			oneApp.scrollToAddedView(view);
 
 			oneApp.sections.toggleStageClass();
 			oneApp.initAllEditors(view.idAttr, section);

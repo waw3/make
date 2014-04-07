@@ -12,6 +12,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		$titlePipe: '',
 		serverRendered: false,
 		$document: $(window.document),
+		$scrollHandle: $('html, body'),
 
 		events: {
 			'click .ttf-one-section-toggle': 'toggleSection',
