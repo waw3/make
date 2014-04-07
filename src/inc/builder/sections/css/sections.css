@@ -81,6 +81,7 @@
 -------------------------------------------------------- */
 .ttf-one-banner-slide-body {
 	padding: 12px;
+	background-color: #fafafa;
 }
 .ttf-one-banner-background-option-wrapper {
 	width: 50%;
@@ -104,6 +105,20 @@
 }
 .ttf-one-banner-slide-header h3 em {
 	font-style: normal; /*reset*/
+}
+.ttf-one-banner-options-container {
+	float: left;
+	margin-right: 40px;
+}
+.ttf-one-banner-options p {
+	display: inline-block;
+	float: left;
+	margin-top: 0; /*reset*/
+	margin-right: 40px;
+}
+.ttf-one-add-slide-wrapper {
+	margin-top: 40px;
+	margin-bottom: 20px;
 }
 .ttf-one-banner-slide .ttf-one-banner-slide-body {
 	display: none;
