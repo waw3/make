@@ -11,7 +11,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			});
 		},
 
-		addGalleryItem : function (evt) {
+		addGalleryItem : function (evt, params) {
 			evt.preventDefault();
 
 			// Create view
@@ -25,6 +25,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Append view
 			var html = view.render().el;
 			$('.ttf-one-gallery-items-stage').append(html);
+
+			// Only focus the element if not being triggered by the "pseudo" click event
+			if ( ! params ) {
+				$('input[type="text"]', view.$el).first().focus();
+			}
 
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-gallery-item-order', $(view.$el).parents('.ttf-one-gallery-items')));
@@ -83,7 +88,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
 			// Add an initial gallery item
-			$('.ttf-one-gallery-add-item', view.$el).click();
+			$('.ttf-one-gallery-add-item', view.$el).trigger('click', {type: 'pseudo'});
 
 			// Initialize the sortables and picker
 			oneApp.initializeGalleryItemSortables();
