@@ -10,15 +10,8 @@
 
 	<?php
 	$editor_settings = array(
-		'tinymce'       => array(
-			'toolbar1' => 'bold,italic,link,unlink,alignleft,aligncenter,alignright',
-			'toolbar2' => '',
-			'toolbar3' => '',
-			'toolbar4' => '',
-		),
-		'quicktags'     => array(
-			'buttons' => 'strong,em,link',
-		),
+		'tinymce'       => true,
+		'quicktags'     => true,
 		'editor_height' => 345,
 		'textarea_name' => $section_name . '[content]'
 	);
