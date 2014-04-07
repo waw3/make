@@ -237,8 +237,19 @@ class TTF_One_Builder_Base {
 			return;
 		}
 
-		?>
+	?>
 		<style type="text/css">
+			<?php if ( 'template-builder.php' === get_page_template_slug() ) : ?>
+			#postdivrich,
+			#postimagediv {
+				display: none;
+			}
+			<?php else : ?>
+			#ttf-one-builder {
+				display: none;
+			}
+			<?php endif; ?>
+
 			<?php foreach ( ttf_one_get_sections() as $key => $section ) : ?>
 			#ttf-one-menu-list-item-link-<?php echo esc_attr( $section['id'] ); ?> .ttf-one-menu-list-item-link-icon-wrapper {
 				background-image: url(<?php echo addcslashes( esc_url_raw( $section['icon'] ), '"' ); ?>);
