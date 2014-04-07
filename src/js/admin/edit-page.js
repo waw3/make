@@ -41,10 +41,6 @@
 
 			// Setup the event for toggling the Page Builder when the page template input changes
 			self.cache.$pageTemplate.on('change', self.templateToggle);
-
-			self.cache.$document.on('ready', function() {
-				self.cache.$pageTemplate.trigger('change');
-			});
 		},
 
 		/**
