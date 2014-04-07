@@ -12,40 +12,40 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 ?>
 
 <div class="ttf-one-banner-options">
-	<input type="checkbox" name="<?php echo $section_name; ?>[display-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
-	<label>
+	<input id="<?php echo $section_name; ?>[display-arrows]" type="checkbox" name="<?php echo $section_name; ?>[display-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
+	<label for="<?php echo $section_name; ?>[display-arrows]">
 		<?php _e( 'Hide navigation arrows', 'ttf-one' ); ?>
 	</label>
 
-	<input type="checkbox" name="<?php echo $section_name; ?>[display-dots]" value="1"<?php checked( $hide_dots ); ?> />
-	<label>
+	<input id="<?php echo $section_name; ?>[display-dots]" type="checkbox" name="<?php echo $section_name; ?>[display-dots]" value="1"<?php checked( $hide_dots ); ?> />
+	<label for="<?php echo $section_name; ?>[display-dots]">
 		<?php _e( 'Hide navigation dots', 'ttf-one' ); ?>
 	</label>
 
-	<input type="checkbox" name="<?php echo $section_name; ?>[autoplay]" value="1"<?php checked( $autoplay ); ?> />
-	<label>
+	<input id="<?php echo $section_name; ?>[autoplay]" type="checkbox" name="<?php echo $section_name; ?>[autoplay]" value="1"<?php checked( $autoplay ); ?> />
+	<label for="<?php echo $section_name; ?>[autoplay]">
 		<?php _e( 'Autoplay slideshow', 'ttf-one' ); ?>
 	</label>
 
-	<label>
+	<label for="<?php echo $section_name; ?>[transition]">
 		<?php _e( 'Transition effect', 'ttf-one' ); ?>
 	</label>
-	<select name="<?php echo $section_name; ?>[transition]">
+	<select id="<?php echo $section_name; ?>[transition]" name="<?php echo $section_name; ?>[transition]">
 		<option value="fade"<?php selected( 'cross-fade', $transition ); ?>><?php _e( 'Cross fade', 'ttf-one' ); ?></option>
 		<option value="fadeout"<?php selected( 'fade', $transition ); ?>><?php _e( 'Fade', 'ttf-one' ); ?></option>
 		<option value="scrollHorz"<?php selected( 'slide-horizontal', $transition ); ?>><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
 		<option value="none"<?php selected( 'none', $transition ); ?>><?php echo _x( 'None', 'transition effect', 'ttf-one' ); ?></option>
 	</select>
 
-	<label>
+	<label for="<?php echo $section_name; ?>[delay]">
 		<?php _e( 'Time between slides (in ms)', 'ttf-one' ); ?>
 	</label>
-	<input type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
+	<input id="<?php echo $section_name; ?>[delay]" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
 
-	<label>
+	<label for="<?php echo $section_name; ?>[height]">
 		<?php _e( 'Section height', 'ttf-one' ); ?>
 	</label>
-	<input type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+	<input id="<?php echo $section_name; ?>[height]" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
 </div>
 
 <div class="ttf-one-add-slide-wrapper">

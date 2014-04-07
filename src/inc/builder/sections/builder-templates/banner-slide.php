@@ -31,15 +31,15 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<div class="ttf-one-banner-background-option-wrapper">
 			<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
 			<p>
-				<input type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
-				<label>
+				<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
+				<label for="<?php echo $section_name; ?>[darken]">
 					<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
 				</label>
 			</p>
 
 			<div class="ttf-one-banner-slide-background-color-wrapper">
-				<h4><?php _e( 'Background color', 'ttf-one' ); ?></h4>
-				<input type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+				<h4><label for="<?php echo $section_name; ?>[backgroud-color]"><?php _e( 'Background color', 'ttf-one' ); ?></label></h4>
+				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
 			</div>
 		</div>
 
@@ -74,8 +74,8 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<?php endif; ?>
 
 		<div class="ttf-one-banner-slide-alignment-wrapper">
-			<label><?php _e( 'Content position', 'ttf-one' ); ?></label>
-			<select name="<?php echo $section_name; ?>[alignment]">
+			<label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position', 'ttf-one' ); ?></label>
+			<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
 				<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
 
 				<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>

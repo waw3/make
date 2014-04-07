@@ -10,8 +10,8 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 ?>
 
 <div class="ttf-one-columns-select-wrapper">
-	<label for="ttf-one-gallery-columns"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
-	<select id="ttf-one-gallery-columns" name="<?php echo $section_name; ?>[columns]">
+	<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
+	<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]">
 		<option value="1"<?php selected( 1, $columns ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns ); ?>>2</option>
 		<option value="3"<?php selected( 3, $columns ); ?>>3</option>
@@ -20,8 +20,8 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 </div>
 
 <div class="ttf-one-captions-select-wrapper">
-	<label for="ttf-one-gallery-captions"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
-	<select id="ttf-one-gallery-captions" name="<?php echo $section_name; ?>[captions]">
+	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
+	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
 		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
 		<option value="fancy"<?php selected( 'fancy', $captions ); ?>><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
@@ -44,8 +44,8 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 </div>
 
 <div class="ttf-one-gallery-background-color-wrapper">
-	<label><?php _e( 'Background color', 'ttf-one' ); ?></label>
-	<input type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+	<label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'ttf-one' ); ?></label>
+	<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
 </div>
 
 <div class="ttf-one-gallery-add-item-wrapper">
