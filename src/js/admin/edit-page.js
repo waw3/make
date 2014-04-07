@@ -8,24 +8,15 @@
 	'use strict';
 
 	var ttfOneEditPage = {
-		/**
-		 *
-		 */
 		cache: {
 			$document: $(document)
 		},
 
-		/**
-		 *
-		 */
 		init: function() {
 			this.cacheElements();
 			this.bindEvents();
 		},
 
-		/**
-		 *
-		 */
 		cacheElements: function() {
 			this.cache.$pageTemplate = $('#page_template');
 			this.cache.$mainEditor = $('#postdivrich');
@@ -33,9 +24,6 @@
 			this.cache.$builderHide = $('#ttf-one-builder-hide');
 		},
 
-		/**
-		 *
-		 */
 		bindEvents: function() {
 			var self = this;
 
@@ -43,10 +31,6 @@
 			self.cache.$pageTemplate.on('change', self.templateToggle);
 		},
 
-		/**
-		 *
-		 * @param e
-		 */
 		templateToggle: function(e) {
 			var val = $(e.target).val(),
 				self = ttfOneEditPage;
