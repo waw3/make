@@ -13,21 +13,21 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 
 <div class="ttf-one-banner-options">
 	<div class="ttf-one-banner-options-container">
-		<h4>
+		<h4 class="ttf-one-banner-options-title">
 			<?php _e( 'Section height', 'ttf-one' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[height]" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+		<input id="<?php echo $section_name; ?>[height]" class="code" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
 	</div>
 
 	<div class="ttf-one-banner-options-container">
-		<h4>
+		<h4 class="ttf-one-banner-options-title">
 			<?php _e( 'Time between slides (in ms)', 'ttf-one' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[delay]" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
+		<input id="<?php echo $section_name; ?>[delay]" class="code" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
 	</div>
 
 	<div class="ttf-one-banner-options-container">
-		<h4>
+		<h4 class="ttf-one-banner-options-title">
 			<?php _e( 'Transition effect', 'ttf-one' ); ?>
 		</h4>
 		<select id="<?php echo $section_name; ?>[transition]" name="<?php echo $section_name; ?>[transition]">
