@@ -125,3 +125,7 @@
 .ttf-one-banner-slide.ttf-one-banner-slide-open .ttf-one-banner-slide-body {
 	display: block;
 }
+.ttf-one-stage .ttf-one-banner-slides .sortable-placeholder {
+	width: 100%;
+	margin-bottom: 8px;
+}

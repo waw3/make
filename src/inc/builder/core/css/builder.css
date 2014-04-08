@@ -227,7 +227,8 @@
 /*---------------------------------------------------------
  Open state (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-section-open {
+.ttf-one-section-open,
+.ttf-one-banner-slide-open {
 	border-bottom: 1px solid #dfdfdf;
 }
 .ttf-one-section-header a {
@@ -386,7 +387,7 @@
 .ttf-one-stage .sortable-placeholder {
 	margin-bottom: 8px;
 }
-.ttf-one-section .sortable-placeholder {
+.ttf-one-stage .sortable-placeholder {
 	float: left;
 	margin: 0; /*reset*/
 	padding: 0; /*reset*/
