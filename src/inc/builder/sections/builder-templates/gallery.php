@@ -1,12 +1,12 @@
 <?php
 ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
-$section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
-$columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
-$captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'basic';
+$section_name     = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
+$columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
+$captions         = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'basic';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
-$section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
+$section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
 
 <div class="ttf-one-captions-select-wrapper">
