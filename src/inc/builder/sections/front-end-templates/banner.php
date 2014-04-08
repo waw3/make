@@ -15,6 +15,9 @@ $is_slider = ( count( $banner ) > 1 ) ? true : false;
 			<div class="builder-banner-content" style="position:absolute;top:0;">
 				<?php ttf_one_get_builder_save()->the_builder_content( $slide['content'] ); ?>
 			</div>
+			<?php if ( 0 !== absint( $slide['darken'] ) ) : ?>
+			<div class="builder-banner-overlay"></div>
+			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
 		<?php if ( $is_slider && false === (bool) $ttf_one_section_data['hide-arrows'] ) : ?>
