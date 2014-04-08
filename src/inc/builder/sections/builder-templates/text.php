@@ -8,7 +8,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 
 <div class="ttf-one-columns-select ttf-one-select">
 	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
-	<select id="<?php echo $section_name; ?>[columns-number]" class="ttf-one-gallery-columns" name="<?php echo $section_name; ?>[columns-number]">
+	<select id="<?php echo $section_name; ?>[columns-number]" class="ttf-one-text-columns" name="<?php echo $section_name; ?>[columns-number]">
 		<option value="1"<?php selected( 1, $columns_number ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns_number ); ?>>2</option>
 		<option value="3"<?php selected( 3, $columns_number ); ?>>3</option>

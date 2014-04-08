@@ -7,7 +7,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.TextView = oneApp.SectionView.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'change .ttf-one-gallery-columns' : 'handleColumns'
+				'change .ttf-one-text-columns' : 'handleColumns'
 			});
 		},
 
