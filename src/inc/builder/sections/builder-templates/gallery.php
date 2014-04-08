@@ -48,8 +48,8 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 	<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
 </div>
 
-<div class="ttf-one-gallery-add-item-wrapper">
-	<a href="#" class="ttf-one-gallery-add-item"><?php _e( 'Add a new gallery item', 'ttf-one' ); ?></a>
+<div class="ttf-one-add-gallery-item-wrapper">
+	<a href="#" class="button button-primary button-large ttf-one-gallery-add-item"><?php _e( 'Add gallery item', 'ttf-one' ); ?></a>
 </div>
 
 <div class="ttf-one-gallery-items">
