@@ -415,7 +415,7 @@
 	background: url(images/sortable-background.png) center center repeat-x;
 }
 .ttf-one-text-column:hover .sortable-background,
-.ttf-one-gallery-column:hover .sortable-background {
+.ttf-one-gallery-item:hover .sortable-background {
 	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------

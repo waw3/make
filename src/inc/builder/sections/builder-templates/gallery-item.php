@@ -20,20 +20,20 @@ $description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one
 	</div>
 
 	<div class="ttf-one-titlediv">
+		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
+	</div>
+
+	<?php ttf_one_get_builder_base()->add_uploader( $section_name, absint( $image_id ) ); ?>
+
+	<div class="ttf-one-titlediv">
 		<div class="ttf-one-titlewrap">
 			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 		</div>
 	</div>
 
-	<div class="ttf-one-titlediv">
-		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
-	</div>
-
 	<div class="ttf-one-gallery-item-description-wrapper">
 		<textarea placeholder="<?php esc_attr_e( 'Enter description here', 'ttf-one' ); ?>" name="<?php echo $section_name; ?>[description]"><?php echo esc_textarea( $description ); ?></textarea>
 	</div>
-
-	<?php ttf_one_get_builder_base()->add_uploader( $section_name, absint( $image_id ) ); ?>
 
 	<a href="#" class="ttf-one-gallery-item-remove">
 		<?php _e( 'Remove this gallery item', 'ttf-one' ); ?>
