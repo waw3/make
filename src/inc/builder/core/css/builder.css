@@ -131,6 +131,13 @@
 	right: 0; /*reset*/
 	margin-bottom: -38px;
 }
+@media screen and ( max-width: 782px ) {
+	.ttf-one-section-toggle .handlediv,
+	.ttf-one-banner-slide-toggle .handlediv {
+		top: -44px;
+		margin-bottom: -44px;
+	}
+}
 .ttf-one-stage .ttf-one-section .ttf-one-section-header .handlediv:before,
 .ttf-one-stage .ttf-one-section .ttf-one-banner-slide-header .handlediv:before {
 	content: '\f140';
