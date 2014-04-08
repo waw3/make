@@ -14,9 +14,29 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 <div class="ttf-one-banner-options">
 	<div class="ttf-one-banner-options-container">
 		<h4 class="ttf-one-banner-options-title">
-			<?php _e( 'Section height', 'ttf-one' ); ?>
+			<?php _e( 'Slideshow display', 'ttf-one' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[height]" class="code" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+
+		<p>
+			<input id="<?php echo $section_name; ?>[hide-arrows]" type="checkbox" name="<?php echo $section_name; ?>[hide-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
+			<label for="<?php echo $section_name; ?>[hide-arrows]">
+				<?php _e( 'Hide navigation arrows', 'ttf-one' ); ?>
+			</label>
+		</p>
+
+		<p>
+			<input id="<?php echo $section_name; ?>[hide-dots]" type="checkbox" name="<?php echo $section_name; ?>[hide-dots]" value="1"<?php checked( $hide_dots ); ?> />
+			<label for="<?php echo $section_name; ?>[hide-dots]">
+				<?php _e( 'Hide navigation dots', 'ttf-one' ); ?>
+			</label>
+		</p>
+
+		<p>
+			<input id="<?php echo $section_name; ?>[autoplay]" type="checkbox" name="<?php echo $section_name; ?>[autoplay]" value="1"<?php checked( $autoplay ); ?> />
+			<label for="<?php echo $section_name; ?>[autoplay]">
+				<?php _e( 'Autoplay slideshow', 'ttf-one' ); ?>
+			</label>
+		</p>
 	</div>
 
 	<div class="ttf-one-banner-options-container">
@@ -24,10 +44,8 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 			<?php _e( 'Time between slides (in ms)', 'ttf-one' ); ?>
 		</h4>
 		<input id="<?php echo $section_name; ?>[delay]" class="code" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
-	</div>
 
-	<div class="ttf-one-banner-options-container">
-		<h4 class="ttf-one-banner-options-title">
+		<h4>
 			<?php _e( 'Transition effect', 'ttf-one' ); ?>
 		</h4>
 		<select id="<?php echo $section_name; ?>[transition]" name="<?php echo $section_name; ?>[transition]">
@@ -38,38 +56,18 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 		</select>
 	</div>
 
-	<div class="clear"></div>
-
-	<h4>
-		<?php _e( 'Slideshow options', 'ttf-one' ); ?>
-	</h4>
-
-	<p>
-		<input id="<?php echo $section_name; ?>[hide-arrows]" type="checkbox" name="<?php echo $section_name; ?>[hide-arrows]" value="1"<?php checked( $hide_arrows ); ?> />
-		<label for="<?php echo $section_name; ?>[hide-arrows]">
-			<?php _e( 'Hide navigation arrows', 'ttf-one' ); ?>
-		</label>
-	</p>
-
-	<p>
-		<input id="<?php echo $section_name; ?>[hide-dots]" type="checkbox" name="<?php echo $section_name; ?>[hide-dots]" value="1"<?php checked( $hide_dots ); ?> />
-		<label for="<?php echo $section_name; ?>[hide-dots]">
-			<?php _e( 'Hide navigation dots', 'ttf-one' ); ?>
-		</label>
-	</p>
-
-	<p>
-		<input id="<?php echo $section_name; ?>[autoplay]" type="checkbox" name="<?php echo $section_name; ?>[autoplay]" value="1"<?php checked( $autoplay ); ?> />
-		<label for="<?php echo $section_name; ?>[autoplay]">
-			<?php _e( 'Autoplay slideshow', 'ttf-one' ); ?>
-		</label>
-	</p>
+	<div class="ttf-one-banner-options-container">
+		<h4 class="ttf-one-banner-options-title">
+			<?php _e( 'Section height', 'ttf-one' ); ?>
+		</h4>
+		<input id="<?php echo $section_name; ?>[height]" class="code" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+	</div>
 
 	<div class="clear"></div>
 </div>
 
 <div class="ttf-one-add-slide-wrapper">
-	<a href="#" class="button button-large ttf-one-add-slide"><?php _e( 'Add Slide', 'ttf-one' ); ?></a>
+	<a href="#" class="button button-primary button-large ttf-one-add-slide"><?php _e( 'Add Slide', 'ttf-one' ); ?></a>
 </div>
 
 <div class="ttf-one-banner-slides">
