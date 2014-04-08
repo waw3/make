@@ -55,21 +55,23 @@
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 }
-.ttf-one-section:hover {
+.ttf-one-section:hover,
+.ttf-one-banner-slide:hover {
 	border: 1px solid #999999;
 	border-bottom: 0; /*reset*/
 }
-.ttf-one-section-open:hover {
+.ttf-one-section-open:hover,
+.ttf-one-banner-slide-open:hover {
 	border: 1px solid #999999;
 }
-.ttf-one-banner-slide-open {
-	border: 1px solid #dfdfdf;
-}
-.ttf-one-section:hover .ttf-one-section-header h3 {
+.ttf-one-section:hover .ttf-one-section-header h3,
+.ttf-one-banner-slide:hover .ttf-one-banner-slide-header h3 {
 	border-bottom: 1px solid #999999;
 }
 .ttf-one-section-open:hover,
-.ttf-one-section-open:hover .ttf-one-section-header h3 {
+.ttf-one-section-open:hover .ttf-one-section-header h3,
+.ttf-one-banner-slide-open:hover,
+.ttf-one-banner-slide-open:hover .ttf-one-banner-slide-header h3 {
 	border-color: #dfdfdf;
 }
 .ttf-one-section:last-of-type {

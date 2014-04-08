@@ -111,7 +111,9 @@
 	margin-top: 8px;
 }
 .ttf-one-banner-slide-header h3 em {
-	font-style: normal; /*reset*/
+	font-weight: normal; /*reset*/
+	color: #999999;
+	color: #999999;
 }
 .ttf-one-add-slide-wrapper {
 	margin-top: 40px;
