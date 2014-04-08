@@ -143,3 +143,22 @@
 	margin-left: 40px;
 	padding: 0 0 12px;
 }
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-gallery-background-image-wrapper {
+		width: 50%;
+		float: left;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-gallery-background-options-wrapper {
+		width: 50%;
+		float: right;
+		padding-left: 20px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}

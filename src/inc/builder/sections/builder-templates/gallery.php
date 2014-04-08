@@ -45,12 +45,20 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 	?>
 </div>
 
-<div class="ttf-one-gallery-background-color-wrapper">
+<div class="ttf-one-gallery-background-options-wrapper">
 	<h4>
 		<?php _e( 'Background color', 'ttf-one' ); ?>
 	</h4>
 	<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+
+	<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
+	<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
+	<label for="<?php echo $section_name; ?>[darken]">
+		<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
+	</label>
 </div>
+
+<div class="clear"></div>
 
 <div class="ttf-one-add-gallery-item-wrapper">
 	<a href="#" class="button button-primary button-large ttf-one-gallery-add-item"><?php _e( 'Add gallery item', 'ttf-one' ); ?></a>
