@@ -7,7 +7,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.GalleryView = oneApp.SectionView.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttf-one-gallery-add-item' : 'addGalleryItem'
+				'click .ttf-one-gallery-add-item' : 'addGalleryItem',
+				'change .ttf-one-gallery-columns' : 'handleColumns'
 			});
 		},
 
@@ -41,6 +42,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				id = idAttr.replace('ttf-one-section-', '');
 
 			return parseInt(id, 10);
+		},
+
+		handleColumns : function (evt) {
+			evt.preventDefault();
+
+			var columns = $(evt.target).val(),
+				$stage = $('.ttf-one-gallery-items-stage', this.$el);
+
+			$stage.removeClass('ttf-one-gallery-columns-1 ttf-one-gallery-columns-2 ttf-one-gallery-columns-3 ttf-one-gallery-columns-4');
+			$stage.addClass('ttf-one-gallery-columns-' + parseInt(columns, 10));
 		}
 	});
 

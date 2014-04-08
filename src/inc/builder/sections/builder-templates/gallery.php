@@ -20,7 +20,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 
 <div class="ttf-one-columns-select-wrapper">
 	<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
-	<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]">
+	<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]" class="ttf-one-gallery-columns">
 		<option value="1"<?php selected( 1, $columns ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns ); ?>>2</option>
 		<option value="3"<?php selected( 3, $columns ); ?>>3</option>
@@ -57,7 +57,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 </div>
 
 <div class="ttf-one-gallery-items">
-	<div class="ttf-one-gallery-items-stage">
+	<div class="ttf-one-gallery-items-stage ttf-one-gallery-columns-<?php echo absint( $columns ); ?>">
 		<?php foreach ( $section_order as $key => $section_id  ) : ?>
 			<?php if ( isset( $ttf_one_section_data['data']['gallery-items'][ $section_id ] ) ) : ?>
 				<?php global $ttf_one_gallery_id; $ttf_one_gallery_id = $section_id; ?>
