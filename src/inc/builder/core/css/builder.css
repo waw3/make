@@ -153,7 +153,7 @@
 	clear: both;
 	width: 100%;
 	margin-top: 20px;
-	margin-bottom: 8px;
+	margin-bottom: 0; /*reset*/
 	padding: 0;  /*reset*/
 	color: #a00;
 	border-bottom: 0;  /*reset*/
