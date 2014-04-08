@@ -96,7 +96,7 @@ class TTF_One_Section_Definitions {
 		if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
 			foreach ( $data['columns'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {
-					$clean_data['columns'][ $id ]['title'] = sanitize_text_field( $item['title'] );
+					$clean_data['columns'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
 				}
 
 				if ( isset( $item['image-link'] ) ) {
@@ -253,7 +253,7 @@ class TTF_One_Section_Definitions {
 		if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
 			foreach ( $data['gallery-items'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {
-					$clean_data['gallery-items'][ $id ]['title'] = sanitize_text_field( $item['title'] );
+					$clean_data['gallery-items'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
 				}
 
 				if ( isset( $item['link'] ) ) {
@@ -305,7 +305,7 @@ class TTF_One_Section_Definitions {
 		$clean_data = array();
 
 		if ( isset( $data['title'] ) ) {
-			$clean_data['title'] = sanitize_text_field( $data['title'] );
+			$clean_data['title'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
 
 		if ( isset( $data['content'] ) ) {

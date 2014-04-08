@@ -25,7 +25,7 @@ $text_columns = ttf_one_builder_get_text_array( $ttf_one_section_data );
 			<?php endif; ?>
 			<?php if ( '' !== $column['title'] ) : ?>
 			<h3 class="builder-text-title">
-				<?php echo ttf_one_sanitize_text( $column['title'] ); ?>
+				<?php echo apply_filters( 'the_title', $column['title'] ); ?>
 			</h3>
 			<?php endif; ?>
 			<?php if ( '' !== $column['content'] ) : ?>

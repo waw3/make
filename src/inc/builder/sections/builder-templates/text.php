@@ -38,7 +38,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 
 		<div class="ttf-one-titlediv">
 			<div class="ttf-one-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo sanitize_text_field( $title ); ?>" autocomplete="off" />
+				<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 			</div>
 		</div>
 

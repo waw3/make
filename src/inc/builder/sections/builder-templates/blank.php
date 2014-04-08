@@ -4,7 +4,7 @@
 
 	<div class="ttf-one-titlediv">
 		<div class="ttf-one-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php if ( isset( $ttf_one_section_data['data']['title'] ) ) echo sanitize_text_field( $ttf_one_section_data['data']['title'] ); ?>" autocomplete="off" />
+			<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php if ( isset( $ttf_one_section_data['data']['title'] ) ) echo esc_attr( htmlspecialchars( $ttf_one_section_data['data']['title'] ) ); ?>" autocomplete="off" />
 		</div>
 	</div>
 

@@ -10,7 +10,7 @@ global $ttf_one_section_data;
 	<?php if ( ! empty( $ttf_one_section_data['title'] ) ) : ?>
 	<header class="builder-section-header">
 		<h2 class="builder-section-title">
-			<?php echo ttf_one_sanitize_text( $ttf_one_section_data['title'] ); ?>
+			<?php echo apply_filters( 'the_title', $ttf_one_section_data['title'] ); ?>
 		</h2>
 	</header>
 	<?php endif; ?>
