@@ -7,10 +7,11 @@ if ( ! function_exists( 'ttf_one_customizer_colors' ) ) :
 /**
  * Configure settings and controls for the Colors section.
  *
- * @since  1.0
+ * @since  1.0.0
  *
  * @param  object    $wp_customize    The global customizer object.
  * @param  string    $section         The section name.
+ *
  * @return void
  */
 function ttf_one_customizer_colors( $wp_customize, $section ) {

@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttf_one_customizer_navigation' ) ) :
 /**
  * Configure settings and controls for the Navigation section.
  *
- * @since  1.0
+ * @since  1.0.0
  *
  * @return void
  */
