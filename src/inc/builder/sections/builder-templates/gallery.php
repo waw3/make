@@ -2,12 +2,21 @@
 ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
-$columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 1;
+$columns = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
 $captions = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'basic';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
 $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
+
+<div class="ttf-one-captions-select-wrapper">
+	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
+	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
+		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
+		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
+		<option value="fancy"<?php selected( 'fancy', $captions ); ?>><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
+	</select>
+</div>
 
 <div class="ttf-one-columns-select-wrapper">
 	<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
@@ -19,14 +28,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 	</select>
 </div>
 
-<div class="ttf-one-captions-select-wrapper">
-	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
-	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
-		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
-		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
-		<option value="fancy"<?php selected( 'fancy', $captions ); ?>><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
-	</select>
-</div>
+<div class="clear"></div>
 
 <div class="ttf-one-gallery-background-image-wrapper">
 	<?php
@@ -44,7 +46,9 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] 
 </div>
 
 <div class="ttf-one-gallery-background-color-wrapper">
-	<label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'ttf-one' ); ?></label>
+	<h4>
+		<?php _e( 'Background color', 'ttf-one' ); ?>
+	</h4>
 	<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
 </div>
 

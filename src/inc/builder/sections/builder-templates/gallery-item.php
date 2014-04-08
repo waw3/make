@@ -26,7 +26,7 @@ $description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one
 	</div>
 
 	<div class="ttf-one-titlediv">
-		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
+		<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
 	</div>
 
 	<div class="ttf-one-gallery-item-description-wrapper">

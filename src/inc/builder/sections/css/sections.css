@@ -77,7 +77,7 @@
 	width: 25%;
 }
 /*---------------------------------------------------------
- Banner
+ Banner (html-builder.css)
 -------------------------------------------------------- */
 .ttf-one-banner-slide-body {
 	padding: 12px;
@@ -132,4 +132,14 @@
 .ttf-one-stage .ttf-one-banner-slides .sortable-placeholder {
 	width: 100%;
 	margin-bottom: 8px;
+}
+/*---------------------------------------------------------
+ Gallery (html-builder.css)
+-------------------------------------------------------- */
+.ttf-one-columns-select-wrapper,
+.ttf-one-captions-select-wrapper {
+	display: inline-block;
+	float: right;
+	margin-left: 40px;
+	padding: 0 0 12px;
 }
