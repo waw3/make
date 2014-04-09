@@ -130,7 +130,6 @@
 }
 .ttf-one-add-slide-wrapper,
 .ttf-one-add-gallery-item-wrapper {
-	margin-top: 40px;
 	margin-bottom: 20px;
 }
 .ttf-one-banner-slide .ttf-one-banner-slide-body {
@@ -146,16 +145,25 @@
 /*---------------------------------------------------------
  Gallery (html-builder.css)
 -------------------------------------------------------- */
+.ttf-one-gallery-items-stage {
+	float: left;
+	width: 100%;
+}
 .ttf-one-columns-select-wrapper,
 .ttf-one-captions-select-wrapper {
 	display: inline-block;
-	float: left;
-	margin-right: 20px;
+	float: right;
+	margin-left: 20px;
 	padding: 0 0 12px;
 }
 .ttf-one-gallery-item-description-wrapper textarea {
 	width: 100%;
 	height: 75px;
+}
+.ttf-one-gallery-background-options-container {
+	float: left;
+	width: 100%;
+	margin-top: 40px;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttf-one-gallery-background-image-wrapper {
