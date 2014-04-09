@@ -36,7 +36,7 @@ $description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one
 	</div>
 
 	<a href="#" class="ttf-one-gallery-item-remove">
-		<?php _e( 'Remove this gallery item', 'ttf-one' ); ?>
+		<?php _e( 'Remove gallery item', 'ttf-one' ); ?>
 	</a>
 <?php if ( true !== $ttf_one_is_js_template ) : ?>
 </div>

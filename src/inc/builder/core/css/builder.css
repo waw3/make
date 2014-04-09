@@ -159,13 +159,19 @@
 	display: inline-block;
 	clear: both;
 	width: 100%;
-	margin-top: 20px;
 	margin-bottom: 0; /*reset*/
 	padding: 0;  /*reset*/
 	color: #a00;
 	border-bottom: 0;  /*reset*/
 	text-decoration: none;  /*reset*/
 	outline: none !important;
+}
+.ttf-one-section-remove {
+	margin-top: 20px;
+}
+.ttf-one-gallery-item-remove,
+.ttf-one-banner-slide-remove {
+	margin-top: 10px;
 }
 .ttf-one-section-remove:hover,
 .ttf-one-gallery-item-remove:hover,
