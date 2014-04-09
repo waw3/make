@@ -21,6 +21,9 @@ $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 			<?php if ( 0 !== absint( $item['image-id'] ) ) : ?>
 			<figure class="builder-gallery-image">
 				<?php echo $link_front . wp_get_attachment_image( $item['image-id'], 'large' ) . $link_back; ?>
+				<?php if ( has_excerpt( $item['image-id'] ) ) : ?>
+				<figcaption class="builder-gallery-image-caption"><?php echo ttf_one_allowed_tags( get_post( $item['image-id'] )->post_excerpt ); ?></figcaption>
+				<?php endif; ?>
 			</figure>
 			<?php endif; ?>
 			<?php if ( '' !== $item['title'] ) : ?>
