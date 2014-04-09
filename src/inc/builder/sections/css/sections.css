@@ -22,8 +22,7 @@
 .ttf-one-text-columns-1 .ttf-one-text-column:nth-child(4) {
 	display: none;
 }
-.ttf-one-text-columns-1 .ttf-one-sortable-handle,
-.ttf-one-gallery-columns-1 ttf-one-sortable-handle {
+.ttf-one-text-columns-1 .ttf-one-sortable-handle {
 	visibility: hidden;
 }
 /*---------------------------------------------------------
@@ -115,6 +114,9 @@
 	margin-top: 15px;
 	display: block;
 	float: right;
+}
+.ttf-one-banner-options {
+	margin-top: 40px;
 }
 .ttf-one-banner-options-container {
 	float: left;
