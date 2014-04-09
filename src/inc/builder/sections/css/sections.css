@@ -151,6 +151,9 @@
 	float: left;
 	width: 100%;
 }
+.ttf-one-gallery-item {
+	margin-bottom: 40px;
+}
 .ttf-one-columns-select-wrapper,
 .ttf-one-captions-select-wrapper {
 	display: inline-block;
@@ -165,7 +168,6 @@
 .ttf-one-gallery-background-options-container {
 	float: left;
 	width: 100%;
-	margin-top: 40px;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttf-one-gallery-background-image-wrapper {
