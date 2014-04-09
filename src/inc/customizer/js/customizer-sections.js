@@ -68,26 +68,26 @@
 
 		ready: function() {
 			var control = this,
+				state = control.state || 'closed',
 				group = control.container.find('.ttf-one-control-group'),
-				isOpen = group.hasClass('open'),
 				prefix = 'customize-control-' + group.attr('data-control-group'),
-				relatedControls = $('[id^="'+prefix+'"]');
+				groupControls = $('[id^="'+prefix+'"]');
 
 			group.on('click', function(e) {
 				e.preventDefault();
 
-				isOpen = group.hasClass('open');
+				state = control.state || 'closed';
 
-				if (true === isOpen) {
-					group.removeClass('open');
-				} else if (false === isOpen) {
-					group.addClass('open');
+				if ('open' === state) {
+					control.state = 'closed';
+				} else if ('closed' === state) {
+					control.state = 'open';
 				}
 
-				control.toggleGroup(relatedControls, !isOpen);
+				control.toggleGroup(groupControls, 'open' === control.state);
 			});
 
-			control.toggleGroup(relatedControls, isOpen);
+			control.toggleGroup(groupControls, 'open' === state);
 		}
 	});
 
