@@ -85,9 +85,6 @@ if ( ! function_exists( 'ttf_one_sanitize_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
  *
- * The first value in the 'allowed_choices' array will be the default if the given
- * value doesn't match anything in the array.
- *
  * @since 1.0.0
  *
  * @param mixed $value
@@ -100,50 +97,107 @@ function ttf_one_sanitize_choice( $value, $setting ) {
 		$setting = $setting->id;
 	}
 
-	$allowed_choices = array( 0 );
-
-	switch ( $setting ) {
-		case 'general-layout' :
-			$allowed_choices = array( 'full-width', 'boxed' );
-			break;
-		case 'background_size' :
-		case 'header-background-size' :
-		case 'main-background-size' :
-		case 'footer-background-size' :
-			$allowed_choices = array( 'auto', 'cover', 'contain' );
-			break;
-		case 'header-background-repeat' :
-		case 'main-background-repeat' :
-		case 'footer-background-repeat' :
-			$allowed_choices = array( 'no-repeat', 'repeat', 'repeat-x', 'repeat-y' );
-			break;
-		case 'header-background-position' :
-		case 'main-background-position' :
-		case 'footer-background-position' :
-			$allowed_choices = array( 'left', 'center', 'right' );
-			break;
-		case 'header-subheader-content-layout' :
-			$allowed_choices = array( 'default', 'flipped' );
-			break;
-		case 'header-layout' :
-			$allowed_choices = array( 1, 2, 3 );
-			break;
-		case 'header-branding-position' :
-			$allowed_choices = array( 'left', 'right' );
-			break;
-		case 'footer-widget-areas' :
-			$allowed_choices = array( 0, 1, 2, 3, 4 );
-			break;
-		case 'footer-layout' :
-			$allowed_choices = array( 1, 2 );
-			break;
-	}
+	$choices = ttf_one_get_choices( $setting );
+	$allowed_choices = array_keys( $choices );
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
 		$value = ttf_one_get_default( $setting );
 	}
 
 	return $value;
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_get_choices' ) ) :
+/**
+ * Return the available choices for a given setting
+ *
+ * @since 1.0.0
+ *
+ * @param string|object $setting
+ *
+ * @return array
+ */
+function ttf_one_get_choices( $setting ) {
+	if ( is_object( $setting ) ) {
+		$setting = $setting->id;
+	}
+
+	$choices = array( 0 );
+
+	switch ( $setting ) {
+		case 'general-layout' :
+			$choices = array(
+				'full-width' => __( 'Full-width', 'ttf-one' ),
+				'boxed'      => __( 'Boxed', 'ttf-one' )
+			);
+			break;
+		case 'background_size' :
+		case 'header-background-size' :
+		case 'main-background-size' :
+		case 'footer-background-size' :
+			$choices = array(
+				'auto'    => __( 'Auto', 'ttf-one' ),
+				'cover'   => __( 'Cover', 'ttf-one' ),
+				'contain' => __( 'Contain', 'ttf-one' )
+			);
+			break;
+		case 'header-background-repeat' :
+		case 'main-background-repeat' :
+		case 'footer-background-repeat' :
+			$choices = array(
+				'no-repeat' => __( 'No Repeat', 'ttf-one' ),
+				'repeat'    => __( 'Tile', 'ttf-one' ),
+				'repeat-x'  => __( 'Tile Horizontally', 'ttf-one' ),
+				'repeat-y'  => __( 'Tile Vertically', 'ttf-one' )
+			);
+			break;
+		case 'header-background-position' :
+		case 'main-background-position' :
+		case 'footer-background-position' :
+			$choices = array(
+				'left'   => __( 'Left', 'ttf-one' ),
+				'center' => __( 'Center', 'ttf-one' ),
+				'right'  => __( 'Right', 'ttf-one' )
+			);
+			break;
+		case 'header-subheader-content-layout' :
+			$choices = array(
+				'default' => __( 'Default', 'ttf-one' ),
+				'flipped' => __( 'Flipped', 'ttf-one' )
+			);
+			break;
+		case 'header-layout' :
+			$choices = array(
+				1  => __( 'Layout 1', 'ttf-one' ),
+				2  => __( 'Layout 2', 'ttf-one' ),
+				3  => __( 'Layout 3', 'ttf-one' ),
+			);
+			break;
+		case 'header-branding-position' :
+			$choices = array(
+				'left'  => __( 'Left', 'ttf-one' ),
+				'right' => __( 'Right', 'ttf-one' )
+			);
+			break;
+		case 'footer-widget-areas' :
+			$choices = array(
+				0 => __( '0', 'ttf-one' ),
+				1 => __( '1', 'ttf-one' ),
+				2 => __( '2', 'ttf-one' ),
+				3 => __( '3', 'ttf-one' ),
+				4 => __( '4', 'ttf-one' )
+			);
+			break;
+		case 'footer-layout' :
+			$choices = array(
+				1  => __( 'Layout 1', 'ttf-one' ),
+				2  => __( 'Layout 2', 'ttf-one' ),
+			);
+			break;
+	}
+
+	return $choices;
 }
 endif;
 
