@@ -50,7 +50,7 @@
 	});
 
 	/**
-	 *
+	 * Custom control for toggling visibility of whole groups of controls
 	 */
 	api.MiscControlGroup = api.Control.extend({
 		toggleGroup: function(group, controls, open) {

@@ -132,14 +132,32 @@ function ttf_one_get_choices( $setting ) {
 				'boxed'      => __( 'Boxed', 'ttf-one' )
 			);
 			break;
-		case 'background_size' :
-		case 'header-background-size' :
-		case 'main-background-size' :
-		case 'footer-background-size' :
+		case 'layout-blog-featured-images' :
 			$choices = array(
-				'auto'    => __( 'Auto', 'ttf-one' ),
-				'cover'   => __( 'Cover', 'ttf-one' ),
-				'contain' => __( 'Contain', 'ttf-one' )
+				'thumbnail'  => __( 'Thumbnail', 'ttf-one' ),
+				'background' => __( 'Post header background', 'ttf-one' ),
+				'none'       => __( 'None', 'ttf-one' ),
+			);
+			break;
+		case 'layout-blog-post-date' :
+			$choices = array(
+				'absolute' => __( 'Absolute', 'ttf-one' ),
+				'relative' => __( 'Relative', 'ttf-one' ),
+				'none'     => __( 'None', 'ttf-one' ),
+			);
+			break;
+		case 'layout-blog-post-author' :
+			$choices = array(
+				'avatar' => __( 'Avatar', 'ttf-one' ),
+				'name'   => __( 'Name', 'ttf-one' ),
+				'both'   => __( 'Avatar + Name', 'ttf-one' ),
+				'none'   => __( 'None', 'ttf-one' ),
+			);
+			break;
+		case 'layout-blog-byline-location' :
+			$choices = array(
+				'before' => __( 'Before content', 'ttf-one' ),
+				'after'  => __( 'After content', 'ttf-one' ),
 			);
 			break;
 		case 'header-background-repeat' :
@@ -159,6 +177,16 @@ function ttf_one_get_choices( $setting ) {
 				'left'   => __( 'Left', 'ttf-one' ),
 				'center' => __( 'Center', 'ttf-one' ),
 				'right'  => __( 'Right', 'ttf-one' )
+			);
+			break;
+		case 'background_size' :
+		case 'header-background-size' :
+		case 'main-background-size' :
+		case 'footer-background-size' :
+			$choices = array(
+				'auto'    => __( 'Auto', 'ttf-one' ),
+				'cover'   => __( 'Cover', 'ttf-one' ),
+				'contain' => __( 'Contain', 'ttf-one' )
 			);
 			break;
 		case 'header-subheader-content-layout' :

@@ -17,42 +17,6 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 	$prefix   = 'ttf-one_';
 	$section_prefix = 'layout-';
 
-	$choices = array();
-
-	// Featured Image Blog|Archive|Search options
-	$choices['featured-images-archive'] = array(
-		'thumbnail'  => __( 'Thumbnail', 'ttf-one' ),
-		'background' => __( 'Post header background', 'ttf-one' ),
-		'none'       => __( 'None', 'ttf-one' ),
-	);
-
-	// Featured Image Post|Page options
-	$choices['featured-images-single'] = array(
-		'thumbnail' => __( 'Thumbnail', 'ttf-one' ),
-		'none'      => __( 'None', 'ttf-one' ),
-	);
-
-	// Post date options
-	$choices['post-date'] = array(
-		'absolute' => __( 'Absolute', 'ttf-one' ),
-		'relative' => __( 'Relative', 'ttf-one' ),
-		'none'     => __( 'None', 'ttf-one' ),
-	);
-
-	// Post author options
-	$choices['post-author'] = array(
-		'avatar' => __( 'Avatar', 'ttf-one' ),
-		'name'   => __( 'Name', 'ttf-one' ),
-		'both'   => __( 'Avatar + Name', 'ttf-one' ),
-		'none'   => __( 'None', 'ttf-one' ),
-	);
-
-	// Byline options
-	$choices['byline-location'] = array(
-		'before' => __( 'Before content', 'ttf-one' ),
-		'after'  => __( 'After content', 'ttf-one' ),
-	);
-
 	/**
 	 * Posts Page
 	 */
@@ -190,7 +154,7 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Featured Images', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => $choices['featured-images-archive'],
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -212,7 +176,7 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Post Date', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => $choices['post-date'],
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -234,7 +198,7 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Post Author', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => $choices['post-author'],
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -256,7 +220,7 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Byline Location', 'ttf-one' ),
 			'type'     => 'radio',
-			'choices'  => $choices['byline-location'],
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
