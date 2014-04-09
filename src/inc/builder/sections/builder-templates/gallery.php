@@ -9,15 +9,6 @@ $background_color = ( isset( $ttf_one_section_data['data']['background-color'] )
 $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
 
-<div class="ttf-one-captions-select-wrapper">
-	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
-	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
-		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
-		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
-		<option value="fancy"<?php selected( 'fancy', $captions ); ?>><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
-	</select>
-</div>
-
 <div class="ttf-one-columns-select-wrapper">
 	<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
 	<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]" class="ttf-one-gallery-columns">
@@ -25,6 +16,15 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 		<option value="2"<?php selected( 2, $columns ); ?>>2</option>
 		<option value="3"<?php selected( 3, $columns ); ?>>3</option>
 		<option value="4"<?php selected( 4, $columns ); ?>>4</option>
+	</select>
+</div>
+
+<div class="ttf-one-captions-select-wrapper">
+	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
+	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
+		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
+		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
+		<option value="fancy"<?php selected( 'fancy', $captions ); ?>><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
 	</select>
 </div>
 

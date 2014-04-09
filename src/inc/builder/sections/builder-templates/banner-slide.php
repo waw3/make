@@ -76,7 +76,7 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<?php endif; ?>
 
 		<div class="ttf-one-banner-slide-alignment-wrapper">
-			<label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position', 'ttf-one' ); ?></label>
+			<label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'ttf-one' ); ?></label>
 			<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
 				<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
 
