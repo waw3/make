@@ -93,7 +93,7 @@ if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'TTF_One_Customiz
 class TTF_One_Customize_Misc_Control extends WP_Customize_Control {
 	public $settings = 'blogname';
 	public $description = '';
-	public $prefix = '';
+	public $group = '';
 
 	public function render_content() {
 		switch ( $this->type ) {
@@ -110,8 +110,8 @@ class TTF_One_Customize_Misc_Control extends WP_Customize_Control {
 				echo '<hr />';
 				break;
 
-			case 'collapsible-section' :
-				echo '<div class="dropdown ttf-one-collapsible" data-control-prefix="' . esc_attr( $this->prefix ) . '"><div class="dropdown-content">' . ttf_one_sanitize_text( $this->label ) . '</div><div class="dropdown-arrow"></div></div>';
+			case 'group' :
+				echo '<div class="ttf-one-control-group" data-control-group="' . esc_attr( $this->group ) . '"><span>' . ttf_one_sanitize_text( $this->label ) . '</span><div class="dropdown-arrow"></div></div>';
 				break;
 		}
 	}

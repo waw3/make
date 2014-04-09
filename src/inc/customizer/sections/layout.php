@@ -59,16 +59,16 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 	$view = 'blog';
 
 	// Blog collapsible section begin
-	$setting_id = $section_prefix . $view . '-collapsible-section';
+	$setting_id = $section_prefix . 'group-' . $view;
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
 			$prefix . $setting_id,
 			array(
 				'section'     => $section,
-				'type'        => 'collapsible-section',
+				'type'        => 'group',
 				'label' => __( 'Blog (Posts Page)', 'ttf-one' ),
-				'prefix'      => $section_prefix . $view,
+				'group'       => $prefix . $section_prefix . $view,
 				'priority'    => $priority->add()
 			)
 		)

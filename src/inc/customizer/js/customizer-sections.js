@@ -52,5 +52,44 @@
 	/**
 	 *
 	 */
+	api.MiscControlGroup = api.Control.extend({
+		toggleGroup: function(controls, open) {
+			$.each(controls, function(i, control) {
+				var cid = control.id.replace('customize-control-', '');
+				api.control( cid, function( control ) {
+					var visibility = function( to ) {
+						control.container.toggle( to );
+					};
 
+					visibility( open );
+				});
+			});
+		},
+
+		ready: function() {
+			var control = this,
+				group = control.container.find('.ttf-one-control-group'),
+				isOpen = group.hasClass('open'),
+				prefix = 'customize-control-' + group.attr('data-control-group'),
+				relatedControls = $('[id^="'+prefix+'"]');
+
+			group.on('click', function(e) {
+				e.preventDefault();
+
+				isOpen = group.hasClass('open');
+
+				if (true === isOpen) {
+					group.removeClass('open');
+				} else if (false === isOpen) {
+					group.addClass('open');
+				}
+
+				control.toggleGroup(relatedControls, !isOpen);
+			});
+
+			control.toggleGroup(relatedControls, isOpen);
+		}
+	});
+
+	api.controlConstructor.group = api.MiscControlGroup;
 } )( jQuery );

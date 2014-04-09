@@ -161,7 +161,7 @@ function ttf_one_customizer_sections_script() {
 		'ttf-one-customizer-sections',
 		get_template_directory_uri() . $path . 'customizer-sections' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-controls' ),
-		TTF_ONE_VERSION,
+		time(),
 		true
 	);
 }
