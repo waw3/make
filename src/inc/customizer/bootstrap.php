@@ -59,6 +59,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 		'logo'       => __( 'Logo', 'ttf-one' ),
 		'fonts'      => __( 'Fonts', 'ttf-one' ),
 		'colors'     => __( 'Colors', 'ttf-one' ),
+		'layout'     => __( 'Layout', 'ttf-one' ),
 		'header'     => __( 'Header', 'ttf-one' ),
 		'main'       => __( 'Main', 'ttf-one' ),
 		'footer'     => __( 'Footer', 'ttf-one' ),
