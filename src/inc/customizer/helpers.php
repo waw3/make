@@ -133,6 +133,8 @@ function ttf_one_get_choices( $setting ) {
 			);
 			break;
 		case 'layout-blog-featured-images' :
+		case 'layout-archive-featured-images' :
+		case 'layout-search-featured-images' :
 			$choices = array(
 				'thumbnail'  => __( 'Thumbnail', 'ttf-one' ),
 				'background' => __( 'Post header background', 'ttf-one' ),
@@ -140,6 +142,8 @@ function ttf_one_get_choices( $setting ) {
 			);
 			break;
 		case 'layout-blog-post-date' :
+		case 'layout-archive-post-date' :
+		case 'layout-search-post-date' :
 			$choices = array(
 				'absolute' => __( 'Absolute', 'ttf-one' ),
 				'relative' => __( 'Relative', 'ttf-one' ),
@@ -147,6 +151,8 @@ function ttf_one_get_choices( $setting ) {
 			);
 			break;
 		case 'layout-blog-post-author' :
+		case 'layout-archive-post-author' :
+		case 'layout-search-post-author' :
 			$choices = array(
 				'avatar' => __( 'Avatar', 'ttf-one' ),
 				'name'   => __( 'Name', 'ttf-one' ),
@@ -155,6 +161,8 @@ function ttf_one_get_choices( $setting ) {
 			);
 			break;
 		case 'layout-blog-byline-location' :
+		case 'layout-archive-byline-location' :
+		case 'layout-search-byline-location' :
 			$choices = array(
 				'before' => __( 'Before content', 'ttf-one' ),
 				'after'  => __( 'After content', 'ttf-one' ),
