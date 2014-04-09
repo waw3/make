@@ -5,7 +5,7 @@ $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_
 $hide_arrows   = ( ! empty( $ttf_one_section_data['data']['hide-arrows'] ) ) ? $ttf_one_section_data['data']['hide-arrows'] : 0;
 $hide_dots     = ( ! empty( $ttf_one_section_data['data']['hide-dots'] ) ) ? $ttf_one_section_data['data']['hide-dots'] : 0;
 $autoplay      = ( ! empty( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 1;
-$transition    = ( ! empty( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'cross-fade';
+$transition    = ( ! empty( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'scrollHorz';
 $delay         = ( ! empty( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 4000;
 $height        = ( ! empty( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 500;
 $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
@@ -67,7 +67,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 		<select id="<?php echo $section_name; ?>[transition]" name="<?php echo $section_name; ?>[transition]">
 			<option value="fade"<?php selected( 'cross-fade', $transition ); ?>><?php _e( 'Cross fade', 'ttf-one' ); ?></option>
 			<option value="fadeout"<?php selected( 'fade', $transition ); ?>><?php _e( 'Fade', 'ttf-one' ); ?></option>
-			<option value="scrollHorz"<?php selected( 'slide-horizontal', $transition ); ?>><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
+			<option value="scrollHorz"<?php selected( 'scrollHorz', $transition ); ?>><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
 			<option value="none"<?php selected( 'none', $transition ); ?>><?php echo _x( 'None', 'transition effect', 'ttf-one' ); ?></option>
 		</select>
 	</div>
