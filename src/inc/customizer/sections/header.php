@@ -105,12 +105,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Repeat', 'ttf-one' ),
 			'type'     => 'radio',
-			'choices'  => array(
-				'no-repeat' => __( 'No Repeat', 'ttf-one' ),
-				'repeat'    => __( 'Tile', 'ttf-one' ),
-				'repeat-x'  => __( 'Tile Horizontally', 'ttf-one' ),
-				'repeat-y'  => __( 'Tile Vertically', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -132,11 +127,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Position', 'ttf-one' ),
 			'type'     => 'radio',
-			'choices'  => array(
-				'left'   => __( 'Left', 'ttf-one' ),
-				'center' => __( 'Center', 'ttf-one' ),
-				'right'  => __( 'Right', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -158,11 +149,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Size', 'ttf-one' ),
 			'type'     => 'radio',
-			'choices'  => array(
-				'auto'  => __( 'Auto', 'ttf-one' ),
-				'cover'   => __( 'Cover', 'ttf-one' ),
-				'contain' => __( 'Contain', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -332,10 +319,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Sub Header Content Layout', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => array(
-				'default' => __( 'Default', 'ttf-one' ),
-				'flipped' => __( 'Flipped', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -357,11 +341,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Header Layout', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => array(
-				1  => __( 'Layout 1', 'ttf-one' ),
-				2  => __( 'Layout 2', 'ttf-one' ),
-				3  => __( 'Layout 3', 'ttf-one' ),
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -383,10 +363,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Show Title/Logo On', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => array(
-				'left'  => __( 'Left', 'ttf-one' ),
-				'right' => __( 'Right', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);

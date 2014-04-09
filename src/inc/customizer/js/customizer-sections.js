@@ -48,4 +48,54 @@
 
 		});
 	});
+
+	/**
+	 * Custom control for toggling visibility of whole groups of controls
+	 */
+	api.MiscControlGroup = api.Control.extend({
+		toggleGroup: function(group, controls, open) {
+			if (true === open) {
+				group.addClass('open');
+			} else {
+				group.removeClass('open');
+			}
+
+			$.each(controls, function(i, control) {
+				var cid = control.id.replace('customize-control-', '');
+				api.control( cid, function( control ) {
+					var visibility = function( to ) {
+						control.container.toggle( to );
+					};
+
+					visibility( open );
+				});
+			});
+		},
+
+		ready: function() {
+			var control = this,
+				state = control.state || 'closed',
+				group = control.container.find('.ttf-one-control-group'),
+				prefix = 'customize-control-' + group.attr('data-control-group'),
+				groupControls = $('[id^="'+prefix+'"]');
+
+			group.on('click', function(e) {
+				e.preventDefault();
+
+				state = control.state || 'closed';
+
+				if ('open' === state) {
+					control.state = 'closed';
+				} else if ('closed' === state) {
+					control.state = 'open';
+				}
+
+				control.toggleGroup(group, groupControls, 'open' === control.state);
+			});
+
+			control.toggleGroup(group, groupControls, 'open' === state);
+		}
+	});
+
+	api.controlConstructor.group = api.MiscControlGroup;
 } )( jQuery );

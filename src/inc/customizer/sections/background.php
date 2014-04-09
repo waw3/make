@@ -63,11 +63,7 @@ function ttf_one_customizer_background() {
 			'section'  => $section,
 			'label'    => __( 'Background Size', 'ttf-one' ),
 			'type'     => 'radio',
-			'choices'  => array(
-				'auto'  => __( 'Auto', 'ttf-one' ),
-				'cover'   => __( 'Cover', 'ttf-one' ),
-				'contain' => __( 'Contain', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);

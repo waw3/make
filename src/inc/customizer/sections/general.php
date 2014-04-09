@@ -35,10 +35,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Site Layout', 'ttf-one' ),
 			'type'     => 'radio',
-			'choices'  => array(
-				'full-width' => __( 'Full-width', 'ttf-one' ),
-				'boxed'      => __( 'Boxed', 'ttf-one' )
-			),
+			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
