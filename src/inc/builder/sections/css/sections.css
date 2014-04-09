@@ -111,9 +111,9 @@
 	}
 }
 .ttf-one-banner-slide-alignment-wrapper {
-	margin-top: 15px;
 	display: block;
-	float: right;
+	margin-top: 15px;
+	text-align: right;
 }
 .ttf-one-banner-options {
 	margin-top: 40px;
