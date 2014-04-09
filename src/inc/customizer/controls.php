@@ -111,7 +111,7 @@ class TTF_One_Customize_Misc_Control extends WP_Customize_Control {
 				break;
 
 			case 'group' :
-				echo '<div class="ttf-one-control-group" data-control-group="' . esc_attr( $this->group ) . '"><span>' . ttf_one_sanitize_text( $this->label ) . '</span><div class="dropdown-arrow"></div></div>';
+				echo '<div class="ttf-one-control-group" data-control-group="' . esc_attr( $this->group ) . '"><span>' . ttf_one_sanitize_text( $this->label ) . '</span></div>';
 				break;
 		}
 	}

@@ -178,6 +178,31 @@ function ttf_one_customizer_admin_styles() { ?>
 		.customize-control.customize-control-heading {
 			margin-bottom: -2px;
 		}
+		.ttf-one-control-group {
+			margin-left: -6px;
+		}
+		.ttf-one-control-group span {
+			cursor: pointer;
+			font-size: 14px;
+			font-weight: bold;
+		}
+		.ttf-one-control-group span:after {
+			content: "\f140";
+			font: normal 20px/1 'dashicons';
+			speak: none;
+			padding: 0;
+			text-indent: 0;
+			text-align: center;
+			position: relative;
+			top: 5px;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-decoration: none !important;
+			color: #333;
+		}
+		.ttf-one-control-group.open span:after {
+			content: "\f142";
+		}
 	</style>
 <?php }
 endif;

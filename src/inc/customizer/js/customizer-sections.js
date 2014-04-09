@@ -53,7 +53,13 @@
 	 *
 	 */
 	api.MiscControlGroup = api.Control.extend({
-		toggleGroup: function(controls, open) {
+		toggleGroup: function(group, controls, open) {
+			if (true === open) {
+				group.addClass('open');
+			} else {
+				group.removeClass('open');
+			}
+
 			$.each(controls, function(i, control) {
 				var cid = control.id.replace('customize-control-', '');
 				api.control( cid, function( control ) {
@@ -84,10 +90,10 @@
 					control.state = 'open';
 				}
 
-				control.toggleGroup(groupControls, 'open' === control.state);
+				control.toggleGroup(group, groupControls, 'open' === control.state);
 			});
 
-			control.toggleGroup(groupControls, 'open' === state);
+			control.toggleGroup(group, groupControls, 'open' === state);
 		}
 	});
 
