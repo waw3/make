@@ -17,9 +17,9 @@
 /*---------------------------------------------------------
  Text and Gallery: One column (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-text-columns-1 .ttf-one-text-column:nth-child(2),
-.ttf-one-text-columns-1 .ttf-one-text-column:nth-child(3),
-.ttf-one-text-columns-1 .ttf-one-text-column:nth-child(4) {
+.ttf-one-text-columns-1 .ttf-one-text-column-position-2,
+.ttf-one-text-columns-1 .ttf-one-text-column-position-3,
+.ttf-one-text-columns-1 .ttf-one-text-column-position-4 {
 	display: none;
 }
 .ttf-one-text-columns-1 .ttf-one-sortable-handle {
@@ -28,8 +28,8 @@
 /*---------------------------------------------------------
  Text and Gallery: Two column (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-text-columns-2 .ttf-one-text-column:nth-child(3),
-.ttf-one-text-columns-2 .ttf-one-text-column:nth-child(4),
+.ttf-one-text-columns-2 .ttf-one-text-column-position-3,
+.ttf-one-text-columns-2 .ttf-one-text-column-position-4,
 .ttf-one-gallery-columns-2 .ttf-one-gallery-item:nth-child(3),
 .ttf-one-gallery-columns-2 .ttf-one-gallery-item:nth-child(4) {
 	display: none;
@@ -49,7 +49,7 @@
 /*---------------------------------------------------------
  Text and Gallery: Three column (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-text-columns-3 .ttf-one-text-column:nth-child(4),
+.ttf-one-text-columns-3 .ttf-one-text-column-position-4,
 .ttf-one-gallery-columns-3 .ttf-one-gallery-item:nth-child(4) {
 	display: none;
 }
@@ -73,10 +73,10 @@
 	.ttf-one-gallery-columns-4 .ttf-one-gallery-item {
 		width: 25%;
 		float: left;
-		padding-right: 20px;
+		padding: 0 10px;
 	}
 }
-.ttf-one-text-columns-4 .ttf-one-text-column:nth-child(4),
+.ttf-one-text-columns-4 .ttf-one-text-column-position-4,
 .ttf-one-gallery-columns-4 .ttf-one-gallery-item:nth-child(4) {
 	padding-right: 0; /*reset*/
 }

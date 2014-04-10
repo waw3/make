@@ -25,7 +25,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 		$title    = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['title'] : '';
 		$content  = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['content'] : '';
 	?>
-	<div class="ttf-one-text-column" data-id="<?php echo $i; ?>">
+	<div class="ttf-one-text-column ttf-one-text-column-position-<?php echo $i; ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 			<div class="sortable-background"></div>
 		</div>
