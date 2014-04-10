@@ -31,28 +31,28 @@ if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttf_one_is_wpcom(
 }
 
 /**
- * Includes
+ * Global Includes
  */
-// Custom template tags
-require get_template_directory() . '/inc/template-tags.php';
 // Custom functions that act independently of the theme templates
 require get_template_directory() . '/inc/extras.php';
+// Custom template tags
+require get_template_directory() . '/inc/template-tags.php';
 // Customizer additions
 require get_template_directory() . '/inc/customizer/bootstrap.php';
 // Jetpack compatibility file
 require get_template_directory() . '/inc/jetpack.php';
 // Gallery slider
 require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
-// TinyMCE customizations
+
+/**
+ * Admin Includes
+ */
 if ( is_admin() ) {
+	// TinyMCE customizations
 	require get_template_directory() . '/inc/tinymce.php';
-}
-// Page customizations
-if ( is_admin() ) {
+	// Page customizations
 	require get_template_directory() . '/inc/edit-page.php';
-}
-// Load the builder
-if ( is_admin() ) {
+	// Page Builder
 	require get_template_directory() . '/inc/builder/core/base.php';
 }
 

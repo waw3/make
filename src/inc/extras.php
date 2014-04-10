@@ -3,31 +3,35 @@
  * @package ttf-one
  */
 
+if ( ! function_exists( 'ttf_one_page_menu_args' ) ) :
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  *
+ * @since 1.0.0
+ *
  * @param array $args Configuration arguments.
+ *
  * @return array
  */
 function ttf_one_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
+endif;
+
 add_filter( 'wp_page_menu_args', 'ttf_one_page_menu_args' );
 
 if ( ! function_exists( 'ttf_one_body_classes' ) ) :
 /**
  * Adds custom classes to the array of body classes.
  *
+ * @since 1.0.0
+ *
  * @param array $classes Classes for the body element.
+ *
  * @return array
  */
 function ttf_one_body_classes( $classes ) {
-	// Adds a class of group-blog to blogs with more than 1 published author.
-	if ( is_multi_author() ) {
-		$classes[] = 'group-blog';
-	}
-
 	// Left Sidebar
 	if ( true === ttf_one_has_sidebar( 'left' ) ) {
 		$classes[] = 'has-left-sidebar';
@@ -44,11 +48,15 @@ endif;
 
 add_filter( 'body_class', 'ttf_one_body_classes' );
 
+if ( ! function_exists( 'ttf_one_wp_title' ) ) :
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  *
+ * @since 1.0.0
+ *
  * @param string $title Default title text for current view.
  * @param string $sep Optional separator.
+ *
  * @return string The filtered title.
  */
 function ttf_one_wp_title( $title, $sep ) {
@@ -74,8 +82,11 @@ function ttf_one_wp_title( $title, $sep ) {
 
 	return $title;
 }
+endif;
+
 add_filter( 'wp_title', 'ttf_one_wp_title', 10, 2 );
 
+if ( ! function_exists( 'ttf_one_setup_author' ) ) :
 /**
  * Sets the authordata global when viewing an author archive.
  *
@@ -86,15 +97,20 @@ add_filter( 'wp_title', 'ttf_one_wp_title', 10, 2 );
  * template to print information about the author.
  *
  * @global WP_Query $wp_query WordPress Query object.
+ *
+ * @since 1.0.0
+ *
  * @return void
  */
 function ttf_one_setup_author() {
 	global $wp_query;
 
-	if ( $wp_query->is_author() && isset( $wp_query->post ) ) {
+	if ( ! isset( $GLOBALS['authordata'] ) && $wp_query->is_author() && isset( $wp_query->post ) ) {
 		$GLOBALS['authordata'] = get_userdata( $wp_query->post->post_author );
 	}
 }
+endif;
+
 add_action( 'wp', 'ttf_one_setup_author' );
 
 if ( ! function_exists( 'ttf_one_get_view' ) ) :
