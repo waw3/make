@@ -41,7 +41,7 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 
 			<div class="ttf-one-banner-slide-background-color-wrapper">
 				<h4><label for="<?php echo $section_name; ?>[backgroud-color]"><?php _e( 'Background color', 'ttf-one' ); ?></label></h4>
-				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
 			</div>
 		</div>
 

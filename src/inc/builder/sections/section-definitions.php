@@ -183,7 +183,7 @@ class TTF_One_Section_Definitions {
 				}
 
 				if ( isset( $slide['background-color'] ) ) {
-					$clean_data['banner-slides'][ $id ]['background-color'] = ttf_one_maybe_hash_hex_color( $slide['background-color'] );
+					$clean_data['banner-slides'][ $id ]['background-color'] = maybe_hash_hex_color( $slide['background-color'] );
 				}
 
 				$clean_data['banner-slides'][ $id ]['darken'] = ( isset( $slide['darken'] ) && 1 === (int) $slide['darken'] ) ? 1 : 0;
@@ -251,7 +251,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['background-color'] ) ) {
-			$clean_data['background-color'] = ttf_one_maybe_hash_hex_color( $data['background-color'] );
+			$clean_data['background-color'] = maybe_hash_hex_color( $data['background-color'] );
 		}
 
 		if ( isset( $data['gallery-item-order'] ) ) {

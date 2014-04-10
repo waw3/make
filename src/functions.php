@@ -3,11 +3,16 @@
  * @package ttf-one
  */
 
+/**
+ * The current version of the theme.
+ */
+define( 'TTF_ONE_VERSION', '1.0' );
+
 if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
 /**
  * Whether or not the current environment is WordPress.com.
  *
- * @since  1.0
+ * @since  1.0.0
  *
  * @return bool
  */
@@ -15,11 +20,6 @@ function ttf_one_is_wpcom() {
 	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
 }
 endif;
-
-/**
- * The current version of the theme.
- */
-define( 'TTF_ONE_VERSION', '1.0' );
 
 /**
  * The suffix to use for scripts.
@@ -58,7 +58,11 @@ if ( is_admin() ) {
 
 if ( ! function_exists( 'ttf_one_setup' ) ) :
 /**
- * Sets up theme defaults and registers support for various WordPress features.
+ * Sets up text domain, theme support, menus, and editor styles
+ *
+ * @since 1.0.0
+ *
+ * @return void
  */
 function ttf_one_setup() {
 	// Text domain
@@ -104,6 +108,10 @@ add_action( 'after_setup_theme', 'ttf_one_setup' );
 if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
 /**
  * Register widget areas
+ *
+ * @since 1.0.0
+ *
+ * @return void
  */
 function ttf_one_widgets_init() {
 	register_sidebar( array(
@@ -167,9 +175,16 @@ add_action( 'widgets_init', 'ttf_one_widgets_init' );
 
 if ( ! function_exists( 'ttf_one_scripts' ) ) :
 /**
- * Enqueue scripts and styles.
+ * Enqueue styles and scripts.
+ *
+ * @since 1.0.0
+ *
+ * @return void
  */
 function ttf_one_scripts() {
+	/**
+	 * Styles
+	 */
 	$style_dependencies = array();
 
 	// Google fonts
@@ -211,9 +226,12 @@ function ttf_one_scripts() {
 		'print'
 	);
 
+	/**
+	 * Scripts
+	 */
 	$script_dependencies = array();
 
-	// Scripts that don't need jQuery
+	// Scripts that don't need jQuery go here
 
 	$script_dependencies[] = 'jquery';
 
@@ -254,6 +272,9 @@ if ( ! function_exists( 'ttf_one_cycle2_script_setup' ) ) :
 /**
  * Enqueue Cycle2 scripts
  *
+ * If the environment is set up for minified scripts, load one concatenated, minified
+ * Cycle 2 script. Otherwise, load each module separately.
+ *
  * @since 1.0.0
  *
  * @param array $script_dependencies
@@ -270,6 +291,7 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 			true
 		);
 	} else {
+		// Core script
 		wp_enqueue_script(
 			'ttf-one-cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
@@ -277,6 +299,7 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 			'2.1.3',
 			true
 		);
+		// Vertical centering
 		wp_enqueue_script(
 			'ttf-one-cycle2-center',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
@@ -284,6 +307,7 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 			'20140121',
 			true
 		);
+		// Swipe support
 		wp_enqueue_script(
 			'ttf-one-cycle2-swipe',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
@@ -298,6 +322,8 @@ endif;
 if ( ! function_exists( 'ttf_one_localize_fitvids' ) ) :
 /**
  * Localize FitVids script.
+ *
+ * Add custom selectors to increase vendor support in FitVids.
  *
  * @since 1.0.0
  *
@@ -334,7 +360,11 @@ endif;
 
 if ( ! function_exists( 'ttf_one_head_extras' ) ) :
 /**
+ * Add additional items to the document head.
  *
+ * @since 1.0.0
+ *
+ * @return void
  */
 function ttf_one_head_extras() { ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -381,72 +411,3 @@ function ttf_one_content_width() {
 endif;
 
 add_action( 'template_redirect', 'ttf_one_content_width' );
-
-if ( ! function_exists( 'ttf_one_sanitize_hex_color' ) ) :
-/**
- * Validates a hex color.
- *
- * Returns either '', a 3 or 6 digit hex color (with #), or null.
- * For validating values without a #, see sanitize_hex_color_no_hash().
- *
- * @since  1.0.0.
- *
- * @param  string         $color    Hexidecimal value to sanitize.
- * @return string|null              Sanitized value.
- */
-function ttf_one_sanitize_hex_color( $color ) {
-	if ( '' === $color )
-		return '';
-
-	// 3 or 6 hex digits, or the empty string.
-	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
-		return $color;
-
-	return null;
-}
-endif;
-
-if ( ! function_exists( 'ttf_one_sanitize_hex_color_no_hash' ) ) :
-/**
- * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
- *
- * Saving hex colors without a hash puts the burden of adding the hash on the
- * UI, which makes it difficult to use or upgrade to other color types such as
- * rgba, hsl, rgb, and html color names.
- *
- * Returns either '', a 3 or 6 digit hex color (without a #), or null.
- *
- * @since  1.0.0.
- *
- * @param  string         $color    Hexidecimal value to sanitize.
- * @return string|null              Sanitized value.
- */
-function ttf_one_sanitize_hex_color_no_hash( $color ) {
-	$color = ltrim( $color, '#' );
-
-	if ( '' === $color )
-		return '';
-
-	return ttf_one_sanitize_hex_color( '#' . $color ) ? $color : null;
-}
-endif;
-
-if ( ! function_exists( 'ttf_one_maybe_hash_hex_color' ) ) :
-/**
- * Ensures that any hex color is properly hashed.
- * Otherwise, returns value untouched.
- *
- * This method should only be necessary if using sanitize_hex_color_no_hash().
- *
- * @since  1.0.0.
- *
- * @param  string    $color    Hexidecimal value to sanitize.
- * @return string              Sanitized value.
- */
-function ttf_one_maybe_hash_hex_color( $color ) {
-	if ( $unhashed = ttf_one_sanitize_hex_color_no_hash( $color ) )
-		return '#' . $unhashed;
-
-	return $color;
-}
-endif;
