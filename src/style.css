@@ -1180,12 +1180,32 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
-.builder-text-columns-2 .builder-text-column {
+/*---------------------------------------------------------
+ Text section (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-column {
   float: left;
-  width: 48.33333%;
   margin-right: 3.33333%; }
-  .builder-text-columns-2 .builder-text-column:last-of-type {
+  .builder-text-column:last-of-type {
     margin-right: 0; }
+
+/*---------------------------------------------------------
+ Text: Two columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-columns-2 .builder-text-column {
+  width: 48.33333%; }
+
+/*---------------------------------------------------------
+ Text: Three columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-columns-3 .builder-text-column {
+  width: 31.11111%; }
+
+/*---------------------------------------------------------
+ Text: Four columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-columns-4 .builder-text-column {
+  width: 22.5%; }
 
 /*---------------------------------------------------------
  Banner section (_builder.scss)

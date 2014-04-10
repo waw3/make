@@ -1,13 +1,33 @@
 /*---------------------------------------------------------
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
-.builder-text-columns-2 .builder-text-column {
+/*---------------------------------------------------------
+ Text section (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-column {
 	float: left;
-	width: percentage( ( $col * 4 + $gut * 3 )  / $width );
 	margin-right: percentage( $gut / $width );
 	&:last-of-type {
 		margin-right: 0; //reset
 	}
+}
+/*---------------------------------------------------------
+ Text: Two columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-columns-2 .builder-text-column {
+	width: percentage( ( $width - $gut ) / ( $width * 2 ) );
+}
+/*---------------------------------------------------------
+ Text: Three columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-columns-3 .builder-text-column {
+	width: percentage( ( $width - ( $gut * 2 ) ) / ( $width * 3 ) );
+}
+/*---------------------------------------------------------
+ Text: Four columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-text-columns-4 .builder-text-column {
+	width: percentage( ( $width - ( $gut * 3 ) ) / ( $width * 4 ) );
 }
 /*---------------------------------------------------------
  Banner section (_builder.scss)
