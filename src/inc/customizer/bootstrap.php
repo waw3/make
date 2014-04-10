@@ -161,7 +161,7 @@ function ttf_one_customizer_sections_script() {
 		'ttf-one-customizer-sections',
 		get_template_directory_uri() . $path . 'customizer-sections' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-controls' ),
-		time(),
+		TTF_ONE_VERSION,
 		true
 	);
 }
@@ -175,6 +175,9 @@ if ( ! function_exists( 'ttf_one_customizer_admin_styles' ) ) :
  */
 function ttf_one_customizer_admin_styles() { ?>
 	<style type="text/css">
+		.customize-control.customize-control-radio {
+			padding-bottom: 0;
+		}
 		.customize-control.customize-control-heading {
 			margin-bottom: -2px;
 		}

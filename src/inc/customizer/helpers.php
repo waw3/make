@@ -135,6 +135,8 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-blog-featured-images' :
 		case 'layout-archive-featured-images' :
 		case 'layout-search-featured-images' :
+		case 'layout-post-featured-images' :
+		case 'layout-page-featured-images' :
 			$choices = array(
 				'thumbnail'  => __( 'Thumbnail', 'ttf-one' ),
 				'background' => __( 'Post header background', 'ttf-one' ),
@@ -144,6 +146,8 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-blog-post-date' :
 		case 'layout-archive-post-date' :
 		case 'layout-search-post-date' :
+		case 'layout-post-post-date' :
+		case 'layout-page-post-date' :
 			$choices = array(
 				'absolute' => __( 'Absolute', 'ttf-one' ),
 				'relative' => __( 'Relative', 'ttf-one' ),
@@ -153,6 +157,8 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-blog-post-author' :
 		case 'layout-archive-post-author' :
 		case 'layout-search-post-author' :
+		case 'layout-post-post-author' :
+		case 'layout-page-post-author' :
 			$choices = array(
 				'avatar' => __( 'Avatar', 'ttf-one' ),
 				'name'   => __( 'Name', 'ttf-one' ),
@@ -163,6 +169,8 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-blog-byline-location' :
 		case 'layout-archive-byline-location' :
 		case 'layout-search-byline-location' :
+		case 'layout-post-byline-location' :
+		case 'layout-page-byline-location' :
 			$choices = array(
 				'before' => __( 'Before content', 'ttf-one' ),
 				'after'  => __( 'After content', 'ttf-one' ),
