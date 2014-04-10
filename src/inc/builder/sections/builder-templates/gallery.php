@@ -45,9 +45,6 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[gallery-item-order]" class="ttf-one-gallery-item-order" />
 </div>
 
-<div class="clear"></div>
-
-
 <div class="ttf-one-gallery-background-options-container">
 	<div class="ttf-one-gallery-background-image-wrapper">
 		<?php
@@ -71,14 +68,10 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 			<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
 		</label>
 
-		<h4>
-			<?php _e( 'Background color', 'ttf-one' ); ?>
-		</h4>
+		<h4><?php _e( 'Background color', 'ttf-one' ); ?></h4>
 		<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
 	</div>
 </div>
-
-<div class="clear"></div>
 
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttf_one_load_section_footer(); ?>
