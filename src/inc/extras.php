@@ -210,12 +210,12 @@ function ttf_one_sidebar_description( $sidebar_id ) {
 
 		// Not enabled anywhere
 		if ( empty( $enabled_views ) ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Main" section of the Theme Customizer.', 'ttf-one' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" section of the Theme Customizer.', 'ttf-one' );
 		}
 		// List enabled views
 		else {
 			$description = sprintf(
-				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Main" section of the Theme Customizer.', 'ttf-one' ),
+				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" section of the Theme Customizer.', 'ttf-one' ),
 				esc_html( implode( _x( ', ', 'list item separator', 'ttf-one' ), $enabled_views ) )
 			);
 		}
@@ -238,25 +238,18 @@ if ( ! function_exists( 'ttf_one_sidebar_list_enabled' ) ) :
 function ttf_one_sidebar_list_enabled( $location ) {
 	$enabled_views = array();
 
-	$theme_mods = get_theme_mods();
-	foreach ( $theme_mods as $key => $value ) {
-		if ( false !== strpos( $key, 'main-sidebar-' . $location ) ) {
-			if ( 1 === $value ) {
-				switch ( $key ) {
-					case 'main-sidebar-' . $location . '-posts' :
-						$enabled_views[] = __( 'Posts', 'ttf-one' );
-						break;
-					case 'main-sidebar-' . $location . '-pages' :
-						$enabled_views[] = __( 'Pages', 'ttf-one' );
-						break;
-					case 'main-sidebar-' . $location . '-archives' :
-						$enabled_views[] = __( 'Blog Page & Archives', 'ttf-one' );
-						break;
-					case 'main-sidebar-' . $location . '-search' :
-						$enabled_views[] = __( 'Search Results', 'ttf-one' );
-						break;
-				}
-			}
+	$views = array(
+		'blog' => __( 'Blog (Post Page)', 'ttf-one' ),
+		'archive' => __( 'Archives', 'ttf-one' ),
+		'search' => __( 'Search Results', 'ttf-one' ),
+		'post' => __( 'Posts', 'ttf-one' ),
+		'page' => __( 'Pages', 'ttf-one' ),
+	);
+
+	foreach ( $views as $view => $label ) {
+		$option = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttf_one_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
+		if ( true === $option ) {
+			$enabled_views[] = $label;
 		}
 	}
 
