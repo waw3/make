@@ -254,7 +254,7 @@
 }
 .ttf-one-menu-pane {
 	padding: 0 20px;
-	border: 1px solid #dfdfdf;
+	border: 1px solid #eeeeee;
 	border-top: none;
 	line-height: 0; /*reset*/
 }
@@ -264,8 +264,7 @@
 .ttf-one-menu-list {
 	display: inline-block;
 	width: 100%;
-	margin-top: 20px;
-	margin-bottom: 0; /*reset*/
+	margin: 20px 0 2px 0;
 }
 @media screen and (min-width: 1160px) {
 	.ttf-one-menu-list-item {
@@ -371,7 +370,7 @@
 .ttf-one-menu-tab-link {
 	padding: 5px 10px;
 	display: inline-block;
-	border: 1px solid #dfdfdf;
+	border: 1px solid #eeeeee;
 	border-top: none;  /*reset*/
 	background: #ffffff;
 	color: #333;
