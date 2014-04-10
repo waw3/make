@@ -14,7 +14,7 @@
 			$pipe_extra_class = ( empty( $header_title ) ) ? ' ttf-one-section-header-pipe-hidden' : '';
 		?>
 		<h3>
-			<span class="ttf-one-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo strtolower( esc_html( $ttf_one_section_data['section']['label'] ) ); ?></em>
+			<span class="ttf-one-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttf_one_section_data['section']['label'] ) ); ?></em>
 		</h3>
 		<a href="#" class="ttf-one-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'ttf-one' ); ?>">
 			<div class="handlediv"></div>

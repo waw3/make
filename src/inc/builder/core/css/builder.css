@@ -106,7 +106,8 @@
 }
 .ttf-one-section-header em {
 	font-weight: normal !important;
-	color: #999999;
+	font-style: normal !important;
+	color: #777777;
 	margin-left: 6px;
 }
 .ttf-one-section .handlediv {
