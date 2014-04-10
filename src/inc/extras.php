@@ -97,6 +97,60 @@ function ttf_one_setup_author() {
 }
 add_action( 'wp', 'ttf_one_setup_author' );
 
+if ( ! function_exists( 'ttf_one_get_view' ) ) :
+/**
+ * Determine the current view
+ *
+ * For use with view-related theme options.
+ *
+ * @since 1.0.0
+ *
+ * @return string
+ */
+function ttf_one_get_view() {
+	// Post types
+	$post_types = get_post_types(
+		array(
+			'public' => true,
+			'_builtin' => false
+		)
+	);
+	$post_types[] = 'post';
+
+	// Post parent
+	$parent_post_type = '';
+	if ( is_attachment() ) {
+		$post_parent = get_post()->post_parent;
+		$parent_post_type = get_post_type( $post_parent );
+	}
+
+	$view = '';
+
+	// Blog
+	if ( is_home() ) {
+		$view = 'blog';
+	}
+	// Archives
+	else if ( is_archive() ) {
+		$view = 'archive';
+	}
+	// Search results
+	else if ( is_search() ) {
+		$view = 'search';
+	}
+	// Posts and public custom post types
+	else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
+		$view = 'post';
+	}
+	// Pages
+	else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
+		$view = 'page';
+	}
+
+	return $view;
+}
+endif;
+
 if ( ! function_exists( 'ttf_one_has_sidebar' ) ) :
 /**
  * Determine if the current view should show a sidebar in the given location.
@@ -115,40 +169,11 @@ function ttf_one_has_sidebar( $location ) {
 		return false;
 	}
 
-	$show_sidebar = false;
+	// Get the view
+	$view = ttf_one_get_view();
 
-	// Post types
-	$post_types = get_post_types(
-		array(
-			'public' => true,
-			'_builtin' => false
-		)
-	);
-	$post_types[] = 'post';
-
-	// Post parent
-	$parent_post_type = '';
-	if ( is_attachment() ) {
-		$post_parent = get_post()->post_parent;
-		$parent_post_type = get_post_type( $post_parent );
-	}
-
-	// Posts and public custom post types
-	if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
-		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-posts', ttf_one_get_default( 'main-sidebar-' . $location . '-posts' ) );
-	}
-	// Pages
-	else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
-		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-pages', ttf_one_get_default( 'main-sidebar-' . $location . '-pages' ) );
-	}
-	// Blog and Archives
-	else if ( is_archive() || is_home() ) {
-		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-archives', ttf_one_get_default( 'main-sidebar-' . $location . '-archives' ) );
-	}
-	// Search results
-	else if ( is_search() ) {
-		$show_sidebar = (bool) get_theme_mod( 'main-sidebar-' . $location . '-search', ttf_one_get_default( 'main-sidebar-' . $location . '-search' ) );
-	}
+	// Get the relevant option
+	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttf_one_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
 
 	// Filter and return
 	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location );

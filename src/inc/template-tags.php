@@ -170,46 +170,13 @@ function ttf_one_maybe_show_site_region( $region ) {
 		return;
 	}
 
-	// Post types
-	$post_types = get_post_types(
-		array(
-			'public' => true,
-			'_builtin' => false
-		)
-	);
-	$post_types[] = 'post';
+	// Get the view
+	$view = ttf_one_get_view();
 
-	// Post parent
-	$parent_post_type = '';
-	if ( is_attachment() ) {
-		$post_parent = get_post()->post_parent;
-		$parent_post_type = get_post_type( $post_parent );
-	}
+	// Get the relevant option
+	$hide_region = (bool) get_theme_mod( 'layout-' . $view . '-hide-' . $region, ttf_one_get_default( 'layout-' . $view . '-hide-' . $region ) );
 
-	// Blog
-	if ( is_home() ) {
-		$key = 'blog';
-	}
-	// Archives
-	else if ( is_archive() ) {
-		$key = 'archive';
-	}
-	// Search results
-	else if ( is_search() ) {
-		$key = 'search';
-	}
-	// Posts and public custom post types
-	else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
-		$key = 'post';
-	}
-	// Pages
-	else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
-		$key = 'page';
-	}
-
-	$hide_region = get_theme_mod( 'layout-' . $key . '-hide-' . $region, ttf_one_get_default( 'layout-' . $key . '-hide-' . $region ) );
-
-	if ( ! $hide_region ) {
+	if ( true !== $hide_region ) {
 		get_template_part(
 			'partials/' . $region . '-layout',
 			get_theme_mod( $region . '-layout', ttf_one_get_default( $region . '-layout' ) )
