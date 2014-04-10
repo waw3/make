@@ -54,6 +54,15 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
 				oneApp.enableEditors($item);
+
+				// Label the columns according to the position they are in
+				var i = 1;
+				$('.ttf-one-text-column', $stage).each(function(){
+					$(this)
+						.removeClass('ttf-one-text-column-position-1 ttf-one-text-column-position-2 ttf-one-text-column-position-3 ttf-one-text-column-position-4')
+						.addClass('ttf-one-text-column-position-' + i);
+					i++;
+				});
 			}
 		});
 	};
