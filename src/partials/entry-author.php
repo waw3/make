@@ -11,7 +11,13 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $key, ttf_one_get_defau
 <div class="entry-author">
 	<?php if ( 'avatar' === $author_option || 'both' === $author_option ) : ?>
 	<div class="entry-author-avatar">
-		<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
+		<?php
+		printf(
+			'<a class="vcard" href="%1$s">%2$s</a>',
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+			get_avatar( get_the_author_meta( 'ID' ) )
+		);
+		?>
 	</div>
 	<?php endif; ?>
 	<?php if ( 'name' === $author_option || 'both' === $author_option ) : ?>
