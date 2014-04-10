@@ -20,16 +20,6 @@
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */
-#ttf_one_builder {
-	padding-bottom: 2px;
-	background: #ffffff;
-}
-#ttf_one_builder.closed {
-	padding-bottom: 0; /*reset*/
-}
-#ttf_one_builder a {
-	outline: 0; /*reset*/
-}
 .ttf-one-stage {
 	clear: both;
 	padding-top: 10px;
@@ -112,10 +102,10 @@
 	box-sizing: border-box;
 }
 .ttf-one-section-header span {
-	font-weight: 700;
+	font-weight: bold;
 }
 .ttf-one-section-header em {
-	font-weight: 400 !important;
+	font-weight: normal !important;
 	color: #999999;
 	margin-left: 6px;
 }
