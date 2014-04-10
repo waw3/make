@@ -7,10 +7,8 @@
 	<div class="ttf-one-section-header">
 		<?php
 			$header_title = '';
-			if ( isset( $ttf_one_section_data['data']['title'] ) ) {
-				$header_title = $ttf_one_section_data['data']['title'];
-			} elseif ( isset( $ttf_one_section_data['data']['left']['title'] ) ) {
-				$header_title = $ttf_one_section_data['data']['left']['title'];
+			if ( isset( $ttf_one_section_data['data']['label'] ) ) {
+				$header_title = $ttf_one_section_data['data']['label'];
 			}
 
 			$pipe_extra_class = ( empty( $header_title ) ) ? ' ttf-one-section-header-pipe-hidden' : '';

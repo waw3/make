@@ -94,9 +94,15 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
+			$i = 1;
 			foreach ( $data['columns'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {
 					$clean_data['columns'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
+
+					// The first title serves as the section title
+					if ( 1 === $i) {
+						$clean_data['label'] = apply_filters( 'title_save_pre', $item['title'] );
+					}
 				}
 
 				if ( isset( $item['image-link'] ) ) {
@@ -110,6 +116,8 @@ class TTF_One_Section_Definitions {
 				if ( isset( $item['content'] ) ) {
 					$clean_data['columns'][ $id ]['content'] = wp_filter_post_kses( $item['content'] );
 				}
+
+				$i++;
 			}
 		}
 
@@ -306,6 +314,7 @@ class TTF_One_Section_Definitions {
 
 		if ( isset( $data['title'] ) ) {
 			$clean_data['title'] = apply_filters( 'title_save_pre', $data['title'] );
+			$clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
 
 		if ( isset( $data['content'] ) ) {
