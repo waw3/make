@@ -8,6 +8,7 @@
 	<header class="entry-header">
 		<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 		<?php get_template_part( 'partials/entry', 'title' ); ?>
+		<?php get_template_part( 'partials/entry', 'author' ); ?>
 	</header>
 
 	<div class="entry-content">
