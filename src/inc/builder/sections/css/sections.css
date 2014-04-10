@@ -91,30 +91,6 @@
 	padding: 12px;
 	background-color: #fcfcfc;
 }
-@media screen and ( min-width: 1160px ) {
-	.ttf-one-banner-background-option-wrapper {
-		width: 50%;
-		float: right;
-		padding-left: 20px;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-}
-@media screen and ( min-width: 1160px ) {
-	.ttf-one-banner-slide-background-image-wrapper {
-		width: 50%;
-		float: left;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-}
-.ttf-one-banner-slide-alignment-wrapper {
-	display: block;
-	margin-top: 15px;
-	text-align: right;
-}
 .ttf-one-banner-options {
 	margin-top: 40px;
 }
@@ -125,9 +101,36 @@
 .ttf-one-banner-options-title {
 	margin-top: 8px;
 }
+/*---------------------------------------------------------
+ Banner: Slide  (html-builder.css)
+-------------------------------------------------------- */
+@media screen and ( min-width: 1160px ) {
+	.ttf-one-banner-background-option-wrapper,
+	.ttf-one-banner-slide-background-image-wrapper,
+	.ttf-one-gallery-background-image-wrapper,
+	.ttf-one-gallery-background-options-wrapper {
+		width: 50%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.ttf-one-banner-background-option-wrapper,
+	.ttf-one-gallery-background-options-wrapper {
+		float: right;
+		padding-left: 20px;
+	}
+	.ttf-one-banner-slide-background-image-wrapper,
+	.ttf-one-gallery-background-image-wrapper {
+		float: left;
+	}
+}
+.ttf-one-banner-slide-alignment-wrapper {
+	display: block;
+	margin-top: 15px;
+	text-align: right;
+}
 .ttf-one-banner-slide-header h3 em {
 	font-weight: normal; /*reset*/
-	color: #999999;
 	color: #999999;
 }
 .ttf-one-add-slide-wrapper,
@@ -137,7 +140,7 @@
 .ttf-one-banner-slide .ttf-one-banner-slide-body {
 	display: none;
 }
-.ttf-one-banner-slide.ttf-one-banner-slide-open .ttf-one-banner-slide-body {
+.ttf-one-banner-slide-open .ttf-one-banner-slide-body {
 	display: block;
 }
 .ttf-one-stage .ttf-one-banner-slides .sortable-placeholder {
@@ -171,23 +174,4 @@
 .ttf-one-gallery-background-options-container {
 	float: left;
 	width: 100%;
-}
-@media screen and ( min-width: 1160px ) {
-	.ttf-one-gallery-background-image-wrapper {
-		width: 50%;
-		float: left;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-}
-@media screen and ( min-width: 1160px ) {
-	.ttf-one-gallery-background-options-wrapper {
-		width: 50%;
-		float: right;
-		padding-left: 20px;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
 }
