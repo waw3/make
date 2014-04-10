@@ -36,7 +36,13 @@ $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 				<?php ttf_one_get_builder_save()->the_builder_content( $item['description'] ); ?>
 			</div>
 			<?php endif; ?>
+			<?php if ( 'fancy' === $ttf_one_section_data['captions'] ) : ?>
+			<div class="builder-gallery-overlay"></div>
+			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
 	</div>
+	<?php if ( 0 !== absint( $ttf_one_section_data['darken'] ) ) : ?>
+	<div class="builder-section-overlay"></div>
+	<?php endif; ?>
 </section>

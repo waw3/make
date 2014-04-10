@@ -250,6 +250,10 @@ class TTF_One_Section_Definitions {
 			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
 		}
 
+		if ( isset( $data['darken'] ) ) {
+			$clean_data['darken'] = absint( $data['darken'] );
+		}
+
 		if ( isset( $data['background-color'] ) ) {
 			$clean_data['background-color'] = maybe_hash_hex_color( $data['background-color'] );
 		}
