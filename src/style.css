@@ -1180,6 +1180,9 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
+.builder-section {
+  margin-bottom: 44px;
+  margin-bottom: 2.75rem; }
 
 .builder-text-title {
   line-height: 1.3; }
@@ -1207,6 +1210,10 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Banner section (_builder.scss)
 -------------------------------------------------------- */
+.builder-banner-content {
+  padding: 92px;
+  font-size: 150%; }
+
 .builder-banner-slide {
   background-repeat: no-repeat;
   background-size: cover;

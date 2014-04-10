@@ -2,6 +2,7 @@
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
 .builder-section {
+	@include rem('margin-bottom', $base*2);
 	@extend .clear;
 }
 .builder-text-title {
@@ -34,6 +35,10 @@
 /*---------------------------------------------------------
  Banner section (_builder.scss)
 -------------------------------------------------------- */
+.builder-banner-content {
+	padding: $col;
+	font-size: 150%; //24px
+}
 .builder-banner-slide {
 	background-repeat: no-repeat;
 	background-size: cover;
