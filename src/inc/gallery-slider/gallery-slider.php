@@ -93,27 +93,27 @@ class TTF_One_Gallery_Slider {
 			</label>
 			<div id="ttf-one-slider-settings">
 				<label class="setting">
-					<span><?php _e( 'Auto-play', 'ttf-one' ); ?></span>
-					<input type="checkbox" data-setting="ttf_one_autoplay" />
-				</label>
-				<label class="setting">
-					<span><?php _e( 'Hide previous/next buttons', 'ttf-one' ); ?></span>
+					<span><?php _e( 'Hide navigation arrows', 'ttf-one' ); ?></span>
 					<input type="checkbox" data-setting="ttf_one_prevnext" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Hide pager', 'ttf-one' ); ?></span>
+					<span><?php _e( 'Hide navigation dots', 'ttf-one' ); ?></span>
 					<input type="checkbox" data-setting="ttf_one_pager" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Delay (milliseconds)', 'ttf-one' ); ?></span>
+					<span><?php _e( 'Autoplay', 'ttf-one' ); ?></span>
+					<input type="checkbox" data-setting="ttf_one_autoplay" />
+				</label>
+				<label class="setting">
+					<span><?php _e( 'Time between slides (ms)', 'ttf-one' ); ?></span>
 					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" value="4000" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Effect', 'ttf-one' ); ?></span>
 					<select data-setting="ttf_one_effect">
-						<option value="fade" selected="selected"><?php _e( 'Cross-fade', 'ttf-one' ); ?></option>
+						<option value="fade"><?php _e( 'Cross-fade', 'ttf-one' ); ?></option>
 						<option value="fadeout"><?php _e( 'Fade out', 'ttf-one' ); ?></option>
-						<option value="scrollHorz"><?php _e( 'Horizontal slide', 'ttf-one' ); ?></option>
+						<option value="scrollHorz" selected="selected"><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
 						<option value="none"><?php _e( 'None', 'ttf-one' ); ?></option>
 					</select>
 				</label>
@@ -165,7 +165,7 @@ class TTF_One_Gallery_Slider {
 				'ttf_one_prevnext' => false,
 				'ttf_one_pager'    => false,
 				'ttf_one_delay'    => 4000,
-				'ttf_one_effect'   => 'fade'
+				'ttf_one_effect'   => 'scrollHorz'
 			), $attr, 'gallery') );
 
 			$id = intval( $id );

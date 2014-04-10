@@ -35,7 +35,7 @@
 			media.gallery.defaults.ttf_one_delay = 4000;
 			this.update.apply( this, ['ttf_one_delay'] );
 			// effect
-			media.gallery.defaults.ttf_one_effect = 'fade';
+			media.gallery.defaults.ttf_one_effect = 'scrollHorz';
 			this.update.apply( this, ['ttf_one_effect'] );
 
 			// Toggle slider settings

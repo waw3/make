@@ -157,9 +157,9 @@ class TTF_One_Section_Definitions {
 
 		$clean_data['hide-arrows'] = ( isset( $data['hide-arrows'] ) && 1 === (int) $data['hide-arrows'] ) ? 1 : 0;
 		$clean_data['hide-dots']   = ( isset( $data['hide-dots'] ) && 1 === (int) $data['hide-dots'] ) ? 1 : 0;
-		$clean_data['autoplay']       = ( isset( $data['autoplay'] ) && 1 === (int) $data['autoplay'] ) ? 1 : 0;
+		$clean_data['autoplay']    = ( isset( $data['autoplay'] ) && 1 === (int) $data['autoplay'] ) ? 1 : 0;
 
-		if ( isset( $data['transition'] ) && in_array( $data['transition'], array( 'cross-fade', 'fade', 'scrollHorz', 'none' ) ) ) {
+		if ( isset( $data['transition'] ) && in_array( $data['transition'], array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
 			$clean_data['transition'] = $data['transition'];
 		}
 
