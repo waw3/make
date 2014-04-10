@@ -175,9 +175,6 @@ if ( ! function_exists( 'ttf_one_customizer_admin_styles' ) ) :
  */
 function ttf_one_customizer_admin_styles() { ?>
 	<style type="text/css">
-		.customize-control.customize-control-radio {
-			padding-bottom: 0;
-		}
 		.customize-control.customize-control-heading {
 			margin-bottom: -2px;
 		}

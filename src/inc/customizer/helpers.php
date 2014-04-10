@@ -75,9 +75,9 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-post-featured-images' :
 		case 'layout-page-featured-images' :
 			$choices = array(
-				'thumbnail'  => __( 'Thumbnail', 'ttf-one' ),
-				'background' => __( 'Post header background', 'ttf-one' ),
-				'none'       => __( 'None', 'ttf-one' ),
+				'post-header' => __( 'Post header', 'ttf-one' ),
+				'thumbnail'   => __( 'Thumbnail', 'ttf-one' ),
+				'none'        => __( 'None', 'ttf-one' ),
 			);
 			break;
 		case 'layout-blog-post-date' :
@@ -85,9 +85,10 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-search-post-date' :
 		case 'layout-post-post-date' :
 		case 'layout-page-post-date' :
+			$week_ago = date( get_option( 'date_format' ), time() - WEEK_IN_SECONDS );
 			$choices = array(
-				'absolute' => __( 'Absolute', 'ttf-one' ),
-				'relative' => __( 'Relative', 'ttf-one' ),
+				'absolute' => sprintf( __( 'Absolute (%s)', 'ttf-one' ), $week_ago ),
+				'relative' => __( 'Relative (1 week ago)', 'ttf-one' ),
 				'none'     => __( 'None', 'ttf-one' ),
 			);
 			break;
@@ -97,20 +98,9 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-post-post-author' :
 		case 'layout-page-post-author' :
 			$choices = array(
-				'avatar' => __( 'Avatar', 'ttf-one' ),
-				'name'   => __( 'Name', 'ttf-one' ),
-				'both'   => __( 'Avatar + Name', 'ttf-one' ),
+				'avatar' => __( 'With avatar', 'ttf-one' ),
+				'name'   => __( 'Without avatar', 'ttf-one' ),
 				'none'   => __( 'None', 'ttf-one' ),
-			);
-			break;
-		case 'layout-blog-byline-location' :
-		case 'layout-archive-byline-location' :
-		case 'layout-search-byline-location' :
-		case 'layout-post-byline-location' :
-		case 'layout-page-byline-location' :
-			$choices = array(
-				'before' => __( 'Before content', 'ttf-one' ),
-				'after'  => __( 'After content', 'ttf-one' ),
 			);
 			break;
 		case 'header-background-repeat' :

@@ -208,28 +208,6 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			)
 		);
 
-		// Byline location
-		$setting_id = $section_prefix . $view . '-byline-location';
-		$wp_customize->add_setting(
-			$setting_id,
-			array(
-				'default'           => ttf_one_get_default( $setting_id ),
-				'type'              => 'theme_mod',
-				'sanitize_callback' => 'ttf_one_sanitize_choice',
-			)
-		);
-		$wp_customize->add_control(
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Byline Location', 'ttf-one' ),
-				'type'     => 'radio',
-				'choices'  => ttf_one_get_choices( $setting_id ),
-				'priority' => $priority->add()
-			)
-		);
-
 		// Content heading
 		$setting_id = $section_prefix . $view . '-heading-content';
 		$wp_customize->add_control(
@@ -260,29 +238,8 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Create auto-excerpts', 'ttf-one' ),
+				'label'    => __( 'Generate excerpts automatically', 'ttf-one' ),
 				'type'     => 'checkbox',
-				'priority' => $priority->add()
-			)
-		);
-
-		// Excerpt length
-		$setting_id = $section_prefix . $view . '-excerpt-length';
-		$wp_customize->add_setting(
-			$setting_id,
-			array(
-				'default'           => ttf_one_get_default( $setting_id ),
-				'type'              => 'theme_mod',
-				'sanitize_callback' => 'absint',
-			)
-		);
-		$wp_customize->add_control(
-			$prefix . $setting_id,
-			array(
-				'settings' => $setting_id,
-				'section'  => $section,
-				'label'    => __( 'Excerpt Length', 'ttf-one' ),
-				'type'     => 'text',
 				'priority' => $priority->add()
 			)
 		);
@@ -527,28 +484,6 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Post Author', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_get_choices( $setting_id ),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Byline location
-	$setting_id = $section_prefix . $view . '-byline-location';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttf_one_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Byline Location', 'ttf-one' ),
-			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
@@ -814,28 +749,6 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Post Author', 'ttf-one' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_get_choices( $setting_id ),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Byline location
-	$setting_id = $section_prefix . $view . '-byline-location';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttf_one_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Byline Location', 'ttf-one' ),
-			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)

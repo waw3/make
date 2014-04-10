@@ -3,13 +3,13 @@
  * @package ttf-one
  */
 
-$key = 'layout-' . ttf_one_get_view() . '-post-author';
-$author_option = ttf_one_sanitize_choice( get_theme_mod( $key, ttf_one_get_default( $key ) ), $key );
+$author_key = 'layout-' . ttf_one_get_view() . '-post-author';
+$author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_get_default( $author_key ) ), $author_key );
 ?>
 
 <?php if ( 'none' !== $author_option ) : ?>
 <div class="entry-author">
-	<?php if ( 'avatar' === $author_option || 'both' === $author_option ) : ?>
+	<?php if ( 'avatar' === $author_option ) : ?>
 	<div class="entry-author-avatar">
 		<?php
 		printf(
@@ -20,7 +20,6 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $key, ttf_one_get_defau
 		?>
 	</div>
 	<?php endif; ?>
-	<?php if ( 'name' === $author_option || 'both' === $author_option ) : ?>
 	<div class="entry-author-byline">
 		<?php
 		printf(
@@ -33,6 +32,5 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $key, ttf_one_get_defau
 		);
 		?>
 	</div>
-	<?php endif; ?>
 </div>
 <?php endif; ?>
