@@ -7,12 +7,7 @@
 				</div>
 			</div>
 
-			<?php // Footer partial
-			get_template_part(
-				'partials/footer-layout',
-				get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) )
-			);
-			?>
+			<?php ttf_one_maybe_show_site_region( 'footer' ); ?>
 		</div>
 
 		<?php wp_footer(); ?>

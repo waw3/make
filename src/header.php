@@ -16,12 +16,7 @@
 	<body <?php body_class(); ?>>
 		<div id="site-wrapper" class="site-wrapper">
 
-			<?php // Header partial
-			get_template_part(
-				'partials/header-layout',
-				get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) )
-			);
-			?>
+			<?php ttf_one_maybe_show_site_region( 'header' ); ?>
 
 			<div id="site-content" class="site-content">
 				<div class="container">
