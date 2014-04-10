@@ -49,33 +49,33 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 
 
 <div class="ttf-one-gallery-background-options-container">
-<div class="ttf-one-gallery-background-image-wrapper">
-	<?php
-		ttf_one_get_builder_base()->add_uploader(
-			$section_name . '[background-image]',
-			$background_image,
-			array(
-				'add'    => __( 'Set background image', 'ttf-one' ),
-				'remove' => __( 'Remove background image', 'ttf-one' ),
-				'title'  => __( 'Background image', 'ttf-one' ),
-				'button' => __( 'Use as Background Image', 'ttf-one' ),
-			)
-		);
-	?>
-</div>
+	<div class="ttf-one-gallery-background-image-wrapper">
+		<?php
+			ttf_one_get_builder_base()->add_uploader(
+				$section_name . '[background-image]',
+				$background_image,
+				array(
+					'add'    => __( 'Set background image', 'ttf-one' ),
+					'remove' => __( 'Remove background image', 'ttf-one' ),
+					'title'  => __( 'Background image', 'ttf-one' ),
+					'button' => __( 'Use as Background Image', 'ttf-one' ),
+				)
+			);
+		?>
+	</div>
 
-<div class="ttf-one-gallery-background-options-wrapper">
-	<h4>
-		<?php _e( 'Background color', 'ttf-one' ); ?>
-	</h4>
-	<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+	<div class="ttf-one-gallery-background-options-wrapper">
+		<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
+		<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
+		<label for="<?php echo $section_name; ?>[darken]">
+			<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
+		</label>
 
-	<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
-	<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
-	<label for="<?php echo $section_name; ?>[darken]">
-		<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
-	</label>
-</div>
+		<h4>
+			<?php _e( 'Background color', 'ttf-one' ); ?>
+		</h4>
+		<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo ttf_one_maybe_hash_hex_color( $background_color ); ?>" />
+	</div>
 </div>
 
 <div class="clear"></div>
