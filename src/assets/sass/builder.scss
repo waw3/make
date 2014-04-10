@@ -12,22 +12,18 @@
 	}
 }
 /*---------------------------------------------------------
- Text: Two columns (_builder.scss)
+ Text: Columns (_builder.scss)
 -------------------------------------------------------- */
-.builder-text-columns-2 .builder-text-column {
-	width: percentage( ( $width - $gut ) / ( $width * 2 ) );
-}
-/*---------------------------------------------------------
- Text: Three columns (_builder.scss)
--------------------------------------------------------- */
-.builder-text-columns-3 .builder-text-column {
-	width: percentage( ( $width - ( $gut * 2 ) ) / ( $width * 3 ) );
-}
-/*---------------------------------------------------------
- Text: Four columns (_builder.scss)
--------------------------------------------------------- */
-.builder-text-columns-4 .builder-text-column {
-	width: percentage( ( $width - ( $gut * 3 ) ) / ( $width * 4 ) );
+@include for(medium-screens) {
+	.builder-text-columns-2 .builder-text-column {
+		width: percentage( ( $width - $gut ) / ( $width * 2 ) );
+	}
+	.builder-text-columns-3 .builder-text-column {
+		width: percentage( ( $width - ( $gut * 2 ) ) / ( $width * 3 ) );
+	}
+	.builder-text-columns-4 .builder-text-column {
+		width: percentage( ( $width - ( $gut * 3 ) ) / ( $width * 4 ) );
+	}
 }
 /*---------------------------------------------------------
  Banner section (_builder.scss)
