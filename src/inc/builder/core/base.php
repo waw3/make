@@ -240,8 +240,7 @@ class TTF_One_Builder_Base {
 	?>
 		<style type="text/css">
 			<?php if ( 'template-builder.php' === get_page_template_slug() ) : ?>
-			#postdivrich,
-			#postimagediv {
+			#postdivrich {
 				display: none;
 			}
 			<?php else : ?>

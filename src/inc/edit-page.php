@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_page_screen_script' ) ) :
+if ( ! function_exists( 'ttf_one_edit_page_script' ) ) :
 /**
  * Enqueue scripts that run on the Edit Page screen
  *
@@ -11,15 +11,23 @@ if ( ! function_exists( 'ttf_one_page_screen_script' ) ) :
  *
  * @return void
  */
-function ttf_one_page_screen_script() {
+function ttf_one_edit_page_script() {
 	wp_enqueue_script(
 		'ttf-one-admin-edit-page',
 		get_template_directory_uri() . '/js/admin/edit-page.js',
 		array( 'jquery' ),
-		TTF_ONE_VERSION,
+		time(),
 		true
+	);
+
+	wp_localize_script(
+		'ttf-one-admin-edit-page',
+		'TTFOneEditPage',
+		array(
+			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'ttf-one' )
+		)
 	);
 }
 endif;
 
-add_action( 'admin_enqueue_scripts', 'ttf_one_page_screen_script' );
+add_action( 'admin_enqueue_scripts', 'ttf_one_edit_page_script' );
