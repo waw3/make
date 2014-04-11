@@ -170,6 +170,10 @@
 #poststuff h2.ttf-one-gallery-options-heading {
 	margin-bottom: 0; /*reset*/
 }
+#poststuff .ttf-one-large-title {
+	padding-top: 12px;
+	border-top: 1px solid #dfdfdf;
+}
 #poststuff .ttf-one-large-title:before {
 	content: "\f108";
 	font-family: Dashicons;
