@@ -148,7 +148,7 @@ function ttf_one_option_defaults() {
 		'social-custom-rss' => '',
 	);
 
-	return apply_filters( 'ttf_one_option_defaults', $defaults );
+	return apply_filters( 'ttf_one_setting_defaults', $defaults );
 }
 endif;
 

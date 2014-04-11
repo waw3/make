@@ -168,7 +168,7 @@ function ttf_one_get_choices( $setting ) {
 			break;
 	}
 
-	return $choices;
+	return apply_filters( 'ttf_one_setting_choices', $choices, $setting );
 }
 endif;
 
