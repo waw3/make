@@ -28,6 +28,9 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 </div>
 
 <div class="ttf-one-banner-options">
+	<h2>
+		<?php _e( 'Section options', 'ttf-one' ); ?>
+	</h2>
 	<div class="ttf-one-banner-options-container">
 		<h4 class="ttf-one-banner-options-title">
 			<?php _e( 'Slideshow display', 'ttf-one' ); ?>

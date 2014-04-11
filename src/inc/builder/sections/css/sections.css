@@ -163,6 +163,9 @@
 	margin-left: 20px;
 	padding: 0 0 12px;
 }
+#poststuff h2.ttf-one-gallery-options-heading {
+	margin-bottom: 0; /*reset*/
+}
 .ttf-one-gallery-background-options-wrapper label {
 	vertical-align: top;
 }

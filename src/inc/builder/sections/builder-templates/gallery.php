@@ -46,6 +46,9 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 </div>
 
 <div class="ttf-one-gallery-background-options-container">
+	<h2 class="ttf-one-gallery-options-heading">
+		<?php _e( 'Section options', 'ttf-one' ); ?>
+	</h2>
 	<div class="ttf-one-gallery-background-image-wrapper">
 		<?php
 			ttf_one_get_builder_base()->add_uploader(
