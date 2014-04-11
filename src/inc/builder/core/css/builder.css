@@ -158,12 +158,12 @@
 	outline: none !important;
 }
 .ttf-one-banner-slide-open:hover {
-	border-color: #5b9dd9;
-	outline: 1px solid #5b9dd9;
+	border-color: #999999;
+	outline: 1px solid #999999;
 }
 .ttf-one-text-column:hover,
 .ttf-one-gallery-item:hover{
-	outline: 2px solid #5b9dd9;
+	outline: 2px solid #999999;
 }
 .ttf-one-section-text:hover .ttf-one-section-remove,
 .ttf-one-section-blank:hover .ttf-one-section-remove,
