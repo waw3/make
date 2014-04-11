@@ -17,6 +17,11 @@
 .clear {
 	clear: both;
 }
+.wp-core-ui .button.ttf-one-button-large {
+	font-size: 14px;
+	height: 38px;
+	line-height: 36px;
+}
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */

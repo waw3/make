@@ -12,7 +12,7 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 ?>
 
 <div class="ttf-one-add-slide-wrapper">
-	<a href="#" class="button button-primary button-hero button-large ttf-one-add-slide"><?php _e( 'Add New Slide', 'ttf-one' ); ?></a>
+	<a href="#" class="button button-primary ttf-one-button-large button-large ttf-one-add-slide"><?php _e( 'Add New Slide', 'ttf-one' ); ?></a>
 </div>
 
 <div class="ttf-one-banner-slides">
