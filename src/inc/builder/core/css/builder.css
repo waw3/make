@@ -147,7 +147,6 @@
 .ttf-one-section-remove,
 .ttf-one-gallery-item-remove,
 .ttf-one-banner-slide-remove {
-	visibility: hidden;
 	display: inline-block;
 	clear: both;
 	margin-bottom: 0; /*reset*/
@@ -156,22 +155,6 @@
 	border-bottom: 0;  /*reset*/
 	text-decoration: none;  /*reset*/
 	outline: none !important;
-}
-.ttf-one-banner-slide-open:hover {
-	border-color: #999999;
-	outline: 1px solid #999999;
-}
-.ttf-one-text-column:hover,
-.ttf-one-gallery-item:hover{
-	outline: 2px solid #999999;
-}
-.ttf-one-section-text:hover .ttf-one-section-remove,
-.ttf-one-section-blank:hover .ttf-one-section-remove,
-.ttf-one-section-banner:hover .ttf-one-section-remove,
-.ttf-one-section-gallery:hover .ttf-one-section-remove,
-.ttf-one-banner-slide:hover .ttf-one-banner-slide-remove,
-.ttf-one-gallery-item:hover .ttf-one-gallery-item-remove {
-	visibility: visible;
 }
 .ttf-one-section-remove {
 	margin-top: 20px;
