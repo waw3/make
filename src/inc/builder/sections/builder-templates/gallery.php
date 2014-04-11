@@ -30,7 +30,7 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 </div>
 
 <div class="ttf-one-add-gallery-item-wrapper">
-	<a href="#" class="button button-primary button-large ttf-one-gallery-add-item"><?php _e( 'Add gallery item', 'ttf-one' ); ?></a>
+	<a href="#" class="button button-primary button-hero button-large ttf-one-gallery-add-item"><?php _e( 'Add New Item', 'ttf-one' ); ?></a>
 </div>
 
 <div class="ttf-one-gallery-items">
