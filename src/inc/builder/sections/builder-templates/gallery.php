@@ -6,7 +6,7 @@ $columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf
 $captions         = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'basic';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
-$darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 0;
+$darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 1;
 $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
 
