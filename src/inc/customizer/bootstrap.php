@@ -194,7 +194,7 @@ function ttf_one_customizer_admin_styles() { ?>
 			text-indent: 0;
 			text-align: center;
 			position: relative;
-			top: 5px;
+			top: 4px;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 			text-decoration: none !important;

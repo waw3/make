@@ -667,6 +667,21 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 		)
 	);
 
+	// Page title heading
+	$setting_id = $section_prefix . $view . '-heading-page-title';
+	$wp_customize->add_control(
+		new TTF_One_Customize_Misc_Control(
+			$wp_customize,
+			$prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'heading',
+				'label' => __( 'Page Title', 'ttf-one' ),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
 	// Hide title
 	$setting_id = $section_prefix . $view . '-hide-title';
 	$wp_customize->add_setting(
