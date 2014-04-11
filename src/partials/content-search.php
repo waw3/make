@@ -13,7 +13,7 @@
 	</header>
 
 	<div class="entry-content">
-		<?php echo wpautop( get_the_excerpt() . ttf_one_get_read_more() ); ?>
+		<?php get_template_part( 'partials/entry', 'content' ); ?>
 	</div>
 
 	<footer class="entry-footer">

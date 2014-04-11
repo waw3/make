@@ -14,13 +14,7 @@
 	</header>
 
 	<div class="entry-content">
-		<?php
-		if ( has_excerpt() ) :
-			echo wpautop( get_the_excerpt() . ttf_one_get_read_more() );
-		else:
-			the_content( ttf_one_get_read_more( '', '' ) );
-		endif;
-		?>
+		<?php get_template_part( 'partials/entry', 'content' ); ?>
 	</div>
 
 	<footer class="entry-footer">
