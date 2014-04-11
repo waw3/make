@@ -136,6 +136,14 @@
 .ttf-one-add-gallery-item-wrapper {
 	margin-bottom: 20px;
 }
+.ttf-one-add-slide-wrapper a:before,
+.ttf-one-add-gallery-item-wrapper a:before {
+	content: "\f132";
+	font-family: Dashicons;
+	position: relative;
+	top: 1px;
+	padding-right: 4px;
+}
 .ttf-one-banner-slide .ttf-one-banner-slide-body {
 	display: none;
 }
@@ -165,6 +173,13 @@
 }
 #poststuff h2.ttf-one-gallery-options-heading {
 	margin-bottom: 0; /*reset*/
+}
+#poststuff .ttf-one-large-title:before {
+	content: "\f108";
+	font-family: Dashicons;
+	position: relative;
+	top: 7px;
+	font-size: 30px;
 }
 .ttf-one-gallery-background-options-wrapper label {
 	vertical-align: top;
