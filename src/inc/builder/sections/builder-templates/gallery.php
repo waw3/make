@@ -47,7 +47,7 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 
 <div class="ttf-one-gallery-background-options-container">
 	<h2 class="ttf-one-large-title ttf-one-gallery-options-heading">
-		<?php _e( 'Section options', 'ttf-one' ); ?>
+		<?php _e( 'Options', 'ttf-one' ); ?>
 	</h2>
 	<div class="ttf-one-gallery-background-image-wrapper">
 		<?php
