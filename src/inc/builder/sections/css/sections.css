@@ -86,7 +86,9 @@
 -------------------------------------------------------- */
 .ttf-one-banner-slide-body {
 	padding: 12px;
-	background-color: #fcfcfc;
+}
+.ttf-one-banner-slides .ttf-one-banner-slide-header h3 {
+	background-color: #ffffff;
 }
 .ttf-one-banner-options {
 	margin-top: 40px;

@@ -232,6 +232,7 @@
 -------------------------------------------------------- */
 .ttf-one-section-open,
 .ttf-one-banner-slide-open {
+	margin-bottom: 40px;
 	border-bottom: 1px solid #dfdfdf;
 }
 .ttf-one-section-header a {
