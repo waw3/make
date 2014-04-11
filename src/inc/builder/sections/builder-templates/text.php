@@ -65,6 +65,8 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 	<?php endforeach; ?>
 </div>
 
+<div class="clear"></div>
+
 <input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttf-one-text-columns-order" />
 <input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttf_one_load_section_footer(); ?>
