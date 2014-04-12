@@ -1190,10 +1190,10 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Text section (_builder.scss)
 -------------------------------------------------------- */
-.builder-text-column {
+.builder-text-column, .builder-gallery-item {
   float: left;
   margin-right: 3.33333%; }
-  .builder-text-column:last-of-type {
+  .builder-text-column:last-of-type, .builder-gallery-item:last-of-type {
     margin-right: 0; }
 
 /*---------------------------------------------------------
@@ -1224,6 +1224,25 @@ iframe[src*="google.com/maps"] {
 .builder-banner-content {
   position: absolute;
   top: 0; }
+
+/*---------------------------------------------------------
+ Gallery: Columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-gallery-item {
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.builder-gallery-title {
+  margin-bottom: 0;
+  font-weight: bold; }
+
+@media screen and (min-width: 800px) {
+  .builder-gallery-columns-2 .builder-gallery-item {
+    width: 48.33333%; }
+  .builder-gallery-columns-3 .builder-gallery-item {
+    width: 31.11111%; }
+  .builder-gallery-columns-4 .builder-gallery-item {
+    width: 22.5%; } }
 
 /*---------------------------------------------------------
  8. Sidebars (_sidebars.scss)

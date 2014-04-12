@@ -11,7 +11,8 @@
 /*---------------------------------------------------------
  Text section (_builder.scss)
 -------------------------------------------------------- */
-.builder-text-column {
+.builder-text-column,
+.builder-gallery-item {
 	float: left;
 	margin-right: percentage( $gut / $width );
 	&:last-of-type {
@@ -49,4 +50,25 @@
 .builder-banner-content {
 	position: absolute;
 	top: 0;
+}
+/*---------------------------------------------------------
+ Gallery: Columns (_builder.scss)
+-------------------------------------------------------- */
+.builder-gallery-item {
+	@include rem('font-size', 14px);
+}
+.builder-gallery-title {
+	margin-bottom: 0; //reset
+	font-weight: bold;
+}
+@include for(medium-screens) {
+	.builder-gallery-columns-2 .builder-gallery-item {
+		width: percentage( ( $width - $gut ) / ( $width * 2 ) );
+	}
+	.builder-gallery-columns-3 .builder-gallery-item {
+		width: percentage( ( $width - ( $gut * 2 ) ) / ( $width * 3 ) );
+	}
+	.builder-gallery-columns-4 .builder-gallery-item {
+		width: percentage( ( $width - ( $gut * 3 ) ) / ( $width * 4 ) );
+	}
 }
