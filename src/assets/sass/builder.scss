@@ -56,6 +56,10 @@
 .builder-gallery-item {
 	@include rem('font-size', 14px);
 }
+.builder-gallery-image {
+	line-height: 0; //reset
+	@include rem('margin-bottom', $gut/4);
+}
 .builder-gallery-title {
 	margin-bottom: 0; //reset
 	font-weight: bold;

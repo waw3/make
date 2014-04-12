@@ -1232,6 +1232,11 @@ iframe[src*="google.com/maps"] {
   font-size: 14px;
   font-size: 0.875rem; }
 
+.builder-gallery-image {
+  line-height: 0;
+  margin-bottom: 8px;
+  margin-bottom: 0.5rem; }
+
 .builder-gallery-title {
   margin-bottom: 0;
   font-weight: bold;
