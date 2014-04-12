@@ -54,24 +54,34 @@
  Gallery: Columns (_builder.scss)
 -------------------------------------------------------- */
 .builder-gallery-item {
-	position: relative;
-	text-align: center;
 	@include rem('margin-bottom', $gut/4);
 	@include rem('font-size', 14px);
+	.builder-gallery-captions-fancy & {
+		position: relative;
+	}
 }
 .builder-gallery-description {
-	color: $e;
+	.builder-gallery-captions-fancy & {
+		position: absolute;
+		top: 0;
+		padding: $gut/2;
+		color: $a;
+	}
 }
 .builder-gallery-image {
 	line-height: 0; //reset
-	background-color: $b;
-	img {
-		opacity: .5;
+	background-color: $c;
+	.builder-gallery-captions-fancy & {
+		img {
+			opacity: .2;
+		}
 	}
 }
 .builder-gallery-title {
-	position: absolute;
-	top: 0; //reset
+	.builder-gallery-captions-fancy & {
+		position: absolute;
+		top: 0; //reset
+	}
 	margin-bottom: 0; //reset
 	font-weight: bold;
 	text-transform: uppercase;
