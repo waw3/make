@@ -54,16 +54,28 @@
  Gallery: Columns (_builder.scss)
 -------------------------------------------------------- */
 .builder-gallery-item {
+	position: relative;
+	text-align: center;
+	@include rem('margin-bottom', $gut/4);
 	@include rem('font-size', 14px);
+}
+.builder-gallery-description {
+	color: $e;
 }
 .builder-gallery-image {
 	line-height: 0; //reset
-	@include rem('margin-bottom', $gut/4);
+	background-color: $b;
+	img {
+		opacity: .5;
+	}
 }
 .builder-gallery-title {
+	position: absolute;
+	top: 0; //reset
 	margin-bottom: 0; //reset
 	font-weight: bold;
 	text-transform: uppercase;
+	color: $a;
 	@include rem('font-size', 18px);
 }
 .builder-gallery-item {
