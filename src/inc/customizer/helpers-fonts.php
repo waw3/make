@@ -6,10 +6,9 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
  *
  * @since  1.0.0
  *
- * @param  string    $css    The current CSS.
- * @return string            The modified CSS.
+ * @return void
  */
-function ttf_one_css_fonts( $css ) {
+function ttf_one_css_fonts() {
 	/**
 	 * Site Title
 	 */
