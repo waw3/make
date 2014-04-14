@@ -1081,6 +1081,7 @@ iframe[src*="google.com/maps"] {
     margin-bottom: 1.29412rem; }
 
 .entry-title {
+  font-weight: bold;
   line-height: 1.1;
   margin-top: 5.5px;
   margin-top: 0.32353rem;
