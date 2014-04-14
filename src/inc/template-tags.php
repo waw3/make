@@ -207,7 +207,7 @@ function ttf_one_maybe_show_sidebar( $location ) {
 			require_once( $template_path );
 		}
 		// Then fall back to the default markup
-		else { ?>
+		elseif ( is_active_sidebar( $sidebar_id ) ) { ?>
 		<section id="<?php echo $sidebar_id; ?>" class="widget-area <?php echo ( is_active_sidebar( $sidebar_id ) ) ? 'active' : 'inactive'; ?>" role="complementary">
 			<?php dynamic_sidebar( $sidebar_id ); ?>
 		</section>
