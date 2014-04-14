@@ -5,56 +5,62 @@
 
 if ( ! class_exists( 'TTF_One_CSS' ) ) :
 /**
- * Class TTF_One_CSS
+ * Singleton to collect and print CSS based on user input.
+ *
+ * This class provides a mechanism to gather all of the CSS needed to implement theme options. It allows for handling
+ * of conflicting rules and sorts out what the final CSS should be. The primary function is `add()`. It allows the
+ * caller to add a new rule to be generated in the CSS.
  */
 class TTF_One_CSS {
 
 	/**
-	 * The one instance of TTF_One_CSS
+	 * The one instance of TTF_One_CSS.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
-	 * @var TTF_One_CSS
+	 * @var   TTF_One_CSS    The one instance for the singleton.
 	 */
 	private static $instance;
 
 	/**
-	 * The array for storing added CSS rule data
+	 * The array for storing added CSS rule data.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
-	 * @var $data
+	 * @var   array    Holds the data to be printed out.
 	 */
+
 	public $data = array();
 
 	/**
-	 * Optional line ending character for debug mode
+	 * Optional line ending character for debug mode.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
-	 * @var $line_ending
+	 * @var   string    Line ending character used to better style the CSS.
 	 */
-	private $line_ending = "";
+	private $line_ending = '';
 
 	/**
-	 * Optional tab character for debug mode
+	 * Optional tab character for debug mode.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
-	 * @var $tab
+	 * @var   string    Line ending character used to better style the CSS.
 	 */
-	private $tab = "";
+	private $tab = '';
 
 	/**
 	 * Instantiate or return the one TTF_One_CSS instance.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_CSS
 	 */
 	public static function instance() {
-		if ( is_null( self::$instance ) )
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
+		}
 
 		return self::$instance;
 	}
@@ -62,7 +68,7 @@ class TTF_One_CSS {
 	/**
 	 * Initialize the object.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_CSS
 	 */
@@ -77,10 +83,9 @@ class TTF_One_CSS {
 	/**
 	 * Add a new CSS rule to the array.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
-	 * @param array $data
-	 *
+	 * @param  array    $data    The selectors and properties to add to the CSS.
 	 * @return void
 	 */
 	public function add( $data ) {
@@ -105,8 +110,8 @@ class TTF_One_CSS {
 		}
 
 		// Create new media query if it doesn't exist yet
-		if ( ! isset( $this->data[$media] ) || ! is_array( $this->data[$media] ) ) {
-			$this->data[$media] = array();
+		if ( ! isset( $this->data[ $media ] ) || ! is_array( $this->data[ $media ] ) ) {
+			$this->data[ $media ] = array();
 		}
 
 		// Look for matching selector sets
@@ -122,20 +127,19 @@ class TTF_One_CSS {
 
 		// No matching selector set, add a new entry
 		if ( false === $match ) {
-			$this->data[$media][] = $entry;
+			$this->data[ $media ][] = $entry;
 		}
 		// Yes, matching selector set, merge declarations
 		else {
-			$this->data[$media][$match]['declarations'] = array_merge( $this->data[$media][$match]['declarations'], $entry['declarations'] );
+			$this->data[ $media ][ $match ]['declarations'] = array_merge( $this->data[ $media ][ $match ]['declarations'], $entry['declarations'] );
 		}
 	}
 
 	/**
 	 * Compile the data array into standard CSS syntax
 	 *
-	 * @since 1.0.0
-	 *
-	 * @return string
+	 * @since  1.0.0.
+	 * @return string    The CSS that is build from the data.
 	 */
 	public function build() {
 		if ( empty( $this->data ) ) {
@@ -180,30 +184,26 @@ class TTF_One_CSS {
 	/**
 	 * Compile the selectors in a rule into a string.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
-	 * @param array $selectors
-	 * @param string $tab
-	 *
-	 * @return string
+	 * @param  array     $selectors    Selectors to combine into single selector.
+	 * @param  string    $tab          Tab character.
+	 * @return string                  Results of the selector combination.
 	 */
 	private function parse_selectors( $selectors, $tab = '' ) {
-		$n = $this->line_ending;
-
+		$n      = $this->line_ending;
 		$output = $tab . implode( ",{$n}{$tab}", $selectors );
-
 		return $output;
 	}
 
 	/**
 	 * Compile the declarations in a rule into a string.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
-	 * @param array $declarations
-	 * @param string $tab
-	 *
-	 * @return string
+	 * @param  array     $declarations    Declarations for a selector.
+	 * @param  string    $tab             Tab character.
+	 * @return string                     The combines declarations.
 	 */
 	private function parse_declarations( $declarations, $tab = '' ) {
 		$n = $this->line_ending;
@@ -221,16 +221,15 @@ class TTF_One_CSS {
 
 		return $output;
 	}
-
-} // end class
+}
 
 if ( ! function_exists( 'ttf_one_get_css' ) ) :
 /**
  * Return the one TTF_One_CSS object.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
- * @return TTF_One_CSS
+ * @return TTF_One_CSS    The one TTF_One_CSS object.
  */
 function ttf_one_get_css() {
 	return TTF_One_CSS::instance();
@@ -239,4 +238,4 @@ endif;
 
 add_action( 'init', 'ttf_one_get_css', 1 );
 
-endif; // end if class_exists
+endif;
