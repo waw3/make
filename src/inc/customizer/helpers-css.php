@@ -222,6 +222,7 @@ class TTF_One_CSS {
 		return $output;
 	}
 }
+endif;
 
 if ( ! function_exists( 'ttf_one_get_css' ) ) :
 /**
@@ -237,5 +238,3 @@ function ttf_one_get_css() {
 endif;
 
 add_action( 'init', 'ttf_one_get_css', 1 );
-
-endif;
