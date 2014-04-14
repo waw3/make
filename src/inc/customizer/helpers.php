@@ -49,11 +49,10 @@ if ( ! function_exists( 'ttf_one_get_choices' ) ) :
 /**
  * Return the available choices for a given setting
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string|object $setting
- *
- * @return array
+ * @param  string|object    $setting    The setting to get options for.
+ * @return array                        The options for the setting.
  */
 function ttf_one_get_choices( $setting ) {
 	if ( is_object( $setting ) ) {
