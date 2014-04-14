@@ -83,6 +83,19 @@ class TTF_One_CSS {
 	/**
 	 * Add a new CSS rule to the array.
 	 *
+	 * Accepts data to eventually be turned into CSS. Usage:
+	 *
+	 * ttf_one_get_css()->add( array(
+	 *     'selectors'    => array( '.site-header-main' ),
+	 *     'declarations' => array(
+	 *         'background-color' => $header_background_color
+	 *     ),
+	 *     'media' => 'print',
+	 * ) );
+	 *
+	 * Selectors represent the CSS selectors; declarations are the CSS properties and values with keys being properties
+	 * and values being values. 'media' can also be declared to specify the media query.
+	 *
 	 * @since  1.0.0.
 	 *
 	 * @param  array    $data    The selectors and properties to add to the CSS.
