@@ -258,10 +258,9 @@ function ttf_one_get_google_font_request() {
 	);
 
 	// De-dupe the fonts
-	$fonts = array_unique( $fonts );
-
+	$fonts         = array_unique( $fonts );
 	$allowed_fonts = ttf_one_get_google_fonts();
-	$family = array();
+	$family        = array();
 
 	// Validate each font and convert to URL format
 	foreach ( $fonts as $font ) {
@@ -269,12 +268,10 @@ function ttf_one_get_google_font_request() {
 
 		// Verify that the font exists
 		if ( array_key_exists( $font, $allowed_fonts ) ) {
-			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700"
+			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
 			$family[] = urlencode( $font . ':' . join( ',', ttf_one_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
 		}
 	}
-
-	$request = '';
 
 	// Convert from array to string
 	if ( empty( $family ) ) {
