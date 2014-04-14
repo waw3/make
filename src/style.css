@@ -187,11 +187,11 @@ html {
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-  background-color: #eeeeee;
+  background-color: #eaecee;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
   body.boxed {
-    background-color: #eeeeee; }
+    background-color: #eaecee; }
     body.boxed .container {
       max-width: 100%;
       width: 100%;
@@ -349,7 +349,7 @@ a {
   width: 100%;
   color: #171717;
   background-color: #ffffff;
-  border-bottom: 1px solid #eeeeee; }
+  border-bottom: 1px solid #eaecee; }
   .sub-header a {
     color: inherit; }
   .sub-header textarea, .sub-header input {
@@ -367,6 +367,7 @@ a {
         padding:  0.64706rem 0 0.64706rem 0.94118rem;
         float: right; } }
     .sub-header .search-form input {
+      border: 1px solid;
       width: 100%; }
       @media screen and (min-width: 1100px) {
         .sub-header .search-form input {
@@ -442,13 +443,13 @@ a {
       float: right; } }
   @media screen and (min-width: 1100px) {
     .header-social-links li:first-of-type {
-      border-left: 1px solid #eeeeee; } }
+      border-left: 1px solid #eaecee; } }
   .header-social-links li a {
     padding: 14px 4px;
     padding:  0.82353rem 0.23529rem; }
     @media screen and (min-width: 1100px) {
       .header-social-links li a {
-        border-right: 1px solid #eeeeee;
+        border-right: 1px solid #eaecee;
         padding: 15px 10px;
         padding:  0.88235rem 0.58824rem; } }
 
@@ -493,7 +494,7 @@ a {
     font-size: 10px;
     font-size: 0.58824rem; }
   .site-navigation li {
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #eaecee;
     padding: 11px 8px;
     padding:  0.64706rem 0.47059rem; }
     @media screen and (min-width: 800px) {
@@ -514,7 +515,7 @@ a {
       z-index: 999;
       margin: 0;
       padding: 0;
-      background-color: #eeeeee;
+      background-color: #eaecee;
       width: 160px;
       margin-left: -10.66667px;
       margin-left: -0.62745rem;
@@ -568,7 +569,7 @@ a {
 -------------------------------------------------------- */
 .site-footer {
   color: #464849;
-  background-color: #eeeeee;
+  background-color: #eaecee;
   padding: 22px 0 44px;
   padding:  1.29412rem 0 2.58824rem;
   float: left;
@@ -714,7 +715,7 @@ blockquote {
       content: "\2014"; }
   blockquote.ttf-one-testimonial {
     line-height: 0;
-    background-color: #eeeeee;
+    background-color: #eaecee;
     margin-bottom: 44px;
     margin-bottom: 2.58824rem;
     padding: 33px 32px;
@@ -740,7 +741,7 @@ blockquote {
       height: 0;
       border-left: 22px solid transparent;
       border-right: 22px solid transparent;
-      border-top: 22px solid #eeeeee;
+      border-top: 22px solid #eaecee;
       left: 5px;
       left: 0.29412rem; }
 
@@ -754,7 +755,7 @@ q:after {
 -------------------------------------------------------- */
 tt, kbd, pre, code, samp, var {
   font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
-  background-color: #eeeeee;
+  background-color: #eaecee;
   padding: 4px 6px;
   padding:  0.23529rem 0.35294rem;
   -webkit-border-radius: 3px;
@@ -836,13 +837,13 @@ address {
 
 hr {
   border: 0;
-  border-top: 2px solid #eeeeee;
+  border-top: 2px solid #eaecee;
   height: 1px;
   margin-bottom: 22px; }
   hr.ttf-one-line-dashed {
-    border-top: 2px dashed #eeeeee; }
+    border-top: 2px dashed #eaecee; }
   hr.ttf-one-line-double {
-    border-top: thick double #eeeeee; }
+    border-top: thick double #eaecee; }
 
 /*---------------------------------------------------------
  Lists (_elements.scss)
@@ -893,7 +894,7 @@ dd {
 table {
   width: 100%;
   text-align: left;
-  border: 1px solid #eeeeee;
+  border: 1px solid #eaecee;
   border-left: 0;
   margin: 22px 0;
   margin:  1.29412rem 0; }
@@ -905,10 +906,10 @@ table {
     padding: 11px 8px;
     padding:  0.64706rem 0.47059rem; }
   table th {
-    border-left: 1px solid #eeeeee; }
+    border-left: 1px solid #eaecee; }
   table td {
-    border-top: 1px solid #eeeeee;
-    border-left: 1px solid #eeeeee; }
+    border-top: 1px solid #eaecee;
+    border-left: 1px solid #eaecee; }
     table td[valign="top"] {
       vertical-align: top; }
     table td[valign="bottom"] {
@@ -955,8 +956,8 @@ table {
 .ttf-one-alert {
   position: relative;
   overflow: hidden;
-  border: 1px solid #c8c8c8;
-  background-color: #eeeeee;
+  border: 1px solid #c0c6cc;
+  background-color: #eaecee;
   padding: 33px 32px;
   padding:  1.94118rem 1.88235rem;
   font-size: 14px;
@@ -1072,7 +1073,7 @@ iframe[src*="google.com/maps"] {
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
 .post {
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eaecee;
   padding-bottom: 22px;
   padding-bottom: 1.29412rem;
   margin-bottom: 88px;
@@ -1172,7 +1173,7 @@ iframe[src*="google.com/maps"] {
 -------------------------------------------------------- */
 .sticky-post-label {
   text-transform: uppercase;
-  background-color: #eeeeee;
+  background-color: #eaecee;
   margin-left: 8px;
   margin-left: 0.47059rem;
   padding: 4px 6px;
@@ -1389,7 +1390,7 @@ iframe[src*="google.com/maps"] {
     padding-left: 0; }
   .widget li {
     list-style: none;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #eaecee;
     padding: 11px 0;
     padding:  0.64706rem 0; }
     .widget li:last-of-type {
@@ -1403,7 +1404,7 @@ iframe[src*="google.com/maps"] {
 
 .widget_tag_cloud a {
   display: inline-block;
-  background-color: #eeeeee;
+  background-color: #eaecee;
   text-decoration: none;
   margin-bottom: 5px;
   margin-bottom: 0.29412rem;
@@ -1490,7 +1491,7 @@ iframe[src*="google.com/maps"] {
   word-wrap: break-word; }
 
 .comment-body {
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eaecee;
   padding-bottom: 33px;
   padding-bottom: 1.94118rem; }
 
@@ -1582,7 +1583,7 @@ iframe[src*="google.com/maps"] {
 textarea, input {
   max-width: 100%;
   border: 0;
-  background-color: #eeeeee;
+  background-color: #eaecee;
   -webkit-appearance: none;
   padding: 6px 8px;
   padding:  0.35294rem 0.47059rem; }
