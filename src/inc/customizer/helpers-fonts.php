@@ -436,7 +436,7 @@ if ( ! function_exists( 'ttf_one_get_all_fonts' ) ) :
 /**
  * Compile font options from different sources.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return array    All available fonts.
  */
@@ -451,7 +451,7 @@ if ( ! function_exists( 'ttf_one_get_standard_fonts' ) ) :
 /**
  * Return an array of standard websafe fonts.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return array    Standard websafe fonts.
  */
