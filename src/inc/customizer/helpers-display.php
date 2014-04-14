@@ -28,7 +28,7 @@ function ttf_one_css_add_rules() {
 		$site_background_size = ttf_one_sanitize_choice( get_theme_mod( 'background_size', ttf_one_get_default( 'background_size' ) ), 'background-size' );
 
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'body' ),
+			'selectors'    => array( 'body' ),
 			'declarations' => array(
 				'background-size' => $site_background_size
 			)
@@ -47,19 +47,19 @@ function ttf_one_css_add_rules() {
 	// Primary color
 	if ( $color_primary !== ttf_one_get_default( 'color-primary' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-primary-text', 'a' ),
+			'selectors'    => array( '.color-primary-text', 'a' ),
 			'declarations' => array(
 				'color' => $color_primary
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-primary-background' ),
+			'selectors'    => array( '.color-primary-background' ),
 			'declarations' => array(
 				'background-color' => $color_primary
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-primary-border' ),
+			'selectors'    => array( '.color-primary-border' ),
 			'declarations' => array(
 				'border-color' => $color_primary
 			)
@@ -69,19 +69,19 @@ function ttf_one_css_add_rules() {
 	// Secondary color
 	if ( $color_secondary !== ttf_one_get_default( 'color-secondary' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-secondary-text' ),
+			'selectors'    => array( '.color-secondary-text' ),
 			'declarations' => array(
 				'color' => $color_secondary
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-secondary-background' ),
+			'selectors'    => array( '.color-secondary-background' ),
 			'declarations' => array(
 				'background-color' => $color_secondary
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-secondary-border' ),
+			'selectors'    => array( '.color-secondary-border' ),
 			'declarations' => array(
 				'border-color' => $color_secondary
 			)
@@ -91,7 +91,7 @@ function ttf_one_css_add_rules() {
 	// Text color
 	if ( $color_text !== ttf_one_get_default( 'color-text' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-text', 'body' ),
+			'selectors'    => array( '.color-text', 'body' ),
 			'declarations' => array(
 				'color' => $color_text
 			)
@@ -101,19 +101,19 @@ function ttf_one_css_add_rules() {
 	// Detail color
 	if ( $color_detail !== ttf_one_get_default( 'color-detail' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-detail-text' ),
+			'selectors'    => array( '.color-detail-text' ),
 			'declarations' => array(
 				'color' => $color_detail
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-detail-background' ),
+			'selectors'    => array( '.color-detail-background' ),
 			'declarations' => array(
 				'background-color' => $color_detail
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.color-detail-border' ),
+			'selectors'    => array( '.color-detail-border' ),
 			'declarations' => array(
 				'border-color' => $color_detail
 			)
@@ -134,7 +134,7 @@ function ttf_one_css_add_rules() {
 	// Header text color
 	if ( $header_text_color !== ttf_one_get_default( 'header-text-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-header', '.site-header a' ),
+			'selectors'    => array( '.site-header', '.site-header a' ),
 			'declarations' => array(
 				'color' => $header_text_color
 			)
@@ -144,7 +144,7 @@ function ttf_one_css_add_rules() {
 	// Header background color
 	if ( $header_background_color !== ttf_one_get_default( 'header-background-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-header-main' ),
+			'selectors'    => array( '.site-header-main' ),
 			'declarations' => array(
 				'background-color' => $header_background_color
 			)
@@ -163,11 +163,11 @@ function ttf_one_css_add_rules() {
 
 		// All variables are escaped at this point
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-header-main' ),
+			'selectors'    => array( '.site-header-main' ),
 			'declarations' => array(
-				'background-image' => 'url("' . $header_background_image . '")',
-				'background-size' => $header_background_size,
-				'background-repeat' => $header_background_repeat,
+				'background-image'    => 'url("' . $header_background_image . '")',
+				'background-size'     => $header_background_size,
+				'background-repeat'   => $header_background_repeat,
 				'background-position' => $header_background_position . ' center'
 			)
 		) );
@@ -176,7 +176,7 @@ function ttf_one_css_add_rules() {
 	// Sub Header text color
 	if ( $subheader_text_color !== ttf_one_get_default( 'header-subheader-text-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.sub-header' ),
+			'selectors'    => array( '.sub-header' ),
 			'declarations' => array(
 				'color' => $subheader_text_color
 			)
@@ -186,7 +186,7 @@ function ttf_one_css_add_rules() {
 	// Sub Header border color
 	if ( $subheader_border_color !== ttf_one_get_default( 'header-subheader-border-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.sub-header', '.header-social-links li:first-of-type', '.header-social-links li a' ),
+			'selectors'    => array( '.sub-header', '.header-social-links li:first-of-type', '.header-social-links li a' ),
 			'declarations' => array(
 				'border-color' => $subheader_border_color
 			)
@@ -196,7 +196,7 @@ function ttf_one_css_add_rules() {
 	// Sub Header background color
 	if ( $subheader_background_color !== ttf_one_get_default( 'header-subheader-background-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.sub-header' ),
+			'selectors'    => array( '.sub-header' ),
 			'declarations' => array(
 				'background-color' => $subheader_background_color
 			)
@@ -214,7 +214,7 @@ function ttf_one_css_add_rules() {
 	// Main background color
 	if ( $main_background_color !== ttf_one_get_default( 'main-background-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-content' ),
+			'selectors'    => array( '.site-content' ),
 			'declarations' => array(
 				'background-color' => $main_background_color
 			)
@@ -233,11 +233,11 @@ function ttf_one_css_add_rules() {
 
 		// All variables are escaped at this point
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-content' ),
+			'selectors'    => array( '.site-content' ),
 			'declarations' => array(
-				'background-image' => 'url("' . $main_background_image . '")',
-				'background-size' => $main_background_size,
-				'background-repeat' => $main_background_repeat,
+				'background-image'    => 'url("' . $main_background_image . '")',
+				'background-size'     => $main_background_size,
+				'background-repeat'   => $main_background_repeat,
 				'background-position' => $main_background_position . ' top'
 			)
 		) );
@@ -246,7 +246,7 @@ function ttf_one_css_add_rules() {
 	// Main Content Link Underline
 	if ( 1 === $main_content_link_underline ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.entry-content a' ),
+			'selectors'    => array( '.entry-content a' ),
 			'declarations' => array(
 				'text-decoration' => 'underline'
 			)
@@ -265,7 +265,7 @@ function ttf_one_css_add_rules() {
 	// Footer text color
 	if ( $footer_text_color !== ttf_one_get_default( 'footer-text-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-footer' ),
+			'selectors'    => array( '.site-footer' ),
 			'declarations' => array(
 				'color' => $footer_text_color
 			)
@@ -275,7 +275,7 @@ function ttf_one_css_add_rules() {
 	// Footer border color
 	if ( $footer_border_color !== ttf_one_get_default( 'footer-border-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-footer' ),
+			'selectors'    => array( '.site-footer' ),
 			'declarations' => array(
 				'border-color' => $footer_border_color
 			)
@@ -285,7 +285,7 @@ function ttf_one_css_add_rules() {
 	// Footer background color
 	if ( $footer_background_color !== ttf_one_get_default( 'footer-background-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-footer' ),
+			'selectors'    => array( '.site-footer' ),
 			'declarations' => array(
 				'background-color' => $footer_background_color
 			)
@@ -304,11 +304,11 @@ function ttf_one_css_add_rules() {
 
 		// All variables are escaped at this point
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-footer' ),
+			'selectors'    => array( '.site-footer' ),
 			'declarations' => array(
-				'background-image' => 'url("' . $footer_background_image . '")',
-				'background-size' => $footer_background_size,
-				'background-repeat' => $footer_background_repeat,
+				'background-image'    => 'url("' . $footer_background_image . '")',
+				'background-size'     => $footer_background_size,
+				'background-repeat'   => $footer_background_repeat,
 				'background-position' => $footer_background_position . ' center'
 			)
 		) );
