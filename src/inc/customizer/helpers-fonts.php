@@ -14,14 +14,14 @@ function ttf_one_css_fonts( $css ) {
 	 * Site Title
 	 */
 	// Get and escape options
-	$font_site_title = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
+	$font_site_title       = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
 	$font_site_title_stack = ttf_one_get_font_stack( $font_site_title );
-	$font_site_title_size = absint( get_theme_mod( 'font-site-title-size', ttf_one_get_default( 'font-site-title-size' ) ) );
+	$font_site_title_size  = absint( get_theme_mod( 'font-site-title-size', ttf_one_get_default( 'font-site-title-size' ) ) );
 
 	// Site Title Font
 	if ( $font_site_title !== ttf_one_get_default( 'font-site-title' ) && '' !== $font_site_title_stack ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-title', '.font-site-title' ),
+			'selectors'    => array( '.site-title', '.font-site-title' ),
 			'declarations' => array(
 				'font-family' => $font_site_title_stack
 			)
@@ -31,9 +31,9 @@ function ttf_one_css_fonts( $css ) {
 	// Site Title Font Size
 	if ( $font_site_title_size !== ttf_one_get_default( 'font-site-title-size' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.site-title', '.font-site-title' ),
+			'selectors'    => array( '.site-title', '.font-site-title' ),
 			'declarations' => array(
-				'font-size-px' => $font_site_title_size . 'px',
+				'font-size-px'  => $font_site_title_size . 'px',
 				'font-size-rem' => ttf_one_convert_px_to_rem( $font_site_title_size ) . 'rem'
 			)
 		) );
@@ -43,9 +43,9 @@ function ttf_one_css_fonts( $css ) {
 	 * Headers
 	 */
 	// Get and escape options
-	$font_header = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
+	$font_header       = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
 	$font_header_stack = ttf_one_get_font_stack( $font_header );
-	$font_header_size = absint( get_theme_mod( 'font-header-size', ttf_one_get_default( 'font-header-size' ) ) );
+	$font_header_size  = absint( get_theme_mod( 'font-header-size', ttf_one_get_default( 'font-header-size' ) ) );
 
 	// Relative sizes of the headers
 	$percent = array(
@@ -62,7 +62,7 @@ function ttf_one_css_fonts( $css ) {
 	// Header Font
 	if ( $font_header !== ttf_one_get_default( 'font-header' ) && '' !== $font_header_stack ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
+			'selectors'    => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
 			'declarations' => array(
 				'font-family' => $font_header_stack
 			)
@@ -73,67 +73,67 @@ function ttf_one_css_fonts( $css ) {
 	if ( $font_header_size !== ttf_one_get_default( 'font-header-size' ) ) {
 		// h1
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h1', '.font-header' ),
+			'selectors'    => array( 'h1', '.font-header' ),
 			'declarations' => array(
-				'font-size-px' => $font_header_size . 'px',
+				'font-size-px'  => $font_header_size . 'px',
 				'font-size-rem' => ttf_one_convert_px_to_rem( $font_header_size ) . 'rem'
 			)
 		) );
 		// h2
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h2' ),
+			'selectors'    => array( 'h2' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h2'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) ) . 'rem'
 			)
 		) );
 		// h3
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h3' ),
+			'selectors'    => array( 'h3' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h3'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h3'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) ) . 'rem'
 			)
 		) );
 		// h4
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h4' ),
+			'selectors'    => array( 'h4' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h4'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h4'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) ) . 'rem'
 			)
 		) );
 		// h5
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h5' ),
+			'selectors'    => array( 'h5' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h5'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h5'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) ) . 'rem'
 			)
 		) );
 		// h6
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'h6' ),
+			'selectors'    => array( 'h6' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['h6'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) ) . 'rem'
 			)
 		) );
 		// Post title with two sidebars
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
+			'selectors'    => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['post-title'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['post-title'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'post-title' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'post-title' ] ) ) . 'rem'
 			),
-			'media' => 'screen and (min-width: 800px)'
+			'media'        => 'screen and (min-width: 800px)'
 		) );
 		// Widget title
 		ttf_one_get_css()->add( array(
-			'selectors' => array( '.widget-title' ),
+			'selectors'    => array( '.widget-title' ),
 			'declarations' => array(
-				'font-size-px' => ttf_one_get_relative_font_size( $font_header_size, $percent['widget-title'] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent['widget-title'] ) ) . 'rem'
+				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) ) . 'rem'
 			)
 		) );
 	}
@@ -142,14 +142,14 @@ function ttf_one_css_fonts( $css ) {
 	 * Body
 	 */
 	// Get and escape options
-	$font_body = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
+	$font_body       = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
 	$font_body_stack = ttf_one_get_font_stack( $font_body );
-	$font_body_size = absint( get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) ) );
+	$font_body_size  = absint( get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) ) );
 
 	// Body Font
 	if ( $font_body !== ttf_one_get_default( 'font-body' ) && '' !== $font_body_stack ) {
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'body', '.font-body' ),
+			'selectors'    => array( 'body', '.font-body' ),
 			'declarations' => array(
 				'font-family' => $font_body_stack
 			)
@@ -160,16 +160,16 @@ function ttf_one_css_fonts( $css ) {
 	if ( $font_body_size !== ttf_one_get_default( 'font-body-size' ) ) {
 		// html
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'html' ),
+			'selectors'    => array( 'html' ),
 			'declarations' => array(
 				'font-size' => ( absint( $font_body_size ) / 16 * 100 ) . '%'
 			)
 		) );
 		// body
 		ttf_one_get_css()->add( array(
-			'selectors' => array( 'body', '.font-body' ),
+			'selectors'    => array( 'body', '.font-body' ),
 			'declarations' => array(
-				'font-size-px' => $font_body_size . 'px',
+				'font-size-px'  => $font_body_size . 'px',
 				'font-size-rem' => ttf_one_convert_px_to_rem( $font_body_size ) . 'rem'
 			)
 		) );
