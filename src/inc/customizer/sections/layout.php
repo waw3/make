@@ -9,22 +9,21 @@ if ( ! function_exists( 'ttf_one_customizer_layout' ) ) :
  *
  * @since  1.0
  *
- * @param object $wp_customize
+ * @param WP_Customize_Manager $wp_customize
  * @param string $section
  */
 function ttf_one_customizer_layout( $wp_customize, $section ) {
-	$priority = new TTF_One_Prioritizer();
-	$prefix   = 'ttf-one_';
+	$priority       = new TTF_One_Prioritizer();
+	$prefix         = 'ttf-one_';
 	$section_prefix = 'layout-';
 
-	/**
-	 * Blog, Archive, Search Result views
-	 */
+	// Blog, Archive, Search Result views
 	$blog_views = array(
-		'blog' => __( 'Blog (Posts Page)', 'ttf-one' ),
+		'blog'    => __( 'Blog (Posts Page)', 'ttf-one' ),
 		'archive' => __( 'Archives', 'ttf-one' ),
-		'search' => __( 'Search Results', 'ttf-one' ),
+		'search'  => __( 'Search Results', 'ttf-one' ),
 	);
+
 	// Loop through each blog view
 	foreach ( $blog_views as $view => $label ) {
 		// Group toggle
@@ -50,10 +49,10 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 				$wp_customize,
 				$prefix . $setting_id,
 				array(
-					'section'     => $section,
-					'type'        => 'heading',
-					'label' => __( 'Header, Footer, Sidebars', 'ttf-one' ),
-					'priority'    => $priority->add()
+					'section'  => $section,
+					'type'     => 'heading',
+					'label'    => __( 'Header, Footer, Sidebars', 'ttf-one' ),
+					'priority' => $priority->add()
 				)
 			)
 		);
@@ -302,10 +301,8 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 		);
 	}
 
-	/**
-	 * Post view
-	 */
-	$view = 'post';
+	// Post View
+	$view  = 'post';
 	$label = __( 'Posts', 'ttf-one' );
 
 	// Group toggle
@@ -331,10 +328,10 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			$wp_customize,
 			$prefix . $setting_id,
 			array(
-				'section'     => $section,
-				'type'        => 'heading',
-				'label' => __( 'Header, Footer, Sidebars', 'ttf-one' ),
-				'priority'    => $priority->add()
+				'section'  => $section,
+				'type'     => 'heading',
+				'label'    => __( 'Header, Footer, Sidebars', 'ttf-one' ),
+				'priority' => $priority->add()
 			)
 		)
 	);
@@ -496,10 +493,10 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			$wp_customize,
 			$prefix . $setting_id,
 			array(
-				'section'     => $section,
-				'type'        => 'heading',
-				'label' => __( 'Post Meta', 'ttf-one' ),
-				'priority'    => $priority->add()
+				'section'  => $section,
+				'type'     => 'heading',
+				'label'    => __( 'Post Meta', 'ttf-one' ),
+				'priority' => $priority->add()
 			)
 		)
 	);
@@ -546,10 +543,8 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 		)
 	);
 
-	/**
-	 * Page view
-	 */
-	$view = 'page';
+	// Page view
+	$view  = 'page';
 	$label = __( 'Pages', 'ttf-one' );
 
 	// Group toggle
@@ -575,10 +570,10 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			$wp_customize,
 			$prefix . $setting_id,
 			array(
-				'section'     => $section,
-				'type'        => 'heading',
-				'label' => __( 'Header, Footer, Sidebars', 'ttf-one' ),
-				'priority'    => $priority->add()
+				'section'  => $section,
+				'type'     => 'heading',
+				'label'    => __( 'Header, Footer, Sidebars', 'ttf-one' ),
+				'priority' => $priority->add()
 			)
 		)
 	);
@@ -674,10 +669,10 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 			$wp_customize,
 			$prefix . $setting_id,
 			array(
-				'section'     => $section,
-				'type'        => 'heading',
-				'label' => __( 'Page Title', 'ttf-one' ),
-				'priority'    => $priority->add()
+				'section'  => $section,
+				'type'     => 'heading',
+				'label'    => __( 'Page Title', 'ttf-one' ),
+				'priority' => $priority->add()
 			)
 		)
 	);
