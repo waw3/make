@@ -3,6 +3,9 @@
 -------------------------------------------------------- */
 .entry-header {
 	@include rem('margin-bottom', $base);
+	.entry-thumbnail {
+		@include rem('margin-bottom', $base);
+	}
 }
 .entry-title {
 	font-weight: bold;
@@ -16,6 +19,29 @@
 	a {
 		color: $b;
 		text-decoration: none; //reset
+	}
+}
+.entry-author {
+	float: left;
+	width: 100%;
+	@include rem('margin-bottom', $base);
+}
+.entry-author-byline {
+	float: left;
+	font-style: italic;
+	line-height: 48px;
+	@include rem('font-size', 15px);
+	a {
+		font-style: normal; //reset
+	}
+}
+.entry-author-avatar {
+	float: left;
+	line-height: 0; //reset
+		@include rem('padding-right', $gut/4);
+	img {
+		width: 48px;
+		@include border-radius(50%);
 	}
 }
 .entry-footer {

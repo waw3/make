@@ -1074,6 +1074,9 @@ iframe[src*="google.com/maps"] {
 .entry-header {
   margin-bottom: 22px;
   margin-bottom: 1.29412rem; }
+  .entry-header .entry-thumbnail {
+    margin-bottom: 22px;
+    margin-bottom: 1.29412rem; }
 
 .entry-title {
   font-weight: bold;
@@ -1090,6 +1093,32 @@ iframe[src*="google.com/maps"] {
   .entry-date a {
     color: #171717;
     text-decoration: none; }
+
+.entry-author {
+  float: left;
+  width: 100%;
+  margin-bottom: 22px;
+  margin-bottom: 1.29412rem; }
+
+.entry-author-byline {
+  float: left;
+  font-style: italic;
+  line-height: 48px;
+  font-size: 15px;
+  font-size: 0.88235rem; }
+  .entry-author-byline a {
+    font-style: normal; }
+
+.entry-author-avatar {
+  float: left;
+  line-height: 0;
+  padding-right: 8px;
+  padding-right: 0.47059rem; }
+  .entry-author-avatar img {
+    width: 48px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%; }
 
 .entry-footer {
   font-size: 14px;
