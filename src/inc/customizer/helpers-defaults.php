@@ -156,14 +156,13 @@ if ( ! function_exists( 'ttf_one_get_default' ) ) :
 /**
  * Return a particular global option default.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $option The key of the option to return.
- *
- * @return mixed
+ * @param  string    $option    The key of the option to return.
+ * @return mixed                Default value if found; false if not found.
  */
 function ttf_one_get_default( $option ) {
 	$defaults = ttf_one_option_defaults();
-	return ( isset( $defaults[$option] ) ) ? $defaults[$option] : false;
+	return ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
 }
 endif;
