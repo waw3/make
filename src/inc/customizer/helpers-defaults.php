@@ -7,9 +7,9 @@ if ( ! function_exists( 'ttf_one_option_defaults' ) ) :
 /**
  * The big array of global option defaults.
  *
- * @since 1.0.0
+ * @since  1.0.0
  *
- * @return array
+ * @return array    The default values for all theme options.
  */
 function ttf_one_option_defaults() {
 	$defaults = array(
