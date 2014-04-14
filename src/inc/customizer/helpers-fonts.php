@@ -477,12 +477,12 @@ if ( ! function_exists( 'ttf_one_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return array    All Google Fonts.
  */
 function ttf_one_get_google_fonts() {
-	return array(
+	return apply_filters( 'ttf_one_get_google_fonts', array(
 		'ABeeZee' => array(
 			'label'    => 'ABeeZee',
 			'variants' => array(
@@ -7378,6 +7378,6 @@ function ttf_one_get_google_fonts() {
 				'latin',
 			),
 		),
-	);
+	) );
 }
 endif;
