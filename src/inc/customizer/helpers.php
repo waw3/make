@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
 /**
  * Sanitize a string to allow only tags in the allowedtags array.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @param  string    $string    The unsanitized string.
  * @return string               The sanitized string.
@@ -22,19 +22,18 @@ if ( ! function_exists( 'ttf_one_sanitize_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
  *
- * @since 1.0.0
+ * @since 1.0.0.
  *
- * @param mixed $value
- * @param mixed $setting
- *
- * @return mixed
+ * @param  mixed    $value      The value to sanitize.
+ * @param  mixed    $setting    The setting for which the sanitizing is occurring.
+ * @return mixed                The sanitized value.
  */
 function ttf_one_sanitize_choice( $value, $setting ) {
 	if ( is_object( $setting ) ) {
 		$setting = $setting->id;
 	}
 
-	$choices = ttf_one_get_choices( $setting );
+	$choices         = ttf_one_get_choices( $setting );
 	$allowed_choices = array_keys( $choices );
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
@@ -175,7 +174,7 @@ if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
 /**
  * Write the favicons to the head to implement the options.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -196,21 +195,22 @@ add_action( 'wp_head', 'ttf_one_display_favicons' );
 
 if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
 /**
- * Add theme option body classes
+ * Add theme option body classes.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param array $classes
- *
- * @return array
+ * @param  array    $classes    Existing classes.
+ * @return array                Modified classes.
  */
 function ttf_one_body_layout_classes( $classes ) {
 	// Full-width vs Boxed
 	$classes[] = get_theme_mod( 'general-layout', ttf_one_get_default( 'general-layout' ) );
+
 	// Header branding position
 	if ( 'right' === get_theme_mod( 'header-branding-position', ttf_one_get_default( 'header-branding-position' ) ) ) {
 		$classes[] = 'branding-right';
 	}
+
 	// Sub Header text position
 	if ( 'flipped' === get_theme_mod( 'header-subheader-content-layout', ttf_one_get_default( 'header-subheader-content-layout' ) ) ) {
 		$classes[] = 'subheader-flipped';
