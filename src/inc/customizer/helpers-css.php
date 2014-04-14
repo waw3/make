@@ -96,6 +96,10 @@ class TTF_One_CSS {
 	 * Selectors represent the CSS selectors; declarations are the CSS properties and values with keys being properties
 	 * and values being values. 'media' can also be declared to specify the media query.
 	 *
+	 * Note that data *must* be sanitized when adding to the data array. Because every piece of CSS data has special
+	 * sanitization concerns, it must be handled at the time of addition, not at the time of output. The theme handles
+	 * this in the the other helper files, i.e., the data is already sanitized when `add()` is called.
+	 *
 	 * @since  1.0.0.
 	 *
 	 * @param  array    $data    The selectors and properties to add to the CSS.
@@ -204,6 +208,10 @@ class TTF_One_CSS {
 	 * @return string                  Results of the selector combination.
 	 */
 	private function parse_selectors( $selectors, $tab = '' ) {
+		/**
+		 * Note that these selectors are hardcoded in the code base. They are never the result of user input and can
+		 * thus be trusted to be sane.
+		 */
 		$n      = $this->line_ending;
 		$output = $tab . implode( ",{$n}{$tab}", $selectors );
 		return $output;
@@ -224,6 +232,11 @@ class TTF_One_CSS {
 
 		$output = '';
 
+		/**
+		 * Note that when this output is prepared, it is not escaped, sanitized or otherwise altered. The sanitization
+		 * routines are implemented when the developer calls `ttf_one_get_css->add()`. Because every property value has
+		 * special sanitization needs, it is handled at that point.
+		 */
 		foreach ( $declarations as $property => $value ) {
 			// Exception for px/rem font size
 			if ( 'font-size-px' === $property || 'font-size-rem' === $property ) {
