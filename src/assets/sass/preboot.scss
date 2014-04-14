@@ -68,7 +68,7 @@ $rule: 				1px solid $b;
 	}
 }
 
-$baseline-px: 16px;
+$baseline-px: 17px;
 
 @mixin rem($property, $px-values) {
 	// Convert the baseline into rems
