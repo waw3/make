@@ -166,8 +166,7 @@ class TTF_One_CSS {
 		if ( isset( $this->data['all'] ) && count( $this->data ) > 1 ) {
 			$all = $this->data['all'];
 			unset( $this->data['all'] );
-			$this->data['all'] = $all;
-			$this->data = array_reverse( $this->data );
+			$this->data = array_merge( $all, $this->data);
 		}
 
 		$output = '';
