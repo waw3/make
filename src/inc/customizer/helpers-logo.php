@@ -9,16 +9,16 @@ if ( ! class_exists( 'TTF_One_Logo' ) ) :
  *
  * A class that adds custom logo functionality.
  *
- * @since 1.0.0
+ * @since 1.0.0.
  */
 class TTF_One_Logo {
 
 	/**
 	 * The one instance of TTF_One_Logo
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
-	 * @var TTF_One_Logo
+	 * @var   TTF_One_Logo    The one instance.
 	 */
 	private static $instance;
 
@@ -29,7 +29,7 @@ class TTF_One_Logo {
 	 * the page load, once the logo information is computed for the first time, it is cached to this variable.
 	 * Subsequent requests for the information are pulled from the variable in memory instead of recomputing it.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
 	 * @var   array    Holds the image, width, and height information for the logos.
 	 */
@@ -38,7 +38,7 @@ class TTF_One_Logo {
 	/**
 	 * Stores whether or not a specified logo type is available.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
 	 * @var   array    Holds boolean values to indicate if the logo type is available.
 	 */
@@ -47,7 +47,7 @@ class TTF_One_Logo {
 	/**
 	 * Instantiate or return the one TTF_One_Logo instance.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Logo
 	 */
@@ -61,7 +61,7 @@ class TTF_One_Logo {
 	/**
 	 * Initiate the actions.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Logo
 	 */
@@ -73,7 +73,7 @@ class TTF_One_Logo {
 	 * Get the ID of an attachment from its image URL.
 	 *
 	 * @author  Taken from reverted change to WordPress core http://core.trac.wordpress.org/ticket/23831
-	 * @since   1.0.0
+	 * @since   1.0.0.
 	 *
 	 * @param   string      $url    The path to an image.
 	 * @return  int|bool            ID of the attachment or 0 on failure.
@@ -116,7 +116,7 @@ class TTF_One_Logo {
 	/**
 	 * Get the dimensions of a logo image from cache or regenerate the values.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $url    The URL of the image in question.
 	 * @return array             The dimensions array on success, and a blank array on failure.
@@ -172,7 +172,7 @@ class TTF_One_Logo {
 	/**
 	 * Determine if a custom logo should be displayed.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return bool    True if a logo should be displayed. False if a logo shouldn't be displayed.
 	 */
@@ -183,7 +183,7 @@ class TTF_One_Logo {
 	/**
 	 * Determine if necessary information is available to show a particular logo.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $type    The type of logo to inspect for.
 	 * @return bool               True if all information is available. False is something is missing.
@@ -228,7 +228,7 @@ class TTF_One_Logo {
 	/**
 	 * Utility function for getting information about the theme logos.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return array    Array containing image file, width, and height for each logo.
 	 */
@@ -273,7 +273,7 @@ class TTF_One_Logo {
 	/**
 	 * Print CSS in the head for the logo.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -353,7 +353,7 @@ class TTF_One_Logo {
 	/**
 	 * Scale the image to the width boundary.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @param  int      $width             The image's width.
 	 * @param  int      $height            The image's height.
@@ -384,13 +384,13 @@ class TTF_One_Logo {
 			'ratio'  => $ratio
 		);
 	}
-} // end class
+}
 
 if ( ! function_exists( 'ttf_one_get_logo' ) ) :
 /**
  * Return the one TTF_One_Logo object.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return TTF_One_Logo
  */
@@ -401,4 +401,4 @@ endif;
 
 add_action( 'init', 'ttf_one_get_logo', 1 );
 
-endif; // end if class_exists
+endif;
