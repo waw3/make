@@ -305,16 +305,6 @@ a {
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
 -------------------------------------------------------- */
-.menu-toggle {
-	cursor: pointer;
-	display: block;
-}
-@include for(medium-screens) {
-	.menu-toggle,
-	.main-navigation.toggled .nav-menu {
-		display: none;
-	}
-}
 .site-navigation {
 	@include for(medium-screens) {
 		float: right;
@@ -325,90 +315,83 @@ a {
 	}
 	margin-bottom: 0; //reset
 	@include no-select;
-	ul {
-		margin: 0; //reset
-		padding: 0; //reset
-		list-style: none; //reset
-	}
-	.page_item_has_children {
-		&:hover:after {
-			color: $b;
-		}
-		&:after {
-			content: "\f078";
-			position: relative;
-			color: $e;
-			font-family: FontAwesome;
-			@include rem('top', -1px);
-			@include rem('padding-left', 6px);
-			@include rem('font-size', 10px);
-		}
+}
+.menu {
+	ul,
+	ol {
+		margin-left: 0; //reset
 	}
 	li {
-		@include for(medium-screens) {
-			display: inline-block;
-			border-bottom: 0; //reset
-			@include rem('margin-bottom', 3px);
-			@include rem('padding', 3px 25px 3px 0);
+		display: inline-block;
+		position: relative;
+		a {
+			display: block;
+			color: $b;
+			font-weight: normal; //reset
+			font-size: 15px;
+			line-height: 1; //reset
+			text-decoration: none;
+			@include rem('padding', $base/2 $gut/2);
+			@include rem('font-size', 14px);
 		}
-		border-bottom: 1px solid $d;
-		@include rem('padding', $base/2 $gut/4);
-		&:last-of-type {
+		&:last-of-type a {
 			padding-right: 0; //reset
 		}
-		&:hover ul {
-			display: block;
-		}
+	}
+	.sub-menu,
+	.children {
+		background-color: $d;
+		border-top: 0;
+		padding: 0;
+		position: absolute;
+		left: -2px;
+		z-index: 99999;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
 		ul {
-			position: absolute;
-			display: none;
-			z-index: 999;
-			margin: 0; //reset
-			padding: 0; //reset
-			background-color: $d;
-			width: 160px;
-			@include rem('margin-left', -$gut/3);
-			@include border-radius;
-			&.children {
-				.page_item_has_children:after {
-					content: none;
-				}
-			}
-			li {
-				border-bottom: 1px solid rgba(0, 0, 0, .1);
-				@include rem('padding', 0 $gut/4);
-				ul {
-					left: 160px;
-				}
-			}
-			li,
-			li a {
-				float: none;
-				display: block;
-				height: auto;
-				@include rem('margin', $base/2 0);
-				@include rem('font-size', 13px);
-				&:last-child {
-					border-bottom: none;
-				}
-			}
+			border-left: 0;
+			left: 100%;
+			top: 0;
 		}
 	}
-	a {
-		display: inline;
-		color: $b;
-		text-decoration: none; //reset
-		@include rem('font-size', 13px);
-		&:hover {
-			color: $c;
-		}
-	}
-	.current_page_item {
-		font-weight: bold;
-		a {
-			color: $b;
-			border-bottom: 2px solid $b;
-		}
+}
+ul.menu ul a,
+.menu ul ul a {
+	margin: 0;
+	min-width: 200px;
+	max-width: 250px;
+}
+ul.menu ul a:hover,
+.menu ul ul a:hover,
+ul.menu ul a:focus,
+.menu ul ul a:focus {
+	color: $a;
+	background-color: $c;
+}
+ul.menu li:hover > ul,
+.menu ul li:hover > ul,
+ul.menu .focus > ul,
+.menu .focus > ul {
+	clip: inherit;
+	overflow: inherit;
+	height: inherit;
+	width: inherit;
+}
+.menu .current_page_item > a,
+.menu .current_page_ancestor > a,
+.menu .current-menu-item > a,
+.menu .current-menu-ancestor > a {
+	font-weight: bold;
+}
+.menu-toggle {
+	cursor: pointer;
+}
+@include for(medium-screens) {
+	.menu-toggle,
+	.main-navigation.toggled .nav-menu {
+		display: none;
 	}
 }
 /*---------------------------------------------------------
