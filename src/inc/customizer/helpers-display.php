@@ -73,19 +73,19 @@ function ttf_one_css_add_rules() {
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.color-secondary-text' ),
 			'declarations' => array(
-				'color' => $color_primary
+				'color' => $color_secondary
 			)
 		) );
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.color-secondary-background' ),
 			'declarations' => array(
-				'background-color' => $color_primary
+				'background-color' => $color_secondary
 			)
 		) );
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.color-secondary-border' ),
 			'declarations' => array(
-				'border-color' => $color_primary
+				'border-color' => $color_secondary
 			)
 		) );
 	}
@@ -105,19 +105,19 @@ function ttf_one_css_add_rules() {
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.color-detail-text' ),
 			'declarations' => array(
-				'color' => $color_primary
+				'color' => $color_detail
 			)
 		) );
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.color-detail-background' ),
 			'declarations' => array(
-				'background-color' => $color_primary
+				'background-color' => $color_detail
 			)
 		) );
 		ttf_one_get_css()->add( array(
 			'selectors' => array( '.color-detail-border' ),
 			'declarations' => array(
-				'border-color' => $color_primary
+				'border-color' => $color_detail
 			)
 		) );
 	}
