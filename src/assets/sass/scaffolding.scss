@@ -347,6 +347,22 @@ a {
 		a {
 			border-bottom: 1px solid $e;
 			@include rem('padding', 15px $gut/2);
+			@include rem('font-size', 13px);
+			&:after {
+				content: none; //reset
+			}
+		}
+		.menu-item-has-children a:after {
+			content: "  \f054";
+			font-weight: normal; //reset
+			font-family: FontAwesome;
+			@include rem('font-size', 10px);
+		}
+		.sub-menu,
+		.children {
+			a:after {
+				content: none; //reset
+			}
 		}
 		li:last-of-type a {
 			border-bottom: 0; //reset
@@ -362,13 +378,22 @@ a {
 	.current-menu-ancestor {
 		> a {
 			font-weight: bold;
+			font-family: FontAwesome;
 		}
 	}
+}
+.menu-item-has-children a:after {
+	content: "  \f078";
+	color: $e;
+	font-family: FontAwesome;
+	font-weight: normal; //reset
+	@include rem('padding-left', 2px);
+	@include rem('font-size', 10px);
 }
 ul.menu ul a,
 .menu ul ul a {
 	margin: 0; //reset
-	min-width: 200px;
+	min-width: 180px;
 	max-width: 250px;
 	&:hover,
 	&:focus {

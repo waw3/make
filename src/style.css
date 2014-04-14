@@ -495,18 +495,41 @@ a {
   .menu .sub-menu a, .menu .children a {
     border-bottom: 1px solid #b9bcbf;
     padding: 15px 16px;
-    padding:  0.88235rem 0.94118rem; }
+    padding:  0.88235rem 0.94118rem;
+    font-size: 13px;
+    font-size: 0.76471rem; }
+    .menu .sub-menu a:after, .menu .children a:after {
+      content: none; }
+  .menu .sub-menu .menu-item-has-children a:after, .menu .children .menu-item-has-children a:after {
+    content: "  \f054";
+    font-weight: normal;
+    font-family: FontAwesome;
+    font-size: 10px;
+    font-size: 0.58824rem; }
+  .menu .sub-menu .sub-menu a:after, .menu .sub-menu .children a:after, .menu .children .sub-menu a:after, .menu .children .children a:after {
+    content: none; }
   .menu .sub-menu li:last-of-type a, .menu .children li:last-of-type a {
     border-bottom: 0; }
   .menu .sub-menu ul, .menu .children ul {
     top: 0;
     left: 100%; }
 .menu .current_page_item > a, .menu .current_page_ancestor > a, .menu .current-menu-item > a, .menu .current-menu-ancestor > a {
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: FontAwesome; }
+
+.menu-item-has-children a:after {
+  content: "  \f078";
+  color: #b9bcbf;
+  font-family: FontAwesome;
+  font-weight: normal;
+  padding-left: 2px;
+  padding-left: 0.11765rem;
+  font-size: 10px;
+  font-size: 0.58824rem; }
 
 ul.menu ul a, .menu ul ul a {
   margin: 0;
-  min-width: 200px;
+  min-width: 180px;
   max-width: 250px; }
   ul.menu ul a:hover, ul.menu ul a:focus, .menu ul ul a:hover, .menu ul ul a:focus {
     color: #ffffff;
