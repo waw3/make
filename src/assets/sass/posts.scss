@@ -1,6 +1,11 @@
 /*---------------------------------------------------------
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
+.post {
+	border-bottom: 1px solid $d;
+	@include rem('padding-bottom', $base);
+	@include rem('margin-bottom', $base*4);
+}
 .entry-header {
 	@include rem('margin-bottom', $base);
 	.entry-thumbnail {
@@ -8,8 +13,9 @@
 	}
 }
 .entry-title {
-	font-weight: bold;
+	line-height: 1.1;
 	@include rem('margin-top', $base/4);
+	@include rem('word-spacing', -1px);
 }
 .entry-date {
 	text-transform: uppercase;
@@ -29,7 +35,7 @@
 .entry-author-byline {
 	float: left;
 	font-style: italic;
-	line-height: 48px;
+	line-height: 34px;
 	@include rem('font-size', 15px);
 	a {
 		font-style: normal; //reset
@@ -40,7 +46,7 @@
 	line-height: 0; //reset
 		@include rem('padding-right', $gut/4);
 	img {
-		width: 48px;
+		width: 34px;
 		@include border-radius(50%);
 	}
 }
