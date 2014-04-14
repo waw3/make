@@ -244,11 +244,11 @@ endif;
 
 if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
 /**
- * Build the HTTP request URL for Google fonts
+ * Build the HTTP request URL for Google Fonts.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @return string
+ * @return string    The URL for including Google Fonts.
  */
 function ttf_one_get_google_font_request() {
 	// Grab the font choices
