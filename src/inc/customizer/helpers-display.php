@@ -24,11 +24,9 @@ function ttf_one_css_add_rules() {
 	 */
 	$site_background_image = get_theme_mod( 'background_image', ttf_one_get_default( 'background_image' ) );
 	if ( ! empty( $site_background_image ) ) {
-		// Get and escape related options
 		// Note that most site background options are handled by internal WordPress functions
 		$site_background_size = ttf_one_sanitize_choice( get_theme_mod( 'background_size', ttf_one_get_default( 'background_size' ) ), 'background-size' );
 
-		// All variables are escaped at this point
 		ttf_one_get_css()->add( array(
 			'selectors' => array( 'body' ),
 			'declarations' => array(
