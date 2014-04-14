@@ -168,7 +168,7 @@ class TTF_One_CSS {
 
 		// Make sure the 'all' array is first
 		if ( isset( $this->data['all'] ) && count( $this->data ) > 1 ) {
-			$all = array ( $this->data['all'] );
+			$all = array ( 'all' => $this->data['all'] );
 			unset( $this->data['all'] );
 			$this->data = array_merge( $all, $this->data);
 		}
