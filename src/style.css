@@ -1190,6 +1190,10 @@ iframe[src*="google.com/maps"] {
     color: #171717;
     font-weight: bold;
     text-decoration: none; }
+    [class*="navigation"] .nav-previous a:before {
+      content: "\f177  ";
+      font-family: FontAwesome;
+      font-weight: normal; }
 
 [class*="navigation"] .nav-next {
   float: right;
@@ -1199,6 +1203,10 @@ iframe[src*="google.com/maps"] {
     color: #171717;
     font-weight: bold;
     text-decoration: none; }
+    [class*="navigation"] .nav-next a:after {
+      content: "  \f178";
+      font-family: FontAwesome;
+      font-weight: normal; }
 
 /* =Infinite Scroll
 ----------------------------------------------- */

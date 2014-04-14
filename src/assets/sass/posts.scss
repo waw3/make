@@ -112,6 +112,11 @@
 		color: $b;
 		font-weight: bold;
 		text-decoration: none; //reset
+		&:before {
+			content: "\f177  ";
+			font-family: FontAwesome;
+			font-weight: normal; //reset
+		}
 	}
 }
 [class*="navigation"] .nav-next {
@@ -122,6 +127,11 @@
 		color: $b;
 		font-weight: bold;
 		text-decoration: none; //reset
+		&:after {
+			content: "  \f178";
+			font-family: FontAwesome;
+			font-weight: normal; //reset
+		}
 	}
 }
 /* =Infinite Scroll
