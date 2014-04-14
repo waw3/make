@@ -185,7 +185,8 @@ if ( ! function_exists( 'ttf_one_get_font_stack' ) ) :
  *
  * @since  1.0.0.
  *
- * @return string
+ * @param  string    $font    The 1st font in the stack.
+ * @return string             The full font stack.
  */
 function ttf_one_get_font_stack( $font ) {
 	$all_fonts = ttf_one_get_all_fonts();
@@ -405,7 +406,7 @@ if ( ! function_exists( 'ttf_one_all_font_choices' ) ) :
  * @return array    The fonts in value/label pairs.
  */
 function ttf_one_all_font_choices() {
-	$fonts = ttf_one_get_all_fonts();
+	$fonts   = ttf_one_get_all_fonts();
 	$choices = array();
 
 	// Repackage the fonts into value/label pairs
@@ -446,7 +447,6 @@ if ( ! function_exists( 'ttf_one_get_all_fonts' ) ) :
 function ttf_one_get_all_fonts() {
 	$standard_fonts = ttf_one_get_standard_fonts();
 	$google_fonts   = ttf_one_get_google_fonts();
-
 	return array_merge( $standard_fonts, $google_fonts );
 }
 endif;
