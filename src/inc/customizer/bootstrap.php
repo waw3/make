@@ -222,9 +222,12 @@ function ttf_one_display_customizations() {
 	do_action( 'ttf_one_css' );
 
 	// Echo the rules
-	echo "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">\n";
-	echo ttf_one_get_css()->build();
-	echo "\n</style>\n<!-- End One Custom CSS -->\n";
+	$css = ttf_one_get_css()->build();
+	if ( ! empty( $css ) ) {
+		echo "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">\n";
+		echo $css;
+		echo "\n</style>\n<!-- End One Custom CSS -->\n";
+	}
 }
 endif;
 
