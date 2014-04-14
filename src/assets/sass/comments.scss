@@ -103,6 +103,10 @@
  Form (_comments.scss)
 -------------------------------------------------------- */
 .comment-form {
+	input,
+	textarea {
+		width: 100%;
+	}
 	label {
 		display: block;
 		@include rem('padding-bottom', $base/3);
@@ -110,6 +114,9 @@
 	.required {
 		color: $c;
 	}
+}
+.form-allowed-tags code {
+	background-color: transparent; //reset
 }
 /*---------------------------------------------------------
  Navigation (_comments.scss)

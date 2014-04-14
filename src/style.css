@@ -1545,12 +1545,17 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Form (_comments.scss)
 -------------------------------------------------------- */
+.comment-form input, .comment-form textarea {
+  width: 100%; }
 .comment-form label {
   display: block;
   padding-bottom: 7.33333px;
   padding-bottom: 0.43137rem; }
 .comment-form .required {
   color: #3070d1; }
+
+.form-allowed-tags code {
+  background-color: transparent; }
 
 /*---------------------------------------------------------
  Navigation (_comments.scss)
