@@ -124,11 +124,11 @@ function ttf_one_css_add_rules() {
 	 * Header section
 	 */
 	// Get and escape options
-	$header_text_color = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttf_one_get_default( 'header-text-color' ) ) );
-	$header_background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttf_one_get_default( 'header-background-color' ) ) );
-	$header_background_image = get_theme_mod( 'header-background-image', ttf_one_get_default( 'header-background-image' ) );
-	$subheader_text_color = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', ttf_one_get_default( 'header-subheader-text-color' ) ) );
-	$subheader_border_color = maybe_hash_hex_color( get_theme_mod( 'header-subheader-border-color', ttf_one_get_default( 'header-subheader-border-color' ) ) );
+	$header_text_color          = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttf_one_get_default( 'header-text-color' ) ) );
+	$header_background_color    = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttf_one_get_default( 'header-background-color' ) ) );
+	$header_background_image    = get_theme_mod( 'header-background-image', ttf_one_get_default( 'header-background-image' ) );
+	$subheader_text_color       = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', ttf_one_get_default( 'header-subheader-text-color' ) ) );
+	$subheader_border_color     = maybe_hash_hex_color( get_theme_mod( 'header-subheader-border-color', ttf_one_get_default( 'header-subheader-border-color' ) ) );
 	$subheader_background_color = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', ttf_one_get_default( 'header-subheader-background-color' ) ) );
 
 	// Header text color
@@ -157,8 +157,8 @@ function ttf_one_css_add_rules() {
 		$header_background_image = addcslashes( esc_url_raw( $header_background_image ), '"' );
 
 		// Get and escape related options
-		$header_background_size = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', ttf_one_get_default( 'header-background-size' ) ), 'header-background-size' );
-		$header_background_repeat = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', ttf_one_get_default( 'header-background-repeat' ) ), 'header-background-repeat' );
+		$header_background_size     = ttf_one_sanitize_choice( get_theme_mod( 'header-background-size', ttf_one_get_default( 'header-background-size' ) ), 'header-background-size' );
+		$header_background_repeat   = ttf_one_sanitize_choice( get_theme_mod( 'header-background-repeat', ttf_one_get_default( 'header-background-repeat' ) ), 'header-background-repeat' );
 		$header_background_position = ttf_one_sanitize_choice( get_theme_mod( 'header-background-position', ttf_one_get_default( 'header-background-position' ) ), 'header-background-position' );
 
 		// All variables are escaped at this point
@@ -207,8 +207,8 @@ function ttf_one_css_add_rules() {
 	 * Main section
 	 */
 	// Get and escape options
-	$main_background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttf_one_get_default( 'main-background-color' ) ) );
-	$main_background_image = get_theme_mod( 'main-background-image', ttf_one_get_default( 'main-background-image' ) );
+	$main_background_color       = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttf_one_get_default( 'main-background-color' ) ) );
+	$main_background_image       = get_theme_mod( 'main-background-image', ttf_one_get_default( 'main-background-image' ) );
 	$main_content_link_underline = absint( get_theme_mod( 'main-content-link-underline', ttf_one_get_default( 'main-content-link-underline' ) ) );
 
 	// Main background color
@@ -227,8 +227,8 @@ function ttf_one_css_add_rules() {
 		$main_background_image = addcslashes( esc_url_raw( $main_background_image ), '"' );
 
 		// Get and escape related options
-		$main_background_size = ttf_one_sanitize_choice( get_theme_mod( 'main-background-size', ttf_one_get_default( 'main-background-size' ) ), 'main-background-size' );
-		$main_background_repeat = ttf_one_sanitize_choice( get_theme_mod( 'main-background-repeat', ttf_one_get_default( 'main-background-repeat' ) ), 'main-background-repeat' );
+		$main_background_size     = ttf_one_sanitize_choice( get_theme_mod( 'main-background-size', ttf_one_get_default( 'main-background-size' ) ), 'main-background-size' );
+		$main_background_repeat   = ttf_one_sanitize_choice( get_theme_mod( 'main-background-repeat', ttf_one_get_default( 'main-background-repeat' ) ), 'main-background-repeat' );
 		$main_background_position = ttf_one_sanitize_choice( get_theme_mod( 'main-background-position', ttf_one_get_default( 'main-background-position' ) ), 'main-background-position' );
 
 		// All variables are escaped at this point
@@ -257,8 +257,8 @@ function ttf_one_css_add_rules() {
 	 * Footer section
 	 */
 	// Get and escape options
-	$footer_text_color = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', ttf_one_get_default( 'footer-text-color' ) ) );
-	$footer_border_color = maybe_hash_hex_color( get_theme_mod( 'footer-border-color', ttf_one_get_default( 'footer-border-color' ) ) );
+	$footer_text_color       = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', ttf_one_get_default( 'footer-text-color' ) ) );
+	$footer_border_color     = maybe_hash_hex_color( get_theme_mod( 'footer-border-color', ttf_one_get_default( 'footer-border-color' ) ) );
 	$footer_background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttf_one_get_default( 'footer-background-color' ) ) );
 	$footer_background_image = get_theme_mod( 'footer-background-image', ttf_one_get_default( 'footer-background-image' ) );
 
@@ -298,8 +298,8 @@ function ttf_one_css_add_rules() {
 		$footer_background_image = addcslashes( esc_url_raw( $footer_background_image ), '"' );
 
 		// Get and escape related options
-		$footer_background_size = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-size', ttf_one_get_default( 'footer-background-size' ) ), 'footer-background-size' );
-		$footer_background_repeat = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-repeat', ttf_one_get_default( 'footer-background-repeat' ) ), 'footer-background-repeat' );
+		$footer_background_size     = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-size', ttf_one_get_default( 'footer-background-size' ) ), 'footer-background-size' );
+		$footer_background_repeat   = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-repeat', ttf_one_get_default( 'footer-background-repeat' ) ), 'footer-background-repeat' );
 		$footer_background_position = ttf_one_sanitize_choice( get_theme_mod( 'footer-background-position', ttf_one_get_default( 'footer-background-position' ) ), 'footer-background-position' );
 
 		// All variables are escaped at this point
