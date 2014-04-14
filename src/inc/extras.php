@@ -125,12 +125,14 @@ if ( ! function_exists( 'sanitize_hex_color' ) ) :
  * @return string|null              The sanitized color.
  */
 function sanitize_hex_color( $color ) {
-	if ( '' === $color )
+	if ( '' === $color ) {
 		return '';
+	}
 
 	// 3 or 6 hex digits, or the empty string.
-	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
 		return $color;
+	}
 
 	return null;
 }
@@ -150,8 +152,9 @@ if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
 function sanitize_hex_color_no_hash( $color ) {
 	$color = ltrim( $color, '#' );
 
-	if ( '' === $color )
+	if ( '' === $color ) {
 		return '';
+	}
 
 	return sanitize_hex_color( '#' . $color ) ? $color : null;
 }
@@ -169,8 +172,9 @@ if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
  * @return string|null              The sanitized color.
  */
 function maybe_hash_hex_color( $color ) {
-	if ( $unhashed = sanitize_hex_color_no_hash( $color ) )
+	if ( $unhashed = sanitize_hex_color_no_hash( $color ) ) {
 		return '#' . $unhashed;
+	}
 
 	return $color;
 }
