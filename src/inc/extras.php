@@ -33,12 +33,12 @@ if ( ! function_exists( 'ttf_one_body_classes' ) ) :
  */
 function ttf_one_body_classes( $classes ) {
 	// Left Sidebar
-	if ( true === ttf_one_has_sidebar( 'left' ) && is_active_sidebar( 'sidebar-left' ) ) {
+	if ( true === ttf_one_has_sidebar( 'left' ) ) {
 		$classes[] = 'has-left-sidebar';
 	}
 
 	// Right Sidebar
-	if ( true === ttf_one_has_sidebar( 'right' ) && is_active_sidebar( 'sidebar-right' ) ) {
+	if ( true === ttf_one_has_sidebar( 'right' ) ) {
 		$classes[] = 'has-right-sidebar';
 	}
 

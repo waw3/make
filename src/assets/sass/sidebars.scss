@@ -30,7 +30,7 @@
 		.site-main {
 			width: percentage( ( $col * 5 + $gut * 5 ) / $width );
 		}
-		#sidebar-right {
+		#sidebar-left, #sidebar-right {
 			width: percentage( ( $col * 2 + $gut * 2 ) / $width );
 		}
 	}

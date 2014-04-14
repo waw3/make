@@ -1301,7 +1301,7 @@ iframe[src*="google.com/maps"] {
     margin-left: 9.58333%; }
   .has-right-sidebar .site-main, .has-left-sidebar .site-main {
     width: 64.58333%; }
-  .has-right-sidebar #sidebar-right, .has-left-sidebar #sidebar-right {
+  .has-right-sidebar #sidebar-left, .has-right-sidebar #sidebar-right, .has-left-sidebar #sidebar-left, .has-left-sidebar #sidebar-right {
     width: 25.83333%; } }
 
 /*---------------------------------------------------------
