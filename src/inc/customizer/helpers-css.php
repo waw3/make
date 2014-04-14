@@ -129,7 +129,7 @@ class TTF_One_CSS {
 
 		// Look for matching selector sets
 		$match = false;
-		foreach ( $this->data[$media] as $key => $rule ) {
+		foreach ( $this->data[ $media ] as $key => $rule ) {
 			$diff1 = array_diff( $rule['selectors'], $entry['selectors'] );
 			$diff2 = array_diff( $entry['selectors'], $rule['selectors'] );
 			if ( empty( $diff1 ) && empty( $diff2 ) ) {
@@ -152,7 +152,8 @@ class TTF_One_CSS {
 	 * Compile the data array into standard CSS syntax
 	 *
 	 * @since  1.0.0.
-	 * @return string    The CSS that is build from the data.
+	 *
+	 * @return string    The CSS that is built from the data.
 	 */
 	public function build() {
 		if ( empty( $this->data ) ) {
