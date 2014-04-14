@@ -251,10 +251,10 @@ function ttf_one_customizer_layout( $wp_customize, $section ) {
 				$wp_customize,
 				$prefix . $setting_id,
 				array(
-					'section'     => $section,
-					'type'        => 'heading',
-					'label' => __( 'Post Meta', 'ttf-one' ),
-					'priority'    => $priority->add()
+					'section'  => $section,
+					'type'     => 'heading',
+					'label'    => __( 'Post Meta', 'ttf-one' ),
+					'priority' => $priority->add()
 				)
 			)
 		);

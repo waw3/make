@@ -12,8 +12,8 @@ $tag_option = (bool) get_theme_mod( $tag_key, ttf_one_get_default( $tag_key ) );
 
 <?php if ( ( $category_option || $tag_option ) && ( ( has_category() && ttf_one_categorized_blog() ) || has_tag() ) ) : ?>
 	<?php
-	$category_list = get_the_category_list();
-	$tag_list = get_the_tag_list( '<ul class="post-tags"><li>', "</li>\n<li>", '</li></ul>' ); // Replicates category output
+	$category_list   = get_the_category_list();
+	$tag_list        = get_the_tag_list( '<ul class="post-tags"><li>', "</li>\n<li>", '</li></ul>' ); // Replicates category output
 	$taxonomy_output = '';
 
 	// Categories
