@@ -5,13 +5,20 @@
 
 if ( ! function_exists( 'ttf_one_css_add_rules' ) ) :
 /**
+ * Process user options to generate CSS needed to implement the choices.
  *
+ * This function reads in the options from theme mods and determines whether a CSS rule is needed to implement an
+ * option. CSS is only written for choices that are non-default in order to avoid adding unnecessary CSS. All options
+ * are also filterable allowing for more precise control via a child theme or plugin.
+ *
+ * Note that all CSS for options is present in this function except for the CSS for fonts and the logo, which require
+ * a lot more code to implement.
+ *
+ * @since  1.0.0.
+ *
+ * @return void
  */
 function ttf_one_css_add_rules() {
-	/**
-	 * Logo section CSS is added in helpers-logo.php
-	 */
-
 	/**
 	 * Background section
 	 */
@@ -29,10 +36,6 @@ function ttf_one_css_add_rules() {
 			)
 		) );
 	}
-
-	/**
-	 * Fonts section CSS is added in helpers-fonts.php
-	 */
 
 	/**
 	 * Colors section
