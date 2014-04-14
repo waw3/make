@@ -189,6 +189,11 @@ a {
 	a {
 		color: inherit;
 	}
+	textarea,
+	input {
+		background-color: $a;
+		@include rem('font-size', 12px);
+	}
 	.search-form {
 		@include for(large-screens) {
 			@include rem('padding', $base/2 0 $base/2 $gut/2);

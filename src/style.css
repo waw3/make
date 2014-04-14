@@ -352,6 +352,10 @@ a {
   border-bottom: 1px solid #eaecee; }
   .sub-header a {
     color: inherit; }
+  .sub-header textarea, .sub-header input {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-size: 0.75rem; }
   .sub-header .search-form {
     font-size: 13px;
     font-size: 0.8125rem;
