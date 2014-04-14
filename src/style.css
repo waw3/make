@@ -478,9 +478,7 @@ a {
     display: block;
     color: #171717;
     font-weight: normal;
-    font-size: 15px;
     line-height: 1;
-    text-decoration: none;
     padding: 11px 16px;
     padding:  0.64706rem 0.94118rem;
     font-size: 14px;
@@ -489,37 +487,36 @@ a {
     padding-right: 0; }
 .menu .sub-menu, .menu .children {
   background-color: #eaecee;
-  border-top: 0;
-  padding: 0;
   position: absolute;
-  left: -2px;
   z-index: 99999;
-  height: 1px;
-  width: 1px;
+  padding: 0;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px); }
+  .menu .sub-menu a, .menu .children a {
+    border-bottom: 1px solid #b9bcbf;
+    padding: 15px 16px;
+    padding:  0.88235rem 0.94118rem; }
+  .menu .sub-menu li:last-of-type a, .menu .children li:last-of-type a {
+    border-bottom: 0; }
   .menu .sub-menu ul, .menu .children ul {
-    border-left: 0;
-    left: 100%;
-    top: 0; }
+    top: 0;
+    left: 100%; }
+.menu .current_page_item > a, .menu .current_page_ancestor > a, .menu .current-menu-item > a, .menu .current-menu-ancestor > a {
+  font-weight: bold; }
 
 ul.menu ul a, .menu ul ul a {
   margin: 0;
   min-width: 200px;
   max-width: 250px; }
-
-ul.menu ul a:hover, .menu ul ul a:hover, ul.menu ul a:focus, .menu ul ul a:focus {
-  color: #ffffff;
-  background-color: #3070d1; }
+  ul.menu ul a:hover, ul.menu ul a:focus, .menu ul ul a:hover, .menu ul ul a:focus {
+    color: #ffffff;
+    background-color: #3070d1; }
 
 ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus > ul {
   clip: inherit;
   overflow: inherit;
   height: inherit;
   width: inherit; }
-
-.menu .current_page_item > a, .menu .current_page_ancestor > a, .menu .current-menu-item > a, .menu .current-menu-ancestor > a {
-  font-weight: bold; }
 
 .menu-toggle {
   cursor: pointer; }

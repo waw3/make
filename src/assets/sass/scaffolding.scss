@@ -328,9 +328,7 @@ a {
 			display: block;
 			color: $b;
 			font-weight: normal; //reset
-			font-size: 15px;
 			line-height: 1; //reset
-			text-decoration: none;
 			@include rem('padding', $base/2 $gut/2);
 			@include rem('font-size', 14px);
 		}
@@ -341,34 +339,42 @@ a {
 	.sub-menu,
 	.children {
 		background-color: $d;
-		border-top: 0;
-		padding: 0;
 		position: absolute;
-		left: -2px;
 		z-index: 99999;
-		height: 1px;
-		width: 1px;
+		padding: 0; //reset
 		overflow: hidden;
 		clip: rect(1px, 1px, 1px, 1px);
+		a {
+			border-bottom: 1px solid $e;
+			@include rem('padding', 15px $gut/2);
+		}
+		li:last-of-type a {
+			border-bottom: 0; //reset
+		}
 		ul {
-			border-left: 0;
+			top: 0; //reset
 			left: 100%;
-			top: 0;
+		}
+	}
+	.current_page_item,
+	.current_page_ancestor,
+	.current-menu-item,
+	.current-menu-ancestor {
+		> a {
+			font-weight: bold;
 		}
 	}
 }
 ul.menu ul a,
 .menu ul ul a {
-	margin: 0;
+	margin: 0; //reset
 	min-width: 200px;
 	max-width: 250px;
-}
-ul.menu ul a:hover,
-.menu ul ul a:hover,
-ul.menu ul a:focus,
-.menu ul ul a:focus {
-	color: $a;
-	background-color: $c;
+	&:hover,
+	&:focus {
+		color: $a;
+		background-color: $c;
+	}
 }
 ul.menu li:hover > ul,
 .menu ul li:hover > ul,
@@ -378,12 +384,6 @@ ul.menu .focus > ul,
 	overflow: inherit;
 	height: inherit;
 	width: inherit;
-}
-.menu .current_page_item > a,
-.menu .current_page_ancestor > a,
-.menu .current-menu-item > a,
-.menu .current-menu-ancestor > a {
-	font-weight: bold;
 }
 .menu-toggle {
 	cursor: pointer;
