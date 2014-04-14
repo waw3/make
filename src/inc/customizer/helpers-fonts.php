@@ -183,15 +183,12 @@ if ( ! function_exists( 'ttf_one_get_font_stack' ) ) :
 /**
  * Validate the font choice and get a font stack for it.
  *
- * @since 1.0.0
- *
- * @param string $font
+ * @since  1.0.0.
  *
  * @return string
  */
 function ttf_one_get_font_stack( $font ) {
 	$all_fonts = ttf_one_get_all_fonts();
-	$stack = '';
 
 	// Validate font choice
 	if ( ! array_key_exists( $font, $all_fonts ) ) {
@@ -199,12 +196,12 @@ function ttf_one_get_font_stack( $font ) {
 	}
 
 	// Standard font
-	if ( isset( $all_fonts[$font]['stack'] ) && ! empty( $all_fonts[$font]['stack'] ) ) {
-		$stack = $all_fonts[$font]['stack'];
-	}
-	// Google font or no specified stack
-	else {
+	if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) {
+		$stack = $all_fonts[ $font ]['stack'];
+	} elseif ( in_array( $font, ttf_one_all_font_choices() ) ) {
 		$stack = '"' . $font . '","Helvetica Neue",Helvetica,Arial,sans-serif';
+	} else {
+		$stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
 	}
 
 	return $stack;
