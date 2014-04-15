@@ -1548,7 +1548,16 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Form (_comments.scss)
 -------------------------------------------------------- */
-.comment-form input, .comment-form textarea {
+@media screen and (min-width: 800px) {
+  #respond {
+    margin-left: auto;
+    margin-right: auto;
+    width: 74.16667%; } }
+
+.has-right-sidebar #respond, .has-left-sidebar #respond {
+  width: 100%; }
+
+.comment-form input:not(#submit), .comment-form textarea {
   width: 100%; }
 .comment-form label {
   display: block;
