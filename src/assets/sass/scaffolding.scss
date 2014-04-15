@@ -328,14 +328,23 @@ a {
 	@include for(medium-screens) {
 		float: right;
 		max-width: 50%;
-		.header-layout-1.branding-right & {
+		.branding-right .header-layout-1 & {
 			float: left;
+			text-align: left;
+		}
+		.branding-right .header-layout-3 & {
+			float: right;
+			text-align: right;
 		}
 	}
 	margin-bottom: 0; //reset
 	@include no-select;
 }
 .menu {
+	padding-left: 0; //reset
+	li:first-of-type a {
+		padding-left: 0; //reset
+	}
 	ul,
 	ol {
 		margin-left: 0; //reset
@@ -363,6 +372,9 @@ a {
 		padding: 0; //reset
 		overflow: hidden;
 		clip: rect(1px, 1px, 1px, 1px);
+		li:first-of-type a {
+			@include rem('padding', 15px $gut/2);
+		}
 		a {
 			border-bottom: 1px solid $e;
 			@include rem('padding', 15px $gut/2);
