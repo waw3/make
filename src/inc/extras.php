@@ -275,8 +275,13 @@ function ttf_one_has_sidebar( $location ) {
 	// Get the relevant option
 	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttf_one_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
 
+	// Builder template doesn't support sidebars
+	if ( 'page' === $view && 'template-builder.php' === get_page_template_slug() ) {
+		$show_sidebar = false;
+	}
+
 	// Filter and return
-	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location );
+	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location, $view );
 }
 endif;
 
