@@ -32,7 +32,7 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_ge
 		);
 		?>
 	</div>
-	<?php if ( $author_bio = get_the_author_meta( 'description' ) ) : ?>
+	<?php if ( is_singular() && $author_bio = get_the_author_meta( 'description' ) ) : ?>
 	<div class="entry-author-bio">
 		<?php echo wpautop( ttf_one_sanitize_text( $author_bio ) ); ?>
 	</div>
