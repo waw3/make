@@ -181,9 +181,9 @@ a {
 .sub-header {
 	float: left;
 	width: 100%;
-	color: $b;
-	background-color: $a;
-	border-bottom: 1px solid $d;
+	color: $a;
+	background-color: $b;
+	border-bottom: $rule;
 	@extend .clear;
 	.subheader-flipped & {
 		.search-form,
