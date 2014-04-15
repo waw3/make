@@ -186,6 +186,15 @@ a {
 	background-color: $a;
 	border-bottom: 1px solid $d;
 	@extend .clear;
+	.subheader-flipped & {
+		.search-form,
+		.social-links {
+			float: left;
+		}
+		.header-text {
+			float: right;
+		}
+	}
 	a {
 		color: inherit;
 	}

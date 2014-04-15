@@ -350,6 +350,10 @@ a {
   color: #171717;
   background-color: #ffffff;
   border-bottom: 1px solid #eaecee; }
+  .subheader-flipped .sub-header .search-form, .subheader-flipped .sub-header .social-links {
+    float: left; }
+  .subheader-flipped .sub-header .header-text {
+    float: right; }
   .sub-header a {
     color: inherit; }
   .sub-header textarea, .sub-header input {
