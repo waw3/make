@@ -1,6 +1,18 @@
 /*---------------------------------------------------------
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
+.page-template-template-builder-php {
+	.site-content > .container {
+		padding: 0;
+		width: 100%
+	}
+	.site-main {
+		width: 100%
+	}
+	.entry-header, .entry-footer, .builder-section-header, .builder-section-content {
+		@extend .container;
+	}
+}
 .builder-section {
 	@include rem('margin-bottom', $base*2);
 	@extend .clear;
