@@ -1054,7 +1054,7 @@ img {
   height: auto;
   max-width: 100%; }
 
-.alignleft {
+.alignleft, .entry-thumbnail {
   display: inline;
   float: left;
   margin-right: 32px;
@@ -1139,6 +1139,11 @@ iframe[src*="google.com/maps"] {
   .entry-header .entry-thumbnail {
     margin-bottom: 22px;
     margin-bottom: 1.29412rem; }
+
+.entry-thumbnail {
+  line-height: 1;
+  margin-bottom: 11px;
+  margin-bottom: 0.64706rem; }
 
 .entry-title {
   font-weight: bold;

@@ -18,6 +18,10 @@
 		@include rem('margin-bottom', $base);
 	}
 }
+.entry-thumbnail {
+	line-height: 1; //reset
+	@include rem('margin-bottom', $base/2);
+}
 .entry-title {
 	font-weight: bold;
 	@include rem('margin-top', $base/4);

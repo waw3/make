@@ -5,7 +5,8 @@ img {
 	height: auto;
 	max-width: 100%;
 }
-.alignleft {
+.alignleft,
+.entry-thumbnail {
 	display: inline;
 	float: left;
 	@include rem('margin-right', $gut);
