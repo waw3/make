@@ -11,11 +11,11 @@
 	<?php
 	previous_post_link(
 		'<div class="nav-previous">%link</div>',
-		_x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'ttf-one' )
+		'%title'
 	);
 	next_post_link(
 		'<div class="nav-next">%link</div>',
-		_x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'ttf-one' )
+		'%title'
 	);
 	?>
 	</div>
