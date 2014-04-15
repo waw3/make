@@ -17,7 +17,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 </div>
 
 <div class="ttf-one-text-columns-stage ttf-one-text-columns-<?php echo $columns_class; ?>">
-	<?php foreach ( $section_order as $key => $i ) : ?>
+	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
 	<?php
 		$column_name = $section_name . '[columns][' . $i . ']';
 		$link     = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['image-link'] : '';
@@ -25,7 +25,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 		$title    = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['title'] : '';
 		$content  = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['content'] : '';
 	?>
-	<div class="ttf-one-text-column ttf-one-text-column-position-<?php echo $i; ?>" data-id="<?php echo $i; ?>">
+	<div class="ttf-one-text-column ttf-one-text-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
 			<div class="sortable-background"></div>
 		</div>
@@ -62,7 +62,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditortext' . $ttf_one_section_data['data']['id'] . $i, $editor_settings ); ?>
 		<?php endif; ?>
 	</div>
-	<?php endforeach; ?>
+	<?php $j++; endforeach; ?>
 </div>
 
 <div class="clear"></div>
