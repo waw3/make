@@ -480,7 +480,7 @@ a {
     display: block;
     color: #171717;
     font-weight: normal;
-    line-height: 1;
+    line-height: 1.4;
     padding: 11px 16px;
     padding:  0.64706rem 0.94118rem;
     font-size: 14px;
@@ -504,8 +504,12 @@ a {
       content: none; }
   .menu .sub-menu .menu-item-has-children a:after, .menu .children .menu-item-has-children a:after {
     content: "  \f054";
+    position: relative;
+    float: right;
     font-weight: normal;
     font-family: FontAwesome;
+    top: 4px;
+    top: 0.23529rem;
     font-size: 10px;
     font-size: 0.58824rem; }
   .menu .sub-menu .sub-menu a:after, .menu .sub-menu .children a:after, .menu .children .sub-menu a:after, .menu .children .children a:after {
@@ -535,6 +539,8 @@ ul.menu ul a, .menu ul ul a {
   ul.menu ul a:hover, ul.menu ul a:focus, .menu ul ul a:hover, .menu ul ul a:focus {
     color: #ffffff;
     background-color: #3070d1; }
+    ul.menu ul a:hover:after, ul.menu ul a:focus:after, .menu ul ul a:hover:after, .menu ul ul a:focus:after {
+      color: #ffffff; }
 
 ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus > ul {
   clip: inherit;
