@@ -312,7 +312,7 @@ a {
 	li {
 		@include for(large-screens) {
 			&:first-of-type {
-				border-left: 1px solid $d;
+				border-left: $rule;
 			}
 			&:last-of-type a {
 				padding-right: 0; //reset
@@ -320,7 +320,7 @@ a {
 		}
 		a {
 			@include for(large-screens) {
-				border-right: 1px solid $d;
+				border-right: $rule;
 				@include rem('padding', 14px 10px);
 				@include rem('font-size', 17px);
 			}
