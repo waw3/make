@@ -42,8 +42,8 @@ img.wp-smiley {
 	margin: 1.2% auto 0;
 	max-width: 98%;
 }
-.wp-caption-text {
-	text-align: center;
+.wp-caption-text,
+.entry-thumbnail-caption {
 	@include rem('font-size', 13px);
 }
 .wp-caption .wp-caption-text {
