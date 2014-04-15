@@ -3,9 +3,14 @@
  * @package ttf-one
  */
 
+$thumb_key = 'layout-' . ttf_one_get_view() . '-featured-images';
+$thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_default( $thumb_key ) ), $thumb_key );
+
 // Header
 ob_start();
-get_template_part( 'partials/entry', 'thumbnail' );
+if ( 'post-header' === $thumb_option ) :
+	get_template_part( 'partials/entry', 'thumbnail' );
+endif;
 get_template_part( 'partials/entry', 'date' );
 get_template_part( 'partials/entry', 'sticky' );
 get_template_part( 'partials/entry', 'title' );
@@ -26,6 +31,9 @@ $entry_footer = trim( ob_get_clean() );
 	<?php endif; ?>
 
 	<div class="entry-content">
+		<?php if ( 'thumbnail' === $thumb_option ) : ?>
+			<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
+		<?php endif; ?>
 		<?php get_template_part( 'partials/entry', 'content' ); ?>
 		<?php get_template_part( 'partials/entry', 'pagination' ); ?>
 	</div>
