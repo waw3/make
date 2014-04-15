@@ -597,9 +597,17 @@ ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus
   .site-footer textarea, .site-footer input, .site-footer .widget_tag_cloud a {
     background-color: #ffffff; }
   .site-footer .site-info {
-    float: left; }
+    text-align: left;
+    text-align: center; }
+    @media screen and (min-width: 800px) {
+      .site-footer .site-info {
+        float: left; } }
   .site-footer .footer-social-links {
-    float: right; }
+    text-align: center; }
+    @media screen and (min-width: 800px) {
+      .site-footer .footer-social-links {
+        float: right;
+        text-align: right; } }
   .site-footer .site-info, .site-footer .site-info a {
     color: inherit;
     font-weight: bold;
@@ -625,17 +633,23 @@ ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus
 
 .footer-text {
   clear: both;
+  text-align: center;
   margin-bottom: 5.5px;
   margin-bottom: 0.32353rem;
   font-size: 12px;
   font-size: 0.70588rem; }
   @media screen and (min-width: 800px) {
     .footer-text {
+      text-align: left;
       font-size: 13px;
       font-size: 0.76471rem; } }
 
 .footer-social-links {
-  margin: 0; }
+  margin-top: 11px;
+  margin-top: 0.64706rem; }
+  @media screen and (min-width: 800px) {
+    .footer-social-links {
+      margin: 0; } }
 
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)

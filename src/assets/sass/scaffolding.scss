@@ -477,10 +477,18 @@ ul.menu .focus > ul,
 		background-color: $a;
 	}
 	.site-info {
+		@include for(medium-screens) {
 		float: left;
+		}
+		text-align: left;
+		text-align: center;
 	}
 	.footer-social-links {
+		@include for(medium-screens) {
 		float: right;
+			text-align: right;
+		}
+		text-align: center;
 	}
 	.site-info,
 	.site-info a {
@@ -506,14 +514,19 @@ ul.menu .focus > ul,
 }
 .footer-text {
 	@include for(medium-screens) {
+		text-align: left;
 		@include rem('font-size', 13px);
 	}
 	clear: both;
+	text-align: center;
 	@include rem('margin-bottom', $base/4);
 	@include rem('font-size', 12px);
 }
 .footer-social-links {
-	margin: 0; //reset
+	@include for(medium-screens) {
+		margin: 0; //reset
+	}
+	@include rem('margin-top', $base/2);
 }
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)
