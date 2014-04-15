@@ -106,33 +106,32 @@
 /*---------------------------------------------------------
  Navigation (_posts.scss)
 -------------------------------------------------------- */
-[class*="navigation"] .nav-previous {
-	float: left;
+[class*="navigation"] .nav-previous,
+[class*="navigation"] .nav-next {
 	width: 50%;
 	a {
 		color: $b;
 		font-weight: bold;
 		text-decoration: none; //reset
-		&:before {
-			content: "\f177  ";
+		@include rem('font-size', 14px);
+		&:before,
+		&:after {
 			font-family: FontAwesome;
 			font-weight: normal; //reset
 		}
 	}
 }
+[class*="navigation"] .nav-previous {
+	float: left;
+	a:before {
+		content: "\f177  ";
+	}
+}
 [class*="navigation"] .nav-next {
 	float: right;
-	width: 50%;
 	text-align: right;
-	a {
-		color: $b;
-		font-weight: bold;
-		text-decoration: none; //reset
-		&:after {
-			content: "  \f178";
-			font-family: FontAwesome;
-			font-weight: normal; //reset
-		}
+	a:after {
+		content: "  \f178";
 	}
 }
 /* =Infinite Scroll

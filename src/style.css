@@ -1183,30 +1183,28 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Navigation (_posts.scss)
 -------------------------------------------------------- */
-[class*="navigation"] .nav-previous {
-  float: left;
+[class*="navigation"] .nav-previous, [class*="navigation"] .nav-next {
   width: 50%; }
-  [class*="navigation"] .nav-previous a {
+  [class*="navigation"] .nav-previous a, [class*="navigation"] .nav-next a {
     color: #171717;
     font-weight: bold;
-    text-decoration: none; }
-    [class*="navigation"] .nav-previous a:before {
-      content: "\f177  ";
+    text-decoration: none;
+    font-size: 14px;
+    font-size: 0.82353rem; }
+    [class*="navigation"] .nav-previous a:before, [class*="navigation"] .nav-previous a:after, [class*="navigation"] .nav-next a:before, [class*="navigation"] .nav-next a:after {
       font-family: FontAwesome;
       font-weight: normal; }
 
+[class*="navigation"] .nav-previous {
+  float: left; }
+  [class*="navigation"] .nav-previous a:before {
+    content: "\f177  "; }
+
 [class*="navigation"] .nav-next {
   float: right;
-  width: 50%;
   text-align: right; }
-  [class*="navigation"] .nav-next a {
-    color: #171717;
-    font-weight: bold;
-    text-decoration: none; }
-    [class*="navigation"] .nav-next a:after {
-      content: "  \f178";
-      font-family: FontAwesome;
-      font-weight: normal; }
+  [class*="navigation"] .nav-next a:after {
+    content: "  \f178"; }
 
 /* =Infinite Scroll
 ----------------------------------------------- */
