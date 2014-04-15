@@ -514,8 +514,7 @@ a {
     top: 0;
     left: 100%; }
 .menu .current_page_item > a, .menu .current_page_ancestor > a, .menu .current-menu-item > a, .menu .current-menu-ancestor > a {
-  font-weight: bold;
-  font-family: FontAwesome; }
+  font-weight: bold; }
 
 .menu-item-has-children a:after {
   content: "  \f078";
