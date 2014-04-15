@@ -4,12 +4,13 @@
 .page-template-template-builder-php {
 	.site-content > .container {
 		padding: 0;
+		max-width: none;
 		width: 100%
 	}
 	.site-main {
 		width: 100%
 	}
-	.entry-header, .entry-footer, .builder-section-header, .builder-section-content {
+	.entry-header, .entry-footer, .builder-section-header, .builder-section-content, .comments-area {
 		@extend .container;
 	}
 }
