@@ -212,6 +212,7 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 	// Data attributes
 	$data_attributes = ' data-cycle-log="true"';
 	$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
+	$data_attributes .= ' data-cycle-swipe="true"';
 
 	// Height / Aspect ratio
 	$height = absint( $atts['height'] );
