@@ -4,7 +4,7 @@
 .post {
 	border-bottom: 1px solid $d;
 	@include rem('padding-bottom', $base);
-	@include rem('margin-top', $base*3 0 $base*4);
+	@include rem('margin', $base*3 0 $base*4);
 	&:first-of-type {
 		margin-top: 0; //reset
 	}
@@ -34,17 +34,15 @@
 	}
 }
 .entry-author {
-	border-top: 1px solid $d;
 	@include rem('margin', $base*2 0 $base);
-	@include rem('padding-top', $base);
 }
 .entry-author-bio {
+	@include rem('margin-top', $base/2);
 	@include rem('font-size', 13px);
 }
 .entry-author-byline {
 	font-style: italic;
 	line-height: 40px;
-	@include rem('margin-bottom', $base/2);
 	@include rem('font-size', 15px);
 	a.vcard {
 		color: $c;

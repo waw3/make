@@ -1071,8 +1071,8 @@ iframe[src*="google.com/maps"] {
   border-bottom: 1px solid #eaecee;
   padding-bottom: 22px;
   padding-bottom: 1.29412rem;
-  margin-top: 66px 0 88px;
-  margin-top:  3.88235rem 0 5.17647rem; }
+  margin: 66px 0 88px;
+  margin:  3.88235rem 0 5.17647rem; }
   .post:first-of-type {
     margin-top: 0; }
   .single .post {
@@ -1105,21 +1105,18 @@ iframe[src*="google.com/maps"] {
     text-decoration: none; }
 
 .entry-author {
-  border-top: 1px solid #eaecee;
   margin: 44px 0 22px;
-  margin:  2.58824rem 0 1.29412rem;
-  padding-top: 22px;
-  padding-top: 1.29412rem; }
+  margin:  2.58824rem 0 1.29412rem; }
 
 .entry-author-bio {
+  margin-top: 11px;
+  margin-top: 0.64706rem;
   font-size: 13px;
   font-size: 0.76471rem; }
 
 .entry-author-byline {
   font-style: italic;
   line-height: 40px;
-  margin-bottom: 11px;
-  margin-bottom: 0.64706rem;
   font-size: 15px;
   font-size: 0.88235rem; }
   .entry-author-byline a.vcard {
@@ -1423,6 +1420,9 @@ iframe[src*="google.com/maps"] {
   border-radius: 3px; }
   .widget_tag_cloud a:hover {
     text-decoration: underline; }
+
+.widget_calendar table {
+  margin-top: 0; }
 
 .widget_search .search-submit {
   display: none; }
