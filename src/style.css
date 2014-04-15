@@ -394,6 +394,8 @@ a {
 
 .header-text {
   float: left;
+  margin-top: 2px;
+  margin-top: 0.11765rem;
   padding: 11px 0;
   padding:  0.64706rem 0;
   font-size: 12px;
@@ -450,8 +452,8 @@ a {
     @media screen and (min-width: 1100px) {
       .header-social-links li a {
         border-right: 1px solid #eaecee;
-        padding: 15px 10px;
-        padding:  0.88235rem 0.58824rem; } }
+        padding: 14px 10px;
+        padding:  0.82353rem 0.58824rem; } }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
