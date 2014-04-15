@@ -415,45 +415,52 @@ a {
       display: block;
       color: inherit;
       text-decoration: none; }
-    .social-links li.facebook a:hover {
+    .social-links li.facebook a:hover, .social-links li.facebook a:focus {
       color: #3B5999; }
-    .social-links li.twitter a:hover {
+    .social-links li.twitter a:hover, .social-links li.twitter a:focus {
       color: #4099ff; }
-    .social-links li.google a:hover {
+    .social-links li.google a:hover, .social-links li.google a:focus {
       color: #d34836; }
-    .social-links li.linkedin a:hover {
+    .social-links li.linkedin a:hover, .social-links li.linkedin a:focus {
       color: #007bb6; }
-    .social-links li.instagram a:hover {
+    .social-links li.instagram a:hover, .social-links li.instagram a:focus {
       color: #517fa4; }
-    .social-links li.flickr a:hover {
+    .social-links li.flickr a:hover, .social-links li.flickr a:focus {
       color: #ff0084; }
-    .social-links li.youtube a:hover {
+    .social-links li.youtube a:hover, .social-links li.youtube a:focus {
       color: #e52d27; }
-    .social-links li.vimeo a:hover {
+    .social-links li.vimeo a:hover, .social-links li.vimeo a:focus {
       color: #1ab7ea; }
-    .social-links li.pinterest a:hover {
+    .social-links li.pinterest a:hover, .social-links li.pinterest a:focus {
       color: #c92228; }
-    .social-links li.email a:hover {
+    .social-links li.email a:hover, .social-links li.email a:focus {
       color: #444444; }
-    .social-links li.rss a:hover {
+    .social-links li.rss a:hover, .social-links li.rss a:focus {
       color: #ff6600; }
 
 .header-social-links {
-  margin-bottom: 0; }
+  text-align: center;
+  margin-bottom: 11px;
+  margin-bottom: 0.64706rem; }
   @media screen and (min-width: 1100px) {
     .header-social-links {
-      float: right; } }
+      float: right;
+      margin-bottom: 0; } }
   @media screen and (min-width: 1100px) {
     .header-social-links li:first-of-type {
       border-left: 1px solid #eaecee; } }
   .header-social-links li a {
-    padding: 14px 4px;
-    padding:  0.82353rem 0.23529rem; }
+    padding: 4px 4px;
+    padding:  0.23529rem 0.23529rem;
+    font-size: 24px;
+    font-size: 1.41176rem; }
     @media screen and (min-width: 1100px) {
       .header-social-links li a {
         border-right: 1px solid #eaecee;
         padding: 14px 10px;
-        padding:  0.82353rem 0.58824rem; } }
+        padding:  0.82353rem 0.58824rem;
+        font-size: 17px;
+        font-size: 1rem; } }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
@@ -646,10 +653,14 @@ ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus
 
 .footer-social-links {
   margin-top: 11px;
-  margin-top: 0.64706rem; }
+  margin-top: 0.64706rem;
+  font-size: 24px;
+  font-size: 1.41176rem; }
   @media screen and (min-width: 800px) {
     .footer-social-links {
-      margin: 0; } }
+      margin: 0;
+      font-size: 17px;
+      font-size: 1rem; } }
 
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)
