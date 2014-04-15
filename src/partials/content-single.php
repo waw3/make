@@ -10,7 +10,6 @@
 		<?php get_template_part( 'partials/entry', 'date' ); ?>
 		<?php get_template_part( 'partials/entry', 'sticky' ); ?>
 		<?php get_template_part( 'partials/entry', 'title' ); ?>
-		<?php get_template_part( 'partials/entry', 'author' ); ?>
 	</header>
 
 	<div class="entry-content">
@@ -19,6 +18,7 @@
 	</div>
 
 	<footer class="entry-footer">
+		<?php get_template_part( 'partials/entry', 'author' ); ?>
 		<?php get_template_part( 'partials/entry', 'taxonomy' ); ?>
 	</footer>
 </article>
