@@ -4,7 +4,13 @@
 .post {
 	border-bottom: 1px solid $d;
 	@include rem('padding-bottom', $base);
-	@include rem('margin-bottom', $base*4);
+	@include rem('margin-top', $base*3 0 $base*4);
+	&:first-of-type {
+		margin-top: 0; //reset
+	}
+	.single & {
+		@include rem('margin-bottom', $base*2);
+	}
 }
 .entry-header {
 	@include rem('margin-bottom', $base);
@@ -14,7 +20,6 @@
 }
 .entry-title {
 	font-weight: bold;
-	line-height: 1.1;
 	@include rem('margin-top', $base/4);
 	@include rem('word-spacing', -1px);
 }
@@ -29,25 +34,30 @@
 	}
 }
 .entry-author {
-	float: left;
-	width: 100%;
-	@include rem('margin-bottom', $base);
+	border-top: 1px solid $d;
+	@include rem('margin', $base*2 0 $base);
+	@include rem('padding-top', $base);
+}
+.entry-author-bio {
+	@include rem('font-size', 13px);
 }
 .entry-author-byline {
-	float: left;
 	font-style: italic;
-	line-height: 34px;
+	line-height: 40px;
+	@include rem('margin-bottom', $base/2);
 	@include rem('font-size', 15px);
-	a {
+	a.vcard {
+		color: $c;
+		font-weight: bold;
 		font-style: normal; //reset
 	}
 }
 .entry-author-avatar {
 	float: left;
 	line-height: 0; //reset
-		@include rem('padding-right', $gut/4);
+	@include rem('padding-right', $gut/4);
 	img {
-		width: 34px;
+		width: 40px;
 		@include border-radius(50%);
 	}
 }
@@ -66,12 +76,6 @@
 		color: $e;
 		@include rem('top', 4px);
 		@include rem('padding-right', $gut/4);
-	}
-}
-.post {
-	@include rem('margin-top', $base*3);
-	&:first-of-type {
-		margin-top: 0; //reset
 	}
 }
 .post-categories,

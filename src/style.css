@@ -657,9 +657,9 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-weight: normal;
-  line-height: 1.3;
-  font-size: 50px;
-  font-size: 2.94118rem; }
+  line-height: 1.15;
+  font-size: 46px;
+  font-size: 2.70588rem; }
 
 h2 {
   font-size: 34px;
@@ -1071,8 +1071,13 @@ iframe[src*="google.com/maps"] {
   border-bottom: 1px solid #eaecee;
   padding-bottom: 22px;
   padding-bottom: 1.29412rem;
-  margin-bottom: 88px;
-  margin-bottom: 5.17647rem; }
+  margin-top: 66px 0 88px;
+  margin-top:  3.88235rem 0 5.17647rem; }
+  .post:first-of-type {
+    margin-top: 0; }
+  .single .post {
+    margin-bottom: 44px;
+    margin-bottom: 2.58824rem; }
 
 .entry-header {
   margin-bottom: 22px;
@@ -1083,7 +1088,6 @@ iframe[src*="google.com/maps"] {
 
 .entry-title {
   font-weight: bold;
-  line-height: 1.1;
   margin-top: 5.5px;
   margin-top: 0.32353rem;
   word-spacing: -1px;
@@ -1101,18 +1105,26 @@ iframe[src*="google.com/maps"] {
     text-decoration: none; }
 
 .entry-author {
-  float: left;
-  width: 100%;
-  margin-bottom: 22px;
-  margin-bottom: 1.29412rem; }
+  border-top: 1px solid #eaecee;
+  margin: 44px 0 22px;
+  margin:  2.58824rem 0 1.29412rem;
+  padding-top: 22px;
+  padding-top: 1.29412rem; }
+
+.entry-author-bio {
+  font-size: 13px;
+  font-size: 0.76471rem; }
 
 .entry-author-byline {
-  float: left;
   font-style: italic;
-  line-height: 34px;
+  line-height: 40px;
+  margin-bottom: 11px;
+  margin-bottom: 0.64706rem;
   font-size: 15px;
   font-size: 0.88235rem; }
-  .entry-author-byline a {
+  .entry-author-byline a.vcard {
+    color: #3070d1;
+    font-weight: bold;
     font-style: normal; }
 
 .entry-author-avatar {
@@ -1121,7 +1133,7 @@ iframe[src*="google.com/maps"] {
   padding-right: 8px;
   padding-right: 0.47059rem; }
   .entry-author-avatar img {
-    width: 34px;
+    width: 40px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%; }
@@ -1142,12 +1154,6 @@ iframe[src*="google.com/maps"] {
     top: 0.23529rem;
     padding-right: 8px;
     padding-right: 0.47059rem; }
-
-.post {
-  margin-top: 66px;
-  margin-top: 3.88235rem; }
-  .post:first-of-type {
-    margin-top: 0; }
 
 .post-categories, .post-tags {
   padding-left: 0;
