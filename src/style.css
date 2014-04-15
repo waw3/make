@@ -448,7 +448,9 @@ a {
       margin-bottom: 0; } }
   @media screen and (min-width: 1100px) {
     .header-social-links li:first-of-type {
-      border-left: 1px solid #eaecee; } }
+      border-left: 1px solid #eaecee; }
+    .header-social-links li:last-of-type a {
+      padding-right: 0; } }
   .header-social-links li a {
     padding: 4px 4px;
     padding:  0.23529rem 0.23529rem;

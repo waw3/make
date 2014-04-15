@@ -306,6 +306,9 @@ a {
 			&:first-of-type {
 				border-left: 1px solid $d;
 			}
+			&:last-of-type a {
+				padding-right: 0; //reset
+			}
 		}
 		a {
 			@include for(large-screens) {
