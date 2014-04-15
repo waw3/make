@@ -188,8 +188,7 @@ html {
 -------------------------------------------------------- */
 body {
   background-color: #eaecee;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
+  text-rendering: optimizeLegibility; }
   body.boxed {
     background-color: #eaecee; }
     body.boxed .container, body.boxed .page-template-template-builder-php .entry-header, .page-template-template-builder-php body.boxed .entry-header, body.boxed .page-template-template-builder-php .entry-footer, .page-template-template-builder-php body.boxed .entry-footer, body.boxed .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php body.boxed .builder-section-header, body.boxed .page-template-template-builder-php .builder-section-content, .page-template-template-builder-php body.boxed .builder-section-content, body.boxed .page-template-template-builder-php .comments-area, .page-template-template-builder-php body.boxed .comments-area {
