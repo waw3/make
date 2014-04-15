@@ -69,9 +69,6 @@
 .ttf-one-banner-slide-open:hover .ttf-one-banner-slide-header h3 {
 	border-color: #dfdfdf;
 }
-.ttf-one-section:last-of-type {
-	margin-bottom: 0; /*reset*/
-}
 .ttf-one-section-body {
 	display: none;
 	float: left;
