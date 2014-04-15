@@ -8,6 +8,24 @@ body {
 	color: #171717;
 }
 /*---------------------------------------------------------
+ Images (editor-style.css)
+-------------------------------------------------------- */
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 32px;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 32px;
+}
+.aligncenter {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+}
+/*---------------------------------------------------------
  Code (editor-style.css)
 -------------------------------------------------------- */
 tt,

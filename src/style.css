@@ -1067,8 +1067,8 @@ img {
   margin-left: 1.88235rem; }
 
 .aligncenter {
-  clear: both;
   display: block;
+  clear: both;
   margin: 0 auto; }
 
 .screen-reader-text {
