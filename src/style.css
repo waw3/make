@@ -1273,6 +1273,18 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  7. Pages (_pages.scss)
 -------------------------------------------------------- */
+.section-header {
+  margin-bottom: 44px;
+  margin-bottom: 2.58824rem; }
+
+.section-title {
+  font-size: 24px;
+  font-size: 1.41176rem; }
+
+.section-description {
+  font-size: 13px;
+  font-size: 0.76471rem; }
+
 /*---------------------------------------------------------
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
