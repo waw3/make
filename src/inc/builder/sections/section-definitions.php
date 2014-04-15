@@ -398,6 +398,16 @@ class TTF_One_Section_Definitions {
 			true
 		);
 
+		// Add localized strings
+		wp_localize_script(
+			'ttf-one-sections/js/views/banner.js',
+			'ttfOneBanner',
+			array(
+				'singularLabel' => __( 'Slide', 'ttf-one' ),
+				'pluralLabel'   => __( 'Slides', 'ttf-one' ),
+			)
+		);
+
 		// Add additional dependencies to the Builder JS
 		add_filter( 'ttf_one_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 
