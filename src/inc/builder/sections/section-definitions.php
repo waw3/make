@@ -192,7 +192,7 @@ class TTF_One_Section_Definitions {
 					$clean_data['banner-slides'][ $id ]['image-id'] = absint( $slide['image-id'] );
 				}
 
-				$clean_data['banner-slides'][ $id ]['alignment'] = ( isset( $slide['alignment'] ) && in_array( $slide['alignment'], array( 'left', 'center', 'right' ) ) ) ? $slide['alignment'] : 'left';
+				$clean_data['banner-slides'][ $id ]['alignment'] = ( isset( $slide['alignment'] ) && in_array( $slide['alignment'], array( 'none', 'left', 'right' ) ) ) ? $slide['alignment'] : 'none';
 
 				if ( isset( $slide['state'] ) ) {
 					$clean_data['banner-slides'][ $id ]['state'] = ( in_array( $slide['state'], array( 'open', 'closed' ) ) ) ? $slide['state'] : 'open';
