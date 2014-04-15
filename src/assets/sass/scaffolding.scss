@@ -425,18 +425,18 @@ ul.menu .focus > ul,
 	background-color: $a;
 	float: left;
 	width: 100%;
-	@include rem('padding', $base 0);
+	@include rem('padding', 0  0$base);
 	@extend .clear;
 }
 /*---------------------------------------------------------
  Footer (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-footer {
-	color: #464849;
-	background-color: $d;
-	@include rem('padding', $base 0 $base*2);
 	float: left;
 	width: 100%;
+	color: #464849;
+	background-color: $d;
+	@include rem('padding', $base*2 0);
 	@extend .clear;
 	*:not(select) {
 		border-color: $e !important;
