@@ -458,10 +458,19 @@ ul.menu .focus > ul,
 .menu-toggle {
 	cursor: pointer;
 }
+.menu-toggle,
+.site-navigation.toggled .nav-menu {
+	display: block;
+}
+.site-navigation ul {
+	display: none;
+}
 @include for(medium-screens) {
-	.menu-toggle,
-	.main-navigation.toggled .nav-menu {
+	.menu-toggle {
 		display: none;
+	}
+	.site-navigation ul {
+		display: block;
 	}
 }
 /*---------------------------------------------------------

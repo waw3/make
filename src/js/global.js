@@ -55,7 +55,7 @@
 			if ( ! container )
 				return;
 
-			button = container.getElementsByTagName( 'h1' )[0];
+			button = container.getElementsByTagName( 'span' )[0];
 			if ( 'undefined' === typeof button )
 				return;
 
