@@ -598,15 +598,11 @@ a {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
-  .menu-toggle:after {
-    content: "  \f078";
+  .menu-toggle:before {
+    content: "\f0c9";
     font-family: FontAwesome;
-    padding-left: 4px;
-    padding-left: 0.23529rem;
-    font-size: 12px;
-    font-size: 0.70588rem; }
-  .menu-toggle.menu-toggle-open:after {
-    content: "\f077"; }
+    padding-right: 6px;
+    padding-right: 0.35294rem; }
 
 .menu-toggle, .site-navigation.toggled .nav-menu {
   display: block; }
@@ -751,12 +747,20 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-weight: normal;
   line-height: 1.15;
-  font-size: 46px;
-  font-size: 2.70588rem; }
+  font-size: 36px;
+  font-size: 2.11765rem; }
+  @media screen and (min-width: 800px) {
+    h1 {
+      font-size: 46px;
+      font-size: 2.70588rem; } }
 
 h2 {
-  font-size: 34px;
-  font-size: 2rem; }
+  font-size: 28px;
+  font-size: 1.64706rem; }
+  @media screen and (min-width: 800px) {
+    h2 {
+      font-size: 34px;
+      font-size: 2rem; } }
 
 h3 {
   font-size: 24px;
