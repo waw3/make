@@ -1421,34 +1421,34 @@ iframe[src*="google.com/maps"] {
   font-size: 0.82353rem; }
   .builder-gallery-captions-fancy .builder-gallery-item {
     position: relative; }
+  .builder-gallery-captions-fancy .builder-gallery-item:hover .builder-gallery-image img {
+    opacity: 0.2; }
+  .builder-gallery-captions-fancy .builder-gallery-item:hover .builder-gallery-content {
+    visibility: visible; }
 
-.builder-gallery-captions-fancy .builder-gallery-description {
+.builder-gallery-captions-fancy .builder-gallery-content {
   position: absolute;
   top: 0;
-  padding: 16px;
-  color: #ffffff; }
+  padding: 16px; }
+.builder-gallery-captions-fancy .builder-gallery-content {
+  visibility: hidden; }
 
 .builder-gallery-image {
   line-height: 0;
-  background-color: #3070d1; }
-  .builder-gallery-captions-fancy .builder-gallery-image img {
-    opacity: 0.2; }
+  background-color: #ffffff; }
 
 .builder-gallery-title {
-  margin-bottom: 0;
   font-weight: bold;
   text-transform: uppercase;
-  color: #ffffff;
   font-size: 18px;
   font-size: 1.05882rem; }
-  .builder-gallery-captions-fancy .builder-gallery-title {
-    position: absolute;
-    top: 0; }
 
 .builder-gallery-item {
   float: left;
   margin-right: 0.83333%; }
   .builder-gallery-item:last-of-type {
+    margin-right: 0; }
+  .builder-gallery-item.last-4 {
     margin-right: 0; }
 
 @media screen and (min-width: 800px) {
