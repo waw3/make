@@ -478,7 +478,23 @@ a {
 	}
 }
 .menu-toggle {
+	color: $a;
+	border: 0; //reset
+	background-color: $b;
 	cursor: pointer;
+	@include rem('margin', $base 0 0);
+	@include rem('padding', 10px 14px);
+	@include rem('font-size', 13px);
+	@include border-radius;
+	&:after {
+		content: "  \f078";
+		font-family: FontAwesome;
+		@include rem('padding-left', 4px);
+		@include rem('font-size', 12px);
+	}
+	&.menu-toggle-open:after {
+		content: "\f077";
+	}
 }
 .menu-toggle,
 .site-navigation.toggled .nav-menu {
