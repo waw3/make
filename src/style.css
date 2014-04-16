@@ -502,7 +502,7 @@ a {
         display: block;
         color: #171717;
         font-weight: normal;
-        line-height: 1.4;
+        line-height: 1.8;
         border-bottom: 1px solid #171717;
         padding: 11px 0;
         padding:  0.64706rem 0;
@@ -511,6 +511,7 @@ a {
         @media screen and (min-width: 800px) {
           .site-navigation .menu li a {
             border-bottom: 0;
+            line-height: 1.4;
             padding: 11px 16px;
             padding:  0.64706rem 0.94118rem; } }
       .site-navigation .menu li:last-of-type a {

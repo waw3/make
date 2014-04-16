@@ -10,6 +10,9 @@ body {
 /*---------------------------------------------------------
  Images (editor-style.css)
 -------------------------------------------------------- */
+img {
+	margin-bottom: 22px;
+}
 .alignleft {
 	display: inline;
 	float: left;

@@ -366,12 +366,13 @@ a {
 			a {
 				@include for(medium-screens) {
 					border-bottom: 0; //reset
+					line-height: 1.4;
 					@include rem('padding', $base/2 $gut/2);
 				}
 				display: block;
 				color: $b;
 				font-weight: normal; //reset
-				line-height: 1.4;
+				line-height: 1.8;
 				border-bottom: $rule;
 				@include rem('padding', $base/2 0);
 				@include rem('font-size', 14px);
