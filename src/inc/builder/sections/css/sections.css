@@ -148,6 +148,12 @@
 	top: 1px;
 	padding-right: 4px;
 }
+@media screen and ( max-width: 782px ) {
+	.ttf-one-add-slide-wrapper a:before,
+	.ttf-one-add-gallery-item-wrapper a:before {
+		top: 3px;
+	}
+}
 .ttf-one-banner-slide .ttf-one-banner-slide-body {
 	display: none;
 }

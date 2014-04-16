@@ -22,6 +22,11 @@
 	height: 38px;
 	line-height: 36px;
 }
+@media screen and ( max-width: 782px ) {
+	.wp-core-ui .button.ttf-one-button-large {
+		line-height: 1;
+	}
+}
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */
