@@ -1131,6 +1131,8 @@ img.wp-smiley {
 -------------------------------------------------------- */
 .wp-caption {
   max-width: 100%;
+  font-style: italic;
+  line-height: 1.35;
   margin-bottom: 22px;
   margin-bottom: 1.29412rem; }
 
@@ -1140,6 +1142,8 @@ img.wp-smiley {
   max-width: 98%; }
 
 .wp-caption-text, .entry-thumbnail-caption {
+  font-style: italic;
+  line-height: 1.35;
   font-size: 13px;
   font-size: 0.76471rem; }
 
@@ -1189,10 +1193,18 @@ iframe[src*="google.com/maps"] {
     margin-bottom: 22px;
     margin-bottom: 1.29412rem; }
 
+.post-header {
+  margin-top: 11px;
+  margin-top: 0.64706rem; }
+
 .entry-thumbnail {
   line-height: 1;
   margin-bottom: 11px;
   margin-bottom: 0.64706rem; }
+
+.entry-thumbnail-caption {
+  margin-top: 5.5px;
+  margin-top: 0.32353rem; }
 
 .entry-title {
   font-weight: bold;
@@ -1287,8 +1299,8 @@ iframe[src*="google.com/maps"] {
   padding:  0.23529rem 0.35294rem;
   font-size: 12px;
   font-size: 0.70588rem;
-  letter-spacing: 1px;
-  letter-spacing: 0.05882rem;
+  letter-spacing: 2px;
+  letter-spacing: 0.11765rem;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }

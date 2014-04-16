@@ -18,9 +18,15 @@
 		@include rem('margin-bottom', $base);
 	}
 }
+.post-header {
+	@include rem('margin-top', $base/2);
+}
 .entry-thumbnail {
 	line-height: 1; //reset
 	@include rem('margin-bottom', $base/2);
+}
+.entry-thumbnail-caption {
+	@include rem('margin-top', $base/4);
 }
 .entry-title {
 	font-weight: bold;
@@ -106,7 +112,7 @@
 	@include rem('margin-left', $gut/4);
 	@include rem('padding', 4px 6px);
 	@include rem('font-size', 12px);
-	@include rem('letter-spacing', 1px);
+	@include rem('letter-spacing', 2px);
 	@include border-radius;
 }
 /*---------------------------------------------------------
