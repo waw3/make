@@ -104,6 +104,31 @@ function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
 }
 
 /**
+ * @param array $ttf_one_section_data
+ * @param int $i The current gallery item iterator
+ *
+ * @return string
+ */
+function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
+	if ( ! ttf_one_builder_is_section_type( 'gallery' ) ) {
+		return '';
+	}
+
+	$gallery_class = '';
+
+	// Columns
+	$gallery_columns = ( isset( $ttf_one_section_data['columns'] ) ) ? absint( $ttf_one_section_data['columns'] ) : 1;
+	if ( $gallery_columns > 2 && 0 === $i % $gallery_columns ) {
+		$gallery_class .= ' last-' . $gallery_columns;
+	}
+	if ( 0 === $i % 2 ) {
+		$gallery_class .= ' last-2';
+	}
+
+	return $gallery_class;
+}
+
+/**
  * @param $ttf_one_section_data
  *
  * @return array
