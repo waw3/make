@@ -99,17 +99,17 @@
 	background-size: cover;
 }
 .builder-banner-content {
+	position: absolute;
 	display: table;
 	vertical-align: middle;
-	font-size: 150%; //24px
-	position: absolute;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
+	left: 0; //reset
+	right: 0; //reset
 	height: 100%;
-	// Container styling
 	max-width: $width+($gut*2);
-	margin: 0 auto;
+	margin: $base*4 auto 0;
+	font-size: 150%; //24px
+	line-height: 1.35;
+	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
 	@include rem('padding', 0 $gut);
 }
 .builder-banner-inner-content {
@@ -121,6 +121,7 @@
 	text-align: center;
 	line-height: 1; //reset
 	@include rem('font-size', 40px);
+	@include  no-select;
 	span {
 		cursor: pointer;
 	}
