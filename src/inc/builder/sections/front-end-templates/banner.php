@@ -10,7 +10,7 @@ $banner_id = ( isset( $ttf_one_section_data['id'] ) ) ? absint( $ttf_one_section
 
 $slider_height = absint( $ttf_one_section_data['height'] );
 if ( 0 === $slider_height ) {
-	$slider_height = 500;
+	$slider_height = 600;
 }
 $slider_ratio = ( $slider_height / 960 ) * 100;
 ?>

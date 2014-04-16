@@ -7,7 +7,7 @@ $hide_dots     = ( isset( $ttf_one_section_data['data']['hide-dots'] ) ) ? $ttf_
 $autoplay      = ( isset( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 1;
 $transition    = ( isset( $ttf_one_section_data['data']['transition'] ) ) ? $ttf_one_section_data['data']['transition'] : 'scrollHorz';
 $delay         = ( isset( $ttf_one_section_data['data']['delay'] ) ) ? $ttf_one_section_data['data']['delay'] : 6000;
-$height        = ( isset( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 500;
+$height        = ( isset( $ttf_one_section_data['data']['height'] ) ) ? $ttf_one_section_data['data']['height'] : 600;
 $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] ) ) ? $ttf_one_section_data['data']['banner-slide-order'] : array();
 ?>
 
