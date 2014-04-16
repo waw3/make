@@ -93,6 +93,8 @@
 	background-color: #ffffff;
 }
 .ttf-one-banner-options {
+	float: left;
+	width: 100%;
 	margin-top: 40px;
 }
 .ttf-one-banner-options-container {
