@@ -58,6 +58,9 @@ iframe,
 object {
 	max-width: 100%;
 }
+div.wp-video-shortcode {
+	@include rem('margin-bottom', $base);
+}
 /*---------------------------------------------------------
  google maps (_patterns.scss)
 -------------------------------------------------------- */

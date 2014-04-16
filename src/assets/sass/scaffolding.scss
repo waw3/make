@@ -32,7 +32,8 @@ body {
 	overflow: hidden;
 	@include rem('padding', 0 0 $base*2);
 }
-.site-wrapper {
+.site-wrapper,
+.site-main {
 	width: 100%;
 	margin: 0 auto;
 	background-color: $a;

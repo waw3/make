@@ -211,7 +211,7 @@ body {
   padding: 0 0 44px;
   padding:  0 0 2.58824rem; }
 
-.site-wrapper {
+.site-wrapper, .site-main {
   width: 100%;
   margin: 0 auto;
   background-color: #ffffff; }
@@ -1153,6 +1153,10 @@ img.wp-smiley {
 embed, iframe, object {
   max-width: 100%; }
 
+div.wp-video-shortcode {
+  margin-bottom: 22px;
+  margin-bottom: 1.29412rem; }
+
 /*---------------------------------------------------------
  google maps (_patterns.scss)
 -------------------------------------------------------- */
@@ -1692,7 +1696,7 @@ iframe[src*="google.com/maps"] {
  Form (_comments.scss)
 -------------------------------------------------------- */
 @media screen and (min-width: 800px) {
-  #respond {
+  #comments {
     margin-left: auto;
     margin-right: auto;
     width: 74.16667%; } }

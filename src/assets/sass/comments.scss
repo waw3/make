@@ -103,7 +103,7 @@
  Form (_comments.scss)
 -------------------------------------------------------- */
 @include for(medium-screens) {
-	#respond {
+	#comments {
 		margin-left: auto;
 		margin-right: auto;
 		width: percentage( ( $width - ( $col*2 + $gut*2 ) ) / $width );
