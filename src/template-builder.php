@@ -15,7 +15,9 @@ get_header();
 
 		<?php get_template_part( 'partials/content', 'page-builder' ); ?>
 
-		<?php get_template_part( 'partials/content', 'comments' ); ?>
+		<div class="builder-comment-container">
+			<?php get_template_part( 'partials/content', 'comments' ); ?>
+		</div>
 
 	<?php endwhile; ?>
 

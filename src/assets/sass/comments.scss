@@ -2,8 +2,19 @@
  9. Comments (_comments.scss)
 -------------------------------------------------------- */
 #comments {
+	@include for(medium-screens) {
+		margin-left: auto;
+		margin-right: auto;
+		width: percentage( ( $width - ( $col*2 + $gut*2 ) ) / $width );
+	}
 	@include rem('margin-top', $base*2);
 	@include rem('font-size', 13px);
+}
+.has-right-sidebar,
+.has-left-sidebar {
+	#comments {
+		width: 100%;
+	}
 }
 .comment-list {
 	padding-left: 0; //reset
@@ -102,19 +113,6 @@
 /*---------------------------------------------------------
  Form (_comments.scss)
 -------------------------------------------------------- */
-@include for(medium-screens) {
-	#comments {
-		margin-left: auto;
-		margin-right: auto;
-		width: percentage( ( $width - ( $col*2 + $gut*2 ) ) / $width );
-	}
-}
-.has-right-sidebar,
-.has-left-sidebar {
-	#respond {
-		width: 100%;
-	}
-}
 .comment-form {
 	input:not(#submit),
 	textarea {

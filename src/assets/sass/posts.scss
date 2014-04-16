@@ -1,29 +1,15 @@
 /*---------------------------------------------------------
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
-.post {
-	border-bottom: 1px solid $d;
-	@include rem('padding-bottom', $base);
-	@include rem('margin', $base*3 0 $base*4);
-	&:first-of-type {
-		margin-top: 0; //reset
-	}
-	.single & {
-		@include rem('margin-bottom', $base*2);
-	}
-}
 .entry-header {
 	@include rem('margin-bottom', $base);
 	.entry-thumbnail {
-		@include rem('margin-bottom', $base);
+		line-height: 1; //reset
+		@include rem('margin-bottom', $base/2);
+		&.post-header {
+			margin-right: 0; //reset
+		}
 	}
-}
-.post-header {
-	@include rem('margin-top', $base/2);
-}
-.entry-thumbnail {
-	line-height: 1; //reset
-	@include rem('margin-bottom', $base/2);
 }
 .entry-thumbnail-caption {
 	@include rem('margin-top', $base/4);
@@ -85,6 +71,20 @@
 		@include rem('top', 4px);
 		@include rem('padding-right', $gut/4);
 	}
+}
+.post {
+	border-bottom: 1px solid $d;
+	@include rem('padding-bottom', $base);
+	@include rem('margin', $base*3 0 $base*4);
+	&:first-of-type {
+		margin-top: 0; //reset
+	}
+	.single & {
+		@include rem('margin-bottom', $base*2);
+	}
+}
+.post-header {
+	@include rem('margin-top', $base/2);
 }
 .post-categories,
 .post-tags {

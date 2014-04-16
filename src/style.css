@@ -1174,33 +1174,15 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
-.post {
-  border-bottom: 1px solid #eaecee;
-  padding-bottom: 22px;
-  padding-bottom: 1.29412rem;
-  margin: 66px 0 88px;
-  margin:  3.88235rem 0 5.17647rem; }
-  .post:first-of-type {
-    margin-top: 0; }
-  .single .post {
-    margin-bottom: 44px;
-    margin-bottom: 2.58824rem; }
-
 .entry-header {
   margin-bottom: 22px;
   margin-bottom: 1.29412rem; }
   .entry-header .entry-thumbnail {
-    margin-bottom: 22px;
-    margin-bottom: 1.29412rem; }
-
-.post-header {
-  margin-top: 11px;
-  margin-top: 0.64706rem; }
-
-.entry-thumbnail {
-  line-height: 1;
-  margin-bottom: 11px;
-  margin-bottom: 0.64706rem; }
+    line-height: 1;
+    margin-bottom: 11px;
+    margin-bottom: 0.64706rem; }
+    .entry-header .entry-thumbnail.post-header {
+      margin-right: 0; }
 
 .entry-thumbnail-caption {
   margin-top: 5.5px;
@@ -1271,6 +1253,22 @@ iframe[src*="google.com/maps"] {
     top: 0.23529rem;
     padding-right: 8px;
     padding-right: 0.47059rem; }
+
+.post {
+  border-bottom: 1px solid #eaecee;
+  padding-bottom: 22px;
+  padding-bottom: 1.29412rem;
+  margin: 66px 0 88px;
+  margin:  3.88235rem 0 5.17647rem; }
+  .post:first-of-type {
+    margin-top: 0; }
+  .single .post {
+    margin-bottom: 44px;
+    margin-bottom: 2.58824rem; }
+
+.post-header {
+  margin-top: 11px;
+  margin-top: 0.64706rem; }
 
 .post-categories, .post-tags {
   padding-left: 0;
@@ -1356,6 +1354,12 @@ iframe[src*="google.com/maps"] {
 .section-description {
   font-size: 13px;
   font-size: 0.76471rem; }
+
+.builder-comment-container {
+  width: 960px;
+  margin: 0 auto; }
+  .builder-comment-container #comments {
+    width: 80.83333%; }
 
 /*---------------------------------------------------------
  7. Builder (_builder.scss)
@@ -1606,6 +1610,14 @@ iframe[src*="google.com/maps"] {
   margin-top: 2.58824rem;
   font-size: 13px;
   font-size: 0.76471rem; }
+  @media screen and (min-width: 800px) {
+    #comments {
+      margin-left: auto;
+      margin-right: auto;
+      width: 74.16667%; } }
+
+.has-right-sidebar #comments, .has-left-sidebar #comments {
+  width: 100%; }
 
 .comment-list {
   padding-left: 0; }
@@ -1707,15 +1719,6 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Form (_comments.scss)
 -------------------------------------------------------- */
-@media screen and (min-width: 800px) {
-  #comments {
-    margin-left: auto;
-    margin-right: auto;
-    width: 74.16667%; } }
-
-.has-right-sidebar #respond, .has-left-sidebar #respond {
-  width: 100%; }
-
 .comment-form input:not(#submit), .comment-form textarea {
   width: 100%; }
 .comment-form label {

@@ -10,3 +10,10 @@
 .section-description {
 	@include rem('font-size', 13px);
 }
+.builder-comment-container {
+	width: $width;
+	margin: 0 auto;
+	#comments {
+		width: percentage( ( $width - ( $col*2 ) ) / $width );
+	}
+}
