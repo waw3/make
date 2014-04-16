@@ -36,7 +36,6 @@ body {
 .site-main {
 	width: 100%;
 	margin: 0 auto;
-	background-color: $a;
 }
 .container {
 	max-width: $width+($gut*2);
@@ -88,7 +87,7 @@ a {
 	background-color: $a;
 	float: left;
 	width: 100%;
-	@include rem('padding', $base*2 0);
+	@include rem('padding', $base*2 0 $base);
 	@extend .clear;
 }
 /*---------------------------------------------------------
@@ -524,7 +523,7 @@ a {
 	background-color: $a;
 	float: left;
 	width: 100%;
-	@include rem('padding', 0  0$base);
+	@include rem('padding', $base 0);
 	@extend .clear;
 }
 /*---------------------------------------------------------

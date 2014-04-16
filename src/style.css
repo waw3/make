@@ -213,8 +213,7 @@ body {
 
 .site-wrapper, .site-main {
   width: 100%;
-  margin: 0 auto;
-  background-color: #ffffff; }
+  margin: 0 auto; }
 
 .container, .page-template-template-builder-php .entry-header, .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .comments-area, .builder-section-gallery .builder-section-content, .builder-section-text .builder-section-content, .builder-section-blank .builder-section-content {
   max-width: 1024px;
@@ -258,8 +257,8 @@ a {
   background-color: #ffffff;
   float: left;
   width: 100%;
-  padding: 44px 0;
-  padding:  2.58824rem 0; }
+  padding: 44px 0 22px;
+  padding:  2.58824rem 0 1.29412rem; }
 
 /*---------------------------------------------------------
  Header layout 2 (_scaffolding.scss)
@@ -629,8 +628,8 @@ a {
   background-color: #ffffff;
   float: left;
   width: 100%;
-  padding: 0 0 22px;
-  padding:  0 0 1.29412rem; }
+  padding: 22px 0;
+  padding:  1.29412rem 0; }
 
 /*---------------------------------------------------------
  Footer (_scaffolding.scss)
