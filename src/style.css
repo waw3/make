@@ -1386,6 +1386,22 @@ iframe[src*="google.com/maps"] {
 .builder-section-banner .builder-section-content {
   width: 100%; }
 
+.builder-banner-overlay {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+  @media screen and (min-width: 800px) {
+    .builder-banner-overlay {
+      background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+      background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+      background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+      background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+      background-color: rgba(0, 0, 0, 0.3); } }
+
 .builder-banner-slide {
   position: relative;
   width: 100%;
@@ -1410,6 +1426,17 @@ iframe[src*="google.com/maps"] {
 .builder-banner-inner-content {
   display: table-cell;
   vertical-align: middle; }
+
+.cycle-pager {
+  color: #eaecee;
+  text-align: center;
+  line-height: 1;
+  font-size: 40px;
+  font-size: 2.35294rem; }
+  .cycle-pager span {
+    cursor: pointer; }
+  .cycle-pager .cycle-pager-active {
+    color: #b9bcbf; }
 
 /*---------------------------------------------------------
  Gallery: Columns (_pages.scss)
