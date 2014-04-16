@@ -35,18 +35,18 @@ This stylesheet uses rem values with a pixel fallback.
  Examples
 -----------------------------------------------------------
 * Use a pixel value with a rem fallback for font-size, padding, margins, etc.
-	padding: 25px 0;
-	padding: 1.5625rem 0; ($base)
+	padding: 22px 0;
+	padding: 1.29412rem 0; ($base)
 -----------------------------------------------------------
  Spacing
 -----------------------------------------------------------
-The $base variable ($base: 25;) is used for spacing between elements.
-Vertical spacing between most elements should use 10px, 25px or 50px
+The $base variable ($base: 22;) is used for spacing between elements.
+Vertical spacing between most elements should use 11px, 22px, 44px or 66px
 to maintain vertical rhythm:
 
 .my-new-div {
-	margin: 50px 0;
-	margin: 3.125rem 0; ($base*2)
+	margin: 66px 0;
+	margin: 3.88235rem 0; ($base*3)
 }
 -----------------------------------------------------------
  Further reading

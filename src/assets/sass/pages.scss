@@ -1,0 +1,158 @@
+/*---------------------------------------------------------
+ 7. Pages (_pages.scss)
+-------------------------------------------------------- */
+.section-header {
+	@include rem('margin-bottom', $base*2);
+}
+.section-title {
+	@include rem('font-size', 24px);
+}
+.section-description {
+	@include rem('font-size', 13px);
+}
+/*---------------------------------------------------------
+ Text section (_pages.scss)
+-------------------------------------------------------- */
+.page-template-template-builder-php {
+	.site-content > .container {
+		max-width: none;
+		width: 100%;
+		padding: 0; //reset
+	}
+	.site-main {
+		width: 100%;
+	}
+	.entry-header,
+	.entry-footer,
+	.builder-section-header,
+	.comments-area {
+		@extend .container;
+	}
+}
+.builder-section-gallery,
+.builder-section-text,
+.builder-section-blank {
+	.builder-section-content {
+		@extend .container;
+	}
+}
+.builder-section {
+	@include rem('margin-bottom', $base*2);
+	@extend .clear;
+}
+.builder-text-title {
+	line-height: 1.3;
+}
+/*---------------------------------------------------------
+ Text section (_pages.scss)
+-------------------------------------------------------- */
+.builder-text-column {
+	float: left;
+	margin-right: percentage( $gut / $width );
+	&:last-of-type {
+		margin-right: 0; //reset
+	}
+}
+/*---------------------------------------------------------
+ Text: Columns (_pages.scss)
+-------------------------------------------------------- */
+@include for(medium-screens) {
+	.builder-text-columns-2 .builder-text-column {
+		width: percentage( ( $width - $gut ) / ( $width*2 ) );
+	}
+	.builder-text-columns-3 .builder-text-column {
+		width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
+	}
+	.builder-text-columns-4 .builder-text-column {
+		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+	}
+}
+/*---------------------------------------------------------
+ Banner section (_pages.scss)
+-------------------------------------------------------- */
+.builder-section-banner {
+	.builder-section-content {
+		width: 100%;
+	}
+}
+.builder-banner-slide {
+	position: relative;
+	width: 100%;
+	height: 0; //reset
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.builder-banner-content {
+	display: table;
+	vertical-align: middle;
+	font-size: 150%; //24px
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	height: 100%;
+	// Container styling
+	max-width: $width+($gut*2);
+	margin: 0 auto;
+	@include rem('padding', 0 $gut);
+}
+.builder-banner-inner-content {
+	display: table-cell;
+	vertical-align: middle;
+}
+/*---------------------------------------------------------
+ Gallery: Columns (_pages.scss)
+-------------------------------------------------------- */
+.builder-gallery-item {
+	@include rem('margin-bottom', $gut/4);
+	@include rem('font-size', 14px);
+	.builder-gallery-captions-fancy & {
+		position: relative;
+	}
+}
+.builder-gallery-description {
+	.builder-gallery-captions-fancy & {
+		position: absolute;
+		top: 0;
+		padding: $gut/2;
+		color: $a;
+	}
+}
+.builder-gallery-image {
+	line-height: 0; //reset
+	background-color: $c;
+	.builder-gallery-captions-fancy & {
+		img {
+			opacity: .2;
+		}
+	}
+}
+.builder-gallery-title {
+	.builder-gallery-captions-fancy & {
+		position: absolute;
+		top: 0; //reset
+	}
+	margin-bottom: 0; //reset
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $a;
+	@include rem('font-size', 18px);
+}
+.builder-gallery-item {
+	float: left;
+	margin-right: percentage( $gut/4 / $width );
+	&:last-of-type {
+		margin-right: 0; //reset
+	}
+}
+@include for(medium-screens) {
+	.builder-gallery-columns-2 .builder-gallery-item {
+		width: percentage( ( $width - $gut/4 ) / ( $width*2 ) );
+	}
+	.builder-gallery-columns-3 .builder-gallery-item {
+		width: percentage( ( $width - ( $gut/4*2 ) ) / ( $width*3 ) );
+	}
+	.builder-gallery-columns-4 .builder-gallery-item {
+		width: percentage( ( $width - ( $gut/4*3 ) ) / ( $width*4 ) );
+	}
+}
