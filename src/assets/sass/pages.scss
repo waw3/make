@@ -122,10 +122,19 @@
 	.builder-gallery-content {
 		position: absolute;
 		top: 0;
-		padding: $gut/2;
+		border: 16px solid transparent;
 	}
 	.builder-gallery-content {
 		visibility: hidden;
+		height: 100%;
+	}
+	.builder-gallery-description {
+		overflow: hidden;
+		height: 60%;
+	}
+	.builder-gallery-title {
+		overflow: hidden;
+		max-height: 100%;
 	}
 }
 .builder-gallery-image {

@@ -1429,9 +1429,16 @@ iframe[src*="google.com/maps"] {
 .builder-gallery-captions-fancy .builder-gallery-content {
   position: absolute;
   top: 0;
-  padding: 16px; }
+  border: 16px solid transparent; }
 .builder-gallery-captions-fancy .builder-gallery-content {
-  visibility: hidden; }
+  visibility: hidden;
+  height: 100%; }
+.builder-gallery-captions-fancy .builder-gallery-description {
+  overflow: hidden;
+  height: 60%; }
+.builder-gallery-captions-fancy .builder-gallery-title {
+  overflow: hidden;
+  max-height: 100%; }
 
 .builder-gallery-image {
   line-height: 0;
