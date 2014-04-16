@@ -348,134 +348,134 @@ a {
 	}
 	margin-bottom: 0; //reset
 	@include no-select;
-}
-.menu {
-	padding-left: 0; //reset
-	li:first-of-type a {
+	.menu {
 		padding-left: 0; //reset
-	}
-	ul,
-	ol {
-		margin-left: 0; //reset
-	}
-	li {
-		@include for(medium-screens) {
-			display: inline-block;
-			position: relative;
+		li:first-of-type a {
+			padding-left: 0; //reset
 		}
-		list-style: none; //reset
-		a {
+		ul,
+		ol {
+			margin-left: 0; //reset
+		}
+		li {
 			@include for(medium-screens) {
-				border-bottom: 0; //reset
-				@include rem('padding', $base/2 $gut/2);
+				display: inline-block;
+				position: relative;
 			}
-			display: block;
-			color: $b;
-			font-weight: normal; //reset
-			line-height: 1.4;
-			border-bottom: $rule;
-			@include rem('padding', $base/2 0);
-			@include rem('font-size', 14px);
+			list-style: none; //reset
+			a {
+				@include for(medium-screens) {
+					border-bottom: 0; //reset
+					@include rem('padding', $base/2 $gut/2);
+				}
+				display: block;
+				color: $b;
+				font-weight: normal; //reset
+				line-height: 1.4;
+				border-bottom: $rule;
+				@include rem('padding', $base/2 0);
+				@include rem('font-size', 14px);
+			}
+			&:last-of-type a {
+				padding-right: 0; //reset
+			}
 		}
-		&:last-of-type a {
-			padding-right: 0; //reset
-		}
-	}
-	.sub-menu,
-	.children {
-		padding: 0; //reset
-	}
-	@include for(medium-screens) {
 		.sub-menu,
 		.children {
-			background-color: $d;
-			position: absolute;
-			z-index: 99999;
-			overflow: hidden;
-			clip: rect(1px, 1px, 1px, 1px);
-			li:first-of-type a {
-				@include rem('padding', 15px $gut/2);
-			}
-			a {
-				border-bottom: 1px solid $e;
-				@include rem('padding', 15px $gut/2);
-				@include rem('font-size', 13px);
-				&:after {
-					content: none; //reset
-				}
-			}
-			.menu-item-has-children a:after {
-				content: "  \f054";
-				position: relative;
-				float: right;
-				font-weight: normal; //reset
-				font-family: FontAwesome;
-				@include rem('top', 4px);
-				@include rem('font-size', 10px);
-			}
+			padding: 0; //reset
+		}
+		@include for(medium-screens) {
 			.sub-menu,
 			.children {
-				a:after {
-					content: none; //reset
+				background-color: $d;
+				position: absolute;
+				z-index: 99999;
+				overflow: hidden;
+				clip: rect(1px, 1px, 1px, 1px);
+				li:first-of-type a {
+					@include rem('padding', 15px $gut/2);
+				}
+				a {
+					border-bottom: 1px solid $e;
+					@include rem('padding', 15px $gut/2);
+					@include rem('font-size', 13px);
+					&:after {
+						content: none; //reset
+					}
+				}
+				.menu-item-has-children a:after {
+					content: "  \f054";
+					position: relative;
+					float: right;
+					font-weight: normal; //reset
+					font-family: FontAwesome;
+					@include rem('top', 4px);
+					@include rem('font-size', 10px);
+				}
+				.sub-menu,
+				.children {
+					a:after {
+						content: none; //reset
+					}
+				}
+				li:last-of-type a {
+					border-bottom: 0; //reset
+				}
+				ul {
+					top: 0; //reset
+					left: 100%;
 				}
 			}
-			li:last-of-type a {
-				border-bottom: 0; //reset
-			}
-			ul {
-				top: 0; //reset
-				left: 100%;
+		}
+		@include for(medium-screens) {
+			.current_page_item,
+			.current_page_ancestor,
+			.current-menu-item,
+			.current-menu-ancestor {
+				> a {
+					font-weight: bold;
+				}
 			}
 		}
-	}
-	@include for(medium-screens) {
 		.current_page_item,
-		.current_page_ancestor,
-		.current-menu-item,
-		.current-menu-ancestor {
+		.current-menu-item {
 			> a {
 				font-weight: bold;
 			}
 		}
 	}
-	.current_page_item,
-	.current-menu-item {
-		> a {
-			font-weight: bold;
+	@include for(medium-screens) {
+		.menu-item-has-children a:after {
+			content: "  \f078";
+			color: $e;
+			font-family: FontAwesome;
+			font-weight: normal; //reset
+			@include rem('padding-left', 2px);
+			@include rem('font-size', 10px);
 		}
-	}
-}
-@include for(medium-screens) {
-	.menu-item-has-children a:after {
-		content: "  \f078";
-		color: $e;
-		font-family: FontAwesome;
-		font-weight: normal; //reset
-		@include rem('padding-left', 2px);
-		@include rem('font-size', 10px);
-	}
-	ul.menu ul a,
-	.menu ul ul a {
-		margin: 0; //reset
-		min-width: 180px;
-		max-width: 250px;
-		&:hover,
-		&:focus {
-			color: $a;
-			background-color: $c;
-			&:after {
+		ul.menu ul a,
+		.menu ul ul a {
+			margin: 0; //reset
+			min-width: 180px;
+			max-width: 250px;
+			&:hover,
+			&:focus {
 				color: $a;
+				background-color: $c;
+				&:after {
+					color: $a;
+				}
 			}
 		}
-	}
-	ul.menu li:hover > ul,
-	.menu ul li:hover > ul,
-	ul.menu .focus > ul,
-	.menu .focus > ul {
-		clip: inherit;
-		overflow: inherit;
-		height: inherit;
-		width: inherit;
+		ul.menu li:hover > ul,
+		.menu ul li:hover > ul,
+		ul.menu .focus > ul,
+		.menu .focus > ul {
+			clip: inherit;
+			overflow: inherit;
+			height: inherit;
+			width: inherit;
+		}
 	}
 }
 .menu-toggle {
