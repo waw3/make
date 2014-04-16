@@ -494,82 +494,95 @@ a {
   .menu ul, .menu ol {
     margin-left: 0; }
   .menu li {
-    display: inline-block;
-    position: relative; }
+    list-style: none; }
+    @media screen and (min-width: 800px) {
+      .menu li {
+        display: inline-block;
+        position: relative; } }
     .menu li a {
       display: block;
       color: #171717;
       font-weight: normal;
       line-height: 1.4;
-      padding: 11px 16px;
-      padding:  0.64706rem 0.94118rem;
+      border-bottom: 1px solid #171717;
+      padding: 11px 0;
+      padding:  0.64706rem 0;
       font-size: 14px;
       font-size: 0.82353rem; }
+      @media screen and (min-width: 800px) {
+        .menu li a {
+          border-bottom: 0;
+          padding: 11px 16px;
+          padding:  0.64706rem 0.94118rem; } }
     .menu li:last-of-type a {
       padding-right: 0; }
   .menu .sub-menu, .menu .children {
-    background-color: #eaecee;
-    position: absolute;
-    z-index: 99999;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px); }
-    .menu .sub-menu li:first-of-type a, .menu .children li:first-of-type a {
-      padding: 15px 16px;
-      padding:  0.88235rem 0.94118rem; }
-    .menu .sub-menu a, .menu .children a {
-      border-bottom: 1px solid #b9bcbf;
-      padding: 15px 16px;
-      padding:  0.88235rem 0.94118rem;
-      font-size: 13px;
-      font-size: 0.76471rem; }
-      .menu .sub-menu a:after, .menu .children a:after {
+    padding: 0; }
+  @media screen and (min-width: 800px) {
+    .menu .sub-menu, .menu .children {
+      background-color: #eaecee;
+      position: absolute;
+      z-index: 99999;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px); }
+      .menu .sub-menu li:first-of-type a, .menu .children li:first-of-type a {
+        padding: 15px 16px;
+        padding:  0.88235rem 0.94118rem; }
+      .menu .sub-menu a, .menu .children a {
+        border-bottom: 1px solid #b9bcbf;
+        padding: 15px 16px;
+        padding:  0.88235rem 0.94118rem;
+        font-size: 13px;
+        font-size: 0.76471rem; }
+        .menu .sub-menu a:after, .menu .children a:after {
+          content: none; }
+      .menu .sub-menu .menu-item-has-children a:after, .menu .children .menu-item-has-children a:after {
+        content: "  \f054";
+        position: relative;
+        float: right;
+        font-weight: normal;
+        font-family: FontAwesome;
+        top: 4px;
+        top: 0.23529rem;
+        font-size: 10px;
+        font-size: 0.58824rem; }
+      .menu .sub-menu .sub-menu a:after, .menu .sub-menu .children a:after, .menu .children .sub-menu a:after, .menu .children .children a:after {
         content: none; }
-    .menu .sub-menu .menu-item-has-children a:after, .menu .children .menu-item-has-children a:after {
-      content: "  \f054";
-      position: relative;
-      float: right;
-      font-weight: normal;
-      font-family: FontAwesome;
-      top: 4px;
-      top: 0.23529rem;
-      font-size: 10px;
-      font-size: 0.58824rem; }
-    .menu .sub-menu .sub-menu a:after, .menu .sub-menu .children a:after, .menu .children .sub-menu a:after, .menu .children .children a:after {
-      content: none; }
-    .menu .sub-menu li:last-of-type a, .menu .children li:last-of-type a {
-      border-bottom: 0; }
-    .menu .sub-menu ul, .menu .children ul {
-      top: 0;
-      left: 100%; }
-  .menu .current_page_item > a, .menu .current_page_ancestor > a, .menu .current-menu-item > a, .menu .current-menu-ancestor > a {
+      .menu .sub-menu li:last-of-type a, .menu .children li:last-of-type a {
+        border-bottom: 0; }
+      .menu .sub-menu ul, .menu .children ul {
+        top: 0;
+        left: 100%; } }
+  @media screen and (min-width: 800px) {
+    .menu .current_page_item > a, .menu .current_page_ancestor > a, .menu .current-menu-item > a, .menu .current-menu-ancestor > a {
+      font-weight: bold; } }
+  .menu .current_page_item > a, .menu .current-menu-item > a {
     font-weight: bold; }
 
-.menu-item-has-children a:after {
-  content: "  \f078";
-  color: #b9bcbf;
-  font-family: FontAwesome;
-  font-weight: normal;
-  padding-left: 2px;
-  padding-left: 0.11765rem;
-  font-size: 10px;
-  font-size: 0.58824rem; }
-
-ul.menu ul a, .menu ul ul a {
-  margin: 0;
-  min-width: 180px;
-  max-width: 250px; }
-  ul.menu ul a:hover, ul.menu ul a:focus, .menu ul ul a:hover, .menu ul ul a:focus {
-    color: #ffffff;
-    background-color: #3070d1; }
-    ul.menu ul a:hover:after, ul.menu ul a:focus:after, .menu ul ul a:hover:after, .menu ul ul a:focus:after {
-      color: #ffffff; }
-
-ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus > ul {
-  clip: inherit;
-  overflow: inherit;
-  height: inherit;
-  width: inherit; }
+@media screen and (min-width: 800px) {
+  .menu-item-has-children a:after {
+    content: "  \f078";
+    color: #b9bcbf;
+    font-family: FontAwesome;
+    font-weight: normal;
+    padding-left: 2px;
+    padding-left: 0.11765rem;
+    font-size: 10px;
+    font-size: 0.58824rem; }
+  ul.menu ul a, .menu ul ul a {
+    margin: 0;
+    min-width: 180px;
+    max-width: 250px; }
+    ul.menu ul a:hover, ul.menu ul a:focus, .menu ul ul a:hover, .menu ul ul a:focus {
+      color: #ffffff;
+      background-color: #3070d1; }
+      ul.menu ul a:hover:after, ul.menu ul a:focus:after, .menu ul ul a:hover:after, .menu ul ul a:focus:after {
+        color: #ffffff; }
+  ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus > ul {
+    clip: inherit;
+    overflow: inherit;
+    height: inherit;
+    width: inherit; } }
 
 .menu-toggle {
   cursor: pointer; }
@@ -577,8 +590,12 @@ ul.menu li:hover > ul, .menu ul li:hover > ul, ul.menu .focus > ul, .menu .focus
 .menu-toggle, .site-navigation.toggled .nav-menu {
   display: block; }
 
-.site-navigation ul {
+.site-navigation .menu {
   display: none; }
+
+@media screen and (min-width: 800px) {
+  .site-navigation ul {
+    display: none; } }
 
 @media screen and (min-width: 800px) {
   .menu-toggle {
