@@ -10,7 +10,12 @@
 	.site-main {
 		width: 100%
 	}
-	.entry-header, .entry-footer, .builder-section-header, .builder-section-content, .comments-area {
+	.entry-header, .entry-footer, .builder-section-header, .comments-area {
+		@extend .container;
+	}
+}
+.builder-section-gallery, .builder-section-text, .builder-section-blank {
+	.builder-section-content {
 		@extend .container;
 	}
 }
@@ -48,9 +53,10 @@
 /*---------------------------------------------------------
  Banner section (_builder.scss)
 -------------------------------------------------------- */
-.builder-banner-content {
-	padding: $col;
-	font-size: 150%; //24px
+.builder-section-banner {
+	.builder-section-content {
+		width: 100%;
+	}
 }
 .builder-banner-slide {
 	background-repeat: no-repeat;
@@ -60,8 +66,22 @@
 	width: 100%;
 }
 .builder-banner-content {
+	display: table;
+	vertical-align: middle;
+	font-size: 150%; //24px
 	position: absolute;
-	top: 0;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	height: 100%;
+	// Container styling
+	max-width: $width+($gut*2);
+	margin: 0 auto;
+	@include rem('padding', 0 $gut);
+}
+.builder-banner-inner-content {
+	display: table-cell;
+	vertical-align: middle;
 }
 /*---------------------------------------------------------
  Gallery: Columns (_builder.scss)

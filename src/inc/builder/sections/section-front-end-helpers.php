@@ -197,29 +197,43 @@ function ttf_one_builder_get_banner_array( $ttf_one_section_data ) {
  *
  * @return string
  */
+function ttf_one_builder_get_banner_class( $ttf_one_section_data ) {
+	if ( ! ttf_one_builder_is_section_type( 'banner' ) ) {
+		return '';
+	}
+
+	$banner_class = ' ';
+
+	// Section classes
+	$banner_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
+
+	// Banner id
+	$banner_id = ( isset( $ttf_one_section_data['id'] ) ) ? absint( $ttf_one_section_data['id'] ) : 1;
+	$banner_class .= ' builder-section-banner-' . $banner_id;
+
+	return $banner_class;
+}
+
+/**
+ * @param array $ttf_one_section_data
+ *
+ * @return string
+ */
 function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'banner' ) ) {
 		return '';
 	}
 
 	$atts = shortcode_atts( array(
-		'height'     => 500,
 		'autoplay'   => true,
 		'transition' => 'fade',
 		'delay'      => 4000
 	), $ttf_one_section_data );
 
 	// Data attributes
-	$data_attributes = ' data-cycle-log="true"';
+	$data_attributes = ' data-cycle-log="false"';
 	$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
 	$data_attributes .= ' data-cycle-swipe="true"';
-
-	// Height / Aspect ratio
-	$height = absint( $atts['height'] );
-	if ( 0 === $height ) {
-		$height = 500;
-	}
-	$data_attributes .= ' data-cycle-auto-height="960:' . $height . '"';
 
 	// Autoplay
 	$autoplay = (bool) $atts['autoplay'];
@@ -285,14 +299,6 @@ function ttf_one_builder_banner_slide_style( $slide, $ttf_one_section_data ) {
 			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
 	}
-
-	// Height
-	$height = absint( $ttf_one_section_data['height'] );
-	if ( 0 === $height ) {
-		$height = 500;
-	}
-	$ratio = ( $height / 960 ) * 100;
-	$slide_style .= 'padding-bottom:' . $ratio . '%;';
 
 	return esc_attr( $slide_style );
 }
