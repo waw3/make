@@ -1343,7 +1343,7 @@ iframe[src*="google.com/maps"] {
   font-size: 0.76471rem; }
 
 /*---------------------------------------------------------
- 7. Builder (_builder.scss)
+ Text section (_pages.scss)
 -------------------------------------------------------- */
 .page-template-template-builder-php .site-content > .container, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-footer, .page-template-template-builder-php .site-content > .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .builder-section-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .comments-area, .page-template-template-builder-php .page-template-template-builder-php .site-content > .comments-area, .page-template-template-builder-php .site-content > .builder-section-gallery .builder-section-content, .builder-section-gallery .page-template-template-builder-php .site-content > .builder-section-content, .page-template-template-builder-php .site-content > .builder-section-text .builder-section-content, .builder-section-text .page-template-template-builder-php .site-content > .builder-section-content, .page-template-template-builder-php .site-content > .builder-section-blank .builder-section-content, .builder-section-blank .page-template-template-builder-php .site-content > .builder-section-content {
   max-width: none;
@@ -1361,7 +1361,7 @@ iframe[src*="google.com/maps"] {
   line-height: 1.3; }
 
 /*---------------------------------------------------------
- Text section (_builder.scss)
+ Text section (_pages.scss)
 -------------------------------------------------------- */
 .builder-text-column {
   float: left;
@@ -1370,7 +1370,7 @@ iframe[src*="google.com/maps"] {
     margin-right: 0; }
 
 /*---------------------------------------------------------
- Text: Columns (_builder.scss)
+ Text: Columns (_pages.scss)
 -------------------------------------------------------- */
 @media screen and (min-width: 800px) {
   .builder-text-columns-2 .builder-text-column {
@@ -1381,7 +1381,7 @@ iframe[src*="google.com/maps"] {
     width: 22.5%; } }
 
 /*---------------------------------------------------------
- Banner section (_builder.scss)
+ Banner section (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-banner .builder-section-content {
   width: 100%; }
@@ -1412,7 +1412,7 @@ iframe[src*="google.com/maps"] {
   vertical-align: middle; }
 
 /*---------------------------------------------------------
- Gallery: Columns (_builder.scss)
+ Gallery: Columns (_pages.scss)
 -------------------------------------------------------- */
 .builder-gallery-item {
   margin-bottom: 8px;
@@ -1807,9 +1807,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 :-ms-input-placeholder {
   color: #171717; }
 
-/*---------------------------------------------------------
- 11. Options (_options.scss)
--------------------------------------------------------- */
 /*---------------------------------------------------------
  11. Support (_support.scss)
 -------------------------------------------------------- */
