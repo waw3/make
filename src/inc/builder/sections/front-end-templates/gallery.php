@@ -28,16 +28,18 @@ $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 				<?php endif; ?>
 			</figure>
 			<?php endif; ?>
-			<?php if ( '' !== $item['title'] ) : ?>
-			<h4 class="builder-gallery-title">
-				<?php echo $link_front . apply_filters( 'the_title', $item['title'] ) . $link_back; ?>
-			</h4>
-			<?php endif; ?>
-			<?php if ( '' !== $item['description'] ) : ?>
-			<div class="builder-gallery-description">
-				<?php ttf_one_get_builder_save()->the_builder_content( $item['description'] ); ?>
+			<div class="builder-gallery-content">
+				<?php if ( '' !== $item['title'] ) : ?>
+				<h4 class="builder-gallery-title">
+					<?php echo $link_front . apply_filters( 'the_title', $item['title'] ) . $link_back; ?>
+				</h4>
+				<?php endif; ?>
+				<?php if ( '' !== $item['description'] ) : ?>
+				<div class="builder-gallery-description">
+					<?php ttf_one_get_builder_save()->the_builder_content( $item['description'] ); ?>
+				</div>
+				<?php endif; ?>
 			</div>
-			<?php endif; ?>
 			<?php if ( 'fancy' === $ttf_one_section_data['captions'] ) : ?>
 			<div class="builder-gallery-overlay"></div>
 			<?php endif; ?>
