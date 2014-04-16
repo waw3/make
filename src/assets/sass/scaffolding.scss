@@ -486,14 +486,10 @@ a {
 	@include rem('padding', 10px 14px);
 	@include rem('font-size', 13px);
 	@include border-radius;
-	&:after {
-		content: "  \f078";
+	&:before {
+		content: "\f0c9";
 		font-family: FontAwesome;
-		@include rem('padding-left', 4px);
-		@include rem('font-size', 12px);
-	}
-	&.menu-toggle-open:after {
-		content: "\f077";
+		@include rem('padding-right', 6px);
 	}
 }
 .menu-toggle,
