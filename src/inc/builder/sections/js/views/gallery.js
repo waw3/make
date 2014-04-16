@@ -73,7 +73,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttf-one-gallery-items'),
-					$orderInput = $('.ttf-one-gallery-item-order', $stage);
+					$orderInput = $('.ttf-one-gallery-item-order', $stage),
+					$section = $item.parents('.ttf-one-section');
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
 			}
@@ -136,6 +137,23 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		oneApp.initializeGalleryItemSortables();
 		oneApp.initializeGalleryItemColorPicker();
+	};
+
+	// Set the classes for the elements
+	oneApp.setClearClasses = function ($el) {
+		var columns = $('.ttf-one-gallery-columns', $el).val(),
+			$items = $('.ttf-one-gallery-item', $el);
+
+		$items.each(function(index, item){
+			var $item = $(item);
+			if (0 !== index && 0 === index % columns) {
+				console.log(index, columns, index % columns, 'clear');
+				$item.addClass('clear');
+			} else {
+				console.log(index, columns, index % columns, 'unclear');
+				$item.removeClass('clear');
+			}
+		});
 	};
 
 	// Initialize the views when the app starts up
