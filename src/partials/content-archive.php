@@ -8,11 +8,11 @@ $thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_
 
 // Header
 ob_start();
+get_template_part( 'partials/entry', 'date' );
+get_template_part( 'partials/entry', 'sticky' );
 if ( 'post-header' === $thumb_option ) :
 	get_template_part( 'partials/entry', 'thumbnail' );
 endif;
-get_template_part( 'partials/entry', 'date' );
-get_template_part( 'partials/entry', 'sticky' );
 get_template_part( 'partials/entry', 'title' );
 $entry_header = trim( ob_get_clean() );
 
