@@ -3,18 +3,23 @@
 -------------------------------------------------------- */
 .page-template-template-builder-php {
 	.site-content > .container {
-		padding: 0;
 		max-width: none;
-		width: 100%
+		width: 100%;
+		padding: 0; //reset
 	}
 	.site-main {
-		width: 100%
+		width: 100%;
 	}
-	.entry-header, .entry-footer, .builder-section-header, .comments-area {
+	.entry-header,
+	.entry-footer,
+	.builder-section-header,
+	.comments-area {
 		@extend .container;
 	}
 }
-.builder-section-gallery, .builder-section-text, .builder-section-blank {
+.builder-section-gallery,
+.builder-section-text,
+.builder-section-blank {
 	.builder-section-content {
 		@extend .container;
 	}
@@ -41,13 +46,13 @@
 -------------------------------------------------------- */
 @include for(medium-screens) {
 	.builder-text-columns-2 .builder-text-column {
-		width: percentage( ( $width - $gut ) / ( $width * 2 ) );
+		width: percentage( ( $width - $gut ) / ( $width*2 ) );
 	}
 	.builder-text-columns-3 .builder-text-column {
-		width: percentage( ( $width - ( $gut * 2 ) ) / ( $width * 3 ) );
+		width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
 	}
 	.builder-text-columns-4 .builder-text-column {
-		width: percentage( ( $width - ( $gut * 3 ) ) / ( $width * 4 ) );
+		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
 	}
 }
 /*---------------------------------------------------------
@@ -59,11 +64,11 @@
 	}
 }
 .builder-banner-slide {
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 0;
 	position: relative;
 	width: 100%;
+	height: 0; //reset
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .builder-banner-content {
 	display: table;
@@ -130,12 +135,12 @@
 }
 @include for(medium-screens) {
 	.builder-gallery-columns-2 .builder-gallery-item {
-		width: percentage( ( $width - $gut/4 ) / ( $width * 2 ) );
+		width: percentage( ( $width - $gut/4 ) / ( $width*2 ) );
 	}
 	.builder-gallery-columns-3 .builder-gallery-item {
-		width: percentage( ( $width - ( $gut/4 * 2 ) ) / ( $width * 3 ) );
+		width: percentage( ( $width - ( $gut/4*2 ) ) / ( $width*3 ) );
 	}
 	.builder-gallery-columns-4 .builder-gallery-item {
-		width: percentage( ( $width - ( $gut/4 * 3 ) ) / ( $width * 4 ) );
+		width: percentage( ( $width - ( $gut/4*3 ) ) / ( $width*4 ) );
 	}
 }

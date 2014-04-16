@@ -28,10 +28,10 @@
 	.has-right-sidebar,
 	.has-left-sidebar {
 		.site-main {
-			width: percentage( ( $col * 5 + $gut * 5 ) / $width );
+			width: percentage( ( $col*5 + $gut*5 ) / $width );
 		}
 		#sidebar-left, #sidebar-right {
-			width: percentage( ( $col * 2 + $gut * 2 ) / $width );
+			width: percentage( ( $col*2 + $gut*2 ) / $width );
 		}
 	}
 }
@@ -44,12 +44,12 @@
 			@include rem('font-size', 34px);
 		}
 		.site-main {
-			width: percentage( ( $col * 4 + $gut * 3 ) / $width );
+			width: percentage( ( $col*4 + $gut*3 ) / $width );
 			margin-left: percentage( $gut / $width );
 		}
 		#sidebar-left,
 		#sidebar-right {
-			width: percentage( ( $col * 2 + $gut ) / $width );
+			width: percentage( ( $col*2 + $gut ) / $width );
 		}
 	}
 }

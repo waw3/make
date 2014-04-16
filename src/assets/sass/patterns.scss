@@ -66,7 +66,7 @@ div.wp-video-shortcode {
 	@include rem('margin-bottom', $base);
 }
 /*---------------------------------------------------------
- google maps (_patterns.scss)
+ Google maps (_patterns.scss)
 -------------------------------------------------------- */
 iframe[src*="google.com/maps"] {
 	@include for(medium-screens) {

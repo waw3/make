@@ -737,8 +737,8 @@ a {
 -------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-weight: bold;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
   margin: 11px 0;
   margin:  0.64706rem 0; }
   h1 a, a h1, h2 a, a h2, h3 a, a h3, h4 a, a h4, h5 a, a h5, h6 a, a h6 {
@@ -1160,7 +1160,7 @@ div.wp-video-shortcode {
   margin-bottom: 1.29412rem; }
 
 /*---------------------------------------------------------
- google maps (_patterns.scss)
+ Google maps (_patterns.scss)
 -------------------------------------------------------- */
 iframe[src*="google.com/maps"] {
   width: 100%;
@@ -1327,17 +1327,6 @@ iframe[src*="google.com/maps"] {
   [class*="navigation"] .nav-next a:after {
     content: "  \f178"; }
 
-/* =Infinite Scroll
------------------------------------------------ */
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .paging-navigation, .infinite-scroll.neverending .site-footer {
-  /* Theme Footer (when set to scrolling) */
-  display: none; }
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
-.infinity-end.neverending .site-footer {
-  display: block; }
-
 /*---------------------------------------------------------
  7. Pages (_pages.scss)
 -------------------------------------------------------- */
@@ -1357,9 +1346,9 @@ iframe[src*="google.com/maps"] {
  7. Builder (_builder.scss)
 -------------------------------------------------------- */
 .page-template-template-builder-php .site-content > .container, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-footer, .page-template-template-builder-php .site-content > .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .builder-section-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .comments-area, .page-template-template-builder-php .page-template-template-builder-php .site-content > .comments-area, .page-template-template-builder-php .site-content > .builder-section-gallery .builder-section-content, .builder-section-gallery .page-template-template-builder-php .site-content > .builder-section-content, .page-template-template-builder-php .site-content > .builder-section-text .builder-section-content, .builder-section-text .page-template-template-builder-php .site-content > .builder-section-content, .page-template-template-builder-php .site-content > .builder-section-blank .builder-section-content, .builder-section-blank .page-template-template-builder-php .site-content > .builder-section-content {
-  padding: 0;
   max-width: none;
-  width: 100%; }
+  width: 100%;
+  padding: 0; }
 .page-template-template-builder-php .site-main {
   width: 100%; }
 
@@ -1398,11 +1387,11 @@ iframe[src*="google.com/maps"] {
   width: 100%; }
 
 .builder-banner-slide {
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 0;
   position: relative;
-  width: 100%; }
+  width: 100%;
+  height: 0;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 .builder-banner-content {
   display: table;
