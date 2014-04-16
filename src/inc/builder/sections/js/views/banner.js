@@ -115,6 +115,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('banner' === view.model.get('sectionType')) {
+			// Notify that the tinyMCE editors should not be initiated
+			view.noTinyMCEInit = true;
+
 			// Add an initial slide item
 			$('.ttf-one-add-slide', view.$el).trigger('click', {type: 'pseudo'});
 

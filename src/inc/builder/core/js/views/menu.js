@@ -58,7 +58,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.scrollToAddedView(view);
 
 			oneApp.sections.toggleStageClass();
-			oneApp.initAllEditors(view.idAttr, section);
+
+			if (view.noTinyMCEInit === undefined) {
+				oneApp.initAllEditors(view.idAttr, section);
+			}
+
 			oneApp.addOrderValue(section.get('id'), oneApp.cache.$sectionOrder);
 		},
 
