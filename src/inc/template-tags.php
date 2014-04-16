@@ -217,3 +217,106 @@ function ttf_one_maybe_show_sidebar( $location ) {
 	}
 }
 endif;
+
+if ( ! function_exists( 'ttf_one_get_exif_data' ) ) :
+/**
+ * @param int $attachment_id
+ *
+ * @return string
+ */
+function ttf_one_get_exif_data( $attachment_id = 0 ) {
+	// Validate attachment id
+	if ( 0 === absint( $attachment_id ) ) {
+		$attachment_id = get_post()->ID;
+	}
+
+	$output = '';
+
+	$attachment_meta = wp_get_attachment_metadata( $attachment_id );
+	$image_meta = ( isset( $attachment_meta[ 'image_meta' ] ) ) ? array_filter( $attachment_meta[ 'image_meta' ], 'trim' ) : array();
+	if ( ! empty( $image_meta ) ) {
+		// Defaults
+		$defaults = array(
+			'aperture' => 0,
+  			'camera' => '',
+  			'created_timestamp' => 0,
+  			'focal_length' => 0,
+  			'iso' => 0,
+  			'shutter_speed' => 0,
+		);
+		$image_meta = wp_parse_args( $image_meta, $defaults );
+
+		// Convert the shutter speed to a fraction and add units
+		if ( 0 !== $image_meta[ 'shutter_speed' ] ) {
+			$raw_ss = floatval( $image_meta['shutter_speed'] );
+			$denominator = 1 / $raw_ss;
+			if ( $denominator > 1 ) {
+				$decimal_places = 0;
+				if ( in_array( number_format( $denominator, 1 ), array( 1.3, 1.5, 1.6, 2.5 ) ) ) {
+					$decimal_places = 1;
+				}
+				$converted_ss = sprintf(
+					'1/%1$s %2$s',
+					number_format_i18n( $denominator, $decimal_places ),
+					_x( 'second', 'time', 'ttf-one' )
+				);
+			} else {
+				$converted_ss = sprintf(
+					'%1$s %2$s',
+					number_format_i18n( $raw_ss, 1 ),
+					_x( 'seconds', 'time', 'ttf-one' )
+				);
+			}
+			$image_meta[ 'shutter_speed' ] = apply_filters( 'ttf_one_exif_shutter_speed', $converted_ss, $image_meta[ 'shutter_speed' ] );
+		}
+
+		// Convert the aperture to an F-stop
+		if ( 0 !== $image_meta[ 'aperture' ] ) {
+			$f_stop = sprintf(
+				'%1$s' . '%2$s',
+				_x( 'f/', 'camera f-stop', 'ttf-one' ),
+				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta[ 'aperture' ] ) ) )
+			);
+			$image_meta[ 'aperture' ] = apply_filters( 'ttf_one_exif_aperture', $f_stop, $image_meta[ 'aperture' ] );
+		}
+
+		$output .= "<ul class=\"entry-exif-list\">\n";
+
+		// Camera
+		if ( ! empty( $image_meta[ 'camera' ] ) ) {
+			$output .= '<li><span>' . _x( 'Camera:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= esc_html( $image_meta[ 'camera' ] ) . "</li>\n";
+		}
+		// Creation Date
+		if ( ! empty( $image_meta[ 'created_timestamp' ] ) ) {
+			$output .= '<li><span>' . _x( 'Taken:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$date = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta[ 'created_timestamp' ] ) );
+			$output .= esc_html( $date->format( get_option( 'date_format' ) ) ) . "</li>\n";
+		}
+		// Focal length
+		if ( ! empty( $image_meta[ 'focal_length' ] ) ) {
+			$output .= '<li><span>' . _x( 'Focal length:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= number_format_i18n( $image_meta[ 'focal_length' ], 0 ) . _x( 'mm', 'millimeters', 'ttf-one' ) . "</li>\n";
+		}
+		// Aperture
+		if ( ! empty( $image_meta[ 'aperture' ] ) ) {
+			$output .= '<li><span>' . _x( 'Aperture:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= esc_html( $image_meta[ 'aperture' ] ) . "</li>\n";
+		}
+		// Exposure
+		if ( ! empty( $image_meta[ 'shutter_speed' ] ) ) {
+			$output .= '<li><span>' . _x( 'Exposure:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= esc_html( $image_meta[ 'shutter_speed' ] ) . "</li>\n";
+		}
+		// ISO
+		if ( ! empty( $image_meta[ 'iso' ] ) ) {
+			$output .= '<li><span>' . _x( 'ISO:', 'camera setting', 'oxford' ) . '</span> ';
+			$output .= absint( $image_meta[ 'iso' ] ) . "</li>\n";
+		}
+
+		$output .= "</ul>\n";
+	}
+
+	return $output;
+}
+endif;

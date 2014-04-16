@@ -1095,9 +1095,10 @@ table {
 -------------------------------------------------------- */
 img {
   height: auto;
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%; }
 
-.alignleft, .entry-thumbnail {
+.alignleft, .entry-thumbnail.thumbnail {
   display: inline;
   float: left;
   margin-right: 32px;

@@ -4,9 +4,10 @@
 img {
 	height: auto;
 	max-width: 100%;
+	width: 100%;
 }
 .alignleft,
-.entry-thumbnail {
+.entry-thumbnail.thumbnail {
 	display: inline;
 	float: left;
 	@include rem('margin-right', $gut);

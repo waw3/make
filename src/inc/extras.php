@@ -224,7 +224,7 @@ function ttf_one_get_view() {
 		$parent_post_type = get_post_type( $post_parent );
 	}
 
-	$view = '';
+	$view = 'post';
 
 	// Blog
 	if ( is_home() ) {
