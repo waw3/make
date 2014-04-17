@@ -77,7 +77,8 @@
 		width: 100%;
 	}
 }
-.builder-banner-overlay {
+.builder-banner-overlay,
+.builder-section-overlay {
 	@include for(medium-screens) {
 		background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0) 50%);
 		background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,.4) 0%, rgba(255,255,255,0) 50%);
@@ -158,7 +159,16 @@
  Gallery: Columns (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
+	position: relative;
+	background-size: cover;
 	@include rem('padding', $base*2 0);
+}
+.builder-section-overlay {
+	z-index: 1;
+}
+.builder-section-content {
+	position: relative;
+	z-index: 2;
 }
 .builder-gallery-item {
 	@include rem('margin-top', $gut/4);

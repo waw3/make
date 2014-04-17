@@ -1391,7 +1391,7 @@ iframe[src*="google.com/maps"] {
 .builder-section-banner .builder-section-content {
   width: 100%; }
 
-.builder-banner-overlay {
+.builder-banner-overlay, .builder-section-overlay {
   z-index: -1;
   position: absolute;
   top: 0;
@@ -1400,7 +1400,7 @@ iframe[src*="google.com/maps"] {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4); }
   @media screen and (min-width: 800px) {
-    .builder-banner-overlay {
+    .builder-banner-overlay, .builder-section-overlay {
       background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
       background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
       background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
@@ -1469,8 +1469,17 @@ iframe[src*="google.com/maps"] {
  Gallery: Columns (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
+  position: relative;
+  background-size: cover;
   padding: 44px 0;
   padding:  2.58824rem 0; }
+
+.builder-section-overlay {
+  z-index: 1; }
+
+.builder-section-content {
+  position: relative;
+  z-index: 2; }
 
 .builder-gallery-item {
   margin-top: 8px;
