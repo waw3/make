@@ -1471,48 +1471,59 @@ iframe[src*="google.com/maps"] {
 .builder-section-gallery {
   position: relative;
   background-size: cover;
-  padding: 44px 0;
-  padding:  2.58824rem 0; }
+  padding: 52px 0 44px;
+  padding:  3.05882rem 0 2.58824rem; }
 
-.builder-section-overlay {
-  z-index: 1; }
+.builder-gallery-overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
+  visibility: hidden; }
+
+.builder-gallery-content {
+  position: relative;
+  z-index: 2; }
 
 .builder-section-content {
   position: relative;
   z-index: 2; }
 
 .builder-gallery-item {
-  margin-top: 8px;
-  margin-top: 0.47059rem;
   margin-bottom: 8px;
   margin-bottom: 0.47059rem;
   font-size: 14px;
   font-size: 0.82353rem; }
-  .builder-gallery-captions-reveal .builder-gallery-item {
+  .builder-gallery-captions-reveal .builder-gallery-item, .builder-gallery-captions-overlay .builder-gallery-item {
     position: relative; }
-  .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-image img {
-    opacity: 0.2; }
-  .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-content {
+  .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-content, .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-overlay, .builder-gallery-captions-overlay .builder-gallery-item .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-item .builder-gallery-overlay {
     visibility: visible; }
+  .builder-gallery-item .builder-gallery-captions-none .builder-gallery-content, .builder-gallery-item .builder-gallery-captions-none .builder-gallery-overlay {
+    display: none; }
+  .builder-gallery-captions-overlay .builder-gallery-item:hover .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-item:hover .builder-gallery-overlay {
+    visibility: hidden; }
 
-.builder-gallery-captions-reveal .builder-gallery-content {
+.builder-gallery-captions-reveal .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-content {
   position: absolute;
   top: 0;
   padding: 16px;
   padding: 0.94118rem; }
-.builder-gallery-captions-reveal .builder-gallery-content {
+.builder-gallery-captions-reveal .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-content {
   visibility: hidden;
   height: 100%; }
-.builder-gallery-captions-reveal .builder-gallery-description {
+.builder-gallery-captions-reveal .builder-gallery-description, .builder-gallery-captions-overlay .builder-gallery-description {
   overflow: hidden;
   height: 60%; }
-.builder-gallery-captions-reveal .builder-gallery-title {
+.builder-gallery-captions-reveal .builder-gallery-title, .builder-gallery-captions-overlay .builder-gallery-title {
   overflow: hidden;
   max-height: 100%; }
 
 .builder-gallery-image {
   line-height: 0;
-  background-color: #ffffff;
   height: 0;
   background-position: center;
   background-size: cover; }
