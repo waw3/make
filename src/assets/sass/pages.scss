@@ -33,7 +33,9 @@
 .builder-section-text,
 .builder-section-blank {
 	.builder-section-content {
-		@extend .container;
+		max-width: $width+($gut*2);
+		margin: 0 auto;
+		@include rem('padding', 0 $gut);
 	}
 }
 .builder-section {
