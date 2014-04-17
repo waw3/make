@@ -1095,8 +1095,7 @@ table {
 -------------------------------------------------------- */
 img {
   height: auto;
-  max-width: 100%;
-  width: 100%; }
+  max-width: 100%; }
 
 .alignleft, .entry-thumbnail.thumbnail {
   display: inline;
