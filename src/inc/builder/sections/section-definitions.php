@@ -241,7 +241,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['captions'] ) ) {
-			if ( in_array( $data['captions'], array( 'none', 'basic', 'overlay', 'reveal' ) ) ) {
+			if ( in_array( $data['captions'], array( 'none', 'overlay', 'reveal' ) ) ) {
 				$clean_data['captions'] = $data['captions'];
 			}
 		}
