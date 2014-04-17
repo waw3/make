@@ -930,13 +930,13 @@ address {
 
 hr {
   border: 0;
-  border-top: 2px solid #eaecee;
+  border-top: 1px solid #eaecee;
   height: 1px;
   margin-bottom: 22px; }
   hr.ttf-one-line-dashed {
-    border-top: 2px dashed #eaecee; }
+    border-top: 1px dashed #eaecee; }
   hr.ttf-one-line-double {
-    border-top: thick double #eaecee; }
+    border-top: 6px double #eaecee; }
 
 /*---------------------------------------------------------
  Lists (_elements.scss)

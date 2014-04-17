@@ -116,10 +116,10 @@ strike {
  Rules (editor-style.css)
 -------------------------------------------------------- */
 hr.ttf-one-line-dashed {
-	border-top: 2px dashed #eaecee;
+	border-top: 1px dashed #eaecee;
 }
 hr.ttf-one-line-double {
-	border-top: thick double #eaecee;
+	border-top: 6px double #eaecee;
 }
 /*---------------------------------------------------------
  Lists (editor-style.css)
