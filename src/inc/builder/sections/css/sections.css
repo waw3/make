@@ -175,7 +175,8 @@
 	margin-bottom: 40px;
 }
 .ttf-one-columns-select-wrapper,
-.ttf-one-captions-select-wrapper {
+.ttf-one-captions-select-wrapper,
+.ttf-one-aspect-select-wrapper{
 	display: inline-block;
 	float: right;
 	margin-left: 20px;

@@ -246,6 +246,12 @@ class TTF_One_Section_Definitions {
 			}
 		}
 
+		if ( isset( $data['aspect'] ) ) {
+			if ( in_array( $data['aspect'], array( 'none', 'landscape', 'portrait', 'square' ) ) ) {
+				$clean_data['aspect'] = $data['aspect'];
+			}
+		}
+
 		if ( isset( $data['background-image']['image-id'] ) ) {
 			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
 		}

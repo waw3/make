@@ -9,6 +9,7 @@ global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name     = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
 $captions         = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'basic';
+$aspect           = ( isset( $ttf_one_section_data['data']['aspect'] ) ) ? $ttf_one_section_data['data']['aspect'] : 'square';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
 $darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 1;
@@ -22,6 +23,16 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 		<option value="overlay"<?php selected( 'overlay', $captions ); ?>><?php echo esc_html( __( 'Overlay', 'ttf-one' ) ); ?></option>
 		<option value="reveal"<?php selected( 'reveal', $captions ); ?>><?php echo esc_html( __( 'Reveal', 'ttf-one' ) ); ?></option>
 		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
+	</select>
+</div>
+
+<div class="ttf-one-aspect-select-wrapper">
+	<label for="<?php echo $section_name; ?>[aspect]"><?php _e( 'Aspect ratio:', 'ttf-one' ); ?></label>
+	<select id="<?php echo $section_name; ?>[aspect]" name="<?php echo $section_name; ?>[aspect]">
+		<option value="landscape"<?php selected( 'landscape', $aspect ); ?>><?php echo esc_html( __( 'Landscape', 'ttf-one' ) ); ?></option>
+		<option value="portrait"<?php selected( 'portrait', $aspect ); ?>><?php echo esc_html( __( 'Portrait', 'ttf-one' ) ); ?></option>
+		<option value="square"<?php selected( 'square', $aspect ); ?>><?php echo esc_html( __( 'Square', 'ttf-one' ) ); ?></option>
+		<option value="none"<?php selected( 'none', $aspect ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 	</select>
 </div>
 
