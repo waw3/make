@@ -6,6 +6,7 @@
 global $ttf_one_section_data;
 $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 
+$darken = ( isset( $ttf_one_section_data[ 'darken' ] ) ) ? absint( $ttf_one_section_data[ 'darken' ] ) : 0;
 $captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_one_section_data[ 'captions' ] ) : 'basic';
 $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_section_data[ 'aspect' ] ) : 'square';
 ?>
@@ -60,7 +61,7 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 		</div>
 		<?php endif; ?>
 	</div>
-	<?php if ( 0 !== absint( $ttf_one_section_data['darken'] ) ) : ?>
+	<?php if ( 0 !== $darken ) : ?>
 	<div class="builder-section-overlay"></div>
 	<?php endif; ?>
 </section>
