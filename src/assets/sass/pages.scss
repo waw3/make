@@ -27,7 +27,9 @@
 	.entry-footer,
 	.builder-section-header,
 	.comments-area {
-		@extend .container;
+		max-width: $width+($gut*2);
+		margin: 0 auto;
+		@include rem('padding', 0 $gut);
 	}
 }
 .builder-section-gallery,
@@ -43,8 +45,10 @@
 	@include rem('margin-bottom', $base*2);
 	@extend .clear;
 }
-.builder-text-title {
-	line-height: 1.3;
+.builder-text-title,
+.builder-section-title {
+	margin-top: 0; //reset
+	line-height: 1.35;
 }
 /*---------------------------------------------------------
  Text section: Columns (_pages.scss)

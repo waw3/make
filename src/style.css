@@ -165,12 +165,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .sub-header, .site-content, .site-footer, .builder-section, .site-content .container, .page-template-template-builder-php .entry-header, .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .comments-area, #comments-nav {
+.clear, .site-header, .site-header-main, .sub-header, .site-content, .site-footer, .builder-section, .site-content .container, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-content:before, .site-footer:before, .builder-section:before, .site-content .container:before, .page-template-template-builder-php .entry-header:before, .page-template-template-builder-php .entry-footer:before, .page-template-template-builder-php .builder-section-header:before, .page-template-template-builder-php .comments-area:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .builder-section:after, .site-content .container:after, .page-template-template-builder-php .entry-header:after, .page-template-template-builder-php .entry-footer:after, .page-template-template-builder-php .builder-section-header:after, .page-template-template-builder-php .comments-area:after, #comments-nav:after {
+  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-content:before, .site-footer:before, .builder-section:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .builder-section:after, .site-content .container:after, .page-template-template-builder-php .entry-header:after, .page-template-template-builder-php .entry-footer:after, .page-template-template-builder-php .builder-section-header:after, .page-template-template-builder-php .comments-area:after, #comments-nav:after {
+  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -191,7 +191,7 @@ body {
   text-rendering: optimizeLegibility; }
   body.boxed {
     background-color: #eaecee; }
-    body.boxed .container, body.boxed .page-template-template-builder-php .entry-header, .page-template-template-builder-php body.boxed .entry-header, body.boxed .page-template-template-builder-php .entry-footer, .page-template-template-builder-php body.boxed .entry-footer, body.boxed .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php body.boxed .builder-section-header, body.boxed .page-template-template-builder-php .comments-area, .page-template-template-builder-php body.boxed .comments-area {
+    body.boxed .container {
       max-width: 100%;
       width: 100%;
       padding: 0 32px;
@@ -215,7 +215,7 @@ body {
   width: 100%;
   margin: 0 auto; }
 
-.container, .page-template-template-builder-php .entry-header, .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .comments-area {
+.container {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 32px;
@@ -1346,12 +1346,17 @@ iframe[src*="google.com/maps"] {
   position: relative;
   z-index: 2; }
 
-.page-template-template-builder-php .site-content > .container, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-footer, .page-template-template-builder-php .site-content > .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .builder-section-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .comments-area, .page-template-template-builder-php .page-template-template-builder-php .site-content > .comments-area {
+.page-template-template-builder-php .site-content > .container {
   width: 100%;
   max-width: none;
   padding: 0; }
 .page-template-template-builder-php .site-main {
   width: 100%; }
+.page-template-template-builder-php .entry-header, .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .comments-area {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 32px;
+  padding:  0 1.88235rem; }
 
 .builder-section-gallery .builder-section-content, .builder-section-text .builder-section-content, .builder-section-blank .builder-section-content {
   max-width: 1024px;
@@ -1363,8 +1368,9 @@ iframe[src*="google.com/maps"] {
   margin-bottom: 44px;
   margin-bottom: 2.58824rem; }
 
-.builder-text-title {
-  line-height: 1.3; }
+.builder-text-title, .builder-section-title {
+  margin-top: 0;
+  line-height: 1.35; }
 
 /*---------------------------------------------------------
  Text section: Columns (_pages.scss)
@@ -1591,7 +1597,7 @@ iframe[src*="google.com/maps"] {
     #sidebar-right {
       float: right; } }
 
-.site-content .container, .site-content .page-template-template-builder-php .entry-header, .page-template-template-builder-php .site-content .entry-header, .site-content .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .site-content .entry-footer, .site-content .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .site-content .builder-section-header, .site-content .page-template-template-builder-php .comments-area, .page-template-template-builder-php .site-content .comments-area {
+.site-content .container {
   clear: both;
   padding-bottom: 44px;
   padding-bottom: 2.58824rem; }
