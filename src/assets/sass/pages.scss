@@ -178,6 +178,9 @@
 .builder-gallery-content {
 	position: relative;
 	z-index: 2;
+	&[onclick] {
+		cursor: pointer;
+	}
 }
 /*---------------------------------------------------------
  Gallery: Captions (_pages.scss)

@@ -1490,6 +1490,8 @@ iframe[src*="google.com/maps"] {
 .builder-gallery-content {
   position: relative;
   z-index: 2; }
+  .builder-gallery-content[onclick] {
+    cursor: pointer; }
 
 /*---------------------------------------------------------
  Gallery: Captions (_pages.scss)

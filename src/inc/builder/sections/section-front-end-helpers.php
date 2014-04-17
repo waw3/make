@@ -167,9 +167,7 @@ function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
 
 	$image = '';
 	if ( '' !== $image_style ) {
-		$image .= '<figure class="builder-gallery-image" style="' . esc_attr( $image_style ) . '">';
-		$image .= '<a href="' . esc_url( $item['link'] ) . '"></a>';
-		$image .= '</figure>';
+		$image .= '<figure class="builder-gallery-image" style="' . esc_attr( $image_style ) . '"></figure>';
 	}
 
 	return $image;

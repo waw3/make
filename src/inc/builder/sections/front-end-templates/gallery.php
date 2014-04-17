@@ -17,11 +17,9 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 		<div class="builder-gallery-masonry-container">
 		<?php endif; ?>
 		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) :
-			$link_front = '';
-			$link_back = '';
+			$onclick = '';
 			if ( '' !== $item['link'] ) :
-				$link_front = '<a href="' . esc_url( $item['link'] ) . '">';
-				$link_back = '</a>';
+				$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $item['link'] ) ) . '\';"';
 			endif;
 			$i++;
 			?>
@@ -30,10 +28,10 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 				<?php echo ttf_one_builder_get_gallery_item_image( $item, $aspect ); ?>
 			<?php endif; ?>
 			<?php if ( 'none' !== $captions ) : ?>
-			<div class="builder-gallery-content">
+			<div class="builder-gallery-content"<?php echo $onclick; ?>>
 				<?php if ( '' !== $item['title'] ) : ?>
 				<h4 class="builder-gallery-title">
-					<?php echo $link_front . apply_filters( 'the_title', $item['title'] ) . $link_back; ?>
+					<?php echo apply_filters( 'the_title', $item['title'] ); ?>
 				</h4>
 				<?php endif; ?>
 				<?php if ( '' !== $item['description'] ) : ?>
@@ -48,10 +46,8 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 			</div>
 			<?php endif; ?>
 			<?php if ( 'none' !== $captions ) : ?>
-				<?php if ( 'basic' !== $captions || '' !== $link_front ) : ?>
-				<div class="builder-gallery-overlay">
-					<?php echo $link_front . $link_back; ?>
-				</div>
+				<?php if ( 'basic' !== $captions ) : ?>
+				<div class="builder-gallery-overlay"></div>
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>
