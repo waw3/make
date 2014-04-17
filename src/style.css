@@ -1469,7 +1469,13 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Gallery: Columns (_pages.scss)
 -------------------------------------------------------- */
+.builder-section-gallery {
+  padding: 44px 0;
+  padding:  2.58824rem 0; }
+
 .builder-gallery-item {
+  margin-top: 8px;
+  margin-top: 0.47059rem;
   margin-bottom: 8px;
   margin-bottom: 0.47059rem;
   font-size: 14px;
@@ -1484,7 +1490,8 @@ iframe[src*="google.com/maps"] {
 .builder-gallery-captions-reveal .builder-gallery-content {
   position: absolute;
   top: 0;
-  border: 16px solid transparent; }
+  padding: 16px;
+  padding: 0.94118rem; }
 .builder-gallery-captions-reveal .builder-gallery-content {
   visibility: hidden;
   height: 100%; }

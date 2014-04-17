@@ -157,7 +157,11 @@
 /*---------------------------------------------------------
  Gallery: Columns (_pages.scss)
 -------------------------------------------------------- */
+.builder-section-gallery {
+	@include rem('padding', $base*2 0);
+}
 .builder-gallery-item {
+	@include rem('margin-top', $gut/4);
 	@include rem('margin-bottom', $gut/4);
 	@include rem('font-size', 14px);
 	.builder-gallery-captions-reveal & {
@@ -176,7 +180,7 @@
 	.builder-gallery-content {
 		position: absolute;
 		top: 0;
-		border: 16px solid transparent;
+		@include rem('padding', $gut/2);
 	}
 	.builder-gallery-content {
 		visibility: hidden;
