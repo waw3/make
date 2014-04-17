@@ -1395,7 +1395,14 @@ iframe[src*="google.com/maps"] {
  Banner section (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-banner .builder-section-content {
-  width: 100%; }
+  width: 100%;
+  line-height: 1.35;
+  font-size: 15px;
+  font-size: 0.88235rem; }
+  @media screen and (min-width: 800px) {
+    .builder-section-banner .builder-section-content {
+      font-size: 21px;
+      font-size: 1.23529rem; } }
 
 /*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
@@ -1428,21 +1435,28 @@ iframe[src*="google.com/maps"] {
 -------------------------------------------------------- */
 .builder-banner-content {
   position: absolute;
-  display: table;
-  vertical-align: middle;
   left: 0;
   right: 0;
   height: 100%;
   max-width: 1024px;
-  margin-top: 44px;
   margin-bottom: 0;
+  overflow: hidden;
   color: #ffffff;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  display: box;
+  box-pack: center;
+  box-align: center;
   text-shadow: 1px 0 8px rgba(0, 0, 0, 0.15);
   padding: 0 32px;
   padding:  0 1.88235rem; }
-  @media screen and (min-width: 800px) {
-    .builder-banner-content {
-      margin-top: 88px; } }
   @media screen and (min-width: 800px) {
     .content-position-none .builder-banner-content {
       margin-left: auto;

@@ -76,7 +76,12 @@
 -------------------------------------------------------- */
 .builder-section-banner {
 	.builder-section-content {
+		@include for(medium-screens) {
+			@include rem('font-size', 21px);
+		}
 		width: 100%;
+		line-height: 1.35;
+		@include rem('font-size', 15px);
 	}
 }
 /*---------------------------------------------------------
@@ -110,19 +115,26 @@
  Banner section: Content (_pages.scss)
 -------------------------------------------------------- */
 .builder-banner-content {
-	@include for(medium-screens) {
-		margin-top: $base*4;
-	}
 	position: absolute;
-	display: table;
-	vertical-align: middle;
 	left: 0; //reset
 	right: 0; //reset
 	height: 100%;
 	max-width: $width+($gut*2);
-	margin-top: $base*2;
 	margin-bottom: 0; //reset
+	overflow: hidden;
 	color: $a;
+	display:-ms-flexbox;
+	-ms-flex-pack:center;
+	-ms-flex-align:center;
+	display:-moz-box;
+	-moz-box-pack:center;
+	-moz-box-align:center;
+	display:-webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	display:box;
+	box-pack:center;
+	box-align:center;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
 	@include rem('padding', 0 $gut);
 	.content-position-none & {
