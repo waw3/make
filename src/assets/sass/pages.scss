@@ -106,11 +106,31 @@
 	right: 0; //reset
 	height: 100%;
 	max-width: $width+($gut*2);
-	margin: $base*4 auto 0;
-	font-size: 150%; //24px
-	line-height: 1.35;
+	margin-top: $base*4;
+	margin-bottom: 0; //reset
+	color: $a;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
 	@include rem('padding', 0 $gut);
+	.content-position-none & {
+		@include for(medium-screens) {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	.content-position-left & {
+		@include for(medium-screens) {
+			right: auto;
+			width: 50%;
+			float: left;
+		}
+	}
+	.content-position-right & {
+		@include for(medium-screens) {
+			left: auto;
+			width: 50%;
+			float: right;
+		}
+	}
 }
 .builder-banner-inner-content {
 	display: table-cell;

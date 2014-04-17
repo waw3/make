@@ -1418,12 +1418,26 @@ iframe[src*="google.com/maps"] {
   right: 0;
   height: 100%;
   max-width: 1024px;
-  margin: 88px auto 0;
-  font-size: 150%;
-  line-height: 1.35;
+  margin-top: 88px;
+  margin-bottom: 0;
+  color: #ffffff;
   text-shadow: 1px 0 8px rgba(0, 0, 0, 0.15);
   padding: 0 32px;
   padding:  0 1.88235rem; }
+  @media screen and (min-width: 800px) {
+    .content-position-none .builder-banner-content {
+      margin-left: auto;
+      margin-right: auto; } }
+  @media screen and (min-width: 800px) {
+    .content-position-left .builder-banner-content {
+      right: auto;
+      width: 50%;
+      float: left; } }
+  @media screen and (min-width: 800px) {
+    .content-position-right .builder-banner-content {
+      left: auto;
+      width: 50%;
+      float: right; } }
 
 .builder-banner-inner-content {
   display: table-cell;
