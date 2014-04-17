@@ -207,6 +207,21 @@ function ttf_one_customizer_admin_styles() { ?>
 <?php }
 endif;
 
+if ( ! function_exists( 'ttf_one_add_customizations' ) ) :
+/**
+ * Make sure the 'ttf_one_css' action only runs once.
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function ttf_one_add_customizations() {
+	do_action( 'ttf_one_css' );
+}
+endif;
+
+add_action( 'after_setup_theme', 'ttf_one_add_customizations' );
+
 if ( ! function_exists( 'ttf_one_display_customizations' ) ) :
 /**
  * Generates the style tag and CSS needed for the theme options.
@@ -219,8 +234,6 @@ if ( ! function_exists( 'ttf_one_display_customizations' ) ) :
  * @return void
  */
 function ttf_one_display_customizations() {
-	do_action( 'ttf_one_css' );
-
 	// Echo the rules
 	$css = ttf_one_get_css()->build();
 	if ( ! empty( $css ) ) {
@@ -247,8 +260,6 @@ function ttf_one_ajax_display_customizations() {
 		return;
 	}
 
-	do_action( 'ttf_one_css' );
-
 	// Set the content type
 	header( "Content-Type: text/css" );
 
@@ -261,3 +272,24 @@ function ttf_one_ajax_display_customizations() {
 endif;
 
 add_action( 'wp_ajax_ttf-one-css', 'ttf_one_ajax_display_customizations' );
+
+if ( ! function_exists( 'ttf_one_mce_css' ) ) :
+/**
+ * Make sure theme option CSS is added to TinyMCE last, to override other styles
+ *
+ * @since 1.0.0
+ *
+ * @param string $stylesheets
+ *
+ * @return string
+ */
+function ttf_one_mce_css( $stylesheets ) {
+	if ( ttf_one_get_css()->build() ) {
+		$stylesheets .= ',' . add_query_arg( 'action', 'ttf-one-css', admin_url( 'admin-ajax.php' ) );
+	}
+
+	return $stylesheets;
+}
+endif;
+
+add_filter( 'mce_css', 'ttf_one_mce_css', 99 );
