@@ -88,8 +88,8 @@
 	}
 	z-index: -1;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 0; //reset
+	left: 0; //reset
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0,0,0,0.4);
@@ -156,13 +156,29 @@
 	}
 }
 /*---------------------------------------------------------
- Gallery: Columns (_pages.scss)
+ Gallery (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
 	position: relative;
 	background-size: cover;
 	@include rem('padding', $base*2+$gut/4 0 $base*2);
 }
+.builder-gallery-title {
+	font-weight: bold;
+	text-transform: uppercase;
+	@include rem('font-size', 18px);
+}
+.builder-gallery-content {
+	position: relative;
+	z-index: 2;
+}
+.builder-section-content {
+	position: relative;
+	z-index: 2;
+}
+/*---------------------------------------------------------
+ Gallery: Captions (_pages.scss)
+-------------------------------------------------------- */
 .builder-gallery-overlay {
 	position: absolute;
 	z-index: 1;
@@ -173,14 +189,6 @@
 	background-color: $a; //fallback
 	background-color: rgba(255,255,255,.85);
 	visibility: hidden;
-}
-.builder-gallery-content {
-	position: relative;
-	z-index: 2;
-}
-.builder-section-content {
-	position: relative;
-	z-index: 2;
 }
 .builder-gallery-item {
 	@include rem('margin-bottom', $gut/4);
@@ -229,10 +237,12 @@
 		max-height: 100%;
 	}
 }
+/*---------------------------------------------------------
+ Gallery: Images (_pages.scss)
+-------------------------------------------------------- */
 .builder-gallery-image {
+	height: 0; //reset
 	line-height: 0; //reset
-
-	height: 0;
 	background-position: center;
 	background-size: cover;
 	.builder-gallery-aspect-square & {
@@ -245,11 +255,9 @@
 		padding-bottom: 133%; // 3:4
 	}
 }
-.builder-gallery-title {
-	font-weight: bold;
-	text-transform: uppercase;
-	@include rem('font-size', 18px);
-}
+/*---------------------------------------------------------
+ Gallery: Columns (_pages.scss)
+-------------------------------------------------------- */
 .builder-gallery-item {
 	float: left;
 	margin-right: percentage( $gut/4 / $width );

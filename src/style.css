@@ -1466,7 +1466,7 @@ iframe[src*="google.com/maps"] {
     color: #b9bcbf; }
 
 /*---------------------------------------------------------
- Gallery: Columns (_pages.scss)
+ Gallery (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
   position: relative;
@@ -1474,6 +1474,23 @@ iframe[src*="google.com/maps"] {
   padding: 52px 0 44px;
   padding:  3.05882rem 0 2.58824rem; }
 
+.builder-gallery-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-size: 1.05882rem; }
+
+.builder-gallery-content {
+  position: relative;
+  z-index: 2; }
+
+.builder-section-content {
+  position: relative;
+  z-index: 2; }
+
+/*---------------------------------------------------------
+ Gallery: Captions (_pages.scss)
+-------------------------------------------------------- */
 .builder-gallery-overlay {
   position: absolute;
   z-index: 1;
@@ -1484,14 +1501,6 @@ iframe[src*="google.com/maps"] {
   background-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.85);
   visibility: hidden; }
-
-.builder-gallery-content {
-  position: relative;
-  z-index: 2; }
-
-.builder-section-content {
-  position: relative;
-  z-index: 2; }
 
 .builder-gallery-item {
   margin-bottom: 8px;
@@ -1522,9 +1531,12 @@ iframe[src*="google.com/maps"] {
   overflow: hidden;
   max-height: 100%; }
 
+/*---------------------------------------------------------
+ Gallery: Images (_pages.scss)
+-------------------------------------------------------- */
 .builder-gallery-image {
-  line-height: 0;
   height: 0;
+  line-height: 0;
   background-position: center;
   background-size: cover; }
   .builder-gallery-aspect-square .builder-gallery-image {
@@ -1534,12 +1546,9 @@ iframe[src*="google.com/maps"] {
   .builder-gallery-aspect-portrait .builder-gallery-image {
     padding-bottom: 133%; }
 
-.builder-gallery-title {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 18px;
-  font-size: 1.05882rem; }
-
+/*---------------------------------------------------------
+ Gallery: Columns (_pages.scss)
+-------------------------------------------------------- */
 .builder-gallery-item {
   float: left;
   margin-right: 0.83333%; }
