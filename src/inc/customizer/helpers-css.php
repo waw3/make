@@ -179,7 +179,7 @@ class TTF_One_CSS {
 			$t = '';
 
 			if ( 'all' !== $query ) {
-				$output .= '@media ' . $query . '{' . $n;
+				$output .= "\n@media " . $query . '{' . $n;
 				$t = $this->tab;
 			}
 

@@ -172,6 +172,15 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( $font_body_size ) . 'rem'
 			)
 		) );
+		// Banner slides
+		ttf_one_get_css()->add( array(
+			'selectors'    => array( '.builder-banner-inner-content' ),
+			'declarations' => array(
+				'font-size-px'  => $font_body_size * 0.75 . 'px',
+				'font-size-rem' => ttf_one_convert_px_to_rem( $font_body_size * 0.75 ) . 'rem'
+			),
+			'media'        => 'screen and (max-width: 600px)'
+		) );
 	}
 }
 endif;

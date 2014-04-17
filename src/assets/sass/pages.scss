@@ -119,6 +119,7 @@
 	left: 0; //reset
 	right: 0; //reset
 	height: 100%;
+	min-height: 100%;
 	max-width: $width+($gut*2);
 	margin-bottom: 0; //reset
 	overflow: hidden;
@@ -137,6 +138,13 @@
 	box-align:center;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
 	@include rem('padding', 0 $gut);
+	&:after {
+		display: inline-block;
+		vertical-align: middle;
+		content: '';
+		height: 100%;
+		margin-left: 0.5%;
+	}
 	.content-position-none & {
 		@include for(medium-screens) {
 			margin-left: auto;
@@ -159,8 +167,15 @@
 	}
 }
 .builder-banner-inner-content {
-	display: table-cell;
+	display: inline-block;
 	vertical-align: middle;
+	max-width: 98%;
+	*:last-child {
+		margin-bottom: 0;
+	}
+	@media screen and (max-width: 600px) {
+		@include rem('font-size', 12.75px);
+	}
 }
 /*---------------------------------------------------------
  Banner section: Pager (_pages.scss)
