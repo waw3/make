@@ -231,8 +231,7 @@ function ttf_one_scripts() {
 	 */
 	$script_dependencies = array();
 
-	// Scripts that don't need jQuery go here
-
+	// jQuery
 	$script_dependencies[] = 'jquery';
 
 	// Cycle2
@@ -249,6 +248,12 @@ function ttf_one_scripts() {
 	);
 	ttf_one_localize_fitvids( 'ttf-one-fitvids' );
 	$script_dependencies[] = 'ttf-one-fitvids';
+
+	// Masonry
+	if ( 'template-builder.php' === get_page_template_slug() ) {
+		$script_dependencies[] = 'underscore';
+		$script_dependencies[] = 'masonry';
+	}
 
 	// Global script
 	wp_enqueue_script(

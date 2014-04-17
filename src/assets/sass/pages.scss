@@ -208,6 +208,18 @@
 .builder-gallery-image {
 	line-height: 0; //reset
 	background-color: $a;
+	height: 0;
+	background-position: center;
+	background-size: cover;
+	.builder-gallery-aspect-square & {
+		padding-bottom: 100%; // 1:1
+	}
+	.builder-gallery-aspect-landscape & {
+		padding-bottom: 75%;  // 4:3
+	}
+	.builder-gallery-aspect-portrait & {
+		padding-bottom: 133%; // 3:4
+	}
 }
 .builder-gallery-title {
 	font-weight: bold;
@@ -223,6 +235,12 @@
 	&.last-4 {
 		margin-right: 0; //reset
 	}
+}
+.builder-gallery-masonry-item {
+	margin-right: 0;
+}
+.builder-gallery-gutter {
+	width: percentage( $gut/4 / $width );
 }
 @include for(medium-screens) {
 	.builder-gallery-columns-2 .builder-gallery-item {

@@ -1512,7 +1512,16 @@ iframe[src*="google.com/maps"] {
 
 .builder-gallery-image {
   line-height: 0;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  height: 0;
+  background-position: center;
+  background-size: cover; }
+  .builder-gallery-aspect-square .builder-gallery-image {
+    padding-bottom: 100%; }
+  .builder-gallery-aspect-landscape .builder-gallery-image {
+    padding-bottom: 75%; }
+  .builder-gallery-aspect-portrait .builder-gallery-image {
+    padding-bottom: 133%; }
 
 .builder-gallery-title {
   font-weight: bold;
@@ -1527,6 +1536,12 @@ iframe[src*="google.com/maps"] {
     margin-right: 0; }
   .builder-gallery-item.last-4 {
     margin-right: 0; }
+
+.builder-gallery-masonry-item {
+  margin-right: 0; }
+
+.builder-gallery-gutter {
+  width: 0.83333%; }
 
 @media screen and (min-width: 800px) {
   .builder-gallery-columns-2 .builder-gallery-item {

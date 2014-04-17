@@ -12,7 +12,8 @@
 		 *
 		 */
 		cache: {
-			$document: $(document)
+			$document: $(document),
+			$window: $(window)
 		},
 
 		/**
@@ -38,6 +39,7 @@
 				self.navigationInit();
 				self.skipLinkFocusFix();
 				self.fitVidsInit();
+				self.masonryInit();
 			} );
 		},
 
@@ -134,6 +136,39 @@
 			// Fix padding issue with Blip.tv. Note that this *must* happen after Fitvids runs.
 			// The selector finds the Blip.tv iFrame, then grabs the .fluid-width-video-wrapper div sibling.
 			this.cache.$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
+		},
+
+		/**
+		 * Initialize Masonry
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
+		masonryInit: function() {
+			// Make sure lib is loaded.
+			if (!$.fn.masonry) {
+				return;
+			}
+
+			// Variables
+			var $container = $( '.builder-gallery-masonry-container' ),
+				$gutter     = $( '.builder-gallery-gutter' ),
+				$masonry,
+				lazyLayout;
+
+			// Run Masonry
+			$container.imagesLoaded(function() {
+				$masonry = $container.masonry( {
+					gutterWidth  : $gutter.outerWidth(),
+					gutter       : $gutter.outerWidth(),
+					itemSelector : '.builder-gallery-masonry-item'
+				} );
+			});
+
+			// Run Masonry again on window resize
+			lazyLayout = _.debounce(function() { $masonry.masonry({ gutterWidth : $gutter.outerWidth(), gutter : $gutter.outerWidth() }); }, 300);
+			this.cache.$window.on('resize', lazyLayout);
 		}
 	};
 

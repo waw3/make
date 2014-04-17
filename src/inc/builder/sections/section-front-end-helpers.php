@@ -72,6 +72,11 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttf_one_section_data['captions'] );
 	}
 
+	// Aspect Ratio
+	if ( isset( $ttf_one_section_data['aspect'] ) && ! empty( $ttf_one_section_data['aspect'] ) ) {
+		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttf_one_section_data['aspect'] );
+	}
+
 	return $gallery_class;
 }
 
@@ -125,7 +130,49 @@ function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
 		$gallery_class .= ' last-2';
 	}
 
+	// Aspect Ratio
+	if ( isset( $ttf_one_section_data['aspect'] ) && 'none' === $ttf_one_section_data['aspect'] && $gallery_columns > 1 ) {
+		$gallery_class .= ' builder-gallery-masonry-item';
+	}
+
 	return $gallery_class;
+}
+
+/**
+ * @param array $item
+ * @param string $aspect
+ *
+ * @return string
+ */
+function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
+	if ( ! ttf_one_builder_is_section_type( 'gallery' ) ) {
+		return '';
+	}
+
+	if ( 0 === absint( $item[ 'image-id' ] ) ) {
+		return '';
+	}
+
+	$image_style = '';
+
+	$image_src = wp_get_attachment_image_src( $item[ 'image-id' ], 'large' );
+	if ( ! empty( $image_src ) ) {
+		$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+	}
+
+	if ( 'none' === $aspect ) {
+		$image_ratio = ( $image_src[2] / $image_src[1] ) * 100;
+		$image_style .= 'padding-bottom: ' . $image_ratio . '%;';
+	}
+
+	$image = '';
+	if ( '' !== $image_style ) {
+		$image .= '<figure class="builder-gallery-image" style="' . esc_attr( $image_style ) . '">';
+		$image .= '<a href="' . esc_url( $item['link'] ) . '"></a>';
+		$image .= '</figure>';
+	}
+
+	return $image;
 }
 
 /**

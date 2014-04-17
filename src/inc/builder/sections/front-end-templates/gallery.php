@@ -7,10 +7,14 @@ global $ttf_one_section_data;
 $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 
 $captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_one_section_data[ 'captions' ] ) : 'basic';
+$aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_section_data[ 'aspect' ] ) : 'square';
 ?>
 
 <section class="builder-section<?php echo esc_attr( ttf_one_builder_get_gallery_class( $ttf_one_section_data ) ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style( $ttf_one_section_data ) ); ?>">
 	<div class="builder-section-content">
+		<?php if ( 'none' === $aspect ) : ?>
+		<div class="builder-gallery-masonry-container">
+		<?php endif; ?>
 		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) :
 			$link_front = '';
 			$link_back = '';
@@ -22,9 +26,7 @@ $captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_on
 			?>
 		<div class="builder-gallery-item<?php echo esc_attr( ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) ); ?>">
 			<?php if ( 0 !== absint( $item['image-id'] ) ) : ?>
-			<figure class="builder-gallery-image">
-				<?php echo $link_front . wp_get_attachment_image( $item['image-id'], 'large' ) . $link_back; ?>
-			</figure>
+				<?php echo ttf_one_builder_get_gallery_item_image( $item, $aspect ); ?>
 			<?php endif; ?>
 			<?php if ( 'none' !== $captions ) : ?>
 			<div class="builder-gallery-content">
@@ -53,6 +55,10 @@ $captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_on
 			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
+		<?php if ( 'none' === $aspect ) : ?>
+			<div class="builder-gallery-gutter"></div>
+		</div>
+		<?php endif; ?>
 	</div>
 	<?php if ( 0 !== absint( $ttf_one_section_data['darken'] ) ) : ?>
 	<div class="builder-section-overlay"></div>
