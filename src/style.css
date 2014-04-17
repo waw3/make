@@ -1342,12 +1342,13 @@ iframe[src*="google.com/maps"] {
   font-size: 13px;
   font-size: 0.76471rem; }
 
-/*---------------------------------------------------------
- Text section (_pages.scss)
--------------------------------------------------------- */
+.builder-section-content {
+  position: relative;
+  z-index: 2; }
+
 .page-template-template-builder-php .site-content > .container, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .entry-footer, .page-template-template-builder-php .page-template-template-builder-php .site-content > .entry-footer, .page-template-template-builder-php .site-content > .page-template-template-builder-php .builder-section-header, .page-template-template-builder-php .page-template-template-builder-php .site-content > .builder-section-header, .page-template-template-builder-php .site-content > .page-template-template-builder-php .comments-area, .page-template-template-builder-php .page-template-template-builder-php .site-content > .comments-area {
-  max-width: none;
   width: 100%;
+  max-width: none;
   padding: 0; }
 .page-template-template-builder-php .site-main {
   width: 100%; }
@@ -1366,7 +1367,7 @@ iframe[src*="google.com/maps"] {
   line-height: 1.3; }
 
 /*---------------------------------------------------------
- Text section (_pages.scss)
+ Text section: Columns (_pages.scss)
 -------------------------------------------------------- */
 .builder-text-column {
   float: left;
@@ -1374,9 +1375,6 @@ iframe[src*="google.com/maps"] {
   .builder-text-column:last-of-type {
     margin-right: 0; }
 
-/*---------------------------------------------------------
- Text: Columns (_pages.scss)
--------------------------------------------------------- */
 @media screen and (min-width: 800px) {
   .builder-text-columns-2 .builder-text-column {
     width: 48.33333%; }
@@ -1391,6 +1389,9 @@ iframe[src*="google.com/maps"] {
 .builder-section-banner .builder-section-content {
   width: 100%; }
 
+/*---------------------------------------------------------
+ Banner section: Caption (_pages.scss)
+-------------------------------------------------------- */
 .builder-banner-overlay, .builder-section-overlay {
   z-index: -1;
   position: absolute;
@@ -1414,6 +1415,9 @@ iframe[src*="google.com/maps"] {
   background-repeat: no-repeat;
   background-size: cover; }
 
+/*---------------------------------------------------------
+ Banner section: Content (_pages.scss)
+-------------------------------------------------------- */
 .builder-banner-content {
   position: absolute;
   display: table;
@@ -1450,6 +1454,9 @@ iframe[src*="google.com/maps"] {
   display: table-cell;
   vertical-align: middle; }
 
+/*---------------------------------------------------------
+ Banner section: Pager (_pages.scss)
+-------------------------------------------------------- */
 .cycle-pager {
   color: #eaecee;
   text-align: center;
@@ -1466,7 +1473,7 @@ iframe[src*="google.com/maps"] {
     color: #b9bcbf; }
 
 /*---------------------------------------------------------
- Gallery (_pages.scss)
+ Gallery section (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
   position: relative;
@@ -1481,10 +1488,6 @@ iframe[src*="google.com/maps"] {
   font-size: 1.05882rem; }
 
 .builder-gallery-content {
-  position: relative;
-  z-index: 2; }
-
-.builder-section-content {
   position: relative;
   z-index: 2; }
 

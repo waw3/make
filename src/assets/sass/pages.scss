@@ -10,13 +10,14 @@
 .section-description {
 	@include rem('font-size', 13px);
 }
-/*---------------------------------------------------------
- Text section (_pages.scss)
--------------------------------------------------------- */
+.builder-section-content {
+	position: relative;
+	z-index: 2;
+}
 .page-template-template-builder-php {
 	.site-content > .container {
-		max-width: none;
 		width: 100%;
+		max-width: none; //reset
 		padding: 0; //reset
 	}
 	.site-main {
@@ -46,7 +47,7 @@
 	line-height: 1.3;
 }
 /*---------------------------------------------------------
- Text section (_pages.scss)
+ Text section: Columns (_pages.scss)
 -------------------------------------------------------- */
 .builder-text-column {
 	float: left;
@@ -55,9 +56,6 @@
 		margin-right: 0; //reset
 	}
 }
-/*---------------------------------------------------------
- Text: Columns (_pages.scss)
--------------------------------------------------------- */
 @include for(medium-screens) {
 	.builder-text-columns-2 .builder-text-column {
 		width: percentage( ( $width - $gut ) / ( $width*2 ) );
@@ -77,6 +75,9 @@
 		width: 100%;
 	}
 }
+/*---------------------------------------------------------
+ Banner section: Caption (_pages.scss)
+-------------------------------------------------------- */
 .builder-banner-overlay,
 .builder-section-overlay {
 	@include for(medium-screens) {
@@ -101,6 +102,9 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+/*---------------------------------------------------------
+ Banner section: Content (_pages.scss)
+-------------------------------------------------------- */
 .builder-banner-content {
 	@include for(medium-screens) {
 		margin-top: $base*4;
@@ -142,6 +146,9 @@
 	display: table-cell;
 	vertical-align: middle;
 }
+/*---------------------------------------------------------
+ Banner section: Pager (_pages.scss)
+-------------------------------------------------------- */
 .cycle-pager {
 	color: $d;
 	text-align: center;
@@ -156,7 +163,7 @@
 	}
 }
 /*---------------------------------------------------------
- Gallery (_pages.scss)
+ Gallery section (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
 	position: relative;
@@ -169,10 +176,6 @@
 	@include rem('font-size', 18px);
 }
 .builder-gallery-content {
-	position: relative;
-	z-index: 2;
-}
-.builder-section-content {
 	position: relative;
 	z-index: 2;
 }
