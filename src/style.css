@@ -1488,10 +1488,11 @@ iframe[src*="google.com/maps"] {
   font-size: 1.05882rem; }
 
 .builder-gallery-content {
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
   position: relative;
+  width: 100%;
   z-index: 2; }
-  .builder-gallery-content[onclick] {
-    cursor: pointer; }
 
 /*---------------------------------------------------------
  Gallery: Captions (_pages.scss)
@@ -1512,6 +1513,8 @@ iframe[src*="google.com/maps"] {
   margin-bottom: 0.47059rem;
   font-size: 14px;
   font-size: 0.82353rem; }
+  .builder-gallery-item[onclick] {
+    cursor: pointer; }
   .builder-gallery-captions-reveal .builder-gallery-item, .builder-gallery-captions-overlay .builder-gallery-item {
     position: relative; }
   .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-content, .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-overlay, .builder-gallery-captions-overlay .builder-gallery-item .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-item .builder-gallery-overlay {

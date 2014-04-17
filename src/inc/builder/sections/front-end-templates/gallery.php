@@ -23,12 +23,12 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 			endif;
 			$i++;
 			?>
-		<div class="builder-gallery-item<?php echo esc_attr( ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) ); ?>">
+		<div class="builder-gallery-item<?php echo esc_attr( ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
 			<?php if ( 0 !== absint( $item['image-id'] ) ) : ?>
 				<?php echo ttf_one_builder_get_gallery_item_image( $item, $aspect ); ?>
 			<?php endif; ?>
-			<?php if ( 'none' !== $captions ) : ?>
-			<div class="builder-gallery-content"<?php echo $onclick; ?>>
+			<?php if ( 'none' !== $captions && ( '' !== $item['title'] || '' !== $item['description'] || has_excerpt( $item['image-id'] ) ) ) : ?>
+			<div class="builder-gallery-content">
 				<?php if ( '' !== $item['title'] ) : ?>
 				<h4 class="builder-gallery-title">
 					<?php echo apply_filters( 'the_title', $item['title'] ); ?>
@@ -44,11 +44,6 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 				</div>
 				<?php endif; ?>
 			</div>
-			<?php endif; ?>
-			<?php if ( 'none' !== $captions ) : ?>
-				<?php if ( 'basic' !== $captions ) : ?>
-				<div class="builder-gallery-overlay"></div>
-				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
