@@ -383,6 +383,7 @@ a {
 		.sub-menu,
 		.children {
 			padding: 0; //reset
+			text-align: left;
 		}
 		@include for(medium-screens) {
 			.sub-menu,
