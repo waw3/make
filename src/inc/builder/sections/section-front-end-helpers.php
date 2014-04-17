@@ -69,7 +69,7 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 
 	// Captions
 	if ( isset( $ttf_one_section_data['captions'] ) && ! empty( $ttf_one_section_data['captions'] ) ) {
-		$gallery_class .= ' builder-gallery-captions-' . $ttf_one_section_data['captions'];
+		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttf_one_section_data['captions'] );
 	}
 
 	return $gallery_class;

@@ -1,5 +1,10 @@
 <?php
+/**
+ * @package ttf-one
+ */
+
 ttf_one_load_section_header();
+
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name     = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
@@ -13,9 +18,10 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 <div class="ttf-one-captions-select-wrapper">
 	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
 	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
-		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 		<option value="basic"<?php selected( 'basic', $captions ); ?>><?php echo esc_html( __( 'Basic', 'ttf-one' ) ); ?></option>
-		<option value="fancy"<?php selected( 'fancy', $captions ); ?>><?php echo esc_html( __( 'Fancy', 'ttf-one' ) ); ?></option>
+		<option value="overlay"<?php selected( 'overlay', $captions ); ?>><?php echo esc_html( __( 'Overlay', 'ttf-one' ) ); ?></option>
+		<option value="reveal"<?php selected( 'reveal', $captions ); ?>><?php echo esc_html( __( 'Reveal', 'ttf-one' ) ); ?></option>
+		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
 	</select>
 </div>
 

@@ -5,6 +5,8 @@
 
 global $ttf_one_section_data;
 $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
+
+$captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_one_section_data[ 'captions' ] ) : 'basic';
 ?>
 
 <section class="builder-section<?php echo esc_attr( ttf_one_builder_get_gallery_class( $ttf_one_section_data ) ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style( $ttf_one_section_data ) ); ?>">
@@ -24,6 +26,7 @@ $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 				<?php echo $link_front . wp_get_attachment_image( $item['image-id'], 'large' ) . $link_back; ?>
 			</figure>
 			<?php endif; ?>
+			<?php if ( 'none' !== $captions ) : ?>
 			<div class="builder-gallery-content">
 				<?php if ( '' !== $item['title'] ) : ?>
 				<h4 class="builder-gallery-title">
@@ -40,8 +43,13 @@ $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 				</div>
 				<?php endif; ?>
 			</div>
-			<?php if ( 'fancy' === $ttf_one_section_data['captions'] ) : ?>
-			<div class="builder-gallery-overlay"></div>
+			<?php endif; ?>
+			<?php if ( 'none' !== $captions ) : ?>
+				<?php if ( 'basic' !== $captions || '' !== $link_front ) : ?>
+				<div class="builder-gallery-overlay">
+					<?php echo $link_front . $link_back; ?>
+				</div>
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
