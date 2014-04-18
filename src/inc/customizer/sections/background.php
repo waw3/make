@@ -15,7 +15,7 @@ function ttf_one_customizer_background() {
 	global $wp_customize;
 
 	$priority = new TTF_One_Prioritizer( 10, 5 );
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
 	$section = 'background_image';
 
 	// Rename Background Image section to Background
@@ -29,7 +29,7 @@ function ttf_one_customizer_background() {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',
@@ -57,7 +57,7 @@ function ttf_one_customizer_background() {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,

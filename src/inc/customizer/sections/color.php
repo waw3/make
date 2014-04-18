@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_colors' ) ) :
+if ( ! function_exists( 'ttf_one_customizer_color' ) ) :
 /**
  * Configure settings and controls for the Colors section.
  *
@@ -14,12 +14,13 @@ if ( ! function_exists( 'ttf_one_customizer_colors' ) ) :
  *
  * @return void
  */
-function ttf_one_customizer_colors( $wp_customize, $section ) {
+function ttf_one_customizer_color( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
+	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Primary Color
-	$setting_id = 'color-primary';
+	$setting_id = $setting_prefix . '-primary';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -31,7 +32,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -42,7 +43,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	);
 
 	// Secondary Color
-	$setting_id = 'color-secondary';
+	$setting_id = $setting_prefix . '-secondary';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -54,7 +55,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -65,7 +66,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	);
 
 	// Text Color
-	$setting_id = 'color-text';
+	$setting_id = $setting_prefix . '-text';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -77,7 +78,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -88,7 +89,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	);
 
 	// Detail Color
-	$setting_id = 'color-detail';
+	$setting_id = $setting_prefix . '-detail';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -100,7 +101,7 @@ function ttf_one_customizer_colors( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,

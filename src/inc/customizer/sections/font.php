@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_fonts' ) ) :
+if ( ! function_exists( 'ttf_one_customizer_font' ) ) :
 /**
  * Configure settings and controls for the Fonts section.
  *
@@ -14,12 +14,13 @@ if ( ! function_exists( 'ttf_one_customizer_fonts' ) ) :
  *
  * @return void
  */
-function ttf_one_customizer_fonts( $wp_customize, $section ) {
+function ttf_one_customizer_font( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
+	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Site title font
-	$setting_id = 'font-site-title';
+	$setting_id = $setting_prefix . '-site-title';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -29,7 +30,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -41,7 +42,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	);
 
 	// Site title font size
-	$setting_id = 'font-site-title-size';
+	$setting_id = $setting_prefix . '-site-title-size';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -51,7 +52,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -62,7 +63,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	);
 
 	// Header font
-	$setting_id = 'font-header';
+	$setting_id = $setting_prefix . '-header';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -72,7 +73,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -84,7 +85,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	);
 
 	// Header font size
-	$setting_id = 'font-header-size';
+	$setting_id = $setting_prefix . '-header-size';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -94,7 +95,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -105,7 +106,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	);
 
 	// Body font
-	$setting_id = 'font-body';
+	$setting_id = $setting_prefix . '-body';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -115,7 +116,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -127,7 +128,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	);
 
 	// Body font size
-	$setting_id = 'font-body-size';
+	$setting_id = $setting_prefix . '-body-size';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -137,7 +138,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -148,7 +149,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 	);
 
 	// Character Subset
-	$setting_id = 'font-subset';
+	$setting_id = $setting_prefix . '-subset';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -158,7 +159,7 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -169,12 +170,12 @@ function ttf_one_customizer_fonts( $wp_customize, $section ) {
 		)
 	);
 
-	// Custom alternate
-	$setting_id = 'font-subset-info';
+	// Character subset info
+	$setting_id = $setting_prefix . '-subset-info';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',

@@ -16,10 +16,11 @@ if ( ! function_exists( 'ttf_one_customizer_header' ) ) :
  */
 function ttf_one_customizer_header( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer( 10, 5 );
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
+	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Header Text color
-	$setting_id = 'header-text-color';
+	$setting_id = $setting_prefix . '-text-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -31,7 +32,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -42,7 +43,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Header Background Color
-	$setting_id = 'header-background-color';
+	$setting_id = $setting_prefix . '-background-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -54,7 +55,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -65,7 +66,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Background Image
-	$setting_id = 'header-background-image';
+	$setting_id = $setting_prefix . '-background-image';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -77,19 +78,19 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Image_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Header Background Image', 'ttf-one' ),
 				'priority' => $priority->add(),
-				'context'  => $prefix . $setting_id
+				'context'  => $control_prefix . $setting_id
 			)
 		)
 	);
 
 	// Background Repeat
-	$setting_id = 'header-background-repeat';
+	$setting_id = $setting_prefix . '-background-repeat';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -99,7 +100,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -111,7 +112,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Background Position
-	$setting_id = 'header-background-position';
+	$setting_id = $setting_prefix . '-background-position';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -121,7 +122,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -133,7 +134,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Background Size
-	$setting_id = 'header-background-size';
+	$setting_id = $setting_prefix . '-background-size';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -143,7 +144,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -155,7 +156,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Sub Header Text color
-	$setting_id = 'header-subheader-text-color';
+	$setting_id = $setting_prefix . '-subheader-text-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -167,7 +168,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -178,7 +179,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Sub Header Border color
-	$setting_id = 'header-subheader-border-color';
+	$setting_id = $setting_prefix . '-subheader-border-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -190,7 +191,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -201,7 +202,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Sub Header Background color
-	$setting_id = 'header-subheader-background-color';
+	$setting_id = $setting_prefix . '-subheader-background-color';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -213,7 +214,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
@@ -224,7 +225,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Header text
-	$setting_id = 'header-text';
+	$setting_id = $setting_prefix . '-text';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -235,7 +236,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -246,11 +247,11 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Header options heading
-	$setting_id = 'header-options-heading';
+	$setting_id = $setting_prefix . '-options-heading';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
@@ -261,7 +262,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Show social icons
-	$setting_id = 'header-show-social';
+	$setting_id = $setting_prefix . '-show-social';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -271,7 +272,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -282,7 +283,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Show search field
-	$setting_id = 'header-show-search';
+	$setting_id = $setting_prefix . '-show-search';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -292,7 +293,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -303,7 +304,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Sub Header content layout
-	$setting_id = 'header-subheader-content-layout';
+	$setting_id = $setting_prefix . '-subheader-content-layout';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -313,7 +314,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -325,7 +326,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Header layout
-	$setting_id = 'header-layout';
+	$setting_id = $setting_prefix . '-layout';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -335,7 +336,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -347,7 +348,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	);
 
 	// Branding position (Layouts 1 & 3 only)
-	$setting_id = 'header-branding-position';
+	$setting_id = $setting_prefix . '-branding-position';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -357,7 +358,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,

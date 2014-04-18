@@ -15,7 +15,7 @@ function ttf_one_customizer_navigation() {
 	global $wp_customize;
 
 	$priority = new TTF_One_Prioritizer();
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
 	$section = 'nav';
 
 	// Menu Label
@@ -31,7 +31,7 @@ function ttf_one_customizer_navigation() {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -46,7 +46,7 @@ function ttf_one_customizer_navigation() {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',

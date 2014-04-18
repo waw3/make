@@ -16,14 +16,15 @@ if ( ! function_exists( 'ttf_one_customizer_social' ) ) :
  */
 function ttf_one_customizer_social( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
+	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Social description
-	$setting_id = 'social-description';
+	$setting_id = $setting_prefix . '-description';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',
@@ -34,7 +35,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Facebook
-	$setting_id = 'social-facebook';
+	$setting_id = $setting_prefix . '-facebook';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -44,7 +45,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -55,7 +56,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Twitter
-	$setting_id = 'social-twitter';
+	$setting_id = $setting_prefix . '-twitter';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -65,7 +66,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -76,7 +77,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Google +
-	$setting_id = 'social-google';
+	$setting_id = $setting_prefix . '-google';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -86,7 +87,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -97,7 +98,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// LinkedIn
-	$setting_id = 'social-linkedin';
+	$setting_id = $setting_prefix . '-linkedin';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -107,7 +108,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -118,7 +119,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Instagram
-	$setting_id = 'social-instagram';
+	$setting_id = $setting_prefix . '-instagram';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -128,7 +129,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -139,7 +140,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Flickr
-	$setting_id = 'social-flickr';
+	$setting_id = $setting_prefix . '-flickr';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -149,7 +150,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -160,7 +161,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// YouTube
-	$setting_id = 'social-youtube';
+	$setting_id = $setting_prefix . '-youtube';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -170,7 +171,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -181,7 +182,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Vimeo
-	$setting_id = 'social-vimeo';
+	$setting_id = $setting_prefix . '-vimeo';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -191,7 +192,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -202,7 +203,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Pinterest
-	$setting_id = 'social-pinterest';
+	$setting_id = $setting_prefix . '-pinterest';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -212,7 +213,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -223,11 +224,11 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Custom alternate
-	$setting_id = 'social-custom-alternate';
+	$setting_id = $setting_prefix . '-custom-alternate';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',
@@ -244,7 +245,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Email
-	$setting_id = 'social-email';
+	$setting_id = $setting_prefix . '-email';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -254,7 +255,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -265,11 +266,11 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// RSS Heading
-	$setting_id = 'social-rss-heading';
+	$setting_id = $setting_prefix . '-rss-heading';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
@@ -280,7 +281,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Hide RSS
-	$setting_id = 'social-hide-rss';
+	$setting_id = $setting_prefix . '-hide-rss';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -290,7 +291,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -301,7 +302,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Custom RSS
-	$setting_id = 'social-custom-rss';
+	$setting_id = $setting_prefix . '-custom-rss';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -311,7 +312,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,

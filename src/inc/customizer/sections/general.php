@@ -16,10 +16,11 @@ if ( ! function_exists( 'ttf_one_customizer_general' ) ) :
  */
 function ttf_one_customizer_general( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();
-	$prefix = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
+	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Site Layout
-	$setting_id = 'general-layout';
+	$setting_id = $setting_prefix . '-layout';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -29,7 +30,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
@@ -41,7 +42,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 	);
 
 	// Sticky label
-	$setting_id = 'general-sticky-label';
+	$setting_id = $setting_prefix . '-sticky-label';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -52,7 +53,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		$prefix . $setting_id,
+		$control_prefix . $setting_id,
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,

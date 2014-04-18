@@ -16,10 +16,11 @@ if ( ! function_exists( 'ttf_one_customizer_logo' ) ) :
  */
 function ttf_one_customizer_logo( $wp_customize, $section ) {
 	$priority = new TTF_One_Prioritizer();
-	$prefix   = 'ttf-one_';
+	$control_prefix = 'ttf-one_';
+	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Regular Logo
-	$setting_id = 'logo-regular';
+	$setting_id = $setting_prefix . '-regular';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -31,19 +32,19 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Image_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Regular Logo', 'ttf-one' ),
 				'priority' => $priority->add(),
-				'context'  => $prefix . $setting_id
+				'context'  => $control_prefix . $setting_id
 			)
 		)
 	);
 
 	// Retina Logo
-	$setting_id = 'logo-retina';
+	$setting_id = $setting_prefix . '-retina';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -55,23 +56,23 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Image_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
 				'label'    => __( 'Retina Logo (2x)', 'ttf-one' ),
 				'priority' => $priority->add(),
-				'context'  => $prefix . $setting_id
+				'context'  => $control_prefix . $setting_id
 			)
 		)
 	);
 
 	// Retina info
-	$setting_id = 'logo-retina-info';
+	$setting_id = $setting_prefix . '-retina-info';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',
@@ -82,7 +83,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	);
 
 	// Favicon
-	$setting_id = 'logo-favicon';
+	$setting_id = $setting_prefix . '-favicon';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -94,24 +95,24 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Image_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings'   => $setting_id,
 				'section'    => $section,
 				'label'      => __( 'Favicon', 'ttf-one' ),
 				'priority'   => $priority->add(),
-				'context'    => $prefix . $setting_id,
+				'context'    => $control_prefix . $setting_id,
 				'extensions' => array( 'png', 'ico' )
 			)
 		)
 	);
 
 	// Favicon info
-	$setting_id = 'logo-favicon-info';
+	$setting_id = $setting_prefix . '-favicon-info';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',
@@ -122,7 +123,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	);
 
 	// Apple Touch Icon
-	$setting_id = 'logo-apple-touch';
+	$setting_id = $setting_prefix . '-apple-touch';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -134,24 +135,24 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 	$wp_customize->add_control(
 		new TTF_One_Customize_Image_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'settings'   => $setting_id,
 				'section'    => $section,
 				'label'      => __( 'Apple Touch Icon', 'ttf-one' ),
 				'priority'   => $priority->add(),
-				'context'    => $prefix . $setting_id,
+				'context'    => $control_prefix . $setting_id,
 				'extensions' => array( 'png' )
 			)
 		)
 	);
 
 	// Apple Touch Icon info
-	$setting_id = 'logo-apple-touch-info';
+	$setting_id = $setting_prefix . '-apple-touch-info';
 	$wp_customize->add_control(
 		new TTF_One_Customize_Misc_Control(
 			$wp_customize,
-			$prefix . $setting_id,
+			$control_prefix . $setting_id,
 			array(
 				'section'     => $section,
 				'type'        => 'text',
