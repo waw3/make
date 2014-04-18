@@ -1443,18 +1443,6 @@ iframe[src*="google.com/maps"] {
   margin-bottom: 0;
   overflow: hidden;
   color: #ffffff;
-  display: -ms-flexbox;
-  -ms-flex-pack: center;
-  -ms-flex-align: center;
-  display: -moz-box;
-  -moz-box-pack: center;
-  -moz-box-align: center;
-  display: -webkit-box;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  display: box;
-  box-pack: center;
-  box-align: center;
   text-shadow: 1px 0 8px rgba(0, 0, 0, 0.15);
   padding: 0 32px;
   padding:  0 1.88235rem; }
@@ -1485,10 +1473,6 @@ iframe[src*="google.com/maps"] {
   max-width: 98%; }
   .builder-banner-inner-content *:last-child {
     margin-bottom: 0; }
-  @media screen and (max-width: 600px) {
-    .builder-banner-inner-content {
-      font-size: 12.75px;
-      font-size: 0.75rem; } }
 
 /*---------------------------------------------------------
  Banner section: Pager (_pages.scss)

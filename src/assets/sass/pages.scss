@@ -124,18 +124,6 @@
 	margin-bottom: 0; //reset
 	overflow: hidden;
 	color: $a;
-	display:-ms-flexbox;
-	-ms-flex-pack:center;
-	-ms-flex-align:center;
-	display:-moz-box;
-	-moz-box-pack:center;
-	-moz-box-align:center;
-	display:-webkit-box;
-	-webkit-box-pack:center;
-	-webkit-box-align:center;
-	display:box;
-	box-pack:center;
-	box-align:center;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
 	@include rem('padding', 0 $gut);
 	&:after {
@@ -172,9 +160,6 @@
 	max-width: 98%;
 	*:last-child {
 		margin-bottom: 0;
-	}
-	@media screen and (max-width: 600px) {
-		@include rem('font-size', 12.75px);
 	}
 }
 /*---------------------------------------------------------
