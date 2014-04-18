@@ -68,9 +68,8 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 			<?php _e( 'Transition effect', 'ttf-one' ); ?>
 		</h4>
 		<select id="<?php echo $section_name; ?>[transition]" name="<?php echo $section_name; ?>[transition]">
-			<option value="fade"<?php selected( 'fade', $transition ); ?>><?php _e( 'Cross fade', 'ttf-one' ); ?></option>
-			<option value="fadeout"<?php selected( 'fadeout', $transition ); ?>><?php _e( 'Fade out', 'ttf-one' ); ?></option>
 			<option value="scrollHorz"<?php selected( 'scrollHorz', $transition ); ?>><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
+			<option value="fade"<?php selected( 'fade', $transition ); ?>><?php _e( 'Fade', 'ttf-one' ); ?></option>
 			<option value="none"<?php selected( 'none', $transition ); ?>><?php echo _x( 'None', 'transition effect', 'ttf-one' ); ?></option>
 		</select>
 	</div>
