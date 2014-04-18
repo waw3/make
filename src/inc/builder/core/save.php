@@ -255,7 +255,9 @@ class TTF_One_Builder_Save {
 	 * @return array                Modified post data.
 	 */
 	public function wp_insert_post_data( $data, $postarr ) {
-		if ( ! isset( $_POST[ 'ttf-one-builder-nonce' ] ) || ! wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) ) {
+		// Make sure the correct page template is set
+		$template = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
+		if ( 'template-builder.php' !== $template || ! isset( $_POST[ 'ttf-one-builder-nonce' ] ) || ! wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) ) {
 			return $data;
 		}
 
