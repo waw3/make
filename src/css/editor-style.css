@@ -71,25 +71,25 @@ blockquote cite {
 	font-size: 75%; /* 12px */
 }
 .ttf-one-testimonial {
-	background-color: #eaecee;
 	padding: 33px 32px;
+	background-color: #eaecee;
 }
 tt,
 kbd,
 pre,
 code,
 samp {
-	background-color: #eaecee;
 	padding: 4px;
 	font-size: 93.75%; /* 15px */
+	background-color: #eaecee;
 }
 pre {
 	padding: 33px 32px;
 	font-size: 93.75%; /* 15px */
 }
 mark {
-	background-color: #fff9c0;
 	text-decoration: none;
+	background-color: #fff9c0;
 }
 ins {
 	color: inherit;
@@ -159,13 +159,13 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
+	padding: 10px 14px;
+	font-size: 13px;
 	color: #ffffff;
 	border: 0;
 	background: #171717;
 	cursor: pointer;
 	-webkit-appearance: button;
-	padding: 10px 14px;
-	font-size: 13px;
 }
 .color-primary-background {
 	background-color: #0094c5;
@@ -181,8 +181,8 @@ input[type="submit"] {
 }
 .ttf-one-download:after {
 	content: "\f0ab";
-	font-family: FontAwesome;
 	padding-left: 6px;
+	font-family: FontAwesome;
 }
 /*---------------------------------------------------------
  Lists (editor-style.css)
@@ -199,8 +199,8 @@ ol.ttf-one-list {
 }
 ul.ttf-one-list li:before,
 ol.ttf-one-list li:before {
-	font-family: FontAwesome;
 	padding-right: 10px;
+	font-family: FontAwesome;
 }
 ul.ttf-one-list-check li:before,
 ol.ttf-one-list-check li:before {
