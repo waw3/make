@@ -1487,6 +1487,34 @@ iframe[src*="google.com/maps"] {
   .cycle-pager .cycle-pager-active {
     color: #b9bcbf; }
 
+.cycle-prev, .cycle-next {
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  opacity: 0.2;
+  cursor: pointer; }
+  .cycle-prev:before, .cycle-prev:after, .cycle-next:before, .cycle-next:after {
+    position: relative;
+    font-family: FontAwesome;
+    color: #ffffff;
+    line-height: 1;
+    top: -34px;
+    top: -2rem;
+    font-size: 34px;
+    font-size: 2rem; }
+  .builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next {
+    opacity: 1; }
+
+.cycle-prev:before {
+  content: "\f0a8";
+  left: 32px; }
+
+.cycle-next {
+  right: 0; }
+  .cycle-next:before {
+    content: "\f0a9";
+    right: 32px; }
+
 /*---------------------------------------------------------
  Gallery section (_pages.scss)
 -------------------------------------------------------- */

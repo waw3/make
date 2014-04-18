@@ -166,6 +166,37 @@
 		color: $e;
 	}
 }
+.cycle-prev,
+.cycle-next {
+	z-index: 999;
+	position: absolute;
+	top: 50%;
+	opacity: .2;
+	cursor: pointer;
+	&:before,
+	&:after {
+		position: relative;
+		font-family: FontAwesome;
+		color: $a;
+		line-height: 1; //reset
+		@include rem('top', -34px);
+		@include rem('font-size', 34px);
+	}
+	.builder-section-banner:hover & {
+		opacity: 1; //reset
+	}
+}
+.cycle-prev:before {
+	content: "\f0a8";
+	left: $gut;
+}
+.cycle-next {
+	right: 0; //reset
+	&:before {
+		content: "\f0a9";
+		right: $gut;
+	}
+}
 /*---------------------------------------------------------
  Gallery section (_pages.scss)
 -------------------------------------------------------- */
