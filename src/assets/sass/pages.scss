@@ -90,11 +90,7 @@
 .builder-banner-overlay,
 .builder-section-overlay {
 	@include for(medium-screens) {
-		background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0) 50%);
-		background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,.4) 0%, rgba(255,255,255,0) 50%);
-		background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0) 50%);
-		background-image: linear-gradient(bottom, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0) 50%);
-		background-color: rgba(0,0,0,0.3);
+		background-color: rgba(0,0,0,0.4);
 	}
 	z-index: -1;
 	position: absolute;
@@ -102,7 +98,7 @@
 	left: 0; //reset
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.5);
 }
 .builder-banner-slide {
 	position: relative;
