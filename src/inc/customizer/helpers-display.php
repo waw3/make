@@ -186,7 +186,7 @@ function ttf_one_css_add_rules() {
 	// Sub Header border color
 	if ( $subheader_border_color !== ttf_one_get_default( 'header-subheader-border-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.sub-header', '.header-social-links li:first-of-type', '.header-social-links li a' ),
+			'selectors'    => array( '.sub-header', '.sub-header .search-form input', '.header-social-links li:first-of-type', '.header-social-links li a' ),
 			'declarations' => array(
 				'border-color' => $subheader_border_color
 			)
