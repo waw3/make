@@ -69,7 +69,8 @@ module.exports = function( grunt ) {
 			},
 			admin: {
 				files:{
-					'src/js/admin/edit-page.min.js': ['src/js/admin/edit-page.js']
+					'src/js/admin/edit-page.min.js': ['src/js/admin/edit-page.js'],
+					'src/inc/gallery-slider/gallery-slider.min.js': ['src/inc/gallery-slider/gallery-slider.js']
 				}
 			}
 		},
