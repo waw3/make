@@ -10,7 +10,8 @@
 
 	media.view.Settings.Gallery = media.view.Settings.Gallery.extend({
 		render: function() {
-			var atts = this.model.attributes;
+			var self = this,
+				atts = self.model.attributes;
 
 			// Begin with default function
 			renderFn.apply( this, arguments );
@@ -22,9 +23,9 @@
 			// slider
 			media.gallery.defaults.ttf_one_slider = false;
 			this.update.apply( this, ['ttf_one_slider'] );
-			// utoplay
-			media.gallery.defaults.ttf_one_autoplay = false;
-			this.update.apply( this, ['ttf_one_autoplay'] );
+			// Autoplay
+			media.gallery.defaults.ttf_one_noautoplay = false;
+			this.update.apply( this, ['ttf_one_noautoplay'] );
 			// prevnext
 			media.gallery.defaults.ttf_one_prevnext = false;
 			this.update.apply( this, ['ttf_one_prevnext'] );
@@ -32,7 +33,7 @@
 			media.gallery.defaults.ttf_one_pager = false;
 			this.update.apply( this, ['ttf_one_pager'] );
 			// delay
-			media.gallery.defaults.ttf_one_delay = 4000;
+			media.gallery.defaults.ttf_one_delay = 6000;
 			this.update.apply( this, ['ttf_one_delay'] );
 			// effect
 			media.gallery.defaults.ttf_one_effect = 'scrollHorz';
@@ -42,11 +43,21 @@
 			if ('undefined' === typeof atts.ttf_one_slider || false == atts.ttf_one_slider) {
 				this.$el.find('#ttf-one-slider-settings').hide();
 			}
-			this.model.on('change', function() {
-				var toggle = $('[data-setting="ttf_one_slider"]').prop('checked'),
+			this.model.on('change', function(t) {
+				// Only proceed if the slider toggle changed
+				if ('undefined' === typeof this.changed.ttf_one_slider) {
+					return;
+				}
+
+				var toggle = this.changed.ttf_one_slider,
 					$settingsDiv = $('#ttf-one-slider-settings');
 
 				if ( true === toggle ) {
+					// Set necessary defaults
+					if ('undefined' === typeof this.attributes.ttf_one_delay) {
+						this.attributes.ttf_one_delay = media.gallery.defaults.ttf_one_delay;
+						self.update.apply( self, ['ttf_one_delay'] );
+					}
 					$settingsDiv.show();
 				} else {
 					$settingsDiv.hide();

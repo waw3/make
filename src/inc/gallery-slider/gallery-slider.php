@@ -101,19 +101,18 @@ class TTF_One_Gallery_Slider {
 					<input type="checkbox" data-setting="ttf_one_pager" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Autoplay', 'ttf-one' ); ?></span>
-					<input type="checkbox" data-setting="ttf_one_autoplay" />
+					<span><?php _e( 'Don\'t auto-advance', 'ttf-one' ); ?></span>
+					<input type="checkbox" data-setting="ttf_one_noautoplay" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Time between slides (ms)', 'ttf-one' ); ?></span>
-					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" value="4000" />
+					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" value="6000" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Effect', 'ttf-one' ); ?></span>
 					<select data-setting="ttf_one_effect">
-						<option value="fade"><?php _e( 'Cross-fade', 'ttf-one' ); ?></option>
-						<option value="fadeout"><?php _e( 'Fade out', 'ttf-one' ); ?></option>
 						<option value="scrollHorz" selected="selected"><?php _e( 'Slide horizontal', 'ttf-one' ); ?></option>
+						<option value="fade"><?php _e( 'Fade', 'ttf-one' ); ?></option>
 						<option value="none"><?php _e( 'None', 'ttf-one' ); ?></option>
 					</select>
 				</label>
@@ -134,6 +133,7 @@ class TTF_One_Gallery_Slider {
 	function render_gallery( $output, $attr ) {
 		// Only use this alternative output if the slider is set to true
 		if ( isset( $attr['ttf_one_slider'] ) && true == $attr['ttf_one_slider'] ) {
+			// Begin core code (3.9 beta)
 			$post = get_post();
 
 			if ( ! empty( $attr['ids'] ) ) {
@@ -160,12 +160,12 @@ class TTF_One_Gallery_Slider {
 				'exclude'    => '',
 				'link'       => '',
 				// ttf-one slider
-				'ttf_one_slider'   => true,
-				'ttf_one_autoplay' => false,
-				'ttf_one_prevnext' => false,
-				'ttf_one_pager'    => false,
-				'ttf_one_delay'    => 4000,
-				'ttf_one_effect'   => 'scrollHorz'
+				'ttf_one_slider'     => true,
+				'ttf_one_noautoplay' => false,
+				'ttf_one_prevnext'   => false,
+				'ttf_one_pager'      => false,
+				'ttf_one_delay'      => 6000,
+				'ttf_one_effect'     => 'scrollHorz'
 			), $attr, 'gallery') );
 
 			$id = intval( $id );
@@ -218,6 +218,7 @@ class TTF_One_Gallery_Slider {
 					$output .= wp_get_attachment_link( $att_id, $size, true ) . "\n";
 				return $output;
 			}
+			// End core code
 
 			// Classes
 			$classes = sanitize_html_class( 'cycle-slideshow' );
@@ -228,16 +229,16 @@ class TTF_One_Gallery_Slider {
 			$data_attributes .= ' data-cycle-center-horz="true"';
     		$data_attributes .= ' data-cycle-center-vert="true"';
 
-			// Autoplay
-			$autoplay = (bool) $ttf_one_autoplay;
-			if ( false === $autoplay ) {
+			// No autoplay
+			$noautoplay = (bool) $ttf_one_noautoplay;
+			if ( true === $noautoplay ) {
 				$data_attributes .= ' data-cycle-paused="true"';
 			}
 
 			// Delay
 			$delay = absint( $ttf_one_delay );
 			if ( 0 === $delay ) {
-				$delay = 4000;
+				$delay = 6000;
 			}
 			if ( 4000 !== $delay ) {
 				$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
@@ -245,8 +246,8 @@ class TTF_One_Gallery_Slider {
 
 			// Effect
 			$effect = trim( $ttf_one_effect );
-			if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
-				$effect = 'fade';
+			if ( ! in_array( $effect, array( 'fade', 'scrollHorz', 'none' ) ) ) {
+				$effect = 'scrollHorz';
 			}
 			if ( 'fade' !== $effect ) {
 				$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
