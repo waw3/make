@@ -55,15 +55,19 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 
 	// List of new sections to add
 	$sections = array(
-		'general'    => __( 'General', 'ttf-one' ),
-		'logo'       => __( 'Logo', 'ttf-one' ),
-		'fonts'      => __( 'Fonts', 'ttf-one' ),
-		'colors'     => __( 'Colors', 'ttf-one' ),
-		'layout'     => __( 'Layout', 'ttf-one' ),
-		'header'     => __( 'Header', 'ttf-one' ),
-		'main'       => __( 'Main', 'ttf-one' ),
-		'footer'     => __( 'Footer', 'ttf-one' ),
-		'social'     => __( 'Social Profiles &amp; RSS', 'ttf-one' )
+		'general'        => __( 'General', 'ttf-one' ),
+		'logo'           => __( 'Logo', 'ttf-one' ),
+		'fonts'          => __( 'Fonts', 'ttf-one' ),
+		'colors'         => __( 'Colors', 'ttf-one' ),
+		'layout-blog'    => __( 'Layout: Blog (Posts Page)', 'ttf-one' ),
+		'layout-archive' => __( 'Layout: Archives', 'ttf-one' ),
+		'layout-search'  => __( 'Layout: Search Results', 'ttf-one' ),
+		'layout-post'    => __( 'Layout: Posts', 'ttf-one' ),
+		'layout-page'    => __( 'Layout: Pages', 'ttf-one' ),
+		'header'         => __( 'Header', 'ttf-one' ),
+		'main'           => __( 'Main', 'ttf-one' ),
+		'footer'         => __( 'Footer', 'ttf-one' ),
+		'social'         => __( 'Social Profiles &amp; RSS', 'ttf-one' )
 	);
 	$sections = apply_filters( 'ttf_one_customizer_sections', $sections );
 
@@ -80,7 +84,9 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 			}
 
 			// Then add the section
-			if ( function_exists( 'ttf_one_customizer_' . $section ) ) {
+			$section_callback = 'ttf_one_customizer_';
+			$section_callback .= ( strpos( $section, '-' ) ) ? str_replace( '-', '_', $section ) : $section;
+			if ( function_exists( $section_callback ) ) {
 				$section_id = 'ttf-one_' . esc_attr( $section );
 				if ( ! $title ) {
 					$title = ucfirst( esc_attr( $section ) );
@@ -97,7 +103,7 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 
 				// Callback to populate the section
 				call_user_func_array(
-					'ttf_one_customizer_' . esc_attr( $section ),
+					$section_callback,
 					array(
 						$wp_customize,
 						$section_id
@@ -177,31 +183,6 @@ function ttf_one_customizer_admin_styles() { ?>
 	<style type="text/css">
 		.customize-control.customize-control-heading {
 			margin-bottom: -2px;
-		}
-		.ttf-one-control-group {
-			margin-left: -6px;
-		}
-		.ttf-one-control-group span {
-			cursor: pointer;
-			font-size: 14px;
-			font-weight: bold;
-		}
-		.ttf-one-control-group span:after {
-			content: "\f140";
-			font: normal 20px/1 'dashicons';
-			speak: none;
-			padding: 0;
-			text-indent: 0;
-			text-align: center;
-			position: relative;
-			top: 4px;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			text-decoration: none !important;
-			color: #333;
-		}
-		.ttf-one-control-group.open span:after {
-			content: "\f142";
 		}
 	</style>
 <?php }
