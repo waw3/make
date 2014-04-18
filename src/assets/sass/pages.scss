@@ -72,19 +72,6 @@
 	}
 }
 /*---------------------------------------------------------
- Banner section (_pages.scss)
--------------------------------------------------------- */
-.builder-section-banner {
-	.builder-section-content {
-		@include for(medium-screens) {
-			@include rem('font-size', 21px);
-		}
-		width: 100%;
-		line-height: 1.35;
-		@include rem('font-size', 15px);
-	}
-}
-/*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
 -------------------------------------------------------- */
 .builder-banner-overlay,
@@ -111,17 +98,22 @@
  Banner section: Content (_pages.scss)
 -------------------------------------------------------- */
 .builder-banner-content {
+	@include for(medium-screens) {
+		@include rem('font-size', 21px);
+	}
 	position: absolute;
 	left: 0; //reset
 	right: 0; //reset
 	height: 100%;
 	min-height: 100%;
-	max-width: $width+($gut*2);
+	width: 100%;
 	margin-bottom: 0; //reset
 	overflow: hidden;
 	color: $a;
+	line-height: 1.35;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
-	@include rem('padding', 0 $gut);
+	@include rem('padding', $base/2 $gut);
+	@include rem('font-size', 15px);
 	&:after {
 		display: inline-block;
 		vertical-align: middle;

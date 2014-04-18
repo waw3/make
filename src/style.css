@@ -450,9 +450,7 @@ a {
       margin-bottom: 0; } }
   @media screen and (min-width: 1100px) {
     .header-social-links li:first-of-type {
-      border-left: 1px solid #171717; }
-    .header-social-links li:last-of-type a {
-      padding-right: 0; } }
+      border-left: 1px solid #171717; } }
   .header-social-links li a {
     padding: 4px 4px;
     padding:  0.23529rem 0.23529rem;
@@ -1392,19 +1390,6 @@ iframe[src*="google.com/maps"] {
     width: 22.5%; } }
 
 /*---------------------------------------------------------
- Banner section (_pages.scss)
--------------------------------------------------------- */
-.builder-section-banner .builder-section-content {
-  width: 100%;
-  line-height: 1.35;
-  font-size: 15px;
-  font-size: 0.88235rem; }
-  @media screen and (min-width: 800px) {
-    .builder-section-banner .builder-section-content {
-      font-size: 21px;
-      font-size: 1.23529rem; } }
-
-/*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
 -------------------------------------------------------- */
 .builder-banner-overlay, .builder-section-overlay {
@@ -1435,13 +1420,20 @@ iframe[src*="google.com/maps"] {
   right: 0;
   height: 100%;
   min-height: 100%;
-  max-width: 1024px;
+  width: 100%;
   margin-bottom: 0;
   overflow: hidden;
   color: #ffffff;
+  line-height: 1.35;
   text-shadow: 1px 0 8px rgba(0, 0, 0, 0.15);
-  padding: 0 32px;
-  padding:  0 1.88235rem; }
+  padding: 11px 32px;
+  padding:  0.64706rem 1.88235rem;
+  font-size: 15px;
+  font-size: 0.88235rem; }
+  @media screen and (min-width: 800px) {
+    .builder-banner-content {
+      font-size: 21px;
+      font-size: 1.23529rem; } }
   .builder-banner-content:after {
     display: inline-block;
     vertical-align: middle;
