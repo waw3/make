@@ -185,13 +185,19 @@ a {
 	background-color: $b;
 	border-bottom: $rule;
 	@extend .clear;
-	.subheader-flipped & {
-		.search-form,
-		.social-links {
-			float: left;
-		}
-		.header-text {
-			float: right;
+	@include for(large-screens) {
+		.subheader-flipped & {
+			.search-form,
+			.social-links {
+				float: left;
+			}
+			.header-text {
+				float: right;
+			}
+			.search-form {
+				padding-left: 0; //reset
+				@include rem('padding-right', $gut/2);
+			}
 		}
 	}
 	a {
@@ -358,6 +364,7 @@ a {
 				display: inline-block;
 				position: relative;
 			}
+			text-align: left;
 			list-style: none; //reset
 			a {
 				@include for(medium-screens) {
@@ -478,6 +485,7 @@ a {
 }
 .menu-toggle {
 	color: $a;
+	text-align: left;
 	border: 0; //reset
 	background-color: $b;
 	cursor: pointer;
