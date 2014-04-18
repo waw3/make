@@ -892,22 +892,9 @@ details :focus {
 /*---------------------------------------------------------
  Marks (_elements.scss)
 -------------------------------------------------------- */
-ins, mark {
+mark {
   background-color: #fff9c0;
   text-decoration: none; }
-
-ins {
-  text-decoration: none; }
-  ins:before {
-    content: "\005B";
-    position: relative;
-    right: 1px;
-    right: 0.05882rem; }
-  ins:after {
-    content: "\005D";
-    position: relative;
-    left: 1px;
-    left: 0.05882rem; }
 
 /*---------------------------------------------------------
  Sizes (_elements.scss)

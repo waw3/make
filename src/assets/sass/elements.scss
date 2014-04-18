@@ -155,23 +155,9 @@ details {
 /*---------------------------------------------------------
  Marks (_elements.scss)
 -------------------------------------------------------- */
-ins,
 mark {
 	background-color: #fff9c0;
 	text-decoration: none;
-}
-ins {
-	text-decoration: none; //reset
-	&:before {
-		content: "\005B";
-		position: relative;
-		@include rem('right', 1px);
-	}
-	&:after {
-		content: "\005D";
-		position: relative;
-		@include rem('left', 1px);
-	}
 }
 /*---------------------------------------------------------
  Sizes (_elements.scss)
