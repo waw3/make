@@ -130,11 +130,6 @@ function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
 		$gallery_class .= ' last-2';
 	}
 
-	// Aspect Ratio
-	if ( isset( $ttf_one_section_data['aspect'] ) && 'none' === $ttf_one_section_data['aspect'] && $gallery_columns > 1 ) {
-		$gallery_class .= ' builder-gallery-masonry-item';
-	}
-
 	return $gallery_class;
 }
 

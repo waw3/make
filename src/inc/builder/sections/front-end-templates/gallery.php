@@ -7,15 +7,12 @@ global $ttf_one_section_data;
 $gallery = ttf_one_builder_get_gallery_array( $ttf_one_section_data );
 
 $darken = ( isset( $ttf_one_section_data[ 'darken' ] ) ) ? absint( $ttf_one_section_data[ 'darken' ] ) : 0;
-$captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_one_section_data[ 'captions' ] ) : 'basic';
+$captions = ( isset( $ttf_one_section_data[ 'captions' ] ) ) ? esc_attr( $ttf_one_section_data[ 'captions' ] ) : 'reveal';
 $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_section_data[ 'aspect' ] ) : 'square';
 ?>
 
 <section class="builder-section<?php echo esc_attr( ttf_one_builder_get_gallery_class( $ttf_one_section_data ) ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style( $ttf_one_section_data ) ); ?>">
 	<div class="builder-section-content">
-		<?php if ( 'none' === $aspect ) : ?>
-		<div class="builder-gallery-masonry-container">
-		<?php endif; ?>
 		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) :
 			$onclick = '';
 			if ( '' !== $item['link'] ) :
@@ -47,10 +44,6 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
-		<?php if ( 'none' === $aspect ) : ?>
-			<div class="builder-gallery-gutter"></div>
-		</div>
-		<?php endif; ?>
 	</div>
 	<?php if ( 0 !== $darken ) : ?>
 	<div class="builder-section-overlay"></div>
