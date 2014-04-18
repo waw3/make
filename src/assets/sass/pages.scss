@@ -172,10 +172,12 @@
 -------------------------------------------------------- */
 .cycle-prev,
 .cycle-next {
+	@include for(medium-screens) {
+		opacity: .2;
+	}
 	z-index: 999;
 	position: absolute;
 	top: 50%;
-	opacity: .2;
 	cursor: pointer;
 	&:before,
 	&:after {
@@ -186,9 +188,11 @@
 		@include rem('top', -34px);
 		@include rem('font-size', 34px);
 	}
-	.builder-section-banner:hover &,
-	.builder-section-banner:focus & {
-		opacity: 1; //reset
+	@include for(medium-screens) {
+		.builder-section-banner:hover &,
+		.builder-section-banner:focus & {
+			opacity: 1; //reset
+		}
 	}
 }
 .cycle-prev:before {
