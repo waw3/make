@@ -100,6 +100,7 @@
 .builder-banner-content {
 	@include for(medium-screens) {
 		@include rem('font-size', 21px);
+		@include rem('padding', $base/2 $gut*4);
 	}
 	position: absolute;
 	left: 0; //reset
@@ -112,7 +113,7 @@
 	color: $a;
 	line-height: 1.35;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
-	@include rem('padding', $base/2 $gut);
+	@include rem('padding', $base/2 $gut*3);
 	@include rem('font-size', 15px);
 	&:after {
 		display: inline-block;
@@ -166,6 +167,9 @@
 		color: $e;
 	}
 }
+/*---------------------------------------------------------
+ Banner section: Arrows (_pages.scss)
+-------------------------------------------------------- */
 .cycle-prev,
 .cycle-next {
 	z-index: 999;
@@ -182,7 +186,8 @@
 		@include rem('top', -34px);
 		@include rem('font-size', 34px);
 	}
-	.builder-section-banner:hover & {
+	.builder-section-banner:hover &,
+	.builder-section-banner:focus & {
 		opacity: 1; //reset
 	}
 }
