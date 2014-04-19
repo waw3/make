@@ -5,12 +5,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	'use strict';
 
 	oneApp.BannerView = oneApp.SectionView.extend({
-		initialize: function(options){
-			oneApp.SectionView.prototype.initialize.apply(this, [options])
-
-			// Update the section header to reflect the number of slides
-			oneApp.setBannerSectionLabel(this.$el);
-		},
 
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
@@ -152,21 +146,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		});
 
 		oneApp.initializeBannerSlidesSortables();
-	};
-
-	// Set the banner section label
-	oneApp.setBannerSectionLabel = function ($section) {
-		var $headerTitle = $('.ttf-one-section-header-title', $section),
-			slidesNumber = $('.ttf-one-banner-slide', $section).length,
-			label = slidesNumber;
-
-		if (1 === slidesNumber) {
-			label += ' ' + ttfOneBanner.singularLabel;
-		} else {
-			label += ' ' + ttfOneBanner.pluralLabel;
-		}
-
-		$headerTitle.text(label);
 	};
 
 	// Initialize the views when the app starts up

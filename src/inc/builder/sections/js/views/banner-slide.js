@@ -41,9 +41,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				height: 'toggle'
 			}, oneApp.options.closeSpeed, function() {
 				this.remove();
-
-				// Reset the header label
-				oneApp.setBannerSectionLabel($stage.parents('.ttf-one-section'));
 			}.bind(this));
 		},
 

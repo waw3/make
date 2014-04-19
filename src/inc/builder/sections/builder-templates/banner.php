@@ -2,6 +2,7 @@
 ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
+$title         = ( isset( $ttf_one_section_data['data']['title'] ) ) ? $ttf_one_section_data['data']['title'] : '';
 $hide_arrows   = ( isset( $ttf_one_section_data['data']['hide-arrows'] ) ) ? $ttf_one_section_data['data']['hide-arrows'] : 0;
 $hide_dots     = ( isset( $ttf_one_section_data['data']['hide-dots'] ) ) ? $ttf_one_section_data['data']['hide-dots'] : 0;
 $autoplay      = ( isset( $ttf_one_section_data['data']['autoplay'] ) ) ? $ttf_one_section_data['data']['autoplay'] : 1;
@@ -32,6 +33,12 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 		<?php _e( 'Options', 'ttf-one' ); ?>
 	</h2>
 	<div class="ttf-one-banner-options-container">
+		<div class="ttf-one-titlediv">
+			<div class="ttf-one-titlewrap">
+				<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+			</div>
+		</div>
+
 		<h4 class="ttf-one-banner-options-title">
 			<?php _e( 'Slideshow display', 'ttf-one' ); ?>
 		</h4>
