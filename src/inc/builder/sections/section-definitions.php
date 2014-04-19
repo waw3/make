@@ -256,6 +256,10 @@ class TTF_One_Section_Definitions {
 			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
 		}
 
+		if ( isset( $data['title'] ) ) {
+			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
+		}
+
 		if ( isset( $data['darken'] ) ) {
 			$clean_data['darken'] = 1;
 		} else {

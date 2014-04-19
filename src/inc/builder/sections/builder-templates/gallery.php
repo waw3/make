@@ -10,6 +10,7 @@ $section_name     = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is
 $columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
 $captions         = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'reveal';
 $aspect           = ( isset( $ttf_one_section_data['data']['aspect'] ) ) ? $ttf_one_section_data['data']['aspect'] : 'square';
+$title            = ( isset( $ttf_one_section_data['data']['title'] ) ) ? $ttf_one_section_data['data']['title'] : '';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
 $darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 1;
@@ -65,6 +66,13 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 	<h2 class="ttf-one-large-title ttf-one-gallery-options-heading">
 		<?php _e( 'Options', 'ttf-one' ); ?>
 	</h2>
+
+	<div class="ttf-one-titlediv">
+		<div class="ttf-one-titlewrap">
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+		</div>
+	</div>
+
 	<div class="ttf-one-gallery-background-image-wrapper">
 		<?php
 			ttf_one_get_builder_base()->add_uploader(
