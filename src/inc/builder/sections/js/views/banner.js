@@ -25,7 +25,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Append view
 			var html = view.render().el;
-			$('.ttf-one-banner-slides-stage').append(html);
+			$('.ttf-one-banner-slides-stage', this.$el).append(html);
 
 			// Only scroll and focus if not triggered by the pseudo event
 			if ( ! params ) {
