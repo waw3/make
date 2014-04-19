@@ -180,7 +180,7 @@ class TTF_One_Section_Definitions {
 			foreach ( $data['banner-slides'] as $id => $slide ) {
 
 				if ( isset( $slide['content'] ) ) {
-					$clean_data['banner-slides'][ $id ]['content'] = wp_filter_post_kses( $slide['content'] );
+					$clean_data['banner-slides'][ $id ]['content'] = sanitize_post_field( 'post_content', $slide['content'], get_the_ID(), 'db' );
 				}
 
 				if ( isset( $slide['background-color'] ) ) {
@@ -286,7 +286,7 @@ class TTF_One_Section_Definitions {
 				}
 
 				if ( isset( $item['description'] ) ) {
-					$clean_data['gallery-items'][ $id ]['description'] = wp_filter_post_kses( $item['description'] );
+					$clean_data['gallery-items'][ $id ]['description'] = sanitize_post_field( 'post_content', $item['description'], get_the_ID(), 'db' );
 				}
 
 				if ( isset( $item['image-id'] ) ) {
@@ -334,7 +334,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['content'] ) ) {
-			$clean_data['content'] = wp_filter_post_kses( $data['content'] );
+			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], get_the_ID(), 'db' );
 		}
 
 		return $clean_data;
