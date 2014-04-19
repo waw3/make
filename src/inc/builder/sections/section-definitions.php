@@ -100,7 +100,7 @@ class TTF_One_Section_Definitions {
 					$clean_data['columns'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
 
 					// The first title serves as the section title
-					if ( 1 === $i) {
+					if ( 1 === $i ) {
 						$clean_data['label'] = apply_filters( 'title_save_pre', $item['title'] );
 					}
 				}
