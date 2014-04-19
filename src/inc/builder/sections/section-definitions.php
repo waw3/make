@@ -257,7 +257,9 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['darken'] ) ) {
-			$clean_data['darken'] = absint( $data['darken'] );
+			$clean_data['darken'] = 1;
+		} else {
+			$clean_data['darken'] = 0;
 		}
 
 		if ( isset( $data['background-color'] ) ) {
