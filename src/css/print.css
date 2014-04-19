@@ -48,6 +48,10 @@ blockquote.ttf-one-testimonial:after {
 #comments .reply,
 #infinite-handle,
 .nav-links,
-.search-form {
+.search-form,
+.widget_search,
+.cycle-pager,
+.cycle-prev,
+.cycle-next {
 	display: none;
 }
