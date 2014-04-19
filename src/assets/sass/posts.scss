@@ -153,6 +153,7 @@
 	.cycle-slide {
 		position: relative;
 		width: 100%;
+		text-align: center;
 	}
 	.cycle-caption {
 		@include for(medium-screens) {
@@ -162,6 +163,7 @@
 		position: absolute;
 		z-index: 10;
 		color: $a;
+		text-align: left;
 		text-shadow: 1px 0 4px rgba(0,0,0,0.15);
 		@include rem('left', $gut/2);
 		@include rem('right', $gut/2);

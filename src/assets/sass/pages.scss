@@ -184,8 +184,7 @@
 		position: absolute;
 		top: 50%;
 		cursor: pointer;
-		&:before,
-		&:after {
+		&:before {
 			position: relative;
 			font-family: FontAwesome;
 			color: $a;
@@ -213,6 +212,12 @@
 			content: "\f0a9";
 			right: $gut;
 		}
+	}
+}
+.ttf-one-shortcode-slider {
+	.cycle-prev:before,
+	.cycle-next:before {
+		@include rem('top', -12px);
 	}
 }
 /*---------------------------------------------------------

@@ -1325,12 +1325,14 @@ iframe[src*="google.com/maps"] {
 -------------------------------------------------------- */
 .ttf-one-shortcode-slider .cycle-slide {
   position: relative;
-  width: 100%; }
+  width: 100%;
+  text-align: center; }
 .ttf-one-shortcode-slider .cycle-caption {
   display: none;
   position: absolute;
   z-index: 10;
   color: #ffffff;
+  text-align: left;
   text-shadow: 1px 0 4px rgba(0, 0, 0, 0.15);
   left: 16px;
   left: 0.94118rem;
@@ -1512,7 +1514,7 @@ iframe[src*="google.com/maps"] {
   @media screen and (min-width: 800px) {
     .builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
       opacity: 0.2; } }
-  .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-prev:after, .builder-section-banner .cycle-next:before, .builder-section-banner .cycle-next:after, .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-prev:after, .ttf-one-shortcode-slider .cycle-next:before, .ttf-one-shortcode-slider .cycle-next:after {
+  .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-next:before {
     position: relative;
     font-family: FontAwesome;
     color: #ffffff;
@@ -1532,6 +1534,10 @@ iframe[src*="google.com/maps"] {
   .builder-section-banner .cycle-next:before, .ttf-one-shortcode-slider .cycle-next:before {
     content: "\f0a9";
     right: 32px; }
+
+.ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-next:before {
+  top: -12px;
+  top: -0.70588rem; }
 
 /*---------------------------------------------------------
  Gallery section (_pages.scss)
