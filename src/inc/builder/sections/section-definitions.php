@@ -325,8 +325,7 @@ class TTF_One_Section_Definitions {
 		$clean_data = array();
 
 		if ( isset( $data['title'] ) ) {
-			$clean_data['title'] = apply_filters( 'title_save_pre', $data['title'] );
-			$clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
+			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
 
 		if ( isset( $data['content'] ) ) {
