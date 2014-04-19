@@ -407,12 +407,11 @@ class TTF_One_Builder_Save {
 
 		// Get the next section's type
 		$next_data = $this->get_next_section_data( $current_section );
-		$next = ( ! empty( $next_data ) && isset( $next_data['section-type'] ) ) ? $prefix . 'next-' . $next_data['section-type'] : $prefix . 'last';
+		$next      = ( ! empty( $next_data ) && isset( $next_data['section-type'] ) ) ? $prefix . 'next-' . $next_data['section-type'] : $prefix . 'last';
 
 		// Get the previous section's type
 		$prev_data = $this->get_prev_section_data( $current_section );
-		$prev = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' .
-$prev_data['section-type'] : $prefix . 'first';
+		$prev      = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' . $prev_data['section-type'] : $prefix . 'first';
 
 		// Return the values as a single string
 		return $prev . ' ' . $current . ' ' . $next;
