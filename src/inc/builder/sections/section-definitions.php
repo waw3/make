@@ -114,7 +114,7 @@ class TTF_One_Section_Definitions {
 				}
 
 				if ( isset( $item['content'] ) ) {
-					$clean_data['columns'][ $id ]['content'] = wp_filter_post_kses( $item['content'] );
+					$clean_data['columns'][ $id ]['content'] = sanitize_post_field( 'post_content', $item['content'], get_the_ID(), 'db' );
 				}
 
 				$i++;
