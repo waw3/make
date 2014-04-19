@@ -32,13 +32,14 @@ $section_order = ( ! empty( $ttf_one_section_data['data']['banner-slide-order'] 
 	<h2 class="ttf-one-large-title">
 		<?php _e( 'Options', 'ttf-one' ); ?>
 	</h2>
-	<div class="ttf-one-banner-options-container">
-		<div class="ttf-one-titlediv">
-			<div class="ttf-one-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
-			</div>
-		</div>
 
+	<div class="ttf-one-titlediv">
+		<div class="ttf-one-titlewrap">
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+		</div>
+	</div>
+
+	<div class="ttf-one-banner-options-container">
 		<h4 class="ttf-one-banner-options-title">
 			<?php _e( 'Slideshow display', 'ttf-one' ); ?>
 		</h4>
