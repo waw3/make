@@ -24,8 +24,8 @@
 			media.gallery.defaults.ttf_one_slider = false;
 			this.update.apply( this, ['ttf_one_slider'] );
 			// Autoplay
-			media.gallery.defaults.ttf_one_noautoplay = false;
-			this.update.apply( this, ['ttf_one_noautoplay'] );
+			media.gallery.defaults.ttf_one_autoplay = false;
+			this.update.apply( this, ['ttf_one_autoplay'] );
 			// prevnext
 			media.gallery.defaults.ttf_one_prevnext = false;
 			this.update.apply( this, ['ttf_one_prevnext'] );
@@ -34,6 +34,9 @@
 			this.update.apply( this, ['ttf_one_pager'] );
 			// delay
 			media.gallery.defaults.ttf_one_delay = 6000;
+			if ('undefined' === typeof this.model.attributes.ttf_one_delay) {
+				this.model.attributes.ttf_one_delay = media.gallery.defaults.ttf_one_delay;
+			}
 			this.update.apply( this, ['ttf_one_delay'] );
 			// effect
 			media.gallery.defaults.ttf_one_effect = 'scrollHorz';
@@ -53,11 +56,6 @@
 					$settingsDiv = $('#ttf-one-slider-settings');
 
 				if ( true === toggle ) {
-					// Set necessary defaults
-					if ('undefined' === typeof this.attributes.ttf_one_delay) {
-						this.attributes.ttf_one_delay = media.gallery.defaults.ttf_one_delay;
-						self.update.apply( self, ['ttf_one_delay'] );
-					}
 					$settingsDiv.show();
 				} else {
 					$settingsDiv.hide();

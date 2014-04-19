@@ -72,7 +72,7 @@ class TTF_One_Gallery_Slider {
 			'ttf-one-admin-gallery-settings',
 			get_template_directory_uri() . '/inc/gallery-slider/gallery-slider' . TTF_ONE_SUFFIX . '.js',
 			array( 'media-views' ),
-			time(),
+			TTF_ONE_VERSION,
 			true
 		);
 	}
@@ -101,12 +101,12 @@ class TTF_One_Gallery_Slider {
 					<input type="checkbox" data-setting="ttf_one_pager" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Don\'t auto-advance', 'ttf-one' ); ?></span>
-					<input type="checkbox" data-setting="ttf_one_noautoplay" />
+					<span><?php _e( 'Autoplay', 'ttf-one' ); ?></span>
+					<input type="checkbox" data-setting="ttf_one_autoplay" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Time between slides (ms)', 'ttf-one' ); ?></span>
-					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" value="6000" />
+					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Effect', 'ttf-one' ); ?></span>
@@ -158,14 +158,13 @@ class TTF_One_Gallery_Slider {
 				'size'       => 'large',
 				'include'    => '',
 				'exclude'    => '',
-				'link'       => '',
 				// ttf-one slider
-				'ttf_one_slider'     => true,
-				'ttf_one_noautoplay' => false,
-				'ttf_one_prevnext'   => false,
-				'ttf_one_pager'      => false,
-				'ttf_one_delay'      => 6000,
-				'ttf_one_effect'     => 'scrollHorz'
+				'ttf_one_slider'   => true,
+				'ttf_one_autoplay' => false,
+				'ttf_one_prevnext' => false,
+				'ttf_one_pager'    => false,
+				'ttf_one_delay'    => 6000,
+				'ttf_one_effect'   => 'scrollHorz'
 			), $attr, 'gallery') );
 
 			$id = intval( $id );
@@ -221,17 +220,19 @@ class TTF_One_Gallery_Slider {
 			// End core code
 
 			// Classes
-			$classes = sanitize_html_class( 'cycle-slideshow' );
+			$classes = 'ttf-one-shortcode-slider cycle-slideshow';
 
 			// Data attributes
-			$data_attributes = ' data-cycle-slides="figure"';
+			$data_attributes = ' data-cycle-log="false"';
+			$data_attributes .= ' data-cycle-slides=".cycle-slide"';
 			$data_attributes .= ' data-cycle-auto-height="calc"';
 			$data_attributes .= ' data-cycle-center-horz="true"';
     		$data_attributes .= ' data-cycle-center-vert="true"';
+			$data_attributes .= ' data-cycle-swipe="true"';
 
 			// No autoplay
-			$noautoplay = (bool) $ttf_one_noautoplay;
-			if ( true === $noautoplay ) {
+			$autoplay = (bool) $ttf_one_autoplay;
+			if ( false === $autoplay ) {
 				$data_attributes .= ' data-cycle-paused="true"';
 			}
 
@@ -258,15 +259,7 @@ class TTF_One_Gallery_Slider {
 			<div class="<?php echo esc_attr( $classes ); ?>"<?php echo $data_attributes; ?>>
 				<?php foreach ( $attachments as $id => $attachment ) : ?>
 				<figure class="cycle-slide">
-					<?php
-					if ( ! empty( $link ) && 'file' === $link ) :
-						echo wp_get_attachment_link( $id, $size, false, false );
-					elseif ( ! empty( $link ) && 'none' === $link ) :
-						echo wp_get_attachment_image( $id, $size, false );
-					else :
-						echo wp_get_attachment_link( $id, $size, true, false );
-					endif;
-					?>
+					<?php echo wp_get_attachment_image( $id, $size, false ); ?>
 					<?php if ( trim( $attachment->post_excerpt ) ) : ?>
 					<figcaption class="cycle-caption">
 						<?php echo wptexturize( $attachment->post_excerpt ); ?>

@@ -146,3 +146,70 @@
 		content: "  \f178";
 	}
 }
+/*---------------------------------------------------------
+ Gallery shortcode slider (_posts.scss)
+-------------------------------------------------------- */
+.ttf-one-shortcode-slider {
+	.cycle-slide {
+		position: relative;
+		text-align: center;
+		width: 100%;
+	}
+	.cycle-caption {
+		position: absolute;
+		bottom: 1em;
+		left: 1em;
+		z-index: 10;
+	}
+	.cycle-pager {
+		color: $d;
+		text-align: center;
+		line-height: 1; //reset
+		@include rem('font-size', 40px);
+		@include  no-select;
+		span {
+			cursor: pointer;
+		}
+		.cycle-pager-active {
+			color: $e;
+		}
+	}
+}
+.ttf-one-shortcode-slider {
+	.cycle-prev,
+	.cycle-next {
+		@include for(medium-screens) {
+			opacity: .2;
+		}
+		z-index: 999;
+		position: absolute;
+		top: 50%;
+		cursor: pointer;
+		&:before,
+		&:after {
+			position: relative;
+			font-family: FontAwesome;
+			color: $a;
+			line-height: 1; //reset
+			@include rem('top', -34px);
+			@include rem('font-size', 34px);
+		}
+		@include for(medium-screens) {
+			.builder-section-banner:hover &,
+			.builder-section-banner:focus & {
+				opacity: 1; //reset
+			}
+		}
+	}
+	.cycle-prev:before {
+		content: "\f0a8";
+		left: $gut;
+	}
+	.cycle-next {
+		right: 0; //reset
+		&:before {
+			content: "\f0a9";
+			right: $gut;
+		}
+	}
+}
