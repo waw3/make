@@ -27,7 +27,7 @@ $description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one
 
 	<div class="ttf-one-titlediv">
 		<div class="ttf-one-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 		</div>
 	</div>
 
