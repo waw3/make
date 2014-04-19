@@ -41,9 +41,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-banner-slide-order', $(view.$el).parents('.ttf-one-banner-slides')));
-
-			// Update the section header to reflect the number of slides
-			oneApp.setBannerSectionLabel(this.$el);
 		},
 
 		getParentID: function() {
