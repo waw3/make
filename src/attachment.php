@@ -13,7 +13,13 @@ get_header();
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php get_template_part( 'partials/content', 'attachment' ); ?>
+		<?php
+		if ( wp_attachment_is_image() ) :
+			get_template_part( 'partials/content', 'image' );
+		else :
+			get_template_part( 'partials/content', 'attachment' );
+		endif;
+		?>
 
 		<?php get_template_part( 'partials/content', 'comments' ); ?>
 
