@@ -3,19 +3,21 @@
  * @package ttf-one
  */
 
-$thumb_key = 'layout-' . ttf_one_get_view() . '-featured-images';
-$thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_default( $thumb_key ) ), $thumb_key );
-
-$thumbnail_id = get_post_thumbnail_id();
-$thumbnail_size = 'thumbnail';
-
 if ( is_attachment() ) :
+	// Always show post-header style image on Attachment view
+	$thumb_option = 'post-header';
 	$thumbnail_id = get_post()->ID;
 	$thumbnail_size = 'full';
-elseif ( 'post-header' === $thumb_option ) :
-	$thumbnail_size = 'large';
-elseif ( 'thumbnail' === $thumb_option ) :
-	$thumbnail_size = ( is_singular() ) ? 'medium' : 'thumbnail';
+else:
+	$thumb_key = 'layout-' . ttf_one_get_view() . '-featured-images';
+	$thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_default( $thumb_key ) ), $thumb_key );
+	$thumbnail_id = get_post_thumbnail_id();
+
+	if ( 'post-header' === $thumb_option ) :
+		$thumbnail_size = 'large';
+	else :
+		$thumbnail_size = ( is_singular() ) ? 'medium' : 'thumbnail';
+	endif;
 endif;
 ?>
 
