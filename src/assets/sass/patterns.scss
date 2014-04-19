@@ -46,7 +46,8 @@ img.wp-smiley {
 	max-width: 98%;
 }
 .wp-caption-text,
-.entry-thumbnail-caption {
+.entry-thumbnail-caption,
+.cycle-caption {
 	font-style: italic;
 	line-height: 1.35;
 	@include rem('font-size', 13px);

@@ -154,7 +154,8 @@
 /*---------------------------------------------------------
  Banner section: Pager (_pages.scss)
 -------------------------------------------------------- */
-.builder-section-banner {
+.builder-section-banner,
+.ttf-one-shortcode-slider {
 	.cycle-pager {
 		color: $d;
 		text-align: center;
@@ -172,7 +173,8 @@
 /*---------------------------------------------------------
  Banner section: Arrows (_pages.scss)
 -------------------------------------------------------- */
-.builder-section-banner {
+.builder-section-banner,
+.ttf-one-shortcode-slider {
 	.cycle-prev,
 	.cycle-next {
 		@include for(medium-screens) {
@@ -191,10 +193,13 @@
 			@include rem('top', -34px);
 			@include rem('font-size', 34px);
 		}
-		@include for(medium-screens) {
-			.builder-section-banner:hover &,
-			.builder-section-banner:focus & {
-				opacity: 1; //reset
+	}
+	@include for(medium-screens) {
+		&:hover,
+		&:focus {
+			.cycle-prev,
+			.cycle-next {
+				opacity: 1;
 			}
 		}
 	}

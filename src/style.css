@@ -1132,7 +1132,7 @@ img.wp-smiley {
   margin: 1.2% auto 0;
   max-width: 98%; }
 
-.wp-caption-text, .entry-thumbnail-caption {
+.wp-caption-text, .entry-thumbnail-caption, .cycle-caption {
   font-style: italic;
   line-height: 1.35;
   font-size: 13px;
@@ -1325,56 +1325,25 @@ iframe[src*="google.com/maps"] {
 -------------------------------------------------------- */
 .ttf-one-shortcode-slider .cycle-slide {
   position: relative;
-  text-align: center;
   width: 100%; }
 .ttf-one-shortcode-slider .cycle-caption {
+  display: none;
   position: absolute;
-  bottom: 1em;
-  left: 1em;
-  z-index: 10; }
+  z-index: 10;
+  color: #ffffff;
+  text-shadow: 1px 0 4px rgba(0, 0, 0, 0.15);
+  left: 16px;
+  left: 0.94118rem;
+  right: 16px;
+  right: 0.94118rem;
+  bottom: 22px;
+  bottom: 1.29412rem; }
+  @media screen and (min-width: 800px) {
+    .ttf-one-shortcode-slider .cycle-caption {
+      display: block; } }
 .ttf-one-shortcode-slider .cycle-pager {
-  color: #eaecee;
-  text-align: center;
-  line-height: 1;
-  font-size: 40px;
-  font-size: 2.35294rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-  .ttf-one-shortcode-slider .cycle-pager span {
-    cursor: pointer; }
-  .ttf-one-shortcode-slider .cycle-pager .cycle-pager-active {
-    color: #b9bcbf; }
-
-.ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
-  z-index: 999;
-  position: absolute;
-  top: 50%;
-  cursor: pointer; }
-  @media screen and (min-width: 800px) {
-    .ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
-      opacity: 0.2; } }
-  .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-prev:after, .ttf-one-shortcode-slider .cycle-next:before, .ttf-one-shortcode-slider .cycle-next:after {
-    position: relative;
-    font-family: FontAwesome;
-    color: #ffffff;
-    line-height: 1;
-    top: -34px;
-    top: -2rem;
-    font-size: 34px;
-    font-size: 2rem; }
-  @media screen and (min-width: 800px) {
-    .builder-section-banner:hover .ttf-one-shortcode-slider .cycle-prev, .builder-section-banner:focus .ttf-one-shortcode-slider .cycle-prev, .builder-section-banner:hover .ttf-one-shortcode-slider .cycle-next, .builder-section-banner:focus .ttf-one-shortcode-slider .cycle-next {
-      opacity: 1; } }
-.ttf-one-shortcode-slider .cycle-prev:before {
-  content: "\f0a8";
-  left: 32px; }
-.ttf-one-shortcode-slider .cycle-next {
-  right: 0; }
-  .ttf-one-shortcode-slider .cycle-next:before {
-    content: "\f0a9";
-    right: 32px; }
+  margin-top: 44px;
+  margin-top: 2.58824rem; }
 
 /*---------------------------------------------------------
  7. Pages (_pages.scss)
@@ -1517,7 +1486,7 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Banner section: Pager (_pages.scss)
 -------------------------------------------------------- */
-.builder-section-banner .cycle-pager {
+.builder-section-banner .cycle-pager, .ttf-one-shortcode-slider .cycle-pager {
   color: #eaecee;
   text-align: center;
   line-height: 1;
@@ -1527,23 +1496,23 @@ iframe[src*="google.com/maps"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .builder-section-banner .cycle-pager span {
+  .builder-section-banner .cycle-pager span, .ttf-one-shortcode-slider .cycle-pager span {
     cursor: pointer; }
-  .builder-section-banner .cycle-pager .cycle-pager-active {
+  .builder-section-banner .cycle-pager .cycle-pager-active, .ttf-one-shortcode-slider .cycle-pager .cycle-pager-active {
     color: #b9bcbf; }
 
 /*---------------------------------------------------------
  Banner section: Arrows (_pages.scss)
 -------------------------------------------------------- */
-.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
+.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
   z-index: 999;
   position: absolute;
   top: 50%;
   cursor: pointer; }
   @media screen and (min-width: 800px) {
-    .builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
+    .builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
       opacity: 0.2; } }
-  .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-prev:after, .builder-section-banner .cycle-next:before, .builder-section-banner .cycle-next:after {
+  .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-prev:after, .builder-section-banner .cycle-next:before, .builder-section-banner .cycle-next:after, .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-prev:after, .ttf-one-shortcode-slider .cycle-next:before, .ttf-one-shortcode-slider .cycle-next:after {
     position: relative;
     font-family: FontAwesome;
     color: #ffffff;
@@ -1552,15 +1521,15 @@ iframe[src*="google.com/maps"] {
     top: -2rem;
     font-size: 34px;
     font-size: 2rem; }
-  @media screen and (min-width: 800px) {
-    .builder-section-banner:hover .builder-section-banner .cycle-prev, .builder-section-banner:focus .builder-section-banner .cycle-prev, .builder-section-banner:hover .builder-section-banner .cycle-next, .builder-section-banner:focus .builder-section-banner .cycle-next {
-      opacity: 1; } }
-.builder-section-banner .cycle-prev:before {
+@media screen and (min-width: 800px) {
+  .builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next, .builder-section-banner:focus .cycle-prev, .builder-section-banner:focus .cycle-next, .ttf-one-shortcode-slider:hover .cycle-prev, .ttf-one-shortcode-slider:hover .cycle-next, .ttf-one-shortcode-slider:focus .cycle-prev, .ttf-one-shortcode-slider:focus .cycle-next {
+    opacity: 1; } }
+.builder-section-banner .cycle-prev:before, .ttf-one-shortcode-slider .cycle-prev:before {
   content: "\f0a8";
   left: 32px; }
-.builder-section-banner .cycle-next {
+.builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-next {
   right: 0; }
-  .builder-section-banner .cycle-next:before {
+  .builder-section-banner .cycle-next:before, .ttf-one-shortcode-slider .cycle-next:before {
     content: "\f0a9";
     right: 32px; }
 
