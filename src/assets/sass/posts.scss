@@ -2,6 +2,7 @@
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
 .entry-header {
+	text-align: center;
 	@include rem('margin-bottom', $base);
 	.entry-thumbnail {
 		line-height: 1; //reset
@@ -12,6 +13,7 @@
 	}
 }
 .entry-thumbnail-caption {
+	text-align: left; //reset
 	@include rem('margin-top', $base/4);
 }
 .entry-title {
