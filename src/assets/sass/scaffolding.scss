@@ -300,7 +300,7 @@ a {
 		}
 		&.email a:hover,
 		&.email a:focus {
-			color: #444444;
+			color: #ffae00;
 		}
 		&.rss a:hover,
 		&.rss a:focus {
@@ -388,6 +388,15 @@ a {
 		.children {
 			padding: 0; //reset
 			text-align: left;
+			li a {
+				@include rem('padding-left', $gut/2);
+				&:before {
+					content: "\2013  ";
+				}
+			}
+			li li a {
+				@include rem('padding-left', $gut);
+			}
 		}
 		@include for(medium-screens) {
 			.sub-menu,
@@ -423,8 +432,14 @@ a {
 						content: none; //reset
 					}
 				}
-				li:last-of-type a {
-					border-bottom: 0; //reset
+				li {
+					padding-left: 0; //reset
+					a:before {
+						content: none; //reset
+					}
+					&:last-of-type a {
+						border-bottom: 0; //reset
+					}
 				}
 				ul {
 					top: 0; //reset
