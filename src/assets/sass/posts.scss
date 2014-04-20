@@ -2,10 +2,10 @@
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
 .entry-header {
-	text-align: center;
 	@include rem('margin-bottom', $base);
 	.entry-thumbnail {
 		line-height: 1; //reset
+		text-align: center;
 		@include rem('margin-bottom', $base/2);
 		&.post-header {
 			margin-right: 0; //reset

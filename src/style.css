@@ -1178,11 +1178,11 @@ iframe[src*="google.com/maps"] {
  6. Posts (_posts.scss)
 -------------------------------------------------------- */
 .entry-header {
-  text-align: center;
   margin-bottom: 22px;
   margin-bottom: 1.29412rem; }
   .entry-header .entry-thumbnail {
     line-height: 1;
+    text-align: center;
     margin-bottom: 11px;
     margin-bottom: 0.64706rem; }
     .entry-header .entry-thumbnail.post-header {
