@@ -1552,6 +1552,9 @@ iframe[src*="google.com/maps"] {
     content: "\f0a9";
     right: 32px; }
 
+.builder-banner-section-title {
+  text-align: center; }
+
 .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-next:before {
   top: -12px;
   top: -0.70588rem; }

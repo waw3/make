@@ -25,6 +25,11 @@ $slider_ratio = ( $slider_height / 960 ) * 100;
 	}
 </style>
 <section class="builder-section <?php echo esc_attr( ttf_one_builder_get_banner_class( $ttf_one_section_data ) ); ?>">
+	<?php if ( '' !== $ttf_one_section_data['title'] ) : ?>
+	<h3 class="builder-banner-section-title">
+		<?php echo apply_filters( 'the_title', $ttf_one_section_data['title'] ); ?>
+	</h3>
+	<?php endif; ?>
 	<div class="builder-section-content<?php echo ( $is_slider ) ? ' cycle-slideshow' : ''; ?>"<?php echo ( $is_slider ) ? ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) : ''; ?>>
 		<?php if ( ! empty( $banner_slides ) ) : foreach ( $banner_slides as $slide ) : ?>
 		<div class="builder-banner-slide<?php echo ttf_one_builder_banner_slide_class( $slide ); ?>" style="<?php echo ttf_one_builder_banner_slide_style( $slide, $ttf_one_section_data ); ?>">
