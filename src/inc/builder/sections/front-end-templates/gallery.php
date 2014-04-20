@@ -12,6 +12,11 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 ?>
 
 <section class="builder-section<?php echo esc_attr( ttf_one_builder_get_gallery_class( $ttf_one_section_data ) ); ?>" style="<?php echo esc_attr( ttf_one_builder_get_gallery_style( $ttf_one_section_data ) ); ?>">
+	<?php if ( '' !== $ttf_one_section_data['title'] ) : ?>
+	<h3 class="builder-gallery-section-title">
+		<?php echo apply_filters( 'the_title', $ttf_one_section_data['title'] ); ?>
+	</h3>
+	<?php endif; ?>
 	<div class="builder-section-content">
 		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) :
 			$onclick = '';
@@ -19,7 +24,7 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 				$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $item['link'] ) ) . '\';"';
 			endif;
 			$i++;
-			?>
+		?>
 		<div class="builder-gallery-item<?php echo esc_attr( ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
 			<?php if ( 0 !== absint( $item['image-id'] ) ) : ?>
 				<?php echo ttf_one_builder_get_gallery_item_image( $item, $aspect ); ?>

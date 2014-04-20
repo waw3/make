@@ -1565,6 +1565,14 @@ iframe[src*="google.com/maps"] {
   padding: 52px 0 44px;
   padding:  3.05882rem 0 2.58824rem; }
 
+.builder-section-gallery .builder-gallery-section-title {
+  max-width: 1024px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  margin-bottom: 0.70588rem;
+  padding: 0 32px;
+  padding:  0 1.88235rem; }
+
 .builder-gallery-title {
   font-weight: bold;
   text-transform: uppercase;
