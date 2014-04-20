@@ -60,7 +60,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		$('.ttf-one-gallery-items-stage', view).sortable({
 			handle: '.ttf-one-sortable-handle',
 			placeholder: 'sortable-placeholder',
-			forcePlaceholderSizeType: true,
 			distance: 2,
 			tolerance: 'pointer',
 			start: function (event, ui) {
@@ -73,8 +72,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttf-one-gallery-items'),
-					$orderInput = $('.ttf-one-gallery-item-order', $stage),
-					$section = $item.parents('.ttf-one-section');
+					$orderInput = $('.ttf-one-gallery-item-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
 			}
