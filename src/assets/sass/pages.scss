@@ -54,8 +54,11 @@
  Text section: Columns (_pages.scss)
 -------------------------------------------------------- */
 .builder-text-column {
+	@include for(medium-screens) {
+		margin-right: percentage( $gut / $width );
+	}
 	float: left;
-	margin-right: percentage( $gut / $width );
+	width: 100%;
 	&:last-of-type {
 		margin-right: 0; //reset
 	}

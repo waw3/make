@@ -1412,7 +1412,10 @@ iframe[src*="google.com/maps"] {
 -------------------------------------------------------- */
 .builder-text-column {
   float: left;
-  margin-right: 3.33333%; }
+  width: 100%; }
+  @media screen and (min-width: 800px) {
+    .builder-text-column {
+      margin-right: 3.33333%; } }
   .builder-text-column:last-of-type {
     margin-right: 0; }
 
