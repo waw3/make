@@ -14,6 +14,9 @@
 		margin-bottom: 0; /*reset*/
 	}
 }
+.ttf-one-section .ttf-one-gallery-items-stage .sortable-placeholder {
+	margin-bottom: 38px;
+}
 /*---------------------------------------------------------
  Text and Gallery: One column (html-builder.css)
 -------------------------------------------------------- */
