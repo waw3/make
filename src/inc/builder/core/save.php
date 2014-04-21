@@ -36,8 +36,9 @@ class TTF_One_Builder_Save {
 	 * @return TTF_One_Builder_Save
 	 */
 	public static function instance() {
-		if ( is_null( self::$instance ) )
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
+		}
 
 		return self::$instance;
 	}

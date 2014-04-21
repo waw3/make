@@ -30,8 +30,9 @@ class TTF_One_Gallery_Slider {
 	 * @return TTF_One_Gallery_Slider
 	 */
 	public static function instance() {
-		if ( is_null( self::$instance ) )
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
+		}
 
 		return self::$instance;
 	}

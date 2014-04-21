@@ -35,8 +35,9 @@ class TTF_One_Sections {
 	 * @return TTF_One_Sections
 	 */
 	public static function instance() {
-		if ( is_null( self::$instance ) )
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
+		}
 
 		return self::$instance;
 	}
