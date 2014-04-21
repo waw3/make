@@ -73,7 +73,7 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 
 	// Columns
 	$gallery_columns = ( isset( $ttf_one_section_data['columns'] ) ) ? absint( $ttf_one_section_data['columns'] ) : 1;
-	$gallery_class .= ' builder-gallery-columns-' . $gallery_columns;
+	$gallery_class  .= ' builder-gallery-columns-' . $gallery_columns;
 
 	// Captions
 	if ( isset( $ttf_one_section_data['captions'] ) && ! empty( $ttf_one_section_data['captions'] ) ) {
