@@ -120,20 +120,21 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var $section = $(this),
 				idAttr = $section.attr('id'),
 				id = $section.attr('data-id'),
-				sectionType = $section.attr('data-section-type');
+				sectionType = $section.attr('data-section-type'),
+				sectionModel, modelViewName, view, viewName;
 
 			// Build the model
-			var sectionModel = new oneApp.SectionModel({
+			sectionModel = new oneApp.SectionModel({
 				sectionType: sectionType,
 				id: id
 			});
 
 			// Ensure that a view exists for the section, otherwise use the base view
-			var modelViewName = sectionModel.get('viewName') + 'View',
-				viewName = (true === oneApp.hasOwnProperty(modelViewName)) ? modelViewName : 'SectionView';
+			modelViewName = sectionModel.get('viewName') + 'View';
+			viewName      = (true === oneApp.hasOwnProperty(modelViewName)) ? modelViewName : 'SectionView';
 
 			// Create view
-			var view = new oneApp[viewName]({
+			view = new oneApp[viewName]({
 				model: sectionModel,
 				el: $('#' + idAttr),
 				serverRendered: true
