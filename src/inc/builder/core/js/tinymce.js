@@ -1,7 +1,7 @@
-/*global jQuery, tinyMCEPreInit */
+/*global jQuery, tinyMCEPreInit, ttfOneMCE */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function ($, oneApp, tinyMCEPreInit ) {
+(function ($, oneApp, tinyMCEPreInit, ttfOneMCE) {
 	'use strict';
 
 	// Initiate a new TinyMCE editor instance
@@ -107,4 +107,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		this.syncEditorHeight(evt, baseEl);
 	};
 
-})(jQuery, oneApp, tinyMCEPreInit );
+})(jQuery, oneApp, tinyMCEPreInit, ttfOneMCE);
