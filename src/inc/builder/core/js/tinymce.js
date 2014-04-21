@@ -5,7 +5,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	'use strict';
 
 	// Initiate a new TinyMCE editor instance
-	oneApp.initEditor = function (editorID, tempEditorID, type) {
+	oneApp.initEditor = function (editorID, tempEditorID) {
 		var mceInit = {},
 			qtInit = {};
 
