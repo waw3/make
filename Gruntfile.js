@@ -27,7 +27,10 @@ module.exports = function( grunt ) {
 				src: [
 					'src/js/**/*.js',
 					'!src/js/**/*.min.js',
-					'src/inc/customizer/js/customizer.js'
+					'!src/js/libs/**/*.js',
+					'src/inc/customizer/js/customizer.js',
+					'src/inc/builder/core/js/**/*.js',
+					'src/inc/builder/sections/js/**/*.js'
 				]
 			}
 		},
