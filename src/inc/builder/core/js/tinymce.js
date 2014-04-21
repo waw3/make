@@ -1,4 +1,4 @@
-/*global jQuery, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor, ttfOneMCE */
+/*global jQuery, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor:true, ttfOneMCE */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 (function ($, oneApp) {
