@@ -59,7 +59,6 @@ class TTF_One_Builder_Base {
 		add_action( 'admin_print_styles-post.php', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_print_styles-post-new.php', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
-		add_action( 'admin_footer', array( $this, 'add_js_data' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
 		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
 	}
@@ -215,6 +214,17 @@ class TTF_One_Builder_Base {
 			TTF_ONE_VERSION,
 			true
 		);
+
+		// Add data needed for the JS
+		$data = array(
+			'pageID' => get_the_ID(),
+		);
+
+		wp_localize_script(
+			'ttf-one-builder',
+			'ttfOneBuilderData',
+			$data
+		);
 	}
 
 	/**
@@ -249,35 +259,6 @@ class TTF_One_Builder_Base {
 			<?php endforeach; ?>
 		</style>
 	<?php
-	}
-
-	/**
-	 * Add data for the HTML Builder.
-	 *
-	 * Data needs to be added late so that the iterator value is properly set.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	public function add_js_data() {
-		global $hook_suffix;
-
-		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
-			return;
-		}
-
-		// Add data needed for the JS
-		$data = array(
-			'pageID' => get_the_ID(),
-		);
-
-		wp_localize_script(
-			'ttf-one-builder',
-			'ttfOneBuilderData',
-			$data
-		);
 	}
 
 	/**
