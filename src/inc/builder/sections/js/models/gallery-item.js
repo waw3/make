@@ -1,7 +1,7 @@
 /* global Backbone, jQuery, _ */
-var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+var oneApp = oneApp || {};
 
-(function (window, Backbone, $, _, oneApp, $oneApp) {
+(function (window, Backbone, $, _, oneApp) {
 	'use strict';
 
 	oneApp.GalleryItemModel = Backbone.Model.extend({
@@ -15,4 +15,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.GalleryItemModel.prototype.sync = function () { return null; };
 	oneApp.GalleryItemModel.prototype.fetch = function () { return null; };
 	oneApp.GalleryItemModel.prototype.save = function () { return null; };
-})(window, Backbone, jQuery, _, oneApp, $oneApp);
+})(window, Backbone, jQuery, _, oneApp);
