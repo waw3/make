@@ -15,8 +15,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		addSlide: function (evt, params) {
 			evt.preventDefault();
 
+			var view, html;
+
 			// Create view
-			var view = new oneApp.BannerSlideView({
+			view = new oneApp.BannerSlideView({
 				model: new oneApp.BannerSlideModel({
 					id: new Date().getTime(),
 					parentID: this.getParentID()
@@ -24,7 +26,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			});
 
 			// Append view
-			var html = view.render().el;
+			html = view.render().el;
 			$('.ttf-one-banner-slides-stage', this.$el).append(html);
 
 			// Only scroll and focus if not triggered by the pseudo event
@@ -124,16 +126,17 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				idAttr = $item.attr('id'),
 				id = $item.attr('data-id'),
 				$section = $item.parents('.ttf-one-section'),
-				parentID = $section.attr('data-id');
+				parentID = $section.attr('data-id'),
+				model, view;
 
 			// Build the model
-			var model = new oneApp.BannerSlideModel({
+			model = new oneApp.BannerSlideModel({
 				id: id,
 				parentID: parentID
 			});
 
 			// Build the view
-			var view = new oneApp.BannerSlideView({
+			view = new oneApp.BannerSlideView({
 				model: model,
 				el: $('#' + idAttr),
 				serverRendered: true

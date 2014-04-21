@@ -117,9 +117,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$placeholder = $('.ttf-one-media-uploader-placeholder', $parent),
 				$input = $('.ttf-one-media-uploader-value', $parent),
 				$remove = $('.ttf-one-media-uploader-remove', $parent),
-				$add = $('.ttf-one-media-uploader-set-link', $parent);
-
-			var frame = frame || {};
+				$add = $('.ttf-one-media-uploader-set-link', $parent),
+				frame = frame || {},
+				props, image;
 
 			// If the media frame already exists, reopen it.
 			if ('function' === typeof frame.open) {
@@ -145,7 +145,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				attachment.caption = '';
 
 				// Build the image
-				var props = wp.media.string.props(
+				props = wp.media.string.props(
 					{},
 					attachment
 				);
@@ -153,7 +153,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				// The URL property is blank, so complete it
 				props.url = attachment.url;
 
-				var image = wp.media.string.image( props );
+				image = wp.media.string.image( props );
 
 				// Show the image
 				$placeholder.html(image);

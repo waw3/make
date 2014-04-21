@@ -7,7 +7,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	// Initiate a new TinyMCE editor instance
 	oneApp.initEditor = function (editorID, tempEditorID) {
 		var mceInit = {},
-			qtInit = {};
+			qtInit = {},
+			$wrapper;
 
 		/**
 		 * Get the default values for this section type from the pre init object. Store them in a new object with
@@ -48,7 +49,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		 * Add Media buttons, as well as some other buttons will add content to the wrong editors. This strategy
 		 * assumes that if you are clicking on the editor, it is the active editor.
 		 */
-		var $wrapper = $('#wp-' + editorID + '-wrap');
+		$wrapper = $('#wp-' + editorID + '-wrap');
 
 		$wrapper.on('click', '.add_media', {id: editorID}, function (evt) {
 			wpActiveEditor = evt.data.id;
