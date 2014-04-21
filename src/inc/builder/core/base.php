@@ -20,15 +20,6 @@ class TTF_One_Builder_Base {
 	private static $instance;
 
 	/**
-	 * Holds the iterator for managing sections
-	 *
-	 * @since 1.0.0.
-	 *
-	 * @var   int    Current section number.
-	 */
-	private $_iterator = 0;
-
-	/**
 	 * Instantiate or return the one TTF_One_Builder_Base instance.
 	 *
 	 * @since  1.0.0.
@@ -279,8 +270,7 @@ class TTF_One_Builder_Base {
 
 		// Add data needed for the JS
 		$data = array(
-			'iterator' => $this->get_iterator(),
-			'pageID'   => get_the_ID(),
+			'pageID' => get_the_ID(),
 		);
 
 		wp_localize_script(
@@ -619,45 +609,6 @@ class TTF_One_Builder_Base {
 		}
 
 		return $order;
-	}
-
-	/**
-	 * Get the value of the iterator.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return int    The value of the iterator.
-	 */
-	public function get_iterator() {
-		return $this->_iterator;
-	}
-
-	/**
-	 * Set the iterator value.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  int    $value    The new iterator value.
-	 * @return int              The iterator value.
-	 */
-	public function set_iterator( $value ) {
-		$this->_iterator = $value;
-		return $this->get_iterator();
-	}
-
-	/**
-	 * Increase the interator value by 1.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return int    The iterator value.
-	 */
-	public function increment_iterator() {
-		$value = $this->get_iterator();
-		$value++;
-
-		$this->set_iterator( $value );
-		return $this->get_iterator();
 	}
 }
 endif;
