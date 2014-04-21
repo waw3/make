@@ -52,6 +52,13 @@
 	line-height: 1.4;
 	@include rem('margin', 0 0 $base);
 }
+.builder-gallery-section-title,
+.builder-banner-section-title {
+	max-width: $width+($gut*2);
+	margin-left: auto;
+	margin-right: auto;
+	@include rem('padding', 0 $gut);
+}
 /*---------------------------------------------------------
  Text section: Columns (_pages.scss)
 -------------------------------------------------------- */
@@ -235,12 +242,6 @@
 	position: relative;
 	background-size: cover;
 	@include rem('padding', $base*2+$gut/4 0 $base*2);
-	.builder-gallery-section-title {
-		max-width: $width+($gut*2);
-		margin-left: auto;
-		margin-right: auto;
-		@include rem('padding', 0 $gut);
-	}
 }
 .builder-gallery-title {
 	font-weight: bold;
