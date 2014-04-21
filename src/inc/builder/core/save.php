@@ -157,9 +157,7 @@ class TTF_One_Builder_Save {
 			update_post_meta( $post_id, $key, $value );
 		}
 
-		/**
-		 * Save the ids for the sections. This will be used to lookup all of the separate values.
-		 */
+		// Save the ids for the sections. This will be used to lookup all of the separate values.
 		$section_ids = array_keys( $sections );
 		update_post_meta( $post_id, '_ttfob-section-ids', $section_ids );
 
