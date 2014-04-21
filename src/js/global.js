@@ -53,12 +53,14 @@
 			var container, button, menu;
 
 			container = document.getElementById( 'site-navigation' );
-			if ( ! container )
+			if ( ! container ) {
 				return;
+			}
 
 			button = container.getElementsByTagName( 'span' )[0];
-			if ( 'undefined' === typeof button )
+			if ( 'undefined' === typeof button ) {
 				return;
+			}
 
 			menu = container.getElementsByTagName( 'ul' )[0];
 
@@ -68,14 +70,16 @@
 				return;
 			}
 
-			if ( -1 === menu.className.indexOf( 'nav-menu' ) )
+			if ( -1 === menu.className.indexOf( 'nav-menu' ) ) {
 				menu.className += ' nav-menu';
+			}
 
 			button.onclick = function() {
-				if ( -1 !== container.className.indexOf( 'toggled' ) )
+				if ( -1 !== container.className.indexOf( 'toggled' ) ) {
 					container.className = container.className.replace( ' toggled', '' );
-				else
+				} else {
 					container.className += ' toggled';
+				}
 			};
 		},
 
@@ -97,8 +101,9 @@
 					var element = document.getElementById( location.hash.substring( 1 ) );
 
 					if ( element ) {
-						if ( ! /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) )
+						if ( ! /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) {
 							element.tabIndex = -1;
+						}
 
 						element.focus();
 					}
