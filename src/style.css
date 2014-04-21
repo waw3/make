@@ -1402,7 +1402,7 @@ iframe[src*="google.com/maps"] {
   margin-bottom: 44px;
   margin-bottom: 2.58824rem; }
 
-.builder-text-title, .builder-section-title {
+.builder-text-title, .builder-section-title, .builder-gallery-section-title, .builder-banner-section-title {
   line-height: 1.4;
   margin: 0 0 22px;
   margin:  0 0 1.29412rem; }
@@ -1567,14 +1567,12 @@ iframe[src*="google.com/maps"] {
   background-size: cover;
   padding: 52px 0 44px;
   padding:  3.05882rem 0 2.58824rem; }
-
-.builder-section-gallery .builder-gallery-section-title {
-  max-width: 1024px;
-  margin: 0 auto;
-  margin-bottom: 12px;
-  margin-bottom: 0.70588rem;
-  padding: 0 32px;
-  padding:  0 1.88235rem; }
+  .builder-section-gallery .builder-gallery-section-title {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 32px;
+    padding:  0 1.88235rem; }
 
 .builder-gallery-title {
   font-weight: bold;

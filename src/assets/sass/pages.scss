@@ -46,7 +46,9 @@
 	@extend .clear;
 }
 .builder-text-title,
-.builder-section-title {
+.builder-section-title,
+.builder-gallery-section-title,
+.builder-banner-section-title {
 	line-height: 1.4;
 	@include rem('margin', 0 0 $base);
 }
@@ -233,12 +235,10 @@
 	position: relative;
 	background-size: cover;
 	@include rem('padding', $base*2+$gut/4 0 $base*2);
-}
-.builder-section-gallery {
 	.builder-gallery-section-title {
 		max-width: $width+($gut*2);
-		margin: 0 auto ;
-		@include rem('margin-bottom', 12px);
+		margin-left: auto;
+		margin-right: auto;
 		@include rem('padding', 0 $gut);
 	}
 }
