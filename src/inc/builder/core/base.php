@@ -490,7 +490,7 @@ class TTF_One_Builder_Base {
 	 * @since  1.0.0.
 	 *
 	 * @param  string    $post_id    The post to retrieve the data from.
-	 * @return mixed                 The combined data.
+	 * @return array                 The combined data.
 	 */
 	public function get_section_data( $post_id ) {
 		$ordered_data = array();
