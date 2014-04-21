@@ -4,9 +4,13 @@
  */
 
 /**
- * @param $type
+ * Determine if a section of a specified type.
  *
- * @return bool
+ * @since  1.0.0.
+ *
+ * @param  string    $type    The section type to check.
+ * @param  array     $data    The section data.
+ * @return bool               True if the section is the specified type; false if it is not.
  */
 function ttf_one_builder_is_section_type( $type, $data ) {
 	if ( isset( $data['section-type'] ) && $type === $data['section-type'] ) {
@@ -17,9 +21,12 @@ function ttf_one_builder_is_section_type( $type, $data ) {
 }
 
 /**
- * @param $ttf_one_section_data
+ * Extract the list of gallery items from the data array.
  *
- * @return array
+ * @since  1.0.0.
+ *
+ * @param  array    $ttf_one_section_data    The section data.
+ * @return array                             The array of gallery items.
  */
 function ttf_one_builder_get_gallery_array( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
@@ -47,9 +54,12 @@ function ttf_one_builder_get_gallery_array( $ttf_one_section_data ) {
 }
 
 /**
- * @param $ttf_one_section_data
+ * Generate the class to use for the gallery section.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return string                             The class.
  */
 function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
@@ -79,9 +89,12 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 }
 
 /**
- * @param $ttf_one_section_data
+ * Generate the CSS for the gallery.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return string                             The CSS string.
  */
 function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
@@ -107,10 +120,13 @@ function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
 }
 
 /**
- * @param array $ttf_one_section_data
- * @param int $i The current gallery item iterator
+ * Generate the class for an individual gallery item.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @param  int       $i                       The current gallery item iterator
+ * @return string                             The class.
  */
 function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
 	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
@@ -124,6 +140,7 @@ function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
 	if ( $gallery_columns > 2 && 0 === $i % $gallery_columns ) {
 		$gallery_class .= ' last-' . $gallery_columns;
 	}
+
 	if ( 0 === $i % 2 ) {
 		$gallery_class .= ' last-2';
 	}
@@ -132,10 +149,13 @@ function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
 }
 
 /**
- * @param array $item
- * @param string $aspect
+ * Get the image for the gallery item.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $item      The item's data.
+ * @param  string    $aspect    The aspect ratio for the section.
+ * @return string               The HTML or CSS for the item's image.
  */
 function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
 	global $ttf_one_section_data;
@@ -169,9 +189,12 @@ function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
 }
 
 /**
- * @param $ttf_one_section_data
+ * Get the columns data for a text section.
  *
- * @return array
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return array                              Array of data for columns in a text section.
  */
 function ttf_one_builder_get_text_array( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'text', $ttf_one_section_data ) ) {
@@ -206,9 +229,12 @@ function ttf_one_builder_get_text_array( $ttf_one_section_data ) {
 }
 
 /**
- * @param $ttf_one_section_data
+ * Get the class for the text section.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return string                             The class.
  */
 function ttf_one_builder_get_text_class( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'text', $ttf_one_section_data ) ) {
@@ -228,9 +254,12 @@ function ttf_one_builder_get_text_class( $ttf_one_section_data ) {
 }
 
 /**
- * @param $ttf_one_section_data
+ * Get the data for the array section.
  *
- * @return array
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return array                              The data.
  */
 function ttf_one_builder_get_banner_array( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'banner', $ttf_one_section_data ) ) {
@@ -258,9 +287,12 @@ function ttf_one_builder_get_banner_array( $ttf_one_section_data ) {
 }
 
 /**
- * @param array $ttf_one_section_data
+ * Get the class for a banner section.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return string                             The class.
  */
 function ttf_one_builder_get_banner_class( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'banner', $ttf_one_section_data ) ) {
@@ -273,16 +305,19 @@ function ttf_one_builder_get_banner_class( $ttf_one_section_data ) {
 	$banner_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
 
 	// Banner id
-	$banner_id = ( isset( $ttf_one_section_data['id'] ) ) ? absint( $ttf_one_section_data['id'] ) : 1;
+	$banner_id     = ( isset( $ttf_one_section_data['id'] ) ) ? absint( $ttf_one_section_data['id'] ) : 1;
 	$banner_class .= ' builder-section-banner-' . $banner_id;
 
 	return $banner_class;
 }
 
 /**
- * @param array $ttf_one_section_data
+ * Get the attributes for a banner slider.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return string                             The attributes.
  */
 function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 	if ( ! ttf_one_builder_is_section_type( 'banner', $ttf_one_section_data ) ) {
@@ -296,7 +331,7 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 	), $ttf_one_section_data );
 
 	// Data attributes
-	$data_attributes = ' data-cycle-log="false"';
+	$data_attributes  = ' data-cycle-log="false"';
 	$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
 	$data_attributes .= ' data-cycle-swipe="true"';
 
@@ -328,9 +363,12 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 }
 
 /**
- * @param array $slide
+ * Get the class attribute for a slide.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $slide    The data for an individual slide.
+ * @return string              The slide's class.
  */
 function ttf_one_builder_banner_slide_class( $slide ) {
 	$slide_class = '';
@@ -344,10 +382,13 @@ function ttf_one_builder_banner_slide_class( $slide ) {
 }
 
 /**
- * @param array $slide
- * @param array $ttf_one_section_data
+ * Get the CSS for a slide.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  array     $slide                   The slide data.
+ * @param  array     $ttf_one_section_data    The section data.
+ * @return string                             The CSS.
  */
 function ttf_one_builder_banner_slide_style( $slide, $ttf_one_section_data ) {
 	$slide_style = '';
