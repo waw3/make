@@ -279,10 +279,8 @@ class TTF_One_Builder_Base {
 
 		// Add data needed for the JS
 		$data = array(
-			'iterator'          => $this->get_iterator(),
-			'pageID'            => get_the_ID(),
-			'hideHeaderChecked' => checked( get_post_meta( get_the_ID(), '_ttf-one-hide-header', true ), '1', false ),
-			'hideHeaderLabel'   => __( 'Hide the site header on this page', 'ttf-one' ),
+			'iterator' => $this->get_iterator(),
+			'pageID'   => get_the_ID(),
 		);
 
 		wp_localize_script(
