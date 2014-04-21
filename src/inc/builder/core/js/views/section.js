@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _, wp:true, switchEditors */
+/* global Backbone, jQuery, _, wp:true */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 (function (window, Backbone, $, _, oneApp, $oneApp) {
