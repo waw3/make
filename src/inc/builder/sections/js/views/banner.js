@@ -1,7 +1,7 @@
-/* global jQuery, _, ttfOneBanner */
+/* global jQuery, _ */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function (window, $, _, oneApp, $oneApp, ttfOneBanner) {
+(function (window, $, _, oneApp, $oneApp) {
 	'use strict';
 
 	oneApp.BannerView = oneApp.SectionView.extend({
@@ -147,4 +147,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Initialize the views when the app starts up
 	oneApp.initBannerSlideViews();
-})(window, jQuery, _, oneApp, $oneApp, ttfOneBanner);
+})(window, jQuery, _, oneApp, $oneApp);
