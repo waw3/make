@@ -3,12 +3,7 @@
 <div class="ttf-one-section <?php if ( isset( $ttf_one_section_data['data']['state'] ) && 'open' === $ttf_one_section_data['data']['state'] ) echo 'ttf-one-section-open'; ?> ttf-one-section-<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>" id="<?php echo 'ttf-one-section-' . esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>">
 <?php endif; ?>
 	<div class="ttf-one-section-header">
-		<?php
-			$header_title = '';
-			if ( isset( $ttf_one_section_data['data']['label'] ) ) {
-				$header_title = $ttf_one_section_data['data']['label'];
-			}
-		?>
+		<?php $header_title = ( isset( $ttf_one_section_data['data']['label'] ) ) ? $ttf_one_section_data['data']['label'] : ''; ?>
 		<h3>
 			<span class="ttf-one-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttf_one_section_data['section']['label'] ) ); ?></em>
 		</h3>
