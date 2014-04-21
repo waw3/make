@@ -1,7 +1,7 @@
-/*global jQuery, tinyMCEPreInit, ttfOneMCE */
+/*global jQuery, tinyMCEPreInit, tinyMCE, ttfOneMCE */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function ($, oneApp, tinyMCEPreInit, ttfOneMCE) {
+(function ($, oneApp, tinyMCEPreInit, tinyMCE, ttfOneMCE) {
 	'use strict';
 
 	// Initiate a new TinyMCE editor instance
@@ -107,4 +107,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		this.syncEditorHeight(evt, baseEl);
 	};
 
-})(jQuery, oneApp, tinyMCEPreInit, ttfOneMCE);
+})(jQuery, oneApp, tinyMCEPreInit, tinyMCE, ttfOneMCE);
