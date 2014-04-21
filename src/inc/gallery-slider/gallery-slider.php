@@ -7,16 +7,16 @@ if ( ! class_exists( 'TTF_One_Gallery_Slider' ) ) :
 /**
  * class TTF_One_Gallery_Slider
  *
- * A class that adds custom logo functionality.
+ * A class that defines the slider for the gallery section.
  *
- * @since 1.0.0
+ * @since 1.0.0.
  */
 class TTF_One_Gallery_Slider {
 
 	/**
 	 * The one instance of TTF_One_Gallery_Slider
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.0.
 	 *
 	 * @var TTF_One_Gallery_Slider
 	 */
@@ -25,7 +25,7 @@ class TTF_One_Gallery_Slider {
 	/**
 	 * Instantiate or return the one TTF_One_Gallery_Slider instance.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Gallery_Slider
 	 */
@@ -40,7 +40,7 @@ class TTF_One_Gallery_Slider {
 	/**
 	 * Add the action and filter hooks.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Gallery_Slider
 	 */
@@ -52,7 +52,7 @@ class TTF_One_Gallery_Slider {
 	/**
 	 * Add admin-only action hooks
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -64,7 +64,7 @@ class TTF_One_Gallery_Slider {
 	/**
 	 * Enqueue the admin script that handles the slider settings in the Media Manager
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -81,7 +81,7 @@ class TTF_One_Gallery_Slider {
 	/**
 	 * Markup for the slider settings in the Media Manager
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -124,41 +124,43 @@ class TTF_One_Gallery_Slider {
 	/**
 	 * Alternate gallery shortcode handler for the slider
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0.
 	 *
-	 * @param string $output
-	 * @param array $attr
-	 *
-     *@return string
+	 * @param  string    $output    The original shortcode output.
+	 * @param  array     $attr      The shortcode attrs.
+	 * @return string               The modified gallery code
 	 */
 	function render_gallery( $output, $attr ) {
 		// Only use this alternative output if the slider is set to true
 		if ( isset( $attr['ttf_one_slider'] ) && true == $attr['ttf_one_slider'] ) {
-			// Begin core code (3.9 beta)
 			$post = get_post();
 
 			if ( ! empty( $attr['ids'] ) ) {
 				// 'ids' is explicitly ordered, unless you specify otherwise.
-				if ( empty( $attr['orderby'] ) )
+				if ( empty( $attr['orderby'] ) ) {
 					$attr['orderby'] = 'post__in';
+				}
+
 				$attr['include'] = $attr['ids'];
 			}
 
 			// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
 			if ( isset( $attr['orderby'] ) ) {
 				$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-				if ( !$attr['orderby'] )
+				if ( !$attr['orderby'] ) {
 					unset( $attr['orderby'] );
+				}
 			}
 
 			extract( shortcode_atts( array(
 				// Built-in
-				'order'      => 'ASC',
-				'orderby'    => 'menu_order ID',
-				'id'         => $post ? $post->ID : 0,
-				'size'       => 'large',
-				'include'    => '',
-				'exclude'    => '',
+				'order'            => 'ASC',
+				'orderby'          => 'menu_order ID',
+				'id'               => $post ? $post->ID : 0,
+				'size'             => 'large',
+				'include'          => '',
+				'exclude'          => '',
+
 				// ttf-one slider
 				'ttf_one_slider'   => true,
 				'ttf_one_autoplay' => false,
@@ -282,14 +284,13 @@ class TTF_One_Gallery_Slider {
 
 		return $output;
 	}
-
-} // end class
+}
 
 if ( ! function_exists( 'ttf_one_get_logo' ) ) :
 /**
  * Return the one TTF_One_Gallery_Slider object.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return TTF_One_Gallery_Slider
  */
@@ -300,4 +301,4 @@ endif;
 
 add_action( 'init', 'ttf_one_get_gallery_slider', 1 );
 
-endif; // end if class_exists
+endif;
