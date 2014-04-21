@@ -1,7 +1,7 @@
-/*global jQuery, tinyMCEPreInit, tinyMCE, QTags, quicktags, ttfOneMCE */
+/*global jQuery, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor, ttfOneMCE */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function ($, oneApp, tinyMCEPreInit, tinyMCE, QTags, quicktags, ttfOneMCE) {
+(function ($, oneApp, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor, ttfOneMCE) {
 	'use strict';
 
 	// Initiate a new TinyMCE editor instance
@@ -107,4 +107,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		this.syncEditorHeight(evt, baseEl);
 	};
 
-})(jQuery, oneApp, tinyMCEPreInit, tinyMCE, QTags, quicktags, ttfOneMCE);
+})(jQuery, oneApp, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor, ttfOneMCE);
