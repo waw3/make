@@ -1,7 +1,7 @@
 /*global jQuery, tinyMCE, switchEditors */
-var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+var oneApp = oneApp || {};
 
-(function ($, oneApp, $oneApp) {
+(function ($, oneApp) {
 	'use strict';
 
 	// Kickoff Backbone App
@@ -157,4 +157,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	oneApp.initSortables();
 	oneApp.initViews();
-})(jQuery, oneApp, $oneApp);
+})(jQuery, oneApp);
