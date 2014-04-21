@@ -218,6 +218,157 @@ function ttf_one_maybe_show_sidebar( $location ) {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_maybe_show_social_links' ) ) :
+/**
+ * Show the social links markup if the theme options and/or menus are configured for it.
+ *
+ * @since 1.0.0.
+ *
+ * @param  string $region The site region (header or footer)
+ * @return void
+ */
+function ttf_one_maybe_show_social_links( $region ) {
+	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
+		return;
+	}
+
+	$show_social = (bool) get_theme_mod( $region . '-show-social', ttf_one_get_default( $region . '-show-social' ) );
+
+	if ( true === $show_social ) {
+		// First look for the alternate custom menu method
+		if ( has_nav_menu( 'social' ) ) {
+			wp_nav_menu(
+				array(
+					'theme_location' => 'social',
+					'container'      => false,
+					'menu_id'        => '',
+					'menu_class'     => 'social-links ' . $region . '-social-links',
+					'depth'          => 1,
+					'fallback_cb'    => '',
+				)
+			);
+		}
+		// Then look for the Customizer theme option method
+		else {
+			$social_links = ttf_one_get_social_links();
+			if ( ! empty( $social_links ) ) { ?>
+				<ul class="social-links <?php echo $region; ?>-social-links">
+				<?php foreach ( $social_links as $key => $link ) : ?>
+					<li class="<?php echo esc_attr( $key ); ?>">
+						<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( $link['title'] ); ?>">
+							<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
+						</a>
+					</li>
+				<?php endforeach; ?>
+				</ul>
+			<?php }
+		}
+	}
+}
+endif;
+
+if ( ! function_exists( 'ttf_one_pre_wp_nav_menu_social' ) ) :
+/**
+ * Alternative output for wp_nav_menu for the 'social' menu location.
+ *
+ * @since 1.0.0.
+ *
+ * @param  string    $output    Null
+ * @param  object    $args      wp_nav_menu arguments
+ *
+ * @return string
+ */
+function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
+	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
+		return;
+	}
+
+	// Get the menu object
+	$locations = get_nav_menu_locations();
+	$menu = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
+	if ( ! $menu || is_wp_error( $menu ) ) {
+		return;
+	}
+
+	$output = '';
+
+	// Get the menu items
+	$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
+
+	// Set up the $menu_item variables
+	_wp_menu_item_classes_by_context( $menu_items );
+
+	// Sort the menu items
+	$sorted_menu_items = array();
+	foreach ( (array) $menu_items as $menu_item ) {
+		$sorted_menu_items[ $menu_item->menu_order ] = $menu_item;
+	}
+
+	unset( $menu_items, $menu_item );
+
+	// Supported social icons (filterable)
+	$supported_icons = apply_filters( 'ttf_one_supported_social_icons', array(
+		'fa-adn' => 'app.net',
+		'fa-bitbucket' => 'bitbucket.org',
+		'fa-dribbble' => 'dribbble.com',
+		'fa-facebook' => 'facebook.com',
+		'fa-flickr' => 'flickr.com',
+		'fa-foursquare' => 'foursquare.com',
+		'fa-github' => 'github.com',
+		'fa-gittip' => 'gittip.com',
+		'fa-google-plus-square' => 'plus.google.com',
+		'fa-instagram' => 'instagram.com',
+		'fa-linkedin' => 'linkedin.com',
+		'fa-pinterest' => 'pinterest.com',
+		'fa-renren' => 'renren.com',
+		'fa-stack-exchange' => 'stackexchange.com',
+		'fa-stack-overflow' => 'stackoverflow.com',
+		'fa-trello' => 'trello.com',
+		'fa-tumblr' => 'tumblr.com',
+		'fa-twitter' => 'twitter.com',
+		'fa-vimeo-square' => 'vimeo.com',
+		'fa-vk' => 'vk.com',
+		'fa-weibo' => 'weibo.com',
+		'fa-xing' => 'xing.com',
+		'fa-youtube' => 'youtube.com',
+	) );
+
+	//
+	foreach ( $sorted_menu_items as $item ) {
+		$item_output = '';
+
+		// Look for matching icons
+		foreach ( $supported_icons as $class => $pattern ) {
+			if ( false !== strpos( $item->url, $pattern ) ) {
+				$output .= '<li class="' . esc_attr( $class ) . '">';
+				$output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
+				$output .= '<i class="fa fa-fw ' . esc_attr( $class ) . '"></i>';
+				$output .= '</a></li>';
+
+				break;
+			}
+		}
+
+		// No matching icons
+		if ( '' === $item_output ) {
+			$output .= '<li class="fa-user">';
+			$output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
+			$output .= '<i class="fa fa-fw fa-user"></i>';
+			$output .= '</a></li>';
+		}
+	}
+
+	// If there are menu items, add a wrapper
+	if ( '' !== $output ) {
+		$output = '<ul class="' . esc_attr( $args->menu_class ) . '">' . $output . '</ul>';
+	}
+
+	return $output;
+}
+endif;
+
+add_filter( 'pre_wp_nav_menu', 'ttf_one_pre_wp_nav_menu_social', 10, 2 );
+
 if ( ! function_exists( 'ttf_one_get_exif_data' ) ) :
 /**
  * @param int $attachment_id

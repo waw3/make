@@ -233,7 +233,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 				'section'     => $section,
 				'type'        => 'text',
 				'description' => sprintf(
-					__( 'If you would like to add a social profile that is not listed above, or would like to change the order of the icons, use %s.', 'ttf-one' ),
+					__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, use %s.', 'ttf-one' ),
 					sprintf(
 						'<a href="' . esc_url( '#' ) . '">%s</a>',
 						__( 'this alternate method', 'ttf-one' )

@@ -95,6 +95,7 @@ function ttf_one_setup() {
 	// Menu locations
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'ttf-one' ),
+		'social'  => __( 'Social Profile Links', 'ttf-one' )
 	) );
 
 	// Editor styles

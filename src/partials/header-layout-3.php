@@ -26,17 +26,7 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default
 			</span>
 			<?php endif; ?>
 			<?php // Social links
-			if ( ! empty ( $social_links ) && 1 === $show_social ) : ?>
-			<ul class="social-links header-social-links">
-				<?php foreach ( $social_links as $key => $link ) : ?>
-				<li class="<?php echo esc_attr( $key ); ?>">
-					<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( $link['title'] ); ?>">
-						<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>"></i>
-					</a>
-				</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php endif; ?>
+			ttf_one_maybe_show_social_links( 'header' ); ?>
 		</div>
 	</div>
 	<?php endif; ?>
