@@ -29,7 +29,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
 
 			// Allow custom init functions
-			$(oneApp).trigger('viewInit', this);
+			$oneApp.trigger('viewInit', this);
 
 			_.templateSettings = {
 				evaluate   : /<#([\s\S]+?)#>/g,
