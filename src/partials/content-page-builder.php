@@ -23,9 +23,7 @@ $entry_footer = trim( ob_get_clean() );
 	<?php endif; ?>
 
 	<div class="entry-content">
-		<?php remove_filter( 'the_content', 'wpautop' ); ?>
 		<?php get_template_part( 'partials/entry', 'content' ); ?>
-		<?php add_filter( 'the_content', 'wpautop' ); ?>
 	</div>
 
 	<?php if ( $entry_footer ) : ?>
