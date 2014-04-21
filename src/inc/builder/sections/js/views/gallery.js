@@ -145,10 +145,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		$items.each(function(index, item){
 			var $item = $(item);
 			if (0 !== index && 0 === index % columns) {
-				console.log(index, columns, index % columns, 'clear');
 				$item.addClass('clear');
 			} else {
-				console.log(index, columns, index % columns, 'unclear');
 				$item.removeClass('clear');
 			}
 		});
