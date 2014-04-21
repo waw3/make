@@ -138,6 +138,8 @@ function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
  * @return string
  */
 function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
+	global $ttf_one_section_data;
+
 	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
 		return '';
 	}
