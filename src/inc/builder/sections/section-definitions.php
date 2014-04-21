@@ -460,7 +460,7 @@ class TTF_One_Section_Definitions {
 	/**
 	 * Print out the JS section templates
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */

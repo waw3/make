@@ -7,13 +7,13 @@ if ( ! function_exists( 'TTF_One_Builder_Base' ) ) :
 /**
  * Defines the functionality for the HTML Builder.
  *
- * @since 1.0.
+ * @since 1.0.0.
  */
 class TTF_One_Builder_Base {
 	/**
 	 * The one instance of TTF_One_Builder_Base.
 	 *
-	 * @since 1.0.
+	 * @since 1.0.0.
 	 *
 	 * @var   TTF_One_Builder_Base
 	 */
@@ -22,7 +22,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Holds the iterator for managing sections
 	 *
-	 * @since 1.0.
+	 * @since 1.0.0.
 	 *
 	 * @var   int    Current section number.
 	 */
@@ -31,7 +31,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Instantiate or return the one TTF_One_Builder_Base instance.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Builder_Base
 	 */
@@ -45,7 +45,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Initiate actions.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Builder_Base
 	 */
@@ -76,7 +76,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Add the meta box.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -94,7 +94,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Display the meta box.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  WP_Post    $post_local    The current post object.
 	 * @return void
@@ -132,6 +132,8 @@ class TTF_One_Builder_Base {
 
 	/**
 	 * Enqueue the JS and CSS for the admin.
+	 *
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $hook_suffix    The suffix for the screen.
 	 * @return void
@@ -263,7 +265,7 @@ class TTF_One_Builder_Base {
 	 *
 	 * Data needs to be added late so that the iterator value is properly set.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -293,7 +295,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Reusable component for adding an image uploader.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $section_name    Name of the current section.
 	 * @param  int       $image_id        ID of the current image.
@@ -333,7 +335,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Load a section template with an available data payload for use in the template.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $section     The section data.
 	 * @param  array     $data        The data payload to inject into the section.
@@ -361,7 +363,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Print out the JS section templates
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return void
 	 */
@@ -403,7 +405,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Wrapper function to produce a WP Editor with special defaults.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $content     The content to display in the editor.
 	 * @param  string    $name        Name of the editor.
@@ -443,7 +445,7 @@ class TTF_One_Builder_Base {
 	 * better for smaller width screens, we need to wrap the button text in a span tag. By doing so, we can hide the
 	 * text in some situations.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $editor_id    The value of the current editor ID.
 	 * @return void
@@ -469,7 +471,7 @@ class TTF_One_Builder_Base {
 	 * Unfortunately, the `wp_editor()` function does not support a "content_css" argument. As a result, the stylesheet
 	 * for the "content_css" parameter needs to be added via a filter.
 	 *
-	 * @since  1.0.4.
+	 * @since  1.0.0.
 	 *
 	 * @param  array     $mce_init     The array of tinyMCE settings.
 	 * @param  string    $editor_id    The ID for the current editor.
@@ -500,7 +502,7 @@ class TTF_One_Builder_Base {
 	 * being printed here in order to guarantee that nothing changes this value before it would otherwise be printed.
 	 * The "after_wp_tiny_mce" action appears to be the most reliable place to print this variable.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  array    $settings   TinyMCE settings.
 	 * @return void
@@ -598,7 +600,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Get the order for a feature section.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  array    $data    The section data.
 	 * @return array             The desired order.
@@ -624,7 +626,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Get the value of the iterator.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return int    The value of the iterator.
 	 */
@@ -635,7 +637,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Set the iterator value.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  int    $value    The new iterator value.
 	 * @return int              The iterator value.
@@ -648,7 +650,7 @@ class TTF_One_Builder_Base {
 	/**
 	 * Increase the interator value by 1.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return int    The iterator value.
 	 */
@@ -665,7 +667,7 @@ endif;
 /**
  * Instantiate or return the one TTF_One_Builder_Base instance.
  *
- * @since  1.0.
+ * @since  1.0.0.
  *
  * @return TTF_One_Builder_Base
  */

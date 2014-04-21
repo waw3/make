@@ -7,13 +7,13 @@ if ( ! function_exists( 'TTF_One_Builder_Save' ) ) :
 /**
  * Defines the functionality for the HTML Builder.
  *
- * @since 1.0.
+ * @since 1.0.0.
  */
 class TTF_One_Builder_Save {
 	/**
 	 * The one instance of TTF_One_Builder_Save.
 	 *
-	 * @since 1.0.
+	 * @since 1.0.0.
 	 *
 	 * @var   TTF_One_Builder_Save
 	 */
@@ -31,7 +31,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Instantiate or return the one TTF_One_Builder_Save instance.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Builder_Save
 	 */
@@ -45,7 +45,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Initiate actions.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @return TTF_One_Builder_Save
 	 */
@@ -64,7 +64,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Save the gallery IDs and order.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  int        $post_id    The ID of the current post.
 	 * @param  WP_Post    $post       The post object for the current post.
@@ -106,7 +106,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Validate and sanitize the builder section data.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  array     $sections     The section data submitted to the server.
 	 * @param  string    $order        The comma separated list of the section order.
@@ -200,7 +200,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Flatten a multidimensional array.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0.
 	 *
 	 * @param  array     $array        Array to transform.
 	 * @param  string    $prefix       The beginning key value.
@@ -248,7 +248,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * On post save, use a theme template to generate content from metadata.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  array    $data       The processed post data.
 	 * @param  array    $postarr    The raw post data.
@@ -314,7 +314,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Allows image size to be saved regardless of the content width variable.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  array    $dimensions    The default dimensions.
 	 * @return array                   The modified dimensions.
@@ -420,7 +420,7 @@ class TTF_One_Builder_Save {
 	/**
 	 * Duplicate of "the_content" with custom filter name for generating content in builder templates.
 	 *
-	 * @since  1.0.
+	 * @since  1.0.0.
 	 *
 	 * @param  string    $content    The original content.
 	 * @return void
@@ -466,7 +466,7 @@ endif;
 /**
  * Instantiate or return the one TTF_One_Builder_Save instance.
  *
- * @since  1.0.
+ * @since  1.0.0.
  *
  * @return TTF_One_Builder_Save
  */
