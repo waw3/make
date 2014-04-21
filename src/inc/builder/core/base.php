@@ -240,7 +240,6 @@ class TTF_One_Builder_Base {
 		if ( 'page' !== get_post_type() ) {
 			return;
 		}
-
 	?>
 		<style type="text/css">
 			<?php if ( 'template-builder.php' === get_page_template_slug() ) : ?>
@@ -297,7 +296,7 @@ class TTF_One_Builder_Base {
 					<?php echo $messages['remove']; ?>
 				</a>
 			</div>
-			<input type="hidden" name="<?php echo $section_name; ?>[image-id]" value="<?php echo absint( $image_id ); ?>" class="ttf-one-media-uploader-value" />
+			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo absint( $image_id ); ?>" class="ttf-one-media-uploader-value" />
 		</div>
 	<?php
 	}
