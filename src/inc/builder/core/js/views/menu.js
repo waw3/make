@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _, ttfOneBuilderData, setUserSetting, deleteUserSetting, basisHTMLBuilderData */
+/* global Backbone, jQuery, _, ttfOneBuilderData, setUserSetting, deleteUserSetting */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 (function (window, Backbone, $, _, oneApp, $oneApp, ttfOneBuilderData) {
