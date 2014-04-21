@@ -1,7 +1,7 @@
 /* global Backbone, jQuery, _, ttfOneBuilderData, setUserSetting, deleteUserSetting */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
-(function (window, Backbone, $, _, oneApp, $oneApp, ttfOneBuilderData) {
+(function (window, Backbone, $, _, oneApp, $oneApp) {
 	'use strict';
 
 	oneApp.MenuView = Backbone.View.extend({
@@ -95,4 +95,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}
 		}
 	});
-})(window, Backbone, jQuery, _, oneApp, $oneApp, ttfOneBuilderData);
+})(window, Backbone, jQuery, _, oneApp, $oneApp);
