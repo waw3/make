@@ -78,15 +78,15 @@ a {
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-header {
-	color: $b;
 	float: left;
 	width: 100%;
+	color: $b;
 	@extend .clear;
 }
 .site-header-main {
-	background-color: $a;
 	float: left;
 	width: 100%;
+	background-color: $a;
 	@include rem('padding', $base*2 0 $base);
 	@extend .clear;
 }
@@ -139,8 +139,8 @@ a {
 		color: inherit;
 	}
 }
-.site-branding {
-	@include for(medium-screens) {
+@include for(medium-screens) {
+	.site-branding {
 		float: left;
 		max-width: 50%;
 		.branding-right & {
@@ -159,16 +159,16 @@ a {
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
 .custom-logo {
+	display: block;
+	max-width: 100%;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center center;
-	display: block;
-	max-width: 100%;
 	@include rem('margin-bottom', $base/2);
 	a {
 		display: block;
 		width: 100%;
-		height: 0;
+		height: 0; //reset
 		font: 0/0 a; //reset
 		text-decoration: none; //reset
 		text-shadow: none; //reset
@@ -225,8 +225,8 @@ a {
 					width: 250px;
 				}
 			}
-			border: 1px solid;
 			width: 100%;
+			border: 1px solid;
 		}
 	}
 	.search-submit {
@@ -234,11 +234,11 @@ a {
 	}
 	&.right-content .header-text {
 		@include for(large-screens) {
+			position: relative;
 			max-width: 20%;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			position: relative;
 			@include rem('top', 5px);
 		}
 		@include rem('padding-top', $base/2);
@@ -364,17 +364,17 @@ a {
 				display: inline-block;
 				position: relative;
 			}
-			text-align: left;
+			text-align: left; //reset
 			list-style: none; //reset
 			a {
 				@include for(medium-screens) {
-					border-bottom: 0; //reset
 					line-height: 1.4;
+					border-bottom: 0; //reset
 					@include rem('padding', $base/2 $gut/2);
 				}
 				display: block;
-				color: $b;
 				font-weight: normal; //reset
+				color: $b;
 				line-height: 1.8;
 				border-bottom: $rule;
 				@include rem('padding', $base/2 0);
@@ -401,11 +401,11 @@ a {
 		@include for(medium-screens) {
 			.sub-menu,
 			.children {
-				background-color: $d;
 				position: absolute;
 				z-index: 99999;
 				overflow: hidden;
 				clip: rect(1px, 1px, 1px, 1px);
+				background-color: $d;
 				li:first-of-type a {
 					@include rem('padding', 15px $gut/2);
 				}
@@ -421,8 +421,8 @@ a {
 					content: "  \f054";
 					position: relative;
 					float: right;
-					font-weight: normal; //reset
 					font-family: FontAwesome;
+					font-weight: normal; //reset
 					@include rem('top', 4px);
 					@include rem('font-size', 10px);
 				}
@@ -467,9 +467,9 @@ a {
 	@include for(medium-screens) {
 		.menu-item-has-children a:after {
 			content: "  \f078";
-			color: $e;
 			font-family: FontAwesome;
 			font-weight: normal; //reset
+			color: $e;
 			@include rem('padding-left', 2px);
 			@include rem('font-size', 10px);
 		}
@@ -541,9 +541,9 @@ a {
  Main (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-content {
-	background-color: $a;
 	float: left;
 	width: 100%;
+	background-color: $a;
 	@include rem('padding', $base 0);
 	@extend .clear;
 }
@@ -590,9 +590,8 @@ a {
 	}
 	.site-info {
 		@include for(medium-screens) {
-		float: left;
+			float: left;
 		}
-		text-align: left;
 		text-align: center;
 	}
 	.footer-social-links {

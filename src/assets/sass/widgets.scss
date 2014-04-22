@@ -28,7 +28,7 @@
 		padding-left: 0; //reset
 	}
 	li {
-		list-style: none;
+		list-style: none; //reset
 		border-bottom: 1px solid $d;
 		@include rem('padding', $base/2 0);
 		&:last-of-type {

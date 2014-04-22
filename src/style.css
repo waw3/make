@@ -249,14 +249,14 @@ a {
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-header {
-  color: #171717;
-  float: left;
-  width: 100%; }
-
-.site-header-main {
-  background-color: #ffffff;
   float: left;
   width: 100%;
+  color: #171717; }
+
+.site-header-main {
+  float: left;
+  width: 100%;
+  background-color: #ffffff;
   padding: 44px 0 22px;
   padding:  2.58824rem 0 1.29412rem; }
 
@@ -323,11 +323,11 @@ a {
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
 .custom-logo {
+  display: block;
+  max-width: 100%;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
-  display: block;
-  max-width: 100%;
   margin-bottom: 11px;
   margin-bottom: 0.64706rem; }
   .custom-logo a {
@@ -374,8 +374,8 @@ a {
         padding:  0.64706rem 0 0.64706rem 0.94118rem;
         float: right; } }
     .sub-header .search-form input {
-      border: 1px solid;
-      width: 100%; }
+      width: 100%;
+      border: 1px solid; }
       @media screen and (min-width: 1100px) {
         .sub-header .search-form input {
           width: 140px;
@@ -391,11 +391,11 @@ a {
     padding-top: 0.64706rem; }
     @media screen and (min-width: 1100px) {
       .sub-header.right-content .header-text {
+        position: relative;
         max-width: 20%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        position: relative;
         top: 5px;
         top: 0.29412rem; } }
 
@@ -503,8 +503,8 @@ a {
           position: relative; } }
       .site-navigation .menu li a {
         display: block;
-        color: #171717;
         font-weight: normal;
+        color: #171717;
         line-height: 1.8;
         border-bottom: 1px solid #171717;
         padding: 11px 0;
@@ -513,8 +513,8 @@ a {
         font-size: 0.82353rem; }
         @media screen and (min-width: 800px) {
           .site-navigation .menu li a {
-            border-bottom: 0;
             line-height: 1.4;
+            border-bottom: 0;
             padding: 11px 16px;
             padding:  0.64706rem 0.94118rem; } }
       .site-navigation .menu li:last-of-type a {
@@ -532,11 +532,11 @@ a {
         padding-left: 1.88235rem; }
     @media screen and (min-width: 800px) {
       .site-navigation .menu .sub-menu, .site-navigation .menu .children {
-        background-color: #eaecee;
         position: absolute;
         z-index: 99999;
         overflow: hidden;
-        clip: rect(1px, 1px, 1px, 1px); }
+        clip: rect(1px, 1px, 1px, 1px);
+        background-color: #eaecee; }
         .site-navigation .menu .sub-menu li:first-of-type a, .site-navigation .menu .children li:first-of-type a {
           padding: 15px 16px;
           padding:  0.88235rem 0.94118rem; }
@@ -552,8 +552,8 @@ a {
           content: "  \f054";
           position: relative;
           float: right;
-          font-weight: normal;
           font-family: FontAwesome;
+          font-weight: normal;
           top: 4px;
           top: 0.23529rem;
           font-size: 10px;
@@ -577,9 +577,9 @@ a {
   @media screen and (min-width: 800px) {
     .site-navigation .menu-item-has-children a:after {
       content: "  \f078";
-      color: #b9bcbf;
       font-family: FontAwesome;
       font-weight: normal;
+      color: #b9bcbf;
       padding-left: 2px;
       padding-left: 0.11765rem;
       font-size: 10px;
@@ -643,9 +643,9 @@ a {
  Main (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-content {
-  background-color: #ffffff;
   float: left;
   width: 100%;
+  background-color: #ffffff;
   padding: 22px 0;
   padding:  1.29412rem 0; }
 
@@ -681,7 +681,6 @@ a {
   .site-footer textarea, .site-footer input, .site-footer .widget_tag_cloud a {
     background-color: #ffffff; }
   .site-footer .site-info {
-    text-align: left;
     text-align: center; }
     @media screen and (min-width: 800px) {
       .site-footer .site-info {
@@ -948,6 +947,7 @@ hr {
 -------------------------------------------------------- */
 ul, ol {
   margin: 0 0 22px 0;
+  margin:  0 0 1.29412rem 0;
   padding-left: 20px;
   padding-left: 1.17647rem; }
   ul.ttf-one-list, ol.ttf-one-list {
@@ -955,8 +955,8 @@ ul, ol {
     list-style: none; }
     ul.ttf-one-list li:before, ol.ttf-one-list li:before {
       font-family: FontAwesome;
-      padding-right: 10px;
-      padding-right: 0.58824rem; }
+      padding-right: 10.66667px;
+      padding-right: 0.62745rem; }
   ul.ttf-one-list-check li:before, ol.ttf-one-list-check li:before {
     content: "\f14a";
     color: #339d56; }
@@ -1463,9 +1463,9 @@ iframe[src*="google.com/maps"] {
   position: absolute;
   left: 0;
   right: 0;
+  width: 100%;
   height: 100%;
   min-height: 100%;
-  width: 100%;
   margin-bottom: 0;
   overflow: hidden;
   color: #ffffff;
@@ -1493,14 +1493,14 @@ iframe[src*="google.com/maps"] {
       margin-right: auto; } }
   @media screen and (min-width: 800px) {
     .content-position-left .builder-banner-content {
+      float: left;
       right: auto;
-      width: 50%;
-      float: left; } }
+      width: 50%; } }
   @media screen and (min-width: 800px) {
     .content-position-right .builder-banner-content {
+      float: right;
       left: auto;
-      width: 50%;
-      float: right; } }
+      width: 50%; } }
 
 .builder-banner-inner-content {
   display: inline-block;
@@ -1513,8 +1513,8 @@ iframe[src*="google.com/maps"] {
  Banner section: Pager (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-banner .cycle-pager, .ttf-one-shortcode-slider .cycle-pager {
-  color: #eaecee;
   text-align: center;
+  color: #eaecee;
   line-height: 1;
   font-size: 40px;
   font-size: 2.35294rem;
