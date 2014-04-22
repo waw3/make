@@ -22,9 +22,9 @@ Tags:
 6. Posts
 7. Pages
 8. Widgets
-9. Comments
-10. Forms and buttons
-11. Options
+9. Sidebars
+10. Comments
+11. Forms and buttons
 12. Browser support
 -------------------------------------------------------- */
 /*---------------------------------------------------------
@@ -1679,7 +1679,7 @@ iframe[src*="google.com/maps"] {
       margin-right: 0; } }
 
 /*---------------------------------------------------------
- 8. Sidebars (_sidebars.scss)
+ 9. Sidebars (_sidebars.scss)
 -------------------------------------------------------- */
 #sidebar-left {
   float: left; }
@@ -1803,7 +1803,7 @@ iframe[src*="google.com/maps"] {
     content: "\2013  "; }
 
 /*---------------------------------------------------------
- 9. Comments (_comments.scss)
+ 10. Comments (_comments.scss)
 -------------------------------------------------------- */
 #comments {
   width: 100%;
@@ -1944,7 +1944,7 @@ iframe[src*="google.com/maps"] {
     padding-bottom: 0.64706rem; }
 
 /*---------------------------------------------------------
- 10. Forms (_forms.scss)
+ 11. Forms (_forms.scss)
 -------------------------------------------------------- */
 textarea, input {
   max-width: 100%;
@@ -2027,5 +2027,5 @@ button::-moz-focus-inner, input::-moz-focus-inner {
   color: #171717; }
 
 /*---------------------------------------------------------
- 11. Support (_support.scss)
+ 12. Support (_support.scss)
 -------------------------------------------------------- */
