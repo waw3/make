@@ -70,7 +70,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				editorID = $el.attr('id').replace('wp-', '').replace('temp-wrap', section.get('sectionType')).replace('-wrap', ''),
 				tempEditorID = editorID.replace(sectionID, '') + 'temp';
 
-			oneApp.initEditor(editorID, tempEditorID, section.get('sectionType'));
+			oneApp.initEditor(editorID, tempEditorID);
 		});
 	};
 
