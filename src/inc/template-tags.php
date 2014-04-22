@@ -307,6 +307,7 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 	unset( $menu_items, $menu_item );
 
 	// Supported social icons (filterable)
+	// [css class] => [url pattern]
 	$supported_icons = apply_filters( 'ttf_one_supported_social_icons', array(
 		'fa-adn' => 'app.net',
 		'fa-bitbucket' => 'bitbucket.org',
@@ -333,17 +334,17 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 		'fa-youtube' => 'youtube.com',
 	) );
 
-	//
+	// Process each menu item
 	foreach ( $sorted_menu_items as $item ) {
 		$item_output = '';
 
 		// Look for matching icons
 		foreach ( $supported_icons as $class => $pattern ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
-				$output .= '<li class="' . esc_attr( $class ) . '">';
-				$output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
-				$output .= '<i class="fa fa-fw ' . esc_attr( $class ) . '"></i>';
-				$output .= '</a></li>';
+				$item_output .= '<li class="' . esc_attr( str_replace( 'fa-', '', $class ) ) . '">';
+				$item_output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
+				$item_output .= '<i class="fa fa-fw ' . esc_attr( $class ) . '"></i>';
+				$item_output .= '</a></li>';
 
 				break;
 			}
@@ -351,11 +352,15 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 
 		// No matching icons
 		if ( '' === $item_output ) {
-			$output .= '<li class="fa-user">';
-			$output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
-			$output .= '<i class="fa fa-fw fa-user"></i>';
-			$output .= '</a></li>';
+			$item_output .= '<li class="fa-user">';
+			$item_output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
+			$item_output .= '<i class="fa fa-fw fa-user"></i>';
+			$item_output .= '</a></li>';
 		}
+
+		// Add item to list
+		$output .= $item_output;
+		unset( $item_output );
 	}
 
 	// If there are menu items, add a wrapper
