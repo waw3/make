@@ -242,7 +242,7 @@ function ttf_one_maybe_show_social_links( $region ) {
 					'theme_location' => 'social',
 					'container'      => false,
 					'menu_id'        => '',
-					'menu_class'     => 'social-links ' . $region . '-social-links',
+					'menu_class'     => 'social-menu social-links ' . $region . '-social-links',
 					'depth'          => 1,
 					'fallback_cb'    => '',
 				)
@@ -252,7 +252,7 @@ function ttf_one_maybe_show_social_links( $region ) {
 		else {
 			$social_links = ttf_one_get_social_links();
 			if ( ! empty( $social_links ) ) { ?>
-				<ul class="social-links <?php echo $region; ?>-social-links">
+				<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
 				<?php foreach ( $social_links as $key => $link ) : ?>
 					<li class="<?php echo esc_attr( $key ); ?>">
 						<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( $link['title'] ); ?>">
