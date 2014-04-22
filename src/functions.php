@@ -180,6 +180,27 @@ endif;
 
 add_action( 'widgets_init', 'ttf_one_widgets_init' );
 
+if ( ! function_exists( 'ttf_one_head_early' ) ) :
+/**
+ * Add items to the top of the wp_head section of the document head.
+ *
+ * @since 1.0.0.
+ *
+ * @return void
+ */
+function ttf_one_head_early() {
+	// JavaScript detection ?>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		document.documentElement.className = document.documentElement.className.replace(new RegExp('(^|\\s)no-js(\\s|$)'), '$1js$2');
+		/* ]]> */
+	</script>
+<?php
+}
+endif;
+
+add_action( 'wp_head', 'ttf_one_head_early', 1 );
+
 if ( ! function_exists( 'ttf_one_scripts' ) ) :
 /**
  * Enqueue styles and scripts.
@@ -364,21 +385,21 @@ function ttf_one_localize_fitvids( $name ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_head_extras' ) ) :
+if ( ! function_exists( 'ttf_one_head_late' ) ) :
 /**
- * Add additional items to the document head.
+ * Add additional items to the end of the wp_head section of the document head.
  *
- * @since 1.0.0
+ * @since 1.0.0.
  *
  * @return void
  */
-function ttf_one_head_extras() { ?>
+function ttf_one_head_late() { ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 }
 endif;
 
-add_action( 'wp_head', 'ttf_one_head_extras', 99 );
+add_action( 'wp_head', 'ttf_one_head_late', 99 );
 
 /**
  * Initial content width
