@@ -280,14 +280,14 @@ if ( ! function_exists( 'ttf_one_pre_wp_nav_menu_social' ) ) :
  */
 function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
-		return;
+		return $output;
 	}
 
 	// Get the menu object
 	$locations = get_nav_menu_locations();
 	$menu = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
 	if ( ! $menu || is_wp_error( $menu ) ) {
-		return;
+		return $output;
 	}
 
 	$output = '';
