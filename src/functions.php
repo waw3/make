@@ -105,6 +105,7 @@ function ttf_one_setup() {
 	}
 	$editor_styles[] = 'css/font-awesome.css';
 	$editor_styles[] = 'css/editor-style.css';
+	// Another editor stylesheet is added via ttf_one_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
 }
 endif;
