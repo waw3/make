@@ -24,23 +24,11 @@ function ttf_one_comment( $comment, $args, $depth ) {
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'comment-parent' ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 			<header class="comment-header">
-				<div class="comment-author vcard">
-					<?php
-					if ( 0 != $args['avatar_size'] ) :
-						echo get_avatar( $comment, $args['avatar_size'] );
-					endif;
-					?>
-					<?php
-					printf(
-						__( '%s <span class="says">says:</span>', 'ttf-one' ),
-						sprintf(
-							'<cite class="fn">%s</cite>',
-							get_comment_author_link()
-						)
-					);
-					?>
-				</div>
-
+				<?php // Avatar
+				if ( 0 != $args['avatar_size'] ) :
+					echo get_avatar( $comment, $args['avatar_size'] );
+				endif;
+				?>
 				<div class="comment-date">
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
@@ -54,8 +42,18 @@ function ttf_one_comment( $comment, $args, $depth ) {
 						</time>
 					</a>
 				</div>
-
-				<?php edit_comment_link( __( 'Edit', 'ttf-one' ), '<span class="edit-link">', '</span>' ); ?>
+				<div class="comment-author vcard">
+					<?php
+					printf(
+						'%1$s <span class="says">%2$s</span>',
+						sprintf(
+							'<cite class="fn">%s</cite>',
+							get_comment_author_link()
+						),
+						_x( 'says:', 'e.g. Bob says hello.', 'ttf-one' )
+					);
+					?>
+				</div>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
 				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'ttf-one' ); ?></p>
