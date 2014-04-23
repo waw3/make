@@ -27,6 +27,19 @@
 		line-height: 1;
 	}
 }
+.gform_media_link {
+	width: 28px;
+	overflow: hidden;
+}
+.gform_media_icon {
+	position: relative;
+	top: 1px;
+}
+@media screen and ( max-width: 782px ) {
+.gform_media_icon {
+	top: 2px;
+}
+}
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */
@@ -445,6 +458,8 @@
 }
 @media screen and ( max-width: 782px ) {
 	.ttf-one-section .wp-media-buttons span.wp-media-buttons-icon {
+		position: relative;
+		top: 2px;
 		padding-left: 10px !important;
 	}
 }
