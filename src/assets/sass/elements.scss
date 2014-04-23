@@ -292,6 +292,7 @@ table {
 	position: relative;
 	float: left;
 	overflow: hidden;
+	text-align: center;
 	@include rem('margin', 0 4px 4px 0);
 	.gallery-columns-1 & {
 		width: 100%;
