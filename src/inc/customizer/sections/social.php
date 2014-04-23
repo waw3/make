@@ -77,7 +77,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Google +
-	$setting_id = $setting_prefix . '-google';
+	$setting_id = $setting_prefix . '-google-plus-square';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
@@ -182,7 +182,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 	);
 
 	// Vimeo
-	$setting_id = $setting_prefix . '-vimeo';
+	$setting_id = $setting_prefix . '-vimeo-square';
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
