@@ -1531,8 +1531,7 @@ iframe[src*="google.com/maps"] {
     display: inline-block;
     vertical-align: middle;
     content: '';
-    height: 100%;
-    margin-left: 0.5%; }
+    height: 100%; }
   @media screen and (min-width: 800px) {
     .content-position-none .builder-banner-content {
       margin-left: auto;
