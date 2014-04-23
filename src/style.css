@@ -2028,7 +2028,9 @@ a.ttf-one-button, button, input[type="button"], input[type="reset"], input[type=
     padding-left: 0.35294rem; }
 
 input[type="checkbox"], input[type="radio"] {
-  padding: 0; }
+  padding: 0;
+  margin-left: 2px;
+  margin-left: 0.11765rem; }
 
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -2069,3 +2071,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
   margin-top: 0.32353rem; }
 .wpcf7 input[type="submit"] {
   margin-bottom: 0; }
+
+/*---------------------------------------------------------
+ Gravity Forms (_support.scss)
+-------------------------------------------------------- */
+.gform_wrapper .top_label .gfield_label {
+  margin-top: 22px !important; }
+.gform_wrapper .ginput_complex label, .gform_wrapper .gfield_time_hour label, .gform_wrapper .gfield_time_minute label, .gform_wrapper .gfield_date_month label, .gform_wrapper .gfield_date_day label, .gform_wrapper .gfield_date_year label, .gform_wrapper .instruction {
+  font-size: 13px !important; }

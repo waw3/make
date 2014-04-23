@@ -70,6 +70,7 @@ input[type="submit"] {
 input[type="checkbox"],
 input[type="radio"] {
 	padding: 0; //reset
+	@include rem('margin-left', 2px);
 }
 input[type="search"] {
 	-webkit-box-sizing: border-box;

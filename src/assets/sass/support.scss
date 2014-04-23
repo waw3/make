@@ -13,3 +13,20 @@
 		margin-bottom: 0; //reset
 	}
 }
+/*---------------------------------------------------------
+ Gravity Forms (_support.scss)
+-------------------------------------------------------- */
+.gform_wrapper {
+	.top_label .gfield_label {
+		margin-top: $base !important;
+	}
+	.ginput_complex label,
+	.gfield_time_hour label,
+	.gfield_time_minute label,
+	.gfield_date_month label,
+	.gfield_date_day label,
+	.gfield_date_year label,
+	.instruction {
+		font-size: 13px !important;
+	}
+}
