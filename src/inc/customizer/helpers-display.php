@@ -91,7 +91,7 @@ function ttf_one_css_add_rules() {
 	// Text color
 	if ( $color_text !== ttf_one_get_default( 'color-text' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.color-text', 'body' ),
+			'selectors'    => array( '.color-text', 'body', '.entry-date a' ),
 			'declarations' => array(
 				'color' => $color_text
 			)
@@ -134,7 +134,7 @@ function ttf_one_css_add_rules() {
 	// Header text color
 	if ( $header_text_color !== ttf_one_get_default( 'header-text-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.site-header', '.site-header a' ),
+			'selectors'    => array( '.site-header', '.site-header a', '.site-navigation .menu li a' ),
 			'declarations' => array(
 				'color' => $header_text_color
 			)
