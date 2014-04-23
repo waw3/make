@@ -47,13 +47,13 @@ function ttf_one_css_add_rules() {
 	// Primary color
 	if ( $color_primary !== ttf_one_get_default( 'color-primary' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.color-primary-text', 'a' ),
+			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttf-one-list-dot li:before', 'ol.ttf-one-list-dot li:before' ),
 			'declarations' => array(
 				'color' => $color_primary
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.color-primary-background' ),
+			'selectors'    => array( '.color-primary-background', '.site-navigation ul.menu ul a:hover', '.site-navigation ul.menu ul a:focus', '.site-navigation .menu ul ul a:hover', '.site-navigation .menu ul ul a:focus', 'a.ttf-one-button.color-primary-background', 'button.color-primary-background', 'input[type="button"].color-primary-background', 'input[type="reset"].color-primary-background', 'input[type="submit"].color-primary-background' ),
 			'declarations' => array(
 				'background-color' => $color_primary
 			)
