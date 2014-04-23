@@ -236,13 +236,15 @@ class TTF_One_Builder_Base {
 	 * @return void
 	 */
 	public function admin_print_styles() {
+		global $pagenow;
+
 		// Do not complete the function if the product template is in use (i.e., the builder needs to be shown)
 		if ( 'page' !== get_post_type() ) {
 			return;
 		}
 	?>
 		<style type="text/css">
-			<?php if ( 'template-builder.php' === get_page_template_slug() ) : ?>
+			<?php if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) ) : ?>
 			#postdivrich {
 				display: none;
 			}

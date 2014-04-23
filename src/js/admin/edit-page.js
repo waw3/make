@@ -30,7 +30,10 @@
 
 			// Setup the event for toggling the Page Builder when the page template input changes
 			self.cache.$pageTemplate.on('change', self.templateToggle);
-			self.cache.$pageTemplate.trigger('change');
+
+			if ( typeof TTFOneEditPage !== 'undefined' && 'post-new.php' === TTFOneEditPage.pageNow ) {
+				self.cache.$pageTemplate.val('template-builder.php');
+			}
 		},
 
 		templateToggle: function(e) {
