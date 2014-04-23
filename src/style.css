@@ -422,28 +422,28 @@ a {
       display: block;
       color: inherit;
       text-decoration: none; }
-    .social-links li.facebook a:hover, .social-links li.facebook a:focus {
-      color: #3B5999; }
-    .social-links li.twitter a:hover, .social-links li.twitter a:focus {
-      color: #4099ff; }
-    .social-links li.google a:hover, .social-links li.google a:focus {
-      color: #d34836; }
-    .social-links li.linkedin a:hover, .social-links li.linkedin a:focus {
-      color: #007bb6; }
-    .social-links li.instagram a:hover, .social-links li.instagram a:focus {
-      color: #517fa4; }
-    .social-links li.flickr a:hover, .social-links li.flickr a:focus {
-      color: #ff0084; }
-    .social-links li.youtube a:hover, .social-links li.youtube a:focus {
-      color: #e52d27; }
-    .social-links li.vimeo a:hover, .social-links li.vimeo a:focus {
-      color: #1ab7ea; }
-    .social-links li.pinterest a:hover, .social-links li.pinterest a:focus {
-      color: #c92228; }
-    .social-links li.email a:hover, .social-links li.email a:focus {
-      color: #ffae00; }
-    .social-links li.rss a:hover, .social-links li.rss a:focus {
-      color: #ff6600; }
+  .social-links.social-customizer .facebook a:hover, .social-links.social-customizer .facebook a:focus {
+    color: #3B5999; }
+  .social-links.social-customizer .twitter a:hover, .social-links.social-customizer .twitter a:focus {
+    color: #4099ff; }
+  .social-links.social-customizer .google a:hover, .social-links.social-customizer .google a:focus {
+    color: #d34836; }
+  .social-links.social-customizer .linkedin a:hover, .social-links.social-customizer .linkedin a:focus {
+    color: #007bb6; }
+  .social-links.social-customizer .instagram a:hover, .social-links.social-customizer .instagram a:focus {
+    color: #517fa4; }
+  .social-links.social-customizer .flickr a:hover, .social-links.social-customizer .flickr a:focus {
+    color: #ff0084; }
+  .social-links.social-customizer .youtube a:hover, .social-links.social-customizer .youtube a:focus {
+    color: #e52d27; }
+  .social-links.social-customizer .vimeo a:hover, .social-links.social-customizer .vimeo a:focus {
+    color: #1ab7ea; }
+  .social-links.social-customizer .pinterest a:hover, .social-links.social-customizer .pinterest a:focus {
+    color: #c92228; }
+  .social-links.social-customizer .email a:hover, .social-links.social-customizer .email a:focus {
+    color: #ffae00; }
+  .social-links.social-customizer .rss a:hover, .social-links.social-customizer .rss a:focus {
+    color: #ff6600; }
 
 .header-social-links {
   text-align: center;
