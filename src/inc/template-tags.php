@@ -352,9 +352,9 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 
 		// No matching icons
 		if ( '' === $item_output ) {
-			$item_output .= '<li class="fa-user">';
+			$item_output .= '<li class="external-link-square">';
 			$item_output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
-			$item_output .= '<i class="fa fa-fw fa-user"></i>';
+			$item_output .= '<i class="fa fa-fw fa-external-link-square"></i>';
 			$item_output .= '</a></li>';
 		}
 

@@ -241,7 +241,7 @@ function ttf_one_get_social_links() {
 			'title' => 'Twitter',
 			'class' => 'fa-twitter',
 		),
-		'google' => array(
+		'google-plus-square' => array(
 			'title' => 'Google+',
 			'class' => 'fa-google-plus-square',
 		),
@@ -261,7 +261,7 @@ function ttf_one_get_social_links() {
 			'title' => 'YouTube',
 			'class' => 'fa-youtube',
 		),
-		'vimeo' => array(
+		'vimeo-square' => array(
 			'title' => 'Vimeo',
 			'class' => 'fa-vimeo-square',
 		),
