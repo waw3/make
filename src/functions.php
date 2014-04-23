@@ -50,8 +50,10 @@ require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
 if ( is_admin() ) {
 	// TinyMCE customizations
 	require get_template_directory() . '/inc/tinymce.php';
+
 	// Page customizations
 	require get_template_directory() . '/inc/edit-page.php';
+
 	// Page Builder
 	require get_template_directory() . '/inc/builder/core/base.php';
 }
