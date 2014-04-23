@@ -286,43 +286,39 @@ table {
 -------------------------------------------------------- */
 .gallery {
 	margin: $base 0 $base/2 !important;
+	@extend .clear;
 }
 .gallery-item {
-	margin: 0 3% 3% 0 !important;
-	text-align: center;
-	img {
-		margin: 0 0 $base/4 !important;
-		border: 0 !important;
-	}
-	dt {
-		margin-bottom: 0; //reset
-	}
+	position: relative;
+	float: left;
+	overflow: hidden;
+	@include rem('margin', 0 4px 4px 0);
 	.gallery-columns-1 & {
-		max-width: 100%;
+		width: 100%;
 	}
 	.gallery-columns-2 & {
-		max-width: 48.5%;
+		width: 48%;
 	}
 	.gallery-columns-3 & {
-		max-width: 31.33%;
+		width: 32%;
 	}
 	.gallery-columns-4 & {
-		max-width: 22.75%;
+		width: 23%;
 	}
 	.gallery-columns-5 & {
-		max-width: 17.6%;
+		width: 19%;
 	}
 	.gallery-columns-6 & {
-		max-width: 14.16%;
+		width: 15%;
 	}
 	.gallery-columns-7 & {
-		max-width: 11.45%;
+		width: 13%;
 	}
 	.gallery-columns-8 & {
-		max-width: 9.87%;
+		width: 11%;
 	}
 	.gallery-columns-9 & {
-		max-width: 8.44%;
+		width: 9%;
 	}
 	.gallery-columns-1 &:nth-of-type(1n),
 	.gallery-columns-2 &:nth-of-type(2n),
@@ -333,8 +329,14 @@ table {
 	.gallery-columns-7 &:nth-of-type(7n),
 	.gallery-columns-8 &:nth-of-type(8n),
 	.gallery-columns-9 &:nth-of-type(9n) {
-		margin-right: 0 !important; //reset
+		margin-right: 0; //reset
 	}
+}
+.gallery-icon {
+	line-height: 0; //reset
+}
+.gallery-caption {
+	display: none;
 }
 /*---------------------------------------------------------
  Note (_elements.scss)
