@@ -53,6 +53,9 @@ class TTF_One_Builder_Save {
 	public function __construct() {
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 
+		// Run wpautop when saving the data
+		add_filter( 'ttf_one_the_builder_content', 'wpautop' );
+
 		// Combine the input into the post's content
 		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 30, 2 );
 	}
