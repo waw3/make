@@ -199,7 +199,7 @@
 		&:before {
 			position: relative;
 			font-family: FontAwesome;
-			color: $a;
+			color: $d;
 			line-height: 1; //reset
 			@include rem('top', -34px);
 			@include rem('font-size', 34px);

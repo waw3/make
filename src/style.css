@@ -1377,9 +1377,9 @@ iframe[src*="google.com/maps"] {
   display: none;
   position: absolute;
   z-index: 10;
-  color: #ffffff;
+  color: #eaecee;
   text-align: left;
-  text-shadow: 1px 0 4px rgba(0, 0, 0, 0.15);
+  text-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
   left: 16px;
   left: 0.94118rem;
   right: 16px;
@@ -1573,7 +1573,7 @@ iframe[src*="google.com/maps"] {
   .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-next:before {
     position: relative;
     font-family: FontAwesome;
-    color: #ffffff;
+    color: #eaecee;
     line-height: 1;
     top: -34px;
     top: -2rem;
