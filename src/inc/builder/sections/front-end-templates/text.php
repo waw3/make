@@ -7,7 +7,7 @@ global $ttf_one_section_data;
 $text_columns = ttf_one_builder_get_text_array( $ttf_one_section_data );
 ?>
 
-<section class="builder-section<?php echo esc_attr( ttf_one_builder_get_text_class( $ttf_one_section_data ) ); ?>">
+<section id="builder-section-<?php echo esc_attr( $ttf_one_section_data['id'] ); ?>" class="builder-section<?php echo esc_attr( ttf_one_builder_get_text_class( $ttf_one_section_data ) ); ?>">
 	<div class="builder-section-content">
 		<?php if ( ! empty( $text_columns ) ) : foreach ( $text_columns as $column ) :
 			$link_front = '';

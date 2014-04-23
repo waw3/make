@@ -24,7 +24,7 @@ $slider_ratio = ( $slider_height / 960 ) * 100;
 		}
 	}
 </style>
-<section class="builder-section <?php echo esc_attr( ttf_one_builder_get_banner_class( $ttf_one_section_data ) ); ?>">
+<section id="builder-section-<?php echo esc_attr( $ttf_one_section_data['id'] ); ?>" class="builder-section <?php echo esc_attr( ttf_one_builder_get_banner_class( $ttf_one_section_data ) ); ?>">
 	<?php if ( '' !== $ttf_one_section_data['title'] ) : ?>
 	<h3 class="builder-banner-section-title">
 		<?php echo apply_filters( 'the_title', $ttf_one_section_data['title'] ); ?>

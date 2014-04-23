@@ -6,7 +6,7 @@
 global $ttf_one_section_data;
 ?>
 
-<section class="builder-section <?php echo esc_attr( ttf_one_get_builder_save()->section_classes( $ttf_one_section_data ) ); ?>">
+<section id="builder-section-<?php echo esc_attr( $ttf_one_section_data['id'] ); ?>" class="builder-section <?php echo esc_attr( ttf_one_get_builder_save()->section_classes( $ttf_one_section_data ) ); ?>">
 	<?php if ( ! empty( $ttf_one_section_data['title'] ) ) : ?>
 	<header class="builder-section-header">
 		<h3 class="builder-section-title">
