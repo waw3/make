@@ -85,7 +85,7 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttf_one_section_data['aspect'] );
 	}
 
-	return $gallery_class;
+	return apply_filters( 'ttf_one_gallery_class', $gallery_class, $ttf_one_section_data );
 }
 
 /**
@@ -308,7 +308,7 @@ function ttf_one_builder_get_banner_class( $ttf_one_section_data ) {
 	$banner_id     = ( isset( $ttf_one_section_data['id'] ) ) ? absint( $ttf_one_section_data['id'] ) : 1;
 	$banner_class .= ' builder-section-banner-' . $banner_id;
 
-	return $banner_class;
+	return apply_filters( 'ttf_one_builder_banner_class', $banner_class, $ttf_one_section_data );
 }
 
 /**

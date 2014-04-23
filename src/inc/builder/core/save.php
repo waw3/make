@@ -408,7 +408,7 @@ class TTF_One_Builder_Save {
 		$prev      = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' . $prev_data['section-type'] : $prefix . 'first';
 
 		// Return the values as a single string
-		return $prev . ' ' . $current . ' ' . $next;
+		return apply_filters( 'ttf_one_section_classes', $prev . ' ' . $current . ' ' . $next, $current_section );
 	}
 
 	/**
