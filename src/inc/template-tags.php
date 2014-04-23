@@ -224,7 +224,7 @@ if ( ! function_exists( 'ttf_one_maybe_show_social_links' ) ) :
  *
  * @since 1.0.0.
  *
- * @param  string $region The site region (header or footer)
+ * @param  string    $region    The site region (header or footer).
  * @return void
  */
 function ttf_one_maybe_show_social_links( $region ) {
@@ -285,7 +285,8 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 
 	// Get the menu object
 	$locations = get_nav_menu_locations();
-	$menu = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
+	$menu      = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
+
 	if ( ! $menu || is_wp_error( $menu ) ) {
 		return $output;
 	}
@@ -309,29 +310,29 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 	// Supported social icons (filterable)
 	// [css class] => [url pattern]
 	$supported_icons = apply_filters( 'ttf_one_supported_social_icons', array(
-		'fa-adn' => 'app.net',
-		'fa-bitbucket' => 'bitbucket.org',
-		'fa-dribbble' => 'dribbble.com',
-		'fa-facebook' => 'facebook.com',
-		'fa-flickr' => 'flickr.com',
-		'fa-foursquare' => 'foursquare.com',
-		'fa-github' => 'github.com',
-		'fa-gittip' => 'gittip.com',
+		'fa-adn'                => 'app.net',
+		'fa-bitbucket'          => 'bitbucket.org',
+		'fa-dribbble'           => 'dribbble.com',
+		'fa-facebook'           => 'facebook.com',
+		'fa-flickr'             => 'flickr.com',
+		'fa-foursquare'         => 'foursquare.com',
+		'fa-github'             => 'github.com',
+		'fa-gittip'             => 'gittip.com',
 		'fa-google-plus-square' => 'plus.google.com',
-		'fa-instagram' => 'instagram.com',
-		'fa-linkedin' => 'linkedin.com',
-		'fa-pinterest' => 'pinterest.com',
-		'fa-renren' => 'renren.com',
-		'fa-stack-exchange' => 'stackexchange.com',
-		'fa-stack-overflow' => 'stackoverflow.com',
-		'fa-trello' => 'trello.com',
-		'fa-tumblr' => 'tumblr.com',
-		'fa-twitter' => 'twitter.com',
-		'fa-vimeo-square' => 'vimeo.com',
-		'fa-vk' => 'vk.com',
-		'fa-weibo' => 'weibo.com',
-		'fa-xing' => 'xing.com',
-		'fa-youtube' => 'youtube.com',
+		'fa-instagram'          => 'instagram.com',
+		'fa-linkedin'           => 'linkedin.com',
+		'fa-pinterest'          => 'pinterest.com',
+		'fa-renren'             => 'renren.com',
+		'fa-stack-exchange'     => 'stackexchange.com',
+		'fa-stack-overflow'     => 'stackoverflow.com',
+		'fa-trello'             => 'trello.com',
+		'fa-tumblr'             => 'tumblr.com',
+		'fa-twitter'            => 'twitter.com',
+		'fa-vimeo-square'       => 'vimeo.com',
+		'fa-vk'                 => 'vk.com',
+		'fa-weibo'              => 'weibo.com',
+		'fa-xing'               => 'xing.com',
+		'fa-youtube'            => 'youtube.com',
 	) );
 
 	// Process each menu item
