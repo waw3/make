@@ -18,6 +18,7 @@ $entry_header = trim( ob_get_clean() );
 // Footer
 ob_start();
 get_template_part( 'partials/entry', 'author' );
+get_template_part( 'partials/entry', 'sharing' );
 $entry_footer = trim( ob_get_clean() );
 ?>
 

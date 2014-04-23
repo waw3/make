@@ -1213,14 +1213,14 @@ iframe[src*="google.com/maps"] {
   word-spacing: -1px;
   word-spacing: -0.05882rem; }
 
-.entry-date {
+.entry-date, .site-wrapper div.sharedaddy h3 {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px;
   font-size: 0.70588rem;
   letter-spacing: 1px;
   letter-spacing: 0.05882rem; }
-  .entry-date a {
+  .entry-date a, .entry-date .site-wrapper div.sharedaddy h3, .site-wrapper div.sharedaddy .entry-date h3 {
     color: #171717;
     text-decoration: none; }
 
@@ -1365,6 +1365,20 @@ iframe[src*="google.com/maps"] {
   height: 28px;
   padding-right: 28px;
   text-indent: -9999px; }
+
+/*---------------------------------------------------------
+ Jetpack Sharing (_posts.scss)
+-------------------------------------------------------- */
+.site-wrapper div.sharedaddy div.sd-block {
+  border-top: 0; }
+.site-wrapper div.sharedaddy h3, .site-wrapper div.sharedaddy .sd-content {
+  display: block;
+  float: left;
+  width: auto; }
+.site-wrapper div.sharedaddy h3 {
+  font-family: inherit;
+  padding-right: 22px;
+  padding-right: 1.29412rem; }
 
 /*---------------------------------------------------------
  Gallery shortcode slider (_posts.scss)

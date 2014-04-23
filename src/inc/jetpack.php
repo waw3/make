@@ -115,3 +115,23 @@ function ttf_one_jetpack_infinite_scroll_render() {
 	endwhile;
 }
 endif;
+
+if ( ! function_exists( 'ttf_one_jetpack_remove_sharing' ) ) :
+/**
+ * Remove the Jetpack Sharing output from the end of the post content
+ * so it can be output elsewhere.
+ *
+ * @since 1.0.0.
+ *
+ * @return void
+ */
+function ttf_one_jetpack_remove_sharing() {
+	remove_filter( 'the_content', 'sharing_display', 19 );
+	remove_filter( 'the_excerpt', 'sharing_display', 19 );
+	if ( class_exists( 'Jetpack_Likes' ) ) {
+		remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+	}
+}
+endif;
+
+add_action( 'loop_start', 'ttf_one_jetpack_remove_sharing' );

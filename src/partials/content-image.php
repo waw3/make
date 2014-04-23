@@ -2,6 +2,12 @@
 /**
  * @package ttf-one
  */
+
+// Footer
+ob_start();
+get_template_part( 'partials/entry', 'author' );
+get_template_part( 'partials/entry', 'sharing' );
+$entry_footer = trim( ob_get_clean() );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -19,4 +25,10 @@
 		</div>
 		<?php endif; ?>
 	</div>
+
+	<?php if ( $entry_footer ) : ?>
+	<footer class="entry-footer">
+		<?php echo $entry_footer; ?>
+	</footer>
+	<?php endif; ?>
 </article>
