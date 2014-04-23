@@ -3,7 +3,7 @@
  *
  * @since 1.0.0
  */
-/* global jQuery, TTFOneEditPage */
+/* global jQuery, ttfOneEditPageData */
 (function($) {
 	'use strict';
 
@@ -31,7 +31,7 @@
 			// Setup the event for toggling the Page Builder when the page template input changes
 			self.cache.$pageTemplate.on('change', self.templateToggle);
 
-			if ( typeof TTFOneEditPage !== 'undefined' && 'post-new.php' === TTFOneEditPage.pageNow ) {
+			if ( typeof ttfOneEditPageData !== 'undefined' && 'post-new.php' === ttfOneEditPageData.pageNow ) {
 				self.cache.$pageTemplate.val('template-builder.php');
 			}
 		},
@@ -59,8 +59,8 @@
 
 			self.cache.$featuredImage.find('.ttf-one-message').remove();
 
-			if ('undefined' !== typeof TTFOneEditPage) {
-				unavailable = TTFOneEditPage.featuredImage;
+			if ('undefined' !== typeof ttfOneEditPageData) {
+				unavailable = ttfOneEditPageData.featuredImage;
 			} else {
 				unavailable = 'Featured images are not available for this page while using the current page template.';
 			}
