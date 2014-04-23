@@ -53,7 +53,7 @@
 .ttf-one-text-columns-3 .ttf-one-text-column-position-4 {
 	display: none;
 }
-@media screen and ( min-width: 1460px ) {
+@media screen and ( min-width: 1160px ) {
 	.ttf-one-text-columns-3 .ttf-one-text-column,
 	.ttf-one-gallery-columns-3 .ttf-one-gallery-item {
 		width: 33.3333%;
@@ -71,7 +71,7 @@
 /*---------------------------------------------------------
  Text and Gallery: Four column (html-builder.css)
 -------------------------------------------------------- */
-@media screen and ( min-width: 1460px ) {
+@media screen and ( min-width: 1260px ) {
 	.ttf-one-text-columns-4 .ttf-one-text-column,
 	.ttf-one-gallery-columns-4 .ttf-one-gallery-item {
 		width: 25%;
