@@ -659,6 +659,9 @@ a {
   background-color: #eaecee;
   padding: 44px 0;
   padding:  2.58824rem 0; }
+  #infinite-footer .site-footer {
+    padding: 22px 0;
+    padding:  1.29412rem 0; }
   .site-footer *:not(select) {
     border-color: #b9bcbf !important; }
   @media screen and (min-width: 800px) {
@@ -737,6 +740,11 @@ a {
       margin: 0;
       font-size: 17px;
       font-size: 1rem; } }
+
+.infinite-scroll.neverending #site-footer {
+  display: none; }
+.infinity-end.neverending #site-footer {
+  display: block; }
 
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)
@@ -1311,15 +1319,23 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Navigation (_posts.scss)
 -------------------------------------------------------- */
-[class*="navigation"] .nav-previous, [class*="navigation"] .nav-next {
+#infinite-handle span {
+  background: inherit;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  padding: inherit; }
+
+[class*="navigation"] .nav-previous, [class*="navigation"] .nav-next, #infinite-handle {
   width: 50%; }
-  [class*="navigation"] .nav-previous a, [class*="navigation"] .nav-next a {
+  [class*="navigation"] .nav-previous a, [class*="navigation"] .nav-previous span, [class*="navigation"] .nav-next a, [class*="navigation"] .nav-next span, #infinite-handle a, #infinite-handle span {
     color: #171717;
     font-weight: bold;
     text-decoration: none;
     font-size: 14px;
     font-size: 0.82353rem; }
-    [class*="navigation"] .nav-previous a:before, [class*="navigation"] .nav-previous a:after, [class*="navigation"] .nav-next a:before, [class*="navigation"] .nav-next a:after {
+    [class*="navigation"] .nav-previous a:before, [class*="navigation"] .nav-previous a:after, [class*="navigation"] .nav-previous span:before, [class*="navigation"] .nav-previous span:after, [class*="navigation"] .nav-next a:before, [class*="navigation"] .nav-next a:after, [class*="navigation"] .nav-next span:before, [class*="navigation"] .nav-next span:after, #infinite-handle a:before, #infinite-handle a:after, #infinite-handle span:before, #infinite-handle span:after {
       font-family: FontAwesome;
       font-weight: normal; }
 
@@ -1328,11 +1344,22 @@ iframe[src*="google.com/maps"] {
   [class*="navigation"] .nav-previous a:before {
     content: "\f177  "; }
 
-[class*="navigation"] .nav-next {
+[class*="navigation"] .nav-next, #infinite-handle {
   float: right;
   text-align: right; }
-  [class*="navigation"] .nav-next a:after {
+  [class*="navigation"] .nav-next a:after, [class*="navigation"] .nav-next span:after, #infinite-handle a:after, #infinite-handle span:after {
     content: "  \f178"; }
+
+.infinite-scroll .paging-navigation {
+  display: none; }
+
+.infinite-loader {
+  color: #171717;
+  display: block;
+  float: right;
+  height: 28px;
+  padding-right: 28px;
+  text-indent: -9999px; }
 
 /*---------------------------------------------------------
  Gallery shortcode slider (_posts.scss)

@@ -120,10 +120,19 @@
 /*---------------------------------------------------------
  Navigation (_posts.scss)
 -------------------------------------------------------- */
+#infinite-handle span {
+	background: inherit;
+	border-radius: 0;
+	color: inherit;
+	cursor: pointer;
+	font-size: inherit;
+	padding: inherit;
+}
 [class*="navigation"] .nav-previous,
-[class*="navigation"] .nav-next {
+[class*="navigation"] .nav-next,
+#infinite-handle {
 	width: 50%;
-	a {
+	a, span {
 		color: $b;
 		font-weight: bold;
 		text-decoration: none; //reset
@@ -141,12 +150,26 @@
 		content: "\f177  ";
 	}
 }
-[class*="navigation"] .nav-next {
+[class*="navigation"] .nav-next,
+#infinite-handle {
 	float: right;
 	text-align: right;
-	a:after {
+	a:after, span:after {
 		content: "  \f178";
 	}
+}
+.infinite-scroll {
+	.paging-navigation {
+		display: none;
+	}
+}
+.infinite-loader {
+	color: $b;
+	display: block;
+	float: right;
+	height: 28px;
+	padding-right: 28px;
+	text-indent: -9999px;
 }
 /*---------------------------------------------------------
  Gallery shortcode slider (_posts.scss)

@@ -556,6 +556,9 @@ a {
 	color: #464849;
 	background-color: $d;
 	@include rem('padding', $base*2 0);
+	#infinite-footer & {
+		@include rem('padding', $base 0);
+	}
 	@extend .clear;
 	*:not(select) {
 		border-color: $e !important;
@@ -640,6 +643,14 @@ a {
 	}
 	@include rem('margin-top', $base/2);
 	@include rem('font-size', 24px);
+}
+#site-footer {
+	.infinite-scroll.neverending & {
+		display: none;
+	}
+	.infinity-end.neverending & {
+		display: block;
+	}
 }
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)

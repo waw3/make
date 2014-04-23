@@ -4,14 +4,14 @@
  */
 
 // Footer Options
+$footer_layout      = (int) get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) );
 $sidebar_count      = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
-$footer_text        = get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) );
-$show_footer_credit = (int) get_theme_mod( 'footer-show-credit', ttf_one_get_default( 'footer-show-credit' ) );
+$footer_text        = ttf_one_sanitize_text( get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) ) );
 $social_links       = ttf_one_get_social_links();
 $show_social        = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
 ?>
 
-<footer id="site-footer" class="site-footer footer-layout-<?php echo get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) ) ?>" role="contentinfo">
+<footer id="site-footer" class="site-footer footer-layout-<?php echo $footer_layout; ?>" role="contentinfo">
 	<div class="container">
 		<?php // Footer widget areas
 		if ( $sidebar_count > 0 ) : ?>
