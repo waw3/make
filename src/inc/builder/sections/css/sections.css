@@ -111,7 +111,7 @@
  Banner: Slide  (html-builder.css)
 -------------------------------------------------------- */
 @media screen and ( min-width: 1160px ) {
-	.ttf-one-banner-background-option-wrapper,
+	.ttf-one-banner-slide-option-wrapper,
 	.ttf-one-banner-slide-background-image-wrapper,
 	.ttf-one-gallery-background-image-wrapper,
 	.ttf-one-gallery-background-options-wrapper {
@@ -120,7 +120,7 @@
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
-	.ttf-one-banner-background-option-wrapper,
+	.ttf-one-banner-slide-option-wrapper,
 	.ttf-one-gallery-background-options-wrapper {
 		float: right;
 		padding-left: 20px;
@@ -129,11 +129,6 @@
 	.ttf-one-gallery-background-image-wrapper {
 		float: left;
 	}
-}
-.ttf-one-banner-slide-alignment-wrapper {
-	display: block;
-	margin-top: 15px;
-	text-align: right;
 }
 .ttf-one-banner-slide-header h3 em {
 	font-weight: normal; /*reset*/

@@ -30,7 +30,7 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 
 	<div class="ttf-one-banner-slide-body">
 
-		<div class="ttf-one-banner-background-option-wrapper">
+		<div class="ttf-one-banner-slide-option-wrapper">
 			<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
 			<p>
 				<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
@@ -43,6 +43,17 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 				<h4><label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'ttf-one' ); ?></label></h4>
 				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
 			</div>
+
+			<div class="ttf-one-banner-slide-alignment-wrapper">
+				<h4><label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'ttf-one' ); ?></label></h4>
+				<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
+					<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
+
+					<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
+					<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
+				</select>
+			</div>
+
 		</div>
 
 		<div class="ttf-one-banner-slide-background-image-wrapper">
@@ -74,16 +85,6 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<?php else : ?>
 			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_slide_id, $editor_settings ); ?>
 		<?php endif; ?>
-
-		<div class="ttf-one-banner-slide-alignment-wrapper">
-			<label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'ttf-one' ); ?></label>
-			<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
-				<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
-
-				<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
-				<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
-			</select>
-		</div>
 
 		<a href="#" class="ttf-one-banner-slide-remove">
 			<?php _e( 'Remove this slide', 'ttf-one' ); ?>
