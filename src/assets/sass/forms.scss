@@ -36,7 +36,7 @@ select {
 /*---------------------------------------------------------
  Buttons and inputs (_forms.scss)
 -------------------------------------------------------- */
-a.ttf-one-button,
+.ttf-one-button,
 button,
 input[type="button"],
 input[type="reset"],
@@ -52,14 +52,17 @@ input[type="submit"] {
 	&.color-primary-background {
 		background-color: $c;
 	}
+	&.color-secondary-background {
+		background-color: $d;
+	}
 	&.ttf-one-success {
-		background: #339d56;
+		background-color: #339d56;
 	}
 	&.ttf-one-error {
-		background: #d04242;
+		background-color: #d04242;
 	}
 	&.ttf-one-important {
-		background: #f89e01;
+		background-color: #f89e01;
 	}
 	&.ttf-one-download:after {
 		content: "\f0ab";

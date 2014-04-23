@@ -53,7 +53,7 @@ function ttf_one_css_add_rules() {
 			)
 		) );
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.color-primary-background', '.site-navigation ul.menu ul a:hover', '.site-navigation ul.menu ul a:focus', '.site-navigation .menu ul ul a:hover', '.site-navigation .menu ul ul a:focus', 'a.ttf-one-button.color-primary-background', 'button.color-primary-background', 'input[type="button"].color-primary-background', 'input[type="reset"].color-primary-background', 'input[type="submit"].color-primary-background' ),
+			'selectors'    => array( '.color-primary-background', '.site-navigation ul.menu ul a:hover', '.site-navigation ul.menu ul a:focus', '.site-navigation .menu ul ul a:hover', '.site-navigation .menu ul ul a:focus' ),
 			'declarations' => array(
 				'background-color' => $color_primary
 			)

@@ -73,6 +73,14 @@ function ttf_one_mce_before_init( $settings ) {
 			),
 			'exact' => true
 		),
+		// Alert (div)
+		array(
+			'title' => __( 'Alert', 'ttf-one' ),
+			'block' => 'div',
+			'attributes' => array(
+				'class' => 'ttf-one-alert' // Replace existing classes instead of adding
+			),
+		),
 		// Button (a)
 		array(
 			'title' => __( 'Button', 'ttf-one' ),
@@ -81,41 +89,41 @@ function ttf_one_mce_before_init( $settings ) {
 				'class' => 'ttf-one-button' // Replace existing classes instead of adding
 			)
 		),
-		// Button alert (a)
-		array(
-			'title' => __( 'Button: alert', 'ttf-one' ),
-			'selector' => 'a,button',
-			'classes' => 'ttf-one-alert'
-		),
 		// Button download (a)
 		array(
 			'title' => __( 'Button: download', 'ttf-one' ),
 			'selector' => 'a,button',
 			'classes' => 'ttf-one-download'
 		),
-		// Button primary color (a)
+		// Button primary (a)
 		array(
-			'title' => __( 'Button: primary color', 'ttf-one' ),
+			'title' => __( 'Button: primary', 'ttf-one' ),
 			'selector' => 'a,button',
 			'classes' => 'color-primary-background'
 		),
-		// Button green (a)
+		// Button primary (a)
 		array(
-			'title' => __( 'Button: green', 'ttf-one' ),
+			'title' => __( 'Button: secondary', 'ttf-one' ),
 			'selector' => 'a,button',
-			'classes' => 'ttf-one-success'
+			'classes' => 'color-secondary-background'
 		),
-		// Button red (a)
+		// Success (div)
 		array(
-			'title' => __( 'Button: red', 'ttf-one' ),
-			'selector' => 'a,button',
-			'classes' => 'ttf-one-error'
+			'title' => __( 'Success (Green)', 'ttf-one' ),
+			'selector' => 'div,a,button',
+			'classes' => 'ttf-one-success',
 		),
-		// Button orange (a)
+		// Error (div)
 		array(
-			'title' => __( 'Button: orange', 'ttf-one' ),
-			'selector' => 'a,button',
-			'classes' => 'ttf-one-important'
+			'title' => __( 'Error (Red)', 'ttf-one' ),
+			'selector' => 'div,a,button',
+			'classes' => 'ttf-one-error',
+		),
+		// Important (div)
+		array(
+			'title' => __( 'Important (Orange)', 'ttf-one' ),
+			'selector' => 'div,a,button',
+			'classes' => 'ttf-one-important',
 		),
 		// List: check 1
 		array(
@@ -148,38 +156,6 @@ function ttf_one_mce_before_init( $settings ) {
 			'attributes' => array(
 				'class' => 'ttf-one-list ttf-one-list-dot' // Replace existing classes instead of adding
 			)
-		),
-		// Alert (div)
-		array(
-			'title' => __( 'Alert', 'ttf-one' ),
-			'block' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert' // Replace existing classes instead of adding
-			),
-		),
-		// Alert success (div)
-		array(
-			'title' => __( 'Alert: success', 'ttf-one' ),
-			'block' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert ttf-one-success' // Replace existing classes instead of adding
-			),
-		),
-		// Alert error (div)
-		array(
-			'title' => __( 'Alert: error', 'ttf-one' ),
-			'block' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert ttf-one-error' // Replace existing classes instead of adding
-			),
-		),
-		// Alert important (div)
-		array(
-			'title' => __( 'Alert: important', 'ttf-one' ),
-			'block' => 'div',
-			'attributes' => array(
-				'class' => 'ttf-one-alert ttf-one-important' // Replace existing classes instead of adding
-			),
 		),
 	);
 

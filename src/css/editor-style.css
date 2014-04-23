@@ -131,30 +131,9 @@ ol {
 	list-style: decimal;
 }
 /*---------------------------------------------------------
- Alerts (editor-style.css)
--------------------------------------------------------- */
-.ttf-one-alert {
-	margin-bottom: 22px;
-	padding: 33px 32px;
-	font-size: 14px;
-	background-color: #eaecee;
-}
-.ttf-one-alert.ttf-one-error {
-	color: #d04242;
-	background-color: #f7eeee;
-}
-.ttf-one-alert.ttf-one-success {
-	color: #339d56;
-	background: #eef7f1;
-}
-.ttf-one-alert.ttf-one-important {
-	color: #f89e01;
-	background-color: #fffde5;
-}
-/*---------------------------------------------------------
  Buttons (editor-style.css)
 -------------------------------------------------------- */
-a.ttf-one-button,
+.ttf-one-button,
 button,
 input[type="button"],
 input[type="reset"],
@@ -170,19 +149,43 @@ input[type="submit"] {
 .color-primary-background {
 	background-color: #0094c5;
 }
+.color-secondary-background {
+	background-color: #eaecee;
+}
 .ttf-one-success {
-	background: #339d56;
+	background-color: #339d56;
 }
 .ttf-one-error {
-	background: #d04242;
+	background-color: #d04242;
 }
 .ttf-one-important {
-	background: #f89e01;
+	background-color: #f89e01;
 }
 .ttf-one-download:after {
 	content: "\f0ab";
 	padding-left: 6px;
 	font-family: FontAwesome;
+}
+/*---------------------------------------------------------
+ Alerts (editor-style.css)
+-------------------------------------------------------- */
+.ttf-one-alert {
+	margin-bottom: 22px;
+	padding: 33px 32px;
+	font-size: 14px;
+	background-color: #eaecee;
+}
+.ttf-one-alert.ttf-one-success {
+	color: #339d56;
+	background-color: #eef7f1;
+}
+.ttf-one-alert.ttf-one-error {
+	color: #d04242;
+	background-color: #f7eeee;
+}
+.ttf-one-alert.ttf-one-important {
+	color: #f89e01;
+	background-color: #fffde5;
 }
 /*---------------------------------------------------------
  Lists (editor-style.css)
