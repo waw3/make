@@ -19,11 +19,7 @@ $show_social   = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default(
 			<?php
 			$current_sidebar = 1;
 			while ( $current_sidebar <= $sidebar_count ) :
-			?>
-			<section id="footer-<?php echo $current_sidebar; ?>" class="widget-area <?php echo ( is_active_sidebar( 'footer-' . $current_sidebar ) ) ? 'active' : 'inactive'; ?>" role="complementary">
-				<?php dynamic_sidebar( 'footer-' . $current_sidebar ); ?>
-			</section>
-			<?php
+				get_sidebar( 'footer-' . $current_sidebar );
 				$current_sidebar++;
 			endwhile; ?>
 		</div>
