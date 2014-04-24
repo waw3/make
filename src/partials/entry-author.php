@@ -20,7 +20,7 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_ge
 		?>
 	</div>
 	<?php endif; ?>
-	<div class="entry-author-byline">
+	<div class="entry-author-byline bypostauthor">
 		<?php
 		printf(
 			_x( 'by %s', 'author byline', 'ttf-one' ),
