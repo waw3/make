@@ -245,14 +245,12 @@ if ( ! function_exists( 'ttf_one_scripts' ) ) :
 /**
  * Enqueue styles and scripts.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_scripts() {
-	/**
-	 * Styles
-	 */
+	// Styles
 	$style_dependencies = array();
 
 	// Google fonts
@@ -294,9 +292,7 @@ function ttf_one_scripts() {
 		'print'
 	);
 
-	/**
-	 * Scripts
-	 */
+	// Scripts
 	$script_dependencies = array();
 
 	// jQuery
@@ -314,7 +310,32 @@ function ttf_one_scripts() {
 		'1.1',
 		true
 	);
-	ttf_one_localize_fitvids( 'ttf-one-fitvids' );
+
+	// Default selectors
+	$selector_array = array(
+		"iframe[src*='www.viddler.com']",
+		"iframe[src*='money.cnn.com']",
+		"iframe[src*='www.educreations.com']",
+		"iframe[src*='//blip.tv']",
+		"iframe[src*='//embed.ted.com']",
+		"iframe[src*='//www.hulu.com']",
+	);
+
+	// Filter selectors
+	$selector_array = apply_filters( 'ttf_one_fitvids_custom_selectors', $selector_array );
+
+	// Compile selectors
+	$fitvids_custom_selectors = array(
+		'selectors' => implode( ',', $selector_array )
+	);
+
+	// Send to the script
+	wp_localize_script(
+		'ttf-one-fitvids',
+		'TTFOneFitVids',
+		$fitvids_custom_selectors
+	);
+
 	$script_dependencies[] = 'ttf-one-fitvids';
 
 	// Global script
@@ -383,45 +404,6 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 			true
 		);
 	}
-}
-endif;
-
-if ( ! function_exists( 'ttf_one_localize_fitvids' ) ) :
-/**
- * Localize FitVids script.
- *
- * Add custom selectors to increase vendor support in FitVids.
- *
- * @since 1.0.0
- *
- * @param  string    $name    The handle for registering the script.
- * @return void
- */
-function ttf_one_localize_fitvids( $name ) {
-	// Default selectors
-	$selector_array = array(
-		"iframe[src*='www.viddler.com']",
-		"iframe[src*='money.cnn.com']",
-		"iframe[src*='www.educreations.com']",
-		"iframe[src*='//blip.tv']",
-		"iframe[src*='//embed.ted.com']",
-		"iframe[src*='//www.hulu.com']",
-	);
-
-	// Filter selectors
-	$selector_array = apply_filters( 'ttf_one_fitvids_custom_selectors', $selector_array );
-
-	// Compile selectors
-	$fitvids_custom_selectors = array(
-		'selectors' => implode( ',', $selector_array )
-	);
-
-	// Send to the script
-	wp_localize_script(
-		$name,
-		'TTFOneFitVids',
-		$fitvids_custom_selectors
-	);
 }
 endif;
 
