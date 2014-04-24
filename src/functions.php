@@ -31,6 +31,44 @@ if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttf_one_is_wpcom(
 }
 
 /**
+ * Initial content width
+ */
+if ( ! isset( $content_width ) ) {
+	$content_width = 620;
+}
+
+if ( ! function_exists( 'ttf_one_content_width' ) ) :
+/**
+ * Set the content width based on current layout
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function ttf_one_content_width() {
+	global $content_width;
+
+	$left = ttf_one_has_sidebar( 'left' );
+	$right = ttf_one_has_sidebar( 'right' );
+
+	// No sidebars
+	if ( ! $left && ! $right ) {
+		$content_width = 960;
+	}
+	// Both sidebars
+	else if ( $left && $right ) {
+		$content_width = 464;
+	}
+	// One sidebar
+	else if ( $left || $right ) {
+		$content_width = 620;
+	}
+}
+endif;
+
+add_action( 'template_redirect', 'ttf_one_content_width' );
+
+/**
  * Global Includes
  */
 // Custom functions that act independently of the theme templates
@@ -402,41 +440,3 @@ function ttf_one_head_late() { ?>
 endif;
 
 add_action( 'wp_head', 'ttf_one_head_late', 99 );
-
-/**
- * Initial content width
- */
-if ( ! isset( $content_width ) ) {
-	$content_width = 620;
-}
-
-if ( ! function_exists( 'ttf_one_content_width' ) ) :
-/**
- * Set the content width based on current layout
- *
- * @since 1.0.0
- *
- * @return void
- */
-function ttf_one_content_width() {
-	global $content_width;
-
-	$left = ttf_one_has_sidebar( 'left' );
-	$right = ttf_one_has_sidebar( 'right' );
-
-	// No sidebars
-	if ( ! $left && ! $right ) {
-		$content_width = 960;
-	}
-	// Both sidebars
-	else if ( $left && $right ) {
-		$content_width = 464;
-	}
-	// One sidebar
-	else if ( $left || $right ) {
-		$content_width = 620;
-	}
-}
-endif;
-
-add_action( 'template_redirect', 'ttf_one_content_width' );
