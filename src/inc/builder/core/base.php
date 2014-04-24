@@ -278,9 +278,9 @@ class TTF_One_Builder_Base {
 		$add_state    = ( '' === $image ) ? 'ttf-one-show' : 'ttf-one-hide';
 		$remove_state = ( '' === $image ) ? 'ttf-one-hide' : 'ttf-one-show';
 
-		// Set default messages. Note that 'one' is not used in some cases the strings are core i18ns
-		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image' )            : $messages['add'];
-		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image' )         : $messages['remove'];
+		// Set default messages. Note that 'ttf-one' is not used in some cases the strings are core i18ns
+		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image' )               : $messages['add'];
+		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image' )            : $messages['remove'];
 		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'ttf-one' )        : $messages['title'];
 		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'ttf-one' ) : $messages['button'];
 		?>
@@ -433,6 +433,7 @@ class TTF_One_Builder_Base {
 
 		$img = '<span class="wp-media-buttons-icon"></span>';
 
+		// Note that 'ttf-one' text domain is not used for Add Media in order to use the core l10n
 		echo '<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="' . esc_attr( $editor_id ) . '" title="' . esc_attr__( 'Add Media' ) . '">' . $img . ' <span class="ttf-one-media-button-text">' . __( 'Add Media' ) . '</span></a>';
 	}
 
