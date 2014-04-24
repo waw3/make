@@ -1484,7 +1484,6 @@ iframe[src*="google.com/maps"] {
  Banner section: Caption (_pages.scss)
 -------------------------------------------------------- */
 .builder-banner-overlay, .builder-section-overlay {
-  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
@@ -1495,7 +1494,14 @@ iframe[src*="google.com/maps"] {
     .builder-banner-overlay, .builder-section-overlay {
       background-color: rgba(0, 0, 0, 0.4); } }
 
+.builder-banner-overlay {
+  z-index: -1; }
+
+.builder-section-overlay {
+  z-index: 1; }
+
 .builder-banner-slide {
+  z-index: 1;
   position: relative;
   width: 100%;
   height: 0;
