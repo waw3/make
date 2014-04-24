@@ -25,11 +25,10 @@ if ( ! function_exists( 'ttf_one_body_classes' ) ) :
 /**
  * Adds custom classes to the array of body classes.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param array $classes Classes for the body element.
- *
- * @return array
+ * @param  array    $classes    Classes for the body element.
+ * @return array                Modified class list.
  */
 function ttf_one_body_classes( $classes ) {
 	// Left Sidebar
@@ -52,12 +51,12 @@ if ( ! function_exists( 'ttf_one_wp_title' ) ) :
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $title Default title text for current view.
- * @param string $sep Optional separator.
+ * @param  string    $title    Default title text for current view.
+ * @param  string    $sep      Optional separator.
  *
- * @return string The filtered title.
+ * @return string              The filtered title.
  */
 function ttf_one_wp_title( $title, $sep ) {
 	global $page, $paged;
