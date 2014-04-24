@@ -38,7 +38,7 @@
 	@include rem('margin-top', $base/2);
 	@include rem('font-size', 13px);
 }
-.entry-author-byline {
+.bypostauthor {
 	font-style: italic;
 	line-height: 40px;
 	@include rem('font-size', 15px);

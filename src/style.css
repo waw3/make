@@ -1236,12 +1236,12 @@ iframe[src*="google.com/maps"] {
   font-size: 13px;
   font-size: 0.76471rem; }
 
-.entry-author-byline {
+.bypostauthor {
   font-style: italic;
   line-height: 40px;
   font-size: 15px;
   font-size: 0.88235rem; }
-  .entry-author-byline a.vcard {
+  .bypostauthor a.vcard {
     color: #3070d1;
     font-weight: bold;
     font-style: normal; }
