@@ -187,9 +187,15 @@ if ( ! function_exists( 'ttf_one_maybe_show_sidebar' ) ) :
 /**
  * Output the sidebar markup if the current view calls for it.
  *
- * @since 1.0.0
+ * The function is a wrapper for the get_sidebar() function. In this theme, the sidebars can be turned on and off for
+ * different page views. It is important the the sidebar is *only included* if the user has set the option for it to
+ * be included. As such, the get_sidebar() function needs to additional logic to determine whether or not to even
+ * include the template.
  *
- * @param $location
+ * @since  1.0.0.
+ *
+ * @param  string    $location    The sidebar location (e.g., left, right).
+ * @return void
  */
 function ttf_one_maybe_show_sidebar( $location ) {
 	// Get sidebar status
@@ -197,21 +203,7 @@ function ttf_one_maybe_show_sidebar( $location ) {
 
 	// Output the sidebar
 	if ( true === $show_sidebar ) {
-		// Filter sidebar id
-		$sidebar_id = apply_filters( 'ttf_one_sidebar_id', 'sidebar-' . $location, $location );
-
-		// First look for a template file
-		if ( '' !== $template_path = locate_template( $sidebar_id . '.php' ) ) {
-			require_once( $template_path );
-		}
-		// Then fall back to the default markup
-		else { ?>
-		<section id="<?php echo $sidebar_id; ?>" class="widget-area <?php echo ( is_active_sidebar( $sidebar_id ) ) ? 'active' : 'inactive'; ?>" role="complementary">
-			<?php if ( ! dynamic_sidebar( $sidebar_id ) ) : ?>
-				&nbsp;
-			<?php endif; ?>
-		</section>
-		<?php }
+		get_sidebar( $location );
 	}
 }
 endif;
