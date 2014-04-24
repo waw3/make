@@ -5,11 +5,11 @@
 
 if ( is_attachment() ) :
 	// Always show post-header style image on Attachment view
-	$thumb_option = 'post-header';
-	$thumbnail_id = get_post()->ID;
+	$thumb_option   = 'post-header';
+	$thumbnail_id   = get_post()->ID;
 	$thumbnail_size = 'full';
 else:
-	$thumb_key = 'layout-' . ttf_one_get_view() . '-featured-images';
+	$thumb_key    = 'layout-' . ttf_one_get_view() . '-featured-images';
 	$thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_default( $thumb_key ) ), $thumb_key );
 	$thumbnail_id = get_post_thumbnail_id();
 
