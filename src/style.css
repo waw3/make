@@ -662,6 +662,8 @@ a {
   #infinite-footer .site-footer {
     padding: 22px 0;
     padding:  1.29412rem 0; }
+  .site-footer .search-form input {
+    border: 1px solid; }
   .site-footer *:not(select) {
     border-color: #b9bcbf !important; }
   @media screen and (min-width: 800px) {

@@ -561,6 +561,9 @@ a {
 	#infinite-footer & {
 		@include rem('padding', $base 0);
 	}
+	.search-form input {
+		border: 1px solid;
+	}
 	@extend .clear;
 	*:not(select) {
 		border-color: $e !important;

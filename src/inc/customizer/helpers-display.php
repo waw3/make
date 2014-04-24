@@ -275,7 +275,7 @@ function ttf_one_css_add_rules() {
 	// Footer border color
 	if ( $footer_border_color !== ttf_one_get_default( 'footer-border-color' ) ) {
 		ttf_one_get_css()->add( array(
-			'selectors'    => array( '.site-footer' ),
+			'selectors'    => array( '.site-footer *:not(select)' ),
 			'declarations' => array(
 				'border-color' => $footer_border_color
 			)
