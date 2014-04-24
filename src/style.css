@@ -2115,3 +2115,9 @@ div.sharedaddy {
 .contact-form div label {
   margin-top: 11px;
   margin-top: 0.64706rem; }
+
+.infinite-scroll.neverending .site-footer {
+  display: none; }
+
+.infinity-end.neverending .site-footer {
+  display: block; }
