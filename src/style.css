@@ -1959,6 +1959,9 @@ iframe[src*="google.com/maps"] {
 .vcard {
   margin-bottom: 0; }
 
+.bypostauthor {
+  margin: 0; }
+
 /*---------------------------------------------------------
  Form (_comments.scss)
 -------------------------------------------------------- */
