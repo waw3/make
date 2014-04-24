@@ -46,3 +46,31 @@
 		font-size: 13px !important;
 	}
 }
+/*---------------------------------------------------------
+ Jetpack (_support.scss)
+-------------------------------------------------------- */
+div.sharedaddy {
+	@include rem('margin', $base 0);
+}
+.contact-form {
+	textarea,
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="text"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"] {
+		max-width: 100% !important;
+		width: 100% !important;
+	}
+	div label {
+		@include rem('margin-top', $base/2);
+	}
+}
