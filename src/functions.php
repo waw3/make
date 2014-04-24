@@ -12,9 +12,9 @@ if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
 /**
  * Whether or not the current environment is WordPress.com.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
- * @return bool
+ * @return bool    Whether or not the current environment is WordPress.com.
  */
 function ttf_one_is_wpcom() {
 	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
@@ -31,7 +31,7 @@ if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttf_one_is_wpcom(
 }
 
 /**
- * Initial content width
+ * Initial content width.
  */
 if ( ! isset( $content_width ) ) {
 	$content_width = 620;
@@ -41,7 +41,7 @@ if ( ! function_exists( 'ttf_one_content_width' ) ) :
 /**
  * Set the content width based on current layout
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -69,21 +69,25 @@ endif;
 add_action( 'template_redirect', 'ttf_one_content_width' );
 
 /**
- * Global Includes
+ * Global includes.
  */
 // Custom functions that act independently of the theme templates
 require get_template_directory() . '/inc/extras.php';
+
 // Custom template tags
 require get_template_directory() . '/inc/template-tags.php';
+
 // Customizer additions
 require get_template_directory() . '/inc/customizer/bootstrap.php';
+
 // Jetpack compatibility file
 require get_template_directory() . '/inc/jetpack.php';
+
 // Gallery slider
 require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
 
 /**
- * Admin Includes
+ * Admin includes.
  */
 if ( is_admin() ) {
 	// TinyMCE customizations
@@ -100,7 +104,7 @@ if ( ! function_exists( 'ttf_one_setup' ) ) :
 /**
  * Sets up text domain, theme support, menus, and editor styles
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -143,8 +147,10 @@ function ttf_one_setup() {
 	if ( '' !== $google_request = ttf_one_get_google_font_request() ) {
 		$editor_styles[] = $google_request;
 	}
+
 	$editor_styles[] = 'css/font-awesome.css';
 	$editor_styles[] = 'css/editor-style.css';
+
 	// Another editor stylesheet is added via ttf_one_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
 }
@@ -156,7 +162,7 @@ if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
 /**
  * Register widget areas
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -224,7 +230,7 @@ if ( ! function_exists( 'ttf_one_head_early' ) ) :
 /**
  * Add items to the top of the wp_head section of the document head.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -363,9 +369,9 @@ if ( ! function_exists( 'ttf_one_cycle2_script_setup' ) ) :
  * If the environment is set up for minified scripts, load one concatenated, minified
  * Cycle 2 script. Otherwise, load each module separately.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param array $script_dependencies
+ * @param  array    $script_dependencies    Scripts that Cycle2 depends on.
  *
  * @return void
  */
@@ -387,6 +393,7 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 			'2.1.3',
 			true
 		);
+
 		// Vertical centering
 		wp_enqueue_script(
 			'ttf-one-cycle2-center',
@@ -395,6 +402,7 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 			'20140121',
 			true
 		);
+
 		// Swipe support
 		wp_enqueue_script(
 			'ttf-one-cycle2-swipe',
@@ -411,7 +419,7 @@ if ( ! function_exists( 'ttf_one_head_late' ) ) :
 /**
  * Add additional items to the end of the wp_head section of the document head.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
