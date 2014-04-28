@@ -386,6 +386,7 @@ class TTF_One_Logo {
 		);
 	}
 }
+endif;
 
 if ( ! function_exists( 'ttf_one_get_logo' ) ) :
 /**
@@ -401,5 +402,3 @@ function ttf_one_get_logo() {
 endif;
 
 add_action( 'init', 'ttf_one_get_logo', 1 );
-
-endif;
