@@ -7,16 +7,16 @@ if ( ! function_exists( 'ttf_one_customizer_background' ) ) :
 /**
  * Configure settings and controls for the Background section.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_customizer_background() {
 	global $wp_customize;
 
-	$priority = new TTF_One_Prioritizer( 10, 5 );
+	$priority       = new TTF_One_Prioritizer( 10, 5 );
 	$control_prefix = 'ttf-one_';
-	$section = 'background_image';
+	$section        = 'background_image';
 
 	// Rename Background Image section to Background
 	$wp_customize->get_section( $section )->title = __( 'Background', 'ttf-one' );
