@@ -78,6 +78,7 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( $font_header_size ) . 'rem'
 			)
 		) );
+
 		// h2
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( 'h2' ),
@@ -86,6 +87,7 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) ) . 'rem'
 			)
 		) );
+
 		// h3
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( 'h3' ),
@@ -94,6 +96,7 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) ) . 'rem'
 			)
 		) );
+
 		// h4
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( 'h4' ),
@@ -102,6 +105,7 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) ) . 'rem'
 			)
 		) );
+
 		// h5
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( 'h5' ),
@@ -110,6 +114,7 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) ) . 'rem'
 			)
 		) );
+
 		// h6
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( 'h6' ),
@@ -118,6 +123,7 @@ function ttf_one_css_fonts() {
 				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) ) . 'rem'
 			)
 		) );
+
 		// Post title with two sidebars
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
@@ -127,6 +133,7 @@ function ttf_one_css_fonts() {
 			),
 			'media'        => 'screen and (min-width: 800px)'
 		) );
+
 		// Widget title
 		ttf_one_get_css()->add( array(
 			'selectors'    => array( '.widget-title' ),
