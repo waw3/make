@@ -98,7 +98,7 @@ if ( is_admin() ) {
 }
 
 /**
- * 3rd party compatibility includes
+ * 3rd party compatibility includes.
  */
 // Jetpack
 if ( class_exists( 'Jetpack' ) ) {
