@@ -7,7 +7,9 @@ if ( ! function_exists( 'ttf_one_customizer_init' ) ) :
 /**
  * Load the customizer files and enqueue scripts
  *
- * @since 1.0
+ * @since  1.0.0.
+ *
+ * @return void
  */
 function ttf_one_customizer_init() {
 	$path = '/inc/customizer/';
@@ -36,11 +38,12 @@ if ( ! function_exists( 'ttf_one_customizer_add_sections' ) ) :
 /**
  * Add sections and controls to the customizer.
  *
- * Hooked to 'customize_register' via ttf_one_customizer_init()
+ * Hooked to 'customize_register' via ttf_one_customizer_init().
  *
- * @since 1.0
+ * @since  1.0.0.
  *
- * @param object $wp_customize
+ * @param  WP_Customize_Manager    $wp_customize    Theme Customizer object.
+ * @return void
  */
 function ttf_one_customizer_add_sections( $wp_customize ) {
 	$path         = '/inc/customizer/';
@@ -122,9 +125,10 @@ if ( ! function_exists( 'ttf_one_customizer_set_transport' ) ) :
  *
  * Allows these settings to update asynchronously in the Preview pane.
  *
- * @since 1.0
+ * @since  1.0.0.
  *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ * @param  WP_Customize_Manager    $wp_customize    Theme Customizer object.
+ * @return void
  */
 function ttf_one_customizer_set_transport( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
@@ -138,7 +142,9 @@ if ( ! function_exists( 'ttf_one_customizer_preview_script' ) ) :
  *
  * Hooked to 'customize_preview_init' via ttf_one_customizer_init()
  *
- * @since 1.0
+ * @since  1.0.0.
+ *
+ * @return void
  */
 function ttf_one_customizer_preview_script() {
 	$path = '/inc/customizer/js/';
@@ -159,7 +165,9 @@ if ( ! function_exists( 'ttf_one_customizer_sections_script' ) ) :
  *
  * Hooked to 'customize_controls_enqueue_scripts' via ttf_one_customizer_init()
  *
- * @since 1.0
+ * @since  1.0.0.
+ *
+ * @return void
  */
 function ttf_one_customizer_sections_script() {
 	$path = '/inc/customizer/js/';
@@ -178,7 +186,9 @@ if ( ! function_exists( 'ttf_one_customizer_admin_styles' ) ) :
 /**
  * Styles for our Customizer sections and controls. Prints in the <head>
  *
- * @since 1.0
+ * @since  1.0.0.
+ *
+ * @return void
  */
 function ttf_one_customizer_admin_styles() { ?>
 	<style type="text/css">
@@ -193,7 +203,7 @@ if ( ! function_exists( 'ttf_one_add_customizations' ) ) :
 /**
  * Make sure the 'ttf_one_css' action only runs once.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -232,7 +242,7 @@ if ( ! function_exists( 'ttf_one_ajax_display_customizations' ) ) :
 /**
  * Generates the theme option CSS as an Ajax response
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -257,13 +267,12 @@ add_action( 'wp_ajax_ttf-one-css', 'ttf_one_ajax_display_customizations' );
 
 if ( ! function_exists( 'ttf_one_mce_css' ) ) :
 /**
- * Make sure theme option CSS is added to TinyMCE last, to override other styles
+ * Make sure theme option CSS is added to TinyMCE last, to override other styles.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $stylesheets
- *
- * @return string
+ * @param  string    $stylesheets    List of stylesheets added to TinyMCE.
+ * @return string                    Modified list of stylesheets.
  */
 function ttf_one_mce_css( $stylesheets ) {
 	if ( ttf_one_get_css()->build() ) {
