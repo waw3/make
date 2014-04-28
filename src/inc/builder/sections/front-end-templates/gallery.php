@@ -42,7 +42,7 @@ $aspect = ( isset( $ttf_one_section_data[ 'aspect' ] ) ) ? esc_attr( $ttf_one_se
 				</div>
 				<?php elseif ( has_excerpt( $item['image-id'] ) ) : ?>
 				<div class="builder-gallery-description">
-					<?php echo ttf_one_allowed_tags( get_post( $item['image-id'] )->post_excerpt ); ?>
+					<?php echo ttf_one_sanitize_text( get_post( $item['image-id'] )->post_excerpt ); ?>
 				</div>
 				<?php endif; ?>
 			</div>

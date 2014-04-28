@@ -571,6 +571,7 @@ class TTF_One_Builder_Base {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_get_builder_base' ) ) :
 /**
  * Instantiate or return the one TTF_One_Builder_Base instance.
  *
@@ -581,6 +582,7 @@ endif;
 function ttf_one_get_builder_base() {
 	return TTF_One_Builder_Base::instance();
 }
+endif;
 
 add_action( 'admin_init', 'ttf_one_get_builder_base', 1 );
 
@@ -656,7 +658,7 @@ function ttf_one_get_section_name( $data, $is_js_template ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_allowed_tags' ) ) :
+if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
 /**
  * Allow only the allowedtags array in a string.
  *
@@ -665,7 +667,7 @@ if ( ! function_exists( 'ttf_one_allowed_tags' ) ) :
  * @param  string    $string    The unsanitized string.
  * @return string               The sanitized string.
  */
-function ttf_one_allowed_tags( $string ) {
+function ttf_one_sanitize_text( $string ) {
 	global $allowedtags;
 	return wp_kses( $string , $allowedtags );
 }
