@@ -156,7 +156,7 @@ function ttf_one_setup() {
 
 	// Editor styles
 	$editor_styles = array();
-	if ( '' !== $google_request = ttf_one_get_google_font_request() ) {
+	if ( '' !== $google_request = ttf_one_get_google_font_uri() ) {
 		$editor_styles[] = $google_request;
 	}
 
@@ -272,7 +272,7 @@ function ttf_one_scripts() {
 	$style_dependencies = array();
 
 	// Google fonts
-	if ( '' !== $google_request = ttf_one_get_google_font_request() ) {
+	if ( '' !== $google_request = ttf_one_get_google_font_uri() ) {
 		// Enqueue the fonts
 		wp_enqueue_style(
 			'ttf-one-google-fonts',

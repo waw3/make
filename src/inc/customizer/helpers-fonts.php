@@ -241,7 +241,7 @@ function ttf_one_convert_px_to_rem( $px, $base = 0 ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
+if ( ! function_exists( 'ttf_one_get_google_font_uri' ) ) :
 /**
  * Build the HTTP request URL for Google Fonts.
  *
@@ -249,7 +249,7 @@ if ( ! function_exists( 'ttf_one_get_google_font_request' ) ) :
  *
  * @return string    The URL for including Google Fonts.
  */
-function ttf_one_get_google_font_request() {
+function ttf_one_get_google_font_uri() {
 	// Grab the font choices
 	$fonts = array(
 		get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) ),
