@@ -45,7 +45,6 @@
 					setting.bind( visibility );
 				});
 			});
-
 		});
 	});
 } )( jQuery );

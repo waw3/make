@@ -21,6 +21,7 @@
 			$content.text( to );
 		} );
 	} );
+
 	// Tagline
 	api( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
@@ -34,6 +35,7 @@
 			$content.text( to );
 		} );
 	} );
+
 	// Mobile Menu Label
 	api( 'navigation-mobile-label', function( value ) {
 		value.bind( function( to ) {
@@ -41,6 +43,7 @@
 			$content.text( to );
 		} );
 	} );
+
 	// Sticky Label
 	api( 'general-sticky-label', function( value ) {
 		value.bind( function( to ) {
@@ -54,6 +57,7 @@
 			$content.text( to );
 		} );
 	} );
+
 	// Header Text
 	api( 'header-text', function( value ) {
 		value.bind( function( to ) {
@@ -73,6 +77,7 @@
 			$content.text( to );
 		} );
 	} );
+
 	// Footer Text
 	api( 'footer-text', function( value ) {
 		value.bind( function( to ) {
