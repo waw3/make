@@ -7,16 +7,16 @@ if ( ! function_exists( 'ttf_one_customizer_navigation' ) ) :
 /**
  * Configure settings and controls for the Navigation section.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_customizer_navigation() {
 	global $wp_customize;
 
-	$priority = new TTF_One_Prioritizer();
+	$priority       = new TTF_One_Prioritizer();
 	$control_prefix = 'ttf-one_';
-	$section = 'nav';
+	$section        = 'nav';
 
 	// Menu Label
 	$setting_id = 'navigation-mobile-label';

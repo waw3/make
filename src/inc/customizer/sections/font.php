@@ -7,15 +7,14 @@ if ( ! function_exists( 'ttf_one_customizer_font' ) ) :
 /**
  * Configure settings and controls for the Fonts section.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @param  object    $wp_customize    The global customizer object.
  * @param  string    $section         The section name.
- *
  * @return void
  */
 function ttf_one_customizer_font( $wp_customize, $section ) {
-	$priority = new TTF_One_Prioritizer();
+	$priority       = new TTF_One_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 

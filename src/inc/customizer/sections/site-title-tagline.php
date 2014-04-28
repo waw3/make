@@ -7,21 +7,20 @@ if ( ! function_exists( 'ttf_one_customizer_sitetitletagline' ) ) :
 /**
  * Configure settings and controls for the Site Title & Tagline section.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_customizer_sitetitletagline() {
 	global $wp_customize;
 
-	$priority = new TTF_One_Prioritizer( 10, 1 );
+	$priority       = new TTF_One_Prioritizer( 10, 1 );
 	$control_prefix = 'ttf-one_';
-	$section = 'title_tagline';
+	$section        = 'title_tagline';
 
 	// Change priority for Site Title
-	$site_title = $wp_customize->get_control( 'blogname' );
+	$site_title           = $wp_customize->get_control( 'blogname' );
 	$site_title->priority = $priority->add();
-
 
 	// Hide Site Title
 	$setting_id = 'hide-site-title';

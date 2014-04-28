@@ -11,11 +11,10 @@ if ( ! function_exists( 'ttf_one_customizer_social' ) ) :
  *
  * @param  object    $wp_customize    The global customizer object.
  * @param  string    $section         The section name.
- *
  * @return void
  */
 function ttf_one_customizer_social( $wp_customize, $section ) {
-	$priority = new TTF_One_Prioritizer();
+	$priority       = new TTF_One_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 

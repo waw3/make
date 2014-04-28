@@ -7,10 +7,11 @@ if ( ! function_exists( 'ttf_one_customizer_layout_page' ) ) :
 /**
  * Configure settings and controls for the Layout: Pages section.
  *
- * @since  1.0
+ * @since  1.0.0.
  *
- * @param WP_Customize_Manager $wp_customize
- * @param string $section
+ * @param  object    $wp_customize    The global customizer object.
+ * @param  string    $section         The section name.
+ * @return void
  */
 function ttf_one_customizer_layout_page( $wp_customize, $section ) {
 	$priority       = new TTF_One_Prioritizer();
