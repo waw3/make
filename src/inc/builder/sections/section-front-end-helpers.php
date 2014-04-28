@@ -80,6 +80,11 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
 		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttf_one_section_data['captions'] );
 	}
 
+	// Caption color
+	if ( isset( $ttf_one_section_data['caption-color'] ) && ! empty( $ttf_one_section_data['caption-color'] ) ) {
+		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttf_one_section_data['caption-color'] );
+	}
+
 	// Aspect Ratio
 	if ( isset( $ttf_one_section_data['aspect'] ) && ! empty( $ttf_one_section_data['aspect'] ) ) {
 		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttf_one_section_data['aspect'] );
@@ -113,6 +118,13 @@ function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
 		$image_src = wp_get_attachment_image_src( $ttf_one_section_data['background-image'], 'full' );
 		if ( isset( $image_src[0] ) ) {
 			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+		}
+	}
+
+	// Background style
+	if ( isset( $ttf_one_section_data['background-style'] ) && ! empty( $ttf_one_section_data['background-style'] ) ) {
+		if ( 'cover' === $ttf_one_section_data['background-style'] ) {
+			$gallery_style .= 'background-size: cover;';
 		}
 	}
 

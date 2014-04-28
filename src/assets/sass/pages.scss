@@ -242,8 +242,9 @@
  Gallery section (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
+	background-position: center;
+	background-repeat: repeat;
 	position: relative;
-	background-size: cover;
 	@include rem('padding', $base*2+$gut/4 0 $base*2);
 }
 .builder-gallery-title {

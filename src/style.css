@@ -1624,8 +1624,9 @@ iframe[src*="google.com/maps"] {
  Gallery section (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-gallery {
+  background-position: center;
+  background-repeat: repeat;
   position: relative;
-  background-size: cover;
   padding: 52px 0 44px;
   padding:  3.05882rem 0 2.58824rem; }
 
