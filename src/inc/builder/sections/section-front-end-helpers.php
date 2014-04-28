@@ -338,8 +338,8 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 
 	$atts = shortcode_atts( array(
 		'autoplay'   => true,
-		'transition' => 'fade',
-		'delay'      => 4000
+		'transition' => 'scrollHorz',
+		'delay'      => 6000
 	), $ttf_one_section_data );
 
 	// Data attributes
@@ -356,7 +356,7 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 	// Delay
 	$delay = absint( $atts['delay'] );
 	if ( 0 === $delay ) {
-		$delay = 4000;
+		$delay = 6000;
 	}
 	if ( 4000 !== $delay ) {
 		$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
@@ -365,7 +365,7 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 	// Effect
 	$effect = trim( $atts['transition'] );
 	if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
-		$effect = 'fade';
+		$effect = 'scrollHorz';
 	}
 	if ( 'fade' !== $effect ) {
 		$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
