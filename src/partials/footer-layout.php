@@ -11,7 +11,7 @@ $social_links  = ttf_one_get_social_links();
 $show_social   = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
 ?>
 
-<footer id="site-footer" class="site-footer footer-layout-<?php echo $footer_layout; ?>" role="contentinfo">
+<footer id="site-footer" class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
 	<div class="container">
 		<?php // Footer widget areas
 		if ( $sidebar_count > 0 ) : ?>

@@ -56,8 +56,8 @@
 		printf(
 			' &#45; <span class="search-result">%s</span>',
 			sprintf(
-				_n( '%s result found', '%s results found', $wp_query->found_posts, 'ttf-one' ),
-				$wp_query->found_posts
+				_n( '%s result found', '%s results found', absint( $wp_query->found_posts ), 'ttf-one' ),
+				absint( $wp_query->found_posts )
 			)
 		);
 
