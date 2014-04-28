@@ -7,11 +7,10 @@ if ( ! function_exists( 'ttf_one_page_menu_args' ) ) :
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param array $args Configuration arguments.
- *
- * @return array
+ * @param  array    $args    Configuration arguments.
+ * @return array             Modified page menu args.
  */
 function ttf_one_page_menu_args( $args ) {
 	$args['show_home'] = true;
@@ -97,7 +96,7 @@ if ( ! function_exists( 'ttf_one_setup_author' ) ) :
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -118,7 +117,7 @@ if ( ! function_exists( 'sanitize_hex_color' ) ) :
  *
  * This is a copy of the core function for use when the customizer is not being shown.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @param  string         $color    The proposed color.
  * @return string|null              The sanitized color.
@@ -143,7 +142,7 @@ if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
  *
  * This is a copy of the core function for use when the customizer is not being shown.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @param  string         $color    The proposed color.
  * @return string|null              The sanitized color.
@@ -165,7 +164,7 @@ if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
  *
  * This is a copy of the core function for use when the customizer is not being shown.
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @param  string         $color    The proposed color.
  * @return string|null              The sanitized color.
@@ -183,7 +182,7 @@ if ( ! function_exists( 'ttf_one_excerpt_more' ) ) :
 /**
  * Modify the excerpt suffix
  *
- * @since 1.0.0
+ * @since 1.0.0.
  *
  * @param string $more
  *
@@ -202,9 +201,9 @@ if ( ! function_exists( 'ttf_one_get_view' ) ) :
  *
  * For use with view-related theme options.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @return string
+ * @return string    The string representing the current view.
  */
 function ttf_one_get_view() {
 	// Post types
@@ -254,11 +253,10 @@ if ( ! function_exists( 'ttf_one_has_sidebar' ) ) :
 /**
  * Determine if the current view should show a sidebar in the given location.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $location
- *
- * @return bool
+ * @param  string    $location    The location to test for.
+ * @return bool                   Whether or not the location has a sidebar.
  */
 function ttf_one_has_sidebar( $location ) {
 	global $wp_registered_sidebars;
@@ -288,11 +286,10 @@ if ( ! function_exists( 'ttf_one_sidebar_description' ) ) :
 /**
  * Output a sidebar description that reflects its current status.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $sidebar_id
- *
- * @return string
+ * @param  string    $sidebar_id    The sidebar to look up the description for.
+ * @return string                   The description.
  */
 function ttf_one_sidebar_description( $sidebar_id ) {
 	$description = '';
@@ -333,21 +330,20 @@ if ( ! function_exists( 'ttf_one_sidebar_list_enabled' ) ) :
 /**
  * Compile a list of views where a particular sidebar is enabled.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $location
- *
- * @return array
+ * @param  string    $location    The sidebar to look up.
+ * @return array                  The sidebar's current locations.
  */
 function ttf_one_sidebar_list_enabled( $location ) {
 	$enabled_views = array();
 
 	$views = array(
-		'blog' => __( 'Blog (Post Page)', 'ttf-one' ),
+		'blog'    => __( 'Blog (Post Page)', 'ttf-one' ),
 		'archive' => __( 'Archives', 'ttf-one' ),
-		'search' => __( 'Search Results', 'ttf-one' ),
-		'post' => __( 'Posts', 'ttf-one' ),
-		'page' => __( 'Pages', 'ttf-one' ),
+		'search'  => __( 'Search Results', 'ttf-one' ),
+		'post'    => __( 'Posts', 'ttf-one' ),
+		'page'    => __( 'Pages', 'ttf-one' ),
 	);
 
 	foreach ( $views as $view => $label ) {
