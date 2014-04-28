@@ -1561,7 +1561,8 @@ iframe[src*="google.com/maps"] {
 .builder-banner-inner-content {
   display: inline-block;
   vertical-align: middle;
-  max-width: 98%; }
+  max-width: 98%;
+  width: 100%; }
   .builder-banner-inner-content *:last-child {
     margin-bottom: 0; }
 
