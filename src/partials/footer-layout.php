@@ -40,9 +40,11 @@ $show_social   = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default(
 			);
 			?>
 			<span class="theme-by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></span>
-			<span class="theme-author"><a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
-				The Theme Foundry
-			</a></span>
+			<span class="theme-author">
+				<a title="The Theme Foundry <?php esc_attr_e( 'homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
+					The Theme Foundry
+				</a>
+			</span>
 		</div>
 
 		<?php // Social links

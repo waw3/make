@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-$title_key = 'layout-' . ttf_one_get_view() . '-hide-title';
+$title_key    = 'layout-' . ttf_one_get_view() . '-hide-title';
 $title_option = (bool) get_theme_mod( $title_key, ttf_one_get_default( $title_key ) );
 ?>
 

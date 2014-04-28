@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-$author_key = 'layout-' . ttf_one_get_view() . '-post-author';
+$author_key    = 'layout-' . ttf_one_get_view() . '-post-author';
 $author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_get_default( $author_key ) ), $author_key );
 ?>
 
