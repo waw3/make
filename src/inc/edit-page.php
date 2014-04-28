@@ -18,7 +18,7 @@ function ttf_one_edit_page_script() {
 		'ttf-one-admin-edit-page',
 		get_template_directory_uri() . '/js/admin/edit-page.js',
 		array( 'jquery' ),
-		time(),
+		TTF_ONE_VERSION,
 		true
 	);
 
