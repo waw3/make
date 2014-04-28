@@ -7,7 +7,7 @@
 <article class="no-results not-found">
 	<header class="entry-header">
 		<h1 class="entry-title">
-			<?php _e( 'Nothing Found', 'ttf-one' ); ?>
+			<?php _e( 'Nothing found', 'ttf-one' ); ?>
 		</h1>
 	</header>
 
