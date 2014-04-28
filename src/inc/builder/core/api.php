@@ -95,6 +95,7 @@ class TTF_One_Sections {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_get_sections_class' ) ) :
 /**
  * Instantiate or return the one TTF_One_Sections instance.
  *
@@ -105,7 +106,9 @@ endif;
 function ttf_one_get_sections_class() {
 	return TTF_One_Sections::instance();
 }
+endif;
 
+if ( ! function_exists( 'ttf_one_get_sections' ) ) :
 /**
  * Get the registered sections.
  *
@@ -116,7 +119,9 @@ function ttf_one_get_sections_class() {
 function ttf_one_get_sections() {
 	return ttf_one_get_sections_class()->get_sections();
 }
+endif;
 
+if ( ! function_exists( 'ttf_one_get_sections_by_order' ) ) :
 /**
  * Get the registered sections by the order parameter.
  *
@@ -129,7 +134,9 @@ function ttf_one_get_sections_by_order() {
 	usort( $sections, 'ttf_one_sorter' );
 	return $sections;
 }
+endif;
 
+if ( ! function_exists( 'ttf_one_sorter' ) ) :
 /**
  * Callback for `usort()` that sorts sections by order.
  *
@@ -142,7 +149,9 @@ function ttf_one_get_sections_by_order() {
 function ttf_one_sorter( $a, $b ) {
 	return $a['order'] - $b['order'];
 }
+endif;
 
+if ( ! function_exists( 'ttf_one_add_section' ) ) :
 /**
  * Return the sections.
  *
@@ -161,3 +170,4 @@ function ttf_one_sorter( $a, $b ) {
 function ttf_one_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
 	ttf_one_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order );
 }
+endif;
