@@ -80,25 +80,15 @@ class TTF_One_Builder_Save {
 			return;
 		}
 
-		// Run the product builder routine maybe
+		// Don't save data if we're not on the Builder template
+		$template = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
+		if ( 'template-builder.php' !== $template ) {
+			return;
+		}
+
+		// Process and save data
 		if ( isset( $_POST[ 'ttf-one-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttf-one-builder-nonce' ], 'save' ) && isset( $_POST['ttf-one-section-order'] ) ) {
-			// Process and save data
 			$this->save_data( $this->get_sanitized_sections(), $post_id );
-
-			// Save the value of the hide/show header variable
-			if ( isset( $_POST['ttf-one-hide-header'] ) ) {
-				$value       = $_POST['ttf-one-hide-header'];
-				$clean_value = ( in_array( $value, array( 0, 1 ) ) ) ? (int) $value : 0;
-
-				// Only save it if necessary
-				if ( 1 === $clean_value ) {
-					update_post_meta( $post_id, '_ttf-one-hide-header', 1 );
-				} else {
-					delete_post_meta( $post_id, '_ttf-one-hide-header' );
-				}
-			} else {
-				delete_post_meta( $post_id, '_ttf-one-hide-header' );
-			}
 		}
 	}
 
