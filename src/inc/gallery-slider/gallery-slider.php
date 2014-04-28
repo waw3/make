@@ -152,7 +152,7 @@ class TTF_One_Gallery_Slider {
 				}
 			}
 
-			extract( shortcode_atts( array(
+			$attr = shortcode_atts( array(
 				// Built-in
 				'order'            => 'ASC',
 				'orderby'          => 'menu_order ID',
@@ -168,45 +168,45 @@ class TTF_One_Gallery_Slider {
 				'ttf_one_pager'    => false,
 				'ttf_one_delay'    => 6000,
 				'ttf_one_effect'   => 'scrollHorz'
-			), $attr, 'gallery') );
+			), $attr, 'gallery');
 
-			$id = intval( $id );
-			if ( 'RAND' == $order ) {
-				$orderby = 'none';
+			$attr[ 'id' ] = intval( $attr[ 'id' ] );
+			if ( 'RAND' == $attr[ 'order' ] ) {
+				$attr[ 'orderby' ] = 'none';
 			}
 
-			if ( ! empty( $include ) ) {
+			if ( ! empty( $attr[ 'include' ] ) ) {
 				$_attachments = get_posts( array(
-					'include' => $include,
+					'include' => $attr[ 'include' ],
 					'post_status' => 'inherit',
 					'post_type' => 'attachment',
 					'post_mime_type' => 'image',
-					'order' => $order,
-					'orderby' => $orderby
+					'order' => $attr[ 'order' ],
+					'orderby' => $attr[ 'orderby' ]
 				) );
 
 				$attachments = array();
 				foreach ( $_attachments as $key => $val ) {
 					$attachments[$val->ID] = $_attachments[$key];
 				}
-			} elseif ( ! empty( $exclude ) ) {
+			} elseif ( ! empty( $attr[ 'exclude' ] ) ) {
 				$attachments = get_children( array(
-					'post_parent' => $id,
-					'exclude' => $exclude,
+					'post_parent' => $attr[ 'id' ],
+					'exclude' => $attr[ 'exclude' ],
 					'post_status' => 'inherit',
 					'post_type' => 'attachment',
 					'post_mime_type' => 'image',
-					'order' => $order,
-					'orderby' => $orderby
+					'order' => $attr[ 'order' ],
+					'orderby' => $attr[ 'orderby' ]
 				) );
 			} else {
 				$attachments = get_children( array(
-					'post_parent' => $id,
+					'post_parent' => $attr[ 'id' ],
 					'post_status' => 'inherit',
 					'post_type' => 'attachment',
 					'post_mime_type' => 'image',
-					'order' => $order,
-					'orderby' => $orderby
+					'order' => $attr[ 'order' ],
+					'orderby' => $attr[ 'orderby' ]
 				) );
 			}
 
@@ -217,7 +217,7 @@ class TTF_One_Gallery_Slider {
 			if ( is_feed() ) {
 				$output = "\n";
 				foreach ( $attachments as $att_id => $attachment )
-					$output .= wp_get_attachment_link( $att_id, $size, true ) . "\n";
+					$output .= wp_get_attachment_link( $att_id, $attr[ 'size' ], true ) . "\n";
 				return $output;
 			}
 			// End core code
@@ -234,13 +234,13 @@ class TTF_One_Gallery_Slider {
 			$data_attributes .= ' data-cycle-swipe="true"';
 
 			// No autoplay
-			$autoplay = (bool) $ttf_one_autoplay;
+			$autoplay = (bool) $attr[ 'ttf_one_autoplay' ];
 			if ( false === $autoplay ) {
 				$data_attributes .= ' data-cycle-paused="true"';
 			}
 
 			// Delay
-			$delay = absint( $ttf_one_delay );
+			$delay = absint( $attr[ 'ttf_one_delay' ] );
 			if ( 0 === $delay ) {
 				$delay = 6000;
 			}
@@ -249,7 +249,7 @@ class TTF_One_Gallery_Slider {
 			}
 
 			// Effect
-			$effect = trim( $ttf_one_effect );
+			$effect = trim( $attr[ 'ttf_one_effect' ] );
 			if ( ! in_array( $effect, array( 'fade', 'scrollHorz', 'none' ) ) ) {
 				$effect = 'scrollHorz';
 			}
@@ -262,7 +262,7 @@ class TTF_One_Gallery_Slider {
 			<div class="<?php echo esc_attr( $classes ); ?>"<?php echo $data_attributes; ?>>
 				<?php foreach ( $attachments as $id => $attachment ) : ?>
 				<figure class="cycle-slide">
-					<?php echo wp_get_attachment_image( $id, $size, false ); ?>
+					<?php echo wp_get_attachment_image( $id, $attr[ 'size' ], false ); ?>
 					<?php if ( trim( $attachment->post_excerpt ) ) : ?>
 					<figcaption class="cycle-caption">
 						<?php echo wptexturize( $attachment->post_excerpt ); ?>
@@ -270,11 +270,11 @@ class TTF_One_Gallery_Slider {
 					<?php endif; ?>
 				</figure>
 				<?php endforeach; ?>
-				<?php if ( true != $ttf_one_prevnext ) : ?>
+				<?php if ( true != $attr[ 'ttf_one_prevnext' ] ) : ?>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
 				<?php endif; ?>
-				<?php if ( true != $ttf_one_pager ) : ?>
+				<?php if ( true != $attr[ 'ttf_one_pager' ] ) : ?>
 				<div class="cycle-pager"></div>
 				<?php endif; ?>
 			</div>
