@@ -61,7 +61,7 @@ class TTF_One_Builder_Save {
 	}
 
 	/**
-	 * Save the gallery IDs and order.
+	 * Save section data.
 	 *
 	 * @since  1.0.0.
 	 *
@@ -196,6 +196,7 @@ class TTF_One_Builder_Save {
 	 */
 	public function flatten_array( $array, $prefix = '', $separator = ':' ) {
 		$result = array();
+
 		foreach ( $array as $key => $value ) {
 			if ( is_array( $value ) ) {
 				$result = $result + $this->flatten_array( $value, $prefix . $key . $separator, $separator );
@@ -219,7 +220,7 @@ class TTF_One_Builder_Save {
 	public function is_save_callback_callable( $section ) {
 		$result = false;
 
-		if( ! empty( $section['save_callback'] ) ) {
+		if ( ! empty( $section['save_callback'] ) ) {
 			$callback = $section['save_callback'];
 
 			if ( is_array( $callback ) && isset( $callback[0] ) && isset( $callback[1] ) ) {
@@ -450,6 +451,7 @@ class TTF_One_Builder_Save {
 }
 endif;
 
+if ( ! function_exists( 'ttf_one_get_builder_save' ) ) :
 /**
  * Instantiate or return the one TTF_One_Builder_Save instance.
  *
@@ -460,5 +462,6 @@ endif;
 function ttf_one_get_builder_save() {
 	return TTF_One_Builder_Save::instance();
 }
+endif;
 
 add_action( 'admin_init', 'ttf_one_get_builder_save' );
