@@ -315,6 +315,12 @@ class TTF_One_Section_Definitions {
 			$clean_data['background-color'] = maybe_hash_hex_color( $data['background-color'] );
 		}
 
+		if ( isset( $data['background-style'] ) ) {
+			if ( in_array( $data['background-style'], array( 'tile', 'cover' ) ) ) {
+				$clean_data['background-style'] = $data['background-style'];
+			}
+		}
+
 		if ( isset( $data['gallery-item-order'] ) ) {
 			$clean_data['gallery-item-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['gallery-item-order'] ) );
 		}

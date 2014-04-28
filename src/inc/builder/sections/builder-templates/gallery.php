@@ -13,6 +13,7 @@ $aspect           = ( isset( $ttf_one_section_data['data']['aspect'] ) ) ? $ttf_
 $title            = ( isset( $ttf_one_section_data['data']['title'] ) ) ? $ttf_one_section_data['data']['title'] : '';
 $background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
+$background_style = ( isset( $ttf_one_section_data['data']['background-style'] ) ) ? $ttf_one_section_data['data']['background-style'] : 'tile';
 $darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 1;
 $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
@@ -97,6 +98,12 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 
 		<h4><?php _e( 'Background color', 'ttf-one' ); ?></h4>
 		<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
+
+		<h4><?php _e( 'Background style:', 'ttf-one' ); ?></h4>
+		<select id="<?php echo $section_name; ?>[background-style]" name="<?php echo $section_name; ?>[background-style]">
+			<option value="tile"<?php selected( 'tile', $background_style ); ?>><?php echo esc_html( __( 'Tile', 'ttf-one' ) ); ?></option>
+			<option value="cover"<?php selected( 'cover', $background_style ); ?>><?php echo esc_html( __( 'Cover', 'ttf-one' ) ); ?></option>
+		</select>
 	</div>
 </div>
 
