@@ -85,7 +85,8 @@ class TTF_One_Gallery_Slider {
 	 *
 	 * @return void
 	 */
-	function print_media_templates() { ?>
+	function print_media_templates() {
+	?>
 		<script type="text/html" id="tmpl-ttf-one-gallery-settings">
 			<h3 style="float:left;margin-top:10px;"><?php _e( 'Slider Settings', 'ttf-one' ); ?></h3>
 			<label class="setting">
@@ -119,7 +120,8 @@ class TTF_One_Gallery_Slider {
 				</label>
 			</div>
 		</script>
-	<?php }
+	<?php
+	}
 
 	/**
 	 * Alternate gallery shortcode handler for the slider
@@ -128,7 +130,7 @@ class TTF_One_Gallery_Slider {
 	 *
 	 * @param  string    $output    The original shortcode output.
 	 * @param  array     $attr      The shortcode attrs.
-	 * @return string               The modified gallery code
+	 * @return string               The modified gallery code.
 	 */
 	function render_gallery( $output, $attr ) {
 		// Only use this alternative output if the slider is set to true
@@ -170,43 +172,45 @@ class TTF_One_Gallery_Slider {
 				'ttf_one_effect'   => 'scrollHorz'
 			), $attr, 'gallery');
 
-			$attr[ 'id' ] = intval( $attr[ 'id' ] );
-			if ( 'RAND' == $attr[ 'order' ] ) {
-				$attr[ 'orderby' ] = 'none';
+			$attr['id'] = intval( $attr['id'] );
+			if ( 'RAND' == $attr['order'] ) {
+				$attr['orderby'] = 'none';
 			}
 
-			if ( ! empty( $attr[ 'include' ] ) ) {
+			if ( !empty( $attr['include'] ) ) {
 				$_attachments = get_posts( array(
-					'include' => $attr[ 'include' ],
-					'post_status' => 'inherit',
-					'post_type' => 'attachment',
+					'include'        => $attr['include'],
+					'post_status'    => 'inherit',
+					'post_type'      => 'attachment',
 					'post_mime_type' => 'image',
-					'order' => $attr[ 'order' ],
-					'orderby' => $attr[ 'orderby' ]
+					'order'          => $attr['order'],
+					'orderby'        => $attr['orderby']
 				) );
 
 				$attachments = array();
 				foreach ( $_attachments as $key => $val ) {
-					$attachments[$val->ID] = $_attachments[$key];
+					$attachments[ $val->ID ] = $_attachments[ $key ];
 				}
-			} elseif ( ! empty( $attr[ 'exclude' ] ) ) {
+			}
+			elseif ( !empty( $attr['exclude'] ) ) {
 				$attachments = get_children( array(
-					'post_parent' => $attr[ 'id' ],
-					'exclude' => $attr[ 'exclude' ],
-					'post_status' => 'inherit',
-					'post_type' => 'attachment',
+					'post_parent'    => $attr['id'],
+					'exclude'        => $attr['exclude'],
+					'post_status'    => 'inherit',
+					'post_type'      => 'attachment',
 					'post_mime_type' => 'image',
-					'order' => $attr[ 'order' ],
-					'orderby' => $attr[ 'orderby' ]
+					'order'          => $attr['order'],
+					'orderby'        => $attr['orderby']
 				) );
-			} else {
+			}
+			else {
 				$attachments = get_children( array(
-					'post_parent' => $attr[ 'id' ],
-					'post_status' => 'inherit',
-					'post_type' => 'attachment',
+					'post_parent'    => $attr['id'],
+					'post_status'    => 'inherit',
+					'post_type'      => 'attachment',
 					'post_mime_type' => 'image',
-					'order' => $attr[ 'order' ],
-					'orderby' => $attr[ 'orderby' ]
+					'order'          => $attr['order'],
+					'orderby'        => $attr['orderby']
 				) );
 			}
 
@@ -216,8 +220,9 @@ class TTF_One_Gallery_Slider {
 
 			if ( is_feed() ) {
 				$output = "\n";
-				foreach ( $attachments as $att_id => $attachment )
-					$output .= wp_get_attachment_link( $att_id, $attr[ 'size' ], true ) . "\n";
+				foreach ( $attachments as $att_id => $attachment ) {
+					$output .= wp_get_attachment_link( $att_id, $attr['size'], true ) . "\n";
+				}
 				return $output;
 			}
 			// End core code
@@ -226,7 +231,7 @@ class TTF_One_Gallery_Slider {
 			$classes = 'ttf-one-shortcode-slider cycle-slideshow';
 
 			// Data attributes
-			$data_attributes = ' data-cycle-log="false"';
+			$data_attributes  = ' data-cycle-log="false"';
 			$data_attributes .= ' data-cycle-slides=".cycle-slide"';
 			$data_attributes .= ' data-cycle-auto-height="calc"';
 			$data_attributes .= ' data-cycle-center-horz="true"';
@@ -234,13 +239,13 @@ class TTF_One_Gallery_Slider {
 			$data_attributes .= ' data-cycle-swipe="true"';
 
 			// No autoplay
-			$autoplay = (bool) $attr[ 'ttf_one_autoplay' ];
+			$autoplay = (bool) $attr['ttf_one_autoplay'];
 			if ( false === $autoplay ) {
 				$data_attributes .= ' data-cycle-paused="true"';
 			}
 
 			// Delay
-			$delay = absint( $attr[ 'ttf_one_delay' ] );
+			$delay = absint( $attr['ttf_one_delay'] );
 			if ( 0 === $delay ) {
 				$delay = 6000;
 			}
@@ -249,7 +254,7 @@ class TTF_One_Gallery_Slider {
 			}
 
 			// Effect
-			$effect = trim( $attr[ 'ttf_one_effect' ] );
+			$effect = trim( $attr['ttf_one_effect'] );
 			if ( ! in_array( $effect, array( 'fade', 'scrollHorz', 'none' ) ) ) {
 				$effect = 'scrollHorz';
 			}
@@ -285,6 +290,7 @@ class TTF_One_Gallery_Slider {
 		return $output;
 	}
 }
+endif;
 
 if ( ! function_exists( 'ttf_one_get_logo' ) ) :
 /**
@@ -300,5 +306,3 @@ function ttf_one_get_gallery_slider() {
 endif;
 
 add_action( 'init', 'ttf_one_get_gallery_slider', 1 );
-
-endif;
