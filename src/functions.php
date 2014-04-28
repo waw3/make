@@ -109,8 +109,10 @@ if ( ! function_exists( 'ttf_one_setup' ) ) :
  * @return void
  */
 function ttf_one_setup() {
-	// Text domain
-	load_theme_textdomain( 'ttf-one', get_template_directory() . '/languages' );
+	// Attempt to load text domain from child theme first
+	if ( ! load_theme_textdomain( 'ttf-one', get_stylesheet_directory() . '/languages' ) ) {
+		load_theme_textdomain( 'ttf-one', get_template_directory() . '/languages' );
+	}
 
 	// Feed links
 	add_theme_support( 'automatic-feed-links' );
