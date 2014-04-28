@@ -8,6 +8,7 @@ ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name     = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
+$caption_color    = ( isset( $ttf_one_section_data['data']['caption-color'] ) ) ? $ttf_one_section_data['data']['caption-color'] : 'light';
 $captions         = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'reveal';
 $aspect           = ( isset( $ttf_one_section_data['data']['aspect'] ) ) ? $ttf_one_section_data['data']['aspect'] : 'square';
 $title            = ( isset( $ttf_one_section_data['data']['title'] ) ) ? $ttf_one_section_data['data']['title'] : '';
@@ -17,6 +18,14 @@ $background_style = ( isset( $ttf_one_section_data['data']['background-style'] )
 $darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 1;
 $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
 ?>
+
+<div class="ttf-one-captions-select-wrapper">
+	<label for="<?php echo $section_name; ?>[caption-color]"><?php _e( 'Caption color:', 'ttf-one' ); ?></label>
+	<select id="<?php echo $section_name; ?>[caption-color]" name="<?php echo $section_name; ?>[caption-color]">
+		<option value="light"<?php selected( 'light', $caption_color ); ?>><?php echo esc_html( __( 'Light', 'ttf-one' ) ); ?></option>
+		<option value="dark"<?php selected( 'dark', $caption_color ); ?>><?php echo esc_html( __( 'Dark', 'ttf-one' ) ); ?></option>
+	</select>
+</div>
 
 <div class="ttf-one-captions-select-wrapper">
 	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>

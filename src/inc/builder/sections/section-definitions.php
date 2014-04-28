@@ -285,6 +285,12 @@ class TTF_One_Section_Definitions {
 			}
 		}
 
+		if ( isset( $data['caption-color'] ) ) {
+			if ( in_array( $data['caption-color'], array( 'light', 'dark' ) ) ) {
+				$clean_data['caption-color'] = $data['caption-color'];
+			}
+		}
+
 		if ( isset( $data['captions'] ) ) {
 			if ( in_array( $data['captions'], array( 'none', 'overlay', 'reveal' ) ) ) {
 				$clean_data['captions'] = $data['captions'];
