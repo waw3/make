@@ -80,9 +80,6 @@ require get_template_directory() . '/inc/template-tags.php';
 // Customizer additions
 require get_template_directory() . '/inc/customizer/bootstrap.php';
 
-// Jetpack compatibility file
-require get_template_directory() . '/inc/jetpack.php';
-
 // Gallery slider
 require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
 
@@ -98,6 +95,19 @@ if ( is_admin() ) {
 
 	// Page Builder
 	require get_template_directory() . '/inc/builder/core/base.php';
+}
+
+/**
+ * 3rd party compatibility includes
+ */
+// Jetpack
+if ( class_exists( 'Jetpack' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
+}
+
+// WooCommerce
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
 }
 
 if ( ! function_exists( 'ttf_one_setup' ) ) :
