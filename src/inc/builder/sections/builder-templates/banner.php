@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package ttf-one
+ */
+
 ttf_one_load_section_header();
 global $ttf_one_section_data, $ttf_one_is_js_template;
 $section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );

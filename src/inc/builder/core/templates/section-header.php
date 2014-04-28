@@ -1,4 +1,11 @@
-<?php global $ttf_one_section_data, $ttf_one_is_js_template; ?>
+<?php
+/**
+ * @package ttf-one
+ */
+
+global $ttf_one_section_data, $ttf_one_is_js_template;
+?>
+
 <?php if ( ! isset( $ttf_one_is_js_template ) || true !== $ttf_one_is_js_template ) : ?>
 <div class="ttf-one-section <?php if ( isset( $ttf_one_section_data['data']['state'] ) && 'open' === $ttf_one_section_data['data']['state'] ) echo 'ttf-one-section-open'; ?> ttf-one-section-<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>" id="<?php echo 'ttf-one-section-' . esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>">
 <?php endif; ?>

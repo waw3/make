@@ -1,3 +1,9 @@
+<?php
+/**
+ * @package ttf-one
+ */
+?>
+
 		<a href="#" class="ttf-one-section-remove">
 			<?php _e( 'Remove', 'ttf-one' ); ?>
 		</a>

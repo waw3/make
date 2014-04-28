@@ -1,4 +1,11 @@
-<?php $class = ( 'c' === get_user_setting( 'ttfonemt' . get_the_ID() ) ) ? 'closed' : 'opened'; ?>
+<?php
+/**
+ * @package ttf-one
+ */
+
+$class = ( 'c' === get_user_setting( 'ttfonemt' . get_the_ID() ) ) ? 'closed' : 'opened';
+?>
+
 <div class="ttf-one-menu ttf-one-menu-<?php echo esc_attr( $class ); ?>" id="ttf-one-menu">
 	<div class="ttf-one-menu-pane">
 		<ul class="ttf-one-menu-list">

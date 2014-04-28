@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package ttf-one
+ */
 
 if ( ! class_exists( 'TTF_One_Section_Definitions' ) ) :
 /**

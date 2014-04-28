@@ -1,6 +1,6 @@
 <?php
 /**
- * @package One
+ * @package ttf-one
  */
 
 if ( ! function_exists( 'TTF_One_Builder_Save' ) ) :

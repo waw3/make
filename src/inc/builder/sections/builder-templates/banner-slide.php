@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package ttf-one
+ */
+
 global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_slide_id;
 $section_name = 'ttf-one-section';
 if ( true === $ttf_one_is_js_template ) {
