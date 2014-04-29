@@ -456,7 +456,7 @@ class TTFMAKE_Builder_Base {
 			return $mce_init;
 		}
 
-		$content_css = get_template_directory_uri() . '/includes/stylesheets/editor-style.css';
+		$content_css = get_template_directory_uri() . '/css/editor-style.css';
 
 		// If there is already a stylesheet being added, append and do not override
 		if ( isset( $mce_init[ 'content_css' ] ) ) {
