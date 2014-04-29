@@ -163,8 +163,8 @@ module.exports = function( grunt ) {
 				],
 				overwrite: true,
 				replacements: [ {
-					from: /^define\( 'TTF_ONE_VERSION'.*$/m,
-					to: 'define( \'TTF_ONE_VERSION\', \'<%= pkg.version %>\' );'
+					from: /^define\( 'TTFMAKE_VERSION'.*$/m,
+					to: 'define( \'TTFMAKE_VERSION\', \'<%= pkg.version %>\' );'
 				} ]
 			}
 		},
