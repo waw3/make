@@ -17,8 +17,8 @@
 									value: 'ttfmake-line-dotted'
 								},
 								{
-									text: 'Dashed',
-									value: 'ttfmake-line-dashed'
+									text: 'Double',
+									value: 'ttfmake-line-double'
 								}
 							]
 						}
