@@ -23,6 +23,8 @@
 			this.cache.$builder = $('#ttfmake-builder');
 			this.cache.$builderHide = $('#ttfmake-builder-hide');
 			this.cache.$featuredImage = $('#postimagediv');
+			this.cache.$commentstatus = $('#comment_status');
+			this.cache.$pingstatus = $('#ping_status');
 		},
 
 		bindEvents: function() {
@@ -31,8 +33,13 @@
 			// Setup the event for toggling the Page Builder when the page template input changes
 			self.cache.$pageTemplate.on('change', self.templateToggle);
 
+			// Change default settings for new pages
 			if ( typeof ttfmakeEditPageData !== 'undefined' && 'post-new.php' === ttfmakeEditPageData.pageNow ) {
+				// Builder template is selected by default
 				self.cache.$pageTemplate.val('template-builder.php');
+				// Comments and pings turned off by default
+				self.cache.$commentstatus.prop('checked', '');
+				self.cache.$pingstatus.prop('checked', '');
 			}
 		},
 
