@@ -4,8 +4,9 @@
  */
 
 ttf_one_load_section_header();
+
 global $ttf_one_section_data, $ttf_one_is_js_template;
-$section_name = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
+$section_name  = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
 $title         = ( isset( $ttf_one_section_data['data']['title'] ) ) ? $ttf_one_section_data['data']['title'] : '';
 $hide_arrows   = ( isset( $ttf_one_section_data['data']['hide-arrows'] ) ) ? $ttf_one_section_data['data']['hide-arrows'] : 0;
 $hide_dots     = ( isset( $ttf_one_section_data['data']['hide-dots'] ) ) ? $ttf_one_section_data['data']['hide-dots'] : 0;
