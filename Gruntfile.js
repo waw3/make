@@ -185,11 +185,11 @@ module.exports = function( grunt ) {
 		if ( 'minor' !== releaseType && 'major' !== releaseType && 'patch' !== releaseType ) {
 			grunt.fail.fatal( 'Please specify the release type (e.g., "grunt release:patch")' );
 		} else {
-			// Create the .pot file
-			grunt.task.run( 'makepot' );
-
 			// Bump the version numbers
 			grunt.task.run( 'bumpto:' + releaseType );
+
+			// Create the .pot file
+			grunt.task.run( 'makepot' );
 
 			// Build the SASS and scripts
 			grunt.task.run( 'default' );
