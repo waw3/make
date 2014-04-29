@@ -188,6 +188,9 @@ module.exports = function( grunt ) {
 			// Bump the version numbers
 			grunt.task.run( 'bumpto:' + releaseType );
 
+			// Check to make sure the log exists
+			grunt.task.run( 'log:' + releaseType );
+
 			// Create the .pot file
 			grunt.task.run( 'makepot' );
 
