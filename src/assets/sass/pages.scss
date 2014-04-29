@@ -173,7 +173,7 @@
  Banner section: Pager (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-banner,
-.ttf-one-shortcode-slider {
+.ttfmake-shortcode-slider {
 	.cycle-pager {
 		text-align: center;
 		color: $d;
@@ -192,7 +192,7 @@
  Banner section: Arrows (_pages.scss)
 -------------------------------------------------------- */
 .builder-section-banner,
-.ttf-one-shortcode-slider {
+.ttfmake-shortcode-slider {
 	.cycle-prev,
 	.cycle-next {
 		@include for(medium-screens) {
@@ -232,7 +232,7 @@
 		}
 	}
 }
-.ttf-one-shortcode-slider {
+.ttfmake-shortcode-slider {
 	.cycle-prev:before,
 	.cycle-next:before {
 		@include rem('top', -12px);

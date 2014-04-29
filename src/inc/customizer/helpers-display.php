@@ -47,7 +47,7 @@ function ttfmake_css_add_rules() {
 	// Primary color
 	if ( $color_primary !== ttfmake_get_default( 'color-primary' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttf-one-list-dot li:before', 'ol.ttf-one-list-dot li:before' ),
+			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttfmake-list-dot li:before', 'ol.ttfmake-list-dot li:before' ),
 			'declarations' => array(
 				'color' => $color_primary
 			)

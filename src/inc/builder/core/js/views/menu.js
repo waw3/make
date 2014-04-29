@@ -5,23 +5,23 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	'use strict';
 
 	oneApp.MenuView = Backbone.View.extend({
-		el: '#ttf-one-menu',
+		el: '#ttfmake-menu',
 
-		$stage: $('#ttf-one-stage'),
+		$stage: $('#ttfmake-stage'),
 
 		$document: $(window.document),
 
 		$scrollHandle: $('html, body'),
 
-		$pane: $('.ttf-one-menu-pane'),
+		$pane: $('.ttfmake-menu-pane'),
 
 		initialize: function () {
 			this.listenTo(oneApp.sections, 'add', this.addOne);
 		},
 
 		events: {
-			'click .ttf-one-menu-list-item-link': 'addSection',
-			'click .ttf-one-menu-tab-link': 'menuToggle'
+			'click .ttfmake-menu-list-item-link': 'addSection',
+			'click .ttfmake-menu-tab-link': 'menuToggle'
 		},
 
 		addSection: function (evt) {
@@ -79,7 +79,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					easing: 'easeInOutQuad',
 					complete: function() {
 						deleteUserSetting( key );
-						this.$el.addClass('ttf-one-menu-opened').removeClass('ttf-one-menu-closed');
+						this.$el.addClass('ttfmake-menu-opened').removeClass('ttfmake-menu-closed');
 					}.bind(this)
 				});
 
@@ -90,7 +90,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					easing: 'easeInOutQuad',
 					complete: function() {
 						setUserSetting( key, 'c' );
-						this.$el.addClass('ttf-one-menu-closed').removeClass('ttf-one-menu-opened');
+						this.$el.addClass('ttfmake-menu-closed').removeClass('ttfmake-menu-opened');
 					}.bind(this)
 				});
 			}

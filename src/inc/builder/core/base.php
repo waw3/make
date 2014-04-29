@@ -73,7 +73,7 @@ class TTF_One_Builder_Base {
 	 */
 	public function add_meta_boxes() {
 		add_meta_box(
-			'ttf-one-builder',
+			'ttfmake-builder',
 			__( 'Page Builder', 'make' ),
 			array( $this, 'display_builder' ),
 			'page',
@@ -91,11 +91,11 @@ class TTF_One_Builder_Base {
 	 * @return void
 	 */
 	public function display_builder( $post_local ) {
-		wp_nonce_field( 'save', 'ttf-one-builder-nonce' );
+		wp_nonce_field( 'save', 'ttfmake-builder-nonce' );
 
 		// Get the current sections
 		global $ttfmake_sections;
-		$ttfmake_sections = get_post_meta( $post_local->ID, '_ttf-one-sections', true );
+		$ttfmake_sections = get_post_meta( $post_local->ID, '_ttfmake-sections', true );
 		$ttfmake_sections = ( is_array( $ttfmake_sections ) ) ? $ttfmake_sections : array();
 
 		// Load the boilerplate templates
@@ -118,7 +118,7 @@ class TTF_One_Builder_Base {
 		// Add the sort input
 		$section_order = get_post_meta( $post_local->ID, '_ttfob-section-ids', true );
 		$section_order = ( ! empty( $section_order ) ) ? implode( ',', $section_order ) : '';
-		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttf-one-section-order" id="ttf-one-section-order" />';
+		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttfmake-section-order" id="ttfmake-section-order" />';
 	}
 
 	/**
@@ -137,7 +137,7 @@ class TTF_One_Builder_Base {
 
 		// Enqueue the CSS
 		wp_enqueue_style(
-			'ttf-one-builder',
+			'ttfmake-builder',
 			get_template_directory_uri() . '/inc/builder/core/css/builder.css',
 			array(),
 			TTF_ONE_VERSION
@@ -157,7 +157,7 @@ class TTF_One_Builder_Base {
 
 		// Only load full scripts for WordPress.com and those with SCRIPT_DEBUG set to true
 		wp_register_script(
-			'ttf-one-builder/js/tinymce.js',
+			'ttfmake-builder/js/tinymce.js',
 			get_template_directory_uri() . '/inc/builder/core/js/tinymce.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -165,7 +165,7 @@ class TTF_One_Builder_Base {
 		);
 
 		wp_register_script(
-			'ttf-one-builder/js/models/section.js',
+			'ttfmake-builder/js/models/section.js',
 			get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -173,7 +173,7 @@ class TTF_One_Builder_Base {
 		);
 
 		wp_register_script(
-			'ttf-one-builder/js/collections/sections.js',
+			'ttfmake-builder/js/collections/sections.js',
 			get_template_directory_uri() . '/inc/builder/core/js/collections/sections.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -181,7 +181,7 @@ class TTF_One_Builder_Base {
 		);
 
 		wp_register_script(
-			'ttf-one-builder/js/views/menu.js',
+			'ttfmake-builder/js/views/menu.js',
 			get_template_directory_uri() . '/inc/builder/core/js/views/menu.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -189,7 +189,7 @@ class TTF_One_Builder_Base {
 		);
 
 		wp_register_script(
-			'ttf-one-builder/js/views/section.js',
+			'ttfmake-builder/js/views/section.js',
 			get_template_directory_uri() . '/inc/builder/core/js/views/section.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -197,18 +197,18 @@ class TTF_One_Builder_Base {
 		);
 
 		wp_enqueue_script(
-			'ttf-one-builder',
+			'ttfmake-builder',
 			get_template_directory_uri() . '/inc/builder/core/js/app.js',
 			apply_filters(
 				'ttfmake_builder_js_dependencies',
 				array_merge(
 					$dependencies,
 					array(
-						'ttf-one-builder/js/tinymce.js',
-						'ttf-one-builder/js/models/section.js',
-						'ttf-one-builder/js/collections/sections.js',
-						'ttf-one-builder/js/views/menu.js',
-						'ttf-one-builder/js/views/section.js',
+						'ttfmake-builder/js/tinymce.js',
+						'ttfmake-builder/js/models/section.js',
+						'ttfmake-builder/js/collections/sections.js',
+						'ttfmake-builder/js/views/menu.js',
+						'ttfmake-builder/js/views/section.js',
 					)
 				)
 			),
@@ -222,7 +222,7 @@ class TTF_One_Builder_Base {
 		);
 
 		wp_localize_script(
-			'ttf-one-builder',
+			'ttfmake-builder',
 			'ttfOneBuilderData',
 			$data
 		);
@@ -249,13 +249,13 @@ class TTF_One_Builder_Base {
 				display: none;
 			}
 			<?php else : ?>
-			#ttf-one-builder {
+			#ttfmake-builder {
 				display: none;
 			}
 			<?php endif; ?>
 
 			<?php foreach ( ttfmake_get_sections() as $key => $section ) : ?>
-			#ttf-one-menu-list-item-link-<?php echo esc_attr( $section['id'] ); ?> .ttf-one-menu-list-item-link-icon-wrapper {
+			#ttfmake-menu-list-item-link-<?php echo esc_attr( $section['id'] ); ?> .ttfmake-menu-list-item-link-icon-wrapper {
 				background-image: url(<?php echo addcslashes( esc_url_raw( $section['icon'] ), '"' ); ?>);
 			}
 			<?php endforeach; ?>
@@ -275,8 +275,8 @@ class TTF_One_Builder_Base {
 	 */
 	public function add_uploader( $section_name, $image_id = 0, $messages = array() ) {
 		$image        = wp_get_attachment_image( $image_id, 'large' );
-		$add_state    = ( '' === $image ) ? 'ttf-one-show' : 'ttf-one-hide';
-		$remove_state = ( '' === $image ) ? 'ttf-one-hide' : 'ttf-one-show';
+		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
+		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
 
 		// Set default messages. Note that 'ttf-one' is not used in some cases the strings are core i18ns
 		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image' )               : $messages['add'];
@@ -284,21 +284,21 @@ class TTF_One_Builder_Base {
 		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
 		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
 		?>
-		<div class="ttf-one-uploader">
-			<div class="ttf-one-media-uploader-placeholder ttf-one-media-uploader-add">
+		<div class="ttfmake-uploader">
+			<div class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add">
 				<?php if ( '' !== $image ) : ?>
 					<?php echo $image; ?>
 				<?php endif; ?>
 			</div>
-			<div class="ttf-one-media-link-wrap">
-				<a href="#" class="ttf-one-media-uploader-add ttf-one-media-uploader-set-link <?php echo $add_state; ?>" data-title="<?php echo esc_attr( $messages['title'] ); ?>" data-button-text="<?php echo esc_attr( $messages['button'] ); ?>">
+			<div class="ttfmake-media-link-wrap">
+				<a href="#" class="ttfmake-media-uploader-add ttfmake-media-uploader-set-link <?php echo $add_state; ?>" data-title="<?php echo esc_attr( $messages['title'] ); ?>" data-button-text="<?php echo esc_attr( $messages['button'] ); ?>">
 					<?php echo $messages['add']; ?>
 				</a>
-				<a href="#" class="ttf-one-media-uploader-remove <?php echo $remove_state; ?>">
+				<a href="#" class="ttfmake-media-uploader-remove <?php echo $remove_state; ?>">
 					<?php echo $messages['remove']; ?>
 				</a>
 			</div>
-			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo absint( $image_id ); ?>" class="ttf-one-media-uploader-value" />
+			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo absint( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
 	<?php
 	}
@@ -349,7 +349,7 @@ class TTF_One_Builder_Base {
 
 		// Print the templates
 		foreach ( ttfmake_get_sections() as $key => $section ) : ?>
-			<script type="text/html" id="tmpl-ttf-one-<?php echo esc_attr( $section['id'] ); ?>">
+			<script type="text/html" id="tmpl-ttfmake-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
 			$this->load_section( $section, array() );
@@ -434,7 +434,7 @@ class TTF_One_Builder_Base {
 		$img = '<span class="wp-media-buttons-icon"></span>';
 
 		// Note that 'ttf-one' text domain is not used for Add Media in order to use the core l10n
-		echo '<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="' . esc_attr( $editor_id ) . '" title="' . esc_attr__( 'Add Media' ) . '">' . $img . ' <span class="ttf-one-media-button-text">' . __( 'Add Media' ) . '</span></a>';
+		echo '<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="' . esc_attr( $editor_id ) . '" title="' . esc_attr__( 'Add Media' ) . '">' . $img . ' <span class="ttfmake-media-button-text">' . __( 'Add Media' ) . '</span></a>';
 	}
 
 	/**
@@ -646,7 +646,7 @@ if ( ! function_exists( 'ttfmake_get_section_name' ) ) :
  * @return string                       The name of the section.
  */
 function ttfmake_get_section_name( $data, $is_js_template ) {
-	$name = 'ttf-one-section';
+	$name = 'ttfmake-section';
 
 	if ( $is_js_template ) {
 		$name .= '[{{{ id }}}]';

@@ -17,7 +17,7 @@
 			renderFn.apply( this, arguments );
 
 			// Append the template
-			this.$el.append( media.template( 'ttf-one-gallery-settings' ) );
+			this.$el.append( media.template( 'ttfmake-gallery-settings' ) );
 
 			// Set up inputs
 			// slider
@@ -44,7 +44,7 @@
 
 			// Toggle slider settings
 			if ('undefined' === typeof atts.ttfmake_slider || false == atts.ttfmake_slider) {
-				this.$el.find('#ttf-one-slider-settings').hide();
+				this.$el.find('#ttfmake-slider-settings').hide();
 			}
 			this.model.on('change', function(t) {
 				// Only proceed if the slider toggle changed
@@ -53,7 +53,7 @@
 				}
 
 				var toggle = this.changed.ttfmake_slider,
-					$settingsDiv = $('#ttf-one-slider-settings');
+					$settingsDiv = $('#ttfmake-slider-settings');
 
 				if ( true === toggle ) {
 					$settingsDiv.show();

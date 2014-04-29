@@ -17,12 +17,12 @@ $height        = ( isset( $ttfmake_section_data['data']['height'] ) ) ? $ttfmake
 $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] ) ) ? $ttfmake_section_data['data']['banner-slide-order'] : array();
 ?>
 
-<div class="ttf-one-add-slide-wrapper">
-	<a href="#" class="button button-primary ttf-one-button-large button-large ttf-one-add-slide"><?php _e( 'Add New Slide', 'make' ); ?></a>
+<div class="ttfmake-add-slide-wrapper">
+	<a href="#" class="button button-primary ttfmake-button-large button-large ttfmake-add-slide"><?php _e( 'Add New Slide', 'make' ); ?></a>
 </div>
 
-<div class="ttf-one-banner-slides">
-	<div class="ttf-one-banner-slides-stage">
+<div class="ttfmake-banner-slides">
+	<div class="ttfmake-banner-slides-stage">
 		<?php foreach ( $section_order as $key => $section_id  ) : ?>
 			<?php if ( isset( $ttfmake_section_data['data']['banner-slides'][ $section_id ] ) ) : ?>
 				<?php global $ttfmake_slide_id; $ttfmake_slide_id = $section_id; ?>
@@ -30,22 +30,22 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
-	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[banner-slide-order]" class="ttf-one-banner-slide-order" />
+	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[banner-slide-order]" class="ttfmake-banner-slide-order" />
 </div>
 
-<div class="ttf-one-banner-options">
-	<h2 class="ttf-one-large-title">
+<div class="ttfmake-banner-options">
+	<h2 class="ttfmake-large-title">
 		<?php _e( 'Options', 'make' ); ?>
 	</h2>
 
-	<div class="ttf-one-titlediv">
-		<div class="ttf-one-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+	<div class="ttfmake-titlediv">
+		<div class="ttfmake-titlewrap">
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 		</div>
 	</div>
 
-	<div class="ttf-one-banner-options-container">
-		<h4 class="ttf-one-banner-options-title">
+	<div class="ttfmake-banner-options-container">
+		<h4 class="ttfmake-banner-options-title">
 			<?php _e( 'Slideshow display', 'make' ); ?>
 		</h4>
 
@@ -71,8 +71,8 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 		</p>
 	</div>
 
-	<div class="ttf-one-banner-options-container">
-		<h4 class="ttf-one-banner-options-title">
+	<div class="ttfmake-banner-options-container">
+		<h4 class="ttfmake-banner-options-title">
 			<?php _e( 'Time between slides (in ms)', 'make' ); ?>
 		</h4>
 		<input id="<?php echo $section_name; ?>[delay]" class="code" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
@@ -87,8 +87,8 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 		</select>
 	</div>
 
-	<div class="ttf-one-banner-options-container">
-		<h4 class="ttf-one-banner-options-title">
+	<div class="ttfmake-banner-options-container">
+		<h4 class="ttfmake-banner-options-title">
 			<?php _e( 'Section height', 'make' ); ?>
 		</h4>
 		<input id="<?php echo $section_name; ?>[height]" class="code" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
@@ -97,5 +97,5 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 	<div class="clear"></div>
 </div>
 
-<input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttfmake_load_section_footer(); ?>

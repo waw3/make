@@ -13,13 +13,13 @@ var oneApp = oneApp || {};
 	};
 
 	oneApp.cache = {
-		$sectionOrder: $('#ttf-one-section-order'),
+		$sectionOrder: $('#ttfmake-section-order'),
 		$scrollHandle: $('html, body')
 	};
 
 	oneApp.initSortables = function () {
-		$('.ttf-one-stage').sortable({
-			handle: '.ttf-one-section-header',
+		$('.ttfmake-stage').sortable({
+			handle: '.ttfmake-section-header',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
 			distance: 2,
@@ -27,7 +27,7 @@ var oneApp = oneApp || {};
 			start: function (event, ui) {
 				// Set the height of the placeholder to that of the sorted item
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-stage');
+					$stage = $item.parents('.ttfmake-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
 				oneApp.disableEditors($item);
@@ -116,7 +116,7 @@ var oneApp = oneApp || {};
 	};
 
 	oneApp.initViews = function () {
-		$('.ttf-one-section').each(function () {
+		$('.ttfmake-section').each(function () {
 			var $section = $(this),
 				idAttr = $section.attr('id'),
 				id = $section.attr('data-id'),

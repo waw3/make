@@ -4,7 +4,7 @@
  */
 
 global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_slide_id;
-$section_name = 'ttf-one-section';
+$section_name = 'ttfmake-section';
 if ( true === $ttfmake_is_js_template ) {
 	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
 } else {
@@ -19,22 +19,22 @@ $alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
 ?>
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
-<div class="ttf-one-banner-slide<?php if ( 'open' === $state ) echo ' ttf-one-banner-slide-open'; ?>" id="ttf-one-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>">
+<div class="ttfmake-banner-slide<?php if ( 'open' === $state ) echo ' ttfmake-banner-slide-open'; ?>" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>">
 <?php endif; ?>
-	<div class="ttf-one-banner-slide-header">
+	<div class="ttfmake-banner-slide-header">
 		<h3>
 			<em><?php _e( 'Slide', 'make' ); ?></em>
 		</h3>
-		<a href="#" class="ttf-one-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
+		<a href="#" class="ttfmake-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
 	</div>
 
 	<div class="clear"></div>
 
-	<div class="ttf-one-banner-slide-body">
+	<div class="ttfmake-banner-slide-body">
 
-		<div class="ttf-one-banner-slide-option-wrapper">
+		<div class="ttfmake-banner-slide-option-wrapper">
 			<h4><?php _e( 'Background image', 'make' ); ?></h4>
 			<p>
 				<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
@@ -43,12 +43,12 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 				</label>
 			</p>
 
-			<div class="ttf-one-banner-slide-background-color-wrapper">
+			<div class="ttfmake-banner-slide-background-color-wrapper">
 				<h4><label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'make' ); ?></label></h4>
-				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
+				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttfmake-banner-slide-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
 			</div>
 
-			<div class="ttf-one-banner-slide-alignment-wrapper">
+			<div class="ttfmake-banner-slide-alignment-wrapper">
 				<h4><label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'make' ); ?></label></h4>
 				<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
 					<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'make' ); ?></option>
@@ -60,7 +60,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 
 		</div>
 
-		<div class="ttf-one-banner-slide-background-image-wrapper">
+		<div class="ttfmake-banner-slide-background-image-wrapper">
 			<?php
 			ttfmake_get_builder_base()->add_uploader(
 				$section_name,
@@ -90,11 +90,11 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttfmake_slide_id, $editor_settings ); ?>
 		<?php endif; ?>
 
-		<a href="#" class="ttf-one-banner-slide-remove">
+		<a href="#" class="ttfmake-banner-slide-remove">
 			<?php _e( 'Remove this slide', 'make' ); ?>
 		</a>
 	</div>
-	<input type="hidden" class="ttf-one-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
+	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>

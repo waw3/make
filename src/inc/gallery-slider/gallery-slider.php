@@ -70,7 +70,7 @@ class TTF_One_Gallery_Slider {
 	 */
 	function enqueue_media() {
 		wp_enqueue_script(
-			'ttf-one-admin-gallery-settings',
+			'ttfmake-admin-gallery-settings',
 			get_template_directory_uri() . '/inc/gallery-slider/gallery-slider' . TTF_ONE_SUFFIX . '.js',
 			array( 'media-views' ),
 			TTF_ONE_VERSION,
@@ -87,13 +87,13 @@ class TTF_One_Gallery_Slider {
 	 */
 	function print_media_templates() {
 	?>
-		<script type="text/html" id="tmpl-ttf-one-gallery-settings">
+		<script type="text/html" id="tmpl-ttfmake-gallery-settings">
 			<h3 style="float:left;margin-top:10px;"><?php _e( 'Slider Settings', 'make' ); ?></h3>
 			<label class="setting">
 				<span><?php _e( 'Show gallery as slider', 'make' ); ?></span>
-				<input id="ttf-one-slider" type="checkbox" data-setting="ttfmake_slider" />
+				<input id="ttfmake-slider" type="checkbox" data-setting="ttfmake_slider" />
 			</label>
-			<div id="ttf-one-slider-settings">
+			<div id="ttfmake-slider-settings">
 				<label class="setting">
 					<span><?php _e( 'Hide navigation arrows', 'make' ); ?></span>
 					<input type="checkbox" data-setting="ttfmake_prevnext" />
@@ -228,7 +228,7 @@ class TTF_One_Gallery_Slider {
 			// End core code
 
 			// Classes
-			$classes = 'ttf-one-shortcode-slider cycle-slideshow';
+			$classes = 'ttfmake-shortcode-slider cycle-slideshow';
 
 			// Data attributes
 			$data_attributes  = ' data-cycle-log="false"';

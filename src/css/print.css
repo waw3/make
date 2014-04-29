@@ -37,7 +37,7 @@ img {
 /*---------------------------------------------------------
  Reset styles (_sidebar.scss)
 -------------------------------------------------------- */
-blockquote.ttf-one-testimonial:after {
+blockquote.ttfmake-testimonial:after {
 	content: none !important;
 }
 /*---------------------------------------------------------

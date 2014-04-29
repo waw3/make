@@ -6,7 +6,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	oneApp.SectionView = Backbone.View.extend({
 		template: '',
-		className: 'ttf-one-section ttf-one-section-open',
+		className: 'ttfmake-section ttfmake-section-open',
 		$headerTitle: '',
 		$titleInput: '',
 		$titlePipe: '',
@@ -15,17 +15,17 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		$scrollHandle: $('html, body'),
 
 		events: {
-			'click .ttf-one-section-toggle': 'toggleSection',
-			'click .ttf-one-section-remove': 'removeSection',
-			'keyup .ttf-one-section-header-title-input': 'constructHeader',
-			'click .ttf-one-media-uploader-add': 'initUploader',
-			'click .ttf-one-media-uploader-remove': 'removeImage',
+			'click .ttfmake-section-toggle': 'toggleSection',
+			'click .ttfmake-section-remove': 'removeSection',
+			'keyup .ttfmake-section-header-title-input': 'constructHeader',
+			'click .ttfmake-media-uploader-add': 'initUploader',
+			'click .ttfmake-media-uploader-remove': 'removeImage',
 			'click .wp-switch-editor': 'adjustEditorHeightOnClick'
 		},
 
 		initialize: function (options) {
 			this.model = options.model;
-			this.idAttr = 'ttf-one-section-' + this.model.get('id');
+			this.idAttr = 'ttfmake-section-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
 
 			// Allow custom init functions
@@ -36,12 +36,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
 				escape     : /\{\{([^\}]+?)\}\}(?!\})/g
 			};
-			this.template = _.template($('#tmpl-ttf-one-' + this.model.get('sectionType')).html());
+			this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html());
 		},
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()))
-				.addClass('ttf-one-section-' + this.model.get('sectionType'))
+				.addClass('ttfmake-section-' + this.model.get('sectionType'))
 				.attr('id', this.idAttr)
 				.attr('data-id', this.model.get('id'))
 				.attr('data-section-type', this.model.get('sectionType'));
@@ -52,18 +52,18 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$section = $this.parents('.ttf-one-section'),
-				$sectionBody = $('.ttf-one-section-body', $section),
-				$input = $('.ttf-one-section-state', this.$el);
+				$section = $this.parents('.ttfmake-section'),
+				$sectionBody = $('.ttfmake-section-body', $section),
+				$input = $('.ttfmake-section-state', this.$el);
 
-			if ($section.hasClass('ttf-one-section-open')) {
+			if ($section.hasClass('ttfmake-section-open')) {
 				$sectionBody.slideUp(oneApp.options.closeSpeed, function() {
-					$section.removeClass('ttf-one-section-open');
+					$section.removeClass('ttfmake-section-open');
 					$input.val('closed');
 				});
 			} else {
 				$sectionBody.slideDown(oneApp.options.openSpeed, function() {
-					$section.addClass('ttf-one-section-open');
+					$section.addClass('ttfmake-section-open');
 					$input.val('open');
 				});
 			}
@@ -85,15 +85,15 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		constructHeader: function () {
 			if ('' === this.$headerTitle) {
-				this.$headerTitle = $('.ttf-one-section-header-title', this.$el);
+				this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
 			}
 
 			if ('' === this.$titleInput) {
-				this.$titleInput = $('.ttf-one-section-header-title-input', this.$el);
+				this.$titleInput = $('.ttfmake-section-header-title-input', this.$el);
 			}
 
 			if ('' === this.$titlePipe) {
-				this.$titlePipe = $('.ttf-one-section-header-pipe', this.$el);
+				this.$titlePipe = $('.ttfmake-section-header-pipe', this.$el);
 			}
 
 			var input = this.$titleInput.val();
@@ -103,9 +103,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Hide or show the pipe depending on what content is available
 			if ('' === input) {
-				this.$titlePipe.addClass('ttf-one-section-header-pipe-hidden');
+				this.$titlePipe.addClass('ttfmake-section-header-pipe-hidden');
 			} else {
-				this.$titlePipe.removeClass('ttf-one-section-header-pipe-hidden');
+				this.$titlePipe.removeClass('ttfmake-section-header-pipe-hidden');
 			}
 		},
 
@@ -113,11 +113,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$parent = $this.parents('.ttf-one-uploader'),
-				$placeholder = $('.ttf-one-media-uploader-placeholder', $parent),
-				$input = $('.ttf-one-media-uploader-value', $parent),
-				$remove = $('.ttf-one-media-uploader-remove', $parent),
-				$add = $('.ttf-one-media-uploader-set-link', $parent),
+				$parent = $this.parents('.ttfmake-uploader'),
+				$placeholder = $('.ttfmake-media-uploader-placeholder', $parent),
+				$input = $('.ttfmake-media-uploader-value', $parent),
+				$remove = $('.ttfmake-media-uploader-remove', $parent),
+				$add = $('.ttfmake-media-uploader-set-link', $parent),
 				frame = frame || {},
 				props, image;
 
@@ -176,10 +176,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$parent = $this.parents('.ttf-one-uploader'),
-				$placeholder = $('.ttf-one-media-uploader-placeholder', $parent),
-				$input = $('.ttf-one-media-uploader-value', $parent),
-				$set = $('.ttf-one-media-uploader-add', $parent);
+				$parent = $this.parents('.ttfmake-uploader'),
+				$placeholder = $('.ttfmake-media-uploader-placeholder', $parent),
+				$input = $('.ttfmake-media-uploader-value', $parent),
+				$set = $('.ttfmake-media-uploader-add', $parent);
 
 			// Remove the image
 			$placeholder.empty();

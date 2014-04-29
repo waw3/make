@@ -372,7 +372,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		wp_register_script(
-			'ttf-one-sections/js/models/gallery-item.js',
+			'ttfmake-sections/js/models/gallery-item.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/models/gallery-item.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -380,7 +380,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
-			'ttf-one-sections/js/views/gallery-item.js',
+			'ttfmake-sections/js/views/gallery-item.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery-item.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -388,7 +388,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
-			'ttf-one-sections/js/views/gallery.js',
+			'ttfmake-sections/js/views/gallery.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -396,7 +396,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
-			'ttf-one-sections/js/views/text.js',
+			'ttfmake-sections/js/views/text.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/text.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -404,7 +404,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
-			'ttf-one-sections/js/models/banner-slide.js',
+			'ttfmake-sections/js/models/banner-slide.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/models/banner-slide.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -412,7 +412,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
-			'ttf-one-sections/js/views/banner-slide.js',
+			'ttfmake-sections/js/views/banner-slide.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/banner-slide.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -420,7 +420,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		wp_register_script(
-			'ttf-one-sections/js/views/banner.js',
+			'ttfmake-sections/js/views/banner.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/banner.js',
 			array(),
 			TTF_ONE_VERSION,
@@ -432,7 +432,7 @@ class TTF_One_Section_Definitions {
 
 		// Add the section CSS
 		wp_enqueue_style(
-			'ttf-one-sections/css/sections.css',
+			'ttfmake-sections/css/sections.css',
 			get_template_directory_uri() . '/inc/builder/sections/css/sections.css',
 			array(),
 			TTF_ONE_VERSION,
@@ -454,13 +454,13 @@ class TTF_One_Section_Definitions {
 		}
 
 		return array_merge( $deps, array(
-			'ttf-one-sections/js/models/gallery-item.js',
-			'ttf-one-sections/js/models/banner-slide.js',
-			'ttf-one-sections/js/views/gallery-item.js',
-			'ttf-one-sections/js/views/gallery.js',
-			'ttf-one-sections/js/views/text.js',
-			'ttf-one-sections/js/views/banner-slide.js',
-			'ttf-one-sections/js/views/banner.js',
+			'ttfmake-sections/js/models/gallery-item.js',
+			'ttfmake-sections/js/models/banner-slide.js',
+			'ttfmake-sections/js/views/gallery-item.js',
+			'ttfmake-sections/js/views/gallery.js',
+			'ttfmake-sections/js/views/text.js',
+			'ttfmake-sections/js/views/banner-slide.js',
+			'ttfmake-sections/js/views/banner.js',
 		) );
 	}
 
@@ -494,7 +494,7 @@ class TTF_One_Section_Definitions {
 
 		// Print the templates
 		foreach ( $templates as $template ) : ?>
-		<script type="text/html" id="tmpl-ttf-one-<?php echo $template['id']; ?>">
+		<script type="text/html" id="tmpl-ttfmake-<?php echo $template['id']; ?>">
 			<?php
 			ob_start();
 			ttfmake_get_builder_base()->load_section( $template, array() );

@@ -7,15 +7,15 @@ var oneApp = oneApp || {};
 	var Sections = Backbone.Collection.extend({
 		model: oneApp.SectionModel,
 
-		$stage: $('#ttf-one-stage'),
+		$stage: $('#ttfmake-stage'),
 
 		toggleStageClass: function() {
-			var sections = $('.ttf-one-section', this.$stage).length;
+			var sections = $('.ttfmake-section', this.$stage).length;
 
 			if (sections > 0) {
-				this.$stage.removeClass('ttf-one-stage-closed');
+				this.$stage.removeClass('ttfmake-stage-closed');
 			} else {
-				this.$stage.addClass('ttf-one-stage-closed');
+				this.$stage.addClass('ttfmake-stage-closed');
 			}
 		}
 	});

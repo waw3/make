@@ -6,4 +6,4 @@
 global $ttfmake_sections;
 ?>
 
-<div class="ttf-one-stage<?php if ( empty( $ttfmake_sections ) ) echo ' ttf-one-stage-closed'?>" id="ttf-one-stage">
+<div class="ttfmake-stage<?php if ( empty( $ttfmake_sections ) ) echo ' ttfmake-stage-closed'?>" id="ttfmake-stage">

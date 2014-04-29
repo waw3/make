@@ -71,7 +71,7 @@ blockquote {
 			content: "\2014";
 		}
 	}
-	&.ttf-one-testimonial {
+	&.ttfmake-testimonial {
 		line-height: 0; //reset
 		background-color: $d;
 		@include rem('margin-bottom', $base*2);
@@ -192,10 +192,10 @@ hr {
 	border-top: 1px solid $d;
 	height: 1px;
 	margin-bottom: $base;
-	&.ttf-one-line-dashed {
+	&.ttfmake-line-dashed {
 		border-top: 1px dashed $d;
 	}
-	&.ttf-one-line-double {
+	&.ttfmake-line-double {
     	border-top: 6px double $d;
 	}
 }
@@ -207,7 +207,7 @@ ul,
 ol {
 	@include rem('margin', 0 0 $base 0);
 	@include rem('padding-left', 20px);
-	&.ttf-one-list {
+	&.ttfmake-list {
 			padding-left: 0; //reset
 			list-style: none; //reset
 			li:before {
@@ -215,19 +215,19 @@ ol {
 				@include rem('padding-right', $gut/3);
 			}
 	}
-	&.ttf-one-list-check li:before {
+	&.ttfmake-list-check li:before {
 		content: "\f14a";
 		color: #339d56;
 	}
-	&.ttf-one-list-check2 li:before {
+	&.ttfmake-list-check2 li:before {
 		content: "\f046";
 		color: #339d56;
 	}
-	&.ttf-one-list-star li:before {
+	&.ttfmake-list-star li:before {
 		content: "\f005";
 		color: #f89e01;
 	}
-	&.ttf-one-list-dot li:before {
+	&.ttfmake-list-dot li:before {
 		content: "\f192";
 		color: $c;
 	}
@@ -342,7 +342,7 @@ table {
 /*---------------------------------------------------------
  Alerts (_elements.scss)
 -------------------------------------------------------- */
-.ttf-one-alert {
+.ttfmake-alert {
 	position: relative;
 	overflow: hidden;
 	border: 1px solid darken($d, 15);
@@ -361,7 +361,7 @@ table {
 		@include rem('right', -12px);
 		@include rem('font-size', 72px);
 	}
-	&.ttf-one-error {
+	&.ttfmake-error {
 		color: #d04242;
 		border: 1px solid darken(#f7eeee, 15);
 		background-color: #f7eeee;
@@ -369,7 +369,7 @@ table {
 			content: "\f06a";
 		}
 	}
-	&.ttf-one-success {
+	&.ttfmake-success {
 		color: #339d56;
 		border: 1px solid darken(#eef7f1, 15);
 		background: #eef7f1;
@@ -377,7 +377,7 @@ table {
 			content: "\f058";
 		}
 	}
-	&.ttf-one-important {
+	&.ttfmake-important {
 		color: #f89e01;
 		border: 1px solid darken(#fffde5, 25);
 		background-color: #fffde5;

@@ -8,7 +8,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttf-one-add-slide': 'addSlide'
+				'click .ttfmake-add-slide': 'addSlide'
 			});
 		},
 
@@ -27,7 +27,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Append view
 			html = view.render().el;
-			$('.ttf-one-banner-slides-stage', this.$el).append(html);
+			$('.ttfmake-banner-slides-stage', this.$el).append(html);
 
 			// Only scroll and focus if not triggered by the pseudo event
 			if ( ! params ) {
@@ -42,12 +42,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.initAllEditors(view.idAttr, view.model);
 
 			// Add the section value to the sortable order
-			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-banner-slide-order', $(view.$el).parents('.ttf-one-banner-slides')));
+			oneApp.addOrderValue(view.model.get('id'), $('.ttfmake-banner-slide-order', $(view.$el).parents('.ttfmake-banner-slides')));
 		},
 
 		getParentID: function() {
 			var idAttr = this.$el.attr('id'),
-				id = idAttr.replace('ttf-one-section-', '');
+				id = idAttr.replace('ttfmake-section-', '');
 
 			return parseInt(id, 10);
 		}
@@ -59,13 +59,13 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		view = view || '';
 
 		if (view.$el) {
-			$selector = $('.ttf-one-banner-slides-stage', view.$el);
+			$selector = $('.ttfmake-banner-slides-stage', view.$el);
 		} else {
-			$selector = $('.ttf-one-banner-slides-stage');
+			$selector = $('.ttfmake-banner-slides-stage');
 		}
 
 		$selector.sortable({
-			handle: '.ttf-one-banner-slide-header',
+			handle: '.ttfmake-banner-slide-header',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
 			distance: 2,
@@ -73,15 +73,15 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			start: function (event, ui) {
 				// Set the height of the placeholder to that of the sorted item
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-banner-slides-stage');
+					$stage = $item.parents('.ttfmake-banner-slides-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
 				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-banner-slides'),
-					$orderInput = $('.ttf-one-banner-slide-order', $stage);
+					$stage = $item.parents('.ttfmake-banner-slides'),
+					$orderInput = $('.ttfmake-banner-slide-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
 				oneApp.enableEditors($item);
@@ -95,9 +95,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		view = view || '';
 
 		if (view.$el) {
-			$selector = $('.ttf-one-banner-slide-background-color', view.$el);
+			$selector = $('.ttfmake-banner-slide-background-color', view.$el);
 		} else {
-			$selector = $('.ttf-one-banner-slide-background-color');
+			$selector = $('.ttfmake-banner-slide-background-color');
 		}
 
 		$selector.wpColorPicker({
@@ -112,7 +112,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			view.noTinyMCEInit = true;
 
 			// Add an initial slide item
-			$('.ttf-one-add-slide', view.$el).trigger('click', {type: 'pseudo'});
+			$('.ttfmake-add-slide', view.$el).trigger('click', {type: 'pseudo'});
 
 			// Initialize the sortables
 			oneApp.initializeBannerSlidesSortables(view);
@@ -121,11 +121,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Initialize available slides
 	oneApp.initBannerSlideViews = function () {
-		$('.ttf-one-banner-slide').each(function () {
+		$('.ttfmake-banner-slide').each(function () {
 			var $item = $(this),
 				idAttr = $item.attr('id'),
 				id = $item.attr('data-id'),
-				$section = $item.parents('.ttf-one-section'),
+				$section = $item.parents('.ttfmake-section'),
 				parentID = $section.attr('data-id'),
 				model, view;
 

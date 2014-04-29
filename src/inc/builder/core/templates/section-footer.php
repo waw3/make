@@ -4,7 +4,7 @@
  */
 ?>
 
-		<a href="#" class="ttf-one-section-remove">
+		<a href="#" class="ttfmake-section-remove">
 			<?php _e( 'Remove', 'make' ); ?>
 		</a>
 	</div>

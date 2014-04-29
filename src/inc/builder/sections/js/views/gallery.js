@@ -7,8 +7,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.GalleryView = oneApp.SectionView.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttf-one-gallery-add-item' : 'addGalleryItem',
-				'change .ttf-one-gallery-columns' : 'handleColumns'
+				'click .ttfmake-gallery-add-item' : 'addGalleryItem',
+				'change .ttfmake-gallery-columns' : 'handleColumns'
 			});
 		},
 
@@ -27,7 +27,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Append view
 			html = view.render().el;
-			$('.ttf-one-gallery-items-stage', this.$el).append(html);
+			$('.ttfmake-gallery-items-stage', this.$el).append(html);
 
 			// Only scroll and focus if not triggered by the pseudo event
 			if ( ! params ) {
@@ -36,12 +36,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}
 
 			// Add the section value to the sortable order
-			oneApp.addOrderValue(view.model.get('id'), $('.ttf-one-gallery-item-order', $(view.$el).parents('.ttf-one-gallery-items')));
+			oneApp.addOrderValue(view.model.get('id'), $('.ttfmake-gallery-item-order', $(view.$el).parents('.ttfmake-gallery-items')));
 		},
 
 		getParentID: function() {
 			var idAttr = this.$el.attr('id'),
-				id = idAttr.replace('ttf-one-section-', '');
+				id = idAttr.replace('ttfmake-section-', '');
 
 			return parseInt(id, 10);
 		},
@@ -50,31 +50,31 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 
 			var columns = $(evt.target).val(),
-				$stage = $('.ttf-one-gallery-items-stage', this.$el);
+				$stage = $('.ttfmake-gallery-items-stage', this.$el);
 
-			$stage.removeClass('ttf-one-gallery-columns-1 ttf-one-gallery-columns-2 ttf-one-gallery-columns-3 ttf-one-gallery-columns-4');
-			$stage.addClass('ttf-one-gallery-columns-' + parseInt(columns, 10));
+			$stage.removeClass('ttfmake-gallery-columns-1 ttfmake-gallery-columns-2 ttfmake-gallery-columns-3 ttfmake-gallery-columns-4');
+			$stage.addClass('ttfmake-gallery-columns-' + parseInt(columns, 10));
 		}
 	});
 
 	// Makes gallery items sortable
 	oneApp.initializeGalleryItemSortables = function(view) {
-		$('.ttf-one-gallery-items-stage', view).sortable({
-			handle: '.ttf-one-sortable-handle',
+		$('.ttfmake-gallery-items-stage', view).sortable({
+			handle: '.ttfmake-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			distance: 2,
 			tolerance: 'pointer',
 			start: function (event, ui) {
 				// Set the height of the placeholder to that of the sorted item
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-gallery-items-stage');
+					$stage = $item.parents('.ttfmake-gallery-items-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttf-one-gallery-items'),
-					$orderInput = $('.ttf-one-gallery-item-order', $stage);
+					$stage = $item.parents('.ttfmake-gallery-items'),
+					$orderInput = $('.ttfmake-gallery-item-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
 			}
@@ -87,9 +87,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		view = view || '';
 
 		if (view.$el) {
-			$selector = $('.ttf-one-gallery-background-color', view.$el);
+			$selector = $('.ttfmake-gallery-background-color', view.$el);
 		} else {
-			$selector = $('.ttf-one-gallery-background-color');
+			$selector = $('.ttfmake-gallery-background-color');
 		}
 
 		$selector.wpColorPicker({
@@ -101,7 +101,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('gallery' === view.model.get('sectionType')) {
 			// Add 3 initial gallery item
-			var $addButton = $('.ttf-one-gallery-add-item', view.$el);
+			var $addButton = $('.ttfmake-gallery-add-item', view.$el);
 			$addButton.trigger('click', {type: 'pseudo'});
 			$addButton.trigger('click', {type: 'pseudo'});
 			$addButton.trigger('click', {type: 'pseudo'});
@@ -114,11 +114,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Initialize available gallery items
 	oneApp.initGalleryItemViews = function () {
-		$('.ttf-one-gallery-item').each(function () {
+		$('.ttfmake-gallery-item').each(function () {
 			var $item = $(this),
 				idAttr = $item.attr('id'),
 				id = $item.attr('data-id'),
-				$section = $item.parents('.ttf-one-section'),
+				$section = $item.parents('.ttfmake-section'),
 				parentID = $section.attr('data-id'),
 				model;
 
@@ -142,8 +142,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Set the classes for the elements
 	oneApp.setClearClasses = function ($el) {
-		var columns = $('.ttf-one-gallery-columns', $el).val(),
-			$items = $('.ttf-one-gallery-item', $el);
+		var columns = $('.ttfmake-gallery-columns', $el).val(),
+			$items = $('.ttfmake-gallery-item', $el);
 
 		$items.each(function(index, item){
 			var $item = $(item);

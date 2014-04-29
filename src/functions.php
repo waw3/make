@@ -275,35 +275,35 @@ function ttfmake_scripts() {
 	if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
 		// Enqueue the fonts
 		wp_enqueue_style(
-			'ttf-one-google-fonts',
+			'ttfmake-google-fonts',
 			$google_request,
 			$style_dependencies,
 			TTF_ONE_VERSION
 		);
-		$style_dependencies[] = 'ttf-one-google-fonts';
+		$style_dependencies[] = 'ttfmake-google-fonts';
 	}
 
 	// Font Awesome
 	wp_enqueue_style(
-		'ttf-one-font-awesome',
+		'ttfmake-font-awesome',
 		get_template_directory_uri() . '/css/font-awesome.css',
 		$style_dependencies,
 		'4.0.3'
 	);
-	$style_dependencies[] = 'ttf-one-font-awesome';
+	$style_dependencies[] = 'ttfmake-font-awesome';
 
 	// Main stylesheet
 	wp_enqueue_style(
-		'ttf-one-main-style',
+		'ttfmake-main-style',
 		get_stylesheet_uri(),
 		$style_dependencies,
 		TTF_ONE_VERSION
 	);
-	$style_dependencies[] = 'ttf-one-main-style';
+	$style_dependencies[] = 'ttfmake-main-style';
 
 	// Print stylesheet
 	wp_enqueue_style(
-		'ttf-one-print-style',
+		'ttfmake-print-style',
 		get_template_directory_uri() . '/css/print.css',
 		$style_dependencies,
 		TTF_ONE_VERSION,
@@ -318,11 +318,11 @@ function ttfmake_scripts() {
 
 	// Cycle2
 	ttfmake_cycle2_script_setup( $script_dependencies );
-	$script_dependencies[] = 'ttf-one-cycle2';
+	$script_dependencies[] = 'ttfmake-cycle2';
 
 	// FitVids
 	wp_enqueue_script(
-		'ttf-one-fitvids',
+		'ttfmake-fitvids',
 		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTF_ONE_SUFFIX . '.js',
 		$script_dependencies,
 		'1.1',
@@ -349,16 +349,16 @@ function ttfmake_scripts() {
 
 	// Send to the script
 	wp_localize_script(
-		'ttf-one-fitvids',
+		'ttfmake-fitvids',
 		'TTFOneFitVids',
 		$fitvids_custom_selectors
 	);
 
-	$script_dependencies[] = 'ttf-one-fitvids';
+	$script_dependencies[] = 'ttfmake-fitvids';
 
 	// Global script
 	wp_enqueue_script(
-		'ttf-one-global',
+		'ttfmake-global',
 		get_template_directory_uri() . '/js/global' . TTF_ONE_SUFFIX . '.js',
 		$script_dependencies,
 		TTF_ONE_VERSION,
@@ -390,7 +390,7 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	if ( defined( 'TTF_ONE_SUFFIX' ) && '.min' === TTF_ONE_SUFFIX ) {
 		wp_enqueue_script(
-			'ttf-one-cycle2',
+			'ttfmake-cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTF_ONE_SUFFIX . '.js',
 			$script_dependencies,
 			TTF_ONE_VERSION,
@@ -399,7 +399,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	} else {
 		// Core script
 		wp_enqueue_script(
-			'ttf-one-cycle2',
+			'ttfmake-cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
 			$script_dependencies,
 			'2.1.3',
@@ -408,18 +408,18 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 
 		// Vertical centering
 		wp_enqueue_script(
-			'ttf-one-cycle2-center',
+			'ttfmake-cycle2-center',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
-			'ttf-one-cycle2',
+			'ttfmake-cycle2',
 			'20140121',
 			true
 		);
 
 		// Swipe support
 		wp_enqueue_script(
-			'ttf-one-cycle2-swipe',
+			'ttfmake-cycle2-swipe',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
-			'ttf-one-cycle2',
+			'ttfmake-cycle2',
 			'20121120',
 			true
 		);

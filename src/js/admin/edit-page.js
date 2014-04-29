@@ -20,8 +20,8 @@
 		cacheElements: function() {
 			this.cache.$pageTemplate = $('#page_template');
 			this.cache.$mainEditor = $('#postdivrich');
-			this.cache.$builder = $('#ttf-one-builder');
-			this.cache.$builderHide = $('#ttf-one-builder-hide');
+			this.cache.$builder = $('#ttfmake-builder');
+			this.cache.$builderHide = $('#ttfmake-builder-hide');
 			this.cache.$featuredImage = $('#postimagediv');
 		},
 
@@ -57,7 +57,7 @@
 			var self = ttfOneEditPage,
 				unavailable;
 
-			self.cache.$featuredImage.find('.ttf-one-message').remove();
+			self.cache.$featuredImage.find('.ttfmake-message').remove();
 
 			if ('undefined' !== typeof ttfOneEditPageData) {
 				unavailable = ttfOneEditPageData.featuredImage;
@@ -65,7 +65,7 @@
 				unavailable = 'Featured images are not available for this page while using the current page template.';
 			}
 
-			unavailable = '<div class="ttf-one-message inside"><p class="hide-if-no-js">'+unavailable+'</p></div>';
+			unavailable = '<div class="ttfmake-message inside"><p class="hide-if-no-js">'+unavailable+'</p></div>';
 
 			if ('show' === state) {
 				self.cache.$featuredImage.find('.inside').show();

@@ -51,7 +51,7 @@ function ttfmake_mce_before_init( $settings ) {
 		array(
 			'title'   => __( 'Blockquote: testimonial', 'make' ),
 			'block'   => 'blockquote',
-			'classes' => 'ttf-one-testimonial',
+			'classes' => 'ttfmake-testimonial',
 			'wrapper' => true
 		),
 		// Line dashed (hr)
@@ -59,7 +59,7 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'Line: dashed', 'make' ),
 			'selector'   => 'hr',
 			'attributes' => array(
-				'class' => 'ttf-one-line-dashed' // Replace existing classes instead of adding
+				'class' => 'ttfmake-line-dashed' // Replace existing classes instead of adding
 			),
 			'exact'      => true
 		),
@@ -68,7 +68,7 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'Line: double', 'make' ),
 			'selector'   => 'hr',
 			'attributes' => array(
-				'class' => 'ttf-one-line-double' // Replace existing classes instead of adding
+				'class' => 'ttfmake-line-double' // Replace existing classes instead of adding
 			),
 			'exact'      => true
 		),
@@ -77,7 +77,7 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'Alert', 'make' ),
 			'block'      => 'div',
 			'attributes' => array(
-				'class' => 'ttf-one-alert' // Replace existing classes instead of adding
+				'class' => 'ttfmake-alert' // Replace existing classes instead of adding
 			),
 		),
 		// Button (a)
@@ -85,14 +85,14 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'Button', 'make' ),
 			'selector'   => 'a,button',
 			'attributes' => array(
-				'class' => 'ttf-one-button' // Replace existing classes instead of adding
+				'class' => 'ttfmake-button' // Replace existing classes instead of adding
 			)
 		),
 		// Button download (a)
 		array(
 			'title'    => __( 'Button: download', 'make' ),
 			'selector' => 'a,button',
-			'classes'  => 'ttf-one-download'
+			'classes'  => 'ttfmake-download'
 		),
 		// Button primary (a)
 		array(
@@ -110,26 +110,26 @@ function ttfmake_mce_before_init( $settings ) {
 		array(
 			'title'    => __( 'Success (Green)', 'make' ),
 			'selector' => 'div,a,button',
-			'classes'  => 'ttf-one-success',
+			'classes'  => 'ttfmake-success',
 		),
 		// Error (div)
 		array(
 			'title'    => __( 'Error (Red)', 'make' ),
 			'selector' => 'div,a,button',
-			'classes'  => 'ttf-one-error',
+			'classes'  => 'ttfmake-error',
 		),
 		// Important (div)
 		array(
 			'title'    => __( 'Important (Orange)', 'make' ),
 			'selector' => 'div,a,button',
-			'classes'  => 'ttf-one-important',
+			'classes'  => 'ttfmake-important',
 		),
 		// List: check 1
 		array(
 			'title'      => __( 'List: checkmark 1', 'make' ),
 			'selector'   => 'ul,ol',
 			'attributes' => array(
-				'class' => 'ttf-one-list ttf-one-list-check' // Replace existing classes instead of adding
+				'class' => 'ttfmake-list ttfmake-list-check' // Replace existing classes instead of adding
 			)
 		),
 		// List: check 2
@@ -137,7 +137,7 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'List: checkmark 2', 'make' ),
 			'selector'   => 'ul,ol',
 			'attributes' => array(
-				'class' => 'ttf-one-list ttf-one-list-check2' // Replace existing classes instead of adding
+				'class' => 'ttfmake-list ttfmake-list-check2' // Replace existing classes instead of adding
 			)
 		),
 		// List: star
@@ -145,7 +145,7 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'List: star', 'make' ),
 			'selector'   => 'ul,ol',
 			'attributes' => array(
-				'class' => 'ttf-one-list ttf-one-list-star' // Replace existing classes instead of adding
+				'class' => 'ttfmake-list ttfmake-list-star' // Replace existing classes instead of adding
 			)
 		),
 		// List: dot
@@ -153,7 +153,7 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'      => __( 'List: dot', 'make' ),
 			'selector'   => 'ul,ol',
 			'attributes' => array(
-				'class' => 'ttf-one-list ttf-one-list-dot' // Replace existing classes instead of adding
+				'class' => 'ttfmake-list ttfmake-list-dot' // Replace existing classes instead of adding
 			)
 		),
 	);

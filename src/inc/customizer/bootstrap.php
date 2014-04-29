@@ -150,7 +150,7 @@ function ttfmake_customizer_preview_script() {
 	$path = '/inc/customizer/js/';
 
 	wp_enqueue_script(
-		'ttf-one-customizer-preview',
+		'ttfmake-customizer-preview',
 		get_template_directory_uri() . $path . 'customizer-preview' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-preview' ),
 		TTF_ONE_VERSION,
@@ -173,7 +173,7 @@ function ttfmake_customizer_sections_script() {
 	$path = '/inc/customizer/js/';
 
 	wp_enqueue_script(
-		'ttf-one-customizer-sections',
+		'ttfmake-customizer-sections',
 		get_template_directory_uri() . $path . 'customizer-sections' . TTF_ONE_SUFFIX . '.js',
 		array( 'customize-controls' ),
 		TTF_ONE_VERSION,
@@ -263,7 +263,7 @@ function ttfmake_ajax_display_customizations() {
 }
 endif;
 
-add_action( 'wp_ajax_ttf-one-css', 'ttfmake_ajax_display_customizations' );
+add_action( 'wp_ajax_ttfmake-css', 'ttfmake_ajax_display_customizations' );
 
 if ( ! function_exists( 'ttfmake_mce_css' ) ) :
 /**
@@ -276,7 +276,7 @@ if ( ! function_exists( 'ttfmake_mce_css' ) ) :
  */
 function ttfmake_mce_css( $stylesheets ) {
 	if ( ttfmake_get_css()->build() ) {
-		$stylesheets .= ',' . add_query_arg( 'action', 'ttf-one-css', admin_url( 'admin-ajax.php' ) );
+		$stylesheets .= ',' . add_query_arg( 'action', 'ttfmake-css', admin_url( 'admin-ajax.php' ) );
 	}
 
 	return $stylesheets;

@@ -36,7 +36,7 @@ select {
 /*---------------------------------------------------------
  Buttons and inputs (_forms.scss)
 -------------------------------------------------------- */
-.ttf-one-button,
+.ttfmake-button,
 button,
 input[type="button"],
 input[type="reset"],
@@ -55,16 +55,16 @@ input[type="submit"] {
 	&.color-secondary-background {
 		background-color: $d;
 	}
-	&.ttf-one-success {
+	&.ttfmake-success {
 		background-color: #339d56;
 	}
-	&.ttf-one-error {
+	&.ttfmake-error {
 		background-color: #d04242;
 	}
-	&.ttf-one-important {
+	&.ttfmake-important {
 		background-color: #f89e01;
 	}
-	&.ttf-one-download:after {
+	&.ttfmake-download:after {
 		content: "\f0ab";
 		font-family: FontAwesome;
 		@include rem('padding-left', 6px);

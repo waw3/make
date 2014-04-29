@@ -1,29 +1,29 @@
 /*---------------------------------------------------------
  Defaults (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-titlediv {
+.ttfmake-titlediv {
 	position: relative;
 	margin-bottom: 15px;
 }
-.ttf-one-titlediv .ttf-one-title {
+.ttfmake-titlediv .ttfmake-title {
 	width: 100%;
 	height: 1.7em;
 	font-size: 1.5em;
 	line-height: 100%;
 }
-.ttf-one-titlediv ::-webkit-input-placeholder {
+.ttfmake-titlediv ::-webkit-input-placeholder {
 	line-height: 1.4em;
 }
 .clear {
 	clear: both;
 }
-.wp-core-ui .button.ttf-one-button-large {
+.wp-core-ui .button.ttfmake-button-large {
 	font-size: 14px;
 	height: 38px;
 	line-height: 36px;
 }
 @media screen and ( max-width: 782px ) {
-	.wp-core-ui .button.ttf-one-button-large {
+	.wp-core-ui .button.ttfmake-button-large {
 		line-height: 1;
 	}
 }
@@ -43,22 +43,22 @@
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-stage {
+.ttfmake-stage {
 	clear: both;
 	padding-top: 10px;
 }
-.ttf-one-stage-closed {
+.ttfmake-stage-closed {
 	padding-top: 0; /*reset*/
 }
-.ttf-one-select {
+.ttfmake-select {
 	text-align: right;
 	padding: 0 0 12px;
 }
 /*---------------------------------------------------------
  Sections (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-section,
-.ttf-one-banner-slide {
+.ttfmake-section,
+.ttfmake-banner-slide {
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: 9px;
@@ -68,26 +68,26 @@
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 }
-.ttf-one-section:hover,
-.ttf-one-banner-slide:hover {
+.ttfmake-section:hover,
+.ttfmake-banner-slide:hover {
 	border: 1px solid #999999;
 	border-bottom: 0; /*reset*/
 }
-.ttf-one-section-open:hover,
-.ttf-one-banner-slide-open:hover {
+.ttfmake-section-open:hover,
+.ttfmake-banner-slide-open:hover {
 	border: 1px solid #999999;
 }
-.ttf-one-section:hover .ttf-one-section-header h3,
-.ttf-one-banner-slide:hover .ttf-one-banner-slide-header h3 {
+.ttfmake-section:hover .ttfmake-section-header h3,
+.ttfmake-banner-slide:hover .ttfmake-banner-slide-header h3 {
 	border-bottom: 1px solid #999999;
 }
-.ttf-one-section-open:hover,
-.ttf-one-section-open:hover .ttf-one-section-header h3,
-.ttf-one-banner-slide-open:hover,
-.ttf-one-banner-slide-open:hover .ttf-one-banner-slide-header h3 {
+.ttfmake-section-open:hover,
+.ttfmake-section-open:hover .ttfmake-section-header h3,
+.ttfmake-banner-slide-open:hover,
+.ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
 	border-color: #dfdfdf;
 }
-.ttf-one-section-body {
+.ttfmake-section-body {
 	display: none;
 	float: left;
 	width: 100%;
@@ -96,18 +96,18 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttf-one-section-open .ttf-one-section-body {
+.ttfmake-section-open .ttfmake-section-body {
 	display: block;
 }
-.ttf-one-section-header-title {
+.ttfmake-section-header-title {
 	max-width: 90%;
 	display: inline-block;
 }
-.ttf-one-section h4 {
+.ttfmake-section h4 {
 	font-size: 13px;
 }
-.ttf-one-section-header h3,
-.ttf-one-banner-slide-header h3 {
+.ttfmake-section-header h3,
+.ttfmake-banner-slide-header h3 {
 	float: left;
 	width: 100%;
 	color: #222222;
@@ -121,52 +121,52 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttf-one-section-header span {
+.ttfmake-section-header span {
 	font-weight: bold;
 }
-.ttf-one-section-header em {
+.ttfmake-section-header em {
 	font-weight: normal !important;
 	font-style: normal !important;
 	color: #777777;
 	margin-left: 6px;
 }
-.ttf-one-section .handlediv {
+.ttfmake-section .handlediv {
 	position: relative;
 }
-.ttf-one-section-toggle:focus {
+.ttfmake-section-toggle:focus {
 	border: none !important;
 }
-.ttf-one-section-toggle .handlediv,
-.ttf-one-banner-slide-toggle .handlediv {
+.ttfmake-section-toggle .handlediv,
+.ttfmake-banner-slide-toggle .handlediv {
 	top: -38px;
 	right: 0; /*reset*/
 	margin-bottom: -38px;
 }
 @media screen and ( max-width: 782px ) {
-	.ttf-one-section-toggle .handlediv,
-	.ttf-one-banner-slide-toggle .handlediv {
+	.ttfmake-section-toggle .handlediv,
+	.ttfmake-banner-slide-toggle .handlediv {
 		top: -44px;
 		margin-bottom: -44px;
 	}
 }
-.ttf-one-stage .ttf-one-section .ttf-one-section-header .handlediv:before,
-.ttf-one-stage .ttf-one-section .ttf-one-banner-slide-header .handlediv:before {
+.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
+.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
 	content: '\f140';
 }
-.ttf-one-stage .ttf-one-section.ttf-one-section-open .ttf-one-section-header .handlediv:before,
-.ttf-one-stage .ttf-one-section .ttf-one-banner-slide-open .ttf-one-banner-slide-header .handlediv:before {
+.ttfmake-stage .ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
+.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
 	content: '\f142';
 }
-.ttf-one-media-link-wrap {
+.ttfmake-media-link-wrap {
 	margin-bottom: 8px;
 }
-.ttf-one-media-uploader-add {
+.ttfmake-media-uploader-add {
 	display: inline-block;
 	cursor: pointer;
 }
-.ttf-one-section-remove,
-.ttf-one-gallery-item-remove,
-.ttf-one-banner-slide-remove {
+.ttfmake-section-remove,
+.ttfmake-gallery-item-remove,
+.ttfmake-banner-slide-remove {
 	display: inline-block;
 	clear: both;
 	margin-bottom: 0; /*reset*/
@@ -176,22 +176,22 @@
 	text-decoration: none;  /*reset*/
 	outline: none !important;
 }
-.ttf-one-section-remove {
+.ttfmake-section-remove {
 	margin-top: 20px;
 }
-.ttf-one-gallery-item-remove,
-.ttf-one-banner-slide-remove {
+.ttfmake-gallery-item-remove,
+.ttfmake-banner-slide-remove {
 	margin-top: 10px;
 }
-.ttf-one-section-remove:hover,
-.ttf-one-gallery-item-remove:hover,
-.ttf-one-banner-slide-remove:hover {
+.ttfmake-section-remove:hover,
+.ttfmake-gallery-item-remove:hover,
+.ttfmake-banner-slide-remove:hover {
 	color: #ff0000;
 }
-.ttf-one-uploader {
+.ttfmake-uploader {
 	margin: 20px 0;
 }
-.ttf-one-media-uploader-placeholder {
+.ttfmake-media-uploader-placeholder {
 	position: relative;
 	display: block;
 	width: 100%;
@@ -203,17 +203,17 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttf-one-media-uploader-placeholder:before {
+.ttfmake-media-uploader-placeholder:before {
 	content: "\f128";
 	display: block;
 	opacity: .15;
 	font: 60px/228px dashicons;
 	text-align: center;
 }
-.ttf-one-media-uploader-placeholder:hover:before {
+.ttfmake-media-uploader-placeholder:hover:before {
 	opacity: .2;
 }
-.ttf-one-media-uploader-placeholder img {
+.ttfmake-media-uploader-placeholder img {
 	position: absolute;
 	max-width: 100%;
 	max-height: 228px;
@@ -229,7 +229,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttf-one-section-body iframe {
+.ttfmake-section-body iframe {
 	background: #ffffff !important;
 }
 .section-type-description {
@@ -240,81 +240,81 @@
 /*---------------------------------------------------------
  Editor (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-section .wp_themeSkin table.mceToolbar {
+.ttfmake-section .wp_themeSkin table.mceToolbar {
 	padding: 1px;
 }
-.ttf-one-section #insert-jetpack-contact-form,
-.ttf-one-section #add_poll {
+.ttfmake-section #insert-jetpack-contact-form,
+.ttfmake-section #add_poll {
 	display: none;
 }
 /*---------------------------------------------------------
  Open state (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-section-open,
-.ttf-one-banner-slide-open {
+.ttfmake-section-open,
+.ttfmake-banner-slide-open {
 	border-bottom: 1px solid #dfdfdf;
 }
-.ttf-one-banner-slide-open {
+.ttfmake-banner-slide-open {
 	margin-bottom: 40px;
 }
-.ttf-one-section-header a {
+.ttfmake-section-header a {
 	float: right;
 	outline: 0; /*reset*/
 }
 /*---------------------------------------------------------
  Common (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-show {
+.ttfmake-show {
 	display: block;
 }
-.ttf-one-hide {
+.ttfmake-hide {
 	display: none;
 }
 /*---------------------------------------------------------
  Menu (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-menu {
+.ttfmake-menu {
 	margin-top: -6px;
 }
-.ttf-one-menu-pane {
+.ttfmake-menu-pane {
 	padding: 0 20px;
 	border: 1px solid #eeeeee;
 	border-top: none;
 	line-height: 0; /*reset*/
 }
-.ttf-one-menu-closed .ttf-one-menu-pane {
+.ttfmake-menu-closed .ttfmake-menu-pane {
 	display: none;
 }
-.ttf-one-menu-list {
+.ttfmake-menu-list {
 	display: inline-block;
 	width: 100%;
 	margin: 20px 0 2px 0;
 }
 @media screen and (min-width: 1160px) {
-	.ttf-one-menu-list-item {
+	.ttfmake-menu-list-item {
 		width: 100%;
 	}
 }
 @media screen and (min-width: 1260px) {
-	.ttf-one-menu-list-item {
+	.ttfmake-menu-list-item {
 		width: 50%;
 	}
 }
-.ttf-one-menu-list h4,
-.ttf-one-menu-list p {
+.ttfmake-menu-list h4,
+.ttfmake-menu-list p {
 	margin: 0; /*reset*/
 }
-.ttf-one-menu-list h4 {
+.ttfmake-menu-list h4 {
 	margin-bottom: 4px;
 }
-.ttf-one-menu-list a {
+.ttfmake-menu-list a {
 	text-decoration: none; /*reset*/
 	color: #777777 !important;
 }
-.ttf-one-menu-list a:hover {
+.ttfmake-menu-list a:hover {
 	color: #333333 !important;
 }
-.ttf-one-menu-list-item {
+.ttfmake-menu-list-item {
 	float: left;
 	width: 100%;
 	margin-bottom: 18px;
@@ -324,20 +324,20 @@
 	box-sizing: border-box;
 }
 @media screen and (min-width: 1160px) {
-	.ttf-one-menu-list-item {
+	.ttfmake-menu-list-item {
 		width: 50%;
 	}
 }
-.ttf-one-menu-list-item a {
+.ttfmake-menu-list-item a {
 	color: #21759b;
 }
-.ttf-one-menu-list-item a:hover {
+.ttfmake-menu-list-item a:hover {
 	color: #d54e21;
 }
-.ttf-one-menu-list-item:last-of-type {
+.ttfmake-menu-list-item:last-of-type {
 	margin-right: 0; /*reset*/
 }
-.ttf-one-menu-list a .ttf-one-menu-list-item-link-icon {
+.ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
 	display: block;
 	opacity: 0;
 	width: 88px;
@@ -349,10 +349,10 @@
 	-webkit-transition-delay: .05s;
 	transition-delay: .05s;
 }
-.ttf-one-menu-list a:hover .ttf-one-menu-list-item-link-icon {
+.ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
 	opacity: 1;
 }
-.ttf-one-menu-list-item-link-icon-wrapper {
+.ttfmake-menu-list-item-link-icon-wrapper {
 	float: left;
 	width: 88px;
 	height: 78px;
@@ -363,35 +363,35 @@
 	background-size: 70px 60px;
 	border: 1px solid #dfdfdf;
 }
-.ttf-one-menu-list-item:hover .ttf-one-menu-list-item-link-icon-wrapper {
+.ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
 	border-color: #bbbbbb;
 }
 /*---------------------------------------------------------
  Menu tab (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-menu-tab {
+.ttfmake-menu-tab {
 	clear: both;
 	margin-top: -1px;
 	margin-bottom: 20px;
 	text-align: center;
 }
-.ttf-one-menu-tab-link span:after {
+.ttfmake-menu-tab-link span:after {
 	position: relative;
 	bottom: 1px;
 	font-size: 8px;
 	color: #dfdfdf;
 	padding-left: 4px;
 }
-.ttf-one-menu-opened .ttf-one-menu-tab-link span:after {
+.ttfmake-menu-opened .ttfmake-menu-tab-link span:after {
 	content: "\25B2";
 }
-.ttf-one-menu-closed .ttf-one-menu-tab-link span:after {
+.ttfmake-menu-closed .ttfmake-menu-tab-link span:after {
 	content: "\25BC";
 }
-.ttf-one-menu-tab-link:hover span:after {
+.ttfmake-menu-tab-link:hover span:after {
 	color: #cccccc;
 }
-.ttf-one-menu-tab-link {
+.ttfmake-menu-tab-link {
 	padding: 5px 10px;
 	display: inline-block;
 	border: 1px solid #eeeeee;
@@ -402,17 +402,17 @@
 	outline: none !important; /*reset*/
 }
 @media screen and ( max-width: 782px ) {
-	.ttf-one-menu-tab-link {
+	.ttfmake-menu-tab-link {
 		padding: 10px 20px;
 	}
 }
 /*---------------------------------------------------------
  Sortable handle (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-stage .sortable-placeholder {
+.ttfmake-stage .sortable-placeholder {
 	margin-bottom: 8px;
 }
-.ttf-one-section .sortable-placeholder {
+.ttfmake-section .sortable-placeholder {
 	float: left;
 	margin: 0; /*reset*/
 	padding: 0; /*reset*/
@@ -420,7 +420,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttf-one-sortable-handle {
+.ttfmake-sortable-handle {
 	cursor: move;
 	width: 100%;
 	height: 14px;
@@ -433,31 +433,31 @@
 	opacity: .5;
 	background: url(images/sortable-background.png) center center repeat-x;
 }
-.ttf-one-text-column:hover .sortable-background,
-.ttf-one-gallery-item:hover .sortable-background {
+.ttfmake-text-column:hover .sortable-background,
+.ttfmake-gallery-item:hover .sortable-background {
 	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------
  Media button (html-builder.css)
 -------------------------------------------------------- */
-.ttf-one-media-button-text {
+.ttfmake-media-button-text {
 	display: none;  /*reset*/
 }
 @media screen and (min-width: 1160px) {
-	.ttf-one-media-button-text {
+	.ttfmake-media-button-text {
 		display: inline;
 	}
 }
-.ttf-one-section #insert-media-button {
+.ttfmake-section #insert-media-button {
 	padding-right: 7px;
 }
 @media screen and (min-width: 1160px) {
-	.ttf-one-section #insert-media-button {
+	.ttfmake-section #insert-media-button {
 		padding-right: 7px;
 	}
 }
 @media screen and ( max-width: 782px ) {
-	.ttf-one-section .wp-media-buttons span.wp-media-buttons-icon {
+	.ttfmake-section .wp-media-buttons span.wp-media-buttons-icon {
 		position: relative;
 		top: 2px;
 		padding-left: 10px !important;

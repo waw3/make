@@ -235,7 +235,7 @@ pre, code, input, textarea {
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
-ul, ol, dl, p, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr, .ttf-one-alert {
+ul, ol, dl, p, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr, .ttfmake-alert {
   margin-bottom: 22px;
   margin-bottom: 1.29412rem; }
 
@@ -836,7 +836,7 @@ blockquote {
     font-size: 0.76471rem; }
     blockquote cite:before {
       content: "\2014"; }
-  blockquote.ttf-one-testimonial {
+  blockquote.ttfmake-testimonial {
     line-height: 0;
     background-color: #eaecee;
     margin-bottom: 44px;
@@ -846,9 +846,9 @@ blockquote {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px; }
-    blockquote.ttf-one-testimonial p {
+    blockquote.ttfmake-testimonial p {
       margin-bottom: 0; }
-    blockquote.ttf-one-testimonial cite {
+    blockquote.ttfmake-testimonial cite {
       display: block;
       margin-bottom: 0;
       font-weight: bold;
@@ -856,7 +856,7 @@ blockquote {
       padding:  0.64706rem 0;
       font-size: 14px;
       font-size: 0.82353rem; }
-    blockquote.ttf-one-testimonial:after {
+    blockquote.ttfmake-testimonial:after {
       content: "";
       position: relative;
       bottom: -66px;
@@ -950,9 +950,9 @@ hr {
   border-top: 1px solid #eaecee;
   height: 1px;
   margin-bottom: 22px; }
-  hr.ttf-one-line-dashed {
+  hr.ttfmake-line-dashed {
     border-top: 1px dashed #eaecee; }
-  hr.ttf-one-line-double {
+  hr.ttfmake-line-double {
     border-top: 6px double #eaecee; }
 
 /*---------------------------------------------------------
@@ -963,23 +963,23 @@ ul, ol {
   margin:  0 0 1.29412rem 0;
   padding-left: 20px;
   padding-left: 1.17647rem; }
-  ul.ttf-one-list, ol.ttf-one-list {
+  ul.ttfmake-list, ol.ttfmake-list {
     padding-left: 0;
     list-style: none; }
-    ul.ttf-one-list li:before, ol.ttf-one-list li:before {
+    ul.ttfmake-list li:before, ol.ttfmake-list li:before {
       font-family: FontAwesome;
       padding-right: 10.66667px;
       padding-right: 0.62745rem; }
-  ul.ttf-one-list-check li:before, ol.ttf-one-list-check li:before {
+  ul.ttfmake-list-check li:before, ol.ttfmake-list-check li:before {
     content: "\f14a";
     color: #339d56; }
-  ul.ttf-one-list-check2 li:before, ol.ttf-one-list-check2 li:before {
+  ul.ttfmake-list-check2 li:before, ol.ttfmake-list-check2 li:before {
     content: "\f046";
     color: #339d56; }
-  ul.ttf-one-list-star li:before, ol.ttf-one-list-star li:before {
+  ul.ttfmake-list-star li:before, ol.ttfmake-list-star li:before {
     content: "\f005";
     color: #f89e01; }
-  ul.ttf-one-list-dot li:before, ol.ttf-one-list-dot li:before {
+  ul.ttfmake-list-dot li:before, ol.ttfmake-list-dot li:before {
     content: "\f192";
     color: #3070d1; }
 
@@ -1069,7 +1069,7 @@ table {
 /*---------------------------------------------------------
  Alerts (_elements.scss)
 -------------------------------------------------------- */
-.ttf-one-alert {
+.ttfmake-alert {
   position: relative;
   overflow: hidden;
   border: 1px solid #c0c6cc;
@@ -1081,7 +1081,7 @@ table {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
-  .ttf-one-alert:before {
+  .ttfmake-alert:before {
     content: "\f05a";
     display: block;
     position: absolute;
@@ -1094,23 +1094,23 @@ table {
     right: -0.70588rem;
     font-size: 72px;
     font-size: 4.23529rem; }
-  .ttf-one-alert.ttf-one-error {
+  .ttfmake-alert.ttfmake-error {
     color: #d04242;
     border: 1px solid #dfbaba;
     background-color: #f7eeee; }
-    .ttf-one-alert.ttf-one-error:before {
+    .ttfmake-alert.ttfmake-error:before {
       content: "\f06a"; }
-  .ttf-one-alert.ttf-one-success {
+  .ttfmake-alert.ttfmake-success {
     color: #339d56;
     border: 1px solid #badfc6;
     background: #eef7f1; }
-    .ttf-one-alert.ttf-one-success:before {
+    .ttfmake-alert.ttfmake-success:before {
       content: "\f058"; }
-  .ttf-one-alert.ttf-one-important {
+  .ttfmake-alert.ttfmake-important {
     color: #f89e01;
     border: 1px solid #fff265;
     background-color: #fffde5; }
-    .ttf-one-alert.ttf-one-important:before {
+    .ttfmake-alert.ttfmake-important:before {
       content: "\f06a"; }
 
 /*---------------------------------------------------------
@@ -1388,11 +1388,11 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Gallery shortcode slider (_posts.scss)
 -------------------------------------------------------- */
-.ttf-one-shortcode-slider .cycle-slide {
+.ttfmake-shortcode-slider .cycle-slide {
   position: relative;
   width: 100%;
   text-align: center; }
-.ttf-one-shortcode-slider .cycle-caption {
+.ttfmake-shortcode-slider .cycle-caption {
   display: none;
   position: absolute;
   z-index: 10;
@@ -1406,9 +1406,9 @@ iframe[src*="google.com/maps"] {
   bottom: 22px;
   bottom: 1.29412rem; }
   @media screen and (min-width: 800px) {
-    .ttf-one-shortcode-slider .cycle-caption {
+    .ttfmake-shortcode-slider .cycle-caption {
       display: block; } }
-.ttf-one-shortcode-slider .cycle-pager {
+.ttfmake-shortcode-slider .cycle-pager {
   margin-top: 44px;
   margin-top: 2.58824rem; }
 
@@ -1569,7 +1569,7 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Banner section: Pager (_pages.scss)
 -------------------------------------------------------- */
-.builder-section-banner .cycle-pager, .ttf-one-shortcode-slider .cycle-pager {
+.builder-section-banner .cycle-pager, .ttfmake-shortcode-slider .cycle-pager {
   text-align: center;
   color: #eaecee;
   line-height: 1;
@@ -1579,23 +1579,23 @@ iframe[src*="google.com/maps"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .builder-section-banner .cycle-pager span, .ttf-one-shortcode-slider .cycle-pager span {
+  .builder-section-banner .cycle-pager span, .ttfmake-shortcode-slider .cycle-pager span {
     cursor: pointer; }
-  .builder-section-banner .cycle-pager .cycle-pager-active, .ttf-one-shortcode-slider .cycle-pager .cycle-pager-active {
+  .builder-section-banner .cycle-pager .cycle-pager-active, .ttfmake-shortcode-slider .cycle-pager .cycle-pager-active {
     color: #b9bcbf; }
 
 /*---------------------------------------------------------
  Banner section: Arrows (_pages.scss)
 -------------------------------------------------------- */
-.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
+.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-prev, .ttfmake-shortcode-slider .cycle-next {
   z-index: 999;
   position: absolute;
   top: 50%;
   cursor: pointer; }
   @media screen and (min-width: 800px) {
-    .builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-prev, .ttf-one-shortcode-slider .cycle-next {
+    .builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-prev, .ttfmake-shortcode-slider .cycle-next {
       opacity: 0.2; } }
-  .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-next:before {
+  .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
     position: relative;
     font-family: FontAwesome;
     color: #eaecee;
@@ -1605,18 +1605,18 @@ iframe[src*="google.com/maps"] {
     font-size: 34px;
     font-size: 2rem; }
 @media screen and (min-width: 800px) {
-  .builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next, .builder-section-banner:focus .cycle-prev, .builder-section-banner:focus .cycle-next, .ttf-one-shortcode-slider:hover .cycle-prev, .ttf-one-shortcode-slider:hover .cycle-next, .ttf-one-shortcode-slider:focus .cycle-prev, .ttf-one-shortcode-slider:focus .cycle-next {
+  .builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next, .builder-section-banner:focus .cycle-prev, .builder-section-banner:focus .cycle-next, .ttfmake-shortcode-slider:hover .cycle-prev, .ttfmake-shortcode-slider:hover .cycle-next, .ttfmake-shortcode-slider:focus .cycle-prev, .ttfmake-shortcode-slider:focus .cycle-next {
     opacity: 1; } }
-.builder-section-banner .cycle-prev:before, .ttf-one-shortcode-slider .cycle-prev:before {
+.builder-section-banner .cycle-prev:before, .ttfmake-shortcode-slider .cycle-prev:before {
   content: "\f0a8";
   left: 32px; }
-.builder-section-banner .cycle-next, .ttf-one-shortcode-slider .cycle-next {
+.builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-next {
   right: 0; }
-  .builder-section-banner .cycle-next:before, .ttf-one-shortcode-slider .cycle-next:before {
+  .builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-next:before {
     content: "\f0a9";
     right: 32px; }
 
-.ttf-one-shortcode-slider .cycle-prev:before, .ttf-one-shortcode-slider .cycle-next:before {
+.ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
   top: -12px;
   top: -0.70588rem; }
 
@@ -2026,7 +2026,7 @@ select {
 /*---------------------------------------------------------
  Buttons and inputs (_forms.scss)
 -------------------------------------------------------- */
-.ttf-one-button, button, input[type="button"], input[type="reset"], input[type="submit"] {
+.ttfmake-button, button, input[type="button"], input[type="reset"], input[type="submit"] {
   color: #ffffff;
   border: 0;
   background: #171717;
@@ -2039,17 +2039,17 @@ select {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
-  .ttf-one-button.color-primary-background, button.color-primary-background, input[type="button"].color-primary-background, input[type="reset"].color-primary-background, input[type="submit"].color-primary-background {
+  .ttfmake-button.color-primary-background, button.color-primary-background, input[type="button"].color-primary-background, input[type="reset"].color-primary-background, input[type="submit"].color-primary-background {
     background-color: #3070d1; }
-  .ttf-one-button.color-secondary-background, button.color-secondary-background, input[type="button"].color-secondary-background, input[type="reset"].color-secondary-background, input[type="submit"].color-secondary-background {
+  .ttfmake-button.color-secondary-background, button.color-secondary-background, input[type="button"].color-secondary-background, input[type="reset"].color-secondary-background, input[type="submit"].color-secondary-background {
     background-color: #eaecee; }
-  .ttf-one-button.ttf-one-success, button.ttf-one-success, input[type="button"].ttf-one-success, input[type="reset"].ttf-one-success, input[type="submit"].ttf-one-success {
+  .ttfmake-button.ttfmake-success, button.ttfmake-success, input[type="button"].ttfmake-success, input[type="reset"].ttfmake-success, input[type="submit"].ttfmake-success {
     background-color: #339d56; }
-  .ttf-one-button.ttf-one-error, button.ttf-one-error, input[type="button"].ttf-one-error, input[type="reset"].ttf-one-error, input[type="submit"].ttf-one-error {
+  .ttfmake-button.ttfmake-error, button.ttfmake-error, input[type="button"].ttfmake-error, input[type="reset"].ttfmake-error, input[type="submit"].ttfmake-error {
     background-color: #d04242; }
-  .ttf-one-button.ttf-one-important, button.ttf-one-important, input[type="button"].ttf-one-important, input[type="reset"].ttf-one-important, input[type="submit"].ttf-one-important {
+  .ttfmake-button.ttfmake-important, button.ttfmake-important, input[type="button"].ttfmake-important, input[type="reset"].ttfmake-important, input[type="submit"].ttfmake-important {
     background-color: #f89e01; }
-  .ttf-one-button.ttf-one-download:after, button.ttf-one-download:after, input[type="button"].ttf-one-download:after, input[type="reset"].ttf-one-download:after, input[type="submit"].ttf-one-download:after {
+  .ttfmake-button.ttfmake-download:after, button.ttfmake-download:after, input[type="button"].ttfmake-download:after, input[type="reset"].ttfmake-download:after, input[type="submit"].ttfmake-download:after {
     content: "\f0ab";
     font-family: FontAwesome;
     padding-left: 6px;

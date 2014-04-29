@@ -124,7 +124,7 @@ class TTF_One_Logo {
 	 */
 	function get_logo_dimensions( $url ) {
 		// Build the cache key
-		$key = 'ttf-one-' . md5( 'logo-dimensions-' . $url . TTF_ONE_VERSION );
+		$key = 'ttfmake-' . md5( 'logo-dimensions-' . $url . TTF_ONE_VERSION );
 
 		// Pull from cache
 		$dimensions = get_transient( $key );

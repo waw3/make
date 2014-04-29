@@ -6,18 +6,18 @@ var oneApp = oneApp || {};
 
 	oneApp.BannerSlideView = Backbone.View.extend({
 		template: '',
-		className: 'ttf-one-banner-slide ttf-one-banner-slide-open',
+		className: 'ttfmake-banner-slide ttfmake-banner-slide-open',
 
 		events: {
-			'click .ttf-one-banner-slide-remove': 'removeItem',
-			'click .ttf-one-banner-slide-toggle': 'toggleSection'
+			'click .ttfmake-banner-slide-remove': 'removeItem',
+			'click .ttfmake-banner-slide-toggle': 'toggleSection'
 		},
 
 		initialize: function (options) {
 			this.model = options.model;
-			this.idAttr = 'ttf-one-banner-slide-' + this.model.get('id');
+			this.idAttr = 'ttfmake-banner-slide-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-			this.template = _.template($('#tmpl-ttf-one-banner-slide').html());
+			this.template = _.template($('#tmpl-ttfmake-banner-slide').html());
 		},
 
 		render: function () {
@@ -30,8 +30,8 @@ var oneApp = oneApp || {};
 		removeItem: function (evt) {
 			evt.preventDefault();
 
-			var $stage = this.$el.parents('.ttf-one-banner-slides'),
-				$orderInput = $('.ttf-one-banner-slide-order', $stage);
+			var $stage = this.$el.parents('.ttfmake-banner-slides'),
+				$orderInput = $('.ttfmake-banner-slide-order', $stage);
 
 			oneApp.removeOrderValue(this.model.get('id'), $orderInput);
 
@@ -48,18 +48,18 @@ var oneApp = oneApp || {};
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$section = $this.parents('.ttf-one-banner-slide'),
-				$sectionBody = $('.ttf-one-banner-slide-body', $section),
-				$input = $('.ttf-one-banner-slide-state', this.$el);
+				$section = $this.parents('.ttfmake-banner-slide'),
+				$sectionBody = $('.ttfmake-banner-slide-body', $section),
+				$input = $('.ttfmake-banner-slide-state', this.$el);
 
-			if ($section.hasClass('ttf-one-banner-slide-open')) {
+			if ($section.hasClass('ttfmake-banner-slide-open')) {
 				$sectionBody.slideUp(oneApp.options.closeSpeed, function() {
-					$section.removeClass('ttf-one-banner-slide-open');
+					$section.removeClass('ttfmake-banner-slide-open');
 					$input.val('closed');
 				});
 			} else {
 				$sectionBody.slideDown(oneApp.options.openSpeed, function() {
-					$section.addClass('ttf-one-banner-slide-open');
+					$section.addClass('ttfmake-banner-slide-open');
 					$input.val('open');
 				});
 			}

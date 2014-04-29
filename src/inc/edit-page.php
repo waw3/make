@@ -15,7 +15,7 @@ function ttfmake_edit_page_script() {
 	global $pagenow;
 
 	wp_enqueue_script(
-		'ttf-one-admin-edit-page',
+		'ttfmake-admin-edit-page',
 		get_template_directory_uri() . '/js/admin/edit-page.js',
 		array( 'jquery' ),
 		TTF_ONE_VERSION,
@@ -23,7 +23,7 @@ function ttfmake_edit_page_script() {
 	);
 
 	wp_localize_script(
-		'ttf-one-admin-edit-page',
+		'ttfmake-admin-edit-page',
 		'ttfOneEditPageData',
 		array(
 			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),

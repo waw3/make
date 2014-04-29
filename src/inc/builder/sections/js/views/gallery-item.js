@@ -6,17 +6,17 @@ var oneApp = oneApp || {};
 
 	oneApp.GalleryItemView = Backbone.View.extend({
 		template: '',
-		className: 'ttf-one-gallery-item',
+		className: 'ttfmake-gallery-item',
 
 		events: {
-			'click .ttf-one-gallery-item-remove': 'removeItem'
+			'click .ttfmake-gallery-item-remove': 'removeItem'
 		},
 
 		initialize: function (options) {
 			this.model = options.model;
-			this.idAttr = 'ttf-one-gallery-item-' + this.model.get('id');
+			this.idAttr = 'ttfmake-gallery-item-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-			this.template = _.template($('#tmpl-ttf-one-gallery-item').html());
+			this.template = _.template($('#tmpl-ttfmake-gallery-item').html());
 		},
 
 		render: function () {
@@ -29,8 +29,8 @@ var oneApp = oneApp || {};
 		removeItem: function (evt) {
 			evt.preventDefault();
 
-			var $stage = this.$el.parents('.ttf-one-gallery-items'),
-				$orderInput = $('.ttf-one-gallery-item-order', $stage);
+			var $stage = this.$el.parents('.ttfmake-gallery-items'),
+				$orderInput = $('.ttfmake-gallery-item-order', $stage);
 
 			oneApp.removeOrderValue(this.model.get('id'), $orderInput);
 
