@@ -54,24 +54,6 @@ function ttfmake_mce_before_init( $settings ) {
 			'classes' => 'ttfmake-testimonial',
 			'wrapper' => true
 		),
-		// Line dashed (hr)
-		array(
-			'title'      => __( 'Line: dashed', 'make' ),
-			'selector'   => 'hr',
-			'attributes' => array(
-				'class' => 'ttfmake-line-dashed' // Replace existing classes instead of adding
-			),
-			'exact'      => true
-		),
-		// Line double (hr)
-		array(
-			'title'      => __( 'Line: double', 'make' ),
-			'selector'   => 'hr',
-			'attributes' => array(
-				'class' => 'ttfmake-line-double' // Replace existing classes instead of adding
-			),
-			'exact'      => true
-		),
 		// Alert (div)
 		array(
 			'title' => __( 'Alert', 'make' ),
