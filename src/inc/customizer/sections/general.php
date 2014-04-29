@@ -33,7 +33,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Site Layout', 'ttf-one' ),
+			'label'    => __( 'Site Layout', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -56,7 +56,7 @@ function ttf_one_customizer_general( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Sticky Label', 'ttf-one' ),
+			'label'    => __( 'Sticky Label', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)

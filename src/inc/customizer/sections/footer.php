@@ -35,7 +35,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Footer Text Color', 'ttf-one' ),
+				'label'    => __( 'Footer Text Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -58,7 +58,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Footer Border Color', 'ttf-one' ),
+				'label'    => __( 'Footer Border Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -81,7 +81,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Footer Background Color', 'ttf-one' ),
+				'label'    => __( 'Footer Background Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -104,7 +104,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Footer Background Image', 'ttf-one' ),
+				'label'    => __( 'Footer Background Image', 'make' ),
 				'priority' => $priority->add(),
 				'context'  => $control_prefix . $setting_id
 			)
@@ -126,7 +126,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Repeat', 'ttf-one' ),
+			'label'    => __( 'Background Repeat', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -148,7 +148,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Position', 'ttf-one' ),
+			'label'    => __( 'Background Position', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -170,7 +170,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Size', 'ttf-one' ),
+			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -192,7 +192,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Footer Widget Areas', 'ttf-one' ),
+			'label'    => __( 'Footer Widget Areas', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -215,7 +215,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Footer Text', 'ttf-one' ),
+			'label'    => __( 'Footer Text', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -230,7 +230,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
-				'label' => __( 'Footer Options', 'ttf-one' ),
+				'label' => __( 'Footer Options', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -251,7 +251,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Social Icons', 'ttf-one' ),
+			'label'    => __( 'Show Social Icons', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -272,7 +272,7 @@ function ttf_one_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Footer Layout', 'ttf-one' ),
+			'label'    => __( 'Footer Layout', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()

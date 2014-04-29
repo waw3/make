@@ -18,11 +18,11 @@ function ttf_one_option_defaults() {
 		'hide-tagline'                      => 0,
 
 		// Navigation
-		'navigation-mobile-label'           => __( 'Menu', 'ttf-one' ),
+		'navigation-mobile-label'           => __( 'Menu', 'make' ),
 
 		// General
 		'general-layout'                    => 'full-width',
-		'general-sticky-label'              => __( 'Featured', 'ttf-one' ),
+		'general-sticky-label'              => __( 'Featured', 'make' ),
 
 		// Logo
 		'logo-regular'                      => '',

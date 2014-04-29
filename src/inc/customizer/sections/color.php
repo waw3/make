@@ -35,7 +35,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Primary Color', 'ttf-one' ),
+				'label'    => __( 'Primary Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -58,7 +58,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Secondary Color', 'ttf-one' ),
+				'label'    => __( 'Secondary Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -81,7 +81,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Text Color', 'ttf-one' ),
+				'label'    => __( 'Text Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -104,7 +104,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Detail Color', 'ttf-one' ),
+				'label'    => __( 'Detail Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)

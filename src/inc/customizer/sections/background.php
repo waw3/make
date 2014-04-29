@@ -19,7 +19,7 @@ function ttf_one_customizer_background() {
 	$section        = 'background_image';
 
 	// Rename Background Image section to Background
-	$wp_customize->get_section( $section )->title = __( 'Background', 'ttf-one' );
+	$wp_customize->get_section( $section )->title = __( 'Background', 'make' );
 
 	// Move Background Color to Background section
 	$wp_customize->get_control( 'background_color' )->section = $section;
@@ -33,7 +33,7 @@ function ttf_one_customizer_background() {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'With the Site Layout option (under <em>General</em>) set to "Full Width", the background color and image will not be visible.', 'ttf-one' ),
+				'description' => __( 'With the Site Layout option (under <em>General</em>) set to "Full Width", the background color and image will not be visible.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -61,7 +61,7 @@ function ttf_one_customizer_background() {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Size', 'ttf-one' ),
+			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()

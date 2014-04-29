@@ -23,7 +23,7 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_ge
 	<div class="entry-author-byline">
 		<?php
 		printf(
-			_x( 'by %s', 'author byline', 'ttf-one' ),
+			_x( 'by %s', 'author byline', 'make' ),
 			sprintf(
 				'<a class="vcard" href="%1$s">%2$s</a>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),

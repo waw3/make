@@ -75,7 +75,7 @@ function ttf_one_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', 'ttf-one' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'make' ), max( $paged, $page ) );
 	}
 
 	return $title;
@@ -300,7 +300,7 @@ function ttf_one_sidebar_description( $sidebar_id ) {
 		$column_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
 
 		if ( $column > $column_count ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the Theme Customizer.', 'ttf-one' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the Theme Customizer.', 'make' );
 		}
 	}
 	// Other sidebars
@@ -311,13 +311,13 @@ function ttf_one_sidebar_description( $sidebar_id ) {
 
 		// Not enabled anywhere
 		if ( empty( $enabled_views ) ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" section of the Theme Customizer.', 'ttf-one' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" section of the Theme Customizer.', 'make' );
 		}
 		// List enabled views
 		else {
 			$description = sprintf(
-				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" section of the Theme Customizer.', 'ttf-one' ),
-				esc_html( implode( _x( ', ', 'list item separator', 'ttf-one' ), $enabled_views ) )
+				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" section of the Theme Customizer.', 'make' ),
+				esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
 			);
 		}
 	}
@@ -339,11 +339,11 @@ function ttf_one_sidebar_list_enabled( $location ) {
 	$enabled_views = array();
 
 	$views = array(
-		'blog'    => __( 'Blog (Post Page)', 'ttf-one' ),
-		'archive' => __( 'Archives', 'ttf-one' ),
-		'search'  => __( 'Search Results', 'ttf-one' ),
-		'post'    => __( 'Posts', 'ttf-one' ),
-		'page'    => __( 'Pages', 'ttf-one' ),
+		'blog'    => __( 'Blog (Post Page)', 'make' ),
+		'archive' => __( 'Archives', 'make' ),
+		'search'  => __( 'Search Results', 'make' ),
+		'post'    => __( 'Posts', 'make' ),
+		'page'    => __( 'Pages', 'make' ),
 	);
 
 	foreach ( $views as $view => $label ) {

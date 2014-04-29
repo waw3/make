@@ -14,7 +14,7 @@ global $ttf_one_section_data, $ttf_one_is_js_template;
 		<h3>
 			<span class="ttf-one-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttf_one_section_data['section']['label'] ) ); ?></em>
 		</h3>
-		<a href="#" class="ttf-one-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'ttf-one' ); ?>">
+		<a href="#" class="ttf-one-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
 	</div>

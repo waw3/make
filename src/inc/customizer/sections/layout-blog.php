@@ -27,7 +27,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 			array(
 				'section'  => $section,
 				'type'     => 'heading',
-				'label'    => __( 'Header, Footer, Sidebars', 'ttf-one' ),
+				'label'    => __( 'Header, Footer, Sidebars', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -48,7 +48,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide site header', 'ttf-one' ),
+			'label'    => __( 'Hide site header', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -69,7 +69,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide site footer', 'ttf-one' ),
+			'label'    => __( 'Hide site footer', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -90,7 +90,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show left sidebar', 'ttf-one' ),
+			'label'    => __( 'Show left sidebar', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -111,7 +111,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show right sidebar', 'ttf-one' ),
+			'label'    => __( 'Show right sidebar', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -132,7 +132,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Featured Images', 'ttf-one' ),
+			'label'    => __( 'Featured Images', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -154,7 +154,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Post Date', 'ttf-one' ),
+			'label'    => __( 'Post Date', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -176,7 +176,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Post Author', 'ttf-one' ),
+			'label'    => __( 'Post Author', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -192,7 +192,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
-				'label' => __( 'Content', 'ttf-one' ),
+				'label' => __( 'Content', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -213,7 +213,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Generate excerpts automatically', 'ttf-one' ),
+			'label'    => __( 'Generate excerpts automatically', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -228,7 +228,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 			array(
 				'section'  => $section,
 				'type'     => 'heading',
-				'label'    => __( 'Post Meta', 'ttf-one' ),
+				'label'    => __( 'Post Meta', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -249,7 +249,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show categories', 'ttf-one' ),
+			'label'    => __( 'Show categories', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -270,7 +270,7 @@ function ttf_one_customizer_layout_blog( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show tags', 'ttf-one' ),
+			'label'    => __( 'Show tags', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)

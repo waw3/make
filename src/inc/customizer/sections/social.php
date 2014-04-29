@@ -27,7 +27,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'ttf-one' ),
+				'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -232,10 +232,10 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 				'section'     => $section,
 				'type'        => 'text',
 				'description' => sprintf(
-					__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, use %s.', 'ttf-one' ),
+					__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, use %s.', 'make' ),
 					sprintf(
 						'<a href="' . esc_url( '#' ) . '">%s</a>',
-						__( 'this alternate method', 'ttf-one' )
+						__( 'this alternate method', 'make' )
 					)
 				),
 				'priority'    => $priority->add()
@@ -258,7 +258,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Email', 'ttf-one' ),
+			'label'    => __( 'Email', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -273,7 +273,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
-				'label' => __( 'Default RSS', 'ttf-one' ),
+				'label' => __( 'Default RSS', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -294,7 +294,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide default RSS feed link', 'ttf-one' ),
+			'label'    => __( 'Hide default RSS feed link', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -315,7 +315,7 @@ function ttf_one_customizer_social( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Custom RSS URL (replaces default)', 'ttf-one' ),
+			'label'    => __( 'Custom RSS URL (replaces default)', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)

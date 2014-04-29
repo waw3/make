@@ -63,8 +63,8 @@ function ttf_one_get_choices( $setting ) {
 	switch ( $setting ) {
 		case 'general-layout' :
 			$choices = array(
-				'full-width' => __( 'Full-width', 'ttf-one' ),
-				'boxed'      => __( 'Boxed', 'ttf-one' )
+				'full-width' => __( 'Full-width', 'make' ),
+				'boxed'      => __( 'Boxed', 'make' )
 			);
 			break;
 		case 'layout-blog-featured-images' :
@@ -73,9 +73,9 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-post-featured-images' :
 		case 'layout-page-featured-images' :
 			$choices = array(
-				'post-header' => __( 'Post header', 'ttf-one' ),
-				'thumbnail'   => __( 'Thumbnail', 'ttf-one' ),
-				'none'        => __( 'None', 'ttf-one' ),
+				'post-header' => __( 'Post header', 'make' ),
+				'thumbnail'   => __( 'Thumbnail', 'make' ),
+				'none'        => __( 'None', 'make' ),
 			);
 			break;
 		case 'layout-blog-post-date' :
@@ -85,9 +85,9 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-page-post-date' :
 			$week_ago = date( get_option( 'date_format' ), time() - WEEK_IN_SECONDS );
 			$choices = array(
-				'absolute' => sprintf( __( 'Absolute (%s)', 'ttf-one' ), $week_ago ),
-				'relative' => __( 'Relative (1 week ago)', 'ttf-one' ),
-				'none'     => __( 'None', 'ttf-one' ),
+				'absolute' => sprintf( __( 'Absolute (%s)', 'make' ), $week_ago ),
+				'relative' => __( 'Relative (1 week ago)', 'make' ),
+				'none'     => __( 'None', 'make' ),
 			);
 			break;
 		case 'layout-blog-post-author' :
@@ -96,28 +96,28 @@ function ttf_one_get_choices( $setting ) {
 		case 'layout-post-post-author' :
 		case 'layout-page-post-author' :
 			$choices = array(
-				'avatar' => __( 'With avatar', 'ttf-one' ),
-				'name'   => __( 'Without avatar', 'ttf-one' ),
-				'none'   => __( 'None', 'ttf-one' ),
+				'avatar' => __( 'With avatar', 'make' ),
+				'name'   => __( 'Without avatar', 'make' ),
+				'none'   => __( 'None', 'make' ),
 			);
 			break;
 		case 'header-background-repeat' :
 		case 'main-background-repeat' :
 		case 'footer-background-repeat' :
 			$choices = array(
-				'no-repeat' => __( 'No Repeat', 'ttf-one' ),
-				'repeat'    => __( 'Tile', 'ttf-one' ),
-				'repeat-x'  => __( 'Tile Horizontally', 'ttf-one' ),
-				'repeat-y'  => __( 'Tile Vertically', 'ttf-one' )
+				'no-repeat' => __( 'No Repeat', 'make' ),
+				'repeat'    => __( 'Tile', 'make' ),
+				'repeat-x'  => __( 'Tile Horizontally', 'make' ),
+				'repeat-y'  => __( 'Tile Vertically', 'make' )
 			);
 			break;
 		case 'header-background-position' :
 		case 'main-background-position' :
 		case 'footer-background-position' :
 			$choices = array(
-				'left'   => __( 'Left', 'ttf-one' ),
-				'center' => __( 'Center', 'ttf-one' ),
-				'right'  => __( 'Right', 'ttf-one' )
+				'left'   => __( 'Left', 'make' ),
+				'center' => __( 'Center', 'make' ),
+				'right'  => __( 'Right', 'make' )
 			);
 			break;
 		case 'background_size' :
@@ -125,43 +125,43 @@ function ttf_one_get_choices( $setting ) {
 		case 'main-background-size' :
 		case 'footer-background-size' :
 			$choices = array(
-				'auto'    => __( 'Auto', 'ttf-one' ),
-				'cover'   => __( 'Cover', 'ttf-one' ),
-				'contain' => __( 'Contain', 'ttf-one' )
+				'auto'    => __( 'Auto', 'make' ),
+				'cover'   => __( 'Cover', 'make' ),
+				'contain' => __( 'Contain', 'make' )
 			);
 			break;
 		case 'header-subheader-content-layout' :
 			$choices = array(
-				'default' => __( 'Default', 'ttf-one' ),
-				'flipped' => __( 'Flipped', 'ttf-one' )
+				'default' => __( 'Default', 'make' ),
+				'flipped' => __( 'Flipped', 'make' )
 			);
 			break;
 		case 'header-layout' :
 			$choices = array(
-				1  => __( 'Layout 1', 'ttf-one' ),
-				2  => __( 'Layout 2', 'ttf-one' ),
-				3  => __( 'Layout 3', 'ttf-one' ),
+				1  => __( 'Layout 1', 'make' ),
+				2  => __( 'Layout 2', 'make' ),
+				3  => __( 'Layout 3', 'make' ),
 			);
 			break;
 		case 'header-branding-position' :
 			$choices = array(
-				'left'  => __( 'Left', 'ttf-one' ),
-				'right' => __( 'Right', 'ttf-one' )
+				'left'  => __( 'Left', 'make' ),
+				'right' => __( 'Right', 'make' )
 			);
 			break;
 		case 'footer-widget-areas' :
 			$choices = array(
-				0 => __( '0', 'ttf-one' ),
-				1 => __( '1', 'ttf-one' ),
-				2 => __( '2', 'ttf-one' ),
-				3 => __( '3', 'ttf-one' ),
-				4 => __( '4', 'ttf-one' )
+				0 => __( '0', 'make' ),
+				1 => __( '1', 'make' ),
+				2 => __( '2', 'make' ),
+				3 => __( '3', 'make' ),
+				4 => __( '4', 'make' )
 			);
 			break;
 		case 'footer-layout' :
 			$choices = array(
-				1  => __( 'Layout 1', 'ttf-one' ),
-				2  => __( 'Layout 2', 'ttf-one' ),
+				1  => __( 'Layout 1', 'make' ),
+				2  => __( 'Layout 2', 'make' ),
 			);
 			break;
 	}

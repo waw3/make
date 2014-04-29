@@ -23,7 +23,7 @@ function ttf_one_comment( $comment, $args, $depth ) {
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
-			<?php _e( 'Pingback:', 'ttf-one' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'ttf-one' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php _e( 'Pingback:', 'make' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'make' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
 	<?php else : ?>
@@ -41,7 +41,7 @@ function ttf_one_comment( $comment, $args, $depth ) {
 						<time datetime="<?php comment_time( 'c' ); ?>">
 							<?php
 							printf(
-								_x( '%1$s at %2$s', '1: date, 2: time', 'ttf-one' ),
+								_x( '%1$s at %2$s', '1: date, 2: time', 'make' ),
 								get_comment_date(),
 								get_comment_time()
 							);
@@ -57,13 +57,13 @@ function ttf_one_comment( $comment, $args, $depth ) {
 							'<cite class="fn">%s</cite>',
 							get_comment_author_link()
 						),
-						_x( 'says:', 'e.g. Bob says hello.', 'ttf-one' )
+						_x( 'says:', 'e.g. Bob says hello.', 'make' )
 					);
 					?>
 				</div>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'ttf-one' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'make' ); ?></p>
 				<?php endif; ?>
 			</header>
 
@@ -154,7 +154,7 @@ function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $af
 		);
 	}
 
-	$more = apply_filters( 'ttf_one_read_more_text', __( 'Read more', 'ttf-one' ) );
+	$more = apply_filters( 'ttf_one_read_more_text', __( 'Read more', 'make' ) );
 
 	return $before . $more . $after;
 }
@@ -412,13 +412,13 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 				$converted_ss = sprintf(
 					'1/%1$s %2$s',
 					number_format_i18n( $denominator, $decimal_places ),
-					_x( 'second', 'time', 'ttf-one' )
+					_x( 'second', 'time', 'make' )
 				);
 			} else {
 				$converted_ss = sprintf(
 					'%1$s %2$s',
 					number_format_i18n( $raw_ss, 1 ),
-					_x( 'seconds', 'time', 'ttf-one' )
+					_x( 'seconds', 'time', 'make' )
 				);
 			}
 			$image_meta['shutter_speed'] = apply_filters( 'ttf_one_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
@@ -428,7 +428,7 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 		if ( 0 !== $image_meta[ 'aperture' ] ) {
 			$f_stop = sprintf(
 				'%1$s' . '%2$s',
-				_x( 'f/', 'camera f-stop', 'ttf-one' ),
+				_x( 'f/', 'camera f-stop', 'make' ),
 				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
 			$image_meta['aperture'] = apply_filters( 'ttf_one_exif_aperture', $f_stop, $image_meta['aperture'] );
@@ -438,32 +438,32 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 
 		// Camera
 		if ( ! empty( $image_meta['camera'] ) ) {
-			$output .= '<li><span>' . _x( 'Camera:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= '<li><span>' . _x( 'Camera:', 'camera setting', 'make' ) . '</span> ';
 			$output .= esc_html( $image_meta['camera'] ) . "</li>\n";
 		}
 
 		// Creation Date
 		if ( ! empty( $image_meta['created_timestamp'] ) ) {
-			$output .= '<li><span>' . _x( 'Taken:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= '<li><span>' . _x( 'Taken:', 'camera setting', 'make' ) . '</span> ';
 			$date    = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta['created_timestamp'] ) );
 			$output .= esc_html( $date->format( get_option( 'date_format' ) ) ) . "</li>\n";
 		}
 
 		// Focal length
 		if ( ! empty( $image_meta['focal_length'] ) ) {
-			$output .= '<li><span>' . _x( 'Focal length:', 'camera setting', 'ttf-one' ) . '</span> ';
-			$output .= number_format_i18n( absint( $image_meta['focal_length'] ), 0 ) . _x( 'mm', 'millimeters', 'ttf-one' ) . "</li>\n";
+			$output .= '<li><span>' . _x( 'Focal length:', 'camera setting', 'make' ) . '</span> ';
+			$output .= number_format_i18n( absint( $image_meta['focal_length'] ), 0 ) . _x( 'mm', 'millimeters', 'make' ) . "</li>\n";
 		}
 
 		// Aperture
 		if ( ! empty( $image_meta['aperture'] ) ) {
-			$output .= '<li><span>' . _x( 'Aperture:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= '<li><span>' . _x( 'Aperture:', 'camera setting', 'make' ) . '</span> ';
 			$output .= esc_html( $image_meta['aperture'] ) . "</li>\n";
 		}
 
 		// Exposure
 		if ( ! empty( $image_meta['shutter_speed'] ) ) {
-			$output .= '<li><span>' . _x( 'Exposure:', 'camera setting', 'ttf-one' ) . '</span> ';
+			$output .= '<li><span>' . _x( 'Exposure:', 'camera setting', 'make' ) . '</span> ';
 			$output .= esc_html( $image_meta['shutter_speed'] ) . "</li>\n";
 		}
 

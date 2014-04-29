@@ -33,7 +33,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Site Title', 'ttf-one' ),
+			'label'    => __( 'Site Title', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_all_font_choices(),
 			'priority' => $priority->add()
@@ -55,7 +55,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Site Title Font Size (in px)', 'ttf-one' ),
+			'label'    => __( 'Site Title Font Size (in px)', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -76,7 +76,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Header', 'ttf-one' ),
+			'label'    => __( 'Header', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_all_font_choices(),
 			'priority' => $priority->add()
@@ -98,7 +98,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Header Font Size (in px)', 'ttf-one' ),
+			'label'    => __( 'Header Font Size (in px)', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -119,7 +119,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Body', 'ttf-one' ),
+			'label'    => __( 'Body', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_all_font_choices(),
 			'priority' => $priority->add()
@@ -141,7 +141,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Body Font Size (in px)', 'ttf-one' ),
+			'label'    => __( 'Body Font Size (in px)', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -162,7 +162,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Character Subset', 'ttf-one' ),
+			'label'    => __( 'Character Subset', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_google_font_subsets(),
 			'priority' => $priority->add()
@@ -178,7 +178,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'Not all fonts provide each of these subsets.', 'ttf-one' ),
+				'description' => __( 'Not all fonts provide each of these subsets.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)

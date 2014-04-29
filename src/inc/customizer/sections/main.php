@@ -35,7 +35,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Background Color', 'ttf-one' ),
+				'label'    => __( 'Background Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -58,7 +58,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Background Image', 'ttf-one' ),
+				'label'    => __( 'Background Image', 'make' ),
 				'priority' => $priority->add(),
 				'context'  => $control_prefix . $setting_id
 			)
@@ -80,7 +80,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Repeat', 'ttf-one' ),
+			'label'    => __( 'Background Repeat', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -102,7 +102,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Position', 'ttf-one' ),
+			'label'    => __( 'Background Position', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -124,7 +124,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Size', 'ttf-one' ),
+			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -140,7 +140,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
-				'label' => __( 'Content Options', 'ttf-one' ),
+				'label' => __( 'Content Options', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -161,7 +161,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Underline links in content', 'ttf-one' ),
+			'label'    => __( 'Underline links in content', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)

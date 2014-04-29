@@ -120,8 +120,8 @@ if ( ! function_exists( 'ttf_one_setup' ) ) :
  */
 function ttf_one_setup() {
 	// Attempt to load text domain from child theme first
-	if ( ! load_theme_textdomain( 'ttf-one', get_stylesheet_directory() . '/languages' ) ) {
-		load_theme_textdomain( 'ttf-one', get_template_directory() . '/languages' );
+	if ( ! load_theme_textdomain( 'make', get_stylesheet_directory() . '/languages' ) ) {
+		load_theme_textdomain( 'make', get_template_directory() . '/languages' );
 	}
 
 	// Feed links
@@ -150,8 +150,8 @@ function ttf_one_setup() {
 
 	// Menu locations
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'ttf-one' ),
-		'social'  => __( 'Social Profile Links', 'ttf-one' )
+		'primary' => __( 'Primary Menu', 'make' ),
+		'social'  => __( 'Social Profile Links', 'make' )
 	) );
 
 	// Editor styles
@@ -181,7 +181,7 @@ if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
 function ttf_one_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'sidebar-left',
-		'name'          => __( 'Left Sidebar', 'ttf-one' ),
+		'name'          => __( 'Left Sidebar', 'make' ),
 		'description'   => ttf_one_sidebar_description( 'sidebar-left' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -190,7 +190,7 @@ function ttf_one_widgets_init() {
 	) );
 	register_sidebar( array(
 		'id'            => 'sidebar-right',
-		'name'          => __( 'Right Sidebar', 'ttf-one' ),
+		'name'          => __( 'Right Sidebar', 'make' ),
 		'description'   => ttf_one_sidebar_description( 'sidebar-right' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -199,7 +199,7 @@ function ttf_one_widgets_init() {
 	) );
 	register_sidebar( array(
 		'id'            => 'footer-1',
-		'name'          => __( 'Footer 1', 'ttf-one' ),
+		'name'          => __( 'Footer 1', 'make' ),
 		'description'   => ttf_one_sidebar_description( 'footer-1' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -208,7 +208,7 @@ function ttf_one_widgets_init() {
 	) );
 	register_sidebar( array(
 		'id'            => 'footer-2',
-		'name'          => __( 'Footer 2', 'ttf-one' ),
+		'name'          => __( 'Footer 2', 'make' ),
 		'description'   => ttf_one_sidebar_description( 'footer-2' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -217,7 +217,7 @@ function ttf_one_widgets_init() {
 	) );
 	register_sidebar( array(
 		'id'            => 'footer-3',
-		'name'          => __( 'Footer 3', 'ttf-one' ),
+		'name'          => __( 'Footer 3', 'make' ),
 		'description'   => ttf_one_sidebar_description( 'footer-3' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -226,7 +226,7 @@ function ttf_one_widgets_init() {
 	) );
 	register_sidebar( array(
 		'id'            => 'footer-4',
-		'name'          => __( 'Footer 4', 'ttf-one' ),
+		'name'          => __( 'Footer 4', 'make' ),
 		'description'   => ttf_one_sidebar_description( 'footer-4' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',

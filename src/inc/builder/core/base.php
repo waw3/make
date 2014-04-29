@@ -74,7 +74,7 @@ class TTF_One_Builder_Base {
 	public function add_meta_boxes() {
 		add_meta_box(
 			'ttf-one-builder',
-			__( 'Page Builder', 'ttf-one' ),
+			__( 'Page Builder', 'make' ),
 			array( $this, 'display_builder' ),
 			'page',
 			'normal',
@@ -281,8 +281,8 @@ class TTF_One_Builder_Base {
 		// Set default messages. Note that 'ttf-one' is not used in some cases the strings are core i18ns
 		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image' )               : $messages['add'];
 		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image' )            : $messages['remove'];
-		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'ttf-one' )        : $messages['title'];
-		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'ttf-one' ) : $messages['button'];
+		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
+		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
 		?>
 		<div class="ttf-one-uploader">
 			<div class="ttf-one-media-uploader-placeholder ttf-one-media-uploader-add">
@@ -451,7 +451,7 @@ class TTF_One_Builder_Base {
 	 */
 	function tiny_mce_before_init( $mce_init, $editor_id ) {
 		// Only add stylesheet to a section editor
-		if ( false === strpos( $editor_id, 'ttf-one' ) ) {
+		if ( false === strpos( $editor_id, 'make' ) ) {
 			return $mce_init;
 		}
 

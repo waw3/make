@@ -35,7 +35,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Header Text Color', 'ttf-one' ),
+				'label'    => __( 'Header Text Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -58,7 +58,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Header Background Color', 'ttf-one' ),
+				'label'    => __( 'Header Background Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -81,7 +81,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Header Background Image', 'ttf-one' ),
+				'label'    => __( 'Header Background Image', 'make' ),
 				'priority' => $priority->add(),
 				'context'  => $control_prefix . $setting_id
 			)
@@ -103,7 +103,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Repeat', 'ttf-one' ),
+			'label'    => __( 'Background Repeat', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -125,7 +125,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Position', 'ttf-one' ),
+			'label'    => __( 'Background Position', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -147,7 +147,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Background Size', 'ttf-one' ),
+			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -171,7 +171,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Sub Header Text Color', 'ttf-one' ),
+				'label'    => __( 'Sub Header Text Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -194,7 +194,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Sub Header Border Color', 'ttf-one' ),
+				'label'    => __( 'Sub Header Border Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -217,7 +217,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Sub Header Background Color', 'ttf-one' ),
+				'label'    => __( 'Sub Header Background Color', 'make' ),
 				'priority' => $priority->add()
 			)
 		)
@@ -239,7 +239,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Sub Header Text', 'ttf-one' ),
+			'label'    => __( 'Sub Header Text', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -254,7 +254,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
-				'label' => __( 'Header Options', 'ttf-one' ),
+				'label' => __( 'Header Options', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -275,7 +275,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Social Icons In Header', 'ttf-one' ),
+			'label'    => __( 'Show Social Icons In Header', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -296,7 +296,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Search Field In Header', 'ttf-one' ),
+			'label'    => __( 'Show Search Field In Header', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -317,7 +317,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Sub Header Content Layout', 'ttf-one' ),
+			'label'    => __( 'Sub Header Content Layout', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -339,7 +339,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Header Layout', 'ttf-one' ),
+			'label'    => __( 'Header Layout', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -361,7 +361,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Title/Logo On', 'ttf-one' ),
+			'label'    => __( 'Show Title/Logo On', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttf_one_get_choices( $setting_id ),
 			'priority' => $priority->add()

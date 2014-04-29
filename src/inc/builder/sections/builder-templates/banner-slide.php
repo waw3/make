@@ -23,9 +23,9 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 <?php endif; ?>
 	<div class="ttf-one-banner-slide-header">
 		<h3>
-			<em><?php _e( 'Slide', 'ttf-one' ); ?></em>
+			<em><?php _e( 'Slide', 'make' ); ?></em>
 		</h3>
-		<a href="#" class="ttf-one-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'ttf-one' ); ?>">
+		<a href="#" class="ttf-one-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
 	</div>
@@ -35,26 +35,26 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 	<div class="ttf-one-banner-slide-body">
 
 		<div class="ttf-one-banner-slide-option-wrapper">
-			<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
+			<h4><?php _e( 'Background image', 'make' ); ?></h4>
 			<p>
 				<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
 				<label for="<?php echo $section_name; ?>[darken]">
-					<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
+					<?php _e( 'Darken to improve readability', 'make' ); ?>
 				</label>
 			</p>
 
 			<div class="ttf-one-banner-slide-background-color-wrapper">
-				<h4><label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'ttf-one' ); ?></label></h4>
+				<h4><label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'make' ); ?></label></h4>
 				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttf-one-banner-slide-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
 			</div>
 
 			<div class="ttf-one-banner-slide-alignment-wrapper">
-				<h4><label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'ttf-one' ); ?></label></h4>
+				<h4><label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'make' ); ?></label></h4>
 				<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
-					<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'ttf-one' ); ?></option>
+					<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'make' ); ?></option>
 
-					<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'ttf-one' ); ?></option>
-					<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'ttf-one' ); ?></option>
+					<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'make' ); ?></option>
+					<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'make' ); ?></option>
 				</select>
 			</div>
 
@@ -66,10 +66,10 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 				$section_name,
 				$image_id,
 				array(
-					'add'    => __( 'Set background image', 'ttf-one' ),
-					'remove' => __( 'Remove background image', 'ttf-one' ),
-					'title'  => __( 'Background image', 'ttf-one' ),
-					'button' => __( 'Use as Background Image', 'ttf-one' ),
+					'add'    => __( 'Set background image', 'make' ),
+					'remove' => __( 'Remove background image', 'make' ),
+					'title'  => __( 'Background image', 'make' ),
+					'button' => __( 'Use as Background Image', 'make' ),
 				)
 			);
 			?>
@@ -91,7 +91,7 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		<?php endif; ?>
 
 		<a href="#" class="ttf-one-banner-slide-remove">
-			<?php _e( 'Remove this slide', 'ttf-one' ); ?>
+			<?php _e( 'Remove this slide', 'make' ); ?>
 		</a>
 	</div>
 	<input type="hidden" class="ttf-one-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />

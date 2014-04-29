@@ -26,7 +26,7 @@ function ttf_one_edit_page_script() {
 		'ttf-one-admin-edit-page',
 		'ttfOneEditPageData',
 		array(
-			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'ttf-one' ),
+			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
 			'pageNow'       => esc_js( $pagenow ),
 		)
 	);

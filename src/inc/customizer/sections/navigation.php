@@ -35,7 +35,7 @@ function ttf_one_customizer_navigation() {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Mobile Menu Label', 'ttf-one' ),
+			'label'    => __( 'Mobile Menu Label', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
 		)
@@ -50,7 +50,7 @@ function ttf_one_customizer_navigation() {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'Resize your browser window to preview the mobile menu label.', 'ttf-one' ),
+				'description' => __( 'Resize your browser window to preview the mobile menu label.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)

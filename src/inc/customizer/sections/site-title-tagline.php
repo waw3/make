@@ -37,7 +37,7 @@ function ttf_one_customizer_sitetitletagline() {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide Site Title', 'ttf-one' ),
+			'label'    => __( 'Hide Site Title', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
@@ -62,7 +62,7 @@ function ttf_one_customizer_sitetitletagline() {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Hide Tagline', 'ttf-one' ),
+			'label'    => __( 'Hide Tagline', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)

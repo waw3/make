@@ -67,9 +67,9 @@ class TTF_One_Section_Definitions {
 	public function register_text_section() {
 		ttf_one_add_section(
 			'text',
-			_x( 'Text', 'section name', 'ttf-one' ),
+			_x( 'Text', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
-			__( 'Organize multiple columns of content.', 'ttf-one' ),
+			__( 'Organize multiple columns of content.', 'make' ),
 			array( $this, 'save_text' ),
 			'/inc/builder/sections/builder-templates/text',
 			'/inc/builder/sections/front-end-templates/text',
@@ -139,9 +139,9 @@ class TTF_One_Section_Definitions {
 	public function register_blank_section() {
 		ttf_one_add_section(
 			'blank',
-			_x( 'Blank', 'section name', 'ttf-one' ),
+			_x( 'Blank', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
-			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
+			__( 'A blank canvas for standard content or HTML code.', 'make' ),
 			array( $this, 'save_blank' ),
 			'/inc/builder/sections/builder-templates/blank',
 			'/inc/builder/sections/front-end-templates/blank',
@@ -181,9 +181,9 @@ class TTF_One_Section_Definitions {
 	public function register_banner_section() {
 		ttf_one_add_section(
 			'banner',
-			_x( 'Banner', 'section name', 'ttf-one' ),
+			_x( 'Banner', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
-			__( 'Display multiple types of content in a slider.', 'ttf-one' ),
+			__( 'Display multiple types of content in a slider.', 'make' ),
 			array( $this, 'save_banner' ),
 			'/inc/builder/sections/builder-templates/banner',
 			'/inc/builder/sections/front-end-templates/banner',
@@ -261,9 +261,9 @@ class TTF_One_Section_Definitions {
 	public function register_gallery_section() {
 		ttf_one_add_section(
 			'gallery',
-			_x( 'Gallery', 'section name', 'ttf-one' ),
+			_x( 'Gallery', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
-			__( 'Display media elements using a modern slider.', 'ttf-one' ),
+			__( 'Display media elements using a modern slider.', 'make' ),
 			array( $this, 'save_gallery' ),
 			'/inc/builder/sections/builder-templates/gallery',
 			'/inc/builder/sections/front-end-templates/gallery',

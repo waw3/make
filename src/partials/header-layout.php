@@ -60,7 +60,7 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default
 
 			<nav id="site-navigation" class="site-navigation" role="navigation">
 				<span class="menu-toggle"><?php echo esc_html( $menu_label ); ?></span>
-				<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'ttf-one' ); ?></a>
+				<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'make' ); ?></a>
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'primary'

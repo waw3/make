@@ -11,7 +11,7 @@ $class = ( 'c' === get_user_setting( 'ttfonemt' . get_the_ID() ) ) ? 'closed' : 
 		<ul class="ttf-one-menu-list">
 			<?php foreach ( ttf_one_get_sections_by_order() as $key => $item ) : ?>
 				<li class="ttf-one-menu-list-item">
-					<a href="#" title="<?php esc_attr_e( 'Add', 'ttf-one' ); ?>" class="ttf-one-menu-list-item-link" id="ttf-one-menu-list-item-link-<?php echo esc_attr( $item['id'] ); ?>" data-section="<?php echo esc_attr( $item['id'] ); ?>">
+					<a href="#" title="<?php esc_attr_e( 'Add', 'make' ); ?>" class="ttf-one-menu-list-item-link" id="ttf-one-menu-list-item-link-<?php echo esc_attr( $item['id'] ); ?>" data-section="<?php echo esc_attr( $item['id'] ); ?>">
 						<div class="ttf-one-menu-list-item-link-icon-wrapper clear">
 							<span class="ttf-one-menu-list-item-link-icon"></span>
 						</div>
@@ -30,7 +30,7 @@ $class = ( 'c' === get_user_setting( 'ttfonemt' . get_the_ID() ) ) ? 'closed' : 
 	</div>
 	<div class="ttf-one-menu-tab">
 		<a href="#" class="ttf-one-menu-tab-link">
-			<span><?php _e( 'Add New Section', 'ttf-one' ); ?></span>
+			<span><?php _e( 'Add New Section', 'make' ); ?></span>
 		</a>
 	</div>
 </div>

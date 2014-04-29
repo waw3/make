@@ -59,19 +59,19 @@ function ttf_one_customizer_add_sections( $wp_customize ) {
 
 	// List of new sections to add
 	$sections = array(
-		'general'        => __( 'General', 'ttf-one' ),
-		'logo'           => __( 'Logo', 'ttf-one' ),
-		'font'           => __( 'Fonts', 'ttf-one' ),
-		'color'          => __( 'Colors', 'ttf-one' ),
-		'layout-blog'    => __( 'Layout: Blog (Posts Page)', 'ttf-one' ),
-		'layout-archive' => __( 'Layout: Archives', 'ttf-one' ),
-		'layout-search'  => __( 'Layout: Search Results', 'ttf-one' ),
-		'layout-post'    => __( 'Layout: Posts', 'ttf-one' ),
-		'layout-page'    => __( 'Layout: Pages', 'ttf-one' ),
-		'header'         => __( 'Header', 'ttf-one' ),
-		'main'           => __( 'Main', 'ttf-one' ),
-		'footer'         => __( 'Footer', 'ttf-one' ),
-		'social'         => __( 'Social Profiles &amp; RSS', 'ttf-one' )
+		'general'        => __( 'General', 'make' ),
+		'logo'           => __( 'Logo', 'make' ),
+		'font'           => __( 'Fonts', 'make' ),
+		'color'          => __( 'Colors', 'make' ),
+		'layout-blog'    => __( 'Layout: Blog (Posts Page)', 'make' ),
+		'layout-archive' => __( 'Layout: Archives', 'make' ),
+		'layout-search'  => __( 'Layout: Search Results', 'make' ),
+		'layout-post'    => __( 'Layout: Posts', 'make' ),
+		'layout-page'    => __( 'Layout: Pages', 'make' ),
+		'header'         => __( 'Header', 'make' ),
+		'main'           => __( 'Main', 'make' ),
+		'footer'         => __( 'Footer', 'make' ),
+		'social'         => __( 'Social Profiles &amp; RSS', 'make' )
 	);
 	$sections = apply_filters( 'ttf_one_customizer_sections', $sections );
 

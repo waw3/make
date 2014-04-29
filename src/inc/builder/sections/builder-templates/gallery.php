@@ -20,34 +20,34 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 ?>
 
 <div class="ttf-one-captions-select-wrapper">
-	<label for="<?php echo $section_name; ?>[caption-color]"><?php _e( 'Caption color:', 'ttf-one' ); ?></label>
+	<label for="<?php echo $section_name; ?>[caption-color]"><?php _e( 'Caption color:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[caption-color]" name="<?php echo $section_name; ?>[caption-color]">
-		<option value="light"<?php selected( 'light', $caption_color ); ?>><?php echo esc_html( __( 'Light', 'ttf-one' ) ); ?></option>
-		<option value="dark"<?php selected( 'dark', $caption_color ); ?>><?php echo esc_html( __( 'Dark', 'ttf-one' ) ); ?></option>
+		<option value="light"<?php selected( 'light', $caption_color ); ?>><?php echo esc_html( __( 'Light', 'make' ) ); ?></option>
+		<option value="dark"<?php selected( 'dark', $caption_color ); ?>><?php echo esc_html( __( 'Dark', 'make' ) ); ?></option>
 	</select>
 </div>
 
 <div class="ttf-one-captions-select-wrapper">
-	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'ttf-one' ); ?></label>
+	<label for="<?php echo $section_name; ?>[captions]"><?php _e( 'Caption style:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[captions]" name="<?php echo $section_name; ?>[captions]">
-		<option value="overlay"<?php selected( 'overlay', $captions ); ?>><?php echo esc_html( __( 'Overlay', 'ttf-one' ) ); ?></option>
-		<option value="reveal"<?php selected( 'reveal', $captions ); ?>><?php echo esc_html( __( 'Reveal', 'ttf-one' ) ); ?></option>
-		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
+		<option value="overlay"<?php selected( 'overlay', $captions ); ?>><?php echo esc_html( __( 'Overlay', 'make' ) ); ?></option>
+		<option value="reveal"<?php selected( 'reveal', $captions ); ?>><?php echo esc_html( __( 'Reveal', 'make' ) ); ?></option>
+		<option value="none"<?php selected( 'none', $captions ); ?>><?php echo esc_html( __( 'None', 'make' ) ); ?></option>
 	</select>
 </div>
 
 <div class="ttf-one-aspect-select-wrapper">
-	<label for="<?php echo $section_name; ?>[aspect]"><?php _e( 'Aspect ratio:', 'ttf-one' ); ?></label>
+	<label for="<?php echo $section_name; ?>[aspect]"><?php _e( 'Aspect ratio:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[aspect]" name="<?php echo $section_name; ?>[aspect]">
-		<option value="landscape"<?php selected( 'landscape', $aspect ); ?>><?php echo esc_html( __( 'Landscape', 'ttf-one' ) ); ?></option>
-		<option value="portrait"<?php selected( 'portrait', $aspect ); ?>><?php echo esc_html( __( 'Portrait', 'ttf-one' ) ); ?></option>
-		<option value="square"<?php selected( 'square', $aspect ); ?>><?php echo esc_html( __( 'Square', 'ttf-one' ) ); ?></option>
-		<option value="none"<?php selected( 'none', $aspect ); ?>><?php echo esc_html( __( 'None', 'ttf-one' ) ); ?></option>
+		<option value="landscape"<?php selected( 'landscape', $aspect ); ?>><?php echo esc_html( __( 'Landscape', 'make' ) ); ?></option>
+		<option value="portrait"<?php selected( 'portrait', $aspect ); ?>><?php echo esc_html( __( 'Portrait', 'make' ) ); ?></option>
+		<option value="square"<?php selected( 'square', $aspect ); ?>><?php echo esc_html( __( 'Square', 'make' ) ); ?></option>
+		<option value="none"<?php selected( 'none', $aspect ); ?>><?php echo esc_html( __( 'None', 'make' ) ); ?></option>
 	</select>
 </div>
 
 <div class="ttf-one-columns-select-wrapper">
-	<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
+	<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]" class="ttf-one-gallery-columns">
 		<option value="1"<?php selected( 1, $columns ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns ); ?>>2</option>
@@ -57,7 +57,7 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 </div>
 
 <div class="ttf-one-add-gallery-item-wrapper">
-	<a href="#" class="button button-primary ttf-one-button-large button-large ttf-one-gallery-add-item"><?php _e( 'Add New Item', 'ttf-one' ); ?></a>
+	<a href="#" class="button button-primary ttf-one-button-large button-large ttf-one-gallery-add-item"><?php _e( 'Add New Item', 'make' ); ?></a>
 </div>
 
 <div class="ttf-one-gallery-items">
@@ -74,12 +74,12 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 
 <div class="ttf-one-gallery-background-options-container">
 	<h2 class="ttf-one-large-title ttf-one-gallery-options-heading">
-		<?php _e( 'Options', 'ttf-one' ); ?>
+		<?php _e( 'Options', 'make' ); ?>
 	</h2>
 
 	<div class="ttf-one-titlediv">
 		<div class="ttf-one-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 		</div>
 	</div>
 
@@ -89,29 +89,29 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 				$section_name . '[background-image]',
 				$background_image,
 				array(
-					'add'    => __( 'Set background image', 'ttf-one' ),
-					'remove' => __( 'Remove background image', 'ttf-one' ),
-					'title'  => __( 'Background image', 'ttf-one' ),
-					'button' => __( 'Use as Background Image', 'ttf-one' ),
+					'add'    => __( 'Set background image', 'make' ),
+					'remove' => __( 'Remove background image', 'make' ),
+					'title'  => __( 'Background image', 'make' ),
+					'button' => __( 'Use as Background Image', 'make' ),
 				)
 			);
 		?>
 	</div>
 
 	<div class="ttf-one-gallery-background-options-wrapper">
-		<h4><?php _e( 'Background image', 'ttf-one' ); ?></h4>
+		<h4><?php _e( 'Background image', 'make' ); ?></h4>
 		<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
 		<label for="<?php echo $section_name; ?>[darken]">
-			<?php _e( 'Darken to improve readability', 'ttf-one' ); ?>
+			<?php _e( 'Darken to improve readability', 'make' ); ?>
 		</label>
 
-		<h4><?php _e( 'Background color', 'ttf-one' ); ?></h4>
+		<h4><?php _e( 'Background color', 'make' ); ?></h4>
 		<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name . '[background-color]'; ?>" class="ttf-one-gallery-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>" />
 
-		<h4><?php _e( 'Background style:', 'ttf-one' ); ?></h4>
+		<h4><?php _e( 'Background style:', 'make' ); ?></h4>
 		<select id="<?php echo $section_name; ?>[background-style]" name="<?php echo $section_name; ?>[background-style]">
-			<option value="tile"<?php selected( 'tile', $background_style ); ?>><?php echo esc_html( __( 'Tile', 'ttf-one' ) ); ?></option>
-			<option value="cover"<?php selected( 'cover', $background_style ); ?>><?php echo esc_html( __( 'Cover', 'ttf-one' ) ); ?></option>
+			<option value="tile"<?php selected( 'tile', $background_style ); ?>><?php echo esc_html( __( 'Tile', 'make' ) ); ?></option>
+			<option value="cover"<?php selected( 'cover', $background_style ); ?>><?php echo esc_html( __( 'Cover', 'make' ) ); ?></option>
 		</select>
 	</div>
 </div>

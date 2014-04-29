@@ -386,16 +386,16 @@ if ( ! function_exists( 'ttf_one_get_google_font_subsets' ) ) :
  */
 function ttf_one_get_google_font_subsets() {
 	return array(
-		'all'          => __( 'All', 'ttf-one' ),
-		'cyrillic'     => __( 'Cyrillic', 'ttf-one' ),
-		'cyrillic-ext' => __( 'Cyrillic Extended', 'ttf-one' ),
-		'devanagari'   => __( 'Devanagari', 'ttf-one' ),
-		'greek'        => __( 'Greek', 'ttf-one' ),
-		'greek-ext'    => __( 'Greek Extended', 'ttf-one' ),
-		'khmer'        => __( 'Khmer', 'ttf-one' ),
-		'latin'        => __( 'Latin', 'ttf-one' ),
-		'latin-ext'    => __( 'Latin Extended', 'ttf-one' ),
-		'vietnamese'   => __( 'Vietnamese', 'ttf-one' ),
+		'all'          => __( 'All', 'make' ),
+		'cyrillic'     => __( 'Cyrillic', 'make' ),
+		'cyrillic-ext' => __( 'Cyrillic Extended', 'make' ),
+		'devanagari'   => __( 'Devanagari', 'make' ),
+		'greek'        => __( 'Greek', 'make' ),
+		'greek-ext'    => __( 'Greek Extended', 'make' ),
+		'khmer'        => __( 'Khmer', 'make' ),
+		'latin'        => __( 'Latin', 'make' ),
+		'latin-ext'    => __( 'Latin Extended', 'make' ),
+		'vietnamese'   => __( 'Vietnamese', 'make' ),
 	);
 }
 endif;
@@ -465,15 +465,15 @@ if ( ! function_exists( 'ttf_one_get_standard_fonts' ) ) :
 function ttf_one_get_standard_fonts() {
 	return array(
 		'serif' => array(
-			'label' => _x( 'Serif', 'font style', 'ttf-one' ),
+			'label' => _x( 'Serif', 'font style', 'make' ),
 			'stack' => 'Georgia,Times,"Times New Roman",serif'
 		),
 		'sans-serif' => array(
-			'label' => _x( 'Sans Serif', 'font style', 'ttf-one' ),
+			'label' => _x( 'Sans Serif', 'font style', 'make' ),
 			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
 		),
 		'monospace' => array(
-			'label' => _x( 'Monospaced', 'font style', 'ttf-one' ),
+			'label' => _x( 'Monospaced', 'font style', 'make' ),
 			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 		)
 	);

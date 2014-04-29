@@ -15,7 +15,7 @@ $date_option = ttf_one_sanitize_choice( get_theme_mod( $date_key, ttf_one_get_de
 	<?php elseif ( 'relative' === $date_option ) : ?>
 		<?php
 		printf(
-			__( '%s ago', 'ttf-one' ),
+			__( '%s ago', 'make' ),
 			human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) )
 		)
 		?>

@@ -35,7 +35,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Regular Logo', 'ttf-one' ),
+				'label'    => __( 'Regular Logo', 'make' ),
 				'priority' => $priority->add(),
 				'context'  => $control_prefix . $setting_id
 			)
@@ -59,7 +59,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Retina Logo (2x)', 'ttf-one' ),
+				'label'    => __( 'Retina Logo (2x)', 'make' ),
 				'priority' => $priority->add(),
 				'context'  => $control_prefix . $setting_id
 			)
@@ -75,7 +75,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'ttf-one' ),
+				'description' => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -98,7 +98,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'settings'   => $setting_id,
 				'section'    => $section,
-				'label'      => __( 'Favicon', 'ttf-one' ),
+				'label'      => __( 'Favicon', 'make' ),
 				'priority'   => $priority->add(),
 				'context'    => $control_prefix . $setting_id,
 				'extensions' => array( 'png', 'ico' )
@@ -115,7 +115,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'ttf-one' ),
+				'description' => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
@@ -138,7 +138,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'settings'   => $setting_id,
 				'section'    => $section,
-				'label'      => __( 'Apple Touch Icon', 'ttf-one' ),
+				'label'      => __( 'Apple Touch Icon', 'make' ),
 				'priority'   => $priority->add(),
 				'context'    => $control_prefix . $setting_id,
 				'extensions' => array( 'png' )
@@ -155,7 +155,7 @@ function ttf_one_customizer_logo( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'ttf-one' ),
+				'description' => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)

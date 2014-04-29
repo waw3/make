@@ -15,7 +15,7 @@ $previous_link = get_previous_post_link(
 
 if ( '' !== $next_link || '' !== $previous_link ) : ?>
 <nav class="navigation post-navigation" role="navigation">
-	<span class="screen-reader-text"><?php _e( 'Post navigation', 'ttf-one' ); ?></span>
+	<span class="screen-reader-text"><?php _e( 'Post navigation', 'make' ); ?></span>
 	<div class="nav-links">
 		<?php
 		echo $previous_link;

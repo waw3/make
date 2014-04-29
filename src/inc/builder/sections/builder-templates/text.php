@@ -13,7 +13,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 ?>
 
 <div class="ttf-one-columns-select ttf-one-select">
-	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'ttf-one' ); ?></label>
+	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[columns-number]" class="ttf-one-text-columns" name="<?php echo $section_name; ?>[columns-number]">
 		<option value="1"<?php selected( 1, $columns_number ); ?>>1</option>
 		<option value="2"<?php selected( 2, $columns_number ); ?>>2</option>
@@ -32,19 +32,19 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttf_
 		$content  = ( isset( $ttf_one_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttf_one_section_data['data']['columns'][ $i ]['content'] : '';
 	?>
 	<div class="ttf-one-text-column ttf-one-text-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
-		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttf-one' ); ?>" class="ttf-one-sortable-handle">
+		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttf-one-sortable-handle">
 			<div class="sortable-background"></div>
 		</div>
 
 		<div class="ttf-one-titlediv">
-			<input placeholder="<?php esc_attr_e( 'Enter link here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
+			<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
 		</div>
 
 		<?php ttf_one_get_builder_base()->add_uploader( $column_name, absint( $image_id ) ); ?>
 
 		<div class="ttf-one-titlediv">
 			<div class="ttf-one-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttf-one' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+				<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttf-one-title ttf-one-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 			</div>
 		</div>
 

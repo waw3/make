@@ -14,13 +14,13 @@ if ( $footer_text ) : ?>
 <div class="site-info">
 	<?php // Footer credit
 	printf(
-		__( '%s theme', 'ttf-one' ),
+		__( '%s theme', 'make' ),
 		'<span class="theme-name">One</span>'
 	);
 	?>
-	<span class="theme-by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></span>
+	<span class="theme-by"><?php _ex( 'by', 'attribution', 'make' ); ?></span>
 	<span class="theme-author">
-		<a title="The Theme Foundry <?php esc_attr_e( 'homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
+		<a title="The Theme Foundry <?php esc_attr_e( 'homepage', 'make' ); ?>" href="https://thethemefoundry.com/">
 			The Theme Foundry
 		</a>
 	</span>
