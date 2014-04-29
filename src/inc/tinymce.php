@@ -74,10 +74,26 @@ function ttfmake_mce_before_init( $settings ) {
 		),
 		// Alert (div)
 		array(
-			'title'      => __( 'Alert', 'make' ),
-			'block'      => 'div',
-			'attributes' => array(
-				'class' => 'ttfmake-alert' // Replace existing classes instead of adding
+			'title' => __( 'Alert', 'make' ),
+			'items' => array(
+				// Success (div)
+				array(
+					'title'   => __( 'Success (Green)', 'make' ),
+					'block'   => 'div',
+					'classes' => 'ttfmake-alert ttfmake-success',
+				),
+				// Error (div)
+				array(
+					'title'   => __( 'Error (Red)', 'make' ),
+					'block'   => 'div',
+					'classes' => 'ttfmake-alert ttfmake-error',
+				),
+				// Important (div)
+				array(
+					'title'   => __( 'Important (Orange)', 'make' ),
+					'block'   => 'div',
+					'classes' => 'ttfmake-alert ttfmake-important',
+				),
 			),
 		),
 		// Button (a)
@@ -105,24 +121,6 @@ function ttfmake_mce_before_init( $settings ) {
 			'title'    => __( 'Button: secondary', 'make' ),
 			'selector' => 'a,button',
 			'classes'  => 'color-secondary-background'
-		),
-		// Success (div)
-		array(
-			'title'    => __( 'Success (Green)', 'make' ),
-			'selector' => 'div,a,button',
-			'classes'  => 'ttfmake-success',
-		),
-		// Error (div)
-		array(
-			'title'    => __( 'Error (Red)', 'make' ),
-			'selector' => 'div,a,button',
-			'classes'  => 'ttfmake-error',
-		),
-		// Important (div)
-		array(
-			'title'    => __( 'Important (Orange)', 'make' ),
-			'selector' => 'div,a,button',
-			'classes'  => 'ttfmake-important',
 		),
 		// List: check 1
 		array(
