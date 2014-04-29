@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttf_one_woocommerce_remove_hooks' ) ) :
 /**
  * Remove default action hooks so we can replace them with our own.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -25,9 +25,9 @@ add_action( 'after_setup_theme', 'ttf_one_woocommerce_remove_hooks' );
 
 if ( ! function_exists( 'ttf_one_woocommerce_before_main_content' ) ) :
 /**
- * Markup to show before the main WooCommerce content
+ * Markup to show before the main WooCommerce content.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -35,9 +35,10 @@ function ttf_one_woocommerce_before_main_content() {
 	// Left sidebar
 	ttf_one_maybe_show_sidebar( 'left' );
 
-	// Begin content wrapper ?>
+	// Begin content wrapper
+	?>
 	<main id="site-main" class="site-main" role="main">
-<?php
+	<?php
 }
 endif;
 
@@ -47,14 +48,15 @@ if ( ! function_exists( 'ttf_one_woocommerce_after_main_content' ) ) :
 /**
  * Markup to show after the main WooCommerce content
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_woocommerce_after_main_content() {
-	// End content wrapper ?>
+	// End content wrapper
+	?>
 	</main>
-<?php
+	<?php
 	// Right sidebar
 	ttf_one_maybe_show_sidebar( 'right' );
 }
