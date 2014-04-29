@@ -5,9 +5,9 @@
 
 if ( ! function_exists( 'ttf_one_jetpack_setup' ) ) :
 /**
- * Jetpack compatibility
+ * Jetpack compatibility.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
@@ -49,16 +49,16 @@ if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_has_footer_widgets' ) )
 /**
  * Determine whether any footer widgets are actually showing.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
- * @return bool
+ * @return bool    Whether or not infinite scroll has footer widgets.
  */
 function ttf_one_jetpack_infinite_scroll_has_footer_widgets() {
 	// Get the view
 	$view = ttf_one_get_view();
 
 	// Get the relevant options
-	$hide_footer = (bool) get_theme_mod( 'layout-' . $view . '-hide-footer', ttf_one_get_default( 'layout-' . $view . '-hide-footer' ) );
+	$hide_footer  = (bool) get_theme_mod( 'layout-' . $view . '-hide-footer', ttf_one_get_default( 'layout-' . $view . '-hide-footer' ) );
 	$widget_areas = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
 
 	// No widget areas are visible
@@ -86,23 +86,23 @@ if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_render' ) ) :
 /**
  * Render the additional posts added by Infinite Scroll
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_jetpack_infinite_scroll_render() {
-	while ( have_posts() ) : the_post();
+	while ( have_posts() ) {
+		the_post();
 		get_template_part( 'partials/content', 'archive' );
-	endwhile;
+	}
 }
 endif;
 
 if ( ! function_exists( 'ttf_one_jetpack_remove_sharing' ) ) :
 /**
- * Remove the Jetpack Sharing output from the end of the post content
- * so it can be output elsewhere.
+ * Remove the Jetpack Sharing output from the end of the post content so it can be output elsewhere.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
