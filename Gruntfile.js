@@ -95,9 +95,16 @@ module.exports = function( grunt ) {
 			theme: {
 				options: {
 					cwd: 'src',
-					potFilename: 'ttf-one.pot',
+					potFilename: 'make.pot',
+					domainPath: '/languages',
 					type: 'wp-theme',
-					exclude: []
+					exclude: [],
+					processPot: function( pot, options ) {
+						pot.headers['Report-msgid-Bugs-To'] = 'https://thethemefoundry.com/support';
+						pot.headers['Last-Translator'] = 'The Theme Foundry';
+						pot.headers['Language-Team'] = 'The Theme Foundry';
+						return pot;
+					}
 				}
 			}
 		},
