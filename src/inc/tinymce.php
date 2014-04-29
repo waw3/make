@@ -84,63 +84,39 @@ function ttfmake_mce_before_init( $settings ) {
 				),
 			),
 		),
-		// Button (a)
+		// List
 		array(
-			'title'      => __( 'Button', 'make' ),
-			'selector'   => 'a,button',
-			'attributes' => array(
-				'class' => 'ttfmake-button' // Replace existing classes instead of adding
-			)
-		),
-		// Button download (a)
-		array(
-			'title'    => __( 'Button: download', 'make' ),
-			'selector' => 'a,button',
-			'classes'  => 'ttfmake-download'
-		),
-		// Button primary (a)
-		array(
-			'title'    => __( 'Button: primary', 'make' ),
-			'selector' => 'a,button',
-			'classes'  => 'color-primary-background'
-		),
-		// Button primary (a)
-		array(
-			'title'    => __( 'Button: secondary', 'make' ),
-			'selector' => 'a,button',
-			'classes'  => 'color-secondary-background'
-		),
-		// List: check 1
-		array(
-			'title'      => __( 'List: checkmark 1', 'make' ),
-			'selector'   => 'ul,ol',
-			'attributes' => array(
-				'class' => 'ttfmake-list ttfmake-list-check' // Replace existing classes instead of adding
-			)
-		),
-		// List: check 2
-		array(
-			'title'      => __( 'List: checkmark 2', 'make' ),
-			'selector'   => 'ul,ol',
-			'attributes' => array(
-				'class' => 'ttfmake-list ttfmake-list-check2' // Replace existing classes instead of adding
-			)
-		),
-		// List: star
-		array(
-			'title'      => __( 'List: star', 'make' ),
-			'selector'   => 'ul,ol',
-			'attributes' => array(
-				'class' => 'ttfmake-list ttfmake-list-star' // Replace existing classes instead of adding
-			)
-		),
-		// List: dot
-		array(
-			'title'      => __( 'List: dot', 'make' ),
-			'selector'   => 'ul,ol',
-			'attributes' => array(
-				'class' => 'ttfmake-list ttfmake-list-dot' // Replace existing classes instead of adding
-			)
+			'title' => __( 'List', 'make' ),
+			'items' => array(
+				array(
+					'title'      => __( 'Checkmark 1', 'make' ),
+					'selector'   => 'ul,ol',
+					'attributes' => array(
+						'class' => 'ttfmake-list ttfmake-list-check' // Replace existing classes instead of adding
+					)
+				),
+				array(
+					'title'      => __( 'Checkmark 2', 'make' ),
+					'selector'   => 'ul,ol',
+					'attributes' => array(
+						'class' => 'ttfmake-list ttfmake-list-check2' // Replace existing classes instead of adding
+					)
+				),
+				array(
+					'title'      => __( 'Star', 'make' ),
+					'selector'   => 'ul,ol',
+					'attributes' => array(
+						'class' => 'ttfmake-list ttfmake-list-star' // Replace existing classes instead of adding
+					)
+				),
+				array(
+					'title'      => __( 'Dot', 'make' ),
+					'selector'   => 'ul,ol',
+					'attributes' => array(
+						'class' => 'ttfmake-list ttfmake-list-dot' // Replace existing classes instead of adding
+					)
+				),
+			),
 		),
 	);
 
