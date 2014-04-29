@@ -114,12 +114,13 @@ if ( ! function_exists( 'ttf_one_category_transient_flusher' ) ) :
 /**
  * Flush out the transients used in ttf_one_categorized_blog.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_category_transient_flusher() {
 	delete_transient( 'all_the_cool_cats' );
+	ttf_one_categorized_blog();
 }
 endif;
 
