@@ -116,7 +116,7 @@ class TTFMAKE_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
 
 		// Add the sort input
-		$section_order = get_post_meta( $post_local->ID, '_ttfob-section-ids', true );
+		$section_order = get_post_meta( $post_local->ID, '_ttfmake-section-ids', true );
 		$section_order = ( ! empty( $section_order ) ) ? implode( ',', $section_order ) : '';
 		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttfmake-section-order" id="ttfmake-section-order" />';
 	}
@@ -498,7 +498,7 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function get_section_data( $post_id ) {
 		$ordered_data = array();
-		$ids          = get_post_meta( $post_id, '_ttfob-section-ids', true );
+		$ids          = get_post_meta( $post_id, '_ttfmake-section-ids', true );
 		$post_meta    = get_post_meta( $post_id );
 
 		// Temp array of hashed keys
@@ -508,9 +508,9 @@ class TTFMAKE_Builder_Base {
 		if ( is_array( $post_meta ) ) {
 			foreach ( $post_meta as $key => $value ) {
 				// Only consider builder values
-				if ( 0 === strpos( $key, '_ttfob:' ) ) {
+				if ( 0 === strpos( $key, '_ttfmake:' ) ) {
 					// Get the individual pieces
-					$temp_data[ str_replace( '_ttfob:', '', $key ) ] = $value[0];
+					$temp_data[ str_replace( '_ttfmake:', '', $key ) ] = $value[0];
 				}
 			}
 		}

@@ -144,7 +144,7 @@ class TTFMAKE_Builder_Save {
 		 * array serialization, whereby changing the site domain can lead to the value being unreadable. Instead, each
 		 * value is independent.
 		 */
-		$values_to_save = $this->flatten_array( $sections, '_ttfob:', ':' );
+		$values_to_save = $this->flatten_array( $sections, '_ttfmake:', ':' );
 
 		foreach ( $values_to_save as $key => $value ) {
 			update_post_meta( $post_id, $key, $value );
@@ -152,7 +152,7 @@ class TTFMAKE_Builder_Save {
 
 		// Save the ids for the sections. This will be used to lookup all of the separate values.
 		$section_ids = array_keys( $sections );
-		update_post_meta( $post_id, '_ttfob-section-ids', $section_ids );
+		update_post_meta( $post_id, '_ttfmake-section-ids', $section_ids );
 
 		// Remove the old section values if necessary
 		$this->prune_abandoned_rows( $post_id, $values_to_save );
@@ -175,7 +175,7 @@ class TTFMAKE_Builder_Save {
 		if ( is_array( $post_meta ) && ! empty( $post_meta ) ) {
 			foreach ( $post_meta as $key => $value ) {
 				// Only consider builder values
-				if ( 0 === strpos( $key, '_ttfob:' ) ) {
+				if ( 0 === strpos( $key, '_ttfmake:' ) ) {
 					if ( ! isset( $current_values[ $key ] ) ) {
 						delete_post_meta( $post_id, $key );
 					}
