@@ -3,6 +3,7 @@
 		editor.addButton('ttfmake_mce_button_button', {
 			text: 'Button',
 			icon: false,
+			tooltip: 'Add button',
 			onclick: function() {
 				editor.windowManager.open( {
 					title: 'Insert Button',
