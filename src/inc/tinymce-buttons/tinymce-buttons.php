@@ -74,9 +74,6 @@ class TTFMAKE_TinyMCE_Buttons {
 	 */
 	public function add_tinymce_plugin( $plugins ) {
 		$plugins['ttfmake_mce_button_button'] = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-button.js';
-		$plugins['ttfmake_mce_alert_button']  = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-alert.js';
-		$plugins['ttfmake_mce_list_button']   = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-list.js';
-		$plugins['ttfmake_mce_line_button']   = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-line.js';
 		return $plugins;
 	}
 
@@ -90,9 +87,6 @@ class TTFMAKE_TinyMCE_Buttons {
 	 */
 	public function register_mce_button( $buttons ) {
 		$buttons[] = 'ttfmake_mce_button_button';
-		$buttons[] = 'ttfmake_mce_alert_button';
-		$buttons[] = 'ttfmake_mce_list_button';
-		$buttons[] = 'ttfmake_mce_line_button';
 		return $buttons;
 	}
 }
