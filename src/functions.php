@@ -90,6 +90,9 @@ if ( is_admin() ) {
 	// TinyMCE customizations
 	require get_template_directory() . '/inc/tinymce.php';
 
+	// TinyMCE buttons
+	require get_template_directory() . '/inc/tinymce-buttons/tinymce-buttons.php';
+
 	// Page customizations
 	require get_template_directory() . '/inc/edit-page.php';
 
