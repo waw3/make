@@ -73,6 +73,8 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return array                The modified plugins array.
 	 */
 	public function add_tinymce_plugin( $plugins ) {
+		unset( $plugins['hr'] );
+		$plugins['ttfmake_mce_hr_button']     = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-hr.js';
 		$plugins['ttfmake_mce_button_button'] = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-button.js';
 		return $plugins;
 	}
@@ -86,6 +88,8 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return array                The modified plugins array.
 	 */
 	public function register_mce_button( $buttons ) {
+		$buttons   = array_diff( $buttons, array( 'hr' ) );
+		$buttons[] = 'ttfmake_mce_hr_button';
 		$buttons[] = 'ttfmake_mce_button_button';
 		return $buttons;
 	}

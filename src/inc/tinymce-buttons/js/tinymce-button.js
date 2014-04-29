@@ -16,7 +16,8 @@
 						{
 							type: 'textbox',
 							name: 'url',
-							label: 'Button URL'
+							label: 'Button URL',
+							value: 'http://'
 						},
 						{
 							type: 'listbox',
