@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 ?><!DOCTYPE html>
 <!--[if lte IE 9]><html class="no-js IE9 IE" <?php language_attributes(); ?>><![endif]-->

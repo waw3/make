@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 $sidebar_id = esc_attr( apply_filters( 'ttfmake_footer_1', 'footer-1' ) );

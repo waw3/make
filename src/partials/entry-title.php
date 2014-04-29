@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 $title_key    = 'layout-' . ttfmake_get_view() . '-hide-title';

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 ttfmake_load_section_header();

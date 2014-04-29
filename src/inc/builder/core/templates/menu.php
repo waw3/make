@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 $class = ( 'c' === get_user_setting( 'ttfonemt' . get_the_ID() ) ) ? 'closed' : 'opened';

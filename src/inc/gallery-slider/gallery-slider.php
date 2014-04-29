@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 if ( ! class_exists( 'TTF_One_Gallery_Slider' ) ) :

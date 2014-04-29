@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 if ( is_category() || is_tag() || is_tax() ) :

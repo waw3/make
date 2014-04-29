@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 $date_key    = 'layout-' . ttfmake_get_view() . '-post-date';

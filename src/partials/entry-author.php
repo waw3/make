@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 $author_key    = 'layout-' . ttfmake_get_view() . '-post-author';

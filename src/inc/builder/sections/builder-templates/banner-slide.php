@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_slide_id;

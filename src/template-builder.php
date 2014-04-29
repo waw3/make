@@ -2,7 +2,7 @@
 /**
  * Template Name: Builder Template
  *
- * @package ttf-one
+ * @package Make
  */
 
 get_header();

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 if ( ! function_exists( 'ttfmake_edit_page_script' ) ) :

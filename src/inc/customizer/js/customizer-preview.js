@@ -1,5 +1,5 @@
 /**
- * @package ttf-one
+ * @package Make
  */
 
 ( function( $ ) {

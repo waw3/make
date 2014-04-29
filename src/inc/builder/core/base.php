@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 if ( ! function_exists( 'TTF_One_Builder_Base' ) ) :

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ttf-one
+ * @package Make
  */
 
 $thumb_key    = 'layout-' . ttfmake_get_view() . '-featured-images';
