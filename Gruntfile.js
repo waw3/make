@@ -100,9 +100,9 @@ module.exports = function( grunt ) {
 					type: 'wp-theme',
 					exclude: [],
 					processPot: function( pot, options ) {
-						pot.headers['Report-msgid-Bugs-To'] = 'https://thethemefoundry.com/support';
-						pot.headers['Last-Translator'] = 'The Theme Foundry';
-						pot.headers['Language-Team'] = 'The Theme Foundry';
+						pot.headers['report-msgid-bugs-to'] = 'https://thethemefoundry.com/support';
+						pot.headers['last-translator'] = 'The Theme Foundry';
+						pot.headers['language-team'] = 'The Theme Foundry';
 						return pot;
 					}
 				}
