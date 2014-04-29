@@ -477,6 +477,7 @@ a {
  Navigation (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-navigation {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   margin-bottom: 0;
   -webkit-user-select: none;
   -moz-user-select: none;

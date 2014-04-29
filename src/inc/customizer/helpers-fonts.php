@@ -39,6 +39,48 @@ function ttfmake_css_fonts() {
 	}
 
 	/**
+	 * Navigation
+	 */
+	// Get and escape options
+	$font_nav          = get_theme_mod( 'font-nav', ttfmake_get_default( 'font-nav' ) );
+	$font_nav_stack    = ttfmake_get_font_stack( $font_nav );
+	$font_nav_size     = absint( get_theme_mod( 'font-nav-size', ttfmake_get_default( 'font-nav-size' ) ) );
+	$font_nav_sub_size = $font_nav_size * ( 13 / 14 );
+
+	// Navigation Font
+	if ( $font_nav !== ttfmake_get_default( 'font-nav' ) && '' !== $font_nav_stack ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation' ),
+			'declarations' => array(
+				'font-family' => $font_nav_stack
+			)
+		) );
+	}
+
+	// Navigation Font Size (top level)
+	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation .menu li a' ),
+			'declarations' => array(
+				'font-size-px'  => $font_nav_size . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_nav_size ) . 'rem'
+			)
+		) );
+	}
+
+	// Navigation Font Size (sub menu items)
+	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation .menu .sub-menu a', '.site-navigation .menu .children a' ),
+			'declarations' => array(
+				'font-size-px'  => $font_nav_sub_size . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_nav_sub_size ) . 'rem'
+			),
+			'media'        => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	/**
 	 * Headers
 	 */
 	// Get and escape options
@@ -260,6 +302,7 @@ function ttfmake_get_google_font_uri() {
 	// Grab the font choices
 	$fonts = array(
 		get_theme_mod( 'font-site-title', ttfmake_get_default( 'font-site-title' ) ),
+		get_theme_mod( 'font-nav', ttfmake_get_default( 'font-nav' ) ),
 		get_theme_mod( 'font-header', ttfmake_get_default( 'font-header' ) ),
 		get_theme_mod( 'font-body', ttfmake_get_default( 'font-body' ) ),
 	);

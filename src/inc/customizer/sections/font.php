@@ -61,6 +61,49 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 		)
 	);
 
+	// Navigation font
+	$setting_id = $setting_prefix . '-nav';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttfmake_sanitize_font_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Navigation', 'make' ),
+			'type'     => 'select',
+			'choices'  => ttfmake_all_font_choices(),
+			'priority' => $priority->add()
+		)
+	);
+
+	// Navigation font size
+	$setting_id = $setting_prefix . '-nav-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Navigation Font Size (in px)', 'make' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
 	// Header font
 	$setting_id = $setting_prefix . '-header';
 	$wp_customize->add_setting(

@@ -339,6 +339,7 @@ a {
  Navigation (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-navigation {
+	font-family: $sans;
 	@include for(medium-screens) {
 		float: right;
 		max-width: 50%;
