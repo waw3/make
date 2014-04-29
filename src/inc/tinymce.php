@@ -60,21 +60,27 @@ function ttfmake_mce_before_init( $settings ) {
 			'items' => array(
 				// Success (div)
 				array(
-					'title'   => __( 'Success (Green)', 'make' ),
-					'block'   => 'div',
-					'classes' => 'ttfmake-alert ttfmake-success',
+					'title'      => __( 'Success (Green)', 'make' ),
+					'block'      => 'div',
+					'attributes' => array(
+						'class' => 'ttfmake-alert ttfmake-success',
+					),
 				),
 				// Error (div)
 				array(
 					'title'   => __( 'Error (Red)', 'make' ),
 					'block'   => 'div',
-					'classes' => 'ttfmake-alert ttfmake-error',
+					'attributes' => array(
+						'class' => 'ttfmake-alert ttfmake-error',
+					),
 				),
 				// Important (div)
 				array(
 					'title'   => __( 'Important (Orange)', 'make' ),
 					'block'   => 'div',
-					'classes' => 'ttfmake-alert ttfmake-important',
+					'attributes' => array(
+						'class' => 'ttfmake-alert ttfmake-important',
+					),
 				),
 			),
 		),
