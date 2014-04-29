@@ -3,11 +3,11 @@
  *
  * @since 1.0.0
  */
-/* global jQuery, ttfOneEditPageData */
+/* global jQuery, ttfmakeEditPageData */
 (function($) {
 	'use strict';
 
-	var ttfOneEditPage = {
+	var ttfmakeEditPage = {
 		cache: {
 			$document: $(document)
 		},
@@ -31,13 +31,13 @@
 			// Setup the event for toggling the Page Builder when the page template input changes
 			self.cache.$pageTemplate.on('change', self.templateToggle);
 
-			if ( typeof ttfOneEditPageData !== 'undefined' && 'post-new.php' === ttfOneEditPageData.pageNow ) {
+			if ( typeof ttfmakeEditPageData !== 'undefined' && 'post-new.php' === ttfmakeEditPageData.pageNow ) {
 				self.cache.$pageTemplate.val('template-builder.php');
 			}
 		},
 
 		templateToggle: function(e) {
-			var self = ttfOneEditPage,
+			var self = ttfmakeEditPage,
 				val = $(e.target).val();
 
 			if ('template-builder.php' === val) {
@@ -54,13 +54,13 @@
 		},
 
 		featuredImageToggle: function(state) {
-			var self = ttfOneEditPage,
+			var self = ttfmakeEditPage,
 				unavailable;
 
 			self.cache.$featuredImage.find('.ttfmake-message').remove();
 
-			if ('undefined' !== typeof ttfOneEditPageData) {
-				unavailable = ttfOneEditPageData.featuredImage;
+			if ('undefined' !== typeof ttfmakeEditPageData) {
+				unavailable = ttfmakeEditPageData.featuredImage;
 			} else {
 				unavailable = 'Featured images are not available for this page while using the current page template.';
 			}
@@ -75,5 +75,5 @@
 		}
 	};
 
-	ttfOneEditPage.init();
+	ttfmakeEditPage.init();
 })(jQuery);

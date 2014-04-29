@@ -3,11 +3,11 @@
  *
  * @since 1.0.0
  */
-/* global jQuery, TTFOneFitvids */
+/* global jQuery, ttfmakeFitVids */
 (function($) {
 	'use strict';
 
-	var ttfOne = {
+	var ttfmake = {
 		/**
 		 *
 		 */
@@ -131,8 +131,8 @@
 			var args = {};
 
 			// Get custom selectors
-			if ('object' === typeof TTFOneFitvids) {
-				args.customSelector = TTFOneFitvids.selectors;
+			if ('object' === typeof ttfmakeFitVids) {
+				args.customSelector = ttfmakeFitVids.selectors;
 			}
 
 			// Run FitVids
@@ -144,5 +144,5 @@
 		}
 	};
 
-	ttfOne.init();
+	ttfmake.init();
 })(jQuery);

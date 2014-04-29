@@ -1,4 +1,4 @@
-/*global jQuery, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor:true, ttfOneMCE */
+/*global jQuery, tinyMCEPreInit, tinyMCE, QTags, quicktags, wpActiveEditor:true, ttfmakeMCE */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 (function ($, oneApp) {
@@ -30,7 +30,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		tinyMCEPreInit.mceInit[editorID].selector = '#' + editorID;
 
 		// Only display the tinyMCE instance if in that mode. Else, the buttons will display incorrectly.
-		if ('tinymce' === ttfOneMCE) {
+		if ('tinymce' === ttfmakeMCE) {
 			tinyMCE.init(tinyMCEPreInit.mceInit[editorID]);
 		}
 

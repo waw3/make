@@ -350,7 +350,7 @@ function ttfmake_scripts() {
 	// Send to the script
 	wp_localize_script(
 		'ttfmake-fitvids',
-		'TTFOneFitVids',
+		'ttfmakeFitVids',
 		$fitvids_custom_selectors
 	);
 

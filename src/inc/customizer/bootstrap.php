@@ -91,7 +91,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 			$section_callback = 'ttfmake_customizer_';
 			$section_callback .= ( strpos( $section, '-' ) ) ? str_replace( '-', '_', $section ) : $section;
 			if ( function_exists( $section_callback ) ) {
-				$section_id = 'ttf-one_' . esc_attr( $section );
+				$section_id = 'ttfmake_' . esc_attr( $section );
 				if ( ! $title ) {
 					$title = ucfirst( esc_attr( $section ) );
 				}

@@ -15,7 +15,7 @@ if ( ! function_exists( 'ttfmake_customizer_header' ) ) :
  */
 function ttfmake_customizer_header( $wp_customize, $section ) {
 	$priority       = new TTFMAKE_Prioritizer( 10, 5 );
-	$control_prefix = 'ttf-one_';
+	$control_prefix = 'ttfmake_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Header Text color

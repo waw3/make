@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _, ttfOneBuilderData, setUserSetting, deleteUserSetting */
+/* global Backbone, jQuery, _, ttfmakeBuilderData, setUserSetting, deleteUserSetting */
 var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 (function (window, Backbone, $, _, oneApp, $oneApp) {
@@ -69,8 +69,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		menuToggle: function(evt) {
 			evt.preventDefault();
-			var id = ttfOneBuilderData.pageID,
-				key = 'ttfonemt' + parseInt(id, 10);
+			var id = ttfmakeBuilderData.pageID,
+				key = 'ttfmakemt' + parseInt(id, 10);
 
 			// Open it down
 			if (this.$pane.is(':hidden')) {

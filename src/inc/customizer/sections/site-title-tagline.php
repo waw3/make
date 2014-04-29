@@ -15,7 +15,7 @@ function ttfmake_customizer_sitetitletagline() {
 	global $wp_customize;
 
 	$priority       = new TTFMAKE_Prioritizer( 10, 1 );
-	$control_prefix = 'ttf-one_';
+	$control_prefix = 'ttfmake_';
 	$section        = 'title_tagline';
 
 	// Change priority for Site Title

@@ -163,7 +163,7 @@ class TTFMAKE_Gallery_Slider {
 				'include'          => '',
 				'exclude'          => '',
 
-				// ttf-one slider
+				// make slider
 				'ttfmake_slider'   => true,
 				'ttfmake_autoplay' => false,
 				'ttfmake_prevnext' => false,

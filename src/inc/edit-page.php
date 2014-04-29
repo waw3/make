@@ -24,7 +24,7 @@ function ttfmake_edit_page_script() {
 
 	wp_localize_script(
 		'ttfmake-admin-edit-page',
-		'ttfOneEditPageData',
+		'ttfmakeEditPageData',
 		array(
 			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
 			'pageNow'       => esc_js( $pagenow ),

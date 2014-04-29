@@ -10,27 +10,27 @@
 	 */
 	$.each({
 		'general-layout': {
-			controls: [ 'ttf-one_background-info' ],
+			controls: [ 'ttfmake_background-info' ],
 			callback: function( to ) { return 'full-width' === to; }
 		},
 		'background_image': {
-			controls: [ 'ttf-one_background_size' ],
+			controls: [ 'ttfmake_background_size' ],
 			callback: function( to ) { return !! to; }
 		},
 		'header-background-image': {
-			controls: [ 'ttf-one_header-background-repeat', 'ttf-one_header-background-position', 'ttf-one_header-background-size' ],
+			controls: [ 'ttfmake_header-background-repeat', 'ttfmake_header-background-position', 'ttfmake_header-background-size' ],
 			callback: function( to ) { return !! to; }
 		},
 		'header-layout': {
-			controls: [ 'ttf-one_header-branding-position' ],
+			controls: [ 'ttfmake_header-branding-position' ],
 			callback: function( to ) { return ( '1' == to || '3' == to ); }
 		},
 		'main-background-image': {
-			controls: [ 'ttf-one_main-background-repeat', 'ttf-one_main-background-position', 'ttf-one_main-background-size' ],
+			controls: [ 'ttfmake_main-background-repeat', 'ttfmake_main-background-position', 'ttfmake_main-background-size' ],
 			callback: function( to ) { return !! to; }
 		},
 		'footer-background-image': {
-			controls: [ 'ttf-one_footer-background-repeat', 'ttf-one_footer-background-position', 'ttf-one_footer-background-size' ],
+			controls: [ 'ttfmake_footer-background-repeat', 'ttfmake_footer-background-position', 'ttfmake_footer-background-size' ],
 			callback: function( to ) { return !! to; }
 		}
 	}, function( settingId, o ) {

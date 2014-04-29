@@ -3,7 +3,7 @@
  * @package Make
  */
 
-$class = ( 'c' === get_user_setting( 'ttfonemt' . get_the_ID() ) ) ? 'closed' : 'opened';
+$class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' : 'opened';
 ?>
 
 <div class="ttfmake-menu ttfmake-menu-<?php echo esc_attr( $class ); ?>" id="ttfmake-menu">

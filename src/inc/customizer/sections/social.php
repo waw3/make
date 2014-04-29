@@ -15,7 +15,7 @@ if ( ! function_exists( 'ttfmake_customizer_social' ) ) :
  */
 function ttfmake_customizer_social( $wp_customize, $section ) {
 	$priority       = new TTFMAKE_Prioritizer();
-	$control_prefix = 'ttf-one_';
+	$control_prefix = 'ttfmake_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Social description

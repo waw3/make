@@ -15,7 +15,7 @@ function ttfmake_customizer_background() {
 	global $wp_customize;
 
 	$priority       = new TTFMAKE_Prioritizer( 10, 5 );
-	$control_prefix = 'ttf-one_';
+	$control_prefix = 'ttfmake_';
 	$section        = 'background_image';
 
 	// Rename Background Image section to Background

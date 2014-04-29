@@ -85,9 +85,9 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 		);
 
 		if ( true === $ttfmake_is_js_template ) : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
+			<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfmakeeditorbannerslidetemp', $editor_settings ); ?>
 		<?php else : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttfmake_slide_id, $editor_settings ); ?>
+			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditorbannerslide' . $ttfmake_slide_id, $editor_settings ); ?>
 		<?php endif; ?>
 
 		<a href="#" class="ttfmake-banner-slide-remove">

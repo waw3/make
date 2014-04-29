@@ -270,11 +270,11 @@ function ttfmake_get_social_links() {
 			'class' => 'fa-pinterest',
 		),
 		'email' => array(
-			'title' => __( 'Email', 'ttf_one' ),
+			'title' => __( 'Email', 'make' ),
 			'class' => 'fa-envelope',
 		),
 		'rss' => array(
-			'title' => __( 'RSS', 'ttf_one' ),
+			'title' => __( 'RSS', 'make' ),
 			'class' => 'fa-rss',
 		),
 	);

@@ -223,7 +223,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_localize_script(
 			'ttfmake-builder',
-			'ttfOneBuilderData',
+			'ttfmakeBuilderData',
 			$data
 		);
 	}
@@ -278,7 +278,8 @@ class TTFMAKE_Builder_Base {
 		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
 		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
 
-		// Set default messages. Note that 'ttf-one' is not used in some cases the strings are core i18ns
+		// Set default messages. Note that the theme textdomain is not used in some cases
+		// because the strings are core i18ns
 		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image' )               : $messages['add'];
 		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image' )            : $messages['remove'];
 		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
@@ -433,7 +434,7 @@ class TTFMAKE_Builder_Base {
 
 		$img = '<span class="wp-media-buttons-icon"></span>';
 
-		// Note that 'ttf-one' text domain is not used for Add Media in order to use the core l10n
+		// Note that the theme textdomain is not used for Add Media in order to use the core l10n
 		echo '<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="' . esc_attr( $editor_id ) . '" title="' . esc_attr__( 'Add Media' ) . '">' . $img . ' <span class="ttfmake-media-button-text">' . __( 'Add Media' ) . '</span></a>';
 	}
 
@@ -482,7 +483,7 @@ class TTFMAKE_Builder_Base {
 	public function after_wp_tiny_mce( $settings ) {
 		?>
 		<script type="text/javascript">
-			var ttfOneMCE = '<?php echo esc_js( wp_default_editor() ); ?>';
+			var ttfmakeMCE = '<?php echo esc_js( wp_default_editor() ); ?>';
 		</script>
 	<?php
 	}
@@ -623,7 +624,7 @@ if ( ! function_exists( 'ttfmake_get_wp_editor_id' ) ) :
  * @return string                       The editor ID.
  */
 function ttfmake_get_wp_editor_id( $data, $is_js_template ) {
-	$id_base = 'ttfoneeditor' . $data['section']['id'];
+	$id_base = 'ttfmakeeditor' . $data['section']['id'];
 
 	if ( $is_js_template ) {
 		$id = $id_base . 'temp';

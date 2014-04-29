@@ -15,7 +15,7 @@ function ttfmake_customizer_navigation() {
 	global $wp_customize;
 
 	$priority       = new TTFMAKE_Prioritizer();
-	$control_prefix = 'ttf-one_';
+	$control_prefix = 'ttfmake_';
 	$section        = 'nav';
 
 	// Menu Label
