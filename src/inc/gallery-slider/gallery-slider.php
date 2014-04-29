@@ -3,31 +3,31 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTF_One_Gallery_Slider' ) ) :
+if ( ! class_exists( 'TTFMAKE_Gallery_Slider' ) ) :
 /**
- * class TTF_One_Gallery_Slider
+ * class TTFMAKE_Gallery_Slider
  *
  * A class that defines the slider for the gallery section.
  *
  * @since 1.0.0.
  */
-class TTF_One_Gallery_Slider {
+class TTFMAKE_Gallery_Slider {
 
 	/**
-	 * The one instance of TTF_One_Gallery_Slider
+	 * The one instance of TTFMAKE_Gallery_Slider
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var TTF_One_Gallery_Slider
+	 * @var TTFMAKE_Gallery_Slider
 	 */
 	private static $instance;
 
 	/**
-	 * Instantiate or return the one TTF_One_Gallery_Slider instance.
+	 * Instantiate or return the one TTFMAKE_Gallery_Slider instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Gallery_Slider
+	 * @return TTFMAKE_Gallery_Slider
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -42,7 +42,7 @@ class TTF_One_Gallery_Slider {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Gallery_Slider
+	 * @return TTFMAKE_Gallery_Slider
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -71,9 +71,9 @@ class TTF_One_Gallery_Slider {
 	function enqueue_media() {
 		wp_enqueue_script(
 			'ttfmake-admin-gallery-settings',
-			get_template_directory_uri() . '/inc/gallery-slider/gallery-slider' . TTF_ONE_SUFFIX . '.js',
+			get_template_directory_uri() . '/inc/gallery-slider/gallery-slider' . TTFMAKE_SUFFIX . '.js',
 			array( 'media-views' ),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 	}
@@ -294,14 +294,14 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_logo' ) ) :
 /**
- * Return the one TTF_One_Gallery_Slider object.
+ * Return the one TTFMAKE_Gallery_Slider object.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_Gallery_Slider
+ * @return TTFMAKE_Gallery_Slider
  */
 function ttfmake_get_gallery_slider() {
-	return TTF_One_Gallery_Slider::instance();
+	return TTFMAKE_Gallery_Slider::instance();
 }
 endif;
 

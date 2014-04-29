@@ -3,15 +3,15 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTF_One_Prioritizer' ) ) :
+if ( ! class_exists( 'TTFMAKE_Prioritizer' ) ) :
 /**
- * Class TTF_One_Prioritizer
+ * Class TTFMAKE_Prioritizer
  *
  * Increment upward from a starting number with each call to add().
  *
  * @since 1.0.0.
  */
-class TTF_One_Prioritizer {
+class TTFMAKE_Prioritizer {
 	/**
 	 * The starting priority.
 	 *
@@ -44,7 +44,7 @@ class TTF_One_Prioritizer {
 	 *
 	 * @param  int                    $initial_priority    Value to being the counter.
 	 * @param  int                    $increment           Value to increment the counter by.
-	 * @return TTF_One_Prioritizer
+	 * @return TTFMAKE_Prioritizer
 	 */
 	function __construct( $initial_priority = 100, $increment = 100 ) {
 		$this->initial_priority = absint( $initial_priority );
@@ -104,15 +104,15 @@ class TTF_One_Prioritizer {
 }
 endif;
 
-if ( class_exists( 'WP_Customize_Image_Control' ) && ! class_exists( 'TTF_One_Customize_Image_Control' ) ) :
+if ( class_exists( 'WP_Customize_Image_Control' ) && ! class_exists( 'TTFMAKE_Customize_Image_Control' ) ) :
 /**
- * Class TTF_One_Customize_Image_Control
+ * Class TTFMAKE_Customize_Image_Control
  *
  * Extend WP_Customize_Image_Control allowing access to uploads made within the same context.
  *
  * @since 1.0.0.
  */
-class TTF_One_Customize_Image_Control extends WP_Customize_Image_Control {
+class TTFMAKE_Customize_Image_Control extends WP_Customize_Image_Control {
 	/**
 	 * Override the stock tab_uploaded function.
 	 *
@@ -143,15 +143,15 @@ class TTF_One_Customize_Image_Control extends WP_Customize_Image_Control {
 }
 endif;
 
-if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'TTF_One_Customize_Misc_Control' ) ) :
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'TTFMAKE_Customize_Misc_Control' ) ) :
 /**
- * Class TTF_One_Customize_Misc_Control
+ * Class TTFMAKE_Customize_Misc_Control
  *
  * Control for adding arbitrary HTML to a Customizer section.
  *
  * @since 1.0.0.
  */
-class TTF_One_Customize_Misc_Control extends WP_Customize_Control {
+class TTFMAKE_Customize_Misc_Control extends WP_Customize_Control {
 	/**
 	 * The current setting name.
 	 *

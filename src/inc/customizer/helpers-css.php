@@ -3,7 +3,7 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTF_One_CSS' ) ) :
+if ( ! class_exists( 'TTFMAKE_CSS' ) ) :
 /**
  * Singleton to collect and print CSS based on user input.
  *
@@ -11,14 +11,14 @@ if ( ! class_exists( 'TTF_One_CSS' ) ) :
  * of conflicting rules and sorts out what the final CSS should be. The primary function is `add()`. It allows the
  * caller to add a new rule to be generated in the CSS.
  */
-class TTF_One_CSS {
+class TTFMAKE_CSS {
 
 	/**
-	 * The one instance of TTF_One_CSS.
+	 * The one instance of TTFMAKE_CSS.
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   TTF_One_CSS    The one instance for the singleton.
+	 * @var   TTFMAKE_CSS    The one instance for the singleton.
 	 */
 	private static $instance;
 
@@ -51,11 +51,11 @@ class TTF_One_CSS {
 	private $tab = '';
 
 	/**
-	 * Instantiate or return the one TTF_One_CSS instance.
+	 * Instantiate or return the one TTFMAKE_CSS instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_CSS
+	 * @return TTFMAKE_CSS
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -70,7 +70,7 @@ class TTF_One_CSS {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_CSS
+	 * @return TTFMAKE_CSS
 	 */
 	function __construct() {
 		// Set line ending and tab
@@ -252,14 +252,14 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_css' ) ) :
 /**
- * Return the one TTF_One_CSS object.
+ * Return the one TTFMAKE_CSS object.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_CSS    The one TTF_One_CSS object.
+ * @return TTFMAKE_CSS    The one TTFMAKE_CSS object.
  */
 function ttfmake_get_css() {
-	return TTF_One_CSS::instance();
+	return TTFMAKE_CSS::instance();
 }
 endif;
 

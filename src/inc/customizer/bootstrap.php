@@ -76,7 +76,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
 
 	// Priority for first section
-	$priority = new TTF_One_Prioritizer( 200, 50 );
+	$priority = new TTFMAKE_Prioritizer( 200, 50 );
 
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $title ) {
@@ -151,9 +151,9 @@ function ttfmake_customizer_preview_script() {
 
 	wp_enqueue_script(
 		'ttfmake-customizer-preview',
-		get_template_directory_uri() . $path . 'customizer-preview' . TTF_ONE_SUFFIX . '.js',
+		get_template_directory_uri() . $path . 'customizer-preview' . TTFMAKE_SUFFIX . '.js',
 		array( 'customize-preview' ),
-		TTF_ONE_VERSION,
+		TTFMAKE_VERSION,
 		true
 	);
 }
@@ -174,9 +174,9 @@ function ttfmake_customizer_sections_script() {
 
 	wp_enqueue_script(
 		'ttfmake-customizer-sections',
-		get_template_directory_uri() . $path . 'customizer-sections' . TTF_ONE_SUFFIX . '.js',
+		get_template_directory_uri() . $path . 'customizer-sections' . TTFMAKE_SUFFIX . '.js',
 		array( 'customize-controls' ),
-		TTF_ONE_VERSION,
+		TTFMAKE_VERSION,
 		true
 	);
 }

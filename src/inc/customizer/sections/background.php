@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_background' ) ) :
 function ttfmake_customizer_background() {
 	global $wp_customize;
 
-	$priority       = new TTF_One_Prioritizer( 10, 5 );
+	$priority       = new TTFMAKE_Prioritizer( 10, 5 );
 	$control_prefix = 'ttf-one_';
 	$section        = 'background_image';
 
@@ -27,7 +27,7 @@ function ttfmake_customizer_background() {
 	// Background note
 	$setting_id = 'background-info';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(

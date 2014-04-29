@@ -3,28 +3,28 @@
  * @package Make
  */
 
-if ( ! function_exists( 'TTF_One_Builder_Base' ) ) :
+if ( ! function_exists( 'TTFMAKE_Builder_Base' ) ) :
 /**
  * Defines the functionality for the HTML Builder.
  *
  * @since 1.0.0.
  */
-class TTF_One_Builder_Base {
+class TTFMAKE_Builder_Base {
 	/**
-	 * The one instance of TTF_One_Builder_Base.
+	 * The one instance of TTFMAKE_Builder_Base.
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   TTF_One_Builder_Base
+	 * @var   TTFMAKE_Builder_Base
 	 */
 	private static $instance;
 
 	/**
-	 * Instantiate or return the one TTF_One_Builder_Base instance.
+	 * Instantiate or return the one TTFMAKE_Builder_Base instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Builder_Base
+	 * @return TTFMAKE_Builder_Base
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -39,7 +39,7 @@ class TTF_One_Builder_Base {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Builder_Base
+	 * @return TTFMAKE_Builder_Base
 	 */
 	public function __construct() {
 		// Include the API
@@ -140,7 +140,7 @@ class TTF_One_Builder_Base {
 			'ttfmake-builder',
 			get_template_directory_uri() . '/inc/builder/core/css/builder.css',
 			array(),
-			TTF_ONE_VERSION
+			TTFMAKE_VERSION
 		);
 
 		wp_enqueue_style( 'wp-color-picker' );
@@ -160,7 +160,7 @@ class TTF_One_Builder_Base {
 			'ttfmake-builder/js/tinymce.js',
 			get_template_directory_uri() . '/inc/builder/core/js/tinymce.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -168,7 +168,7 @@ class TTF_One_Builder_Base {
 			'ttfmake-builder/js/models/section.js',
 			get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -176,7 +176,7 @@ class TTF_One_Builder_Base {
 			'ttfmake-builder/js/collections/sections.js',
 			get_template_directory_uri() . '/inc/builder/core/js/collections/sections.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -184,7 +184,7 @@ class TTF_One_Builder_Base {
 			'ttfmake-builder/js/views/menu.js',
 			get_template_directory_uri() . '/inc/builder/core/js/views/menu.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -192,7 +192,7 @@ class TTF_One_Builder_Base {
 			'ttfmake-builder/js/views/section.js',
 			get_template_directory_uri() . '/inc/builder/core/js/views/section.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -212,7 +212,7 @@ class TTF_One_Builder_Base {
 					)
 				)
 			),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -573,14 +573,14 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_builder_base' ) ) :
 /**
- * Instantiate or return the one TTF_One_Builder_Base instance.
+ * Instantiate or return the one TTFMAKE_Builder_Base instance.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_Builder_Base
+ * @return TTFMAKE_Builder_Base
  */
 function ttfmake_get_builder_base() {
-	return TTF_One_Builder_Base::instance();
+	return TTFMAKE_Builder_Base::instance();
 }
 endif;
 

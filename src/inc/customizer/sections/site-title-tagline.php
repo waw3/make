@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_sitetitletagline' ) ) :
 function ttfmake_customizer_sitetitletagline() {
 	global $wp_customize;
 
-	$priority       = new TTF_One_Prioritizer( 10, 1 );
+	$priority       = new TTFMAKE_Prioritizer( 10, 1 );
 	$control_prefix = 'ttf-one_';
 	$section        = 'title_tagline';
 

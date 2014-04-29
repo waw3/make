@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_logo' ) ) :
  * @return void
  */
 function ttfmake_customizer_logo( $wp_customize, $section ) {
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
@@ -29,7 +29,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
+		new TTFMAKE_Customize_Image_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -53,7 +53,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
+		new TTFMAKE_Customize_Image_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -69,7 +69,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 	// Retina info
 	$setting_id = $setting_prefix . '-retina-info';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -92,7 +92,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
+		new TTFMAKE_Customize_Image_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -109,7 +109,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 	// Favicon info
 	$setting_id = $setting_prefix . '-favicon-info';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -132,7 +132,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
+		new TTFMAKE_Customize_Image_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -149,7 +149,7 @@ function ttfmake_customizer_logo( $wp_customize, $section ) {
 	// Apple Touch Icon info
 	$setting_id = $setting_prefix . '-apple-touch-info';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(

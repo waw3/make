@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_navigation' ) ) :
 function ttfmake_customizer_navigation() {
 	global $wp_customize;
 
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$section        = 'nav';
 
@@ -44,7 +44,7 @@ function ttfmake_customizer_navigation() {
 	// Menu Label info
 	$setting_id = 'navigation-mobile-lable-info';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(

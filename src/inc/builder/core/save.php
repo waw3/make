@@ -3,19 +3,19 @@
  * @package Make
  */
 
-if ( ! function_exists( 'TTF_One_Builder_Save' ) ) :
+if ( ! function_exists( 'TTFMAKE_Builder_Save' ) ) :
 /**
  * Defines the functionality for the HTML Builder.
  *
  * @since 1.0.0.
  */
-class TTF_One_Builder_Save {
+class TTFMAKE_Builder_Save {
 	/**
-	 * The one instance of TTF_One_Builder_Save.
+	 * The one instance of TTFMAKE_Builder_Save.
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   TTF_One_Builder_Save
+	 * @var   TTFMAKE_Builder_Save
 	 */
 	private static $instance;
 
@@ -29,11 +29,11 @@ class TTF_One_Builder_Save {
 	private $_sanitized_sections = array();
 
 	/**
-	 * Instantiate or return the one TTF_One_Builder_Save instance.
+	 * Instantiate or return the one TTFMAKE_Builder_Save instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Builder_Save
+	 * @return TTFMAKE_Builder_Save
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -48,7 +48,7 @@ class TTF_One_Builder_Save {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Builder_Save
+	 * @return TTFMAKE_Builder_Save
 	 */
 	public function __construct() {
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
@@ -453,14 +453,14 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_builder_save' ) ) :
 /**
- * Instantiate or return the one TTF_One_Builder_Save instance.
+ * Instantiate or return the one TTFMAKE_Builder_Save instance.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_Builder_Save
+ * @return TTFMAKE_Builder_Save
  */
 function ttfmake_get_builder_save() {
-	return TTF_One_Builder_Save::instance();
+	return TTFMAKE_Builder_Save::instance();
 }
 endif;
 

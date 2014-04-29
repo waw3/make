@@ -3,22 +3,22 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTF_One_Logo' ) ) :
+if ( ! class_exists( 'TTFMAKE_Logo' ) ) :
 /**
- * class TTF_One_Logo
+ * class TTFMAKE_Logo
  *
  * A class that adds custom logo functionality.
  *
  * @since 1.0.0.
  */
-class TTF_One_Logo {
+class TTFMAKE_Logo {
 
 	/**
-	 * The one instance of TTF_One_Logo
+	 * The one instance of TTFMAKE_Logo
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   TTF_One_Logo    The one instance.
+	 * @var   TTFMAKE_Logo    The one instance.
 	 */
 	private static $instance;
 
@@ -45,11 +45,11 @@ class TTF_One_Logo {
 	var $has_logo_by_type = array();
 
 	/**
-	 * Instantiate or return the one TTF_One_Logo instance.
+	 * Instantiate or return the one TTFMAKE_Logo instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Logo
+	 * @return TTFMAKE_Logo
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -64,7 +64,7 @@ class TTF_One_Logo {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Logo
+	 * @return TTFMAKE_Logo
 	 */
 	public function __construct() {
 		add_action( 'ttfmake_css', array( $this, 'print_logo_css' ) );
@@ -124,7 +124,7 @@ class TTF_One_Logo {
 	 */
 	function get_logo_dimensions( $url ) {
 		// Build the cache key
-		$key = 'ttfmake-' . md5( 'logo-dimensions-' . $url . TTF_ONE_VERSION );
+		$key = 'ttfmake-' . md5( 'logo-dimensions-' . $url . TTFMAKE_VERSION );
 
 		// Pull from cache
 		$dimensions = get_transient( $key );
@@ -390,14 +390,14 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_logo' ) ) :
 /**
- * Return the one TTF_One_Logo object.
+ * Return the one TTFMAKE_Logo object.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_Logo
+ * @return TTFMAKE_Logo
  */
 function ttfmake_get_logo() {
-	return TTF_One_Logo::instance();
+	return TTFMAKE_Logo::instance();
 }
 endif;
 

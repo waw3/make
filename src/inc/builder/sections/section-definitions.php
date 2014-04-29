@@ -3,30 +3,30 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTF_One_Section_Definitions' ) ) :
+if ( ! class_exists( 'TTFMAKE_Section_Definitions' ) ) :
 /**
  * Collector for builder sections.
  *
  * @since 1.0.0.
  *
- * Class TTF_One_Section_Definitions
+ * Class TTFMAKE_Section_Definitions
  */
-class TTF_One_Section_Definitions {
+class TTFMAKE_Section_Definitions {
 	/**
-	 * The one instance of TTF_One_Section_Definitions.
+	 * The one instance of TTFMAKE_Section_Definitions.
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   TTF_One_Section_Definitions
+	 * @var   TTFMAKE_Section_Definitions
 	 */
 	private static $instance;
 
 	/**
-	 * Instantiate or return the one TTF_One_Section_Definitions instance.
+	 * Instantiate or return the one TTFMAKE_Section_Definitions instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Section_Definitions
+	 * @return TTFMAKE_Section_Definitions
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -41,7 +41,7 @@ class TTF_One_Section_Definitions {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Section_Definitions
+	 * @return TTFMAKE_Section_Definitions
 	 */
 	public function __construct() {
 		// Register all of the sections via the section API
@@ -95,7 +95,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['columns-order'] ) ) {
-			$clean_data['columns-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['columns-order'] ) );
+			$clean_data['columns-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['columns-order'] ) );
 		}
 
 		if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
@@ -220,7 +220,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['banner-slide-order'] ) ) {
-			$clean_data['banner-slide-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
+			$clean_data['banner-slide-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
 		}
 
 		if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
@@ -331,7 +331,7 @@ class TTF_One_Section_Definitions {
 		}
 
 		if ( isset( $data['gallery-item-order'] ) ) {
-			$clean_data['gallery-item-order'] = array_map( array( 'TTF_One_Builder_Save', 'clean_section_id' ), explode( ',', $data['gallery-item-order'] ) );
+			$clean_data['gallery-item-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['gallery-item-order'] ) );
 		}
 
 		if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
@@ -375,7 +375,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/models/gallery-item.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/models/gallery-item.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -383,7 +383,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/views/gallery-item.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery-item.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -391,7 +391,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/views/gallery.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -399,7 +399,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/views/text.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/text.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -407,7 +407,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/models/banner-slide.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/models/banner-slide.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -415,7 +415,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/views/banner-slide.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/banner-slide.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -423,7 +423,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/js/views/banner.js',
 			get_template_directory_uri() . '/inc/builder/sections/js/views/banner.js',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 
@@ -435,7 +435,7 @@ class TTF_One_Section_Definitions {
 			'ttfmake-sections/css/sections.css',
 			get_template_directory_uri() . '/inc/builder/sections/css/sections.css',
 			array(),
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			'all'
 		);
 	}
@@ -518,14 +518,14 @@ class TTF_One_Section_Definitions {
 endif;
 
 /**
- * Instantiate or return the one TTF_One_Section_Definitions instance.
+ * Instantiate or return the one TTFMAKE_Section_Definitions instance.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_Section_Definitions
+ * @return TTFMAKE_Section_Definitions
  */
 function ttfmake_get_section_definitions() {
-	return TTF_One_Section_Definitions::instance();
+	return TTFMAKE_Section_Definitions::instance();
 }
 
 add_action( 'admin_init', 'ttfmake_get_section_definitions' );

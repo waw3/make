@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_color' ) ) :
  * @return void
  */
 function ttfmake_customizer_color( $wp_customize, $section ) {
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 

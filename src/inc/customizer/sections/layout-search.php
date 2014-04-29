@@ -14,14 +14,14 @@ if ( ! function_exists( 'ttfmake_customizer_layout_search' ) ) :
  * @return void
  */
 function ttfmake_customizer_layout_search( $wp_customize, $section ) {
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Header, Footer, Sidebars heading
 	$setting_id = $setting_prefix . '-heading-sidebars';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -186,7 +186,7 @@ function ttfmake_customizer_layout_search( $wp_customize, $section ) {
 	// Content heading
 	$setting_id = $setting_prefix . '-heading-content';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -222,7 +222,7 @@ function ttfmake_customizer_layout_search( $wp_customize, $section ) {
 	// Post meta heading
 	$setting_id = $setting_prefix . '-heading-postmeta';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(

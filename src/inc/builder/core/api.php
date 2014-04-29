@@ -3,15 +3,15 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTF_One_Sections' ) ) :
+if ( ! class_exists( 'TTFMAKE_Sections' ) ) :
 /**
  * Collector for builder sections.
  *
  * @since 1.0.0.
  *
- * Class TTF_One_Sections
+ * Class TTFMAKE_Sections
  */
-class TTF_One_Sections {
+class TTFMAKE_Sections {
 	/**
 	 * The sections for the builder.
 	 *
@@ -22,20 +22,20 @@ class TTF_One_Sections {
 	private $_sections = array();
 
 	/**
-	 * The one instance of TTF_One_Sections.
+	 * The one instance of TTFMAKE_Sections.
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   TTF_One_Sections
+	 * @var   TTFMAKE_Sections
 	 */
 	private static $instance;
 
 	/**
-	 * Instantiate or return the one TTF_One_Sections instance.
+	 * Instantiate or return the one TTFMAKE_Sections instance.
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Sections
+	 * @return TTFMAKE_Sections
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -50,7 +50,7 @@ class TTF_One_Sections {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return TTF_One_Sections
+	 * @return TTFMAKE_Sections
 	 */
 	public function __constructor() {}
 
@@ -97,14 +97,14 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_sections_class' ) ) :
 /**
- * Instantiate or return the one TTF_One_Sections instance.
+ * Instantiate or return the one TTFMAKE_Sections instance.
  *
  * @since  1.0.0.
  *
- * @return TTF_One_Sections
+ * @return TTFMAKE_Sections
  */
 function ttfmake_get_sections_class() {
-	return TTF_One_Sections::instance();
+	return TTFMAKE_Sections::instance();
 }
 endif;
 

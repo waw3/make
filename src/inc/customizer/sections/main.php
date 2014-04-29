@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_main' ) ) :
  * @return void
  */
 function ttfmake_customizer_main( $wp_customize, $section ) {
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
@@ -52,7 +52,7 @@ function ttfmake_customizer_main( $wp_customize, $section ) {
 		)
 	);
 	$wp_customize->add_control(
-		new TTF_One_Customize_Image_Control(
+		new TTFMAKE_Customize_Image_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -134,7 +134,7 @@ function ttfmake_customizer_main( $wp_customize, $section ) {
 	// Content options heading
 	$setting_id = $setting_prefix . '-content-heading';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(

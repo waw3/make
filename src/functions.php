@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTF_ONE_VERSION', '1.0' );
+define( 'TTFMAKE_VERSION', '1.0' );
 
 if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
 /**
@@ -25,9 +25,9 @@ endif;
  * The suffix to use for scripts.
  */
 if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttfmake_is_wpcom() ) {
-	define( 'TTF_ONE_SUFFIX', '' );
+	define( 'TTFMAKE_SUFFIX', '' );
 } else {
-	define( 'TTF_ONE_SUFFIX', '.min' );
+	define( 'TTFMAKE_SUFFIX', '.min' );
 }
 
 /**
@@ -278,7 +278,7 @@ function ttfmake_scripts() {
 			'ttfmake-google-fonts',
 			$google_request,
 			$style_dependencies,
-			TTF_ONE_VERSION
+			TTFMAKE_VERSION
 		);
 		$style_dependencies[] = 'ttfmake-google-fonts';
 	}
@@ -297,7 +297,7 @@ function ttfmake_scripts() {
 		'ttfmake-main-style',
 		get_stylesheet_uri(),
 		$style_dependencies,
-		TTF_ONE_VERSION
+		TTFMAKE_VERSION
 	);
 	$style_dependencies[] = 'ttfmake-main-style';
 
@@ -306,7 +306,7 @@ function ttfmake_scripts() {
 		'ttfmake-print-style',
 		get_template_directory_uri() . '/css/print.css',
 		$style_dependencies,
-		TTF_ONE_VERSION,
+		TTFMAKE_VERSION,
 		'print'
 	);
 
@@ -323,7 +323,7 @@ function ttfmake_scripts() {
 	// FitVids
 	wp_enqueue_script(
 		'ttfmake-fitvids',
-		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTF_ONE_SUFFIX . '.js',
+		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
 		$script_dependencies,
 		'1.1',
 		true
@@ -359,9 +359,9 @@ function ttfmake_scripts() {
 	// Global script
 	wp_enqueue_script(
 		'ttfmake-global',
-		get_template_directory_uri() . '/js/global' . TTF_ONE_SUFFIX . '.js',
+		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
 		$script_dependencies,
-		TTF_ONE_VERSION,
+		TTFMAKE_VERSION,
 		true
 	);
 
@@ -388,12 +388,12 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
  * @return void
  */
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
-	if ( defined( 'TTF_ONE_SUFFIX' ) && '.min' === TTF_ONE_SUFFIX ) {
+	if ( defined( 'TTFMAKE_SUFFIX' ) && '.min' === TTFMAKE_SUFFIX ) {
 		wp_enqueue_script(
 			'ttfmake-cycle2',
-			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTF_ONE_SUFFIX . '.js',
+			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTFMAKE_SUFFIX . '.js',
 			$script_dependencies,
-			TTF_ONE_VERSION,
+			TTFMAKE_VERSION,
 			true
 		);
 	} else {

@@ -14,7 +14,7 @@ if ( ! function_exists( 'ttfmake_customizer_font' ) ) :
  * @return void
  */
 function ttfmake_customizer_font( $wp_customize, $section ) {
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
@@ -172,7 +172,7 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 	// Character subset info
 	$setting_id = $setting_prefix . '-subset-info';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(

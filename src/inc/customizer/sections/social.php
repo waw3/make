@@ -14,14 +14,14 @@ if ( ! function_exists( 'ttfmake_customizer_social' ) ) :
  * @return void
  */
 function ttfmake_customizer_social( $wp_customize, $section ) {
-	$priority       = new TTF_One_Prioritizer();
+	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
 	// Social description
 	$setting_id = $setting_prefix . '-description';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -225,7 +225,7 @@ function ttfmake_customizer_social( $wp_customize, $section ) {
 	// Custom alternate
 	$setting_id = $setting_prefix . '-custom-alternate';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
@@ -267,7 +267,7 @@ function ttfmake_customizer_social( $wp_customize, $section ) {
 	// RSS Heading
 	$setting_id = $setting_prefix . '-rss-heading';
 	$wp_customize->add_control(
-		new TTF_One_Customize_Misc_Control(
+		new TTFMAKE_Customize_Misc_Control(
 			$wp_customize,
 			$control_prefix . $setting_id,
 			array(
