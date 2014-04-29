@@ -24,7 +24,9 @@ $show_social   = (int) get_theme_mod( 'footer-show-social', ttfmake_get_default(
 		</div>
 		<?php endif; ?>
 
-		<?php get_template_part( 'partials/footer', 'text' ); ?>
+		<?php // Footer text and credit line
+		get_template_part( 'partials/footer', 'credit' ); ?>
+
 		<?php ttfmake_maybe_show_social_links( 'footer' ); ?>
 	</div>
 </footer>
