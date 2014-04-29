@@ -27,37 +27,18 @@ add_action( 'after_setup_theme', 'ttf_one_jetpack_setup' );
 
 if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_footer_callback' ) ) :
 /**
- * Callback to render the special footer added by Infinite Scroll
+ * Callback to render the special footer added by Infinite Scroll.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @return void
  */
 function ttf_one_jetpack_infinite_scroll_footer_callback() {
 	$footer_layout = (int) get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) );
-	$footer_text   = ttf_one_sanitize_text( get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) ) );
-	$social_links  = ttf_one_get_social_links();
 	?>
 	<div id="infinite-footer">
-		<footer class="site-footer footer-layout-<?php echo $footer_layout; ?>" role="contentinfo">
-			<?php if ( $footer_text ) : ?>
-			<div class="footer-text">
-				<?php echo ttf_one_sanitize_text( $footer_text ); ?>
-			</div>
-			<?php endif; ?>
-
-			<div class="site-info">
-				<?php // Footer credit
-				printf(
-					__( '%s theme', 'ttf-one' ),
-					'<span class="theme-name">One</span>'
-				);
-				?>
-				<span class="theme-by"><?php _ex( 'by', 'attribution', 'ttf-one' ); ?></span>
-				<span class="theme-author"><a title="<?php esc_attr_e( 'The Theme Foundry homepage', 'ttf-one' ); ?>" href="https://thethemefoundry.com/">
-					The Theme Foundry
-				</a></span>
-			</div>
+		<footer class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
+			<?php get_template_part( 'partials/footer', 'credit' ); ?>
 		</footer>
 	</div>
 <?php
