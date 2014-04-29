@@ -131,12 +131,13 @@ a {
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
+	color: $b;
 	margin: 0; //reset
 	font-weight: bold;
 	font-family: $heading;
 	@include rem('font-size', 34px);
 	a {
-		color: inherit;
+		color: $b;
 	}
 }
 @include for(medium-screens) {

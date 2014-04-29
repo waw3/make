@@ -22,6 +22,29 @@ function ttfmake_customizer_sitetitletagline() {
 	$site_title           = $wp_customize->get_control( 'blogname' );
 	$site_title->priority = $priority->add();
 
+	// Site title color
+	$setting_id = 'color-site-title';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'maybe_hash_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$control_prefix . $setting_id,
+			array(
+				'settings' => $setting_id,
+				'section'  => $section,
+				'label'    => __( 'Site Title Color', 'make' ),
+				'priority' => $priority->add()
+			)
+		)
+	);
+
 	// Hide Site Title
 	$setting_id = 'hide-site-title';
 	$wp_customize->add_setting(

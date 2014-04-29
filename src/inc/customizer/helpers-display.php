@@ -20,6 +20,19 @@ if ( ! function_exists( 'ttfmake_css_add_rules' ) ) :
  */
 function ttfmake_css_add_rules() {
 	/**
+	 * Site Title & Tagline section
+	 */
+	$color_site_title = maybe_hash_hex_color( get_theme_mod( 'color-site-title', ttfmake_get_default( 'color-site-title' ) ) );
+	if ( $color_site_title !== ttfmake_get_default( 'color-site-title' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-title', '.site-title a' ),
+			'declarations' => array(
+				'color' => $color_site_title
+			)
+		) );
+	}
+
+	/**
 	 * Background section
 	 */
 	$site_background_image = get_theme_mod( 'background_image', ttfmake_get_default( 'background_image' ) );

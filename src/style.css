@@ -297,13 +297,14 @@ a {
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
+  color: #171717;
   margin: 0;
   font-weight: bold;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 34px;
   font-size: 2rem; }
   .site-title a {
-    color: inherit; }
+    color: #171717; }
 
 @media screen and (min-width: 800px) {
   .site-branding {

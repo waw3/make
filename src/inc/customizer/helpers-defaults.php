@@ -16,6 +16,7 @@ function ttfmake_option_defaults() {
 		// Site Title & Tagline
 		'hide-site-title'                   => 0,
 		'hide-tagline'                      => 0,
+		'color-site-title'                  => '#171717',
 
 		// Navigation
 		'navigation-mobile-label'           => __( 'Menu', 'make' ),
