@@ -8,6 +8,13 @@ if ( ! function_exists( 'ttf_one_comment' ) ) :
  * Template for comments and pingbacks.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since  1.0.0.
+ *
+ * @param  array    $comment    The current comment object.
+ * @param  array    $args       The comment configuration arguments.
+ * @param  mixed    $depth      Depth of the current comment.
+ * @return void
  */
 function ttf_one_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
@@ -83,9 +90,9 @@ if ( ! function_exists( 'ttf_one_categorized_blog' ) ) :
 /**
  * Returns true if a blog has more than 1 category.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @return bool
+ * @return bool    Determine if the site has more than one active category.
  */
 function ttf_one_categorized_blog() {
 	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
@@ -133,12 +140,11 @@ if ( ! function_exists( 'ttf_one_get_read_more' ) ) :
  *
  * Use '%s' as a placeholder for the post URL.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $before
- * @param string $after
- *
- * @return string
+ * @param  string    $before    HTML before the text.
+ * @param  string    $after     HTML after the text.
+ * @return string               Full read more HTML.
  */
 function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
 	if ( strpos( $before, '%s' ) ) {
@@ -156,12 +162,11 @@ endif;
 
 if ( ! function_exists( 'ttf_one_maybe_show_site_region' ) ) :
 /**
- * Output the site region (header or footer) markup if the current view calls for it
+ * Output the site region (header or footer) markup if the current view calls for it.
  *
- * @since 1.0.0
+ * @since  1.0.0.
  *
- * @param string $region
- *
+ * @param  string    $region    Region to maybe show.
  * @return void
  */
 function ttf_one_maybe_show_site_region( $region ) {
@@ -213,7 +218,7 @@ if ( ! function_exists( 'ttf_one_maybe_show_social_links' ) ) :
 /**
  * Show the social links markup if the theme options and/or menus are configured for it.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
  * @param  string    $region    The site region (header or footer).
  * @return void
@@ -262,12 +267,11 @@ if ( ! function_exists( 'ttf_one_pre_wp_nav_menu_social' ) ) :
 /**
  * Alternative output for wp_nav_menu for the 'social' menu location.
  *
- * @since 1.0.0.
+ * @since  1.0.0.
  *
- * @param  string    $output    Null
- * @param  object    $args      wp_nav_menu arguments
- *
- * @return string
+ * @param  string    $output    Output for the menu.
+ * @param  object    $args      wp_nav_menu arguments.
+ * @return string               Modified menu.
  */
 function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
@@ -298,8 +302,7 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 
 	unset( $menu_items, $menu_item );
 
-	// Supported social icons (filterable)
-	// [css class] => [url pattern]
+	// Supported social icons (filterable); [css class] => [url pattern]
 	$supported_icons = apply_filters( 'ttf_one_supported_social_icons', array(
 		'fa-adn'                => 'app.net',
 		'fa-bitbucket'          => 'bitbucket.org',
@@ -368,9 +371,12 @@ add_filter( 'pre_wp_nav_menu', 'ttf_one_pre_wp_nav_menu_social', 10, 2 );
 
 if ( ! function_exists( 'ttf_one_get_exif_data' ) ) :
 /**
- * @param int $attachment_id
+ * Get EXIF data from an attachment.
  *
- * @return string
+ * @since  1.0.0.
+ *
+ * @param  int       $attachment_id    The attachment ID to get data from.
+ * @return string                      The EXIF data.
  */
 function ttf_one_get_exif_data( $attachment_id = 0 ) {
 	// Validate attachment id
@@ -381,7 +387,7 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 	$output = '';
 
 	$attachment_meta = wp_get_attachment_metadata( $attachment_id );
-	$image_meta = ( isset( $attachment_meta[ 'image_meta' ] ) ) ? array_filter( $attachment_meta[ 'image_meta' ], 'trim' ) : array();
+	$image_meta      = ( isset( $attachment_meta['image_meta'] ) ) ? array_filter( $attachment_meta['image_meta'], 'trim' ) : array();
 	if ( ! empty( $image_meta ) ) {
 		// Defaults
 		$defaults = array(
@@ -415,7 +421,7 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 					_x( 'seconds', 'time', 'ttf-one' )
 				);
 			}
-			$image_meta[ 'shutter_speed' ] = apply_filters( 'ttf_one_exif_shutter_speed', $converted_ss, $image_meta[ 'shutter_speed' ] );
+			$image_meta['shutter_speed'] = apply_filters( 'ttf_one_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
 		}
 
 		// Convert the aperture to an F-stop
@@ -423,43 +429,48 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 			$f_stop = sprintf(
 				'%1$s' . '%2$s',
 				_x( 'f/', 'camera f-stop', 'ttf-one' ),
-				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta[ 'aperture' ] ) ) )
+				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
-			$image_meta[ 'aperture' ] = apply_filters( 'ttf_one_exif_aperture', $f_stop, $image_meta[ 'aperture' ] );
+			$image_meta['aperture'] = apply_filters( 'ttf_one_exif_aperture', $f_stop, $image_meta['aperture'] );
 		}
 
 		$output .= "<ul class=\"entry-exif-list\">\n";
 
 		// Camera
-		if ( ! empty( $image_meta[ 'camera' ] ) ) {
+		if ( ! empty( $image_meta['camera'] ) ) {
 			$output .= '<li><span>' . _x( 'Camera:', 'camera setting', 'ttf-one' ) . '</span> ';
-			$output .= esc_html( $image_meta[ 'camera' ] ) . "</li>\n";
+			$output .= esc_html( $image_meta['camera'] ) . "</li>\n";
 		}
+
 		// Creation Date
-		if ( ! empty( $image_meta[ 'created_timestamp' ] ) ) {
+		if ( ! empty( $image_meta['created_timestamp'] ) ) {
 			$output .= '<li><span>' . _x( 'Taken:', 'camera setting', 'ttf-one' ) . '</span> ';
-			$date = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta[ 'created_timestamp' ] ) );
+			$date    = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta['created_timestamp'] ) );
 			$output .= esc_html( $date->format( get_option( 'date_format' ) ) ) . "</li>\n";
 		}
+
 		// Focal length
-		if ( ! empty( $image_meta[ 'focal_length' ] ) ) {
+		if ( ! empty( $image_meta['focal_length'] ) ) {
 			$output .= '<li><span>' . _x( 'Focal length:', 'camera setting', 'ttf-one' ) . '</span> ';
-			$output .= number_format_i18n( $image_meta[ 'focal_length' ], 0 ) . _x( 'mm', 'millimeters', 'ttf-one' ) . "</li>\n";
+			$output .= number_format_i18n( absint( $image_meta['focal_length'] ), 0 ) . _x( 'mm', 'millimeters', 'ttf-one' ) . "</li>\n";
 		}
+
 		// Aperture
-		if ( ! empty( $image_meta[ 'aperture' ] ) ) {
+		if ( ! empty( $image_meta['aperture'] ) ) {
 			$output .= '<li><span>' . _x( 'Aperture:', 'camera setting', 'ttf-one' ) . '</span> ';
-			$output .= esc_html( $image_meta[ 'aperture' ] ) . "</li>\n";
+			$output .= esc_html( $image_meta['aperture'] ) . "</li>\n";
 		}
+
 		// Exposure
-		if ( ! empty( $image_meta[ 'shutter_speed' ] ) ) {
+		if ( ! empty( $image_meta['shutter_speed'] ) ) {
 			$output .= '<li><span>' . _x( 'Exposure:', 'camera setting', 'ttf-one' ) . '</span> ';
-			$output .= esc_html( $image_meta[ 'shutter_speed' ] ) . "</li>\n";
+			$output .= esc_html( $image_meta['shutter_speed'] ) . "</li>\n";
 		}
+
 		// ISO
-		if ( ! empty( $image_meta[ 'iso' ] ) ) {
+		if ( ! empty( $image_meta['iso'] ) ) {
 			$output .= '<li><span>' . _x( 'ISO:', 'camera setting', 'oxford' ) . '</span> ';
-			$output .= absint( $image_meta[ 'iso' ] ) . "</li>\n";
+			$output .= absint( $image_meta['iso'] ) . "</li>\n";
 		}
 
 		$output .= "</ul>\n";
