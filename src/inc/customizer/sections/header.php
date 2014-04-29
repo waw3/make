@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_header' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_header' ) ) :
 /**
  * Configure settings and controls for the Header section
  *
@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttf_one_customizer_header' ) ) :
  * @param  string    $section         The section name.
  * @return void
  */
-function ttf_one_customizer_header( $wp_customize, $section ) {
+function ttfmake_customizer_header( $wp_customize, $section ) {
 	$priority       = new TTF_One_Prioritizer( 10, 5 );
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
@@ -23,7 +23,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -46,7 +46,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -69,7 +69,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -93,9 +93,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -105,7 +105,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Repeat', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -115,9 +115,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -127,7 +127,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Position', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -137,9 +137,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -149,7 +149,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -159,7 +159,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -182,7 +182,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -205,7 +205,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -228,9 +228,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_text',
+			'sanitize_callback' => 'ttfmake_sanitize_text',
 			'transport'         => 'postMessage' // Asynchronous preview
 		)
 	);
@@ -265,7 +265,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -286,7 +286,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -307,9 +307,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -319,7 +319,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Sub Header Content Layout', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -329,9 +329,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -341,7 +341,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Header Layout', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -351,9 +351,9 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -363,7 +363,7 @@ function ttf_one_customizer_header( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Show Title/Logo On', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);

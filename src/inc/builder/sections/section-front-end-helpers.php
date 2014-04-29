@@ -12,7 +12,7 @@
  * @param  array     $data    The section data.
  * @return bool               True if the section is the specified type; false if it is not.
  */
-function ttf_one_builder_is_section_type( $type, $data ) {
+function ttfmake_builder_is_section_type( $type, $data ) {
 	if ( isset( $data['section-type'] ) && $type === $data['section-type'] ) {
 		return true;
 	}
@@ -25,22 +25,22 @@ function ttf_one_builder_is_section_type( $type, $data ) {
  *
  * @since  1.0.0.
  *
- * @param  array    $ttf_one_section_data    The section data.
+ * @param  array    $ttfmake_section_data    The section data.
  * @return array                             The array of gallery items.
  */
-function ttf_one_builder_get_gallery_array( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_gallery_array( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
 		return array();
 	}
 
 	$gallery_order = array();
-	if ( isset( $ttf_one_section_data['gallery-item-order'] ) ) {
-		$gallery_order = $ttf_one_section_data['gallery-item-order'];
+	if ( isset( $ttfmake_section_data['gallery-item-order'] ) ) {
+		$gallery_order = $ttfmake_section_data['gallery-item-order'];
 	}
 
 	$gallery_items = array();
-	if ( isset( $ttf_one_section_data['gallery-items'] ) ) {
-		$gallery_items = $ttf_one_section_data['gallery-items'];
+	if ( isset( $ttfmake_section_data['gallery-items'] ) ) {
+		$gallery_items = $ttfmake_section_data['gallery-items'];
 	}
 
 	$gallery_array = array();
@@ -58,39 +58,39 @@ function ttf_one_builder_get_gallery_array( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return string                             The class.
  */
-function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_gallery_class( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
 		return '';
 	}
 
 	$gallery_class = ' ';
 
 	// Section classes
-	$gallery_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
+	$gallery_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data );
 
 	// Columns
-	$gallery_columns = ( isset( $ttf_one_section_data['columns'] ) ) ? absint( $ttf_one_section_data['columns'] ) : 1;
+	$gallery_columns = ( isset( $ttfmake_section_data['columns'] ) ) ? absint( $ttfmake_section_data['columns'] ) : 1;
 	$gallery_class  .= ' builder-gallery-columns-' . $gallery_columns;
 
 	// Captions
-	if ( isset( $ttf_one_section_data['captions'] ) && ! empty( $ttf_one_section_data['captions'] ) ) {
-		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttf_one_section_data['captions'] );
+	if ( isset( $ttfmake_section_data['captions'] ) && ! empty( $ttfmake_section_data['captions'] ) ) {
+		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttfmake_section_data['captions'] );
 	}
 
 	// Caption color
-	if ( isset( $ttf_one_section_data['caption-color'] ) && ! empty( $ttf_one_section_data['caption-color'] ) ) {
-		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttf_one_section_data['caption-color'] );
+	if ( isset( $ttfmake_section_data['caption-color'] ) && ! empty( $ttfmake_section_data['caption-color'] ) ) {
+		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttfmake_section_data['caption-color'] );
 	}
 
 	// Aspect Ratio
-	if ( isset( $ttf_one_section_data['aspect'] ) && ! empty( $ttf_one_section_data['aspect'] ) ) {
-		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttf_one_section_data['aspect'] );
+	if ( isset( $ttfmake_section_data['aspect'] ) && ! empty( $ttfmake_section_data['aspect'] ) ) {
+		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttfmake_section_data['aspect'] );
 	}
 
-	return apply_filters( 'ttf_one_gallery_class', $gallery_class, $ttf_one_section_data );
+	return apply_filters( 'ttfmake_gallery_class', $gallery_class, $ttfmake_section_data );
 }
 
 /**
@@ -98,32 +98,32 @@ function ttf_one_builder_get_gallery_class( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return string                             The CSS string.
  */
-function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
 		return '';
 	}
 
 	$gallery_style = '';
 
 	// Background color
-	if ( isset( $ttf_one_section_data['background-color'] ) && ! empty( $ttf_one_section_data['background-color'] ) ) {
-		$gallery_style .= 'background-color:' . maybe_hash_hex_color( $ttf_one_section_data['background-color'] ) . ';';
+	if ( isset( $ttfmake_section_data['background-color'] ) && ! empty( $ttfmake_section_data['background-color'] ) ) {
+		$gallery_style .= 'background-color:' . maybe_hash_hex_color( $ttfmake_section_data['background-color'] ) . ';';
 	}
 
 	// Background image
-	if ( isset( $ttf_one_section_data['background-image'] ) && 0 !== absint( $ttf_one_section_data['background-image'] ) ) {
-		$image_src = wp_get_attachment_image_src( $ttf_one_section_data['background-image'], 'full' );
+	if ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) ) {
+		$image_src = wp_get_attachment_image_src( $ttfmake_section_data['background-image'], 'full' );
 		if ( isset( $image_src[0] ) ) {
 			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
 	}
 
 	// Background style
-	if ( isset( $ttf_one_section_data['background-style'] ) && ! empty( $ttf_one_section_data['background-style'] ) ) {
-		if ( 'cover' === $ttf_one_section_data['background-style'] ) {
+	if ( isset( $ttfmake_section_data['background-style'] ) && ! empty( $ttfmake_section_data['background-style'] ) ) {
+		if ( 'cover' === $ttfmake_section_data['background-style'] ) {
 			$gallery_style .= 'background-size: cover;';
 		}
 	}
@@ -136,19 +136,19 @@ function ttf_one_builder_get_gallery_style( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @param  int       $i                       The current gallery item iterator
  * @return string                             The class.
  */
-function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
-	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_gallery_item_class( $ttfmake_section_data, $i ) {
+	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
 		return '';
 	}
 
 	$gallery_class = '';
 
 	// Columns
-	$gallery_columns = ( isset( $ttf_one_section_data['columns'] ) ) ? absint( $ttf_one_section_data['columns'] ) : 1;
+	$gallery_columns = ( isset( $ttfmake_section_data['columns'] ) ) ? absint( $ttfmake_section_data['columns'] ) : 1;
 	if ( $gallery_columns > 2 && 0 === $i % $gallery_columns ) {
 		$gallery_class .= ' last-' . $gallery_columns;
 	}
@@ -169,10 +169,10 @@ function ttf_one_builder_get_gallery_item_class( $ttf_one_section_data, $i ) {
  * @param  string    $aspect    The aspect ratio for the section.
  * @return string               The HTML or CSS for the item's image.
  */
-function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
-	global $ttf_one_section_data;
+function ttfmake_builder_get_gallery_item_image( $item, $aspect ) {
+	global $ttfmake_section_data;
 
-	if ( ! ttf_one_builder_is_section_type( 'gallery', $ttf_one_section_data ) ) {
+	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
 		return '';
 	}
 
@@ -205,24 +205,24 @@ function ttf_one_builder_get_gallery_item_image( $item, $aspect ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return array                              Array of data for columns in a text section.
  */
-function ttf_one_builder_get_text_array( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'text', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_text_array( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'text', $ttfmake_section_data ) ) {
 		return array();
 	}
 
-	$columns_number = ( isset( $ttf_one_section_data['columns-number'] ) ) ? absint( $ttf_one_section_data['columns-number'] ) : 1;
+	$columns_number = ( isset( $ttfmake_section_data['columns-number'] ) ) ? absint( $ttfmake_section_data['columns-number'] ) : 1;
 
 	$columns_order = array();
-	if ( isset( $ttf_one_section_data['columns-order'] ) ) {
-		$columns_order = $ttf_one_section_data['columns-order'];
+	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
+		$columns_order = $ttfmake_section_data['columns-order'];
 	}
 
 	$columns_data = array();
-	if ( isset( $ttf_one_section_data['columns'] ) ) {
-		$columns_data = $ttf_one_section_data['columns'];
+	if ( isset( $ttfmake_section_data['columns'] ) ) {
+		$columns_data = $ttfmake_section_data['columns'];
 	}
 
 	$columns_array = array();
@@ -245,21 +245,21 @@ function ttf_one_builder_get_text_array( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return string                             The class.
  */
-function ttf_one_builder_get_text_class( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'text', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_text_class( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'text', $ttfmake_section_data ) ) {
 		return '';
 	}
 
 	$text_class = ' ';
 
 	// Section classes
-	$text_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
+	$text_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data );
 
 	// Columns
-	$columns_number = ( isset( $ttf_one_section_data['columns-number'] ) ) ? absint( $ttf_one_section_data['columns-number'] ) : 1;
+	$columns_number = ( isset( $ttfmake_section_data['columns-number'] ) ) ? absint( $ttfmake_section_data['columns-number'] ) : 1;
 	$text_class .= ' builder-text-columns-' . $columns_number;
 
 	return $text_class;
@@ -270,22 +270,22 @@ function ttf_one_builder_get_text_class( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return array                              The data.
  */
-function ttf_one_builder_get_banner_array( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'banner', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_banner_array( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
 		return array();
 	}
 
 	$banner_order = array();
-	if ( isset( $ttf_one_section_data['banner-slide-order'] ) ) {
-		$banner_order = $ttf_one_section_data['banner-slide-order'];
+	if ( isset( $ttfmake_section_data['banner-slide-order'] ) ) {
+		$banner_order = $ttfmake_section_data['banner-slide-order'];
 	}
 
 	$banner_slides = array();
-	if ( isset( $ttf_one_section_data['banner-slides'] ) ) {
-		$banner_slides = $ttf_one_section_data['banner-slides'];
+	if ( isset( $ttfmake_section_data['banner-slides'] ) ) {
+		$banner_slides = $ttfmake_section_data['banner-slides'];
 	}
 
 	$banner_array = array();
@@ -303,24 +303,24 @@ function ttf_one_builder_get_banner_array( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return string                             The class.
  */
-function ttf_one_builder_get_banner_class( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'banner', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_banner_class( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
 		return '';
 	}
 
 	$banner_class = ' ';
 
 	// Section classes
-	$banner_class .= ttf_one_get_builder_save()->section_classes( $ttf_one_section_data );
+	$banner_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data );
 
 	// Banner id
-	$banner_id     = ( isset( $ttf_one_section_data['id'] ) ) ? absint( $ttf_one_section_data['id'] ) : 1;
+	$banner_id     = ( isset( $ttfmake_section_data['id'] ) ) ? absint( $ttfmake_section_data['id'] ) : 1;
 	$banner_class .= ' builder-section-banner-' . $banner_id;
 
-	return apply_filters( 'ttf_one_builder_banner_class', $banner_class, $ttf_one_section_data );
+	return apply_filters( 'ttfmake_builder_banner_class', $banner_class, $ttfmake_section_data );
 }
 
 /**
@@ -328,11 +328,11 @@ function ttf_one_builder_get_banner_class( $ttf_one_section_data ) {
  *
  * @since  1.0.0.
  *
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return string                             The attributes.
  */
-function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
-	if ( ! ttf_one_builder_is_section_type( 'banner', $ttf_one_section_data ) ) {
+function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
+	if ( ! ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
 		return '';
 	}
 
@@ -340,7 +340,7 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
 		'autoplay'   => true,
 		'transition' => 'scrollHorz',
 		'delay'      => 6000
-	), $ttf_one_section_data );
+	), $ttfmake_section_data );
 
 	// Data attributes
 	$data_attributes  = ' data-cycle-log="false"';
@@ -382,7 +382,7 @@ function ttf_one_builder_get_banner_slider_atts( $ttf_one_section_data ) {
  * @param  array     $slide    The data for an individual slide.
  * @return string              The slide's class.
  */
-function ttf_one_builder_banner_slide_class( $slide ) {
+function ttfmake_builder_banner_slide_class( $slide ) {
 	$slide_class = '';
 
 	// Content position
@@ -399,10 +399,10 @@ function ttf_one_builder_banner_slide_class( $slide ) {
  * @since  1.0.0.
  *
  * @param  array     $slide                   The slide data.
- * @param  array     $ttf_one_section_data    The section data.
+ * @param  array     $ttfmake_section_data    The section data.
  * @return string                             The CSS.
  */
-function ttf_one_builder_banner_slide_style( $slide, $ttf_one_section_data ) {
+function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 	$slide_style = '';
 
 	// Background color

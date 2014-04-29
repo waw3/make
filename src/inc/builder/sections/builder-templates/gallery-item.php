@@ -3,21 +3,21 @@
  * @package ttf-one
  */
 
-global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_gallery_id;
+global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_gallery_id;
 $section_name = 'ttf-one-section';
-if ( true === $ttf_one_is_js_template ) {
+if ( true === $ttfmake_is_js_template ) {
 	$section_name .= '[{{{ parentID }}}][gallery-items][{{{ id }}}]';
 } else {
-	$section_name .= '[' . $ttf_one_section_data['data']['id'] . '][gallery-items][' . $ttf_one_gallery_id . ']';
+	$section_name .= '[' . $ttfmake_section_data['data']['id'] . '][gallery-items][' . $ttfmake_gallery_id . ']';
 }
 
-$title       = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['title'] ) ) ? $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['title'] : '';
-$link        = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['link'] ) ) ? $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['link'] : '';
-$image_id    = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['image-id'] ) ) ? $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['image-id'] : 0;
-$description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['description'] ) ) ? $ttf_one_section_data['data']['gallery-items'][ $ttf_one_gallery_id ]['description'] : '';
+$title       = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['title'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['title'] : '';
+$link        = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['link'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['link'] : '';
+$image_id    = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['image-id'] : 0;
+$description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['description'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['description'] : '';
 ?>
-<?php if ( true !== $ttf_one_is_js_template ) : ?>
-<div class="ttf-one-gallery-item" id="ttf-one-gallery-item-<?php echo esc_attr( $ttf_one_gallery_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_gallery_id ); ?>">
+<?php if ( true !== $ttfmake_is_js_template ) : ?>
+<div class="ttf-one-gallery-item" id="ttf-one-gallery-item-<?php echo esc_attr( $ttfmake_gallery_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_gallery_id ); ?>">
 <?php endif; ?>
 	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttf-one-sortable-handle">
 		<div class="sortable-background"></div>
@@ -27,7 +27,7 @@ $description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one
 		<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttf-one-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
 	</div>
 
-	<?php ttf_one_get_builder_base()->add_uploader( $section_name, absint( $image_id ) ); ?>
+	<?php ttfmake_get_builder_base()->add_uploader( $section_name, absint( $image_id ) ); ?>
 
 	<div class="ttf-one-titlediv">
 		<div class="ttf-one-titlewrap">
@@ -42,6 +42,6 @@ $description = ( isset( $ttf_one_section_data['data']['gallery-items'][ $ttf_one
 	<a href="#" class="ttf-one-gallery-item-remove">
 		<?php _e( 'Remove gallery item', 'make' ); ?>
 	</a>
-<?php if ( true !== $ttf_one_is_js_template ) : ?>
+<?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>

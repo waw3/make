@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_background' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_background' ) ) :
 /**
  * Configure settings and controls for the Background section.
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'ttf_one_customizer_background' ) ) :
  *
  * @return void
  */
-function ttf_one_customizer_background() {
+function ttfmake_customizer_background() {
 	global $wp_customize;
 
 	$priority       = new TTF_One_Prioritizer( 10, 5 );
@@ -51,9 +51,9 @@ function ttf_one_customizer_background() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -63,11 +63,11 @@ function ttf_one_customizer_background() {
 			'section'  => $section,
 			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
 }
 endif;
 
-add_action( 'customize_register', 'ttf_one_customizer_background', 20 );
+add_action( 'customize_register', 'ttfmake_customizer_background', 20 );

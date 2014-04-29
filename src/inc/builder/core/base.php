@@ -94,16 +94,16 @@ class TTF_One_Builder_Base {
 		wp_nonce_field( 'save', 'ttf-one-builder-nonce' );
 
 		// Get the current sections
-		global $ttf_one_sections;
-		$ttf_one_sections = get_post_meta( $post_local->ID, '_ttf-one-sections', true );
-		$ttf_one_sections = ( is_array( $ttf_one_sections ) ) ? $ttf_one_sections : array();
+		global $ttfmake_sections;
+		$ttfmake_sections = get_post_meta( $post_local->ID, '_ttf-one-sections', true );
+		$ttfmake_sections = ( is_array( $ttfmake_sections ) ) ? $ttfmake_sections : array();
 
 		// Load the boilerplate templates
 		get_template_part( 'inc/builder/core/templates/menu' );
 		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
 		$section_data        = $this->get_section_data( $post_local->ID );
-		$registered_sections = ttf_one_get_sections();
+		$registered_sections = ttfmake_get_sections();
 
 		// Print the current sections
 		foreach ( $section_data as $section ) {
@@ -200,7 +200,7 @@ class TTF_One_Builder_Base {
 			'ttf-one-builder',
 			get_template_directory_uri() . '/inc/builder/core/js/app.js',
 			apply_filters(
-				'ttf_one_builder_js_dependencies',
+				'ttfmake_builder_js_dependencies',
 				array_merge(
 					$dependencies,
 					array(
@@ -254,7 +254,7 @@ class TTF_One_Builder_Base {
 			}
 			<?php endif; ?>
 
-			<?php foreach ( ttf_one_get_sections() as $key => $section ) : ?>
+			<?php foreach ( ttfmake_get_sections() as $key => $section ) : ?>
 			#ttf-one-menu-list-item-link-<?php echo esc_attr( $section['id'] ); ?> .ttf-one-menu-list-item-link-icon-wrapper {
 				background-image: url(<?php echo addcslashes( esc_url_raw( $section['icon'] ), '"' ); ?>);
 			}
@@ -318,8 +318,8 @@ class TTF_One_Builder_Base {
 		}
 
 		// Globalize the data to provide access within the template
-		global $ttf_one_section_data;
-		$ttf_one_section_data = array(
+		global $ttfmake_section_data;
+		$ttfmake_section_data = array(
 			'data'    => $data,
 			'section' => $section,
 		);
@@ -328,7 +328,7 @@ class TTF_One_Builder_Base {
 		get_template_part( $section['builder_template'] );
 
 		// Destroy the variable as a good citizen does
-		unset( $GLOBALS['ttf_one_section_data'] );
+		unset( $GLOBALS['ttfmake_section_data'] );
 	}
 
 	/**
@@ -339,8 +339,8 @@ class TTF_One_Builder_Base {
 	 * @return void
 	 */
 	public function print_templates() {
-		global $hook_suffix, $typenow, $ttf_one_is_js_template;
-		$ttf_one_is_js_template = true;
+		global $hook_suffix, $typenow, $ttfmake_is_js_template;
+		$ttfmake_is_js_template = true;
 
 		// Only show when adding/editing pages
 		if ( 'page' !== $typenow || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
@@ -348,7 +348,7 @@ class TTF_One_Builder_Base {
 		}
 
 		// Print the templates
-		foreach ( ttf_one_get_sections() as $key => $section ) : ?>
+		foreach ( ttfmake_get_sections() as $key => $section ) : ?>
 			<script type="text/html" id="tmpl-ttf-one-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
@@ -370,7 +370,7 @@ class TTF_One_Builder_Base {
 		</script>
 		<?php endforeach;
 
-		unset( $GLOBALS['ttf_one_is_js_template'] );
+		unset( $GLOBALS['ttfmake_is_js_template'] );
 	}
 
 	/**
@@ -571,7 +571,7 @@ class TTF_One_Builder_Base {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_builder_base' ) ) :
+if ( ! function_exists( 'ttfmake_get_builder_base' ) ) :
 /**
  * Instantiate or return the one TTF_One_Builder_Base instance.
  *
@@ -579,14 +579,14 @@ if ( ! function_exists( 'ttf_one_get_builder_base' ) ) :
  *
  * @return TTF_One_Builder_Base
  */
-function ttf_one_get_builder_base() {
+function ttfmake_get_builder_base() {
 	return TTF_One_Builder_Base::instance();
 }
 endif;
 
-add_action( 'admin_init', 'ttf_one_get_builder_base', 1 );
+add_action( 'admin_init', 'ttfmake_get_builder_base', 1 );
 
-if ( ! function_exists( 'ttf_one_load_section_header' ) ) :
+if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
 /**
  * Load a consistent header for sections.
  *
@@ -594,12 +594,12 @@ if ( ! function_exists( 'ttf_one_load_section_header' ) ) :
  *
  * @return void
  */
-function ttf_one_load_section_header() {
+function ttfmake_load_section_header() {
 	get_template_part( '/inc/builder/core/templates/section', 'header' );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_load_section_footer' ) ) :
+if ( ! function_exists( 'ttfmake_load_section_footer' ) ) :
 /**
  * Load a consistent footer for sections.
  *
@@ -607,12 +607,12 @@ if ( ! function_exists( 'ttf_one_load_section_footer' ) ) :
  *
  * @return void
  */
-function ttf_one_load_section_footer() {
+function ttfmake_load_section_footer() {
 	get_template_part( '/inc/builder/core/templates/section', 'footer' );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_wp_editor_id' ) ) :
+if ( ! function_exists( 'ttfmake_get_wp_editor_id' ) ) :
 /**
  * Generate the ID for a WP editor based on an existing or future section number.
  *
@@ -622,7 +622,7 @@ if ( ! function_exists( 'ttf_one_get_wp_editor_id' ) ) :
  * @param  array     $is_js_template    Whether a JS template is being printed or not.
  * @return string                       The editor ID.
  */
-function ttf_one_get_wp_editor_id( $data, $is_js_template ) {
+function ttfmake_get_wp_editor_id( $data, $is_js_template ) {
 	$id_base = 'ttfoneeditor' . $data['section']['id'];
 
 	if ( $is_js_template ) {
@@ -635,7 +635,7 @@ function ttf_one_get_wp_editor_id( $data, $is_js_template ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_section_name' ) ) :
+if ( ! function_exists( 'ttfmake_get_section_name' ) ) :
 /**
  * Generate the name of a section.
  *
@@ -645,7 +645,7 @@ if ( ! function_exists( 'ttf_one_get_section_name' ) ) :
  * @param  array     $is_js_template    Whether a JS template is being printed or not.
  * @return string                       The name of the section.
  */
-function ttf_one_get_section_name( $data, $is_js_template ) {
+function ttfmake_get_section_name( $data, $is_js_template ) {
 	$name = 'ttf-one-section';
 
 	if ( $is_js_template ) {
@@ -658,7 +658,7 @@ function ttf_one_get_section_name( $data, $is_js_template ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
+if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
 /**
  * Allow only the allowedtags array in a string.
  *
@@ -667,7 +667,7 @@ if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
  * @param  string    $string    The unsanitized string.
  * @return string               The sanitized string.
  */
-function ttf_one_sanitize_text( $string ) {
+function ttfmake_sanitize_text( $string ) {
 	global $allowedtags;
 	return wp_kses( $string , $allowedtags );
 }

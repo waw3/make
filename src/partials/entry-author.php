@@ -3,8 +3,8 @@
  * @package ttf-one
  */
 
-$author_key    = 'layout-' . ttf_one_get_view() . '-post-author';
-$author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_get_default( $author_key ) ), $author_key );
+$author_key    = 'layout-' . ttfmake_get_view() . '-post-author';
+$author_option = ttfmake_sanitize_choice( get_theme_mod( $author_key, ttfmake_get_default( $author_key ) ), $author_key );
 ?>
 
 <?php if ( 'none' !== $author_option ) : ?>
@@ -34,7 +34,7 @@ $author_option = ttf_one_sanitize_choice( get_theme_mod( $author_key, ttf_one_ge
 	</div>
 	<?php if ( is_singular() && $author_bio = get_the_author_meta( 'description' ) ) : ?>
 	<div class="entry-author-bio">
-		<?php echo wpautop( ttf_one_sanitize_text( $author_bio ) ); ?>
+		<?php echo wpautop( ttfmake_sanitize_text( $author_bio ) ); ?>
 	</div>
 	<?php endif; ?>
 </div>

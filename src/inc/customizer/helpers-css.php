@@ -85,7 +85,7 @@ class TTF_One_CSS {
 	 *
 	 * Accepts data to eventually be turned into CSS. Usage:
 	 *
-	 * ttf_one_get_css()->add( array(
+	 * ttfmake_get_css()->add( array(
 	 *     'selectors'    => array( '.site-header-main' ),
 	 *     'declarations' => array(
 	 *         'background-color' => $header_background_color
@@ -234,7 +234,7 @@ class TTF_One_CSS {
 
 		/**
 		 * Note that when this output is prepared, it is not escaped, sanitized or otherwise altered. The sanitization
-		 * routines are implemented when the developer calls `ttf_one_get_css->add()`. Because every property value has
+		 * routines are implemented when the developer calls `ttfmake_get_css->add()`. Because every property value has
 		 * special sanitization needs, it is handled at that point.
 		 */
 		foreach ( $declarations as $property => $value ) {
@@ -250,7 +250,7 @@ class TTF_One_CSS {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_css' ) ) :
+if ( ! function_exists( 'ttfmake_get_css' ) ) :
 /**
  * Return the one TTF_One_CSS object.
  *
@@ -258,9 +258,9 @@ if ( ! function_exists( 'ttf_one_get_css' ) ) :
  *
  * @return TTF_One_CSS    The one TTF_One_CSS object.
  */
-function ttf_one_get_css() {
+function ttfmake_get_css() {
 	return TTF_One_CSS::instance();
 }
 endif;
 
-add_action( 'init', 'ttf_one_get_css', 1 );
+add_action( 'init', 'ttfmake_get_css', 1 );

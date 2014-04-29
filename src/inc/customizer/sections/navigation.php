@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_navigation' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_navigation' ) ) :
 /**
  * Configure settings and controls for the Navigation section.
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'ttf_one_customizer_navigation' ) ) :
  *
  * @return void
  */
-function ttf_one_customizer_navigation() {
+function ttfmake_customizer_navigation() {
 	global $wp_customize;
 
 	$priority       = new TTF_One_Prioritizer();
@@ -23,7 +23,7 @@ function ttf_one_customizer_navigation() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_html',
 			'theme_supports'    => 'menus',
@@ -58,4 +58,4 @@ function ttf_one_customizer_navigation() {
 }
 endif;
 
-add_action( 'customize_register', 'ttf_one_customizer_navigation', 20 );
+add_action( 'customize_register', 'ttfmake_customizer_navigation', 20 );

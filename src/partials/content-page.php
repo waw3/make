@@ -3,8 +3,8 @@
  * @package ttf-one
  */
 
-$thumb_key    = 'layout-' . ttf_one_get_view() . '-featured-images';
-$thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_default( $thumb_key ) ), $thumb_key );
+$thumb_key    = 'layout-' . ttfmake_get_view() . '-featured-images';
+$thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_default( $thumb_key ) ), $thumb_key );
 
 // Header
 ob_start();

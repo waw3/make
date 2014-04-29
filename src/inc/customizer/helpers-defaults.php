@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_option_defaults' ) ) :
+if ( ! function_exists( 'ttfmake_option_defaults' ) ) :
 /**
  * The big array of global option defaults.
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'ttf_one_option_defaults' ) ) :
  *
  * @return array    The default values for all theme options.
  */
-function ttf_one_option_defaults() {
+function ttfmake_option_defaults() {
 	$defaults = array(
 		// Site Title & Tagline
 		'hide-site-title'                   => 0,
@@ -163,11 +163,11 @@ function ttf_one_option_defaults() {
 		'social-custom-rss'                 => '',
 	);
 
-	return apply_filters( 'ttf_one_setting_defaults', $defaults );
+	return apply_filters( 'ttfmake_setting_defaults', $defaults );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_default' ) ) :
+if ( ! function_exists( 'ttfmake_get_default' ) ) :
 /**
  * Return a particular global option default.
  *
@@ -176,8 +176,8 @@ if ( ! function_exists( 'ttf_one_get_default' ) ) :
  * @param  string    $option    The key of the option to return.
  * @return mixed                Default value if found; false if not found.
  */
-function ttf_one_get_default( $option ) {
-	$defaults = ttf_one_option_defaults();
+function ttfmake_get_default( $option ) {
+	$defaults = ttfmake_option_defaults();
 	return ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
 }
 endif;

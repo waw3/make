@@ -5,16 +5,16 @@
 
 // Header Options
 $header_text     = get_theme_mod( 'header-text', false );
-$social_links    = ttf_one_get_social_links();
-$show_social     = (int) get_theme_mod( 'header-show-social', ttf_one_get_default( 'header-show-social' ) );
-$show_search     = (int) get_theme_mod( 'header-show-search', ttf_one_get_default( 'header-show-search' ) );
+$social_links    = ttfmake_get_social_links();
+$show_social     = (int) get_theme_mod( 'header-show-social', ttfmake_get_default( 'header-show-social' ) );
+$show_search     = (int) get_theme_mod( 'header-show-search', ttfmake_get_default( 'header-show-search' ) );
 $subheader_class = ( 1 === $show_social || 1 === $show_search ) ? ' right-content' : '';
-$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttf_one_get_default( 'hide-site-title' ) );
-$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttf_one_get_default( 'hide-tagline' ) );
-$menu_label      = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default( 'navigation-mobile-label' ) );
+$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
+$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
+$menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default( 'navigation-mobile-label' ) );
 ?>
 
-<header id="site-header" class="site-header header-layout-<?php echo esc_attr( get_theme_mod( 'header-layout', ttf_one_get_default( 'header-layout' ) ) ); ?>" role="banner">
+<header id="site-header" class="site-header header-layout-<?php echo esc_attr( get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) ) ); ?>" role="banner">
 	<?php // Only show Sub Header if it has content
 	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) ) : ?>
 	<div class="sub-header<?php echo esc_attr( $subheader_class ); ?>">
@@ -22,7 +22,7 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default
 			<?php // Header text
 			if ( ! empty( $header_text ) ) : ?>
 			<span class="header-text">
-				<?php echo ttf_one_sanitize_text( $header_text ); ?>
+				<?php echo ttfmake_sanitize_text( $header_text ); ?>
 			</span>
 			<?php endif; ?>
 			<?php // Search form
@@ -30,14 +30,14 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttf_one_get_default
 				get_search_form();
 			endif; ?>
 			<?php // Social links
-			ttf_one_maybe_show_social_links( 'header' ); ?>
+			ttfmake_maybe_show_social_links( 'header' ); ?>
 		</div>
 	</div>
 	<?php endif; ?>
 	<div class="site-header-main">
 		<div class="container">
 			<div class="site-branding">
-				<?php if ( ttf_one_get_logo()->has_logo() ) : ?>
+				<?php if ( ttfmake_get_logo()->has_logo() ) : ?>
 				<div class="custom-logo">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"></a>
 				</div>

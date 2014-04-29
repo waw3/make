@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_jetpack_setup' ) ) :
+if ( ! function_exists( 'ttfmake_jetpack_setup' ) ) :
 /**
  * Jetpack compatibility.
  *
@@ -11,21 +11,21 @@ if ( ! function_exists( 'ttf_one_jetpack_setup' ) ) :
  *
  * @return void
  */
-function ttf_one_jetpack_setup() {
+function ttfmake_jetpack_setup() {
 	// Add theme support for Infinite Scroll
 	add_theme_support( 'infinite-scroll', array(
 		'container'       => 'site-main',
 		'footer'          => 'site-footer',
-		'footer_callback' => 'ttf_one_jetpack_infinite_scroll_footer_callback',
+		'footer_callback' => 'ttfmake_jetpack_infinite_scroll_footer_callback',
 		'footer_widgets'  => array( 'footer-1', 'footer-2', 'footer-3', 'footer-4' ),
-		'render'          => 'ttf_one_jetpack_infinite_scroll_render'
+		'render'          => 'ttfmake_jetpack_infinite_scroll_render'
 	) );
 }
 endif;
 
-add_action( 'after_setup_theme', 'ttf_one_jetpack_setup' );
+add_action( 'after_setup_theme', 'ttfmake_jetpack_setup' );
 
-if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_footer_callback' ) ) :
+if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_footer_callback' ) ) :
 /**
  * Callback to render the special footer added by Infinite Scroll.
  *
@@ -33,8 +33,8 @@ if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_footer_callback' ) ) :
  *
  * @return void
  */
-function ttf_one_jetpack_infinite_scroll_footer_callback() {
-	$footer_layout = (int) get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) );
+function ttfmake_jetpack_infinite_scroll_footer_callback() {
+	$footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'footer-layout' ) );
 	?>
 	<div id="infinite-footer">
 		<footer class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
@@ -45,7 +45,7 @@ function ttf_one_jetpack_infinite_scroll_footer_callback() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_has_footer_widgets' ) ) :
+if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_has_footer_widgets' ) ) :
 /**
  * Determine whether any footer widgets are actually showing.
  *
@@ -53,13 +53,13 @@ if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_has_footer_widgets' ) )
  *
  * @return bool    Whether or not infinite scroll has footer widgets.
  */
-function ttf_one_jetpack_infinite_scroll_has_footer_widgets() {
+function ttfmake_jetpack_infinite_scroll_has_footer_widgets() {
 	// Get the view
-	$view = ttf_one_get_view();
+	$view = ttfmake_get_view();
 
 	// Get the relevant options
-	$hide_footer  = (bool) get_theme_mod( 'layout-' . $view . '-hide-footer', ttf_one_get_default( 'layout-' . $view . '-hide-footer' ) );
-	$widget_areas = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
+	$hide_footer  = (bool) get_theme_mod( 'layout-' . $view . '-hide-footer', ttfmake_get_default( 'layout-' . $view . '-hide-footer' ) );
+	$widget_areas = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
 
 	// No widget areas are visible
 	if ( true === $hide_footer || $widget_areas < 1 ) {
@@ -80,9 +80,9 @@ function ttf_one_jetpack_infinite_scroll_has_footer_widgets() {
 }
 endif;
 
-add_filter( 'infinite_scroll_has_footer_widgets', 'ttf_one_jetpack_infinite_scroll_has_footer_widgets' );
+add_filter( 'infinite_scroll_has_footer_widgets', 'ttfmake_jetpack_infinite_scroll_has_footer_widgets' );
 
-if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_render' ) ) :
+if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_render' ) ) :
 /**
  * Render the additional posts added by Infinite Scroll
  *
@@ -90,7 +90,7 @@ if ( ! function_exists( 'ttf_one_jetpack_infinite_scroll_render' ) ) :
  *
  * @return void
  */
-function ttf_one_jetpack_infinite_scroll_render() {
+function ttfmake_jetpack_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		get_template_part( 'partials/content', 'archive' );
@@ -98,7 +98,7 @@ function ttf_one_jetpack_infinite_scroll_render() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_jetpack_remove_sharing' ) ) :
+if ( ! function_exists( 'ttfmake_jetpack_remove_sharing' ) ) :
 /**
  * Remove the Jetpack Sharing output from the end of the post content so it can be output elsewhere.
  *
@@ -106,7 +106,7 @@ if ( ! function_exists( 'ttf_one_jetpack_remove_sharing' ) ) :
  *
  * @return void
  */
-function ttf_one_jetpack_remove_sharing() {
+function ttfmake_jetpack_remove_sharing() {
 	remove_filter( 'the_content', 'sharing_display', 19 );
 	remove_filter( 'the_excerpt', 'sharing_display', 19 );
 	if ( class_exists( 'Jetpack_Likes' ) ) {
@@ -115,4 +115,4 @@ function ttf_one_jetpack_remove_sharing() {
 }
 endif;
 
-add_action( 'loop_start', 'ttf_one_jetpack_remove_sharing' );
+add_action( 'loop_start', 'ttfmake_jetpack_remove_sharing' );

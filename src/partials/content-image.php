@@ -18,7 +18,7 @@ $entry_footer = trim( ob_get_clean() );
 	<div class="entry-content">
 		<?php get_template_part( 'partials/entry', 'title' ); ?>
 		<?php get_template_part( 'partials/entry', 'content' ); ?>
-		<?php if ( '' !== $exif_data = ttf_one_get_exif_data() ) : ?>
+		<?php if ( '' !== $exif_data = ttfmake_get_exif_data() ) : ?>
 		<div class="entry-exif">
 			<h4 class="entry-exif-label"><?php _e( 'Technical Details', 'make' ); ?></h4>
 			<?php echo $exif_data; ?>

@@ -3,8 +3,8 @@
  * @package ttf-one
  */
 
-$date_key    = 'layout-' . ttf_one_get_view() . '-post-date';
-$date_option = ttf_one_sanitize_choice( get_theme_mod( $date_key, ttf_one_get_default( $date_key ) ), $date_key );
+$date_key    = 'layout-' . ttfmake_get_view() . '-post-date';
+$date_option = ttfmake_sanitize_choice( get_theme_mod( $date_key, ttfmake_get_default( $date_key ) ), $date_key );
 ?>
 
 <?php if ( 'none' !== $date_option ) : ?>

@@ -3,11 +3,11 @@
  * @package ttf-one
  */
 
-$footer_text = ttf_one_sanitize_text( get_theme_mod( 'footer-text', ttf_one_get_default( 'footer-text' ) ) );
+$footer_text = ttfmake_sanitize_text( get_theme_mod( 'footer-text', ttfmake_get_default( 'footer-text' ) ) );
 
 if ( $footer_text ) : ?>
 <div class="footer-text">
-	<?php echo ttf_one_sanitize_text( $footer_text ); ?>
+	<?php echo ttfmake_sanitize_text( $footer_text ); ?>
 </div>
 <?php endif; ?>
 

@@ -95,7 +95,7 @@ class TTF_One_Sections {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_sections_class' ) ) :
+if ( ! function_exists( 'ttfmake_get_sections_class' ) ) :
 /**
  * Instantiate or return the one TTF_One_Sections instance.
  *
@@ -103,12 +103,12 @@ if ( ! function_exists( 'ttf_one_get_sections_class' ) ) :
  *
  * @return TTF_One_Sections
  */
-function ttf_one_get_sections_class() {
+function ttfmake_get_sections_class() {
 	return TTF_One_Sections::instance();
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_sections' ) ) :
+if ( ! function_exists( 'ttfmake_get_sections' ) ) :
 /**
  * Get the registered sections.
  *
@@ -116,12 +116,12 @@ if ( ! function_exists( 'ttf_one_get_sections' ) ) :
  *
  * @return array    The list of registered sections.
  */
-function ttf_one_get_sections() {
-	return ttf_one_get_sections_class()->get_sections();
+function ttfmake_get_sections() {
+	return ttfmake_get_sections_class()->get_sections();
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_sections_by_order' ) ) :
+if ( ! function_exists( 'ttfmake_get_sections_by_order' ) ) :
 /**
  * Get the registered sections by the order parameter.
  *
@@ -129,14 +129,14 @@ if ( ! function_exists( 'ttf_one_get_sections_by_order' ) ) :
  *
  * @return array    The list of registered sections in the parameter order.
  */
-function ttf_one_get_sections_by_order() {
-	$sections = ttf_one_get_sections_class()->get_sections();
-	usort( $sections, 'ttf_one_sorter' );
+function ttfmake_get_sections_by_order() {
+	$sections = ttfmake_get_sections_class()->get_sections();
+	usort( $sections, 'ttfmake_sorter' );
 	return $sections;
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sorter' ) ) :
+if ( ! function_exists( 'ttfmake_sorter' ) ) :
 /**
  * Callback for `usort()` that sorts sections by order.
  *
@@ -146,12 +146,12 @@ if ( ! function_exists( 'ttf_one_sorter' ) ) :
  * @param  mixed    $b    The second element.
  * @return mixed          The result.
  */
-function ttf_one_sorter( $a, $b ) {
+function ttfmake_sorter( $a, $b ) {
 	return $a['order'] - $b['order'];
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_add_section' ) ) :
+if ( ! function_exists( 'ttfmake_add_section' ) ) :
 /**
  * Return the sections.
  *
@@ -167,7 +167,7 @@ if ( ! function_exists( 'ttf_one_add_section' ) ) :
  * @param  int       $order               The order in which to display the item.
  * @return void
  */
-function ttf_one_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
-	ttf_one_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order );
+function ttfmake_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order ) {
+	ttfmake_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order );
 }
 endif;

@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_font' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_font' ) ) :
 /**
  * Configure settings and controls for the Fonts section.
  *
@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttf_one_customizer_font' ) ) :
  * @param  string    $section         The section name.
  * @return void
  */
-function ttf_one_customizer_font( $wp_customize, $section ) {
+function ttfmake_customizer_font( $wp_customize, $section ) {
 	$priority       = new TTF_One_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
@@ -23,9 +23,9 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_font_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -35,7 +35,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Site Title', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_all_font_choices(),
+			'choices'  => ttfmake_all_font_choices(),
 			'priority' => $priority->add()
 		)
 	);
@@ -45,7 +45,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -66,9 +66,9 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_font_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -78,7 +78,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Header', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_all_font_choices(),
+			'choices'  => ttfmake_all_font_choices(),
 			'priority' => $priority->add()
 		)
 	);
@@ -88,7 +88,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -109,9 +109,9 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_font_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_font_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -121,7 +121,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Body', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_all_font_choices(),
+			'choices'  => ttfmake_all_font_choices(),
 			'priority' => $priority->add()
 		)
 	);
@@ -131,7 +131,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -152,9 +152,9 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_font_subset',
+			'sanitize_callback' => 'ttfmake_sanitize_font_subset',
 		)
 	);
 	$wp_customize->add_control(
@@ -164,7 +164,7 @@ function ttf_one_customizer_font( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Character Subset', 'make' ),
 			'type'     => 'select',
-			'choices'  => ttf_one_get_google_font_subsets(),
+			'choices'  => ttfmake_get_google_font_subsets(),
 			'priority' => $priority->add()
 		)
 	);

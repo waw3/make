@@ -3,23 +3,23 @@
  * @package ttf-one
  */
 
-global $ttf_one_section_data, $ttf_one_is_js_template, $ttf_one_slide_id;
+global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_slide_id;
 $section_name = 'ttf-one-section';
-if ( true === $ttf_one_is_js_template ) {
+if ( true === $ttfmake_is_js_template ) {
 	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
 } else {
-	$section_name .= '[' . $ttf_one_section_data['data']['id'] . '][banner-slides][' . $ttf_one_slide_id . ']';
+	$section_name .= '[' . $ttfmake_section_data['data']['id'] . '][banner-slides][' . $ttfmake_slide_id . ']';
 }
 
-$content          = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['content'] : '';
-$background_color = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['background-color'] : '#ffffff';
-$darken           = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['darken'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['darken'] : 0;
-$image_id         = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['image-id'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['image-id'] : 0;
-$alignment        = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['alignment'] : 'none';
-$state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['state'] ) ) ? $ttf_one_section_data['data']['banner-slides'][ $ttf_one_slide_id ]['state'] : 'open';
+$content          = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] : '';
+$background_color = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['background-color'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['background-color'] : '#ffffff';
+$darken           = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['darken'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['darken'] : 0;
+$image_id         = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] : 0;
+$alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] : 'none';
+$state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
 ?>
-<?php if ( true !== $ttf_one_is_js_template ) : ?>
-<div class="ttf-one-banner-slide<?php if ( 'open' === $state ) echo ' ttf-one-banner-slide-open'; ?>" id="ttf-one-banner-slide-<?php echo esc_attr( $ttf_one_slide_id ); ?>" data-id="<?php echo esc_attr( $ttf_one_slide_id ); ?>">
+<?php if ( true !== $ttfmake_is_js_template ) : ?>
+<div class="ttf-one-banner-slide<?php if ( 'open' === $state ) echo ' ttf-one-banner-slide-open'; ?>" id="ttf-one-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>">
 <?php endif; ?>
 	<div class="ttf-one-banner-slide-header">
 		<h3>
@@ -62,7 +62,7 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 
 		<div class="ttf-one-banner-slide-background-image-wrapper">
 			<?php
-			ttf_one_get_builder_base()->add_uploader(
+			ttfmake_get_builder_base()->add_uploader(
 				$section_name,
 				$image_id,
 				array(
@@ -84,10 +84,10 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 			'textarea_name' => $section_name . '[content]'
 		);
 
-		if ( true === $ttf_one_is_js_template ) : ?>
-			<?php ttf_one_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
+		if ( true === $ttfmake_is_js_template ) : ?>
+			<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfoneeditorbannerslidetemp', $editor_settings ); ?>
 		<?php else : ?>
-			<?php ttf_one_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttf_one_slide_id, $editor_settings ); ?>
+			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfoneeditorbannerslide' . $ttfmake_slide_id, $editor_settings ); ?>
 		<?php endif; ?>
 
 		<a href="#" class="ttf-one-banner-slide-remove">
@@ -95,6 +95,6 @@ $state            = ( isset( $ttf_one_section_data['data']['banner-slides'][ $tt
 		</a>
 	</div>
 	<input type="hidden" class="ttf-one-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
-<?php if ( true !== $ttf_one_is_js_template ) : ?>
+<?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>

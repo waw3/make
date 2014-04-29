@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_woocommerce_init' ) ) :
+if ( ! function_exists( 'ttfmake_woocommerce_init' ) ) :
 /**
  * Add theme support and remove default action hooks so we can replace them with our own.
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'ttf_one_woocommerce_init' ) ) :
  *
  * @return void
  */
-function ttf_one_woocommerce_init() {
+function ttfmake_woocommerce_init() {
 	// Theme support
 	add_theme_support( 'woocommerce' );
 
@@ -24,9 +24,9 @@ function ttf_one_woocommerce_init() {
 }
 endif;
 
-add_action( 'after_setup_theme', 'ttf_one_woocommerce_init' );
+add_action( 'after_setup_theme', 'ttfmake_woocommerce_init' );
 
-if ( ! function_exists( 'ttf_one_woocommerce_before_main_content' ) ) :
+if ( ! function_exists( 'ttfmake_woocommerce_before_main_content' ) ) :
 /**
  * Markup to show before the main WooCommerce content.
  *
@@ -34,9 +34,9 @@ if ( ! function_exists( 'ttf_one_woocommerce_before_main_content' ) ) :
  *
  * @return void
  */
-function ttf_one_woocommerce_before_main_content() {
+function ttfmake_woocommerce_before_main_content() {
 	// Left sidebar
-	ttf_one_maybe_show_sidebar( 'left' );
+	ttfmake_maybe_show_sidebar( 'left' );
 
 	// Begin content wrapper
 	?>
@@ -45,9 +45,9 @@ function ttf_one_woocommerce_before_main_content() {
 }
 endif;
 
-add_action( 'woocommerce_before_main_content', 'ttf_one_woocommerce_before_main_content' );
+add_action( 'woocommerce_before_main_content', 'ttfmake_woocommerce_before_main_content' );
 
-if ( ! function_exists( 'ttf_one_woocommerce_after_main_content' ) ) :
+if ( ! function_exists( 'ttfmake_woocommerce_after_main_content' ) ) :
 /**
  * Markup to show after the main WooCommerce content
  *
@@ -55,14 +55,14 @@ if ( ! function_exists( 'ttf_one_woocommerce_after_main_content' ) ) :
  *
  * @return void
  */
-function ttf_one_woocommerce_after_main_content() {
+function ttfmake_woocommerce_after_main_content() {
 	// End content wrapper
 	?>
 	</main>
 	<?php
 	// Right sidebar
-	ttf_one_maybe_show_sidebar( 'right' );
+	ttfmake_maybe_show_sidebar( 'right' );
 }
 endif;
 
-add_action( 'woocommerce_after_main_content', 'ttf_one_woocommerce_after_main_content' );
+add_action( 'woocommerce_after_main_content', 'ttfmake_woocommerce_after_main_content' );

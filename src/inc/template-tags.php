@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_comment' ) ) :
+if ( ! function_exists( 'ttfmake_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  *
@@ -16,7 +16,7 @@ if ( ! function_exists( 'ttf_one_comment' ) ) :
  * @param  mixed    $depth      Depth of the current comment.
  * @return void
  */
-function ttf_one_comment( $comment, $args, $depth ) {
+function ttfmake_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
@@ -86,7 +86,7 @@ function ttf_one_comment( $comment, $args, $depth ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_categorized_blog' ) ) :
+if ( ! function_exists( 'ttfmake_categorized_blog' ) ) :
 /**
  * Returns true if a blog has more than 1 category.
  *
@@ -94,7 +94,7 @@ if ( ! function_exists( 'ttf_one_categorized_blog' ) ) :
  *
  * @return bool    Determine if the site has more than one active category.
  */
-function ttf_one_categorized_blog() {
+function ttfmake_categorized_blog() {
 	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
@@ -108,33 +108,33 @@ function ttf_one_categorized_blog() {
 	}
 
 	if ( '1' != $all_the_cool_cats ) {
-		// This blog has more than 1 category so ttf_one_categorized_blog should return true.
+		// This blog has more than 1 category so ttfmake_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so ttf_one_categorized_blog should return false.
+		// This blog has only 1 category so ttfmake_categorized_blog should return false.
 		return false;
 	}
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_category_transient_flusher' ) ) :
+if ( ! function_exists( 'ttfmake_category_transient_flusher' ) ) :
 /**
- * Flush out the transients used in ttf_one_categorized_blog.
+ * Flush out the transients used in ttfmake_categorized_blog.
  *
  * @since  1.0.0.
  *
  * @return void
  */
-function ttf_one_category_transient_flusher() {
+function ttfmake_category_transient_flusher() {
 	delete_transient( 'all_the_cool_cats' );
-	ttf_one_categorized_blog();
+	ttfmake_categorized_blog();
 }
 endif;
 
-add_action( 'edit_category', 'ttf_one_category_transient_flusher' );
-add_action( 'save_post',     'ttf_one_category_transient_flusher' );
+add_action( 'edit_category', 'ttfmake_category_transient_flusher' );
+add_action( 'save_post',     'ttfmake_category_transient_flusher' );
 
-if ( ! function_exists( 'ttf_one_get_read_more' ) ) :
+if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
 /**
  * Return a read more link
  *
@@ -146,7 +146,7 @@ if ( ! function_exists( 'ttf_one_get_read_more' ) ) :
  * @param  string    $after     HTML after the text.
  * @return string               Full read more HTML.
  */
-function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
+function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
 	if ( strpos( $before, '%s' ) ) {
 		$before = sprintf(
 			$before,
@@ -154,13 +154,13 @@ function ttf_one_get_read_more( $before = '<a class="read-more" href="%s">', $af
 		);
 	}
 
-	$more = apply_filters( 'ttf_one_read_more_text', __( 'Read more', 'make' ) );
+	$more = apply_filters( 'ttfmake_read_more_text', __( 'Read more', 'make' ) );
 
 	return $before . $more . $after;
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_maybe_show_site_region' ) ) :
+if ( ! function_exists( 'ttfmake_maybe_show_site_region' ) ) :
 /**
  * Output the site region (header or footer) markup if the current view calls for it.
  *
@@ -169,27 +169,27 @@ if ( ! function_exists( 'ttf_one_maybe_show_site_region' ) ) :
  * @param  string    $region    Region to maybe show.
  * @return void
  */
-function ttf_one_maybe_show_site_region( $region ) {
+function ttfmake_maybe_show_site_region( $region ) {
 	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
 		return;
 	}
 
 	// Get the view
-	$view = ttf_one_get_view();
+	$view = ttfmake_get_view();
 
 	// Get the relevant option
-	$hide_region = (bool) get_theme_mod( 'layout-' . $view . '-hide-' . $region, ttf_one_get_default( 'layout-' . $view . '-hide-' . $region ) );
+	$hide_region = (bool) get_theme_mod( 'layout-' . $view . '-hide-' . $region, ttfmake_get_default( 'layout-' . $view . '-hide-' . $region ) );
 
 	if ( true !== $hide_region ) {
 		get_template_part(
 			'partials/' . $region . '-layout',
-			get_theme_mod( $region . '-layout', ttf_one_get_default( $region . '-layout' ) )
+			get_theme_mod( $region . '-layout', ttfmake_get_default( $region . '-layout' ) )
 		);
 	}
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_maybe_show_sidebar' ) ) :
+if ( ! function_exists( 'ttfmake_maybe_show_sidebar' ) ) :
 /**
  * Output the sidebar markup if the current view calls for it.
  *
@@ -203,9 +203,9 @@ if ( ! function_exists( 'ttf_one_maybe_show_sidebar' ) ) :
  * @param  string    $location    The sidebar location (e.g., left, right).
  * @return void
  */
-function ttf_one_maybe_show_sidebar( $location ) {
+function ttfmake_maybe_show_sidebar( $location ) {
 	// Get sidebar status
-	$show_sidebar = ttf_one_has_sidebar( $location );
+	$show_sidebar = ttfmake_has_sidebar( $location );
 
 	// Output the sidebar
 	if ( true === $show_sidebar ) {
@@ -214,7 +214,7 @@ function ttf_one_maybe_show_sidebar( $location ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_maybe_show_social_links' ) ) :
+if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
 /**
  * Show the social links markup if the theme options and/or menus are configured for it.
  *
@@ -223,12 +223,12 @@ if ( ! function_exists( 'ttf_one_maybe_show_social_links' ) ) :
  * @param  string    $region    The site region (header or footer).
  * @return void
  */
-function ttf_one_maybe_show_social_links( $region ) {
+function ttfmake_maybe_show_social_links( $region ) {
 	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
 		return;
 	}
 
-	$show_social = (bool) get_theme_mod( $region . '-show-social', ttf_one_get_default( $region . '-show-social' ) );
+	$show_social = (bool) get_theme_mod( $region . '-show-social', ttfmake_get_default( $region . '-show-social' ) );
 
 	if ( true === $show_social ) {
 		// First look for the alternate custom menu method
@@ -246,7 +246,7 @@ function ttf_one_maybe_show_social_links( $region ) {
 		}
 		// Then look for the Customizer theme option method
 		else {
-			$social_links = ttf_one_get_social_links();
+			$social_links = ttfmake_get_social_links();
 			if ( ! empty( $social_links ) ) { ?>
 				<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
 				<?php foreach ( $social_links as $key => $link ) : ?>
@@ -263,7 +263,7 @@ function ttf_one_maybe_show_social_links( $region ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_pre_wp_nav_menu_social' ) ) :
+if ( ! function_exists( 'ttfmake_pre_wp_nav_menu_social' ) ) :
 /**
  * Alternative output for wp_nav_menu for the 'social' menu location.
  *
@@ -273,7 +273,7 @@ if ( ! function_exists( 'ttf_one_pre_wp_nav_menu_social' ) ) :
  * @param  object    $args      wp_nav_menu arguments.
  * @return string               Modified menu.
  */
-function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
+function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
 		return $output;
 	}
@@ -303,7 +303,7 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 	unset( $menu_items, $menu_item );
 
 	// Supported social icons (filterable); [css class] => [url pattern]
-	$supported_icons = apply_filters( 'ttf_one_supported_social_icons', array(
+	$supported_icons = apply_filters( 'ttfmake_supported_social_icons', array(
 		'fa-adn'                => 'app.net',
 		'fa-bitbucket'          => 'bitbucket.org',
 		'fa-dribbble'           => 'dribbble.com',
@@ -367,9 +367,9 @@ function ttf_one_pre_wp_nav_menu_social( $output, $args ) {
 }
 endif;
 
-add_filter( 'pre_wp_nav_menu', 'ttf_one_pre_wp_nav_menu_social', 10, 2 );
+add_filter( 'pre_wp_nav_menu', 'ttfmake_pre_wp_nav_menu_social', 10, 2 );
 
-if ( ! function_exists( 'ttf_one_get_exif_data' ) ) :
+if ( ! function_exists( 'ttfmake_get_exif_data' ) ) :
 /**
  * Get EXIF data from an attachment.
  *
@@ -378,7 +378,7 @@ if ( ! function_exists( 'ttf_one_get_exif_data' ) ) :
  * @param  int       $attachment_id    The attachment ID to get data from.
  * @return string                      The EXIF data.
  */
-function ttf_one_get_exif_data( $attachment_id = 0 ) {
+function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	// Validate attachment id
 	if ( 0 === absint( $attachment_id ) ) {
 		$attachment_id = get_post()->ID;
@@ -421,7 +421,7 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 					_x( 'seconds', 'time', 'make' )
 				);
 			}
-			$image_meta['shutter_speed'] = apply_filters( 'ttf_one_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
+			$image_meta['shutter_speed'] = apply_filters( 'ttfmake_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
 		}
 
 		// Convert the aperture to an F-stop
@@ -431,7 +431,7 @@ function ttf_one_get_exif_data( $attachment_id = 0 ) {
 				_x( 'f/', 'camera f-stop', 'make' ),
 				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
-			$image_meta['aperture'] = apply_filters( 'ttf_one_exif_aperture', $f_stop, $image_meta['aperture'] );
+			$image_meta['aperture'] = apply_filters( 'ttfmake_exif_aperture', $f_stop, $image_meta['aperture'] );
 		}
 
 		$output .= "<ul class=\"entry-exif-list\">\n";

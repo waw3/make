@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
+if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
 /**
  * Sanitize a string to allow only tags in the allowedtags array.
  *
@@ -12,13 +12,13 @@ if ( ! function_exists( 'ttf_one_sanitize_text' ) ) :
  * @param  string    $string    The unsanitized string.
  * @return string               The sanitized string.
  */
-function ttf_one_sanitize_text( $string ) {
+function ttfmake_sanitize_text( $string ) {
 	global $allowedtags;
 	return wp_kses( $string , $allowedtags );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sanitize_choice' ) ) :
+if ( ! function_exists( 'ttfmake_sanitize_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
  *
@@ -28,23 +28,23 @@ if ( ! function_exists( 'ttf_one_sanitize_choice' ) ) :
  * @param  mixed    $setting    The setting for which the sanitizing is occurring.
  * @return mixed                The sanitized value.
  */
-function ttf_one_sanitize_choice( $value, $setting ) {
+function ttfmake_sanitize_choice( $value, $setting ) {
 	if ( is_object( $setting ) ) {
 		$setting = $setting->id;
 	}
 
-	$choices         = ttf_one_get_choices( $setting );
+	$choices         = ttfmake_get_choices( $setting );
 	$allowed_choices = array_keys( $choices );
 
 	if ( ! in_array( $value, $allowed_choices ) ) {
-		$value = ttf_one_get_default( $setting );
+		$value = ttfmake_get_default( $setting );
 	}
 
 	return $value;
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_choices' ) ) :
+if ( ! function_exists( 'ttfmake_get_choices' ) ) :
 /**
  * Return the available choices for a given setting
  *
@@ -53,7 +53,7 @@ if ( ! function_exists( 'ttf_one_get_choices' ) ) :
  * @param  string|object    $setting    The setting to get options for.
  * @return array                        The options for the setting.
  */
-function ttf_one_get_choices( $setting ) {
+function ttfmake_get_choices( $setting ) {
 	if ( is_object( $setting ) ) {
 		$setting = $setting->id;
 	}
@@ -166,11 +166,11 @@ function ttf_one_get_choices( $setting ) {
 			break;
 	}
 
-	return apply_filters( 'ttf_one_setting_choices', $choices, $setting );
+	return apply_filters( 'ttfmake_setting_choices', $choices, $setting );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
+if ( ! function_exists( 'ttfmake_display_favicons' ) ) :
 /**
  * Write the favicons to the head to implement the options.
  *
@@ -178,22 +178,22 @@ if ( ! function_exists( 'ttf_one_display_favicons' ) ) :
  *
  * @return void
  */
-function ttf_one_display_favicons() {
-	$logo_favicon = get_theme_mod( 'logo-favicon', ttf_one_get_default( 'logo-favicon' ) );
+function ttfmake_display_favicons() {
+	$logo_favicon = get_theme_mod( 'logo-favicon', ttfmake_get_default( 'logo-favicon' ) );
 	if ( ! empty( $logo_favicon ) ) : ?>
 		<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
 	<?php endif;
 
-	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttf_one_get_default( 'logo-apple-touch' ) );
+	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttfmake_get_default( 'logo-apple-touch' ) );
 	if ( ! empty( $logo_apple_touch ) ) : ?>
 		<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
 	<?php endif;
 }
 endif;
 
-add_action( 'wp_head', 'ttf_one_display_favicons' );
+add_action( 'wp_head', 'ttfmake_display_favicons' );
 
-if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
+if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
 /**
  * Add theme option body classes.
  *
@@ -202,17 +202,17 @@ if ( ! function_exists( 'ttf_one_body_layout_classes' ) ) :
  * @param  array    $classes    Existing classes.
  * @return array                Modified classes.
  */
-function ttf_one_body_layout_classes( $classes ) {
+function ttfmake_body_layout_classes( $classes ) {
 	// Full-width vs Boxed
-	$classes[] = get_theme_mod( 'general-layout', ttf_one_get_default( 'general-layout' ) );
+	$classes[] = get_theme_mod( 'general-layout', ttfmake_get_default( 'general-layout' ) );
 
 	// Header branding position
-	if ( 'right' === get_theme_mod( 'header-branding-position', ttf_one_get_default( 'header-branding-position' ) ) ) {
+	if ( 'right' === get_theme_mod( 'header-branding-position', ttfmake_get_default( 'header-branding-position' ) ) ) {
 		$classes[] = 'branding-right';
 	}
 
 	// Sub Header text position
-	if ( 'flipped' === get_theme_mod( 'header-subheader-content-layout', ttf_one_get_default( 'header-subheader-content-layout' ) ) ) {
+	if ( 'flipped' === get_theme_mod( 'header-subheader-content-layout', ttfmake_get_default( 'header-subheader-content-layout' ) ) ) {
 		$classes[] = 'subheader-flipped';
 	}
 
@@ -220,9 +220,9 @@ function ttf_one_body_layout_classes( $classes ) {
 }
 endif;
 
-add_filter( 'body_class', 'ttf_one_body_layout_classes' );
+add_filter( 'body_class', 'ttfmake_body_layout_classes' );
 
-if ( ! function_exists( 'ttf_one_get_social_links' ) ) :
+if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
 /**
  * Get the social links from options.
  *
@@ -230,7 +230,7 @@ if ( ! function_exists( 'ttf_one_get_social_links' ) ) :
  *
  * @return array    Keys are service names and the values are links.
  */
-function ttf_one_get_social_links() {
+function ttfmake_get_social_links() {
 	// Define default services; note that these are intentional non-translatable
 	$default_services = array(
 		'facebook' => array(
@@ -284,7 +284,7 @@ function ttf_one_get_social_links() {
 
 	// Get the links for these services
 	foreach ( $default_services as $service => $details ) {
-		$url = get_theme_mod( 'social-' . $service, ttf_one_get_default( 'social-' . $service ) );
+		$url = get_theme_mod( 'social-' . $service, ttfmake_get_default( 'social-' . $service ) );
 		if ( '' !== $url ) {
 			$services_with_links[ $service ] = array(
 				'title' => $details['title'],
@@ -295,9 +295,9 @@ function ttf_one_get_social_links() {
 	}
 
 	// Special handling for RSS
-	$hide_rss = (int) get_theme_mod( 'social-hide-rss', ttf_one_get_default( 'social-hide-rss' ) );
+	$hide_rss = (int) get_theme_mod( 'social-hide-rss', ttfmake_get_default( 'social-hide-rss' ) );
 	if ( 0 === $hide_rss ) {
-		$custom_rss = get_theme_mod( 'social-custom-rss', ttf_one_get_default( 'social-custom-rss' ) );
+		$custom_rss = get_theme_mod( 'social-custom-rss', ttfmake_get_default( 'social-custom-rss' ) );
 		if ( ! empty( $custom_rss ) ) {
 			$services_with_links['rss']['url'] = $custom_rss;
 		} else {
@@ -312,6 +312,6 @@ function ttf_one_get_social_links() {
 		$services_with_links['email']['url'] = esc_url( 'mailto:' . $services_with_links['email']['url'] );
 	}
 
-	return apply_filters( 'ttf_one_social_links', $services_with_links );
+	return apply_filters( 'ttfmake_social_links', $services_with_links );
 }
 endif;

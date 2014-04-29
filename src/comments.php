@@ -30,7 +30,7 @@ endif;
 			<?php
 			wp_list_comments( array(
 				'avatar_size' => 38,
-				'callback'    => 'ttf_one_comment'
+				'callback'    => 'ttfmake_comment'
 			) );
 			?>
 		</ol>

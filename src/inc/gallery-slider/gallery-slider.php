@@ -91,28 +91,28 @@ class TTF_One_Gallery_Slider {
 			<h3 style="float:left;margin-top:10px;"><?php _e( 'Slider Settings', 'make' ); ?></h3>
 			<label class="setting">
 				<span><?php _e( 'Show gallery as slider', 'make' ); ?></span>
-				<input id="ttf-one-slider" type="checkbox" data-setting="ttf_one_slider" />
+				<input id="ttf-one-slider" type="checkbox" data-setting="ttfmake_slider" />
 			</label>
 			<div id="ttf-one-slider-settings">
 				<label class="setting">
 					<span><?php _e( 'Hide navigation arrows', 'make' ); ?></span>
-					<input type="checkbox" data-setting="ttf_one_prevnext" />
+					<input type="checkbox" data-setting="ttfmake_prevnext" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Hide navigation dots', 'make' ); ?></span>
-					<input type="checkbox" data-setting="ttf_one_pager" />
+					<input type="checkbox" data-setting="ttfmake_pager" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Autoplay', 'make' ); ?></span>
-					<input type="checkbox" data-setting="ttf_one_autoplay" />
+					<input type="checkbox" data-setting="ttfmake_autoplay" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Time between slides (ms)', 'make' ); ?></span>
-					<input type="text" data-setting="ttf_one_delay" style="float:left;width:25%;" />
+					<input type="text" data-setting="ttfmake_delay" style="float:left;width:25%;" />
 				</label>
 				<label class="setting">
 					<span><?php _e( 'Effect', 'make' ); ?></span>
-					<select data-setting="ttf_one_effect">
+					<select data-setting="ttfmake_effect">
 						<option value="scrollHorz" selected="selected"><?php _e( 'Slide horizontal', 'make' ); ?></option>
 						<option value="fade"><?php _e( 'Fade', 'make' ); ?></option>
 						<option value="none"><?php _e( 'None', 'make' ); ?></option>
@@ -134,7 +134,7 @@ class TTF_One_Gallery_Slider {
 	 */
 	function render_gallery( $output, $attr ) {
 		// Only use this alternative output if the slider is set to true
-		if ( isset( $attr['ttf_one_slider'] ) && true == $attr['ttf_one_slider'] ) {
+		if ( isset( $attr['ttfmake_slider'] ) && true == $attr['ttfmake_slider'] ) {
 			$post = get_post();
 
 			if ( ! empty( $attr['ids'] ) ) {
@@ -164,12 +164,12 @@ class TTF_One_Gallery_Slider {
 				'exclude'          => '',
 
 				// ttf-one slider
-				'ttf_one_slider'   => true,
-				'ttf_one_autoplay' => false,
-				'ttf_one_prevnext' => false,
-				'ttf_one_pager'    => false,
-				'ttf_one_delay'    => 6000,
-				'ttf_one_effect'   => 'scrollHorz'
+				'ttfmake_slider'   => true,
+				'ttfmake_autoplay' => false,
+				'ttfmake_prevnext' => false,
+				'ttfmake_pager'    => false,
+				'ttfmake_delay'    => 6000,
+				'ttfmake_effect'   => 'scrollHorz'
 			), $attr, 'gallery');
 
 			$attr['id'] = intval( $attr['id'] );
@@ -239,13 +239,13 @@ class TTF_One_Gallery_Slider {
 			$data_attributes .= ' data-cycle-swipe="true"';
 
 			// No autoplay
-			$autoplay = (bool) $attr['ttf_one_autoplay'];
+			$autoplay = (bool) $attr['ttfmake_autoplay'];
 			if ( false === $autoplay ) {
 				$data_attributes .= ' data-cycle-paused="true"';
 			}
 
 			// Delay
-			$delay = absint( $attr['ttf_one_delay'] );
+			$delay = absint( $attr['ttfmake_delay'] );
 			if ( 0 === $delay ) {
 				$delay = 6000;
 			}
@@ -254,7 +254,7 @@ class TTF_One_Gallery_Slider {
 			}
 
 			// Effect
-			$effect = trim( $attr['ttf_one_effect'] );
+			$effect = trim( $attr['ttfmake_effect'] );
 			if ( ! in_array( $effect, array( 'fade', 'scrollHorz', 'none' ) ) ) {
 				$effect = 'scrollHorz';
 			}
@@ -275,11 +275,11 @@ class TTF_One_Gallery_Slider {
 					<?php endif; ?>
 				</figure>
 				<?php endforeach; ?>
-				<?php if ( true != $attr[ 'ttf_one_prevnext' ] ) : ?>
+				<?php if ( true != $attr[ 'ttfmake_prevnext' ] ) : ?>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
 				<?php endif; ?>
-				<?php if ( true != $attr[ 'ttf_one_pager' ] ) : ?>
+				<?php if ( true != $attr[ 'ttfmake_pager' ] ) : ?>
 				<div class="cycle-pager"></div>
 				<?php endif; ?>
 			</div>
@@ -292,7 +292,7 @@ class TTF_One_Gallery_Slider {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_logo' ) ) :
+if ( ! function_exists( 'ttfmake_get_logo' ) ) :
 /**
  * Return the one TTF_One_Gallery_Slider object.
  *
@@ -300,9 +300,9 @@ if ( ! function_exists( 'ttf_one_get_logo' ) ) :
  *
  * @return TTF_One_Gallery_Slider
  */
-function ttf_one_get_gallery_slider() {
+function ttfmake_get_gallery_slider() {
 	return TTF_One_Gallery_Slider::instance();
 }
 endif;
 
-add_action( 'init', 'ttf_one_get_gallery_slider', 1 );
+add_action( 'init', 'ttfmake_get_gallery_slider', 1 );

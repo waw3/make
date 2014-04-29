@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_main' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_main' ) ) :
 /**
  * Configure settings and controls for the Main section.
  *
@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttf_one_customizer_main' ) ) :
  * @param  string    $section         The section name.
  * @return void
  */
-function ttf_one_customizer_main( $wp_customize, $section ) {
+function ttfmake_customizer_main( $wp_customize, $section ) {
 	$priority       = new TTF_One_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
@@ -23,7 +23,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -46,7 +46,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'esc_url_raw',
 		)
@@ -70,9 +70,9 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -82,7 +82,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Repeat', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -92,9 +92,9 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -104,7 +104,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Position', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -114,9 +114,9 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttf_one_sanitize_choice',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
 		)
 	);
 	$wp_customize->add_control(
@@ -126,7 +126,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Background Size', 'make' ),
 			'type'     => 'radio',
-			'choices'  => ttf_one_get_choices( $setting_id ),
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
@@ -151,7 +151,7 @@ function ttf_one_customizer_main( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)

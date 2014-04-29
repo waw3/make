@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_sitetitletagline' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_sitetitletagline' ) ) :
 /**
  * Configure settings and controls for the Site Title & Tagline section.
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'ttf_one_customizer_sitetitletagline' ) ) :
  *
  * @return void
  */
-function ttf_one_customizer_sitetitletagline() {
+function ttfmake_customizer_sitetitletagline() {
 	global $wp_customize;
 
 	$priority       = new TTF_One_Prioritizer( 10, 1 );
@@ -27,7 +27,7 @@ function ttf_one_customizer_sitetitletagline() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -52,7 +52,7 @@ function ttf_one_customizer_sitetitletagline() {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'absint',
 		)
@@ -70,4 +70,4 @@ function ttf_one_customizer_sitetitletagline() {
 }
 endif;
 
-add_action( 'customize_register', 'ttf_one_customizer_sitetitletagline', 20 );
+add_action( 'customize_register', 'ttfmake_customizer_sitetitletagline', 20 );

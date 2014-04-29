@@ -6,7 +6,7 @@
 get_header();
 ?>
 
-<?php ttf_one_maybe_show_sidebar( 'left' ); ?>
+<?php ttfmake_maybe_show_sidebar( 'left' ); ?>
 
 <main id="site-main" class="site-main" role="main">
 <?php if ( have_posts() ) : ?>
@@ -26,6 +26,6 @@ get_header();
 <?php endif; ?>
 </main>
 
-<?php ttf_one_maybe_show_sidebar( 'right' ); ?>
+<?php ttfmake_maybe_show_sidebar( 'right' ); ?>
 
 <?php get_footer(); ?>

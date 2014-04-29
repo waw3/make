@@ -67,7 +67,7 @@ class TTF_One_Logo {
 	 * @return TTF_One_Logo
 	 */
 	public function __construct() {
-		add_action( 'ttf_one_css', array( $this, 'print_logo_css' ) );
+		add_action( 'ttfmake_css', array( $this, 'print_logo_css' ) );
 	}
 
 	/**
@@ -266,7 +266,7 @@ class TTF_One_Logo {
 		}
 
 		// Allow logo settings to be overridden via filter
-		$this->logo_information = apply_filters( 'ttf_one_custom_logo_information', $this->logo_information );
+		$this->logo_information = apply_filters( 'ttfmake_custom_logo_information', $this->logo_information );
 
 		return $this->logo_information;
 	}
@@ -279,7 +279,7 @@ class TTF_One_Logo {
 	 * @return void
 	 */
 	function print_logo_css() {
-		$size = apply_filters( 'ttf_one_custom_logo_max_width', '960' );
+		$size = apply_filters( 'ttfmake_custom_logo_max_width', '960' );
 
 		// Grab the logo information
 		$info = $this->get_logo_information();
@@ -288,7 +288,7 @@ class TTF_One_Logo {
 		if ( $this->has_logo_by_type( 'logo-regular' ) && $this->has_logo_by_type( 'logo-retina' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-regular']['width'], $info['logo-regular']['height'], $size, false );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ) . '")',
@@ -296,14 +296,14 @@ class TTF_One_Logo {
 				)
 			) );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
 					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
 				)
 			) );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ) . '")'
@@ -315,7 +315,7 @@ class TTF_One_Logo {
 		else if ( $this->has_logo_by_type( 'logo-regular' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-regular']['width'], $info['logo-regular']['height'], $size );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ) . '")',
@@ -323,7 +323,7 @@ class TTF_One_Logo {
 				)
 			) );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
 					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
@@ -334,7 +334,7 @@ class TTF_One_Logo {
 		else if ( $this->has_logo_by_type( 'logo-retina' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-retina']['width'], $info['logo-retina']['height'], $size, true );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ) . '")',
@@ -342,7 +342,7 @@ class TTF_One_Logo {
 				)
 			) );
 
-			ttf_one_get_css()->add( array(
+			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
 					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
@@ -388,7 +388,7 @@ class TTF_One_Logo {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_logo' ) ) :
+if ( ! function_exists( 'ttfmake_get_logo' ) ) :
 /**
  * Return the one TTF_One_Logo object.
  *
@@ -396,9 +396,9 @@ if ( ! function_exists( 'ttf_one_get_logo' ) ) :
  *
  * @return TTF_One_Logo
  */
-function ttf_one_get_logo() {
+function ttfmake_get_logo() {
 	return TTF_One_Logo::instance();
 }
 endif;
 
-add_action( 'init', 'ttf_one_get_logo', 1 );
+add_action( 'init', 'ttfmake_get_logo', 1 );

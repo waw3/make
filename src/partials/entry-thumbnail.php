@@ -9,8 +9,8 @@ if ( is_attachment() ) :
 	$thumbnail_id   = get_post()->ID;
 	$thumbnail_size = 'full';
 else:
-	$thumb_key    = 'layout-' . ttf_one_get_view() . '-featured-images';
-	$thumb_option = ttf_one_sanitize_choice( get_theme_mod( $thumb_key, ttf_one_get_default( $thumb_key ) ), $thumb_key );
+	$thumb_key    = 'layout-' . ttfmake_get_view() . '-featured-images';
+	$thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_default( $thumb_key ) ), $thumb_key );
 	$thumbnail_id = get_post_thumbnail_id();
 
 	if ( 'post-header' === $thumb_option ) :
@@ -28,7 +28,7 @@ endif;
 	<?php if ( ! is_singular() ) : ?></a><?php endif; ?>
 	<?php if ( is_singular() && has_excerpt( $thumbnail_id ) ) : ?>
 	<figcaption class="entry-thumbnail-caption">
-		<?php echo ttf_one_sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
+		<?php echo ttfmake_sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
 	</figcaption>
 	<?php endif; ?>
 </figure>

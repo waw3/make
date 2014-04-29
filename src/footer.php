@@ -7,7 +7,7 @@
 				</div>
 			</div>
 
-			<?php ttf_one_maybe_show_site_region( 'footer' ); ?>
+			<?php ttfmake_maybe_show_site_region( 'footer' ); ?>
 		</div>
 
 		<?php wp_footer(); ?>

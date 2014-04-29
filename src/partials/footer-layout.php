@@ -4,10 +4,10 @@
  */
 
 // Footer Options
-$footer_layout = (int) get_theme_mod( 'footer-layout', ttf_one_get_default( 'footer-layout' ) );
-$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
-$social_links  = ttf_one_get_social_links();
-$show_social   = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default( 'footer-show-social' ) );
+$footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'footer-layout' ) );
+$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
+$social_links  = ttfmake_get_social_links();
+$show_social   = (int) get_theme_mod( 'footer-show-social', ttfmake_get_default( 'footer-show-social' ) );
 ?>
 
 <footer id="site-footer" class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
@@ -25,6 +25,6 @@ $show_social   = (int) get_theme_mod( 'footer-show-social', ttf_one_get_default(
 		<?php endif; ?>
 
 		<?php get_template_part( 'partials/footer', 'text' ); ?>
-		<?php ttf_one_maybe_show_social_links( 'footer' ); ?>
+		<?php ttfmake_maybe_show_social_links( 'footer' ); ?>
 	</div>
 </footer>

@@ -54,7 +54,7 @@ class TTF_One_Builder_Save {
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 
 		// Run wpautop when saving the data
-		add_filter( 'ttf_one_the_builder_content', 'wpautop' );
+		add_filter( 'ttfmake_the_builder_content', 'wpautop' );
 
 		// Combine the input into the post's content
 		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 30, 2 );
@@ -104,7 +104,7 @@ class TTF_One_Builder_Save {
 	public function prepare_data( $sections, $order ) {
 		$ordered_sections    = array();
 		$clean_sections      = array();
-		$registered_sections = ttf_one_get_sections();
+		$registered_sections = ttfmake_get_sections();
 
 		// Get the order in which to process the sections
 		$order = explode( ',', $order );
@@ -274,17 +274,17 @@ class TTF_One_Builder_Save {
 
 		// For each sections, render it using the template
 		foreach ( $sanitized_sections as $section ) {
-			global $ttf_one_section_data;
-			$ttf_one_section_data = $section;
+			global $ttfmake_section_data;
+			$ttfmake_section_data = $section;
 
 			// Get the registered sections
-			$registered_sections = ttf_one_get_sections();
+			$registered_sections = ttfmake_get_sections();
 
 			// Get the template for the section
 			get_template_part( $registered_sections[ $section['section-type'] ]['display_template'] );
 
 			// Cleanup the global
-			unset( $GLOBALS['ttf_one_section_data'] );
+			unset( $GLOBALS['ttfmake_section_data'] );
 		}
 
 		// Get the rendered templates from the output buffer
@@ -402,7 +402,7 @@ class TTF_One_Builder_Save {
 		$prev      = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' . $prev_data['section-type'] : $prefix . 'first';
 
 		// Return the values as a single string
-		return apply_filters( 'ttf_one_section_classes', $prev . ' ' . $current . ' ' . $next, $current_section );
+		return apply_filters( 'ttfmake_section_classes', $prev . ' ' . $current . ' ' . $next, $current_section );
 	}
 
 	/**
@@ -414,7 +414,7 @@ class TTF_One_Builder_Save {
 	 * @return void
 	 */
 	public function the_builder_content( $content ) {
-		$content = apply_filters( 'ttf_one_the_builder_content', $content );
+		$content = apply_filters( 'ttfmake_the_builder_content', $content );
 		$content = str_replace( ']]>', ']]&gt;', $content );
 		echo $content;
 	}
@@ -451,7 +451,7 @@ class TTF_One_Builder_Save {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_builder_save' ) ) :
+if ( ! function_exists( 'ttfmake_get_builder_save' ) ) :
 /**
  * Instantiate or return the one TTF_One_Builder_Save instance.
  *
@@ -459,9 +459,9 @@ if ( ! function_exists( 'ttf_one_get_builder_save' ) ) :
  *
  * @return TTF_One_Builder_Save
  */
-function ttf_one_get_builder_save() {
+function ttfmake_get_builder_save() {
 	return TTF_One_Builder_Save::instance();
 }
 endif;
 
-add_action( 'admin_init', 'ttf_one_get_builder_save' );
+add_action( 'admin_init', 'ttfmake_get_builder_save' );

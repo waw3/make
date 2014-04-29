@@ -21,38 +21,38 @@
 
 			// Set up inputs
 			// slider
-			media.gallery.defaults.ttf_one_slider = false;
-			this.update.apply( this, ['ttf_one_slider'] );
+			media.gallery.defaults.ttfmake_slider = false;
+			this.update.apply( this, ['ttfmake_slider'] );
 			// Autoplay
-			media.gallery.defaults.ttf_one_autoplay = false;
-			this.update.apply( this, ['ttf_one_autoplay'] );
+			media.gallery.defaults.ttfmake_autoplay = false;
+			this.update.apply( this, ['ttfmake_autoplay'] );
 			// prevnext
-			media.gallery.defaults.ttf_one_prevnext = false;
-			this.update.apply( this, ['ttf_one_prevnext'] );
+			media.gallery.defaults.ttfmake_prevnext = false;
+			this.update.apply( this, ['ttfmake_prevnext'] );
 			// pager
-			media.gallery.defaults.ttf_one_pager = false;
-			this.update.apply( this, ['ttf_one_pager'] );
+			media.gallery.defaults.ttfmake_pager = false;
+			this.update.apply( this, ['ttfmake_pager'] );
 			// delay
-			media.gallery.defaults.ttf_one_delay = 6000;
-			if ('undefined' === typeof this.model.attributes.ttf_one_delay) {
-				this.model.attributes.ttf_one_delay = media.gallery.defaults.ttf_one_delay;
+			media.gallery.defaults.ttfmake_delay = 6000;
+			if ('undefined' === typeof this.model.attributes.ttfmake_delay) {
+				this.model.attributes.ttfmake_delay = media.gallery.defaults.ttfmake_delay;
 			}
-			this.update.apply( this, ['ttf_one_delay'] );
+			this.update.apply( this, ['ttfmake_delay'] );
 			// effect
-			media.gallery.defaults.ttf_one_effect = 'scrollHorz';
-			this.update.apply( this, ['ttf_one_effect'] );
+			media.gallery.defaults.ttfmake_effect = 'scrollHorz';
+			this.update.apply( this, ['ttfmake_effect'] );
 
 			// Toggle slider settings
-			if ('undefined' === typeof atts.ttf_one_slider || false == atts.ttf_one_slider) {
+			if ('undefined' === typeof atts.ttfmake_slider || false == atts.ttfmake_slider) {
 				this.$el.find('#ttf-one-slider-settings').hide();
 			}
 			this.model.on('change', function(t) {
 				// Only proceed if the slider toggle changed
-				if ('undefined' === typeof this.changed.ttf_one_slider) {
+				if ('undefined' === typeof this.changed.ttfmake_slider) {
 					return;
 				}
 
-				var toggle = this.changed.ttf_one_slider,
+				var toggle = this.changed.ttfmake_slider,
 					$settingsDiv = $('#ttf-one-slider-settings');
 
 				if ( true === toggle ) {

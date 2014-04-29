@@ -1,6 +1,6 @@
 <?php
 
-if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
+if ( ! function_exists( 'ttfmake_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
  *
@@ -8,18 +8,18 @@ if ( ! function_exists( 'ttf_one_css_fonts' ) ) :
  *
  * @return void
  */
-function ttf_one_css_fonts() {
+function ttfmake_css_fonts() {
 	/**
 	 * Site Title
 	 */
 	// Get and escape options
-	$font_site_title       = get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) );
-	$font_site_title_stack = ttf_one_get_font_stack( $font_site_title );
-	$font_site_title_size  = absint( get_theme_mod( 'font-site-title-size', ttf_one_get_default( 'font-site-title-size' ) ) );
+	$font_site_title       = get_theme_mod( 'font-site-title', ttfmake_get_default( 'font-site-title' ) );
+	$font_site_title_stack = ttfmake_get_font_stack( $font_site_title );
+	$font_site_title_size  = absint( get_theme_mod( 'font-site-title-size', ttfmake_get_default( 'font-site-title-size' ) ) );
 
 	// Site Title Font
-	if ( $font_site_title !== ttf_one_get_default( 'font-site-title' ) && '' !== $font_site_title_stack ) {
-		ttf_one_get_css()->add( array(
+	if ( $font_site_title !== ttfmake_get_default( 'font-site-title' ) && '' !== $font_site_title_stack ) {
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-title', '.font-site-title' ),
 			'declarations' => array(
 				'font-family' => $font_site_title_stack
@@ -28,12 +28,12 @@ function ttf_one_css_fonts() {
 	}
 
 	// Site Title Font Size
-	if ( $font_site_title_size !== ttf_one_get_default( 'font-site-title-size' ) ) {
-		ttf_one_get_css()->add( array(
+	if ( $font_site_title_size !== ttfmake_get_default( 'font-site-title-size' ) ) {
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-title', '.font-site-title' ),
 			'declarations' => array(
 				'font-size-px'  => $font_site_title_size . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( $font_site_title_size ) . 'rem'
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_site_title_size ) . 'rem'
 			)
 		) );
 	}
@@ -42,9 +42,9 @@ function ttf_one_css_fonts() {
 	 * Headers
 	 */
 	// Get and escape options
-	$font_header       = get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) );
-	$font_header_stack = ttf_one_get_font_stack( $font_header );
-	$font_header_size  = absint( get_theme_mod( 'font-header-size', ttf_one_get_default( 'font-header-size' ) ) );
+	$font_header       = get_theme_mod( 'font-header', ttfmake_get_default( 'font-header' ) );
+	$font_header_stack = ttfmake_get_font_stack( $font_header );
+	$font_header_size  = absint( get_theme_mod( 'font-header-size', ttfmake_get_default( 'font-header-size' ) ) );
 
 	// Relative sizes of the headers
 	$percent = array(
@@ -59,8 +59,8 @@ function ttf_one_css_fonts() {
 	);
 
 	// Header Font
-	if ( $font_header !== ttf_one_get_default( 'font-header' ) && '' !== $font_header_stack ) {
-		ttf_one_get_css()->add( array(
+	if ( $font_header !== ttfmake_get_default( 'font-header' ) && '' !== $font_header_stack ) {
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
 			'declarations' => array(
 				'font-family' => $font_header_stack
@@ -69,77 +69,77 @@ function ttf_one_css_fonts() {
 	}
 
 	// Header Font Sizes
-	if ( $font_header_size !== ttf_one_get_default( 'font-header-size' ) ) {
+	if ( $font_header_size !== ttfmake_get_default( 'font-header-size' ) ) {
 		// h1
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h1', '.font-header' ),
 			'declarations' => array(
 				'font-size-px'  => $font_header_size . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( $font_header_size ) . 'rem'
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_header_size ) . 'rem'
 			)
 		) );
 
 		// h2
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h2' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h2' ] ) ) . 'rem'
 			)
 		) );
 
 		// h3
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h3' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h3' ] ) ) . 'rem'
 			)
 		) );
 
 		// h4
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h4' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h4' ] ) ) . 'rem'
 			)
 		) );
 
 		// h5
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h5' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h5' ] ) ) . 'rem'
 			)
 		) );
 
 		// h6
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'h6' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'h6' ] ) ) . 'rem'
 			)
 		) );
 
 		// Post title with two sidebars
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'post-title' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'post-title' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'post-title' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'post-title' ] ) ) . 'rem'
 			),
 			'media'        => 'screen and (min-width: 800px)'
 		) );
 
 		// Widget title
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.widget-title' ),
 			'declarations' => array(
-				'font-size-px'  => ttf_one_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( ttf_one_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) ) . 'rem'
 			)
 		) );
 	}
@@ -148,13 +148,13 @@ function ttf_one_css_fonts() {
 	 * Body
 	 */
 	// Get and escape options
-	$font_body       = get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) );
-	$font_body_stack = ttf_one_get_font_stack( $font_body );
-	$font_body_size  = absint( get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) ) );
+	$font_body       = get_theme_mod( 'font-body', ttfmake_get_default( 'font-body' ) );
+	$font_body_stack = ttfmake_get_font_stack( $font_body );
+	$font_body_size  = absint( get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) ) );
 
 	// Body Font
-	if ( $font_body !== ttf_one_get_default( 'font-body' ) && '' !== $font_body_stack ) {
-		ttf_one_get_css()->add( array(
+	if ( $font_body !== ttfmake_get_default( 'font-body' ) && '' !== $font_body_stack ) {
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'body', '.font-body' ),
 			'declarations' => array(
 				'font-family' => $font_body_stack
@@ -163,29 +163,29 @@ function ttf_one_css_fonts() {
 	}
 
 	// Body Font Size
-	if ( $font_body_size !== ttf_one_get_default( 'font-body-size' ) ) {
+	if ( $font_body_size !== ttfmake_get_default( 'font-body-size' ) ) {
 		// html
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'html' ),
 			'declarations' => array(
 				'font-size' => ( absint( $font_body_size ) / 16 * 100 ) . '%'
 			)
 		) );
 		// body
-		ttf_one_get_css()->add( array(
+		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'body', '.font-body' ),
 			'declarations' => array(
 				'font-size-px'  => $font_body_size . 'px',
-				'font-size-rem' => ttf_one_convert_px_to_rem( $font_body_size ) . 'rem'
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_body_size ) . 'rem'
 			)
 		) );
 	}
 }
 endif;
 
-add_action( 'ttf_one_css', 'ttf_one_css_fonts' );
+add_action( 'ttfmake_css', 'ttfmake_css_fonts' );
 
-if ( ! function_exists( 'ttf_one_get_font_stack' ) ) :
+if ( ! function_exists( 'ttfmake_get_font_stack' ) ) :
 /**
  * Validate the font choice and get a font stack for it.
  *
@@ -194,8 +194,8 @@ if ( ! function_exists( 'ttf_one_get_font_stack' ) ) :
  * @param  string    $font    The 1st font in the stack.
  * @return string             The full font stack.
  */
-function ttf_one_get_font_stack( $font ) {
-	$all_fonts = ttf_one_get_all_fonts();
+function ttfmake_get_font_stack( $font ) {
+	$all_fonts = ttfmake_get_all_fonts();
 
 	// Validate font choice
 	if ( ! array_key_exists( $font, $all_fonts ) ) {
@@ -205,7 +205,7 @@ function ttf_one_get_font_stack( $font ) {
 	// Standard font
 	if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) {
 		$stack = $all_fonts[ $font ]['stack'];
-	} elseif ( in_array( $font, ttf_one_all_font_choices() ) ) {
+	} elseif ( in_array( $font, ttfmake_all_font_choices() ) ) {
 		$stack = '"' . $font . '","Helvetica Neue",Helvetica,Arial,sans-serif';
 	} else {
 		$stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
@@ -215,7 +215,7 @@ function ttf_one_get_font_stack( $font ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_relative_font_size' ) ) :
+if ( ! function_exists( 'ttfmake_get_relative_font_size' ) ) :
 /**
  * Convert a font size to a relative size based on a starting value and percentage.
  *
@@ -225,12 +225,12 @@ if ( ! function_exists( 'ttf_one_get_relative_font_size' ) ) :
  * @param  mixed    $percentage    The percentage of change.
  * @return float                   The converted value.
  */
-function ttf_one_get_relative_font_size( $value, $percentage ) {
+function ttfmake_get_relative_font_size( $value, $percentage ) {
 	return (float) $value * ( $percentage / 100 );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_convert_px_to_rem' ) ) :
+if ( ! function_exists( 'ttfmake_convert_px_to_rem' ) ) :
 /**
  * Given a px value, return a rem value.
  *
@@ -240,15 +240,15 @@ if ( ! function_exists( 'ttf_one_convert_px_to_rem' ) ) :
  * @param  mixed    $base    The font-size base for the rem conversion.
  * @return float             The converted value.
  */
-function ttf_one_convert_px_to_rem( $px, $base = 0 ) {
+function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
 	if ( 0 === $base ) {
-		$base = get_theme_mod( 'font-body-size', ttf_one_get_default( 'font-body-size' ) );
+		$base = get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) );
 	}
 	return (float) $px / $base;
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_google_font_uri' ) ) :
+if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
 /**
  * Build the HTTP request URL for Google Fonts.
  *
@@ -256,17 +256,17 @@ if ( ! function_exists( 'ttf_one_get_google_font_uri' ) ) :
  *
  * @return string    The URL for including Google Fonts.
  */
-function ttf_one_get_google_font_uri() {
+function ttfmake_get_google_font_uri() {
 	// Grab the font choices
 	$fonts = array(
-		get_theme_mod( 'font-site-title', ttf_one_get_default( 'font-site-title' ) ),
-		get_theme_mod( 'font-header', ttf_one_get_default( 'font-header' ) ),
-		get_theme_mod( 'font-body', ttf_one_get_default( 'font-body' ) ),
+		get_theme_mod( 'font-site-title', ttfmake_get_default( 'font-site-title' ) ),
+		get_theme_mod( 'font-header', ttfmake_get_default( 'font-header' ) ),
+		get_theme_mod( 'font-body', ttfmake_get_default( 'font-body' ) ),
 	);
 
 	// De-dupe the fonts
 	$fonts         = array_unique( $fonts );
-	$allowed_fonts = ttf_one_get_google_fonts();
+	$allowed_fonts = ttfmake_get_google_fonts();
 	$family        = array();
 
 	// Validate each font and convert to URL format
@@ -276,7 +276,7 @@ function ttf_one_get_google_font_uri() {
 		// Verify that the font exists
 		if ( array_key_exists( $font, $allowed_fonts ) ) {
 			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
-			$family[] = urlencode( $font . ':' . join( ',', ttf_one_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
+			$family[] = urlencode( $font . ':' . join( ',', ttfmake_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
 		}
 	}
 
@@ -288,10 +288,10 @@ function ttf_one_get_google_font_uri() {
 	}
 
 	// Load the font subset
-	$subset = get_theme_mod( 'font-subset', ttf_one_get_default( 'font-subset' ) );
+	$subset = get_theme_mod( 'font-subset', ttfmake_get_default( 'font-subset' ) );
 
 	if ( 'all' === $subset ) {
-		$subsets_available = ttf_one_get_google_font_subsets();
+		$subsets_available = ttfmake_get_google_font_subsets();
 
 		// Remove the all set
 		unset( $subsets_available['all'] );
@@ -314,7 +314,7 @@ function ttf_one_get_google_font_uri() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_choose_google_font_variants' ) ) :
+if ( ! function_exists( 'ttfmake_choose_google_font_variants' ) ) :
 /**
  * Given a font, chose the variants to load for the theme.
  *
@@ -327,10 +327,10 @@ if ( ! function_exists( 'ttf_one_choose_google_font_variants' ) ) :
  * @param  array     $variants    The variants for the font.
  * @return array                  The chosen variants.
  */
-function ttf_one_choose_google_font_variants( $font, $variants = array() ) {
+function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
 	$chosen_variants = array();
 	if ( empty( $variants ) ) {
-		$fonts = ttf_one_get_google_fonts();
+		$fonts = ttfmake_get_google_fonts();
 
 		if ( array_key_exists( $font, $fonts ) ) {
 			$variants = $fonts[ $font ]['variants'];
@@ -354,11 +354,11 @@ function ttf_one_choose_google_font_variants( $font, $variants = array() ) {
 		$chosen_variants[] = '700';
 	}
 
-	return apply_filters( 'ttf_one_font_variants', array_unique( $chosen_variants ), $font, $variants );
+	return apply_filters( 'ttfmake_font_variants', array_unique( $chosen_variants ), $font, $variants );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sanitize_font_subset' ) ) :
+if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
 /**
  * Sanitize the Character Subset choice.
  *
@@ -367,8 +367,8 @@ if ( ! function_exists( 'ttf_one_sanitize_font_subset' ) ) :
  * @param  string    $value    The value to sanitize.
  * @return array               The sanitized value.
  */
-function ttf_one_sanitize_font_subset( $value ) {
-	if ( ! array_key_exists( $value, ttf_one_get_google_font_subsets() ) ) {
+function ttfmake_sanitize_font_subset( $value ) {
+	if ( ! array_key_exists( $value, ttfmake_get_google_font_subsets() ) ) {
 		$value = 'latin';
 	}
 
@@ -376,7 +376,7 @@ function ttf_one_sanitize_font_subset( $value ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_google_font_subsets' ) ) :
+if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
 /**
  * Retrieve the list of available Google font subsets.
  *
@@ -384,7 +384,7 @@ if ( ! function_exists( 'ttf_one_get_google_font_subsets' ) ) :
  *
  * @return array    The available subsets.
  */
-function ttf_one_get_google_font_subsets() {
+function ttfmake_get_google_font_subsets() {
 	return array(
 		'all'          => __( 'All', 'make' ),
 		'cyrillic'     => __( 'Cyrillic', 'make' ),
@@ -400,7 +400,7 @@ function ttf_one_get_google_font_subsets() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_all_font_choices' ) ) :
+if ( ! function_exists( 'ttfmake_all_font_choices' ) ) :
 /**
  * Packages the font choices into value/label pairs for use with the customizer.
  *
@@ -408,8 +408,8 @@ if ( ! function_exists( 'ttf_one_all_font_choices' ) ) :
  *
  * @return array    The fonts in value/label pairs.
  */
-function ttf_one_all_font_choices() {
-	$fonts   = ttf_one_get_all_fonts();
+function ttfmake_all_font_choices() {
+	$fonts   = ttfmake_get_all_fonts();
 	$choices = array();
 
 	// Repackage the fonts into value/label pairs
@@ -421,7 +421,7 @@ function ttf_one_all_font_choices() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sanitize_font_choice' ) ) :
+if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
 /**
  * Sanitize a font choice.
  *
@@ -430,8 +430,8 @@ if ( ! function_exists( 'ttf_one_sanitize_font_choice' ) ) :
  * @param  string    $value    The font choice.
  * @return string              The sanitized font choice.
  */
-function ttf_one_sanitize_font_choice( $value ) {
-	if ( array_key_exists( $value, ttf_one_get_all_fonts() ) ) {
+function ttfmake_sanitize_font_choice( $value ) {
+	if ( array_key_exists( $value, ttfmake_get_all_fonts() ) ) {
 		return $value;
 	} else {
 		return '';
@@ -439,7 +439,7 @@ function ttf_one_sanitize_font_choice( $value ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_all_fonts' ) ) :
+if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
 /**
  * Compile font options from different sources.
  *
@@ -447,14 +447,14 @@ if ( ! function_exists( 'ttf_one_get_all_fonts' ) ) :
  *
  * @return array    All available fonts.
  */
-function ttf_one_get_all_fonts() {
-	$standard_fonts = ttf_one_get_standard_fonts();
-	$google_fonts   = ttf_one_get_google_fonts();
+function ttfmake_get_all_fonts() {
+	$standard_fonts = ttfmake_get_standard_fonts();
+	$google_fonts   = ttfmake_get_google_fonts();
 	return array_merge( $standard_fonts, $google_fonts );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_standard_fonts' ) ) :
+if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
 /**
  * Return an array of standard websafe fonts.
  *
@@ -462,7 +462,7 @@ if ( ! function_exists( 'ttf_one_get_standard_fonts' ) ) :
  *
  * @return array    Standard websafe fonts.
  */
-function ttf_one_get_standard_fonts() {
+function ttfmake_get_standard_fonts() {
 	return array(
 		'serif' => array(
 			'label' => _x( 'Serif', 'font style', 'make' ),
@@ -480,7 +480,7 @@ function ttf_one_get_standard_fonts() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_get_google_fonts' ) ) :
+if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
@@ -488,8 +488,8 @@ if ( ! function_exists( 'ttf_one_get_google_fonts' ) ) :
  *
  * @return array    All Google Fonts.
  */
-function ttf_one_get_google_fonts() {
-	return apply_filters( 'ttf_one_get_google_fonts', array(
+function ttfmake_get_google_fonts() {
+	return apply_filters( 'ttfmake_get_google_fonts', array(
 		'ABeeZee' => array(
 			'label'    => 'ABeeZee',
 			'variants' => array(

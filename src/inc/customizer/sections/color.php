@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_customizer_color' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_color' ) ) :
 /**
  * Configure settings and controls for the Colors section.
  *
@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttf_one_customizer_color' ) ) :
  * @param  string    $section         The section name.
  * @return void
  */
-function ttf_one_customizer_color( $wp_customize, $section ) {
+function ttfmake_customizer_color( $wp_customize, $section ) {
 	$priority       = new TTF_One_Prioritizer();
 	$control_prefix = 'ttf-one_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
@@ -23,7 +23,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -46,7 +46,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -69,7 +69,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)
@@ -92,7 +92,7 @@ function ttf_one_customizer_color( $wp_customize, $section ) {
 	$wp_customize->add_setting(
 		$setting_id,
 		array(
-			'default'           => ttf_one_get_default( $setting_id ),
+			'default'           => ttfmake_get_default( $setting_id ),
 			'type'              => 'theme_mod',
 			'sanitize_callback' => 'maybe_hash_hex_color',
 		)

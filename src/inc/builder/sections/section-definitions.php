@@ -65,7 +65,7 @@ class TTF_One_Section_Definitions {
 	 * @return void
 	 */
 	public function register_text_section() {
-		ttf_one_add_section(
+		ttfmake_add_section(
 			'text',
 			_x( 'Text', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
@@ -137,7 +137,7 @@ class TTF_One_Section_Definitions {
 	 * @return void
 	 */
 	public function register_blank_section() {
-		ttf_one_add_section(
+		ttfmake_add_section(
 			'blank',
 			_x( 'Blank', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
@@ -179,7 +179,7 @@ class TTF_One_Section_Definitions {
 	 * @return void
 	 */
 	public function register_banner_section() {
-		ttf_one_add_section(
+		ttfmake_add_section(
 			'banner',
 			_x( 'Banner', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
@@ -259,7 +259,7 @@ class TTF_One_Section_Definitions {
 	 * @return void
 	 */
 	public function register_gallery_section() {
-		ttf_one_add_section(
+		ttfmake_add_section(
 			'gallery',
 			_x( 'Gallery', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
@@ -428,7 +428,7 @@ class TTF_One_Section_Definitions {
 		);
 
 		// Add additional dependencies to the Builder JS
-		add_filter( 'ttf_one_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
+		add_filter( 'ttfmake_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 
 		// Add the section CSS
 		wp_enqueue_style(
@@ -472,8 +472,8 @@ class TTF_One_Section_Definitions {
 	 * @return void
 	 */
 	public function print_templates() {
-		global $hook_suffix, $typenow, $ttf_one_is_js_template;
-		$ttf_one_is_js_template = true;
+		global $hook_suffix, $typenow, $ttfmake_is_js_template;
+		$ttfmake_is_js_template = true;
 
 		// Only show when adding/editing pages
 		if ( 'page' !== $typenow || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
@@ -497,7 +497,7 @@ class TTF_One_Section_Definitions {
 		<script type="text/html" id="tmpl-ttf-one-<?php echo $template['id']; ?>">
 			<?php
 			ob_start();
-			ttf_one_get_builder_base()->load_section( $template, array() );
+			ttfmake_get_builder_base()->load_section( $template, array() );
 			$html = ob_get_clean();
 			$html = str_replace(
 				array(
@@ -512,7 +512,7 @@ class TTF_One_Section_Definitions {
 			?>
 		</script>
 		<?php endforeach;
-		unset( $GLOBALS['ttf_one_is_js_template'] );
+		unset( $GLOBALS['ttfmake_is_js_template'] );
 	}
 }
 endif;
@@ -524,8 +524,8 @@ endif;
  *
  * @return TTF_One_Section_Definitions
  */
-function ttf_one_get_section_definitions() {
+function ttfmake_get_section_definitions() {
 	return TTF_One_Section_Definitions::instance();
 }
 
-add_action( 'admin_init', 'ttf_one_get_section_definitions' );
+add_action( 'admin_init', 'ttfmake_get_section_definitions' );

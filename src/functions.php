@@ -8,7 +8,7 @@
  */
 define( 'TTF_ONE_VERSION', '1.0' );
 
-if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
+if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
 /**
  * Whether or not the current environment is WordPress.com.
  *
@@ -16,7 +16,7 @@ if ( ! function_exists( 'ttf_one_is_wpcom' ) ) :
  *
  * @return bool    Whether or not the current environment is WordPress.com.
  */
-function ttf_one_is_wpcom() {
+function ttfmake_is_wpcom() {
 	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
 }
 endif;
@@ -24,7 +24,7 @@ endif;
 /**
  * The suffix to use for scripts.
  */
-if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttf_one_is_wpcom() ) {
+if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttfmake_is_wpcom() ) {
 	define( 'TTF_ONE_SUFFIX', '' );
 } else {
 	define( 'TTF_ONE_SUFFIX', '.min' );
@@ -37,7 +37,7 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 620;
 }
 
-if ( ! function_exists( 'ttf_one_content_width' ) ) :
+if ( ! function_exists( 'ttfmake_content_width' ) ) :
 /**
  * Set the content width based on current layout
  *
@@ -45,11 +45,11 @@ if ( ! function_exists( 'ttf_one_content_width' ) ) :
  *
  * @return void
  */
-function ttf_one_content_width() {
+function ttfmake_content_width() {
 	global $content_width;
 
-	$left = ttf_one_has_sidebar( 'left' );
-	$right = ttf_one_has_sidebar( 'right' );
+	$left = ttfmake_has_sidebar( 'left' );
+	$right = ttfmake_has_sidebar( 'right' );
 
 	// No sidebars
 	if ( ! $left && ! $right ) {
@@ -66,7 +66,7 @@ function ttf_one_content_width() {
 }
 endif;
 
-add_action( 'template_redirect', 'ttf_one_content_width' );
+add_action( 'template_redirect', 'ttfmake_content_width' );
 
 /**
  * Global includes.
@@ -110,7 +110,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
-if ( ! function_exists( 'ttf_one_setup' ) ) :
+if ( ! function_exists( 'ttfmake_setup' ) ) :
 /**
  * Sets up text domain, theme support, menus, and editor styles
  *
@@ -118,7 +118,7 @@ if ( ! function_exists( 'ttf_one_setup' ) ) :
  *
  * @return void
  */
-function ttf_one_setup() {
+function ttfmake_setup() {
 	// Attempt to load text domain from child theme first
 	if ( ! load_theme_textdomain( 'make', get_stylesheet_directory() . '/languages' ) ) {
 		load_theme_textdomain( 'make', get_template_directory() . '/languages' );
@@ -132,11 +132,11 @@ function ttf_one_setup() {
 
 	// Custom background
 	add_theme_support( 'custom-background', array(
-		'default-color'      => ttf_one_get_default( 'background_color' ),
-		'default-image'      => ttf_one_get_default( 'background_image' ),
-		'default-repeat'     => ttf_one_get_default( 'background_repeat' ),
-		'default-position-x' => ttf_one_get_default( 'background_position_x' ),
-		'default-attachment' => ttf_one_get_default( 'background_attachment' ),
+		'default-color'      => ttfmake_get_default( 'background_color' ),
+		'default-image'      => ttfmake_get_default( 'background_image' ),
+		'default-repeat'     => ttfmake_get_default( 'background_repeat' ),
+		'default-position-x' => ttfmake_get_default( 'background_position_x' ),
+		'default-attachment' => ttfmake_get_default( 'background_attachment' ),
 	) );
 
 	// HTML5
@@ -156,21 +156,21 @@ function ttf_one_setup() {
 
 	// Editor styles
 	$editor_styles = array();
-	if ( '' !== $google_request = ttf_one_get_google_font_uri() ) {
+	if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
 		$editor_styles[] = $google_request;
 	}
 
 	$editor_styles[] = 'css/font-awesome.css';
 	$editor_styles[] = 'css/editor-style.css';
 
-	// Another editor stylesheet is added via ttf_one_mce_css() in inc/customizer/bootstrap.php
+	// Another editor stylesheet is added via ttfmake_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
 }
 endif;
 
-add_action( 'after_setup_theme', 'ttf_one_setup' );
+add_action( 'after_setup_theme', 'ttfmake_setup' );
 
-if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
+if ( ! function_exists( 'ttfmake_widgets_init' ) ) :
 /**
  * Register widget areas
  *
@@ -178,11 +178,11 @@ if ( ! function_exists( 'ttf_one_widgets_init' ) ) :
  *
  * @return void
  */
-function ttf_one_widgets_init() {
+function ttfmake_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'sidebar-left',
 		'name'          => __( 'Left Sidebar', 'make' ),
-		'description'   => ttf_one_sidebar_description( 'sidebar-left' ),
+		'description'   => ttfmake_sidebar_description( 'sidebar-left' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -191,7 +191,7 @@ function ttf_one_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'sidebar-right',
 		'name'          => __( 'Right Sidebar', 'make' ),
-		'description'   => ttf_one_sidebar_description( 'sidebar-right' ),
+		'description'   => ttfmake_sidebar_description( 'sidebar-right' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -200,7 +200,7 @@ function ttf_one_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'footer-1',
 		'name'          => __( 'Footer 1', 'make' ),
-		'description'   => ttf_one_sidebar_description( 'footer-1' ),
+		'description'   => ttfmake_sidebar_description( 'footer-1' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -209,7 +209,7 @@ function ttf_one_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'footer-2',
 		'name'          => __( 'Footer 2', 'make' ),
-		'description'   => ttf_one_sidebar_description( 'footer-2' ),
+		'description'   => ttfmake_sidebar_description( 'footer-2' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -218,7 +218,7 @@ function ttf_one_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'footer-3',
 		'name'          => __( 'Footer 3', 'make' ),
-		'description'   => ttf_one_sidebar_description( 'footer-3' ),
+		'description'   => ttfmake_sidebar_description( 'footer-3' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -227,7 +227,7 @@ function ttf_one_widgets_init() {
 	register_sidebar( array(
 		'id'            => 'footer-4',
 		'name'          => __( 'Footer 4', 'make' ),
-		'description'   => ttf_one_sidebar_description( 'footer-4' ),
+		'description'   => ttfmake_sidebar_description( 'footer-4' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -236,9 +236,9 @@ function ttf_one_widgets_init() {
 }
 endif;
 
-add_action( 'widgets_init', 'ttf_one_widgets_init' );
+add_action( 'widgets_init', 'ttfmake_widgets_init' );
 
-if ( ! function_exists( 'ttf_one_head_early' ) ) :
+if ( ! function_exists( 'ttfmake_head_early' ) ) :
 /**
  * Add items to the top of the wp_head section of the document head.
  *
@@ -246,7 +246,7 @@ if ( ! function_exists( 'ttf_one_head_early' ) ) :
  *
  * @return void
  */
-function ttf_one_head_early() {
+function ttfmake_head_early() {
 	// JavaScript detection ?>
 	<script type="text/javascript">
 		/* <![CDATA[ */
@@ -257,9 +257,9 @@ function ttf_one_head_early() {
 }
 endif;
 
-add_action( 'wp_head', 'ttf_one_head_early', 1 );
+add_action( 'wp_head', 'ttfmake_head_early', 1 );
 
-if ( ! function_exists( 'ttf_one_scripts' ) ) :
+if ( ! function_exists( 'ttfmake_scripts' ) ) :
 /**
  * Enqueue styles and scripts.
  *
@@ -267,12 +267,12 @@ if ( ! function_exists( 'ttf_one_scripts' ) ) :
  *
  * @return void
  */
-function ttf_one_scripts() {
+function ttfmake_scripts() {
 	// Styles
 	$style_dependencies = array();
 
 	// Google fonts
-	if ( '' !== $google_request = ttf_one_get_google_font_uri() ) {
+	if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
 		// Enqueue the fonts
 		wp_enqueue_style(
 			'ttf-one-google-fonts',
@@ -317,7 +317,7 @@ function ttf_one_scripts() {
 	$script_dependencies[] = 'jquery';
 
 	// Cycle2
-	ttf_one_cycle2_script_setup( $script_dependencies );
+	ttfmake_cycle2_script_setup( $script_dependencies );
 	$script_dependencies[] = 'ttf-one-cycle2';
 
 	// FitVids
@@ -340,7 +340,7 @@ function ttf_one_scripts() {
 	);
 
 	// Filter selectors
-	$selector_array = apply_filters( 'ttf_one_fitvids_custom_selectors', $selector_array );
+	$selector_array = apply_filters( 'ttfmake_fitvids_custom_selectors', $selector_array );
 
 	// Compile selectors
 	$fitvids_custom_selectors = array(
@@ -372,9 +372,9 @@ function ttf_one_scripts() {
 }
 endif;
 
-add_action( 'wp_enqueue_scripts', 'ttf_one_scripts' );
+add_action( 'wp_enqueue_scripts', 'ttfmake_scripts' );
 
-if ( ! function_exists( 'ttf_one_cycle2_script_setup' ) ) :
+if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
 /**
  * Enqueue Cycle2 scripts
  *
@@ -387,7 +387,7 @@ if ( ! function_exists( 'ttf_one_cycle2_script_setup' ) ) :
  *
  * @return void
  */
-function ttf_one_cycle2_script_setup( $script_dependencies ) {
+function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	if ( defined( 'TTF_ONE_SUFFIX' ) && '.min' === TTF_ONE_SUFFIX ) {
 		wp_enqueue_script(
 			'ttf-one-cycle2',
@@ -427,7 +427,7 @@ function ttf_one_cycle2_script_setup( $script_dependencies ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_head_late' ) ) :
+if ( ! function_exists( 'ttfmake_head_late' ) ) :
 /**
  * Add additional items to the end of the wp_head section of the document head.
  *
@@ -435,10 +435,10 @@ if ( ! function_exists( 'ttf_one_head_late' ) ) :
  *
  * @return void
  */
-function ttf_one_head_late() { ?>
+function ttfmake_head_late() { ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 }
 endif;
 
-add_action( 'wp_head', 'ttf_one_head_late', 99 );
+add_action( 'wp_head', 'ttfmake_head_late', 99 );

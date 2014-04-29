@@ -3,20 +3,20 @@
  * @package ttf-one
  */
 
-ttf_one_load_section_header();
+ttfmake_load_section_header();
 
-global $ttf_one_section_data, $ttf_one_is_js_template;
-$section_name     = ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template );
-$columns          = ( isset( $ttf_one_section_data['data']['columns'] ) ) ? $ttf_one_section_data['data']['columns'] : 3;
-$caption_color    = ( isset( $ttf_one_section_data['data']['caption-color'] ) ) ? $ttf_one_section_data['data']['caption-color'] : 'light';
-$captions         = ( isset( $ttf_one_section_data['data']['captions'] ) ) ? $ttf_one_section_data['data']['captions'] : 'reveal';
-$aspect           = ( isset( $ttf_one_section_data['data']['aspect'] ) ) ? $ttf_one_section_data['data']['aspect'] : 'square';
-$title            = ( isset( $ttf_one_section_data['data']['title'] ) ) ? $ttf_one_section_data['data']['title'] : '';
-$background_image = ( isset( $ttf_one_section_data['data']['background-image'] ) ) ? $ttf_one_section_data['data']['background-image'] : 0;
-$background_color = ( isset( $ttf_one_section_data['data']['background-color'] ) ) ? $ttf_one_section_data['data']['background-color'] : '';
-$background_style = ( isset( $ttf_one_section_data['data']['background-style'] ) ) ? $ttf_one_section_data['data']['background-style'] : 'tile';
-$darken           = ( isset( $ttf_one_section_data['data']['darken'] ) ) ? $ttf_one_section_data['data']['darken'] : 1;
-$section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order'] ) ) ? $ttf_one_section_data['data']['gallery-item-order'] : array();
+global $ttfmake_section_data, $ttfmake_is_js_template;
+$section_name     = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
+$columns          = ( isset( $ttfmake_section_data['data']['columns'] ) ) ? $ttfmake_section_data['data']['columns'] : 3;
+$caption_color    = ( isset( $ttfmake_section_data['data']['caption-color'] ) ) ? $ttfmake_section_data['data']['caption-color'] : 'light';
+$captions         = ( isset( $ttfmake_section_data['data']['captions'] ) ) ? $ttfmake_section_data['data']['captions'] : 'reveal';
+$aspect           = ( isset( $ttfmake_section_data['data']['aspect'] ) ) ? $ttfmake_section_data['data']['aspect'] : 'square';
+$title            = ( isset( $ttfmake_section_data['data']['title'] ) ) ? $ttfmake_section_data['data']['title'] : '';
+$background_image = ( isset( $ttfmake_section_data['data']['background-image'] ) ) ? $ttfmake_section_data['data']['background-image'] : 0;
+$background_color = ( isset( $ttfmake_section_data['data']['background-color'] ) ) ? $ttfmake_section_data['data']['background-color'] : '';
+$background_style = ( isset( $ttfmake_section_data['data']['background-style'] ) ) ? $ttfmake_section_data['data']['background-style'] : 'tile';
+$darken           = ( isset( $ttfmake_section_data['data']['darken'] ) ) ? $ttfmake_section_data['data']['darken'] : 1;
+$section_order    = ( ! empty( $ttfmake_section_data['data']['gallery-item-order'] ) ) ? $ttfmake_section_data['data']['gallery-item-order'] : array();
 ?>
 
 <div class="ttf-one-captions-select-wrapper">
@@ -63,8 +63,8 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 <div class="ttf-one-gallery-items">
 	<div class="ttf-one-gallery-items-stage ttf-one-gallery-columns-<?php echo absint( $columns ); ?>">
 		<?php foreach ( $section_order as $key => $section_id  ) : ?>
-			<?php if ( isset( $ttf_one_section_data['data']['gallery-items'][ $section_id ] ) ) : ?>
-				<?php global $ttf_one_gallery_id; $ttf_one_gallery_id = $section_id; ?>
+			<?php if ( isset( $ttfmake_section_data['data']['gallery-items'][ $section_id ] ) ) : ?>
+				<?php global $ttfmake_gallery_id; $ttfmake_gallery_id = $section_id; ?>
 				<?php get_template_part( '/inc/builder/sections/builder-templates/gallery', 'item' ); ?>
 			<?php endif; ?>
 		<?php endforeach; ?>
@@ -85,7 +85,7 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 
 	<div class="ttf-one-gallery-background-image-wrapper">
 		<?php
-			ttf_one_get_builder_base()->add_uploader(
+			ttfmake_get_builder_base()->add_uploader(
 				$section_name . '[background-image]',
 				$background_image,
 				array(
@@ -116,5 +116,5 @@ $section_order    = ( ! empty( $ttf_one_section_data['data']['gallery-item-order
 	</div>
 </div>
 
-<input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttf_one_section_data['data']['state'] ) ) echo esc_attr( $ttf_one_section_data['data']['state'] ); else echo 'open'; ?>" />
-<?php ttf_one_load_section_footer(); ?>
+<input type="hidden" class="ttf-one-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+<?php ttfmake_load_section_footer(); ?>

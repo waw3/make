@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_mce_buttons_2' ) ) :
+if ( ! function_exists( 'ttfmake_mce_buttons_2' ) ) :
 /**
  * Activate the Styles dropdown for the Visual editor.
  *
@@ -12,16 +12,16 @@ if ( ! function_exists( 'ttf_one_mce_buttons_2' ) ) :
  * @param  array    $buttons    Array of activated buttons.
  * @return array                The modified array.
  */
-function ttf_one_mce_buttons_2( $buttons ) {
+function ttfmake_mce_buttons_2( $buttons ) {
 	// Add the styles dropdown
 	array_unshift( $buttons, 'styleselect' );
 	return $buttons;
 }
 endif;
 
-add_filter( 'mce_buttons_2', 'ttf_one_mce_buttons_2' );
+add_filter( 'mce_buttons_2', 'ttfmake_mce_buttons_2' );
 
-if ( ! function_exists( 'ttf_one_mce_before_init' ) ) :
+if ( ! function_exists( 'ttfmake_mce_before_init' ) ) :
 /**
  * Add styles to the Styles dropdown.
  *
@@ -30,7 +30,7 @@ if ( ! function_exists( 'ttf_one_mce_before_init' ) ) :
  * @param  array    $settings    TinyMCE settings array.
  * @return array                 Modified array.
  */
-function ttf_one_mce_before_init( $settings ) {
+function ttfmake_mce_before_init( $settings ) {
 	$style_formats = array(
 		// Big (big)
 		array(
@@ -159,7 +159,7 @@ function ttf_one_mce_before_init( $settings ) {
 	);
 
 	// Allow styles to be customized
-	$style_formats = apply_filters( 'ttf_one_style_formats', $style_formats );
+	$style_formats = apply_filters( 'ttfmake_style_formats', $style_formats );
 
 	// Encode
 	$settings['style_formats'] = json_encode( $style_formats );
@@ -168,4 +168,4 @@ function ttf_one_mce_before_init( $settings ) {
 }
 endif;
 
-add_filter( 'tiny_mce_before_init', 'ttf_one_mce_before_init' );
+add_filter( 'tiny_mce_before_init', 'ttfmake_mce_before_init' );

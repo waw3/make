@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_page_menu_args' ) ) :
+if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  *
@@ -12,15 +12,15 @@ if ( ! function_exists( 'ttf_one_page_menu_args' ) ) :
  * @param  array    $args    Configuration arguments.
  * @return array             Modified page menu args.
  */
-function ttf_one_page_menu_args( $args ) {
+function ttfmake_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
 endif;
 
-add_filter( 'wp_page_menu_args', 'ttf_one_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'ttfmake_page_menu_args' );
 
-if ( ! function_exists( 'ttf_one_body_classes' ) ) :
+if ( ! function_exists( 'ttfmake_body_classes' ) ) :
 /**
  * Adds custom classes to the array of body classes.
  *
@@ -29,14 +29,14 @@ if ( ! function_exists( 'ttf_one_body_classes' ) ) :
  * @param  array    $classes    Classes for the body element.
  * @return array                Modified class list.
  */
-function ttf_one_body_classes( $classes ) {
+function ttfmake_body_classes( $classes ) {
 	// Left Sidebar
-	if ( true === ttf_one_has_sidebar( 'left' ) ) {
+	if ( true === ttfmake_has_sidebar( 'left' ) ) {
 		$classes[] = 'has-left-sidebar';
 	}
 
 	// Right Sidebar
-	if ( true === ttf_one_has_sidebar( 'right' ) ) {
+	if ( true === ttfmake_has_sidebar( 'right' ) ) {
 		$classes[] = 'has-right-sidebar';
 	}
 
@@ -44,9 +44,9 @@ function ttf_one_body_classes( $classes ) {
 }
 endif;
 
-add_filter( 'body_class', 'ttf_one_body_classes' );
+add_filter( 'body_class', 'ttfmake_body_classes' );
 
-if ( ! function_exists( 'ttf_one_wp_title' ) ) :
+if ( ! function_exists( 'ttfmake_wp_title' ) ) :
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  *
@@ -57,7 +57,7 @@ if ( ! function_exists( 'ttf_one_wp_title' ) ) :
  *
  * @return string              The filtered title.
  */
-function ttf_one_wp_title( $title, $sep ) {
+function ttfmake_wp_title( $title, $sep ) {
 	global $page, $paged;
 
 	if ( is_feed() ) {
@@ -82,9 +82,9 @@ function ttf_one_wp_title( $title, $sep ) {
 }
 endif;
 
-add_filter( 'wp_title', 'ttf_one_wp_title', 10, 2 );
+add_filter( 'wp_title', 'ttfmake_wp_title', 10, 2 );
 
-if ( ! function_exists( 'ttf_one_setup_author' ) ) :
+if ( ! function_exists( 'ttfmake_setup_author' ) ) :
 /**
  * Sets the authordata global when viewing an author archive.
  *
@@ -100,7 +100,7 @@ if ( ! function_exists( 'ttf_one_setup_author' ) ) :
  *
  * @return void
  */
-function ttf_one_setup_author() {
+function ttfmake_setup_author() {
 	global $wp_query;
 
 	if ( ! isset( $GLOBALS['authordata'] ) && $wp_query->is_author() && isset( $wp_query->post ) ) {
@@ -109,7 +109,7 @@ function ttf_one_setup_author() {
 }
 endif;
 
-add_action( 'wp', 'ttf_one_setup_author' );
+add_action( 'wp', 'ttfmake_setup_author' );
 
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
@@ -178,7 +178,7 @@ function maybe_hash_hex_color( $color ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_excerpt_more' ) ) :
+if ( ! function_exists( 'ttfmake_excerpt_more' ) ) :
 /**
  * Modify the excerpt suffix
  *
@@ -188,14 +188,14 @@ if ( ! function_exists( 'ttf_one_excerpt_more' ) ) :
  *
  * @return string
  */
-function ttf_one_excerpt_more( $more ) {
+function ttfmake_excerpt_more( $more ) {
 	return ' &hellip;';
 }
 endif;
 
-add_filter( 'excerpt_more', 'ttf_one_excerpt_more' );
+add_filter( 'excerpt_more', 'ttfmake_excerpt_more' );
 
-if ( ! function_exists( 'ttf_one_get_view' ) ) :
+if ( ! function_exists( 'ttfmake_get_view' ) ) :
 /**
  * Determine the current view
  *
@@ -205,7 +205,7 @@ if ( ! function_exists( 'ttf_one_get_view' ) ) :
  *
  * @return string    The string representing the current view.
  */
-function ttf_one_get_view() {
+function ttfmake_get_view() {
 	// Post types
 	$post_types = get_post_types(
 		array(
@@ -249,7 +249,7 @@ function ttf_one_get_view() {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_has_sidebar' ) ) :
+if ( ! function_exists( 'ttfmake_has_sidebar' ) ) :
 /**
  * Determine if the current view should show a sidebar in the given location.
  *
@@ -258,7 +258,7 @@ if ( ! function_exists( 'ttf_one_has_sidebar' ) ) :
  * @param  string    $location    The location to test for.
  * @return bool                   Whether or not the location has a sidebar.
  */
-function ttf_one_has_sidebar( $location ) {
+function ttfmake_has_sidebar( $location ) {
 	global $wp_registered_sidebars;
 
 	// Validate the sidebar location
@@ -267,10 +267,10 @@ function ttf_one_has_sidebar( $location ) {
 	}
 
 	// Get the view
-	$view = ttf_one_get_view();
+	$view = ttfmake_get_view();
 
 	// Get the relevant option
-	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttf_one_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
+	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttfmake_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
 
 	// Builder template doesn't support sidebars
 	if ( 'page' === $view && 'template-builder.php' === get_page_template_slug() ) {
@@ -278,11 +278,11 @@ function ttf_one_has_sidebar( $location ) {
 	}
 
 	// Filter and return
-	return apply_filters( 'ttf_one_has_sidebar', $show_sidebar, $location, $view );
+	return apply_filters( 'ttfmake_has_sidebar', $show_sidebar, $location, $view );
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sidebar_description' ) ) :
+if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 /**
  * Output a sidebar description that reflects its current status.
  *
@@ -291,13 +291,13 @@ if ( ! function_exists( 'ttf_one_sidebar_description' ) ) :
  * @param  string    $sidebar_id    The sidebar to look up the description for.
  * @return string                   The description.
  */
-function ttf_one_sidebar_description( $sidebar_id ) {
+function ttfmake_sidebar_description( $sidebar_id ) {
 	$description = '';
 
 	// Footer sidebars
 	if ( false !== strpos( $sidebar_id, 'footer-' ) ) {
 		$column = (int) str_replace( 'footer-', '', $sidebar_id );
-		$column_count = (int) get_theme_mod( 'footer-widget-areas', ttf_one_get_default( 'footer-widget-areas' ) );
+		$column_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
 
 		if ( $column > $column_count ) {
 			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the Theme Customizer.', 'make' );
@@ -307,7 +307,7 @@ function ttf_one_sidebar_description( $sidebar_id ) {
 	else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
 		$location = str_replace( 'sidebar-', '', $sidebar_id );
 
-		$enabled_views = ttf_one_sidebar_list_enabled( $location );
+		$enabled_views = ttfmake_sidebar_list_enabled( $location );
 
 		// Not enabled anywhere
 		if ( empty( $enabled_views ) ) {
@@ -326,7 +326,7 @@ function ttf_one_sidebar_description( $sidebar_id ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_one_sidebar_list_enabled' ) ) :
+if ( ! function_exists( 'ttfmake_sidebar_list_enabled' ) ) :
 /**
  * Compile a list of views where a particular sidebar is enabled.
  *
@@ -335,7 +335,7 @@ if ( ! function_exists( 'ttf_one_sidebar_list_enabled' ) ) :
  * @param  string    $location    The sidebar to look up.
  * @return array                  The sidebar's current locations.
  */
-function ttf_one_sidebar_list_enabled( $location ) {
+function ttfmake_sidebar_list_enabled( $location ) {
 	$enabled_views = array();
 
 	$views = array(
@@ -347,7 +347,7 @@ function ttf_one_sidebar_list_enabled( $location ) {
 	);
 
 	foreach ( $views as $view => $label ) {
-		$option = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttf_one_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
+		$option = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttfmake_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
 		if ( true === $option ) {
 			$enabled_views[] = $label;
 		}

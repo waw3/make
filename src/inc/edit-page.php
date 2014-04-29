@@ -3,7 +3,7 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_edit_page_script' ) ) :
+if ( ! function_exists( 'ttfmake_edit_page_script' ) ) :
 /**
  * Enqueue scripts that run on the Edit Page screen
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'ttf_one_edit_page_script' ) ) :
  *
  * @return void
  */
-function ttf_one_edit_page_script() {
+function ttfmake_edit_page_script() {
 	global $pagenow;
 
 	wp_enqueue_script(
@@ -33,4 +33,4 @@ function ttf_one_edit_page_script() {
 }
 endif;
 
-add_action( 'admin_enqueue_scripts', 'ttf_one_edit_page_script' );
+add_action( 'admin_enqueue_scripts', 'ttfmake_edit_page_script' );

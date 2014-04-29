@@ -3,16 +3,16 @@
  * @package ttf-one
  */
 
-global $ttf_one_section_data, $ttf_one_is_js_template;
+global $ttfmake_section_data, $ttfmake_is_js_template;
 ?>
 
-<?php if ( ! isset( $ttf_one_is_js_template ) || true !== $ttf_one_is_js_template ) : ?>
-<div class="ttf-one-section <?php if ( isset( $ttf_one_section_data['data']['state'] ) && 'open' === $ttf_one_section_data['data']['state'] ) echo 'ttf-one-section-open'; ?> ttf-one-section-<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>" id="<?php echo 'ttf-one-section-' . esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttf_one_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttf_one_section_data['section']['id'] ); ?>">
+<?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
+<div class="ttf-one-section <?php if ( isset( $ttfmake_section_data['data']['state'] ) && 'open' === $ttfmake_section_data['data']['state'] ) echo 'ttf-one-section-open'; ?> ttf-one-section-<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>" id="<?php echo 'ttf-one-section-' . esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>">
 <?php endif; ?>
 	<div class="ttf-one-section-header">
-		<?php $header_title = ( isset( $ttf_one_section_data['data']['label'] ) ) ? $ttf_one_section_data['data']['label'] : ''; ?>
+		<?php $header_title = ( isset( $ttfmake_section_data['data']['label'] ) ) ? $ttfmake_section_data['data']['label'] : ''; ?>
 		<h3>
-			<span class="ttf-one-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttf_one_section_data['section']['label'] ) ); ?></em>
+			<span class="ttf-one-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttfmake_section_data['section']['label'] ) ); ?></em>
 		</h3>
 		<a href="#" class="ttf-one-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
@@ -20,4 +20,4 @@ global $ttf_one_section_data, $ttf_one_is_js_template;
 	</div>
 	<div class="clear"></div>
 	<div class="ttf-one-section-body">
-		<input type="hidden" value="<?php echo $ttf_one_section_data['section']['id']; ?>" name="<?php echo ttf_one_get_section_name( $ttf_one_section_data, $ttf_one_is_js_template ); ?>[section-type]" />
+		<input type="hidden" value="<?php echo $ttfmake_section_data['section']['id']; ?>" name="<?php echo ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template ); ?>[section-type]" />
