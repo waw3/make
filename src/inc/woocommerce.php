@@ -3,15 +3,18 @@
  * @package ttf-one
  */
 
-if ( ! function_exists( 'ttf_one_woocommerce_remove_hooks' ) ) :
+if ( ! function_exists( 'ttf_one_woocommerce_init' ) ) :
 /**
- * Remove default action hooks so we can replace them with our own.
+ * Add theme support and remove default action hooks so we can replace them with our own.
  *
  * @since  1.0.0.
  *
  * @return void
  */
-function ttf_one_woocommerce_remove_hooks() {
+function ttf_one_woocommerce_init() {
+	// Theme support
+	add_theme_support( 'woocommerce' );
+
 	// Content wrapper
 	remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper' );
 	remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end' );
@@ -21,7 +24,7 @@ function ttf_one_woocommerce_remove_hooks() {
 }
 endif;
 
-add_action( 'after_setup_theme', 'ttf_one_woocommerce_remove_hooks' );
+add_action( 'after_setup_theme', 'ttf_one_woocommerce_init' );
 
 if ( ! function_exists( 'ttf_one_woocommerce_before_main_content' ) ) :
 /**
