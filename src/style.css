@@ -168,12 +168,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .sub-header, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, #comments-nav {
+.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .sub-header:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
+  .clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .sub-header:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
+  .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -346,55 +346,55 @@ a {
 /*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
 -------------------------------------------------------- */
-.sub-header {
+.header-bar {
   float: left;
   width: 100%;
   color: #ffffff;
   background-color: #171717;
   border-bottom: 1px solid #171717; }
   @media screen and (min-width: 1100px) {
-    .subheader-flipped .sub-header .search-form, .subheader-flipped .sub-header .social-links {
+    .header-bar-flipped .header-bar .search-form, .header-bar-flipped .header-bar .social-links {
       float: left; }
-    .subheader-flipped .sub-header .header-text {
+    .header-bar-flipped .header-bar .header-text {
       float: right; }
-    .subheader-flipped .sub-header .search-form {
+    .header-bar-flipped .header-bar .search-form {
       padding-left: 0;
       padding-right: 16px;
       padding-right: 0.94118rem; } }
-  .sub-header a {
+  .header-bar a {
     color: inherit; }
-  .sub-header textarea, .sub-header input {
+  .header-bar textarea, .header-bar input {
     background-color: #ffffff;
     font-size: 12px;
     font-size: 0.70588rem; }
-  .sub-header .search-form {
+  .header-bar .search-form {
     font-size: 13px;
     font-size: 0.76471rem;
     padding: 11px 0;
     padding:  0.64706rem 0; }
     @media screen and (min-width: 1100px) {
-      .sub-header .search-form {
+      .header-bar .search-form {
         padding: 11px 0 11px 16px;
         padding:  0.64706rem 0 0.64706rem 0.94118rem;
         float: right; } }
-    .sub-header .search-form input {
+    .header-bar .search-form input {
       width: 100%;
       border: 1px solid; }
       @media screen and (min-width: 1100px) {
-        .sub-header .search-form input {
+        .header-bar .search-form input {
           width: 140px;
           -webkit-transition: width 0.3s;
           -moz-transition: width 0.3s;
           transition: width 0.3s; }
-          .sub-header .search-form input:focus {
+          .header-bar .search-form input:focus {
             width: 250px; } }
-  .sub-header .search-submit {
+  .header-bar .search-submit {
     display: none; }
-  .sub-header.right-content .header-text {
+  .header-bar.right-content .header-text {
     padding-top: 11px;
     padding-top: 0.64706rem; }
     @media screen and (min-width: 1100px) {
-      .sub-header.right-content .header-text {
+      .header-bar.right-content .header-text {
         position: relative;
         max-width: 20%;
         white-space: nowrap;

@@ -130,7 +130,7 @@ function ttfmake_get_choices( $setting ) {
 				'contain' => __( 'Contain', 'make' )
 			);
 			break;
-		case 'header-subheader-content-layout' :
+		case 'header-bar-content-layout' :
 			$choices = array(
 				'default' => __( 'Default', 'make' ),
 				'flipped' => __( 'Flipped', 'make' )
@@ -211,9 +211,9 @@ function ttfmake_body_layout_classes( $classes ) {
 		$classes[] = 'branding-right';
 	}
 
-	// Sub Header text position
-	if ( 'flipped' === get_theme_mod( 'header-subheader-content-layout', ttfmake_get_default( 'header-subheader-content-layout' ) ) ) {
-		$classes[] = 'subheader-flipped';
+	// Header Bar text position
+	if ( 'flipped' === get_theme_mod( 'header-bar-content-layout', ttfmake_get_default( 'header-bar-content-layout' ) ) ) {
+		$classes[] = 'header-bar-flipped';
 	}
 
 	return $classes;

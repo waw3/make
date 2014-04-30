@@ -127,9 +127,9 @@ function ttfmake_css_add_rules() {
 	$header_text_color          = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
 	$header_background_color    = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
 	$header_background_image    = get_theme_mod( 'header-background-image', ttfmake_get_default( 'header-background-image' ) );
-	$subheader_text_color       = maybe_hash_hex_color( get_theme_mod( 'header-subheader-text-color', ttfmake_get_default( 'header-subheader-text-color' ) ) );
-	$subheader_border_color     = maybe_hash_hex_color( get_theme_mod( 'header-subheader-border-color', ttfmake_get_default( 'header-subheader-border-color' ) ) );
-	$subheader_background_color = maybe_hash_hex_color( get_theme_mod( 'header-subheader-background-color', ttfmake_get_default( 'header-subheader-background-color' ) ) );
+	$header_bar_text_color       = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
+	$header_bar_border_color     = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
+	$header_bar_background_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
 
 	// Header text color
 	if ( $header_text_color !== ttfmake_get_default( 'header-text-color' ) ) {
@@ -173,32 +173,32 @@ function ttfmake_css_add_rules() {
 		) );
 	}
 
-	// Sub Header text color
-	if ( $subheader_text_color !== ttfmake_get_default( 'header-subheader-text-color' ) ) {
+	// Header Bar text color
+	if ( $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.sub-header' ),
+			'selectors'    => array( '.header-bar' ),
 			'declarations' => array(
-				'color' => $subheader_text_color
+				'color' => $header_bar_text_color
 			)
 		) );
 	}
 
-	// Sub Header border color
-	if ( $subheader_border_color !== ttfmake_get_default( 'header-subheader-border-color' ) ) {
+	// Header Bar border color
+	if ( $header_bar_border_color !== ttfmake_get_default( 'header-bar-border-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.sub-header', '.sub-header .search-form input', '.header-social-links li:first-of-type', '.header-social-links li a' ),
+			'selectors'    => array( '.header-bar', '.header-bar .search-form input', '.header-social-links li:first-of-type', '.header-social-links li a' ),
 			'declarations' => array(
-				'border-color' => $subheader_border_color
+				'border-color' => $header_bar_border_color
 			)
 		) );
 	}
 
-	// Sub Header background color
-	if ( $subheader_background_color !== ttfmake_get_default( 'header-subheader-background-color' ) ) {
+	// Header Bar background color
+	if ( $header_bar_background_color !== ttfmake_get_default( 'header-bar-background-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.sub-header' ),
+			'selectors'    => array( '.header-bar' ),
 			'declarations' => array(
-				'background-color' => $subheader_background_color
+				'background-color' => $header_bar_background_color
 			)
 		) );
 	}
