@@ -121,7 +121,18 @@ Each color in the *Colors* section sets colors for numerous elements. The primar
 
 ### Header ###
 
+The *Header* section allows you to configure unique and stylish header designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
 
-
-
+* **Header Layout**: Sets the global layout for the header. *Traditional* places the site identity and the navigation side by site. *Centered* centers both the site identity and the navigation and places the identity above the navigation. *Navigation Below* places the identity and the search bar side by side, with the navigation below those elements.
+* **Show Title/Logo On**: Sets the location of the site identity when the *Header Layout* option is set to either *Traditional* or *Navigation Below*.
+* **Header Bar Content Layout**: Sets the location of the Header bar elements. In most cases, the Header bar contains multiple elements with one element on the left and another on the right. This option allows you to flip the positioning of those elements.
+* **Header Bar Text**: Sets the text to display in the Header bar.
+* **Header Bar Text Color**: Sets the color of the text in the Header bar.
+* **Header Bar Border Color**: Sets the color of the border of the Header bar.
+* **Header Bar Background Color**: Sets the color of the background in the Header bar.
+* **Header Text Color**: Sets the color of the text in the Header. Note that this does not change the color of the site title as that is controlled in the *Site Title &amp; Tagline* section.
+* **Header Background Color**: Sets the color of the background in the Header. Note that if a *Header Background Image* is set, the *Header Background Color* will not be visible.
+* **Header Background Image**: Sets the background image for the Header. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Show Social Icons In Header Bar**: Checking this option will show the list of social icons set in *Social Profiles &amp; RSS* in the Header bar.
+* **Show Search Field in Header**: Checking this option will show the search input in the Header.
 
