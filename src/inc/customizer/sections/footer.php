@@ -301,7 +301,7 @@ function ttfmake_customizer_footer( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Social Icons', 'make' ),
+			'label'    => __( 'Show social icons', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)

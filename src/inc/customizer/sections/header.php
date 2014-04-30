@@ -369,7 +369,7 @@ function ttfmake_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show Social Icons In Header Bar', 'make' ),
+			'label'    => __( 'Show social icons in header bar', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)
