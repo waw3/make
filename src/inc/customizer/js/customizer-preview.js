@@ -64,12 +64,12 @@
 			var $content = $('.header-text');
 			if ( ! $content.length ) {
 				// Check for sub header
-				var $container = $('.sub-header');
+				var $container = $('.header-bar');
 				if ( ! $container.length ) {
-					$('#site-header').prepend('<div class="sub-header"><div class="container"></div></div>');
+					$('#site-header').prepend('<div class="header-bar"><div class="container"></div></div>');
 				}
 
-				$('.sub-header .container').prepend('<span class="header-text">' + to + '</span>');
+				$('.header-bar .container').prepend('<span class="header-text">' + to + '</span>');
 			}
 			if ( ! to ) {
 				$content.remove();
