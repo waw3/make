@@ -1,18 +1,18 @@
-## Introduction ##
+## Introduction {#introduction}
 
 The **Make** theme for WordPress provides site builder functionality to improve your experience of building a website. In the page edit screen, you can activate a **Page Builder** interface that assists with generating HTML for powerful page layouts. After constructing your pages, you can use a whole array of **Customizer options** to control numerous aspects of your theme's look and feel. These two powerful features allow you to transform **Make** into any type of website that you need.
 
-## Minimum requirements ##
+## Minimum requirements {#minimum-requirements}
 
 The **Make** theme requires WordPress 3.9 or above.
 
-## Page Builder ##
+## Page Builder {#page-builder}
 
 ![Page builder menu](https://thethemefoundry.com/wp-content/uploads/2014/04/builder-menu.jpg)
 
 **Make** provides a Page Builder that assists you in generating complex page layouts. The Page Builder includes four sections that each offer different layout options. By mixing and matching different sections, you can build exciting page layouts for your website.
 
-### Getting started with the Page Builder ###
+### Getting started with the Page Builder {#getting-started-with-the-page-builder}
 
 To begin working with the Page Builder:
 
@@ -20,7 +20,7 @@ To begin working with the Page Builder:
 1. You should see the _Page Builder_ in place of the normal content editor on the Add New Page screen.
 1. If the _Page Builder_ is not displayed, change the page template value to _Builder Template_ in the _Template_ dropdown in the _Page Attributes_ metabox.
 
-### Adding a text section ###
+### Adding a text section {#adding-a-text-section}
 
 ![Text section example](https://thethemefoundry.com/wp-content/uploads/2014/04/text-section.jpg)
 
@@ -37,7 +37,7 @@ The Page Builder's **Text** section generates a multi-column text layout.
 1. To rearrange the order of the columns, click and hold the double dotted border at the top of a text column. Drag the column to a new location and release.
 1. Click _Save Draft_, _Publish_ or _Update_ to save the section.
 
-### Adding a blank section ###
+### Adding a blank section {#adding-a-blank-section}
 
 ![Blank section example](https://thethemefoundry.com/wp-content/uploads/2014/04/blank-section.jpg)
 
@@ -47,7 +47,7 @@ The Page Builder's **Blank** section provides a free form section for adding arb
 1. Optionally add a title to the section by entering text into the input with the _Enter title here_ placeholder text.
 1. Optionally add content to the section in the WordPress editor input.
 
-### Adding a banner section ###
+### Adding a banner section {#adding-a-banner-section}
 
 ![Banner section example](https://thethemefoundry.com/wp-content/uploads/2014/04/banner-section.jpg)
 
@@ -74,7 +74,7 @@ After adding the content for your banner section, you can set the options for th
 6. Choose an option from the *Transition effect* select input to change the animation between slides.
 7. Set the height of the banner section by changing the *Section height* text input. The height is in pixels (px). Note that the exact pixel value will be used when the page is displayed at full width and will be scaled proportionally as the browser window narrows.
 
-### Adding a gallery section ###
+### Adding a gallery section {#adding-a-gallery-section}
 
 ![Gallery section example](https://thethemefoundry.com/wp-content/uploads/2014/04/gallery-section.jpg)
 
@@ -100,27 +100,27 @@ In the gallery section, you can configure a custom background. To add a custom b
 3. Choose a background style to change how the image is displayed via the *Background style* select input. *Tile* will cause the image to repeat in the X and Y direction (e.g., adds the CSS `repeat` value). *Cover* will scale the background image to completely fill the background of the element. Note that this option can lead to distortion of smaller images and cropping of bigger images.
 4. If you prefer to set a background color, you can do so by clicking the *Select color* button and choosing a color. Note that if you have a background image set, it will override the background color. Click *Remove background image* to remove the background image.
 
-## Customizer options ##
+## Customizer options {#customizer-options}
 
 The Make WordPress theme's Customizer has numerous options to help you enhance your website's look and feel. These customization options can be leveraged to configure your site without custom code. Below, you will find helpful information for each of the sections in the customizer.
 
-### General ###
+### General {#general}
 
 * **Site Layout**: Sets the main column layout for the site. *Full-width* allows the main column to stretch the full width of the browser. *Boxed* sets the main column width to 1144px and centers it in the background.
 * **Sticky Label**: Sets the label used in the header of sticky posts.
 
-### Background ###
+### Background {#background}
 
 * **Background Color**: Sets the color for the background of the site. If a background image is set, the color will not be seen. Additionally, if you are using the *Full-width Site Layout* option, the background color will not be seen as it is completely covered by the main column.
 * **Background Image**: Sets the background image for the site. If you are using the *Full-width Site Layout* option, the background color will not be seen as it is completely covered by the main column. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, *Background Attachment* and *Background Size*.
 
-### Fonts ###
+### Fonts {#fonts}
 
 * **Font Style**: You can change the font family used for the *Site Title*, *Headers*, and *Body* via the respective font select inputs. Each select gives you the option to choose from *Standard Fonts* and *Google Fonts*. To browse Google Fonts, please visit the [Google Fonts website](http://www.google.com/fonts/).
 * **Font Size**: Font size can be individually controlled for *Site Title*, *Navigation*, *Header*, *Widgets*, and *Body* by entering a number into the respective text input fields. The font size entered is in pixels.
 * **Character Subset**: Sets the character subset to use with the fonts. Please note that not all character subsets are supported by all Google Fonts. This can lead to issues with displaying some characters. Consult the Google Fonts [Google Fonts website](http://www.google.com/fonts/) for detailed information about character subsets.
 
-### Colors ###
+### Colors {#colors}
 
 Each color in the *Colors* section sets colors for numerous elements. The primary use for these colors is documented below.
 
@@ -129,7 +129,7 @@ Each color in the *Colors* section sets colors for numerous elements. The primar
 * **Text Color**: Sets the color of text in the body of posts, including post content, date, title, and by line.
 * **Detail Color**: Sets the color of small elements throughout the site.
 
-### Header ###
+### Header {#header}
 
 The *Header* section allows you to configure unique and stylish header designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
 
@@ -146,7 +146,7 @@ The *Header* section allows you to configure unique and stylish header designs. 
 * **Show Social Icons In Header Bar**: Checking this option will show the list of social icons set in *Social Profiles &amp; RSS* in the Header bar.
 * **Show Search Field in Header**: Checking this option will show the search input in the Header.
 
-### Site Title &amp; Tagline ###
+### Site Title &amp; Tagline {#site-title-and-tagline}
 
 * **Site Title Color**: Sets the color of the site title. Note that if you are using a custom logo (set in *Logo*), this option will have no effect.
 * **Site Title**: Sets the site name, which is displayed in the Header of the site. Note that this is the WordPress option that sets your title in various places throughout WordPress.
@@ -154,20 +154,20 @@ The *Header* section allows you to configure unique and stylish header designs. 
 * **Tagline**: Sets the site tagline, which is displayed in the Header of the site. Note that this is the WordPress option that sets your tagline in various places throughout WordPress.
 * **Hide Tagline**: Checking this option hides the tagline in the Header.
 
-### Logo ###
+### Logo {#logo}
 
 * **Regular Logo**: Sets the logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section.
 * **Retina Logo (2x)**: Sets the retina or HiDPI logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section. The retina logo is displayed at exactly half the height and width of the full size image. If you are setting the *Regular Logo* and a *Retina Logo* options, it is recommended that the image used for the *Retina Logo* is exactly twice the height and width of the *Regular Logo*.
 * **Favicon**: Sets the favicon used for the site. This image must be in .png or .ico format. The optimal size for this image is 32px x 32px.
 * **Apple Touch Icon**: Sets the Apple touch icon used for the site. This image must be in .png format. The optimal size for this image is 152px x 152px.
 
-### Navigation ###
+### Navigation {#navigation}
 
 * **Primary Menu**: Sets the menu to use in the Header. You must first create menus using [WordPress' menus system](http://codex.wordpress.org/WordPress_Menu_User_Guide) before being able to set menus in the header.
 * **Social Profile Links Menu**: Sets the menu to use in the Header and Footer social profiles links area. Please see the *Social Profiles &amp; Links* section for more information about creating a custom social links menu.
 * **Mobile Menu Label**: Sets the label text that is shown in the mobile menu.
 
-### Main ###
+### Main {#main}
 
 This section controls options for the main column. It is the center of the screen in which the primary content is contained, but does not include the header or the footer.
 
@@ -175,7 +175,7 @@ This section controls options for the main column. It is the center of the scree
 * **Background Image**: Sets the background image for the main column in the site. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
 * **Underline Links in Content**: Checking this option will add underlines to all links within the post content (e.g., adds the `text-decoration: underline;` property and value to post content links).
 
-### Layout: Blog (Posts Page) ###
+### Layout: Blog (Posts Page) {#layout-blog-posts-page}
 
 * **Hide site header**: Checking this option will hide the Header on the blog/posts page.
 * **Hide site footer**: Checking this option will hide the Footer on the blog/posts page.
@@ -188,7 +188,7 @@ This section controls options for the main column. It is the center of the scree
 * **Show categories**: Checking this option will show the category list for the post.
 * **Show tags**: Checking this option will show the tag list for the post.
 
-### Layout: Archives ###
+### Layout: Archives {#layout-archives}
 
 * **Hide site header**: Checking this option will hide the Header on archive pages.
 * **Hide site footer**: Checking this option will hide the Footer on archive pages.
@@ -201,7 +201,7 @@ This section controls options for the main column. It is the center of the scree
 * **Show categories**: Checking this option will show the category list for the post.
 * **Show tags**: Checking this option will show the tag list for the post.
 
-### Layout: Search ###
+### Layout: Search {#layout-search}
 
 * **Hide site header**: Checking this option will hide the Header on the search page.
 * **Hide site footer**: Checking this option will hide the Footer on the search page.
@@ -214,7 +214,7 @@ This section controls options for the main column. It is the center of the scree
 * **Show categories**: Checking this option will show the category list for the post.
 * **Show tags**: Checking this option will show the tag list for the post.
 
-### Layout: Posts ###
+### Layout: Posts {#layout-posts}
 
 * **Hide site header**: Checking this option will hide the Header on post pages.
 * **Hide site footer**: Checking this option will hide the Footer on post pages.
@@ -226,7 +226,7 @@ This section controls options for the main column. It is the center of the scree
 * **Show categories**: Checking this option will show the category list for the post.
 * **Show tags**: Checking this option will show the tag list for the post.
 
-### Layout: Pages ###
+### Layout: Pages {#layout-pages}
 
 * **Hide site header**: Checking this option will hide the Header on single pages.
 * **Hide site footer**: Checking this option will hide the Footer on single pages.
@@ -237,7 +237,7 @@ This section controls options for the main column. It is the center of the scree
 * **Post Date**: Sets the style for displaying the post data on single pages. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
 * **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
 
-### Footer ###
+### Footer {#footer}
 
 The *Footer* section allows you to configure unique and stylish footer designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
 
@@ -249,7 +249,7 @@ The *Footer* section allows you to configure unique and stylish footer designs. 
 * **Footer Background Image**: Sets the background image for the Footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
 * **Footer Widget Areas**: Sets the number of widget areas to show in the footer. The footer widget areas are displayed in equal width columns above the footer text and social icons. Note that space will only be held for these areas if there are active widgets in one of the widget areas.
 
-### Social Profiles &amp; RSS ###
+### Social Profiles &amp; RSS {#social-profiles-and-rss}
 
 Social icons linked to your social profiles can be displayed in either the header or footer. Before these icons can appear in either location, you must add your links in the this section. Additionally, you can toggle an RSS link in these locations.
 
