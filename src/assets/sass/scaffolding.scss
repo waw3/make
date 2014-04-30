@@ -2,675 +2,675 @@
  3. Scaffolding (_scaffolding.scss)
 -------------------------------------------------------- */
 html {
-    font-size: 106.25%; //17px
+	font-size: 106.25%; //17px
 }
 /*---------------------------------------------------------
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-    background-color: $d;
-    text-rendering: optimizeLegibility;
-    &.boxed {
-        background-color: $d;
-        .container {
-            @include for(medium-screens) {
-                @include rem('padding', 0 $col);
-            }
-            max-width: 100%;
-            width: 100%;
-            @include rem('padding', 0 $gut);
-        }
-        .site-wrapper {
-            @include for(medium-screens) {
-                 max-width: $width+($col*2);
-             }
-             max-width: $width+($gut*2);
-        }
-    }
+	background-color: $d;
+	text-rendering: optimizeLegibility;
+	&.boxed {
+		background-color: $d;
+		.container {
+			@include for(medium-screens) {
+				@include rem('padding', 0 $col);
+			}
+			max-width: 100%;
+			width: 100%;
+			@include rem('padding', 0 $gut);
+		}
+		.site-wrapper {
+			@include for(medium-screens) {
+				 max-width: $width+($col*2);
+			 }
+			 max-width: $width+($gut*2);
+		}
+	}
 }
 .site-main [class*="navigation"] {
-    overflow: hidden;
-    @include rem('padding', 0 0 $base*2);
+	overflow: hidden;
+	@include rem('padding', 0 0 $base*2);
 }
 .site-wrapper,
 .site-main {
-    width: 100%;
-    margin: 0 auto;
+	width: 100%;
+	margin: 0 auto;
 }
 .container {
-    max-width: $width+($gut*2);
-    margin: 0 auto;
-    @include rem('padding', 0 $gut);
+	max-width: $width+($gut*2);
+	margin: 0 auto;
+	@include rem('padding', 0 $gut);
 }
 body,
 button,
 input,
 select,
 textarea {
-    color: $b;
-    font-family: $sans;
-    line-height: 1.55;
+	color: $b;
+	font-family: $sans;
+	line-height: 1.55;
 }
 pre,
 code,
 input,
 textarea {
-    font: inherit;
+	font: inherit;
 }
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
 ul,ol,dl,p,details,address,.vcard,figure,pre,fieldset,table,dt,dd,hr,.ttfmake-alert {
-    @include rem('margin-bottom', $base);
+	@include rem('margin-bottom', $base);
 }
 p,ul,ol,dl,blockquote {
-    @extend .break;
+	@extend .break;
 }
 /*---------------------------------------------------------
  Links (_scaffolding.scss)
 -------------------------------------------------------- */
 a {
-    color: $c;
-    font-weight: bold;
-    text-decoration: none; //reset
+	color: $c;
+	font-weight: bold;
+	text-decoration: none; //reset
 }
 /*---------------------------------------------------------
  Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-header {
-    float: left;
-    width: 100%;
-    color: $b;
-    @extend .clear;
+	float: left;
+	width: 100%;
+	color: $b;
+	@extend .clear;
 }
 .site-header-main {
-    float: left;
-    width: 100%;
-    background-color: $a;
-    @include rem('padding', $base*2 0 $base);
-    @extend .clear;
+	float: left;
+	width: 100%;
+	background-color: $a;
+	@include rem('padding', $base*2 0 $base);
+	@extend .clear;
 }
 /*---------------------------------------------------------
  Header layout 2 (_scaffolding.scss)
 -------------------------------------------------------- */
 .header-layout-2 {
-    .site-branding,
-    .site-navigation {
-        float: none; //reset
-        max-width: 100%;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
+	.site-branding,
+	.site-navigation {
+		float: none; //reset
+		max-width: 100%;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
 }
 /*---------------------------------------------------------
  Header layout 3 (_scaffolding.scss)
 -------------------------------------------------------- */
 .header-layout-3 {
-    .site-navigation {
-        float: left; //reset
-        max-width: 100%;
-        width: 100%;
-        text-align: left;
-    }
-    .search-form {
-        @include for(medium-screens) {
-            float: right;
-            .branding-right & {
-                float: left;
-            }
-        }
-        @include rem('font-size', 13px);
-    }
-    .search-submit {
-        display: none;
-    }
+	.site-navigation {
+		float: left; //reset
+		max-width: 100%;
+		width: 100%;
+		text-align: left;
+	}
+	.search-form {
+		@include for(medium-screens) {
+			float: right;
+			.branding-right & {
+				float: left;
+			}
+		}
+		@include rem('font-size', 13px);
+	}
+	.search-submit {
+		display: none;
+	}
 }
 /*---------------------------------------------------------
  Title and tagline (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-title {
-    color: $b;
-    margin: 0; //reset
-    font-weight: bold;
-    font-family: $heading;
-    @include rem('font-size', 34px);
-    a {
-        color: $b;
-    }
+	color: $b;
+	margin: 0; //reset
+	font-weight: bold;
+	font-family: $heading;
+	@include rem('font-size', 34px);
+	a {
+		color: $b;
+	}
 }
 @include for(medium-screens) {
-    .site-branding {
-        float: left;
-        max-width: 50%;
-        .branding-right & {
-            float: right;
-        }
-    }
+	.site-branding {
+		float: left;
+		max-width: 50%;
+		.branding-right & {
+			float: right;
+		}
+	}
 }
 .site-description {
-    display: block;
-    text-transform: uppercase;
-    @include rem('margin', $base/2 0 $base);
-    @include rem('font-size', 12px);
-    @include rem('letter-spacing', 1px);
+	display: block;
+	text-transform: uppercase;
+	@include rem('margin', $base/2 0 $base);
+	@include rem('font-size', 12px);
+	@include rem('letter-spacing', 1px);
 }
 /*---------------------------------------------------------
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
 .custom-logo {
-    display: block;
-    max-width: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    @include rem('margin-bottom', $base/2);
-    a {
-        display: block;
-        width: 100%;
-        height: 0; //reset
-        font: 0/0 a; //reset
-        text-decoration: none; //reset
-        text-shadow: none; //reset
-        color: transparent; //reset
-    }
+	display: block;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	@include rem('margin-bottom', $base/2);
+	a {
+		display: block;
+		width: 100%;
+		height: 0; //reset
+		font: 0/0 a; //reset
+		text-decoration: none; //reset
+		text-shadow: none; //reset
+		color: transparent; //reset
+	}
 }
 /*---------------------------------------------------------
  Sub Header (_scaffolding.scss)
 -------------------------------------------------------- */
 .header-bar {
-    float: left;
-    width: 100%;
-    color: $a;
-    background-color: $b;
-    border-bottom: $rule;
-    @extend .clear;
-    @include for(large-screens) {
-        .header-bar-flipped & {
-            .search-form,
-            .social-links {
-                float: left;
-            }
-            .header-text {
-                float: right;
-            }
-            .search-form {
-                padding-left: 0; //reset
-                @include rem('padding-right', $gut/2);
-            }
-        }
-    }
-    a {
-        color: inherit;
-    }
-    textarea,
-    input {
-        background-color: $a;
-        @include rem('font-size', 12px);
-    }
-    .search-form {
-        @include for(large-screens) {
-            @include rem('padding', $base/2 0 $base/2 $gut/2);
-            float: right;
-        }
-        @include rem('font-size', 13px);
-        @include rem('padding', $base/2 0);
-        input {
-            @include for(large-screens) {
-                width: 140px;
-                -webkit-transition: width .3s;
-                   -moz-transition: width .3s;
-                        transition: width .3s;
-                &:focus {
-                    width: 250px;
-                }
-            }
-            width: 100%;
-            border: 1px solid;
-        }
-    }
-    .search-submit {
-        display: none;
-    }
-    &.right-content .header-text {
-        @include for(large-screens) {
-            position: relative;
-            max-width: 20%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            @include rem('top', 5px);
-        }
-        @include rem('padding-top', $base/2);
-    }
+	float: left;
+	width: 100%;
+	color: $a;
+	background-color: $b;
+	border-bottom: $rule;
+	@extend .clear;
+	@include for(large-screens) {
+		.header-bar-flipped & {
+			.search-form,
+			.social-links {
+				float: left;
+			}
+			.header-text {
+				float: right;
+			}
+			.search-form {
+				padding-left: 0; //reset
+				@include rem('padding-right', $gut/2);
+			}
+		}
+	}
+	a {
+		color: inherit;
+	}
+	textarea,
+	input {
+		background-color: $a;
+		@include rem('font-size', 12px);
+	}
+	.search-form {
+		@include for(large-screens) {
+			@include rem('padding', $base/2 0 $base/2 $gut/2);
+			float: right;
+		}
+		@include rem('font-size', 13px);
+		@include rem('padding', $base/2 0);
+		input {
+			@include for(large-screens) {
+				width: 140px;
+				-webkit-transition: width .3s;
+				   -moz-transition: width .3s;
+						transition: width .3s;
+				&:focus {
+					width: 250px;
+				}
+			}
+			width: 100%;
+			border: 1px solid;
+		}
+	}
+	.search-submit {
+		display: none;
+	}
+	&.right-content .header-text {
+		@include for(large-screens) {
+			position: relative;
+			max-width: 20%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			@include rem('top', 5px);
+		}
+		@include rem('padding-top', $base/2);
+	}
 }
 .header-text {
-    float: left;
-    @include rem('margin-top', 2px);
-    @include rem('padding', $base/2 0);
-    @include rem('font-size', 12px);
+	float: left;
+	@include rem('margin-top', 2px);
+	@include rem('padding', $base/2 0);
+	@include rem('font-size', 12px);
 }
 .social-links {
-    padding-left: 0; //reset
-    list-style: none; //reset
-    @include no-select;
-    li {
-        a {
-            display: block;
-            color: inherit;
-            text-decoration: none; //reset
-        }
-        display:  inline-block;
-        text-align: center;
-    }
-    &.social-customizer {
-        .facebook a:hover,
-        .facebook a:focus {
-            color: #3B5999;
-        }
-        .twitter a:hover,
-        .twitter a:focus {
-            color: #4099ff;
-        }
-        .google-plus-square a:hover,
-        .google-plus-square a:focus {
-            color: #d34836;
-        }
-        .linkedin a:hover,
-        .linkedin a:focus {
-            color: #007bb6;
-        }
-        .instagram a:hover,
-        .instagram a:focus {
-            color: #517fa4;
-        }
-        .flickr a:hover,
-        .flickr a:focus {
-            color: #ff0084;
-        }
-        .youtube a:hover,
-        .youtube a:focus {
-            color: #e52d27;
-        }
-        .vimeo-square a:hover,
-        .vimeo-square a:focus {
-            color: #1ab7ea;
-        }
-        .pinterest a:hover,
-        .pinterest a:focus {
-            color: #c92228;
-        }
-        .email a:hover,
-        .email a:focus {
-            color: #ffae00;
-        }
-        .rss a:hover,
-        .rss a:focus {
-            color: #ff6600;
-        }
-    }
+	padding-left: 0; //reset
+	list-style: none; //reset
+	@include no-select;
+	li {
+		a {
+			display: block;
+			color: inherit;
+			text-decoration: none; //reset
+		}
+		display:  inline-block;
+		text-align: center;
+	}
+	&.social-customizer {
+		.facebook a:hover,
+		.facebook a:focus {
+			color: #3B5999;
+		}
+		.twitter a:hover,
+		.twitter a:focus {
+			color: #4099ff;
+		}
+		.google-plus-square a:hover,
+		.google-plus-square a:focus {
+			color: #d34836;
+		}
+		.linkedin a:hover,
+		.linkedin a:focus {
+			color: #007bb6;
+		}
+		.instagram a:hover,
+		.instagram a:focus {
+			color: #517fa4;
+		}
+		.flickr a:hover,
+		.flickr a:focus {
+			color: #ff0084;
+		}
+		.youtube a:hover,
+		.youtube a:focus {
+			color: #e52d27;
+		}
+		.vimeo-square a:hover,
+		.vimeo-square a:focus {
+			color: #1ab7ea;
+		}
+		.pinterest a:hover,
+		.pinterest a:focus {
+			color: #c92228;
+		}
+		.email a:hover,
+		.email a:focus {
+			color: #ffae00;
+		}
+		.rss a:hover,
+		.rss a:focus {
+			color: #ff6600;
+		}
+	}
 }
 .header-social-links {
-    @include for(large-screens) {
-        float: right;
-        margin-bottom: 0; //reset
-    }
-    text-align: center;
-    @include rem('margin-bottom', $base/2);
-    li {
-        @include for(large-screens) {
-            &:first-of-type {
-                border-left: $rule;
-            }
-        }
-        a {
-            @include for(large-screens) {
-                border-right: $rule;
-                @include rem('padding', 14px 10px);
-                @include rem('font-size', 17px);
-            }
-            @include rem('padding', 4px 4px);
-            @include rem('font-size', 24px);
-        }
-    }
+	@include for(large-screens) {
+		float: right;
+		margin-bottom: 0; //reset
+	}
+	text-align: center;
+	@include rem('margin-bottom', $base/2);
+	li {
+		@include for(large-screens) {
+			&:first-of-type {
+				border-left: $rule;
+			}
+		}
+		a {
+			@include for(large-screens) {
+				border-right: $rule;
+				@include rem('padding', 14px 10px);
+				@include rem('font-size', 17px);
+			}
+			@include rem('padding', 4px 4px);
+			@include rem('font-size', 24px);
+		}
+	}
 }
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-navigation {
-    font-family: $sans;
-    @include for(medium-screens) {
-        float: right;
-        max-width: 50%;
-        .branding-right .header-layout-1 & {
-            float: left;
-            text-align: left;
-        }
-        .branding-right .header-layout-3 & {
-            float: right;
-            text-align: right;
-        }
-    }
-    margin-bottom: 0; //reset
-    @include no-select;
-    .menu {
-        padding-left: 0; //reset
-        li:first-of-type a {
-            padding-left: 0; //reset
-        }
-        ul,
-        ol {
-            margin-left: 0; //reset
-        }
-        li {
-            @include for(medium-screens) {
-                display: inline-block;
-                position: relative;
-            }
-            text-align: left; //reset
-            list-style: none; //reset
-            a {
-                @include for(medium-screens) {
-                    line-height: 1.4;
-                    border-bottom: 0; //reset
-                    @include rem('padding', $base/2 $gut/2);
-                }
-                display: block;
-                font-weight: normal; //reset
-                color: $b;
-                line-height: 1.8;
-                border-bottom: $rule;
-                @include rem('padding', $base/2 0);
-                @include rem('font-size', 14px);
-            }
-            &:last-of-type a {
-                padding-right: 0; //reset
-            }
-        }
-        .sub-menu,
-        .children {
-            padding: 0; //reset
-            text-align: left;
-            li a {
-                @include rem('padding-left', $gut/2);
-                &:before {
-                    content: "\2013  ";
-                }
-            }
-            li li a {
-                @include rem('padding-left', $gut);
-            }
-        }
-        @include for(medium-screens) {
-            .sub-menu,
-            .children {
-                position: absolute;
-                z-index: 99999;
-                overflow: hidden;
-                clip: rect(1px, 1px, 1px, 1px);
-                background-color: $d;
-                li:first-of-type a {
-                    @include rem('padding', 15px $gut/2);
-                }
-                a {
-                    border-bottom: 1px solid $e;
-                    @include rem('padding', 15px $gut/2);
-                    @include rem('font-size', 13px);
-                    &:after {
-                        content: none; //reset
-                    }
-                }
-                .menu-item-has-children a:after {
-                    content: "  \f054";
-                    position: relative;
-                    float: right;
-                    font-family: FontAwesome;
-                    font-weight: normal; //reset
-                    @include rem('top', 4px);
-                    @include rem('font-size', 10px);
-                }
-                .sub-menu,
-                .children {
-                    a:after {
-                        content: none; //reset
-                    }
-                }
-                li {
-                    padding-left: 0; //reset
-                    a:before {
-                        content: none; //reset
-                    }
-                    &:last-of-type a {
-                        border-bottom: 0; //reset
-                    }
-                }
-                ul {
-                    top: 0; //reset
-                    left: 100%;
-                }
-            }
-        }
-        @include for(medium-screens) {
-            .current_page_item,
-            .current_page_ancestor,
-            .current-menu-item,
-            .current-menu-ancestor {
-                > a {
-                    font-weight: bold;
-                }
-            }
-        }
-        .current_page_item,
-        .current-menu-item {
-            > a {
-                font-weight: bold;
-            }
-        }
-    }
-    @include for(medium-screens) {
-        .menu-item-has-children a:after {
-            content: "  \f078";
-            font-family: FontAwesome;
-            font-weight: normal; //reset
-            color: $e;
-            @include rem('padding-left', 2px);
-            @include rem('font-size', 10px);
-        }
-        ul.menu ul a,
-        .menu ul ul a {
-            margin: 0; //reset
-            min-width: 180px;
-            max-width: 250px;
-            &:hover,
-            &:focus {
-                color: $a;
-                background-color: $c;
-                &:after {
-                    color: $a;
-                }
-            }
-        }
-        ul.menu li:hover > ul,
-        .menu ul li:hover > ul,
-        ul.menu .focus > ul,
-        .menu .focus > ul {
-            clip: inherit;
-            overflow: inherit;
-            height: inherit;
-            width: inherit;
-        }
-    }
+	font-family: $sans;
+	@include for(medium-screens) {
+		float: right;
+		max-width: 50%;
+		.branding-right .header-layout-1 & {
+			float: left;
+			text-align: left;
+		}
+		.branding-right .header-layout-3 & {
+			float: right;
+			text-align: right;
+		}
+	}
+	margin-bottom: 0; //reset
+	@include no-select;
+	.menu {
+		padding-left: 0; //reset
+		li:first-of-type a {
+			padding-left: 0; //reset
+		}
+		ul,
+		ol {
+			margin-left: 0; //reset
+		}
+		li {
+			@include for(medium-screens) {
+				display: inline-block;
+				position: relative;
+			}
+			text-align: left; //reset
+			list-style: none; //reset
+			a {
+				@include for(medium-screens) {
+					line-height: 1.4;
+					border-bottom: 0; //reset
+					@include rem('padding', $base/2 $gut/2);
+				}
+				display: block;
+				font-weight: normal; //reset
+				color: $b;
+				line-height: 1.8;
+				border-bottom: $rule;
+				@include rem('padding', $base/2 0);
+				@include rem('font-size', 14px);
+			}
+			&:last-of-type a {
+				padding-right: 0; //reset
+			}
+		}
+		.sub-menu,
+		.children {
+			padding: 0; //reset
+			text-align: left;
+			li a {
+				@include rem('padding-left', $gut/2);
+				&:before {
+					content: "\2013  ";
+				}
+			}
+			li li a {
+				@include rem('padding-left', $gut);
+			}
+		}
+		@include for(medium-screens) {
+			.sub-menu,
+			.children {
+				position: absolute;
+				z-index: 99999;
+				overflow: hidden;
+				clip: rect(1px, 1px, 1px, 1px);
+				background-color: $d;
+				li:first-of-type a {
+					@include rem('padding', 15px $gut/2);
+				}
+				a {
+					border-bottom: 1px solid $e;
+					@include rem('padding', 15px $gut/2);
+					@include rem('font-size', 13px);
+					&:after {
+						content: none; //reset
+					}
+				}
+				.menu-item-has-children a:after {
+					content: "  \f054";
+					position: relative;
+					float: right;
+					font-family: FontAwesome;
+					font-weight: normal; //reset
+					@include rem('top', 4px);
+					@include rem('font-size', 10px);
+				}
+				.sub-menu,
+				.children {
+					a:after {
+						content: none; //reset
+					}
+				}
+				li {
+					padding-left: 0; //reset
+					a:before {
+						content: none; //reset
+					}
+					&:last-of-type a {
+						border-bottom: 0; //reset
+					}
+				}
+				ul {
+					top: 0; //reset
+					left: 100%;
+				}
+			}
+		}
+		@include for(medium-screens) {
+			.current_page_item,
+			.current_page_ancestor,
+			.current-menu-item,
+			.current-menu-ancestor {
+				> a {
+					font-weight: bold;
+				}
+			}
+		}
+		.current_page_item,
+		.current-menu-item {
+			> a {
+				font-weight: bold;
+			}
+		}
+	}
+	@include for(medium-screens) {
+		.menu-item-has-children a:after {
+			content: "  \f078";
+			font-family: FontAwesome;
+			font-weight: normal; //reset
+			color: $e;
+			@include rem('padding-left', 2px);
+			@include rem('font-size', 10px);
+		}
+		ul.menu ul a,
+		.menu ul ul a {
+			margin: 0; //reset
+			min-width: 180px;
+			max-width: 250px;
+			&:hover,
+			&:focus {
+				color: $a;
+				background-color: $c;
+				&:after {
+					color: $a;
+				}
+			}
+		}
+		ul.menu li:hover > ul,
+		.menu ul li:hover > ul,
+		ul.menu .focus > ul,
+		.menu .focus > ul {
+			clip: inherit;
+			overflow: inherit;
+			height: inherit;
+			width: inherit;
+		}
+	}
 }
 .menu-toggle {
-    color: $a;
-    text-align: left;
-    border: 0; //reset
-    background-color: $b;
-    cursor: pointer;
-    @include rem('margin', $base 0 0);
-    @include rem('padding', 10px 14px);
-    @include rem('font-size', 13px);
-    @include border-radius;
-    &:before {
-        content: "\f0c9";
-        font-family: FontAwesome;
-        @include rem('padding-right', 6px);
-    }
+	color: $a;
+	text-align: left;
+	border: 0; //reset
+	background-color: $b;
+	cursor: pointer;
+	@include rem('margin', $base 0 0);
+	@include rem('padding', 10px 14px);
+	@include rem('font-size', 13px);
+	@include border-radius;
+	&:before {
+		content: "\f0c9";
+		font-family: FontAwesome;
+		@include rem('padding-right', 6px);
+	}
 }
 .menu-toggle,
 .site-navigation.toggled .nav-menu {
-    display: block;
+	display: block;
 }
 .site-navigation .menu {
-    @include for(medium-screens) {
-        display: block;
-    }
-    display: none;
+	@include for(medium-screens) {
+		display: block;
+	}
+	display: none;
 }
 @include for(medium-screens) {
-    .site-navigation ul {
-        display: none;
-    }
+	.site-navigation ul {
+		display: none;
+	}
 }
 @include for(medium-screens) {
-    .menu-toggle {
-        display: none;
-    }
-    .site-navigation ul {
-        display: block;
-    }
+	.menu-toggle {
+		display: none;
+	}
+	.site-navigation ul {
+		display: block;
+	}
 }
 /*---------------------------------------------------------
  Main (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-content {
-    float: left;
-    width: 100%;
-    background-color: $a;
-    @include rem('padding', $base 0);
-    @extend .clear;
+	float: left;
+	width: 100%;
+	background-color: $a;
+	@include rem('padding', $base 0);
+	@extend .clear;
 }
 /*---------------------------------------------------------
  Footer (_scaffolding.scss)
 -------------------------------------------------------- */
 .site-footer {
-    float: left;
-    width: 100%;
-    color: #464849;
-    background-color: $d;
-    @include rem('padding', $base*2 0);
-    #infinite-footer & {
-        @include rem('padding', $base 0);
-    }
-    .search-form input {
-        border: 1px solid;
-    }
-    @extend .clear;
-    *:not(select) {
-        border-color: $e !important;
-    }
-    @include for(medium-screens) {
-        .columns-1 .widget-area {
-            width: 100%;
-        }
-        .columns-2 .widget-area {
-            width: percentage( ( $width - $gut ) / ( $width*2 ) );
-        }
-        .columns-3 .widget-area {
-            width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
-        }
-        .columns-4 .widget-area {
-            width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
-        }
-    }
-    .widget-area {
-        width: 100%;
-        float: left;
-        margin-right: percentage( $gut / $width );
-        @include rem('margin-bottom', $base*2);
-        &:last-of-type {
-            margin-right: 0; //reset
-        }
-    }
-    textarea,
-    input,
-    .widget_tag_cloud a {
-        background-color: $a;
-    }
-    .site-info {
-        @include for(medium-screens) {
-            float: left;
-        }
-        text-align: center;
-    }
-    .footer-social-links {
-        @include for(medium-screens) {
-        float: right;
-            text-align: right;
-        }
-        text-align: center;
-    }
-    .site-info,
-    .site-info a {
-        @include for(medium-screens) {
-            @include rem('font-size', 13px);
-        }
-        color: inherit;
-        font-weight: bold;
-        text-decoration: none; //reset
-        @include rem('font-size', 12px);
-        .theme-by {
-            font-weight: normal;
-            font-style: italic;
-            text-transform: lowercase;
-            @include rem('padding', 0 4px);
-            @include rem('letter-spacing', 1px);
-        }
-    }
+	float: left;
+	width: 100%;
+	color: #464849;
+	background-color: $d;
+	@include rem('padding', $base*2 0);
+	#infinite-footer & {
+		@include rem('padding', $base 0);
+	}
+	.search-form input {
+		border: 1px solid;
+	}
+	@extend .clear;
+	*:not(select) {
+		border-color: $e !important;
+	}
+	@include for(medium-screens) {
+		.columns-1 .widget-area {
+			width: 100%;
+		}
+		.columns-2 .widget-area {
+			width: percentage( ( $width - $gut ) / ( $width*2 ) );
+		}
+		.columns-3 .widget-area {
+			width: percentage( ( $width - ( $gut*2 ) ) / ( $width*3 ) );
+		}
+		.columns-4 .widget-area {
+			width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+		}
+	}
+	.widget-area {
+		width: 100%;
+		float: left;
+		margin-right: percentage( $gut / $width );
+		@include rem('margin-bottom', $base*2);
+		&:last-of-type {
+			margin-right: 0; //reset
+		}
+	}
+	textarea,
+	input,
+	.widget_tag_cloud a {
+		background-color: $a;
+	}
+	.site-info {
+		@include for(medium-screens) {
+			float: left;
+		}
+		text-align: center;
+	}
+	.footer-social-links {
+		@include for(medium-screens) {
+		float: right;
+			text-align: right;
+		}
+		text-align: center;
+	}
+	.site-info,
+	.site-info a {
+		@include for(medium-screens) {
+			@include rem('font-size', 13px);
+		}
+		color: inherit;
+		font-weight: bold;
+		text-decoration: none; //reset
+		@include rem('font-size', 12px);
+		.theme-by {
+			font-weight: normal;
+			font-style: italic;
+			text-transform: lowercase;
+			@include rem('padding', 0 4px);
+			@include rem('letter-spacing', 1px);
+		}
+	}
 }
 .footer-widget-container {
-    float: left;
-    width: 100%;
+	float: left;
+	width: 100%;
 }
 .footer-text {
-    @include for(medium-screens) {
-        text-align: left;
-        @include rem('font-size', 13px);
-    }
-    clear: both;
-    text-align: center;
-    @include rem('margin-bottom', $base/4);
-    @include rem('font-size', 12px);
+	@include for(medium-screens) {
+		text-align: left;
+		@include rem('font-size', 13px);
+	}
+	clear: both;
+	text-align: center;
+	@include rem('margin-bottom', $base/4);
+	@include rem('font-size', 12px);
 }
 .footer-social-links {
-    @include for(medium-screens) {
-        margin: 0; //reset
-        @include rem('font-size', 17px);
-    }
-    @include rem('margin-top', $base/2);
-    @include rem('font-size', 24px);
+	@include for(medium-screens) {
+		margin: 0; //reset
+		@include rem('font-size', 17px);
+	}
+	@include rem('margin-top', $base/2);
+	@include rem('font-size', 24px);
 }
 #site-footer {
-    .infinite-scroll.neverending & {
-        display: none;
-    }
-    .infinity-end.neverending & {
-        display: block;
-    }
+	.infinite-scroll.neverending & {
+		display: none;
+	}
+	.infinity-end.neverending & {
+		display: block;
+	}
 }
 /*---------------------------------------------------------
  Footer layout 2 (_scaffolding.scss)
 -------------------------------------------------------- */
 .footer-layout-2 {
-    .site-info,
-    .footer-text,
-    .footer-social-links {
-        float: none; //reset
-        clear: both;
-        text-align: center;
-    }
-    .footer-social-links {
-        @include rem('margin-top', $base/2);
-    }
+	.site-info,
+	.footer-text,
+	.footer-social-links {
+		float: none; //reset
+		clear: both;
+		text-align: center;
+	}
+	.footer-social-links {
+		@include rem('margin-top', $base/2);
+	}
 }
