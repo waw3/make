@@ -15,7 +15,7 @@ $title            = ( isset( $ttfmake_section_data['data']['title'] ) ) ? $ttfma
 $background_image = ( isset( $ttfmake_section_data['data']['background-image'] ) ) ? $ttfmake_section_data['data']['background-image'] : 0;
 $background_color = ( isset( $ttfmake_section_data['data']['background-color'] ) ) ? $ttfmake_section_data['data']['background-color'] : '';
 $background_style = ( isset( $ttfmake_section_data['data']['background-style'] ) ) ? $ttfmake_section_data['data']['background-style'] : 'tile';
-$darken           = ( isset( $ttfmake_section_data['data']['darken'] ) ) ? $ttfmake_section_data['data']['darken'] : 1;
+$darken           = ( isset( $ttfmake_section_data['data']['darken'] ) ) ? $ttfmake_section_data['data']['darken'] : 0;
 $section_order    = ( ! empty( $ttfmake_section_data['data']['gallery-item-order'] ) ) ? $ttfmake_section_data['data']['gallery-item-order'] : array();
 ?>
 
