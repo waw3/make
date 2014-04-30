@@ -57,22 +57,22 @@ The Page Builder's **Banner** section generates a full width banner section that
 1. Add a background image for the slide by clicking _Set slide image_ or the grey box with the image icon. In the modal window that pops up, click an existing image or drag and drop a new image onto the modal window. Click _Select_ to insert the image.
 1. Check the box next to _Darken to improve readability_ to add a semi-transparent overlay to the image to darken it slightly.
 1. Set a _Background color_ by clicking _Select color_ and choosing a color. The background color will only be applied if a slide image is not set.
-1. Choose a _Content position_ to position where on the slide that the content will be located.
-1. Add content to the WordPress editor under the *Slide content overlay* heading to add content to the slide.
-1. Optionally add additional slides by clicking *Add new slide* and repeating steps 2-6 for each slide.
-1. To remove slides, click the *Remove this slide* link.
+1. _Content position_ specifies where on the slide that the content will be located.
+1. Add content to the WordPress editor under the _Slide content overlay_ heading to add content to the slide.
+1. Optionally add additional slides by clicking _Add new slide_ and repeating the above steps for each slide.
+1. To remove slides, click the _Remove this slide_ link.
 
 **Banner slide options**
 
-After adding the content for your banner section, you can set the options for the section. Most of these options *only* apply to the banner sections with a slider (i.e., banner sections that have 2 or more slides).
+After adding the content for your banner section, you can set the options for the section. Most of these options only apply to banner sections with a slider (i.e., banner sections that have 2 or more slides).
 
-1. Add text to the input with the *Enter title here* placeholder to set a title for the section.
-2. Check the *Hide navigation arrows* box to remove the left and right navigation arrows in the slider.
-3. Check the *Hide navigation dots* box to remove the navigation dots below the slider.
-4. Uncheck the *Autoplay slideshow* box to remove the autoplay option from the slider.
-5. Set the value for the *Time between slides (in ms)* text input to change the amount of time that each slides displays. The default is 6 seconds (6000 milliseconds).
-6. Choose an option from the *Transition effect* select input to change the animation between slides.
-7. Set the height of the banner section by changing the *Section height* text input. The height is in pixels (px). Note that the exact pixel value will be used when the page is displayed at full width and will be scaled proportionally as the browser window narrows.
+1. Add text to the input with the _Enter title here_ placeholder to set a title for the section.
+1. Check the _Hide navigation arrows_ box to remove the left and right navigation arrows from the slider.
+1. Check the _Hide navigation dots_ box to remove the navigation dots from below the slider.
+1. Uncheck the _Autoplay slideshow_ box to switch slides only when clicking the navigation arrows or dots.
+1. Set the value for the _Time between slides (in ms)_ text input to change the amount of time that each slide displays. The default is 6 seconds (6000 milliseconds).
+1. Choose an option from the _Transition effect_ dropdown to change the animation between slides.
+1. Set the height of the banner section by changing the _Section height_ text input. The height is in pixels (px). Note that the exact pixel value will be used when the page is displayed at full width and will be scaled proportionally as the browser window narrows (such as on mobile devices).
 
 ### Adding a gallery section {#adding-a-gallery-section}
 
