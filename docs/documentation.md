@@ -91,3 +91,20 @@ In the gallery section, you can configure a custom background. To add a custom b
 4. If you prefer to set a background color, you can do so by clicking the *Select color* button and choosing a color. Note that if you have a background image set, it will override the background color. Click *Remove background image* to remove the background image.
 
 ## Customizer options ##
+
+The Make WordPress theme's Customizer has numerous options to help you enhance your website's look and feel. These customization options can be leveraged to configure your site without custom code. Below, you will find helpful information for each of the sections in the customizer.
+
+### General ###
+
+* **Site Layout**: Sets the main column layout for the site. *Full-width* allows the main column to stretch the full width of the browser. *Boxed* sets the main column width to 1144px and centers it in the background.
+* **Sticky Label**: Sets the label used in the header of sticky posts.
+
+### Background ###
+
+* **Background Color**: Sets the color for the background of the site. If a background image is set, the color will not be seen. Additionally, if you are using the *Full-width Site Layout* option, the background color will not be seen as it is completely covered by the main column.
+* **Background Image**: Sets the background image for the site. If you are using the *Full-width Site Layout* option, the background color will not be seen as it is completely covered by the main column. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, *Background Attachment* and *Background Size*.
+
+### Fonts ###
+
+
+
