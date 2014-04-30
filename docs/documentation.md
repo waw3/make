@@ -151,4 +151,10 @@ The *Header* section allows you to configure unique and stylish header designs. 
 * **Favicon**: Sets the favicon used for the site. This image must be in .png or .ico format. The optimal size for this image is 32px x 32px.
 * **Apple Touch Icon**: Sets the Apple touch icon used for the site. This image must be in .png format. The optimal size for this image is 152px x 152px.
 
+### Navigation ###
+
+* **Primary Menu**: Sets the menu to use in the Header. You must first create menus using [WordPress' menus system](http://codex.wordpress.org/WordPress_Menu_User_Guide) before being able to set menus in the header.
+* **Social Profile Links Menu**: Sets the menu to use in the Header and Footer social profiles links area. Please see the *Social Profiles &amp; Links* section for more information about creating a custom social links menu.
+* **Mobile Menu Label**: Sets the label text that is shown in the mobile menu.
+
 
