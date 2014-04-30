@@ -1487,6 +1487,9 @@ iframe[src*="google.com/maps"] {
   .builder-text-columns-4 .builder-text-column {
     width: 22.5%; } }
 
+.builder-text-image {
+  text-align: center; }
+
 /*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
 -------------------------------------------------------- */
