@@ -78,27 +78,27 @@ After adding the content for your banner section, you can set the options for th
 
 ![Gallery section example](https://thethemefoundry.com/wp-content/uploads/2014/04/gallery-section.jpg)
 
-The Page builder's **Gallery** section generates grid based gallery with optional text descriptions and captions.
+The Page Builder's **Gallery** section generates a grid-based gallery with optional text descriptions and captions.
 
-1. Click the *Gallery* section in the Page builder's section menu to add a new gallery section. When adding a new gallery section, three gallery items are created for you.
-2. Choose the number of columns for the gallery section using the *Columns* select input.
-3. Choose the aspect ratio of the images using the *Aspect ratio* select input. For optimal display, it is recommended that you always use the same size images for each gallery item.
-4. Choose the caption style for the gallery items using the *Caption style* select input. *Overlay* will display the caption on top of an image. *Reveal* will reveal the caption when hovering over an image. *None* will not display any captions.
-5. Choose the caption color scheme using the *Caption color* select input. The two options will determine whether a *lighter* or *darker* overlay will be used when displaying image captions.
-6. Add an image for the first gallery item by clicking *Set featured image* or the grey box with the image icon. In the modal window that pops up, click an existing image or drag and drop a new image onto the modal window. Click *Select* to insert the image.
-7. Add a title to the gallery item by entering text into the input with the *Enter title here* placeholder text.
-8. Add a description to the column by adding text to the textarea with the *Enter description here* placeholder text. If your image has a caption set via the media library, that will be displayed if no description text is set.
-9. Add additional gallery items by clicking *Add New Item*.
-10. Repeat steps 6-8 for additional gallery items.
+1. Click the _Gallery_ section in the Page Builder's section menu. When adding a new gallery section, three initial gallery items are created for you.
+1. Choose the number of columns for the gallery section using the _Columns_ dropdown.
+1. Choose the aspect ratio of the images using the _Aspect ratio_ select input. For optimal display, it is recommended that you always use the same size images for each gallery item.
+1. Choose the caption style for the gallery items using the _Caption style_ dropdown. _Overlay_ will display the caption on top of an image. _Reveal_ will reveal the caption when hovering over an image. _None_ will not display any captions.
+1. Choose the caption color scheme using the _Caption color_ select input. The two options will determine whether a _lighter_ or _darker_ overlay will be used when displaying image captions.
+1. Add an image for a gallery item by clicking _Set featured image_ or the grey box with the image icon. In the modal window that pops up, click an existing image or drag and drop a new image onto the modal window. Click _Select_ to insert the image.
+1. Add a title to the gallery item by entering text into the input with the _Enter title here_ placeholder text.
+1. Add a description to the gallery item by adding text to the field with the _Enter description here_ placeholder text. If your image has a caption set via the Media Library, that will be displayed if no description text is set.
+1. Add additional gallery items by clicking _Add New Item_.
+1. Repeat the above steps for additional gallery items.
 
 **Gallery section options**
 
 In the gallery section, you can configure a custom background. To add a custom background, follow these steps:
 
-1. Add an image for the background by clicking *Set background image* or the grey box with the image icon. In the modal window that pops up, click an existing image or drag and drop a new image onto the modal window. Click *Select* to insert the image.
-2. Click *Darken to improve readability* to increase the contrast between the background and the section content.
-3. Choose a background style to change how the image is displayed via the *Background style* select input. *Tile* will cause the image to repeat in the X and Y direction (e.g., adds the CSS `repeat` value). *Cover* will scale the background image to completely fill the background of the element. Note that this option can lead to distortion of smaller images and cropping of bigger images.
-4. If you prefer to set a background color, you can do so by clicking the *Select color* button and choosing a color. Note that if you have a background image set, it will override the background color. Click *Remove background image* to remove the background image.
+1. Add an image for the background by clicking _Set background image_ or the grey box with the image icon. In the modal window that pops up, click an existing image or drag and drop a new image onto the modal window. Click _Select_ to insert the image.
+1. Click _Darken to improve readability_ to increase the contrast between the background and the section content.
+1. Choose a background style to change how the image is displayed via the _Background style_ select input. _Tile_ will cause the image to repeat both horizontally and vertically. *Cover* will scale the background image to completely fill the background of the element. Note that this option can lead to distortion of smaller images and cropping of larger images.
+1. If you prefer to set a background color, you can do so by clicking the _Select color_ button and choosing a color. Note that if you have a background image set, it will cover up the background color. Click _Remove background image_ to remove the background image.
 
 ## Customizer options {#customizer-options}
 
