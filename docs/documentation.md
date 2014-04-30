@@ -165,4 +165,15 @@ This section controls options for the main column. It is the center of the scree
 * **Background Image**: Sets the background image for the main column in the site. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
 * **Underline Links in Content**: Checking this option will add underlines to all links within the post content (e.g., adds the `text-decoration: underline;` property and value to post content links).
 
+### Layout: Blog (Posts Page) ###
 
+* **Hide site header**: Checking this option will hide the Header on the blog/posts page.
+* **Hide site footer**: Checking this option will hide the Footer on the blog/posts page.
+* **Show left sidebar**: Checking this option will add a sidebar on the left on the blog/posts page.
+* **Show right sidebar**: Checking this option will add a sidebar on the right on the blog/posts page.
+* **Featured Images**: Sets the style for displaying the featured image on the blog/posts page. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
+* **Post Date**: Sets the style for displaying the post data on the blog/posts page. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
+* **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
+* **Generate excerpts automatically**: By default, the post excerpt is displayed. By checking this option, the theme will automatically truncate your content when displayed on the blog/posts page. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
+* **Show categories**: Checking this option will show the category list for the post.
+* **Show tags**: Checking this option will show the tag list for the post.
