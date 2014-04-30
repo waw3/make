@@ -143,3 +143,12 @@ The *Header* section allows you to configure unique and stylish header designs. 
 * **Hide Site Title**: Checking this option hides the site title in the Header.
 * **Tagline**: Sets the site tagline, which is displayed in the Header of the site. Note that this is the WordPress option that sets your tagline in various places throughout WordPress.
 * **Hide Tagline**: Checking this option hides the tagline in the Header.
+
+### Logo ###
+
+* **Regular Logo**: Sets the logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section.
+* **Retina Logo (2x)**: Sets the retina or HiDPI logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section. The retina logo is displayed at exactly half the height and width of the full size image. If you are setting the *Regular Logo* and a *Retina Logo* options, it is recommended that the image used for the *Retina Logo* is exactly twice the height and width of the *Regular Logo*.
+* **Favicon**: Sets the favicon used for the site. This image must be in .png or .ico format. The optimal size for this image is 32px x 32px.
+* **Apple Touch Icon**: Sets the Apple touch icon used for the site. This image must be in .png format. The optimal size for this image is 152px x 152px.
+
+
