@@ -29,8 +29,9 @@ The Page builder's **Text** section generates a multicolumn text layout.
 5. Optionally add an image to the column by clicking the *Set featured image* link or the clicking on the gray box with the image icon. In the modal window that pops up, click an existing image or drag and drop a new image onto the modal window. Click *Select* to insert the image.
 6. Optionally add a title to the column by entering text into the input with the *Enter title here* placeholder text.
 7. Optionally add content to the column by adding text to the WordPress editor input.
-8. To rearrange the order of the columns, click and hold the double dotted border at the top of a text column. Drag the column to a new location and release.
-9. Click *Save Draft*, *Publish* or *Update* to save the section.
+8. Repeat steps 4-7 for additional columns.
+9. To rearrange the order of the columns, click and hold the double dotted border at the top of a text column. Drag the column to a new location and release.
+10. Click *Save Draft*, *Publish* or *Update* to save the section.
 
 ### Adding a blank section ###
 
