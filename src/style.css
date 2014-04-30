@@ -1458,6 +1458,10 @@ iframe[src*="google.com/maps"] {
   padding: 0 32px;
   padding:  0 1.88235rem; }
 
+.builder-text-section-title {
+  margin-bottom: 22px;
+  margin-bottom: 1.29412rem; }
+
 /*---------------------------------------------------------
  Text section: Columns (_pages.scss)
 -------------------------------------------------------- */

@@ -61,6 +61,9 @@
     margin-right: auto;
     @include rem('padding', 0 $gut);
 }
+.builder-text-section-title {
+    @include rem('margin-bottom', $base);
+}
 /*---------------------------------------------------------
  Text section: Columns (_pages.scss)
 -------------------------------------------------------- */
