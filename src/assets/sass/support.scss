@@ -5,78 +5,78 @@
  Contact Form 7 (_support.scss)
 -------------------------------------------------------- */
 .wpcf7 {
-	input,
-	textarea {
-		@include rem('margin-top', $base/4);
-	}
-	input[type="submit"] {
-		margin-bottom: 0; //reset
-	}
+    input,
+    textarea {
+        @include rem('margin-top', $base/4);
+    }
+    input[type="submit"] {
+        margin-bottom: 0; //reset
+    }
 }
 /*---------------------------------------------------------
  Gravity Forms (_support.scss)
 -------------------------------------------------------- */
 .gform_wrapper {
-	textarea,
-	input[type="date"],
-	input[type="datetime"],
-	input[type="datetime-local"],
-	input[type="email"],
-	input[type="month"],
-	input[type="number"],
-	input[type="password"],
-	input[type="search"],
-	input[type="tel"],
-	input[type="text"],
-	input[type="time"],
-	input[type="url"],
-	input[type="week"] {
-		padding: 6px 8px !important;
-	}
-	.top_label .gfield_label {
-		margin-top: $base !important;
-	}
-	.ginput_complex label,
-	.gfield_time_hour label,
-	.gfield_time_minute label,
-	.gfield_date_month label,
-	.gfield_date_day label,
-	.gfield_date_year label,
-	.instruction {
-		font-size: 13px !important;
-	}
+    textarea,
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"] {
+        padding: 6px 8px !important;
+    }
+    .top_label .gfield_label {
+        margin-top: $base !important;
+    }
+    .ginput_complex label,
+    .gfield_time_hour label,
+    .gfield_time_minute label,
+    .gfield_date_month label,
+    .gfield_date_day label,
+    .gfield_date_year label,
+    .instruction {
+        font-size: 13px !important;
+    }
 }
 /*---------------------------------------------------------
  Jetpack (_support.scss)
 -------------------------------------------------------- */
 div.sharedaddy {
-	@include rem('margin', $base 0);
+    @include rem('margin', $base 0);
 }
 .contact-form {
-	textarea,
-	input[type="date"],
-	input[type="datetime"],
-	input[type="datetime-local"],
-	input[type="email"],
-	input[type="month"],
-	input[type="number"],
-	input[type="password"],
-	input[type="search"],
-	input[type="tel"],
-	input[type="text"],
-	input[type="time"],
-	input[type="url"],
-	input[type="week"] {
-		max-width: 100% !important;
-		width: 100% !important;
-	}
-	div label {
-		@include rem('margin-top', $base/2);
-	}
+    textarea,
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"] {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    div label {
+        @include rem('margin-top', $base/2);
+    }
 }
-.infinite-scroll.neverending .site-footer {
-	display: none;
+.infinite-scroll.neverending #site-footer {
+    display: none;
 }
-.infinity-end.neverending .site-footer {
-	display: block;
+.infinity-end.neverending #site-footer {
+    display: block;
 }

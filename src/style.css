@@ -2120,8 +2120,8 @@ div.sharedaddy {
   margin-top: 11px;
   margin-top: 0.64706rem; }
 
-.infinite-scroll.neverending .site-footer {
+.infinite-scroll.neverending #site-footer {
   display: none; }
 
-.infinity-end.neverending .site-footer {
+.infinity-end.neverending #site-footer {
   display: block; }
