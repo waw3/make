@@ -66,10 +66,24 @@
 						}
 					],
 					onsubmit: function( e ) {
-						editor.insertContent( '<a href="' + e.data.url + '" class="' + e.data.style + ' ' + e.data.color + ' ttfmake-button">' + e.data.text + '</a>');
+						editor.insertContent( '<a href="' + ttfmakeEscAttr( e.data.url ) + '" class="' + ttfmakeEscAttr( e.data.style ) + ' ' + ttfmakeEscAttr( e.data.color ) + ' ttfmake-button">' + ttfmakeEscAttr( e.data.text ) + '</a>');
 					}
 				});
 			}
 		});
 	});
+
+	// @link http://stackoverflow.com/a/9756789/719811
+	function ttfmakeEscAttr(s, preserveCR) {
+		preserveCR = preserveCR ? '&#13;' : '\n';
+		return ('' + s) /* Forces the conversion to string. */
+			.replace(/&/g, '&amp;') /* This MUST be the 1st replacement. */
+			.replace(/'/g, '&apos;') /* The 4 other predefined entities, required. */
+			.replace(/"/g, '&quot;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
+			.replace(/[\r\n]/g, preserveCR);
+		;
+	}
 })(tinymce);
