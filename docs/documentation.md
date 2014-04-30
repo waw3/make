@@ -66,7 +66,7 @@ After adding the content for your banner section, you can set the options for th
 6. Choose an option from the *Transition effect* select input to change the animation between slides.
 7. Set the height of the banner section by changing the *Section height* text input. The height is in pixels (px). Note that the exact pixel value will be used when the page is displayed at full width and will be scaled proportionally as the browser window narrows.
 
-### Gallery section ###
+### Adding a gallery section ###
 
 The Page builder's **Gallery** section generates grid based gallery with optional text descriptions and captions.
 
