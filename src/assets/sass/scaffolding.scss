@@ -2,7 +2,7 @@
  3. Scaffolding (_scaffolding.scss)
 -------------------------------------------------------- */
 html {
-	font-size: 106.25%; //17px
+	font-size: 62.5%; //10px
 }
 /*---------------------------------------------------------
  Detail (_scaffolding.scss)
@@ -10,6 +10,7 @@ html {
 body {
 	background-color: $d;
 	text-rendering: optimizeLegibility;
+	@include rem('font-size', 17px);
 	&.boxed {
 		background-color: $d;
 		.container {

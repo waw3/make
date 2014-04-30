@@ -73,7 +73,10 @@ function ttfmake_css_fonts() {
 		'h6'           => 28,
 		'post-title'   => 68,
 		// Relative to widget font size
-		'widget-title' => 100
+		'widget-title' => 100,
+		// Relative to body font size
+		'comments'     => 82,
+		'comment-date' => 65,
 	) );
 
 	// Site Title Font Size
@@ -87,8 +90,9 @@ function ttfmake_css_fonts() {
 		) );
 	}
 
-	// Navigation Font Size (top level)
+	// Navigation Font Size
 	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
+		// Top level
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-navigation .menu li a' ),
 			'declarations' => array(
@@ -96,10 +100,8 @@ function ttfmake_css_fonts() {
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_nav_size ) . 'rem'
 			)
 		) );
-	}
 
-	// Navigation Font Size (sub menu items)
-	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
+		// Sub menu items
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-navigation .menu .sub-menu li a', '.site-navigation .menu .children li a' ),
 			'declarations' => array(
@@ -108,10 +110,8 @@ function ttfmake_css_fonts() {
 			),
 			'media'        => 'screen and (min-width: 800px)'
 		) );
-	}
 
-	// Navigation grandchild arrow position
-	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
+		// Grandchild arrow position
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-navigation .menu .sub-menu .menu-item-has-children a:after', '.site-navigation .menu .children .menu-item-has-children a:after' ),
 			'declarations' => array(
@@ -198,6 +198,7 @@ function ttfmake_css_fonts() {
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_widget_size ) . 'rem'
 			)
 		) );
+
 		// Widget title
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.widget-title' ),
@@ -210,19 +211,30 @@ function ttfmake_css_fonts() {
 
 	// Body Font Size
 	if ( $font_body_size !== ttfmake_get_default( 'font-body-size' ) ) {
-		// html
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( 'html' ),
-			'declarations' => array(
-				'font-size' => ( absint( $font_body_size ) / 16 * 100 ) . '%'
-			)
-		) );
 		// body
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( 'body', '.font-body' ),
 			'declarations' => array(
 				'font-size-px'  => $font_body_size . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_body_size ) . 'rem'
+			)
+		) );
+
+		// Comments
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '#comments' ),
+			'declarations' => array(
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_body_size, $percent[ 'comments' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_body_size, $percent[ 'comments' ] ) ) . 'rem'
+			)
+		) );
+
+		// Comment date
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.comment-date' ),
+			'declarations' => array(
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_body_size, $percent[ 'comment-date' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_body_size, $percent[ 'comment-date' ] ) ) . 'rem'
 			)
 		) );
 	}
@@ -288,7 +300,7 @@ function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
 	if ( 0 === $base ) {
 		$base = get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) );
 	}
-	return (float) $px / $base;
+	return (float) $px / 10;
 }
 endif;
 
