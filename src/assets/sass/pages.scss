@@ -46,12 +46,14 @@
     @extend .clear;
 }
 .builder-text-title,
+.builder-text-section-title,
 .builder-section-title,
 .builder-gallery-section-title,
 .builder-banner-section-title {
     line-height: 1.4;
     @include rem('margin', 0 0 $base);
 }
+.builder-text-section-title,
 .builder-gallery-section-title,
 .builder-banner-section-title {
     max-width: $width+($gut*2);

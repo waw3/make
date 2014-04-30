@@ -9,6 +9,11 @@ $text_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
 
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_text_class( $ttfmake_section_data ) ); ?>">
 	<div class="builder-section-content">
+		<?php if ( '' !== $ttfmake_section_data['title'] ) : ?>
+		<h3 class="builder-text-section-title">
+			<?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?>
+		</h3>
+		<?php endif; ?>
 		<?php if ( ! empty( $text_columns ) ) : foreach ( $text_columns as $column ) :
 			$link_front = '';
 			$link_back = '';

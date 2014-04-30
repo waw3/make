@@ -1455,12 +1455,12 @@ iframe[src*="google.com/maps"] {
   margin-bottom: 44px;
   margin-bottom: 2.58824rem; }
 
-.builder-text-title, .builder-section-title, .builder-gallery-section-title, .builder-banner-section-title {
+.builder-text-title, .builder-text-section-title, .builder-section-title, .builder-gallery-section-title, .builder-banner-section-title {
   line-height: 1.4;
   margin: 0 0 22px;
   margin:  0 0 1.29412rem; }
 
-.builder-gallery-section-title, .builder-banner-section-title {
+.builder-text-section-title, .builder-gallery-section-title, .builder-banner-section-title {
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
