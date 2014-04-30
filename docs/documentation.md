@@ -108,5 +108,15 @@ The Make WordPress theme's Customizer has numerous options to help you enhance y
 
 * **Font Style**: You can change the font family used for the *Site Title*, *Headers*, and *Body* via the respective font select inputs. Each select gives you the option to choose from *Standard Fonts* and *Google Fonts*. To browse Google Fonts, please visit the [Google Fonts website](http://www.google.com/fonts/).
 * **Font Size**: Font size can be individually controlled for *Site Title*, *Navigation*, *Header*, *Widgets*, and *Body* by entering a number into the respective text input fields. The font size entered is in pixels.
-* **Character Subset**: Sets the character subset to use with the fonts. Please note that not all character subsets are supported by all Google Fonts. This can lead to issues with displaying some characters. Consult the Google Fonts [Google Fonts website](http://www.google.com/fonts/) for detailed information about character subsets/
+* **Character Subset**: Sets the character subset to use with the fonts. Please note that not all character subsets are supported by all Google Fonts. This can lead to issues with displaying some characters. Consult the Google Fonts [Google Fonts website](http://www.google.com/fonts/) for detailed information about character subsets.
+
+### Colors ###
+
+Each color in the *Colors* section sets colors for numerous elements. The primary use for these colors is documented below.
+
+* **Primary Color**: Sets the link color for the site.
+* **Secondary Color**: Sets the color for the sticky post background, input field backgrounds, and borders between posts.
+* **Text Color**: Sets the color of text in the body of posts, including post content, date, title, and by line.
+* **Detail Color**: Sets the color of small elements throughout the site.
+
 
