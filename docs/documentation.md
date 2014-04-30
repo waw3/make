@@ -226,3 +226,15 @@ This section controls options for the main column. It is the center of the scree
 * **Featured Images**: Sets the style for displaying the featured image on single pages. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
 * **Post Date**: Sets the style for displaying the post data on single pages. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
 * **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
+
+### Footer ###
+
+The *Footer* section allows you to configure unique and stylish footer designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
+
+* **Footer Layout**: Sets the overall layout for the footer. *Traditional* displays the footer text on one side and the social icons on the other. *Centered* centers both pieces of content and displays the footer text above the Footer.
+* **Footer Text**: Sets the text to display in the Footer.
+* **Footer Text Color**: Sets the color of the text in the Footer.
+* **Footer Border Color**: Sets the color of the border of the Footer.
+* **Footer Background Color**: Sets the color of the background in the Footer.
+* **Footer Background Image**: Sets the background image for the Footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Footer Widget Areas**: Sets the number of widget areas to show in the footer. The footer widget areas are displayed in equal width columns above the footer text and social icons. Note that space will only be held for these areas if there are active widgets in one of the widget areas.
