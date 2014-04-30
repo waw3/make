@@ -94,7 +94,6 @@ function ttfmake_css_add_rules() {
 			'selectors'    => array(
 				'.color-secondary-background',
 				'blockquote.ttfmake-testimonial',
-				'blockquote.ttfmake-testimonial:after',
 				'tt',
 				'kbd',
 				'pre',
@@ -135,6 +134,7 @@ function ttfmake_css_add_rules() {
 				'table',
 				'table th',
 				'table td',
+				'blockquote.ttfmake-testimonial:after',
 			),
 			'declarations' => array(
 				'border-color' => $color_secondary
