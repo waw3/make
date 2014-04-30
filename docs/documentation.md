@@ -251,25 +251,25 @@ The _Footer_ section allows you to choose and configure footer layouts. It is ha
 
 ### Social Profiles &amp; RSS {#social-profiles-and-rss}
 
-Social icons linked to your social profiles can be displayed in either the header or footer. Before these icons can appear in either location, you must add your links in this section. Additionally, you can toggle an RSS link in these locations.
+Social icons linked to your social profiles can be displayed in the header and/or footer. Before these icons can appear in either location, you must add your links in this section. Additionally, you can toggle Email and RSS icons in this section.
 
-For each input field, add the *full link* to your profile for the corresponding service. Additionally, you can add your email address and an alternate RSS URL for additional links for those services. You can also hide the default RSS link by checking the *Hide default RSS feed link* box.
+For each input field, add the **full link** (including `http://`) to your profile for the corresponding service. If you would prefer not to show any RSS icon, you can hide it by checking the _Hide default RSS feed link_ box.
 
-Within the Customizer, you can set icons for 9 popular services. To customize your services and order of the services, you can implement a *custom social menu* using the following steps:
+Within the Customizer, you can set icons for 9 popular services. To add other services or change their order, you can implement a _custom social menu_ by following these steps:
 
-1. Go to *Appearance &rarr; Menu* in the WordPress admin.
-2. Click *create new menu*.
-3. Title the menu "Social Menu".
-4. Click *Create Menu*.
-5. Click the *Links* header on the left hand side of the page.
-6. Type a link (e.g., https://www.facebook.com/thethemefoundry) to one of your social profiles in the *URL* field.
-7. Give the link a title by typing it into the *Link Text* field.
-8. Click *Add to Menu*.
-9. Repeat steps 5-8 to add additional social profiles.
-10. Under the *Menu Settings* heading, next to the *Theme locations* label, check the *Social Profile Links* box.
-11. Click *Save Menu*.
+1. Go to _Appearance &rarr; Menu_ in the WordPress admin.
+1. Click _create a new menu_.
+1. Give the menu a name like "Social Menu".
+1. Click _Create Menu_.
+1. Click the _Links_ header on the left side of the page.
+1. Type a link (e.g., https://www.facebook.com/thethemefoundry) to one of your social profiles in the *URL* field.
+1. Give the link a title by typing the name of the service into the *Link Text* field.
+1. Click *Add to Menu*.
+1. Repeat the above steps to add additional social profiles.
+1. Under the _Menu Settings_ heading, next to the _Theme locations_ label, check the _Social Profile Links_ box.
+1. Click _Save Menu_.
 
-Adding your social links as a custom menu allows you to sort your profiles and add as many as you want. The theme supports icons for following services:
+Adding your social links as a custom menu allows you to sort your profiles and add as many as you want. The **Make** theme currently supports icons for following services:
 
 * App.net
 * BitBucket
