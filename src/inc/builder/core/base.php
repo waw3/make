@@ -465,6 +465,11 @@ class TTFMAKE_Builder_Base {
 		$editor_styles[] = get_template_directory_uri() . '/css/font-awesome.css';
 		$editor_styles[] = get_template_directory_uri() . '/css/editor-style.css';
 
+		// Append in the customizer styles if available
+		if ( function_exists( 'ttfmake_get_css' ) && ttfmake_get_css()->build() ) {
+			$editor_styles[] = add_query_arg( 'action', 'ttfmake-css', admin_url( 'admin-ajax.php' ) );
+		}
+
 		// Create string of CSS files
 		$content_css = implode( ',', $editor_styles );
 
