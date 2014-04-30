@@ -32,7 +32,13 @@ The Page builder's **Text** section generates a multicolumn text layout.
 8. To rearrange the order of the columns, click and hold the double dotted border at the top of a text column. Drag the column to a new location and release.
 9. Click *Save Draft*, *Publish* or *Update* to save the section.
 
-### Blank section ###
+### Adding a blank section ###
+
+The Page builder's *Blank* section provides a free form section for adding arbitrary content to a page.
+
+1. Click the *Blank* section in the Page builder's section menu.
+2. Optionally add a title to the column by entering text into the input with the *Enter title here* placeholder text.
+3. Optionally add content to the column by adding text to the WordPress editor input.
 
 ### Banner section ###
 
