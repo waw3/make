@@ -80,6 +80,5 @@
 			.replace(/>/g, '&gt;')
 			.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
 			.replace(/[\r\n]/g, preserveCR);
-		;
 	}
 })(tinymce);

@@ -456,10 +456,20 @@ class TTFMAKE_Builder_Base {
 			return $mce_init;
 		}
 
-		$content_css = get_template_directory_uri() . '/css/editor-style.css';
+		// Editor styles
+		$editor_styles = array();
+		if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
+			$editor_styles[] = $google_request;
+		}
+
+		$editor_styles[] = get_template_directory_uri() . '/css/font-awesome.css';
+		$editor_styles[] = get_template_directory_uri() . '/css/editor-style.css';
+
+		// Create string of CSS files
+		$content_css = implode( ',', $editor_styles );
 
 		// If there is already a stylesheet being added, append and do not override
-		if ( isset( $mce_init[ 'content_css' ] ) ) {
+		if ( isset( $mce_init['content_css'] ) ) {
 			$mce_init['content_css'] .= ',' . $content_css;
 		} else {
 			$mce_init['content_css'] = $content_css;
