@@ -28,10 +28,6 @@
 									value: 'ttfmake-normal'
 								},
 								{
-									text: 'Alert',
-									value: 'ttfmake-alert'
-								},
-								{
 									text: 'Download',
 									value: 'ttfmake-download'
 								}
