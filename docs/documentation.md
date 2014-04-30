@@ -1,10 +1,10 @@
-## Minimum requirements ##
-
-The Make WordPress theme requires WordPress 3.9 or above.
-
 ## Introduction ##
 
-The Make WordPress provides site builder functionality to improve your experience of building a website. In the page edit screen, you can invoke a **Page builder** that assists with generating HTML for powerful page layouts. After laying out your pages, you can use the ample **Customizer options** to controls numerous aspects of your theme's look and feel. These two powerful features allow you to transform Make into any type of website that you need. 
+The Make WordPress provides site builder functionality to improve your experience of building a website. In the page edit screen, you can invoke a **Page builder** that assists with generating HTML for powerful page layouts. After laying out your pages, you can use the ample **Customizer options** to controls numerous aspects of your theme's look and feel. These two powerful features allow you to transform Make into any type of website that you need.
+
+## Minimum requirements ##
+
+The Make WordPress theme requires WordPress 3.9 or above. 
 
 ## Page builder ##
 
@@ -118,5 +118,10 @@ Each color in the *Colors* section sets colors for numerous elements. The primar
 * **Secondary Color**: Sets the color for the sticky post background, input field backgrounds, and borders between posts.
 * **Text Color**: Sets the color of text in the body of posts, including post content, date, title, and by line.
 * **Detail Color**: Sets the color of small elements throughout the site.
+
+### Header ###
+
+
+
 
 
