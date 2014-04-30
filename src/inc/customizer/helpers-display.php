@@ -69,21 +69,88 @@ function ttfmake_css_add_rules() {
 	// Secondary color
 	if ( $color_secondary !== ttfmake_get_default( 'color-secondary' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-secondary-text' ),
+			'selectors'    => array(
+				'.color-secondary-text',
+				'.builder-section-banner .cycle-pager',
+				'.ttfmake-shortcode-slider .cycle-pager',
+				'.builder-section-banner .cycle-prev:before',
+				'.builder-section-banner .cycle-next:before',
+				'.ttfmake-shortcode-slider .cycle-prev:before',
+				'.ttfmake-shortcode-slider .cycle-next:before',
+				'.ttfmake-shortcode-slider .cycle-caption',
+			),
 			'declarations' => array(
 				'color' => $color_secondary
 			)
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-secondary-background' ),
+			'selectors'    => array(
+				'.color-secondary-background',
+				'blockquote.ttfmake-testimonial',
+				'blockquote.ttfmake-testimonial:after',
+				'tt',
+				'kbd',
+				'pre',
+				'code',
+				'samp',
+				'var',
+				'textarea',
+				'input[type="date"]',
+				'input[type="datetime"]',
+				'input[type="datetime-local"]',
+				'input[type="email"]',
+				'input[type="month"]',
+				'input[type="number"]',
+				'input[type="password"]',
+				'input[type="search"]',
+				'input[type="tel"]',
+				'input[type="text"]',
+				'input[type="time"]',
+				'input[type="url"]',
+				'input[type="week"]',
+				'.ttfmake-button.color-secondary-background',
+				'button.color-secondary-background',
+				'input[type="button"].color-secondary-background',
+				'input[type="reset"].color-secondary-background',
+				'input[type="submit"].color-secondary-background',
+				'.sticky-post-label',
+				'.site-navigation .menu .sub-menu',
+				'.site-navigation .menu .children',
+				'.widget_tag_cloud a',
+			),
 			'declarations' => array(
 				'background-color' => $color_secondary
 			)
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-secondary-border' ),
+			'selectors'    => array(
+				'.color-secondary-border',
+				'table',
+				'table th',
+				'table td',
+			),
 			'declarations' => array(
 				'border-color' => $color_secondary
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'hr',
+				'hr.ttfmake-line-dashed',
+				'hr.ttfmake-line-double',
+			),
+			'declarations' => array(
+				'border-bottom-top' => $color_secondary
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.comment-body',
+				'.post',
+				'.widget li',
+			),
+			'declarations' => array(
+				'border-bottom-color' => $color_secondary
 			)
 		) );
 	}
