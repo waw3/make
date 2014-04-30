@@ -41,7 +41,12 @@ The Page builder's *Blank* section provides a free form section for adding arbit
 2. Optionally add a title to the column by entering text into the input with the *Enter title here* placeholder text.
 3. Optionally add content to the column by adding text to the WordPress editor input.
 
-### Banner section ###
+### Adding a banner section ###
+
+The Page builder's **Banner** section generates a full width banner section that be turn into a slider if multiple slides are added.
+
+1. Click the *Banner* section in the Page builder's section menu. When adding a new banner section, an initial slide is created for you.
+2. 
 
 ### Gallery section ###
 
