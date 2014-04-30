@@ -102,48 +102,48 @@ In the gallery section, you can configure a custom background. To add a custom b
 
 ## Customizer options {#customizer-options}
 
-The Make WordPress theme's Customizer has numerous options to help you enhance your website's look and feel. These customization options can be leveraged to configure your site without custom code. Below, you will find helpful information for each of the sections in the customizer.
+The Make theme provides numerous options in the WordPress Customizer interface to help you enhance your website's look and feel. These customization options can be leveraged to configure your site without custom code. Below you will find helpful information for each of the sections in the Customizer.
 
 ### General {#general}
 
-* **Site Layout**: Sets the main column layout for the site. *Full-width* allows the main column to stretch the full width of the browser. *Boxed* sets the main column width to 1144px and centers it in the background.
+* **Site Layout**: Sets the main column layout for the site. _Full-width_ allows the main column to stretch the full width of the browser. _Boxed_ sets the main column width to a maximum of 1144px and centers it in the browser window.
 * **Sticky Label**: Sets the label used in the header of sticky posts.
 
 ### Background {#background}
 
-* **Background Color**: Sets the color for the background of the site. If a background image is set, the color will not be seen. Additionally, if you are using the *Full-width Site Layout* option, the background color will not be seen as it is completely covered by the main column.
-* **Background Image**: Sets the background image for the site. If you are using the *Full-width Site Layout* option, the background color will not be seen as it is completely covered by the main column. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, *Background Attachment* and *Background Size*.
+* **Background Color**: Sets the color for the background of the site. If a background image is set, the color will not be seen. Additionally, if you are using the _Full-width_ Site Layout option, the background color will not be seen as it will be completely covered by the main column.
+* **Background Image**: Sets the background image for the site. If you are using the _Full-width_ Site Layout option, the background image will not be seen as it will be completely covered by the main column. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including _Background Repeat_, _Background Position_, _Background Attachment_ and _Background Size_.
 
 ### Fonts {#fonts}
 
-* **Font Style**: You can change the font family used for the *Site Title*, *Headers*, and *Body* via the respective font select inputs. Each select gives you the option to choose from *Standard Fonts* and *Google Fonts*. To browse Google Fonts, please visit the [Google Fonts website](http://www.google.com/fonts/).
-* **Font Size**: Font size can be individually controlled for *Site Title*, *Navigation*, *Header*, *Widgets*, and *Body* by entering a number into the respective text input fields. The font size entered is in pixels.
-* **Character Subset**: Sets the character subset to use with the fonts. Please note that not all character subsets are supported by all Google Fonts. This can lead to issues with displaying some characters. Consult the Google Fonts [Google Fonts website](http://www.google.com/fonts/) for detailed information about character subsets.
+* **Font Style**: You can change the font family used for the _Site Title_, _Headers_, and _Body_ via the respective font select inputs. Each select gives you the option to choose from _Standard Fonts_ and _Google Fonts_. To browse and preview Google Fonts, please visit the [Google Fonts website](http://www.google.com/fonts/).
+* **Font Size**: Font size can be individually controlled for _Site Title_, _Navigation_, _Headers_, _Widgets_, and _Body_ by entering a number into the respective text input fields. The font size number should be entered in pixels.
+* **Character Subset**: Sets the character subset to use with the fonts. Please note that not all character subsets are supported by all Google Fonts. This can lead to issues with displaying some characters. Consult the [Google Fonts website](http://www.google.com/fonts/) for detailed information about character subsets.
 
 ### Colors {#colors}
 
-Each color in the *Colors* section sets colors for numerous elements. The primary use for these colors is documented below.
+Each color in the _Colors_ section sets colors for numerous elements. The primary use for these colors is documented below.
 
-* **Primary Color**: Sets the link color for the site.
+* **Primary Color**: Sets the background color for the comment button, the highlight color for menu items, and the text color of all links in content.
 * **Secondary Color**: Sets the color for the sticky post background, input field backgrounds, and borders between posts.
-* **Text Color**: Sets the color of text in the body of posts, including post content, date, title, and by line.
-* **Detail Color**: Sets the color of small elements throughout the site.
+* **Text Color**: Sets the color of text in the body of posts, including post content, date, title, and byline.
+* **Detail Color**: Sets the color of various small elements throughout the site.
 
 ### Header {#header}
 
-The *Header* section allows you to configure unique and stylish header designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
+The _Header_ section allows you to choose and configure header layouts. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
 
-* **Header Layout**: Sets the global layout for the header. *Traditional* places the site identity and the navigation side by site. *Centered* centers both the site identity and the navigation and places the identity above the navigation. *Navigation Below* places the identity and the search bar side by side, with the navigation below those elements.
-* **Show Title/Logo On**: Sets the location of the site identity when the *Header Layout* option is set to either *Traditional* or *Navigation Below*.
+* **Header Layout**: Sets the global layout for the header. _Traditional_ places the site identity and the navigation side by site. _Centered_ centers both the site identity and the navigation and places the identity above the navigation. _Navigation Below_ places the identity and the search bar side by side, with the navigation below those elements, aligned to one side.
+* **Show Title/Logo On**: Sets the location of the site identity when the _Header Layout_ option is set to either _Traditional_ or _Navigation Below_.
 * **Header Bar Content Layout**: Sets the location of the header bar elements. In most cases, the header bar contains multiple elements with one element on the left and another on the right. This option allows you to flip the positioning of those elements.
 * **Header Bar Text**: Sets the text to display in the header bar.
-* **Header Bar Text Color**: Sets the color of the text in the header bar.
+* **Header Bar Text Color**: Sets the color of the text and icons in the header bar.
 * **Header Bar Border Color**: Sets the color of the border of the header bar.
 * **Header Bar Background Color**: Sets the color of the background in the header bar.
-* **Header Text Color**: Sets the color of the text in the header. Note that this does not change the color of the site title as that is controlled in the *Site Title &amp; Tagline* section.
-* **Header Background Color**: Sets the color of the background in the header. Note that if a *Header Background Image* is set, the *Header Background Color* will not be visible.
-* **Header Background Image**: Sets the background image for the header. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
-* **Show Social Icons In Header Bar**: Checking this option will show the list of social icons set in *Social Profiles &amp; RSS* in the Header bar.
+* **Header Text Color**: Sets the color of the text in the header. Note that this does not change the color of the site title as that is controlled in the _Site Title &amp; Tagline_ section.
+* **Header Background Color**: Sets the color of the background in the header. Note that if a _Header Background Image_ is set, the _Header Background Color_ will not be visible.
+* **Header Background Image**: Sets the background image for the header. After adding a background image, additional inputs for controlling CSS properties for background images will be revealed, including _Background Repeat_, _Background Position_, and _Background Size_.
+* **Show Social Icons In Header Bar**: Checking this option will show the list of social icons configured in _Social Profiles &amp; RSS_ in the header bar.
 * **Show Search Field in Header**: Checking this option will show the search input in the Header.
 
 ### Site Title &amp; Tagline {#site-title-and-tagline}
