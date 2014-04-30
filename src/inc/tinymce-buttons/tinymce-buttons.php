@@ -96,8 +96,9 @@ class TTFMAKE_TinyMCE_Buttons {
 	public function register_mce_button( $buttons, $editor_id ) {
 		if ( false !== strpos( $editor_id, 'ttfmake' ) ) {
 			$buttons[] = 'ttfmake_mce_hr_button';
-			$buttons[] = 'ttfmake_mce_button_button';
 		}
+
+		$buttons[] = 'ttfmake_mce_button_button';
 
 		return $buttons;
 	}
