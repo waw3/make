@@ -22,6 +22,8 @@ To begin working with the Page builder, follow these instructions:
 
 ### Adding a text section ###
 
+![Text section example](https://thethemefoundry.com/wp-content/uploads/2014/04/text-section.jpg)
+
 The Page builder's **Text** section generates a multicolumn text layout.
 
 1. Click the *Text* section in the Page builder's section menu to add a new text section.
