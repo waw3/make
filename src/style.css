@@ -1596,7 +1596,7 @@ iframe[src*="google.com/maps"] {
   cursor: pointer; }
   @media screen and (min-width: 800px) {
     .builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-prev, .ttfmake-shortcode-slider .cycle-next {
-      opacity: 0.2; } }
+      opacity: 0.6; } }
   .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
     position: relative;
     font-family: FontAwesome;

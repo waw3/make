@@ -196,7 +196,7 @@
     .cycle-prev,
     .cycle-next {
         @include for(medium-screens) {
-            opacity: .2;
+            opacity: .6;
         }
         z-index: 999;
         position: absolute;
