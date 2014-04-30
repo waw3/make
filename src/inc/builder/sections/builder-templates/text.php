@@ -57,7 +57,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<?php
 		$editor_settings = array(
 			'tinymce'       => array(
-				'toolbar1' => 'bold,italic,link',
+				'toolbar1' => 'bold,italic,link,ttfmake_mce_button_button',
 				'toolbar2' => '',
 				'toolbar3' => '',
 				'toolbar4' => '',
