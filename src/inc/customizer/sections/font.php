@@ -18,6 +18,28 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 	$control_prefix = 'ttfmake_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
+	// Google font info
+	$setting_id = $setting_prefix . '-google-font-info';
+	$wp_customize->add_control(
+		new TTFMAKE_Customize_Misc_Control(
+			$wp_customize,
+			$control_prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'text',
+				'description' => sprintf(
+					__( 'The list of Google fonts is long! You can %s before making your choices.', 'make' ),
+					sprintf(
+						'<a href="%1$s" target="_blank">%2$s</a>',
+						esc_url( 'http://www.google.com/fonts/' ),
+						__( 'preview', 'make' )
+					)
+				),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
 	// Site title font
 	$setting_id = $setting_prefix . '-site-title';
 	$wp_customize->add_setting(

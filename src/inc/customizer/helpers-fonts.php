@@ -239,10 +239,8 @@ if ( ! function_exists( 'ttfmake_get_font_stack' ) ) :
 function ttfmake_get_font_stack( $font ) {
 	$all_fonts = ttfmake_get_all_fonts();
 
-	// Validate font choice
-	if ( ! array_key_exists( $font, $all_fonts ) ) {
-		return '';
-	}
+	// Sanitize font choice
+	$font = ttfmake_sanitize_font_choice( $font );
 
 	// Standard font
 	if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) {
@@ -443,6 +441,27 @@ function ttfmake_get_google_font_subsets() {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
+/**
+ * Sanitize a font choice.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $value    The font choice.
+ * @return string              The sanitized font choice.
+ */
+function ttfmake_sanitize_font_choice( $value ) {
+	if ( is_int( $value ) ) {
+		// The array key is an integer, so the chosen option is a heading, not a real choice
+		return '';
+	} else if ( array_key_exists( $value, ttfmake_all_font_choices() ) ) {
+		return $value;
+	} else {
+		return '';
+	}
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_all_font_choices' ) ) :
 /**
  * Packages the font choices into value/label pairs for use with the customizer.
@@ -464,24 +483,6 @@ function ttfmake_all_font_choices() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
-/**
- * Sanitize a font choice.
- *
- * @since  1.0.0.
- *
- * @param  string    $value    The font choice.
- * @return string              The sanitized font choice.
- */
-function ttfmake_sanitize_font_choice( $value ) {
-	if ( array_key_exists( $value, ttfmake_get_all_fonts() ) ) {
-		return $value;
-	} else {
-		return '';
-	}
-}
-endif;
-
 if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
 /**
  * Compile font options from different sources.
@@ -491,9 +492,11 @@ if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
  * @return array    All available fonts.
  */
 function ttfmake_get_all_fonts() {
+	$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'make' ) ) ) );
 	$standard_fonts = ttfmake_get_standard_fonts();
+	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'make' ) ) ) );
 	$google_fonts   = ttfmake_get_google_fonts();
-	return array_merge( $standard_fonts, $google_fonts );
+	return apply_filters( 'ttfmake_all_fonts', array_merge( $heading1, $standard_fonts, $heading2, $google_fonts ) );
 }
 endif;
 
