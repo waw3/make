@@ -47,6 +47,8 @@ The Page builder's *Blank* section provides a free form section for adding arbit
 
 ### Adding a banner section ###
 
+![Banner section example](https://thethemefoundry.com/wp-content/uploads/2014/04/banner-section.jpg)
+
 The Page builder's **Banner** section generates a full width banner section that can turn into a slider if multiple slides are added.
 
 1. Click the *Banner* section in the Page builder's section menu to add a new banner section. When adding a new banner section, an initial slide is created for you.
@@ -71,6 +73,8 @@ After adding the content for your banner section, you can set the options for th
 7. Set the height of the banner section by changing the *Section height* text input. The height is in pixels (px). Note that the exact pixel value will be used when the page is displayed at full width and will be scaled proportionally as the browser window narrows.
 
 ### Adding a gallery section ###
+
+![Gallery section example](https://thethemefoundry.com/wp-content/uploads/2014/04/gallery-section.jpg)
 
 The Page builder's **Gallery** section generates grid based gallery with optional text descriptions and captions.
 
