@@ -148,23 +148,23 @@ The _Header_ section allows you to choose and configure header layouts. It is ha
 
 ### Site Title &amp; Tagline {#site-title-and-tagline}
 
-* **Site Title Color**: Sets the color of the site title. Note that if you are using a custom logo (set in *Logo*), this option will have no effect.
-* **Site Title**: Sets the site name, which is displayed in the Header of the site. Note that this is the WordPress option that sets your title in various places throughout WordPress.
+* **Site Title Color**: Sets the color of the site title.
+* **Site Title**: Sets the site name, which is displayed in the Header of the site. Note that this is a built-in option that sets the name of your website in various places throughout WordPress.
 * **Hide Site Title**: Checking this option hides the site title in the Header.
-* **Tagline**: Sets the site tagline, which is displayed in the Header of the site. Note that this is the WordPress option that sets your tagline in various places throughout WordPress.
+* **Tagline**: Sets the site tagline, which is displayed in the Header of the site. Note that this is a built-in option that sets your tagline in various places throughout WordPress.
 * **Hide Tagline**: Checking this option hides the tagline in the Header.
 
 ### Logo {#custom-logo}
 
-* **Regular Logo**: Sets the logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section.
-* **Retina Logo (2x)**: Sets the retina or HiDPI logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section. The retina logo is displayed at exactly half the height and width of the full size image. If you are setting the *Regular Logo* and a *Retina Logo* options, it is recommended that the image used for the *Retina Logo* is exactly twice the height and width of the *Regular Logo*.
+* **Regular Logo**: Sets the logo for the site. It will be displayed in the header and positioned according to the _Show Title/Logo On_ option in the _Header_ section.
+* **Retina Logo (2x)**: Sets the retina or HiDPI logo for the site. It will be displayed in the header and positioned according to the _Show Title/Logo On_ option in the _Header_ section. The retina logo is displayed at exactly half the height and width of the full size image. If you are setting both a _Regular Logo_ and a _Retina Logo_ option, it is recommended that the image used for the _Retina Logo_ be exactly twice the height and width of the _Regular Logo_.
 * **Favicon**: Sets the favicon used for the site. This image must be in .png or .ico format. The optimal size for this image is 32px x 32px.
 * **Apple Touch Icon**: Sets the Apple touch icon used for the site. This image must be in .png format. The optimal size for this image is 152px x 152px.
 
 ### Navigation {#navigation}
 
-* **Primary Menu**: Sets the menu to use in the Header. You must first create menus using [WordPress' menus system](http://codex.wordpress.org/WordPress_Menu_User_Guide) before being able to set menus in the header.
-* **Social Profile Links Menu**: Sets the menu to use in the Header and Footer social profiles links area. Please see the *Social Profiles &amp; Links* section for more information about creating a custom social links menu.
+* **Primary Menu**: Sets the menu to use in the Header. You must first create menus using the [WordPress menus system](http://codex.wordpress.org/WordPress_Menu_User_Guide) before choosing a menu for the header.
+* **Social Profile Links Menu**: Sets the menu to use in the Header and Footer social profiles links area. Please see the _Social Profiles &amp; Links_ section for more information about creating a custom social links menu.
 * **Mobile Menu Label**: Sets the label text that is shown in the mobile menu.
 
 ### Main {#main}
