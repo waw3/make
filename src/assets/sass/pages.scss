@@ -51,7 +51,7 @@
 .builder-gallery-section-title,
 .builder-banner-section-title {
     line-height: 1.4;
-    @include rem('margin', 0 0 $base);
+    @include rem('margin', 0 0 $base/2);
 }
 .builder-text-section-title,
 .builder-gallery-section-title,
@@ -87,6 +87,8 @@
 }
 .builder-text-image {
     text-align: center;
+    @include rem('margin-bottom', $base);
+
 }
 /*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
@@ -251,8 +253,8 @@
     background-repeat: repeat;
     position: relative;
     &.has-background {
-		@include rem('padding', $base*2+$gut/4 0 $base*2);
-	}
+        @include rem('padding', $base*2+$gut/4 0 $base*2);
+    }
 }
 .builder-gallery-title {
     font-weight: bold;

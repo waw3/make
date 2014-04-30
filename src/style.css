@@ -1457,8 +1457,8 @@ iframe[src*="google.com/maps"] {
 
 .builder-text-title, .builder-text-section-title, .builder-section-title, .builder-gallery-section-title, .builder-banner-section-title {
   line-height: 1.4;
-  margin: 0 0 22px;
-  margin:  0 0 1.29412rem; }
+  margin: 0 0 11px;
+  margin:  0 0 0.64706rem; }
 
 .builder-text-section-title, .builder-gallery-section-title, .builder-banner-section-title {
   max-width: 1024px;
@@ -1488,7 +1488,9 @@ iframe[src*="google.com/maps"] {
     width: 22.5%; } }
 
 .builder-text-image {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 22px;
+  margin-bottom: 1.29412rem; }
 
 /*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
