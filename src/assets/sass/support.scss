@@ -74,6 +74,9 @@ div.sharedaddy {
         @include rem('margin-top', $base/2);
     }
 }
+.infinite-footer-container {
+	@extend .container;
+}
 .infinite-scroll.neverending #site-footer {
     display: none;
 }

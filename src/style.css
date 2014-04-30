@@ -168,12 +168,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, #comments-nav {
+.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, .infinite-footer-container, #comments-nav {
   zoom: 1; }
-  .clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
+  .clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, .infinite-footer-container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after {
     display: table;
     content: ""; }
-  .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, #comments-nav:after {
+  .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after {
     clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
@@ -194,7 +194,7 @@ body {
   text-rendering: optimizeLegibility; }
   body.boxed {
     background-color: #eaecee; }
-    body.boxed .container {
+    body.boxed .container, body.boxed .infinite-footer-container {
       max-width: 100%;
       width: 100%;
       padding: 0 32px;
@@ -218,7 +218,7 @@ body {
   width: 100%;
   margin: 0 auto; }
 
-.container {
+.container, .infinite-footer-container {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 32px;
@@ -1433,7 +1433,7 @@ iframe[src*="google.com/maps"] {
   position: relative;
   z-index: 2; }
 
-.page-template-template-builder-php .site-content > .container {
+.page-template-template-builder-php .site-content > .container, .page-template-template-builder-php .site-content > .infinite-footer-container {
   width: 100%;
   max-width: none;
   padding: 0; }
@@ -1741,7 +1741,7 @@ iframe[src*="google.com/maps"] {
     #sidebar-right {
       float: right; } }
 
-.site-content .container {
+.site-content .container, .site-content .infinite-footer-container {
   clear: both;
   padding-bottom: 44px;
   padding-bottom: 2.58824rem; }
@@ -2116,6 +2116,7 @@ div.sharedaddy {
 .contact-form div label {
   margin-top: 11px;
   margin-top: 0.64706rem; }
+
 
 .infinite-scroll.neverending #site-footer {
   display: none; }
