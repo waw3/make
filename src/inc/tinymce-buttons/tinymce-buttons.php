@@ -62,7 +62,7 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return void
 	 */
 	public function add_button_button() {
-		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+		if ( ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) ) {
 			return;
 		}
 
@@ -79,8 +79,11 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return array                The modified plugins array.
 	 */
 	public function add_tinymce_plugin( $plugins ) {
-		$plugins['ttfmake_mce_hr_button']     = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-hr.js';
-		$plugins['ttfmake_mce_button_button'] = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-button.js';
+		if ( 'page' === get_post_type() ) {
+			$plugins['ttfmake_mce_hr_button']     = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-hr.js';
+			$plugins['ttfmake_mce_button_button'] = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-button.js';
+		}
+
 		return $plugins;
 	}
 
@@ -94,11 +97,13 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return array                   The modified plugins array.
 	 */
 	public function register_mce_button( $buttons, $editor_id ) {
-		if ( false !== strpos( $editor_id, 'ttfmake' ) ) {
-			$buttons[] = 'ttfmake_mce_hr_button';
-		}
+		if ( 'page' === get_post_type() ) {
+			if ( false !== strpos( $editor_id, 'ttfmake' ) ) {
+				$buttons[] = 'ttfmake_mce_hr_button';
+			}
 
-		$buttons[] = 'ttfmake_mce_button_button';
+			$buttons[] = 'ttfmake_mce_button_button';
+		}
 
 		return $buttons;
 	}
@@ -113,15 +118,17 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return array                   The modified configuration array.
 	 */
 	public function tiny_mce_before_init( $mceInit, $editor_id ) {
-		if ( false !== strpos( $editor_id, 'ttfmake' ) && ! empty( $mceInit['toolbar1'] ) ) {
-			if ( in_array( 'hr', explode( ',', $mceInit['toolbar1'] ) ) ) {
-				// Remove the current positioning of the new hr button
-				$mceInit['toolbar1'] = str_replace( ',hr,', ',ttfmake_mce_hr_button,', $mceInit['toolbar1'] );
+		if ( 'page' === get_post_type() ) {
+			if ( false !== strpos( $editor_id, 'ttfmake' ) && ! empty( $mceInit['toolbar1'] ) ) {
+				if ( in_array( 'hr', explode( ',', $mceInit['toolbar1'] ) ) ) {
+					// Remove the current positioning of the new hr button
+					$mceInit['toolbar1'] = str_replace( ',hr,', ',ttfmake_mce_hr_button,', $mceInit['toolbar1'] );
 
-				// Remove the duplicated new hr button
-				$pieces              = explode( ',', $mceInit['toolbar1'] );
-				$pieces              = array_unique( $pieces );
-				$mceInit['toolbar1'] = implode( ',', $pieces );
+					// Remove the duplicated new hr button
+					$pieces              = explode( ',', $mceInit['toolbar1'] );
+					$pieces              = array_unique( $pieces );
+					$mceInit['toolbar1'] = implode( ',', $pieces );
+				}
 			}
 		}
 
