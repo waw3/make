@@ -19,18 +19,18 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default
 	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) ) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
-			<?php // Header text
-			if ( ! empty( $header_text ) ) : ?>
-			<span class="header-text">
-				<?php echo ttfmake_sanitize_text( $header_text ); ?>
-			</span>
-			<?php endif; ?>
 			<?php // Search form
 			if ( 1 === $show_search ) :
 				get_search_form();
 			endif; ?>
 			<?php // Social links
 			ttfmake_maybe_show_social_links( 'header' ); ?>
+			<?php // Header text
+			if ( ! empty( $header_text ) ) : ?>
+				<span class="header-text">
+				<?php echo ttfmake_sanitize_text( $header_text ); ?>
+			</span>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php endif; ?>

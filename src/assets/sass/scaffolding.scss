@@ -190,11 +190,13 @@ a {
 	@include for(large-screens) {
 		.header-bar-flipped & {
 			.search-form,
-			.social-links {
+			.header-social-links {
 				float: left;
+				padding-left: 0; //reset
+				@include rem('padding-right', $gut/2);
 			}
 			.header-text {
-				float: right;
+				text-align: right;
 			}
 			.search-form {
 				padding-left: 0; //reset
@@ -237,17 +239,14 @@ a {
 	&.right-content .header-text {
 		@include for(large-screens) {
 			position: relative;
-			max-width: 20%;
-			white-space: nowrap;
 			overflow: hidden;
-			text-overflow: ellipsis;
 			@include rem('top', 5px);
 		}
 		@include rem('padding-top', $base/2);
 	}
 }
 .header-text {
-	float: left;
+	display: block;
 	@include rem('margin-top', 2px);
 	@include rem('padding', $base/2 0);
 	@include rem('font-size', 12px);
@@ -316,18 +315,13 @@ a {
 	@include for(large-screens) {
 		float: right;
 		margin-bottom: 0; //reset
+		@include rem('padding-left', $gut/2);
 	}
 	text-align: center;
 	@include rem('margin-bottom', $base/2);
 	li {
-		@include for(large-screens) {
-			&:first-of-type {
-				border-left: $rule;
-			}
-		}
 		a {
 			@include for(large-screens) {
-				border-right: $rule;
 				@include rem('padding', 14px 10px);
 				@include rem('font-size', 17px);
 			}

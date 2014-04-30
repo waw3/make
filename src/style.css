@@ -355,10 +355,13 @@ a {
   background-color: #171717;
   border-bottom: 1px solid #171717; }
   @media screen and (min-width: 1100px) {
-    .header-bar-flipped .header-bar .search-form, .header-bar-flipped .header-bar .social-links {
-      float: left; }
+    .header-bar-flipped .header-bar .search-form, .header-bar-flipped .header-bar .header-social-links {
+      float: left;
+      padding-left: 0;
+      padding-right: 16px;
+      padding-right: 1.6rem; }
     .header-bar-flipped .header-bar .header-text {
-      float: right; }
+      text-align: right; }
     .header-bar-flipped .header-bar .search-form {
       padding-left: 0;
       padding-right: 16px;
@@ -398,15 +401,12 @@ a {
     @media screen and (min-width: 1100px) {
       .header-bar.right-content .header-text {
         position: relative;
-        max-width: 20%;
-        white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
         top: 5px;
         top: 0.5rem; } }
 
 .header-text {
-  float: left;
+  display: block;
   margin-top: 2px;
   margin-top: 0.2rem;
   padding: 11px 0;
@@ -458,10 +458,9 @@ a {
   @media screen and (min-width: 1100px) {
     .header-social-links {
       float: right;
-      margin-bottom: 0; } }
-  @media screen and (min-width: 1100px) {
-    .header-social-links li:first-of-type {
-      border-left: 1px solid #171717; } }
+      margin-bottom: 0;
+      padding-left: 16px;
+      padding-left: 1.6rem; } }
   .header-social-links li a {
     padding: 4px 4px;
     padding:  0.4rem 0.4rem;
@@ -469,7 +468,6 @@ a {
     font-size: 2.4rem; }
     @media screen and (min-width: 1100px) {
       .header-social-links li a {
-        border-right: 1px solid #171717;
         padding: 14px 10px;
         padding:  1.4rem 1rem;
         font-size: 17px;
