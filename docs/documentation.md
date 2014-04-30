@@ -238,3 +238,49 @@ The *Footer* section allows you to configure unique and stylish footer designs. 
 * **Footer Background Color**: Sets the color of the background in the Footer.
 * **Footer Background Image**: Sets the background image for the Footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
 * **Footer Widget Areas**: Sets the number of widget areas to show in the footer. The footer widget areas are displayed in equal width columns above the footer text and social icons. Note that space will only be held for these areas if there are active widgets in one of the widget areas.
+
+### Social Profiles &amp; RSS ###
+
+Social icons linked to your social profiles can be displayed in either the header or footer. Before these icons can appear in either location, you must add your links in the this section. Additionally, you can toggle an RSS link in these locations.
+
+For each input field, add the *full link* to your profile for the corresponding service. Additionally, you can add your email address and an alternate RSS URL for additional links for those services. You can also hide the default RSS link by checking the *Hide default RSS feed link* box.
+
+Within the Customizer, you can set icons for 9 popular services. To customize your services and order of the services, you can implement a *custom social menu* using the following steps:
+
+1. Go to *Appearance &rarr; Menu* in the WordPress admin.
+2. Click *create new menu*.
+3. Title the menu "Social Menu".
+4. Click *Create Menu*.
+5. Click the *Links* header on the left hand side of the page.
+6. Type a link (e.g., https://www.facebook.com/thethemefoundry) to one of your social profiles in the *URL* field.
+7. Give the link a title by typing it into the *Link Text* field.
+8. Click *Add to Menu*.
+9. Repeat steps 5-8 to add additional social profiles.
+10. Under the *Menu Settings* heading, next to the *Theme locations* label, check the *Social Profile Links* box.
+11. Click *Save Menu*.
+
+Adding your social links as a custom menu allows you to sort your profiles and add as many as you want. The theme supports icons for following services:
+
+* App.net
+* BitBucket
+* Dribble
+* Facebook
+* Flickr
+* Foursquare
+* Github
+* Gittip
+* Google Plus
+* Instagram
+* Linkedin
+* Pinterest
+* Renren
+* StackExchange
+* StackOverflow
+* Trello
+* Tumblr
+* Twitter
+* Vimeo
+* VK
+* Weibo
+* Xing
+* Youtube
