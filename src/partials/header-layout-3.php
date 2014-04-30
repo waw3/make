@@ -17,7 +17,7 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default
 <header id="site-header" class="site-header header-layout-<?php echo esc_attr( get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) ) ); ?>" role="banner">
 	<?php // Only show Sub Header if it has content
 	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) ) : ?>
-	<div class="sub-header<?php echo esc_attr( $subheader_class ); ?>">
+	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
 			<?php // Header text
 			if ( ! empty( $header_text ) ) : ?>
