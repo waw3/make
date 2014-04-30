@@ -4,7 +4,7 @@
 #comments {
 	width: 100%;
 	@include rem('margin-top', $base*2);
-	@include rem('font-size', 13px);
+	@include rem('font-size', 15px);
 }
 .comment-list {
 	padding-left: 0; //reset
@@ -60,7 +60,7 @@
 	@include rem('padding-bottom', $base*1.5);
 }
 .comment-date {
-	@include rem('font-size', 11px);
+	@include rem('font-size', 13px);
 }
 .comment-content,
 .comment-reply-link {

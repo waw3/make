@@ -76,8 +76,8 @@ function ttfmake_css_fonts() {
 		// Relative to widget font size
 		'widget-title' => 100,
 		// Relative to body font size
-		'comments'     => 82,
-		'comment-date' => 65,
+		'comments'     => 88,
+		'comment-date' => 82,
 	) );
 
 	// Site Title Font Size
