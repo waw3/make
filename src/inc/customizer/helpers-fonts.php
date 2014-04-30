@@ -10,12 +10,15 @@ if ( ! function_exists( 'ttfmake_css_fonts' ) ) :
  */
 function ttfmake_css_fonts() {
 	/**
-	 * Site Title
+	 * Font Families
 	 */
 	// Get and escape options
 	$font_site_title       = get_theme_mod( 'font-site-title', ttfmake_get_default( 'font-site-title' ) );
 	$font_site_title_stack = ttfmake_get_font_stack( $font_site_title );
-	$font_site_title_size  = absint( get_theme_mod( 'font-site-title-size', ttfmake_get_default( 'font-site-title-size' ) ) );
+	$font_header           = get_theme_mod( 'font-header', ttfmake_get_default( 'font-header' ) );
+	$font_header_stack     = ttfmake_get_font_stack( $font_header );
+	$font_body             = get_theme_mod( 'font-body', ttfmake_get_default( 'font-body' ) );
+	$font_body_stack       = ttfmake_get_font_stack( $font_body );
 
 	// Site Title Font
 	if ( $font_site_title !== ttfmake_get_default( 'font-site-title' ) && '' !== $font_site_title_stack ) {
@@ -27,6 +30,52 @@ function ttfmake_css_fonts() {
 		) );
 	}
 
+	// Header Font
+	if ( $font_header !== ttfmake_get_default( 'font-header' ) && '' !== $font_header_stack ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
+			'declarations' => array(
+				'font-family' => $font_header_stack
+			)
+		) );
+	}
+
+	// Body Font
+	if ( $font_body !== ttfmake_get_default( 'font-body' ) && '' !== $font_body_stack ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( 'body', '.font-body' ),
+			'declarations' => array(
+				'font-family' => $font_body_stack
+			)
+		) );
+	}
+
+	/**
+	 * Font Sizes
+	 */
+	// Get and escape options
+	$font_site_title_size = absint( get_theme_mod( 'font-site-title-size', ttfmake_get_default( 'font-site-title-size' ) ) );
+	$font_nav_size        = absint( get_theme_mod( 'font-nav-size', ttfmake_get_default( 'font-nav-size' ) ) );
+	$font_header_size     = absint( get_theme_mod( 'font-header-size', ttfmake_get_default( 'font-header-size' ) ) );
+	$font_widget_size     = absint( get_theme_mod( 'font-widget-size', ttfmake_get_default( 'font-widget-size' ) ) );
+	$font_body_size       = absint( get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) ) );
+
+	// Relative font sizes
+	$percent = apply_filters( 'ttfmake_font_relative_size', array(
+		// Relative to navigation font size
+		'sub-menu'     => 93,
+		// Relative to header font size
+		'h1'           => 100,
+		'h2'           => 68,
+		'h3'           => 48,
+		'h4'           => 48,
+		'h5'           => 32,
+		'h6'           => 28,
+		'post-title'   => 68,
+		// Relative to widget font size
+		'widget-title' => 100
+	) );
+
 	// Site Title Font Size
 	if ( $font_site_title_size !== ttfmake_get_default( 'font-site-title-size' ) ) {
 		ttfmake_get_css()->add( array(
@@ -34,25 +83,6 @@ function ttfmake_css_fonts() {
 			'declarations' => array(
 				'font-size-px'  => $font_site_title_size . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_site_title_size ) . 'rem'
-			)
-		) );
-	}
-
-	/**
-	 * Navigation
-	 */
-	// Get and escape options
-	$font_nav          = get_theme_mod( 'font-nav', ttfmake_get_default( 'font-nav' ) );
-	$font_nav_stack    = ttfmake_get_font_stack( $font_nav );
-	$font_nav_size     = absint( get_theme_mod( 'font-nav-size', ttfmake_get_default( 'font-nav-size' ) ) );
-	$font_nav_sub_size = $font_nav_size * ( 13 / 14 );
-
-	// Navigation Font
-	if ( $font_nav !== ttfmake_get_default( 'font-nav' ) && '' !== $font_nav_stack ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-navigation' ),
-			'declarations' => array(
-				'font-family' => $font_nav_stack
 			)
 		) );
 	}
@@ -71,42 +101,23 @@ function ttfmake_css_fonts() {
 	// Navigation Font Size (sub menu items)
 	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-navigation .menu .sub-menu a', '.site-navigation .menu .children a' ),
+			'selectors'    => array( '.site-navigation .menu .sub-menu li a', '.site-navigation .menu .children li a' ),
 			'declarations' => array(
-				'font-size-px'  => $font_nav_sub_size . 'px',
-				'font-size-rem' => ttfmake_convert_px_to_rem( $font_nav_sub_size ) . 'rem'
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_nav_size, $percent['sub-menu'] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_nav_size, $percent['sub-menu'] ) ) . 'rem'
 			),
 			'media'        => 'screen and (min-width: 800px)'
 		) );
 	}
 
-	/**
-	 * Headers
-	 */
-	// Get and escape options
-	$font_header       = get_theme_mod( 'font-header', ttfmake_get_default( 'font-header' ) );
-	$font_header_stack = ttfmake_get_font_stack( $font_header );
-	$font_header_size  = absint( get_theme_mod( 'font-header-size', ttfmake_get_default( 'font-header-size' ) ) );
-
-	// Relative sizes of the headers
-	$percent = array(
-		'h1'           => 100,
-		'h2'           => 68,
-		'h3'           => 48,
-		'h4'           => 48,
-		'h5'           => 32,
-		'h6'           => 28,
-		'post-title'   => 68,
-		'widget-title' => 26
-	);
-
-	// Header Font
-	if ( $font_header !== ttfmake_get_default( 'font-header' ) && '' !== $font_header_stack ) {
+	// Navigation grandchild arrow position
+	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.font-header' ),
+			'selectors'    => array( '.site-navigation .menu .sub-menu .menu-item-has-children a:after', '.site-navigation .menu .children .menu-item-has-children a:after' ),
 			'declarations' => array(
-				'font-family' => $font_header_stack
-			)
+				'top' => ( $font_nav_size * 1.4 / 2 ) - 5 . 'px'
+			),
+			'media'        => 'screen and (min-width: 800px)'
 		) );
 	}
 
@@ -175,31 +186,24 @@ function ttfmake_css_fonts() {
 			),
 			'media'        => 'screen and (min-width: 800px)'
 		) );
+	}
 
+	// Widget Font Size
+	if ( $font_widget_size !== ttfmake_get_default( 'font-widget-size' ) ) {
+		// Widget body
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.widget' ),
+			'declarations' => array(
+				'font-size-px'  => $font_widget_size . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_widget_size ) . 'rem'
+			)
+		) );
 		// Widget title
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.widget-title' ),
 			'declarations' => array(
-				'font-size-px'  => ttfmake_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) . 'px',
-				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_header_size, $percent[ 'widget-title' ] ) ) . 'rem'
-			)
-		) );
-	}
-
-	/**
-	 * Body
-	 */
-	// Get and escape options
-	$font_body       = get_theme_mod( 'font-body', ttfmake_get_default( 'font-body' ) );
-	$font_body_stack = ttfmake_get_font_stack( $font_body );
-	$font_body_size  = absint( get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) ) );
-
-	// Body Font
-	if ( $font_body !== ttfmake_get_default( 'font-body' ) && '' !== $font_body_stack ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( 'body', '.font-body' ),
-			'declarations' => array(
-				'font-family' => $font_body_stack
+				'font-size-px'  => ttfmake_get_relative_font_size( $font_widget_size, $percent[ 'widget-title' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_widget_size, $percent[ 'widget-title' ] ) ) . 'rem'
 			)
 		) );
 	}
@@ -300,7 +304,6 @@ function ttfmake_get_google_font_uri() {
 	// Grab the font choices
 	$fonts = array(
 		get_theme_mod( 'font-site-title', ttfmake_get_default( 'font-site-title' ) ),
-		get_theme_mod( 'font-nav', ttfmake_get_default( 'font-nav' ) ),
 		get_theme_mod( 'font-header', ttfmake_get_default( 'font-header' ) ),
 		get_theme_mod( 'font-body', ttfmake_get_default( 'font-body' ) ),
 	);

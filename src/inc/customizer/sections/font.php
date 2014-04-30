@@ -62,70 +62,6 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 		)
 	);
 
-	// Site title font size
-	$setting_id = $setting_prefix . '-site-title-size';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttfmake_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$control_prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Site Title Font Size (in px)', 'make' ),
-			'type'     => 'text',
-			'priority' => $priority->add()
-		)
-	);
-
-	// Navigation font
-	$setting_id = $setting_prefix . '-nav';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttfmake_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-		)
-	);
-	$wp_customize->add_control(
-		$control_prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Navigation', 'make' ),
-			'type'     => 'select',
-			'choices'  => ttfmake_all_font_choices(),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Navigation font size
-	$setting_id = $setting_prefix . '-nav-size';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttfmake_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$control_prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Navigation Font Size (in px)', 'make' ),
-			'type'     => 'text',
-			'priority' => $priority->add()
-		)
-	);
-
 	// Header font
 	$setting_id = $setting_prefix . '-header';
 	$wp_customize->add_setting(
@@ -141,30 +77,9 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Header', 'make' ),
+			'label'    => __( 'Headers', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttfmake_all_font_choices(),
-			'priority' => $priority->add()
-		)
-	);
-
-	// Header font size
-	$setting_id = $setting_prefix . '-header-size';
-	$wp_customize->add_setting(
-		$setting_id,
-		array(
-			'default'           => ttfmake_get_default( $setting_id ),
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		$control_prefix . $setting_id,
-		array(
-			'settings' => $setting_id,
-			'section'  => $section,
-			'label'    => __( 'Header Font Size (in px)', 'make' ),
-			'type'     => 'text',
 			'priority' => $priority->add()
 		)
 	);
@@ -191,6 +106,104 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 		)
 	);
 
+	// Font family line
+	$setting_id = $setting_prefix . '-family-line';
+	$wp_customize->add_control(
+		new TTFMAKE_Customize_Misc_Control(
+			$wp_customize,
+			$control_prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'line',
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
+	// Site title font size
+	$setting_id = $setting_prefix . '-site-title-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Site Title Font Size (in px)', 'make' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Navigation font size
+	$setting_id = $setting_prefix . '-nav-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Navigation Font Size (in px)', 'make' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Header font size
+	$setting_id = $setting_prefix . '-header-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Header Font Size (in px)', 'make' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Widget font size
+	$setting_id = $setting_prefix . '-widget-size';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Widget Font Size (in px)', 'make' ),
+			'type'     => 'text',
+			'priority' => $priority->add()
+		)
+	);
+
 	// Body font size
 	$setting_id = $setting_prefix . '-body-size';
 	$wp_customize->add_setting(
@@ -209,6 +222,20 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 			'label'    => __( 'Body Font Size (in px)', 'make' ),
 			'type'     => 'text',
 			'priority' => $priority->add()
+		)
+	);
+
+	// Font size line
+	$setting_id = $setting_prefix . '-size-line';
+	$wp_customize->add_control(
+		new TTFMAKE_Customize_Misc_Control(
+			$wp_customize,
+			$control_prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'line',
+				'priority'    => $priority->add()
+			)
 		)
 	);
 

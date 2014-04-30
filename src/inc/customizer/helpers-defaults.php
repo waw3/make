@@ -41,12 +41,12 @@ function ttfmake_option_defaults() {
 
 		// Fonts
 		'font-site-title'                   => 'sans-serif',
-		'font-site-title-size'              => 34,
-		'font-nav'                          => 'sans-serif',
-		'font-nav-size'                     => 14,
 		'font-header'                       => 'sans-serif',
-		'font-header-size'                  => 50,
 		'font-body'                         => 'Open Sans',
+		'font-site-title-size'              => 34,
+		'font-nav-size'                     => 14,
+		'font-header-size'                  => 50,
+		'font-widget-size'                  => 13,
 		'font-body-size'                    => 17,
 		'font-subset'                       => 'latin',
 
