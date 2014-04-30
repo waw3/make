@@ -52,15 +52,15 @@
 									value: 'color-secondary-background'
 								},
 								{
-									text: 'Success',
+									text: 'Green',
 									value: 'ttfmake-success'
 								},
 								{
-									text: 'Error',
+									text: 'Red',
 									value: 'ttfmake-error'
 								},
 								{
-									text: 'Important',
+									text: 'Orange',
 									value: 'ttfmake-important'
 								}
 							]
