@@ -196,18 +196,9 @@ body {
     background-color: #eaecee; }
     body.boxed .container, body.boxed .infinite-footer-container {
       max-width: 100%;
-      width: 100%;
-      padding: 0 32px;
-      padding:  0 1.88235rem; }
-      @media screen and (min-width: 800px) {
-        body.boxed .container {
-          padding: 0 92px;
-          padding:  0 5.41176rem; } }
+      width: 100%; }
     body.boxed .site-wrapper {
-      max-width: 1024px; }
-      @media screen and (min-width: 800px) {
-        body.boxed .site-wrapper {
-          max-width: 1144px; } }
+      max-width: 960px; }
 
 .site-main [class*="navigation"] {
   overflow: hidden;
