@@ -39,6 +39,8 @@ The Page builder's **Text** section generates a multicolumn text layout.
 
 ### Adding a blank section ###
 
+![Blank section example](https://thethemefoundry.com/wp-content/uploads/2014/04/blank-section.jpg)
+
 The Page builder's *Blank* section provides a free form section for adding arbitrary content to a page.
 
 1. Click the *Blank* section in the Page builder's section menu.
