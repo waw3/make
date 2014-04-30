@@ -8,6 +8,8 @@ The Make WordPress theme requires WordPress 3.9 or above.
 
 ## Page builder ##
 
+![Page builder menu](https://thethemefoundry.com/wp-content/uploads/2014/04/builder-menu.jpg)
+
 Make provides a Page builder that assists you in generating complex HTML for diverse page layouts. The Page builder includes four distinct sections that generate layouts for different purposes. By mixing and matching different sections, you can build exciting page layouts for your website.
 
 ### Getting started with the page builder ###
