@@ -8,12 +8,25 @@ $footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'foo
 $sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
 $social_links  = ttfmake_get_social_links();
 $show_social   = (int) get_theme_mod( 'footer-show-social', ttfmake_get_default( 'footer-show-social' ) );
+
+// Test for enabled sidebars that contain widgets
+$has_active_sidebar = false;
+if ( $sidebar_count > 0 ) {
+	$i = 1;
+	while ( $i <= $sidebar_count ) {
+		if ( is_active_sidebar( 'footer-' . $i ) ) {
+			$has_active_sidebar = true;
+			break;
+		}
+		$i++;
+	}
+}
 ?>
 
 <footer id="site-footer" class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
 	<div class="container">
 		<?php // Footer widget areas
-		if ( $sidebar_count > 0 ) : ?>
+		if ( true === $has_active_sidebar ) : ?>
 		<div class="footer-widget-container columns-<?php echo esc_attr( $sidebar_count ); ?>">
 			<?php
 			$current_sidebar = 1;
