@@ -198,9 +198,9 @@ function ttfmake_css_add_rules() {
 	 * Header section
 	 */
 	// Get and escape options
-	$header_text_color          = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
-	$header_background_color    = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
-	$header_background_image    = get_theme_mod( 'header-background-image', ttfmake_get_default( 'header-background-image' ) );
+	$header_text_color           = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
+	$header_background_color     = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
+	$header_background_image     = get_theme_mod( 'header-background-image', ttfmake_get_default( 'header-background-image' ) );
 	$header_bar_text_color       = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
 	$header_bar_border_color     = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
 	$header_bar_background_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
