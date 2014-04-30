@@ -239,14 +239,14 @@ This section controls options for the main column. It is the center of each webs
 
 ### Footer {#footer}
 
-The *Footer* section allows you to configure unique and stylish footer designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
+The _Footer_ section allows you to choose and configure footer layouts. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
 
-* **Footer Layout**: Sets the overall layout for the footer. *Traditional* displays the footer text on one side and the social icons on the other. *Centered* centers both pieces of content and displays the footer text above the Footer.
+* **Footer Layout**: Sets the overall layout for the footer. _Traditional_ displays the footer text on one side and the social icons on the other. _Centered_ centers both pieces of content and displays the footer text above the social icons.
 * **Footer Text**: Sets the text to display in the Footer.
 * **Footer Text Color**: Sets the color of the text in the Footer.
 * **Footer Border Color**: Sets the color of the border of the Footer.
-* **Footer Background Color**: Sets the color of the background in the Footer.
-* **Footer Background Image**: Sets the background image for the Footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Footer Background Color**: Sets the color of the background in the Footer. Note that this color will not be visible if a _Footer Background Image_ is set.
+* **Footer Background Image**: Sets the background image for the Footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including _Background Repeat_, _Background Position_, and _Background Size_.
 * **Footer Widget Areas**: Sets the number of widget areas to show in the footer. The footer widget areas are displayed in equal width columns above the footer text and social icons. Note that space will only be held for these areas if there are active widgets in one of the widget areas.
 
 ### Social Profiles &amp; RSS {#social-profiles-and-rss}
