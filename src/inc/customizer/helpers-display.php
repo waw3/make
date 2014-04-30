@@ -175,10 +175,24 @@ function ttfmake_css_add_rules() {
 	// Detail color
 	if ( $color_detail !== ttfmake_get_default( 'color-detail' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-detail-text' ),
+			'selectors'    => array( '.color-detail-text', '.builder-section-banner .cycle-pager .cycle-pager-active', '.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active', '.post-categories li:after', '.post-tags li:after' ),
 			'declarations' => array(
 				'color' => $color_detail
 			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation .menu-item-has-children a:after' ),
+			'declarations' => array(
+				'color' => $color_detail
+			),
+			'media'        => 'screen and (min-width: 800px)'
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation .menu .sub-menu a', '.site-navigation .menu .sub-menu a' ),
+			'declarations' => array(
+				'border-bottom-color' => $color_detail
+			),
+			'media'        => 'screen and (min-width: 800px)'
 		) );
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.color-detail-background' ),
