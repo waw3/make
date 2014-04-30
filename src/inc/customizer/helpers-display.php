@@ -378,7 +378,7 @@ function ttfmake_css_add_rules() {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-footer *:not(select)' ),
 			'declarations' => array(
-				'border-color' => $footer_border_color
+				'border-color' => $footer_border_color . ' !important'
 			)
 		) );
 	}
