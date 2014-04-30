@@ -136,3 +136,10 @@ The *Header* section allows you to configure unique and stylish header designs. 
 * **Show Social Icons In Header Bar**: Checking this option will show the list of social icons set in *Social Profiles &amp; RSS* in the Header bar.
 * **Show Search Field in Header**: Checking this option will show the search input in the Header.
 
+### Site Title &amp; Tagline ###
+
+* **Site Title Color**: Sets the color of the site title. Note that if you are using a custom logo (set in *Logo*), this option will have no effect.
+* **Site Title**: Sets the site name, which is displayed in the Header of the site. Note that this is the WordPress option that sets your title in various places throughout WordPress.
+* **Hide Site Title**: Checking this option hides the site title in the Header.
+* **Tagline**: Sets the site tagline, which is displayed in the Header of the site. Note that this is the WordPress option that sets your tagline in various places throughout WordPress.
+* **Hide Tagline**: Checking this option hides the tagline in the Header.
