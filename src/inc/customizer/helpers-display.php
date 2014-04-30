@@ -134,7 +134,6 @@ function ttfmake_css_add_rules() {
 				'table',
 				'table th',
 				'table td',
-				'blockquote.ttfmake-testimonial:after',
 			),
 			'declarations' => array(
 				'border-color' => $color_secondary
@@ -145,9 +144,10 @@ function ttfmake_css_add_rules() {
 				'hr',
 				'hr.ttfmake-line-dashed',
 				'hr.ttfmake-line-double',
+				'blockquote.ttfmake-testimonial:after',
 			),
 			'declarations' => array(
-				'border-bottom-top' => $color_secondary
+				'border-top-color' => $color_secondary
 			)
 		) );
 		ttfmake_get_css()->add( array(
