@@ -44,6 +44,7 @@ function ttfmake_option_defaults() {
 		'font-header'                       => 'sans-serif',
 		'font-body'                         => 'Open Sans',
 		'font-site-title-size'              => 34,
+		'font-site-tagline-size'            => 12,
 		'font-nav-size'                     => 14,
 		'font-header-size'                  => 50,
 		'font-widget-size'                  => 13,

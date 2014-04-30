@@ -55,6 +55,7 @@ function ttfmake_css_fonts() {
 	 */
 	// Get and escape options
 	$font_site_title_size = absint( get_theme_mod( 'font-site-title-size', ttfmake_get_default( 'font-site-title-size' ) ) );
+	$font_site_tagline_size = absint( get_theme_mod( 'font-site-tagline-size', ttfmake_get_default( 'font-site-tagline-size' ) ) );
 	$font_nav_size        = absint( get_theme_mod( 'font-nav-size', ttfmake_get_default( 'font-nav-size' ) ) );
 	$font_header_size     = absint( get_theme_mod( 'font-header-size', ttfmake_get_default( 'font-header-size' ) ) );
 	$font_widget_size     = absint( get_theme_mod( 'font-widget-size', ttfmake_get_default( 'font-widget-size' ) ) );
@@ -90,11 +91,22 @@ function ttfmake_css_fonts() {
 		) );
 	}
 
+	// Site Tagline Font Size
+	if ( $font_site_tagline_size !== ttfmake_get_default( 'font-site-tagline-size' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-description', '.font-site-tagline' ),
+			'declarations' => array(
+				'font-size-px'  => $font_site_tagline_size . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( $font_site_tagline_size ) . 'rem'
+			)
+		) );
+	}
+
 	// Navigation Font Size
 	if ( $font_nav_size !== ttfmake_get_default( 'font-nav-size' ) ) {
 		// Top level
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-navigation .menu li a' ),
+			'selectors'    => array( '.site-navigation .menu li a', '.font-nav' ),
 			'declarations' => array(
 				'font-size-px'  => $font_nav_size . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_nav_size ) . 'rem'
@@ -192,7 +204,7 @@ function ttfmake_css_fonts() {
 	if ( $font_widget_size !== ttfmake_get_default( 'font-widget-size' ) ) {
 		// Widget body
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.widget' ),
+			'selectors'    => array( '.widget', '.font-widget' ),
 			'declarations' => array(
 				'font-size-px'  => $font_widget_size . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_widget_size ) . 'rem'
