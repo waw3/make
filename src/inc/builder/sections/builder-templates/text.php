@@ -22,6 +22,12 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	</select>
 </div>
 
+<div class="ttfmake-titlediv">
+	<div class="ttfmake-titlewrap">
+		<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php if ( isset( $ttfmake_section_data['data']['title'] ) ) echo esc_attr( htmlspecialchars( $ttfmake_section_data['data']['title'] ) ); ?>" autocomplete="off" />
+	</div>
+</div>
+
 <div class="ttfmake-text-columns-stage ttfmake-text-columns-<?php echo $columns_class; ?>">
 	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
 	<?php

@@ -94,20 +94,16 @@ class TTFMAKE_Section_Definitions {
 			}
 		}
 
+		$clean_data['title'] = $clean_data['label'] = ( isset( $data['title'] ) ) ? apply_filters( 'title_save_pre', $data['title'] ) : '';
+
 		if ( isset( $data['columns-order'] ) ) {
 			$clean_data['columns-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['columns-order'] ) );
 		}
 
 		if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
-			$i = 1;
 			foreach ( $data['columns'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {
 					$clean_data['columns'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
-
-					// The first title serves as the section title
-					if ( 1 === $i ) {
-						$clean_data['label'] = apply_filters( 'title_save_pre', $item['title'] );
-					}
 				}
 
 				if ( isset( $item['image-link'] ) ) {
@@ -121,8 +117,6 @@ class TTFMAKE_Section_Definitions {
 				if ( isset( $item['content'] ) ) {
 					$clean_data['columns'][ $id ]['content'] = sanitize_post_field( 'post_content', $item['content'], get_the_ID(), 'db' );
 				}
-
-				$i++;
 			}
 		}
 
