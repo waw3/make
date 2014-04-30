@@ -38,7 +38,9 @@ function ttfmake_jetpack_infinite_scroll_footer_callback() {
 	?>
 	<div id="infinite-footer">
 		<footer class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
-			<?php get_template_part( 'partials/footer', 'credit' ); ?>
+			<div class="container">
+				<?php get_template_part( 'partials/footer', 'credit' ); ?>
+			</div>
 		</footer>
 	</div>
 <?php
