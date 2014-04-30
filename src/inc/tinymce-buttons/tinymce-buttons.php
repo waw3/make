@@ -49,6 +49,9 @@ class TTFMAKE_TinyMCE_Buttons {
 
 		// Reorder the hr button
 		add_filter( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 20, 2 );
+
+		// Add translations for plugin
+		add_filter( 'wp_mce_translation', array( $this, 'wp_mce_translation' ), 10, 2 );
 	}
 
 	/**
@@ -122,6 +125,38 @@ class TTFMAKE_TinyMCE_Buttons {
 		}
 
 		return $mceInit;
+	}
+
+	/**
+	 * Add translations for plugin.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array     $mce_translation    Key/value pairs of strings.
+	 * @param  string    $mce_locale         Locale.
+	 * @return array                         The updated translation array.
+	 */
+	public function wp_mce_translation( $mce_translation, $mce_locale ) {
+		$additional_items = array(
+			'Add button'    => __( 'Add button', 'ttfmake' ),
+			'Insert Button' => __( 'Insert Button', 'ttfmake' ),
+			'Button text'   => __( 'Button text', 'ttfmake' ),
+			'Button URL'    => __( 'Button URL', 'ttfmake' ),
+			'Normal'        => __( 'Normal', 'ttfmake' ),
+			'Alert'         => __( 'Alert', 'ttfmake' ),
+			'Download'      => __( 'Download', 'ttfmake' ),
+			'Color'         => __( 'Color', 'ttfmake' ),
+			'Primary'       => __( 'Primary', 'ttfmake' ),
+			'Secondary'     => __( 'Secondary', 'ttfmake' ),
+			'Green'         => __( 'Green', 'ttfmake' ),
+			'Red'           => __( 'Red', 'ttfmake' ),
+			'Orange'        => __( 'Orange', 'ttfmake' ),
+			'Style'         => __( 'Style', 'ttfmake' ),
+			'Dotted'        => __( 'Dotted', 'ttfmake' ),
+			'Double'        => __( 'Double', 'ttfmake' ),
+		);
+
+		return array_merge( $mce_translation, $additional_items );
 	}
 }
 endif;
