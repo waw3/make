@@ -64,6 +64,13 @@ function ttfmake_css_add_rules() {
 				'border-color' => $color_primary
 			)
 		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation ul.menu ul a:hover', '.site-navigation ul.menu ul a:focus', '.site-navigation .menu ul ul a:hover', '.site-navigation .menu ul ul a:focus' ),
+			'declarations' => array(
+				'background-color' => $color_primary
+			),
+			'media'        => 'screen and (min-width: 800px)'
+		) );
 	}
 
 	// Secondary color
