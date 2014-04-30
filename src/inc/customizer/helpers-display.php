@@ -165,7 +165,7 @@ function ttfmake_css_add_rules() {
 	// Text color
 	if ( $color_text !== ttfmake_get_default( 'color-text' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-text', 'body', '.entry-date a' ),
+			'selectors'    => array( '.color-text', 'body', '.entry-date a', 'body', 'button', 'input', 'select', 'textarea', '[class*="navigation"] .nav-previous a', '[class*="navigation"] .nav-previous span', '[class*="navigation"] .nav-next a', '[class*="navigation"] .nav-next span' ),
 			'declarations' => array(
 				'color' => $color_text
 			)
