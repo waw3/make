@@ -53,7 +53,7 @@ function ttfmake_css_add_rules() {
 			)
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-primary-background','.ttfmake-button.color-primary-background', '.site-navigation ul.menu ul a:hover', '.site-navigation ul.menu ul a:focus', '.site-navigation .menu ul ul a:hover', '.site-navigation .menu ul ul a:focus' ),
+			'selectors'    => array( '.color-primary-background','.ttfmake-button.color-primary-background' ),
 			'declarations' => array(
 				'background-color' => $color_primary
 			)
