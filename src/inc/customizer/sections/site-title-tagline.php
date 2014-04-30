@@ -18,10 +18,6 @@ function ttfmake_customizer_sitetitletagline() {
 	$control_prefix = 'ttfmake_';
 	$section        = 'title_tagline';
 
-	// Change priority for Site Title
-	$site_title           = $wp_customize->get_control( 'blogname' );
-	$site_title->priority = $priority->add();
-
 	// Site title color
 	$setting_id = 'color-site-title';
 	$wp_customize->add_setting(
@@ -44,6 +40,10 @@ function ttfmake_customizer_sitetitletagline() {
 			)
 		)
 	);
+
+	// Change priority for Site Title
+	$site_title           = $wp_customize->get_control( 'blogname' );
+	$site_title->priority = $priority->add();
 
 	// Hide Site Title
 	$setting_id = 'hide-site-title';

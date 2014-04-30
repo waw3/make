@@ -60,31 +60,40 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	// List of new sections to add
 	$sections = array(
 		'general'        => __( 'General', 'make' ),
-		'logo'           => __( 'Logo', 'make' ),
 		'font'           => __( 'Fonts', 'make' ),
 		'color'          => __( 'Colors', 'make' ),
+		'header'         => __( 'Header', 'make' ),
+		'logo'           => __( 'Logo', 'make' ),
+		'main'           => __( 'Main', 'make' ),
 		'layout-blog'    => __( 'Layout: Blog (Posts Page)', 'make' ),
 		'layout-archive' => __( 'Layout: Archives', 'make' ),
 		'layout-search'  => __( 'Layout: Search Results', 'make' ),
 		'layout-post'    => __( 'Layout: Posts', 'make' ),
 		'layout-page'    => __( 'Layout: Pages', 'make' ),
-		'header'         => __( 'Header', 'make' ),
-		'main'           => __( 'Main', 'make' ),
 		'footer'         => __( 'Footer', 'make' ),
 		'social'         => __( 'Social Profiles &amp; RSS', 'make' )
 	);
 	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
 
 	// Priority for first section
-	$priority = new TTFMAKE_Prioritizer( 200, 50 );
+	$priority = new TTFMAKE_Prioritizer( 0, 10 );
 
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $title ) {
 		// First load the file
 		if ( '' !== locate_template( $section_path . $section . '.php', true ) ) {
-			// Custom priorities for some built-in sections
-			if ( 'fonts' === $section ) {
+			// Custom priorities for built-in sections
+			if ( 'font' === $section ) {
 				$wp_customize->get_section( 'background_image' )->priority = $priority->add();
+			}
+			if ( 'logo' === $section ) {
+				$wp_customize->get_section( 'title_tagline' )->priority = $priority->add();
+			}
+			if ( 'main' === $section ) {
+				$wp_customize->get_section( 'nav' )->priority = $priority->add();
+			}
+			if ( 'layout-blog' === $section ) {
+				$wp_customize->get_section( 'static_front_page' )->priority = $priority->add();
 			}
 
 			// Then add the section
