@@ -138,9 +138,9 @@ function ttfmake_get_choices( $setting ) {
 			break;
 		case 'header-layout' :
 			$choices = array(
-				1  => __( 'Layout 1', 'make' ),
-				2  => __( 'Layout 2', 'make' ),
-				3  => __( 'Layout 3', 'make' ),
+				1  => __( 'Traditional', 'make' ),
+				2  => __( 'Centered', 'make' ),
+				3  => __( 'Navigation Below', 'make' ),
 			);
 			break;
 		case 'header-branding-position' :
@@ -160,8 +160,8 @@ function ttfmake_get_choices( $setting ) {
 			break;
 		case 'footer-layout' :
 			$choices = array(
-				1  => __( 'Layout 1', 'make' ),
-				2  => __( 'Layout 2', 'make' ),
+				1  => __( 'Traditional', 'make' ),
+				2  => __( 'Centered', 'make' ),
 			);
 			break;
 	}
