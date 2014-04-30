@@ -46,6 +46,9 @@ class TTFMAKE_TinyMCE_Buttons {
 	public function __construct() {
 		// Add the button
 		add_action( 'admin_init', array( $this, 'add_button_button' ), 11 );
+
+		// Reorder the hr button
+		add_filter( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 20, 2 );
 	}
 
 	/**
@@ -61,7 +64,7 @@ class TTFMAKE_TinyMCE_Buttons {
 		}
 
 		add_filter( 'mce_external_plugins', array( $this, 'add_tinymce_plugin' ) );
-		add_filter( 'mce_buttons', array( $this, 'register_mce_button' ) );
+		add_filter( 'mce_buttons', array( $this, 'register_mce_button' ), 10, 2 );
 	}
 
 	/**
@@ -73,7 +76,6 @@ class TTFMAKE_TinyMCE_Buttons {
 	 * @return array                The modified plugins array.
 	 */
 	public function add_tinymce_plugin( $plugins ) {
-		unset( $plugins['hr'] );
 		$plugins['ttfmake_mce_hr_button']     = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-hr.js';
 		$plugins['ttfmake_mce_button_button'] = get_template_directory_uri() .'/inc/tinymce-buttons/js/tinymce-button.js';
 		return $plugins;
@@ -84,14 +86,42 @@ class TTFMAKE_TinyMCE_Buttons {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  array    $buttons    The current array of plugins.
-	 * @return array                The modified plugins array.
+	 * @param  array     $buttons      The current array of plugins.
+	 * @param  string    $editor_id    The ID for the current editor.
+	 * @return array                   The modified plugins array.
 	 */
-	public function register_mce_button( $buttons ) {
-		$buttons   = array_diff( $buttons, array( 'hr' ) );
-		$buttons[] = 'ttfmake_mce_hr_button';
-		$buttons[] = 'ttfmake_mce_button_button';
+	public function register_mce_button( $buttons, $editor_id ) {
+		if ( false !== strpos( $editor_id, 'ttfmake' ) ) {
+			$buttons[] = 'ttfmake_mce_hr_button';
+			$buttons[] = 'ttfmake_mce_button_button';
+		}
+
 		return $buttons;
+	}
+
+	/**
+	 * Position the new hr button in the place that the old hr usually resides.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array     $mceInit      The configuration for the current editor.
+	 * @param  string    $editor_id    The ID for the current editor.
+	 * @return array                   The modified configuration array.
+	 */
+	public function tiny_mce_before_init( $mceInit, $editor_id ) {
+		if ( false !== strpos( $editor_id, 'ttfmake' ) && ! empty( $mceInit['toolbar1'] ) ) {
+			if ( in_array( 'hr', explode( ',', $mceInit['toolbar1'] ) ) ) {
+				// Remove the current positioning of the new hr button
+				$mceInit['toolbar1'] = str_replace( ',hr,', ',ttfmake_mce_hr_button,', $mceInit['toolbar1'] );
+
+				// Remove the duplicated new hr button
+				$pieces              = explode( ',', $mceInit['toolbar1'] );
+				$pieces              = array_unique( $pieces );
+				$mceInit['toolbar1'] = implode( ',', $pieces );
+			}
+		}
+
+		return $mceInit;
 	}
 }
 endif;
