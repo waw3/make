@@ -157,4 +157,12 @@ The *Header* section allows you to configure unique and stylish header designs. 
 * **Social Profile Links Menu**: Sets the menu to use in the Header and Footer social profiles links area. Please see the *Social Profiles &amp; Links* section for more information about creating a custom social links menu.
 * **Mobile Menu Label**: Sets the label text that is shown in the mobile menu.
 
+### Main ###
+
+This section controls options for the main column. It is the center of the screen in which the primary content is contained, but does not include the header or the footer.
+
+* **Background Color**: Sets the color for the main column in the site. If a background image is set, the color will not be seen.
+* **Background Image**: Sets the background image for the main column in the site. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Underline Links in Content**: Checking this option will add underlines to all links within the post content (e.g., adds the `text-decoration: underline;` property and value to post content links).
+
 
