@@ -250,7 +250,9 @@
     background-position: center;
     background-repeat: repeat;
     position: relative;
-    @include rem('padding', $base*2+$gut/4 0 $base*2);
+    &.has-background {
+		@include rem('padding', $base*2+$gut/4 0 $base*2);
+	}
 }
 .builder-gallery-title {
     font-weight: bold;

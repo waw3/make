@@ -1631,9 +1631,10 @@ iframe[src*="google.com/maps"] {
 .builder-section-gallery {
   background-position: center;
   background-repeat: repeat;
-  position: relative;
-  padding: 52px 0 44px;
-  padding:  3.05882rem 0 2.58824rem; }
+  position: relative; }
+  .builder-section-gallery.has-background {
+    padding: 52px 0 44px;
+    padding:  3.05882rem 0 2.58824rem; }
 
 .builder-gallery-title {
   font-weight: bold;

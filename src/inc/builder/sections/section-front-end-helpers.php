@@ -90,6 +90,13 @@ function ttfmake_builder_get_gallery_class( $ttfmake_section_data ) {
 		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttfmake_section_data['aspect'] );
 	}
 
+	// Test for background padding
+	$bg_color = ( isset( $ttfmake_section_data['background-color'] ) && ! empty( $ttfmake_section_data['background-color'] ) );
+	$bg_image = ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) );
+	if ( true === $bg_color || true === $bg_image ) {
+		$gallery_class .= ' has-background';
+	}
+
 	return apply_filters( 'ttfmake_gallery_class', $gallery_class, $ttfmake_section_data );
 }
 
