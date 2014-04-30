@@ -169,10 +169,10 @@ The _Header_ section allows you to choose and configure header layouts. It is ha
 
 ### Main {#main}
 
-This section controls options for the main column. It is the center of the screen in which the primary content is contained, but does not include the header or the footer.
+This section controls options for the main column. It is the center of each website page in which the primary content is contained, but does not include the header or the footer.
 
-* **Background Color**: Sets the color for the main column in the site. If a background image is set, the color will not be seen.
-* **Background Image**: Sets the background image for the main column in the site. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Background Color**: Sets the color for the main column in the site. If a background image is set, the color will not be visible.
+* **Background Image**: Sets the background image for the main column in the site. After adding a background image, additional inputs for controlling CSS properties for background images will be revealed, including _Background Repeat_, _Background Position_, and _Background Size_.
 * **Underline Links in Content**: Checking this option will add underlines to all links within the post content (e.g., adds the `text-decoration: underline;` property and value to post content links).
 
 ### Layout: Blog (Posts Page) {#layout-blog-posts-page}
@@ -181,12 +181,12 @@ This section controls options for the main column. It is the center of the scree
 * **Hide site footer**: Checking this option will hide the Footer on the blog/posts page.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on the blog/posts page.
 * **Show right sidebar**: Checking this option will add a sidebar on the right on the blog/posts page.
-* **Featured Images**: Sets the style for displaying the featured image on the blog/posts page. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
-* **Post Date**: Sets the style for displaying the post data on the blog/posts page. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
-* **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
-* **Generate excerpts automatically**: By default, the post excerpt is displayed. By checking this option, the theme will automatically truncate your content when displayed on the blog/posts page. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
-* **Show categories**: Checking this option will show the category list for the post.
-* **Show tags**: Checking this option will show the tag list for the post.
+* **Featured Images**: Sets the style for displaying the featured image. _Post header_ will display the image above the post title. _Thumbnail_ will display the image using the thumbnail dimensions (defaults to 150x150) below the post title and floated left in the content. _None_ will cause the thumbnail to not be displayed.
+* **Post Date**: Sets the style for displaying the post date. _Absolute_ will display the date according to the _Date Format_ option in WordPress. _Relative_ will display the day in human readable format indicating how long ago the post was published. _None_ will hide the date.
+* **Post Author**: Sets the display style for the author byline. _With avatar_ displays a circular image next to the byline. _Without avatar_ displays only the byline. _None_ hides the author byline completely.
+* **Generate excerpts automatically**: Checking this option will automatically generate an excerpt your content rather than displaying all of it. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
+* **Show categories**: Checking this option will show a list of categories added to the post.
+* **Show tags**: Checking this option will show a list of tags added to the post.
 
 ### Layout: Archives {#layout-archives}
 
@@ -194,25 +194,25 @@ This section controls options for the main column. It is the center of the scree
 * **Hide site footer**: Checking this option will hide the Footer on archive pages.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on archive pages.
 * **Show right sidebar**: Checking this option will add a sidebar on the right on archive pages.
-* **Featured Images**: Sets the style for displaying the featured image on archive pages. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
-* **Post Date**: Sets the style for displaying the post data on archive pages. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
-* **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
-* **Generate excerpts automatically**: By default, the post excerpt is displayed. By checking this option, the theme will automatically truncate your content when displayed on archive pages. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
-* **Show categories**: Checking this option will show the category list for the post.
-* **Show tags**: Checking this option will show the tag list for the post.
+* **Featured Images**: Sets the style for displaying the featured image. _Post header_ will display the image above the post title. _Thumbnail_ will display the image using the thumbnail dimensions (defaults to 150x150) below the post title and floated left in the content. _None_ will cause the thumbnail to not be displayed.
+* **Post Date**: Sets the style for displaying the post date. _Absolute_ will display the date according to the _Date Format_ option in WordPress. _Relative_ will display the day in human readable format indicating how long ago the post was published. _None_ will hide the date.
+* **Post Author**: Sets the display style for the author byline. _With avatar_ displays a circular image next to the byline. _Without avatar_ displays only the byline. _None_ hides the author byline completely.
+* **Generate excerpts automatically**: Checking this option will automatically generate an excerpt your content rather than displaying all of it. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
+* **Show categories**: Checking this option will show a list of categories added to the post.
+* **Show tags**: Checking this option will show a list of tags added to the post.
 
-### Layout: Search {#layout-search}
+### Layout: Search Results {#layout-search-results}
 
 * **Hide site header**: Checking this option will hide the Header on the search page.
 * **Hide site footer**: Checking this option will hide the Footer on the search page.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on the search page.
 * **Show right sidebar**: Checking this option will add a sidebar on the right the search page.
-* **Featured Images**: Sets the style for displaying the featured image the search page. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
-* **Post Date**: Sets the style for displaying the post data on the search page. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
-* **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
-* **Generate excerpts automatically**: By default, the post excerpt is displayed. By checking this option, the theme will automatically truncate your content when displayed on the search page. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
-* **Show categories**: Checking this option will show the category list for the post.
-* **Show tags**: Checking this option will show the tag list for the post.
+* **Featured Images**: Sets the style for displaying the featured image. _Post header_ will display the image above the post title. _Thumbnail_ will display the image using the thumbnail dimensions (defaults to 150x150) below the post title and floated left in the content. _None_ will cause the thumbnail to not be displayed.
+* **Post Date**: Sets the style for displaying the post date. _Absolute_ will display the date according to the _Date Format_ option in WordPress. _Relative_ will display the day in human readable format indicating how long ago the post was published. _None_ will hide the date.
+* **Post Author**: Sets the display style for the author byline. _With avatar_ displays a circular image next to the byline. _Without avatar_ displays only the byline. _None_ hides the author byline completely.
+* **Generate excerpts automatically**: Checking this option will automatically generate an excerpt your content rather than displaying all of it. Note that only text will be displayed. Images, videos, audio, etc. will be removed if this option is checked.
+* **Show categories**: Checking this option will show a list of categories added to the post.
+* **Show tags**: Checking this option will show a list of tags added to the post.
 
 ### Layout: Posts {#layout-posts}
 
@@ -220,11 +220,11 @@ This section controls options for the main column. It is the center of the scree
 * **Hide site footer**: Checking this option will hide the Footer on post pages.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on post pages.
 * **Show right sidebar**: Checking this option will add a sidebar on the right post pages.
-* **Featured Images**: Sets the style for displaying the featured image the post pages. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
-* **Post Date**: Sets the style for displaying the post data on post pages. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
-* **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
-* **Show categories**: Checking this option will show the category list for the post.
-* **Show tags**: Checking this option will show the tag list for the post.
+* **Featured Images**: Sets the style for displaying the featured image. _Post header_ will display the image above the post title. _Thumbnail_ will display the image using the thumbnail dimensions (defaults to 150x150) below the post title and floated left in the content. _None_ will cause the thumbnail to not be displayed.
+* **Post Date**: Sets the style for displaying the post date. _Absolute_ will display the date according to the _Date Format_ option in WordPress. _Relative_ will display the day in human readable format indicating how long ago the post was published. _None_ will hide the date.
+* **Post Author**: Sets the display style for the author byline. _With avatar_ displays a circular image next to the byline. _Without avatar_ displays only the byline. _None_ hides the author byline completely.
+* **Show categories**: Checking this option will show a list of categories added to the post.
+* **Show tags**: Checking this option will show a list of tags added to the post.
 
 ### Layout: Pages {#layout-pages}
 
@@ -232,10 +232,10 @@ This section controls options for the main column. It is the center of the scree
 * **Hide site footer**: Checking this option will hide the Footer on single pages.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on single pages.
 * **Show right sidebar**: Checking this option will add a sidebar on the right on single pages.
-* **Hide title**: Checking this option hides the title on the page.
-* **Featured Images**: Sets the style for displaying the featured image on single pages. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
-* **Post Date**: Sets the style for displaying the post data on single pages. *Absolute* will display the date according to the *Date Format* option in WordPress. *Relative* will display the day in human readable format indicating how long ago the post was published. *None* will hide the date.
-* **Post Author**: Sets the display style for the author byline. *With avatar* displays the byline with a circular gravatar. *Without avatar* display the byline without an avatar. *None* hides the author display.
+* **Hide title**: Checking this option hides the title of the page.
+* **Featured Images**: Sets the style for displaying the featured image. _Post header_ will display the image above the post title. _Thumbnail_ will display the image using the thumbnail dimensions (defaults to 150x150) below the post title and floated left in the content. _None_ will cause the thumbnail to not be displayed.
+* **Post Date**: Sets the style for displaying the post date. _Absolute_ will display the date according to the _Date Format_ option in WordPress. _Relative_ will display the day in human readable format indicating how long ago the post was published. _None_ will hide the date.
+* **Post Author**: Sets the display style for the author byline. _With avatar_ displays a circular image next to the byline. _Without avatar_ displays only the byline. _None_ hides the author byline completely.
 
 ### Footer {#footer}
 
