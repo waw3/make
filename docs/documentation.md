@@ -125,36 +125,36 @@ The *Header* section allows you to configure unique and stylish header designs. 
 
 * **Header Layout**: Sets the global layout for the header. *Traditional* places the site identity and the navigation side by site. *Centered* centers both the site identity and the navigation and places the identity above the navigation. *Navigation Below* places the identity and the search bar side by side, with the navigation below those elements.
 * **Show Title/Logo On**: Sets the location of the site identity when the *Header Layout* option is set to either *Traditional* or *Navigation Below*.
-* **Header Bar Content Layout**: Sets the location of the Header bar elements. In most cases, the Header bar contains multiple elements with one element on the left and another on the right. This option allows you to flip the positioning of those elements.
-* **Header Bar Text**: Sets the text to display in the Header bar.
-* **Header Bar Text Color**: Sets the color of the text in the Header bar.
-* **Header Bar Border Color**: Sets the color of the border of the Header bar.
-* **Header Bar Background Color**: Sets the color of the background in the Header bar.
-* **Header Text Color**: Sets the color of the text in the Header. Note that this does not change the color of the site title as that is controlled in the *Site Title &amp; Tagline* section.
-* **Header Background Color**: Sets the color of the background in the Header. Note that if a *Header Background Image* is set, the *Header Background Color* will not be visible.
-* **Header Background Image**: Sets the background image for the Header. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
-* **Show Social Icons In Header Bar**: Checking this option will show the list of social icons set in *Social Profiles &amp; RSS* in the Header bar.
-* **Show Search Field in Header**: Checking this option will show the search input in the Header.
+* **Header Bar Content Layout**: Sets the location of the header bar elements. In most cases, the header bar contains multiple elements with one element on the left and another on the right. This option allows you to flip the positioning of those elements.
+* **Header Bar Text**: Sets the text to display in the header bar.
+* **Header Bar Text Color**: Sets the color of the text in the header bar.
+* **Header Bar Border Color**: Sets the color of the border of the header bar.
+* **Header Bar Background Color**: Sets the color of the background in the header bar.
+* **Header Text Color**: Sets the color of the text in the header. Note that this does not change the color of the site title as that is controlled in the *Site Title &amp; Tagline* section.
+* **Header Background Color**: Sets the color of the background in the header. Note that if a *Header Background Image* is set, the *Header Background Color* will not be visible.
+* **Header Background Image**: Sets the background image for the header. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Show social icons in header bar**: Checking this option will show the list of social icons set in *Social Profiles &amp; RSS* in the header bar.
+* **Show search field in header**: Checking this option will show the search input in the header.
 
 ### Site Title &amp; Tagline ###
 
 * **Site Title Color**: Sets the color of the site title. Note that if you are using a custom logo (set in *Logo*), this option will have no effect.
-* **Site Title**: Sets the site name, which is displayed in the Header of the site. Note that this is the WordPress option that sets your title in various places throughout WordPress.
-* **Hide Site Title**: Checking this option hides the site title in the Header.
-* **Tagline**: Sets the site tagline, which is displayed in the Header of the site. Note that this is the WordPress option that sets your tagline in various places throughout WordPress.
-* **Hide Tagline**: Checking this option hides the tagline in the Header.
+* **Site Title**: Sets the site name, which is displayed in the header of the site. Note that this is the WordPress option that sets your title in various places throughout WordPress.
+* **Hide Site Title**: Checking this option hides the site title in the header.
+* **Tagline**: Sets the site tagline, which is displayed in the header of the site. Note that this is the WordPress option that sets your tagline in various places throughout WordPress.
+* **Hide Tagline**: Checking this option hides the tagline in the header.
 
 ### Logo ###
 
-* **Regular Logo**: Sets the logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section.
+* **Regular Logo**: Sets the logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *header* section.
 * **Retina Logo (2x)**: Sets the retina or HiDPI logo for the site. It will be displayed in the header and positioned according to the *Show Title/Logo On* option in the *Header* section. The retina logo is displayed at exactly half the height and width of the full size image. If you are setting the *Regular Logo* and a *Retina Logo* options, it is recommended that the image used for the *Retina Logo* is exactly twice the height and width of the *Regular Logo*.
 * **Favicon**: Sets the favicon used for the site. This image must be in .png or .ico format. The optimal size for this image is 32px x 32px.
 * **Apple Touch Icon**: Sets the Apple touch icon used for the site. This image must be in .png format. The optimal size for this image is 152px x 152px.
 
 ### Navigation ###
 
-* **Primary Menu**: Sets the menu to use in the Header. You must first create menus using [WordPress' menus system](http://codex.wordpress.org/WordPress_Menu_User_Guide) before being able to set menus in the header.
-* **Social Profile Links Menu**: Sets the menu to use in the Header and Footer social profiles links area. Please see the *Social Profiles &amp; Links* section for more information about creating a custom social links menu.
+* **Primary Menu**: Sets the menu to use in the header. You must first create menus using [WordPress' menus system](http://codex.wordpress.org/WordPress_Menu_User_Guide) before being able to set menus in the header.
+* **Social Profile Links Menu**: Sets the menu to use in the header and footer social profiles links area. Please see the *Social Profiles &amp; Links* section for more information about creating a custom social links menu.
 * **Mobile Menu Label**: Sets the label text that is shown in the mobile menu.
 
 ### Main ###
@@ -167,8 +167,8 @@ This section controls options for the main column. It is the center of the scree
 
 ### Layout: Blog (Posts Page) ###
 
-* **Hide site header**: Checking this option will hide the Header on the blog/posts page.
-* **Hide site footer**: Checking this option will hide the Footer on the blog/posts page.
+* **Hide site header**: Checking this option will hide the header on the blog/posts page.
+* **Hide site footer**: Checking this option will hide the footer on the blog/posts page.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on the blog/posts page.
 * **Show right sidebar**: Checking this option will add a sidebar on the right on the blog/posts page.
 * **Featured Images**: Sets the style for displaying the featured image on the blog/posts page. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
@@ -180,8 +180,8 @@ This section controls options for the main column. It is the center of the scree
 
 ### Layout: Archives ###
 
-* **Hide site header**: Checking this option will hide the Header on archive pages.
-* **Hide site footer**: Checking this option will hide the Footer on archive pages.
+* **Hide site header**: Checking this option will hide the header on archive pages.
+* **Hide site footer**: Checking this option will hide the footer on archive pages.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on archive pages.
 * **Show right sidebar**: Checking this option will add a sidebar on the right on archive pages.
 * **Featured Images**: Sets the style for displaying the featured image on archive pages. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
@@ -193,8 +193,8 @@ This section controls options for the main column. It is the center of the scree
 
 ### Layout: Search ###
 
-* **Hide site header**: Checking this option will hide the Header on the search page.
-* **Hide site footer**: Checking this option will hide the Footer on the search page.
+* **Hide site header**: Checking this option will hide the header on the search page.
+* **Hide site footer**: Checking this option will hide the footer on the search page.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on the search page.
 * **Show right sidebar**: Checking this option will add a sidebar on the right the search page.
 * **Featured Images**: Sets the style for displaying the featured image the search page. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
@@ -206,8 +206,8 @@ This section controls options for the main column. It is the center of the scree
 
 ### Layout: Posts ###
 
-* **Hide site header**: Checking this option will hide the Header on post pages.
-* **Hide site footer**: Checking this option will hide the Footer on post pages.
+* **Hide site header**: Checking this option will hide the header on post pages.
+* **Hide site footer**: Checking this option will hide the footer on post pages.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on post pages.
 * **Show right sidebar**: Checking this option will add a sidebar on the right post pages.
 * **Featured Images**: Sets the style for displaying the featured image the post pages. *Post header* will display the image above the post title. *Thumbnail* will display the image using the thumbnail height (defaults to 150x150) below the post title and floated left in the content. *None* will cause the thumbnail to not be displayed.
@@ -218,8 +218,8 @@ This section controls options for the main column. It is the center of the scree
 
 ### Layout: Pages ###
 
-* **Hide site header**: Checking this option will hide the Header on single pages.
-* **Hide site footer**: Checking this option will hide the Footer on single pages.
+* **Hide site header**: Checking this option will hide the header on single pages.
+* **Hide site footer**: Checking this option will hide the footer on single pages.
 * **Show left sidebar**: Checking this option will add a sidebar on the left on single pages.
 * **Show right sidebar**: Checking this option will add a sidebar on the right on single pages.
 * **Hide title**: Checking this option hides the title on the page.
@@ -231,12 +231,12 @@ This section controls options for the main column. It is the center of the scree
 
 The *Footer* section allows you to configure unique and stylish footer designs. It is hard to imagine all of the possibilities and we recommend working with these options to find the right look for your site.
 
-* **Footer Layout**: Sets the overall layout for the footer. *Traditional* displays the footer text on one side and the social icons on the other. *Centered* centers both pieces of content and displays the footer text above the Footer.
-* **Footer Text**: Sets the text to display in the Footer.
-* **Footer Text Color**: Sets the color of the text in the Footer.
-* **Footer Border Color**: Sets the color of the border of the Footer.
-* **Footer Background Color**: Sets the color of the background in the Footer.
-* **Footer Background Image**: Sets the background image for the Footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
+* **Footer Layout**: Sets the overall layout for the footer. *Traditional* displays the footer text on one side and the social icons on the other. *Centered* centers both pieces of content and displays the footer text above the footer.
+* **Footer Text**: Sets the text to display in the footer.
+* **Footer Text Color**: Sets the color of the text in the footer.
+* **Footer Border Color**: Sets the color of the border of the footer.
+* **Footer Background Color**: Sets the color of the background in the footer.
+* **Footer Background Image**: Sets the background image for the footer. After adding a background image, additional inputs for controlling CSS properties for background images will be exposed, including *Background Repeat*, *Background Position*, and *Background Size*.
 * **Footer Widget Areas**: Sets the number of widget areas to show in the footer. The footer widget areas are displayed in equal width columns above the footer text and social icons. Note that space will only be held for these areas if there are active widgets in one of the widget areas.
 
 ### Social Profiles &amp; RSS ###
