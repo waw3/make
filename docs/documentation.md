@@ -251,7 +251,7 @@ The *Footer* section allows you to configure unique and stylish footer designs. 
 
 ### Social Profiles &amp; RSS {#social-profiles-and-rss}
 
-Social icons linked to your social profiles can be displayed in either the header or footer. Before these icons can appear in either location, you must add your links in the this section. Additionally, you can toggle an RSS link in these locations.
+Social icons linked to your social profiles can be displayed in either the header or footer. Before these icons can appear in either location, you must add your links in this section. Additionally, you can toggle an RSS link in these locations.
 
 For each input field, add the *full link* to your profile for the corresponding service. Additionally, you can add your email address and an alternate RSS URL for additional links for those services. You can also hide the default RSS link by checking the *Hide default RSS feed link* box.
 
