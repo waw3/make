@@ -1,8 +1,7 @@
 (function(tinymce) {
 	tinymce.PluginManager.add('ttfmake_mce_button_button', function( editor, url ) {
 		editor.addButton('ttfmake_mce_button_button', {
-			text: 'Button',
-			icon: false,
+			icon: 'ttfmake-button-button',
 			tooltip: 'Add button',
 			onclick: function() {
 				editor.windowManager.open( {
