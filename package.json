@@ -2,12 +2,12 @@
 	"name": "make",
 	"version": "1.0.0",
 	"description": "One theme to rule them all",
-	"homepage": "https://github.com/thethemefoundry/ttf-one",
-	"bugs": "https://github.com/thethemefoundry/ttf-one/issues",
+	"homepage": "https://github.com/thethemefoundry/make",
+	"bugs": "https://github.com/thethemefoundry/make/issues",
 	"license": "GPLv2",
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:thethemefoundry/ttf-one.git"
+		"url": "git@github.com:thethemefoundry/make.git"
 	},
 	"dependencies": {
 		"grunt": "~0.4.1",
