@@ -328,16 +328,16 @@ a {
 	}
 }
 .header-social-links {
-	@include for(large-screens) {
-		float: right;
-		margin-bottom: 0; //reset
-	}
+	text-align: center;
+	@include rem('margin-bottom', $base/2);
 	@include for(medium-screens) {
 		float: none; //reset
 		text-align: left;
 	}
-	text-align: center;
-	@include rem('margin-bottom', $base/2);
+	@include for(large-screens) {
+		float: right;
+		margin-bottom: 0; //reset
+	}
 	li {
 		a {
 			@include for(large-screens) {

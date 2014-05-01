@@ -468,14 +468,14 @@ a {
   text-align: center;
   margin-bottom: 11px;
   margin-bottom: 1.1rem; }
-  @media screen and (min-width: 1100px) {
-    .header-social-links {
-      float: right;
-      margin-bottom: 0; } }
   @media screen and (min-width: 800px) {
     .header-social-links {
       float: none;
       text-align: left; } }
+  @media screen and (min-width: 1100px) {
+    .header-social-links {
+      float: right;
+      margin-bottom: 0; } }
   .header-social-links li a {
     padding: 4px 4px;
     padding:  0.4rem 0.4rem;
