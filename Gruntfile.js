@@ -12,7 +12,7 @@ module.exports = function( grunt ) {
 					outputStyle: 'nested'
 				},
 				files: {
-					'src/style.css': 'src/sass/style.scss'
+					'src/style.css': 'assets/sass/style.scss'
 				}
 			}
 		},
@@ -87,7 +87,7 @@ module.exports = function( grunt ) {
 		},
 		watch: {
 			css: {
-				files: 'src/sass/**/*.scss',
+				files: 'assets/sass/**/*.scss',
 				tasks: [ 'sass' ]
 			}
 		},
@@ -148,7 +148,7 @@ module.exports = function( grunt ) {
 		replace: {
 			styleVersion: {
 				src: [
-					'src/sass/header.scss',
+					'assets/sass/header.scss',
 					'src/style.css'
 				],
 				overwrite: true,
