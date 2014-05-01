@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 		sass: {
 			theme: {
 				options: {
-					outputStyle: 'expanded'
+					outputStyle: 'nested'
 				},
 				files: {
 					'src/style.css': 'src/assets/sass/style.scss'
