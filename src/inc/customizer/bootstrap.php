@@ -202,7 +202,12 @@ if ( ! function_exists( 'ttfmake_customizer_admin_styles' ) ) :
 function ttfmake_customizer_admin_styles() { ?>
 	<style type="text/css">
 		.customize-control.customize-control-heading {
+			margin-top: 6px;
 			margin-bottom: -2px;
+		}
+		.customize-control.customize-control-line {
+			margin-top: 10px;
+			margin-bottom: 6px;
 		}
 	</style>
 <?php }
