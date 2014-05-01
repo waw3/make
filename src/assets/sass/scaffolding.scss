@@ -127,6 +127,12 @@ a {
 			}
 		}
 		@include rem('font-size', 13px);
+		input {
+			@include for(medium-screens) {
+				width: auto;
+			}
+			width: 100%;
+		}
 	}
 	.search-submit {
 		display: none;

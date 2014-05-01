@@ -295,6 +295,11 @@ a {
       float: right; }
       .branding-right .header-layout-3 .search-form {
         float: left; } }
+  .header-layout-3 .search-form input {
+    width: 100%; }
+    @media screen and (min-width: 800px) {
+      .header-layout-3 .search-form input {
+        width: auto; } }
 .header-layout-3 .search-submit {
   display: none; }
 
