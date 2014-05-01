@@ -1686,7 +1686,7 @@ iframe[src*="google.com/maps"] {
   font-size: 1.4rem; }
   .builder-gallery-item[onclick] {
     cursor: pointer; }
-  .builder-gallery-captions-reveal .builder-gallery-item {
+  .builder-gallery-captions-reveal .builder-gallery-item, .builder-gallery-captions-overlay .builder-gallery-item {
     position: relative; }
   .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-item .builder-gallery-content {
     visibility: visible; }
@@ -1695,18 +1695,18 @@ iframe[src*="google.com/maps"] {
   .builder-gallery-captions-overlay .builder-gallery-item:hover .builder-gallery-content {
     visibility: hidden; }
 
-.builder-gallery-captions-reveal .builder-gallery-content {
+.builder-gallery-captions-reveal .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-content {
   position: absolute;
   top: 0;
   padding: 32px;
   padding: 3.2rem; }
-.builder-gallery-captions-reveal .builder-gallery-content {
+.builder-gallery-captions-reveal .builder-gallery-content, .builder-gallery-captions-overlay .builder-gallery-content {
   visibility: hidden;
   height: 100%; }
-.builder-gallery-captions-reveal .builder-gallery-description {
+.builder-gallery-captions-reveal .builder-gallery-description, .builder-gallery-captions-overlay .builder-gallery-description {
   overflow: hidden;
   height: 60%; }
-.builder-gallery-captions-reveal .builder-gallery-title {
+.builder-gallery-captions-reveal .builder-gallery-title, .builder-gallery-captions-overlay .builder-gallery-title {
   overflow: hidden;
   max-height: 100%;
   line-height: 1.5; }

@@ -280,7 +280,8 @@
 	&[onclick] {
 		cursor: pointer;
 	}
-	.builder-gallery-captions-reveal & {
+	.builder-gallery-captions-reveal &,
+	.builder-gallery-captions-overlay & {
 		position: relative;
 	}
 	.builder-gallery-captions-reveal &:hover,
@@ -300,7 +301,8 @@
 		}
 	}
 }
-.builder-gallery-captions-reveal {
+.builder-gallery-captions-reveal,
+.builder-gallery-captions-overlay {
 	.builder-gallery-content {
 		position: absolute;
 		top: 0;
