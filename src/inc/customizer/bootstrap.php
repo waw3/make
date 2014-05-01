@@ -221,7 +221,7 @@ function ttfmake_add_customizations() {
 }
 endif;
 
-add_action( 'after_setup_theme', 'ttfmake_add_customizations' );
+add_action( 'init', 'ttfmake_add_customizations' );
 
 if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
 /**

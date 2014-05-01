@@ -247,7 +247,7 @@ class TTFMAKE_Logo {
 
 		// For each logo slug, get the image, width and height
 		foreach ( $logos as $logo ) {
-			$this->logo_information[ $logo ]['image'] = get_theme_mod( $logo );
+			$this->logo_information[ $logo ]['image'] = get_theme_mod( $logo, ttfmake_get_default( $logo ) );
 
 			// Set the defaults
 			$this->logo_information[ $logo ]['width']  = '';
