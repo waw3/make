@@ -189,6 +189,37 @@ function ttfmake_maybe_show_site_region( $region ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_get_site_header_class' ) ) :
+/**
+ * Compile the classes for the site header
+ *
+ * @since 1.0.0.
+ *
+ * @return string
+ */
+function ttfmake_get_site_header_class() {
+	// Base
+	$class = 'site-header';
+
+	// Layout
+	$class .= ' header-layout-' . get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) );
+
+	// Title
+	$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
+	if ( 1 === $hide_site_title || ! get_bloginfo( 'name' ) ) {
+		$class .= ' no-site-title';
+	}
+
+	// Tagline
+	$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
+	if ( 1 === $hide_tagline || ! get_bloginfo( 'description' ) ) {
+		$class .= ' no-site-tagline';
+	}
+
+	return esc_attr( $class );
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_maybe_show_sidebar' ) ) :
 /**
  * Output the sidebar markup if the current view calls for it.

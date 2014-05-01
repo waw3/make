@@ -14,7 +14,7 @@ $hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hi
 $menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default( 'navigation-mobile-label' ) );
 ?>
 
-<header id="site-header" class="site-header header-layout-<?php echo esc_attr( get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) ) ); ?>" role="banner">
+<header id="site-header" class="<?php echo esc_attr( ttfmake_get_site_header_class() ); ?>" role="banner">
 	<?php // Only show Sub Header if it has content
 	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) ) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
