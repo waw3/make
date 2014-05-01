@@ -19,6 +19,7 @@ a {
 -------------------------------------------------------- */
 img {
     margin-bottom: 22px;
+	height: auto;
 }
 .alignleft {
     display: inline;
