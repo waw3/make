@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Make 1.0.0\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-05-01 00:47:54+00:00\n"
+"POT-Creation-Date: 2014-05-01 15:52:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1220,6 +1220,21 @@ msgstr ""
 msgid "https://thethemefoundry.com/wordpress-themes/make/"
 msgstr ""
 
+#. Description of the plugin/theme
+msgid ""
+"Create your website without touching a line of code. Make's flexible "
+"customization features and a powerful drag and drop page builder make "
+"designing your site fun and easy. Build almost anything: a simple portfolio "
+"or photography site, an ecommerce business site, a minimalist blog, or even "
+"a professional magazine. You'll start by customizing your background, "
+"layouts, fonts, colors, and logo. Next, add and organize your content using "
+"the drag and drop page builder. Add a photo, a video, a gallery, or even a "
+"slider to any page on your website. Make is responsive, so your website "
+"will naturally look great on phones, tablets, and desktop screens. It's "
+"also fully compatible with popular plugins like WooCommerce, Gravity Forms, "
+"Contact Form 7, Jetpack, and WP PageNavi."
+msgstr ""
+
 #. Author of the plugin/theme
 msgid "The Theme Foundry"
 msgstr ""
@@ -1319,52 +1334,52 @@ msgctxt "e.g. Bob says hello."
 msgid "says:"
 msgstr ""
 
-#: inc/template-tags.php:415
+#: inc/template-tags.php:446
 msgctxt "time"
 msgid "second"
 msgstr ""
 
-#: inc/template-tags.php:421
+#: inc/template-tags.php:452
 msgctxt "time"
 msgid "seconds"
 msgstr ""
 
-#: inc/template-tags.php:431
+#: inc/template-tags.php:462
 msgctxt "camera f-stop"
 msgid "f/"
 msgstr ""
 
-#: inc/template-tags.php:441
+#: inc/template-tags.php:472
 msgctxt "camera setting"
 msgid "Camera:"
 msgstr ""
 
-#: inc/template-tags.php:447
+#: inc/template-tags.php:478
 msgctxt "camera setting"
 msgid "Taken:"
 msgstr ""
 
-#: inc/template-tags.php:454
+#: inc/template-tags.php:485
 msgctxt "camera setting"
 msgid "Focal length:"
 msgstr ""
 
-#: inc/template-tags.php:460
+#: inc/template-tags.php:491
 msgctxt "camera setting"
 msgid "Aperture:"
 msgstr ""
 
-#: inc/template-tags.php:466
+#: inc/template-tags.php:497
 msgctxt "camera setting"
 msgid "Exposure:"
 msgstr ""
 
-#: inc/template-tags.php:472
+#: inc/template-tags.php:503
 msgctxt "camera setting"
 msgid "ISO:"
 msgstr ""
 
-#: inc/template-tags.php:455
+#: inc/template-tags.php:486
 msgctxt "millimeters"
 msgid "mm"
 msgstr ""
