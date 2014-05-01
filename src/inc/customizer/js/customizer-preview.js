@@ -69,7 +69,7 @@
 					$('#site-header').prepend('<div class="header-bar"><div class="container"></div></div>');
 				}
 
-				$('.header-bar .container').prepend('<span class="header-text">' + to + '</span>');
+				$('.header-bar .container').append('<span class="header-text">' + to + '</span>');
 			}
 			if ( ! to ) {
 				$content.remove();
