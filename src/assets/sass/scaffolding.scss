@@ -221,13 +221,7 @@ a {
 		@include rem('padding', $base/2 0);
 		input {
 			@include for(large-screens) {
-				width: 140px;
-				-webkit-transition: width .3s;
-				   -moz-transition: width .3s;
-						transition: width .3s;
-				&:focus {
-					width: 250px;
-				}
+				width: 175px;
 			}
 			width: 100%;
 			border: 1px solid;
