@@ -90,13 +90,13 @@ blockquote {
 		&:after {
 			content: "";
 			position: relative;
-			bottom: -($base*3);
 			width: 0; //reset
 			height: 0; //reset
 			border-left: 22px solid transparent;
 			border-right: 22px solid transparent;
 			border-top: 22px solid $d;
 			@include rem('left', 5px);
+			@include rem('bottom', -60px);
 		}
 	}
 }
