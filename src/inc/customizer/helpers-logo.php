@@ -119,10 +119,11 @@ class TTFMAKE_Logo {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  string    $url    The URL of the image in question.
-	 * @return array             The dimensions array on success, and a blank array on failure.
+	 * @param  string    $url      The URL of the image in question.
+	 * @param  bool      $force    Cause a cache refresh.
+	 * @return array               The dimensions array on success, and a blank array on failure.
 	 */
-	function get_logo_dimensions( $url ) {
+	function get_logo_dimensions( $url, $force = false ) {
 		// Build the cache key
 		$key = 'ttfmake-' . md5( 'logo-dimensions-' . $url . TTFMAKE_VERSION );
 
@@ -130,7 +131,7 @@ class TTFMAKE_Logo {
 		$dimensions = get_transient( $key );
 
 		// If the value is not found in cache, regenerate
-		if ( false === $dimensions ) {
+		if ( false === $dimensions || is_preview() || true === $force ) {
 			$dimensions = array();
 
 			// Get the ID of the attachment
@@ -164,7 +165,9 @@ class TTFMAKE_Logo {
 			}
 
 			// Store the transient
-			set_transient( $key, $dimensions, 86400 );
+			if ( ! is_preview() ) {
+				set_transient( $key, $dimensions, 86400 );
+			}
 		}
 
 		return $dimensions;
@@ -231,9 +234,10 @@ class TTFMAKE_Logo {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @return array    Array containing image file, width, and height for each logo.
+	 * @param  bool     $force    Update the dimension cache.
+	 * @return array              Array containing image file, width, and height for each logo.
 	 */
-	function get_logo_information() {
+	function get_logo_information( $force = false) {
 		// If the logo information is cached to an instance var, pull from there
 		if ( ! empty( $this->logo_information ) ) {
 			return $this->logo_information;
@@ -255,7 +259,7 @@ class TTFMAKE_Logo {
 
 			// If there is an image, get the dimensions
 			if ( ! empty( $this->logo_information[ $logo ]['image'] ) ) {
-				$dimensions = $this->get_logo_dimensions( $this->logo_information[ $logo ]['image'] );
+				$dimensions = $this->get_logo_dimensions( $this->logo_information[ $logo ]['image'], $force );
 
 				// Set the dimensions to the array if all information is present
 				if ( ! empty( $dimensions ) && isset( $dimensions['width'] ) && isset( $dimensions['height'] ) ) {
@@ -401,4 +405,20 @@ function ttfmake_get_logo() {
 }
 endif;
 
-add_action( 'init', 'ttfmake_get_logo', 1 );
+add_action( 'init', 'ttfmake_get_logo', 11 );
+
+if ( ! function_exists( 'ttfmake_refresh_logo_cache' ) ) :
+/**
+ * Refresh the logo cache after the customizer is saved.
+ *
+ * @since  1.0.0.
+ *
+ * @param  object    $wp_customize    The customizer object.
+ * @return void
+ */
+function ttfmake_refresh_logo_cache( $wp_customize ) {
+	ttfmake_get_logo()->get_logo_information( true );
+}
+endif;
+
+add_action( 'customize_save_after', 'ttfmake_refresh_logo_cache' );
