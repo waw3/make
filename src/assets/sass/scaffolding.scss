@@ -178,7 +178,7 @@ a {
 	}
 }
 /*---------------------------------------------------------
- Sub Header (_scaffolding.scss)
+ Header bar (_scaffolding.scss)
 -------------------------------------------------------- */
 .header-bar {
 	float: left;
@@ -222,6 +222,9 @@ a {
 		input {
 			@include for(large-screens) {
 				width: 175px;
+			}
+			@include for(medium-screens) {
+				width: auto;
 			}
 			width: 100%;
 			border: 1px solid;
@@ -309,7 +312,10 @@ a {
 	@include for(large-screens) {
 		float: right;
 		margin-bottom: 0; //reset
-		@include rem('padding-left', $gut/2);
+	}
+	@include for(medium-screens) {
+		float: none; //reset
+		text-align: left;
 	}
 	text-align: center;
 	@include rem('margin-bottom', $base/2);
@@ -320,7 +326,10 @@ a {
 				@include rem('font-size', 17px);
 			}
 			@include rem('padding', 4px 4px);
-			@include rem('font-size', 24px);
+			@include rem('font-size', 20px);
+		}
+		&:first-of-type a {
+			padding-left: 0; //reset
 		}
 	}
 }
@@ -637,7 +646,7 @@ a {
 		@include rem('font-size', 17px);
 	}
 	@include rem('margin-top', $base/2);
-	@include rem('font-size', 24px);
+	@include rem('font-size', 20px);
 }
 #site-footer {
 	.infinite-scroll.neverending & {

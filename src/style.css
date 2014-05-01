@@ -346,7 +346,7 @@ a {
     color: transparent; }
 
 /*---------------------------------------------------------
- Sub Header (_scaffolding.scss)
+ Header bar (_scaffolding.scss)
 -------------------------------------------------------- */
 .header-bar {
   float: left;
@@ -388,6 +388,9 @@ a {
       @media screen and (min-width: 1100px) {
         .header-bar .search-form input {
           width: 175px; } }
+      @media screen and (min-width: 800px) {
+        .header-bar .search-form input {
+          width: auto; } }
   .header-bar .search-submit {
     display: none; }
   .header-bar.right-content .header-text {
@@ -453,20 +456,24 @@ a {
   @media screen and (min-width: 1100px) {
     .header-social-links {
       float: right;
-      margin-bottom: 0;
-      padding-left: 16px;
-      padding-left: 1.6rem; } }
+      margin-bottom: 0; } }
+  @media screen and (min-width: 800px) {
+    .header-social-links {
+      float: none;
+      text-align: left; } }
   .header-social-links li a {
     padding: 4px 4px;
     padding:  0.4rem 0.4rem;
-    font-size: 24px;
-    font-size: 2.4rem; }
+    font-size: 20px;
+    font-size: 2rem; }
     @media screen and (min-width: 1100px) {
       .header-social-links li a {
         padding: 14px 10px;
         padding:  1.4rem 1rem;
         font-size: 17px;
         font-size: 1.7rem; } }
+  .header-social-links li:first-of-type a {
+    padding-left: 0; }
 
 /*---------------------------------------------------------
  Navigation (_scaffolding.scss)
@@ -734,8 +741,8 @@ a {
 .footer-social-links {
   margin-top: 11px;
   margin-top: 1.1rem;
-  font-size: 24px;
-  font-size: 2.4rem; }
+  font-size: 20px;
+  font-size: 2rem; }
   @media screen and (min-width: 800px) {
     .footer-social-links {
       margin: 0;
