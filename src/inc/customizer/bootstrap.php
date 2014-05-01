@@ -221,7 +221,7 @@ function ttfmake_add_customizations() {
 }
 endif;
 
-add_action( 'init', 'ttfmake_add_customizations' );
+add_action( 'admin_init', 'ttfmake_add_customizations' );
 
 if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
 /**
@@ -235,6 +235,8 @@ if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
  * @return void
  */
 function ttfmake_display_customizations() {
+	do_action( 'ttfmake_css' );
+
 	// Echo the rules
 	$css = ttfmake_get_css()->build();
 	if ( ! empty( $css ) ) {
