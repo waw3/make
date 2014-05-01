@@ -24,6 +24,7 @@
 }
 @media screen and ( max-width: 782px ) {
 	.wp-core-ui .button.ttfmake-button-large {
+		height: 33px;
 		line-height: 1;
 	}
 }
