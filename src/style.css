@@ -315,6 +315,9 @@ a {
   font-size: 3.4rem; }
   .site-title a {
     color: #171717; }
+  .no-site-tagline .site-title {
+    margin-bottom: 22px;
+    margin-bottom: 2.2rem; }
 
 @media screen and (min-width: 800px) {
   .site-branding {

@@ -150,6 +150,9 @@ a {
 	a {
 		color: $b;
 	}
+	.no-site-tagline & {
+		@include rem('margin-bottom', $base);
+	}
 }
 @include for(medium-screens) {
 	.site-branding {
