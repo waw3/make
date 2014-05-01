@@ -601,10 +601,13 @@ a {
 		}
 	}
 	.widget-area {
+		@include for(medium-screens) {
+			@include rem('margin-bottom', $base*2);
+		}
 		width: 100%;
 		float: left;
 		margin-right: percentage( $gut / $width );
-		@include rem('margin-bottom', $base*2);
+		@include rem('margin-bottom', $base);
 		&:last-of-type {
 			margin-right: 0; //reset
 		}
