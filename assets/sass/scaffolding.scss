@@ -104,6 +104,9 @@ a {
 		margin-right: auto;
 		text-align: center;
 	}
+	.custom-logo {
+		display: inline-block;
+	}
 }
 /*---------------------------------------------------------
  Header layout 3 (_scaffolding.scss)
@@ -188,6 +191,9 @@ a {
 		text-decoration: none; //reset
 		text-shadow: none; //reset
 		color: transparent; //reset
+	}
+	.no-site-title.no-site-tagline & {
+		margin-bottom: 0; //reset
 	}
 }
 /*---------------------------------------------------------

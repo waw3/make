@@ -275,6 +275,8 @@ a {
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
+.header-layout-2 .custom-logo {
+  display: inline-block; }
 
 /*---------------------------------------------------------
  Header layout 3 (_scaffolding.scss)
@@ -355,6 +357,8 @@ a {
     text-decoration: none;
     text-shadow: none;
     color: transparent; }
+  .no-site-title.no-site-tagline .custom-logo {
+    margin-bottom: 0; }
 
 /*---------------------------------------------------------
  Header bar (_scaffolding.scss)
