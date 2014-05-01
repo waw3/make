@@ -134,6 +134,7 @@ function ttfmake_css_add_rules() {
 				'table',
 				'table th',
 				'table td',
+				'.header-layout-3 .site-navigation .menu',
 			),
 			'declarations' => array(
 				'border-color' => $color_secondary

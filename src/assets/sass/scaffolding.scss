@@ -114,6 +114,10 @@ a {
 		max-width: 100%;
 		width: 100%;
 		text-align: left;
+		.menu {
+			border-top: 1px solid $d;
+			border-bottom: 1px solid $d;
+		}
 	}
 	.search-form {
 		@include for(medium-screens) {
