@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.0.0\n"
+"Project-Id-Version: Make 1.0.1\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-05-01 15:52:55+00:00\n"
+"POT-Creation-Date: 2014-05-02 16:42:12+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,35 +28,35 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:156
+#: functions.php:158
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:157
+#: functions.php:159
 msgid "Social Profile Links"
 msgstr ""
 
-#: functions.php:187
+#: functions.php:189
 msgid "Left Sidebar"
 msgstr ""
 
-#: functions.php:196
+#: functions.php:198
 msgid "Right Sidebar"
 msgstr ""
 
-#: functions.php:205
+#: functions.php:207
 msgid "Footer 1"
 msgstr ""
 
-#: functions.php:214
+#: functions.php:216
 msgid "Footer 2"
 msgstr ""
 
-#: functions.php:223
+#: functions.php:225
 msgid "Footer 3"
 msgstr ""
 
-#: functions.php:232
+#: functions.php:234
 msgid "Footer 4"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgid "Cover"
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:72
-msgid "Organize multiple columns of content."
+msgid "Create rearrangeable columns of content and images."
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:138
@@ -327,11 +327,11 @@ msgid "A blank canvas for standard content or HTML code."
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:180
-msgid "Display multiple types of content in a slider."
+msgid "Display multiple types of content in a banner or a slider."
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:260
-msgid "Display media elements using a modern slider."
+msgid "Display your images in various grid combinations."
 msgstr ""
 
 #: inc/customizer/bootstrap.php:62
