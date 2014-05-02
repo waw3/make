@@ -16,6 +16,16 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+		csscomb: {
+			style: {
+				options: {
+					config: 'csscomb.json'
+				},
+				files: {
+					'src/style.css': ['src/style.css']
+				}
+			}
+		},
 		jshint: {
 			options: grunt.file.readJSON( '.jshintrc' ),
 			grunt: {
