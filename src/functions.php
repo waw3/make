@@ -104,9 +104,11 @@ if ( is_admin() ) {
  * 3rd party compatibility includes.
  */
 // Jetpack
-if ( class_exists( 'Jetpack' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
+// There are several plugins that duplicate the functionality of various Jetpack modules,
+// so rather than conditionally loading our Jetpack compatibility file based on the presence
+// of the main Jetpack class, we attempt to detect individual classes/functions related to
+// their particular modules.
+require get_template_directory() . '/inc/jetpack.php';
 
 // WooCommerce
 if ( class_exists( 'WooCommerce' ) ) {
