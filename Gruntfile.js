@@ -98,7 +98,7 @@ module.exports = function( grunt ) {
 		watch: {
 			css: {
 				files: 'assets/sass/**/*.scss',
-				tasks: [ 'sass' ]
+				tasks: [ 'sass', 'csscomb:style' ]
 			}
 		},
 		makepot: {
@@ -217,7 +217,7 @@ module.exports = function( grunt ) {
 	} );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'sass', 'concat', 'uglify' ] );
+	grunt.registerTask( 'default', [ 'sass', 'csscomb:style', 'concat', 'uglify' ] );
 
 	// Bump the version to the specified value; e.g., "grunt bumpto:patch"
 	grunt.registerTask( 'bumpto', function( releaseType ) {
