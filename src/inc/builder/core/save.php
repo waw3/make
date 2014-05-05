@@ -263,6 +263,24 @@ class TTFMAKE_Builder_Save {
 			return $data;
 		}
 
+		// Generate the post content
+		$post_content = $this->generate_post_content( $sanitized_sections );
+
+		// Sanitize and set the content
+		$data['post_content'] = sanitize_post_field( 'post_content', $post_content, get_the_ID(), 'db' );
+
+		return $data;
+	}
+
+	/**
+	 * Based on section data, generate a post's post_content.
+	 *
+	 * @since  1.0.3.
+	 *
+	 * @param  array     $data    Data for sections used to comprise a page's post_content.
+	 * @return string             The post content.
+	 */
+	public function generate_post_content( $data ) {
 		// Run wpautop when saving the data
 		add_filter( 'ttfmake_the_builder_content', 'wpautop' );
 
@@ -278,7 +296,7 @@ class TTFMAKE_Builder_Save {
 		ob_start();
 
 		// For each sections, render it using the template
-		foreach ( $sanitized_sections as $section ) {
+		foreach ( $data as $section ) {
 			global $ttfmake_section_data;
 			$ttfmake_section_data = $section;
 
@@ -298,10 +316,7 @@ class TTFMAKE_Builder_Save {
 		// Allow constraints again after builder data processing is complete.
 		remove_filter( 'editor_max_image_size', array( &$this, 'remove_image_constraints' ) );
 
-		// Sanitize and set the content
-		$data['post_content'] = sanitize_post_field( 'post_content', $post_content, get_the_ID(), 'db' );
-
-		return $data;
+		return $post_content;
 	}
 
 	/**
