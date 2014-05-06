@@ -614,7 +614,7 @@ if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
  * @return void
  */
 function ttfmake_load_section_header() {
-	get_template_part( '/inc/builder/core/templates/section', 'header' );
+	get_template_part( 'inc/builder/core/templates/section', 'header' );
 }
 endif;
 
@@ -627,7 +627,7 @@ if ( ! function_exists( 'ttfmake_load_section_footer' ) ) :
  * @return void
  */
 function ttfmake_load_section_footer() {
-	get_template_part( '/inc/builder/core/templates/section', 'footer' );
+	get_template_part( 'inc/builder/core/templates/section', 'footer' );
 }
 endif;
 
