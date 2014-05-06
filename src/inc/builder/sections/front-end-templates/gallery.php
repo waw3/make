@@ -3,7 +3,7 @@
  * @package Make
  */
 
-global $ttfmake_section_data;
+global $ttfmake_section_data, $ttfmake_sections;
 $gallery = ttfmake_builder_get_gallery_array( $ttfmake_section_data );
 
 $darken   = ( isset( $ttfmake_section_data[ 'darken' ] ) ) ? absint( $ttfmake_section_data[ 'darken' ] ) : 0;
@@ -11,7 +11,7 @@ $captions = ( isset( $ttfmake_section_data[ 'captions' ] ) ) ? esc_attr( $ttfmak
 $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_section_data[ 'aspect' ] ) : 'square';
 ?>
 
-<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_gallery_class( $ttfmake_section_data ) ); ?>" style="<?php echo esc_attr( ttfmake_builder_get_gallery_style( $ttfmake_section_data ) ); ?>">
+<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_gallery_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>" style="<?php echo esc_attr( ttfmake_builder_get_gallery_style( $ttfmake_section_data ) ); ?>">
 	<?php if ( '' !== $ttfmake_section_data['title'] ) : ?>
 	<h3 class="builder-gallery-section-title">
 		<?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?>

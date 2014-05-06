@@ -301,8 +301,9 @@ class TTFMAKE_Builder_Save {
 
 		// For each sections, render it using the template
 		foreach ( $data as $section ) {
-			global $ttfmake_section_data;
+			global $ttfmake_section_data, $ttfmake_sections;
 			$ttfmake_section_data = $section;
+			$ttfmake_sections     = $data;
 
 			// Get the registered sections
 			$registered_sections = ttfmake_get_sections();
@@ -426,11 +427,10 @@ class TTFMAKE_Builder_Save {
 	 * @since  1.0.0.
 	 *
 	 * @param  array    $current_section    The current section's data.
+	 * @param  array    $sections           The list of sections.
 	 * @return array                        The next section's data.
 	 */
-	public function get_next_section_data( $current_section ) {
-		$sections = $this->get_sanitized_sections();
-
+	public function get_next_section_data( $current_section, $sections ) {
 		// Move the pointer to the current section
 		$this->set_array_pointer( $current_section['id'], $sections );
 
@@ -451,11 +451,10 @@ class TTFMAKE_Builder_Save {
 	 * @since  1.0.0.
 	 *
 	 * @param  array    $current_section    The current section's data.
+	 * @param  array    $sections           The list of sections.
 	 * @return array                        The previous section's data.
 	 */
-	public function get_prev_section_data( $current_section ) {
-		$sections = $this->get_sanitized_sections();
-
+	public function get_prev_section_data( $current_section, $sections ) {
 		// Move the pointer to the current section
 		$this->set_array_pointer( $current_section['id'], $sections );
 
@@ -494,20 +493,21 @@ class TTFMAKE_Builder_Save {
 	 * @since  1.0.0.
 	 *
 	 * @param  array     $current_section    The current section's data.
+	 * @param  array     $sections           The list of sections.
 	 * @return string                        The class string.
 	 */
-	public function section_classes( $current_section ) {
+	public function section_classes( $current_section, $sections ) {
 		$prefix = 'builder-section-';
 
 		// Get the current section type
 		$current = ( isset( $current_section['section-type'] ) ) ? $prefix . $current_section['section-type'] : '';
 
 		// Get the next section's type
-		$next_data = $this->get_next_section_data( $current_section );
+		$next_data = $this->get_next_section_data( $current_section, $sections );
 		$next      = ( ! empty( $next_data ) && isset( $next_data['section-type'] ) ) ? $prefix . 'next-' . $next_data['section-type'] : $prefix . 'last';
 
 		// Get the previous section's type
-		$prev_data = $this->get_prev_section_data( $current_section );
+		$prev_data = $this->get_prev_section_data( $current_section, $sections );
 		$prev      = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' . $prev_data['section-type'] : $prefix . 'first';
 
 		// Return the values as a single string
