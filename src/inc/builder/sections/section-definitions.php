@@ -522,4 +522,5 @@ function ttfmake_get_section_definitions() {
 	return TTFMAKE_Section_Definitions::instance();
 }
 
-add_action( 'admin_init', 'ttfmake_get_section_definitions' );
+// Kick off the section definitions immediately
+ttfmake_get_section_definitions();

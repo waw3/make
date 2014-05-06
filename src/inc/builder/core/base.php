@@ -600,7 +600,8 @@ function ttfmake_get_builder_base() {
 }
 endif;
 
-add_action( 'admin_init', 'ttfmake_get_builder_base', 1 );
+// Add the base immediately
+ttfmake_get_builder_base();
 
 if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
 /**
