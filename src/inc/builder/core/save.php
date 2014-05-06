@@ -51,10 +51,14 @@ class TTFMAKE_Builder_Save {
 	 * @return TTFMAKE_Builder_Save
 	 */
 	public function __construct() {
-		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		// Only add filters when the builder is being saved
+		if ( isset( $_POST[ 'ttfmake-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttfmake-builder-nonce' ], 'save' ) && isset( $_POST['ttfmake-section-order'] ) ) {
+			// Save the post's meta data
+			add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 
-		// Combine the input into the post's content
-		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 30, 2 );
+			// Combine the input into the post's content
+			add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 30, 2 );
+		}
 	}
 
 	/**
