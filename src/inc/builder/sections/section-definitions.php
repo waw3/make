@@ -523,4 +523,6 @@ function ttfmake_get_section_definitions() {
 }
 
 // Kick off the section definitions immediately
-ttfmake_get_section_definitions();
+if ( is_admin() ) {
+	ttfmake_get_section_definitions();
+}
