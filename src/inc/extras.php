@@ -245,7 +245,8 @@ function ttfmake_get_view() {
 		$view = 'page';
 	}
 
-	return $view;
+	// Filter the view and return
+	return apply_filters( 'ttfmake_get_view', $view, $parent_post_type );
 }
 endif;
 
