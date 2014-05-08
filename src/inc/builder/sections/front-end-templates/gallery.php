@@ -4,8 +4,7 @@
  */
 
 global $ttfmake_section_data, $ttfmake_sections;
-$gallery = ttfmake_builder_get_gallery_array( $ttfmake_section_data );
-
+$gallery  = ttfmake_builder_get_gallery_array( $ttfmake_section_data );
 $darken   = ( isset( $ttfmake_section_data[ 'darken' ] ) ) ? absint( $ttfmake_section_data[ 'darken' ] ) : 0;
 $captions = ( isset( $ttfmake_section_data[ 'captions' ] ) ) ? esc_attr( $ttfmake_section_data[ 'captions' ] ) : 'reveal';
 $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_section_data[ 'aspect' ] ) : 'square';
@@ -26,8 +25,9 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 			$i++;
 		?>
 		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $ttfmake_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
-			<?php if ( 0 !== absint( $item['image-id'] ) ) : ?>
-				<?php echo ttfmake_builder_get_gallery_item_image( $item, $aspect ); ?>
+			<?php $image = ttfmake_builder_get_gallery_item_image( $item, $aspect ); ?>
+			<?php if ( '' !== $image ) : ?>
+				<?php echo $image; ?>
 			<?php endif; ?>
 			<?php if ( 'none' !== $captions && ( '' !== $item['title'] || '' !== $item['description'] || has_excerpt( $item['image-id'] ) ) ) : ?>
 			<div class="builder-gallery-content">

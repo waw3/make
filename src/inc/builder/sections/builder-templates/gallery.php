@@ -87,7 +87,7 @@ $section_order    = ( ! empty( $ttfmake_section_data['data']['gallery-item-order
 		<?php
 			ttfmake_get_builder_base()->add_uploader(
 				$section_name . '[background-image]',
-				$background_image,
+				ttfmake_sanitize_image_id( $background_image ),
 				array(
 					'add'    => __( 'Set background image', 'make' ),
 					'remove' => __( 'Remove background image', 'make' ),

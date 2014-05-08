@@ -301,7 +301,7 @@ class TTFMAKE_Section_Definitions {
 		}
 
 		if ( isset( $data['background-image']['image-id'] ) ) {
-			$clean_data['background-image'] = absint( $data['background-image']['image-id'] );
+			$clean_data['background-image'] = ttfmake_sanitize_image_id( $data['background-image']['image-id'] );
 		}
 
 		if ( isset( $data['title'] ) ) {
@@ -343,7 +343,7 @@ class TTFMAKE_Section_Definitions {
 				}
 
 				if ( isset( $item['image-id'] ) ) {
-					$clean_data['gallery-items'][ $id ]['image-id'] = absint( $item['image-id'] );
+					$clean_data['gallery-items'][ $id ]['image-id'] = ttfmake_sanitize_image_id( $item['image-id'] );
 				}
 			}
 		}
