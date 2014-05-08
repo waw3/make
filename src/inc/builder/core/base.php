@@ -720,6 +720,37 @@ function ttfmake_get_image( $image_id, $size ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_get_image_src' ) ) :
+/**
+ * Get an image's src.
+ *
+ * @since  1.0.3.
+ *
+ * @param  int       $image_id    The attachment ID. Dimension value IDs represent placeholders (100x150).
+ * @param  string    $size        The image size.
+ * @return string                 URL for the image.
+ */
+function ttfmake_get_image_src( $image_id, $size ) {
+	$src = '';
+
+	if ( false === strpos( $image_id, 'x' ) ) {
+		$image = wp_get_attachment_image_src( $image_id, $size );
+
+		if ( false !== $image && isset( $image[0] ) ) {
+			$src = $image[0];
+		}
+	} else {
+		$image = ttfmake_get_placeholder_image( $image_id );
+
+		if ( isset( $image['src'] ) ) {
+			$src = $image['src'];
+		}
+	}
+
+	return $src;
+}
+endif;
+
 global $ttfmake_placeholder_images;
 
 if ( ! function_exists( 'ttfmake_get_placeholder_image' ) ) :
