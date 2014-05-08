@@ -638,8 +638,13 @@ a {
 		}
 		color: inherit;
 		font-weight: bold;
-		text-decoration: none; //reset
 		@include rem('font-size', 12px);
+		a {
+			text-decoration: underline;
+			&:hover {
+				text-decoration: none; //reset
+			}
+		}
 		.theme-by {
 			font-weight: normal;
 			font-style: italic;
