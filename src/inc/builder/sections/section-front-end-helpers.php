@@ -192,7 +192,7 @@ function ttfmake_builder_get_gallery_item_image( $item, $aspect ) {
 
 	$image_src = ttfmake_get_image_src( $item[ 'image-id' ], 'large' );
 	if ( ! empty( $image_src ) ) {
-		$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+		$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
 	}
 
 	if ( 'none' === $aspect ) {
