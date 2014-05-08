@@ -326,7 +326,10 @@ class TTFMAKE_Builder_Base {
 		);
 
 		// Include the template
-		get_template_part( $section['builder_template'] );
+		ttfmake_load_section_template(
+			$section['builder_template'],
+			$section['path']
+		);
 
 		// Destroy the variable as a good citizen does
 		unset( $GLOBALS['ttfmake_section_data'] );
@@ -628,6 +631,32 @@ if ( ! function_exists( 'ttfmake_load_section_footer' ) ) :
  */
 function ttfmake_load_section_footer() {
 	get_template_part( 'inc/builder/core/templates/section', 'footer' );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
+/**
+ * @since 1.0.3.
+ *
+ * @param  string    $slug
+ * @param  string    $path
+ * @return string
+ */
+function ttfmake_load_section_template( $slug, $path ) {
+	$located = '';
+
+	$templates = array(
+		$slug . '.php',
+		trailingslashit( $path ) . $slug . '.php'
+	);
+	if ( '' === $located = locate_template( $templates, true, false ) ) {
+		if ( file_exists( $templates[1] ) ) {
+			require( $templates[1] );
+			$located = $templates[1];
+		}
+	}
+
+	return $located;
 }
 endif;
 

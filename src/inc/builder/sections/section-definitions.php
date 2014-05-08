@@ -71,9 +71,10 @@ class TTFMAKE_Section_Definitions {
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
 			__( 'Create rearrangeable columns of content and images.', 'make' ),
 			array( $this, 'save_text' ),
-			'inc/builder/sections/builder-templates/text',
-			'inc/builder/sections/front-end-templates/text',
-			100
+			'sections/builder-templates/text',
+			'sections/front-end-templates/text',
+			100,
+			'inc/builder/'
 		);
 	}
 
@@ -137,9 +138,10 @@ class TTFMAKE_Section_Definitions {
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
 			__( 'A blank canvas for standard content or HTML code.', 'make' ),
 			array( $this, 'save_blank' ),
-			'inc/builder/sections/builder-templates/blank',
-			'inc/builder/sections/front-end-templates/blank',
-			200
+			'sections/builder-templates/blank',
+			'sections/front-end-templates/blank',
+			200,
+			'inc/builder/'
 		);
 	}
 
@@ -179,9 +181,10 @@ class TTFMAKE_Section_Definitions {
 			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
 			__( 'Display multiple types of content in a banner or a slider.', 'make' ),
 			array( $this, 'save_banner' ),
-			'inc/builder/sections/builder-templates/banner',
-			'inc/builder/sections/front-end-templates/banner',
-			300
+			'sections/builder-templates/banner',
+			'sections/front-end-templates/banner',
+			300,
+			'inc/builder/'
 		);
 	}
 
@@ -259,9 +262,10 @@ class TTFMAKE_Section_Definitions {
 			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
 			__( 'Display your images in various grid combinations.', 'make' ),
 			array( $this, 'save_gallery' ),
-			'inc/builder/sections/builder-templates/gallery',
-			'inc/builder/sections/front-end-templates/gallery',
-			400
+			'sections/builder-templates/gallery',
+			'sections/front-end-templates/gallery',
+			400,
+			'inc/builder/'
 		);
 	}
 

@@ -309,7 +309,10 @@ class TTFMAKE_Builder_Save {
 			$registered_sections = ttfmake_get_sections();
 
 			// Get the template for the section
-			get_template_part( $registered_sections[ $section['section-type'] ]['display_template'] );
+			ttfmake_load_section_template(
+				$registered_sections[ $section['section-type'] ]['display_template'],
+				$registered_sections[ $section['section-type'] ]['path']
+			);
 
 			// Cleanup the global
 			unset( $GLOBALS['ttfmake_section_data'] );
