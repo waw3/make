@@ -274,7 +274,7 @@ class TTFMAKE_Builder_Base {
 	 * @return void
 	 */
 	public function add_uploader( $section_name, $image_id = 0, $messages = array() ) {
-		$image        = wp_get_attachment_image( $image_id, 'large' );
+		$image        = ttfmake_get_image( $image_id, 'large' );
 		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
 		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
 
@@ -299,7 +299,7 @@ class TTFMAKE_Builder_Base {
 					<?php echo $messages['remove']; ?>
 				</a>
 			</div>
-			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo absint( $image_id ); ?>" class="ttfmake-media-uploader-value" />
+			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
 	<?php
 	}
@@ -689,5 +689,71 @@ if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
 function ttfmake_sanitize_text( $string ) {
 	global $allowedtags;
 	return wp_kses( $string , $allowedtags );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_image' ) ) :
+/**
+ * Get an image to display in page builder backend or front end template.
+ * 
+ * This function allows image IDs defined with a negative number to surface placeholder images. This allows templates to
+ * approximate real content without needing to add images to the user's media library.
+ * 
+ * @since  1.0.3.
+ * 
+ * @param  int       $image_id    The attachment ID. Dimension value IDs represent placeholders (100x150).
+ * @param  string    $size        The image size.
+ * @return string                 HTML for the image. Empty string if image cannot be produced.
+ */
+function ttfmake_get_image( $image_id, $size ) {
+	if ( false === strpos( $image_id, 'x' ) ) {
+		return wp_get_attachment_image( $image_id, $size );
+	} else {
+		$image = ttfmake_get_placeholder_image( $image_id );
+
+		if ( ! empty( $image ) && isset( $image['src'] ) && isset( $image['alt'] ) && isset( $image['class'] ) && isset( $image['height'] ) && isset( $image['width'] ) ) {
+			return '<img src="' . $image['src'] . '" alt="' . $image['alt'] . '" class="' . $image['class'] . '" height="' . $image['height'] . '" width="' . $image['width'] . '" />';
+		} else {
+			return '';
+		}
+	}
+}
+endif;
+
+global $ttfmake_placeholder_images;
+
+if ( ! function_exists( 'ttfmake_get_placeholder_image' ) ) :
+/**
+ * Gets the specified placeholder image.
+ *
+ * @since  1.0.3.
+ *
+ * @param  int      $image_id    Image ID. Should be a dimension value (100x150).
+ * @return array                 The image data, including 'src', 'alt', 'class', 'height', and 'width'.
+ */
+function ttfmake_get_placeholder_image( $image_id ) {
+	global $ttfmake_placeholder_images;
+
+	if ( isset( $ttfmake_placeholder_images[ $image_id ] ) ) {
+		return $ttfmake_placeholder_images[ $image_id ];
+	} else {
+		return array();
+	}
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_register_placeholder_image' ) ) :
+/**
+ * Add a new placeholder image.
+ *
+ * @since  1.0.3.
+ *
+ * @param  int      $id      The ID for the image. Should be a dimension value (100x150).
+ * @param  array    $data    The image data, including 'src', 'alt', 'class', 'height', and 'width'.
+ * @return void
+ */
+function ttfmake_register_placeholder_image( $id, $data ) {
+	global $ttfmake_placeholder_images;
+	$ttfmake_placeholder_images[ $id ] = $data;
 }
 endif;

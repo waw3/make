@@ -111,7 +111,7 @@ class TTFMAKE_Section_Definitions {
 				}
 
 				if ( isset( $item['image-id'] ) ) {
-					$clean_data['columns'][ $id ]['image-id'] = absint( $item['image-id'] );
+					$clean_data['columns'][ $id ]['image-id'] = ttfmake_sanitize_image_id( $item['image-id'] );
 				}
 
 				if ( isset( $item['content'] ) ) {
