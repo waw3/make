@@ -482,11 +482,13 @@ class TTFMAKE_Section_Definitions {
 		$templates = array(
 			array(
 				'id' => 'gallery-item',
-				'builder_template' => 'inc/builder/sections/builder-templates/gallery-item',
+				'builder_template' => 'sections/builder-templates/gallery-item',
+				'path' => 'inc/builder/',
 			),
 			array(
 				'id' => 'banner-slide',
-				'builder_template' => 'inc/builder/sections/builder-templates/banner-slide',
+				'builder_template' => 'sections/builder-templates/banner-slide',
+				'path' => 'inc/builder/',
 			),
 		);
 
