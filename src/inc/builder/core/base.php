@@ -59,6 +59,7 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 11 );
 		add_action( 'admin_print_styles-post.php', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_print_styles-post-new.php', array( $this, 'admin_print_styles' ) );
+		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
 		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
@@ -261,6 +262,29 @@ class TTFMAKE_Builder_Base {
 			<?php endforeach; ?>
 		</style>
 	<?php
+	}
+
+	/**
+	 * Add a class to indicate the current template being used.
+	 *
+	 * @since  1.0.3.
+	 *
+	 * @param  array    $classes    The current classes.
+	 * @return array                The modified classes.
+	 */
+	function admin_body_class( $classes ) {
+		global $pagenow;
+
+		// Do not complete the function if the product template is in use (i.e., the builder needs to be shown)
+		if ( 'page' === get_post_type() ) {
+			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) ) {
+				$classes .= ' ttfmake-builder-active';
+			} else {
+				$classes .= ' ttfmake-default-active';
+			}
+		}
+
+		return $classes;
 	}
 
 	/**
