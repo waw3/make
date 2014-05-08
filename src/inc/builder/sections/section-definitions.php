@@ -231,7 +231,7 @@ class TTFMAKE_Section_Definitions {
 				$clean_data['banner-slides'][ $id ]['darken'] = ( isset( $slide['darken'] ) && 1 === (int) $slide['darken'] ) ? 1 : 0;
 
 				if ( isset( $slide['image-id'] ) ) {
-					$clean_data['banner-slides'][ $id ]['image-id'] = absint( $slide['image-id'] );
+					$clean_data['banner-slides'][ $id ]['image-id'] = ttfmake_sanitize_image_id( $slide['image-id'] );
 				}
 
 				$clean_data['banner-slides'][ $id ]['alignment'] = ( isset( $slide['alignment'] ) && in_array( $slide['alignment'], array( 'none', 'left', 'right' ) ) ) ? $slide['alignment'] : 'none';

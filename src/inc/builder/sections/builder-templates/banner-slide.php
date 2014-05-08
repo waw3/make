@@ -64,7 +64,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
             <?php
             ttfmake_get_builder_base()->add_uploader(
                 $section_name,
-                $image_id,
+                ttfmake_sanitize_image_id( $image_id ),
                 array(
                     'add'    => __( 'Set slide image', 'make' ),
                     'remove' => __( 'Remove slide image', 'make' ),

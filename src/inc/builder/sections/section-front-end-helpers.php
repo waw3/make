@@ -421,10 +421,10 @@ function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 	}
 
 	// Background image
-	if ( isset( $slide['image-id'] ) && 0 !== absint( $slide['image-id'] ) ) {
-		$image_src = wp_get_attachment_image_src( $slide['image-id'], 'full' );
-		if ( isset( $image_src[0] ) ) {
-			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+	if ( isset( $slide['image-id'] ) && 0 !== ttfmake_sanitize_image_id( $slide['image-id'] ) ) {
+		$image_src = ttfmake_get_image_src( $slide['image-id'], 'full' );
+		if ( '' !== $image_src ) {
+			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
 		}
 	}
 
