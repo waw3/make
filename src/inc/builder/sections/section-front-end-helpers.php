@@ -346,11 +346,12 @@ function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
 		return '';
 	}
 
-	$atts = shortcode_atts( array(
-		'autoplay'   => true,
-		'transition' => 'scrollHorz',
-		'delay'      => 6000
-	), $ttfmake_section_data );
+	$keys = array(
+		'autoplay',
+		'transition',
+		'delay',
+	);
+	$atts = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'banner' );
 
 	// Data attributes
 	$data_attributes  = ' data-cycle-log="false"';
@@ -366,17 +367,14 @@ function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
 	// Delay
 	$delay = absint( $atts['delay'] );
 	if ( 0 === $delay ) {
-		$delay = 6000;
+		$delay = ttfmake_get_section_default( 'delay', 'banner' );
 	}
 	if ( 4000 !== $delay ) {
 		$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
 	}
 
 	// Effect
-	$effect = trim( $atts['transition'] );
-	if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
-		$effect = 'scrollHorz';
-	}
+	$effect = ttfmake_sanitize_section_choice( $atts['transition'], 'transition', 'banner' );
 	if ( 'fade' !== $effect ) {
 		$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
 	}
@@ -395,10 +393,14 @@ function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
 function ttfmake_builder_banner_slide_class( $slide ) {
 	$slide_class = '';
 
+	$keys = array(
+		'alignment',
+	);
+	$slide = ttfmake_parse_section_data( $slide, $keys, 'banner-slide' );
+
 	// Content position
-	if ( isset( $slide['alignment'] ) && '' !== $slide['alignment'] ) {
-		$slide_class .= ' ' . sanitize_html_class( 'content-position-' . $slide['alignment'] );
-	}
+	$alignment = ttfmake_sanitize_section_choice( $slide['alignment'], 'alignment', 'banner-slide' );
+	$slide_class .= ' ' . sanitize_html_class( 'content-position-' . $alignment );
 
 	return $slide_class;
 }
@@ -415,13 +417,19 @@ function ttfmake_builder_banner_slide_class( $slide ) {
 function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 	$slide_style = '';
 
+	$keys = array(
+		'background-color',
+		'image-id'
+	);
+	$slide = ttfmake_parse_section_data( $slide, $keys, 'banner-slide' );
+
 	// Background color
-	if ( isset( $slide['background-color'] ) && '' !== $slide['background-color'] ) {
+	if ( '' !== $slide['background-color'] ) {
 		$slide_style .= 'background-color:' . maybe_hash_hex_color( $slide['background-color'] ) . ';';
 	}
 
 	// Background image
-	if ( isset( $slide['image-id'] ) && 0 !== ttfmake_sanitize_image_id( $slide['image-id'] ) ) {
+	if ( 0 !== ttfmake_sanitize_image_id( $slide['image-id'] ) ) {
 		$image_src = ttfmake_get_image_src( $slide['image-id'], 'full' );
 		if ( '' !== $image_src ) {
 			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
