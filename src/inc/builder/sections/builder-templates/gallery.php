@@ -3,8 +3,6 @@
  * @package Make
  */
 
-ttfmake_load_section_header();
-
 global $ttfmake_section_data, $ttfmake_is_js_template;
 $section_name     = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 $columns          = ( isset( $ttfmake_section_data['data']['columns'] ) ) ? $ttfmake_section_data['data']['columns'] : 3;
@@ -117,4 +115,3 @@ $section_order    = ( ! empty( $ttfmake_section_data['data']['gallery-item-order
 </div>
 
 <input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
-<?php ttfmake_load_section_footer(); ?>

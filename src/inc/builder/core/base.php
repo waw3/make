@@ -349,11 +349,20 @@ class TTFMAKE_Builder_Base {
 			'section' => $section,
 		);
 
+		// Load the header
+		ttfmake_load_section_header();
+
+		do_action( 'ttfmake_section_' . $section['id'] . '_before', $ttfmake_section_data );
+
 		// Include the template
 		ttfmake_load_section_template(
 			$section['builder_template'],
 			$section['path']
 		);
+
+		do_action( 'ttfmake_section_' . $section['id'] . '_after', $ttfmake_section_data );
+
+		ttfmake_load_section_footer();
 
 		// Destroy the variable as a good citizen does
 		unset( $GLOBALS['ttfmake_section_data'] );
