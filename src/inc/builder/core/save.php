@@ -120,7 +120,7 @@ class TTFMAKE_Builder_Save {
 		// Call the save callback for each section
 		foreach ( $ordered_sections as $id => $values ) {
 			if ( isset( $registered_sections[ $values['section-type'] ]['save_callback'] ) && true === $this->is_save_callback_callable( $registered_sections[ $values['section-type'] ] ) ) {
-				$clean_sections[ $id ]                 = call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) );
+				$clean_sections[ $id ]                 = apply_filters( 'ttfmake_prepare_data_section', call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) ), $values, $values['section-type'] );
 				$clean_sections[ $id ]['state']        = ( isset( $values['state'] ) ) ? sanitize_key( $values['state'] ) : 'open';
 				$clean_sections[ $id ]['section-type'] = $values['section-type'];
 				$clean_sections[ $id ]['id']           = $id;
