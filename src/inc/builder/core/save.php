@@ -261,7 +261,7 @@ class TTFMAKE_Builder_Save {
 		}
 
 		// The data has been deleted and can be removed
-		$sanitized_sections = $this->get_sanitized_sections();
+		$sanitized_sections = apply_filters( 'ttfmake_insert_post_data_sections', $this->get_sanitized_sections() );
 		if ( empty( $sanitized_sections ) ) {
 			$data['post_content'] = '';
 			return $data;
