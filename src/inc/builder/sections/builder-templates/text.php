@@ -36,6 +36,9 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
 	?>
 	<div class="ttfmake-text-column ttfmake-text-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
+		<?php do_action( 'ttfmake_section_text_before_column', $ttfmake_section_data ); ?>
+		<?php do_action( 'ttfmake_section_text_before_column_' . $i, $ttfmake_section_data ); ?>
+
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
 			<div class="sortable-background"></div>
 		</div>
@@ -71,6 +74,9 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<?php else : ?>
 			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortext' . $ttfmake_section_data['data']['id'] . $i, $editor_settings ); ?>
 		<?php endif; ?>
+
+		<?php do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data ); ?>
+		<?php do_action( 'ttfmake_section_text_after_column_' . $i, $ttfmake_section_data ); ?>
 	</div>
 	<?php $j++; endforeach; ?>
 </div>
