@@ -3,6 +3,8 @@
  * @package Make
  */
 
+ttfmake_load_section_header();
+
 global $ttfmake_section_data, $ttfmake_is_js_template;
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 $columns_number = ( isset( $ttfmake_section_data['data']['columns-number'] ) ) ? $ttfmake_section_data['data']['columns-number'] : 3;
@@ -83,3 +85,4 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 <input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttfmake-text-columns-order" />
 <input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+<?php ttfmake_load_section_footer();
