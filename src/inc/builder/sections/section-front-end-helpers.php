@@ -136,9 +136,9 @@ function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
 
 	// Background image
 	if ( 0 !== absint( $data['background-image'] ) ) {
-		$image_src = wp_get_attachment_image_src( $data['background-image'], 'full' );
-		if ( isset( $image_src[0] ) ) {
-			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+		$image_src = ttfmake_get_image_src( $data['background-image'], 'full' );
+		if ( '' !== $image_src ) {
+			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
 		}
 	}
 
