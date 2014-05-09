@@ -514,8 +514,187 @@ class TTFMAKE_Section_Definitions {
 		<?php endforeach;
 		unset( $GLOBALS['ttfmake_is_js_template'] );
 	}
+
+	/**
+	 * An array of defaults for all the Builder section settings
+	 *
+	 * @since 1.0.3.
+	 *
+	 * @return array
+	 */
+	public function get_section_defaults() {
+		$defaults = array(
+			// Banner
+			'banner-title' => '',
+			'banner-hide-arrows' => 0,
+			'banner-hide-dots' => 0,
+			'banner-autoplay' => 1,
+			'banner-transition' => 'scrollHorz',
+			'banner-delay' => 6000,
+			'banner-height' => 600,
+
+			// Banner Slide
+			'banner-slide-content' => '',
+			'banner-slide-background-color' => '',
+			'banner-slide-darken' => 0,
+			'banner-slide-image-id' => 0,
+			'banner-slide-alignment' => 'none',
+
+			// Blank
+			'blank-title' => '',
+			'blank-content' => '',
+
+			// Gallery
+			'gallery-columns' => 3,
+			'gallery-caption-color' => 'light',
+			'gallery-captions' => 'reveal',
+			'gallery-aspect' => 'square',
+			'gallery-background-image' => 0,
+			'gallery-title' => '',
+			'gallery-darken' => 0,
+			'gallery-background-color' => '',
+			'gallery-background-style' => 'tile',
+
+			// Gallery Item
+			'gallery-item-title' => '',
+			'gallery-item-link' => '',
+			'gallery-item-description' => '',
+			'gallery-item-image-id' => 0,
+
+			// Text
+			'text-columns-number' => 3,
+			'text-title' => '',
+
+			// Text Column
+			'text-column-title' => '',
+			'text-column-image-link' => '',
+			'text-column-image-id' => 0,
+			'text-column-content' => '',
+		);
+
+		return apply_filters( 'ttfmake_section_defaults', $defaults );
+	}
+
+	/**
+	 * Define the choices for section setting dropdowns.
+	 *
+	 * @since 1.0.3.
+	 *
+	 * @param  string    $key             The key for the section setting.
+	 * @param  string    $section_type    The section type.
+ 	 * @return array                      The array of choices for the section setting.
+	 */
+	public function get_choices( $key, $section_type ) {
+		$choices = array( 0 );
+
+		$choice_id = "$section_type-$key";
+
+		switch ( $choice_id ) {
+			case 'banner-transition' :
+				$choices = array(
+					'scrollHorz' => _x( 'Slide horizontal', 'transition effect', 'make' ),
+					'fade'       => _x( 'Fade', 'transition effect', 'make' ),
+					'none'       => _x( 'None', 'transition effect', 'make' )
+				);
+				break;
+			case 'banner-slide-alignment' :
+				$choices = array(
+					'none'  => __( 'None', 'make' ),
+					'left'  => __( 'Left', 'make' ),
+					'right' => __( 'Right', 'make' ),
+				);
+				break;
+			case 'gallery-caption-color' :
+				$choices = array(
+					'light' => __( 'Light', 'make' ),
+					'dark'  => __( 'Dark', 'make' ),
+				);
+				break;
+			case 'gallery-captions' :
+				$choices = array(
+					'overlay' => __( 'Overlay', 'make' ),
+					'reveal'  => __( 'Reveal', 'make' ),
+					'none'    => __( 'None', 'make' ),
+				);
+				break;
+			case 'gallery-aspect' :
+				$choices = array(
+					'landscape' => __( 'Landscape', 'make' ),
+					'portrait'  => __( 'Portrait', 'make' ),
+					'square'    => __( 'Square', 'make' ),
+					'none'      => __( 'None', 'make' ),
+				);
+				break;
+			case 'gallery-columns' :
+			case 'text-columns-number' :
+				$choices = array(
+					1 => __( '1', 'make' ),
+					2 => __( '2', 'make' ),
+					3 => __( '3', 'make' ),
+					4 => __( '4', 'make' ),
+				);
+				break;
+			case 'gallery-background-style' :
+				$choices = array(
+					'tile'  => __( 'Tile', 'make' ),
+					'cover' => __( 'Cover', 'make' ),
+				);
+				break;
+		}
+
+		return apply_filters( 'ttfmake_section_choices', $choices, $key, $section_type );
+	}
 }
 endif;
+
+/**
+ * Return the default value for a particular section setting.
+ *
+ * @since 1.0.3.
+ *
+ * @param  string    $key             The key for the section setting.
+ * @param  string    $section_type    The section type.
+ * @return mixed                      Default value if found; false if not found.
+ */
+function ttfmake_get_section_default( $key, $section_type ) {
+	$defaults = ttfmake_get_section_definitions()->get_section_defaults();
+	$id = "$section_type-$key";
+	return ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
+}
+
+/**
+ * Wrapper function for TTFMAKE_Section_Definitions->get_choices
+ *
+ * @since 1.0.3.
+ *
+ * @param  string    $key             The key for the section setting.
+ * @param  string    $section_type    The section type.
+ * @return array                      The array of choices for the section setting.
+ */
+function ttfmake_get_section_choices( $key, $section_type ) {
+	return ttfmake_get_section_definitions()->get_choices( $key, $section_type );
+}
+
+/**
+ * Sanitize a value from a list of allowed values.
+ *
+ * @since 1.0.3.
+ *
+ * @param  string|int $value The current value of the section setting.
+ * @param  string        $key             The key for the section setting.
+ * @param  string        $section_type    The section type.
+ * @return mixed                          The sanitized value.
+ */
+function ttfmake_sanitize_section_choice( $value, $key, $section_type ) {
+	$choices         = ttfmake_get_section_choices( $key, $section_type );
+	$allowed_choices = array_keys( $choices );
+
+	if ( ! in_array( $value, $allowed_choices ) ) {
+		$value = ttfmake_get_section_default( $key, $section_type );
+	}
+
+	return $value;
+}
 
 /**
  * Instantiate or return the one TTFMAKE_Section_Definitions instance.
