@@ -647,6 +647,31 @@ class TTFMAKE_Section_Definitions {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_parse_section_data' ) ) :
+/**
+ * Combine the defaults with the current setting values for a section.
+ *
+ * @since 1.0.3.
+ *
+ * @param  array $data Array of setting values.
+ * @param  array     $keys            Array of section setting keys.
+ * @param  string    $section_type    The section type.
+ * @return array                      Parsed array of setting values.
+ */
+function ttfmake_parse_section_data( $data, $keys, $section_type ) {
+	$defaults = array();
+
+	foreach ( $keys as $key ) {
+		$defaults[$key] = ttfmake_get_section_default( $key, $section_type );
+	}
+
+	$parsed_data = wp_parse_args( $data, $defaults );
+
+	return $parsed_data;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_section_default' ) ) :
 /**
  * Return the default value for a particular section setting.
  *
@@ -661,7 +686,9 @@ function ttfmake_get_section_default( $key, $section_type ) {
 	$id = "$section_type-$key";
 	return ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_get_section_choices' ) ) :
 /**
  * Wrapper function for TTFMAKE_Section_Definitions->get_choices
  *
@@ -674,7 +701,9 @@ function ttfmake_get_section_default( $key, $section_type ) {
 function ttfmake_get_section_choices( $key, $section_type ) {
 	return ttfmake_get_section_definitions()->get_choices( $key, $section_type );
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_sanitize_section_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
  *
@@ -695,6 +724,7 @@ function ttfmake_sanitize_section_choice( $value, $key, $section_type ) {
 
 	return $value;
 }
+endif;
 
 /**
  * Instantiate or return the one TTFMAKE_Section_Definitions instance.
