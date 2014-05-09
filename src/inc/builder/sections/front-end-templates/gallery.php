@@ -5,9 +5,13 @@
 
 global $ttfmake_section_data, $ttfmake_sections;
 $gallery  = ttfmake_builder_get_gallery_array( $ttfmake_section_data );
-$darken   = ( isset( $ttfmake_section_data[ 'darken' ] ) ) ? absint( $ttfmake_section_data[ 'darken' ] ) : 0;
-$captions = ( isset( $ttfmake_section_data[ 'captions' ] ) ) ? esc_attr( $ttfmake_section_data[ 'captions' ] ) : 'reveal';
-$aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_section_data[ 'aspect' ] ) : 'square';
+
+$keys = array(
+	'captions',
+	'aspect',
+	'darken',
+);
+$data = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'gallery' );
 ?>
 
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_gallery_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>" style="<?php echo esc_attr( ttfmake_builder_get_gallery_style( $ttfmake_section_data ) ); ?>">
@@ -25,11 +29,11 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 			$i++;
 		?>
 		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $ttfmake_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
-			<?php $image = ttfmake_builder_get_gallery_item_image( $item, $aspect ); ?>
+			<?php $image = ttfmake_builder_get_gallery_item_image( $item, $data['aspect'] ); ?>
 			<?php if ( '' !== $image ) : ?>
 				<?php echo $image; ?>
 			<?php endif; ?>
-			<?php if ( 'none' !== $captions && ( '' !== $item['title'] || '' !== $item['description'] || has_excerpt( $item['image-id'] ) ) ) : ?>
+			<?php if ( 'none' !== $data['captions'] && ( '' !== $item['title'] || '' !== $item['description'] || has_excerpt( $item['image-id'] ) ) ) : ?>
 			<div class="builder-gallery-content">
 				<?php if ( '' !== $item['title'] ) : ?>
 				<h4 class="builder-gallery-title">
@@ -50,7 +54,7 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 		</div>
 		<?php endforeach; endif; ?>
 	</div>
-	<?php if ( 0 !== $darken ) : ?>
+	<?php if ( 0 !== absint( $data['darken'] ) ) : ?>
 	<div class="builder-section-overlay"></div>
 	<?php endif; ?>
 </section>

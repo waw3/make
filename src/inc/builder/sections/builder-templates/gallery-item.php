@@ -11,10 +11,16 @@ if ( true === $ttfmake_is_js_template ) {
 	$section_name .= '[' . $ttfmake_section_data['data']['id'] . '][gallery-items][' . $ttfmake_gallery_id . ']';
 }
 
-$title       = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['title'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['title'] : '';
-$link        = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['link'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['link'] : '';
-$image_id    = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['image-id'] : 0;
-$description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['description'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['description'] : '';
+$keys = array(
+	'title',
+	'link',
+	'description',
+	'image-id',
+);
+$item = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ] : array();
+$data = ttfmake_parse_section_data( $item, $keys, 'gallery-item' );
+
+$state = ( isset( $data['state'] ) ) ? $data['state'] : 'open';
 ?>
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 <div class="ttfmake-gallery-item" id="ttfmake-gallery-item-<?php echo esc_attr( $ttfmake_gallery_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_gallery_id ); ?>">
@@ -24,19 +30,19 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 	</div>
 
 	<div class="ttfmake-titlediv">
-		<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttfmake-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
+		<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttfmake-link code widefat" value="<?php echo esc_url( $data['link'] ); ?>" autocomplete="off" />
 	</div>
 
-	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
+	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $data['image-id'] ) ); ?>
 
 	<div class="ttfmake-titlediv">
 		<div class="ttfmake-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+			<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title" value="<?php echo esc_attr( htmlspecialchars( $data['title'] ) ); ?>" autocomplete="off" />
 		</div>
 	</div>
 
 	<div class="ttfmake-gallery-item-description-wrapper">
-		<textarea placeholder="<?php esc_attr_e( 'Enter description here', 'make' ); ?>" name="<?php echo $section_name; ?>[description]"><?php echo esc_textarea( $description ); ?></textarea>
+		<textarea placeholder="<?php esc_attr_e( 'Enter description here', 'make' ); ?>" name="<?php echo $section_name; ?>[description]"><?php echo esc_textarea( $data['description'] ); ?></textarea>
 	</div>
 
 	<a href="#" class="ttfmake-gallery-item-remove">

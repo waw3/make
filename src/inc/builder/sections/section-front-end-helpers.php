@@ -72,29 +72,36 @@ function ttfmake_builder_get_gallery_class( $ttfmake_section_data, $sections ) {
 	// Section classes
 	$gallery_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 
+	$keys = array(
+		'columns',
+		'captions',
+		'caption-color',
+		'aspect',
+		'background-color',
+		'background-image'
+	);
+	$data = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'gallery' );
+
 	// Columns
-	$gallery_columns = ( isset( $ttfmake_section_data['columns'] ) ) ? absint( $ttfmake_section_data['columns'] ) : 1;
+	$gallery_columns = ttfmake_sanitize_section_choice( $data['columns'], 'columns', 'gallery' );
 	$gallery_class  .= ' builder-gallery-columns-' . $gallery_columns;
 
 	// Captions
-	if ( isset( $ttfmake_section_data['captions'] ) && ! empty( $ttfmake_section_data['captions'] ) ) {
-		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttfmake_section_data['captions'] );
-	}
+	$gallery_captions = ttfmake_sanitize_section_choice( $data['captions'], 'captions', 'gallery' );
+	$gallery_class .= ' builder-gallery-captions-' . esc_attr( $gallery_captions );
 
 	// Caption color
-	if ( isset( $ttfmake_section_data['caption-color'] ) && ! empty( $ttfmake_section_data['caption-color'] ) ) {
-		$gallery_class .= ' builder-gallery-captions-' . esc_attr( $ttfmake_section_data['caption-color'] );
-	}
+	$gallery_caption_color = ttfmake_sanitize_section_choice( $data['caption-color'], 'caption-color', 'gallery' );
+	$gallery_class .= ' builder-gallery-captions-' . esc_attr( $gallery_caption_color );
 
 	// Aspect Ratio
-	if ( isset( $ttfmake_section_data['aspect'] ) && ! empty( $ttfmake_section_data['aspect'] ) ) {
-		$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $ttfmake_section_data['aspect'] );
-	}
+	$gallery_aspect = ttfmake_sanitize_section_choice( $data['aspect'], 'aspect', 'gallery' );
+	$gallery_class .= ' builder-gallery-aspect-' . esc_attr( $gallery_aspect );
 
 	// Test for background padding
-	$bg_color = ( isset( $ttfmake_section_data['background-color'] ) && ! empty( $ttfmake_section_data['background-color'] ) );
-	$bg_image = ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) );
-	if ( true === $bg_color || true === $bg_image ) {
+	$bg_color = maybe_hash_hex_color( $data['background-color'] );
+	$bg_image = absint( $data['background-image'] );
+	if ( $bg_color || $bg_image ) {
 		$gallery_class .= ' has-background';
 	}
 
@@ -116,24 +123,29 @@ function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
 
 	$gallery_style = '';
 
+	$keys = array(
+		'background-color',
+		'background-image',
+		'background-style',
+	);
+	$data = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'gallery' );
+
 	// Background color
-	if ( isset( $ttfmake_section_data['background-color'] ) && ! empty( $ttfmake_section_data['background-color'] ) ) {
-		$gallery_style .= 'background-color:' . maybe_hash_hex_color( $ttfmake_section_data['background-color'] ) . ';';
-	}
+	$background_color = maybe_hash_hex_color( $data['background-color'] );
+	$gallery_style .= 'background-color:' . esc_attr( $background_color ) . ';';
 
 	// Background image
-	if ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) ) {
-		$image_src = wp_get_attachment_image_src( $ttfmake_section_data['background-image'], 'full' );
+	if ( 0 !== absint( $data['background-image'] ) ) {
+		$image_src = wp_get_attachment_image_src( $data['background-image'], 'full' );
 		if ( isset( $image_src[0] ) ) {
 			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
 	}
 
 	// Background style
-	if ( isset( $ttfmake_section_data['background-style'] ) && ! empty( $ttfmake_section_data['background-style'] ) ) {
-		if ( 'cover' === $ttfmake_section_data['background-style'] ) {
-			$gallery_style .= 'background-size: cover;';
-		}
+	$background_style = ttfmake_sanitize_section_choice( $data['background-style'], 'background-style', 'gallery' );
+	if ( 'cover' === $background_style ) {
+		$gallery_style .= 'background-size: cover;';
 	}
 
 	return $gallery_style;
@@ -155,8 +167,13 @@ function ttfmake_builder_get_gallery_item_class( $ttfmake_section_data, $i ) {
 
 	$gallery_class = '';
 
+	$keys = array(
+		'columns',
+	);
+	$data = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'gallery' );
+
 	// Columns
-	$gallery_columns = ( isset( $ttfmake_section_data['columns'] ) ) ? absint( $ttfmake_section_data['columns'] ) : 1;
+	$gallery_columns = ttfmake_sanitize_section_choice( $data['columns'], 'columns', 'gallery' );
 	if ( $gallery_columns > 2 && 0 === $i % $gallery_columns ) {
 		$gallery_class .= ' last-' . $gallery_columns;
 	}
@@ -424,8 +441,9 @@ function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 	$slide = ttfmake_parse_section_data( $slide, $keys, 'banner-slide' );
 
 	// Background color
+	$background_color = maybe_hash_hex_color( $slide['background-color'] );
 	if ( '' !== $slide['background-color'] ) {
-		$slide_style .= 'background-color:' . maybe_hash_hex_color( $slide['background-color'] ) . ';';
+		$slide_style .= 'background-color:' . esc_attr( $background_color ) . ';';
 	}
 
 	// Background image
