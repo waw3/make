@@ -103,5 +103,5 @@ $section_order = ( ! empty( $data['banner-slide-order'] ) ) ? $data['banner-slid
 	<div class="clear"></div>
 </div>
 
-<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $data['state'] ); else echo 'open'; ?>" />
+<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $data['state'] ) ) echo esc_attr( $data['state'] ); else echo 'open'; ?>" />
 <?php ttfmake_load_section_footer(); ?>
