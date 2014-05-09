@@ -70,7 +70,7 @@ class TTFMAKE_Sections {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  string    $id                  Unique ID for the section.
+	 * @param  string    $id                  Unique ID for the section. Alphanumeric characters only.
 	 * @param  string    $label               Name to display for the section.
 	 * @param  string    $description         Section description.
 	 * @param  string    $icon                URL to the icon for the display.
@@ -159,7 +159,7 @@ if ( ! function_exists( 'ttfmake_add_section' ) ) :
  *
  * @since  1.0.0.
  *
- * @param  string    $id                  Unique ID for the section.
+ * @param  string    $id                  Unique ID for the section. Alphanumeric characters only.
  * @param  string    $label               Name to display for the section.
  * @param  string    $description         Section description.
  * @param  string    $icon                URL to the icon for the display.
