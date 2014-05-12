@@ -482,6 +482,8 @@ class TTFMAKE_Builder_Save {
 	 * @return void
 	 */
 	public function set_array_pointer( $key, &$array ) {
+		reset( $array );
+
 		while ( key( $array ) !== $key ) {
 			next( $array );
 		}
