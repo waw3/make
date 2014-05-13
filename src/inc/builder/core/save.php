@@ -434,18 +434,21 @@ class TTFMAKE_Builder_Save {
 	 * @return array                        The next section's data.
 	 */
 	public function get_next_section_data( $current_section, $sections ) {
-		// Move the pointer to the current section
-		$this->set_array_pointer( $current_section['id'], $sections );
+		$next_is_the_one = false;
+		$next_data       = array();
 
-		// Move pointer to the next item
-		$next_section = next( $sections );
+		foreach ( $sections as $id => $data ) {
+			if ( true === $next_is_the_one ) {
+				$next_data = $data;
+				break;
+			}
 
-		// If the section does not exist, the current section is the last section
-		if ( $next_section ) {
-			return $next_section;
-		} else {
-			return array();
+			if ( $current_section['id'] === $id ) {
+				$next_is_the_one = true;
+			}
 		}
+
+		return $next_data;
 	}
 
 	/**
@@ -458,35 +461,15 @@ class TTFMAKE_Builder_Save {
 	 * @return array                        The previous section's data.
 	 */
 	public function get_prev_section_data( $current_section, $sections ) {
-		// Move the pointer to the current section
-		$this->set_array_pointer( $current_section['id'], $sections );
-
-		// Move pointer to the next item
-		$previous_section = prev( $sections );
-
-		// If the section does not exist, the current section is the last section
-		if ( $previous_section ) {
-			return $previous_section;
-		} else {
-			return array();
+		foreach ( $sections as $id => $data ) {
+			if ( $current_section['id'] === $id ) {
+				break;
+			} else {
+				$prev_key = $id;
+			}
 		}
-	}
 
-	/**
-	 * Set the pointer position in an array to a specified key.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  string    $key      The key position to set the array to.
-	 * @param  array     $array    The array to set. Passed by reference to affect the array outside of the function scope.
-	 * @return void
-	 */
-	public function set_array_pointer( $key, &$array ) {
-		reset( $array );
-
-		while ( key( $array ) !== $key ) {
-			next( $array );
-		}
+		return ( isset( $prev_key ) && isset( $sections[ $prev_key ] ) ) ? $sections[ $prev_key ] : array();
 	}
 
 	/**
