@@ -279,7 +279,7 @@ class TTFMAKE_Builder_Save {
 	/**
 	 * Based on section data, generate a post's post_content.
 	 *
-	 * @since  1.0.3.
+	 * @since  1.0.4.
 	 *
 	 * @param  array     $data    Data for sections used to comprise a page's post_content.
 	 * @return string             The post content.

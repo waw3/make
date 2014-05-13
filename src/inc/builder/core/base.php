@@ -267,7 +267,7 @@ class TTFMAKE_Builder_Base {
 	/**
 	 * Add a class to indicate the current template being used.
 	 *
-	 * @since  1.0.3.
+	 * @since  1.0.4.
 	 *
 	 * @param  array    $classes    The current classes.
 	 * @return array                The modified classes.
@@ -667,7 +667,7 @@ if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
  * Load a section front- or back-end section template. Searches for child theme versions
  * first, then parent themes, then plugins.
  *
- * @since 1.0.3.
+ * @since  1.0.4.
  *
  * @param  string    $slug    The relative path and filename (w/out suffix) required
  *                            to substitute the template in a child theme.
@@ -761,7 +761,7 @@ if ( ! function_exists( 'ttfmake_get_image' ) ) :
  * This function allows image IDs defined with a negative number to surface placeholder images. This allows templates to
  * approximate real content without needing to add images to the user's media library.
  * 
- * @since  1.0.3.
+ * @since  1.0.4.
  * 
  * @param  int       $image_id    The attachment ID. Dimension value IDs represent placeholders (100x150).
  * @param  string    $size        The image size.
@@ -786,7 +786,7 @@ if ( ! function_exists( 'ttfmake_get_image_src' ) ) :
 /**
  * Get an image's src.
  *
- * @since  1.0.3.
+ * @since  1.0.4.
  *
  * @param  int       $image_id    The attachment ID. Dimension value IDs represent placeholders (100x150).
  * @param  string    $size        The image size.
@@ -819,7 +819,7 @@ if ( ! function_exists( 'ttfmake_get_placeholder_image' ) ) :
 /**
  * Gets the specified placeholder image.
  *
- * @since  1.0.3.
+ * @since  1.0.4.
  *
  * @param  int      $image_id    Image ID. Should be a dimension value (100x150).
  * @return array                 The image data, including 'src', 'alt', 'class', 'height', and 'width'.
@@ -839,7 +839,7 @@ if ( ! function_exists( 'ttfmake_register_placeholder_image' ) ) :
 /**
  * Add a new placeholder image.
  *
- * @since  1.0.3.
+ * @since  1.0.4.
  *
  * @param  int      $id      The ID for the image. Should be a dimension value (100x150).
  * @param  array    $data    The image data, including 'src', 'alt', 'class', 'height', and 'width'.
