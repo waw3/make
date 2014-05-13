@@ -195,11 +195,11 @@ module.exports = function( grunt ) {
 		if ( 'minor' !== releaseType && 'major' !== releaseType && 'patch' !== releaseType ) {
 			grunt.fail.fatal( 'Please specify the release type (e.g., "grunt release:patch")' );
 		} else {
-			// Bump the version numbers
-			grunt.task.run( 'bumpto:' + releaseType );
-
 			// Check to make sure the log exists
 			grunt.task.run( 'log:' + releaseType );
+
+			// Bump the version numbers
+			grunt.task.run( 'bumpto:' + releaseType );
 
 			// Create the .pot file
 			grunt.task.run( 'makepot' );
@@ -236,7 +236,7 @@ module.exports = function( grunt ) {
 		var semver = require( 'semver' ),
 			changelog,
 			newVersion = semver.inc( grunt.config.get( 'pkg' ).version, releaseType),
-			regex = new RegExp( '^# ' + newVersion, 'gm' ); // Match the version number (e.g., "# 1.2.3")
+			regex = new RegExp( '^## ' + newVersion, 'gm' ); // Match the version number (e.g., "# 1.2.3")
 
 		if ( 'minor' !== releaseType && 'major' !== releaseType && 'patch' !== releaseType ) {
 			grunt.log.writeln().fail( 'Please choose a valid version type (minor, major, or patch)' );
