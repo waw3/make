@@ -238,12 +238,7 @@ function ttfmake_builder_get_text_array( $ttfmake_section_data ) {
 		return array();
 	}
 
-	$keys = array(
-		'columns-number',
-	);
-	$data = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'text' );
-
-	$columns_number = ttfmake_sanitize_section_choice( $data['columns-number'], 'columns-number', 'text' );
+	$columns_number = ( isset( $ttfmake_section_data['columns-number'] ) ) ? absint( $ttfmake_section_data['columns-number'] ) : 1;
 
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
@@ -289,13 +284,8 @@ function ttfmake_builder_get_text_class( $ttfmake_section_data, $sections ) {
 	// Section classes
 	$text_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 
-	$keys = array(
-		'columns-number',
-	);
-	$data = ttfmake_parse_section_data( $ttfmake_section_data, $keys, 'text' );
-
 	// Columns
-	$columns_number = ttfmake_sanitize_section_choice( $data['columns-number'], 'columns-number', 'text' );
+	$columns_number = ( isset( $ttfmake_section_data['columns-number'] ) ) ? absint( $ttfmake_section_data['columns-number'] ) : 1;
 	$text_class .= ' builder-text-columns-' . $columns_number;
 
 	return $text_class;
