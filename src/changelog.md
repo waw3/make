@@ -1,3 +1,8 @@
+## 1.0.3
+
+* Improved tagline to be more readable
+* Improved CSS code styling without any functional changes
+
 ## 1.0.2
 
 * Removed RTL stylesheet as it was just a placeholder
