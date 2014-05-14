@@ -10,6 +10,7 @@
 	height: 1.7em;
 	font-size: 1.5em;
 	line-height: 100%;
+	margin: 0;
 }
 .ttfmake-titlediv ::-webkit-input-placeholder {
 	line-height: 1.4em;
