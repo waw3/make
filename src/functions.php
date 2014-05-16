@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.0.3' );
+define( 'TTFMAKE_VERSION', '1.0.4' );
 
 if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
 /**
@@ -447,3 +447,14 @@ function ttfmake_head_late() { ?>
 endif;
 
 add_action( 'wp_head', 'ttfmake_head_late', 99 );
+
+/**
+ * Determine if the companion plugin is installed.
+ *
+ * @since  1.0.4.
+ *
+ * @return bool    Whether or not the companion plugin is installed.
+ */
+function ttfmake_is_plus() {
+	return apply_filters( 'ttfmake_is_plus', class_exists( 'TTFMP_App' ) );
+}

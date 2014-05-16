@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.0.3
+ * Version:     1.0.4
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -916,7 +916,6 @@ a {
 	font-size: 12px;
 	font-size: 1.2rem;
 	font-weight: bold;
-	text-decoration: none;
 	color: inherit;
 }
 @media screen and (min-width: 800px) {
@@ -924,6 +923,12 @@ a {
 		font-size: 13px;
 		font-size: 1.3rem;
 	}
+}
+.site-footer .site-info a, .site-footer .site-info a a {
+	text-decoration: underline;
+}
+.site-footer .site-info a:hover, .site-footer .site-info a a:hover {
+	text-decoration: none;
 }
 .site-footer .site-info .theme-by, .site-footer .site-info a .theme-by {
 	font-weight: normal;
@@ -1912,6 +1917,7 @@ iframe[src*="google.com/maps"] {
 	width: 100%;
 	height: 0;
 	background-repeat: no-repeat;
+	background-position: center center;
 	background-size: cover;
 }
 
