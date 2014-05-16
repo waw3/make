@@ -1,3 +1,25 @@
+## 1.0.4
+
+* Improved banner slide image position
+* Added underline for footer link
+* Added function to determine if companion plugin is installed
+* Added TinyMCE buttons from builder to other TinyMCE instances
+* Builder API improvements
+  * Added ability for templates to exist outside of a parent or child theme
+  * Added class for noting whether a builder page is displayed or not
+  * Added wrapper functions for getting images used in the builder for easier filterability
+  * Added actions for altering builder from 3rd party code
+  * Added event for after section is removed
+  * Removed save post actions when builder isn't being saved
+  * Improved the abstraction of data saving functions for easier global use
+  * Improved timing of events to prevent unfortunate code loading issues
+  * Fixed bug with determining next/prev section that could cause a fatal error
+
+## 1.0.3
+
+* Improved tagline to be more readable
+* Improved CSS code styling without any functional changes
+
 ## 1.0.2
 
 * Removed RTL stylesheet as it was just a placeholder
