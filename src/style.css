@@ -1858,6 +1858,7 @@ iframe[src*="google.com/maps"] {
 .builder-text-column {
 	float: left;
 	width: 100%;
+	min-height: 1px;
 }
 @media screen and (min-width: 800px) {
 	.builder-text-column {
