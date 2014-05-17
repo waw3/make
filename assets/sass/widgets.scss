@@ -8,11 +8,18 @@
 	font-weight: bold;
 	@include rem('margin', 0 0 $base/2);
 	@include rem('font-size', 13px);
+	.builder-text-content & {
+		line-height: 1.4;
+		@include rem('font-size', 24px);
+	}
 }
 .widget {
 	max-width: 100%;
 	@include rem('margin-bottom', $base*2);
 	@include rem('font-size', 13px);
+	.builder-text-content & {
+		@include rem('font-size', 17px);
+	}
 	.search-form {
 		@include rem('margin-top', $base/2);
 	}
