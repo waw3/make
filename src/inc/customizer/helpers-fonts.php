@@ -204,7 +204,7 @@ function ttfmake_css_fonts() {
 	if ( $font_widget_size !== ttfmake_get_default( 'font-widget-size' ) ) {
 		// Widget body
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.widget-non-builder', '.widget-non-builder .font-widget' ),
+			'selectors'    => array( '.widget', '.font-widget' ),
 			'declarations' => array(
 				'font-size-px'  => $font_widget_size . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_widget_size ) . 'rem'
@@ -213,7 +213,7 @@ function ttfmake_css_fonts() {
 
 		// Widget title
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.widget-non-builder .widget-title' ),
+			'selectors'    => array( '.widget-title' ),
 			'declarations' => array(
 				'font-size-px'  => ttfmake_get_relative_font_size( $font_widget_size, $percent[ 'widget-title' ] ) . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $font_widget_size, $percent[ 'widget-title' ] ) ) . 'rem'
