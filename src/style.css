@@ -2309,7 +2309,7 @@ iframe[src*="google.com/maps"] {
 	content: "\2013  ";
 }
 
-.widget_tag_cloud a {
+.widget_tag_cloud a, .widget_product_tag_cloud a {
 	display: inline-block;
 	margin-bottom: 5px;
 	margin-bottom: .5rem;
@@ -2321,7 +2321,7 @@ iframe[src*="google.com/maps"] {
 	border-radius: 3px;
 	background-color: #eaecee;
 }
-.widget_tag_cloud a:hover {
+.widget_tag_cloud a:hover, .widget_product_tag_cloud a:hover {
 	text-decoration: underline;
 }
 
