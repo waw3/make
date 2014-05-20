@@ -225,7 +225,7 @@ function ttfmake_css_fonts() {
 	if ( $font_body_size !== ttfmake_get_default( 'font-body-size' ) ) {
 		// body
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( 'body', '.font-body', '.builder-text-content .widget p' ),
+			'selectors'    => array( 'body', '.font-body', '.builder-text-content .widget' ),
 			'declarations' => array(
 				'font-size-px'  => $font_body_size . 'px',
 				'font-size-rem' => ttfmake_convert_px_to_rem( $font_body_size ) . 'rem'
