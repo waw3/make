@@ -211,8 +211,8 @@ module.exports = function( grunt ) {
 			grunt.task.run( 'package' );
 
 			// Commit and tag version update
-			grunt.task.run( 'shell:commit' );
-			grunt.task.run( 'shell:tag' );
+			//grunt.task.run( 'shell:commit' );
+			//grunt.task.run( 'shell:tag' );
 		}
 	} );
 
