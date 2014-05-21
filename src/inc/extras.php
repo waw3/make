@@ -414,14 +414,16 @@ function ttfmake_admin_bar_style() {
 	?>
 	<style type="text/css">
 		#wpadminbar .quicklinks #wp-admin-bar-ttfmake-admin-bar-plus a {
-			background-color: #d54e21;
-			color: #ffffff;
+			position: relative;
 			display: inline;
-			font-size: 0.7em;
-			font-weight: bold;
-			letter-spacing: 1px;
+			top: -1px;
 			margin: 0;
 			padding: 3px 6px;
+			font-size: 10px;
+			font-weight: bold;
+			color: #ffffff;
+			background-color: #d54e21;
+			letter-spacing: 1px;
 			text-transform: uppercase;
 		}
 	</style>
