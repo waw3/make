@@ -176,6 +176,16 @@ module.exports = function( grunt ) {
 					from: /^define\( 'TTFMAKE_VERSION'.*$/m,
 					to: 'define( \'TTFMAKE_VERSION\', \'<%= pkg.version %>\' );'
 				} ]
+			},
+			readmeVersion: {
+				src: [
+					'readme.md'
+				],
+				overwrite: true,
+				replacements: [ {
+					from: /^\* \*\*Stable version:\*\* .*$/m,
+					to: '* **Stable version:** <%= pkg.version %>'
+				} ]
 			}
 		},
 		bump: {
