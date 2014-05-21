@@ -106,6 +106,30 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 		)
 	);
 
+	if ( false === ttfmake_is_plus() ) {
+		// Typekit information
+		$setting_id = $setting_prefix . '-typekit-font-info';
+		$wp_customize->add_control(
+			new TTFMAKE_Customize_Misc_Control(
+				$wp_customize,
+				$control_prefix . $setting_id,
+				array(
+					'section'     => $section,
+					'type'        => 'text',
+					'description' => sprintf(
+						__( 'Add Typekit fonts with %s.', 'make' ),
+						sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a>',
+							esc_url( 'https://thethemefoundry.com/wordpress-themes/make' ),
+							__( 'Make Plus', 'make' )
+						)
+					),
+					'priority'    => 450
+				)
+			)
+		);
+	}
+
 	// Font family line
 	$setting_id = $setting_prefix . '-family-line';
 	$wp_customize->add_control(
