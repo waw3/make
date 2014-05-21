@@ -357,3 +357,56 @@ function ttfmake_sidebar_list_enabled( $location ) {
 	return $enabled_views;
 }
 endif;
+
+
+function ttfmake_get_plus_link( $component ) {
+	$url = 'https://thethemefoundry.com/wordpress-themes/make/';
+
+	return esc_url( $url );
+}
+
+
+function ttfmake_admin_bar_plus() {
+	if ( ttfmake_is_plus() ) {
+		return;
+	}
+
+	global $wp_admin_bar;
+
+	$args = array(
+		'id' => 'ttfmake-admin-bar-plus',
+		'title' => sprintf(
+			'<a href="%1$s" target="_blank">%2$s</a>',
+			esc_url( ttfmake_get_plus_link( 'admin-bar-badge' ) ),
+			__( 'Upgrade to Make Plus', 'make' )
+		),
+		'parent' => false
+	);
+	$wp_admin_bar->add_node( $args );
+}
+
+add_action( 'admin_bar_menu', 'ttfmake_admin_bar_plus', 99 );
+
+
+function ttfmake_admin_bar_plus_style() {
+	if ( ttfmake_is_plus() ) {
+		return;
+	}
+	?>
+	<style type="text/css">
+		#wp-admin-bar-ttfmake-admin-bar-plus {
+
+		}
+		#wp-admin-bar-ttfmake-admin-bar-plus a {
+			background: red;
+			border-radius: 2px;
+			font-size: 0.7em;
+			font-weight: bold;
+			margin: 3px;
+			padding: 3px 8px;
+			text-transform: uppercase;
+		}
+	</style>
+<?php }
+
+add_action( 'wp_before_admin_bar_render', 'ttfmake_admin_bar_plus_style', 99 );
