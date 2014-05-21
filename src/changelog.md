@@ -1,3 +1,14 @@
+## 1.0.5
+
+* Improved styling of widgets
+* Improved whitespacing in the builder interface
+* Improved language in builder
+* Improved builder icons
+* Added styles to make sure empty text columns hold their width
+* Added functionality to disable header items in the font select lists
+* Added filter for showing/hiding footer credit
+* Added styling for WooCommerce product tag cloud
+
 ## 1.0.4
 
 * Improved banner slide image position
