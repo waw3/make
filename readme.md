@@ -18,7 +18,7 @@ Contributions are welcome! Here are a few simple guidelines:
 
 Basically, be nice, stay on topic, and respect other contributors/participants.
 
-We welcome issues for bug reports and feature requests. We won't answer support questions here, because support is one of the things you get when you purchase [Make Plus](https://thethemefoundry.com/wordpress-themes/make/).
+We welcome issues for bug reports and feature requests. We won't answer support questions here, because support is one of the things you get when you purchase **[Make Plus](https://thethemefoundry.com/wordpress-themes/make/)**.
 
 ### Pull Requests
 
