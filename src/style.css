@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.0.4
+ * Version:     1.0.5
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -1858,6 +1858,7 @@ iframe[src*="google.com/maps"] {
 .builder-text-column {
 	float: left;
 	width: 100%;
+	min-height: 1px;
 }
 @media screen and (min-width: 800px) {
 	.builder-text-column {
@@ -2263,6 +2264,11 @@ iframe[src*="google.com/maps"] {
 	margin: 0 0 11px;
 	margin: 0 0 1.1rem;
 }
+.builder-text-content .widget-title {
+	font-size: 24px;
+	font-size: 2.4rem;
+	line-height: 1.4;
+}
 
 .widget {
 	font-size: 13px;
@@ -2270,6 +2276,10 @@ iframe[src*="google.com/maps"] {
 	max-width: 100%;
 	margin-bottom: 44px;
 	margin-bottom: 4.4rem;
+}
+.builder-text-content .widget {
+	font-size: 17px;
+	font-size: 1.7rem;
 }
 .widget .search-form {
 	margin-top: 11px;
@@ -2299,7 +2309,7 @@ iframe[src*="google.com/maps"] {
 	content: "\2013  ";
 }
 
-.widget_tag_cloud a {
+.widget_tag_cloud a, .widget_product_tag_cloud a {
 	display: inline-block;
 	margin-bottom: 5px;
 	margin-bottom: .5rem;
@@ -2311,7 +2321,7 @@ iframe[src*="google.com/maps"] {
 	border-radius: 3px;
 	background-color: #eaecee;
 }
-.widget_tag_cloud a:hover {
+.widget_tag_cloud a:hover, .widget_product_tag_cloud a:hover {
 	text-decoration: underline;
 }
 

@@ -49,7 +49,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
             </div>
 
             <div class="ttfmake-banner-slide-alignment-wrapper">
-                <h4><label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position:', 'make' ); ?></label></h4>
+                <h4><label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position', 'make' ); ?></label></h4>
                 <select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
                     <option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'make' ); ?></option>
 

@@ -757,12 +757,12 @@ endif;
 if ( ! function_exists( 'ttfmake_get_image' ) ) :
 /**
  * Get an image to display in page builder backend or front end template.
- * 
+ *
  * This function allows image IDs defined with a negative number to surface placeholder images. This allows templates to
  * approximate real content without needing to add images to the user's media library.
- * 
+ *
  * @since  1.0.4.
- * 
+ *
  * @param  int       $image_id    The attachment ID. Dimension value IDs represent placeholders (100x150).
  * @param  string    $size        The image size.
  * @return string                 HTML for the image. Empty string if image cannot be produced.

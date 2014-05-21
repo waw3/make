@@ -40,7 +40,7 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 	</div>
 
 	<a href="#" class="ttfmake-gallery-item-remove">
-		<?php _e( 'Remove gallery item', 'make' ); ?>
+		<?php _e( 'Remove this item', 'make' ); ?>
 	</a>
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
