@@ -5,6 +5,19 @@
 * **Stable version:** 1.0.5
 * **Theme directory listing:** [https://wordpress.org/themes/make/](https://wordpress.org/themes/make/)
 * **Contributors:** @tollmanz, @coreymckrill, @scottrrollo, @dstrojny
-* **Contributing:** Contributions are welcome! Please read our [contributing guidelines](). Thanks!
 
-## Overview
+## Contributing
+
+Contributions are welcome! Here are a few simple guidelines:
+
+### Issues
+
+Basically, be nice, stay on topic, and respect other contributors/participants.
+
+We welcome issues for bug reports and feature requests. We won't answer support questions here, because support is one of the things you get when you purchase [Make Plus](https://thethemefoundry.com/wordpress-themes/make/).
+
+### Pull Requests
+
+Submit a pull request at any time, whether an issue has been created or not. It may be helpful to discuss your goals in an issue first, though many things can best be shown with code.
+
+Since **Make** is released in the WordPress.org theme directory, we ask that you submit your pull requests to the **develop** branch, to help us make sure everything is stable before we release a new version.
