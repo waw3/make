@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.0.4\n"
+"Project-Id-Version: Make 1.0.5\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-05-16 22:54:56+00:00\n"
+"POT-Creation-Date: 2014-05-21 00:13:11+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -93,7 +93,7 @@ msgid "Add New Section"
 msgstr ""
 
 #: inc/builder/core/templates/section-footer.php:8
-msgid "Remove"
+msgid "Remove this section"
 msgstr ""
 
 #: inc/builder/core/templates/section-header.php:17
@@ -122,7 +122,7 @@ msgid "Background color"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:52
-msgid "Content position:"
+msgid "Content position"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:54
@@ -240,7 +240,7 @@ msgid "Enter description here"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery-item.php:43
-msgid "Remove gallery item"
+msgid "Remove this item"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery.php:23
@@ -1157,7 +1157,7 @@ msgstr ""
 msgid "<i class=\"fa fa-tag\"></i> "
 msgstr ""
 
-#: partials/footer-credit.php:19
+#: partials/footer-credit.php:21
 msgid "homepage"
 msgstr ""
 
@@ -1389,7 +1389,7 @@ msgctxt "author byline"
 msgid "by %s"
 msgstr ""
 
-#: partials/footer-credit.php:17
+#: partials/footer-credit.php:19
 msgctxt "attribution"
 msgid "by"
 msgstr ""
