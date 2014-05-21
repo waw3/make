@@ -358,14 +358,27 @@ function ttfmake_sidebar_list_enabled( $location ) {
 }
 endif;
 
-
+/**
+ * Generate a link to the Make info page.
+ *
+ * @since 1.0.6.
+ *
+ * @param  string    $component    The component where the link is located.
+ * @return string                  The link.
+ */
 function ttfmake_get_plus_link( $component ) {
 	$url = 'https://thethemefoundry.com/wordpress-themes/make/';
 
 	return esc_url( $url );
 }
 
-
+/**
+ * Add an upgrade node to the Admin bar
+ *
+ * @since 1.0.6.
+ *
+ * @return void
+ */
 function ttfmake_admin_bar_plus() {
 	if ( ttfmake_is_plus() ) {
 		return;
@@ -387,26 +400,31 @@ function ttfmake_admin_bar_plus() {
 
 add_action( 'admin_bar_menu', 'ttfmake_admin_bar_plus', 99 );
 
-
-function ttfmake_admin_bar_plus_style() {
+/**
+ * Add inline styles for custom admin bar items
+ *
+ * @since 1.0.6.
+ *
+ * @return void
+ */
+function ttfmake_admin_bar_style() {
 	if ( ttfmake_is_plus() ) {
 		return;
 	}
 	?>
 	<style type="text/css">
-		#wp-admin-bar-ttfmake-admin-bar-plus {
-
-		}
-		#wp-admin-bar-ttfmake-admin-bar-plus a {
-			background: red;
-			border-radius: 2px;
+		#wpadminbar .quicklinks #wp-admin-bar-ttfmake-admin-bar-plus a {
+			background-color: #d54e21;
+			color: #ffffff;
+			display: inline;
 			font-size: 0.7em;
 			font-weight: bold;
-			margin: 3px;
-			padding: 3px 8px;
+			letter-spacing: 1px;
+			margin: 0;
+			padding: 3px 6px;
 			text-transform: uppercase;
 		}
 	</style>
 <?php }
 
-add_action( 'wp_before_admin_bar_render', 'ttfmake_admin_bar_plus_style', 99 );
+add_action( 'wp_before_admin_bar_render', 'ttfmake_admin_bar_style', 99 );
