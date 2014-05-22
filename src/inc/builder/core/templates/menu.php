@@ -27,9 +27,9 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 				</li>
 			<?php endforeach; ?>
 			<?php if ( ! ttfmake_is_plus() && in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) : ?>
-				<li class="ttfmake-menu-list-item">
+				<li class="ttfmake-menu-list-item make-plus-products">
 					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="background-image: url('<?php echo addcslashes( esc_url_raw( get_template_directory_uri() . '/inc/builder/sections/css/images/woocommerce.png' ), '"' ); ?>');">
-						<span class="ttfmake-menu-list-item-link-icon"></span>
+						<span class="ttfmake-menu-list-item-link-icon "></span>
 					</div>
 					<div class="section-type-description">
 						<h4>
