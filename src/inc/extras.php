@@ -367,7 +367,7 @@ endif;
  * @return string                  The link.
  */
 function ttfmake_get_plus_link( $component ) {
-	$url = 'https://thethemefoundry.com/wordpress-themes/make/';
+	$url = 'https://thethemefoundry.com/wordpress-themes/make/?utm_source=make&utm_medium=link&utm_content=' . urlencode( sanitize_title_with_dashes( $component ) ) . '&utm_campaign=plus';
 	return esc_url( $url );
 }
 
