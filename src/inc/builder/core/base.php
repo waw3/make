@@ -850,3 +850,38 @@ function ttfmake_register_placeholder_image( $id, $data ) {
 	$ttfmake_placeholder_images[ $id ] = $data;
 }
 endif;
+
+/**
+ * Add information about Quick Start.
+ *
+ * @since  1.0.6.
+ *
+ * @return void
+ */
+function ttfmake_plus_quick_start() {
+	if ( false !== ttfmake_is_plus() || 'page' !== get_post_type() ) {
+		return;
+	}
+
+	$section_ids        = get_post_meta( get_the_ID(), '_ttfmake-section-ids', true );
+	$additional_classes = ( ! empty( $section_ids ) ) ? ' ttfmp-import-message-hide' : '';
+	?>
+	<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
+		<p>
+			<strong><?php _e( 'Quick Start', 'make' ); ?></strong><br />
+			<?php
+			printf(
+				__( 'Want to import demo content directly into this page? %s', 'make' ),
+				sprintf(
+					'<a href="%1$s" target="_blank">%2$s</a>',
+					esc_url( 'https://thethemefoundry.com/wordpress-themes/make' ),
+					__( 'Upgrade to Make Plus.', 'make' )
+				)
+			);
+			?>
+		</p>
+	</div>
+<?php
+}
+
+add_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );
