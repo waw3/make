@@ -87,7 +87,7 @@ function ttfmake_render_plus_metabox( $post ) {
 
 	echo '<p class="howto">';
 	printf(
-		__( 'Want to configure a unique layout for this %s?', 'make' ),
+		__( 'Looking to configure a unique layout for this %s?', 'make' ),
 		esc_html( strtolower( $label ) )
 	);
 	printf(

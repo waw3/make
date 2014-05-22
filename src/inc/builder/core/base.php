@@ -871,7 +871,7 @@ function ttfmake_plus_quick_start() {
 			<strong><?php _e( 'Quick Start', 'make' ); ?></strong><br />
 			<?php
 			printf(
-				__( 'Want to import demo content directly into this page? %s', 'make' ),
+				__( 'Want to import example content directly into this page? %s.', 'make' ),
 				sprintf(
 					'<a href="%1$s" target="_blank">%2$s</a>',
 					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
