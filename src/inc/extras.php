@@ -390,7 +390,10 @@ function ttfmake_admin_bar_plus() {
 		'title' => sprintf(
 			'<a href="%1$s" target="_blank">%2$s</a>',
 			esc_url( ttfmake_get_plus_link( 'admin-bar-badge' ) ),
-			__( 'Upgrade to Make Plus', 'make' )
+			sprintf(
+				__( 'Upgrade to %s', 'make' ),
+				'Make Plus'
+			)
 		),
 		'parent' => false
 	);
