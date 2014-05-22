@@ -799,13 +799,18 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		$image = wp_get_attachment_image_src( $image_id, $size );
 
 		if ( false !== $image && isset( $image[0] ) ) {
-			$src = $image[0];
+			$src = $image;
 		}
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );
 
 		if ( isset( $image['src'] ) ) {
-			$src = $image['src'];
+			$wp_src = array(
+				0 => $image['src'],
+				1 => $image['width'],
+				2 => $image['height'],
+			);
+			$src = array_merge( $image, $wp_src );
 		}
 	}
 
@@ -850,3 +855,41 @@ function ttfmake_register_placeholder_image( $id, $data ) {
 	$ttfmake_placeholder_images[ $id ] = $data;
 }
 endif;
+
+/**
+ * Add information about Quick Start.
+ *
+ * @since  1.0.6.
+ *
+ * @return void
+ */
+function ttfmake_plus_quick_start() {
+	if ( false !== ttfmake_is_plus() || 'page' !== get_post_type() ) {
+		return;
+	}
+
+	$section_ids        = get_post_meta( get_the_ID(), '_ttfmake-section-ids', true );
+	$additional_classes = ( ! empty( $section_ids ) ) ? ' ttfmp-import-message-hide' : '';
+	?>
+	<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
+		<p>
+			<strong><?php _e( 'Want some ideas?', 'make' ); ?></strong><br />
+			<?php
+			printf(
+				__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
+				sprintf(
+					'<a href="%1$s" target="_blank">%2$s</a>',
+					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
+					sprintf(
+						__( 'Upgrade to %s', 'make' ),
+						'Make Plus'
+					)
+				)
+			);
+			?>
+		</p>
+	</div>
+<?php
+}
+
+add_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );

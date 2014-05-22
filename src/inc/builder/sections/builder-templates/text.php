@@ -12,6 +12,28 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfmake_is_js_template ) ? $columns_number : 3;
 ?>
 
+<?php if ( false === ttfmake_is_plus() ) : ?>
+<div class="ttfmake-plus-info">
+	<p>
+		<em>
+		<?php
+		printf(
+			__( '%s and convert any column into an area for widgets.', 'make' ),
+			sprintf(
+				'<a href="%1$s" target="_blank">%2$s</a>',
+				esc_url( ttfmake_get_plus_link( 'widget-area' ) ),
+				sprintf(
+					__( 'Upgrade to %s', 'make' ),
+					'Make Plus'
+				)
+			)
+		);
+		?>
+		</em>
+	</p>
+</div>
+<?php endif; ?>
+
 <div class="ttfmake-columns-select ttfmake-select">
 	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[columns-number]" class="ttfmake-text-columns" name="<?php echo $section_name; ?>[columns-number]">

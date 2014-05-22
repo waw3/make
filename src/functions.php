@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.0.5' );
+define( 'TTFMAKE_VERSION', '1.0.6' );
 
 if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
 /**
@@ -458,3 +458,63 @@ add_action( 'wp_head', 'ttfmake_head_late', 99 );
 function ttfmake_is_plus() {
 	return apply_filters( 'ttfmake_is_plus', class_exists( 'TTFMP_App' ) );
 }
+
+/**
+ * Add styles to admin head for Make Plus
+ *
+ * @since 1.0.6.
+ *
+ * @return void
+ */
+function ttfmake_plus_styles() {
+	if ( ttfmake_is_plus() ) {
+		return;
+	}
+	?>
+	<style type="text/css">
+	#ttfmake-plus-metabox h3:after,
+	#customize-control-ttfmake_footer-whitelabel-heading span:after,
+	#customize-control-ttfmake_font-typekit-font-heading span:after,
+	.ttfmake-section-text .ttfmake-plus-info p:after,
+	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
+	.ttfmp-import-message strong:after {
+		content: "Plus";
+		position: relative;
+		top: -1px;
+		margin-left: 8px;
+		padding: 3px 6px;
+		font-size: 9px;
+		color: #ffffff;
+		background-color: #d54e21;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+	.ttfmp-import-message strong {
+		display: inline-block;
+		font-size: 14px;
+		margin-bottom: 4px;
+	}
+	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before {
+		position: relative;
+		top: 38px;
+		left: 17px;
+	}
+	.make-plus-products .section-type-description {
+		color: #777777;
+	}
+	.ttfmake-menu-list-item.make-plus-products:hover .ttfmake-menu-list-item-link-icon-wrapper {
+		border-color: #dfdfdf;
+	}
+	.make-plus-products .section-type-description a {
+		color: #0074a2 !important;
+		text-decoration: underline;
+	}
+	.make-plus-products .section-type-description a:hover,
+	.make-plus-products .section-type-description a:focus {
+		color: #2ea2cc !important;
+	}
+	</style>
+<?php }
+
+add_action( 'admin_head', 'ttfmake_plus_styles', 20 );
+add_action( 'customize_controls_print_styles', 'ttfmake_plus_styles', 20 );

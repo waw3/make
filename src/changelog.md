@@ -1,3 +1,9 @@
+## 1.0.6
+
+* Added Make Plus information
+* Fixed bug with images not displaying properly when aspect ratio was set to none in the Gallery section
+* Removed sanitization of Customizer description section as these never receive user input
+
 ## 1.0.5
 
 * Improved styling of widgets
