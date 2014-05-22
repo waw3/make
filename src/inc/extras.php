@@ -361,14 +361,13 @@ endif;
 /**
  * Generate a link to the Make info page.
  *
- * @since 1.0.6.
+ * @since  1.0.6.
  *
  * @param  string    $component    The component where the link is located.
  * @return string                  The link.
  */
 function ttfmake_get_plus_link( $component ) {
 	$url = 'https://thethemefoundry.com/wordpress-themes/make/';
-
 	return esc_url( $url );
 }
 
