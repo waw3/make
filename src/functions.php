@@ -472,7 +472,18 @@ function ttfmake_plus_styles() {
 	}
 	?>
 	<style type="text/css">
-
+	#ttfmake-plus-metabox h3:after {
+		content: "Plus";
+		position: relative;
+		top: -1px;
+		margin-left: 8px;
+		padding: 3px 6px;
+		font-size: 9px;
+		color: #ffffff;
+		background-color: #d54e21;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
 	</style>
 <?php }
 
