@@ -38,7 +38,7 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 						<p>
 							<?php
 							printf(
-								__( 'Want to add a product grid? %s.', 'make' ),
+								__( '%s and feature your WooCommerce products in a grid layout.', 'make' ),
 								sprintf(
 									'<a href="%1$s" target="_blank">%2$s</a>',
 									esc_url( ttfmake_get_plus_link( 'woocommerce-section' ) ),

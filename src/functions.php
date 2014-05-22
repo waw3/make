@@ -493,8 +493,15 @@ function ttfmake_plus_styles() {
 		top: 38px;
 		left: 17px;
 	}
+	.make-plus-products .section-type-description {
+		color: #777777;
+	}
+	.ttfmake-menu-list-item.make-plus-products:hover .ttfmake-menu-list-item-link-icon-wrapper {
+		border-color: #dfdfdf;
+	}
 	.make-plus-products .section-type-description a {
 		color: #0074a2 !important;
+		text-decoration: underline;
 	}
 	.make-plus-products .section-type-description a:hover,
 	.make-plus-products .section-type-description a:focus {
