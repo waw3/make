@@ -130,7 +130,7 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 				array(
 					'section'     => $section,
 					'type'        => 'text',
-					'description' => __( 'Want to add Typekit fonts to your website?', 'make' ) . sprintf(
+					'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ) . sprintf(
 							' <a href="%1$s" target="_blank">%2$s</a>',
 							esc_url( ttfmake_get_plus_link( 'typekit' ) ),
 							sprintf(

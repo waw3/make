@@ -472,7 +472,9 @@ function ttfmake_plus_styles() {
 	}
 	?>
 	<style type="text/css">
-	#ttfmake-plus-metabox h3:after {
+	#ttfmake-plus-metabox h3:after,
+	#customize-control-ttfmake_footer-whitelabel-heading span:after,
+	#customize-control-ttfmake_font-typekit-font-heading span:after {
 		content: "Plus";
 		position: relative;
 		top: -1px;
