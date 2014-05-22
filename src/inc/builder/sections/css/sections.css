@@ -214,3 +214,12 @@
 	float: left;
 	width: 100%;
 }
+/*---------------------------------------------------------
+ Quick Start info (sections.css)
+-------------------------------------------------------- */
+.ttfmp-import-message-hide {
+	display: none;
+}
+.ttfmake-default-active .ttfmp-import-message {
+	display: none;
+}
