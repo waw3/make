@@ -474,7 +474,8 @@ function ttfmake_plus_styles() {
 	<style type="text/css">
 	#ttfmake-plus-metabox h3:after,
 	#customize-control-ttfmake_footer-whitelabel-heading span:after,
-	#customize-control-ttfmake_font-typekit-font-heading span:after {
+	#customize-control-ttfmake_font-typekit-font-heading span:after,
+	.ttfmake-section-text .ttfmake-plus-info p:after {
 		content: "Plus";
 		position: relative;
 		top: -1px;
