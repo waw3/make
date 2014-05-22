@@ -37,13 +37,15 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 						</h4>
 						<p>
 							<?php
-							_e( 'Want to add a product grid?', 'make' );
 							printf(
-								' <a href="%1$s" target="_blank">%2$s</a>',
-								esc_url( ttfmake_get_plus_link( 'woocommerce-section' ) ),
+								__( 'Want to add a product grid? %s.', 'make' ),
 								sprintf(
-									__( 'Upgrade to %s.', 'make' ),
-									'Make Plus'
+									'<a href="%1$s" target="_blank">%2$s</a>',
+									esc_url( ttfmake_get_plus_link( 'woocommerce-section' ) ),
+									sprintf(
+										__( 'Upgrade to %s', 'make' ),
+										'Make Plus'
+									)
 								)
 							);
 							?>
