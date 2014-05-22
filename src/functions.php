@@ -458,3 +458,22 @@ add_action( 'wp_head', 'ttfmake_head_late', 99 );
 function ttfmake_is_plus() {
 	return apply_filters( 'ttfmake_is_plus', class_exists( 'TTFMP_App' ) );
 }
+
+/**
+ * Add styles to admin head for Make Plus
+ *
+ * @since 1.0.6.
+ *
+ * @return void
+ */
+function ttfmake_plus_styles() {
+	if ( ttfmake_is_plus() ) {
+		return;
+	}
+	?>
+	<style type="text/css">
+
+	</style>
+<?php }
+
+add_action( 'admin_head', 'ttfmake_plus_styles', 20 );
