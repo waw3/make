@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.0.5\n"
+"Project-Id-Version: Make 1.0.6\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-05-21 00:13:11+00:00\n"
+"POT-Creation-Date: 2014-05-22 23:14:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,11 +84,33 @@ msgstr ""
 msgid "Add Media"
 msgstr ""
 
+#: inc/builder/core/base.php:876
+msgid "Want some ideas?"
+msgstr ""
+
+#: inc/builder/core/base.php:879
+msgid "%s and get a quick start with pre-made designer builder templates."
+msgstr ""
+
+#: inc/builder/core/base.php:884 inc/builder/core/templates/menu.php:46
+#: inc/builder/sections/builder-templates/text.php:26 inc/edit-page.php:96
+#: inc/extras.php:394
+msgid "Upgrade to %s"
+msgstr ""
+
 #: inc/builder/core/templates/menu.php:14
 msgid "Add"
 msgstr ""
 
-#: inc/builder/core/templates/menu.php:33
+#: inc/builder/core/templates/menu.php:36
+msgid "Products"
+msgstr ""
+
+#: inc/builder/core/templates/menu.php:41
+msgid "%s and feature your WooCommerce products in a grid layout."
+msgstr ""
+
+#: inc/builder/core/templates/menu.php:60
 msgid "Add New Section"
 msgstr ""
 
@@ -180,8 +202,8 @@ msgstr ""
 #: inc/builder/sections/builder-templates/blank.php:14
 #: inc/builder/sections/builder-templates/gallery-item.php:34
 #: inc/builder/sections/builder-templates/gallery.php:82
-#: inc/builder/sections/builder-templates/text.php:27
-#: inc/builder/sections/builder-templates/text.php:55
+#: inc/builder/sections/builder-templates/text.php:49
+#: inc/builder/sections/builder-templates/text.php:77
 msgid "Enter title here"
 msgstr ""
 
@@ -226,12 +248,12 @@ msgid "Section height"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery-item.php:22
-#: inc/builder/sections/builder-templates/text.php:41
+#: inc/builder/sections/builder-templates/text.php:63
 msgid "Drag-and-drop this column into place"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery-item.php:27
-#: inc/builder/sections/builder-templates/text.php:48
+#: inc/builder/sections/builder-templates/text.php:70
 msgid "Enter link here"
 msgstr ""
 
@@ -284,7 +306,7 @@ msgid "Square"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery.php:50
-#: inc/builder/sections/builder-templates/text.php:16
+#: inc/builder/sections/builder-templates/text.php:38
 msgid "Columns:"
 msgstr ""
 
@@ -316,6 +338,10 @@ msgstr ""
 #: inc/builder/sections/builder-templates/gallery.php:114
 #: inc/customizer/helpers.php:129
 msgid "Cover"
+msgstr ""
+
+#: inc/builder/sections/builder-templates/text.php:21
+msgid "%s and convert any column into an area for widgets."
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:72
@@ -578,35 +604,47 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: inc/customizer/sections/font.php:138
+#: inc/customizer/sections/font.php:119
+msgid "Typekit"
+msgstr ""
+
+#: inc/customizer/sections/font.php:134
+msgid "Looking to add premium fonts from Typekit to your website? %s."
+msgstr ""
+
+#: inc/customizer/sections/font.php:139 inc/customizer/sections/footer.php:355
+msgid "Upgrade to %1$s"
+msgstr ""
+
+#: inc/customizer/sections/font.php:179
 msgid "Site Title Font Size (in px)"
 msgstr ""
 
-#: inc/customizer/sections/font.php:159
+#: inc/customizer/sections/font.php:200
 msgid "Site Tagline Font Size (in px)"
 msgstr ""
 
-#: inc/customizer/sections/font.php:180
+#: inc/customizer/sections/font.php:221
 msgid "Navigation Font Size (in px)"
 msgstr ""
 
-#: inc/customizer/sections/font.php:201
+#: inc/customizer/sections/font.php:242
 msgid "Header Font Size (in px)"
 msgstr ""
 
-#: inc/customizer/sections/font.php:222
+#: inc/customizer/sections/font.php:263
 msgid "Widget Font Size (in px)"
 msgstr ""
 
-#: inc/customizer/sections/font.php:243
+#: inc/customizer/sections/font.php:284
 msgid "Body Font Size (in px)"
 msgstr ""
 
-#: inc/customizer/sections/font.php:278
+#: inc/customizer/sections/font.php:319
 msgid "Character Subset"
 msgstr ""
 
-#: inc/customizer/sections/font.php:294
+#: inc/customizer/sections/font.php:335
 msgid "Not all fonts provide each of these subsets."
 msgstr ""
 
@@ -654,6 +692,14 @@ msgstr ""
 
 #: inc/customizer/sections/footer.php:304
 msgid "Show social icons"
+msgstr ""
+
+#: inc/customizer/sections/footer.php:334
+msgid "White Label"
+msgstr ""
+
+#: inc/customizer/sections/footer.php:350
+msgid "Want to remove the theme byline from your website&#8217;s footer? %s."
 msgstr ""
 
 #: inc/customizer/sections/general.php:36
@@ -921,6 +967,18 @@ msgstr ""
 msgid ""
 "Featured images are not available for this page while using the current "
 "page template."
+msgstr ""
+
+#: inc/edit-page.php:64
+msgid "Layout Settings"
+msgstr ""
+
+#: inc/edit-page.php:86
+msgid "Post"
+msgstr ""
+
+#: inc/edit-page.php:90
+msgid "Looking to configure a unique layout for this %1$s? %2$s."
 msgstr ""
 
 #: inc/extras.php:78
