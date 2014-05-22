@@ -380,7 +380,7 @@ function ttfmake_get_plus_link( $component ) {
  * @return void
  */
 function ttfmake_admin_bar_plus() {
-	if ( ttfmake_is_plus() ) {
+	if ( ttfmake_is_plus() || ! is_admin() || ! is_super_admin() || ! is_admin_bar_showing() ) {
 		return;
 	}
 
