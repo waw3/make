@@ -12,6 +12,25 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfmake_is_js_template ) ? $columns_number : 3;
 ?>
 
+<?php if ( false === ttfmake_is_plus() ) : ?>
+<div class="ttfmake-plus-info">
+	<p>
+		<em>
+		<?php
+		printf(
+			__( 'Want to turn any column in to a widget area? %s', 'make' ),
+			sprintf(
+				'<a href="%1$s" target="_blank">%2$s</a>',
+				esc_url( 'https://thethemefoundry.com/wordpress-themes/make' ),
+				__( 'Upgrade to Make Plus', 'make' )
+			)
+		);
+		?>
+		</em>
+	</p>
+</div>
+<?php endif; ?>
+
 <div class="ttfmake-columns-select ttfmake-select">
 	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[columns-number]" class="ttfmake-text-columns" name="<?php echo $section_name; ?>[columns-number]">

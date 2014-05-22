@@ -17,6 +17,9 @@
 .ttfmake-section .ttfmake-gallery-items-stage .sortable-placeholder {
 	margin-bottom: 38px;
 }
+.ttfmake-plus-info {
+	float: left;
+}
 /*---------------------------------------------------------
  Text and Gallery: One column (html-builder.css)
 -------------------------------------------------------- */
