@@ -874,8 +874,11 @@ function ttfmake_plus_quick_start() {
 				__( 'Want to import demo content directly into this page? %s', 'make' ),
 				sprintf(
 					'<a href="%1$s" target="_blank">%2$s</a>',
-					esc_url( 'https://thethemefoundry.com/wordpress-themes/make' ),
-					__( 'Upgrade to Make Plus.', 'make' )
+					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
+					sprintf(
+						__( 'Upgrade to %s', 'make' ),
+						'Make Plus'
+					)
 				)
 			);
 			?>

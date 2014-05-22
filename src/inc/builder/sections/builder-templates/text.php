@@ -21,8 +21,11 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 			__( 'Want to turn any column in to a widget area? %s', 'make' ),
 			sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
-				esc_url( 'https://thethemefoundry.com/wordpress-themes/make' ),
-				__( 'Upgrade to Make Plus', 'make' )
+				esc_url( ttfmake_get_plus_link( 'widget-area' ) ),
+				sprintf(
+					__( 'Upgrade to %s', 'make' ),
+					'Make Plus'
+				)
 			)
 		);
 		?>
