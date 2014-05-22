@@ -26,6 +26,31 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 					</a>
 				</li>
 			<?php endforeach; ?>
+			<?php if ( ! ttfmake_is_plus() && in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) : ?>
+				<li class="ttfmake-menu-list-item">
+					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="background-image: url('<?php echo addcslashes( esc_url_raw( get_template_directory_uri() . '/inc/builder/sections/css/images/woocommerce.png' ), '"' ); ?>');">
+						<span class="ttfmake-menu-list-item-link-icon"></span>
+					</div>
+					<div class="section-type-description">
+						<h4>
+							<?php _e( 'Products', 'make' ); ?>
+						</h4>
+						<p>
+							<?php
+							_e( 'Want to add a product grid?', 'make' );
+							printf(
+								' <a href="%1$s" target="_blank">%2$s</a>',
+								esc_url( ttfmake_get_plus_link( 'woocommerce-section' ) ),
+								sprintf(
+									__( 'Upgrade to %s.', 'make' ),
+									'Make Plus'
+								)
+							);
+							?>
+						</p>
+					</div>
+				</li>
+			<?php endif; ?>
 		</ul>
 	</div>
 	<div class="ttfmake-menu-tab">
