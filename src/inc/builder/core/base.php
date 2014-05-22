@@ -871,7 +871,7 @@ function ttfmake_plus_quick_start() {
 			<strong><?php _e( 'Want some ideas?', 'make' ); ?></strong><br />
 			<?php
 			printf(
-				__( '%s and get a quick start with designer builder templates.', 'make' ),
+				__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
 				sprintf(
 					'<a href="%1$s" target="_blank">%2$s</a>',
 					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
