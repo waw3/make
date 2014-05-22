@@ -799,13 +799,18 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		$image = wp_get_attachment_image_src( $image_id, $size );
 
 		if ( false !== $image && isset( $image[0] ) ) {
-			$src = $image[0];
+			$src = $image;
 		}
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );
 
 		if ( isset( $image['src'] ) ) {
-			$src = $image['src'];
+			$wp_src = array(
+				0 => $image['src'],
+				1 => $image['width'],
+				2 => $image['height'],
+			);
+			$src = array_merge( $image, $wp_src );
 		}
 	}
 
