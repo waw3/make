@@ -18,7 +18,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<em>
 		<?php
 		printf(
-			__( 'Want to turn any column into a widget area? %s.', 'make' ),
+			__( 'Want to convert any column into a widget area? %s.', 'make' ),
 			sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( ttfmake_get_plus_link( 'widget-area' ) ),
