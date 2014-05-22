@@ -488,3 +488,4 @@ function ttfmake_plus_styles() {
 <?php }
 
 add_action( 'admin_head', 'ttfmake_plus_styles', 20 );
+add_action( 'customize_controls_print_styles', 'ttfmake_plus_styles', 20 );
