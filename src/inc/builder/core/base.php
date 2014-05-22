@@ -868,10 +868,10 @@ function ttfmake_plus_quick_start() {
 	?>
 	<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
 		<p>
-			<strong><?php _e( 'Quick Start', 'make' ); ?></strong><br />
+			<strong><?php _e( 'Want some ideas?', 'make' ); ?></strong><br />
 			<?php
 			printf(
-				__( 'Want to import example content directly into this page? %s.', 'make' ),
+				__( '%s and get a quick start with designer builder templates.', 'make' ),
 				sprintf(
 					'<a href="%1$s" target="_blank">%2$s</a>',
 					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
