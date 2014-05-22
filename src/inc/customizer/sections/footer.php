@@ -346,12 +346,15 @@ function ttfmake_customizer_footer( $wp_customize, $section ) {
 				array(
 					'section'     => $section,
 					'type'        => 'text',
-					'description' => __( 'Want to remove the theme byline from your website&#8217;s footer&#63;', 'make' ) . sprintf(
-						' <a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( ttfmake_get_plus_link( 'white-label' ) ),
+					'description' => sprintf(
+						__( 'Want to remove the theme byline from your website&#8217;s footer? %s.', 'make' ),
 						sprintf(
-							__( 'Upgrade to %1$s.', 'make' ),
-							'Make Plus'
+							'<a href="%1$s" target="_blank">%2$s</a>',
+							esc_url( ttfmake_get_plus_link( 'white-label' ) ),
+							sprintf(
+								__( 'Upgrade to %1$s', 'make' ),
+								'Make Plus'
+							)
 						)
 					),
 					'priority'    => $priority->add()

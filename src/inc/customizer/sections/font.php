@@ -130,14 +130,17 @@ function ttfmake_customizer_font( $wp_customize, $section ) {
 				array(
 					'section'     => $section,
 					'type'        => 'text',
-					'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ) . sprintf(
-							' <a href="%1$s" target="_blank">%2$s</a>',
+					'description' => sprintf(
+						__( 'Looking to add premium fonts from Typekit to your website? %s.', 'make' ),
+						sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a>',
 							esc_url( ttfmake_get_plus_link( 'typekit' ) ),
 							sprintf(
-								__( 'Upgrade to %1$s.', 'make' ),
+								__( 'Upgrade to %1$s', 'make' ),
 								'Make Plus'
 							)
-						),
+						)
+					),
 					'priority'    => 460
 				)
 			)

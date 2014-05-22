@@ -87,15 +87,15 @@ function ttfmake_render_plus_metabox( $post ) {
 
 	echo '<p class="howto">';
 	printf(
-		__( 'Looking to configure a unique layout for this %s?', 'make' ),
-		esc_html( strtolower( $label ) )
-	);
-	printf(
-		' <a href="%1$s" target="_blank">%2$s</a>',
-		esc_url( ttfmake_get_plus_link( 'layout-settings' ) ),
+		__( 'Looking to configure a unique layout for this %1$s? %2$s.', 'make' ),
+		esc_html( strtolower( $label ) ),
 		sprintf(
-			__( 'Upgrade to %s.', 'make' ),
-			'Make Plus'
+			'<a href="%1$s" target="_blank">%2$s</a>',
+			esc_url( ttfmake_get_plus_link( 'layout-settings' ) ),
+			sprintf(
+				__( 'Upgrade to %s', 'make' ),
+				'Make Plus'
+			)
 		)
 	);
 	echo '</p>';
