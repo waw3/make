@@ -303,7 +303,7 @@ class TTFMAKE_Logo {
 			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
-					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
+					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
 				)
 			) );
 
@@ -330,7 +330,7 @@ class TTFMAKE_Logo {
 			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
-					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
+					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
 				)
 			) );
 		}
@@ -349,7 +349,7 @@ class TTFMAKE_Logo {
 			ttfmake_get_css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
-					'padding-bottom' => absint( $final_dimensions['ratio'] ) . '%'
+					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
 				)
 			) );
 		}
