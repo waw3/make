@@ -15,8 +15,11 @@ $links = apply_filters( 'ttfmake_builder_section_footer_links', array(
 		<?php
 			$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
 			$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
-			$class = ( isset( $link['class'] ) ) ? ' class="' . esc_attr( $link['class'] ) . '"' : '';
 			$label = ( isset( $link['label'] ) ) ? esc_html( $link['label'] ) : '';
+
+			// Set up the class value with a base class
+			$class_base = ' class="ttfmake-builder-section-footer-link';
+			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 		?>
 		<a<?php echo $href . $id . $class; ?>>
 			<?php echo $label; ?>
