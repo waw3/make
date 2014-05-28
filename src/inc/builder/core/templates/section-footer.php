@@ -11,7 +11,7 @@ $links = apply_filters( 'ttfmake_builder_section_footer_links', array(
 	)
 ) );
 ?>
-		<?php foreach ( $links as $link ) : ?>
+		<?php $i = 1; foreach ( $links as $link ) : ?>
 		<?php
 			$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
 			$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
@@ -20,8 +20,8 @@ $links = apply_filters( 'ttfmake_builder_section_footer_links', array(
 		?>
 		<a<?php echo $href . $id . $class; ?>>
 			<?php echo $label; ?>
-		</a>
-		<?php endforeach; ?>
+		</a><?php if ( $i < count( $links ) ) : ?>&nbsp;&#124;&nbsp;<?php endif; ?>
+		<?php $i++; endforeach; ?>
 	</div>
 <?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
 </div>
