@@ -24,7 +24,14 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'Upgrade to Make Plus to quickly change the appearance of your website with pre-made design packs.', 'make' ),
+				'description' => sprintf(
+					__( '%s to quickly change the appearance of your website with pre-made design packs.', 'make' ),
+					sprintf(
+						'<a href="%1$s" target="_blank">%2$s</a>',
+						esc_url( ttfmake_get_plus_link( 'design-packs' ) ),
+						__( 'Upgrade to Make Plus', 'make' )
+					)
+				),
 				'priority'    => $priority->add()
 			)
 		)
