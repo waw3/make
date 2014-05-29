@@ -24,7 +24,7 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'text',
-				'description' => __( 'Placeholder text.', 'make' ),
+				'description' => __( 'Upgrade to Make Plus to quickly change the appearance of your website with pre-made design packs.', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
