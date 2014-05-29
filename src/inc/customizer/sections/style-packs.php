@@ -65,10 +65,10 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 					<select>
 						<option></option>
 						<option disabled="disabled">' . __( "Light", "make" ) . '</option>
-						<option disabled="disabled">' . __( "Vintage", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Dark", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Modern", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Creative", "make" ) . '</option>
+						<option disabled="disabled">' . __( "Vintage", "make" ) . '</option>
 					</select>
 				',
 				'priority'    => $priority->add()
