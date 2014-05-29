@@ -63,7 +63,7 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 				'type'        => 'text',
 				'description' => '
 					<select>
-						<option></option>
+						<option selected="selected" disabled="disabled">--- ' . __( "Choose a preset", "make" ) . ' ---</option>
 						<option disabled="disabled">' . __( "Light", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Dark", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Modern", "make" ) . '</option>
