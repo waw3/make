@@ -98,9 +98,10 @@ class TTFMAKE_Sections {
 	/**
 	 * Remove a section.
 	 *
-	 * @since 1.0.7
+	 * @since  1.0.7.
 	 *
-	 * @param string $id Unique ID for an existing section. Alphanumeric characters only.
+	 * @param  string    $id    Unique ID for an existing section. Alphanumeric characters only.
+	 * @return void
 	 */
 	public function remove_section( $id ) {
 		if ( isset( $this->_sections[ $id ] ) ) {
@@ -192,9 +193,10 @@ if ( ! function_exists( 'ttfmake_remove_section' ) ) :
 /**
  * Remove a defined section.
  *
- * @since 1.0.7
+ * @since  1.0.7.
  *
- * @param string $id Unique ID for the section. Alphanumeric characters only.
+ * @param  string    $id    Unique ID for an existing section. Alphanumeric characters only.
+ * @return void
  */
 function ttfmake_remove_section( $id ) {
 	ttfmake_get_sections_class()->remove_section( $id );
