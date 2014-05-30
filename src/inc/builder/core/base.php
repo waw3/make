@@ -257,6 +257,9 @@ class TTFMAKE_Builder_Base {
 			#ttfmake-builder {
 				display: none;
 			}
+			.ttfmake-duplicator {
+				display: none;
+			}
 			<?php endif; ?>
 
 			<?php foreach ( ttfmake_get_sections() as $key => $section ) : ?>
@@ -625,7 +628,7 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function post_submitbox_misc_actions() {
 	?>
-		<div class="misc-pub-section">
+		<div class="misc-pub-section ttfmake-duplicator">
 			<a style="float:right;" class="ttfmp-duplicator-button button" href="#"><?php _e( 'Duplicate Page', 'make-plus' ); ?></a>
 			<p style="float:left;font-style:italic;">
 				<?php printf(
