@@ -103,7 +103,9 @@ class TTFMAKE_Sections {
 	 * @param string $id Unique ID for an existing section. Alphanumeric characters only.
 	 */
 	public function remove_section( $id ) {
-		unset( $this->_sections[ $id ] );
+		if ( isset( $this->_sections[ $id ] ) ) {
+			unset( $this->_sections[ $id ] );
+		}
 	}
 }
 endif;
