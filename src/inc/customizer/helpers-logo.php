@@ -140,12 +140,40 @@ class TTFMAKE_Logo {
 			// Get the dimensions
 			$info = wp_get_attachment_image_src( $attachment_id, 'full' );
 
-			if ( false !== $info && isset( $info[1] ) && isset( $info[2] ) ) {
-				// Package the data
-				$dimensions = array(
-					'width'  => $info[1],
-					'height' => $info[2],
-				);
+			if ( false !== $info && isset( $info[0] ) && isset( $info[1] ) && isset( $info[2] ) ) {
+				// Detect JetPack altered src
+				if ( false === $info[1] && false === $info[2] ) {
+					// Parse the URL for the dimensions
+					$pieces = parse_url( urldecode( $info[0] ) );
+
+					// Pull apart the query string
+					if ( isset( $pieces['query'] ) ) {
+						parse_str( $pieces['query'], $query_pieces );
+
+						// Get the values from "resize"
+						if ( isset( $query_pieces['resize'] ) || isset( $query_pieces['fit'] ) ) {
+							if ( isset( $query_pieces['resize'] ) ) {
+								$jp_dimensions = explode( ',', $query_pieces['resize'] );
+							} elseif ( $query_pieces['fit'] ){
+								$jp_dimensions = explode( ',', $query_pieces['fit'] );
+							}
+
+							if ( isset( $jp_dimensions[0] ) && isset( $jp_dimensions[1] ) ) {
+								// Package the data
+								$dimensions = array(
+									'width'  => $jp_dimensions[0],
+									'height' => $jp_dimensions[1],
+								);
+							}
+						}
+					}
+				} else {
+					// Package the data
+					$dimensions = array(
+						'width'  => $info[1],
+						'height' => $info[2],
+					);
+				}
 			} else {
 				// Get the image path from the URL
 				$wp_upload_dir = wp_upload_dir();
