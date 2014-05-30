@@ -66,7 +66,7 @@ class TTFMAKE_Sections {
 	}
 
 	/**
-	 * Return the sections.
+	 * Add a section.
 	 *
 	 * @since  1.0.0.
 	 *
@@ -166,7 +166,7 @@ endif;
 
 if ( ! function_exists( 'ttfmake_add_section' ) ) :
 /**
- * Return the sections.
+ * Add a section.
  *
  * @since  1.0.0.
  *
