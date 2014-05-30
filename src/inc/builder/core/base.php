@@ -629,19 +629,17 @@ class TTFMAKE_Builder_Base {
 	public function post_submitbox_misc_actions() {
 	?>
 		<div class="misc-pub-section ttfmake-duplicator">
-			<a style="float:right;" class="ttfmp-duplicator-button button" href="#"><?php _e( 'Duplicate Page', 'make-plus' ); ?></a>
-			<p style="float:left;font-style:italic;">
-				<?php printf(
-					__( '%s and duplicate builder pages.', 'make' ),
+			<p style="font-style:italic;margin:0 0 7px 3px;">
+				<?php
+				printf(
+					__( 'Duplicate this page with %s.', 'make' ),
 					sprintf(
 						'<a href="%1$s" target="_blank">%2$s</a>',
 						esc_url( ttfmake_get_plus_link( 'duplicator' ) ),
-						sprintf(
-							__( 'Upgrade to %1$s', 'make' ),
-							'Make Plus'
-						)
+						'Make Plus'
 					)
-				); ?>
+				);
+				?>
 			</p>
 			<div class="clear"></div>
 		</div>
