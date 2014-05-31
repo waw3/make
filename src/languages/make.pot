@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.0.6\n"
+"Project-Id-Version: Make 1.0.7\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-05-22 23:14:40+00:00\n"
+"POT-Creation-Date: 2014-05-31 17:51:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -60,39 +60,44 @@ msgstr ""
 msgid "Footer 4"
 msgstr ""
 
-#: inc/builder/core/base.php:78
+#: inc/builder/core/base.php:82
 msgid "Page Builder"
 msgstr ""
 
-#: inc/builder/core/base.php:307
+#: inc/builder/core/base.php:314
 msgid "Set featured image"
 msgstr ""
 
-#: inc/builder/core/base.php:308
+#: inc/builder/core/base.php:315
 msgid "Remove featured image"
 msgstr ""
 
-#: inc/builder/core/base.php:309
+#: inc/builder/core/base.php:316
 msgid "Featured Image"
 msgstr ""
 
-#: inc/builder/core/base.php:310
+#: inc/builder/core/base.php:317
 msgid "Use as Featured Image"
 msgstr ""
 
-#: inc/builder/core/base.php:465
+#: inc/builder/core/base.php:472
 msgid "Add Media"
 msgstr ""
 
-#: inc/builder/core/base.php:876
+#: inc/builder/core/base.php:635
+msgid "Duplicate this page with %s."
+msgstr ""
+
+#: inc/builder/core/base.php:910
 msgid "Want some ideas?"
 msgstr ""
 
-#: inc/builder/core/base.php:879
+#: inc/builder/core/base.php:913
 msgid "%s and get a quick start with pre-made designer builder templates."
 msgstr ""
 
-#: inc/builder/core/base.php:884 inc/builder/core/templates/menu.php:46
+#: inc/builder/core/base.php:918 inc/builder/core/templates/menu.php:46
+#: inc/builder/core/templates/menu.php:73
 #: inc/builder/sections/builder-templates/text.php:26 inc/edit-page.php:96
 #: inc/extras.php:394
 msgid "Upgrade to %s"
@@ -110,11 +115,19 @@ msgstr ""
 msgid "%s and feature your WooCommerce products in a grid layout."
 msgstr ""
 
-#: inc/builder/core/templates/menu.php:60
+#: inc/builder/core/templates/menu.php:63
+msgid "Downloads"
+msgstr ""
+
+#: inc/builder/core/templates/menu.php:68
+msgid "%s and feature your Easy Digital Downloads products in a grid layout."
+msgstr ""
+
+#: inc/builder/core/templates/menu.php:87
 msgid "Add New Section"
 msgstr ""
 
-#: inc/builder/core/templates/section-footer.php:8
+#: inc/builder/core/templates/section-footer.php:10
 msgid "Remove this section"
 msgstr ""
 
@@ -270,10 +283,12 @@ msgid "Caption color:"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery.php:25
+#: inc/customizer/sections/stylekit.php:67
 msgid "Light"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery.php:26
+#: inc/customizer/sections/stylekit.php:68
 msgid "Dark"
 msgstr ""
 
@@ -365,50 +380,54 @@ msgid "General"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:63
-msgid "Fonts"
+msgid "Style Kits"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:64
-msgid "Colors"
+msgid "Fonts"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:65
-msgid "Header"
+msgid "Colors"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:66
-msgid "Logo"
+msgid "Header"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:67
-msgid "Main"
+msgid "Logo"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:68
-msgid "Layout: Blog (Posts Page)"
+msgid "Main"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:69
-msgid "Layout: Archives"
+msgid "Layout: Blog (Posts Page)"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:70
-msgid "Layout: Search Results"
+msgid "Layout: Archives"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:71
-msgid "Layout: Posts"
+msgid "Layout: Search Results"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:72
-msgid "Layout: Pages"
+msgid "Layout: Posts"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:73
-msgid "Footer"
+msgid "Layout: Pages"
 msgstr ""
 
 #: inc/customizer/bootstrap.php:74
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer/bootstrap.php:75
 msgid "Social Profiles &amp; RSS"
 msgstr ""
 
@@ -961,6 +980,36 @@ msgstr ""
 
 #: inc/customizer/sections/social.php:318
 msgid "Custom RSS URL (replaces default)"
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:28
+msgid ""
+"%s to quickly apply designer-picked style choices (fonts, layout, colors) "
+"to your website."
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:32
+msgid "Upgrade to Make Plus"
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:49
+msgid "Kits"
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:66
+msgid "Choose a kit"
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:69
+msgid "Modern"
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:70
+msgid "Creative"
+msgstr ""
+
+#: inc/customizer/sections/stylekit.php:71
+msgid "Vintage"
 msgstr ""
 
 #: inc/edit-page.php:29
