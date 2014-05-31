@@ -477,17 +477,24 @@ function ttfmake_plus_styles() {
 	#customize-control-ttfmake_font-typekit-font-heading span:after,
 	.ttfmake-section-text .ttfmake-plus-info p:after,
 	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
-	.ttfmp-import-message strong:after {
+	.ttfmp-import-message strong:after,
+	#accordion-section-ttfmake_stylekit h3:before {
 		content: "Plus";
 		position: relative;
 		top: -1px;
 		margin-left: 8px;
-		padding: 3px 6px;
-		font-size: 9px;
-		color: #ffffff;
+		padding: 3px 6px !important;
+		line-height: 1.5 !important;
+		font-size: 9px !important;
+		color: #ffffff !important;
 		background-color: #d54e21;
 		letter-spacing: 1px;
 		text-transform: uppercase;
+	}
+	#accordion-section-ttfmake_stylekit h3:before {
+		float: right;
+		top: 2px;
+		margin-right: 30px;
 	}
 	.ttfmp-import-message strong {
 		display: inline-block;
