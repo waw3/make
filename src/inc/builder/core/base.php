@@ -63,6 +63,10 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
 		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
+
+		if ( false === ttfmake_is_plus() ) {
+			add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
+		}
 	}
 
 	/**
@@ -251,6 +255,9 @@ class TTFMAKE_Builder_Base {
 			}
 			<?php else : ?>
 			#ttfmake-builder {
+				display: none;
+			}
+			.ttfmake-duplicator {
 				display: none;
 			}
 			<?php endif; ?>
@@ -610,6 +617,33 @@ class TTFMAKE_Builder_Base {
 
 		// Return the result array
 		return $result;
+	}
+
+	/**
+	 * Display information about duplicating posts.
+	 *
+	 * @since  1.1.0.
+	 *
+	 * @return void
+	 */
+	public function post_submitbox_misc_actions() {
+	?>
+		<div class="misc-pub-section ttfmake-duplicator">
+			<p style="font-style:italic;margin:0 0 7px 3px;">
+				<?php
+				printf(
+					__( 'Duplicate this page with %s.', 'make' ),
+					sprintf(
+						'<a href="%1$s" target="_blank">%2$s</a>',
+						esc_url( ttfmake_get_plus_link( 'duplicator' ) ),
+						'Make Plus'
+					)
+				);
+				?>
+			</p>
+			<div class="clear"></div>
+		</div>
+	<?php
 	}
 }
 endif;

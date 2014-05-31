@@ -1,25 +1,25 @@
 {
-	"exclude": [
+	"exclude"              : [
 		".git/**",
 		"node_modules/**"
 	],
-	"always-semicolon": true,
-	"block-indent": "\t",
-	"colon-space": ["", " "],
-	"color-case": "lower",
-	"color-shorthand": true,
-	"combinator-space": [" ", " "],
-	"element-case": "lower",
-	"eof-newline": false,
-	"leading-zero": false,
-	"quotes": "double",
+	"always-semicolon"     : true,
+	"block-indent"         : "\t",
+	"colon-space"          : ["", " "],
+	"color-case"           : "lower",
+	"color-shorthand"      : true,
+	"combinator-space"     : [" ", " "],
+	"element-case"         : "lower",
+	"eof-newline"          : false,
+	"leading-zero"         : false,
+	"quotes"               : "double",
 	"remove-empty-rulesets": true,
-	"rule-indent": "\t",
-	"stick-brace": " ",
-	"strip-spaces": true,
-	"unitless-zero": true,
-	"vendor-prefix-align": false,
-	"sort-order": [
+	"rule-indent"          : "\t",
+	"stick-brace"          : " ",
+	"strip-spaces"         : true,
+	"unitless-zero"        : true,
+	"vendor-prefix-align"  : false,
+	"sort-order"           : [
 		[
 			"font",
 			"font-family",

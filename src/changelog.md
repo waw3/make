@@ -1,3 +1,12 @@
+## 1.0.7
+
+* Fixed bug that prevented default font from showing in the editor styles
+* Fixed Photon conflict that rendered custom logo functionality unusable
+* Added filter builder section footer action links
+* Added builder API function for removing builder sections
+* Added information about Style Kits, Easy Digital Downloads, and Page Duplicator
+* Added German and Finnish translations
+
 ## 1.0.6
 
 * Added Make Plus information
