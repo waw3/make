@@ -8,12 +8,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-05-02 17:07+0100\n"
-"Last-Translator: The Theme Foundry\n"
+"PO-Revision-Date: 2014-05-31 10:48-0800\n"
+"Last-Translator: \n"
 "Language-Team: The Theme Foundry <timm@dertimm.de>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: de_DE\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:12
@@ -30,11 +30,11 @@ msgstr "Navigationskommentar"
 
 #: comments.php:49
 msgid "Comments are closed."
-msgstr "Es kÃ¶nnen keine Kommentare geschrieben werden."
+msgstr "Es k&ouml;nnen keine Kommentare geschrieben werden."
 
 #: functions.php:156
 msgid "Primary Menu"
-msgstr "ErstmenÃ¼"
+msgstr "Erstmen&uuml;"
 
 #: functions.php:157
 msgid "Social Profile Links"
@@ -86,15 +86,15 @@ msgstr "Dieses Bild als besonderes Bild nutzen"
 
 #: inc/builder/core/base.php:438
 msgid "Add Media"
-msgstr "Mediendaten hinzufÃ¼gen"
+msgstr "Mediendaten hinzuf&uuml;gen"
 
 #: inc/builder/core/templates/menu.php:14
 msgid "Add"
-msgstr "HinzufÃ¼gen"
+msgstr "Hinzuf&uuml;gen"
 
 #: inc/builder/core/templates/menu.php:33
 msgid "Add New Section"
-msgstr "Neue Auswahl hinzufÃ¼gen"
+msgstr "Neue Auswahl hinzuf&uuml;gen"
 
 #: inc/builder/core/templates/section-footer.php:8
 msgid "Remove"
@@ -165,7 +165,7 @@ msgstr "Als Scrollbild verwenden"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:81
 msgid "Slide content overlay"
-msgstr "Ãœberlagerter Inhalt"
+msgstr "&Uuml;berlagerter Inhalt"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:98
 msgid "Remove this slide"
@@ -173,7 +173,7 @@ msgstr "Diese Folie entfernen"
 
 #: inc/builder/sections/builder-templates/banner.php:21
 msgid "Add New Slide"
-msgstr "Neue Folie hinzufÃ¼gen"
+msgstr "Neue Folie hinzuf&uuml;gen"
 
 #: inc/builder/sections/builder-templates/banner.php:38
 #: inc/builder/sections/builder-templates/gallery.php:77
@@ -187,7 +187,7 @@ msgstr "Optionen"
 #: inc/builder/sections/builder-templates/text.php:27
 #: inc/builder/sections/builder-templates/text.php:53
 msgid "Enter title here"
-msgstr "FÃ¼ge hier einen Titel hinzu"
+msgstr "F&uuml;ge hier einen Titel hinzu"
 
 #: inc/builder/sections/builder-templates/banner.php:49
 msgid "Slideshow display"
@@ -213,7 +213,7 @@ msgstr "Zeit zwischen zwei Folien (in Millisekunden)"
 
 #: inc/builder/sections/builder-templates/banner.php:81
 msgid "Transition effect"
-msgstr "Ãœbergangseffekt"
+msgstr "&Uuml;bergangseffekt"
 
 #: inc/builder/sections/builder-templates/banner.php:84
 #: inc/gallery-slider/gallery-slider.php:116
@@ -227,7 +227,7 @@ msgstr "Einblenden"
 
 #: inc/builder/sections/builder-templates/banner.php:92
 msgid "Section height"
-msgstr "AuswahlhÃ¶he"
+msgstr "Auswahlh&ouml;he"
 
 #: inc/builder/sections/builder-templates/gallery-item.php:22
 #: inc/builder/sections/builder-templates/text.php:41
@@ -237,11 +237,11 @@ msgstr "Klicke und verschiebe diese Spalte in ihre Position"
 #: inc/builder/sections/builder-templates/gallery-item.php:27
 #: inc/builder/sections/builder-templates/text.php:46
 msgid "Enter link here"
-msgstr "FÃ¼ge hier eine VerknÃ¼pfung ein"
+msgstr "F&uuml;ge hier eine Verkn&uuml;pfung ein"
 
 #: inc/builder/sections/builder-templates/gallery-item.php:39
 msgid "Enter description here"
-msgstr "FÃ¼ge hier eine Beschreibung ein"
+msgstr "F&uuml;ge hier eine Beschreibung ein"
 
 #: inc/builder/sections/builder-templates/gallery-item.php:43
 msgid "Remove gallery item"
@@ -265,7 +265,7 @@ msgstr "Beschreibungsstil:"
 
 #: inc/builder/sections/builder-templates/gallery.php:33
 msgid "Overlay"
-msgstr "Ãœberlagerung"
+msgstr "&Uuml;berlagerung"
 
 #: inc/builder/sections/builder-templates/gallery.php:34
 msgid "Reveal"
@@ -273,7 +273,7 @@ msgstr "Hervorhebung"
 
 #: inc/builder/sections/builder-templates/gallery.php:40
 msgid "Aspect ratio:"
-msgstr "SeitenverhÃ¤ltnis:"
+msgstr "Seitenverh&auml;ltnis:"
 
 #: inc/builder/sections/builder-templates/gallery.php:42
 msgid "Landscape"
@@ -281,7 +281,7 @@ msgstr "Querformat"
 
 #: inc/builder/sections/builder-templates/gallery.php:43
 msgid "Portrait"
-msgstr "LÃ¤ngsformat"
+msgstr "L&auml;ngsformat"
 
 #: inc/builder/sections/builder-templates/gallery.php:44
 msgid "Square"
@@ -294,7 +294,7 @@ msgstr "Spalten"
 
 #: inc/builder/sections/builder-templates/gallery.php:60
 msgid "Add New Item"
-msgstr "Neues Modul hinzufÃ¼gen"
+msgstr "Neues Modul hinzuf&uuml;gen"
 
 #: inc/builder/sections/builder-templates/gallery.php:92
 msgid "Set background image"
@@ -320,7 +320,7 @@ msgstr "Kacheln"
 #: inc/builder/sections/builder-templates/gallery.php:114
 #: inc/customizer/helpers.php:129
 msgid "Cover"
-msgstr "Ãœberlagern"
+msgstr "&Uuml;berlagern"
 
 #: inc/builder/sections/section-definitions.php:72
 msgid "Organize multiple columns of content."
@@ -328,7 +328,7 @@ msgstr "Sortiere mehrere Inhaltsspalten"
 
 #: inc/builder/sections/section-definitions.php:138
 msgid "A blank canvas for standard content or HTML code."
-msgstr "Ein leeres Modul fÃ¼r Standardinhalte oder HTML-Code"
+msgstr "Ein leeres Modul f&uuml;r Standardinhalte oder HTML-Code"
 
 #: inc/builder/sections/section-definitions.php:180
 msgid "Display multiple types of content in a slider."
@@ -376,7 +376,7 @@ msgstr "Layout: Suchergebnisse"
 
 #: inc/customizer/bootstrap.php:71
 msgid "Layout: Posts"
-msgstr "Layout: EintrÃ¤ge"
+msgstr "Layout: Eintr&auml;ge"
 
 #: inc/customizer/bootstrap.php:72
 msgid "Layout: Pages"
@@ -384,7 +384,7 @@ msgstr "Layout: Seiten"
 
 #: inc/customizer/bootstrap.php:73
 msgid "Footer"
-msgstr "FuÃŸzeile"
+msgstr "Fu&szlig;zeile"
 
 #: inc/customizer/bootstrap.php:74
 msgid "Social Profiles &amp; RSS"
@@ -392,7 +392,7 @@ msgstr "Social Profiles &amp; RSS"
 
 #: inc/customizer/helpers-defaults.php:22
 msgid "Menu"
-msgstr "MenÃ¼"
+msgstr "Men&uuml;"
 
 #: inc/customizer/helpers-defaults.php:26
 msgid "Featured"
@@ -546,15 +546,15 @@ msgstr ""
 #: inc/customizer/sections/footer.php:231
 #: inc/customizer/sections/header.php:335 inc/customizer/sections/main.php:127
 msgid "Background Size"
-msgstr "HintergrundgrÃ¶ÃŸe"
+msgstr "Hintergrundgr&ouml;&szlig;e"
 
 #: inc/customizer/sections/color.php:38
 msgid "Primary Color"
-msgstr "PrimÃ¤rfarbe"
+msgstr "Prim&auml;rfarbe"
 
 #: inc/customizer/sections/color.php:61
 msgid "Secondary Color"
-msgstr "SekundÃ¤rfarbe"
+msgstr "Sekund&auml;rfarbe"
 
 #: inc/customizer/sections/color.php:84
 msgid "Text Color"
@@ -589,27 +589,27 @@ msgstr "Hauptteil"
 
 #: inc/customizer/sections/font.php:138
 msgid "Site Title Font Size (in px)"
-msgstr "TextgrÃ¶ÃŸe des Seitentitels (in Pixeln)"
+msgstr "Textgr&ouml;&szlig;e des Seitentitels (in Pixeln)"
 
 #: inc/customizer/sections/font.php:159
 msgid "Site Tagline Font Size (in px)"
-msgstr "TextgrÃ¶ÃŸe des Claims (in Pixeln)"
+msgstr "Textgr&ouml;&szlig;e des Claims (in Pixeln)"
 
 #: inc/customizer/sections/font.php:180
 msgid "Navigation Font Size (in px)"
-msgstr "TextgrÃ¶ÃŸe der Navigation (in Pixeln)"
+msgstr "Textgr&ouml;&szlig;e der Navigation (in Pixeln)"
 
 #: inc/customizer/sections/font.php:201
 msgid "Header Font Size (in px)"
-msgstr "TextgrÃ¶ÃŸe der Ãœberschrift (in Pixeln)"
+msgstr "Textgr&ouml;&szlig;e der &Uuml;berschrift (in Pixeln)"
 
 #: inc/customizer/sections/font.php:222
 msgid "Widget Font Size (in px)"
-msgstr "TextgrÃ¶ÃŸe der Widgets (in Pixeln)"
+msgstr "Textgr&ouml;&szlig;e der Widgets (in Pixeln)"
 
 #: inc/customizer/sections/font.php:243
 msgid "Body Font Size (in px)"
-msgstr "TextgrÃ¶ÃŸe des Hauptteils (in Pixeln)"
+msgstr "Textgr&ouml;&szlig;e des Hauptteils (in Pixeln)"
 
 #: inc/customizer/sections/font.php:278
 msgid "Character Subset"
@@ -621,27 +621,27 @@ msgstr "Nicht alle Schriftarten haben Untergruppen."
 
 #: inc/customizer/sections/footer.php:36
 msgid "Footer Layout"
-msgstr "FuÃŸzeilenlayout"
+msgstr "Fu&szlig;zeilenlayout"
 
 #: inc/customizer/sections/footer.php:73
 msgid "Footer Text"
-msgstr "FuÃŸzeilentext"
+msgstr "Fu&szlig;zeilentext"
 
 #: inc/customizer/sections/footer.php:96
 msgid "Footer Text Color"
-msgstr "FuÃŸzeilenfarbe"
+msgstr "Fu&szlig;zeilenfarbe"
 
 #: inc/customizer/sections/footer.php:119
 msgid "Footer Border Color"
-msgstr "FuÃŸzeilenumrandungsfarbe"
+msgstr "Fu&szlig;zeilenumrandungsfarbe"
 
 #: inc/customizer/sections/footer.php:142
 msgid "Footer Background Color"
-msgstr "FuÃŸzeilenhintergrundfarbe"
+msgstr "Fu&szlig;zeilenhintergrundfarbe"
 
 #: inc/customizer/sections/footer.php:165
 msgid "Footer Background Image"
-msgstr "FuÃŸzeilenhintergrundbild"
+msgstr "Fu&szlig;zeilenhintergrundbild"
 
 #: inc/customizer/sections/footer.php:187
 #: inc/customizer/sections/header.php:291 inc/customizer/sections/main.php:83
@@ -655,11 +655,11 @@ msgstr "Hintergrundposition"
 
 #: inc/customizer/sections/footer.php:267
 msgid "Footer Widget Areas"
-msgstr "Widget Area der FuÃŸzeile"
+msgstr "Widget Area der Fu&szlig;zeile"
 
 #: inc/customizer/sections/footer.php:283
 msgid "Footer Options"
-msgstr "FuÃŸzeilenoptionen"
+msgstr "Fu&szlig;zeilenoptionen"
 
 #: inc/customizer/sections/footer.php:304
 msgid "Show social icons"
@@ -731,7 +731,7 @@ msgstr "Zeige Suchfeld in der Kopfzeile"
 #: inc/customizer/sections/layout-post.php:30
 #: inc/customizer/sections/layout-search.php:30
 msgid "Header, Footer, Sidebars"
-msgstr "Kopfzeile, FuÃŸzeile, Seitenbalken"
+msgstr "Kopfzeile, Fu&szlig;zeile, Seitenbalken"
 
 #: inc/customizer/sections/layout-archive.php:51
 #: inc/customizer/sections/layout-blog.php:51
@@ -747,7 +747,7 @@ msgstr "Verberge die Kopfzeile"
 #: inc/customizer/sections/layout-post.php:72
 #: inc/customizer/sections/layout-search.php:72
 msgid "Hide site footer"
-msgstr "Verberge die FuÃŸzeile"
+msgstr "Verberge die Fu&szlig;zeile"
 
 #: inc/customizer/sections/layout-archive.php:93
 #: inc/customizer/sections/layout-blog.php:93
@@ -840,7 +840,8 @@ msgstr "Retina-taugliches Logo (2x)"
 
 #: inc/customizer/sections/logo.php:78
 msgid "The Retina Logo should be twice the size of the Regular Logo."
-msgstr "Das Retina-Logo sollte doppelt so groÃŸ sein wie das Standard-Logo."
+msgstr ""
+"Das Retina-Logo sollte doppelt so gro&szlig; sein wie das Standard-Logo."
 
 #: inc/customizer/sections/logo.php:101
 msgid "Favicon"
@@ -863,8 +864,8 @@ msgid ""
 "File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px "
 "x 152px</strong>."
 msgstr ""
-"Die Datei muss vom Typ <strong>.png</strong> sein. Optimale GrÃ¶ÃŸe: "
-"<strong>152px x 152px</strong>."
+"Die Datei muss vom Typ <strong>.png</strong> sein. Optimale Gr&ouml;&szlig;"
+"e: <strong>152px x 152px</strong>."
 
 #: inc/customizer/sections/main.php:38
 msgid "Background Color"
@@ -880,17 +881,17 @@ msgstr "Inhaltsoptionen"
 
 #: inc/customizer/sections/main.php:164
 msgid "Underline links in content"
-msgstr "VerknÃ¼pfungen im Text unterstreichen"
+msgstr "Verkn&uuml;pfungen im Text unterstreichen"
 
 #: inc/customizer/sections/navigation.php:38
 msgid "Mobile Menu Label"
-msgstr "Label des mobilen MenÃ¼s"
+msgstr "Label des mobilen Men&uuml;s"
 
 #: inc/customizer/sections/navigation.php:53
 msgid "Resize your browser window to preview the mobile menu label."
 msgstr ""
-"VerÃ¤ndere die GrÃ¶ÃŸe deines Browserfensters, um das Label des mobilen MenÃ¼s "
-"sehen zu kÃ¶nnen."
+"Ver&auml;ndere die Gr&ouml;&szlig;e deines Browserfensters, um das Label des "
+"mobilen Men&uuml;s sehen zu k&öuml;nnen."
 
 #: inc/customizer/sections/site-title-tagline.php:38
 msgid "Site Title Color"
@@ -908,15 +909,16 @@ msgstr "Verberge die Stichwortleiste"
 msgid ""
 "Enter the complete URL to your profile for each service below that you would "
 "like to share."
-msgstr "FÃ¼ge die komplette URL des Profils ein, das Du teilen mÃ¶chtest."
+msgstr ""
+"F&uuml;ge die komplette URL des Profils ein, das Du teilen m&ouml;chtest."
 
 #: inc/customizer/sections/social.php:235
 msgid ""
 "If you would like to add a social profile that is not listed above, or "
 "change the order of the icons, use %s."
 msgstr ""
-"Falls Du ein Profil verlinken mÃ¶chtest, das nicht aufgefÃ¼hrt ist, oder "
-"mÃ¶chtest Du die Reihenfolge der Icons Ã¤ndern, benutze %s."
+"Falls Du ein Profil verlinken m&ouml;chtest, das nicht aufgef&uuml;hrt ist, "
+"oder Du die Reihenfolge der Icons &äuml;ndern m&ouml;chtest, benutze %s."
 
 #: inc/customizer/sections/social.php:238
 msgid "this alternate method"
@@ -939,8 +941,8 @@ msgid ""
 "Featured images are not available for this page while using the current page "
 "template."
 msgstr ""
-"Hervorgehobene Bilder kÃ¶nnen fÃ¼r diese Seite nicht angezeigt werden, das das "
-"aktuelle Template diese nicht unterstÃ¼tzen."
+"Hervorgehobene Bilder k&ouml;nnen f&uuml;r diese Seite nicht angezeigt "
+"werden, das das aktuelle Template diese nicht unterst&uuml;tzen."
 
 #: inc/extras.php:78
 msgid "Page %s"
@@ -967,8 +969,8 @@ msgid ""
 "This widget area is currently enabled for the following views: %s. Change "
 "this in the \"Layout\" section of the Theme Customizer."
 msgstr ""
-"Diese Widget-Area ist aktuell fÃ¼r die folgenden Sichten aktiviert: %s. "
-"Ã„ndere sie im \"Layout\"-Abschnitt der Themeanpassung."
+"Diese Widget-Area ist aktuell f&uuml;r die folgenden Sichten aktiviert: %s. Ã"
+"„ndere sie im \"Layout\"-Abschnitt der Themeanpassung."
 
 #: inc/extras.php:342
 msgid "Blog (Post Page)"
@@ -984,7 +986,7 @@ msgstr "Suchergebnisse"
 
 #: inc/extras.php:345
 msgid "Posts"
-msgstr "EintrÃ¤ge"
+msgstr "Eintr&auml;ge"
 
 #: inc/extras.php:346
 msgid "Pages"
@@ -1028,19 +1030,19 @@ msgstr "Weiterlesen"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:149
 msgid "Add button"
-msgstr "SchaltflÃ¤che hinzufÃ¼gen"
+msgstr "Schaltfl&auml;che hinzuf&uuml;gen"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:150
 msgid "Insert Button"
-msgstr "SchaltflÃ¤che einfÃ¼gen"
+msgstr "Schaltfl&auml;che einf&uuml;gen"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:151
 msgid "Button text"
-msgstr "SchaltflÃ¤chentext"
+msgstr "Schaltfl&auml;chentext"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:152
 msgid "Button URL"
-msgstr "SchaltflÃ¤chen-URL"
+msgstr "Schaltfl&auml;chen-URL"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:153
 msgid "Normal"
@@ -1068,7 +1070,7 @@ msgstr "Zweit"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:159
 msgid "Green"
-msgstr "GrÃ¼n"
+msgstr "Gr&uuml;n"
 
 #: inc/tinymce-buttons/tinymce-buttons.php:160
 msgid "Red"
@@ -1092,7 +1094,7 @@ msgstr "Doppelt"
 
 #: inc/tinymce.php:37
 msgid "Big"
-msgstr "GroÃŸ"
+msgstr "Gro&szlig;"
 
 #: inc/tinymce.php:42
 msgid "Small"
@@ -1108,7 +1110,7 @@ msgstr "Blocksatz: Testimonial"
 
 #: inc/tinymce.php:63
 msgid "Success (Green)"
-msgstr "Erfolg (grÃ¼n)"
+msgstr "Erfolg (gr&uuml;n)"
 
 #: inc/tinymce.php:71
 msgid "Error (Red)"
@@ -1170,8 +1172,8 @@ msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
-"Es sieht so aus, als kÃ¶nnten wir finden, wonach Du suchst. Vielleicht kann "
-"die Suche dabei behilflich sein."
+"Es sieht so aus, als k&ouml;nnten wir nicht finden, wonach Du suchst. "
+"Vielleicht kann die Suche dabei behilflich sein."
 
 #: partials/entry-date.php:18
 msgid "%s ago"
@@ -1203,15 +1205,15 @@ msgstr "Navigation des Eintrags"
 
 #: partials/nav-paging.php:16
 msgid "Newer posts"
-msgstr "Neuere EintrÃ¤ge"
+msgstr "Neuere Eintr&auml;ge"
 
 #: partials/nav-paging.php:22
 msgid "Older posts"
-msgstr "Ã„ltere EintrÃ¤ge"
+msgstr "&Auml;ltere Eintr&auml;ge"
 
 #: partials/nav-post.php:18
 msgid "Post navigation"
-msgstr "Navigation durch die EintrÃ¤ge"
+msgstr "Navigation durch die Eintr&auml;ge"
 
 #: partials/section-title.php:12 partials/section-title.php:24
 #: partials/section-title.php:30 partials/section-title.php:36
@@ -1242,7 +1244,7 @@ msgstr[1] "%s Ergebnisse gefunden"
 
 #: searchform.php:10
 msgid "Press Enter to submit your search"
-msgstr "DrÃ¼cke Eingabe, um Deine Suche zu beginnen."
+msgstr "Dr&uuml;cke Eingabe, um Deine Suche zu beginnen."
 
 #. Theme Name of the plugin/theme
 msgid "Make"
@@ -1266,20 +1268,21 @@ msgid ""
 "fully compatible with popular plugins like WooCommerce, Gravity Forms, "
 "Contact Form 7, Jetpack, and WP PageNavi."
 msgstr ""
-"Bau Dir Deine eigene Webseite, ohne eine einzelne Codezeile berÃ¼hren zu "
-"mÃ¼ssen. Die flexiblen Anpassoptionen des Make-Themes und eine "
-"leistungsstarke Drag'n'Drop-FunktionalitÃ¤t erlauben es Dir, Deine Webseite "
-"sehr schnell und einfach zu erstellen. Erstelle beinahe alles: von einer "
-"simplen Portfolio-Seite oder Fotografie-Seite, einer E-Commerce-LÃ¶sung, "
-"einem minimaoistischen Blog bis hinzu einem professionellen Magazin ist "
-"alles mÃ¶glich. Du beginnst damit, HintergrÃ¼nde, Layouts, Schriftarten, "
-"Farben und das Logo anzupassen. In einem nÃ¤chsten Schritt ordnest Du die "
-"Inhalte mit der Drag'n'Drop-FunktionalitÃ¤t an. FÃ¼ge ein Foto, ein Video, "
-"eine Galerie oder sogar eine Diaschau zu jeder Deiner Seiten hinzu. "
-"Entwickle ein flexibles Design, das sich jedem EndgerÃ¤t anpasst und auch auf "
-"Telefonen, Tablets und Deskopbildschirmen groÃŸartig aussieht. Das Theme ist "
-"darÃ¼ber hinaus kompatibel mit den beliebtesten Wordpress-Plugins, wie z.B. "
-"WooCommerce, Gravity Forms, Contact Form 7, Jetpack und WP PageNavi."
+"Bau Dir Deine eigene Webseite, ohne eine einzelne Codezeile ber&uuml;hren zu "
+"m&uuml;ssen. Die flexiblen Anpassoptionen des Make-Themes und eine "
+"leistungsstarke Drag'n'Drop-Funktionalit&auml;t erlauben es Dir, Deine "
+"Webseite sehr schnell und einfach zu erstellen. Erstelle beinahe alles: von "
+"einer simplen Portfolio-Seite oder Fotografie-Seite, einer E-Commerce-L&ouml;"
+"sung, einem minimaoistischen Blog bis hinzu einem professionellen Magazin "
+"ist alles m&ouml;glich. Du beginnst damit, Hintergr&uuml;nde, Layouts, "
+"Schriftarten, Farben und das Logo anzupassen. In einem n&auml;chsten Schritt "
+"ordnest Du die Inhalte mit der Drag'n'Drop-Funktionalit&auml;t an. F&uuml;ge "
+"ein Foto, ein Video, eine Galerie oder sogar eine Diaschau zu jeder Deiner "
+"Seiten hinzu. Entwickle ein flexibles Design, das sich jedem Endger&auml;t "
+"anpasst und auch auf Telefonen, Tablets und Deskopbildschirmen gro&szlig;"
+"artig aussieht. Das Theme ist dar&uuml;ber hinaus kompatibel mit den "
+"beliebtesten Wordpress-Plugins, wie z.B. WooCommerce, Gravity Forms, Contact "
+"Form 7, Jetpack und WP PageNavi."
 
 #. Author of the plugin/theme
 msgid "The Theme Foundry"
@@ -1338,7 +1341,7 @@ msgstr "Ohne Serifen"
 #: inc/customizer/helpers-fonts.php:549
 msgctxt "font style"
 msgid "Monospaced"
-msgstr "Gleiche AbstÃ¤nde"
+msgstr "Gleiche Abst&auml;nde"
 
 #: inc/customizer/helpers.php:154
 msgctxt "footer widget area number"
@@ -1464,4 +1467,3 @@ msgstr "Suche&hellip;"
 msgctxt "submit button"
 msgid "Search"
 msgstr "Suche"
-
