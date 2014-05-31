@@ -60,7 +60,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	// List of new sections to add
 	$sections = array(
 		'general'        => array( 'title' => __( 'General', 'make' ), 'path' => $section_path ),
-		'style-packs'    => array( 'title' => __( 'Design Packs', 'make' ), 'path' => $section_path ),
+		'stylekit'       => array( 'title' => __( 'Style Kits', 'make' ), 'path' => $section_path ),
 		'font'           => array( 'title' => __( 'Fonts', 'make' ), 'path' => $section_path ),
 		'color'          => array( 'title' => __( 'Colors', 'make' ), 'path' => $section_path ),
 		'header'         => array( 'title' => __( 'Header', 'make' ), 'path' => $section_path ),
@@ -75,7 +75,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		'social'         => array( 'title' => __( 'Social Profiles &amp; RSS', 'make' ), 'path' => $section_path )
 	);
 	if ( ttfmake_is_plus() ) {
-		unset( $sections['style-packs'] );
+		unset( $sections['stylekit'] );
 	}
 	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
 

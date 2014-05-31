@@ -478,7 +478,7 @@ function ttfmake_plus_styles() {
 	.ttfmake-section-text .ttfmake-plus-info p:after,
 	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
 	.ttfmp-import-message strong:after,
-	#accordion-section-ttfmake_style-packs h3:before {
+	#accordion-section-ttfmake_stylekit h3:before {
 		content: "Plus";
 		position: relative;
 		top: -1px;
@@ -491,7 +491,7 @@ function ttfmake_plus_styles() {
 		letter-spacing: 1px;
 		text-transform: uppercase;
 	}
-	#accordion-section-ttfmake_style-packs h3:before {
+	#accordion-section-ttfmake_stylekit h3:before {
 		float: right;
 		top: 2px;
 		margin-right: 30px;

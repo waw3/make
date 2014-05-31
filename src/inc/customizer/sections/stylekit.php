@@ -1,8 +1,8 @@
 <?php
 
-if ( ! function_exists( 'ttfmake_customizer_style_packs' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_stylekit' ) ) :
 /**
- * Configure settings and controls for the Design Packs section.
+ * Configure settings and controls for the Kits section.
  *
  * @since  1.0.3.
  *
@@ -10,12 +10,12 @@ if ( ! function_exists( 'ttfmake_customizer_style_packs' ) ) :
  * @param  string    $section         The section name.
  * @return void
  */
-function ttfmake_customizer_style_packs( $wp_customize, $section ) {
+function ttfmake_customizer_stylekit( $wp_customize, $section ) {
 	$priority       = new TTFMAKE_Prioritizer();
 	$control_prefix = 'ttfmake_';
 	$setting_prefix = str_replace( $control_prefix, '', $section );
 
-	// Design Packs info
+	// Style Kits info
 	$setting_id = $setting_prefix . '-info';
 	$wp_customize->add_control(
 		new TTFMAKE_Customize_Misc_Control(
@@ -25,10 +25,10 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 				'section'     => $section,
 				'type'        => 'text',
 				'description' => sprintf(
-					__( '%s to quickly change the appearance of your website with pre-made design packs.', 'make' ),
+					__( '%s to quickly apply designer-picked style choices (fonts, layout, colors) to your website.', 'make' ),
 					sprintf(
 						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( ttfmake_get_plus_link( 'design-packs' ) ),
+						esc_url( ttfmake_get_plus_link( 'style-kits' ) ),
 						__( 'Upgrade to Make Plus', 'make' )
 					)
 				),
@@ -37,7 +37,7 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 		)
 	);
 
-	// Design Packs heading
+	// Style Kits heading
 	$setting_id = $setting_prefix . '-heading';
 	$wp_customize->add_control(
 		new TTFMAKE_Customize_Misc_Control(
@@ -46,13 +46,13 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 			array(
 				'section'     => $section,
 				'type'        => 'heading',
-				'label' => __( 'Design Pack', 'make-plus' ),
+				'label' => __( 'Kits', 'make' ),
 				'priority'    => $priority->add()
 			)
 		)
 	);
 
-	// Design Packs dropdown
+	// Style Kits dropdown
 	$setting_id = $setting_prefix . '-dropdown';
 	$wp_customize->add_control(
 		new TTFMAKE_Customize_Misc_Control(
@@ -63,7 +63,7 @@ function ttfmake_customizer_style_packs( $wp_customize, $section ) {
 				'type'        => 'text',
 				'description' => '
 					<select>
-						<option selected="selected" disabled="disabled">--- ' . __( "Choose a preset", "make" ) . ' ---</option>
+						<option selected="selected" disabled="disabled">--- ' . __( "Choose a kit", "make" ) . ' ---</option>
 						<option disabled="disabled">' . __( "Light", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Dark", "make" ) . '</option>
 						<option disabled="disabled">' . __( "Modern", "make" ) . '</option>
