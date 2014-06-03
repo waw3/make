@@ -62,7 +62,12 @@
 		upgrade = $('<a class="ttfmake-customize-plus"></a>')
 			.attr('href', ttfmakeCustomizerL10n.plusURL)
 			.attr('target', '_blank')
-			.text(ttfmakeCustomizerL10n.plusLabel);
+			.text(ttfmakeCustomizerL10n.plusLabel)
+		;
 		$('.preview-notice').append(upgrade);
+		// Remove accordion click event
+		$('.ttfmake-customize-plus').on('click', function(e) {
+			e.stopPropagation();
+		});
 	}
 } )( jQuery );
