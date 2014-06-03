@@ -2,8 +2,10 @@
  * @package Make
  */
 
+/* global jQuery, ttfmakeCustomizerL10n */
 ( function( $ ) {
-	var api = wp.customize;
+	var api = wp.customize,
+		upgrade;
 
 	/**
 	 * Visibility toggling for some controls
@@ -54,4 +56,13 @@
 			var val = $(this).val();
 			return !isNaN(parseFloat(+val)) && isFinite(val);
 		}).attr('disabled', 'disabled');
+
+	// Add Make Plus message
+	if ('undefined' !== typeof ttfmakeCustomizerL10n) {
+		upgrade = $('<a class="ttfmake-customize-plus"></a>')
+			.attr('href', ttfmakeCustomizerL10n.plusURL)
+			.attr('target', '_blank')
+			.text(ttfmakeCustomizerL10n.plusLabel);
+		$('.preview-notice').append(upgrade);
+	}
 } )( jQuery );
