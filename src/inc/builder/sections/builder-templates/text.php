@@ -95,7 +95,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		if ( true === $ttfmake_is_js_template ) : ?>
 			<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfmakeeditortextcolumn' . $i . 'temp', $editor_settings ); ?>
 		<?php else : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortext' . $ttfmake_section_data['data']['id'] . $i, $editor_settings ); ?>
+			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortextcolumn' . $ttfmake_section_data['data']['id'] . $i, $editor_settings ); ?>
 		<?php endif; ?>
 
 		<?php do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i ); ?>
