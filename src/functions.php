@@ -490,6 +490,11 @@ function ttfmake_plus_styles() {
 		background-color: #d54e21;
 		letter-spacing: 1px;
 		text-transform: uppercase;
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
+	a.ttfmake-customize-plus {
+		margin-left: 0;
+		color: #d54e21;
 	}
 	#accordion-section-ttfmake_stylekit h3:before {
 		float: right;
