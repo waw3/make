@@ -1,3 +1,9 @@
+## 1.0.8
+
+* Removed Make Plus information from the admin bar
+* Added Make Plus information to the Customizer
+* Improved aspects of the builder to prepare for additional premium features
+
 ## 1.0.7
 
 * Fixed bug that prevented default font from showing in the editor styles
