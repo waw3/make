@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.0.7
+ * Version:     1.0.8
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -996,7 +996,7 @@ a {
 }
 
 /*---------------------------------------------------------
- 4. Elements (_elements.scss)
+4. Elements (_elements.scss)
 -------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1063,7 +1063,7 @@ h6 {
 }
 
 /*---------------------------------------------------------
- Quote (_elements.scss)
+Quote (_elements.scss)
 -------------------------------------------------------- */
 blockquote {
 	clear: both;
@@ -1130,7 +1130,7 @@ q:after {
 }
 
 /*---------------------------------------------------------
- Code (_elements.scss)
+Code (_elements.scss)
 -------------------------------------------------------- */
 tt, kbd, pre, code, samp, var {
 	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
@@ -1154,7 +1154,7 @@ pre {
 }
 
 /*---------------------------------------------------------
- Details (_elements.scss)
+Details (_elements.scss)
 -------------------------------------------------------- */
 abbr, acronym, dfn {
 	font-size: .95em;
@@ -1175,7 +1175,7 @@ details :focus {
 }
 
 /*---------------------------------------------------------
- Marks (_elements.scss)
+Marks (_elements.scss)
 -------------------------------------------------------- */
 mark {
 	text-decoration: none;
@@ -1183,7 +1183,7 @@ mark {
 }
 
 /*---------------------------------------------------------
- Sizes (_elements.scss)
+Sizes (_elements.scss)
 -------------------------------------------------------- */
 small {
 	font-size: 75%;
@@ -1194,7 +1194,7 @@ big {
 }
 
 /*---------------------------------------------------------
- Content (_elements.scss)
+Content (_elements.scss)
 -------------------------------------------------------- */
 b, strong {
 	font-weight: bold;
@@ -1227,7 +1227,7 @@ hr.ttfmake-line-double {
 }
 
 /*---------------------------------------------------------
- Lists (_elements.scss)
+Lists (_elements.scss)
 -------------------------------------------------------- */
 ul, ol {
 	margin: 0 0 22px 0;
@@ -1283,7 +1283,7 @@ dd {
 }
 
 /*---------------------------------------------------------
- Table (_elements.scss)
+Table (_elements.scss)
 -------------------------------------------------------- */
 table {
 	width: 100%;
@@ -1317,7 +1317,7 @@ table td[valign="bottom"] {
 }
 
 /*---------------------------------------------------------
- Galleries (_elements.scss)
+Galleries (_elements.scss)
 -------------------------------------------------------- */
 .gallery {
 	margin: 22px 0 11px !important;
@@ -1371,7 +1371,7 @@ table td[valign="bottom"] {
 }
 
 /*---------------------------------------------------------
- Alerts (_elements.scss)
+Alerts (_elements.scss)
 -------------------------------------------------------- */
 .ttfmake-alert {
 	font-size: 14px;

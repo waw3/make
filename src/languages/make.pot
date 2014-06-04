@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.0.7\n"
+"Project-Id-Version: Make 1.0.8\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-05-31 17:51:59+00:00\n"
+"POT-Creation-Date: 2014-06-04 23:36:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -99,7 +99,6 @@ msgstr ""
 #: inc/builder/core/base.php:918 inc/builder/core/templates/menu.php:46
 #: inc/builder/core/templates/menu.php:73
 #: inc/builder/sections/builder-templates/text.php:26 inc/edit-page.php:96
-#: inc/extras.php:394
 msgid "Upgrade to %s"
 msgstr ""
 
@@ -146,21 +145,21 @@ msgstr ""
 msgid "Background image"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:42
+#: inc/builder/sections/builder-templates/banner-slide.php:43
 #: inc/builder/sections/builder-templates/gallery.php:105
 msgid "Darken to improve readability"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:47
+#: inc/builder/sections/builder-templates/banner-slide.php:49
 #: inc/builder/sections/builder-templates/gallery.php:108
 msgid "Background color"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:52
+#: inc/builder/sections/builder-templates/banner-slide.php:56
 msgid "Content position"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:54
+#: inc/builder/sections/builder-templates/banner-slide.php:59
 #: inc/builder/sections/builder-templates/gallery.php:35
 #: inc/builder/sections/builder-templates/gallery.php:45
 #: inc/customizer/helpers.php:78 inc/customizer/helpers.php:90
@@ -168,37 +167,37 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:56
+#: inc/builder/sections/builder-templates/banner-slide.php:60
 #: inc/customizer/helpers.php:118 inc/customizer/helpers.php:148
 msgid "Left"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:57
+#: inc/builder/sections/builder-templates/banner-slide.php:61
 #: inc/customizer/helpers.php:120 inc/customizer/helpers.php:149
 msgid "Right"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:69
+#: inc/builder/sections/builder-templates/banner-slide.php:73
 msgid "Set slide image"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:70
+#: inc/builder/sections/builder-templates/banner-slide.php:74
 msgid "Remove slide image"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:71
+#: inc/builder/sections/builder-templates/banner-slide.php:75
 msgid "Slide image"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:72
+#: inc/builder/sections/builder-templates/banner-slide.php:76
 msgid "Use as slide image"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:81
+#: inc/builder/sections/builder-templates/banner-slide.php:85
 msgid "Slide content overlay"
 msgstr ""
 
-#: inc/builder/sections/builder-templates/banner-slide.php:98
+#: inc/builder/sections/builder-templates/banner-slide.php:102
 msgid "Remove this slide"
 msgstr ""
 
@@ -429,6 +428,10 @@ msgstr ""
 
 #: inc/customizer/bootstrap.php:75
 msgid "Social Profiles &amp; RSS"
+msgstr ""
+
+#: inc/customizer/bootstrap.php:207 inc/customizer/sections/stylekit.php:32
+msgid "Upgrade to Make Plus"
 msgstr ""
 
 #: inc/customizer/helpers-defaults.php:22
@@ -986,10 +989,6 @@ msgstr ""
 msgid ""
 "%s to quickly apply designer-picked style choices (fonts, layout, colors) "
 "to your website."
-msgstr ""
-
-#: inc/customizer/sections/stylekit.php:32
-msgid "Upgrade to Make Plus"
 msgstr ""
 
 #: inc/customizer/sections/stylekit.php:49

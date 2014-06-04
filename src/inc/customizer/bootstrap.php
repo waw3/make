@@ -197,6 +197,17 @@ function ttfmake_customizer_sections_script() {
 		TTFMAKE_VERSION,
 		true
 	);
+
+	if ( ! ttfmake_is_plus() ) {
+		wp_localize_script(
+			'ttfmake-customizer-sections',
+			'ttfmakeCustomizerL10n',
+			array(
+				'plusURL'   => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
+				'plusLabel' => __( 'Upgrade to Make Plus', 'make' ),
+			)
+		);
+	}
 }
 endif;
 
