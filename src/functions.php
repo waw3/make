@@ -293,7 +293,7 @@ function ttfmake_scripts() {
 		'ttfmake-font-awesome',
 		get_template_directory_uri() . '/css/font-awesome.css',
 		$style_dependencies,
-		'4.0.3'
+		'4.1.0'
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 
