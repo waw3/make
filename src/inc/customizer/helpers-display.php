@@ -324,7 +324,7 @@ function ttfmake_css_add_rules() {
 	// Main background color
 	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-content' ),
+			'selectors'    => array( '.site-content', 'body.mce-content-body' ),
 			'declarations' => array(
 				'background-color' => $main_background_color
 			)
