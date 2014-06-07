@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.0.8' );
+define( 'TTFMAKE_VERSION', '1.0.9' );
 
 if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
 /**
@@ -293,7 +293,7 @@ function ttfmake_scripts() {
 		'ttfmake-font-awesome',
 		get_template_directory_uri() . '/css/font-awesome.css',
 		$style_dependencies,
-		'4.0.3'
+		'4.1.0'
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 
