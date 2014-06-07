@@ -1,3 +1,9 @@
+## 1.0.9
+
+* Fixed PHP notice edge case when $post object is not set when saving post
+* Fixed issue of white font not showing on TinyMCE background
+* Updated Font Awesome to 4.1.0
+
 ## 1.0.8
 
 * Removed Make Plus information from the admin bar
