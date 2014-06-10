@@ -1,3 +1,10 @@
+## 1.0.10
+
+* Improved consistency in styling between custom menus and default menus
+* Improved JetPack share button styling
+* Fixed an issue with dynamically added TinyMCE instances affecting already added instances
+* Added link to social menu support documentation
+
 ## 1.0.9
 
 * Fixed PHP notice edge case when $post object is not set when saving post
