@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.0.9' );
+define( 'TTFMAKE_VERSION', '1.0.10' );
 
 if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
 /**
