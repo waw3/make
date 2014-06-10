@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.0.9
+ * Version:     1.0.10
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -200,14 +200,14 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, .infinite-footer-container, #comments-nav {
+.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, .infinite-footer-container, #comments-nav, div.sharedaddy {
 	zoom: 1;
 }
-.clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, .infinite-footer-container:before, #comments-nav:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after {
+.clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, .infinite-footer-container:before, #comments-nav:before, div.sharedaddy:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after, div.sharedaddy:after {
 	display: table;
 	content: "";
 }
-.clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after {
+.clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after, div.sharedaddy:after {
 	clear: both;
 }
 
@@ -347,6 +347,9 @@ a {
 .header-layout-3 .site-navigation .menu {
 	border-top: 1px solid #eaecee;
 	border-bottom: 1px solid #eaecee;
+}
+.header-layout-3 .site-navigation .nav-menu {
+	margin-bottom: 0;
 }
 .header-layout-3 .search-form {
 	font-size: 13px;
@@ -634,26 +637,26 @@ a {
 		text-align: right;
 	}
 }
-.site-navigation .menu {
+.site-navigation .menu, .site-navigation .nav-menu {
 	padding-left: 0;
 }
-.site-navigation .menu li:first-of-type a {
+.site-navigation .menu li:first-of-type a, .site-navigation .nav-menu li:first-of-type a {
 	padding-left: 0;
 }
-.site-navigation .menu ul, .site-navigation .menu ol {
+.site-navigation .menu ul, .site-navigation .menu ol, .site-navigation .nav-menu ul, .site-navigation .nav-menu ol {
 	margin-left: 0;
 }
-.site-navigation .menu li {
+.site-navigation .menu li, .site-navigation .nav-menu li {
 	list-style: none;
 	text-align: left;
 }
 @media screen and (min-width: 800px) {
-	.site-navigation .menu li {
+	.site-navigation .menu li, .site-navigation .nav-menu li {
 		position: relative;
 		display: inline-block;
 	}
 }
-.site-navigation .menu li a {
+.site-navigation .menu li a, .site-navigation .nav-menu li a {
 	font-size: 14px;
 	font-size: 1.4rem;
 	font-weight: normal;
@@ -665,54 +668,54 @@ a {
 	border-bottom: 1px solid #171717;
 }
 @media screen and (min-width: 800px) {
-	.site-navigation .menu li a {
+	.site-navigation .menu li a, .site-navigation .nav-menu li a {
 		line-height: 1.4;
 		padding: 11px 16px;
 		padding: 1.1rem 1.6rem;
 		border-bottom: 0;
 	}
 }
-.site-navigation .menu li:last-of-type a {
+.site-navigation .menu li:last-of-type a, .site-navigation .nav-menu li:last-of-type a {
 	padding-right: 0;
 }
-.site-navigation .menu .sub-menu, .site-navigation .menu .children {
+.site-navigation .menu .sub-menu, .site-navigation .menu .children, .site-navigation .nav-menu .sub-menu, .site-navigation .nav-menu .children {
 	padding: 0;
 	text-align: left;
 }
-.site-navigation .menu .sub-menu li a, .site-navigation .menu .children li a {
+.site-navigation .menu .sub-menu li a, .site-navigation .menu .children li a, .site-navigation .nav-menu .sub-menu li a, .site-navigation .nav-menu .children li a {
 	padding-left: 16px;
 	padding-left: 1.6rem;
 }
-.site-navigation .menu .sub-menu li a:before, .site-navigation .menu .children li a:before {
+.site-navigation .menu .sub-menu li a:before, .site-navigation .menu .children li a:before, .site-navigation .nav-menu .sub-menu li a:before, .site-navigation .nav-menu .children li a:before {
 	content: "\2013  ";
 }
-.site-navigation .menu .sub-menu li li a, .site-navigation .menu .children li li a {
+.site-navigation .menu .sub-menu li li a, .site-navigation .menu .children li li a, .site-navigation .nav-menu .sub-menu li li a, .site-navigation .nav-menu .children li li a {
 	padding-left: 32px;
 	padding-left: 3.2rem;
 }
 @media screen and (min-width: 800px) {
-	.site-navigation .menu .sub-menu, .site-navigation .menu .children {
+	.site-navigation .menu .sub-menu, .site-navigation .menu .children, .site-navigation .nav-menu .sub-menu, .site-navigation .nav-menu .children {
 		position: absolute;
 		z-index: 99999;
 		overflow: hidden;
 		clip: rect(1px, 1px, 1px, 1px);
 		background-color: #eaecee;
 	}
-	.site-navigation .menu .sub-menu li:first-of-type a, .site-navigation .menu .children li:first-of-type a {
+	.site-navigation .menu .sub-menu li:first-of-type a, .site-navigation .menu .children li:first-of-type a, .site-navigation .nav-menu .sub-menu li:first-of-type a, .site-navigation .nav-menu .children li:first-of-type a {
 		padding: 15px 16px;
 		padding: 1.5rem 1.6rem;
 	}
-	.site-navigation .menu .sub-menu a, .site-navigation .menu .children a {
+	.site-navigation .menu .sub-menu a, .site-navigation .menu .children a, .site-navigation .nav-menu .sub-menu a, .site-navigation .nav-menu .children a {
 		font-size: 13px;
 		font-size: 1.3rem;
 		padding: 15px 16px;
 		padding: 1.5rem 1.6rem;
 		border-bottom: 1px solid #b9bcbf;
 	}
-	.site-navigation .menu .sub-menu a:after, .site-navigation .menu .children a:after {
+	.site-navigation .menu .sub-menu a:after, .site-navigation .menu .children a:after, .site-navigation .nav-menu .sub-menu a:after, .site-navigation .nav-menu .children a:after {
 		content: none;
 	}
-	.site-navigation .menu .sub-menu .menu-item-has-children a:after, .site-navigation .menu .children .menu-item-has-children a:after {
+	.site-navigation .menu .sub-menu .page_item_has_children a:after, .site-navigation .menu .sub-menu .menu-item-has-children a:after, .site-navigation .menu .children .page_item_has_children a:after, .site-navigation .menu .children .menu-item-has-children a:after, .site-navigation .nav-menu .sub-menu .page_item_has_children a:after, .site-navigation .nav-menu .sub-menu .menu-item-has-children a:after, .site-navigation .nav-menu .children .page_item_has_children a:after, .site-navigation .nav-menu .children .menu-item-has-children a:after {
 		font-family: FontAwesome;
 		font-size: 10px;
 		font-size: 1rem;
@@ -723,33 +726,33 @@ a {
 		float: right;
 		content: "  \f054";
 	}
-	.site-navigation .menu .sub-menu .sub-menu a:after, .site-navigation .menu .sub-menu .children a:after, .site-navigation .menu .children .sub-menu a:after, .site-navigation .menu .children .children a:after {
+	.site-navigation .menu .sub-menu .sub-menu a:after, .site-navigation .menu .sub-menu .children a:after, .site-navigation .menu .children .sub-menu a:after, .site-navigation .menu .children .children a:after, .site-navigation .nav-menu .sub-menu .sub-menu a:after, .site-navigation .nav-menu .sub-menu .children a:after, .site-navigation .nav-menu .children .sub-menu a:after, .site-navigation .nav-menu .children .children a:after {
 		content: none;
 	}
-	.site-navigation .menu .sub-menu li, .site-navigation .menu .children li {
+	.site-navigation .menu .sub-menu li, .site-navigation .menu .children li, .site-navigation .nav-menu .sub-menu li, .site-navigation .nav-menu .children li {
 		padding-left: 0;
 	}
-	.site-navigation .menu .sub-menu li a:before, .site-navigation .menu .children li a:before {
+	.site-navigation .menu .sub-menu li a:before, .site-navigation .menu .children li a:before, .site-navigation .nav-menu .sub-menu li a:before, .site-navigation .nav-menu .children li a:before {
 		content: none;
 	}
-	.site-navigation .menu .sub-menu li:last-of-type a, .site-navigation .menu .children li:last-of-type a {
+	.site-navigation .menu .sub-menu li:last-of-type a, .site-navigation .menu .children li:last-of-type a, .site-navigation .nav-menu .sub-menu li:last-of-type a, .site-navigation .nav-menu .children li:last-of-type a {
 		border-bottom: 0;
 	}
-	.site-navigation .menu .sub-menu ul, .site-navigation .menu .children ul {
+	.site-navigation .menu .sub-menu ul, .site-navigation .menu .children ul, .site-navigation .nav-menu .sub-menu ul, .site-navigation .nav-menu .children ul {
 		top: 0;
 		left: 100%;
 	}
 }
 @media screen and (min-width: 800px) {
-	.site-navigation .menu .current_page_item > a, .site-navigation .menu .current_page_ancestor > a, .site-navigation .menu .current-menu-item > a, .site-navigation .menu .current-menu-ancestor > a {
+	.site-navigation .menu .current_page_item > a, .site-navigation .menu .current_page_ancestor > a, .site-navigation .menu .current-menu-item > a, .site-navigation .menu .current-menu-ancestor > a, .site-navigation .nav-menu .current_page_item > a, .site-navigation .nav-menu .current_page_ancestor > a, .site-navigation .nav-menu .current-menu-item > a, .site-navigation .nav-menu .current-menu-ancestor > a {
 		font-weight: bold;
 	}
 }
-.site-navigation .menu .current_page_item > a, .site-navigation .menu .current-menu-item > a {
+.site-navigation .menu .current_page_item > a, .site-navigation .menu .current-menu-item > a, .site-navigation .nav-menu .current_page_item > a, .site-navigation .nav-menu .current-menu-item > a {
 	font-weight: bold;
 }
 @media screen and (min-width: 800px) {
-	.site-navigation .menu-item-has-children a:after {
+	.site-navigation .page_item_has_children a:after, .site-navigation .menu-item-has-children a:after {
 		font-family: FontAwesome;
 		font-size: 10px;
 		font-size: 1rem;

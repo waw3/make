@@ -121,6 +121,9 @@ a {
 			border-top: 1px solid $d;
 			border-bottom: 1px solid $d;
 		}
+		.nav-menu {
+			margin-bottom: 0; //reset
+		}
 	}
 	.search-form {
 		@include for(medium-screens) {
@@ -370,7 +373,8 @@ a {
 	}
 	margin-bottom: 0; //reset
 	@include no-select;
-	.menu {
+	.menu,
+	.nav-menu {
 		padding-left: 0; //reset
 		li:first-of-type a {
 			padding-left: 0; //reset
@@ -437,6 +441,7 @@ a {
 						content: none; //reset
 					}
 				}
+				.page_item_has_children a:after,
 				.menu-item-has-children a:after {
 					content: "  \f054";
 					position: relative;
@@ -485,6 +490,7 @@ a {
 		}
 	}
 	@include for(medium-screens) {
+		.page_item_has_children a:after,
 		.menu-item-has-children a:after {
 			content: "  \f078";
 			font-family: FontAwesome;
