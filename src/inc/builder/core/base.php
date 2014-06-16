@@ -547,7 +547,7 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function get_section_data( $post_id ) {
 		$ordered_data = array();
-		$ids          = get_post_meta( $post_id, '_ttfmake-section-ids', true );
+		$ids          = array_map( 'strval', get_post_meta( $post_id, '_ttfmake-section-ids', true ) );
 		$post_meta    = get_post_meta( $post_id );
 
 		// Temp array of hashed keys
