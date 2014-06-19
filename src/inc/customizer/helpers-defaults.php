@@ -70,7 +70,7 @@ function ttfmake_option_defaults() {
 		'layout-blog-show-tags'             => 1,
 		'layout-blog-featured-images-alignment' => 'center',
 		'layout-blog-post-date-location'        => 'top',
-		'layout-blog-post-author-location'      => 'footer',
+		'layout-blog-post-author-location'      => 'post-footer',
 		'layout-blog-comment-count'             => 'none',
 		'layout-blog-comment-count-location'    => 'before-content',
 
@@ -87,7 +87,7 @@ function ttfmake_option_defaults() {
 		'layout-archive-show-tags'          => 1,
 		'layout-archive-featured-images-alignment' => 'center',
 		'layout-archive-post-date-location'        => 'top',
-		'layout-archive-post-author-location'      => 'footer',
+		'layout-archive-post-author-location'      => 'post-footer',
 		'layout-archive-comment-count'             => 'none',
 		'layout-archive-comment-count-location'    => 'before-content',
 
@@ -104,7 +104,7 @@ function ttfmake_option_defaults() {
 		'layout-search-show-tags'           => 1,
 		'layout-search-featured-images-alignment' => 'center',
 		'layout-search-post-date-location'        => 'top',
-		'layout-search-post-author-location'      => 'footer',
+		'layout-search-post-author-location'      => 'post-footer',
 		'layout-search-comment-count'             => 'none',
 		'layout-search-comment-count-location'    => 'before-content',
 
@@ -120,7 +120,7 @@ function ttfmake_option_defaults() {
 		'layout-post-show-tags'             => 1,
 		'layout-post-featured-images-alignment' => 'center',
 		'layout-post-post-date-location'        => 'top',
-		'layout-post-post-author-location'      => 'footer',
+		'layout-post-post-author-location'      => 'post-footer',
 		'layout-post-comment-count'             => 'none',
 		'layout-post-comment-count-location'    => 'before-content',
 
@@ -135,7 +135,7 @@ function ttfmake_option_defaults() {
 		'layout-page-post-author'           => 'none',
 		'layout-page-featured-images-alignment' => 'center',
 		'layout-page-post-date-location'        => 'top',
-		'layout-page-post-author-location'      => 'footer',
+		'layout-page-post-author-location'      => 'post-footer',
 		'layout-page-comment-count'             => 'none',
 		'layout-page-comment-count-location'    => 'before-content',
 

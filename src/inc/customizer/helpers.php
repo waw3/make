@@ -185,9 +185,9 @@ function ttfmake_get_choices( $setting ) {
 		case 'layout-page-post-author-location' :
 		case 'layout-page-comment-count-location' :
 			$choices = array(
-				'top' => __( 'Top', 'make' ),
+				'top'            => __( 'Top', 'make' ),
 				'before-content' => __( 'Before content', 'make' ),
-				'footer' => __( 'Post footer', 'make' ),
+				'post-footer'    => __( 'Post footer', 'make' ),
 			);
 			break;
 		case 'layout-blog-comment-count' :
