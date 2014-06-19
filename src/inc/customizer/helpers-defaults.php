@@ -68,6 +68,11 @@ function ttfmake_option_defaults() {
 		'layout-blog-auto-excerpt'          => 0,
 		'layout-blog-show-categories'       => 1,
 		'layout-blog-show-tags'             => 1,
+		'layout-blog-featured-images-alignment' => 'center',
+		'layout-blog-post-date-location'        => 'top',
+		'layout-blog-post-author-location'      => 'footer',
+		'layout-blog-comment-count'             => 'none',
+		'layout-blog-comment-count-location'    => 'before-content',
 
 		// Layout - Archive
 		'layout-archive-hide-header'        => 0,
@@ -80,6 +85,11 @@ function ttfmake_option_defaults() {
 		'layout-archive-auto-excerpt'       => 0,
 		'layout-archive-show-categories'    => 1,
 		'layout-archive-show-tags'          => 1,
+		'layout-archive-featured-images-alignment' => 'center',
+		'layout-archive-post-date-location'        => 'top',
+		'layout-archive-post-author-location'      => 'footer',
+		'layout-archive-comment-count'             => 'none',
+		'layout-archive-comment-count-location'    => 'before-content',
 
 		// Layout - Search
 		'layout-search-hide-header'         => 0,
@@ -92,6 +102,11 @@ function ttfmake_option_defaults() {
 		'layout-search-auto-excerpt'        => 1,
 		'layout-search-show-categories'     => 1,
 		'layout-search-show-tags'           => 1,
+		'layout-search-featured-images-alignment' => 'center',
+		'layout-search-post-date-location'        => 'top',
+		'layout-search-post-author-location'      => 'footer',
+		'layout-search-comment-count'             => 'none',
+		'layout-search-comment-count-location'    => 'before-content',
 
 		// Layout - Posts
 		'layout-post-hide-header'           => 0,
@@ -103,6 +118,11 @@ function ttfmake_option_defaults() {
 		'layout-post-post-author'           => 'avatar',
 		'layout-post-show-categories'       => 1,
 		'layout-post-show-tags'             => 1,
+		'layout-post-featured-images-alignment' => 'center',
+		'layout-post-post-date-location'        => 'top',
+		'layout-post-post-author-location'      => 'footer',
+		'layout-post-comment-count'             => 'none',
+		'layout-post-comment-count-location'    => 'before-content',
 
 		// Layout - Pages
 		'layout-page-hide-header'           => 0,
@@ -113,6 +133,11 @@ function ttfmake_option_defaults() {
 		'layout-page-featured-images'       => 'none',
 		'layout-page-post-date'             => 'none',
 		'layout-page-post-author'           => 'none',
+		'layout-page-featured-images-alignment' => 'center',
+		'layout-page-post-date-location'        => 'top',
+		'layout-page-post-author-location'      => 'footer',
+		'layout-page-comment-count'             => 'none',
+		'layout-page-comment-count-location'    => 'before-content',
 
 		// Header
 		'header-text-color'                 => '#171717',

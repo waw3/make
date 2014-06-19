@@ -114,6 +114,11 @@ function ttfmake_get_choices( $setting ) {
 		case 'header-background-position' :
 		case 'main-background-position' :
 		case 'footer-background-position' :
+		case 'layout-blog-featured-images-alignment' :
+		case 'layout-archive-featured-images-alignment' :
+		case 'layout-search-featured-images-alignment' :
+		case 'layout-post-featured-images-alignment' :
+		case 'layout-page-featured-images-alignment' :
 			$choices = array(
 				'left'   => __( 'Left', 'make' ),
 				'center' => __( 'Center', 'make' ),
@@ -162,6 +167,38 @@ function ttfmake_get_choices( $setting ) {
 			$choices = array(
 				1  => __( 'Traditional', 'make' ),
 				2  => __( 'Centered', 'make' ),
+			);
+			break;
+		case 'layout-blog-post-date-location' :
+		case 'layout-blog-post-author-location' :
+		case 'layout-blog-comment-count-location' :
+		case 'layout-archive-post-date-location' :
+		case 'layout-archive-post-author-location' :
+		case 'layout-archive-comment-count-location' :
+		case 'layout-search-post-date-location' :
+		case 'layout-search-post-author-location' :
+		case 'layout-search-comment-count-location' :
+		case 'layout-post-post-date-location' :
+		case 'layout-post-post-author-location' :
+		case 'layout-post-comment-count-location' :
+		case 'layout-page-post-date-location' :
+		case 'layout-page-post-author-location' :
+		case 'layout-page-comment-count-location' :
+			$choices = array(
+				'top' => __( 'Top', 'make' ),
+				'before-content' => __( 'Before content', 'make' ),
+				'footer' => __( 'Post footer', 'make' ),
+			);
+			break;
+		case 'layout-blog-comment-count' :
+		case 'layout-archive-comment-count' :
+		case 'layout-search-comment-count' :
+		case 'layout-post-comment-count' :
+		case 'layout-page-comment-count' :
+			$choices = array(
+				'icon' => __( 'With icon', 'make' ),
+				'text' => __( 'With text', 'make' ),
+				'none' => __( 'None' ),
 			);
 			break;
 	}
