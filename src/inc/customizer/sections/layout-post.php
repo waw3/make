@@ -139,6 +139,28 @@ function ttfmake_customizer_layout_post( $wp_customize, $section ) {
 		)
 	);
 
+	// Featured images alignment
+	$setting_id = $setting_prefix . '-featured-images-alignment';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Featured Images Alignment', 'make' ),
+			'type'     => 'select',
+			'choices'  => ttfmake_get_choices( $setting_id ),
+			'priority' => $priority->add()
+		)
+	);
+
 	// Post date
 	$setting_id = $setting_prefix . '-post-date';
 	$wp_customize->add_setting(
@@ -161,6 +183,28 @@ function ttfmake_customizer_layout_post( $wp_customize, $section ) {
 		)
 	);
 
+	// Post date location
+	$setting_id = $setting_prefix . '-post-date-location';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Post Date Location', 'make' ),
+			'type'     => 'select',
+			'choices'  => ttfmake_get_choices( $setting_id ),
+			'priority' => $priority->add()
+		)
+	);
+
 	// Post author
 	$setting_id = $setting_prefix . '-post-author';
 	$wp_customize->add_setting(
@@ -177,6 +221,28 @@ function ttfmake_customizer_layout_post( $wp_customize, $section ) {
 			'settings' => $setting_id,
 			'section'  => $section,
 			'label'    => __( 'Post Author', 'make' ),
+			'type'     => 'select',
+			'choices'  => ttfmake_get_choices( $setting_id ),
+			'priority' => $priority->add()
+		)
+	);
+
+	// Post author location
+	$setting_id = $setting_prefix . '-post-author-location';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Post Author Location', 'make' ),
 			'type'     => 'select',
 			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
@@ -236,6 +302,50 @@ function ttfmake_customizer_layout_post( $wp_customize, $section ) {
 			'section'  => $section,
 			'label'    => __( 'Show tags', 'make' ),
 			'type'     => 'checkbox',
+			'priority' => $priority->add()
+		)
+	);
+
+	// Comment count
+	$setting_id = $setting_prefix . '-comment-count';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Comment Count', 'make' ),
+			'type'     => 'select',
+			'choices'  => ttfmake_get_choices( $setting_id ),
+			'priority' => $priority->add()
+		)
+	);
+
+	// Comment count location
+	$setting_id = $setting_prefix . '-comment-count-location';
+	$wp_customize->add_setting(
+		$setting_id,
+		array(
+			'default'           => ttfmake_get_default( $setting_id ),
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'ttfmake_sanitize_choice',
+		)
+	);
+	$wp_customize->add_control(
+		$control_prefix . $setting_id,
+		array(
+			'settings' => $setting_id,
+			'section'  => $section,
+			'label'    => __( 'Comment Count Location', 'make' ),
+			'type'     => 'select',
+			'choices'  => ttfmake_get_choices( $setting_id ),
 			'priority' => $priority->add()
 		)
 	);
