@@ -47,7 +47,8 @@ function ttfmake_css_add_rules() {
 	// Primary color
 	if ( $color_primary !== ttfmake_get_default( 'color-primary' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttfmake-list-dot li:before', 'ol.ttfmake-list-dot li:before' ),
+			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttfmake-list-dot li:before', 'ol.ttfmake-list-dot li:before', '.entry-comment-count a:hover',
+'.comment-count-icon a:hover' ),
 			'declarations' => array(
 				'color' => $color_primary
 			)
@@ -184,7 +185,8 @@ function ttfmake_css_add_rules() {
 	// Detail color
 	if ( $color_detail !== ttfmake_get_default( 'color-detail' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-detail-text', '.builder-section-banner .cycle-pager .cycle-pager-active', '.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active', '.post-categories li:after', '.post-tags li:after' ),
+			'selectors'    => array( '.color-detail-text', '.builder-section-banner .cycle-pager .cycle-pager-active', '.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active', '.post-categories li:after', '.post-tags li:after', '.comment-count-icon:before', '.entry-comment-count a',
+'.comment-count-icon a' ),
 			'declarations' => array(
 				'color' => $color_detail
 			)

@@ -48,6 +48,25 @@
 		font-style: normal; //reset
 	}
 }
+.entry-comment-count {
+	@include rem('margin-bottom', $base);
+}
+.entry-comment-count a,
+.comment-count-icon a {
+	color: $e;
+	font-weight: normal; //reset
+	@include rem('font-size', 14px);
+	&:hover {
+		color: $c;
+	}
+}
+.comment-count-icon:before {
+	content: "\f075";
+	float: left;
+	font-family: FontAwesome;
+	color: $e;
+	@include rem('padding-right', 8px);
+}
 .entry-author-avatar {
 	float: left;
 	line-height: 0; //reset

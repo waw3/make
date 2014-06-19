@@ -1590,6 +1590,30 @@ iframe[src*="google.com/maps"] {
 	color: #3070d1;
 }
 
+.entry-comment-count {
+	margin-bottom: 22px;
+	margin-bottom: 2.2rem;
+}
+
+.entry-comment-count a, .comment-count-icon a {
+	font-size: 14px;
+	font-size: 1.4rem;
+	font-weight: normal;
+	color: #b9bcbf;
+}
+.entry-comment-count a:hover, .comment-count-icon a:hover {
+	color: #3070d1;
+}
+
+.comment-count-icon:before {
+	font-family: FontAwesome;
+	float: left;
+	padding-right: 8px;
+	padding-right: .8rem;
+	content: "\f075";
+	color: #b9bcbf;
+}
+
 .entry-author-avatar {
 	line-height: 0;
 	float: left;
