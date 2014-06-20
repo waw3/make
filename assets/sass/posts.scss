@@ -29,12 +29,16 @@
 	@include rem('letter-spacing', 1px);
 	@include rem('margin-bottom', $base/2);
 	.entry-header & {
+		display: inline-block;
+		margin-bottom: 0; //reset
+		line-height: 40px;
 		@include rem('margin-top', $base);
 	}
 	.entry-footer & {
 		text-transform: none; //reset
 		letter-spacing: 0; //reset
 		@include rem('font-size', 14px);
+		@include rem('margin-bottom', $base);
 	}
 	a {
 		color: $b;
@@ -43,6 +47,14 @@
 }
 .entry-author {
 	@include rem('margin', $base 0 $base);
+	.entry-header & {
+		display: inline-block;
+		margin-bottom: 0; //reset
+		.entry-author-byline {
+			display: inline-block;
+			@include rem('margin-right', 8px);
+		}
+	}
 	.entry-footer & {
 		@include rem('margin', $base*2 0 $base);
 	}
