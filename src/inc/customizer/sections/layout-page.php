@@ -117,6 +117,21 @@ function ttfmake_customizer_layout_page( $wp_customize, $section ) {
 		)
 	);
 
+	// Google font info
+	$setting_id = $setting_prefix . '-sidebar-info';
+	$wp_customize->add_control(
+		new TTFMAKE_Customize_Misc_Control(
+			$wp_customize,
+			$control_prefix . $setting_id,
+			array(
+				'section'     => $section,
+				'type'        => 'text',
+				'description' => __( 'Sidebars are not available on pages using the Builder Template.', 'make' ),
+				'priority'    => $priority->add()
+			)
+		)
+	);
+
 	// Page title heading
 	$setting_id = $setting_prefix . '-heading-page-title';
 	$wp_customize->add_control(
