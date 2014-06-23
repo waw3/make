@@ -117,7 +117,7 @@ function ttfmake_customizer_layout_page( $wp_customize, $section ) {
 		)
 	);
 
-	// Google font info
+	// Sidebar note
 	$setting_id = $setting_prefix . '-sidebar-info';
 	$wp_customize->add_control(
 		new TTFMAKE_Customize_Misc_Control(
