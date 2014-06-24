@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.0.11
+ * Version:     1.1.0
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -1557,9 +1557,26 @@ iframe[src*="google.com/maps"] {
 	font-size: 12px;
 	font-size: 1.2rem;
 	font-weight: bold;
+	display: block;
+	float: left;
+	margin-bottom: 11px;
+	margin-bottom: 1.1rem;
 	letter-spacing: 1px;
 	letter-spacing: .1rem;
 	text-transform: uppercase;
+}
+.entry-header .entry-date, .entry-header .site-wrapper div.sharedaddy h3, .site-wrapper div.sharedaddy .entry-header h3 {
+	line-height: 40px;
+}
+.entry-footer .entry-date, .entry-footer .site-wrapper div.sharedaddy h3, .site-wrapper div.sharedaddy .entry-footer h3 {
+	font-size: 14px;
+	font-size: 1.4rem;
+	display: inline-block;
+	float: none;
+	margin-bottom: 22px;
+	margin-bottom: 2.2rem;
+	letter-spacing: 0;
+	text-transform: none;
 }
 .entry-date a, .entry-date .site-wrapper div.sharedaddy h3, .site-wrapper div.sharedaddy .entry-date h3 {
 	text-decoration: none;
@@ -1567,8 +1584,30 @@ iframe[src*="google.com/maps"] {
 }
 
 .entry-author {
+	float: left;
+	clear: both;
+	margin: 22px 0 22px;
+	margin: 2.2rem 0 2.2rem;
+}
+.entry-header .entry-author {
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.entry-header .entry-author .entry-author-byline {
+	display: inline-block;
+	margin-right: 8px;
+	margin-right: .8rem;
+}
+.entry-footer .entry-author {
+	display: block;
+	float: none;
 	margin: 44px 0 22px;
 	margin: 4.4rem 0 2.2rem;
+}
+
+.entry-content {
+	clear: both;
 }
 
 .entry-author-bio {
@@ -1588,6 +1627,45 @@ iframe[src*="google.com/maps"] {
 	font-weight: bold;
 	font-style: normal;
 	color: #3070d1;
+}
+
+.entry-comment-count {
+	margin-bottom: 11px;
+	margin-bottom: 1.1rem;
+}
+.entry-header .entry-comment-count {
+	line-height: 40px;
+	float: right;
+	clear: both;
+}
+.entry-footer .entry-comment-count {
+	margin-bottom: 22px;
+	margin-bottom: 2.2rem;
+}
+
+.entry-comment-count a, .comment-count-icon a {
+	font-size: 14px;
+	font-size: 1.4rem;
+	font-weight: normal;
+	color: #b9bcbf;
+}
+.entry-comment-count a:hover, .comment-count-icon a:hover {
+	color: #3070d1;
+}
+
+.comment-count-icon:before {
+	font-family: FontAwesome;
+	position: relative;
+	top: 1px;
+	top: .1rem;
+	float: left;
+	padding-right: 8px;
+	padding-right: .8rem;
+	content: "\f075";
+	color: #b9bcbf;
+}
+.entry-footer .comment-count-icon:before {
+	top: 0;
 }
 
 .entry-author-avatar {
@@ -1666,11 +1744,13 @@ iframe[src*="google.com/maps"] {
 /*---------------------------------------------------------
  Sticky label (_posts.scss)
 -------------------------------------------------------- */
+.sticky-post-label-wrapper {
+	clear: both;
+}
+
 .sticky-post-label {
 	font-size: 12px;
 	font-size: 1.2rem;
-	margin-left: 8px;
-	margin-left: .8rem;
 	padding: 4px 6px;
 	padding: .4rem .6rem;
 	letter-spacing: 2px;

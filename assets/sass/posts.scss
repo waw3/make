@@ -22,17 +22,50 @@
 	@include rem('word-spacing', -1px);
 }
 .entry-date {
+	display: block;
+	float: left;
 	text-transform: uppercase;
 	font-weight: bold;
 	@include rem('font-size', 12px);
 	@include rem('letter-spacing', 1px);
+	@include rem('margin-bottom', $base/2);
+	.entry-header & {
+		line-height: 40px;
+	}
+	.entry-footer & {
+		display: inline-block;
+		float: none; //reset
+		text-transform: none; //reset
+		letter-spacing: 0; //reset
+		@include rem('font-size', 14px);
+		@include rem('margin-bottom', $base);
+	}
 	a {
 		color: $b;
 		text-decoration: none; //reset
 	}
 }
 .entry-author {
-	@include rem('margin', $base*2 0 $base);
+	float: left;
+	clear: both;
+	@include rem('margin', $base 0 $base);
+	.entry-header & {
+		display: inline-block;
+		margin-top: 0; //reset
+		margin-bottom: 0; //reset
+		.entry-author-byline {
+			display: inline-block;
+			@include rem('margin-right', 8px);
+		}
+	}
+	.entry-footer & {
+		display: block;
+		float: none; //reset
+		@include rem('margin', $base*2 0 $base);
+	}
+}
+.entry-content {
+	clear: both;
 }
 .entry-author-bio {
 	@include rem('margin-top', $base/2);
@@ -46,6 +79,38 @@
 		color: $c;
 		font-weight: bold;
 		font-style: normal; //reset
+	}
+}
+.entry-comment-count {
+	@include rem('margin-bottom', $base/2);
+	.entry-header & {
+		float: right;
+		clear: both;
+		line-height: 40px;
+	}
+	.entry-footer & {
+		@include rem('margin-bottom', $base);
+	}
+}
+.entry-comment-count a,
+.comment-count-icon a {
+	color: $e;
+	font-weight: normal; //reset
+	@include rem('font-size', 14px);
+	&:hover {
+		color: $c;
+	}
+}
+.comment-count-icon:before {
+	position: relative;
+	content: "\f075";
+	float: left;
+	font-family: FontAwesome;
+	color: $e;
+	@include rem('top', 1px);
+	@include rem('padding-right', 8px);
+	.entry-footer & {
+		top: 0; //reset
 	}
 }
 .entry-author-avatar {
@@ -108,10 +173,12 @@
 /*---------------------------------------------------------
  Sticky label (_posts.scss)
 -------------------------------------------------------- */
+.sticky-post-label-wrapper {
+	clear: both;
+}
 .sticky-post-label {
 	text-transform: uppercase;
 	background-color: $d;
-	@include rem('margin-left', $gut/4);
 	@include rem('padding', 4px 6px);
 	@include rem('font-size', 12px);
 	@include rem('letter-spacing', 2px);
