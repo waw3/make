@@ -8,16 +8,17 @@ $thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_
 
 // Header
 ob_start();
-get_template_part( 'partials/entry', 'date' );
+get_template_part( 'partials/entry', 'meta-top' );
 if ( 'post-header' === $thumb_option ) :
 	get_template_part( 'partials/entry', 'thumbnail' );
 endif;
 get_template_part( 'partials/entry', 'title' );
+get_template_part( 'partials/entry', 'meta-before-content' );
 $entry_header = trim( ob_get_clean() );
 
 // Footer
 ob_start();
-get_template_part( 'partials/entry', 'author' );
+get_template_part( 'partials/entry', 'meta-post-footer' );
 get_template_part( 'partials/entry', 'sharing' );
 $entry_footer = trim( ob_get_clean() );
 ?>

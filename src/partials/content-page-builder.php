@@ -5,13 +5,14 @@
 
 // Header
 ob_start();
-get_template_part( 'partials/entry', 'date' );
+get_template_part( 'partials/entry', 'meta-top' );
 get_template_part( 'partials/entry', 'title' );
+get_template_part( 'partials/entry', 'meta-before-content' );
 $entry_header = trim( ob_get_clean() );
 
 // Footer
 ob_start();
-get_template_part( 'partials/entry', 'author' );
+get_template_part( 'partials/entry', 'meta-post-footer' );
 get_template_part( 'partials/entry', 'sharing' );
 $entry_footer = trim( ob_get_clean() );
 ?>

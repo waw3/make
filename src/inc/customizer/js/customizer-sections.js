@@ -34,6 +34,86 @@
 		'footer-background-image': {
 			controls: [ 'ttfmake_footer-background-repeat', 'ttfmake_footer-background-position', 'ttfmake_footer-background-size' ],
 			callback: function( to ) { return !! to; }
+		},
+		'layout-blog-featured-images': {
+			controls: [ 'ttfmake_layout-blog-featured-images-alignment' ],
+			callback: function( to ) { return ( 'post-header' === to ); }
+		},
+		'layout-archive-featured-images': {
+			controls: [ 'ttfmake_layout-archive-featured-images-alignment' ],
+			callback: function( to ) { return ( 'post-header' === to ); }
+		},
+		'layout-search-featured-images': {
+			controls: [ 'ttfmake_layout-search-featured-images-alignment' ],
+			callback: function( to ) { return ( 'post-header' === to ); }
+		},
+		'layout-post-featured-images': {
+			controls: [ 'ttfmake_layout-post-featured-images-alignment' ],
+			callback: function( to ) { return ( 'post-header' === to ); }
+		},
+		'layout-page-featured-images': {
+			controls: [ 'ttfmake_layout-page-featured-images-alignment' ],
+			callback: function( to ) { return ( 'post-header' === to ); }
+		},
+		'layout-blog-post-date': {
+			controls: [ 'ttfmake_layout-blog-post-date-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-archive-post-date': {
+			controls: [ 'ttfmake_layout-archive-post-date-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-search-post-date': {
+			controls: [ 'ttfmake_layout-search-post-date-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-post-post-date': {
+			controls: [ 'ttfmake_layout-post-post-date-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-page-post-date': {
+			controls: [ 'ttfmake_layout-page-post-date-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-blog-post-author': {
+			controls: [ 'ttfmake_layout-blog-post-author-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-archive-post-author': {
+			controls: [ 'ttfmake_layout-archive-post-author-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-search-post-author': {
+			controls: [ 'ttfmake_layout-search-post-author-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-post-post-author': {
+			controls: [ 'ttfmake_layout-post-post-author-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-page-post-author': {
+			controls: [ 'ttfmake_layout-page-post-author-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-blog-comment-count': {
+			controls: [ 'ttfmake_layout-blog-comment-count-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-archive-comment-count': {
+			controls: [ 'ttfmake_layout-archive-comment-count-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-search-comment-count': {
+			controls: [ 'ttfmake_layout-search-comment-count-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-post-comment-count': {
+			controls: [ 'ttfmake_layout-post-comment-count-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
+		},
+		'layout-page-comment-count': {
+			controls: [ 'ttfmake_layout-page-comment-count-location' ],
+			callback: function( to ) { return ( 'none' !== to ); }
 		}
 	}, function( settingId, o ) {
 		api( settingId, function( setting ) {
