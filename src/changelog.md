@@ -1,3 +1,9 @@
+## 1.1.0
+
+* Added control for showing comment count
+* Added controls for positioning author, date, and comment count
+* Added control for aligning featured images
+
 ## 1.0.11
 
 * Improved messaging about Make Plus
