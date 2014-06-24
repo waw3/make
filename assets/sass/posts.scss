@@ -21,6 +21,9 @@
 	@include rem('margin-top', $base/4);
 	@include rem('word-spacing', -1px);
 }
+.has-author-avatar .entry-header .entry-date {
+	float: right;
+}
 .entry-date {
 	display: block;
 	text-transform: uppercase;
@@ -32,7 +35,6 @@
 		display: inline-block;
 		margin-bottom: 0; //reset
 		line-height: 40px;
-		@include rem('margin-top', $base);
 	}
 	.entry-footer & {
 		text-transform: none; //reset
@@ -49,6 +51,7 @@
 	@include rem('margin', $base 0 $base);
 	.entry-header & {
 		display: inline-block;
+		margin-top: 0; //reset
 		margin-bottom: 0; //reset
 		.entry-author-byline {
 			display: inline-block;
@@ -58,6 +61,9 @@
 	.entry-footer & {
 		@include rem('margin', $base*2 0 $base);
 	}
+}
+.entry-content {
+	clear: both;
 }
 .entry-author-bio {
 	@include rem('margin-top', $base/2);
@@ -75,6 +81,11 @@
 }
 .entry-comment-count {
 	@include rem('margin-bottom', $base);
+	.entry-header & {
+		float: right;
+		clear: both;
+		line-height: 40px;
+	}
 }
 .entry-comment-count a,
 .comment-count-icon a {
@@ -91,7 +102,7 @@
 	float: left;
 	font-family: FontAwesome;
 	color: $e;
-	@include rem('top', 4px);
+	@include rem('top', 1px);
 	@include rem('padding-right', 8px);
 	.entry-footer & {
 		top: 0; //reset
@@ -157,6 +168,9 @@
 /*---------------------------------------------------------
  Sticky label (_posts.scss)
 -------------------------------------------------------- */
+.sticky-post-label-wrapper {
+	clear: both;
+}
 .sticky-post-label {
 	text-transform: uppercase;
 	background-color: $d;
