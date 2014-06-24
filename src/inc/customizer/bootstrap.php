@@ -265,9 +265,9 @@ function ttfmake_display_customizations() {
 	// Echo the rules
 	$css = ttfmake_get_css()->build();
 	if ( ! empty( $css ) ) {
-		echo "\n<!-- Begin One Custom CSS -->\n<style type=\"text/css\" id=\"tff-one-custom-css\">\n";
+		echo "\n<!-- Begin Make Custom CSS -->\n<style type=\"text/css\" id=\"ttfmake-custom-css\">\n";
 		echo $css;
-		echo "\n</style>\n<!-- End One Custom CSS -->\n";
+		echo "\n</style>\n<!-- End Make Custom CSS -->\n";
 	}
 }
 endif;
