@@ -333,31 +333,48 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 
 	unset( $menu_items, $menu_item );
 
-	// Supported social icons (filterable); [css class] => [url pattern]
+	// Supported social icons (filterable); [url pattern] => [css class]
 	$supported_icons = apply_filters( 'ttfmake_supported_social_icons', array(
-		'fa-adn'                => 'app.net',
-		'fa-bitbucket'          => 'bitbucket.org',
-		'fa-dribbble'           => 'dribbble.com',
-		'fa-facebook'           => 'facebook.com',
-		'fa-flickr'             => 'flickr.com',
-		'fa-foursquare'         => 'foursquare.com',
-		'fa-github'             => 'github.com',
-		'fa-gittip'             => 'gittip.com',
-		'fa-google-plus-square' => 'plus.google.com',
-		'fa-instagram'          => 'instagram.com',
-		'fa-linkedin'           => 'linkedin.com',
-		'fa-pinterest'          => 'pinterest.com',
-		'fa-renren'             => 'renren.com',
-		'fa-stack-exchange'     => 'stackexchange.com',
-		'fa-stack-overflow'     => 'stackoverflow.com',
-		'fa-trello'             => 'trello.com',
-		'fa-tumblr'             => 'tumblr.com',
-		'fa-twitter'            => 'twitter.com',
-		'fa-vimeo-square'       => 'vimeo.com',
-		'fa-vk'                 => 'vk.com',
-		'fa-weibo'              => 'weibo.com',
-		'fa-xing'               => 'xing.com',
-		'fa-youtube'            => 'youtube.com',
+		'app.net'            => 'fa-adn',
+		'behance.net'        => 'fa-behance',
+		'bitbucket.org'      => 'fa-bitbucket',
+		'codepen.io'         => 'fa-codepen',
+		'delicious.com'      => 'fa-delicious',
+		'deviantart.com'     => 'fa-deviantart',
+		'digg.com'           => 'fa-digg',
+		'dribbble.com'       => 'fa-dribbble',
+		'facebook.com'       => 'fa-facebook',
+		'flickr.com'         => 'fa-flickr',
+		'foursquare.com'     => 'fa-foursquare',
+		'github.com'         => 'fa-github',
+		'gittip.com'         => 'fa-gittip',
+		'plus.google.com'    => 'fa-google-plus-square',
+		'instagram.com'      => 'fa-instagram',
+		'jsfiddle.net'       => 'fa-jsfiddle',
+		'linkedin.com'       => 'fa-linkedin',
+		'pinterest.com'      => 'fa-pinterest',
+		'qzone.qq.com'       => 'fa-qq',
+		'reddit.com'         => 'fa-reddit',
+		'renren.com'         => 'fa-renren',
+		'soundcloud.com'     => 'fa-soundcloud',
+		'spotify.com'        => 'fa-spotify',
+		'stackexchange.com'  => 'fa-stack-exchange',
+		'stackoverflow.com'  => 'fa-stack-overflow',
+		'steamcommunity.com' => 'fa-steam',
+		'stumbleupon.com'    => 'fa-stumbleupon',
+		't.qq.com'           => 'fa-tencent-weibo',
+		'trello.com'         => 'fa-trello',
+		'tumblr.com'         => 'fa-tumblr',
+		'twitter.com'        => 'fa-twitter',
+		'vimeo.com'          => 'fa-vimeo-square',
+		'vine.co'            => 'fa-vine',
+		'vk.com'             => 'fa-vk',
+		'weibo.com'          => 'fa-weibo',
+		'weixin.qq.com'      => 'fa-weixin',
+		'wordpress.com'      => 'fa-wordpress',
+		'xing.com'           => 'fa-xing',
+		'yahoo.com'          => 'fa-yahoo',
+		'youtube.com'        => 'fa-youtube',
 	) );
 
 	// Process each menu item
@@ -365,7 +382,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		$item_output = '';
 
 		// Look for matching icons
-		foreach ( $supported_icons as $class => $pattern ) {
+		foreach ( $supported_icons as $pattern => $class ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
 				$item_output .= '<li class="' . esc_attr( str_replace( 'fa-', '', $class ) ) . '">';
 				$item_output .= '<a href="' . esc_url( $item->url ) . '" title="' . esc_attr( $item->title ) . '">';
