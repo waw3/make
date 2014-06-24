@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.0.11\n"
+"Project-Id-Version: Make 1.1.0\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-06-24 16:37:44+00:00\n"
+"POT-Creation-Date: 2014-06-24 22:15:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -163,17 +163,18 @@ msgstr ""
 #: inc/builder/sections/builder-templates/gallery.php:35
 #: inc/builder/sections/builder-templates/gallery.php:45
 #: inc/customizer/helpers.php:78 inc/customizer/helpers.php:90
-#: inc/customizer/helpers.php:101 inc/gallery-slider/gallery-slider.php:118
+#: inc/customizer/helpers.php:101 inc/customizer/helpers.php:201
+#: inc/gallery-slider/gallery-slider.php:118
 msgid "None"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:60
-#: inc/customizer/helpers.php:118 inc/customizer/helpers.php:148
+#: inc/customizer/helpers.php:123 inc/customizer/helpers.php:153
 msgid "Left"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:61
-#: inc/customizer/helpers.php:120 inc/customizer/helpers.php:149
+#: inc/customizer/helpers.php:125 inc/customizer/helpers.php:154
 msgid "Right"
 msgstr ""
 
@@ -350,7 +351,7 @@ msgid "Tile"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/gallery.php:114
-#: inc/customizer/helpers.php:129
+#: inc/customizer/helpers.php:134
 msgid "Cover"
 msgstr ""
 
@@ -534,43 +535,63 @@ msgstr ""
 msgid "Tile Vertically"
 msgstr ""
 
-#: inc/customizer/helpers.php:119
+#: inc/customizer/helpers.php:124
 msgid "Center"
 msgstr ""
 
-#: inc/customizer/helpers.php:128
+#: inc/customizer/helpers.php:133
 msgid "Auto"
 msgstr ""
 
-#: inc/customizer/helpers.php:130
+#: inc/customizer/helpers.php:135
 msgid "Contain"
 msgstr ""
 
-#: inc/customizer/helpers.php:135
+#: inc/customizer/helpers.php:140
 msgid "Default"
 msgstr ""
 
-#: inc/customizer/helpers.php:136
+#: inc/customizer/helpers.php:141
 msgid "Flipped"
 msgstr ""
 
-#: inc/customizer/helpers.php:141 inc/customizer/helpers.php:163
+#: inc/customizer/helpers.php:146 inc/customizer/helpers.php:168
 msgid "Traditional"
 msgstr ""
 
-#: inc/customizer/helpers.php:142 inc/customizer/helpers.php:164
+#: inc/customizer/helpers.php:147 inc/customizer/helpers.php:169
 msgid "Centered"
 msgstr ""
 
-#: inc/customizer/helpers.php:143
+#: inc/customizer/helpers.php:148
 msgid "Navigation Below"
 msgstr ""
 
-#: inc/customizer/helpers.php:273 inc/customizer/sections/social.php:261
+#: inc/customizer/helpers.php:188
+msgid "Top"
+msgstr ""
+
+#: inc/customizer/helpers.php:189
+msgid "Before content"
+msgstr ""
+
+#: inc/customizer/helpers.php:190
+msgid "Post footer"
+msgstr ""
+
+#: inc/customizer/helpers.php:199
+msgid "With icon"
+msgstr ""
+
+#: inc/customizer/helpers.php:200
+msgid "With text"
+msgstr ""
+
+#: inc/customizer/helpers.php:310 inc/customizer/sections/social.php:261
 msgid "Email"
 msgstr ""
 
-#: inc/customizer/helpers.php:277
+#: inc/customizer/helpers.php:314
 msgid "RSS"
 msgstr ""
 
@@ -837,7 +858,7 @@ msgstr ""
 #: inc/customizer/sections/layout-page.php:208
 #: inc/customizer/sections/layout-post.php:157
 #: inc/customizer/sections/layout-search.php:157
-msgid "Post Date"
+msgid "Featured Images Alignment"
 msgstr ""
 
 #: inc/customizer/sections/layout-archive.php:179
@@ -845,40 +866,80 @@ msgstr ""
 #: inc/customizer/sections/layout-page.php:230
 #: inc/customizer/sections/layout-post.php:179
 #: inc/customizer/sections/layout-search.php:179
+msgid "Post Date"
+msgstr ""
+
+#: inc/customizer/sections/layout-archive.php:201
+#: inc/customizer/sections/layout-blog.php:201
+#: inc/customizer/sections/layout-page.php:252
+#: inc/customizer/sections/layout-post.php:201
+#: inc/customizer/sections/layout-search.php:201
+msgid "Post Date Location"
+msgstr ""
+
+#: inc/customizer/sections/layout-archive.php:223
+#: inc/customizer/sections/layout-blog.php:223
+#: inc/customizer/sections/layout-page.php:274
+#: inc/customizer/sections/layout-post.php:223
+#: inc/customizer/sections/layout-search.php:223
 msgid "Post Author"
 msgstr ""
 
-#: inc/customizer/sections/layout-archive.php:195
-#: inc/customizer/sections/layout-blog.php:195
-#: inc/customizer/sections/layout-search.php:195
+#: inc/customizer/sections/layout-archive.php:245
+#: inc/customizer/sections/layout-blog.php:245
+#: inc/customizer/sections/layout-page.php:296
+#: inc/customizer/sections/layout-post.php:245
+#: inc/customizer/sections/layout-search.php:245
+msgid "Post Author Location"
+msgstr ""
+
+#: inc/customizer/sections/layout-archive.php:261
+#: inc/customizer/sections/layout-blog.php:261
+#: inc/customizer/sections/layout-search.php:261
 msgid "Content"
 msgstr ""
 
-#: inc/customizer/sections/layout-archive.php:216
-#: inc/customizer/sections/layout-blog.php:216
-#: inc/customizer/sections/layout-search.php:216
+#: inc/customizer/sections/layout-archive.php:282
+#: inc/customizer/sections/layout-blog.php:282
+#: inc/customizer/sections/layout-search.php:282
 msgid "Generate excerpts automatically"
 msgstr ""
 
-#: inc/customizer/sections/layout-archive.php:231
-#: inc/customizer/sections/layout-blog.php:231
-#: inc/customizer/sections/layout-post.php:195
-#: inc/customizer/sections/layout-search.php:231
+#: inc/customizer/sections/layout-archive.php:297
+#: inc/customizer/sections/layout-blog.php:297
+#: inc/customizer/sections/layout-post.php:261
+#: inc/customizer/sections/layout-search.php:297
 msgid "Post Meta"
 msgstr ""
 
-#: inc/customizer/sections/layout-archive.php:252
-#: inc/customizer/sections/layout-blog.php:252
-#: inc/customizer/sections/layout-post.php:216
-#: inc/customizer/sections/layout-search.php:252
+#: inc/customizer/sections/layout-archive.php:318
+#: inc/customizer/sections/layout-blog.php:318
+#: inc/customizer/sections/layout-post.php:282
+#: inc/customizer/sections/layout-search.php:318
 msgid "Show categories"
 msgstr ""
 
-#: inc/customizer/sections/layout-archive.php:273
-#: inc/customizer/sections/layout-blog.php:273
-#: inc/customizer/sections/layout-post.php:237
-#: inc/customizer/sections/layout-search.php:273
+#: inc/customizer/sections/layout-archive.php:339
+#: inc/customizer/sections/layout-blog.php:339
+#: inc/customizer/sections/layout-post.php:303
+#: inc/customizer/sections/layout-search.php:339
 msgid "Show tags"
+msgstr ""
+
+#: inc/customizer/sections/layout-archive.php:360
+#: inc/customizer/sections/layout-blog.php:360
+#: inc/customizer/sections/layout-page.php:318
+#: inc/customizer/sections/layout-post.php:324
+#: inc/customizer/sections/layout-search.php:360
+msgid "Comment Count"
+msgstr ""
+
+#: inc/customizer/sections/layout-archive.php:382
+#: inc/customizer/sections/layout-blog.php:382
+#: inc/customizer/sections/layout-page.php:340
+#: inc/customizer/sections/layout-post.php:346
+#: inc/customizer/sections/layout-search.php:382
+msgid "Comment Count Location"
 msgstr ""
 
 #: inc/customizer/sections/layout-page.php:129
@@ -1404,27 +1465,27 @@ msgctxt "font style"
 msgid "Monospaced"
 msgstr ""
 
-#: inc/customizer/helpers.php:154
+#: inc/customizer/helpers.php:159
 msgctxt "footer widget area number"
 msgid "0"
 msgstr ""
 
-#: inc/customizer/helpers.php:155
+#: inc/customizer/helpers.php:160
 msgctxt "footer widget area number"
 msgid "1"
 msgstr ""
 
-#: inc/customizer/helpers.php:156
+#: inc/customizer/helpers.php:161
 msgctxt "footer widget area number"
 msgid "2"
 msgstr ""
 
-#: inc/customizer/helpers.php:157
+#: inc/customizer/helpers.php:162
 msgctxt "footer widget area number"
 msgid "3"
 msgstr ""
 
-#: inc/customizer/helpers.php:158
+#: inc/customizer/helpers.php:163
 msgctxt "footer widget area number"
 msgid "4"
 msgstr ""
