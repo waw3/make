@@ -17,10 +17,10 @@ if ( $ttfmake_current_location === $author_option ) :
 	get_template_part( 'partials/entry', 'author' );
 endif;
 
-if ( $ttfmake_current_location === $date_option ) :
-	get_template_part( 'partials/entry', 'date' );
-endif;
-
 if ( $ttfmake_current_location === $comment_count_option ) :
 	get_template_part( 'partials/entry', 'comment-count' );
+endif;
+
+if ( $ttfmake_current_location === $date_option ) :
+	get_template_part( 'partials/entry', 'date' );
 endif;
