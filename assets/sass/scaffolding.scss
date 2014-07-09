@@ -426,9 +426,9 @@ a {
 			.sub-menu,
 			.children {
 				position: absolute;
+				display: none;
 				z-index: 99999;
 				overflow: hidden;
-				clip: rect(1px, 1px, 1px, 1px);
 				background-color: $d;
 				li:first-of-type a {
 					@include rem('padding', 15px $gut/2);
@@ -517,7 +517,7 @@ a {
 		.menu ul li:hover > ul,
 		ul.menu .focus > ul,
 		.menu .focus > ul {
-			clip: inherit;
+			display: block;
 			overflow: inherit;
 			height: inherit;
 			width: inherit;
