@@ -370,3 +370,36 @@ function ttfmake_get_plus_link( $component ) {
 	$url = 'https://thethemefoundry.com/wordpress-themes/make/?utm_source=make&utm_medium=link&utm_content=' . urlencode( sanitize_title_with_dashes( $component ) ) . '&utm_campaign=plus#make-table';
 	return esc_url( $url );
 }
+
+/**
+ * Add notice if Make Plus is installed as a plugin.
+ *
+ * @since  1.1.2.
+ *
+ * @param  string         $source           File source location.
+ * @param  string         $remote_source    Remove file source location.
+ * @param  WP_Upgrader    $upgrader         WP_Upgrader instance.
+ * @return WP_Error                         Error or source on success.
+ */
+function ttf_check_package( $source, $remote_source, $upgrader ) {
+	global $wp_filesystem;
+
+	if ( is_wp_error( $source ) ) {
+		return $source;
+	}
+
+	// Check the folder contains a valid theme
+	$working_directory = str_replace( $wp_filesystem->wp_content_dir(), trailingslashit( WP_CONTENT_DIR ), $source );
+	if ( ! is_dir( $working_directory ) ) { // Sanity check, if the above fails, lets not prevent installation.
+		return $source;
+	}
+
+	// A proper archive should have a style.css file in the single subdirectory
+	if ( ! file_exists( $working_directory . 'style.css' ) && strpos( $source, 'make-plus-' ) >= 0 ) {
+		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings[ 'incompatible_archive' ], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.' ) );
+	}
+
+	return $source;
+}
+
+add_filter( 'upgrader_source_selection', 'ttf_check_package', 9, 3 );
