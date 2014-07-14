@@ -372,7 +372,7 @@ function ttfmake_get_plus_link( $component ) {
 }
 
 /**
- * Add notice if Make Plus is installed as a plugin.
+ * Add notice if Make Plus is installed as a theme.
  *
  * @since  1.1.2.
  *
