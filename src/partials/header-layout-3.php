@@ -27,6 +27,12 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default
 				<?php echo ttfmake_sanitize_text( $header_text ); ?>
 			</span>
 			<?php endif; ?>
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'header-bar',
+				'fallback_cb'    => false,
+			) );
+			?>
 		</div>
 	</div>
 	<?php endif; ?>
