@@ -263,9 +263,35 @@ a {
 		}
 		@include rem('padding-top', $base/2);
 	}
+	.menu {
+		@include for(large-screens) {
+			float: right;
+		}
+		clear: right;
+		padding: 0; //reset
+		list-style: none; //reset
+		@include rem('margin', $base/2 0 $base);
+		li {
+			display: inline-block;
+			text-align: left;
+			@include rem('padding-right', $gut/2);
+			&:last-of-type {
+				padding-right: 0; //reset
+			}
+		}
+		a {
+			font-weight: normal; //reset
+			text-transform: uppercase;
+			@include rem('font-size', 13px);
+			@include rem('letter-spacing', 1px);
+		}
+	}
 }
 .header-text {
-	display: block;
+	@include for(large-screens) {
+		float: left;
+		display: inline-block;
+	}
 	@include rem('margin-top', 2px);
 	@include rem('padding', $base/2 0);
 	@include rem('font-size', 12px);
