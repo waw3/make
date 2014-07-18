@@ -224,6 +224,10 @@ a {
 				padding-left: 0; //reset
 				@include rem('padding-right', $gut/2);
 			}
+			.menu {
+				clear: both;
+				float: left;
+			}
 		}
 	}
 	a {
