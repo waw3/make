@@ -384,6 +384,10 @@ function ttfmake_get_plus_link( $component ) {
 function ttf_check_package( $source, $remote_source, $upgrader ) {
 	global $wp_filesystem;
 
+	if ( ! isset( $_GET['action'] ) || 'upload-theme' !== $_GET['action'] ) {
+		return $source;
+	}
+
 	if ( is_wp_error( $source ) ) {
 		return $source;
 	}
