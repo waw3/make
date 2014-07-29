@@ -8,23 +8,10 @@
  */
 define( 'TTFMAKE_VERSION', '1.2.0' );
 
-if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
-/**
- * Whether or not the current environment is WordPress.com.
- *
- * @since  1.0.0.
- *
- * @return bool    Whether or not the current environment is WordPress.com.
- */
-function ttfmake_is_wpcom() {
-	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
-}
-endif;
-
 /**
  * The suffix to use for scripts.
  */
-if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttfmake_is_wpcom() ) {
+if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
 	define( 'TTFMAKE_SUFFIX', '' );
 } else {
 	define( 'TTFMAKE_SUFFIX', '.min' );
