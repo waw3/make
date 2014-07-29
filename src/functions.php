@@ -453,8 +453,8 @@ if ( ! function_exists( 'ttfmake_theme_file_url' ) ) :
  *
  * @since 1.2.0.
  *
- * @param  $file_names
- * @return string
+ * @param  string|array    $file_names    One or more filenames to search for.
+ * @return string                         The URL to the file.
  */
 function ttfmake_theme_file_url( $file_names ) {
 	$located_path = locate_template( $file_names );
