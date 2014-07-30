@@ -74,7 +74,7 @@
 			if ( ! to ) {
 				$content.remove();
 			}
-			$content.text( to );
+			$content.html( to );
 		} );
 	} );
 
@@ -88,7 +88,7 @@
 			if ( ! to ) {
 				$content.remove();
 			}
-			$content.text( to );
+			$content.html( to );
 		} );
 	} );
 } )( jQuery );

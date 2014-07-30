@@ -26,8 +26,8 @@ $menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default
 			<?php // Social links
 			ttfmake_maybe_show_social_links( 'header' ); ?>
 			<?php // Header text
-			if ( ! empty( $header_text ) ) : ?>
-				<span class="header-text">
+			if ( ! empty( $header_text ) || ttfmake_is_preview() ) : ?>
+			<span class="header-text">
 				<?php echo ttfmake_sanitize_text( $header_text ); ?>
 			</span>
 			<?php endif; ?>
