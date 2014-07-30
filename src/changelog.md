@@ -2,6 +2,7 @@
 
 * Added ability to override some auxiliary stylesheets and scripts in child theme
 * Fixed issue where captions on non-linked gallery items would not reveal on iOS
+* Fixed issue where HTML added to Header/Footer text fields appeared as plain text in the Customizer
 
 ## 1.1.1
 
