@@ -1,3 +1,8 @@
+## 1.2.0 (unreleased)
+
+* Added ability to override some auxiliary stylesheets and scripts in child theme
+* Fixed issue where captions on non-linked gallery items would not reveal on iOS
+
 ## 1.1.1
 
 * Added Japanese translations
