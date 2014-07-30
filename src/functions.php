@@ -474,6 +474,20 @@ function ttfmake_theme_file_url( $file_names ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_is_preview' ) ) :
+/**
+ * Check if the current view is rendering in the Customizer preview pane.
+ *
+ * @since 1.2.0.
+ *
+ * @return bool    True if in the preview pane.
+ */
+function ttfmake_is_preview() {
+	global $wp_customize;
+	return ( isset( $wp_customize ) && $wp_customize->is_preview() );
+}
+endif;
+
 /**
  * Determine if the companion plugin is installed.
  *
