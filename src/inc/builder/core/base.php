@@ -107,7 +107,7 @@ class TTFMAKE_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/menu' );
 		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
-		$section_data        = $this->get_section_data( $post_local->ID );
+		$section_data        = ttf_get_section_data( $post_local->ID );
 		$registered_sections = ttfmake_get_sections();
 
 		// Print the current sections
@@ -540,48 +540,25 @@ class TTFMAKE_Builder_Base {
 	/**
 	 * Retrieve all of the data for the sections.
 	 *
+	 * Note that in 1.2.0, this function was changed to call the global function. This global function was added to
+	 * provide easier reuse of the function. In order to maintain backwards compatibility, this function is left in
+	 * place.
+	 *
 	 * @since  1.0.0.
 	 *
 	 * @param  string    $post_id    The post to retrieve the data from.
 	 * @return array                 The combined data.
 	 */
 	public function get_section_data( $post_id ) {
-		$ordered_data = array();
-		$ids          = get_post_meta( $post_id, '_ttfmake-section-ids', true );
-		$ids          = ( ! empty( $ids ) && is_array( $ids ) ) ? array_map( 'strval', $ids ) : $ids;
-		$post_meta    = get_post_meta( $post_id );
-
-		// Temp array of hashed keys
-		$temp_data = array();
-
-		// Any meta containing the old keys should be deleted
-		if ( is_array( $post_meta ) ) {
-			foreach ( $post_meta as $key => $value ) {
-				// Only consider builder values
-				if ( 0 === strpos( $key, '_ttfmake:' ) ) {
-					// Get the individual pieces
-					$temp_data[ str_replace( '_ttfmake:', '', $key ) ] = $value[0];
-				}
-			}
-		}
-
-		// Create multidimensional array from postmeta
-		$data = $this->create_array_from_meta_keys( $temp_data );
-
-		// Reorder the data in the order specified by the section IDs
-		if ( is_array( $ids ) ) {
-			foreach ( $ids as $id ) {
-				if ( isset( $data[ $id ] ) ) {
-					$ordered_data[ $id ] = $data[ $id ];
-				}
-			}
-		}
-
-		return $ordered_data;
+		return ttf_get_section_data( $post_id );
 	}
 
 	/**
 	 * Convert an array with array keys that map to a multidimensional array to the array.
+	 *
+	 * Note that in 1.2.0, this function was changed to call the global function. This global function was added to
+	 * provide easier reuse of the function. In order to maintain backwards compatibility, this function is left in
+	 * place.
 	 *
 	 * @since  1.0.0.
 	 *
@@ -589,35 +566,7 @@ class TTFMAKE_Builder_Base {
 	 * @return array            The converted array.
 	 */
 	function create_array_from_meta_keys( $arr ) {
-		// The new multidimensional array we will return
-		$result = array();
-
-		// Process each item of the input array
-		foreach ( $arr as $key => $value ) {
-			// Store a reference to the root of the array
-			$current = & $result;
-
-			// Split up the current item's key into its pieces
-			$pieces = explode( ':', $key );
-
-			/**
-			 * For all but the last piece of the key, create a new sub-array (if necessary), and update the $current
-			 * variable to a reference of that sub-array.
-			 */
-			for ( $i = 0; $i < count( $pieces ) - 1; $i++ ) {
-				$step = $pieces[ $i ];
-				if ( ! isset( $current[ $step ] ) ) {
-					$current[ $step ] = array();
-				}
-				$current = & $current[ $step ];
-			}
-
-			// Add the current value into the final nested sub-array
-			$current[ $pieces[ $i ] ] = $value;
-		}
-
-		// Return the result array
-		return $result;
+		return ttf_create_array_from_meta_keys( $arr );
 	}
 
 	/**
