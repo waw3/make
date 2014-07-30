@@ -517,7 +517,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 
 		// ISO
 		if ( ! empty( $image_meta['iso'] ) ) {
-			$output .= '<li><span>' . _x( 'ISO:', 'camera setting', 'oxford' ) . '</span> ';
+			$output .= '<li><span>' . _x( 'ISO:', 'camera setting', 'make' ) . '</span> ';
 			$output .= absint( $image_meta['iso'] ) . "</li>\n";
 		}
 
