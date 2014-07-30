@@ -2174,7 +2174,7 @@ iframe[src*="google.com/maps"] {
 	margin-bottom: 8px;
 	margin-bottom: .8rem;
 }
-.builder-gallery-item[onclick] {
+.builder-gallery-item.has-link {
 	cursor: pointer;
 }
 .builder-gallery-captions-reveal .builder-gallery-item, .builder-gallery-captions-overlay .builder-gallery-item {

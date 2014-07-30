@@ -279,7 +279,7 @@
 .builder-gallery-item {
 	@include rem('margin-bottom', $gut/4);
 	@include rem('font-size', 14px);
-	&[onclick] {
+	&.has-link {
 		cursor: pointer;
 	}
 	.builder-gallery-captions-reveal &,
