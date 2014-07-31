@@ -8,11 +8,10 @@ html {
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-	background-color: $d;
+	background-color: $e;
 	text-rendering: optimizeLegibility;
 	@include rem('font-size', 17px);
 	&.boxed {
-		background-color: $d;
 		.container {
 			@include for(medium-screens) {
 				@include rem('padding', 0 $col);
