@@ -229,12 +229,9 @@ html {
 body {
 	font-size: 17px;
 	font-size: 1.7rem;
-	background-color: #eaecee;
+	background-color: #b9bcbf;
 
 	text-rendering: optimizeLegibility;
-}
-body.boxed {
-	background-color: #eaecee;
 }
 body.boxed .container, body.boxed .infinite-footer-container {
 	width: 100%;
