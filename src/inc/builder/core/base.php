@@ -616,6 +616,28 @@ if ( is_admin() ) {
 	ttfmake_get_builder_base();
 }
 
+if ( ! function_exists( 'ttfmake_get_post_types_supporting_builder' ) ) :
+/**
+ * Get all post types that support the Make builder.
+ *
+ * @since  1.2.0.
+ *
+ * @return array    Array of all post types that support the builder.
+ */
+function ttfmake_get_post_types_supporting_builder() {
+	$post_types_supporting_builder = array();
+
+	// Inspect each post type for builder support
+	foreach ( get_post_types() as $name => $data ) {
+		if ( post_type_supports( $name, 'make-builder' ) ) {
+			$post_types_supporting_builder[] = $name;
+		}
+	}
+
+	return $post_types_supporting_builder;
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
 /**
  * Load a consistent header for sections.
