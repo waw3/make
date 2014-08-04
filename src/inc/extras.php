@@ -494,3 +494,18 @@ function ttf_create_array_from_meta_keys( $arr ) {
 	return $result;
 }
 endif;
+
+if ( ! function_exists( 'ttf_post_type_supports_builder' ) ) :
+/**
+ * Check if a post type supports the Make builder.
+ *
+ * @since  1.2.0.
+ *
+ * @param  string    $post_type    The post type to test.
+ * @return bool                    True if the post type supports the builder; false if it does not.
+ */
+function ttf_post_type_supports_builder( $post_type ) {
+	return post_type_supports( $post_type, 'make-builder' );
+}
+
+endif;
