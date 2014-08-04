@@ -121,7 +121,7 @@ class TTFMAKE_Builder_Base {
 		get_template_part( 'inc/builder/core/templates/menu' );
 		get_template_part( 'inc/builder/core/templates/stage', 'header' );
 
-		$section_data        = ttf_get_section_data( $post_local->ID );
+		$section_data        = ttfmake_get_section_data( $post_local->ID );
 		$registered_sections = ttfmake_get_sections();
 
 		// Print the current sections
@@ -564,7 +564,7 @@ class TTFMAKE_Builder_Base {
 	 * @return array                 The combined data.
 	 */
 	public function get_section_data( $post_id ) {
-		return ttf_get_section_data( $post_id );
+		return ttfmake_get_section_data( $post_id );
 	}
 
 	/**
@@ -580,7 +580,7 @@ class TTFMAKE_Builder_Base {
 	 * @return array            The converted array.
 	 */
 	function create_array_from_meta_keys( $arr ) {
-		return ttf_create_array_from_meta_keys( $arr );
+		return ttfmake_create_array_from_meta_keys( $arr );
 	}
 
 	/**
