@@ -507,5 +507,28 @@ if ( ! function_exists( 'ttfmake_post_type_supports_builder' ) ) :
 function ttfmake_post_type_supports_builder( $post_type ) {
 	return post_type_supports( $post_type, 'make-builder' );
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_is_builder_page' ) ) :
+/**
+ * Determine if the post uses the builder or not.
+ *
+ * @since  1.2.0.
+ *
+ * @param  int     $post_id    The post to inspect.
+ * @return bool                True if builder is used for post; false if it is not.
+ */
+function ttfmake_is_builder_page( $post_id = 0 ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	// Pages will use the template-builder.php template to denote that it is a builder page
+	$has_builder_template = ( 'template-builder.php' === get_page_template_slug( $post_id ) );
+
+	// Other post types will use meta data to support builder pages
+	$has_builder_meta = ( 1 === (int) get_post_meta( $post_id, '_ttfmake-use-builder', true ) );
+
+	return $has_builder_template || $has_builder_meta;
+}
 endif;
