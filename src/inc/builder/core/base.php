@@ -55,6 +55,7 @@ class TTFMAKE_Builder_Base {
 		require get_template_directory() . '/inc/builder/sections/section-front-end-helpers.php';
 
 		// Set up actions
+		add_action( 'admin_init', array( $this, 'register_post_type_support_for_builder' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 1 ); // Bias toward top of stack
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 11 );
 		add_action( 'admin_print_styles-post.php', array( $this, 'admin_print_styles' ) );
@@ -70,6 +71,17 @@ class TTFMAKE_Builder_Base {
 	}
 
 	/**
+	 * Add support for post types to use the Make builder.
+	 *
+	 * @since  1.3.0.
+	 *
+	 * @return void
+	 */
+	public function register_post_type_support_for_builder() {
+		add_post_type_support( 'page', 'make-builder' );
+	}
+
+	/**
 	 * Add the meta box.
 	 *
 	 * @since  1.0.0.
@@ -77,14 +89,16 @@ class TTFMAKE_Builder_Base {
 	 * @return void
 	 */
 	public function add_meta_boxes() {
-		add_meta_box(
-			'ttfmake-builder',
-			__( 'Page Builder', 'make' ),
-			array( $this, 'display_builder' ),
-			'page',
-			'normal',
-			'high'
-		);
+		foreach ( ttfmake_get_post_types_supporting_builder() as $name ) {
+			add_meta_box(
+				'ttfmake-builder',
+				__( 'Page Builder', 'make' ),
+				array( $this, 'display_builder' ),
+				$name,
+				'normal',
+				'high'
+			);
+		}
 	}
 
 	/**
