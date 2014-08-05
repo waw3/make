@@ -81,9 +81,8 @@ class TTFMAKE_Builder_Save {
 			return;
 		}
 
-		// Don't save data if we're not on the Builder template
-		$template = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
-		if ( 'template-builder.php' !== $template ) {
+		// Don't save data if we're not using the Builder template
+		if ( ! ttfmake_will_be_builder_page() ) {
 			return;
 		}
 
@@ -244,9 +243,7 @@ class TTFMAKE_Builder_Save {
 	 * @return array                Modified post data.
 	 */
 	public function wp_insert_post_data( $data, $postarr ) {
-		// Make sure the correct page template is set
-		$template = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
-		if ( 'template-builder.php' !== $template || ! isset( $_POST[ 'ttfmake-builder-nonce' ] ) || ! wp_verify_nonce( $_POST[ 'ttfmake-builder-nonce' ], 'save' ) ) {
+		if ( ! ttfmake_will_be_builder_page() || ! isset( $_POST[ 'ttfmake-builder-nonce' ] ) || ! wp_verify_nonce( $_POST[ 'ttfmake-builder-nonce' ], 'save' ) ) {
 			return $data;
 		}
 

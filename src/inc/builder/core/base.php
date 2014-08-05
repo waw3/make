@@ -150,7 +150,7 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			return;
 		}
 
@@ -258,12 +258,12 @@ class TTFMAKE_Builder_Base {
 		global $pagenow;
 
 		// Do not complete the function if the product template is in use (i.e., the builder needs to be shown)
-		if ( 'page' !== get_post_type() ) {
+		if ( ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			return;
 		}
 	?>
 		<style type="text/css">
-			<?php if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) ) : ?>
+			<?php if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && ttfmake_is_builder_page() ) ) : ?>
 			#postdivrich {
 				display: none;
 			}
@@ -297,8 +297,8 @@ class TTFMAKE_Builder_Base {
 		global $pagenow;
 
 		// Do not complete the function if the product template is in use (i.e., the builder needs to be shown)
-		if ( 'page' === get_post_type() ) {
-			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) ) {
+		if ( ttfmake_post_type_supports_builder( get_post_type() ) ) {
+			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && ttfmake_is_builder_page() ) ) {
 				$classes .= ' ttfmake-builder-active';
 			} else {
 				$classes .= ' ttfmake-default-active';
@@ -392,7 +392,7 @@ class TTFMAKE_Builder_Base {
 		$ttfmake_is_js_template = true;
 
 		// Only show when adding/editing pages
-		if ( 'page' !== $typenow || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
+		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
 			return;
 		}
 
@@ -649,6 +649,22 @@ function ttfmake_get_post_types_supporting_builder() {
 	}
 
 	return $post_types_supporting_builder;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_will_be_builder_page' ) ):
+/**
+ * Determines if a page in the process of being saved will use the builder template.
+ *
+ * @since  1.2.0.
+ *
+ * @return bool    True if the builder template will be used; false if it will not.
+ */
+function ttfmake_will_be_builder_page() {
+	$template    = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
+	$use_builder = isset( $_POST['use-builder'] ) ? (int) isset( $_POST['use-builder'] ) : 0;
+
+	return ( 'template-builder.php' === $template || 1 === $use_builder );
 }
 endif;
 
