@@ -8,7 +8,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttfmake-add-slide': 'addSlide'
+				'click .ttfmake-add-slide' : 'addSlide',
+				'change select[id*="[responsive]"]' : 'toggleResponsive'
 			});
 		},
 
@@ -43,6 +44,20 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttfmake-banner-slide-order', $(view.$el).parents('.ttfmake-banner-slides')));
+		},
+
+		toggleResponsive: function (evt) {
+			var $heightEl = $('.setting-height'),
+				$minHeightEl = $('.setting-min-height'),
+				choice = $(evt.target).val();
+
+			if ('content' === choice) {
+				$heightEl.hide();
+				$minHeightEl.show();
+			} else {
+				$heightEl.show();
+				$minHeightEl.hide();
+			}
 		},
 
 		getParentID: function() {

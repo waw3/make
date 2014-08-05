@@ -89,15 +89,15 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 	</div>
 
 	<div class="ttfmake-banner-options-container">
-		<h4 class="ttfmake-banner-options-title setting-height">
+		<h4 class="ttfmake-banner-options-title setting-height"<?php if ( 'content' === $responsive ) echo ' style="display:none;"' ?>>
 			<?php _e( 'Section height (px)', 'make' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[height]" class="code setting-height" type="number" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+		<input id="<?php echo $section_name; ?>[height]" class="code setting-height" type="number" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>"<?php if ( 'content' === $responsive ) echo ' style="display:none;"' ?> />
 
-		<h4 class="ttfmake-banner-options-title setting-min-height">
+		<h4 class="ttfmake-banner-options-title setting-min-height"<?php if ( 'content' !== $responsive ) echo ' style="display:none;"' ?>>
 			<?php _e( 'Minimum height (px)', 'make' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[min-height]" class="code setting-min-height" type="number" name="<?php echo $section_name; ?>[min-height]" value="<?php echo absint( $min_height ); ?>" />
+		<input id="<?php echo $section_name; ?>[min-height]" class="code setting-min-height" type="number" name="<?php echo $section_name; ?>[min-height]" value="<?php echo absint( $min_height ); ?>"<?php if ( 'content' !== $responsive ) echo ' style="display:none;"' ?> />
 
 		<h4>
 			<?php _e( 'Responsive behavior', 'make' ); ?>
