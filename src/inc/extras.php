@@ -381,7 +381,7 @@ function ttfmake_get_plus_link( $component ) {
  * @param  WP_Upgrader    $upgrader         WP_Upgrader instance.
  * @return WP_Error                         Error or source on success.
  */
-function ttf_check_package( $source, $remote_source, $upgrader ) {
+function ttfmake_check_package( $source, $remote_source, $upgrader ) {
 	global $wp_filesystem;
 
 	if ( ! isset( $_GET['action'] ) || 'upload-theme' !== $_GET['action'] ) {
@@ -406,9 +406,9 @@ function ttf_check_package( $source, $remote_source, $upgrader ) {
 	return $source;
 }
 
-add_filter( 'upgrader_source_selection', 'ttf_check_package', 9, 3 );
+add_filter( 'upgrader_source_selection', 'ttfmake_check_package', 9, 3 );
 
-if ( ! function_exists( 'ttf_get_section_data' ) ) :
+if ( ! function_exists( 'ttfmake_get_section_data' ) ) :
 /**
  * Retrieve all of the data for the sections.
  *
@@ -417,7 +417,7 @@ if ( ! function_exists( 'ttf_get_section_data' ) ) :
  * @param  string    $post_id    The post to retrieve the data from.
  * @return array                 The combined data.
  */
-function ttf_get_section_data( $post_id ) {
+function ttfmake_get_section_data( $post_id ) {
 	$ordered_data = array();
 	$ids          = get_post_meta( $post_id, '_ttfmake-section-ids', true );
 	$ids          = ( ! empty( $ids ) && is_array( $ids ) ) ? array_map( 'strval', $ids ) : $ids;
@@ -438,7 +438,7 @@ function ttf_get_section_data( $post_id ) {
 	}
 
 	// Create multidimensional array from postmeta
-	$data = ttf_create_array_from_meta_keys( $temp_data );
+	$data = ttfmake_create_array_from_meta_keys( $temp_data );
 
 	// Reorder the data in the order specified by the section IDs
 	if ( is_array( $ids ) ) {
@@ -453,7 +453,7 @@ function ttf_get_section_data( $post_id ) {
 }
 endif;
 
-if ( ! function_exists( 'ttf_create_array_from_meta_keys' ) ) :
+if ( ! function_exists( 'ttfmake_create_array_from_meta_keys' ) ) :
 /**
  * Convert an array with array keys that map to a multidimensional array to the array.
  *
@@ -462,7 +462,7 @@ if ( ! function_exists( 'ttf_create_array_from_meta_keys' ) ) :
  * @param  array    $arr    The array to convert.
  * @return array            The converted array.
  */
-function ttf_create_array_from_meta_keys( $arr ) {
+function ttfmake_create_array_from_meta_keys( $arr ) {
 	// The new multidimensional array we will return
 	$result = array();
 
@@ -492,5 +492,43 @@ function ttf_create_array_from_meta_keys( $arr ) {
 
 	// Return the result array
 	return $result;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_post_type_supports_builder' ) ) :
+/**
+ * Check if a post type supports the Make builder.
+ *
+ * @since  1.2.0.
+ *
+ * @param  string    $post_type    The post type to test.
+ * @return bool                    True if the post type supports the builder; false if it does not.
+ */
+function ttfmake_post_type_supports_builder( $post_type ) {
+	return post_type_supports( $post_type, 'make-builder' );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_is_builder_page' ) ) :
+/**
+ * Determine if the post uses the builder or not.
+ *
+ * @since  1.2.0.
+ *
+ * @param  int     $post_id    The post to inspect.
+ * @return bool                True if builder is used for post; false if it is not.
+ */
+function ttfmake_is_builder_page( $post_id = 0 ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	// Pages will use the template-builder.php template to denote that it is a builder page
+	$has_builder_template = ( 'template-builder.php' === get_page_template_slug( $post_id ) );
+
+	// Other post types will use meta data to support builder pages
+	$has_builder_meta = ( 1 === (int) get_post_meta( $post_id, '_ttfmake-use-builder', true ) );
+
+	return $has_builder_template || $has_builder_meta;
 }
 endif;
