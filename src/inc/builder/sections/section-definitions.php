@@ -216,6 +216,14 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['height'] = absint( $data['height'] );
 		}
 
+		if ( isset( $data['min-height'] ) ) {
+			$clean_data['min-height'] = absint( $data['min-height'] );
+		}
+
+		if ( isset( $data['responsive'] ) && in_array( $data['responsive'], array( 'aspect', 'balanced', 'content' ) ) ) {
+			$clean_data['responsive'] = $data['responsive'];
+		}
+
 		if ( isset( $data['banner-slide-order'] ) ) {
 			$clean_data['banner-slide-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
 		}
