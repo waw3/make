@@ -77,8 +77,15 @@ class TTFMAKE_Builder_Save {
 		}
 
 		// Only check permissions for pages since it can only run on pages
-		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+		if ( ! current_user_can( 'edit_page', $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
+		}
+
+		// Indicate if the post is a builder post; handled earlier because if won't pass future tests
+		if ( isset( $_POST['use-builder'] ) && 1 === (int) $_POST['use-builder'] ) {
+			update_post_meta( $post_id, '_ttfmake-use-builder', 1 );
+		} else {
+			delete_post_meta( $post_id, '_ttfmake-use-builder' );
 		}
 
 		// Don't save data if we're not using the Builder template

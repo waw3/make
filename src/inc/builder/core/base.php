@@ -64,6 +64,7 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
 		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
+		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
 
 		if ( false === ttfmake_is_plus() ) {
 			add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
@@ -99,6 +100,33 @@ class TTFMAKE_Builder_Base {
 				'high'
 			);
 		}
+	}
+
+	/**
+	 * Display the checkbox to turn the builder on or off.
+	 *
+	 * @since  1.2.0.
+	 *
+	 * @return void
+	 */
+	public function builder_toggle() {
+		// Do not show the toggle for pages as the builder is controlled by page templates
+		if ( 'page' === get_post_type() ) {
+			return;
+		}
+
+		// Only show the builder toggle for CPTs that support the builder
+		if ( ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
+			return;
+		}
+
+		$using_builder = get_post_meta( get_the_ID(), '_ttfmake-use-builder', true );
+	?>
+		<div class="misc-pub-section">
+			<input type="checkbox" value="1" name="use-builder" id="use-builder"<?php checked( $using_builder, 1 ); ?> />
+			&nbsp;<label for="use-builder"><?php _e( 'Use Page Builder', 'make' ); ?></label>
+		</div>
+	<?php
 	}
 
 	/**
