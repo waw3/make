@@ -225,8 +225,7 @@ a {
 				@include rem('padding-right', $gut/2);
 			}
 			.menu {
-				clear: both;
-				float: left;
+				float: right;
 			}
 		}
 	}
@@ -269,9 +268,11 @@ a {
 	}
 	.menu {
 		@include for(large-screens) {
-			float: right;
+			.header-bar-flipped & {
+				float: right;
+			}
+			float: left;
 		}
-		clear: right;
 		padding: 0; //reset
 		list-style: none; //reset
 		@include rem('margin', $base/2 0 $base);
@@ -285,7 +286,6 @@ a {
 		}
 		a {
 			font-weight: normal; //reset
-			text-transform: uppercase;
 			@include rem('font-size', 13px);
 			@include rem('letter-spacing', 1px);
 		}
