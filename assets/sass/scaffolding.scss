@@ -272,9 +272,14 @@ a {
 				float: right;
 			}
 			float: left;
+			text-align: left;
+		}
+		@include for(medium-screens) {
+			text-align: left;
 		}
 		padding: 0; //reset
 		list-style: none; //reset
+		text-align: center;
 		@include rem('margin', $base/2 0 $base);
 		li {
 			display: inline-block;
