@@ -76,7 +76,7 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 		<h4 class="ttfmake-banner-options-title">
 			<?php _e( 'Time between slides (in ms)', 'make' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[delay]" class="code" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
+		<input id="<?php echo $section_name; ?>[delay]" class="code" type="number" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
 
 		<h4>
 			<?php _e( 'Transition effect', 'make' ); ?>
