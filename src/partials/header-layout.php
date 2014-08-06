@@ -30,8 +30,8 @@ $header_bar_menu = wp_nav_menu( array(
 			endif; ?>
 			<?php // Social links
 			ttfmake_maybe_show_social_links( 'header' ); ?>
-			<?php // Header text
-			if ( ! empty( $header_text ) ) : ?>
+			<?php // Header text; shown only if there is no header menu
+			if ( ! empty( $header_text ) && empty( $header_bar_menu ) ) : ?>
 				<span class="header-text">
 				<?php echo ttfmake_sanitize_text( $header_text ); ?>
 			</span>
