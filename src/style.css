@@ -571,6 +571,9 @@ a {
 		float: left;
 	}
 }
+.header-bar-flipped .header-text {
+	float: right;
+}
 
 .social-links {
 	padding-left: 0;

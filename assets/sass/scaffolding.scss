@@ -304,6 +304,9 @@ a {
 	@include rem('margin-top', 2px);
 	@include rem('padding', $base/2 0);
 	@include rem('font-size', 12px);
+	.header-bar-flipped & {
+		float: right;
+	}
 }
 .social-links {
 	padding-left: 0; //reset
