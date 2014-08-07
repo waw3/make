@@ -103,9 +103,9 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 			<?php _e( 'Responsive behavior', 'make' ); ?>
 		</h4>
 		<select id="<?php echo $section_name; ?>[responsive]" name="<?php echo $section_name; ?>[responsive]">
+			<option value="balanced"<?php selected( 'balanced', $responsive ); ?>><?php _e( 'Default', 'make' ); ?></option>
 			<option value="aspect"<?php selected( 'aspect', $responsive ); ?>><?php _e( 'Maintain aspect ratio', 'make' ); ?></option>
-			<option value="balanced"<?php selected( 'balanced', $responsive ); ?>><?php _e( 'Balanced', 'make' ); ?></option>
-			<option value="content"<?php selected( 'content', $responsive ); ?>><?php echo _e( 'Display all slide content', 'make' ); ?></option>
+			<option value="content"<?php selected( 'content', $responsive ); ?>><?php echo _e( 'Display all content', 'make' ); ?></option>
 		</select>
 		<p class="help-text"><?php _e( 'Choose how the banner will respond to varying screen widths.', 'make' ); ?></p>
 	</div>
