@@ -50,6 +50,18 @@
 .ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
 	width: 50%;
 }
+.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-fourth .sortable-placeholder{
+	width: 25%;
+}
+.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-third .sortable-placeholder{
+	width: 33%;
+}
+.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-two-thirds .sortable-placeholder{
+	width: 66%;
+}
+.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-three-fourths .sortable-placeholder{
+	width: 75%;
+}
 /*---------------------------------------------------------
  Text and Gallery: Three column (html-builder.css)
 -------------------------------------------------------- */
@@ -67,6 +79,12 @@
 .ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
 .ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
 	width: 33.3333%;
+}
+.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-fourth .sortable-placeholder{
+	width: 25%;
+}
+.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-half .sortable-placeholder{
+	width: 50%;
 }
 .ttfmake-text-columns-3 .ttfmake-media-button-text {
 	display: none;  /*reset*/
