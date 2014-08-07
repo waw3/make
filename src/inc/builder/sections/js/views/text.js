@@ -86,7 +86,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				});
 
 				// Remove the temporary classes from stage
-				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-one-fourth current-item-one-half');
+				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-three-fourths current-item-one-half');
 			}
 		});
 	};
