@@ -142,8 +142,9 @@ function ttfmake_setup() {
 
 	// Menu locations
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'make' ),
-		'social'  => __( 'Social Profile Links', 'make' )
+		'primary'    => __( 'Primary Menu', 'make' ),
+		'social'     => __( 'Social Profile Links', 'make' ),
+		'header-bar' => __( 'Header Bar Menu', 'make' ),
 	) );
 
 	// Editor styles
