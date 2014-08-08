@@ -292,7 +292,6 @@ a {
 		a {
 			font-weight: normal; //reset
 			@include rem('font-size', 13px);
-			@include rem('letter-spacing', 1px);
 		}
 	}
 }
