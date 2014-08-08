@@ -127,6 +127,32 @@ function ttfmake_css_add_rules() {
 				'background-color' => $color_secondary
 			)
 		) );
+		// These placeholder selectors have to be isolated in individual rules.
+		// See http://css-tricks.com/snippets/css/style-placeholder-text/#comment-96771
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '::-webkit-input-placeholder' ),
+			'declarations' => array(
+				'color' => $color_secondary
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( ':-moz-placeholder' ),
+			'declarations' => array(
+				'color' => $color_secondary
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '::-moz-placeholder' ),
+			'declarations' => array(
+				'color' => $color_secondary
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( ':-ms-input-placeholder' ),
+			'declarations' => array(
+				'color' => $color_secondary
+			)
+		) );
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-navigation .menu .sub-menu',
