@@ -1478,7 +1478,6 @@ img.wp-smiley {
 
 .wp-caption img[class*="wp-image-"] {
 	display: block;
-	max-width: 98%;
 	margin: 1.2% auto 0;
 }
 
