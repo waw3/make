@@ -30,7 +30,7 @@ $header_bar_menu = wp_nav_menu( array(
 			if ( ! empty( $header_text ) && empty( $header_bar_menu ) ) : ?>
 				<span class="header-text">
 				<?php echo ttfmake_sanitize_text( $header_text ); ?>
-			</span>
+				</span>
 			<?php endif; ?>
 			<?php echo $header_bar_menu; ?>
 		</div>
