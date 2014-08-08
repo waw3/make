@@ -299,10 +299,15 @@ a {
 .header-text {
 	@include for(large-screens) {
 		float: left;
-		display: inline-block;
+		@include rem('margin-top', 2px);
+		@include rem('padding', $base/2 0);
 	}
-	@include rem('margin-top', 2px);
-	@include rem('padding', $base/2 0);
+	@include for(medium-screens) {
+		text-align: left;
+	}
+	text-align: center;
+	display: block;
+	@include rem('margin-bottom', $base);
 	@include rem('font-size', 12px);
 	.header-bar-flipped & {
 		float: right;
