@@ -241,9 +241,10 @@ a {
 		@include for(large-screens) {
 			@include rem('padding', $base/2 0 $base/2 $gut/2);
 			float: right;
+			@include rem('padding', $base/2 0);
 		}
 		@include rem('font-size', 13px);
-		@include rem('padding', $base/2 0);
+		@include rem('padding', $base 0 $base/2);
 		input {
 			@include for(large-screens) {
 				width: 175px;
@@ -308,8 +309,12 @@ a {
 	}
 }
 .social-links {
+	@include for(large-screens) {
+		padding-top: 0;
+	}
 	padding-left: 0; //reset
 	list-style: none; //reset
+	@include rem('padding-top', $base/2);
 	@include no-select;
 	li {
 		a {
