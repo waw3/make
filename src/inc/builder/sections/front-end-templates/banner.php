@@ -32,6 +32,11 @@ if ( 0 === $slider_min_height ) {
 		height: auto;
 		min-height: <?php echo $slider_min_height; ?>px;
 	}
+	#builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?> .builder-banner-content {
+		position: relative;
+		padding-top: 22px;
+		padding-bottom: 22px;
+	}
 	<?php
 	// Balanced
 	else : ?>
