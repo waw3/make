@@ -216,11 +216,7 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['height'] = absint( $data['height'] );
 		}
 
-		if ( isset( $data['min-height'] ) ) {
-			$clean_data['min-height'] = absint( $data['min-height'] );
-		}
-
-		if ( isset( $data['responsive'] ) && in_array( $data['responsive'], array( 'aspect', 'balanced', 'content' ) ) ) {
+		if ( isset( $data['responsive'] ) && in_array( $data['responsive'], array( 'aspect', 'balanced' ) ) ) {
 			$clean_data['responsive'] = $data['responsive'];
 		}
 

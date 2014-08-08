@@ -13,10 +13,6 @@ if ( 0 === $slider_height ) {
 	$slider_height = 600;
 }
 $slider_ratio = ( $slider_height / 960 ) * 100;
-$slider_min_height = absint( $ttfmake_section_data['min-height'] );
-if ( 0 === $slider_min_height ) {
-	$slider_min_height = 600;
-}
 ?>
 <style type="text/css">
 	<?php
@@ -26,26 +22,14 @@ if ( 0 === $slider_min_height ) {
 		padding-bottom: <?php echo $slider_ratio; ?>%;
 	}
 	<?php
-	// Show all slide content
-	elseif ( 'content' === $responsive ) : ?>
-	#builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?> .builder-banner-slide {
-		height: auto;
-		min-height: <?php echo $slider_min_height; ?>px;
-	}
-	#builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?> .builder-banner-content {
-		position: relative;
-		padding-top: 22px;
-		padding-bottom: 22px;
-	}
-	<?php
 	// Balanced
 	else : ?>
 	#builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?> .builder-banner-slide {
-		padding-bottom: <?php echo $slider_ratio; ?>%;
+		padding-bottom: <?php echo $slider_height; ?>px;
 	}
-	@media screen and (min-width: 960px) {
+	@media screen and (min-width: 600px) and (max-width: 960px) {
 		#builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?> .builder-banner-slide {
-			padding-bottom: <?php echo $slider_height; ?>px;
+			padding-bottom: <?php echo $slider_ratio; ?>%;
 		}
 	}
 	<?php endif; ?>
