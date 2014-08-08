@@ -16,7 +16,7 @@ get_header();
 	</header>
 
 	<?php while ( have_posts() ) : the_post(); ?>
-		<?php get_template_part( 'partials/content', 'search' ); ?>
+		<?php get_template_part( 'partials/content', apply_filters( 'ttfmake_template_content_search', 'search', $post ) ); ?>
 	<?php endwhile; ?>
 
 	<?php get_template_part( 'partials/nav', 'paging' ); ?>
