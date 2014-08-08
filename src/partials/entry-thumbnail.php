@@ -8,7 +8,7 @@ if ( is_attachment() ) :
 	$thumb_option   = 'post-header';
 	$thumbnail_id   = get_post()->ID;
 	$thumbnail_size = 'full';
-	$thumbnail_html = wp_get_attachment_image( $thumbnail_id, $thumbnail_size );
+	$thumbnail_html = '<a href="' . wp_get_attachment_url() . '">' . wp_get_attachment_image( $thumbnail_id, $thumbnail_size ) . '</a>';
 else:
 	$thumb_key    = 'layout-' . ttfmake_get_view() . '-featured-images';
 	$thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_default( $thumb_key ) ), $thumb_key );
