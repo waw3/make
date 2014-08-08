@@ -403,9 +403,6 @@ a {
 				@include rem('padding', $base/2 0);
 				@include rem('font-size', 14px);
 			}
-			&:last-of-type a {
-				padding-right: 0; //reset
-			}
 		}
 		.sub-menu,
 		.children {
@@ -416,9 +413,6 @@ a {
 				&:before {
 					content: "\2013  ";
 				}
-			}
-			li li a {
-				@include rem('padding-left', $gut);
 			}
 		}
 		@include for(medium-screens) {
@@ -452,7 +446,8 @@ a {
 				}
 				.sub-menu,
 				.children {
-					a:after {
+					li:not(.menu-item-has-children) a:after,
+					li:not(.page_item_has_children) a:after {
 						content: none; //reset
 					}
 				}
@@ -460,9 +455,6 @@ a {
 					padding-left: 0; //reset
 					a:before {
 						content: none; //reset
-					}
-					&:last-of-type a {
-						border-bottom: 0; //reset
 					}
 				}
 				ul {

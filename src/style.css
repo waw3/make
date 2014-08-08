@@ -672,9 +672,6 @@ a {
 		border-bottom: 0;
 	}
 }
-.site-navigation .menu li:last-of-type a, .site-navigation .nav-menu li:last-of-type a {
-	padding-right: 0;
-}
 .site-navigation .menu .sub-menu, .site-navigation .menu .children, .site-navigation .nav-menu .sub-menu, .site-navigation .nav-menu .children {
 	padding: 0;
 	text-align: left;
@@ -685,10 +682,6 @@ a {
 }
 .site-navigation .menu .sub-menu li a:before, .site-navigation .menu .children li a:before, .site-navigation .nav-menu .sub-menu li a:before, .site-navigation .nav-menu .children li a:before {
 	content: "\2013  ";
-}
-.site-navigation .menu .sub-menu li li a, .site-navigation .menu .children li li a, .site-navigation .nav-menu .sub-menu li li a, .site-navigation .nav-menu .children li li a {
-	padding-left: 32px;
-	padding-left: 3.2rem;
 }
 @media screen and (min-width: 800px) {
 	.site-navigation .menu .sub-menu, .site-navigation .menu .children, .site-navigation .nav-menu .sub-menu, .site-navigation .nav-menu .children {
@@ -723,7 +716,7 @@ a {
 		float: right;
 		content: "  \f054";
 	}
-	.site-navigation .menu .sub-menu .sub-menu a:after, .site-navigation .menu .sub-menu .children a:after, .site-navigation .menu .children .sub-menu a:after, .site-navigation .menu .children .children a:after, .site-navigation .nav-menu .sub-menu .sub-menu a:after, .site-navigation .nav-menu .sub-menu .children a:after, .site-navigation .nav-menu .children .sub-menu a:after, .site-navigation .nav-menu .children .children a:after {
+	.site-navigation .menu .sub-menu .sub-menu li:not(.menu-item-has-children) a:after, .site-navigation .menu .sub-menu .sub-menu li:not(.page_item_has_children) a:after, .site-navigation .menu .sub-menu .children li:not(.menu-item-has-children) a:after, .site-navigation .menu .sub-menu .children li:not(.page_item_has_children) a:after, .site-navigation .menu .children .sub-menu li:not(.menu-item-has-children) a:after, .site-navigation .menu .children .sub-menu li:not(.page_item_has_children) a:after, .site-navigation .menu .children .children li:not(.menu-item-has-children) a:after, .site-navigation .menu .children .children li:not(.page_item_has_children) a:after, .site-navigation .nav-menu .sub-menu .sub-menu li:not(.menu-item-has-children) a:after, .site-navigation .nav-menu .sub-menu .sub-menu li:not(.page_item_has_children) a:after, .site-navigation .nav-menu .sub-menu .children li:not(.menu-item-has-children) a:after, .site-navigation .nav-menu .sub-menu .children li:not(.page_item_has_children) a:after, .site-navigation .nav-menu .children .sub-menu li:not(.menu-item-has-children) a:after, .site-navigation .nav-menu .children .sub-menu li:not(.page_item_has_children) a:after, .site-navigation .nav-menu .children .children li:not(.menu-item-has-children) a:after, .site-navigation .nav-menu .children .children li:not(.page_item_has_children) a:after {
 		content: none;
 	}
 	.site-navigation .menu .sub-menu li, .site-navigation .menu .children li, .site-navigation .nav-menu .sub-menu li, .site-navigation .nav-menu .children li {
@@ -731,9 +724,6 @@ a {
 	}
 	.site-navigation .menu .sub-menu li a:before, .site-navigation .menu .children li a:before, .site-navigation .nav-menu .sub-menu li a:before, .site-navigation .nav-menu .children li a:before {
 		content: none;
-	}
-	.site-navigation .menu .sub-menu li:last-of-type a, .site-navigation .menu .children li:last-of-type a, .site-navigation .nav-menu .sub-menu li:last-of-type a, .site-navigation .nav-menu .children li:last-of-type a {
-		border-bottom: 0;
 	}
 	.site-navigation .menu .sub-menu ul, .site-navigation .menu .children ul, .site-navigation .nav-menu .sub-menu ul, .site-navigation .nav-menu .children ul {
 		top: 0;
