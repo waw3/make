@@ -24,6 +24,7 @@ $header_bar_menu = wp_nav_menu( array(
 	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) || ! empty( $header_bar_menu ) ) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
+			<a class="skip-link screen-reader-text" href="#site-content"><?php _e( 'Skip to content', 'make' ); ?></a>
 			<?php // Search form
 			if ( 1 === $show_search ) :
 				get_search_form();

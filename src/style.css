@@ -604,12 +604,6 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
-.social-links li i span {
-	position: absolute;
-	clip: rect(1px 1px 1px 1px);
-      /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
-}
 .social-links.social-customizer .facebook a:hover, .social-links.social-customizer .facebook a:focus {
 	color: #3b5999;
 }
@@ -1512,7 +1506,7 @@ img {
 	margin: 0 auto;
 }
 
-.screen-reader-text {
+.screen-reader-text, .social-links li i span {
 	position: absolute !important;
 	clip: rect(1px, 1px, 1px, 1px);
 }
