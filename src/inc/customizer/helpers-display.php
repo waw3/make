@@ -127,32 +127,6 @@ function ttfmake_css_add_rules() {
 				'background-color' => $color_secondary
 			)
 		) );
-		// These placeholder selectors have to be isolated in individual rules.
-		// See http://css-tricks.com/snippets/css/style-placeholder-text/#comment-96771
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '::-webkit-input-placeholder' ),
-			'declarations' => array(
-				'color' => $color_secondary
-			)
-		) );
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( ':-moz-placeholder' ),
-			'declarations' => array(
-				'color' => $color_secondary
-			)
-		) );
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '::-moz-placeholder' ),
-			'declarations' => array(
-				'color' => $color_secondary
-			)
-		) );
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( ':-ms-input-placeholder' ),
-			'declarations' => array(
-				'color' => $color_secondary
-			)
-		) );
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-navigation .menu .sub-menu',
@@ -202,6 +176,32 @@ function ttfmake_css_add_rules() {
 	if ( $color_text !== ttfmake_get_default( 'color-text' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.color-text', 'body', '.entry-date a', 'body', 'button', 'input', 'select', 'textarea', '[class*="navigation"] .nav-previous a', '[class*="navigation"] .nav-previous span', '[class*="navigation"] .nav-next a', '[class*="navigation"] .nav-next span' ),
+			'declarations' => array(
+				'color' => $color_text
+			)
+		) );
+		// These placeholder selectors have to be isolated in individual rules.
+		// See http://css-tricks.com/snippets/css/style-placeholder-text/#comment-96771
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '::-webkit-input-placeholder' ),
+			'declarations' => array(
+				'color' => $color_text
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( ':-moz-placeholder' ),
+			'declarations' => array(
+				'color' => $color_text
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '::-moz-placeholder' ),
+			'declarations' => array(
+				'color' => $color_text
+			)
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( ':-ms-input-placeholder' ),
 			'declarations' => array(
 				'color' => $color_text
 			)
