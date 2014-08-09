@@ -4,6 +4,7 @@
  */
 
 get_header();
+global $post;
 ?>
 
 <?php ttfmake_maybe_show_sidebar( 'left' ); ?>
