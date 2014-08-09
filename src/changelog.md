@@ -1,8 +1,20 @@
-## 1.2.0 (unreleased)
+## 1.2.0
 
 * Added ability to override some auxiliary stylesheets and scripts in child theme
+* Added ability for CPTs to use the builder
+* Added a "Maintain aspect ratio" option for banner sections for better responsive control
+* Added IDs for individual text columns
+* Added menu in the header bar
+* Added filters to control font size
+* Added notice for users trying to install Make Plus as a theme
 * Fixed issue where captions on non-linked gallery items would not reveal on iOS
 * Fixed issue where HTML added to Header/Footer text fields appeared as plain text in the Customizer
+* Fixed alignment issues with submenus
+* Fixed issue that caused submenus to fall below some content
+* Fixed JS errors that occurred when rich text editor was turned off
+* Fixed issue with broken default background color
+* Improved the responsiveness of banner sections
+* Improved consistency of textdomain handling
 
 ## 1.1.1
 
