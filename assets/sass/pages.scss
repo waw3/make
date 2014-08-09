@@ -143,8 +143,11 @@
 	color: $a;
 	line-height: 1.35;
 	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
-	@include rem('padding', $base/2 $gut*3);
+	@include rem('padding', $base/2 $gut);
 	@include rem('font-size', 15px);
+	.cycle-slide & {
+		@include rem('padding', $base/2 $gut*3);
+	}
 	&:after {
 		display: inline-block;
 		vertical-align: middle;
@@ -279,7 +282,7 @@
 .builder-gallery-item {
 	@include rem('margin-bottom', $gut/4);
 	@include rem('font-size', 14px);
-	&[onclick] {
+	&.has-link {
 		cursor: pointer;
 	}
 	.builder-gallery-captions-reveal &,

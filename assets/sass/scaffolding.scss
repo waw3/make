@@ -8,11 +8,10 @@ html {
  Detail (_scaffolding.scss)
 -------------------------------------------------------- */
 body {
-	background-color: $d;
+	background-color: $e;
 	text-rendering: optimizeLegibility;
 	@include rem('font-size', 17px);
 	&.boxed {
-		background-color: $d;
 		.container {
 			@include for(medium-screens) {
 				@include rem('padding', 0 $col);
@@ -224,6 +223,9 @@ a {
 				padding-left: 0; //reset
 				@include rem('padding-right', $gut/2);
 			}
+			.menu {
+				float: right;
+			}
 		}
 	}
 	a {
@@ -238,9 +240,10 @@ a {
 		@include for(large-screens) {
 			@include rem('padding', $base/2 0 $base/2 $gut/2);
 			float: right;
+			@include rem('padding', $base/2 0);
 		}
 		@include rem('font-size', 13px);
-		@include rem('padding', $base/2 0);
+		@include rem('padding', $base 0 $base/2);
 		input {
 			@include for(large-screens) {
 				width: 175px;
@@ -263,25 +266,71 @@ a {
 		}
 		@include rem('padding-top', $base/2);
 	}
+	.menu {
+		@include for(large-screens) {
+			.header-bar-flipped & {
+				float: right;
+			}
+			float: left;
+			text-align: left;
+		}
+		@include for(medium-screens) {
+			text-align: left;
+		}
+		padding: 0; //reset
+		list-style: none; //reset
+		text-align: center;
+		@include rem('margin', $base/2 0 $base);
+		li {
+			display: inline-block;
+			text-align: left;
+			@include rem('padding-right', $gut/2);
+			&:last-of-type {
+				padding-right: 0; //reset
+			}
+		}
+		a {
+			font-weight: normal; //reset
+			@include rem('font-size', 13px);
+		}
+	}
 }
 .header-text {
+	@include for(large-screens) {
+		float: left;
+		@include rem('margin-top', 2px);
+		@include rem('padding', $base/2 0);
+	}
+	@include for(medium-screens) {
+		text-align: left;
+	}
+	text-align: center;
 	display: block;
-	@include rem('margin-top', 2px);
-	@include rem('padding', $base/2 0);
+	@include rem('margin-bottom', $base);
 	@include rem('font-size', 12px);
+	.header-bar-flipped & {
+		float: right;
+	}
 }
 .social-links {
+	@include for(large-screens) {
+		padding-top: 0;
+	}
 	padding-left: 0; //reset
 	list-style: none; //reset
+	@include rem('padding-top', $base/2);
 	@include no-select;
 	li {
+		display:  inline-block;
+		text-align: center;
 		a {
 			display: block;
 			color: inherit;
 			text-decoration: none; //reset
 		}
-		display:  inline-block;
-		text-align: center;
+		i span {
+			@extend .screen-reader-text;
+		}
 	}
 	&.social-customizer {
 		.facebook a:hover,
@@ -404,9 +453,6 @@ a {
 				@include rem('padding', $base/2 0);
 				@include rem('font-size', 14px);
 			}
-			&:last-of-type a {
-				padding-right: 0; //reset
-			}
 		}
 		.sub-menu,
 		.children {
@@ -417,9 +463,6 @@ a {
 				&:before {
 					content: "\2013  ";
 				}
-			}
-			li li a {
-				@include rem('padding-left', $gut);
 			}
 		}
 		@include for(medium-screens) {
@@ -453,7 +496,8 @@ a {
 				}
 				.sub-menu,
 				.children {
-					a:after {
+					li:not(.menu-item-has-children) a:after,
+					li:not(.page_item_has_children) a:after {
 						content: none; //reset
 					}
 				}
@@ -461,9 +505,6 @@ a {
 					padding-left: 0; //reset
 					a:before {
 						content: none; //reset
-					}
-					&:last-of-type a {
-						border-bottom: 0; //reset
 					}
 				}
 				ul {
