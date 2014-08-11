@@ -46,6 +46,11 @@
 				self.cache.$commentstatus.prop('checked', '');
 				self.cache.$pingstatus.prop('checked', '');
 			}
+
+			// Make sure screen is correctly toggled on load
+			self.cache.$document.on('ready', function() {
+				self.cache.$pageTemplate.trigger('change');
+			});
 		},
 
 		templateToggle: function(e) {
