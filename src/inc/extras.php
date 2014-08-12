@@ -367,7 +367,7 @@ endif;
  * @return string                  The link.
  */
 function ttfmake_get_plus_link( $component ) {
-	$url = 'https://thethemefoundry.com/wordpress-themes/make/?utm_source=make&utm_medium=link&utm_content=' . urlencode( sanitize_title_with_dashes( $component ) ) . '&utm_campaign=plus#make-table';
+	$url = 'https://thethemefoundry.com/wordpress-themes/make/#make-table';
 	return esc_url( $url );
 }
 
@@ -400,7 +400,7 @@ function ttfmake_check_package( $source, $remote_source, $upgrader ) {
 
 	// A proper archive should have a style.css file in the single subdirectory
 	if ( ! file_exists( $working_directory . 'style.css' ) && strpos( $source, 'make-plus-' ) >= 0 ) {
-		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings[ 'incompatible_archive' ], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.' ) );
+		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings[ 'incompatible_archive' ], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.', 'make' ) );
 	}
 
 	return $source;

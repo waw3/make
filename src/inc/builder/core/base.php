@@ -511,7 +511,7 @@ class TTFMAKE_Builder_Base {
 		$img = '<span class="wp-media-buttons-icon"></span>';
 
 		// Note that the theme textdomain is not used for Add Media in order to use the core l10n
-		echo '<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="' . esc_attr( $editor_id ) . '" title="' . esc_attr__( 'Add Media' ) . '">' . $img . ' <span class="ttfmake-media-button-text">' . __( 'Add Media' ) . '</span></a>';
+		echo '<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="' . esc_attr( $editor_id ) . '" title="' . esc_attr__( 'Add Media', 'make' ) . '">' . $img . ' <span class="ttfmake-media-button-text">' . __( 'Add Media', 'make' ) . '</span></a>';
 	}
 
 	/**

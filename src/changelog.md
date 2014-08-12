@@ -1,3 +1,10 @@
+## 1.2.1
+
+* Fixed issue where Page Builder was hidden in certain situations when adding a new page
+* Updated theme screenshot with CC0-compatible image
+* Added missing text domain strings
+* Removed query string parameters from Make Plus links
+
 ## 1.2.0
 
 * Added ability to override some auxiliary stylesheets and scripts in child theme
