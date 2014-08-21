@@ -22,10 +22,12 @@ ksort( $links );
 			$class_base = ' class="ttfmake-builder-section-footer-link';
 			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 		?>
+		<?php do_action( 'make_before_builder_footer_links' ); ?>
 		<a<?php echo $href . $id . $class; ?>>
 			<?php echo $label; ?>
 		</a><?php if ( $i < count( $links ) ) : ?>&nbsp;&#124;&nbsp;<?php endif; ?>
 		<?php $i++; endforeach; ?>
+		<?php do_action( 'make_after_builder_footer_links' ); ?>
 	</div>
 <?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
 </div>
