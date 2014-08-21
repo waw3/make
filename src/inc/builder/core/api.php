@@ -82,7 +82,7 @@ class TTFMAKE_Sections {
 	 * @return void
 	 */
 	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
-		$this->_sections[ $id ] = array(
+		$this->_sections[ $id ] = apply_filters( 'make_add_section', array(
 			'id'               => $id,
 			'label'            => $label,
 			'icon'             => $icon,
@@ -92,7 +92,7 @@ class TTFMAKE_Sections {
 			'display_template' => $display_template,
 			'order'            => $order,
 			'path'             => $path,
-		);
+		) );
 	}
 
 	/**
