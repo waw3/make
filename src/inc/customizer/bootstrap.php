@@ -172,11 +172,9 @@ if ( ! function_exists( 'ttfmake_customizer_preview_script' ) ) :
  * @return void
  */
 function ttfmake_customizer_preview_script() {
-	$path = '/inc/customizer/js/';
-
 	wp_enqueue_script(
 		'ttfmake-customizer-preview',
-		get_template_directory_uri() . $path . 'customizer-preview' . TTFMAKE_SUFFIX . '.js',
+		get_template_directory_uri() . '/inc/customizer/js/customizer-preview' . TTFMAKE_SUFFIX . '.js',
 		array( 'customize-preview' ),
 		TTFMAKE_VERSION,
 		true
@@ -195,11 +193,9 @@ if ( ! function_exists( 'ttfmake_customizer_sections_script' ) ) :
  * @return void
  */
 function ttfmake_customizer_sections_script() {
-	$path = '/inc/customizer/js/';
-
 	wp_enqueue_script(
 		'ttfmake-customizer-sections',
-		get_template_directory_uri() . $path . 'customizer-sections' . TTFMAKE_SUFFIX . '.js',
+		get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
 		array( 'customize-controls' ),
 		TTFMAKE_VERSION,
 		true
