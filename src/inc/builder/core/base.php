@@ -876,7 +876,7 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		}
 	}
 
-	return $src;
+	return apply_filters( 'make_get_image_src', $src, $image_id, $size );
 }
 endif;
 
