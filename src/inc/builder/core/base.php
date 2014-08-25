@@ -810,7 +810,7 @@ if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
  */
 function ttfmake_sanitize_text( $string ) {
 	global $allowedtags;
-	return wp_kses( $string , $allowedtags );
+	return wp_kses( $string, $allowedtags );
 }
 endif;
 
