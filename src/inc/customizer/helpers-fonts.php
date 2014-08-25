@@ -375,7 +375,7 @@ function ttfmake_get_google_font_uri() {
 		$request .= urlencode( '&subset=' . join( ',', $subsets ) );
 	}
 
-	return esc_url( $request );
+	return apply_filters( 'make_get_google_font_uri', esc_url( $request ) );
 }
 endif;
 
@@ -437,7 +437,7 @@ function ttfmake_sanitize_font_subset( $value ) {
 		$value = 'latin';
 	}
 
-	return $value;
+	return apply_filters( 'make_sanitize_font_subset', $value );
 }
 endif;
 
@@ -450,7 +450,7 @@ if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
  * @return array    The available subsets.
  */
 function ttfmake_get_google_font_subsets() {
-	return array(
+	return apply_filters( 'make_get_google_font_subsets', array(
 		'all'          => __( 'All', 'make' ),
 		'cyrillic'     => __( 'Cyrillic', 'make' ),
 		'cyrillic-ext' => __( 'Cyrillic Extended', 'make' ),
@@ -461,7 +461,7 @@ function ttfmake_get_google_font_subsets() {
 		'latin'        => __( 'Latin', 'make' ),
 		'latin-ext'    => __( 'Latin Extended', 'make' ),
 		'vietnamese'   => __( 'Vietnamese', 'make' ),
-	);
+	) );
 }
 endif;
 
@@ -475,14 +475,13 @@ if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
  * @return string              The sanitized font choice.
  */
 function ttfmake_sanitize_font_choice( $value ) {
-	if ( is_int( $value ) ) {
-		// The array key is an integer, so the chosen option is a heading, not a real choice
-		return '';
-	} else if ( array_key_exists( $value, ttfmake_all_font_choices() ) ) {
-		return $value;
-	} else {
-		return '';
+	$return = '';
+
+	if ( array_key_exists( $value, ttfmake_all_font_choices() ) ) {
+		$return = $value;
 	}
+
+	return apply_filters( 'make_sanitize_font_choice', $return );
 }
 endif;
 
@@ -503,7 +502,7 @@ function ttfmake_all_font_choices() {
 		$choices[ $key ] = $font['label'];
 	}
 
-	return $choices;
+	return apply_filters( 'make_all_font_choices', $choices );
 }
 endif;
 
@@ -533,7 +532,7 @@ if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
  * @return array    Standard websafe fonts.
  */
 function ttfmake_get_standard_fonts() {
-	return array(
+	return apply_filters( 'make_get_standard_fonts', array(
 		'serif' => array(
 			'label' => _x( 'Serif', 'font style', 'make' ),
 			'stack' => 'Georgia,Times,"Times New Roman",serif'
@@ -546,7 +545,7 @@ function ttfmake_get_standard_fonts() {
 			'label' => _x( 'Monospaced', 'font style', 'make' ),
 			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 		)
-	);
+	) );
 }
 endif;
 
