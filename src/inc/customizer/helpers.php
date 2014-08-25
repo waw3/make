@@ -40,7 +40,7 @@ function ttfmake_sanitize_choice( $value, $setting ) {
 		$value = ttfmake_get_default( $setting );
 	}
 
-	return $value;
+	return apply_filters( 'make_sanitize_choice', $value, $setting );
 }
 endif;
 
@@ -253,7 +253,7 @@ function ttfmake_body_layout_classes( $classes ) {
 		$classes[] = 'header-bar-flipped';
 	}
 
-	return $classes;
+	return apply_filters( 'make_body_layout_classes', $classes );
 }
 endif;
 
