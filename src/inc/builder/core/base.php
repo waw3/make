@@ -795,7 +795,7 @@ function ttfmake_get_section_name( $data, $is_js_template ) {
 		$name .= '[' . $data['data']['id'] . ']';
 	}
 
-	return $name;
+	return apply_filters( 'make_get_section_name', $name, $data, $is_js_template );
 }
 endif;
 
