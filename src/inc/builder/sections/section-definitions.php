@@ -534,9 +534,9 @@ class TTFMAKE_Section_Definitions {
 	/**
 	 * An array of defaults for all the Builder section settings
 	 *
-	 * @since 1.0.4.
+	 * @since  1.0.4.
 	 *
-	 * @return array
+	 * @return array    The section defaults.
 	 */
 	public function get_section_defaults() {
 		$defaults = array(
@@ -549,7 +549,7 @@ class TTFMAKE_Section_Definitions {
 	/**
 	 * Define the choices for section setting dropdowns.
 	 *
-	 * @since 1.0.4.
+	 * @since  1.0.4.
 	 *
 	 * @param  string    $key             The key for the section setting.
 	 * @param  string    $section_type    The section type.
