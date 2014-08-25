@@ -242,10 +242,12 @@ class TTFMAKE_CSS {
 			if ( 'font-size-px' === $property || 'font-size-rem' === $property ) {
 				$property = 'font-size';
 			}
-			$output .= "{$t}{$property}:{$value};$n";
+
+			$parsed_value  = "{$t}{$property}:{$value};$n";
+			$output       .= apply_filters( 'make_parse_declaration', $parsed_value, $property, $value, $t, $n );
 		}
 
-		return $output;
+		return apply_filters( 'make_parse_declarations', $output, $declarations, $tab );
 	}
 }
 endif;
