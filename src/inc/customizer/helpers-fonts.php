@@ -305,13 +305,10 @@ if ( ! function_exists( 'ttfmake_convert_px_to_rem' ) ) :
  * @since  1.0.0.
  *
  * @param  mixed    $px      The value to convert.
- * @param  mixed    $base    The font-size base for the rem conversion.
+ * @param  mixed    $base    The font-size base for the rem conversion (deprecated).
  * @return float             The converted value.
  */
 function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
-	if ( 0 === $base ) {
-		$base = get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) );
-	}
 	return (float) $px / 10;
 }
 endif;
