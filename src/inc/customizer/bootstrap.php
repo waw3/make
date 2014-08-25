@@ -222,7 +222,8 @@ if ( ! function_exists( 'ttfmake_customizer_admin_styles' ) ) :
  *
  * @return void
  */
-function ttfmake_customizer_admin_styles() { ?>
+function ttfmake_customizer_admin_styles() {
+?>
 	<style type="text/css">
 		.customize-control.customize-control-heading {
 			margin-top: 6px;
@@ -233,7 +234,8 @@ function ttfmake_customizer_admin_styles() { ?>
 			margin-bottom: 6px;
 		}
 	</style>
-<?php }
+<?php
+}
 endif;
 
 if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
@@ -279,7 +281,7 @@ add_action( 'wp_head', 'ttfmake_display_customizations', 11 );
 
 if ( ! function_exists( 'ttfmake_ajax_display_customizations' ) ) :
 /**
- * Generates the theme option CSS as an Ajax response
+ * Generates the theme option CSS as an Ajax response.
  *
  * @since  1.0.0.
  *
