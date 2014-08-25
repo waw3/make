@@ -501,7 +501,7 @@ function ttfmake_maybe_add_with_avatar_class( $classes, $class, $post_ID ) {
 		$classes[] = 'has-author-avatar';
 	}
 
-	return $classes;
+	return apply_filters( 'make_maybe_add_with_avatar_class', $classes, $class, $post_ID );
 }
 endif;
 
