@@ -202,7 +202,6 @@ class TTFMAKE_Builder_Base {
 			'backbone',
 		);
 
-		// Only load full scripts for WordPress.com and those with SCRIPT_DEBUG set to true
 		wp_register_script(
 			'ttfmake-builder/js/tinymce.js',
 			get_template_directory_uri() . '/inc/builder/core/js/tinymce.js',
