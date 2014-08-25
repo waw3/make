@@ -133,7 +133,7 @@ class TTFMAKE_Builder_Save {
 			}
 		}
 
-		return $clean_sections;
+		return apply_filters( 'make_prepare_data', $clean_sections, $sections, $order );
 	}
 
 	/**
@@ -160,6 +160,7 @@ class TTFMAKE_Builder_Save {
 		// Save the ids for the sections. This will be used to lookup all of the separate values.
 		$section_ids = array_keys( $sections );
 		update_post_meta( $post_id, '_ttfmake-section-ids', $section_ids );
+		do_action( 'make_builder_data_saved', $sections, $post_id );
 
 		// Remove the old section values if necessary
 		$this->prune_abandoned_rows( $post_id, $values_to_save );
@@ -330,7 +331,7 @@ class TTFMAKE_Builder_Save {
 		// Allow constraints again after builder data processing is complete.
 		remove_filter( 'editor_max_image_size', array( &$this, 'remove_image_constraints' ) );
 
-		return $post_content;
+		return apply_filters( 'make_generate_post_content', $post_content, $data );
 	}
 
 	/**
@@ -454,7 +455,7 @@ class TTFMAKE_Builder_Save {
 			}
 		}
 
-		return $next_data;
+		return apply_filters( 'make_get_next_section_data', $next_data, $current_section, $sections );
 	}
 
 	/**
@@ -475,7 +476,8 @@ class TTFMAKE_Builder_Save {
 			}
 		}
 
-		return ( isset( $prev_key ) && isset( $sections[ $prev_key ] ) ) ? $sections[ $prev_key ] : array();
+		$prev_section = ( isset( $prev_key ) && isset( $sections[ $prev_key ] ) ) ? $sections[ $prev_key ] : array();
+		return apply_filters( 'make_get_next_section_data', $prev_section, $current_section, $sections );
 	}
 
 	/**
