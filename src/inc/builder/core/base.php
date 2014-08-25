@@ -772,7 +772,7 @@ function ttfmake_get_wp_editor_id( $data, $is_js_template ) {
 		$id = $id_base . $data['data']['id'];
 	}
 
-	return $id;
+	return apply_filters( 'make_get_wp_editor_id', $id, $data, $is_js_template );
 }
 endif;
 
