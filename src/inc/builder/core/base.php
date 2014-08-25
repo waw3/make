@@ -691,7 +691,7 @@ function ttfmake_will_be_builder_page() {
 	$template    = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
 	$use_builder = isset( $_POST['use-builder'] ) ? (int) isset( $_POST['use-builder'] ) : 0;
 
-	return ( 'template-builder.php' === $template || 1 === $use_builder );
+	return apply_filters( 'make_will_be_builder_page', ( 'template-builder.php' === $template || 1 === $use_builder ), $template, $use_builder );
 }
 endif;
 
