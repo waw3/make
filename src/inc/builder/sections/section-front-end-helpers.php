@@ -13,11 +13,8 @@
  * @return bool               True if the section is the specified type; false if it is not.
  */
 function ttfmake_builder_is_section_type( $type, $data ) {
-	if ( isset( $data['section-type'] ) && $type === $data['section-type'] ) {
-		return true;
-	}
-
-	return false;
+	$is_section_type = ( isset( $data['section-type'] ) && $type === $data['section-type'] );
+	return apply_filters( 'make_builder_is_section_type', $is_section_type, $type, $data );
 }
 
 /**
@@ -50,7 +47,7 @@ function ttfmake_builder_get_gallery_array( $ttfmake_section_data ) {
 		}
 	}
 
-	return $gallery_array;
+	return apply_filters( 'make_builder_get_gallery_array', $gallery_array, $ttfmake_section_data );
 }
 
 /**
@@ -136,7 +133,7 @@ function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
 		}
 	}
 
-	return $gallery_style;
+	return apply_filters( 'make_builder_get_gallery_style', $gallery_style, $ttfmake_section_data );
 }
 
 /**
@@ -172,7 +169,7 @@ function ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $
 		$gallery_class .= ' last-2';
 	}
 
-	return $gallery_class;
+	return apply_filters( 'make_builder_get_gallery_item_class', $gallery_class, $item, $ttfmake_section_data );
 }
 
 /**
@@ -186,33 +183,27 @@ function ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $
  */
 function ttfmake_builder_get_gallery_item_image( $item, $aspect ) {
 	global $ttfmake_section_data;
-
-	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
-		return '';
-	}
-
-	if ( 0 === ttfmake_sanitize_image_id( $item[ 'image-id' ] ) ) {
-		return '';
-	}
-
-	$image_style = '';
-
-	$image_src = ttfmake_get_image_src( $item[ 'image-id' ], 'large' );
-	if ( isset( $image_src[0]  ) ) {
-		$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
-	}
-
-	if ( 'none' === $aspect && isset( $image_src[1] ) && isset( $image_src[2] ) ) {
-		$image_ratio = ( $image_src[2] / $image_src[1] ) * 100;
-		$image_style .= 'padding-bottom: ' . $image_ratio . '%;';
-	}
-
 	$image = '';
-	if ( '' !== $image_style ) {
-		$image .= '<figure class="builder-gallery-image" style="' . esc_attr( $image_style ) . '"></figure>';
+
+	if ( ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) && 0 !== ttfmake_sanitize_image_id( $item[ 'image-id' ] ) ) {
+		$image_style = '';
+
+		$image_src = ttfmake_get_image_src( $item[ 'image-id' ], 'large' );
+		if ( isset( $image_src[0]  ) ) {
+			$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+		}
+
+		if ( 'none' === $aspect && isset( $image_src[1] ) && isset( $image_src[2] ) ) {
+			$image_ratio = ( $image_src[2] / $image_src[1] ) * 100;
+			$image_style .= 'padding-bottom: ' . $image_ratio . '%;';
+		}
+
+		if ( '' !== $image_style ) {
+			$image .= '<figure class="builder-gallery-image" style="' . esc_attr( $image_style ) . '"></figure>';
+		}
 	}
 
-	return $image;
+	return apply_filters( 'make_builder_get_gallery_item_image', $image, $item, $aspect );
 }
 
 /**
@@ -252,7 +243,7 @@ function ttfmake_builder_get_text_array( $ttfmake_section_data ) {
 		}
 	}
 
-	return $columns_array;
+	return apply_filters( 'make_builder_get_text_array', $columns_array, $ttfmake_section_data );
 }
 
 /**
@@ -278,7 +269,7 @@ function ttfmake_builder_get_text_class( $ttfmake_section_data, $sections ) {
 	$columns_number = ( isset( $ttfmake_section_data['columns-number'] ) ) ? absint( $ttfmake_section_data['columns-number'] ) : 1;
 	$text_class .= ' builder-text-columns-' . $columns_number;
 
-	return $text_class;
+	return apply_filters( 'make_builder_get_text_class', $text_class, $ttfmake_section_data, $sections );
 }
 
 /**
@@ -290,28 +281,27 @@ function ttfmake_builder_get_text_class( $ttfmake_section_data, $sections ) {
  * @return array                              The data.
  */
 function ttfmake_builder_get_banner_array( $ttfmake_section_data ) {
-	if ( ! ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
-		return array();
-	}
-
-	$banner_order = array();
-	if ( isset( $ttfmake_section_data['banner-slide-order'] ) ) {
-		$banner_order = $ttfmake_section_data['banner-slide-order'];
-	}
-
+	$banner_order  = array();
 	$banner_slides = array();
-	if ( isset( $ttfmake_section_data['banner-slides'] ) ) {
-		$banner_slides = $ttfmake_section_data['banner-slides'];
-	}
+	$banner_array  = array();
 
-	$banner_array = array();
-	if ( ! empty( $banner_order ) && ! empty( $banner_slides ) ) {
-		foreach ( $banner_order as $order => $key ) {
-			$banner_array[$order] = $banner_slides[$key];
+	if ( ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
+		if ( isset( $ttfmake_section_data['banner-slide-order'] ) ) {
+			$banner_order = $ttfmake_section_data['banner-slide-order'];
+		}
+
+		if ( isset( $ttfmake_section_data['banner-slides'] ) ) {
+			$banner_slides = $ttfmake_section_data['banner-slides'];
+		}
+
+		if ( ! empty( $banner_order ) && ! empty( $banner_slides ) ) {
+			foreach ( $banner_order as $order => $key ) {
+				$banner_array[$order] = $banner_slides[$key];
+			}
 		}
 	}
 
-	return $banner_array;
+	return apply_filters( 'make_builder_get_banner_array', $banner_array, $ttfmake_section_data );
 }
 
 /**
@@ -324,14 +314,11 @@ function ttfmake_builder_get_banner_array( $ttfmake_section_data ) {
  * @return string                             The class.
  */
 function ttfmake_builder_get_banner_class( $ttfmake_section_data, $sections ) {
-	if ( ! ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
-		return '';
+	$banner_class = '';
+
+	if ( ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
+		$banner_class .= ' ' . ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 	}
-
-	$banner_class = ' ';
-
-	// Section classes
-	$banner_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 
 	return apply_filters( 'ttfmake_builder_banner_class', $banner_class, $ttfmake_section_data );
 }
@@ -345,46 +332,48 @@ function ttfmake_builder_get_banner_class( $ttfmake_section_data, $sections ) {
  * @return string                             The attributes.
  */
 function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
-	if ( ! ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
-		return '';
+	$data_attributes = '';
+
+	if ( ttfmake_builder_is_section_type( 'banner', $ttfmake_section_data ) ) {
+		$atts = shortcode_atts( array(
+			'autoplay'   => true,
+			'transition' => 'scrollHorz',
+			'delay'      => 6000
+		), $ttfmake_section_data );
+
+		// Data attributes
+		$data_attributes  = ' data-cycle-log="false"';
+		$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
+		$data_attributes .= ' data-cycle-swipe="true"';
+
+		// Autoplay
+		$autoplay = (bool) $atts['autoplay'];
+		if ( false === $autoplay ) {
+			$data_attributes .= ' data-cycle-paused="true"';
+		}
+
+		// Delay
+		$delay = absint( $atts['delay'] );
+		if ( 0 === $delay ) {
+			$delay = 6000;
+		}
+
+		if ( 4000 !== $delay ) {
+			$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
+		}
+
+		// Effect
+		$effect = trim( $atts['transition'] );
+		if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
+			$effect = 'scrollHorz';
+		}
+
+		if ( 'fade' !== $effect ) {
+			$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
+		}
 	}
 
-	$atts = shortcode_atts( array(
-		'autoplay'   => true,
-		'transition' => 'scrollHorz',
-		'delay'      => 6000
-	), $ttfmake_section_data );
-
-	// Data attributes
-	$data_attributes  = ' data-cycle-log="false"';
-	$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
-	$data_attributes .= ' data-cycle-swipe="true"';
-
-	// Autoplay
-	$autoplay = (bool) $atts['autoplay'];
-	if ( false === $autoplay ) {
-		$data_attributes .= ' data-cycle-paused="true"';
-	}
-
-	// Delay
-	$delay = absint( $atts['delay'] );
-	if ( 0 === $delay ) {
-		$delay = 6000;
-	}
-	if ( 4000 !== $delay ) {
-		$data_attributes .= ' data-cycle-timeout="' . esc_attr( $delay ) . '"';
-	}
-
-	// Effect
-	$effect = trim( $atts['transition'] );
-	if ( ! in_array( $effect, array( 'fade', 'fadeout', 'scrollHorz', 'none' ) ) ) {
-		$effect = 'scrollHorz';
-	}
-	if ( 'fade' !== $effect ) {
-		$data_attributes .= ' data-cycle-fx="' . esc_attr( $effect ) . '"';
-	}
-
-	return $data_attributes;
+	return apply_filters( 'make_builder_get_banner_slider_atts', $data_attributes, $ttfmake_section_data );
 }
 
 /**
@@ -403,7 +392,7 @@ function ttfmake_builder_banner_slide_class( $slide ) {
 		$slide_class .= ' ' . sanitize_html_class( 'content-position-' . $slide['alignment'] );
 	}
 
-	return $slide_class;
+	return apply_filters( 'make_builder_banner_slide_class', $slide_class, $slide );
 }
 
 /**
@@ -431,5 +420,5 @@ function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 		}
 	}
 
-	return esc_attr( $slide_style );
+	return apply_filters( 'make_builder_banner_slide_style', esc_attr( $slide_style ), $slide, $ttfmake_section_data );
 }
