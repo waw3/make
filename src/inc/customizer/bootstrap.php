@@ -74,9 +74,11 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		'footer'         => array( 'title' => __( 'Footer', 'make' ), 'path' => $section_path ),
 		'social'         => array( 'title' => __( 'Social Profiles &amp; RSS', 'make' ), 'path' => $section_path )
 	);
+
 	if ( ttfmake_is_plus() ) {
 		unset( $sections['stylekit'] );
 	}
+
 	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
 
 	// Priority for first section
@@ -85,6 +87,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $data ) {
 		$file = trailingslashit( $data[ 'path' ] ) . $section . '.php';
+
 		if ( file_exists( $file ) ) {
 			// First load the file
 			require_once( $file );
@@ -93,19 +96,23 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 			if ( 'font' === $section ) {
 				$wp_customize->get_section( 'background_image' )->priority = $priority->add();
 			}
+
 			if ( 'logo' === $section ) {
 				$wp_customize->get_section( 'title_tagline' )->priority = $priority->add();
 			}
+
 			if ( 'main' === $section ) {
 				$wp_customize->get_section( 'nav' )->priority = $priority->add();
 			}
+
 			if ( 'layout-blog' === $section ) {
 				$wp_customize->get_section( 'static_front_page' )->priority = $priority->add();
 			}
 
 			// Then add the section
-			$section_callback = 'ttfmake_customizer_';
+			$section_callback  = 'ttfmake_customizer_';
 			$section_callback .= ( strpos( $section, '-' ) ) ? str_replace( '-', '_', $section ) : $section;
+
 			if ( function_exists( $section_callback ) ) {
 				$section_id = 'ttfmake_' . esc_attr( $section );
 
