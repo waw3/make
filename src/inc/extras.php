@@ -40,7 +40,7 @@ function ttfmake_body_classes( $classes ) {
 		$classes[] = 'has-right-sidebar';
 	}
 
-	return $classes;
+	return apply_filters( 'make_body_classes', $classes );
 }
 endif;
 
@@ -354,7 +354,7 @@ function ttfmake_sidebar_list_enabled( $location ) {
 		}
 	}
 
-	return $enabled_views;
+	return apply_filters( 'make_sidebar_list_enabled', $enabled_views, $location );
 }
 endif;
 
@@ -529,6 +529,7 @@ function ttfmake_is_builder_page( $post_id = 0 ) {
 	// Other post types will use meta data to support builder pages
 	$has_builder_meta = ( 1 === (int) get_post_meta( $post_id, '_ttfmake-use-builder', true ) );
 
-	return $has_builder_template || $has_builder_meta;
+	$is_builder_page = $has_builder_template || $has_builder_meta;
+	return apply_filters( 'make_is_builder_page', $is_builder_page, $post_id );
 }
 endif;
