@@ -207,6 +207,7 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  */
 function ttfmake_get_default( $option ) {
 	$defaults = ttfmake_option_defaults();
-	return ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
+	$default  = ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
+	return apply_filters( 'make_get_default', $default, $option, $defaults );
 }
 endif;
