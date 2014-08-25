@@ -111,6 +111,7 @@ class TTFMAKE_CSS {
 		}
 
 		$entry = array();
+		$data  = apply_filters( 'make_css_add', $data );
 
 		// Sanitize selectors
 		$entry['selectors'] = array_map( 'trim', (array) $data['selectors'] );
