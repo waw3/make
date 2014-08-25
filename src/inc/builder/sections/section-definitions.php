@@ -581,8 +581,9 @@ if ( ! function_exists( 'ttfmake_get_section_default' ) ) :
  */
 function ttfmake_get_section_default( $key, $section_type ) {
 	$defaults = ttfmake_get_section_definitions()->get_section_defaults();
-	$id = "$section_type-$key";
-	return ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
+	$id       = "$section_type-$key";
+	$value    = ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
+	return apply_filters( 'make_get_section_default', $value, $key, $section_type );
 }
 endif;
 
@@ -597,7 +598,7 @@ if ( ! function_exists( 'ttfmake_get_section_choices' ) ) :
  * @return array                      The array of choices for the section setting.
  */
 function ttfmake_get_section_choices( $key, $section_type ) {
-	return ttfmake_get_section_definitions()->get_choices( $key, $section_type );
+	return apply_filters( 'make_get_section_choices', ttfmake_get_section_definitions()->get_choices( $key, $section_type ), $key, $section_type );
 }
 endif;
 
@@ -620,7 +621,7 @@ function ttfmake_sanitize_section_choice( $value, $key, $section_type ) {
 		$value = ttfmake_get_section_default( $key, $section_type );
 	}
 
-	return $value;
+	return apply_filters( 'make_sanitize_section_choice', $value, $key, $section_type );
 }
 endif;
 
