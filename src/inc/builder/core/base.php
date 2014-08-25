@@ -893,12 +893,13 @@ if ( ! function_exists( 'ttfmake_get_placeholder_image' ) ) :
  */
 function ttfmake_get_placeholder_image( $image_id ) {
 	global $ttfmake_placeholder_images;
+	$return = array();
 
 	if ( isset( $ttfmake_placeholder_images[ $image_id ] ) ) {
-		return $ttfmake_placeholder_images[ $image_id ];
-	} else {
-		return array();
+		$return = $ttfmake_placeholder_images[ $image_id ];
 	}
+
+	return apply_filters( 'make_get_placeholder_image', $return, $image_id, $ttfmake_placeholder_images );
 }
 endif;
 
