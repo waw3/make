@@ -828,17 +828,19 @@ if ( ! function_exists( 'ttfmake_get_image' ) ) :
  * @return string                 HTML for the image. Empty string if image cannot be produced.
  */
 function ttfmake_get_image( $image_id, $size ) {
+	$return = '';
+
 	if ( false === strpos( $image_id, 'x' ) ) {
-		return wp_get_attachment_image( $image_id, $size );
+		$return = wp_get_attachment_image( $image_id, $size );
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );
 
 		if ( ! empty( $image ) && isset( $image['src'] ) && isset( $image['alt'] ) && isset( $image['class'] ) && isset( $image['height'] ) && isset( $image['width'] ) ) {
-			return '<img src="' . $image['src'] . '" alt="' . $image['alt'] . '" class="' . $image['class'] . '" height="' . $image['height'] . '" width="' . $image['width'] . '" />';
-		} else {
-			return '';
+			$return = '<img src="' . $image['src'] . '" alt="' . $image['alt'] . '" class="' . $image['class'] . '" height="' . $image['height'] . '" width="' . $image['width'] . '" />';
 		}
 	}
+
+	return apply_filters( 'make_get_image', $return, $image_id, $size );
 }
 endif;
 
