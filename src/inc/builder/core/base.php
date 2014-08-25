@@ -732,21 +732,18 @@ if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
  *
  * @since  1.0.4.
  *
- * @param  string    $slug    The relative path and filename (w/out suffix) required
- *                            to substitute the template in a child theme.
- * @param  string    $path    An optional path extension to point to the template in
- *                            the parent theme or a plugin.
- * @return string
+ * @param  string    $slug    The relative path and filename (w/out suffix) required to substitute the template in a child theme.
+ * @param  string    $path    An optional path extension to point to the template in the parent theme or a plugin.
+ * @return string             The template filename if one is located.
  */
 function ttfmake_load_section_template( $slug, $path ) {
-	$located = '';
-
-	$templates = array(
+	$templates = apply_filters( 'make_load_section_template', array(
 		$slug . '.php',
 		trailingslashit( $path ) . $slug . '.php'
-	);
+	), $slug, $path );
+
 	if ( '' === $located = locate_template( $templates, true, false ) ) {
-		if ( file_exists( $templates[1] ) ) {
+		if ( isset( $templates[1] ) && file_exists( $templates[1] ) ) {
 			require( $templates[1] );
 			$located = $templates[1];
 		}
