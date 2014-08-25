@@ -449,7 +449,7 @@ function ttfmake_get_section_data( $post_id ) {
 		}
 	}
 
-	return $ordered_data;
+	return apply_filters( 'make_get_section_data', $ordered_data, $post_id );
 }
 endif;
 
