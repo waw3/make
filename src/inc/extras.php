@@ -533,3 +533,21 @@ function ttfmake_is_builder_page( $post_id = 0 ) {
 	return apply_filters( 'make_is_builder_page', $is_builder_page, $post_id );
 }
 endif;
+
+function ttfmake_filter_backcompat() {
+	$old_filters = array(
+		'ttfmake_font_variants' => 3,
+		'ttfmake_is_plus' => 1,
+	);
+
+	foreach ( $old_filters as $filter => $args ) {
+		add_filter( $filter, 'ttfmake_dummy_filter', 10, $args );
+	}
+}
+
+add_action( 'after_setup_theme', 'ttfmake_filter_backcompat', 1 );
+
+function ttfmake_dummy_filter() {
+	$filter = str_replace( 'ttfmake_', 'make_', current_filter() );
+	return apply_filters_ref_array( $filter, func_get_args() );
+}
