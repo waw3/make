@@ -527,6 +527,6 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 		$output .= "</ul>\n";
 	}
 
-	return $output;
+	return apply_filters( 'make_get_exif_data', $output, $attachment_id );
 }
 endif;
