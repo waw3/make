@@ -137,6 +137,54 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 }
 endif;
 
+
+function ttfmake_customizer_add_options( $section, $args ) {
+	global $wp_customize;
+
+	$priority = new TTFMAKE_Prioritizer();
+	$theme_prefix = 'ttfmake_';
+	$setting_prefix = $section . '-';
+
+	foreach ( $args as $id => $option ) {
+		$setting_id = $setting_prefix . $id;
+
+		// Add setting
+		if ( isset( $option['setting'] ) ) {
+			$defaults = array(
+				'default' => ttfmake_get_default( $setting_id ),
+				'type'    => 'theme_mod',
+			);
+			$setting = wp_parse_args( $option['setting'], $defaults );
+
+			$wp_customize->add_setting( $setting_id, $setting );
+		}
+
+		// Add control
+		if ( isset( $option['control'] ) ) {
+			$control_id = $theme_prefix . $setting_id;
+
+			$defaults = array(
+				'settings' => $setting_id,
+				'section'  => $theme_prefix . $section,
+				'priority' => $priority->add(),
+			);
+			$control = wp_parse_args( $option['control'], $defaults );
+
+			// Check for a specialized control class
+			if ( isset( $control['control_type'] ) ) {
+				$class = $control['control_type'];
+				unset( $control['control_type'] );
+				$wp_customize->add_control(
+					new $class( $wp_customize, $control_id, $control )
+				);
+			} else {
+				$wp_customize->add_control( $control_id, $control );
+			}
+		}
+	}
+}
+
+
 if ( ! function_exists( 'ttfmake_customizer_set_transport' ) ) :
 /**
  * Add postMessage support for certain built-in settings in the Theme Customizer.
