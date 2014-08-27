@@ -52,13 +52,12 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 
 		// Define panels
 		$panels = array(
-			'general'      => array( 'title' => __( 'General', 'make' ) ),
-			'typography'   => array( 'title' => __( 'Typography', 'make' ) ),
-			'color-scheme' => array( 'title' => __( 'Color Scheme', 'make' ) ),
-			'header'       => array( 'title' => __( 'Header', 'make' ) ),
-			'main-column'  => array( 'title' => __( 'Main Column', 'make' ) ),
-			'layout'       => array( 'title' => __( 'Layout', 'make' ) ),
-			'footer'       => array( 'title' => __( 'Footer', 'make' ) ),
+			'general'        => array( 'title' => __( 'General', 'make' ) ),
+			'typography'     => array( 'title' => __( 'Typography', 'make' ) ),
+			'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ) ),
+			'header'         => array( 'title' => __( 'Header', 'make' ) ),
+			'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ) ),
+			'footer'         => array( 'title' => __( 'Footer', 'make' ) ),
 		);
 		// Filter panel list
 		$panels = apply_filters( 'make_customizer_panels', $panels );
