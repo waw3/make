@@ -487,6 +487,15 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 					_x( 'seconds', 'time', 'make' )
 				);
 			}
+
+			/**
+			 * Filter the shutter speed value.
+			 *
+			 * @since 1.2.3.
+			 *
+			 * @param string    $converted_as         The shutter speed value.
+			 * @param float     $raw_shutter_speed    The raw shutter speed value.
+			 */
 			$image_meta['shutter_speed'] = apply_filters( 'make_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
 		}
 
@@ -497,6 +506,15 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 				_x( 'f/', 'camera f-stop', 'make' ),
 				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
+
+			/**
+			 * Filter the aperture value.
+			 *
+			 * @since 1.2.3.
+			 *
+			 * @param string    $f_stop          The aperture value.
+			 * @param int       $raw_aperture    The raw aperture value.
+			 */
 			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'] );
 		}
 
@@ -542,6 +560,14 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 		$output .= "</ul>\n";
 	}
 
+	/**
+	 * Alter the exif data output.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $output           The EXIF data prepared as HTML.
+	 * @param int       $attachment_id    The image being generated.
+	 */
 	return apply_filters( 'make_get_exif_data', $output, $attachment_id );
 }
 endif;
