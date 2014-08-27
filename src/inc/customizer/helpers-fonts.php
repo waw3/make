@@ -253,7 +253,7 @@ function ttfmake_css_fonts() {
 }
 endif;
 
-add_action( 'ttfmake_css', 'ttfmake_css_fonts' );
+add_action( 'make_css', 'ttfmake_css_fonts' );
 
 if ( ! function_exists( 'ttfmake_get_font_stack' ) ) :
 /**

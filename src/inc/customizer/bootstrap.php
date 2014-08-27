@@ -240,7 +240,7 @@ endif;
 
 if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
 /**
- * Make sure the 'ttfmake_css' action only runs once.
+ * Make sure the 'make_css' action only runs once.
  *
  * @since  1.0.0.
  *
@@ -257,7 +257,7 @@ if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
 /**
  * Generates the style tag and CSS needed for the theme options.
  *
- * By using the "ttfmake_css" filter, different components can print CSS in the header. It is organized this way to
+ * By using the "make_css" filter, different components can print CSS in the header. It is organized this way to
  * ensure that there is only one "style" tag and not a proliferation of them.
  *
  * @since  1.0.0.
