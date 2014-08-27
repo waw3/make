@@ -631,8 +631,8 @@ function ttfmake_action_backcompat() {
 		'section_text_before_columns_select' => 1,
 		'section_text_after_columns_select'  => 1,
 		'section_text_after_title'           => 1,
-		'section_text_before_column'         => 1,
-		'section_text_after_column'          => 1,
+		'section_text_before_column'         => 2,
+		'section_text_after_column'          => 2,
 		'section_text_after_columns'         => 1,
 		'css'                                => 1,
 	);
