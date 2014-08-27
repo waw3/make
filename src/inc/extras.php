@@ -534,20 +534,43 @@ function ttfmake_is_builder_page( $post_id = 0 ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_filter_backcompat' ) ) :
+/**
+ * Adds back compat for filters with changed names.
+ *
+ * In Make 1.2.3, filters were all changed for "ttfmake_" to "make_". In order to maintain back compatibility, the old
+ * version of the filter needs to still be called. This function collects all of those changed filters and mirrors the
+ * new filter so that the old filter name will still work.
+ *
+ * @since  1.2.3.
+ *
+ * @return void
+ */
 function ttfmake_filter_backcompat() {
+	// All filters that need a name change
 	$old_filters = array(
-		'ttfmake_font_variants' => 3,
-		'ttfmake_is_plus' => 1,
+		'make_font_variants' => 3,
+		'make_is_plus' => 1,
 	);
 
 	foreach ( $old_filters as $filter => $args ) {
-		add_filter( $filter, 'ttfmake_dummy_filter', 10, $args );
+		add_filter( $filter, 'ttfmake_backcompat_filter', 10, $args );
 	}
 }
+endif;
 
 add_action( 'after_setup_theme', 'ttfmake_filter_backcompat', 1 );
 
-function ttfmake_dummy_filter() {
-	$filter = str_replace( 'ttfmake_', 'make_', current_filter() );
+if ( function_exists( 'ttfmake_backcompat_filter' ) ) :
+/**
+ * Prepends "ttf" to a filter name and calls that new filter variant.
+ *
+ * @since  1.2.3.
+ *
+ * @return mixed    The result of the filter.
+ */
+function ttfmake_backcompat_filter() {
+	$filter = 'ttf' . current_filter();
 	return apply_filters_ref_array( $filter, func_get_args() );
 }
+endif;
