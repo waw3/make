@@ -608,7 +608,53 @@ if ( ! function_exists( 'ttfmake_backcompat_filter' ) ) :
  * @return mixed    The result of the filter.
  */
 function ttfmake_backcompat_filter() {
-	$filter = 'ttfmake_' . current_filter();
+	$filter = 'ttf' . current_filter();
 	return apply_filters_ref_array( $filter, func_get_args() );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_action_backcompat' ) ) :
+/**
+ * Adds back compat for actions with changed names.
+ *
+ * In Make 1.2.3, actions were all changed from "ttfmake_" to "make_". In order to maintain back compatibility, the old
+ * version of the action needs to still be called. This function collects all of those changed actions and mirrors the
+ * new filter so that the old filter name will still work.
+ *
+ * @since  1.2.3.
+ *
+ * @return void
+ */
+function ttfmake_action_backcompat() {
+	// All filters that need a name change
+	$old_actions = array(
+		'section_text_before_columns_select' => 1,
+		'section_text_after_columns_select'  => 1,
+		'section_text_after_title'           => 1,
+		'section_text_before_column'         => 1,
+		'section_text_after_column'          => 1,
+		'section_text_after_columns'         => 1,
+		'css'                                => 1,
+	);
+
+	foreach ( $old_actions as $action => $args ) {
+		add_action( 'make_' . $action, 'ttfmake_backcompat_action', 10, $args );
+	}
+}
+endif;
+
+add_action( 'after_setup_theme', 'ttfmake_action_backcompat', 1 );
+
+if ( ! function_exists( 'ttfmake_backcompat_action' ) ) :
+/**
+ * Prepends "ttf" to a filter name and calls that new filter variant.
+ *
+ * @since  1.2.3.
+ *
+ * @return mixed    The result of the filter.
+ */
+function ttfmake_backcompat_action() {
+	$action = 'ttf' . current_action();
+	do_action_ref_array( $action, func_get_args() );
 }
 endif;

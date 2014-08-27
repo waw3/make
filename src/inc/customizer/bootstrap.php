@@ -247,7 +247,7 @@ if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
  * @return void
  */
 function ttfmake_add_customizations() {
-	do_action( 'ttfmake_css' );
+	do_action( 'make_css' );
 }
 endif;
 
@@ -265,7 +265,7 @@ if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
  * @return void
  */
 function ttfmake_display_customizations() {
-	do_action( 'ttfmake_css' );
+	do_action( 'make_css' );
 
 	// Echo the rules
 	$css = ttfmake_get_css()->build();

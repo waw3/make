@@ -34,7 +34,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 </div>
 <?php endif; ?>
 
-<?php do_action( 'ttfmake_section_text_before_columns_select', $ttfmake_section_data ); ?>
+<?php do_action( 'make_section_text_before_columns_select', $ttfmake_section_data ); ?>
 
 <div class="ttfmake-columns-select ttfmake-select">
 	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'make' ); ?></label>
@@ -46,7 +46,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	</select>
 </div>
 
-<?php do_action( 'ttfmake_section_text_after_columns_select', $ttfmake_section_data ); ?>
+<?php do_action( 'make_section_text_after_columns_select', $ttfmake_section_data ); ?>
 
 <div class="ttfmake-titlediv">
 	<div class="ttfmake-titlewrap">
@@ -54,7 +54,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	</div>
 </div>
 
-<?php do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
+<?php do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 
 <div class="ttfmake-text-columns-stage ttfmake-text-columns-<?php echo $columns_class; ?>">
 	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
@@ -70,7 +70,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 			<div class="sortable-background"></div>
 		</div>
 
-		<?php do_action( 'ttfmake_section_text_before_column', $ttfmake_section_data, $i ); ?>
+		<?php do_action( 'make_section_text_before_column', $ttfmake_section_data, $i ); ?>
 
 		<div class="ttfmake-titlediv">
 			<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttfmake-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
@@ -104,12 +104,12 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortextcolumn' . $i . $ttfmake_section_data['data']['id'], $editor_settings ); ?>
 		<?php endif; ?>
 
-		<?php do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i ); ?>
+		<?php do_action( 'make_section_text_after_column', $ttfmake_section_data, $i ); ?>
 	</div>
 	<?php $j++; endforeach; ?>
 </div>
 
-<?php do_action( 'ttfmake_section_text_after_columns', $ttfmake_section_data ); ?>
+<?php do_action( 'make_section_text_after_columns', $ttfmake_section_data ); ?>
 
 <div class="clear"></div>
 

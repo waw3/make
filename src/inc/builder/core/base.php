@@ -706,6 +706,9 @@ if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
 function ttfmake_load_section_header() {
 	global $ttfmake_section_data;
 	get_template_part( 'inc/builder/core/templates/section', 'header' );
+	do_action( 'make_section_' . $ttfmake_section_data['section']['id'] . '_before', $ttfmake_section_data );
+
+	// Backcompat
 	do_action( 'ttfmake_section_' . $ttfmake_section_data['section']['id'] . '_before', $ttfmake_section_data );
 }
 endif;
@@ -721,6 +724,9 @@ if ( ! function_exists( 'ttfmake_load_section_footer' ) ) :
 function ttfmake_load_section_footer() {
 	global $ttfmake_section_data;
 	get_template_part( 'inc/builder/core/templates/section', 'footer' );
+	do_action( 'make_section_' . $ttfmake_section_data['section']['id'] . '_after', $ttfmake_section_data );
+
+	// Backcompat
 	do_action( 'ttfmake_section_' . $ttfmake_section_data['section']['id'] . '_after', $ttfmake_section_data );
 }
 endif;
