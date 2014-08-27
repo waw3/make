@@ -197,7 +197,7 @@ add_filter( 'excerpt_more', 'ttfmake_excerpt_more' );
 
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
 /**
- * Determine the current view
+ * Determine the current view.
  *
  * For use with view-related theme options.
  *
@@ -218,7 +218,7 @@ function ttfmake_get_view() {
 	// Post parent
 	$parent_post_type = '';
 	if ( is_attachment() ) {
-		$post_parent = get_post()->post_parent;
+		$post_parent      = get_post()->post_parent;
 		$parent_post_type = get_post_type( $post_parent );
 	}
 
@@ -245,7 +245,14 @@ function ttfmake_get_view() {
 		$view = 'page';
 	}
 
-	// Filter the view and return
+	/**
+	 * Allow developers to dynamically change the view.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $view                The view name.
+	 * @param string    $parent_post_type    The post type for the parent post of the current post.
+	 */
 	return apply_filters( 'make_get_view', $view, $parent_post_type );
 }
 endif;
@@ -278,7 +285,16 @@ function ttfmake_has_sidebar( $location ) {
 		$show_sidebar = false;
 	}
 
-	// Filter and return
+	/**
+	 * Allow developers to dynamically changed the result of the "has sidebar" check.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param bool      $show_sidebar    Whether or not to show the sidebar.
+	 * @param string    $location        The location of the sidebar being evaluated.
+	 * @param string    $view            The view name.
+	 */
+
 	return apply_filters( 'make_has_sidebar', $show_sidebar, $location, $view );
 }
 endif;
@@ -353,6 +369,15 @@ function ttfmake_sidebar_list_enabled( $location ) {
 			$enabled_views[] = $label;
 		}
 	}
+
+	/**
+	 * Filter the list of sidebars that are available for a specific location.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $enabled_views    The list of views enabled for the sidebar.
+	 * @param string   $location         The location of the sidebar being evaulated.
+	 */
 
 	return apply_filters( 'make_sidebar_list_enabled', $enabled_views, $location );
 }
@@ -449,6 +474,14 @@ function ttfmake_get_section_data( $post_id ) {
 		}
 	}
 
+	/**
+	 * Filter the section data for a post.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $ordered_data    The array of section data.
+	 * @param int      $post_id         The post ID for the retrieved data.
+	 */
 	return apply_filters( 'make_get_section_data', $ordered_data, $post_id );
 }
 endif;
@@ -530,6 +563,15 @@ function ttfmake_is_builder_page( $post_id = 0 ) {
 	$has_builder_meta = ( 1 === (int) get_post_meta( $post_id, '_ttfmake-use-builder', true ) );
 
 	$is_builder_page = $has_builder_template || $has_builder_meta;
+
+	/**
+	 * Allow a developer to dynamically change whether the post uses the builder or not.
+	 *
+	 * @since 1.2.3
+	 *
+	 * @param bool    $is_builder_page    Whether or not the post uses the builder.
+	 * @param int     $post_id            The ID of post being evaluated.
+	 */
 	return apply_filters( 'make_is_builder_page', $is_builder_page, $post_id );
 }
 endif;

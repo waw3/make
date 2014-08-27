@@ -154,8 +154,14 @@ function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $af
 		);
 	}
 
+	/**
+	 * Filter the value of the read more text.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $read_more_text    The read more text value.
+	 */
 	$more = apply_filters( 'make_read_more_text', __( 'Read more', 'make' ) );
-
 	return $before . $more . $after;
 }
 endif;
@@ -335,7 +341,16 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 
 	unset( $menu_items, $menu_item );
 
-	// Supported social icons (filterable); [url pattern] => [css class]
+	/**
+	 * Filter the supported social icons.
+	 *
+	 * This array uses the url pattern for the key and the CSS class (as dictated by Font Awesome) as the array value.
+	 * The URL pattern is used to match the URL used by a menu item.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $icons    The array of supported social icons.
+	 */
 	$supported_icons = apply_filters( 'make_supported_social_icons', array(
 		'app.net'            => 'fa-adn',
 		'behance.net'        => 'fa-behance',
