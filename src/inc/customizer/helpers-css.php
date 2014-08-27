@@ -248,7 +248,7 @@ class TTFMAKE_CSS {
 			$output       .= apply_filters( 'make_parse_declaration', $parsed_value, $property, $value, $t, $n );
 		}
 
-		return apply_filters( 'make_parse_declarations', $output, $declarations, $tab );
+		return apply_filters( 'make_css_parse_declarations', $output, $declarations, $tab );
 	}
 }
 endif;
