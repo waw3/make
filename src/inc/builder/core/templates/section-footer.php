@@ -3,6 +3,13 @@
  * @package Make
  */
 
+/**
+ * Filter the builder section footer links.
+ *
+ * @since 1.2.3.
+ *
+ * @param array    $links    The list of footer links.
+ */
 $links = apply_filters( 'make_builder_section_footer_links', array(
 	100 => array(
 		'href'  => '#',
