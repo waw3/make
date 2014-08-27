@@ -538,7 +538,7 @@ if ( ! function_exists( 'ttfmake_filter_backcompat' ) ) :
 /**
  * Adds back compat for filters with changed names.
  *
- * In Make 1.2.3, filters were all changed for "ttfmake_" to "make_". In order to maintain back compatibility, the old
+ * In Make 1.2.3, filters were all changed from "ttfmake_" to "make_". In order to maintain back compatibility, the old
  * version of the filter needs to still be called. This function collects all of those changed filters and mirrors the
  * new filter so that the old filter name will still work.
  *
@@ -592,14 +592,14 @@ function ttfmake_filter_backcompat() {
 	);
 
 	foreach ( $old_filters as $filter => $args ) {
-		add_filter( $filter, 'ttfmake_backcompat_filter', 10, $args );
+		add_filter( 'make_' . $filter, 'ttfmake_backcompat_filter', 10, $args );
 	}
 }
 endif;
 
 add_action( 'after_setup_theme', 'ttfmake_filter_backcompat', 1 );
 
-if ( function_exists( 'ttfmake_backcompat_filter' ) ) :
+if ( ! function_exists( 'ttfmake_backcompat_filter' ) ) :
 /**
  * Prepends "ttf" to a filter name and calls that new filter variant.
  *
