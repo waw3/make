@@ -23,6 +23,7 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'helpers-logo.php' );
 
 	// Hook up functions
+	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
 	add_action( 'customize_register', 'ttfmake_customizer_add_sections' );
 	add_action( 'customize_register', 'ttfmake_customizer_set_transport' );
 	add_action( 'customize_preview_init', 'ttfmake_customizer_preview_script' );
@@ -33,6 +34,54 @@ function ttfmake_customizer_init() {
 endif;
 
 add_action( 'after_setup_theme', 'ttfmake_customizer_init' );
+
+if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
+/**
+ * Register Customizer panels
+ *
+ * @since 1.3.0.
+ *
+ * @param  WP_Customize_Manager    $wp_customize    Customizer object.
+ * @return void
+ */
+function ttfmake_customizer_add_panels( $wp_customize ) {
+	// Panels are only available in WP 4.0+
+	if ( method_exists( $wp_customize, 'add_panel' ) ) {
+		$priority = new TTFMAKE_Prioritizer( 10, 10 );
+		$theme_prefix = 'ttfmake_';
+
+		// Define panels
+		$panels = array(
+			'general'      => array( 'title' => __( 'General', 'make' ) ),
+			'typography'   => array( 'title' => __( 'Typography', 'make' ) ),
+			'color-scheme' => array( 'title' => __( 'Color Scheme', 'make' ) ),
+			'header'       => array( 'title' => __( 'Header', 'make' ) ),
+			'main-column'  => array( 'title' => __( 'Main Column', 'make' ) ),
+			'layout'       => array( 'title' => __( 'Layout', 'make' ) ),
+			'footer'       => array( 'title' => __( 'Footer', 'make' ) ),
+		);
+		// Filter panel list
+		$panels = apply_filters( 'make_customizer_panels', $panels );
+
+		// Add panels
+		foreach ( $panels as $panel => $data ) {
+			// Sanitize the panel title
+			if ( ! isset( $data[ 'title' ] ) || ! $data[ 'title' ] ) {
+				$data[ 'title' ] = ucfirst( esc_attr( $panel ) );
+			}
+
+			// Add panel
+			$wp_customize->add_panel(
+				$theme_prefix . $panel,
+				array(
+					'title'    => $data['title'],
+					'priority' => $priority->add(),
+				)
+			);
+		}
+	}
+}
+endif;
 
 if ( ! function_exists( 'ttfmake_customizer_add_sections' ) ) :
 /**
