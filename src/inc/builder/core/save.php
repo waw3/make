@@ -126,6 +126,18 @@ class TTFMAKE_Builder_Save {
 		// Call the save callback for each section
 		foreach ( $ordered_sections as $id => $values ) {
 			if ( isset( $registered_sections[ $values['section-type'] ]['save_callback'] ) && true === $this->is_save_callback_callable( $registered_sections[ $values['section-type'] ] ) ) {
+				/**
+				 * Filter the prepared data for an individual section.
+				 *
+				 * The result of the `call_user_func_array()` call is an array of data representing the data for the
+				 * section. This filter allows a developer to alter that data after it is handled.
+				 *
+				 * @since 1.2.3.
+				 *
+				 * @param array  $data            The section data.
+				 * @param array  $data            The raw section data.
+				 * @param string $section_type    The type of section being handled.
+				 */
 				$clean_sections[ $id ]                 = apply_filters( 'make_prepare_data_section', call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) ), $values, $values['section-type'] );
 				$clean_sections[ $id ]['state']        = ( isset( $values['state'] ) ) ? sanitize_key( $values['state'] ) : 'open';
 				$clean_sections[ $id ]['section-type'] = $values['section-type'];
@@ -133,6 +145,15 @@ class TTFMAKE_Builder_Save {
 			}
 		}
 
+		/**
+		 * Filter the full set of data for a post.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $clean_sections    The clean sections.
+		 * @param array    $sections          The raw sections.
+		 * @param array    $order             The order for the sections.
+		 */
 		return apply_filters( 'make_prepare_data', $clean_sections, $sections, $order );
 	}
 
@@ -277,8 +298,16 @@ class TTFMAKE_Builder_Save {
 			return $data;
 		}
 
-		// The data has been deleted and can be removed
+		/**
+		 * Filter the section data.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $data   The sanitized data.
+		 */
 		$sanitized_sections = apply_filters( 'make_insert_post_data_sections', $this->get_sanitized_sections() );
+
+		// The data has been deleted and can be removed
 		if ( empty( $sanitized_sections ) ) {
 			$data['post_content'] = '';
 			return $data;
@@ -343,6 +372,16 @@ class TTFMAKE_Builder_Save {
 		// Allow constraints again after builder data processing is complete.
 		remove_filter( 'editor_max_image_size', array( &$this, 'remove_image_constraints' ) );
 
+		/**
+		 * Filter the generated post content.
+		 *
+		 * This content is the full HTML version of the content that will be saved as "post_content".
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $post_content    The fully generated post content.
+		 * @param array     $data            The data used to generate the content.
+		 */
 		return apply_filters( 'make_generate_post_content', $post_content, $data );
 	}
 
@@ -467,6 +506,15 @@ class TTFMAKE_Builder_Save {
 			}
 		}
 
+		/**
+		 * Allow developers to alter the "next" section data.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $next_data          The data for the next section.
+		 * @param array    $current_section    The data for the current section.
+		 * @param array    $sections           The list of all sections.
+		 */
 		return apply_filters( 'make_get_next_section_data', $next_data, $current_section, $sections );
 	}
 
@@ -489,6 +537,16 @@ class TTFMAKE_Builder_Save {
 		}
 
 		$prev_section = ( isset( $prev_key ) && isset( $sections[ $prev_key ] ) ) ? $sections[ $prev_key ] : array();
+
+		/**
+		 * Allow developers to alter the "next" section data.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $prev_section       The data for the next section.
+		 * @param array    $current_section    The data for the current section.
+		 * @param array    $sections           The list of all sections.
+		 */
 		return apply_filters( 'make_get_next_section_data', $prev_section, $current_section, $sections );
 	}
 
@@ -518,7 +576,14 @@ class TTFMAKE_Builder_Save {
 		$prev_data = $this->get_prev_section_data( $current_section, $sections );
 		$prev      = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' . $prev_data['section-type'] : $prefix . 'first';
 
-		// Return the values as a single string
+		/**
+		 * Filter the section classes.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $classes            The sting of classes.
+		 * @param array     $current_section    The array of data for the current section.
+		 */
 		return apply_filters( 'make_section_classes', $prev . ' ' . $current . ' ' . $next, $current_section );
 	}
 
@@ -531,6 +596,13 @@ class TTFMAKE_Builder_Save {
 	 * @return void
 	 */
 	public function the_builder_content( $content ) {
+		/**
+		 * Filter the content used for "post_content" when the builder is used to generate content.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $content    The post content.
+		 */
 		$content = apply_filters( 'make_the_builder_content', $content );
 		$content = str_replace( ']]>', ']]&gt;', $content );
 		echo $content;
