@@ -160,6 +160,18 @@ class TTFMAKE_Builder_Save {
 		// Save the ids for the sections. This will be used to lookup all of the separate values.
 		$section_ids = array_keys( $sections );
 		update_post_meta( $post_id, '_ttfmake-section-ids', $section_ids );
+
+		/**
+		 * Execute code after the section data is saved.
+		 *
+		 * While it is possible to use a "save_post" to hook into the save routine, this action is preferred as it is
+		 * only called after all validation and sanitization is completed.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $sections    The clean section data.
+		 * @param int      $post_id     The post ID for the saved data.
+		 */
 		do_action( 'make_builder_data_saved', $sections, $post_id );
 
 		// Remove the old section values if necessary

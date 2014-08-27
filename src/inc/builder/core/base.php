@@ -706,6 +706,17 @@ if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
 function ttfmake_load_section_header() {
 	global $ttfmake_section_data;
 	get_template_part( 'inc/builder/core/templates/section', 'header' );
+
+	/**
+	 * Allow for script execution in the header of a builder section.
+	 *
+	 * This action is a variable action that allows a developer to hook into specific section types (e.g., 'text'). Do
+	 * not confuse "id" in this context as the individual section id (e.g., 14092814910).
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $ttfmake_section_data    The array of data for the section.
+	 */
 	do_action( 'make_section_' . $ttfmake_section_data['section']['id'] . '_before', $ttfmake_section_data );
 
 	// Backcompat
@@ -724,6 +735,17 @@ if ( ! function_exists( 'ttfmake_load_section_footer' ) ) :
 function ttfmake_load_section_footer() {
 	global $ttfmake_section_data;
 	get_template_part( 'inc/builder/core/templates/section', 'footer' );
+
+	/**
+	 * Allow for script execution in the footer of a builder section.
+	 *
+	 * This action is a variable action that allows a developer to hook into specific section types (e.g., 'text'). Do
+	 * not confuse "id" in this context as the individual section id (e.g., 14092814910).
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $ttfmake_section_data    The array of data for the section.
+	 */
 	do_action( 'make_section_' . $ttfmake_section_data['section']['id'] . '_after', $ttfmake_section_data );
 
 	// Backcompat

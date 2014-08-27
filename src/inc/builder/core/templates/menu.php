@@ -9,7 +9,14 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 <div class="ttfmake-menu ttfmake-menu-<?php echo esc_attr( $class ); ?>" id="ttfmake-menu">
 	<div class="ttfmake-menu-pane">
 		<ul class="ttfmake-menu-list">
-			<?php do_action( 'make_before_builder_menu' ); ?>
+			<?php
+			/**
+			 * Execute code before the builder menu is displayed.
+			 *
+			 * @since 1.2.3.
+			 */
+			do_action( 'make_before_builder_menu' );
+			?>
 			<?php foreach ( ttfmake_get_sections_by_order() as $key => $item ) : ?>
 				<li class="ttfmake-menu-list-item">
 					<a href="#" title="<?php esc_attr_e( 'Add', 'make' ); ?>" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-<?php echo esc_attr( $item['id'] ); ?>" data-section="<?php echo esc_attr( $item['id'] ); ?>">
@@ -27,7 +34,14 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 					</a>
 				</li>
 			<?php endforeach; ?>
-			<?php do_action( 'make_after_builder_menu' ); ?>
+			<?php
+			/**
+			 * Execute code after the builder menu is displayed.
+			 *
+			 * @since 1.2.3.
+			 */
+			do_action( 'make_after_builder_menu' );
+			?>
 			<?php if ( ! ttfmake_is_plus() && in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) : ?>
 				<li class="ttfmake-menu-list-item make-plus-products">
 					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="background-image: url('<?php echo addcslashes( esc_url_raw( get_template_directory_uri() . '/inc/builder/sections/css/images/woocommerce.png' ), '"' ); ?>');">

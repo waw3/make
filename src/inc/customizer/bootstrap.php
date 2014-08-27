@@ -247,6 +247,15 @@ if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
  * @return void
  */
 function ttfmake_add_customizations() {
+	/**
+	 * The hook used to add CSS rules for the generated inline CSS.
+	 *
+	 * This hook is the correct hook to use for adding CSS styles to the group of selectors and properties that will be
+	 * added to inline CSS that is printed in the head. Hooking elsewhere may lead to rules not being registered
+	 * correctly for the CSS generation. Most Customizer options will use this hook to register additional CSS rules.
+	 *
+	 * @since 1.2.3.
+	 */
 	do_action( 'make_css' );
 }
 endif;
@@ -265,6 +274,15 @@ if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
  * @return void
  */
 function ttfmake_display_customizations() {
+	/**
+	 * The hook used to add CSS rules for the generated inline CSS.
+	 *
+	 * This hook is the correct hook to use for adding CSS styles to the group of selectors and properties that will be
+	 * added to inline CSS that is printed in the head. Hooking elsewhere may lead to rules not being registered
+	 * correctly for the CSS generation. Most Customizer options will use this hook to register additional CSS rules.
+	 *
+	 * @since 1.2.3.
+	 */
 	do_action( 'make_css' );
 
 	// Echo the rules
