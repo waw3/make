@@ -246,7 +246,7 @@ function ttfmake_get_view() {
 	}
 
 	// Filter the view and return
-	return apply_filters( 'ttfmake_get_view', $view, $parent_post_type );
+	return apply_filters( 'make_get_view', $view, $parent_post_type );
 }
 endif;
 
@@ -279,7 +279,7 @@ function ttfmake_has_sidebar( $location ) {
 	}
 
 	// Filter and return
-	return apply_filters( 'ttfmake_has_sidebar', $show_sidebar, $location, $view );
+	return apply_filters( 'make_has_sidebar', $show_sidebar, $location, $view );
 }
 endif;
 
@@ -549,8 +549,46 @@ if ( ! function_exists( 'ttfmake_filter_backcompat' ) ) :
 function ttfmake_filter_backcompat() {
 	// All filters that need a name change
 	$old_filters = array(
-		'make_font_variants' => 3,
-		'make_is_plus' => 1,
+		'template_content_archive'     => 2,
+		'fitvids_custom_selectors'     => 1,
+		'template_content_page'        => 2,
+		'template_content_search'      => 2,
+		'footer_1'                     => 1,
+		'footer_2'                     => 1,
+		'footer_3'                     => 1,
+		'footer_4'                     => 1,
+		'sidebar_left'                 => 1,
+		'sidebar_right'                => 1,
+		'template_content_single'      => 2,
+		'get_view'                     => 2,
+		'has_sidebar'                  => 3,
+		'read_more_text'               => 1,
+		'supported_social_icons'       => 1,
+		'exif_shutter_speed'           => 2,
+		'exif_aperture'                => 2,
+		'style_formats'                => 1,
+		'prepare_data_section'         => 3,
+		'insert_post_data_sections'    => 1,
+		'section_classes'              => 2,
+		'the_builder_content'          => 1,
+		'builder_section_footer_links' => 1,
+		'section_defaults'             => 1,
+		'section_choices'              => 3,
+		'gallery_class'                => 2,
+		'builder_banner_class'         => 2,
+		'customizer_sections'          => 1,
+		'setting_defaults'             => 1,
+		'font_relative_size'           => 1,
+		'font_stack'                   => 2,
+		'font_variants'                => 3,
+		'all_fonts'                    => 1,
+		'get_google_fonts'             => 1,
+		'custom_logo_information'      => 1,
+		'custom_logo_max_width'        => 1,
+		'setting_choices'              => 2,
+		'social_links'                 => 1,
+		'show_footer_credit'           => 1,
+		'is_plus'                      => 1,
 	);
 
 	foreach ( $old_filters as $filter => $args ) {
@@ -570,7 +608,7 @@ if ( function_exists( 'ttfmake_backcompat_filter' ) ) :
  * @return mixed    The result of the filter.
  */
 function ttfmake_backcompat_filter() {
-	$filter = 'ttf' . current_filter();
+	$filter = 'ttfmake_' . current_filter();
 	return apply_filters_ref_array( $filter, func_get_args() );
 }
 endif;

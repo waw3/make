@@ -126,7 +126,7 @@ class TTFMAKE_Builder_Save {
 		// Call the save callback for each section
 		foreach ( $ordered_sections as $id => $values ) {
 			if ( isset( $registered_sections[ $values['section-type'] ]['save_callback'] ) && true === $this->is_save_callback_callable( $registered_sections[ $values['section-type'] ] ) ) {
-				$clean_sections[ $id ]                 = apply_filters( 'ttfmake_prepare_data_section', call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) ), $values, $values['section-type'] );
+				$clean_sections[ $id ]                 = apply_filters( 'make_prepare_data_section', call_user_func_array( $registered_sections[ $values['section-type'] ]['save_callback'], array( $values ) ), $values, $values['section-type'] );
 				$clean_sections[ $id ]['state']        = ( isset( $values['state'] ) ) ? sanitize_key( $values['state'] ) : 'open';
 				$clean_sections[ $id ]['section-type'] = $values['section-type'];
 				$clean_sections[ $id ]['id']           = $id;
@@ -266,7 +266,7 @@ class TTFMAKE_Builder_Save {
 		}
 
 		// The data has been deleted and can be removed
-		$sanitized_sections = apply_filters( 'ttfmake_insert_post_data_sections', $this->get_sanitized_sections() );
+		$sanitized_sections = apply_filters( 'make_insert_post_data_sections', $this->get_sanitized_sections() );
 		if ( empty( $sanitized_sections ) ) {
 			$data['post_content'] = '';
 			return $data;
@@ -507,7 +507,7 @@ class TTFMAKE_Builder_Save {
 		$prev      = ( ! empty( $prev_data ) && isset( $prev_data['section-type'] ) ) ? $prefix . 'prev-' . $prev_data['section-type'] : $prefix . 'first';
 
 		// Return the values as a single string
-		return apply_filters( 'ttfmake_section_classes', $prev . ' ' . $current . ' ' . $next, $current_section );
+		return apply_filters( 'make_section_classes', $prev . ' ' . $current . ' ' . $next, $current_section );
 	}
 
 	/**
@@ -519,7 +519,7 @@ class TTFMAKE_Builder_Save {
 	 * @return void
 	 */
 	public function the_builder_content( $content ) {
-		$content = apply_filters( 'ttfmake_the_builder_content', $content );
+		$content = apply_filters( 'make_the_builder_content', $content );
 		$content = str_replace( ']]>', ']]&gt;', $content );
 		echo $content;
 	}

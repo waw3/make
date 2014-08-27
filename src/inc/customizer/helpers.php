@@ -203,7 +203,7 @@ function ttfmake_get_choices( $setting ) {
 			break;
 	}
 
-	return apply_filters( 'ttfmake_setting_choices', $choices, $setting );
+	return apply_filters( 'make_setting_choices', $choices, $setting );
 }
 endif;
 
@@ -349,6 +349,6 @@ function ttfmake_get_social_links() {
 		$services_with_links['email']['url'] = esc_url( 'mailto:' . $services_with_links['email']['url'] );
 	}
 
-	return apply_filters( 'ttfmake_social_links', $services_with_links );
+	return apply_filters( 'make_social_links', $services_with_links );
 }
 endif;

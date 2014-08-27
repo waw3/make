@@ -121,7 +121,7 @@ function ttfmake_mce_before_init( $settings ) {
 	);
 
 	// Allow styles to be customized
-	$style_formats = apply_filters( 'ttfmake_style_formats', $style_formats );
+	$style_formats = apply_filters( 'make_style_formats', $style_formats );
 
 	// Encode
 	$settings['style_formats'] = json_encode( $style_formats );

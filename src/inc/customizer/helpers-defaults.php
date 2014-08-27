@@ -192,7 +192,7 @@ function ttfmake_option_defaults() {
 		'social-custom-rss'                        => '',
 	);
 
-	return apply_filters( 'ttfmake_setting_defaults', $defaults );
+	return apply_filters( 'make_setting_defaults', $defaults );
 }
 endif;
 

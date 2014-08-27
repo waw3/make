@@ -95,7 +95,7 @@ function ttfmake_builder_get_gallery_class( $ttfmake_section_data, $sections ) {
 		$gallery_class .= ' has-background';
 	}
 
-	return apply_filters( 'ttfmake_gallery_class', $gallery_class, $ttfmake_section_data );
+	return apply_filters( 'make_gallery_class', $gallery_class, $ttfmake_section_data );
 }
 
 /**
@@ -320,7 +320,7 @@ function ttfmake_builder_get_banner_class( $ttfmake_section_data, $sections ) {
 		$banner_class .= ' ' . ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 	}
 
-	return apply_filters( 'ttfmake_builder_banner_class', $banner_class, $ttfmake_section_data );
+	return apply_filters( 'make_builder_banner_class', $banner_class, $ttfmake_section_data );
 }
 
 /**

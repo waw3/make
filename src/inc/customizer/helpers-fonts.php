@@ -62,7 +62,7 @@ function ttfmake_css_fonts() {
 	$font_body_size       = absint( get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) ) );
 
 	// Relative font sizes
-	$percent = apply_filters( 'ttfmake_font_relative_size', array(
+	$percent = apply_filters( 'make_font_relative_size', array(
 		// Relative to navigation font size
 		'sub-menu'     => 93,
 		// Relative to header font size
@@ -279,7 +279,7 @@ function ttfmake_get_font_stack( $font ) {
 		$stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
 	}
 
-	return apply_filters( 'ttfmake_font_stack', $stack, $font );
+	return apply_filters( 'make_font_stack', $stack, $font );
 }
 endif;
 
@@ -419,7 +419,7 @@ function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
 		$chosen_variants[] = '700';
 	}
 
-	return apply_filters( 'ttfmake_font_variants', array_unique( $chosen_variants ), $font, $variants );
+	return apply_filters( 'make_font_variants', array_unique( $chosen_variants ), $font, $variants );
 }
 endif;
 
@@ -519,7 +519,7 @@ function ttfmake_get_all_fonts() {
 	$standard_fonts = ttfmake_get_standard_fonts();
 	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'make' ) ) ) );
 	$google_fonts   = ttfmake_get_google_fonts();
-	return apply_filters( 'ttfmake_all_fonts', array_merge( $heading1, $standard_fonts, $heading2, $google_fonts ) );
+	return apply_filters( 'make_all_fonts', array_merge( $heading1, $standard_fonts, $heading2, $google_fonts ) );
 }
 endif;
 
@@ -558,7 +558,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
  * @return array    All Google Fonts.
  */
 function ttfmake_get_google_fonts() {
-	return apply_filters( 'ttfmake_get_google_fonts', array(
+	return apply_filters( 'make_get_google_fonts', array(
 		'ABeeZee' => array(
 			'label'    => 'ABeeZee',
 			'variants' => array(

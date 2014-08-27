@@ -299,7 +299,7 @@ class TTFMAKE_Logo {
 		}
 
 		// Allow logo settings to be overridden via filter
-		$this->logo_information = apply_filters( 'ttfmake_custom_logo_information', $this->logo_information );
+		$this->logo_information = apply_filters( 'make_custom_logo_information', $this->logo_information );
 
 		return $this->logo_information;
 	}
@@ -312,7 +312,7 @@ class TTFMAKE_Logo {
 	 * @return void
 	 */
 	function print_logo_css() {
-		$size = apply_filters( 'ttfmake_custom_logo_max_width', '960' );
+		$size = apply_filters( 'make_custom_logo_max_width', '960' );
 
 		// Grab the logo information
 		$info = $this->get_logo_information();

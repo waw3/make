@@ -154,7 +154,7 @@ function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $af
 		);
 	}
 
-	$more = apply_filters( 'ttfmake_read_more_text', __( 'Read more', 'make' ) );
+	$more = apply_filters( 'make_read_more_text', __( 'Read more', 'make' ) );
 
 	return $before . $more . $after;
 }
@@ -336,7 +336,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 	unset( $menu_items, $menu_item );
 
 	// Supported social icons (filterable); [url pattern] => [css class]
-	$supported_icons = apply_filters( 'ttfmake_supported_social_icons', array(
+	$supported_icons = apply_filters( 'make_supported_social_icons', array(
 		'app.net'            => 'fa-adn',
 		'behance.net'        => 'fa-behance',
 		'bitbucket.org'      => 'fa-bitbucket',
@@ -472,7 +472,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 					_x( 'seconds', 'time', 'make' )
 				);
 			}
-			$image_meta['shutter_speed'] = apply_filters( 'ttfmake_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
+			$image_meta['shutter_speed'] = apply_filters( 'make_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
 		}
 
 		// Convert the aperture to an F-stop
@@ -482,7 +482,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 				_x( 'f/', 'camera f-stop', 'make' ),
 				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
-			$image_meta['aperture'] = apply_filters( 'ttfmake_exif_aperture', $f_stop, $image_meta['aperture'] );
+			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'] );
 		}
 
 		$output .= "<ul class=\"entry-exif-list\">\n";

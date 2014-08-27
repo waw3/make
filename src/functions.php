@@ -333,7 +333,7 @@ function ttfmake_scripts() {
 	);
 
 	// Filter selectors
-	$selector_array = apply_filters( 'ttfmake_fitvids_custom_selectors', $selector_array );
+	$selector_array = apply_filters( 'make_fitvids_custom_selectors', $selector_array );
 
 	// Compile selectors
 	$fitvids_custom_selectors = array(
@@ -458,7 +458,7 @@ endif;
  * @return bool    Whether or not the companion plugin is installed.
  */
 function ttfmake_is_plus() {
-	return apply_filters( 'ttfmake_is_plus', class_exists( 'TTFMP_App' ) );
+	return apply_filters( 'make_is_plus', class_exists( 'TTFMP_App' ) );
 }
 
 /**

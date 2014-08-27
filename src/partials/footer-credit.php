@@ -4,7 +4,7 @@
  */
 
 $footer_text = get_theme_mod( 'footer-text', false );
-$footer_credit = apply_filters( 'ttfmake_show_footer_credit', true );
+$footer_credit = apply_filters( 'make_show_footer_credit', true );
 ?>
 
 <?php if ( $footer_text || ttfmake_is_preview() ) : ?>

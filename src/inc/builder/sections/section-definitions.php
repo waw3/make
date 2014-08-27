@@ -543,7 +543,7 @@ class TTFMAKE_Section_Definitions {
 			// Placeholder
 		);
 
-		return apply_filters( 'ttfmake_section_defaults', $defaults );
+		return apply_filters( 'make_section_defaults', $defaults );
 	}
 
 	/**
@@ -564,7 +564,7 @@ class TTFMAKE_Section_Definitions {
 			// Placeholder
 		}
 
-		return apply_filters( 'ttfmake_section_choices', $choices, $key, $section_type );
+		return apply_filters( 'make_section_choices', $choices, $key, $section_type );
 	}
 }
 endif;

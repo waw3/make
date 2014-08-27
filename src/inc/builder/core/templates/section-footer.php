@@ -3,7 +3,7 @@
  * @package Make
  */
 
-$links = apply_filters( 'ttfmake_builder_section_footer_links', array(
+$links = apply_filters( 'make_builder_section_footer_links', array(
 	100 => array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-remove',

@@ -79,7 +79,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		unset( $sections['stylekit'] );
 	}
 
-	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
+	$sections = apply_filters( 'make_customizer_sections', $sections );
 
 	// Priority for first section
 	$priority = new TTFMAKE_Prioritizer( 0, 10 );
