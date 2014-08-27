@@ -40,7 +40,7 @@ function ttfmake_body_classes( $classes ) {
 		$classes[] = 'has-right-sidebar';
 	}
 
-	return apply_filters( 'make_body_classes', $classes );
+	return $classes;
 }
 endif;
 
