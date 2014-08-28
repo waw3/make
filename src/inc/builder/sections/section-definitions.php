@@ -598,7 +598,7 @@ if ( ! function_exists( 'ttfmake_get_section_choices' ) ) :
  * @return array                      The array of choices for the section setting.
  */
 function ttfmake_get_section_choices( $key, $section_type ) {
-	return apply_filters( 'make_get_section_choices', ttfmake_get_section_definitions()->get_choices( $key, $section_type ), $key, $section_type );
+	return ttfmake_get_section_definitions()->get_choices( $key, $section_type );
 }
 endif;
 
