@@ -82,7 +82,7 @@ class TTFMAKE_Logo {
 	function get_attachment_id_from_url( $url = '' ) {
 		// If there is no url, return.
 		if ( '' === $url ) {
-			return apply_filters( 'get_attachment_id_from_url', false, $url );
+			return false;
 		}
 
 		global $wpdb;
@@ -92,7 +92,7 @@ class TTFMAKE_Logo {
 			$id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' " . "AND guid = %s", esc_url_raw( $url ) ) );
 
 			if ( ! empty( $id ) ) {
-				return apply_filters( 'get_attachment_id_from_url', absint( $id ), $url );
+				return absint( $id );
 			}
 		}
 
@@ -111,7 +111,7 @@ class TTFMAKE_Logo {
 			$attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", esc_url_raw( $url ) ) );
 		}
 
-		return apply_filters( 'get_attachment_id_from_url', $attachment_id, $url );
+		return $attachment_id;
 	}
 
 	/**
@@ -198,7 +198,7 @@ class TTFMAKE_Logo {
 			}
 		}
 
-		return apply_filters( 'make_get_logo_dimensions', $dimensions, $url, $force );
+		return $dimensions;
 	}
 
 	/**
@@ -209,8 +209,7 @@ class TTFMAKE_Logo {
 	 * @return bool    True if a logo should be displayed. False if a logo shouldn't be displayed.
 	 */
 	public function has_logo() {
-		$has_logo = ( $this->has_logo_by_type( 'logo-regular' ) || $this->has_logo_by_type( 'logo-retina' ) );
-		return apply_filters( 'make_has_logo', $has_logo );
+		return ( $this->has_logo_by_type( 'logo-regular' ) || $this->has_logo_by_type( 'logo-retina' ) );
 	}
 
 	/**
@@ -227,7 +226,7 @@ class TTFMAKE_Logo {
 
 		// If the information is already set, return it from the instance cache
 		if ( isset( $this->has_logo_by_type[ $type ] ) ) {
-			return apply_filters( 'make_has_logo_by_type', $this->has_logo_by_type[ $type ], $type );
+			return $this->has_logo_by_type[ $type ];
 		}
 
 		// Grab the logo information
@@ -255,7 +254,7 @@ class TTFMAKE_Logo {
 
 		// Cache to the instance var for future use
 		$this->has_logo_by_type[ $type ] = $return;
-		return apply_filters( 'make_has_logo_by_type', $this->has_logo_by_type[ $type ], $type );
+		return $this->has_logo_by_type[ $type ];
 	}
 
 	/**
@@ -299,7 +298,7 @@ class TTFMAKE_Logo {
 		}
 
 		// Allow logo settings to be overridden via filter
-		$this->logo_information = apply_filters( 'make_custom_logo_information', $this->logo_information );
+		$this->logo_information = apply_filters( 'ttfmake_custom_logo_information', $this->logo_information );
 
 		return $this->logo_information;
 	}
@@ -312,7 +311,7 @@ class TTFMAKE_Logo {
 	 * @return void
 	 */
 	function print_logo_css() {
-		$size = apply_filters( 'make_custom_logo_max_width', '960' );
+		$size = apply_filters( 'ttfmake_custom_logo_max_width', '960' );
 
 		// Grab the logo information
 		$info = $this->get_logo_information();
@@ -412,11 +411,11 @@ class TTFMAKE_Logo {
 		$ratio = $height / $width * 100;
 
 		// Arrange the resulting dimensions in an array
-		return apply_filters( 'make_adjust_dimensions', array(
+		return array(
 			'width'  => $width,
 			'height' => $height,
 			'ratio'  => $ratio
-		), $width, $height, $width_boundary, $retina );
+		);
 	}
 }
 endif;
