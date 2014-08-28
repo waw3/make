@@ -7,7 +7,9 @@
 function ttfmake_customizer_get_key_conversions() {
 	// $new => $old
 	$conversions = array(
-		'typography-sitetitle-family' => 'font-site-title',
+		'font-site-title-family' => 'font-site-title',
+		'font-header-family'     => 'font-header',
+		'font-body-family'       => 'font-body',
 	);
 
 	return apply_filters( 'make_customizer_key_conversions', $conversions );
