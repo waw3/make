@@ -17,15 +17,15 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	$general_sections = array();
 
 	/**
-	 * Static Front Page
+	 * Site Title & Tagline
 	 *
-	 * This is a built-in section
+	 * This is a built-in section.
 	 */
 
 	/**
 	 * Background Image
 	 *
-	 * This is a built-in section
+	 * This is a built-in section.
 	 */
 
 	/**
@@ -166,6 +166,12 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 		),
 	);
+
+	/**
+	 * Static Front Page
+	 *
+	 * This is a built-in section.
+	 */
 
 	// Filter the definitions
 	$general_sections = apply_filters( 'make_customizer_general_sections', $general_sections );
