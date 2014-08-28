@@ -23,6 +23,11 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'helpers-fonts.php' );
 	require_once( $path . 'helpers-logo.php' );
 
+	// Only load on admin side
+	if ( is_admin() ) {
+		require_once( $path . 'controls.php' );
+	}
+
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
 	add_action( 'customize_register', 'ttfmake_customizer_add_sections' );
@@ -35,6 +40,28 @@ function ttfmake_customizer_init() {
 endif;
 
 add_action( 'after_setup_theme', 'ttfmake_customizer_init' );
+
+if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
+/**
+ * Return an array of panel definitions
+ *
+ * @since 1.3.0.
+ *
+ * @return array    The array of panel definitions
+ */
+function ttfmake_customizer_get_panels() {
+	$panels = array(
+		'general'        => array( 'title' => __( 'General', 'make' ), 'description' => 'test' ),
+		'typography'     => array( 'title' => __( 'Typography', 'make' ) ),
+		'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ) ),
+		'header'         => array( 'title' => __( 'Header', 'make' ) ),
+		'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ) ),
+		'footer'         => array( 'title' => __( 'Footer', 'make' ) ),
+	);
+
+	return apply_filters( 'make_customizer_panels', $panels );
+}
+endif;
 
 if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
 /**
@@ -51,35 +78,32 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 		$priority = new TTFMAKE_Prioritizer( 10, 10 );
 		$theme_prefix = 'ttfmake_';
 
-		// Define panels
-		$panels = array(
-			'general'        => array( 'title' => __( 'General', 'make' ) ),
-			'typography'     => array( 'title' => __( 'Typography', 'make' ) ),
-			'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ) ),
-			'header'         => array( 'title' => __( 'Header', 'make' ) ),
-			'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ) ),
-			'footer'         => array( 'title' => __( 'Footer', 'make' ) ),
-		);
-		// Filter panel list
-		$panels = apply_filters( 'make_customizer_panels', $panels );
+		// Get panel definitions
+		$panels = ttfmake_customizer_get_panels();
 
 		// Add panels
 		foreach ( $panels as $panel => $data ) {
-			// Sanitize the panel title
-			if ( ! isset( $data[ 'title' ] ) || ! $data[ 'title' ] ) {
-				$data[ 'title' ] = ucfirst( esc_attr( $panel ) );
+			if ( ! isset( $data['priority'] ) ) {
+				$data['priority'] = $priority->add();
 			}
 
 			// Add panel
-			$wp_customize->add_panel(
-				$theme_prefix . $panel,
-				array(
-					'title'    => $data['title'],
-					'priority' => $priority->add(),
-				)
-			);
+			$wp_customize->add_panel( $theme_prefix . $panel, $data );
 		}
 	}
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_customizer_get_sections' ) ) :
+/**
+ * Return the master array of Customizer sections
+ *
+ * @since 1.3.0.
+ *
+ * @return array    The master array of Customizer sections
+ */
+function ttfmake_customizer_get_sections() {
+	return apply_filters( 'make_customizer_sections', array() );
 }
 endif;
 
@@ -95,6 +119,58 @@ if ( ! function_exists( 'ttfmake_customizer_add_sections' ) ) :
  * @return void
  */
 function ttfmake_customizer_add_sections( $wp_customize ) {
+	$theme_prefix = 'ttfmake_';
+	$default_path = get_template_directory() . '/inc/customizer/sections';
+	$panels = ttfmake_customizer_get_panels();
+
+	// Load section definition files
+	foreach ( $panels as $panel => $data ) {
+		if ( ! isset( $data['path'] ) ) {
+			$data['path'] = $default_path;
+		}
+
+		$file = trailingslashit( $data['path'] ) . $panel . '.php';
+
+		if ( file_exists( $file ) ) {
+			require_once( $file );
+		}
+	}
+
+	// Compile the section definitions
+	$sections = ttfmake_customizer_get_sections();
+
+	// Register each section and add its options
+	$priority = array();
+	foreach ( $sections as $section => $data ) {
+		// Store the options
+		if ( isset( $data['options'] ) ) {
+			$options = $data['options'];
+			unset( $data['options'] );
+		}
+
+		// Determine the priority
+		if ( ! isset( $data['priority'] ) ) {
+			$panel = ( isset( $data['panel'] ) ) ? $data['panel'] : 'none';
+
+			// Create a separate priority counter for each panel, and one for sections without a panel
+			if ( ! isset( $priority[ $panel ] ) ) {
+				$initial_priority = ( 'none' === $panel ) ? $wp_customize->get_panel( 'widgets' )->priority + 100 : 10;
+				$priority[ $panel ] = new TTFMAKE_Prioritizer( $initial_priority, 10 );
+			}
+
+			$data['priority'] = $priority[ $panel ]->add();
+		}
+
+		// Register section
+		$wp_customize->add_section( $theme_prefix . $section, $data );
+
+		// Add options to the section
+		if ( isset( $options ) ) {
+			ttfmake_customizer_add_section_options( $section, $options );
+		}
+	}
+
+	/*
 	$path         = get_template_directory() . '/inc/customizer/';
 	$section_path = $path . 'sections/';
 
@@ -183,24 +259,21 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 			}
 		}
 	}
+	*/
 }
 endif;
 
 
-function ttfmake_customizer_add_options( $section, $args ) {
+function ttfmake_customizer_add_section_options( $section, $args ) {
 	global $wp_customize;
 
 	$priority = new TTFMAKE_Prioritizer();
 	$theme_prefix = 'ttfmake_';
-	$setting_prefix = $section . '-';
 
-	foreach ( $args as $id => $option ) {
-		$setting_id = $setting_prefix . $id;
-
+	foreach ( $args as $setting_id => $option ) {
 		// Add setting
 		if ( isset( $option['setting'] ) ) {
 			$defaults = array(
-				'default' => ttfmake_get_default( $setting_id ),
 				'type'    => 'theme_mod',
 			);
 			$setting = wp_parse_args( $option['setting'], $defaults );
@@ -217,6 +290,9 @@ function ttfmake_customizer_add_options( $section, $args ) {
 				'section'  => $theme_prefix . $section,
 				'priority' => $priority->add(),
 			);
+			if ( ! isset( $option['setting'] ) ) {
+				unset( $defaults['settings'] );
+			}
 			$control = wp_parse_args( $option['control'], $defaults );
 
 			// Check for a specialized control class
