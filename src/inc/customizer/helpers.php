@@ -269,7 +269,7 @@ function ttfmake_body_layout_classes( $classes ) {
 		$classes[] = 'header-bar-flipped';
 	}
 
-	return apply_filters( 'make_body_layout_classes', $classes );
+	return $classes;
 }
 endif;
 
