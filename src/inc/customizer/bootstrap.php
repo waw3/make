@@ -67,12 +67,12 @@ if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
  */
 function ttfmake_customizer_get_panels() {
 	$panels = array(
-		'general'        => array( 'title' => __( 'General', 'make' ) ),
-		'typography'     => array( 'title' => __( 'Typography', 'make' ) ),
-		'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ) ),
-		'header'         => array( 'title' => __( 'Header', 'make' ) ),
-		'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ) ),
-		'footer'         => array( 'title' => __( 'Footer', 'make' ) ),
+		'general'        => array( 'title' => __( 'General', 'make' ), 'priority' => 100 ),
+		'typography'     => array( 'title' => __( 'Typography', 'make' ), 'priority' => 200 ),
+		'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ), 'priority' => 300 ),
+		'header'         => array( 'title' => __( 'Header', 'make' ), 'priority' => 400 ),
+		'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ), 'priority' => 500 ),
+		'footer'         => array( 'title' => __( 'Footer', 'make' ), 'priority' => 600 ),
 	);
 
 	return apply_filters( 'make_customizer_panels', $panels );
@@ -91,7 +91,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
 function ttfmake_customizer_add_panels( $wp_customize ) {
 	// Panels are only available in WP 4.0+
 	if ( ttfmake_customizer_supports_panels() ) {
-		$priority = new TTFMAKE_Prioritizer( 100, 10 );
+		$priority = new TTFMAKE_Prioritizer( 1000, 100 );
 		$theme_prefix = 'ttfmake_';
 
 		// Get panel definitions
@@ -109,7 +109,7 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 		}
 
 		// Re-prioritize the Widgets panel
-		$wp_customize->get_panel( 'widgets' )->priority = $priority->add();
+		$wp_customize->get_panel( 'widgets' )->priority = (int) $data['priority'] + 100;
 	}
 }
 endif;
@@ -171,11 +171,11 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		// Determine the priority
 		if ( ! isset( $data['priority'] ) ) {
 			$panel = ( isset( $data['panel'] ) ) ? $data['panel'] : 'none';
+			$panel_priority = ( 'none' !== $panel && isset( $panels[ $panel ]['priority'] ) ) ? $panels[ $panel ]['priority'] : 1000;
 
 			// Create a separate priority counter for each panel, and one for sections without a panel
 			if ( ! isset( $priority[ $panel ] ) ) {
-				$initial_priority = ( 'none' === $panel ) ? $wp_customize->get_panel( 'widgets' )->priority + 100 : 10;
-				$priority[ $panel ] = new TTFMAKE_Prioritizer( $initial_priority, 10 );
+				$priority[ $panel ] = new TTFMAKE_Prioritizer( $panel_priority, 10 );
 			}
 
 			$data['priority'] = $priority[ $panel ]->add();
