@@ -52,7 +52,7 @@ if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
  */
 function ttfmake_customizer_get_panels() {
 	$panels = array(
-		'general'        => array( 'title' => __( 'General', 'make' ), 'description' => 'test' ),
+		'general'        => array( 'title' => __( 'General', 'make' ) ),
 		'typography'     => array( 'title' => __( 'Typography', 'make' ) ),
 		'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ) ),
 		'header'         => array( 'title' => __( 'Header', 'make' ) ),
