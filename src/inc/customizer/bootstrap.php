@@ -76,7 +76,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
 function ttfmake_customizer_add_panels( $wp_customize ) {
 	// Panels are only available in WP 4.0+
 	if ( method_exists( $wp_customize, 'add_panel' ) ) {
-		$priority = new TTFMAKE_Prioritizer( 10, 10 );
+		$priority = new TTFMAKE_Prioritizer( 100, 10 );
 		$theme_prefix = 'ttfmake_';
 
 		// Get panel definitions
@@ -92,6 +92,9 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 			// Add panel
 			$wp_customize->add_panel( $theme_prefix . $panel, $data );
 		}
+
+		// Re-prioritize the Widgets panel
+		$wp_customize->get_panel( 'widgets' )->priority = $priority->add();
 	}
 }
 endif;
