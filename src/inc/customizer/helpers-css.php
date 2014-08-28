@@ -111,6 +111,14 @@ class TTFMAKE_CSS {
 		}
 
 		$entry = array();
+
+		/**
+		 * Filter CSS as it is registered.
+		 *
+		 * @since 1.2.3
+		 *
+		 * @param array    $data    The selectors and properties to add to the CSS.
+		 */
 		$data  = apply_filters( 'make_css_add', $data );
 
 		// Sanitize selectors
@@ -245,9 +253,30 @@ class TTFMAKE_CSS {
 			}
 
 			$parsed_value  = "{$t}{$property}:{$value};$n";
-			$output       .= apply_filters( 'make_parse_declaration', $parsed_value, $property, $value, $t, $n );
+
+			/**
+			 * Filter the final CSS declaration after being parsed.
+			 *
+			 * @since 1.2.3.
+			 *
+			 * @param string    $parsed_value    The full CSS declaration.
+			 * @param string    $property        The property being parsed.
+			 * @param string    $value           The value for the property.
+			 * @param string    $t               The tab character.
+			 * @param string    $n               The newline character.
+			 */
+			$output .= apply_filters( 'make_parse_declaration', $parsed_value, $property, $value, $t, $n );
 		}
 
+		/**
+		 * Filter the full list of parsed declarations.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $output          The full CSS output.
+		 * @param array     $declarations    The list of CSS declarations.
+		 * @param string    $tab             The tab character.
+		 */
 		return apply_filters( 'make_css_parse_declarations', $output, $declarations, $tab );
 	}
 }
