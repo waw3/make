@@ -35,25 +35,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 <?php endif; ?>
 
 <?php do_action( 'ttfmake_section_text_before_columns_select', $ttfmake_section_data ); ?>
-
-<div class="ttfmake-columns-select ttfmake-select">
-	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'make' ); ?></label>
-	<select id="<?php echo $section_name; ?>[columns-number]" class="ttfmake-text-columns" name="<?php echo $section_name; ?>[columns-number]">
-		<option value="1"<?php selected( 1, $columns_number ); ?>>1</option>
-		<option value="2"<?php selected( 2, $columns_number ); ?>>2</option>
-		<option value="3"<?php selected( 3, $columns_number ); ?>>3</option>
-		<option value="4"<?php selected( 4, $columns_number ); ?>>4</option>
-	</select>
-</div>
-
 <?php do_action( 'ttfmake_section_text_after_columns_select', $ttfmake_section_data ); ?>
-
-<div class="ttfmake-titlediv">
-	<div class="ttfmake-titlewrap">
-		<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php if ( isset( $ttfmake_section_data['data']['title'] ) ) echo esc_attr( htmlspecialchars( $ttfmake_section_data['data']['title'] ) ); ?>" autocomplete="off" />
-	</div>
-</div>
-
 <?php do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 
 <div class="ttfmake-text-columns-stage ttfmake-text-columns-<?php echo $columns_class; ?>">
@@ -72,37 +54,9 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 		<?php do_action( 'ttfmake_section_text_before_column', $ttfmake_section_data, $i ); ?>
 
-		<div class="ttfmake-titlediv">
-			<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[image-link]" class="ttfmake-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
-		</div>
-
 		<?php ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-		<div class="ttfmake-titlediv">
-			<div class="ttfmake-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
-			</div>
-		</div>
-
-		<?php
-		$editor_settings = array(
-			'tinymce'       => array(
-				'toolbar1' => 'bold,italic,link,ttfmake_mce_button_button',
-				'toolbar2' => '',
-				'toolbar3' => '',
-				'toolbar4' => '',
-			),
-			'quicktags'     => array(
-				'buttons' => 'strong,em,link',
-			),
-			'textarea_name' => $column_name . '[content]'
-		);
-
-		if ( true === $ttfmake_is_js_template ) : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfmakeeditortextcolumn' . $i . 'temp', $editor_settings ); ?>
-		<?php else : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortextcolumn' . $i . $ttfmake_section_data['data']['id'], $editor_settings ); ?>
-		<?php endif; ?>
+		<iframe width="100%" height="300" id="ttfmake-iframe-<?php echo $i; ?>"></iframe>
 
 		<?php do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i ); ?>
 	</div>
