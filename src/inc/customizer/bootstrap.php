@@ -165,6 +165,29 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		// Register section
 		$wp_customize->add_section( $theme_prefix . $section, $data );
 
+		// Back compatibility
+		if ( isset( $data['path'] ) ) {
+			$file = trailingslashit( $data[ 'path' ] ) . $section . '.php';
+			if ( file_exists( $file ) ) {
+				// First load the file
+				require_once( $file );
+
+				// Then add the section
+				$section_callback = 'ttfmake_customizer_';
+				$section_callback .= ( strpos( $section, '-' ) ) ? str_replace( '-', '_', $section ) : $section;
+				if ( function_exists( $section_callback ) ) {
+					// Callback to populate the section
+					call_user_func_array(
+						$section_callback,
+						array(
+							$wp_customize,
+							$theme_prefix . $section,
+						)
+					);
+				}
+			}
+		}
+
 		// Add options to the section
 		if ( isset( $options ) ) {
 			ttfmake_customizer_add_section_options( $section, $options );
