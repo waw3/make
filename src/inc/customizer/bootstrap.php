@@ -181,6 +181,13 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 			$data['priority'] = $priority[ $panel ]->add();
 		}
 
+		// Adjust section title if no panel support
+		if ( ! ttfmake_customizer_supports_panels() && isset( $data['panel'] ) ) {
+			$existing_title = ( isset( $data['title'] ) ) ? $data['title'] : ucfirst( $section );
+			$panel_prefix = ( isset( $panels[ $data['panel'] ]['title'] ) ) ? $panels[ $data['panel'] ]['title'] . ': ' : '';
+			$data['title'] = $panel_prefix . $existing_title;
+		}
+
 		// Register section
 		$wp_customize->add_section( $theme_prefix . $section, $data );
 
