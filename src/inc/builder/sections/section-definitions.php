@@ -539,10 +539,16 @@ class TTFMAKE_Section_Definitions {
 	 * @return array    The section defaults.
 	 */
 	public function get_section_defaults() {
-		$defaults = array(
-			// Placeholder
-		);
+		// Note that this function does not do anything yet. It is part of an API refresh that is happening over time.
+		$defaults = array();
 
+		/**
+		 * Filter the section defaults.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $defaults    The default section data
+		 */
 		return apply_filters( 'make_section_defaults', $defaults );
 	}
 
@@ -560,10 +566,18 @@ class TTFMAKE_Section_Definitions {
 
 		$choice_id = "$section_type-$key";
 
-		switch ( $choice_id ) {
-			// Placeholder
-		}
+		// Note that this function does not do anything yet. It is part of an API refresh that is happening over time.
+		switch ( $choice_id ) {}
 
+		/**
+		 * Filter the section choices.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $choices         The default section choices.
+		 * @param string   $key             The key for the data.
+		 * @param string   $section_type    The type of section this relates to.
+		 */
 		return apply_filters( 'make_section_choices', $choices, $key, $section_type );
 	}
 }
@@ -583,6 +597,16 @@ function ttfmake_get_section_default( $key, $section_type ) {
 	$defaults = ttfmake_get_section_definitions()->get_section_defaults();
 	$id       = "$section_type-$key";
 	$value    = ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
+
+	/**
+	 * Filter the default section data that is received.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param mixed     $value           The section value.
+	 * @param string    $key             The key to get data for.
+	 * @param string    $section_type    The type of section the data is for.
+	 */
 	return apply_filters( 'make_get_section_default', $value, $key, $section_type );
 }
 endif;
@@ -621,6 +645,15 @@ function ttfmake_sanitize_section_choice( $value, $key, $section_type ) {
 		$value = ttfmake_get_section_default( $key, $section_type );
 	}
 
+	/**
+	 * Allow developers to alter a section choice during the sanitization process.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param mixed     $value           The value for the section choice.
+	 * @param string    $key             The key for the section choice.
+	 * @param string    $section_type    The section type.
+	 */
 	return apply_filters( 'make_sanitize_section_choice', $value, $key, $section_type );
 }
 endif;
