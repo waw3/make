@@ -14,6 +14,16 @@
  */
 function ttfmake_builder_is_section_type( $type, $data ) {
 	$is_section_type = ( isset( $data['section-type'] ) && $type === $data['section-type'] );
+
+	/**
+	 * Allow developers to alter if a set of data is a specified section type.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param bool      $is_section_type    Whether or not the data represents a specific section.
+	 * @param string    $type               The section type to check.
+	 * @param array     $data               The section data.
+	 */
 	return apply_filters( 'make_builder_is_section_type', $is_section_type, $type, $data );
 }
 
@@ -47,6 +57,14 @@ function ttfmake_builder_get_gallery_array( $ttfmake_section_data ) {
 		}
 	}
 
+	/**
+	 * Filter the gallery item data.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $gallery_array           The array of gallery item data.
+	 * @param array    $ttfmake_section_data    The section data.
+	 */
 	return apply_filters( 'make_builder_get_gallery_array', $gallery_array, $ttfmake_section_data );
 }
 
@@ -95,7 +113,16 @@ function ttfmake_builder_get_gallery_class( $ttfmake_section_data, $sections ) {
 		$gallery_class .= ' has-background';
 	}
 
-	return apply_filters( 'make_gallery_class', $gallery_class, $ttfmake_section_data );
+	/**
+	 * Filter the class applied to a gallery.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $gallery_class           The class applied to the gallery.
+	 * @param array     $ttfmake_section_data    The section data.
+	 * @param array     $sections                The list of sections.
+	 */
+	return apply_filters( 'make_gallery_class', $gallery_class, $ttfmake_section_data, $sections );
 }
 
 /**
@@ -133,6 +160,14 @@ function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
 		}
 	}
 
+	/**
+	 * Filter the style added to a gallery section.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $gallery_style           The style applied to the gallery.
+	 * @param array     $ttfmake_section_data    The section data.
+	 */
 	return apply_filters( 'make_builder_get_gallery_style', $gallery_style, $ttfmake_section_data );
 }
 
@@ -169,7 +204,17 @@ function ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $
 		$gallery_class .= ' last-2';
 	}
 
-	return apply_filters( 'make_builder_get_gallery_item_class', $gallery_class, $item, $ttfmake_section_data );
+	/**
+	 * Filter the class used for a gallery item.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $gallery_class           The computed gallery class.
+	 * @param array     $item                    The item's data.
+	 * @param array     $ttfmake_section_data    The section data.
+	 * @param int       $i                       The current gallery item number.
+	 */
+	return apply_filters( 'make_builder_get_gallery_item_class', $gallery_class, $item, $ttfmake_section_data, $i );
 }
 
 /**
@@ -203,6 +248,15 @@ function ttfmake_builder_get_gallery_item_image( $item, $aspect ) {
 		}
 	}
 
+	/**
+	 * Alter the generated gallery image.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $image     The image HTML.
+	 * @param array     $item      The item's data.
+	 * @param string    $aspect    The aspect ratio for the section.
+	 */
 	return apply_filters( 'make_builder_get_gallery_item_image', $image, $item, $aspect );
 }
 
@@ -243,6 +297,14 @@ function ttfmake_builder_get_text_array( $ttfmake_section_data ) {
 		}
 	}
 
+	/**
+	 * Filter the array of builder data for the text section.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $columns_array           The ordered data for the text section.
+	 * @param array    $ttfmake_section_data    The raw section data.
+	 */
 	return apply_filters( 'make_builder_get_text_array', $columns_array, $ttfmake_section_data );
 }
 
@@ -269,6 +331,15 @@ function ttfmake_builder_get_text_class( $ttfmake_section_data, $sections ) {
 	$columns_number = ( isset( $ttfmake_section_data['columns-number'] ) ) ? absint( $ttfmake_section_data['columns-number'] ) : 1;
 	$text_class .= ' builder-text-columns-' . $columns_number;
 
+	/**
+	 * Filter the text section class.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $text_class              The computed class string.
+	 * @param array     $ttfmake_section_data    The section data.
+	 * @param array     $sections                The list of sections.
+	 */
 	return apply_filters( 'make_builder_get_text_class', $text_class, $ttfmake_section_data, $sections );
 }
 
@@ -301,6 +372,14 @@ function ttfmake_builder_get_banner_array( $ttfmake_section_data ) {
 		}
 	}
 
+	/**
+	 * Filter the data array for a banner section.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $banner_array            The ordered banner data.
+	 * @param array    $ttfmake_section_data    All of the data for the section.
+	 */
 	return apply_filters( 'make_builder_get_banner_array', $banner_array, $ttfmake_section_data );
 }
 
@@ -320,6 +399,14 @@ function ttfmake_builder_get_banner_class( $ttfmake_section_data, $sections ) {
 		$banner_class .= ' ' . ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 	}
 
+	/**
+	 * Filter the class for the banner section.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $banner_class            The banner class.
+	 * @param array     $ttfmake_section_data    The section data.
+	 */
 	return apply_filters( 'make_builder_banner_class', $banner_class, $ttfmake_section_data );
 }
 
@@ -373,6 +460,14 @@ function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
 		}
 	}
 
+	/**
+	 * Allow for altering the banner slider attributes.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $data_attributes         The data attributes in string form.
+	 * @param array     $ttfmake_section_data    The section data.
+	 */
 	return apply_filters( 'make_builder_get_banner_slider_atts', $data_attributes, $ttfmake_section_data );
 }
 
@@ -392,6 +487,13 @@ function ttfmake_builder_banner_slide_class( $slide ) {
 		$slide_class .= ' ' . sanitize_html_class( 'content-position-' . $slide['alignment'] );
 	}
 
+	/**
+	 * Allow developers to alter the class for the banner slide.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string $slide_class The banner classes.
+	 */
 	return apply_filters( 'make_builder_banner_slide_class', $slide_class, $slide );
 }
 
@@ -420,5 +522,14 @@ function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 		}
 	}
 
+	/**
+	 * Allow developers to change the CSS for a Banner section.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $slide_style             The CSS for the banner.
+	 * @param array     $slide                   The slide data.
+	 * @param array     $ttfmake_section_data    The section data.
+	 */
 	return apply_filters( 'make_builder_banner_slide_style', esc_attr( $slide_style ), $slide, $ttfmake_section_data );
 }
