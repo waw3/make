@@ -264,7 +264,16 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 }
 endif;
 
-
+if ( ! function_exists( 'ttfmake_customizer_add_section_options' ) ) :
+/**
+ * Register settings and controls for a section.
+ *
+ * @since 1.3.0.
+ *
+ * @param  string    $section
+ * @param  array     $args
+ * @return void
+ */
 function ttfmake_customizer_add_section_options( $section, $args ) {
 	global $wp_customize;
 
@@ -310,7 +319,7 @@ function ttfmake_customizer_add_section_options( $section, $args ) {
 		}
 	}
 }
-
+endif;
 
 if ( ! function_exists( 'ttfmake_customizer_set_transport' ) ) :
 /**
