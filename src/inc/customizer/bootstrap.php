@@ -42,6 +42,21 @@ endif;
 
 add_action( 'after_setup_theme', 'ttfmake_customizer_init' );
 
+if ( ! function_exists( 'ttfmake_customizer_supports_panels' ) ) :
+/**
+ * Detect support for Customizer panels
+ *
+ * This feature was introduced in WP 4.0.
+ *
+ * @since 1.3.0.
+ *
+ * @return bool
+ */
+function ttfmake_customizer_supports_panels() {
+	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) );
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
 /**
  * Return an array of panel definitions
@@ -75,7 +90,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
  */
 function ttfmake_customizer_add_panels( $wp_customize ) {
 	// Panels are only available in WP 4.0+
-	if ( method_exists( $wp_customize, 'add_panel' ) ) {
+	if ( ttfmake_customizer_supports_panels() ) {
 		$priority = new TTFMAKE_Prioritizer( 100, 10 );
 		$theme_prefix = 'ttfmake_';
 
