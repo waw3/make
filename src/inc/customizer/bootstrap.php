@@ -31,7 +31,6 @@ function ttfmake_customizer_init() {
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
 	add_action( 'customize_register', 'ttfmake_customizer_add_sections' );
-	add_action( 'customize_register', 'ttfmake_customizer_modify_builtin_sections' );
 	add_action( 'customize_register', 'ttfmake_customizer_set_transport' );
 	add_action( 'customize_preview_init', 'ttfmake_customizer_preview_script' );
 	add_action( 'customize_preview_init', 'ttfmake_add_customizations' );
@@ -142,6 +141,18 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	$theme_prefix = 'ttfmake_';
 	$default_path = get_template_directory() . '/inc/customizer/sections';
 	$panels = ttfmake_customizer_get_panels();
+
+	// Load built-in section mods
+	$builtin_mods = array(
+		'background',
+		'static-front-page',
+	);
+	foreach ( $builtin_mods as $slug ) {
+		$file = trailingslashit( $default_path ) . $slug . '.php';
+		if ( file_exists( $file ) ) {
+			require_once( $file );
+		}
+	}
 
 	// Load section definition files
 	foreach ( $panels as $panel => $data ) {
@@ -319,14 +330,15 @@ if ( ! function_exists( 'ttfmake_customizer_add_section_options' ) ) :
  *
  * @since 1.3.0.
  *
- * @param  string    $section
- * @param  array     $args
- * @return void
+ * @param  string    $section             Section ID
+ * @param  array     $args                Array of setting and control definitions
+ * @param  int       $initial_priority    The initial priority to use for controls
+ * @return int                            The last priority value assigned
  */
-function ttfmake_customizer_add_section_options( $section, $args ) {
+function ttfmake_customizer_add_section_options( $section, $args, $initial_priority = null ) {
 	global $wp_customize;
 
-	$priority = new TTFMAKE_Prioritizer();
+	$priority = new TTFMAKE_Prioritizer( $initial_priority, 5 );
 	$theme_prefix = 'ttfmake_';
 
 	foreach ( $args as $setting_id => $option ) {
@@ -367,49 +379,8 @@ function ttfmake_customizer_add_section_options( $section, $args ) {
 			}
 		}
 	}
-}
-endif;
 
-if ( ! function_exists( 'ttfmake_customizer_modify_builtin_sections' ) ) :
-/**
- * Modify built-in sections, settings, and controls
- *
- * @since 1.3.0.
- *
- * @return void
- */
-function ttfmake_customizer_modify_builtin_sections() {
-	global $wp_customize;
-	$theme_prefix = 'ttfmake_';
-
-	/**
-	 * Background Image
-	 */
-	$section = 'background_image';
-	$priority = new TTFMAKE_Prioritizer( 10, 10 );
-
-	// Move Background Image section to General panel
-	$wp_customize->get_section( $section )->panel = $theme_prefix . 'general';
-
-	// Set Background Image section priority
-	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
-	$wp_customize->get_section( $section )->priority = $social_priority - 5;
-
-	// Rename Background Image section
-	$wp_customize->get_section( $section )->title = __( 'Site Background Image', 'make' );
-
-	/**
-	 * Static Front Page
-	 */
-	$section = 'static_front_page';
-	$priority = new TTFMAKE_Prioritizer( 10, 10 );
-
-	// Move Static Front Page section to General panel
-	$wp_customize->get_section( $section )->panel = $theme_prefix . 'general';
-
-	// Set Static Front Page section priority
-	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
-	$wp_customize->get_section( $section )->priority = $social_priority + 5;
+	return $priority->get();
 }
 endif;
 
