@@ -14,15 +14,24 @@ if ( ! function_exists( 'ttfmake_customizer_staticfrontpage' ) ) :
 function ttfmake_customizer_staticfrontpage() {
 	global $wp_customize;
 	$theme_prefix = 'ttfmake_';
-	$section = 'static_front_page';
+	$section_id = 'static_front_page';
+	$section = $wp_customize->get_section( $section_id );
 	$priority = new TTFMAKE_Prioritizer( 10, 5 );
 
 	// Move Static Front Page section to General panel
-	$wp_customize->get_section( $section )->panel = $theme_prefix . 'general';
+	$section->panel = $theme_prefix . 'general';
 
 	// Set Static Front Page section priority
 	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
-	$wp_customize->get_section( $section )->priority = $social_priority + 5;
+	$section->priority = $social_priority + 5;
+
+	// Adjust section title if no panel support
+	if ( ! ttfmake_customizer_supports_panels() ) {
+		$panels = ttfmake_customizer_get_panels();
+		if ( isset( $panels['general']['title'] ) ) {
+			$section->title = $panels['general']['title'] . ': ' . $section->title;
+		}
+	}
 }
 endif;
 

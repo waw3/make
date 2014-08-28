@@ -173,6 +173,9 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	// Register each section and add its options
 	$priority = array();
 	foreach ( $sections as $section => $data ) {
+		// Get the non-prefixed ID of the current section's panel
+		$panel = ( isset( $data['panel'] ) ) ? str_replace( $theme_prefix, '', $data['panel'] ) : 'none';
+
 		// Store the options
 		if ( isset( $data['options'] ) ) {
 			$options = $data['options'];
@@ -181,7 +184,6 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 
 		// Determine the priority
 		if ( ! isset( $data['priority'] ) ) {
-			$panel = ( isset( $data['panel'] ) ) ? $data['panel'] : 'none';
 			$panel_priority = ( 'none' !== $panel && isset( $panels[ $panel ]['priority'] ) ) ? $panels[ $panel ]['priority'] : 1000;
 
 			// Create a separate priority counter for each panel, and one for sections without a panel
@@ -195,7 +197,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		// Adjust section title if no panel support
 		if ( ! ttfmake_customizer_supports_panels() && isset( $data['panel'] ) ) {
 			$existing_title = ( isset( $data['title'] ) ) ? $data['title'] : ucfirst( $section );
-			$panel_prefix = ( isset( $panels[ $data['panel'] ]['title'] ) ) ? $panels[ $data['panel'] ]['title'] . ': ' : '';
+			$panel_prefix = ( isset( $panels[ $panel ]['title'] ) ) ? $panels[ $panel ]['title'] . ': ' : '';
 			$data['title'] = $panel_prefix . $existing_title;
 		}
 

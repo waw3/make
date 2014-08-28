@@ -14,18 +14,27 @@ if ( ! function_exists( 'ttfmake_customizer_background' ) ) :
 function ttfmake_customizer_background() {
 	global $wp_customize;
 	$theme_prefix = 'ttfmake_';
-	$section = 'background_image';
+	$section_id = 'background_image';
+	$section = $wp_customize->get_section( $section_id );
 	$priority = new TTFMAKE_Prioritizer( 10, 5 );
 
 	// Move Background Image section to General panel
-	$wp_customize->get_section( $section )->panel = $theme_prefix . 'general';
+	$section->panel = $theme_prefix . 'general';
 
 	// Set Background Image section priority
 	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
-	$wp_customize->get_section( $section )->priority = $social_priority - 5;
+	$section->priority = $social_priority - 5;
 
 	// Rename Background Image section
-	$wp_customize->get_section( $section )->title = __( 'Site Background Image', 'make' );
+	$section->title = __( 'Site Background Image', 'make' );
+
+	// Adjust section title if no panel support
+	if ( ! ttfmake_customizer_supports_panels() ) {
+		$panels = ttfmake_customizer_get_panels();
+		if ( isset( $panels['general']['title'] ) ) {
+			$section->title = $panels['general']['title'] . ': ' . $section->title;
+		}
+	}
 
 	// Reset priorities on existing controls
 	$wp_customize->get_control( 'background_image' )->priority = $priority->add();
@@ -46,7 +55,7 @@ function ttfmake_customizer_background() {
 			),
 		),
 	);
-	$new_priority = ttfmake_customizer_add_section_options( $section, $options, $priority->add() );
+	$new_priority = ttfmake_customizer_add_section_options( $section_id, $options, $priority->add() );
 	$priority->set( $new_priority );
 }
 endif;
