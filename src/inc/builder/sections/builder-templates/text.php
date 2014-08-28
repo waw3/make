@@ -54,6 +54,22 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 		<?php do_action( 'ttfmake_section_text_before_column', $ttfmake_section_data, $i ); ?>
 
+		<div class="ttfmake-titlediv">
+			<div class="ttfmake-titlewrap">
+				<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+				<span class="convert-to-widget-area-icon">
+					<a href="#" class="convert-to-widget-link">
+						<?php _e( 'Convert column to widget area', 'make' ); ?>
+					</a>
+				</span>
+				<span class="edit-content-icon">
+					<a href="#" class="edit-content-link">
+						<?php _e( 'Edit content', 'make' ); ?>
+					</a>
+				</span>
+			</div>
+		</div>
+
 		<?php ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
 		<iframe width="100%" height="300" id="ttfmake-iframe-<?php echo $i; ?>"></iframe>
