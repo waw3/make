@@ -38,7 +38,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 		'options' => array(
 			'social-facebook' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -48,7 +47,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-twitter' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -58,7 +56,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-google-plus-square' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -68,7 +65,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-linkedin' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -78,7 +74,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-instagram' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -88,7 +83,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-flickr' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -98,7 +92,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-youtube' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -108,7 +101,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-vimeo-square' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -118,7 +110,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-pinterest' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(
@@ -141,7 +132,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-email' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'sanitize_email',
 				),
 				'control' => array(
@@ -158,7 +148,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-hide-rss' => array(
 				'setting' => array(
-					'default'			=> 0,
 					'sanitize_callback'	=> 'absint',
 				),
 				'control' => array(
@@ -168,7 +157,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			),
 			'social-custom-rss' => array(
 				'setting' => array(
-					'default'			=> '',
 					'sanitize_callback'	=> 'esc_url_raw',
 				),
 				'control' => array(

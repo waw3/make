@@ -83,6 +83,7 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 
 		// Add panels
 		foreach ( $panels as $panel => $data ) {
+			// Determine priority
 			if ( ! isset( $data['priority'] ) ) {
 				$data['priority'] = $priority->add();
 			}
@@ -274,6 +275,7 @@ function ttfmake_customizer_add_section_options( $section, $args ) {
 		// Add setting
 		if ( isset( $option['setting'] ) ) {
 			$defaults = array(
+				'default' => ttfmake_get_default( $setting_id ),
 				'type'    => 'theme_mod',
 			);
 			$setting = wp_parse_args( $option['setting'], $defaults );
