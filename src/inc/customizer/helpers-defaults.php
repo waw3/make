@@ -40,9 +40,10 @@ function ttfmake_option_defaults() {
 		'background_size'                          => 'auto',
 
 		// Fonts
-		'font-site-title'                          => 'sans-serif',
-		'font-header'                              => 'sans-serif',
-		'font-body'                                => 'Open Sans',
+		'font-site-title-family'                   => 'sans-serif',
+		'font-site-tagline-family'                 => 'sans-serif',
+		'font-header-family'                       => 'sans-serif',
+		'font-body-family'                         => 'Open Sans',
 		'font-site-title-size'                     => 34,
 		'font-site-tagline-size'                   => 12,
 		'font-nav-size'                            => 14,
@@ -207,6 +208,15 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  */
 function ttfmake_get_default( $option ) {
 	$defaults = ttfmake_option_defaults();
+
+	// If the option key doesn't exist, look it up in the conversion array
+	if ( ! isset( $defaults[ $option ] ) ) {
+		$conversions = array_flip( ttfmake_customizer_get_key_conversions() );
+		if ( isset( $conversions[ $option ] ) ) {
+			$option = $conversions[ $option ];
+		}
+	}
+
 	return ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
 }
 endif;
