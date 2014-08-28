@@ -31,6 +31,7 @@ function ttfmake_customizer_init() {
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
 	add_action( 'customize_register', 'ttfmake_customizer_add_sections' );
+	add_action( 'customize_register', 'ttfmake_customizer_modify_builtin_sections' );
 	add_action( 'customize_register', 'ttfmake_customizer_set_transport' );
 	add_action( 'customize_preview_init', 'ttfmake_customizer_preview_script' );
 	add_action( 'customize_preview_init', 'ttfmake_add_customizations' );
@@ -341,6 +342,49 @@ function ttfmake_customizer_add_section_options( $section, $args ) {
 			}
 		}
 	}
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_customizer_modify_builtin_sections' ) ) :
+/**
+ * Modify built-in sections, settings, and controls
+ *
+ * @since 1.3.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_modify_builtin_sections() {
+	global $wp_customize;
+	$theme_prefix = 'ttfmake_';
+
+	/**
+	 * Background Image
+	 */
+	$section = 'background_image';
+	$priority = new TTFMAKE_Prioritizer( 10, 10 );
+
+	// Move Background Image section to General panel
+	$wp_customize->get_section( $section )->panel = $theme_prefix . 'general';
+
+	// Set Background Image section priority
+	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
+	$wp_customize->get_section( $section )->priority = $social_priority - 5;
+
+	// Rename Background Image section
+	$wp_customize->get_section( $section )->title = __( 'Site Background Image', 'make' );
+
+	/**
+	 * Static Front Page
+	 */
+	$section = 'static_front_page';
+	$priority = new TTFMAKE_Prioritizer( 10, 10 );
+
+	// Move Static Front Page section to General panel
+	$wp_customize->get_section( $section )->panel = $theme_prefix . 'general';
+
+	// Set Static Front Page section priority
+	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
+	$wp_customize->get_section( $section )->priority = $social_priority + 5;
 }
 endif;
 
