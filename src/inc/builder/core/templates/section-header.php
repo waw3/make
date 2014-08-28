@@ -22,7 +22,7 @@ ksort( $links );
 		<h3>
 			<span class="ttfmake-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttfmake_section_data['section']['label'] ) ); ?></em>
 		</h3>
-		<?php $i = 1; foreach ( $links as $link ) : ?>
+		<?php foreach ( $links as $link ) : ?>
 			<?php
 			$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
 			$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
@@ -34,8 +34,8 @@ ksort( $links );
 			?>
 			<a<?php echo $href . $id . $class; ?>>
 			<?php echo $label; ?>
-			</a><?php if ( $i < count( $links ) ) : ?>&nbsp;&#124;&nbsp;<?php endif; ?>
-		<?php $i++; endforeach; ?>
+			</a>
+		<?php endforeach; ?>
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
