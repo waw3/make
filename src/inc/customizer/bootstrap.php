@@ -145,6 +145,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	// Load built-in section mods
 	$builtin_mods = array(
 		'background',
+		'site-title-tagline',
 		'static-front-page',
 	);
 	foreach ( $builtin_mods as $slug ) {
@@ -229,7 +230,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 
 		// Add options to the section
 		if ( isset( $options ) ) {
-			ttfmake_customizer_add_section_options( $section, $options );
+			ttfmake_customizer_add_section_options( $theme_prefix . $section, $options );
 		}
 	}
 
@@ -361,7 +362,7 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 
 			$defaults = array(
 				'settings' => $setting_id,
-				'section'  => $theme_prefix . $section,
+				'section'  => $section,
 				'priority' => $priority->add(),
 			);
 			if ( ! isset( $option['setting'] ) ) {
