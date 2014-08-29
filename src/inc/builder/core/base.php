@@ -204,14 +204,6 @@ class TTFMAKE_Builder_Base {
 
 		// Only load full scripts for WordPress.com and those with SCRIPT_DEBUG set to true
 		wp_register_script(
-			'ttfmake-builder/js/tinymce.js',
-			get_template_directory_uri() . '/inc/builder/core/js/tinymce.js',
-			array(),
-			TTFMAKE_VERSION,
-			true
-		);
-
-		wp_register_script(
 			'ttfmake-builder/js/models/section.js',
 			get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
 			array(),
@@ -251,7 +243,6 @@ class TTFMAKE_Builder_Base {
 				array_merge(
 					$dependencies,
 					array(
-						'ttfmake-builder/js/tinymce.js',
 						'ttfmake-builder/js/models/section.js',
 						'ttfmake-builder/js/collections/sections.js',
 						'ttfmake-builder/js/views/menu.js',

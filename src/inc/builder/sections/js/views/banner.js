@@ -38,9 +38,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Initiate the color picker
 			oneApp.initializeBannerSlidesColorPicker(view);
 
-			// Initiate the text editor
-			oneApp.initAllEditors(view.idAttr, view.model);
-
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttfmake-banner-slide-order', $(view.$el).parents('.ttfmake-banner-slides')));
 		},
@@ -76,7 +73,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage = $item.parents('.ttfmake-banner-slides-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
-				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
@@ -107,9 +103,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('banner' === view.model.get('sectionType')) {
-			// Notify that the tinyMCE editors should not be initiated
-			view.noTinyMCEInit = true;
-
 			// Add an initial slide item
 			$('.ttfmake-add-slide', view.$el).trigger('click', {type: 'pseudo'});
 

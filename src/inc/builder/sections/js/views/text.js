@@ -63,8 +63,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				}
 
 				$('.sortable-placeholder', $stage).height($item.height());
-
-				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
