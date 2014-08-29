@@ -23,25 +23,15 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 		<div class="sortable-background"></div>
 	</div>
 
-	<div class="ttfmake-titlediv">
-		<input placeholder="<?php esc_attr_e( 'Enter link here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[link]" class="ttfmake-link code widefat" value="<?php echo esc_url( $link ); ?>" autocomplete="off" />
-	</div>
-
 	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<div class="ttfmake-titlediv">
-		<div class="ttfmake-titlewrap">
-			<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
-		</div>
-	</div>
-
-	<div class="ttfmake-gallery-item-description-wrapper">
-		<textarea placeholder="<?php esc_attr_e( 'Enter description here', 'make' ); ?>" name="<?php echo $section_name; ?>[description]"><?php echo esc_textarea( $description ); ?></textarea>
-	</div>
-
-	<a href="#" class="ttfmake-gallery-item-remove">
-		<?php _e( 'Remove this item', 'make' ); ?>
+	<a href="#" class="remove-gallery-item-link">
+		<?php _e( 'Remove gallery item', 'make' ); ?>
 	</a>
+	<a href="#" class="edit-gallery-item-link">
+		<?php _e( 'Edit gallery item', 'make' ); ?>
+	</a>
+
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>
