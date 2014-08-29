@@ -1,4 +1,5 @@
-<div class="ttfmake-overlay">
+<?php global $ttfmake_overlay_id; ?>
+<div class="ttfmake-overlay" id="<?php echo $ttfmake_overlay_id; ?>">
 	<div class="ttfmake-overlay-wrapper">
 		<div class="ttfmake-overlay-header">
 			<h2>Testing</h2>

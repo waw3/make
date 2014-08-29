@@ -7,25 +7,29 @@ var oneApp = oneApp || {};
 	oneApp.OverlayView = Backbone.View.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttfmake-overlay-close' : 'close'
+				'click .ttfmake-overlay-close' : 'closeOnClick'
 			});
 		},
 
-		close: function(e) {
-			e.preventDefault();
+		open: function() {
+			this.$el.show();
+		},
 
+		close: function() {
 			this.$el.hide();
+		},
+
+		closeOnClick: function(e) {
+			e.preventDefault();
+			this.close();
 		}
+
 	});
 
 	// Initialize available gallery items
 	oneApp.initOverlayViews = function () {
-		var $items = $('.ttfmake-overlay');
-
-		$items.each(function () {
-			new oneApp.OverlayView({
-				el: $(this)
-			});
+		oneApp.tinymceOverlay = new oneApp.OverlayView({
+			el: $('#ttfmake-tinymce-overlay')
 		});
 	};
 

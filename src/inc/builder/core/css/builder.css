@@ -469,6 +469,7 @@
  TinyMCE Overlay
 -------------------------------------------------------- */
 .ttfmake-overlay {
+	display: none;
 	z-index: 99999;
 	position: absolute;
 	top: 0; /*reset*/

@@ -19,7 +19,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-section-remove': 'removeSection',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
-			'click .ttfmake-media-uploader-remove': 'removeImage'
+			'click .ttfmake-media-uploader-remove': 'removeImage',
+			'click .edit-content-link': 'openTinyMCEOverlay'
 		},
 
 		initialize: function (options) {
@@ -192,6 +193,14 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Show the set link
 			$set.show();
+		},
+
+		openTinyMCEOverlay: function(evt) {
+			evt.preventDefault();
+
+			console.log( evt );
+
+			oneApp.tinymceOverlay.open();
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);
