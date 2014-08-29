@@ -197,10 +197,14 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		openTinyMCEOverlay: function(evt) {
 			evt.preventDefault();
-
-			console.log( evt );
-
 			oneApp.tinymceOverlay.open();
+
+			var column = $(evt.target).attr('data-column-number'),
+				iframe = document.getElementById('ttfmake-iframe-' + column),
+				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+				iframeBody = $('body', iframeContent);
+
+			tinyMCE.get('make').setContent(iframeBody.html());
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);

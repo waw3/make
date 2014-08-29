@@ -60,7 +60,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 				<a href="#" class="convert-to-widget-link">
 					<?php _e( 'Convert column to widget area', 'make' ); ?>
 				</a>
-				<a href="#" class="edit-content-link">
+				<a href="#" class="edit-content-link" data-column-number="<?php echo $i; ?>">
 					<?php _e( 'Edit content', 'make' ); ?>
 				</a>
 			</div>

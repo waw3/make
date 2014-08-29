@@ -1,5 +1,5 @@
 /* global jQuery, _ */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 (function (window, $, _, oneApp) {
 	'use strict';
@@ -12,10 +12,12 @@ var oneApp = oneApp || {};
 		},
 
 		open: function() {
+			$oneApp.trigger('overlayOpen', this.$el);
 			this.$el.show();
 		},
 
 		close: function() {
+			$oneApp.trigger('overlayClose', this.$el);
 			this.$el.hide();
 		},
 
