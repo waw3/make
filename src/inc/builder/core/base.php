@@ -422,6 +422,9 @@ class TTFMAKE_Builder_Base {
 		<?php endforeach;
 
 		unset( $GLOBALS['ttfmake_is_js_template'] );
+
+		// Load the overlay for TinyMCE
+		get_template_part( '/inc/builder/core/templates/overlay', 'tinymce' );
 	}
 
 	/**

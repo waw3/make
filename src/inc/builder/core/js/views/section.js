@@ -19,7 +19,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-section-remove': 'removeSection',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
-			'click .ttfmake-media-uploader-remove': 'removeImage',
+			'click .ttfmake-media-uploader-remove': 'removeImage'
 		},
 
 		initialize: function (options) {

@@ -465,3 +465,48 @@
 		padding-left: 10px !important;
 	}
 }
+/*---------------------------------------------------------
+ TinyMCE Overlay
+-------------------------------------------------------- */
+.ttfmake-overlay {
+	z-index: 99999;
+	position: absolute;
+	top: 0; /*reset*/
+	left: 0; /*reset*/
+	right: 0; /*reset*/
+	bottom: 0; /*reset*/
+	margin-top: -28px;
+	background: url(images/background.png) top left repeat;
+	background: rgba(0, 0, 0, 0.8) ;
+}
+.ttfmake-overlay-wrapper {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -400px;
+	margin-top: -300px;
+	width: 800px;
+	height: 600px;
+	font-size: 15px;
+	text-align: center;
+	color: #999087;
+	line-height: 1.35;
+	background-color: #f9f9f5;
+	box-sizing: border-box;
+	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+}
+.ttfmake-overlay-header {
+	border-bottom: 1px solid #000;
+}
+.ttfmake-overlay-header h2 {
+	float: left;
+}
+.ttfmake-overlay-header .ttfmake-overlay-close {
+	float: right;
+}
+.ttfmake-overlay-body {
+	padding: 20px;
+	clear: both;
+}
