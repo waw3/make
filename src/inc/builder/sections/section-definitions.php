@@ -48,7 +48,7 @@ class TTFMAKE_Section_Definitions {
 		$this->register_text_section();
 		$this->register_banner_section();
 		$this->register_gallery_section();
-		$this->register_blank_section();
+		//$this->register_blank_section();
 
 		// Add the section JS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
