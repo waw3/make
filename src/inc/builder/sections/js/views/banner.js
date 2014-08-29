@@ -84,7 +84,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$orderInput = $('.ttfmake-banner-slide-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
-				oneApp.enableEditors($item);
 			}
 		});
 	};

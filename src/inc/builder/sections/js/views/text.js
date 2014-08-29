@@ -74,7 +74,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					i;
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
-				oneApp.enableEditors($item);
 
 				// Label the columns according to the position they are in
 				i = 1;

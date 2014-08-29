@@ -30,13 +30,11 @@ var oneApp = oneApp || {};
 					$stage = $item.parents('.ttfmake-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
-				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0));
 
 				oneApp.setOrder( $(this).sortable('toArray', {attribute: 'data-id'}), oneApp.cache.$sectionOrder );
-				oneApp.enableEditors($item);
 			}
 		});
 	};
@@ -77,46 +75,6 @@ var oneApp = oneApp || {};
 		}
 
 		oneApp.setOrder(currentOrderArray, $input);
-	};
-
-	oneApp.disableEditors = function ($item) {
-		if ( typeof tinyMCE !== 'undefined' ) {
-			/**
-			 * When moving the section, the TinyMCE instance must be removed. If it is not removed, it will be
-			 * unresponsive once placed. It is reinstated when the section is placed
-			 */
-			$('.wp-editor-area', $item).each(function () {
-				var $this = $(this),
-					id = $this.attr('id');
-
-				oneApp.removeTinyMCE(id);
-				delete tinyMCE.editors.id;
-			});
-		}
-	};
-
-	oneApp.enableEditors = function ($item) {
-		if ( typeof tinyMCE !== 'undefined' ) {
-			/**
-			 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
-			 * that the TinyMCE editor is operable after a sort.
-			 */
-			$('.wp-editor-area', $item).each(function () {
-				var $this = $(this),
-					id = $this.attr('id'),
-					$wrap = $this.parents('.wp-editor-wrap'),
-					el = tinyMCE.DOM.get(id);
-
-				// If the text area (i.e., non-tinyMCE) is showing, do not init the editor.
-				if ($wrap.hasClass('tmce-active')) {
-					// Restore the content, with pee
-					el.value = switchEditors.wpautop(el.value);
-
-					// Activate tinyMCE
-					oneApp.addTinyMCE(id);
-				}
-			});
-		}
 	};
 
 	oneApp.initViews = function () {
