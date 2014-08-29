@@ -57,16 +57,12 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<div class="ttfmake-titlediv">
 			<div class="ttfmake-titlewrap">
 				<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
-				<span class="convert-to-widget-area-icon">
-					<a href="#" class="convert-to-widget-link">
-						<?php _e( 'Convert column to widget area', 'make' ); ?>
-					</a>
-				</span>
-				<span class="edit-content-icon">
-					<a href="#" class="edit-content-link">
-						<?php _e( 'Edit content', 'make' ); ?>
-					</a>
-				</span>
+				<a href="#" class="convert-to-widget-link">
+					<?php _e( 'Convert column to widget area', 'make' ); ?>
+				</a>
+				<a href="#" class="edit-content-link">
+					<?php _e( 'Edit content', 'make' ); ?>
+				</a>
 			</div>
 		</div>
 
