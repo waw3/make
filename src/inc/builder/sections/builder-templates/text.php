@@ -70,6 +70,19 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 		<iframe width="100%" height="300" id="ttfmake-iframe-<?php echo $i; ?>"></iframe>
 
+		<?php if ( true !== $ttfmake_is_js_template ) : ?>
+		<script type="text/javascript">
+			(function($){
+				var content = 'Testing content',
+					iframe = document.getElementById('ttfmake-iframe-<?php echo $i; ?>'),
+					iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+					iframeBody = $('body', iframeContent);
+
+				iframeBody.html(content);
+			})(jQuery);
+		</script>
+		<?php endif; ?>
+
 		<?php do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i ); ?>
 	</div>
 	<?php $j++; endforeach; ?>
