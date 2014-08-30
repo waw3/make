@@ -144,6 +144,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	// Load built-in section mods
 	$builtin_mods = array(
 		'background',
+		'navigation',
 		'site-title-tagline',
 		'static-front-page',
 	);
