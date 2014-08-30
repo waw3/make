@@ -13,6 +13,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_general_sections' ) ) :
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_general_sections( $sections ) {
+	$theme_prefix = 'ttfmake_';
 	$panel = 'ttfmake_general';
 	$general_sections = array();
 
@@ -21,6 +22,79 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	 *
 	 * This is a built-in section.
 	 */
+
+	/**
+	 * Logo
+	 */
+	$general_sections['logo'] = array(
+		'panel' => $panel,
+		'title' => __( 'Logo', 'make' ),
+		'options' => array(
+			'logo-regular' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'esc_url_raw',
+				),
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
+					'label'				=> __( 'Regular Logo', 'make' ),
+					'context'			=> $theme_prefix . 'logo-regular',
+				),
+			),
+			'logo-retina' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'esc_url_raw',
+				),
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
+					'label'				=> __( 'Retina Logo (2x)', 'make' ),
+					'context'			=> $theme_prefix . 'logo-retina',
+				),
+			),
+			'logo-retina-text' => array(
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
+					'type'				=> 'text',
+					'description'		=> __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
+				),
+			),
+			'logo-favicon' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'esc_url_raw',
+				),
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
+					'label'				=> __( 'Favicon', 'make' ),
+					'context'			=> $theme_prefix . 'logo-favicon',
+					'extensions'		=> array( 'png', 'ico' ),
+				),
+			),
+			'logo-favicon-text' => array(
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
+					'type'				=> 'text',
+					'description'		=> __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
+				),
+			),
+			'logo-apple-touch' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'esc_url_raw',
+				),
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
+					'label'				=> __( 'Apple Touch Icon', 'make' ),
+					'context'			=> $theme_prefix . 'logo-apple-touch',
+					'extensions'		=> array( 'png' ),
+				),
+			),
+			'logo-apple-touch-text' => array(
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
+					'type'				=> 'text',
+					'description'		=> __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
+				),
+			),
+		),
+	);
 
 	/**
 	 * Background Image

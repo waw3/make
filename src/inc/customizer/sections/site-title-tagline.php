@@ -22,14 +22,14 @@ function ttfmake_customizer_sitetitletagline() {
 	$section->panel = $theme_prefix . 'general';
 
 	// Set Site Title & Tagline section priority
-	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
-	$section->priority = $social_priority - 10;
+	$logo_priority = $wp_customize->get_section( $theme_prefix . 'logo' )->priority;
+	$section->priority = $logo_priority - 5;
 
 	// Adjust section title if no panel support
 	if ( ! ttfmake_customizer_supports_panels() ) {
 		$panels = ttfmake_customizer_get_panels();
-		if ( isset( $panels['general']['title'] ) ) {
-			$section->title = $panels['general']['title'] . ': ' . $section->title;
+		if ( isset( $panels['header']['title'] ) ) {
+			$section->title = $panels['header']['title'] . ': ' . $section->title;
 		}
 	}
 

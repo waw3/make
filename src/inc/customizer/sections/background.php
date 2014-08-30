@@ -26,8 +26,8 @@ function ttfmake_customizer_background() {
 	$section->panel = $theme_prefix . 'general';
 
 	// Set Background Image section priority
-	$social_priority = $wp_customize->get_section( $theme_prefix . 'social' )->priority;
-	$section->priority = $social_priority - 5;
+	$logo_priority = $wp_customize->get_section( $theme_prefix . 'logo' )->priority;
+	$section->priority = $logo_priority + 5;
 
 	// Adjust section title if no panel support
 	if ( ! ttfmake_customizer_supports_panels() ) {
