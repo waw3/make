@@ -104,7 +104,10 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 		}
 
 		// Re-prioritize the Widgets panel
-		$wp_customize->get_panel( 'widgets' )->priority = (int) $data['priority'] + 100;
+		if ( ! isset( $wp_customize->get_panel( 'widgets' )->priority ) ) {
+			$wp_customize->add_panel( 'widgets' );
+		}
+		$wp_customize->get_panel( 'widgets' )->priority = $priority->add();
 	}
 }
 endif;
