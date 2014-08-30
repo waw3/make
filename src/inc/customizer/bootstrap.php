@@ -231,6 +231,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		// Add options to the section
 		if ( isset( $options ) ) {
 			ttfmake_customizer_add_section_options( $theme_prefix . $section, $options );
+			unset( $options );
 		}
 	}
 
