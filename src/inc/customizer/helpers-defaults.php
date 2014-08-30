@@ -52,7 +52,6 @@ function ttfmake_option_defaults() {
 		'font-h5-family'                           => 'sans-serif',
 		'font-h6-family'                           => 'sans-serif',
 		'font-body-family'                         => 'Open Sans',
-
 		'font-site-title-size'                     => 34,
 		'font-site-tagline-size'                   => 12,
 		'font-nav-size'                            => 14,

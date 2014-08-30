@@ -20,7 +20,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	 * Typekit
 	 */
 	if ( ! ttfmake_is_plus() ) {
-		$typography_sections['typekit'] = array(
+		$typography_sections['font-typekit'] = array(
 			'panel' => $panel,
 			'title' => __( 'Typekit', 'make' ),
 			'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ),
@@ -46,6 +46,29 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	/**
 	 * Google Web Fonts
 	 */
+	$typography_sections['font-google'] = array(
+		'panel' => $panel,
+		'title' => __( 'Google Web Fonts', 'make' ),
+		'options' => array(
+			'font-subset' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_subset',
+				),
+				'control' => array(
+					'label'				=> __( 'Character Subset', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_get_google_font_subsets(),
+				),
+			),
+			'font-subset-text' => array(
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
+					'type'				=> 'text',
+					'description'		=> __( 'Not all fonts provide each of these subsets.', 'make' ),
+				),
+			),
+		),
+	);
 
 	/**
 	 * Site Title & Tagline
