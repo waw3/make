@@ -16,17 +16,13 @@ function ttfmake_customizer_init() {
 
 	// Always load
 	require_once( $path . 'compatibility.php' );
+	require_once( $path . 'controls.php' );
 	require_once( $path . 'helpers.php' );
 	require_once( $path . 'helpers-css.php' );
 	require_once( $path . 'helpers-defaults.php' );
 	require_once( $path . 'helpers-display.php' );
 	require_once( $path . 'helpers-fonts.php' );
 	require_once( $path . 'helpers-logo.php' );
-
-	// Only load on admin side
-	if ( is_admin() ) {
-		require_once( $path . 'controls.php' );
-	}
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
