@@ -107,3 +107,5 @@ function ttfmake_customizer_migrate_header_options() {
 		}
 	}
 }
+
+// TODO hook up header function
