@@ -339,7 +339,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	// Filter the definitions
-	$typography_sections = apply_filters( 'make_customizer_general_sections', $typography_sections );
+	$typography_sections = apply_filters( 'make_customizer_typography_sections', $typography_sections );
 
 	// Merge with master array
 	return array_merge( $sections, $typography_sections );

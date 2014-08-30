@@ -43,7 +43,13 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	/**
 	 * Footer
 	 */
-	
+
+
+	// Filter the definitions
+	$colorscheme_sections = apply_filters( 'make_customizer_colorscheme_sections', $colorscheme_sections );
+
+	// Merge with master array
+	return array_merge( $sections, $colorscheme_sections );
 }
 endif;
 
