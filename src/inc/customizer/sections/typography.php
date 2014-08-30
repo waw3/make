@@ -44,7 +44,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	}
 
 	/**
-	 * Header Bar
+	 * Google Web Fonts
 	 */
 
 	/**
@@ -144,11 +144,40 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
-	 * Headers
+	 * Widgets
 	 */
-	$typography_sections['font-headers'] = array(
+	$typography_sections['font-widget'] = array(
 		'panel' => $panel,
-		'title' => __( 'Headers (H1 - H6)', 'make' ),
+		'title' => __( 'Widgets', 'make' ),
+		'options' => array(
+			'font-widget-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'Widget Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-widget-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'Widget Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+		),
+	);
+
+	/**
+	 * Headers & Body
+	 */
+	$typography_sections['font'] = array(
+		'panel' => $panel,
+		'title' => __( 'Headers &amp; Body', 'make' ),
 		'options' => array(
 			'font-h1-family' => array(
 				'setting' => array(
@@ -264,20 +293,27 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
+			'font-body-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'Body Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-body-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'Body Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
 		),
 	);
-
-	/**
-	 * Body Text
-	 */
-
-	/**
-	 * Widgets
-	 */
-
-	/**
-	 * Footer
-	 */
 
 	// Filter the definitions
 	$typography_sections = apply_filters( 'make_customizer_general_sections', $typography_sections );
