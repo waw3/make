@@ -76,16 +76,18 @@ function ttfmake_customizer_migrate_header_options() {
 	// Test for new header keys in the theme mod array
 	$diff = array_diff_key( $new_header_keys, $theme_mods );
 	$has_new_keys = ( count( $new_header_keys ) !== count( $diff ) );
+	$migrated = get_theme_mod( 'headers-migrated', false );
 
-	// Only set new theme mod values if no new keys exist and one of the old keys has a non-default value
-	if ( ! $has_new_keys ) {
+	// Only set new theme mod values if they haven't been previously migrated,
+	// no new keys exist, and one of the old keys has a non-default value
+	if ( ! $has_new_keys && false === $migrated ) {
 		// Check for customized header font family
 		if ( isset( $theme_mods['font-header'] ) ) {
 			$header_family = get_theme_mod( 'font-header' );
 			foreach ( $new_header_family_keys as $key ) {
 				set_theme_mod( $key, $header_family );
 			}
-			remove_theme_mod( 'font-header' );
+			set_theme_mod( 'headers-migrated', true );
 		}
 
 		// Check for customized header font size
@@ -103,7 +105,7 @@ function ttfmake_customizer_migrate_header_options() {
 				$h = preg_replace( '/font-(h\d)-size/', '$1', $key );
 				set_theme_mod( $key, ttfmake_get_relative_font_size( $header_size, $percent[$h] ) );
 			}
-			remove_theme_mod( 'font-header-size' );
+			set_theme_mod( 'headers-migrated', true );
 		}
 	}
 }
