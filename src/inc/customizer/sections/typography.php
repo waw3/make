@@ -98,10 +98,174 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	/**
 	 * Main Navigation
 	 */
+	$typography_sections['font-main-menu'] = array(
+		'panel' => $panel,
+		'title' => __( 'Main Menu', 'make' ),
+		'options' => array(
+			'font-nav-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'Menu Item Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-nav-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'Menu Item Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-subnav-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'Sub-Menu Item Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-subnav-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'Sub-Menu Item Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+		),
+	);
 
 	/**
 	 * Headers
 	 */
+	$typography_sections['font-headers'] = array(
+		'panel' => $panel,
+		'title' => __( 'Headers (H1 - H6)', 'make' ),
+		'options' => array(
+			'font-h1-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'H1 Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-h1-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'H1 Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-h2-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'H2 Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-h2-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'H2 Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-h3-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'H3 Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-h3-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'H3 Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-h4-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'H4 Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-h4-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'H4 Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-h5-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'H5 Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-h5-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'H5 Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-h6-family' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
+				),
+				'control' => array(
+					'label'				=> __( 'H6 Font Family', 'make' ),
+					'type'				=> 'select',
+					'choices'			=> ttfmake_all_font_choices(),
+				),
+			),
+			'font-h6-size' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'H6 Font Size (in px)', 'make' ),
+					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+		),
+	);
 
 	/**
 	 * Body Text
