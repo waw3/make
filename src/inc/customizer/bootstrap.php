@@ -337,7 +337,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_section_options' ) ) :
  * @param  int       $initial_priority    The initial priority to use for controls
  * @return int                            The last priority value assigned
  */
-function ttfmake_customizer_add_section_options( $section, $args, $initial_priority = null ) {
+function ttfmake_customizer_add_section_options( $section, $args, $initial_priority = 100 ) {
 	global $wp_customize;
 
 	$priority = new TTFMAKE_Prioritizer( $initial_priority, 5 );
