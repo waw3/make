@@ -28,8 +28,8 @@ function ttfmake_customizer_sitetitletagline() {
 	// Adjust section title if no panel support
 	if ( ! ttfmake_customizer_supports_panels() ) {
 		$panels = ttfmake_customizer_get_panels();
-		if ( isset( $panels['header']['title'] ) ) {
-			$section->title = $panels['header']['title'] . ': ' . $section->title;
+		if ( isset( $panels['general']['title'] ) ) {
+			$section->title = $panels['general']['title'] . ': ' . $section->title;
 		}
 	}
 
