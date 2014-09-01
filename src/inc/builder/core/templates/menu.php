@@ -10,8 +10,9 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 	<div class="ttfmake-menu-pane">
 		<ul class="ttfmake-menu-list">
 			<?php foreach ( ttfmake_get_sections_by_order() as $key => $item ) : ?>
+			<a href="#" title="<?php echo esc_html( $item['description'] ); ?>" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-<?php echo esc_attr( $item['id'] ); ?>" data-section="<?php echo esc_attr( $item['id'] ); ?>">
+
 				<li class="ttfmake-menu-list-item">
-					<a href="#" title="<?php echo esc_html( $item['description'] ); ?>" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-<?php echo esc_attr( $item['id'] ); ?>" data-section="<?php echo esc_attr( $item['id'] ); ?>">
 						<div class="ttfmake-menu-list-item-link-icon-wrapper clear">
 							<span class="ttfmake-menu-list-item-link-icon"></span>
 							<div class="section-type-description">
@@ -20,8 +21,9 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 								</h4>
 							</div>
 						</div>
-					</a>
+
 				</li>
+				</a>
 			<?php endforeach; ?>
 			<?php if ( ! ttfmake_is_plus() && in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) : ?>
 				<li class="ttfmake-menu-list-item make-plus-products">
