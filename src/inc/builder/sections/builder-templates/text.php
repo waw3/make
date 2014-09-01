@@ -70,7 +70,16 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 		<?php ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-		<iframe width="100%" height="300" id="<?php echo $iframe_id; ?>"></iframe>
+		<div class="ttfmake-iframe-wrapper">
+			<div class="ttfmake-iframe-overlay">
+				<a href="#" class="edit-content-link" data-textarea="<?php echo $textarea_id; ?>" data-iframe="<?php echo $iframe_id; ?>">
+					<span class="screen-reader-text">
+						<?php _e( 'Edit content', 'make' ); ?>
+					</span>
+				</a>
+			</div>
+			<iframe width="100%" height="300" id="<?php echo $iframe_id; ?>"></iframe>
+		</div>
 		<textarea id="<?php echo $textarea_id; ?>" name="<?php echo $column_name; ?>[content]" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
 
 		<?php if ( true !== $ttfmake_is_js_template ) : ?>
