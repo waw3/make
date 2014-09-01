@@ -20,8 +20,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		},
 
 		events: {
-			'click .ttfmake-menu-list-item-link': 'addSection',
-			'click .ttfmake-menu-tab-link': 'menuToggle'
+			'click .ttfmake-menu-list-item-link': 'addSection'
 		},
 
 		addSection: function (evt) {

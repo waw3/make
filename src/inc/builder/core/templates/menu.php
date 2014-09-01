@@ -79,9 +79,4 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 			<?php endif; ?>
 		</ul>
 	</div>
-	<div class="ttfmake-menu-tab">
-		<a href="#" class="ttfmake-menu-tab-link">
-			<span><?php _e( 'Add New Section', 'make' ); ?></span>
-		</a>
-	</div>
 </div>
