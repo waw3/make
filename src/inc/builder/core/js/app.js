@@ -147,7 +147,7 @@ var oneApp = oneApp || {};
 		if (oneApp.isVisualActive()) {
 			tinyMCE.get('make').setContent(content);
 		} else {
-			oneApp.cache.$makeTextArea.val(content);
+			oneApp.cache.$makeTextArea.val(switchEditors.pre_wpautop(content));
 		}
 	};
 
