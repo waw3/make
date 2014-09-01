@@ -119,7 +119,7 @@ var oneApp = oneApp || {};
 		$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
 	};
 
-	oneApp.filliframeFromTinyMCE = function (iframeID, args) {
+	oneApp.filliframe = function (iframeID, args) {
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent),
