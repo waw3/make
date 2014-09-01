@@ -117,6 +117,34 @@ var oneApp = oneApp || {};
 		$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
 	};
 
+	oneApp.filliframe = function (iframeID) {
+		var iframe = document.getElementById('ttfmake-iframe-1'),
+			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+			iframeBody = $('body', iframeContent);
+
+		iframeBody.html(oneApp.getMakeContent());
+	};
+
+	oneApp.setTextarea = function (textareaID) {
+		$('#' + textareaID).val(oneApp.getMakeContent());
+	};
+
+	oneApp.getMakeContent = function () {
+		return tinyMCE.get('make').getContent();
+	};
+
+	oneApp.setMakeContent = function (content) {
+		tinyMCE.get('make').setContent(content);
+	};
+
+	oneApp.setMakeContentFromiframe = function (iframeID) {
+		var iframe = document.getElementById(iframeID),
+			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+			iframeBody = $('body', iframeContent);
+
+		oneApp.setMakeContent(iframeBody.html());
+	};
+
 	oneApp.initSortables();
 	oneApp.initViews();
 })(jQuery, oneApp);

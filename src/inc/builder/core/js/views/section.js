@@ -199,12 +199,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 			oneApp.tinymceOverlay.open();
 
-			var column = $(evt.target).attr('data-column-number'),
-				iframe = document.getElementById('ttfmake-iframe-' + column),
-				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
-				iframeBody = $('body', iframeContent);
-
-			tinyMCE.get('make').setContent(iframeBody.html());
+			var id = 'ttfmake-iframe-' + $(evt.target).attr('data-column-number');
+			oneApp.setMakeContentFromiframe(id);
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);

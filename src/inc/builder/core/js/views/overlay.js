@@ -21,14 +21,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			this.$el.hide();
 
 			// Pass the new content to the iframe and textarea
-			var content = tinyMCE.get('make').getContent();
-			$('#ttfmake-content-1').val(content);
-
-			var iframe = document.getElementById('ttfmake-iframe-1'),
-				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
-				iframeBody = $('body', iframeContent);
-
-			iframeBody.html(content);
+			oneApp.setTextarea('ttfmake-content-1');
+			oneApp.filliframe('ttfmake-iframe-1');
 		},
 
 		closeOnClick: function(e) {
