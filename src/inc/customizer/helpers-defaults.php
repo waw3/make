@@ -54,33 +54,33 @@ function ttfmake_option_defaults() {
 		// Google Web Fonts
 		'font-subset'                              => 'latin',
 		// Site Title & Tagline
-		'font-site-title-family'                   => 'sans-serif',
-		'font-site-title-size'                     => 34,
-		'font-site-tagline-family'                 => 'Open Sans',
-		'font-site-tagline-size'                   => 12,
+		'font-family-site-title'                   => 'sans-serif',
+		'font-size-site-title'                     => 34,
+		'font-family-site-tagline'                 => 'Open Sans',
+		'font-size-site-tagline'                   => 12,
 		// Main Menu
-		'font-nav-family'						   => 'Open Sans',
-		'font-nav-size'                            => 14,
-		'font-subnav-family'					   => 'Open Sans',
-		'font-subnav-size'                         => 13,
+		'font-family-nav'						   => 'Open Sans',
+		'font-size-nav'                            => 14,
+		'font-family-subnav'					   => 'Open Sans',
+		'font-size-subnav'                         => 13,
 		// Widgets
-		'font-widget-family'                       => 'Open Sans',
-		'font-widget-size'                         => 13,
+		'font-family-widget'                       => 'Open Sans',
+		'font-size-widget'                         => 13,
 		// Headers & Body
-		'font-h1-family'                           => 'sans-serif',
-		'font-h1-size'                             => 50,
-		'font-h2-family'                           => 'sans-serif',
-		'font-h2-size'                             => 34,
-		'font-h3-family'                           => 'sans-serif',
-		'font-h3-size'                             => 24,
-		'font-h4-family'                           => 'sans-serif',
-		'font-h4-size'                             => 24,
-		'font-h5-family'                           => 'sans-serif',
-		'font-h5-size'                             => 16,
-		'font-h6-family'                           => 'sans-serif',
-		'font-h6-size'                             => 14,
-		'font-body-family'                         => 'Open Sans',
-		'font-body-size'                           => 17,
+		'font-family-h1'                           => 'sans-serif',
+		'font-size-h1'                             => 50,
+		'font-family-h2'                           => 'sans-serif',
+		'font-size-h2'                             => 34,
+		'font-family-h3'                           => 'sans-serif',
+		'font-size-h3'                             => 24,
+		'font-family-h4'                           => 'sans-serif',
+		'font-size-h4'                             => 24,
+		'font-family-h5'                           => 'sans-serif',
+		'font-size-h5'                             => 16,
+		'font-family-h6'                           => 'sans-serif',
+		'font-size-h6'                             => 14,
+		'font-family-body'                         => 'Open Sans',
+		'font-size-body'                           => 17,
 
 		/**
 		 * Color Scheme
@@ -222,6 +222,19 @@ function ttfmake_option_defaults() {
 		'footer-layout'                            => 1,
 		'footer-text'                              => '',
 		'footer-show-social'                       => 1,
+
+		/**
+		 * Deprecated defaults
+		 */
+		'font-site-title'                          => 'sans-serif',
+		'font-header'                              => 'sans-serif',
+		'font-body'                                => 'Open Sans',
+		'font-site-title-size'                     => 34,
+		'font-site-tagline-size'                   => 12,
+		'font-nav-size'                            => 14,
+		'font-header-size'                         => 50,
+		'font-widget-size'                         => 13,
+		'font-body-size'                           => 17,
 	);
 
 	return apply_filters( 'ttfmake_setting_defaults', $defaults );
@@ -239,15 +252,6 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  */
 function ttfmake_get_default( $option ) {
 	$defaults = ttfmake_option_defaults();
-
-	// If the option key doesn't exist, look it up in the conversion array
-	if ( ! isset( $defaults[ $option ] ) ) {
-		$conversions = array_flip( ttfmake_customizer_get_key_conversions() );
-		if ( isset( $conversions[ $option ] ) ) {
-			$option = $conversions[ $option ];
-		}
-	}
-
 	return ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
 }
 endif;
