@@ -69,14 +69,15 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<?php ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
 		<iframe width="100%" height="300" id="ttfmake-iframe-<?php echo $i; ?>"></iframe>
+		<textarea id="ttfmake-content-<?php echo $i; ?>" name="<?php echo $column_name; ?>[content]" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
 
 		<?php if ( true !== $ttfmake_is_js_template ) : ?>
 		<script type="text/javascript">
 			(function($){
-				var content = 'Testing content',
-					iframe = document.getElementById('ttfmake-iframe-<?php echo $i; ?>'),
+				var iframe = document.getElementById('ttfmake-iframe-<?php echo $i; ?>'),
 					iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
-					iframeBody = $('body', iframeContent);
+					iframeBody = $('body', iframeContent),
+					content = $('#ttfmake-content-<?php echo $i; ?>').val();
 
 				iframeBody.html(content);
 			})(jQuery);
