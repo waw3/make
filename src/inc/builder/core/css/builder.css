@@ -299,7 +299,7 @@
 	color: #333333 !important;
 }
 .ttfmake-menu-list-item {
-	width: 25%;
+	width: 50%;
 	float: left;
 	text-align: center;
 	border-right: 1px solid #eeeeee;
@@ -310,15 +310,26 @@
 	margin-bottom: 0; /*reset*/
 	height: 160px;
 }
+.ttfmake-menu-list-item-link:nth-child(1) .ttfmake-menu-list-item,
+.ttfmake-menu-list-item-link:nth-child(3) .ttfmake-menu-list-item,
+.ttfmake-menu-list-item-link:nth-child(5) .ttfmake-menu-list-item,
+.ttfmake-menu-list-item-link:nth-child(7) .ttfmake-menu-list-item {
+	border-left: 1px solid #eeeeee;
+}
+@media screen and (min-width: 1160px) {
+	.ttfmake-menu-list-item {
+		width: 25%;
+	}
+	.ttfmake-menu-list-item-link:nth-child(3) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(7) .ttfmake-menu-list-item {
+		border-left: 0; /*reset*/
+	}
+}
 .ttfmake-menu-list-item:hover {
 		background-color: #fafafa;
 }
 .ttfmake-menu-list-item-link {
 	display: block;
-}
-.ttfmake-menu-list-item-link:nth-child(1) .ttfmake-menu-list-item,
-.ttfmake-menu-list-item-link:nth-child(5) .ttfmake-menu-list-item {
-	border-left: 1px solid #eeeeee;
 }
 .ttfmake-menu-list-item a {
 	color: #21759b;
