@@ -139,6 +139,21 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'label'				=> __( 'Header Text Color', 'make' ),
 				),
 			),
+			'header-element-color-line' => array(
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
+					'type'				=> 'line',
+				),
+			),
+			'color-site-title' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type'		=> 'WP_Customize_Color_Control',
+					'label'				=> __( 'Site Title Color', 'make' ),
+				),
+			),
 		),
 	);
 

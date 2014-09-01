@@ -110,6 +110,16 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 					'type'				=> 'line',
 				),
 			),
+			'footer-text' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'ttfmake_sanitize_text',
+					'transport'			=> 'postMessage',
+				),
+				'control' => array(
+					'label'				=> __( 'Footer Text', 'make' ),
+					'type'				=> 'text',
+				),
+			),
 			'footer-options-heading' => array(
 				'control' => array(
 					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
