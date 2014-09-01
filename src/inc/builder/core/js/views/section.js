@@ -203,7 +203,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				iframeID = $target.attr('data-iframe'),
 				textAreaID = $target.attr('data-textarea');
 
-			oneApp.setMakeContentFromiframe(iframeID, textAreaID);
+			oneApp.setMakeContentFromTextArea(iframeID, textAreaID);
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);

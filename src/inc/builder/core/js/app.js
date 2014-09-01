@@ -151,14 +151,12 @@ var oneApp = oneApp || {};
 		}
 	};
 
-	oneApp.setMakeContentFromiframe = function (iframeID, textAreaID) {
-		var iframe = document.getElementById(iframeID),
-			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
-			iframeBody = $('body', iframeContent);
+	oneApp.setMakeContentFromTextArea = function (iframeID, textAreaID) {
+		var textAreaContent = $('#' + textAreaID).val();
 
 		oneApp.setActiveiframeID(iframeID);
 		oneApp.setActiveTextAreaID(textAreaID);
-		oneApp.setMakeContent(iframeBody.html());
+		oneApp.setMakeContent(textAreaContent);
 	};
 
 	oneApp.setActiveiframeID = function(iframeID) {
