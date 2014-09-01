@@ -14,11 +14,11 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 					<a href="#" title="<?php echo esc_html( $item['description'] ); ?>" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-<?php echo esc_attr( $item['id'] ); ?>" data-section="<?php echo esc_attr( $item['id'] ); ?>">
 						<div class="ttfmake-menu-list-item-link-icon-wrapper clear">
 							<span class="ttfmake-menu-list-item-link-icon"></span>
-						</div>
-						<div class="section-type-description">
-							<h4>
-								<?php echo esc_html( $item['label'] ); ?>
-							</h4>
+							<div class="section-type-description">
+								<h4>
+									<?php echo esc_html( $item['label'] ); ?>
+								</h4>
+							</div>
 						</div>
 					</a>
 				</li>
