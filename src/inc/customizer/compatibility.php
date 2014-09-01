@@ -85,6 +85,11 @@ if ( ! function_exists( 'ttfmake_customizer_migrate_options' ) ) :
  * @return void
  */
 function ttfmake_customizer_migrate_options() {
+	// Don't run migrations if WordPress version is not 4.0+
+	if ( ! ttfmake_customizer_supports_panels() ) {
+		return;
+	}
+
 	// Get the array of migration definitions
 	$migrations = ttfmake_customizer_get_key_migrations();
 

@@ -137,6 +137,12 @@ if ( ! function_exists( 'ttfmake_customizer_add_sections' ) ) :
  * @return void
  */
 function ttfmake_customizer_add_sections( $wp_customize ) {
+	// Use legacy sections instead if no panel support
+	if ( ! ttfmake_customizer_supports_panels() ) {
+		ttfmake_customizer_add_legacy_sections( $wp_customize );
+		return;
+	}
+
 	$theme_prefix = 'ttfmake_';
 	$default_path = get_template_directory() . '/inc/customizer/sections';
 	$panels = ttfmake_customizer_get_panels();
@@ -294,6 +300,109 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 	}
 
 	return $priority->get();
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_customizer_add_legacy_sections' ) ) :
+/**
+ * Add the old sections and controls to the customizer for WP installations with no panel support.
+ *
+ * Hooked to 'customize_register' via ttfmake_customizer_init().
+ *
+ * @since  1.3.0.
+ *
+ * @param  WP_Customize_Manager    $wp_customize    Theme Customizer object.
+ * @return void
+ */
+function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
+	$path         = get_template_directory() . '/inc/customizer/';
+	$section_path = $path . 'legacy_sections/';
+
+	// Get the custom controls
+	require_once( $path . 'controls.php' );
+
+	// Modifications for existing sections
+	require_once( $section_path . 'background.php' );
+	require_once( $section_path . 'navigation.php' );
+	require_once( $section_path . 'site-title-tagline.php' );
+
+	// List of new sections to add
+	$sections = array(
+		'general'        => array( 'title' => __( 'General', 'make' ), 'path' => $section_path ),
+		'stylekit'       => array( 'title' => __( 'Style Kits', 'make' ), 'path' => $section_path ),
+		'font'           => array( 'title' => __( 'Fonts', 'make' ), 'path' => $section_path ),
+		'color'          => array( 'title' => __( 'Colors', 'make' ), 'path' => $section_path ),
+		'header'         => array( 'title' => __( 'Header', 'make' ), 'path' => $section_path ),
+		'logo'           => array( 'title' => __( 'Logo', 'make' ), 'path' => $section_path ),
+		'main'           => array( 'title' => __( 'Main', 'make' ), 'path' => $section_path ),
+		'layout-blog'    => array( 'title' => __( 'Layout: Blog (Posts Page)', 'make' ), 'path' => $section_path ),
+		'layout-archive' => array( 'title' => __( 'Layout: Archives', 'make' ), 'path' => $section_path ),
+		'layout-search'  => array( 'title' => __( 'Layout: Search Results', 'make' ), 'path' => $section_path ),
+		'layout-post'    => array( 'title' => __( 'Layout: Posts', 'make' ), 'path' => $section_path ),
+		'layout-page'    => array( 'title' => __( 'Layout: Pages', 'make' ), 'path' => $section_path ),
+		'footer'         => array( 'title' => __( 'Footer', 'make' ), 'path' => $section_path ),
+		'social'         => array( 'title' => __( 'Social Profiles &amp; RSS', 'make' ), 'path' => $section_path )
+	);
+	if ( ttfmake_is_plus() ) {
+		unset( $sections['stylekit'] );
+	}
+	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
+
+	// Priority for first section
+	$priority = new TTFMAKE_Prioritizer( 0, 10 );
+
+	// Add and populate each section, if it exists
+	foreach ( $sections as $section => $data ) {
+		$file = trailingslashit( $data[ 'path' ] ) . $section . '.php';
+		if ( file_exists( $file ) ) {
+			// First load the file
+			require_once( $file );
+
+			// Custom priorities for built-in sections
+			if ( 'font' === $section ) {
+				$wp_customize->get_section( 'background_image' )->priority = $priority->add();
+			}
+			if ( 'logo' === $section ) {
+				$wp_customize->get_section( 'title_tagline' )->priority = $priority->add();
+			}
+			if ( 'main' === $section ) {
+				$wp_customize->get_section( 'nav' )->priority = $priority->add();
+			}
+			if ( 'layout-blog' === $section ) {
+				$wp_customize->get_section( 'static_front_page' )->priority = $priority->add();
+			}
+
+			// Then add the section
+			$section_callback = 'ttfmake_customizer_';
+			$section_callback .= ( strpos( $section, '-' ) ) ? str_replace( '-', '_', $section ) : $section;
+			if ( function_exists( $section_callback ) ) {
+				$section_id = 'ttfmake_' . esc_attr( $section );
+
+				// Sanitize the section title
+				if ( ! isset( $data[ 'title' ] ) || ! $data[ 'title' ] ) {
+					$data[ 'title' ] = ucfirst( esc_attr( $section ) );
+				}
+
+				// Add section
+				$wp_customize->add_section(
+					$section_id,
+					array(
+						'title'    => $data[ 'title' ],
+						'priority' => $priority->add(),
+					)
+				);
+
+				// Callback to populate the section
+				call_user_func_array(
+					$section_callback,
+					array(
+						$wp_customize,
+						$section_id
+					)
+				);
+			}
+		}
+	}
 }
 endif;
 
