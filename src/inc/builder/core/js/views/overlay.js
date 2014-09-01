@@ -21,8 +21,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			this.$el.hide();
 
 			// Pass the new content to the iframe and textarea
-			oneApp.setTextarea('ttfmake-content-1');
-			oneApp.filliframe('ttfmake-iframe-1');
+			oneApp.setTextArea(oneApp.getActiveTextAreaID());
+			oneApp.filliframe(oneApp.getActiveiframeID());
 		},
 
 		closeOnClick: function(e) {

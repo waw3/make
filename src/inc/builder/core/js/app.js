@@ -118,15 +118,15 @@ var oneApp = oneApp || {};
 	};
 
 	oneApp.filliframe = function (iframeID) {
-		var iframe = document.getElementById('ttfmake-iframe-1'),
+		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent);
 
 		iframeBody.html(oneApp.getMakeContent());
 	};
 
-	oneApp.setTextarea = function (textareaID) {
-		$('#' + textareaID).val(oneApp.getMakeContent());
+	oneApp.setTextArea = function (textAreaID) {
+		$('#' + textAreaID).val(oneApp.getMakeContent());
 	};
 
 	oneApp.getMakeContent = function () {
@@ -137,12 +137,38 @@ var oneApp = oneApp || {};
 		tinyMCE.get('make').setContent(content);
 	};
 
-	oneApp.setMakeContentFromiframe = function (iframeID, textareaID) {
+	oneApp.setMakeContentFromiframe = function (iframeID, textAreaID) {
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent);
 
 		oneApp.setMakeContent(iframeBody.html());
+		oneApp.setActiveiframeID(iframeID);
+		oneApp.setActiveTextAreaID(textAreaID);
+	};
+
+	oneApp.setActiveiframeID = function(iframeID) {
+		oneApp.activeiframeID = iframeID;
+	};
+
+	oneApp.setActiveTextAreaID = function(textAreaID) {
+		oneApp.activeTextAreaID = textAreaID;
+	};
+
+	oneApp.getActiveiframeID = function() {
+		if (oneApp.hasOwnProperty('activeiframeID')) {
+			return oneApp.activeiframeID;
+		} else {
+			return '';
+		}
+	};
+
+	oneApp.getActiveTextAreaID = function() {
+		if (oneApp.hasOwnProperty('activeTextAreaID')) {
+			return oneApp.activeTextAreaID;
+		} else {
+			return '';
+		}
 	};
 
 	oneApp.initSortables();
