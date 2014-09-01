@@ -478,8 +478,8 @@ if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
  * @return string              The sanitized font choice.
  */
 function ttfmake_sanitize_font_choice( $value ) {
-	if ( is_int( $value ) ) {
-		// The array key is an integer, so the chosen option is a heading, not a real choice
+	if ( ! is_string( $value ) ) {
+		// The array key is not a string, so the chosen option is not a real choice
 		return '';
 	} else if ( array_key_exists( $value, ttfmake_all_font_choices() ) ) {
 		return $value;
