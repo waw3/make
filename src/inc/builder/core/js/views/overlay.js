@@ -22,7 +22,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Pass the new content to the iframe and textarea
 			oneApp.setTextArea(oneApp.getActiveTextAreaID());
-			oneApp.filliframe(oneApp.getActiveiframeID());
+			oneApp.filliframeFromTinyMCE(oneApp.getActiveiframeID(), {format: 'raw'});
 		},
 
 		closeOnClick: function(e) {
