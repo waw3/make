@@ -199,8 +199,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 			oneApp.tinymceOverlay.open();
 
-			var id = 'ttfmake-iframe-' + $(evt.target).attr('data-column-number');
-			oneApp.setMakeContentFromiframe(id);
+			var $target = $(evt.target),
+				iframeID = $target.attr('data-iframe'),
+				textareaID = $target.attr('data-textarea');
+
+			oneApp.setMakeContentFromiframe(iframeID, textareaID);
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);

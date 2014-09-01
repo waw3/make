@@ -42,10 +42,12 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
 	<?php
 		$column_name = $section_name . '[columns][' . $i . ']';
-		$link     = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-link'] : '';
-		$image_id = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
-		$title    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
-		$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
+		$iframe_id   = 'ttfmake-iframe-' . $i;
+		$textarea_id = 'ttfmake-content-' . $i;
+		$link        = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-link'] : '';
+		$image_id    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
+		$title       = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
+		$content     = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
 	?>
 	<div class="<?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
@@ -60,7 +62,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 				<a href="#" class="convert-to-widget-link">
 					<?php _e( 'Convert column to widget area', 'make' ); ?>
 				</a>
-				<a href="#" class="edit-content-link" data-column-number="<?php echo $i; ?>">
+				<a href="#" class="edit-content-link" data-text-area="<?php echo $textarea_id; ?>" data-iframe="<?php echo $iframe_id; ?>">
 					<?php _e( 'Edit content', 'make' ); ?>
 				</a>
 			</div>
@@ -68,8 +70,8 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 		<?php ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-		<iframe width="100%" height="300" id="ttfmake-iframe-<?php echo $i; ?>"></iframe>
-		<textarea id="ttfmake-content-<?php echo $i; ?>" name="<?php echo $column_name; ?>[content]" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
+		<iframe width="100%" height="300" id="<?php echo $iframe_id; ?>"></iframe>
+		<textarea id="<?php echo $textarea_id; ?>" name="<?php echo $column_name; ?>[content]" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
 
 		<?php if ( true !== $ttfmake_is_js_template ) : ?>
 		<script type="text/javascript">

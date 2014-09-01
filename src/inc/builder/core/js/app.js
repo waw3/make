@@ -137,7 +137,7 @@ var oneApp = oneApp || {};
 		tinyMCE.get('make').setContent(content);
 	};
 
-	oneApp.setMakeContentFromiframe = function (iframeID) {
+	oneApp.setMakeContentFromiframe = function (iframeID, textareaID) {
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent);
