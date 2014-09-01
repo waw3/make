@@ -108,6 +108,9 @@
 .ttfmake-section h4 {
 	font-size: 13px;
 }
+..ttfmake-section-header {
+	position: absolute;
+}
 .ttfmake-section-header h3,
 .ttfmake-banner-slide-header h3 {
 	float: left;
@@ -166,6 +169,11 @@
 	display: inline-block;
 	cursor: pointer;
 }
+.ttfmake-section-remove {
+	position: absolute;
+	right: 50px;
+	line-height: 39px;
+}
 .ttfmake-section-remove,
 .ttfmake-gallery-item-remove,
 .ttfmake-banner-slide-remove {
@@ -177,9 +185,6 @@
 	border-bottom: 0;  /*reset*/
 	text-decoration: none;  /*reset*/
 	outline: none !important;
-}
-.ttfmake-section-remove {
-	margin-top: 40px;
 }
 .ttfmake-gallery-item-remove,
 .ttfmake-banner-slide-remove {
@@ -259,7 +264,6 @@
 	margin-bottom: 40px;
 }
 .ttfmake-section-header a {
-	float: right;
 	outline: 0; /*reset*/
 }
 /*---------------------------------------------------------
