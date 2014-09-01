@@ -122,9 +122,15 @@ var oneApp = oneApp || {};
 	oneApp.filliframe = function (iframeID) {
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
-			iframeBody = $('body', iframeContent);
+			iframeBody = $('body', iframeContent),
+			content = '';
 
-		iframeBody.html(oneApp.getMakeContent());
+		content = oneApp.getMakeContent();
+
+		// Since content is being displayed in the iframe, run it through autop
+		content = switchEditors.wpautop(content);
+
+		iframeBody.html(content);
 	};
 
 	oneApp.setTextArea = function (textAreaID) {
