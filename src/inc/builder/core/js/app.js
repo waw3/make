@@ -14,7 +14,9 @@ var oneApp = oneApp || {};
 
 	oneApp.cache = {
 		$sectionOrder: $('#ttfmake-section-order'),
-		$scrollHandle: $('html, body')
+		$scrollHandle: $('html, body'),
+		$makeEditor: $('#wp-make-wrap'),
+		$makeTextArea: $('#make')
 	};
 
 	oneApp.initSortables = function () {
@@ -130,11 +132,23 @@ var oneApp = oneApp || {};
 	};
 
 	oneApp.getMakeContent = function () {
-		return tinyMCE.get('make').getContent();
+		var content = '';
+
+		if (oneApp.isVisualActive()) {
+			content = tinyMCE.get('make').getContent();
+		} else {
+			content = oneApp.cache.$makeTextArea.val();
+		}
+
+		return content;
 	};
 
 	oneApp.setMakeContent = function (content) {
-		tinyMCE.get('make').setContent(content);
+		if (oneApp.isVisualActive()) {
+			tinyMCE.get('make').setContent(content);
+		} else {
+			oneApp.cache.$makeTextArea.val(content);
+		}
 	};
 
 	oneApp.setMakeContentFromiframe = function (iframeID, textAreaID) {
@@ -142,9 +156,9 @@ var oneApp = oneApp || {};
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent);
 
-		oneApp.setMakeContent(iframeBody.html());
 		oneApp.setActiveiframeID(iframeID);
 		oneApp.setActiveTextAreaID(textAreaID);
+		oneApp.setMakeContent(iframeBody.html());
 	};
 
 	oneApp.setActiveiframeID = function(iframeID) {
@@ -169,6 +183,14 @@ var oneApp = oneApp || {};
 		} else {
 			return '';
 		}
+	};
+
+	oneApp.isTextActive = function() {
+		return oneApp.cache.$makeEditor.hasClass('html-active');
+	};
+
+	oneApp.isVisualActive = function() {
+		return oneApp.cache.$makeEditor.hasClass('tmce-active');
 	};
 
 	oneApp.initSortables();
