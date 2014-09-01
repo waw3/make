@@ -104,6 +104,13 @@ function ttfmake_customizer_migrate_options() {
 	// Get array of all the theme mods for later use
 	$theme_mods = get_theme_mods();
 
+	// If the theme mods array is empty, this is a new installation,
+	// no migration necessary
+	if ( false === $theme_mods ) {
+		set_theme_mod( 'options-migrated', $migration_versions );
+		return;
+	}
+
 	// Run each migration set that hasn't been done yet
 	foreach ( $missing_migrations as $version ) {
 		// Compile new keys
