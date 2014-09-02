@@ -41,7 +41,9 @@ if ( ! function_exists( 'ttfmake_customizer_supports_panels' ) ) :
 /**
  * Detect support for Customizer panels.
  *
- * This feature was introduced in WP 4.0.
+ * This feature was introduced in WP 4.0. The WP_Customize_Manager class is not loaded
+ * outside of the Customizer, so this also looks for wp_validate_boolean(), another
+ * function added in WP 4.0.
  *
  * @since  1.3.0.
  *
