@@ -53,12 +53,12 @@ function ttfmake_customizer_background() {
 	$options = array(
 		'background_size' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
 			),
 			'control' => array(
-				'label'				=> __( 'Site Background Size', 'make' ),
-				'type'				=> 'radio',
-				'choices'			=> ttfmake_get_choices( 'background_size' ),
+				'label'   => __( 'Site Background Size', 'make' ),
+				'type'    => 'radio',
+				'choices' => ttfmake_get_choices( 'background_size' ),
 			),
 		),
 	);
@@ -69,42 +69,42 @@ function ttfmake_customizer_background() {
 	$options = array(
 		'main-background-image' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'esc_url_raw',
+				'sanitize_callback' => 'esc_url_raw',
 			),
 			'control' => array(
-				'control_type'		=> 'TTFMAKE_Customize_Image_Control',
-				'label'				=> __( 'Main Column Background Image', 'make' ),
-				'context'			=> $theme_prefix . 'main-background-image',
+				'control_type' => 'TTFMAKE_Customize_Image_Control',
+				'label'        => __( 'Main Column Background Image', 'make' ),
+				'context'      => $theme_prefix . 'main-background-image',
 			),
 		),
 		'main-background-repeat' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
 			),
 			'control' => array(
-				'label'				=> __( 'Main Column Background Repeat', 'make' ),
-				'type'				=> 'radio',
-				'choices'			=> ttfmake_get_choices( 'main-background-repeat' ),
+				'label'   => __( 'Main Column Background Repeat', 'make' ),
+				'type'    => 'radio',
+				'choices' => ttfmake_get_choices( 'main-background-repeat' ),
 			),
 		),
 		'main-background-position' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
 			),
 			'control' => array(
-				'label'				=> __( 'Main Column Background Position', 'make' ),
-				'type'				=> 'radio',
-				'choices'			=> ttfmake_get_choices( 'main-background-position' ),
+				'label'   => __( 'Main Column Background Position', 'make' ),
+				'type'    => 'radio',
+				'choices' => ttfmake_get_choices( 'main-background-position' ),
 			),
 		),
 		'main-background-size' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
 			),
 			'control' => array(
-				'label'				=> __( 'Main Column Background Size', 'make' ),
-				'type'				=> 'radio',
-				'choices'			=> ttfmake_get_choices( 'main-background-size' ),
+				'label'   => __( 'Main Column Background Size', 'make' ),
+				'type'    => 'radio',
+				'choices' => ttfmake_get_choices( 'main-background-size' ),
 			),
 		),
 	);

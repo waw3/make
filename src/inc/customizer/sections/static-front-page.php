@@ -14,9 +14,9 @@ if ( ! function_exists( 'ttfmake_customizer_staticfrontpage' ) ) :
 function ttfmake_customizer_staticfrontpage() {
 	global $wp_customize;
 	$theme_prefix = 'ttfmake_';
-	$section_id = 'static_front_page';
-	$section = $wp_customize->get_section( $section_id );
-	$priority = new TTFMAKE_Prioritizer( 10, 5 );
+	$section_id   = 'static_front_page';
+	$section      = $wp_customize->get_section( $section_id );
+	$priority     = new TTFMAKE_Prioritizer( 10, 5 );
 
 	// Move Static Front Page section to General panel
 	$section->panel = $theme_prefix . 'general';

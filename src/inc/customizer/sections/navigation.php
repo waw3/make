@@ -46,13 +46,13 @@ function ttfmake_customizer_navigation() {
 	$options = array(
 		'navigation-mobile-label' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'esc_html',
-				'theme_supports'	=> 'menus',
-				'transport'			=> 'postMessage',
+				'sanitize_callback' => 'esc_html',
+				'theme_supports'    => 'menus',
+				'transport'         => 'postMessage',
 			),
 			'control' => array(
-				'label'				=> __( 'Mobile Menu Label', 'make' ),
-				'type'				=> 'text',
+				'label' => __( 'Mobile Menu Label', 'make' ),
+				'type'  => 'text',
 			),
 		),
 	);

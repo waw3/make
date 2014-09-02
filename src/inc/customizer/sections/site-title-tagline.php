@@ -40,11 +40,11 @@ function ttfmake_customizer_sitetitletagline() {
 	$options = array(
 		'hide-site-title' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'absint',
+				'sanitize_callback' => 'absint',
 			),
 			'control' => array(
-				'label'				=> __( 'Hide Site Title', 'make' ),
-				'type'				=> 'checkbox',
+				'label' => __( 'Hide Site Title', 'make' ),
+				'type'  => 'checkbox',
 			),
 		),
 	);
@@ -58,11 +58,11 @@ function ttfmake_customizer_sitetitletagline() {
 	$options = array(
 		'hide-tagline' => array(
 			'setting' => array(
-				'sanitize_callback'	=> 'absint',
+				'sanitize_callback' => 'absint',
 			),
 			'control' => array(
-				'label'				=> __( 'Hide Tagline', 'make' ),
-				'type'				=> 'checkbox',
+				'label' => __( 'Hide Tagline', 'make' ),
+				'type'  => 'checkbox',
 			),
 		),
 	);

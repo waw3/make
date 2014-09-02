@@ -21,47 +21,47 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 	 * Background Image
 	 */
 	$footer_sections['footer-background'] = array(
-		'panel' => $panel,
-		'title' => __( 'Background Image', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Background Image', 'make' ),
 		'options' => array(
-			'footer-background-image' => array(
+			'footer-background-image'    => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
-					'label'				=> __( 'Footer Background Image', 'make' ),
-					'context'			=> $theme_prefix . 'footer-background-image',
+					'control_type' => 'TTFMAKE_Customize_Image_Control',
+					'label'        => __( 'Footer Background Image', 'make' ),
+					'context'      => $theme_prefix . 'footer-background-image',
 				),
 			),
-			'footer-background-repeat' => array(
+			'footer-background-repeat'   => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Footer Background Repeat', 'make' ),
-					'type'				=> 'radio',
-					'choices'			=> ttfmake_get_choices( 'footer-background-repeat' ),
+					'label'   => __( 'Footer Background Repeat', 'make' ),
+					'type'    => 'radio',
+					'choices' => ttfmake_get_choices( 'footer-background-repeat' ),
 				),
 			),
 			'footer-background-position' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Footer Background Position', 'make' ),
-					'type'				=> 'radio',
-					'choices'			=> ttfmake_get_choices( 'footer-background-position' ),
+					'label'   => __( 'Footer Background Position', 'make' ),
+					'type'    => 'radio',
+					'choices' => ttfmake_get_choices( 'footer-background-position' ),
 				),
 			),
-			'footer-background-size' => array(
+			'footer-background-size'     => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Footer Background Size', 'make' ),
-					'type'				=> 'radio',
-					'choices'			=> ttfmake_get_choices( 'footer-background-size' ),
+					'label'   => __( 'Footer Background Size', 'make' ),
+					'type'    => 'radio',
+					'choices' => ttfmake_get_choices( 'footer-background-size' ),
 				),
 			),
 		),
@@ -144,15 +144,15 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 	 */
 	if ( ! ttfmake_is_plus() ) {
 		$footer_sections['footer-white-label'] = array(
-			'panel' => $panel,
-			'title' => __( 'White Label', 'make' ),
+			'panel'       => $panel,
+			'title'       => __( 'White Label', 'make' ),
 			'description' => __( 'Want to remove the theme byline from your website&#8217;s footer?', 'make' ),
-			'options' => array(
+			'options'     => array(
 				'footer-white-label-text' => array(
 					'control' => array(
-						'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-						'type'				=> 'text',
-						'description'		=> sprintf(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'type'         => 'text',
+						'description'  => sprintf(
 							'<a href="%1$s" target="_blank">%2$s</a>',
 							esc_url( ttfmake_get_plus_link( 'white-label' ) ),
 							sprintf(

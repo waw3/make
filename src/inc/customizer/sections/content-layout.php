@@ -21,46 +21,45 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 * Global
 	 */
 	$contentlayout_sections['layout-global'] = array(
-		'panel' => $panel,
-		'title' => __( 'Global', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Global', 'make' ),
 		'options' => array(
-			'general-layout' => array(
+			'general-layout'                => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Site Layout', 'make' ),
-					'type'				=> 'radio',
-					'choices'			=> ttfmake_get_choices( 'general-layout' ),
+					'label'   => __( 'Site Layout', 'make' ),
+					'type'    => 'radio',
+					'choices' => ttfmake_get_choices( 'general-layout' ),
 				),
 			),
-			'general-sticky-label' => array(
+			'general-sticky-label'          => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_html',
-					'transport'			=> 'postMessage',
+					'sanitize_callback' => 'esc_html',
+					'transport'         => 'postMessage',
 				),
 				'control' => array(
-					'label'				=> __( 'Sticky Label', 'make' ),
-					'type'				=> 'text',
+					'label' => __( 'Sticky Label', 'make' ),
+					'type'  => 'text',
 				),
 			),
 			'layout-global-content-heading' => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Content Options', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Content Options', 'make' ),
 				),
 			),
-			'main-content-link-underline' => array(
+			'main-content-link-underline'   => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Underline links in content', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Underline links in content', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-
 		),
 	);
 
@@ -69,177 +68,177 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 */
 	$prefix = 'layout-blog-';
 	$contentlayout_sections['layout-blog'] = array(
-		'panel' => $panel,
-		'title' => __( 'Blog (Posts Page)', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Blog (Posts Page)', 'make' ),
 		'options' => array(
-			$prefix . 'sidebars-heading' => array(
+			$prefix . 'sidebars-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Header, Footer, Sidebars', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Header, Footer, Sidebars', 'make' ),
 				),
 			),
-			$prefix . 'hide-header' => array(
+			$prefix . 'hide-header'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site header', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site header', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'hide-footer' => array(
+			$prefix . 'hide-footer'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site footer', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site footer', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-left' => array(
+			$prefix . 'sidebar-left'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show left sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show left sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-right' => array(
+			$prefix . 'sidebar-right'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show right sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show right sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebars-line' => array(
+			$prefix . 'sidebars-line'             => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'line',
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'line',
 				),
 			),
-			$prefix . 'featured-images' => array(
+			$prefix . 'featured-images'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images' ),
+					'label'   => __( 'Featured Images', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images' ),
 				),
 			),
 			$prefix . 'featured-images-alignment' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images Alignment', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
+					'label'   => __( 'Featured Images Alignment', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
 				),
 			),
-			$prefix . 'post-date' => array(
+			$prefix . 'post-date'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date' ),
+					'label'   => __( 'Post Date', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date' ),
 				),
 			),
-			$prefix . 'post-date-location' => array(
+			$prefix . 'post-date-location'        => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date-location' ),
+					'label'   => __( 'Post Date Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date-location' ),
 				),
 			),
-			$prefix . 'post-author' => array(
+			$prefix . 'post-author'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author' ),
+					'label'   => __( 'Post Author', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author' ),
 				),
 			),
-			$prefix . 'post-author-location' => array(
+			$prefix . 'post-author-location'      => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author-location' ),
+					'label'   => __( 'Post Author Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author-location' ),
 				),
 			),
-			$prefix . 'content-heading' => array(
+			$prefix . 'content-heading'           => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Content', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Content', 'make' ),
 				),
 			),
-			$prefix . 'auto-excerpt' => array(
+			$prefix . 'auto-excerpt'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Generate excerpts automatically', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Generate excerpts automatically', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'postmeta-heading' => array(
+			$prefix . 'postmeta-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Post Meta', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Post Meta', 'make' ),
 				),
 			),
-			$prefix . 'show-categories' => array(
+			$prefix . 'show-categories'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show categories', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show categories', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'show-tags' => array(
+			$prefix . 'show-tags'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show tags', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show tags', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'comment-count' => array(
+			$prefix . 'comment-count'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count' ),
+					'label'   => __( 'Comment Count', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count' ),
 				),
 			),
-			$prefix . 'comment-count-location' => array(
+			$prefix . 'comment-count-location'    => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count-location' ),
+					'label'   => __( 'Comment Count Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count-location' ),
 				),
 			),
 		),
@@ -250,177 +249,177 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 */
 	$prefix = 'layout-archive-';
 	$contentlayout_sections['layout-archive'] = array(
-		'panel' => $panel,
-		'title' => __( 'Archives', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Archives', 'make' ),
 		'options' => array(
-			$prefix . 'sidebars-heading' => array(
+			$prefix . 'sidebars-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Header, Footer, Sidebars', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Header, Footer, Sidebars', 'make' ),
 				),
 			),
-			$prefix . 'hide-header' => array(
+			$prefix . 'hide-header'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site header', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site header', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'hide-footer' => array(
+			$prefix . 'hide-footer'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site footer', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site footer', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-left' => array(
+			$prefix . 'sidebar-left'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show left sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show left sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-right' => array(
+			$prefix . 'sidebar-right'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show right sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show right sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebars-line' => array(
+			$prefix . 'sidebars-line'             => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'line',
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'line',
 				),
 			),
-			$prefix . 'featured-images' => array(
+			$prefix . 'featured-images'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images' ),
+					'label'   => __( 'Featured Images', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images' ),
 				),
 			),
 			$prefix . 'featured-images-alignment' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images Alignment', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
+					'label'   => __( 'Featured Images Alignment', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
 				),
 			),
-			$prefix . 'post-date' => array(
+			$prefix . 'post-date'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date' ),
+					'label'   => __( 'Post Date', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date' ),
 				),
 			),
-			$prefix . 'post-date-location' => array(
+			$prefix . 'post-date-location'        => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date-location' ),
+					'label'   => __( 'Post Date Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date-location' ),
 				),
 			),
-			$prefix . 'post-author' => array(
+			$prefix . 'post-author'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author' ),
+					'label'   => __( 'Post Author', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author' ),
 				),
 			),
-			$prefix . 'post-author-location' => array(
+			$prefix . 'post-author-location'      => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author-location' ),
+					'label'   => __( 'Post Author Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author-location' ),
 				),
 			),
-			$prefix . 'content-heading' => array(
+			$prefix . 'content-heading'           => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Content', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Content', 'make' ),
 				),
 			),
-			$prefix . 'auto-excerpt' => array(
+			$prefix . 'auto-excerpt'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Generate excerpts automatically', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Generate excerpts automatically', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'postmeta-heading' => array(
+			$prefix . 'postmeta-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Post Meta', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Post Meta', 'make' ),
 				),
 			),
-			$prefix . 'show-categories' => array(
+			$prefix . 'show-categories'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show categories', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show categories', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'show-tags' => array(
+			$prefix . 'show-tags'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show tags', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show tags', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'comment-count' => array(
+			$prefix . 'comment-count'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count' ),
+					'label'   => __( 'Comment Count', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count' ),
 				),
 			),
-			$prefix . 'comment-count-location' => array(
+			$prefix . 'comment-count-location'    => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count-location' ),
+					'label'   => __( 'Comment Count Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count-location' ),
 				),
 			),
 		),
@@ -431,177 +430,177 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 */
 	$prefix = 'layout-search-';
 	$contentlayout_sections['layout-search'] = array(
-		'panel' => $panel,
-		'title' => __( 'Search Results', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Search Results', 'make' ),
 		'options' => array(
-			$prefix . 'sidebars-heading' => array(
+			$prefix . 'sidebars-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Header, Footer, Sidebars', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Header, Footer, Sidebars', 'make' ),
 				),
 			),
-			$prefix . 'hide-header' => array(
+			$prefix . 'hide-header'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site header', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site header', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'hide-footer' => array(
+			$prefix . 'hide-footer'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site footer', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site footer', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-left' => array(
+			$prefix . 'sidebar-left'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show left sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show left sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-right' => array(
+			$prefix . 'sidebar-right'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show right sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show right sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebars-line' => array(
+			$prefix . 'sidebars-line'             => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'line',
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'line',
 				),
 			),
-			$prefix . 'featured-images' => array(
+			$prefix . 'featured-images'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images' ),
+					'label'   => __( 'Featured Images', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images' ),
 				),
 			),
 			$prefix . 'featured-images-alignment' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images Alignment', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
+					'label'   => __( 'Featured Images Alignment', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
 				),
 			),
-			$prefix . 'post-date' => array(
+			$prefix . 'post-date'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date' ),
+					'label'   => __( 'Post Date', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date' ),
 				),
 			),
-			$prefix . 'post-date-location' => array(
+			$prefix . 'post-date-location'        => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date-location' ),
+					'label'   => __( 'Post Date Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date-location' ),
 				),
 			),
-			$prefix . 'post-author' => array(
+			$prefix . 'post-author'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author' ),
+					'label'   => __( 'Post Author', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author' ),
 				),
 			),
-			$prefix . 'post-author-location' => array(
+			$prefix . 'post-author-location'      => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author-location' ),
+					'label'   => __( 'Post Author Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author-location' ),
 				),
 			),
-			$prefix . 'content-heading' => array(
+			$prefix . 'content-heading'           => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Content', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Content', 'make' ),
 				),
 			),
-			$prefix . 'auto-excerpt' => array(
+			$prefix . 'auto-excerpt'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Generate excerpts automatically', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Generate excerpts automatically', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'postmeta-heading' => array(
+			$prefix . 'postmeta-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Post Meta', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Post Meta', 'make' ),
 				),
 			),
-			$prefix . 'show-categories' => array(
+			$prefix . 'show-categories'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show categories', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show categories', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'show-tags' => array(
+			$prefix . 'show-tags'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show tags', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show tags', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'comment-count' => array(
+			$prefix . 'comment-count'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count' ),
+					'label'   => __( 'Comment Count', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count' ),
 				),
 			),
-			$prefix . 'comment-count-location' => array(
+			$prefix . 'comment-count-location'    => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count-location' ),
+					'label'   => __( 'Comment Count Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count-location' ),
 				),
 			),
 		),
@@ -612,161 +611,161 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 */
 	$prefix = 'layout-post-';
 	$contentlayout_sections['layout-post'] = array(
-		'panel' => $panel,
-		'title' => __( 'Posts', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Posts', 'make' ),
 		'options' => array(
-			$prefix . 'sidebars-heading' => array(
+			$prefix . 'sidebars-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Header, Footer, Sidebars', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Header, Footer, Sidebars', 'make' ),
 				),
 			),
-			$prefix . 'hide-header' => array(
+			$prefix . 'hide-header'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site header', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site header', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'hide-footer' => array(
+			$prefix . 'hide-footer'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site footer', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site footer', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-left' => array(
+			$prefix . 'sidebar-left'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show left sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show left sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-right' => array(
+			$prefix . 'sidebar-right'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show right sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show right sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebars-line' => array(
+			$prefix . 'sidebars-line'             => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'line',
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'line',
 				),
 			),
-			$prefix . 'featured-images' => array(
+			$prefix . 'featured-images'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images' ),
+					'label'   => __( 'Featured Images', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images' ),
 				),
 			),
 			$prefix . 'featured-images-alignment' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images Alignment', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
+					'label'   => __( 'Featured Images Alignment', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
 				),
 			),
-			$prefix . 'post-date' => array(
+			$prefix . 'post-date'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date' ),
+					'label'   => __( 'Post Date', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date' ),
 				),
 			),
-			$prefix . 'post-date-location' => array(
+			$prefix . 'post-date-location'        => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date-location' ),
+					'label'   => __( 'Post Date Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date-location' ),
 				),
 			),
-			$prefix . 'post-author' => array(
+			$prefix . 'post-author'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author' ),
+					'label'   => __( 'Post Author', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author' ),
 				),
 			),
-			$prefix . 'post-author-location' => array(
+			$prefix . 'post-author-location'      => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author-location' ),
+					'label'   => __( 'Post Author Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author-location' ),
 				),
 			),
-			$prefix . 'postmeta-heading' => array(
+			$prefix . 'postmeta-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Post Meta', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Post Meta', 'make' ),
 				),
 			),
-			$prefix . 'show-categories' => array(
+			$prefix . 'show-categories'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show categories', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show categories', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'show-tags' => array(
+			$prefix . 'show-tags'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show tags', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show tags', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'comment-count' => array(
+			$prefix . 'comment-count'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count' ),
+					'label'   => __( 'Comment Count', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count' ),
 				),
 			),
-			$prefix . 'comment-count-location' => array(
+			$prefix . 'comment-count-location'    => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count-location' ),
+					'label'   => __( 'Comment Count Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count-location' ),
 				),
 			),
 		),
@@ -777,159 +776,159 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 */
 	$prefix = 'layout-page-';
 	$contentlayout_sections['layout-page'] = array(
-		'panel' => $panel,
-		'title' => __( 'Pages', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Pages', 'make' ),
 		'options' => array(
-			$prefix . 'sidebars-heading' => array(
+			$prefix . 'sidebars-heading'          => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Header, Footer, Sidebars', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Header, Footer, Sidebars', 'make' ),
 				),
 			),
-			$prefix . 'hide-header' => array(
+			$prefix . 'hide-header'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site header', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site header', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'hide-footer' => array(
+			$prefix . 'hide-footer'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide site footer', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide site footer', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-left' => array(
+			$prefix . 'sidebar-left'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show left sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show left sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebar-right' => array(
+			$prefix . 'sidebar-right'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Show right sidebar', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Show right sidebar', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'sidebars-text' => array(
+			$prefix . 'sidebars-text'             => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'text',
-					'description'		=> __( 'Sidebars are not available on pages using the Builder Template.', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'text',
+					'description'  => __( 'Sidebars are not available on pages using the Builder Template.', 'make' ),
 				),
 			),
-			$prefix . 'sidebars-line' => array(
+			$prefix . 'sidebars-line'             => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'line',
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'line',
 				),
 			),
-			$prefix . 'pagetitle-heading' => array(
+			$prefix . 'pagetitle-heading'         => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Page Title', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Page Title', 'make' ),
 				),
 			),
-			$prefix . 'hide-title' => array(
+			$prefix . 'hide-title'                => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide title', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide title', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			$prefix . 'featured-images' => array(
+			$prefix . 'featured-images'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images' ),
+					'label'   => __( 'Featured Images', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images' ),
 				),
 			),
 			$prefix . 'featured-images-alignment' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Featured Images Alignment', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
+					'label'   => __( 'Featured Images Alignment', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'featured-images-alignment' ),
 				),
 			),
-			$prefix . 'post-date' => array(
+			$prefix . 'post-date'                 => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date' ),
+					'label'   => __( 'Post Date', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date' ),
 				),
 			),
-			$prefix . 'post-date-location' => array(
+			$prefix . 'post-date-location'        => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Date Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-date-location' ),
+					'label'   => __( 'Post Date Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-date-location' ),
 				),
 			),
-			$prefix . 'post-author' => array(
+			$prefix . 'post-author'               => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author' ),
+					'label'   => __( 'Post Author', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author' ),
 				),
 			),
-			$prefix . 'post-author-location' => array(
+			$prefix . 'post-author-location'      => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Post Author Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'post-author-location' ),
+					'label'   => __( 'Post Author Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'post-author-location' ),
 				),
 			),
-			$prefix . 'comment-count' => array(
+			$prefix . 'comment-count'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count' ),
+					'label'   => __( 'Comment Count', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count' ),
 				),
 			),
-			$prefix . 'comment-count-location' => array(
+			$prefix . 'comment-count-location'    => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'ttfmake_sanitize_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_choice',
 				),
 				'control' => array(
-					'label'				=> __( 'Comment Count Location', 'make' ),
-					'type'				=> 'select',
-					'choices'			=> ttfmake_get_choices( $prefix . 'comment-count-location' ),
+					'label'   => __( 'Comment Count Location', 'make' ),
+					'type'    => 'select',
+					'choices' => ttfmake_get_choices( $prefix . 'comment-count-location' ),
 				),
 			),
 		),

@@ -27,70 +27,70 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	 * Logo
 	 */
 	$general_sections['logo'] = array(
-		'panel' => $panel,
-		'title' => __( 'Logo', 'make' ),
+		'panel'   => $panel,
+		'title'   => __( 'Logo', 'make' ),
 		'options' => array(
-			'logo-regular' => array(
+			'logo-regular'          => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
-					'label'				=> __( 'Regular Logo', 'make' ),
-					'context'			=> $theme_prefix . 'logo-regular',
+					'control_type' => 'TTFMAKE_Customize_Image_Control',
+					'label'        => __( 'Regular Logo', 'make' ),
+					'context'      => $theme_prefix . 'logo-regular',
 				),
 			),
-			'logo-retina' => array(
+			'logo-retina'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
-					'label'				=> __( 'Retina Logo (2x)', 'make' ),
-					'context'			=> $theme_prefix . 'logo-retina',
+					'control_type' => 'TTFMAKE_Customize_Image_Control',
+					'label'        => __( 'Retina Logo (2x)', 'make' ),
+					'context'      => $theme_prefix . 'logo-retina',
 				),
 			),
-			'logo-retina-text' => array(
+			'logo-retina-text'      => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'text',
-					'description'		=> __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'text',
+					'description'  => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
 				),
 			),
-			'logo-favicon' => array(
+			'logo-favicon'          => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
-					'label'				=> __( 'Favicon', 'make' ),
-					'context'			=> $theme_prefix . 'logo-favicon',
-					'extensions'		=> array( 'png', 'ico' ),
+					'control_type' => 'TTFMAKE_Customize_Image_Control',
+					'label'        => __( 'Favicon', 'make' ),
+					'context'      => $theme_prefix . 'logo-favicon',
+					'extensions'   => array( 'png', 'ico' ),
 				),
 			),
-			'logo-favicon-text' => array(
+			'logo-favicon-text'     => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'text',
-					'description'		=> __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'text',
+					'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
 				),
 			),
-			'logo-apple-touch' => array(
+			'logo-apple-touch'      => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Image_Control',
-					'label'				=> __( 'Apple Touch Icon', 'make' ),
-					'context'			=> $theme_prefix . 'logo-apple-touch',
-					'extensions'		=> array( 'png' ),
+					'control_type' => 'TTFMAKE_Customize_Image_Control',
+					'label'        => __( 'Apple Touch Icon', 'make' ),
+					'context'      => $theme_prefix . 'logo-apple-touch',
+					'extensions'   => array( 'png' ),
 				),
 			),
 			'logo-apple-touch-text' => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'text',
-					'description'		=> __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'text',
+					'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
 				),
 			),
 		),
@@ -106,96 +106,96 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	 * Social Profiles & RSS
 	 */
 	$general_sections['social'] = array(
-		'panel' => $panel,
-		'title' => __( 'Social Profiles &amp; RSS', 'make' ),
+		'panel'       => $panel,
+		'title'       => __( 'Social Profiles &amp; RSS', 'make' ),
 		'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
-		'options' => array(
-			'social-facebook' => array(
+		'options'     => array(
+			'social-facebook'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Facebook', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Facebook', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-twitter' => array(
+			'social-twitter'            => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Twitter', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Twitter', // brand names not translated
+					'type'  => 'text',
 				),
 			),
 			'social-google-plus-square' => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Google +', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Google +', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-linkedin' => array(
+			'social-linkedin'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'LinkedIn', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'LinkedIn', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-instagram' => array(
+			'social-instagram'          => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Instagram', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Instagram', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-flickr' => array(
+			'social-flickr'             => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Flickr', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Flickr', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-youtube' => array(
+			'social-youtube'            => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'YouTube', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'YouTube', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-vimeo-square' => array(
+			'social-vimeo-square'       => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Vimeo', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Vimeo', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-pinterest' => array(
+			'social-pinterest'          => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> 'Pinterest', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Pinterest', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-custom-menu-text' => array(
+			'social-custom-menu-text'   => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'text',
-					'description'		=> sprintf(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'text',
+					'description'  => sprintf(
 						__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, use %s.', 'make' ),
 						sprintf(
 							'<a href="' . esc_url( 'https://thethemefoundry.com/tutorials/make/#social-profiles-and-rss' ) . '">%s</a>',
@@ -204,38 +204,38 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					),
 				),
 			),
-			'social-email' => array(
+			'social-email'              => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'sanitize_email',
+					'sanitize_callback' => 'sanitize_email',
 				),
 				'control' => array(
-					'label'				=> 'Email', // brand names not translated
-					'type'				=> 'text',
+					'label' => 'Email', // brand names not translated
+					'type'  => 'text',
 				),
 			),
-			'social-rss-heading' => array(
+			'social-rss-heading'        => array(
 				'control' => array(
-					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'type'				=> 'heading',
-					'label'				=> __( 'Default RSS', 'make' ),
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'heading',
+					'label'        => __( 'Default RSS', 'make' ),
 				),
 			),
-			'social-hide-rss' => array(
+			'social-hide-rss'           => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'absint',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label'				=> __( 'Hide default RSS feed link', 'make' ),
-					'type'				=> 'checkbox',
+					'label' => __( 'Hide default RSS feed link', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
-			'social-custom-rss' => array(
+			'social-custom-rss'         => array(
 				'setting' => array(
-					'sanitize_callback'	=> 'esc_url_raw',
+					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
-					'label'				=> __( 'Custom RSS URL (replaces default)', 'make' ),
-					'type'				=> 'text',
+					'label' => __( 'Custom RSS URL (replaces default)', 'make' ),
+					'type'  => 'text',
 				),
 			),
 		),
