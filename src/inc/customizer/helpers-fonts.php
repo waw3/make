@@ -13,7 +13,7 @@ if ( ! function_exists( 'ttfmake_font_get_relative_sizes' ) ) :
  */
 function ttfmake_font_get_relative_sizes() {
 	// Relative font sizes
-	return apply_filters( 'ttfmake_font_relative_size', array(
+	return apply_filters( 'make_font_relative_size', array(
 		// Relative to navigation font size
 		'sub-menu'     => 93,  // Deprecated in 1.3.0.
 		// Relative to header font size
@@ -238,7 +238,7 @@ function ttfmake_css_fonts() {
 }
 endif;
 
-add_action( 'ttfmake_css', 'ttfmake_css_fonts' );
+add_action( 'make_css', 'ttfmake_css_fonts' );
 
 if ( ! function_exists( 'ttfmake_parse_font_properties' ) ) :
 /**
@@ -299,7 +299,15 @@ function ttfmake_get_font_stack( $font ) {
 		$stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
 	}
 
-	return apply_filters( 'ttfmake_font_stack', $stack, $font );
+	/**
+	 * Allow developers to filter the full font stack.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $stack    The font stack.
+	 * @param string    $font     The font.
+	 */
+	return apply_filters( 'make_font_stack', $stack, $font );
 }
 endif;
 
@@ -325,13 +333,10 @@ if ( ! function_exists( 'ttfmake_convert_px_to_rem' ) ) :
  * @since  1.0.0.
  *
  * @param  mixed    $px      The value to convert.
- * @param  mixed    $base    The font-size base for the rem conversion.
+ * @param  mixed    $base    The font-size base for the rem conversion (deprecated).
  * @return float             The converted value.
  */
 function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
-	if ( 0 === $base ) {
-		$base = get_theme_mod( 'font-body-size', ttfmake_get_default( 'font-body-size' ) );
-	}
 	return (float) $px / 10;
 }
 endif;
@@ -442,7 +447,14 @@ function ttfmake_get_google_font_uri() {
 		$request .= urlencode( '&subset=' . join( ',', $subsets ) );
 	}
 
-	return esc_url( $request );
+	/**
+	 * Filter the Google Fonts URL.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $url    The URL to retrieve the Google Fonts.
+	 */
+	return apply_filters( 'make_get_google_font_uri', esc_url( $request ) );
 }
 endif;
 
@@ -486,7 +498,16 @@ function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
 		$chosen_variants[] = '700';
 	}
 
-	return apply_filters( 'ttfmake_font_variants', array_unique( $chosen_variants ), $font, $variants );
+	/**
+	 * Allow developers to alter the font variant choice.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array     $variants    The list of variants for a font.
+	 * @param string    $font        The font to load variants for.
+	 * @param array     $variants    The variants for the font.
+	 */
+	return apply_filters( 'make_font_variants', array_unique( $chosen_variants ), $font, $variants );
 }
 endif;
 
@@ -504,7 +525,14 @@ function ttfmake_sanitize_font_subset( $value ) {
 		$value = 'latin';
 	}
 
-	return $value;
+	/**
+	 * Filter the sanitized subset choice.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $value    The chosen subset value.
+	 */
+	return apply_filters( 'make_sanitize_font_subset', $value );
 }
 endif;
 
@@ -517,7 +545,14 @@ if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
  * @return array    The available subsets.
  */
 function ttfmake_get_google_font_subsets() {
-	return array(
+	/**
+	 * Filter the list of supported Google Font subsets.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $subsets    The list of subsets.
+	 */
+	return apply_filters( 'make_get_google_font_subsets', array(
 		'all'          => __( 'All', 'make' ),
 		'cyrillic'     => __( 'Cyrillic', 'make' ),
 		'cyrillic-ext' => __( 'Cyrillic Extended', 'make' ),
@@ -528,7 +563,7 @@ function ttfmake_get_google_font_subsets() {
 		'latin'        => __( 'Latin', 'make' ),
 		'latin-ext'    => __( 'Latin Extended', 'make' ),
 		'vietnamese'   => __( 'Vietnamese', 'make' ),
-	);
+	) );
 }
 endif;
 
@@ -550,6 +585,15 @@ function ttfmake_sanitize_font_choice( $value ) {
 	} else {
 		return '';
 	}
+
+	/**
+	 * Filter the sanitized font choice.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $value    The chosen font value.
+	 */
+	return apply_filters( 'make_sanitize_font_choice', $return );
 }
 endif;
 
@@ -584,7 +628,14 @@ function ttfmake_all_font_choices() {
 		$choices[ $key ] = $font['label'];
 	}
 
-	return $choices;
+	/**
+	 * Allow for developers to modify the full list of fonts.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $choices    The list of all fonts.
+	 */
+	return apply_filters( 'make_all_font_choices', $choices );
 }
 endif;
 
@@ -622,7 +673,15 @@ function ttfmake_get_all_fonts() {
 	$standard_fonts = ttfmake_get_standard_fonts();
 	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'make' ) ) ) );
 	$google_fonts   = ttfmake_get_google_fonts();
-	return apply_filters( 'ttfmake_all_fonts', $heading1 + $standard_fonts + $heading2 + $google_fonts );
+
+	/**
+	 * Allow for developers to modify the full list of fonts.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $fonts    The list of all fonts.
+	 */
+	return apply_filters( 'make_all_fonts', array_merge( $heading1, $standard_fonts, $heading2, $google_fonts ) );
 }
 endif;
 
@@ -635,7 +694,14 @@ if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
  * @return array    Standard websafe fonts.
  */
 function ttfmake_get_standard_fonts() {
-	return array(
+	/**
+	 * Allow for developers to modify the standard fonts.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $fonts    The list of standard fonts.
+	 */
+	return apply_filters( 'make_get_standard_fonts', array(
 		'serif' => array(
 			'label' => _x( 'Serif', 'font style', 'make' ),
 			'stack' => 'Georgia,Times,"Times New Roman",serif'
@@ -648,7 +714,7 @@ function ttfmake_get_standard_fonts() {
 			'label' => _x( 'Monospaced', 'font style', 'make' ),
 			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 		)
-	);
+	) );
 }
 endif;
 
@@ -898,7 +964,14 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
  * @return array    All Google Fonts.
  */
 function ttfmake_get_google_fonts() {
-	return apply_filters( 'ttfmake_get_google_fonts', array(
+	/**
+	 * Allow for developers to modify the allowed Google fonts.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $fonts    The list of Google fonts with variants and subsets.
+	 */
+	return apply_filters( 'make_get_google_fonts', array(
 		'ABeeZee' => array(
 			'label'    => 'ABeeZee',
 			'variants' => array(

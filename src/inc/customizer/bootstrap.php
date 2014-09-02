@@ -351,7 +351,7 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 		unset( $sections['stylekit'] );
 	}
 
-	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
+	$sections = apply_filters( 'make_customizer_sections', $sections );
 
 	// Priority for first section
 	$priority = new TTFMAKE_Prioritizer( 0, 10 );
@@ -359,6 +359,7 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $data ) {
 		$file = trailingslashit( $data[ 'path' ] ) . $section . '.php';
+
 		if ( file_exists( $file ) ) {
 			// First load the file
 			require_once( $file );
@@ -381,8 +382,9 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 			}
 
 			// Then add the section
-			$section_callback = 'ttfmake_customizer_';
+			$section_callback  = 'ttfmake_customizer_';
 			$section_callback .= ( strpos( $section, '-' ) ) ? str_replace( '-', '_', $section ) : $section;
+
 			if ( function_exists( $section_callback ) ) {
 				$section_id = 'ttfmake_' . esc_attr( $section );
 
@@ -442,11 +444,9 @@ if ( ! function_exists( 'ttfmake_customizer_preview_script' ) ) :
  * @return void
  */
 function ttfmake_customizer_preview_script() {
-	$path = '/inc/customizer/js/';
-
 	wp_enqueue_script(
 		'ttfmake-customizer-preview',
-		get_template_directory_uri() . $path . 'customizer-preview' . TTFMAKE_SUFFIX . '.js',
+		get_template_directory_uri() . '/inc/customizer/js/customizer-preview' . TTFMAKE_SUFFIX . '.js',
 		array( 'customize-preview' ),
 		TTFMAKE_VERSION,
 		true
@@ -465,11 +465,9 @@ if ( ! function_exists( 'ttfmake_customizer_sections_script' ) ) :
  * @return void
  */
 function ttfmake_customizer_sections_script() {
-	$path = '/inc/customizer/js/';
-
 	wp_enqueue_script(
 		'ttfmake-customizer-sections',
-		get_template_directory_uri() . $path . 'customizer-sections' . TTFMAKE_SUFFIX . '.js',
+		get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
 		array( 'customize-controls' ),
 		TTFMAKE_VERSION,
 		true
@@ -507,7 +505,8 @@ if ( ! function_exists( 'ttfmake_customizer_admin_styles' ) ) :
  *
  * @return void
  */
-function ttfmake_customizer_admin_styles() { ?>
+function ttfmake_customizer_admin_styles() {
+?>
 	<style type="text/css">
 		.customize-control.customize-control-heading {
 			margin-top: 6px;
@@ -518,19 +517,29 @@ function ttfmake_customizer_admin_styles() { ?>
 			margin-bottom: 6px;
 		}
 	</style>
-<?php }
+<?php
+}
 endif;
 
 if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
 /**
- * Make sure the 'ttfmake_css' action only runs once.
+ * Make sure the 'make_css' action only runs once.
  *
  * @since  1.0.0.
  *
  * @return void
  */
 function ttfmake_add_customizations() {
-	do_action( 'ttfmake_css' );
+	/**
+	 * The hook used to add CSS rules for the generated inline CSS.
+	 *
+	 * This hook is the correct hook to use for adding CSS styles to the group of selectors and properties that will be
+	 * added to inline CSS that is printed in the head. Hooking elsewhere may lead to rules not being registered
+	 * correctly for the CSS generation. Most Customizer options will use this hook to register additional CSS rules.
+	 *
+	 * @since 1.2.3.
+	 */
+	do_action( 'make_css' );
 }
 endif;
 
@@ -540,7 +549,7 @@ if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
 /**
  * Generates the style tag and CSS needed for the theme options.
  *
- * By using the "ttfmake_css" filter, different components can print CSS in the header. It is organized this way to
+ * By using the "make_css" filter, different components can print CSS in the header. It is organized this way to
  * ensure that there is only one "style" tag and not a proliferation of them.
  *
  * @since  1.0.0.
@@ -548,7 +557,16 @@ if ( ! function_exists( 'ttfmake_display_customizations' ) ) :
  * @return void
  */
 function ttfmake_display_customizations() {
-	do_action( 'ttfmake_css' );
+	/**
+	 * The hook used to add CSS rules for the generated inline CSS.
+	 *
+	 * This hook is the correct hook to use for adding CSS styles to the group of selectors and properties that will be
+	 * added to inline CSS that is printed in the head. Hooking elsewhere may lead to rules not being registered
+	 * correctly for the CSS generation. Most Customizer options will use this hook to register additional CSS rules.
+	 *
+	 * @since 1.2.3.
+	 */
+	do_action( 'make_css' );
 
 	// Echo the rules
 	$css = ttfmake_get_css()->build();
@@ -564,7 +582,7 @@ add_action( 'wp_head', 'ttfmake_display_customizations', 11 );
 
 if ( ! function_exists( 'ttfmake_ajax_display_customizations' ) ) :
 /**
- * Generates the theme option CSS as an Ajax response
+ * Generates the theme option CSS as an Ajax response.
  *
  * @since  1.0.0.
  *

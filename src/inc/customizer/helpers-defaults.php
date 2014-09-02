@@ -238,7 +238,14 @@ function ttfmake_option_defaults() {
 		'font-body-size'                           => 17,
 	);
 
-	return apply_filters( 'ttfmake_setting_defaults', $defaults );
+	/**
+	 * Filter the default values for the settings.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $defaults    The list of default settings.
+	 */
+	return apply_filters( 'make_setting_defaults', $defaults );
 }
 endif;
 
@@ -253,6 +260,16 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  */
 function ttfmake_get_default( $option ) {
 	$defaults = ttfmake_option_defaults();
-	return ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
+	$default  = ( isset( $defaults[ $option ] ) ) ? $defaults[ $option ] : false;
+
+	/**
+	 * Filter the retrieved default value.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param mixed     $default    The default value.
+	 * @param string    $option     The name of the default value.
+	 */
+	return apply_filters( 'make_get_default', $default, $option );
 }
 endif;
