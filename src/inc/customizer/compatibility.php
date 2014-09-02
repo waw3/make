@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_customizer_get_key_migrations' ) ) :
 /**
  * Return an array of option key migration sets.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @return array    The list of key migration sets.
  */
@@ -19,19 +19,29 @@ function ttfmake_customizer_get_key_migrations() {
 	 */
 	$migrations = array(
 		'1.3.0' => array(
-			'font-site-title'			=> 'font-family-site-title',
-			'font-header'				=> array(
-				'font-family-h1', 'font-family-h2', 'font-family-h3', 'font-family-h4', 'font-family-h5', 'font-family-h6'
+			'font-site-title'        => 'font-family-site-title',
+			'font-header'            => array(
+				'font-family-h1',
+				'font-family-h2',
+				'font-family-h3',
+				'font-family-h4',
+				'font-family-h5',
+				'font-family-h6'
 			),
-			'font-body'					=> 'font-family-body',
-			'font-site-title-size'		=> 'font-size-site-title',
-			'font-site-tagline-size'	=> 'font-size-site-tagline',
-			'font-nav-size'				=> 'font-size-nav',
-			'font-header-size'			=> array(
-				'font-size-h1', 'font-size-h2', 'font-size-h3', 'font-size-h4', 'font-size-h5', 'font-size-h6'
+			'font-body'              => 'font-family-body',
+			'font-site-title-size'   => 'font-size-site-title',
+			'font-site-tagline-size' => 'font-size-site-tagline',
+			'font-nav-size'          => 'font-size-nav',
+			'font-header-size'       => array(
+				'font-size-h1',
+				'font-size-h2',
+				'font-size-h3',
+				'font-size-h4',
+				'font-size-h5',
+				'font-size-h6'
 			),
-			'font-widget-size'			=> 'font-size-widget',
-			'font-body-size'			=> 'font-size-body',
+			'font-widget-size'       => 'font-size-widget',
+			'font-body-size'         => 'font-size-body',
 		),
 	);
 
@@ -43,17 +53,19 @@ if ( ! function_exists( 'ttfmake_customizer_get_key_migration_callbacks' ) ) :
 /**
  * Return an array of callbacks for a particular migration set.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  string    $version    The theme version to get the callbacks for
  * @return array                 An array containing any callbacks for the specified set
  */
 function ttfmake_customizer_get_key_migration_callbacks( $version ) {
-	// $theme_version => array
-	// 		$key => $callback
+	/**
+	 * $theme_version => array
+	 *     $key => $callback
+	 */
 	$all_callbacks = array(
 		'1.3.0' => array(
-			'font-header-size'			=> 'ttfmake_customizer_header_sizes_callback',
+			'font-header-size' => 'ttfmake_customizer_header_sizes_callback',
 		),
 	);
 
@@ -74,13 +86,15 @@ if ( ! function_exists( 'ttfmake_customizer_migrate_options' ) ) :
  * This function parses the array of key migration sets from ttfmake_customizer_get_key_migrations(),
  * and compares the theme versions to an array of migration sets that have already been performed (if any).
  * For each migration set that hasn't been performed yet:
+ *
  * 1. Check to see if any of the new keys already exist. Don't perform the migration if any do.
  * 2. Process each migration rule in the set, either with the specified callback, or by copying the
  *    old value over to each of the related new keys.
+ *
  * Afterward, migration sets that were performed are stored in a theme mod called 'options-migrated' to
  * ensure that they won't be performed again.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @return void
  */
@@ -95,8 +109,9 @@ function ttfmake_customizer_migrate_options() {
 
 	// Bail if all of the migrations have already been performed
 	$migration_versions = array_keys( $migrations );
-	$migrated = get_theme_mod( 'options-migrated', array() );
+	$migrated           = get_theme_mod( 'options-migrated', array() );
 	$missing_migrations = array_diff_key( $migration_versions, $migrated );
+
 	if ( empty( $missing_migrations ) ) {
 		return;
 	}
@@ -115,12 +130,12 @@ function ttfmake_customizer_migrate_options() {
 	foreach ( $missing_migrations as $version ) {
 		// Compile new keys
 		$new_keys = array();
-		foreach ( $migrations[$version] as $old => $new ) {
+		foreach ( $migrations[ $version ] as $new ) {
 			$new_keys = array_merge( $new_keys, (array) $new );
 		}
 
 		// Test for new header keys in the theme mod array
-		$diff = array_diff_key( $new_keys, $theme_mods );
+		$diff         = array_diff_key( $new_keys, $theme_mods );
 		$has_new_keys = ( count( $new_keys ) !== count( $diff ) );
 
 		// Only run the migration if none of the new keys exist yet
@@ -129,14 +144,13 @@ function ttfmake_customizer_migrate_options() {
 			$callbacks = ttfmake_customizer_get_key_migration_callbacks( $version );
 
 			// Process each migration rule
-			foreach ( $migrations[$version] as $old => $new ) {
-				// Get the old value, even if it's a default
-				// (The new key might not have the same default)
+			foreach ( $migrations[ $version ] as $old => $new ) {
+				// Get the old value, even if it's a default (the new key might not have the same default)
 				$value = get_theme_mod( $old, ttfmake_get_default( $old ) );
 
 				// Run the special callback for the option, if it exists
-				if ( isset( $callbacks[$old] ) ) {
-					call_user_func_array( $callbacks[$old], array( $value, $new ) );
+				if ( isset( $callbacks[ $old ] ) ) {
+					call_user_func_array( $callbacks[ $old ], array( $value, $new ) );
 				}
 				// Otherwise set all the related new keys to the old key's value
 				else {
@@ -162,7 +176,7 @@ if ( ! function_exists( 'ttfmake_customizer_header_sizes_callback' ) ) :
 /**
  * Convert the old header size value into separate sizes (H1-H6).
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  int      $value       The old key value
  * @param  array    $new_keys    The new option keys
@@ -186,7 +200,7 @@ if ( ! function_exists( 'ttfmake_css_legacy_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
  *
- * @since  1.0.0
+ * @since  1.0.0.
  *
  * @return void
  */

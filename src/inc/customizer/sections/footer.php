@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_footer_sections' ) ) :
 /**
  * Define the sections and settings for the Footer panel
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  array    $sections    The master array of Customizer sections
  * @return array                 The augmented master array

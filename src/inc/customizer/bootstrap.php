@@ -39,13 +39,13 @@ add_action( 'after_setup_theme', 'ttfmake_customizer_init' );
 
 if ( ! function_exists( 'ttfmake_customizer_supports_panels' ) ) :
 /**
- * Detect support for Customizer panels
+ * Detect support for Customizer panels.
  *
  * This feature was introduced in WP 4.0.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
- * @return bool
+ * @return bool    Whether or not panels are supported.
  */
 function ttfmake_customizer_supports_panels() {
 	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) );
@@ -54,11 +54,11 @@ endif;
 
 if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
 /**
- * Return an array of panel definitions
+ * Return an array of panel definitions.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
- * @return array    The array of panel definitions
+ * @return array    The array of panel definitions.
  */
 function ttfmake_customizer_get_panels() {
 	$panels = array(
@@ -78,7 +78,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
 /**
  * Register Customizer panels
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  WP_Customize_Manager    $wp_customize    Customizer object.
  * @return void
@@ -116,7 +116,7 @@ if ( ! function_exists( 'ttfmake_customizer_get_sections' ) ) :
 /**
  * Return the master array of Customizer sections
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @return array    The master array of Customizer sections
  */
@@ -145,7 +145,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 
 	$theme_prefix = 'ttfmake_';
 	$default_path = get_template_directory() . '/inc/customizer/sections';
-	$panels = ttfmake_customizer_get_panels();
+	$panels       = ttfmake_customizer_get_panels();
 
 	// Load built-in section mods
 	$builtin_mods = array(
@@ -154,6 +154,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		'site-title-tagline',
 		'static-front-page',
 	);
+
 	foreach ( $builtin_mods as $slug ) {
 		$file = trailingslashit( $default_path ) . $slug . '.php';
 		if ( file_exists( $file ) ) {
@@ -247,7 +248,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_section_options' ) ) :
 /**
  * Register settings and controls for a section.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  string    $section             Section ID
  * @param  array     $args                Array of setting and control definitions
@@ -281,9 +282,11 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 				'section'  => $section,
 				'priority' => $priority->add(),
 			);
+
 			if ( ! isset( $option['setting'] ) ) {
 				unset( $defaults['settings'] );
 			}
+
 			$control = wp_parse_args( $option['control'], $defaults );
 
 			// Check for a specialized control class
@@ -343,9 +346,11 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 		'footer'         => array( 'title' => __( 'Footer', 'make' ), 'path' => $section_path ),
 		'social'         => array( 'title' => __( 'Social Profiles &amp; RSS', 'make' ), 'path' => $section_path )
 	);
+
 	if ( ttfmake_is_plus() ) {
 		unset( $sections['stylekit'] );
 	}
+
 	$sections = apply_filters( 'ttfmake_customizer_sections', $sections );
 
 	// Priority for first section
@@ -362,12 +367,15 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 			if ( 'font' === $section ) {
 				$wp_customize->get_section( 'background_image' )->priority = $priority->add();
 			}
+
 			if ( 'logo' === $section ) {
 				$wp_customize->get_section( 'title_tagline' )->priority = $priority->add();
 			}
+
 			if ( 'main' === $section ) {
 				$wp_customize->get_section( 'nav' )->priority = $priority->add();
 			}
+
 			if ( 'layout-blog' === $section ) {
 				$wp_customize->get_section( 'static_front_page' )->priority = $priority->add();
 			}

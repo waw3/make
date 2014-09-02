@@ -94,7 +94,7 @@ class TTFMAKE_Prioritizer {
 	/**
 	 * Change the current priority and/or increment value.
 	 *
-	 * @since 1.3.0.
+	 * @since  1.3.0.
 	 *
 	 * @param  null|int    $new_priority     The new current priority.
 	 * @param  null|int    $new_increment    The new increment value.

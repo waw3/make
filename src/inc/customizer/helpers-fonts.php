@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_font_get_relative_sizes' ) ) :
 /**
  * Return an array of percentages to use when calculating certain font sizes.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @return array    The percentage value relative to another specific size
  */
@@ -245,7 +245,7 @@ if ( ! function_exists( 'ttfmake_parse_font_properties' ) ) :
  * Cycle through the font options for the given element and collect an array
  * of option values that are non-default.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  string    $element    The element to parse the options for.
  * @return array                 An array of non-default CSS declarations.
@@ -340,7 +340,7 @@ if ( ! function_exists( 'ttfmake_get_font_property_option_keys' ) ) :
 /**
  * Return all the option keys for the specified font property.
  *
- * @since 1.3.0.
+ * @since  1.3.0.
  *
  * @param  string    $property    The font property to search for.
  * @return array                  Array of matching font option keys.
