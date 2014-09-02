@@ -62,25 +62,29 @@
 /*---------------------------------------------------------
  Sections (html-builder.css)
 -------------------------------------------------------- */
+.ttfmake-section {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 .ttfmake-section,
 .ttfmake-banner-slide {
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: 9px;
 	background-color: #ffffff;
-	border: 1px solid #dfdfdf;
+	border-top: 1px solid #dfdfdf;
 	border-bottom: 0; /*reset*/
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 }
 .ttfmake-section:hover,
 .ttfmake-banner-slide:hover {
-	border: 1px solid #999999;
-	border-bottom: 0; /*reset*/
+	border-top: 1px solid #999999;
 }
 .ttfmake-section-open:hover,
 .ttfmake-banner-slide-open:hover {
-	border: 1px solid #999999;
+	border-top: 1px solid #999999;
 }
 .ttfmake-section:hover .ttfmake-section-header h3,
 .ttfmake-banner-slide:hover .ttfmake-banner-slide-header h3 {
@@ -90,7 +94,7 @@
 .ttfmake-section-open:hover .ttfmake-section-header h3,
 .ttfmake-banner-slide-open:hover,
 .ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
-	border-color: #dfdfdf;
+	border-color: #e5e5e5;
 }
 .ttfmake-section-body {
 	display: none;
