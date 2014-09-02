@@ -118,7 +118,7 @@ if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_values' ) ) :
 function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $value ) {
 	if ( in_array( $old_key, array( 'font-header', 'font-header-size' ) ) ) {
 		$percent = ttfmake_font_get_relative_sizes();
-		$h       = preg_replace( '/font-size-(h\d)/', '$1', $new_key );
+		$h       = preg_replace( '/font-(size|family)-(h\d)/', '$2', $new_key );
 		$value   = ttfmake_get_relative_font_size( $value, $percent[$h] );
 	}
 
