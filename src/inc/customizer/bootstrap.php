@@ -475,18 +475,27 @@ function ttfmake_customizer_sections_script() {
 		true
 	);
 
+	// Collect localization data
+	$data = array(
+		'fontOptions'		=> ttfmake_get_font_property_option_keys( 'family' ),
+		'allFontChoices'	=> ttfmake_all_font_choices_js(),
+	);
+
+	// Add localization strings for Upgrade button
 	if ( ! ttfmake_is_plus() ) {
-		wp_localize_script(
-			'ttfmake-customizer-sections',
-			'ttfmakeCustomizerL10n',
-			array(
-				'fontOptions'		=> ttfmake_get_font_property_option_keys( 'family' ),
-				'allFontChoices'	=> ttfmake_all_font_choices_js(),
-				'plusURL'			=> esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-				'plusLabel'			=> __( 'Upgrade to Make Plus', 'make' ),
-			)
+		$localize = array(
+			'plusURL'			=> esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
+			'plusLabel'			=> __( 'Upgrade to Make Plus', 'make' ),
 		);
+		$data = $data + $localize;
 	}
+
+	// Localize the script
+	wp_localize_script(
+		'ttfmake-customizer-sections',
+		'ttfmakeCustomizerL10n',
+		$data
+	);
 }
 endif;
 
