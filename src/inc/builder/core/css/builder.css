@@ -499,6 +499,7 @@
 -------------------------------------------------------- */
 .ttfmake-iframe-wrapper {
 	position: relative;
+	border: 1px solid #ddd;
 }
 .ttfmake-iframe-overlay {
 	position: absolute;
