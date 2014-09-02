@@ -82,6 +82,9 @@
 .ttfmake-banner-slide:hover {
 	border-top: 1px solid #999999;
 }
+.ttfmake-section:hover .handlediv {
+	border-color: #999;
+}
 .ttfmake-section-open:hover,
 .ttfmake-banner-slide-open:hover {
 	border-top: 1px solid #999999;
@@ -91,6 +94,7 @@
 	border-bottom: 1px solid #999999;
 }
 .ttfmake-section-open:hover,
+.ttfmake-section-open:hover .handlediv,
 .ttfmake-section-open:hover .ttfmake-section-header h3,
 .ttfmake-banner-slide-open:hover,
 .ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
@@ -115,8 +119,8 @@
 .ttfmake-section h4 {
 	font-size: 13px;
 }
-..ttfmake-section-header {
-	position: absolute;
+.ttfmake-section-header {
+	cursor: move;
 }
 .ttfmake-section-header h3,
 .ttfmake-banner-slide-header h3 {
@@ -144,15 +148,18 @@
 }
 .ttfmake-section .handlediv {
 	position: relative;
+	height: 38px;
+	padding-left: 10px;
+	border-left: 1px solid #e5e5e5;
 }
 .ttfmake-section-toggle:focus {
 	border: none !important;
 }
 .ttfmake-section-toggle .handlediv,
 .ttfmake-banner-slide-toggle .handlediv {
-	top: -38px;
+	top: -39px;
 	right: 0; /*reset*/
-	margin-bottom: -38px;
+	margin-bottom: -39px;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-toggle .handlediv,
