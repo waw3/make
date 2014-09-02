@@ -64,7 +64,7 @@ function ttfmake_customizer_set_up_theme_mod_conversions() {
 }
 endif;
 
-add_action( 'init', 'ttfmake_customizer_set_up_theme_mod_conversions', 1 );
+add_action( 'after_setup_theme', 'ttfmake_customizer_set_up_theme_mod_conversions', 11 );
 
 if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_filter' ) ) :
 /**
