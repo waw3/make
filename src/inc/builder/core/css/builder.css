@@ -82,7 +82,8 @@
 .ttfmake-banner-slide:hover {
 	border-top: 1px solid #999999;
 }
-.ttfmake-section:hover .handlediv {
+.ttfmake-section:hover .handlediv,
+.ttfmake-section:hover .ttfmake-section-remove {
 	border-color: #999;
 }
 .ttfmake-section-open:hover,
@@ -95,6 +96,7 @@
 }
 .ttfmake-section-open:hover,
 .ttfmake-section-open:hover .handlediv,
+.ttfmake-section-open:hover .ttfmake-section-remove,
 .ttfmake-section-open:hover .ttfmake-section-header h3,
 .ttfmake-banner-slide-open:hover,
 .ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
@@ -186,7 +188,16 @@
 .ttfmake-section-remove {
 	position: absolute;
 	right: 50px;
+	padding-left: 12px;
 	line-height: 39px;
+	height: 38px;
+	border-left: 1px solid #e5e5e5;
+}
+.ttfmake-section-remove span {
+	display: none;
+	text-indent: -9999px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .ttfmake-section-remove,
 .ttfmake-gallery-item-remove,
@@ -194,20 +205,22 @@
 	display: inline-block;
 	clear: both;
 	margin-bottom: 0; /*reset*/
-	padding: 0 0 8px 0;  /*reset*/
-	color: #a00;
+	color: #aaaaaa;
 	border-bottom: 0;  /*reset*/
 	text-decoration: none;  /*reset*/
 	outline: none !important;
 }
-.ttfmake-gallery-item-remove,
-.ttfmake-banner-slide-remove {
-	margin-top: 20px;
+.ttfmake-section-remove:before,
+.ttfmake-gallery-item-remove:before,
+.ttfmake-banner-slide-remove:before {
+	content: "\f182";
+	font: 400 20px/39px dashicons;
+	speak: none;
 }
 .ttfmake-section-remove:hover,
 .ttfmake-gallery-item-remove:hover,
 .ttfmake-banner-slide-remove:hover {
-	color: #ff0000;
+	color: #777777;
 }
 .ttfmake-uploader {
 	margin: 20px 0;

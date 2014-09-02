@@ -33,7 +33,9 @@ ksort( $links );
 			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 			?>
 			<a<?php echo $href . $id . $class; ?>>
-			<?php echo $label; ?>
+				<span>
+					<?php echo $label; ?>
+				</span>
 			</a>
 		<?php endforeach; ?>
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
