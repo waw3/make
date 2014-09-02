@@ -7,13 +7,16 @@
 }
 .ttfmake-titlediv .ttfmake-title {
 	width: 100%;
-	height: 1.7em;
-	font-size: 1.5em;
-	line-height: 100%;
+	height: 35px;
+	font-size: 16px;
 	margin: 0;
+	-webkit-box-shadow: none; /*reset*/
+	box-shadow: none; /*reset*/
 }
-.ttfmake-titlediv ::-webkit-input-placeholder {
-	line-height: 1.4em;
+.ttfmake-titlediv .ttfmake-title:focus {
+	border: 1px solid #ddd;
+	-webkit-box-shadow: none; /*reset*/
+	box-shadow: none; /*reset*/
 }
 .clear {
 	clear: both;
