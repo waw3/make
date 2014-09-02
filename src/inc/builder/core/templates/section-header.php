@@ -8,8 +8,9 @@ $links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_bu
 	100 => array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-remove',
-		'label' => __( 'Remove this section', 'make' )
-	)
+		'label' => __( 'Remove this section', 'make' ),
+		'title' => __( 'Remove this section', 'make' ),
+	),
 ) ) );
 ksort( $links );
 ?>
@@ -27,12 +28,13 @@ ksort( $links );
 			$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
 			$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
 			$label = ( isset( $link['label'] ) ) ? esc_html( $link['label'] ) : '';
+			$title = ( isset( $link['title'] ) ) ? ' title="' . esc_html( $link['title'] ) . '"' : '';
 
 			// Set up the class value with a base class
 			$class_base = ' class="ttfmake-builder-section-link';
 			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 			?>
-			<a<?php echo $href . $id . $class; ?>>
+			<a<?php echo $href . $id . $class . $title; ?>>
 				<span>
 					<?php echo $label; ?>
 				</span>
