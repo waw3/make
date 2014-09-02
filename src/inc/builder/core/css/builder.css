@@ -83,8 +83,10 @@
 	border-top: 1px solid #999999;
 }
 .ttfmake-section:hover .handlediv,
-.ttfmake-section:hover .ttfmake-section-remove {
-	border-color: #999;
+.ttfmake-section:hover .ttfmake-section-remove,
+.ttfmake-section:hover .ttfmp-duplicate-section,
+.ttfmake-section:hover .ttfmake-section-configure {
+	border-color: #999999;
 }
 .ttfmake-section-open:hover,
 .ttfmake-banner-slide-open:hover {
@@ -97,6 +99,8 @@
 .ttfmake-section-open:hover,
 .ttfmake-section-open:hover .handlediv,
 .ttfmake-section-open:hover .ttfmake-section-remove,
+.ttfmake-section-open:hover .ttfmp-duplicate-section,
+.ttfmake-section-open:hover .ttfmake-section-configure,
 .ttfmake-section-open:hover .ttfmake-section-header h3,
 .ttfmake-banner-slide-open:hover,
 .ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
@@ -185,15 +189,24 @@
 	display: inline-block;
 	cursor: pointer;
 }
-.ttfmake-section-remove {
+.ttfmake-section-configure {
 	position: absolute;
-	right: 50px;
-	padding-left: 12px;
+	right: 125px;
+	padding: 0 12px;
 	line-height: 39px;
 	height: 38px;
 	border-left: 1px solid #e5e5e5;
 }
-.ttfmake-section-remove span {
+.ttfmake-section-remove {
+	position: absolute;
+	right: 35px;
+	padding: 0 12px;
+	line-height: 39px;
+	height: 38px;
+	border-left: 1px solid #e5e5e5;
+}
+.ttfmake-section-remove span,
+.ttfmake-section-configure span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
@@ -201,7 +214,8 @@
 }
 .ttfmake-section-remove,
 .ttfmake-gallery-item-remove,
-.ttfmake-banner-slide-remove {
+.ttfmake-banner-slide-remove,
+.ttfmake-section-configure {
 	display: inline-block;
 	clear: both;
 	margin-bottom: 0; /*reset*/
@@ -217,9 +231,15 @@
 	font: 400 20px/39px dashicons;
 	speak: none;
 }
+.ttfmake-section-configure:before {
+	content: "\f107";
+	font: 400 20px/39px dashicons;
+	speak: none;
+}
 .ttfmake-section-remove:hover,
 .ttfmake-gallery-item-remove:hover,
-.ttfmake-banner-slide-remove:hover {
+.ttfmake-banner-slide-remove:hover,
+.ttfmake-section-configure:hover {
 	color: #777777;
 }
 .ttfmake-uploader {
