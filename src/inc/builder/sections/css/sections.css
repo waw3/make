@@ -205,23 +205,6 @@
 .ttfmake-gallery-item {
 	margin-bottom: 40px;
 }
-.ttfmake-columns-select-wrapper,
-.ttfmake-captions-select-wrapper,
-.ttfmake-aspect-select-wrapper{
-	display: inline-block;
-	float: right;
-	margin-left: 20px;
-	padding: 0 0 12px;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-columns-select-wrapper,
-	.ttfmake-captions-select-wrapper,
-	.ttfmake-aspect-select-wrapper{
-		display: block;
-		float: none;
-		margin: 0; /*reset*/
-	}
-}
 #poststuff .ttfmake-large-title {
 	padding-top: 12px;
 	border-top: 1px solid #dfdfdf;
