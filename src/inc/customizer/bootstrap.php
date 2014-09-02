@@ -48,7 +48,7 @@ if ( ! function_exists( 'ttfmake_customizer_supports_panels' ) ) :
  * @return bool    Whether or not panels are supported.
  */
 function ttfmake_customizer_supports_panels() {
-	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) );
+	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) ) || function_exists( 'wp_validate_boolean' );
 }
 endif;
 
