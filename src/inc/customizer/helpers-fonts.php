@@ -336,6 +336,29 @@ function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_get_font_property_option_keys' ) ) :
+/**
+ * Return all the option keys for the specified font property.
+ *
+ * @since 1.3.0.
+ *
+ * @param  string    $property    The font property to search for.
+ * @return array                  Array of matching font option keys.
+ */
+function ttfmake_get_font_property_option_keys( $property ) {
+	$all_keys = array_keys( ttfmake_option_defaults() );
+
+	$font_keys = array();
+	foreach ( $all_keys as $key ) {
+		if ( preg_match( '/^font-' . $property . '-/', $key ) ) {
+			$font_keys[] = $key;
+		}
+	}
+
+	return $font_keys;
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
 /**
  * Build the HTTP request URL for Google Fonts.
