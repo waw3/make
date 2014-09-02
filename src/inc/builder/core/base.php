@@ -352,8 +352,7 @@ class TTFMAKE_Builder_Base {
 		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
 		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
 
-		// Set default messages. Note that the theme textdomain is not used in some cases
-		// because the strings are core i18ns
+		// Set default messages
 		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image', 'make' )    : $messages['add'];
 		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image', 'make' ) : $messages['remove'];
 		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
