@@ -351,10 +351,6 @@
 	height: 78px;
 	background: url(images/section-icons-hover.png) center center no-repeat;
 	background-size: 36px 36px;
-	-webkit-transition: opacity .15s ease-in-out;
-	transition: opacity .15s ease-in-out;
-	-webkit-transition-delay: .05s;
-	transition-delay: .05s;
 }
 .ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
 	opacity: 1;
