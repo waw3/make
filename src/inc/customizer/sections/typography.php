@@ -77,7 +77,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel' => $panel,
 		'title' => __( 'Site Title &amp; Tagline', 'make' ),
 		'options' => array(
-			'font-site-title-family' => array(
+			'font-family-site-title' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -87,7 +87,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-site-title-size' => array(
+			'font-size-site-title' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -96,7 +96,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-site-tagline-family' => array(
+			'font-family-site-tagline' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -106,7 +106,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-site-tagline-size' => array(
+			'font-size-site-tagline' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -125,7 +125,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel' => $panel,
 		'title' => __( 'Main Menu', 'make' ),
 		'options' => array(
-			'font-nav-family' => array(
+			'font-family-nav' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -135,7 +135,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-nav-size' => array(
+			'font-size-nav' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -144,7 +144,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-subnav-family' => array(
+			'font-family-subnav' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -154,13 +154,29 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-subnav-size' => array(
+			'font-size-subnav' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
 				'control' => array(
 					'label'				=> __( 'Sub-Menu Item Font Size (in px)', 'make' ),
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+				),
+			),
+			'font-subnav-option-heading' => array(
+				'control' => array(
+					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
+					'type'				=> 'heading',
+					'label'				=> __( 'Sub-Menu Item Options', 'make' ),
+				),
+			),
+			'font-subnav-mobile' => array(
+				'setting' => array(
+					'sanitize_callback'	=> 'absint',
+				),
+				'control' => array(
+					'label'				=> __( 'Use Menu Item styles in mobile view', 'make' ),
+					'type'				=> 'checkbox',
 				),
 			),
 		),
@@ -173,7 +189,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel' => $panel,
 		'title' => __( 'Widgets', 'make' ),
 		'options' => array(
-			'font-widget-family' => array(
+			'font-family-widget' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -183,7 +199,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-widget-size' => array(
+			'font-size-widget' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -202,7 +218,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel' => $panel,
 		'title' => __( 'Headers &amp; Body', 'make' ),
 		'options' => array(
-			'font-h1-family' => array(
+			'font-family-h1' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -212,7 +228,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-h1-size' => array(
+			'font-size-h1' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -221,7 +237,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-h2-family' => array(
+			'font-family-h2' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -231,7 +247,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-h2-size' => array(
+			'font-size-h2' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -240,7 +256,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-h3-family' => array(
+			'font-family-h3' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -250,7 +266,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-h3-size' => array(
+			'font-size-h3' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -259,7 +275,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-h4-family' => array(
+			'font-family-h4' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -269,7 +285,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-h4-size' => array(
+			'font-size-h4' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -278,7 +294,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-h5-family' => array(
+			'font-family-h5' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -288,7 +304,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-h5-size' => array(
+			'font-size-h5' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -297,7 +313,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-h6-family' => array(
+			'font-family-h6' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -307,7 +323,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-h6-size' => array(
+			'font-size-h6' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
@@ -316,7 +332,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'				=> ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-body-family' => array(
+			'font-family-body' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'ttfmake_sanitize_font_choice',
 				),
@@ -326,7 +342,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'choices'			=> ttfmake_all_font_choices(),
 				),
 			),
-			'font-body-size' => array(
+			'font-size-body' => array(
 				'setting' => array(
 					'sanitize_callback'	=> 'absint',
 				),
