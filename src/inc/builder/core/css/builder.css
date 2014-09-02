@@ -423,37 +423,6 @@
 	border-color: #bbbbbb;
 }
 /*---------------------------------------------------------
- Sortable handle (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-stage .sortable-placeholder {
-	margin-bottom: 8px;
-}
-.ttfmake-section .sortable-placeholder {
-	float: left;
-	margin: 0; /*reset*/
-	padding: 0; /*reset*/
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttfmake-sortable-handle {
-	cursor: move;
-	width: 100%;
-	height: 14px;
-	margin-bottom: 8px;
-	padding-top: 8px;
-}
-.sortable-background {
-	height: 14px;
-	margin: 0 auto;
-	opacity: .5;
-	background: url(images/sortable-background.png) center center repeat-x;
-}
-.ttfmake-text-column:hover .sortable-background,
-.ttfmake-gallery-item:hover .sortable-background {
-	opacity: 1; /*reset*/
-}
-/*---------------------------------------------------------
  Media button (html-builder.css)
 -------------------------------------------------------- */
 .ttfmake-media-button-text {
