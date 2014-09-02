@@ -480,8 +480,10 @@ function ttfmake_customizer_sections_script() {
 			'ttfmake-customizer-sections',
 			'ttfmakeCustomizerL10n',
 			array(
-				'plusURL'   => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-				'plusLabel' => __( 'Upgrade to Make Plus', 'make' ),
+				'fontOptions'		=> ttfmake_get_font_property_option_keys( 'family' ),
+				'allFontChoices'	=> ttfmake_all_font_choices_js(),
+				'plusURL'			=> esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
+				'plusLabel'			=> __( 'Upgrade to Make Plus', 'make' ),
 			)
 		);
 	}

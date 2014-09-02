@@ -84,7 +84,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'Site Title Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-site-title'     => array(
@@ -103,7 +103,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'Site Tagline Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-site-tagline'   => array(
@@ -132,7 +132,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'Menu Item Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-nav'              => array(
@@ -151,7 +151,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'Sub-Menu Item Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-subnav'           => array(
@@ -196,7 +196,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'Widget Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-widget'   => array(
@@ -225,7 +225,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'H1 Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-h1'     => array(
@@ -244,7 +244,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'H2 Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-h2'     => array(
@@ -263,7 +263,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'H3 Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-h3'     => array(
@@ -282,7 +282,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'H4 Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-h4'     => array(
@@ -301,7 +301,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'H5 Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-h5'     => array(
@@ -320,7 +320,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'H6 Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-h6'     => array(
@@ -339,7 +339,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 				'control' => array(
 					'label'   => __( 'Body Font Family', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_all_font_choices(),
+					'choices' => ttfmake_font_choices_placeholder(),
 				),
 			),
 			'font-size-body'   => array(

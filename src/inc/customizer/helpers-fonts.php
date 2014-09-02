@@ -553,6 +553,20 @@ function ttfmake_sanitize_font_choice( $value ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_font_choices_placeholder' ) ) :
+/**
+ * Add a placeholder for the large font choices array, which will be loaded
+ * in via JavaScript.
+ *
+ * @since 1.3.0.
+ *
+ * @return array
+ */
+function ttfmake_font_choices_placeholder() {
+	return array( 'placeholder' => __( 'Loading&hellip;', 'make' ) );
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_all_font_choices' ) ) :
 /**
  * Packages the font choices into value/label pairs for use with the customizer.
@@ -574,6 +588,27 @@ function ttfmake_all_font_choices() {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_all_font_choices_js' ) ) :
+/**
+ * Compile the font choices for better handling as a JSON object
+ *
+ * @since 1.3.0.
+ *
+ * @return array
+ */
+function ttfmake_all_font_choices_js() {
+	$fonts   = ttfmake_get_all_fonts();
+	$choices = array();
+
+	// Repackage the fonts into value/label pairs
+	foreach ( $fonts as $key => $font ) {
+		$choices[] = array( 'k' => $key, 'l' => $font['label'] );
+	}
+
+	return $choices;
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
 /**
  * Compile font options from different sources.
@@ -587,7 +622,7 @@ function ttfmake_get_all_fonts() {
 	$standard_fonts = ttfmake_get_standard_fonts();
 	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'make' ) ) ) );
 	$google_fonts   = ttfmake_get_google_fonts();
-	return apply_filters( 'ttfmake_all_fonts', array_merge( $heading1, $standard_fonts, $heading2, $google_fonts ) );
+	return apply_filters( 'ttfmake_all_fonts', $heading1 + $standard_fonts + $heading2 + $google_fonts );
 }
 endif;
 
