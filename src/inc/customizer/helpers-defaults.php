@@ -59,11 +59,11 @@ function ttfmake_option_defaults() {
 		'font-family-site-tagline'                 => 'Open Sans',
 		'font-size-site-tagline'                   => 12,
 		// Main Menu
-		'font-family-nav'						   => 'Open Sans',
+		'font-family-nav'                          => 'Open Sans',
 		'font-size-nav'                            => 14,
-		'font-family-subnav'					   => 'Open Sans',
+		'font-family-subnav'                       => 'Open Sans',
 		'font-size-subnav'                         => 13,
-		'font-subnav-mobile'					   => 1,
+		'font-subnav-mobile'                       => 1,
 		// Widgets
 		'font-family-widget'                       => 'Open Sans',
 		'font-size-widget'                         => 13,
