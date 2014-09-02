@@ -81,6 +81,23 @@ function ttfmake_customizer_convert_theme_mods_filter( $value ) {
 	$mods         = get_theme_mods();
 
 	/**
+	 * When previewing a page, the logic for this filter needs to change. Because the isset check in the conditional
+	 * below will always fail if the new mod key is not set (i.e., the value isn't in the db yet), the default value,
+	 * instead of the preview value will always show. Instead, when previewing, the value needs to be gotten from
+	 * the `get_theme_mod()` call without this filter applied. This will give the new preview value. If it is not found,
+	 * then the normal routine will be used.
+	 */
+	if ( ttfmake_is_preview() ) {
+		remove_filter( current_filter(), 'ttfmake_customizer_convert_theme_mods_filter', 11 );
+		$previewed_value = get_theme_mod( $new_mod_name, 'default-value' );
+		add_filter( current_filter(), 'ttfmake_customizer_convert_theme_mods_filter', 11 );
+
+		if ( 'default-value' !== $previewed_value ) {
+			return $previewed_value;
+		}
+	}
+
+	/**
 	 * We only want to convert the value if the new mod is not in the mods array. This means that the value is not set
 	 * and an attempt to get the value from an old key is warranted.
 	 */
