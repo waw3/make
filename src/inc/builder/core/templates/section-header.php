@@ -11,6 +11,12 @@ $links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_bu
 		'label' => __( 'Remove this section', 'make' ),
 		'title' => __( 'Remove this section', 'make' ),
 	),
+	150 => array(
+		'href'  => '#',
+		'class' => 'ttfmake-section-configure',
+		'label' => __( 'Configure section', 'make' ),
+		'title' => __( 'Configure section', 'make' ),
+	),
 ) ) );
 ksort( $links );
 ?>
@@ -40,9 +46,6 @@ ksort( $links );
 				</span>
 			</a>
 		<?php endforeach; ?>
-		<a class="ttfmake-section-configure" href="#">
-			<span>Configure Section</span>
-		</a>
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
