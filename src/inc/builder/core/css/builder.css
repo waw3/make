@@ -45,6 +45,9 @@
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */
+#ttfmake-builder .inside {
+	padding: 0; /*reset*/
+}
 .ttfmake-stage {
 	clear: both;
 	padding-top: 10px;
@@ -314,19 +317,20 @@
 	margin-bottom: 0; /*reset*/
 	height: 165px;
 }
-.ttfmake-menu-list-item-link:nth-child(1) .ttfmake-menu-list-item,
-.ttfmake-menu-list-item-link:nth-child(3) .ttfmake-menu-list-item,
-.ttfmake-menu-list-item-link:nth-child(5) .ttfmake-menu-list-item,
-.ttfmake-menu-list-item-link:nth-child(7) .ttfmake-menu-list-item {
-	border-left: 1px solid #eeeeee;
+.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
+	border-right: 0; /*reset*/
 }
 @media screen and (min-width: 1160px) {
 	.ttfmake-menu-list-item {
 		width: 25%;
 	}
-	.ttfmake-menu-list-item-link:nth-child(3) .ttfmake-menu-list-item,
-	.ttfmake-menu-list-item-link:nth-child(7) .ttfmake-menu-list-item {
-		border-left: 0; /*reset*/
+	.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
+		border-right: 1px solid #eeeeee;
+	}
+	.ttfmake-menu-list-item-link:nth-child(4) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(8) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(12) .ttfmake-menu-list-item {
+		border-right: 0; /*reset*/
 	}
 }
 .ttfmake-menu-list-item:hover {
