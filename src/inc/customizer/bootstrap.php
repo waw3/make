@@ -105,11 +105,12 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 			$wp_customize->add_panel( $theme_prefix . $panel, $data );
 		}
 
-		// Re-prioritize the Widgets panel
+		// Re-prioritize and rename the Widgets panel
 		if ( ! isset( $wp_customize->get_panel( 'widgets' )->priority ) ) {
 			$wp_customize->add_panel( 'widgets' );
 		}
 		$wp_customize->get_panel( 'widgets' )->priority = $priority->add();
+		$wp_customize->get_panel( 'widgets' )->title = __( 'Sidebars & Widgets', 'make' );
 	}
 }
 endif;

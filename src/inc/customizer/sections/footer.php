@@ -124,7 +124,7 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 				'control' => array(
 					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
 					'type'				=> 'heading',
-					'label'				=> __( 'Footer Options', 'make' ),
+					'label'				=> __( 'Social Icons', 'make' ),
 				),
 			),
 			'footer-show-social' => array(

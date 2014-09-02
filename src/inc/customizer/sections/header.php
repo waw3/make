@@ -138,7 +138,7 @@ function ttfmake_customizer_define_header_sections( $sections ) {
 					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label' => __( 'Show social icons in header bar', 'make' ),
+					'label' => __( 'Show social icons in Header Bar', 'make' ),
 					'type'  => 'checkbox',
 				),
 			),
@@ -147,7 +147,7 @@ function ttfmake_customizer_define_header_sections( $sections ) {
 					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label' => __( 'Show search field in header bar', 'make' ),
+					'label' => __( 'Show search field in Header Bar', 'make' ),
 					'type'  => 'checkbox',
 				),
 			),
