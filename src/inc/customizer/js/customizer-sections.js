@@ -173,13 +173,6 @@
 		});
 	});
 
-	// Set header items as disabled
-	$('#customize-control-ttfmake_font-site-title option, #customize-control-ttfmake_font-header option, #customize-control-ttfmake_font-body option')
-		.filter(function(index) {
-			var val = $(this).val();
-			return !isNaN(parseFloat(+val)) && isFinite(val);
-		}).attr('disabled', 'disabled');
-
 	// Add Make Plus message
 	if ('undefined' !== typeof ttfmakeCustomizerL10n) {
 		upgrade = $('<a class="ttfmake-customize-plus"></a>')
