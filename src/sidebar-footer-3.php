@@ -10,7 +10,7 @@
  *
  * @param string    $footer_id    The ID of the current footer being generated.
  */
-$sidebar_id = apply_filters( 'make_footer_2', 'footer-2' );
+$sidebar_id = apply_filters( 'make_footer_3', 'footer-3' );
 $sidebar_id = esc_attr( $sidebar_id );
 ?>
 <section id="footer-3" class="widget-area <?php echo $sidebar_id; ?> <?php echo ( is_active_sidebar( $sidebar_id ) ) ? 'active' : 'inactive'; ?>" role="complementary">

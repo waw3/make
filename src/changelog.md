@@ -6,6 +6,7 @@
 * Added other new font options: Tagline family, Sub-menu family and size, Widget family
 * Added lots of new filter and action hooks for developers, along with inline documentation
 * Fixed incorrect header font size defaults
+* Fixed incorrect IDs on some footer widget areas
 * Fixed post navigation arrow orientation
 * Fixed theme name in German translation
 
