@@ -317,7 +317,7 @@ function ttfmake_sidebar_description( $sidebar_id ) {
 		$column_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
 
 		if ( $column > $column_count ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the Theme Customizer.', 'make' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" panel of the Customizer.', 'make' );
 		}
 	}
 	// Other sidebars
@@ -328,12 +328,12 @@ function ttfmake_sidebar_description( $sidebar_id ) {
 
 		// Not enabled anywhere
 		if ( empty( $enabled_views ) ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" section of the Theme Customizer.', 'make' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Content & Layout" panel of the Customizer.', 'make' );
 		}
 		// List enabled views
 		else {
 			$description = sprintf(
-				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" section of the Theme Customizer.', 'make' ),
+				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Content & Layout" panel of the Customizer.', 'make' ),
 				esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
 			);
 		}
@@ -378,7 +378,6 @@ function ttfmake_sidebar_list_enabled( $location ) {
 	 * @param array    $enabled_views    The list of views enabled for the sidebar.
 	 * @param string   $location         The location of the sidebar being evaulated.
 	 */
-
 	return apply_filters( 'make_sidebar_list_enabled', $enabled_views, $location );
 }
 endif;
