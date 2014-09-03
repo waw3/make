@@ -44,6 +44,14 @@ function ttfmake_customizer_navigation() {
 	$custom_menu_text_priority = $wp_customize->get_control( $theme_prefix . 'social-custom-menu-text' )->priority;
 	$social_menu->priority = $custom_menu_text_priority + 1;
 
+	/**
+	 * Adjust Navigation section description
+	 *
+	 * Since the Social Profile Links item gets moved to another section, the part of the description that
+	 * states the number of menu locations is misleading.
+	 */
+	$section->description = __( 'Select which menu appears in each location. You can edit your menu content on the Menus screen in the Appearance section.', 'make' );
+
 	// Add new options
 	$options = array(
 		'navigation-mobile-label' => array(
@@ -53,8 +61,9 @@ function ttfmake_customizer_navigation() {
 				'transport'         => 'postMessage',
 			),
 			'control' => array(
-				'label' => __( 'Mobile Menu Label', 'make' ),
-				'type'  => 'text',
+				'label'             => __( 'Mobile Menu Label', 'make' ),
+				'description'       => __( 'Resize your browser window to preview the mobile menu label.', 'make' ),
+				'type'              => 'text',
 			),
 		),
 	);
