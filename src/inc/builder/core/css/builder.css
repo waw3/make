@@ -218,6 +218,13 @@
 	height: 38px;
 	border-left: 1px solid #e5e5e5;
 }
+.ttfmake-section-open .ttfmake-builder-section-link,
+.ttfmake-section:hover .ttfmake-builder-section-link {
+	visibility: visible;
+}
+.ttfmake-builder-section-link {
+	visibility: hidden;
+}
 .ttfmake-section-remove {
 	position: absolute;
 	right: 35px;
