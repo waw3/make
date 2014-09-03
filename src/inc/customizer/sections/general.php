@@ -40,39 +40,27 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					'context'      => $theme_prefix . 'logo-regular',
 				),
 			),
-			'logo-retina'           => array(
+			'logo-retina'          => array(
 				'setting' => array(
 					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Image_Control',
 					'label'        => __( 'Retina Logo (2x)', 'make' ),
+					'description'  => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
 					'context'      => $theme_prefix . 'logo-retina',
 				),
 			),
-			'logo-retina-text'      => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'text',
-					'description'  => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
-				),
-			),
-			'logo-favicon'          => array(
+			'logo-favicon'         => array(
 				'setting' => array(
 					'sanitize_callback' => 'esc_url_raw',
 				),
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Image_Control',
 					'label'        => __( 'Favicon', 'make' ),
+					'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
 					'context'      => $theme_prefix . 'logo-favicon',
 					'extensions'   => array( 'png', 'ico' ),
-				),
-			),
-			'logo-favicon-text'     => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'text',
-					'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
 				),
 			),
 			'logo-apple-touch'      => array(
@@ -82,15 +70,9 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Image_Control',
 					'label'        => __( 'Apple Touch Icon', 'make' ),
+					'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
 					'context'      => $theme_prefix . 'logo-apple-touch',
 					'extensions'   => array( 'png' ),
-				),
-			),
-			'logo-apple-touch-text' => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'text',
-					'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
 				),
 			),
 		),
@@ -196,12 +178,18 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
 					'type'         => 'text',
 					'description'  => sprintf(
-						__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, use %s.', 'make' ),
+						__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, create a custom menu %s.', 'make' ),
 						sprintf(
 							'<a href="' . esc_url( 'https://thethemefoundry.com/tutorials/make/#social-profiles-and-rss' ) . '">%s</a>',
-							__( 'this alternate method', 'make' )
+							__( 'as described here', 'make' )
 						)
 					),
+				),
+			),
+			'social-divider-line' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'line',
 				),
 			),
 			'social-email'              => array(

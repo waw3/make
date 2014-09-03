@@ -38,9 +38,11 @@ function ttfmake_customizer_navigation() {
 	}
 
 	// Move the Social Profile Links option to the General > Social section
-	$wp_customize->get_control( 'nav_menu_locations[social]' )->section = $theme_prefix . 'social';
+	$social_menu = $wp_customize->get_control( 'nav_menu_locations[social]' );
+	$social_menu->section = $theme_prefix . 'social';
+	$social_menu->description = __( 'After you have created your custom menu for social profile links, select it here.', 'make' );
 	$custom_menu_text_priority = $wp_customize->get_control( $theme_prefix . 'social-custom-menu-text' )->priority;
-	$wp_customize->get_control( 'nav_menu_locations[social]' )->priority = $custom_menu_text_priority + 1;
+	$social_menu->priority = $custom_menu_text_priority + 1;
 
 	// Add new options
 	$options = array(
