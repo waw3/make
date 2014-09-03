@@ -403,6 +403,9 @@ class TTFMAKE_Builder_Base {
 			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>"></iframe>
 		</div>
 		<textarea id="<?php echo esc_attr( $textarea_id ); ?>" name="<?php echo esc_attr( $textarea_name ); ?>" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
+		<div id="ttmake-rendered-content-<?php echo $id; ?>" style="display:none;">
+			<?php echo apply_filters( 'the_content', $content ); ?>
+		</div>
 
 		<?php if ( true !== $ttfmake_is_js_template ) : ?>
 			<script type="text/javascript">

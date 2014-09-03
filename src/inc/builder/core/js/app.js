@@ -210,7 +210,7 @@ var oneApp = oneApp || {};
 
 			// Add content and CSS
 			_.each(ttfMakeFrames, function(id) {
-				content = $('#ttfmake-content-' + id).val();
+				content = $('#ttmake-rendered-content-' + id).html();
 				iframe = document.getElementById('ttfmake-iframe-' + id);
 				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
 				iframeHead = $('head', iframeContent);
