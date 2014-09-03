@@ -122,8 +122,9 @@ function ttfmake_customizer_define_header_sections( $sections ) {
 					'transport'         => 'postMessage',
 				),
 				'control' => array(
-					'label' => __( 'Header Bar Text', 'make' ),
-					'type'  => 'text',
+					'label'       => __( 'Header Bar Text', 'make' ),
+					'description' => __( 'This text only appears if a custom menu has not been assigned to the Header Bar Menu location in the Navigation section.', 'make' ),
+					'type'        => 'text',
 				),
 			),
 			'header-options-heading'    => array(
