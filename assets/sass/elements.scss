@@ -19,19 +19,13 @@ h6 {
 	}
 }
 h1 {
-	@include for(medium-screens) {
-		@include rem('font-size', 46px);
-	}
 	font-weight: normal;
 	line-height: 1.15;
-	@include rem('font-size', 36px);
+	@include rem('font-size', 46px);
 
 }
 h2 {
-	@include for(medium-screens) {
-		@include rem('font-size', 34px);
-	}
-	@include rem('font-size', 28px);
+	@include rem('font-size', 34px);
 }
 h3 {
 	@include rem('font-size', 24px);

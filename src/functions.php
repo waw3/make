@@ -332,8 +332,14 @@ function ttfmake_scripts() {
 		"iframe[src*='//www.hulu.com']",
 	);
 
-	// Filter selectors
-	$selector_array = apply_filters( 'ttfmake_fitvids_custom_selectors', $selector_array );
+	/**
+	 * Allow for changing of the selectors that are used to apply FitVids.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $selector_array    The selectors used by FitVids.
+	 */
+	$selector_array = apply_filters( 'make_fitvids_custom_selectors', $selector_array );
 
 	// Compile selectors
 	$fitvids_custom_selectors = array(
@@ -458,7 +464,14 @@ endif;
  * @return bool    Whether or not the companion plugin is installed.
  */
 function ttfmake_is_plus() {
-	return apply_filters( 'ttfmake_is_plus', class_exists( 'TTFMP_App' ) );
+	/**
+	 * Allow for toggling of the Make Plus status.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param bool    $is_plus    Whether or not Make Plus is installed.
+	 */
+	return apply_filters( 'make_is_plus', class_exists( 'TTFMP_App' ) );
 }
 
 /**
