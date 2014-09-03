@@ -156,6 +156,7 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 		'navigation',
 		'site-title-tagline',
 		'static-front-page',
+		'stylekit',
 	);
 
 	foreach ( $builtin_mods as $slug ) {
