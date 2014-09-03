@@ -74,7 +74,25 @@ class TTFMAKE_Section_Definitions {
 			'sections/builder-templates/text',
 			'sections/front-end-templates/text',
 			100,
-			'inc/builder/'
+			'inc/builder/',
+			array(
+				100 => array(
+					'type'  => 'section-title',
+					'name'  => 'title',
+					'label' => __( 'Enter title here', 'make' ),
+				),
+				200 => array(
+					'type'    => 'select',
+					'name'    => 'columns',
+					'label'   => __( 'Columns', 'make' ),
+					'default' => 3,
+					'options' => array(
+						1 => 1,
+						2 => 2,
+						3 => 3,
+					)
+				),
+			)
 		);
 	}
 
