@@ -1,5 +1,5 @@
 /*global jQuery, tinyMCE, switchEditors */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 
 (function ($, oneApp, ttfMakeFrames) {
 	'use strict';
@@ -198,7 +198,7 @@ var oneApp = oneApp || {};
 	};
 
 	oneApp.initFrames = function() {
-		if (ttfMakeFrames && ttfMakeFrames.length > 0) {
+		if (ttfMakeFrames.length > 0) {
 			var scripts = tinyMCEPreInit.mceInit.make.content_css.split(','),
 				link = '',
 				content, iframe, iframeContent, iframeHead, iframeBody;
