@@ -1,7 +1,7 @@
 /*global jQuery, tinyMCE, switchEditors */
 var oneApp = oneApp || {};
 
-(function ($, oneApp) {
+(function ($, oneApp, ttfMakeFrames) {
 	'use strict';
 
 	// Kickoff Backbone App
@@ -197,6 +197,38 @@ var oneApp = oneApp || {};
 		return oneApp.cache.$makeEditor.hasClass('tmce-active');
 	};
 
+	oneApp.initFrames = function() {
+		if (ttfMakeFrames && ttfMakeFrames.length > 0) {
+			var scripts = tinyMCEPreInit.mceInit.make.content_css.split(','),
+				link = '',
+				content, iframe, iframeContent, iframeHead, iframeBody;
+
+			// Create the CSS links for the head
+			_.each(scripts, function(e) {
+				link += '<link type="text/css" rel="stylesheet" href="' + e + '" />';
+			});
+
+			// Add content and CSS
+			_.each(ttfMakeFrames, function(id) {
+				content = $('#ttfmake-content-' + id).val();
+				iframe = document.getElementById('ttfmake-iframe-' + id);
+				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
+				iframeHead = $('head', iframeContent);
+				iframeBody = $('body', iframeContent);
+
+				iframeHead.html(link);
+				iframeBody.html(content);
+			});
+		}
+	};
+
+	oneApp.triggerInitFrames = function() {
+		$(document).ready(function(){
+			oneApp.initFrames();
+		});
+	};
+
 	oneApp.initSortables();
 	oneApp.initViews();
-})(jQuery, oneApp);
+	oneApp.triggerInitFrames();
+})(jQuery, oneApp, ttfMakeFrames);

@@ -6,6 +6,7 @@
 ttfmake_load_section_header();
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
+$section_id     = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '';
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 $columns_number = ( isset( $ttfmake_section_data['data']['columns-number'] ) ) ? $ttfmake_section_data['data']['columns-number'] : 3;
 $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, 4);
@@ -42,8 +43,8 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
 	<?php
 		$column_name = $section_name . '[columns][' . $i . ']';
-		$iframe_id   = 'ttfmake-iframe-' . $i;
-		$textarea_id = 'ttfmake-content-' . $i;
+		$iframe_id   = 'ttfmake-iframe-' . $section_id . '-' . $i;
+		$textarea_id = 'ttfmake-content-' . $section_id . '-' . $i;
 		$link        = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-link'] : '';
 		$image_id    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
 		$title       = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
@@ -78,14 +79,8 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 
 		<?php if ( true !== $ttfmake_is_js_template ) : ?>
 		<script type="text/javascript">
-			(function($){
-				var iframe = document.getElementById('ttfmake-iframe-<?php echo $i; ?>'),
-					iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
-					iframeBody = $('body', iframeContent),
-					content = $('#ttfmake-content-<?php echo $i; ?>').val();
-
-				iframeBody.html(content);
-			})(jQuery);
+			var ttfMakeFrames = ttfMakeFrames || [];
+			ttfMakeFrames.push('<?php echo $section_id . '-' . $i; ?>');
 		</script>
 		<?php endif; ?>
 
