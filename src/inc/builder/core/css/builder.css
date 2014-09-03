@@ -63,6 +63,22 @@
 	padding: 0 0 12px;
 }
 /*---------------------------------------------------------
+ Forms (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-section input[type=checkbox],
+.ttfmake-section input[type=radio],
+.ttfmake-section input[type=search],
+.ttfmake-section input[type=number],
+.ttfmake-section input[type=text],
+.ttfmake-section select,
+.ttfmake-section textarea {
+	-webkit-box-shadow: none; /*reset*/
+	box-shadow: none; /*reset*/
+}
+.ttfmake-section input[type=number]:focus {
+	border-color: #ddd;
+}
+/*---------------------------------------------------------
  Sections (html-builder.css)
 -------------------------------------------------------- */
 .ttfmake-section {
@@ -127,6 +143,7 @@
 	display: inline-block;
 }
 .ttfmake-section h4 {
+	margin: 20px 0 10px;
 	font-size: 13px;
 }
 .ttfmake-section-header {
