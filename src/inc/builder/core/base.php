@@ -378,6 +378,41 @@ class TTFMAKE_Builder_Base {
 	}
 
 	/**
+	 * Create an iframe preview area that is connected to a TinyMCE modal window.
+	 *
+	 * @since  1.4.0.
+	 *
+	 * @param  string    $id               The unique ID to identify the different areas.
+	 * @param  string    $textarea_name    The name of the textarea.
+	 * @param  string    $content          The content for the text area.
+	 * @return void
+	 */
+	public function add_frame( $id, $textarea_name, $content = '' ) {
+		global $ttfmake_is_js_template;
+		$iframe_id   = 'ttfmake-iframe-' . $id;
+		$textarea_id = 'ttfmake-content-' . $id;
+	?>
+		<div class="ttfmake-iframe-wrapper">
+			<div class="ttfmake-iframe-overlay">
+				<a href="#" class="edit-content-link" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
+					<span class="screen-reader-text">
+						<?php _e( 'Edit content', 'make' ); ?>
+					</span>
+				</a>
+			</div>
+			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>"></iframe>
+		</div>
+		<textarea id="<?php echo esc_attr( $textarea_id ); ?>" name="<?php echo esc_attr( $textarea_name ); ?>" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
+
+		<?php if ( true !== $ttfmake_is_js_template ) : ?>
+			<script type="text/javascript">
+				var ttfMakeFrames = ttfMakeFrames || [];
+				ttfMakeFrames.push('<?php echo esc_js( $id ); ?>');
+			</script>
+		<?php endif;
+	}
+
+	/**
 	 * Load a section template with an available data payload for use in the template.
 	 *
 	 * @since  1.0.0.
