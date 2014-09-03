@@ -69,7 +69,7 @@ function ttfmake_option_defaults() {
 		'font-size-widget'                         => 13,
 		// Headers & Body
 		'font-family-h1'                           => 'sans-serif',
-		'font-size-h1'                             => 50,
+		'font-size-h1'                             => 46,
 		'font-family-h2'                           => 'sans-serif',
 		'font-size-h2'                             => 34,
 		'font-family-h3'                           => 'sans-serif',
@@ -233,7 +233,7 @@ function ttfmake_option_defaults() {
 		'font-site-title-size'                     => 34,
 		'font-site-tagline-size'                   => 12,
 		'font-nav-size'                            => 14,
-		'font-header-size'                         => 50,
+		'font-header-size'                         => 46,
 		'font-widget-size'                         => 13,
 		'font-body-size'                           => 17,
 	);

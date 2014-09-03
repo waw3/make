@@ -5,6 +5,7 @@
 * Added individual font family and size options for each header level (H1 - H6)
 * Added other new font options: Tagline family, Sub-menu family and size, Widget family
 * Added lots of new filter and action hooks for developers, along with inline documentation
+* Fixed incorrect header font size defaults
 * Fixed post navigation arrow orientation
 * Fixed theme name in German translation
 

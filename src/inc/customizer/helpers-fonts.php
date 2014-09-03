@@ -18,12 +18,12 @@ function ttfmake_font_get_relative_sizes() {
 		'sub-menu'     => 93,  // Deprecated in 1.3.0.
 		// Relative to header font size
 		'h1'           => 100, // Deprecated in 1.3.0.
-		'h2'           => 68,  // Deprecated in 1.3.0.
-		'h3'           => 48,  // Deprecated in 1.3.0.
-		'h4'           => 48,  // Deprecated in 1.3.0.
-		'h5'           => 32,  // Deprecated in 1.3.0.
-		'h6'           => 28,  // Deprecated in 1.3.0.
-		'post-title'   => 68,
+		'h2'           => 74,  // Deprecated in 1.3.0.
+		'h3'           => 52,  // Deprecated in 1.3.0.
+		'h4'           => 52,  // Deprecated in 1.3.0.
+		'h5'           => 35,  // Deprecated in 1.3.0.
+		'h6'           => 30,  // Deprecated in 1.3.0.
+		'post-title'   => 74,
 		// Relative to widget font size
 		'widget-title' => 100,
 		// Relative to body font size
