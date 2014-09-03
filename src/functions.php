@@ -279,9 +279,9 @@ function ttfmake_scripts() {
 	// Font Awesome
 	wp_enqueue_style(
 		'ttfmake-font-awesome',
-		get_template_directory_uri() . '/css/font-awesome.css',
+		get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 		$style_dependencies,
-		'4.1.0'
+		'4.2.0'
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 

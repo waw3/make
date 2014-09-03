@@ -352,6 +352,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 	 * @param array    $icons    The array of supported social icons.
 	 */
 	$supported_icons = apply_filters( 'make_supported_social_icons', array(
+		'angel.co'           => 'fa-angellist',
 		'app.net'            => 'fa-adn',
 		'behance.net'        => 'fa-behance',
 		'bitbucket.org'      => 'fa-bitbucket',
@@ -368,11 +369,13 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'plus.google.com'    => 'fa-google-plus-square',
 		'instagram.com'      => 'fa-instagram',
 		'jsfiddle.net'       => 'fa-jsfiddle',
+		'last.fm'            => 'fa-lastfm',
 		'linkedin.com'       => 'fa-linkedin',
 		'pinterest.com'      => 'fa-pinterest',
 		'qzone.qq.com'       => 'fa-qq',
 		'reddit.com'         => 'fa-reddit',
 		'renren.com'         => 'fa-renren',
+		'slideshare.net'     => 'fa-slideshare',
 		'soundcloud.com'     => 'fa-soundcloud',
 		'spotify.com'        => 'fa-spotify',
 		'stackexchange.com'  => 'fa-stack-exchange',
@@ -382,6 +385,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		't.qq.com'           => 'fa-tencent-weibo',
 		'trello.com'         => 'fa-trello',
 		'tumblr.com'         => 'fa-tumblr',
+		'twitch.tv'          => 'fa-twitch',
 		'twitter.com'        => 'fa-twitter',
 		'vimeo.com'          => 'fa-vimeo-square',
 		'vine.co'            => 'fa-vine',
@@ -391,6 +395,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'wordpress.com'      => 'fa-wordpress',
 		'xing.com'           => 'fa-xing',
 		'yahoo.com'          => 'fa-yahoo',
+		'yelp.com'           => 'fa-yelp',
 		'youtube.com'        => 'fa-youtube',
 	) );
 
