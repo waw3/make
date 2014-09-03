@@ -87,42 +87,25 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttfmake-section,
-.ttfmake-banner-slide {
+.ttfmake-section {
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: 9px;
 	background-color: #ffffff;
-	border-top: 1px solid #dfdfdf;
 	border-bottom: 0; /*reset*/
 }
-.ttfmake-section:hover,
-.ttfmake-banner-slide:hover {
-	border-top: 1px solid #999999;
-}
-.ttfmake-section:hover .handlediv,
-.ttfmake-section:hover .ttfmake-section-remove,
-.ttfmake-section:hover .ttfmp-duplicate-section,
-.ttfmake-section:hover .ttfmake-section-configure {
+.ttfmake-section-header:hover .handlediv,
+.ttfmake-section-header:hover .ttfmake-section-remove,
+.ttfmake-section-header:hover .ttfmp-duplicate-section,
+.ttfmake-section-header:hover .ttfmake-section-configure {
 	border-color: #999999;
 }
-.ttfmake-section-open:hover,
-.ttfmake-banner-slide-open:hover {
+.ttfmake-section-header h3 {
+	border-top: 1px solid #dfdfdf;
+}
+.ttfmake-section-header:hover h3 {
 	border-top: 1px solid #999999;
-}
-.ttfmake-section:hover .ttfmake-section-header h3,
-.ttfmake-banner-slide:hover .ttfmake-banner-slide-header h3 {
 	border-bottom: 1px solid #999999;
-}
-.ttfmake-section-open:hover,
-.ttfmake-section-open:hover .handlediv,
-.ttfmake-section-open:hover .ttfmake-section-remove,
-.ttfmake-section-open:hover .ttfmp-duplicate-section,
-.ttfmake-section-open:hover .ttfmake-section-configure,
-.ttfmake-section-open:hover .ttfmake-section-header h3,
-.ttfmake-banner-slide-open:hover,
-.ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
-	border-color: #e5e5e5;
 }
 .ttfmake-section-body {
 	display: none;
