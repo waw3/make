@@ -76,11 +76,13 @@
 .ttfmake-section input[type=search],
 .ttfmake-section input[type=number],
 .ttfmake-section input[type=text],
+.ttfmake-section input,
 .ttfmake-section select,
 .ttfmake-section textarea {
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 }
+.ttfmake-section input:focus,
 .ttfmake-section input[type=number]:focus {
 	border-color: #ddd;
 }
@@ -458,27 +460,17 @@
 	left: 0; /*reset*/
 	right: 0; /*reset*/
 	bottom: 0; /*reset*/
-	margin-top: -28px;
 	background: url(images/background.png) top left repeat;
-	background: rgba(0, 0, 0, 0.8) ;
+	background: rgba(255, 255, 255, 0.8) ;
 }
 .ttfmake-overlay-wrapper {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-left: -400px;
-	margin-top: -300px;
-	width: 800px;
-	height: 600px;
-	font-size: 15px;
-	text-align: center;
-	color: #999087;
-	line-height: 1.35;
-	background-color: #f9f9f5;
-	box-sizing: border-box;
-	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
-	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
-	box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+	position: fixed !important;
+	top: 50% !important;
+	left: 50% !important;
+	margin-left: -250px !important;
+	margin-top: -200px !important;
+	width: 500px !important;
+	height: 400px !important;
 }
 .ttfmake-overlay-header {
 	border-bottom: 1px solid #000;
@@ -490,7 +482,7 @@
 	float: right;
 }
 .ttfmake-overlay-body {
-	padding: 20px;
+	padding: 20px !important;
 	clear: both;
 }
 /*---------------------------------------------------------
