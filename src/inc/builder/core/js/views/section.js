@@ -20,7 +20,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
 			'click .ttfmake-media-uploader-remove': 'removeImage',
-			'click .edit-content-link': 'openTinyMCEOverlay'
+			'click .edit-content-link': 'openTinyMCEOverlay',
+			'click .ttfmake-section-configure': 'openConfigurationOverlay'
 		},
 
 		initialize: function (options) {
@@ -204,6 +205,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				textAreaID = $target.attr('data-textarea');
 
 			oneApp.setMakeContentFromTextArea(iframeID, textAreaID);
+		},
+
+		openConfigurationOverlay: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$section = $this.parents('.ttfmake-section'),
+				$overlay = $('.ttfmake-overlay', $section);
+
+			$overlay.show();
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);
