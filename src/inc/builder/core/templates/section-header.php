@@ -29,23 +29,25 @@ ksort( $links );
 		<h3>
 			<span class="ttfmake-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttfmake_section_data['section']['label'] ) ); ?></em>
 		</h3>
-		<?php foreach ( $links as $link ) : ?>
-			<?php
-			$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
-			$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
-			$label = ( isset( $link['label'] ) ) ? esc_html( $link['label'] ) : '';
-			$title = ( isset( $link['title'] ) ) ? ' title="' . esc_html( $link['title'] ) . '"' : '';
+		<div class="ttf-make-section-header-button-wrapper">
+			<?php foreach ( $links as $link ) : ?>
+				<?php
+				$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
+				$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
+				$label = ( isset( $link['label'] ) ) ? esc_html( $link['label'] ) : '';
+				$title = ( isset( $link['title'] ) ) ? ' title="' . esc_html( $link['title'] ) . '"' : '';
 
-			// Set up the class value with a base class
-			$class_base = ' class="ttfmake-builder-section-link';
-			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
-			?>
-			<a<?php echo $href . $id . $class . $title; ?>>
-				<span>
-					<?php echo $label; ?>
-				</span>
-			</a>
-		<?php endforeach; ?>
+				// Set up the class value with a base class
+				$class_base = ' class="ttfmake-builder-section-link';
+				$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
+				?>
+				<a<?php echo $href . $id . $class . $title; ?>>
+					<span>
+						<?php echo $label; ?>
+					</span>
+				</a>
+			<?php endforeach; ?>
+		</div>
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
