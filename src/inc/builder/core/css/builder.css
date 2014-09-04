@@ -289,12 +289,12 @@
 .ttfmake-media-uploader-placeholder:before {
 	content: "\f128";
 	display: block;
-	color: #e5e5e5;
+	color: #d9d9d9;
 	font: 60px/228px dashicons;
 	text-align: center;
 }
 .ttfmake-media-uploader-placeholder:hover:before {
-	color: #222222;
+	color: #c7c7c7;
 }
 .ttfmake-media-uploader-placeholder img {
 	position: absolute;
