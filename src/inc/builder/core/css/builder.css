@@ -448,12 +448,12 @@
 	}
 }
 /*---------------------------------------------------------
- TinyMCE Overlay
+ Overlay
 -------------------------------------------------------- */
 .ttfmake-overlay {
 	display: none;
 	z-index: 99999;
-	position: absolute;
+	position: fixed;
 	top: 0; /*reset*/
 	left: 0; /*reset*/
 	right: 0; /*reset*/
