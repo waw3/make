@@ -43,19 +43,6 @@
 		line-height: 1;
 	}
 }
-.gform_media_link {
-	width: 28px;
-	overflow: hidden;
-}
-.gform_media_icon {
-	position: relative;
-	top: 1px;
-}
-@media screen and ( max-width: 782px ) {
-.gform_media_icon {
-	top: 2px;
-}
-}
 /*---------------------------------------------------------
  Builder (html-builder.css)
 -------------------------------------------------------- */
@@ -81,15 +68,16 @@
 .ttfmake-section input[type=search],
 .ttfmake-section input[type=number],
 .ttfmake-section input[type=text],
-.ttfmake-section input,
-.ttfmake-section select,
 .ttfmake-section textarea {
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 }
-.ttfmake-section input:focus,
+.ttfmake-section input[type=text]:focus,
 .ttfmake-section input[type=number]:focus {
 	border-color: #ddd;
+}
+.ttfmake-configuration-overlay-input-wrap select {
+	border: 1px solid #ddd;
 }
 /*---------------------------------------------------------
  Sections (html-builder.css)
@@ -475,8 +463,11 @@
 	margin-left: -200px !important;
 	margin-top: -200px !important;
 	width: 400px !important;
-	height: 400px !important;
-	-webkit-font-smoothing: subpixel-antialiased;
+	min-height: 200px !important;
+	padding-bottom: 20px !important;
+}
+.ttfmake-overlay-wrapper * {
+	-webkit-font-smoothing: subpixel-antialiased !important;
 }
 .ttfmake-overlay-header {
 	border-bottom: 1px solid #000;
