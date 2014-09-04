@@ -73,7 +73,9 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	 */
 	$input_html = apply_filters( 'make_configuration_overlay_input', $this_output, $input, $ttfmake_section_data );
 
-	$output .= sprintf( $wrap, $input_html );
+	if ( $input_html ) {
+		$output .= sprintf( $wrap, $input_html );
+	}
 }
 
 echo $output;
