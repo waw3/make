@@ -6,7 +6,7 @@ $section_name       = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_
 // Include the header
 get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
-// Sort the config in case 3rd part code added another input
+// Sort the config in case 3rd party code added another input
 ksort( $ttfmake_section_data['section']['config'], SORT_NUMERIC );
 
 // Print the inputs
@@ -24,7 +24,7 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 
 			case 'select':
 				if ( isset( $input['default'] ) && isset( $input['options'] ) ) {
-					$id     = $section_name . '[' . $input['name'];
+					$id     = $section_name . '[' . $input['name'] . ']';
 					$label  = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . ':</label>' : '';
 					$select = '<select id="' . $id . '" class="ttfmake-text-columns" name="' . $id . '">%s</select>';
 
