@@ -25,7 +25,7 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 			case 'select':
 				if ( isset( $input['default'] ) && isset( $input['options'] ) ) {
 					$id     = $section_name . '[' . $input['name'] . ']';
-					$label  = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . ':</label>' : '';
+					$label  = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
 					$select = '<select id="' . $id . '" class="ttfmake-text-columns" name="' . $id . '">%s</select>';
 
 					$options = '';
@@ -36,6 +36,13 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 
 					$this_output = $label . sprintf( $select, $options );
 				}
+				break;
+
+			case 'checkbox':
+				$id          = $section_name . '[' . $input['name'] . ']';
+				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
+				$input       = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1">';
+				$this_output = $label . $input;
 				break;
 		}
 	}
