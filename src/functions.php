@@ -510,8 +510,9 @@ function ttfmake_plus_styles() {
 	}
 	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before {
 		position: relative;
-		top: 38px;
-		left: 17px;
+		top: 32px;
+		margin-left: -2px;
+		text-align: center;
 	}
 	.make-plus-products .section-type-description {
 		color: #777777;

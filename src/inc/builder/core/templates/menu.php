@@ -34,21 +34,6 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 						<h4>
 							<?php _e( 'Products', 'make' ); ?>
 						</h4>
-						<p>
-							<?php
-							printf(
-								__( '%s and feature your WooCommerce products in a grid layout.', 'make' ),
-								sprintf(
-									'<a href="%1$s" target="_blank">%2$s</a>',
-									esc_url( ttfmake_get_plus_link( 'woocommerce-section' ) ),
-									sprintf(
-										__( 'Upgrade to %s', 'make' ),
-										'Make Plus'
-									)
-								)
-							);
-							?>
-						</p>
 					</div>
 				</li>
 			<?php endif; ?>
@@ -61,21 +46,6 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 						<h4>
 							<?php _e( 'Downloads', 'make' ); ?>
 						</h4>
-						<p>
-							<?php
-							printf(
-								__( '%s and feature your Easy Digital Downloads products in a grid layout.', 'make' ),
-								sprintf(
-									'<a href="%1$s" target="_blank">%2$s</a>',
-									esc_url( ttfmake_get_plus_link( 'edd-section' ) ),
-									sprintf(
-										__( 'Upgrade to %s', 'make' ),
-										'Make Plus'
-									)
-								)
-							);
-							?>
-						</p>
 					</div>
 				</li>
 			<?php endif; ?>
