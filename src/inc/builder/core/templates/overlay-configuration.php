@@ -44,6 +44,10 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 				$input       = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1">';
 				$this_output = $label . $input;
 				break;
+
+			case 'text':
+				$this_output = '<label>Dummy text</label><input type="text" />';
+				break;
 		}
 	}
 
