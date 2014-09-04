@@ -358,7 +358,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin-bottom: 0; /*reset*/
-	height: 165px;
+	height: 155px;
 }
 .ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
 	border-right: 0; /*reset*/
@@ -394,8 +394,8 @@
 .ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
 	display: block;
 	visibility: hidden;
-	width: 88px;
-	height: 78px;
+	width: 84px;
+	height: 74px;
 	background: url(images/section-icons-hover.png) center center no-repeat;
 	background-size: 36px 36px;
 }
@@ -404,12 +404,12 @@
 }
 .ttfmake-menu-list-item-link-icon-wrapper {
 	display: inline-block;
-	width: 88px;
-	height: 78px;
-	margin-top: 30px;
-	margin-left: 30px;
-	margin-right: 30px;
-	background-color: #fafafa;
+	width: 84px;
+	height: 74px;
+	margin-top: 25px;
+	margin-left: 25px;
+	margin-right: 25px;
+	background-color: #ffffff;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 70px 60px;
