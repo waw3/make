@@ -289,12 +289,12 @@
 .ttfmake-media-uploader-placeholder:before {
 	content: "\f128";
 	display: block;
-	opacity: .15;
+	color: #e5e5e5;
 	font: 60px/228px dashicons;
 	text-align: center;
 }
 .ttfmake-media-uploader-placeholder:hover:before {
-	opacity: .2;
+	color: #222222;
 }
 .ttfmake-media-uploader-placeholder img {
 	position: absolute;
@@ -423,14 +423,14 @@
 }
 .ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
 	display: block;
-	opacity: 0;
+	visibility: hidden;
 	width: 88px;
 	height: 78px;
 	background: url(images/section-icons-hover.png) center center no-repeat;
 	background-size: 36px 36px;
 }
 .ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
-	opacity: 1;
+	visibility: visible;
 }
 .ttfmake-menu-list-item-link-icon-wrapper {
 	display: inline-block;
