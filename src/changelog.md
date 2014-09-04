@@ -1,13 +1,12 @@
 ## 1.3.0
 
-* Added support for Customizer panels
+* Added support for WordPress 4.0 and Customizer panels
 * Updated organization of Customizer options to utilize panels
 * Added individual font family and size options for each header level (H1 - H6)
 * Added other new font options: Tagline family, Sub-menu family and size, Widget family
 * Added lots of new filter and action hooks for developers, along with inline documentation
 * Updated FontAwesome library to 4.2. Includes support for 5 new social profile icons: Angel List, Last.fm, Slideshare, Twitch, and Yelp
 * Fixed incorrect header font size defaults
-* Fixed incorrect IDs on some footer widget areas
 * Fixed post navigation arrow orientation
 * Fixed theme name in German translation
 
