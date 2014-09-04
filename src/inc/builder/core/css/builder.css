@@ -418,6 +418,9 @@
 .ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
 	border-color: #bbbbbb;
 }
+.section-type-description {
+	margin-top: 18px;
+}
 /*---------------------------------------------------------
  Media button (html-builder.css)
 -------------------------------------------------------- */
