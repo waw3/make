@@ -353,7 +353,6 @@ class TTFMAKE_Builder_Base {
 		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
 
 		// Set default messages
-		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image', 'make' )    : $messages['add'];
 		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image', 'make' ) : $messages['remove'];
 		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
 		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
@@ -363,14 +362,6 @@ class TTFMAKE_Builder_Base {
 				<?php if ( '' !== $image ) : ?>
 					<?php echo $image; ?>
 				<?php endif; ?>
-			</div>
-			<div class="ttfmake-media-link-wrap">
-				<a href="#" class="ttfmake-media-uploader-add ttfmake-media-uploader-set-link <?php echo $add_state; ?>" data-title="<?php echo esc_attr( $messages['title'] ); ?>" data-button-text="<?php echo esc_attr( $messages['button'] ); ?>">
-					<?php echo $messages['add']; ?>
-				</a>
-				<a href="#" class="ttfmake-media-uploader-remove <?php echo $remove_state; ?>">
-					<?php echo $messages['remove']; ?>
-				</a>
 			</div>
 			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
