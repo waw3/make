@@ -205,6 +205,7 @@
 	padding: 0 12px;
 	height: 39px;
 	border-left: 1px solid #e5e5e5;
+	background-color: #eeeeee;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-configure {
@@ -224,6 +225,7 @@
 	padding: 0 12px;
 	height: 39px;
 	border-left: 1px solid #e5e5e5;
+	background-color: #eeeeee;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-remove {
@@ -265,13 +267,13 @@
 	}
 }
 .ttfmake-section-configure:before {
-	content: "\f107";
+	content: "\f111";
 	font: 400 20px/39px dashicons;
 	speak: none;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-configure:before {
-		content: "\f107";
+		content: "\f111";
 		font: 400 20px/49px dashicons;
 		speak: none;
 	}

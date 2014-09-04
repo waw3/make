@@ -200,6 +200,7 @@
 	width: 100%;
 }
 .ttfmake-gallery-item {
+	position: relative;
 	margin-bottom: 40px;
 }
 #poststuff .ttfmake-large-title {
@@ -223,6 +224,47 @@
 .ttfmake-gallery-background-options-container {
 	float: left;
 	width: 100%;
+}
+.edit-gallery-item-link,
+.remove-gallery-item-link {
+	position: absolute;
+	top: 0;
+	right: 40px;
+	text-align: center;
+	width: 39px;
+	height: 39px;
+	background-color: #eeeeee;
+	display: inline-block;
+	clear: both;
+	margin-bottom: 0; /*reset*/
+	color: #aaaaaa;
+	text-decoration: none;  /*reset*/
+	outline: none !important;
+}
+.remove-gallery-item-link {
+	right: 0px;
+	border-left: 1px solid #d9d9d9;
+}
+.edit-gallery-item-link:hover,
+.remove-gallery-item-link:hover {
+	color: #777777;
+}
+.edit-gallery-item-link span,
+.remove-gallery-item-link span {
+	display: none;
+	text-indent: -9999px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.edit-gallery-item-link:before {
+	content: "\f464";
+	font: 400 20px/39px dashicons;
+	speak: none;
+}
+.remove-gallery-item-link:before {
+	content: "\f182";
+	font: 400 20px/39px dashicons;
+	speak: none;
 }
 /*---------------------------------------------------------
  Quick Start info (sections.css)

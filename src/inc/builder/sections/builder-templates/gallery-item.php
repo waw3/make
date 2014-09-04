@@ -25,11 +25,15 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 
 	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="remove-gallery-item-link">
-		<?php _e( 'Remove gallery item', 'make' ); ?>
-	</a>
 	<a href="#" class="edit-gallery-item-link">
-		<?php _e( 'Edit gallery item', 'make' ); ?>
+		<span>
+			<?php _e( 'Edit gallery item', 'make' ); ?>
+		</span>
+	</a>
+	<a href="#" class="remove-gallery-item-link">
+		<span>
+			<?php _e( 'Remove gallery item', 'make' ); ?>
+		</span>
 	</a>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
