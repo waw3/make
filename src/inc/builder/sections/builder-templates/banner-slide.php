@@ -24,11 +24,15 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 
 	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="remove-banner-slide-link">
-		<?php _e( 'Remove banner slide', 'make' ); ?>
-	</a>
 	<a href="#" class="edit-banner-slide-link">
-		<?php _e( 'Edit banner slide', 'make' ); ?>
+		<span>
+			<?php _e( 'Edit banner slide', 'make' ); ?>
+		</span>
+	</a>
+	<a href="#" class="remove-banner-slide-link">
+		<span>
+			<?php _e( 'Remove banner slide', 'make' ); ?>
+		</span>
 	</a>
 
 	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />

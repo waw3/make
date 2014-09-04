@@ -280,9 +280,8 @@
 	display: block;
 	width: 100%;
 	height: 228px;
-	margin-bottom: 4px;
-	background-color: #fafafa;
 	border: 1px solid #dfdfdf;
+	background-color: #fafafa;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -408,7 +407,7 @@
 	}
 }
 .ttfmake-menu-list-item:hover {
-		background-color: #fafafa;
+	background-color: #fafafa;
 }
 .ttfmake-menu-list-item-link {
 	display: block;

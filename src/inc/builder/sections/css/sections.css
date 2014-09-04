@@ -119,6 +119,9 @@
 /*---------------------------------------------------------
  Banner (html-builder.css)
 -------------------------------------------------------- */
+.ttfmake-banner-slide {
+	position: relative;
+}
 .ttfmake-banner-slide-body {
 	padding: 12px;
 }
@@ -226,7 +229,9 @@
 	width: 100%;
 }
 .edit-gallery-item-link,
-.remove-gallery-item-link {
+.remove-gallery-item-link,
+.edit-banner-slide-link,
+.remove-banner-slide-link {
 	position: absolute;
 	top: 0;
 	right: 45px;
@@ -241,26 +246,33 @@
 	text-decoration: none;  /*reset*/
 	outline: none !important;
 }
-.remove-gallery-item-link {
+.remove-gallery-item-link,
+.remove-banner-slide-link {
 	right: 0px;
 }
 .edit-gallery-item-link:hover,
-.remove-gallery-item-link:hover {
+.remove-gallery-item-link:hover,
+.edit-banner-slide-link:hover,
+.remove-banner-slide-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
-.remove-gallery-item-link span {
+.remove-gallery-item-link span,
+.edit-banner-slide-link span,
+.remove-banner-slide-link span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
 	overflow: hidden;
 }
-.edit-gallery-item-link:before {
+.edit-gallery-item-link:before,
+.edit-banner-slide-link:before {
 	content: "\f464";
 	font: 400 20px/39px dashicons;
 	speak: none;
 }
-.remove-gallery-item-link:before {
+.remove-gallery-item-link:before,
+.remove-banner-slide-link:before {
 	content: "\f182";
 	font: 400 20px/39px dashicons;
 	speak: none;
