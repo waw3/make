@@ -206,6 +206,7 @@
 	position: absolute;
 	right: 39px; /*width of .handlediv*/
 }
+/* icon containers */
 .ttfmake-section-remove,
 .ttfmake-section-configure,
 .ttfmp-duplicate-section {
@@ -216,6 +217,7 @@
 	text-decoration: none;  /*reset*/
 	border-left: 1px solid #d9d9d9;
 }
+/* hide text labels */
 .ttfmake-section-remove span,
 .ttfmake-section-configure span,
 .ttfmp-duplicate-section span {
@@ -224,34 +226,34 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
-.ttfmake-section-remove:before,
-.ttfmake-gallery-item-remove:before,
-.ttfmake-banner-slide-remove:before {
-	content: "\f182";
-	font: 400 20px/39px dashicons;
-	speak: none;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-section-remove:before,
-	.ttfmake-gallery-item-remove:before,
-	.ttfmake-banner-slide-remove:before {
-		line-height: 49px;
-
-	}
-}
+/* hover state */
 .ttfmake-section-remove:hover,
 .ttfmake-section-configure:hover,
 .ttfmp-duplicate-section:hover {
 	color: #222222;
 }
-.ttfmake-section-configure:before {
-	content: "\f111";
+/* add icons */
+.ttfmake-section-remove:before,
+.ttfmake-section-configure:before,
+.ttfmp-duplicate-section:before {
 	font: 400 20px/39px dashicons;
 	speak: none;
 }
+.ttfmake-section-remove:before {
+	content: "\f182";
+}
+.ttfmake-section-configure:before {
+	content: "\f111";
+}
+.ttfmp-duplicate-section:before {
+	content: "\f105";
+}
+/* adjust icons in narrow view */
 @media screen and ( max-width: 782px ) {
-	.ttfmake-section-configure:before {
-		font: 400 20px/49px dashicons;
+	.ttfmake-section-remove:before,
+	.ttfmake-section-configure:before,
+	.ttfmp-duplicate-section:before {
+		line-height: 48px;
 	}
 }
 /*---------------------------------------------------------
@@ -268,6 +270,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+/* add icon */
 .ttfmake-media-uploader-placeholder:before {
 	content: "\f128";
 	display: block;
@@ -275,6 +278,7 @@
 	font: 60px/228px dashicons;
 	text-align: center;
 }
+/* hover state */
 .ttfmake-media-uploader-placeholder:hover:before {
 	color: #c7c7c7;
 }
@@ -297,20 +301,6 @@
 .ttfmake-section-body iframe {
 	background: #ffffff !important;
 }
-.section-type-description {
-	margin-top: 8px;
-	line-height: 1.35;
-}
-/*---------------------------------------------------------
- Editor (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-section .wp_themeSkin table.mceToolbar {
-	padding: 1px;
-}
-.ttfmake-section #insert-jetpack-contact-form,
-.ttfmake-section #add_poll {
-	display: none;
-}
 /*---------------------------------------------------------
  Open state (html-builder.css)
 -------------------------------------------------------- */
@@ -318,11 +308,9 @@
 .ttfmake-banner-slide-open {
 	border-bottom: 1px solid #dfdfdf;
 }
+/* open state */
 .ttfmake-banner-slide-open {
 	margin-bottom: 40px;
-}
-.ttfmake-section-header a {
-	outline: 0; /*reset*/
 }
 /*---------------------------------------------------------
  Common (html-builder.css)
@@ -331,7 +319,7 @@
 	display: block;
 }
 .ttfmake-hide {
-	display: none;
+	display: none; /*reset*/
 }
 /*---------------------------------------------------------
  Menu (html-builder.css)
