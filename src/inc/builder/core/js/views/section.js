@@ -21,7 +21,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-media-uploader-add': 'initUploader',
 			'click .ttfmake-media-uploader-remove': 'removeImage',
 			'click .edit-content-link': 'openTinyMCEOverlay',
-			'click .ttfmake-section-configure': 'openConfigurationOverlay'
+			'click .ttfmake-section-configure': 'openConfigurationOverlay',
+			'click .ttfmake-overlay-close': 'closeConfigurationOverlay'
 		},
 
 		initialize: function (options) {
@@ -196,7 +197,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			$set.show();
 		},
 
-		openTinyMCEOverlay: function(evt) {
+		openTinyMCEOverlay: function (evt) {
 			evt.preventDefault();
 			oneApp.tinymceOverlay.open();
 
@@ -215,6 +216,15 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$overlay = $('.ttfmake-overlay', $section);
 
 			$overlay.show();
+		},
+
+		closeConfigurationOverlay: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$overlay = $this.parents('.ttfmake-overlay');
+
+			$overlay.hide();
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);
