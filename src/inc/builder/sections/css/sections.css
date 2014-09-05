@@ -1,5 +1,16 @@
 /*---------------------------------------------------------
- Text and Gallery section (html-builder.css)
+ Text and Gallery section (sections.css)
+-------------------------------------------------------- */
+.ttfmake-section-text .ttfmake-titlediv {
+	margin-bottom: 0; /*reset*/
+}
+.ttfmake-section-text .ttfmake-media-uploader-placeholder {
+	border-top: 0; /*reset*/
+	border-bottom: 0; /*reset*/
+}
+
+/*---------------------------------------------------------
+ Text and Gallery section (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-column,
 .ttfmake-gallery-item {
@@ -21,7 +32,7 @@
 	float: left;
 }
 /*---------------------------------------------------------
- Text and Gallery: One column (html-builder.css)
+ Text and Gallery: One column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-1 .ttfmake-text-column-position-2,
 .ttfmake-text-columns-1 .ttfmake-text-column-position-3,
@@ -32,7 +43,7 @@
 	visibility: hidden;
 }
 /*---------------------------------------------------------
- Text and Gallery: Two column (html-builder.css)
+ Text and Gallery: Two column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-2 .ttfmake-text-column-position-3,
 .ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
@@ -51,7 +62,7 @@
 	}
 }
 /*---------------------------------------------------------
- Text and Gallery: Three column (html-builder.css)
+ Text and Gallery: Three column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
 	display: none;
@@ -69,7 +80,7 @@
 	}
 }
 /*---------------------------------------------------------
- Text and Gallery: Four column (html-builder.css)
+ Text and Gallery: Four column (sections.css)
 -------------------------------------------------------- */
 @media screen and ( min-width: 1260px ) {
 	.ttfmake-text-columns-4 {
@@ -84,7 +95,7 @@
 	}
 }
 /*---------------------------------------------------------
- Banner (html-builder.css)
+ Banner (sections.css)
 -------------------------------------------------------- */
 .ttfmake-banner-slide {
 	position: relative;
@@ -108,7 +119,7 @@
 	margin-top: 8px;
 }
 /*---------------------------------------------------------
- Banner: Slide  (html-builder.css)
+ Banner: Slide (sections.css)
 -------------------------------------------------------- */
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-banner-slide-option-wrapper,
@@ -163,7 +174,7 @@
 	margin-bottom: 8px;
 }
 /*---------------------------------------------------------
- Gallery (html-builder.css)
+ Gallery (sections.css)
 -------------------------------------------------------- */
 .ttfmake-gallery-items-stage {
 	float: left;
