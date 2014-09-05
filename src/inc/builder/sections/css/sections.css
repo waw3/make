@@ -3,6 +3,7 @@
 -------------------------------------------------------- */
 .ttfmake-section-text .ttfmake-titlediv {
 	margin-bottom: 0; /*reset*/
+	padding-right: 90px;
 }
 .ttfmake-section-text .ttfmake-media-uploader-placeholder {
 	border-top: 0; /*reset*/
@@ -209,7 +210,9 @@
 .edit-gallery-item-link,
 .remove-gallery-item-link,
 .edit-banner-slide-link,
-.remove-banner-slide-link {
+.remove-banner-slide-link,
+.convert-widget-area-link,
+.edit-text-column-link {
 	position: absolute;
 	top: 0;
 	right: 45px;
@@ -225,26 +228,32 @@
 	outline: none !important;
 }
 .remove-gallery-item-link,
-.remove-banner-slide-link {
+.remove-banner-slide-link,
+.convert-widget-area-link {
 	right: 0px;
 }
 .edit-gallery-item-link:hover,
 .remove-gallery-item-link:hover,
 .edit-banner-slide-link:hover,
-.remove-banner-slide-link:hover {
+.remove-banner-slide-link:hover,
+.convert-widget-area-link:hover,
+.edit-text-column-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
 .remove-gallery-item-link span,
 .edit-banner-slide-link span,
-.remove-banner-slide-link span {
+.remove-banner-slide-link span,
+.convert-widget-area-link span,
+.edit-text-column-link span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
 	overflow: hidden;
 }
 .edit-gallery-item-link:before,
-.edit-banner-slide-link:before {
+.edit-banner-slide-link:before,
+.edit-text-column-link:before {
 	content: "\f464";
 	font: 400 20px/39px dashicons;
 	speak: none;
@@ -252,6 +261,11 @@
 .remove-gallery-item-link:before,
 .remove-banner-slide-link:before {
 	content: "\f182";
+	font: 400 20px/39px dashicons;
+	speak: none;
+}
+.convert-widget-area-link:before {
+	content: "\f311";
 	font: 400 20px/39px dashicons;
 	speak: none;
 }
