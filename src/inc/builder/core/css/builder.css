@@ -11,8 +11,7 @@
 	height: 41px;
 	margin: 0;
 	padding: 0 8px;
-	font-size: 18px;
-	font-weight: 600;
+	font-size: 19px;
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 	-webkit-box-sizing: border-box;
@@ -103,14 +102,12 @@
 .ttfmake-section-header h3 {
 	float: left;
 	width: 100%;
-	color: #222222;
+	color: #fff;
 	font-size: 13px !important;
 	font-weight: 700 !important;
 	font-family: 'Open Sans', sans-serif !important;
 	line-height: 1.7 !important;
-	background-color: #eeeeee;
-	border-top: 1px solid #d9d9d9;
-	border-bottom: 1px solid #d9d9d9;
+	background-color: #222;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -121,14 +118,14 @@
 .ttfmake-section-header em {
 	font-weight: normal !important;
 	font-style: normal !important;
-	color: #777777;
+	color: #bbb;
 	margin-left: 10px;
 }
 .ttfmake-section .handlediv {
 	position: relative;
 	height: 38px;
 	padding-left: 10px;
-	border-left: 1px solid #d9d9d9;
+	border-left: 1px solid #999;
 }
 .ttfmake-section-toggle:focus {
 	border: none !important;
@@ -152,7 +149,7 @@
 }
 .ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:hover:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
-	color: #222222;
+	color: #fff;
 }
 .ttfmake-stage .ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
@@ -186,9 +183,9 @@
 	display: inline-block;
 	height: 100%;
 	padding: 0 10px 0 14px;
-	color: #aaaaaa;
+	color: #bbb;
 	text-decoration: none;  /*reset*/
-	border-left: 1px solid #d9d9d9;
+	border-left: 1px solid #999;
 }
 /* hide text labels */
 .ttfmake-section-remove span,
@@ -203,13 +200,13 @@
 .ttfmake-section-remove:hover,
 .ttfmake-section-configure:hover,
 .ttfmp-duplicate-section:hover {
-	color: #222222;
+	color: #fff;
 }
 /* add icons */
 .ttfmake-section-remove:before,
 .ttfmake-section-configure:before,
 .ttfmp-duplicate-section:before {
-	font: 400 20px/39px dashicons;
+	font: 400 20px/38px dashicons;
 	speak: none;
 }
 .ttfmake-section-remove:before {
