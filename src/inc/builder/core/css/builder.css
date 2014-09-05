@@ -307,10 +307,6 @@
 .ttfmake-banner-slide-open {
 	border-bottom: 1px solid #dfdfdf;
 }
-/* open state */
-.ttfmake-banner-slide-open {
-	margin-bottom: 40px;
-}
 /*---------------------------------------------------------
  Common (builder.css)
 -------------------------------------------------------- */
