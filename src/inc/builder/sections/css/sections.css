@@ -75,29 +75,16 @@
 .ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
 	display: none;
 }
-.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
+.ttfmake-text-columns-3 {
+	display: -webkit-flex;
+
+}
+.ttfmake-text-columns-3 .ttfmake-text-column {
 	width: 100%;
+	padding-left: 20px;
 }
-@media screen and ( min-width: 1160px ) {
-	.ttfmake-text-columns-3 .ttfmake-text-column,
-	.ttfmake-gallery-columns-3 .ttfmake-gallery-item {
-		width: 33.3333%;
-		float: left;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
-	.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
-		width: 33.3333%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-fourth .sortable-placeholder{
-		width: 25%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-half .sortable-placeholder{
-		width: 50%;
-	}
-}
-.ttfmake-text-columns-3 .ttfmake-media-button-text {
-	display: none;  /*reset*/
+.ttfmake-text-columns-3 .ttfmake-text-column-position-1 {
+	margin-left: -20px; /*offset*/
 }
 /*---------------------------------------------------------
  Text and Gallery: Four column (html-builder.css)
