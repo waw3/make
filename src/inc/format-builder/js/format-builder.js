@@ -1,6 +1,7 @@
 (function(tinymce) {
 	tinymce.PluginManager.add('ttfmake_format_builder', function( editor, url ) {
 		var formatBuilder = {
+			// @link http://stackoverflow.com/a/9756789/719811
 			escAttr: function(s, preserveCR) {
 				preserveCR = preserveCR ? '&#13;' : '\n';
 				return ('' + s) /* Forces the conversion to string. */
