@@ -38,35 +38,16 @@
 .ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
 	display: none;
 }
-.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
-	width: 100%;
-}
-@media screen and ( min-width: 1160px ) {
-	.ttfmake-text-columns-2 .ttfmake-text-column,
-	.ttfmake-gallery-columns-2 .ttfmake-gallery-item {
-		width: 50%;
-		float: left;
+@media screen and ( min-width: 1260px ) {
+	.ttfmake-text-columns-2 {
+		display: -webkit-flex;
 	}
-	.ttfmake-text-columns-2 .ttfmake-text-column-position-3,
-	.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
-		width: 0;
+	.ttfmake-text-columns-2 .ttfmake-text-column {
+		width: 100%;
+		padding-left: 20px;
 	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
-	.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
-		width: 50%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-fourth .sortable-placeholder{
-		width: 25%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-third .sortable-placeholder{
-		width: 33.3333%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-two-thirds .sortable-placeholder{
-		width: 66.3333%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-three-fourths .sortable-placeholder{
-		width: 75%;
+	.ttfmake-text-columns-2 .ttfmake-text-column-position-1 {
+		margin-left: -20px; /*offset*/
 	}
 }
 /*---------------------------------------------------------
@@ -91,18 +72,16 @@
  Text and Gallery: Four column (html-builder.css)
 -------------------------------------------------------- */
 @media screen and ( min-width: 1260px ) {
-	.ttfmake-text-columns-4 .ttfmake-text-column,
-	.ttfmake-gallery-columns-4 .ttfmake-gallery-item {
-		width: 25%;
-		float: left;
+	.ttfmake-text-columns-4 {
+		display: -webkit-flex;
 	}
-}
-.ttfmake-text-columns-stage.ttfmake-text-columns-4 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-4 .sortable-placeholder {
-	width: 25%;
-}
-.ttfmake-text-columns-4 .ttfmake-media-button-text {
-	display: none;  /*reset*/
+	.ttfmake-text-columns-4 .ttfmake-text-column {
+		width: 100%;
+		padding-left: 20px;
+	}
+	.ttfmake-text-columns-4 .ttfmake-text-column-position-1 {
+		margin-left: -20px; /*offset*/
+	}
 }
 /*---------------------------------------------------------
  Banner (html-builder.css)
