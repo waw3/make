@@ -107,10 +107,16 @@
 	font-weight: 700 !important;
 	font-family: 'Open Sans', sans-serif !important;
 	line-height: 1.7 !important;
-	background-color: #222;
+	background-color: #eee;
+	border-top: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+.ttfmake-section-open h3 {
+	background-color: #222;
+	border-color: #222;
 }
 .ttfmake-section-header span {
 	font-weight: bold;
@@ -118,23 +124,29 @@
 .ttfmake-section-header em {
 	font-weight: normal !important;
 	font-style: normal !important;
-	color: #bbb;
+	color: #777;
 	margin-left: 10px;
+}
+.ttfmake-section-open .ttfmake-section-header em {
+	color: #bbb;
 }
 .ttfmake-section .handlediv {
 	position: relative;
-	height: 38px;
+	height: 40px;
 	padding-left: 10px;
-	border-left: 1px solid #999;
+	border-left: 1px solid #d9d9d9;
+}
+.ttfmake-section-open .handlediv {
+	border-left-color: #999;
 }
 .ttfmake-section-toggle:focus {
 	border: none !important;
 }
 .ttfmake-section-toggle .handlediv,
 .ttfmake-banner-slide-toggle .handlediv {
-	top: -39px;
+	top: -40px;
 	right: 0; /*reset*/
-	margin-bottom: -39px;
+	margin-bottom: -40px;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-toggle .handlediv,
@@ -149,6 +161,10 @@
 }
 .ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:hover:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
+	color: #222;
+}
+.ttfmake-stage .ttfmake-section-open .ttfmake-section-header .handlediv:hover:before,
+.ttfmake-stage .ttfmake-section-open .ttfmake-banner-slide-header .handlediv:hover:before {
 	color: #fff;
 }
 .ttfmake-stage .ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
@@ -183,10 +199,17 @@
 	display: inline-block;
 	height: 100%;
 	padding: 0 10px 0 14px;
-	color: #bbb;
+	color: #aaa;
 	text-decoration: none;  /*reset*/
+	border-left: 1px solid #d9d9d9;
+}
+.ttfmake-section-open .ttfmake-section-remove,
+.ttfmake-section-open .ttfmake-section-configure,
+.ttfmake-section-open .ttfmp-duplicate-section {
+	color: #bbb;
 	border-left: 1px solid #999;
 }
+
 /* hide text labels */
 .ttfmake-section-remove span,
 .ttfmake-section-configure span,
@@ -200,13 +223,19 @@
 .ttfmake-section-remove:hover,
 .ttfmake-section-configure:hover,
 .ttfmp-duplicate-section:hover {
+	color: #222;
+}
+.ttfmake-section-open .ttfmake-section-remove:hover,
+.ttfmake-section-open .ttfmake-section-configure:hover,
+.ttfmake-section-open .ttfmp-duplicate-section:hover {
 	color: #fff;
 }
+
 /* add icons */
 .ttfmake-section-remove:before,
 .ttfmake-section-configure:before,
 .ttfmp-duplicate-section:before {
-	font: 400 20px/38px dashicons;
+	font: 400 20px/40px dashicons;
 	speak: none;
 }
 .ttfmake-section-remove:before {
