@@ -1,5 +1,5 @@
 /*---------------------------------------------------------
- Defaults (html-builder.css)
+ Defaults (builder.css)
 -------------------------------------------------------- */
 .ttfmake-titlediv {
 	position: relative;
@@ -9,10 +9,10 @@
 .ttfmake-configuration-overlay-input-wrap .ttfmake-section-header-title-input {
 	width: 100%;
 	height: 35px;
-	font-size: 18px;
-	font-weight: 600;
 	margin: 0;
 	padding: 0 8px;
+	font-size: 18px;
+	font-weight: 600;
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 	-webkit-box-sizing: border-box;
@@ -29,22 +29,8 @@
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 }
-.clear {
-	clear: both;
-}
-.wp-core-ui .button.ttfmake-button-large {
-	font-size: 14px;
-	height: 38px;
-	line-height: 36px;
-}
-@media screen and ( max-width: 782px ) {
-	.wp-core-ui .button.ttfmake-button-large {
-		height: 33px;
-		line-height: 1;
-	}
-}
 /*---------------------------------------------------------
- Builder (html-builder.css)
+ Builder (builder.css)
 -------------------------------------------------------- */
 #ttfmake-builder .inside {
 	padding: 0; /*reset*/
@@ -56,12 +42,8 @@
 .ttfmake-stage-closed {
 	padding-top: 0; /*reset*/
 }
-.ttfmake-select {
-	text-align: right;
-	padding: 0 0 12px;
-}
 /*---------------------------------------------------------
- Forms (html-builder.css)
+ Forms (builder.css)
 -------------------------------------------------------- */
 .ttfmake-section input[type=checkbox],
 .ttfmake-section input[type=radio],
@@ -80,22 +62,17 @@
 	border: 1px solid #ddd;
 }
 /*---------------------------------------------------------
- Sections (html-builder.css)
+ Sections (builder.css)
 -------------------------------------------------------- */
-.ttfmake-section {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
 .ttfmake-section {
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: 9px;
-	background-color: #ffffff;
+	background-color: #fff;
 	border-bottom: 0; /*reset*/
-}
-.ttfmake-section-header h3 {
-	border-top: 1px solid #d9d9d9;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .ttfmake-section-body {
 	display: none;
@@ -132,6 +109,7 @@
 	font-family: 'Open Sans', sans-serif !important;
 	line-height: 1.7 !important;
 	background-color: #eeeeee;
+	border-top: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -195,7 +173,7 @@
 	visibility: hidden;
 }
 /*---------------------------------------------------------
- Sections header buttons (html-builder.css)
+ Sections header buttons (builder.css)
 -------------------------------------------------------- */
 .ttf-make-section-header-button-wrapper {
 	position: absolute;
@@ -252,7 +230,7 @@
 	}
 }
 /*---------------------------------------------------------
- Media placeholder (html-builder.css)
+ Media placeholder (builder.css)
 -------------------------------------------------------- */
 .ttfmake-media-uploader-placeholder {
 	position: relative;
@@ -294,10 +272,10 @@
 	box-sizing: border-box;
 }
 .ttfmake-section-body iframe {
-	background: #ffffff !important;
+	background: #fff !important;
 }
 /*---------------------------------------------------------
- Open state (html-builder.css)
+ Open state (builder.css)
 -------------------------------------------------------- */
 .ttfmake-section-open,
 .ttfmake-banner-slide-open {
@@ -308,8 +286,11 @@
 	margin-bottom: 40px;
 }
 /*---------------------------------------------------------
- Common (html-builder.css)
+ Common (builder.css)
 -------------------------------------------------------- */
+.clear {
+	clear: both;
+}
 .ttfmake-show {
 	display: block;
 }
@@ -317,7 +298,7 @@
 	display: none; /*reset*/
 }
 /*---------------------------------------------------------
- Menu (html-builder.css)
+ Menu (builder.css)
 -------------------------------------------------------- */
 .ttfmake-menu {
 	margin-top: -6px;
@@ -417,7 +398,7 @@
 	margin-top: 18px;
 }
 /*---------------------------------------------------------
- Media button (html-builder.css)
+ Media button (builder.css)
 -------------------------------------------------------- */
 .ttfmake-media-button-text {
 	display: none;  /*reset*/
@@ -443,7 +424,7 @@
 	}
 }
 /*---------------------------------------------------------
- Overlay
+ Overlay (builder.css)
 -------------------------------------------------------- */
 .ttfmake-overlay {
 	display: none;
@@ -508,7 +489,7 @@
 	float: right !important;
 }
 /*---------------------------------------------------------
- iFrame
+ iFrame (builder.css)
 -------------------------------------------------------- */
 .ttfmake-iframe-wrapper {
 	position: relative;
