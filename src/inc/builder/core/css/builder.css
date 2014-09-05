@@ -461,9 +461,9 @@
 	top: 50% !important;
 	left: 50% !important;
 	margin-left: -200px !important;
-	margin-top: -200px !important;
+	margin-top: -75px !important;
 	width: 400px !important;
-	min-height: 200px !important;
+	min-height: 150px !important;
 	padding-bottom: 20px !important;
 }
 .ttfmake-overlay-wrapper * {
@@ -480,11 +480,16 @@
 }
 .ttfmake-configuration-overlay-input-wrap {
 	padding: 20px 0 !important;
-	text-align: right !important;
 	border-bottom: 1px solid #efefef !important;
+	/* align vertically */
+    display: flex;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
 }
-.ttfmake-configuration-overlay-input-wrap label {
-	float: left !important;
+.ttfmake-configuration-overlay-input-wrap select,
+.ttfmake-configuration-overlay-input-wrap input {
+	margin-left: auto;
 }
 .ttfmake-overlay-body {
 	padding: 20px !important;
@@ -492,6 +497,10 @@
 }
 .ttfmake-configuration-overlay-input-wrap:nth-child(1) {
 	padding-top: 0 !important;
+	border-bottom: 0 !important;
+}
+.ttfmake-configuration-overlay-input-wrap:nth-child(3) {
+	padding-bottom: 40px !important;
 	border-bottom: 0 !important;
 }
 .ttfmake-configuration-overlay-button {
