@@ -102,21 +102,22 @@
 .ttfmake-section-header h3 {
 	float: left;
 	width: 100%;
-	color: #fff;
+	color: #222;
 	font-size: 13px !important;
 	font-weight: 700 !important;
 	font-family: 'Open Sans', sans-serif !important;
 	line-height: 1.7 !important;
-	background-color: #eee;
 	border-top: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
+	background-color: #eee;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttfmake-section-open h3 {
-	background-color: #222;
+.ttfmake-section-open .ttfmake-section-header h3 {
+	color: #fff;
 	border-color: #222;
+	background-color: #222;
 }
 .ttfmake-section-header span {
 	font-weight: bold;
