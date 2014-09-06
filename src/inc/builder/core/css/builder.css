@@ -303,8 +303,7 @@
 /*---------------------------------------------------------
  Open state (builder.css)
 -------------------------------------------------------- */
-.ttfmake-section-open,
-.ttfmake-banner-slide-open {
+.ttfmake-section-open {
 	border-bottom: 1px solid #dfdfdf;
 }
 /*---------------------------------------------------------

@@ -26,11 +26,13 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
-	<div class="ttfmake-banner-add-item">
-		<a href="#" class="ttfmake-add-slide ttfmake-banner-add-item-link">
-			<?php _e( 'Add Item', 'make' ); ?>
-		</a>
-	</div>
+	<a href="#" class="ttfmake-add-slide ttfmake-banner-add-item-link">
+		<div class="ttfmake-banner-add-item">
+			<span>
+				<?php _e( 'Add Item', 'make' ); ?>
+			</span>
+		</div>
+	</a>
 	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[banner-slide-order]" class="ttfmake-banner-slide-order" />
 </div>
 
