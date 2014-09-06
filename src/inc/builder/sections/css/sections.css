@@ -121,9 +121,9 @@
 	margin-top: 8px;
 }
 .ttfmake-banner-add-item {
-	background-color: #fafafa;
+	background-color: #fff;
 	border: 1px solid #dfdfdf;
-	height: 80px;
+	height: 76px;
 }
 .ttfmake-banner-add-item:before {
 	content: "\f502";
