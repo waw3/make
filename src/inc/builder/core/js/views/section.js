@@ -208,9 +208,30 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			var $this = $(evt.target),
 				$section = $this.parents('.ttfmake-section'),
-				$overlay = $('.ttfmake-overlay', $section);
+				$overlay = $('.ttfmake-overlay', $section),
+				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
 			$overlay.show();
+
+			this.setSize($overlay, $wrapper);
+		},
+
+		setSize: function($overlay, $wrapper) {
+			var $body = $('.ttfmake-overlay-body', $wrapper),
+				bodyHeight = $body.height(),
+				wrapperHeight;
+
+			wrapperHeight =
+				parseInt(bodyHeight, 10) + // Body height
+					20 + // Bottom padding
+					30 + // Button height
+					37; // Header height
+
+			$wrapper
+				.height(wrapperHeight)
+				.css({
+					'margin-top': -1 * parseInt(wrapperHeight/2, 10) + 'px'
+				})
 		},
 
 		closeConfigurationOverlay: function (evt) {

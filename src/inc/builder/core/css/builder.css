@@ -457,18 +457,17 @@
 	position: fixed !important;
 	top: 50% !important;
 	left: 50% !important;
-	margin-top: -75px !important;
 	min-height: 150px !important;
 	padding-bottom: 20px !important;
 }
 .ttfmake-configuration-overlay .ttfmake-overlay-wrapper {
-	margin-left: -200px !important;
-	width: 400px !important;
+	margin-left: -200px;
+	width: 400px;
 }
 #ttfmake-tinymce-overlay .ttfmake-overlay-wrapper {
 	margin-left: -400px !important;
 	width: 800px !important;
-	height: 400px;
+	height: 400px !important;
 	margin-top: -200px !important;
 }
 .ttfmake-overlay-wrapper * {
@@ -499,6 +498,8 @@
 .ttfmake-overlay-body {
 	padding: 20px !important;
 	clear: both;
+	overflow-y: scroll;
+	max-height: 400px;
 }
 .ttfmake-configuration-overlay-input-wrap:nth-child(1) {
 	padding-top: 0 !important;
