@@ -14,8 +14,8 @@ $links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_bu
 	100 => array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-remove',
-		'label' => __( 'Remove section', 'make' ),
-		'title' => __( 'Remove section', 'make' ),
+		'label' => __( 'Delete section', 'make' ),
+		'title' => __( 'Delete section', 'make' ),
 	)
 ) ) );
 ksort( $links );
