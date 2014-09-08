@@ -19,14 +19,16 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 			case 'section-title':
 				$placeholder = ( isset( $input['label'] ) ) ? ' placeholder="' . esc_attr( $input['label'] ) . '"' : '';
 				$name        = 'name="' . $section_name . '[' . esc_attr( $input['name'] ) . ']"';
-				$this_output = '<input' . $placeholder . ' type="text" ' . $name . ' class="ttfmake-title ttfmake-section-header-title-input" value="" autocomplete="off">';
+				$class       = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
+				$this_output = '<input' . $placeholder . $class .' type="text" ' . $name . ' class="ttfmake-title ttfmake-section-header-title-input" value="" autocomplete="off">';
 				break;
 
 			case 'select':
 				if ( isset( $input['default'] ) && isset( $input['options'] ) ) {
 					$id     = $section_name . '[' . $input['name'] . ']';
 					$label  = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
-					$select = '<select id="' . $id . '" class="ttfmake-text-columns" name="' . $id . '">%s</select>';
+					$class  = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
+					$select = '<select id="' . $id . '"' . $class .' name="' . $id . '">%s</select>';
 
 					$options = '';
 

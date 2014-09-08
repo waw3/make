@@ -88,6 +88,7 @@ class TTFMAKE_Section_Definitions {
 				200 => array(
 					'type'    => 'select',
 					'name'    => 'columns-number',
+					'class'   => 'ttfmake-text-columns',
 					'label'   => __( 'Columns', 'make' ),
 					'default' => 3,
 					'options' => array(
