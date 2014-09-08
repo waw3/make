@@ -1,3 +1,7 @@
+## 1.3.1
+
+* Fixed fatal error in PHP 5.2.
+
 ## 1.3.0
 
 * Added support for WordPress 4.0 and Customizer panels
