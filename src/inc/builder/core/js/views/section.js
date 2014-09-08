@@ -153,13 +153,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					attachment
 				);
 
-				// The URL property is blank, so complete it
-				props.url = attachment.url;
-
-				image = wp.media.string.image( props );
-
 				// Show the image
-				$placeholder.html(image);
+				$placeholder.css('background-image', 'url(' + attachment.url + ')');
 
 				// Record the chosen value
 				$input.val(attachment.id);
