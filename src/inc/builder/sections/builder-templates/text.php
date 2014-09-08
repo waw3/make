@@ -34,10 +34,33 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	</p>
 </div>
 <?php endif; ?>
+<?php
+/**
+ * Execute code before the columns select input is displayed.
+ *
+ * @since 1.2.3.
+ *
+ * @param array    $ttfmake_section_data    The data for the section.
+ */
+do_action( 'ttfmake_section_text_before_columns_select', $ttfmake_section_data );
 
-<?php do_action( 'ttfmake_section_text_before_columns_select', $ttfmake_section_data ); ?>
-<?php do_action( 'ttfmake_section_text_after_columns_select', $ttfmake_section_data ); ?>
-<?php do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
+/**
+ * Execute code after the columns select input is displayed.
+ *
+ * @since 1.2.3.
+ *
+ * @param array    $ttfmake_section_data    The data for the section.
+ */
+do_action( 'ttfmake_section_text_after_columns_select', $ttfmake_section_data );
+
+/**
+ * Execute code after the section title is displayed.
+ *
+ * @since 1.2.3.
+ *
+ * @param array    $ttfmake_section_data    The data for the section.
+ */
+do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 
 <div class="ttfmake-text-columns-stage ttfmake-text-columns-<?php echo $columns_class; ?>">
 	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
@@ -55,7 +78,16 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 			<div class="sortable-background"></div>
 		</div>
 
-		<?php do_action( 'ttfmake_section_text_before_column', $ttfmake_section_data, $i ); ?>
+		<?php
+		/**
+		 * Execute code before an individual text column is displayed.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $ttfmake_section_data    The data for the section.
+		 */
+		do_action( 'make_section_text_before_column', $ttfmake_section_data, $i );
+		?>
 
 		<div class="ttfmake-titlediv">
 			<div class="ttfmake-titlewrap">
@@ -77,12 +109,30 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<?php ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 		<?php ttfmake_get_builder_base()->add_frame( $section_id . '-' . $i, $column_name . '[content]', $content ); ?>
 
-		<?php do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i ); ?>
+		<?php
+		/**
+		 * Execute code after an individual text column is displayed.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $ttfmake_section_data    The data for the section.
+		 */
+		do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i );
+		?>
 	</div>
 	<?php $j++; endforeach; ?>
 </div>
 
-<?php do_action( 'ttfmake_section_text_after_columns', $ttfmake_section_data ); ?>
+<?php
+/**
+ * Execute code after all columns are displayed.
+ *
+ * @since 1.2.3.
+ *
+ * @param array    $ttfmake_section_data    The data for the section.
+ */
+do_action( 'make_section_text_after_columns', $ttfmake_section_data );
+?>
 
 <div class="clear"></div>
 
