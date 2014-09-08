@@ -180,7 +180,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$set = $('.ttfmake-media-uploader-add', $parent);
 
 			// Remove the image
-			$placeholder.empty();
+			$placeholder.css('background-image', '');
 
 			// Remove the value from the input
 			$input.removeAttr('value');
