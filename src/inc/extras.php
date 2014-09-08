@@ -650,7 +650,8 @@ if ( ! function_exists( 'ttfmake_backcompat_filter' ) ) :
  */
 function ttfmake_backcompat_filter() {
 	$filter = 'ttf' . current_filter();
-	return apply_filters_ref_array( $filter, func_get_args() );
+	$args   = func_get_args();
+	return apply_filters_ref_array( $filter, $args );
 }
 endif;
 
