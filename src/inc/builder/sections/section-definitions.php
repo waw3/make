@@ -96,15 +96,6 @@ class TTFMAKE_Section_Definitions {
 						3 => 3,
 					)
 				),
-				300 => array(
-					'type' => 'checkbox',
-					'name' => 'testing',
-					'label' => __( 'Test Checkbox', 'make' ),
-					'default' => 0
-				),
-				400 => array(
-					'type' => 'text',
-				)
 			)
 		);
 	}
