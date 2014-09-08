@@ -60,6 +60,10 @@ class TTFMAKE_Section_Definitions {
 	/**
 	 * Register the text section.
 	 *
+	 * Note that in 1.4.0, the "text" section was renamed to "columns". In order to provide good back compatibility,
+	 * only the section label is changed to "Columns". All other internal references for this section will remain as
+	 * "text".
+	 *
 	 * @since  1.0.0.
 	 *
 	 * @return void
@@ -67,7 +71,7 @@ class TTFMAKE_Section_Definitions {
 	public function register_text_section() {
 		ttfmake_add_section(
 			'text',
-			_x( 'Text', 'section name', 'make' ),
+			_x( 'Columns', 'section name', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
 			__( 'Create rearrangeable columns of content and images.', 'make' ),
 			array( $this, 'save_text' ),
