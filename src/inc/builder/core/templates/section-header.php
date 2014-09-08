@@ -5,18 +5,18 @@
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
 $links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_builder_section_footer_links', array(
-	100 => array(
-		'href'  => '#',
-		'class' => 'ttfmake-section-remove',
-		'label' => __( 'Remove this section', 'make' ),
-		'title' => __( 'Remove this section', 'make' ),
-	),
-	150 => array(
+	25 => array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-configure',
 		'label' => __( 'Configure section', 'make' ),
 		'title' => __( 'Configure section', 'make' ),
 	),
+	100 => array(
+		'href'  => '#',
+		'class' => 'ttfmake-section-remove',
+		'label' => __( 'Remove section', 'make' ),
+		'title' => __( 'Remove section', 'make' ),
+	)
 ) ) );
 ksort( $links );
 ?>
