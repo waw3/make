@@ -693,5 +693,5 @@ function ttfmake_get_section_definitions() {
 
 // Kick off the section definitions immediately
 if ( is_admin() ) {
-	ttfmake_get_section_definitions();
+	add_action( 'after_setup_theme', 'ttfmake_get_section_definitions', 11 );
 }
