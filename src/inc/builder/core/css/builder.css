@@ -457,11 +457,19 @@
 	position: fixed !important;
 	top: 50% !important;
 	left: 50% !important;
-	margin-left: -200px !important;
 	margin-top: -75px !important;
-	width: 400px !important;
 	min-height: 150px !important;
 	padding-bottom: 20px !important;
+}
+.ttfmake-configuration-overlay .ttfmake-overlay-wrapper {
+	margin-left: -200px !important;
+	width: 400px !important;
+}
+#ttfmake-tinymce-overlay .ttfmake-overlay-wrapper {
+	margin-left: -400px !important;
+	width: 800px !important;
+	height: 400px;
+	margin-top: -200px !important;
 }
 .ttfmake-overlay-wrapper * {
 	-webkit-font-smoothing: subpixel-antialiased !important;
