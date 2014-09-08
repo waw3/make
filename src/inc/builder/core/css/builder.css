@@ -479,10 +479,10 @@
 	padding: 20px 0 !important;
 	border-bottom: 1px solid #efefef !important;
 	/* align vertically */
-    display: flex;
-    align-items: center;
-    display: -webkit-flex;
-    -webkit-align-items: center;
+	display: flex;
+	align-items: center;
+	display: -webkit-flex;
+	-webkit-align-items: center;
 }
 .ttfmake-configuration-overlay-input-wrap select,
 .ttfmake-configuration-overlay-input-wrap input {
