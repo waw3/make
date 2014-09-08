@@ -62,7 +62,7 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	 * @param string    $input                   The input data that is wrapped.
 	 * @param string    $ttfmake_section_data    The data for the section.
 	 */
-	$wrap  = apply_filters( 'make_configuration_overlay_input_wrap', '<div class="ttfmake-configuration-overlay-input-wrap">%s</div>', $input, $ttfmake_section_data );
+	$wrap = apply_filters( 'make_configuration_overlay_input_wrap', '<div class="ttfmake-configuration-overlay-input-wrap %1$s">%2$s</div>', $input, $ttfmake_section_data );
 
 	/**
 	 * Filter the HTML for the input.
@@ -76,7 +76,8 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	$input_html = apply_filters( 'make_configuration_overlay_input', $this_output, $input, $ttfmake_section_data );
 
 	if ( $input_html ) {
-		$output .= sprintf( $wrap, $input_html );
+		$class   = ( isset( $input['class'] ) ) ? esc_attr( $input['class'] ) . '-wrap' : '';
+		$output .= sprintf( $wrap, $class, $input_html );
 	}
 }
 
