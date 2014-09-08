@@ -208,7 +208,65 @@ class TTFMAKE_Section_Definitions {
 			'sections/builder-templates/banner',
 			'sections/front-end-templates/banner',
 			300,
-			'inc/builder/'
+			'inc/builder/',
+			array(
+				100 => array(
+					'type'  => 'section-title',
+					'name'  => 'title',
+					'label' => __( 'Enter title here', 'make' ),
+				),
+				200 => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Hide navigation arrows', 'make-plus' ),
+					'name'    => 'hide-arrows',
+					'default' => 0
+				),
+				300 => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Hide navigation dots', 'make-plus' ),
+					'name'    => 'hide-dots',
+					'default' => 0
+				),
+				400 => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Autoplay slideshow', 'make-plus' ),
+					'name'    => 'autoplay',
+					'default' => 1
+				),
+				500 => array(
+					'type'    => 'text',
+					'label'   => __( 'Time between slides (in ms)', 'make-plus' ),
+					'name'    => 'delay',
+					'default' => 6000
+				),
+				600 => array(
+					'type'    => 'select',
+					'label'   => __( 'Transition effect', 'make-plus' ),
+					'name'    => 'transition',
+					'default' => 'scrollHorz',
+					'options' => array(
+						'scrollHorz' => __( 'Slide horizontal', 'make-plus' ),
+						'fade'       => __( 'Fade', 'make-plus' ),
+						'none'       => __( 'None', 'make-plus' ),
+					)
+				),
+				700 => array(
+					'type'    => 'text',
+					'label'   => __( 'Section height (px)', 'make-plus' ),
+					'name'    => 'height',
+					'default' => 600
+				),
+				800 => array(
+					'type'    => 'select',
+					'label'   => __( 'Responsive behavior', 'make-plus' ),
+					'name'    => 'responsive',
+					'default' => 'balanced',
+					'options' => array(
+						'balanced' => __( 'Default', 'make-plus' ),
+						'aspect'   => __( 'Aspect', 'make-plus' ),
+					)
+				)
+			)
 		);
 	}
 
