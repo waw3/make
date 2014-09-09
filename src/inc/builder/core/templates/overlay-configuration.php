@@ -52,6 +52,11 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
 				$this_output = $label . '<input type="text" id="' . $id . '" name="' . $id . '" />';
 				break;
+
+			case 'image':
+				$name = $section_name . '[' . $input['name'] . ']';
+				ttfmake_get_builder_base()->add_uploader( $name );
+				break;
 		}
 	}
 

@@ -399,6 +399,11 @@ class TTFMAKE_Section_Definitions {
 						'overlay' => __( 'Dark', 'make' ),
 					)
 				),
+				500 => array(
+					'type' => 'image',
+					'name' => 'background-image',
+					'label' => __( 'Background image', 'make' ),
+				),
 				600 => array(
 					'type'    => 'checkbox',
 					'label'   => __( 'Darken to improve readability', 'make' ),
