@@ -57,6 +57,12 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 				$name = $section_name . '[' . $input['name'] . ']';
 				ttfmake_get_builder_base()->add_uploader( $name );
 				break;
+
+			case 'color':
+				$name        = $section_name . '[' . $input['name'] . ']';
+				$class       = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
+				$this_output = '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' />';
+				break;
 		}
 	}
 

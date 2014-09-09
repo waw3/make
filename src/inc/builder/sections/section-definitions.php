@@ -408,7 +408,14 @@ class TTFMAKE_Section_Definitions {
 					'type'    => 'checkbox',
 					'label'   => __( 'Darken to improve readability', 'make' ),
 					'name'    => 'darken',
-					'default' => 0
+					'default' => 0,
+				),
+				700 => array(
+					'type'    => 'color',
+					'label'   => __( 'Background color', 'make' ),
+					'name'    => 'background-color',
+					'class'   => 'ttfmake-gallery-background-color',
+					'default' => '',
 				),
 				800 => array(
 					'type'    => 'select',
@@ -418,7 +425,7 @@ class TTFMAKE_Section_Definitions {
 					'options' => array(
 						'tile'  => __( 'Tile', 'make' ),
 						'cover' => __( 'Cover', 'make' ),
-					)
+					),
 				),
 			)
 		);
