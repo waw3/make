@@ -36,7 +36,7 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 					$options = '';
 
 					foreach ( $input['options'] as $key => $value ) {
-						$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $value, $current_value, false ) . '>' . $value . '</option>';
+						$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $key, $current_value, false ) . '>' . $value . '</option>';
 					}
 
 					$this_output = $label . sprintf( $select, $options );
