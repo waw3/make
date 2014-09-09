@@ -4,20 +4,25 @@
  */
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
-$links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_builder_section_footer_links', array(
-	25 => array(
+
+$links = array(
+	100 => array(
+	'href'  => '#',
+	'class' => 'ttfmake-section-remove',
+	'label' => __( 'Delete section', 'make' ),
+	'title' => __( 'Delete section', 'make' ),
+) );
+
+if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
+	$links[25] = array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-configure',
 		'label' => __( 'Configure section', 'make' ),
 		'title' => __( 'Configure section', 'make' ),
-	),
-	100 => array(
-		'href'  => '#',
-		'class' => 'ttfmake-section-remove',
-		'label' => __( 'Delete section', 'make' ),
-		'title' => __( 'Delete section', 'make' ),
-	)
-) ) );
+	);
+}
+
+$links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_builder_section_footer_links', $links ) );
 ksort( $links );
 ?>
 
