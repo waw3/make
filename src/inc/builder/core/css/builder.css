@@ -42,6 +42,30 @@
 	padding-top: 0; /*reset*/
 }
 /*---------------------------------------------------------
+ Sortable handle (builder.css)
+-------------------------------------------------------- */
+.ttfmake-sortable-handle {
+	position: relative;
+	background-color: #eee;
+	border: 1px solid #d9d9d9;
+	border-bottom: 0; /*reset*/
+	width: 100%;
+	height: 20px;
+	cursor: move;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.sortable-background {
+	display: block;
+	visibility: hidden;
+	height: 20px;
+	background: url(images/sortable-background.png) center center repeat-x;
+}
+.ttfmake-gallery-item:hover .sortable-background {
+	visibility: visible;
+}
+/*---------------------------------------------------------
  Forms (builder.css)
 -------------------------------------------------------- */
 .ttfmake-section input[type=checkbox],
@@ -303,6 +327,16 @@
 }
 .ttfmake-section-body iframe {
 	background: #fff !important;
+}
+/* has image */
+.ttfmake-has-image-set {
+	background-color: #fff;
+}
+.ttfmake-has-image-set .ttfmake-media-uploader-placeholder:before {
+	content: none;
+}
+.ttfmake-has-image-set:hover .ttfmake-media-uploader-placeholder {
+	opacity: .8;
 }
 /*---------------------------------------------------------
  Common (builder.css)
