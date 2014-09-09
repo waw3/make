@@ -34,7 +34,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 			<?php _e( 'Edit banner slide', 'make' ); ?>
 		</span>
 	</a>
-	<a href="#" class="remove-banner-slide-link">
+	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove">
 		<span>
 			<?php _e( 'Remove banner slide', 'make' ); ?>
 		</span>

@@ -32,7 +32,7 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 			<?php _e( 'Edit gallery item', 'make' ); ?>
 		</span>
 	</a>
-	<a href="#" class="remove-gallery-item-link">
+	<a href="#" class="remove-gallery-item-link ttfmake-gallery-item-remove">
 		<span>
 			<?php _e( 'Remove gallery item', 'make' ); ?>
 		</span>
