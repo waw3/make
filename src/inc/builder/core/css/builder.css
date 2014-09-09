@@ -58,12 +58,12 @@
 }
 .sortable-background {
 	display: block;
-	visibility: hidden;
 	height: 20px;
-	background: url(images/sortable-background.png) center center repeat-x;
 }
-.ttfmake-gallery-item:hover .sortable-background {
-	visibility: visible;
+.ttfmake-gallery-item:hover .sortable-background,
+.ttfmake-text-column:hover .sortable-background,
+.ttfmake-banner-slide:hover .sortable-background {
+	background: url(images/sortable-background.png) center center repeat-x;
 }
 /*---------------------------------------------------------
  Forms (builder.css)
