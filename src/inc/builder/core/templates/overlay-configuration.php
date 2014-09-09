@@ -15,12 +15,15 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	$this_output = '';
 
 	if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+		$default_value = ( isset( $input['default'] ) ) ? isset( $input['default'] ) : '';
+		$current_value = ( isset( $ttfmake_section_data['data'][ $input['name'] ] ) ) ? $ttfmake_section_data['data'][ $input['name'] ] : $default_value;
+
 		switch( $input['type'] ) {
 			case 'section-title':
 				$placeholder = ( isset( $input['label'] ) ) ? ' placeholder="' . esc_attr( $input['label'] ) . '"' : '';
 				$name        = 'name="' . $section_name . '[' . esc_attr( $input['name'] ) . ']"';
 				$class       = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
-				$this_output = '<input' . $placeholder . $class .' type="text" ' . $name . ' class="ttfmake-title ttfmake-section-header-title-input" value="" autocomplete="off">';
+				$this_output = '<input' . $placeholder . $class .' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title ttfmake-section-header-title-input" autocomplete="off">';
 				break;
 
 			case 'select':
@@ -33,7 +36,7 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 					$options = '';
 
 					foreach ( $input['options'] as $key => $value ) {
-						$options .= '<option value="' . esc_attr( $key ) . '">' . $value . '</option>';
+						$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $value, $current_value, false ) . '>' . $value . '</option>';
 					}
 
 					$this_output = $label . sprintf( $select, $options );
@@ -43,25 +46,25 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 			case 'checkbox':
 				$id          = $section_name . '[' . $input['name'] . ']';
 				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
-				$input       = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1">';
+				$input       = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>';
 				$this_output = $label . $input;
 				break;
 
 			case 'text':
 				$id          = $section_name . '[' . $input['name'] . ']';
 				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
-				$this_output = $label . '<input type="text" id="' . $id . '" name="' . $id . '" />';
+				$this_output = $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . $current_value . '" />';
 				break;
 
 			case 'image':
 				$name        = $section_name . '[' . $input['name'] . ']';
-				$this_output = ttfmake_get_builder_base()->add_uploader( $name );
+				$this_output = ttfmake_get_builder_base()->add_uploader( $name, $current_value );
 				break;
 
 			case 'color':
 				$name        = $section_name . '[' . $input['name'] . ']';
 				$class       = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
-				$this_output = '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' />';
+				$this_output = '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . $current_value . '" />';
 				break;
 		}
 	}
