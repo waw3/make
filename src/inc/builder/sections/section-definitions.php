@@ -83,7 +83,7 @@ class TTFMAKE_Section_Definitions {
 				100 => array(
 					'type'  => 'section-title',
 					'name'  => 'title',
-					'label' => __( 'Enter title here', 'make' ),
+					'label' => __( 'Enter section title', 'make' ),
 				),
 				200 => array(
 					'type'    => 'select',
@@ -213,7 +213,7 @@ class TTFMAKE_Section_Definitions {
 				100 => array(
 					'type'  => 'section-title',
 					'name'  => 'title',
-					'label' => __( 'Enter title here', 'make' ),
+					'label' => __( 'Enter section title', 'make' ),
 				),
 				200 => array(
 					'type'    => 'checkbox',

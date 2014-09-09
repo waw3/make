@@ -91,7 +91,7 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 
 		<div class="ttfmake-titlediv">
 			<div class="ttfmake-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter title here', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+				<input placeholder="<?php esc_attr_e( 'Enter column title', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 
 				<a href="#" class="edit-content-link edit-text-column-link" title="<?php echo esc_attr( __( 'Edit content', 'make' ) ); ?>" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
 					<span>
