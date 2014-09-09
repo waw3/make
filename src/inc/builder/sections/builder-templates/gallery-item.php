@@ -21,7 +21,7 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 <div class="ttfmake-gallery-item" id="ttfmake-gallery-item-<?php echo esc_attr( $ttfmake_gallery_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_gallery_id ); ?>" data-section-type="gallery-item">
 <?php endif; ?>
 
-	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
+	<div title="<?php esc_attr_e( 'Drag-and-drop this item into place', 'make' ); ?>" class="ttfmake-sortable-handle">
 		<div class="sortable-background"></div>
 	</div>
 
