@@ -33,6 +33,7 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 			</span>
 		</div>
 	</a>
+
 	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[banner-slide-order]" class="ttfmake-banner-slide-order" />
 </div>
 
