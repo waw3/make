@@ -217,53 +217,53 @@ class TTFMAKE_Section_Definitions {
 				),
 				200 => array(
 					'type'    => 'checkbox',
-					'label'   => __( 'Hide navigation arrows', 'make-plus' ),
+					'label'   => __( 'Hide navigation arrows', 'make' ),
 					'name'    => 'hide-arrows',
 					'default' => 0
 				),
 				300 => array(
 					'type'    => 'checkbox',
-					'label'   => __( 'Hide navigation dots', 'make-plus' ),
+					'label'   => __( 'Hide navigation dots', 'make' ),
 					'name'    => 'hide-dots',
 					'default' => 0
 				),
 				400 => array(
 					'type'    => 'checkbox',
-					'label'   => __( 'Autoplay slideshow', 'make-plus' ),
+					'label'   => __( 'Autoplay slideshow', 'make' ),
 					'name'    => 'autoplay',
 					'default' => 1
 				),
 				500 => array(
 					'type'    => 'text',
-					'label'   => __( 'Time between slides (in ms)', 'make-plus' ),
+					'label'   => __( 'Time between slides (in ms)', 'make' ),
 					'name'    => 'delay',
 					'default' => 6000
 				),
 				600 => array(
 					'type'    => 'select',
-					'label'   => __( 'Transition effect', 'make-plus' ),
+					'label'   => __( 'Transition effect', 'make' ),
 					'name'    => 'transition',
 					'default' => 'scrollHorz',
 					'options' => array(
-						'scrollHorz' => __( 'Slide horizontal', 'make-plus' ),
-						'fade'       => __( 'Fade', 'make-plus' ),
-						'none'       => __( 'None', 'make-plus' ),
+						'scrollHorz' => __( 'Slide horizontal', 'make' ),
+						'fade'       => __( 'Fade', 'make' ),
+						'none'       => __( 'None', 'make' ),
 					)
 				),
 				700 => array(
 					'type'    => 'text',
-					'label'   => __( 'Section height (px)', 'make-plus' ),
+					'label'   => __( 'Section height (px)', 'make' ),
 					'name'    => 'height',
 					'default' => 600
 				),
 				800 => array(
 					'type'    => 'select',
-					'label'   => __( 'Responsive behavior', 'make-plus' ),
+					'label'   => __( 'Responsive behavior', 'make' ),
 					'name'    => 'responsive',
 					'default' => 'balanced',
 					'options' => array(
-						'balanced' => __( 'Default', 'make-plus' ),
-						'aspect'   => __( 'Aspect', 'make-plus' ),
+						'balanced' => __( 'Default', 'make' ),
+						'aspect'   => __( 'Aspect', 'make' ),
 					)
 				)
 			)
