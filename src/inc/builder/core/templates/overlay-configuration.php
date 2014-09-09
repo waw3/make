@@ -15,7 +15,7 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	$this_output = '';
 
 	if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-		$default_value = ( isset( $input['default'] ) ) ? isset( $input['default'] ) : '';
+		$default_value = ( isset( $input['default'] ) ) ? $input['default'] : '';
 		$current_value = ( isset( $ttfmake_section_data['data'][ $input['name'] ] ) ) ? $ttfmake_section_data['data'][ $input['name'] ] : $default_value;
 
 		switch( $input['type'] ) {
