@@ -351,7 +351,71 @@ class TTFMAKE_Section_Definitions {
 			'sections/builder-templates/gallery',
 			'sections/front-end-templates/gallery',
 			400,
-			'inc/builder/'
+			'inc/builder/',
+			array(
+				100 => array(
+					'type'    => 'select',
+					'name'    => 'columns',
+					'label'   => __( 'Columns', 'make' ),
+					'class'   => 'ttfmake-gallery-columns',
+					'default' => 3,
+					'options' => array(
+						1 => 1,
+						2 => 2,
+						3 => 3,
+						4 => 4,
+					)
+				),
+				200 => array(
+					'type'    => 'select',
+					'name'    => 'aspect',
+					'label'   => __( 'Aspect ratio', 'make' ),
+					'default' => 'square',
+					'options' => array(
+						'square'    => __( 'Square', 'make' ),
+						'landscape' => __( 'Landscape', 'make' ),
+						'portrait'  => __( 'Portrait', 'make' ),
+						'none'      => __( 'None', 'make' ),
+					)
+				),
+				300 => array(
+					'type'    => 'select',
+					'name'    => 'captions',
+					'label'   => __( 'Caption style', 'make' ),
+					'default' => 'reveal',
+					'options' => array(
+						'reveal'  => __( 'Reveal', 'make' ),
+						'overlay' => __( 'Overlay', 'make' ),
+						'none'    => __( 'None', 'make' ),
+					)
+				),
+				400 => array(
+					'type'    => 'select',
+					'name'    => 'caption-color',
+					'label'   => __( 'Caption color', 'make' ),
+					'default' => 'light',
+					'options' => array(
+						'reveal'  => __( 'Light', 'make' ),
+						'overlay' => __( 'Dark', 'make' ),
+					)
+				),
+				600 => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Darken to improve readability', 'make' ),
+					'name'    => 'darken',
+					'default' => 0
+				),
+				800 => array(
+					'type'    => 'select',
+					'name'    => 'background-style',
+					'label'   => __( 'Background style', 'make' ),
+					'default' => 'tile',
+					'options' => array(
+						'tile'  => __( 'Tile', 'make' ),
+						'cover' => __( 'Cover', 'make' ),
+					)
+				),
+			)
 		);
 	}
 
