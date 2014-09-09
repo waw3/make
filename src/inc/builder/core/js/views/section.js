@@ -155,7 +155,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 				// Show the image
 				$placeholder.css('background-image', 'url(' + attachment.url + ')');
-				$placeholder.addClass('ttfmake-has-image-set');
+				$parent.addClass('ttfmake-has-image-set');
 
 				// Record the chosen value
 				$input.val(attachment.id);
@@ -182,7 +182,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Remove the image
 			$placeholder.css('background-image', '');
-			$placeholder.removeClass('ttfmake-has-image-set');
+			$parent.removeClass('ttfmake-has-image-set');
 
 			// Remove the value from the input
 			$input.removeAttr('value');
