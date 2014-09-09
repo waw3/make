@@ -354,6 +354,11 @@ class TTFMAKE_Section_Definitions {
 			'inc/builder/',
 			array(
 				100 => array(
+					'type'  => 'section-title',
+					'name'  => 'title',
+					'label' => __( 'Enter section title', 'make' ),
+				),
+				200 => array(
 					'type'    => 'select',
 					'name'    => 'columns',
 					'label'   => __( 'Columns', 'make' ),
@@ -366,7 +371,7 @@ class TTFMAKE_Section_Definitions {
 						4 => 4,
 					)
 				),
-				200 => array(
+				300 => array(
 					'type'    => 'select',
 					'name'    => 'aspect',
 					'label'   => __( 'Aspect ratio', 'make' ),
@@ -378,7 +383,7 @@ class TTFMAKE_Section_Definitions {
 						'none'      => __( 'None', 'make' ),
 					)
 				),
-				300 => array(
+				400 => array(
 					'type'    => 'select',
 					'name'    => 'captions',
 					'label'   => __( 'Caption style', 'make' ),
@@ -389,7 +394,7 @@ class TTFMAKE_Section_Definitions {
 						'none'    => __( 'None', 'make' ),
 					)
 				),
-				400 => array(
+				500 => array(
 					'type'    => 'select',
 					'name'    => 'caption-color',
 					'label'   => __( 'Caption color', 'make' ),
@@ -399,25 +404,25 @@ class TTFMAKE_Section_Definitions {
 						'overlay' => __( 'Dark', 'make' ),
 					)
 				),
-				500 => array(
+				600 => array(
 					'type' => 'image',
 					'name' => 'background-image',
 					'label' => __( 'Background image', 'make' ),
 				),
-				600 => array(
+				700 => array(
 					'type'    => 'checkbox',
 					'label'   => __( 'Darken to improve readability', 'make' ),
 					'name'    => 'darken',
 					'default' => 0,
 				),
-				700 => array(
+				800 => array(
 					'type'    => 'color',
 					'label'   => __( 'Background color', 'make' ),
 					'name'    => 'background-color',
 					'class'   => 'ttfmake-gallery-background-color',
 					'default' => '',
 				),
-				800 => array(
+				900 => array(
 					'type'    => 'select',
 					'name'    => 'background-style',
 					'label'   => __( 'Background style', 'make' ),
