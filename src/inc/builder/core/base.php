@@ -352,7 +352,7 @@ class TTFMAKE_Builder_Base {
 	 * @param  string    $section_name    Name of the current section.
 	 * @param  int       $image_id        ID of the current image.
 	 * @param  array     $messages        Message to show.
-	 * @return void
+	 * @return string                Either return the string or echo it.
 	 */
 	public function add_uploader( $section_name, $image_id = 0, $messages = array() ) {
 		$image        = ttfmake_get_image( $image_id, 'large' );
@@ -363,6 +363,8 @@ class TTFMAKE_Builder_Base {
 		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image', 'make' ) : $messages['remove'];
 		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
 		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
+
+		ob_start();
 		?>
 		<div class="ttfmake-uploader">
 			<div class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add">
@@ -373,6 +375,8 @@ class TTFMAKE_Builder_Base {
 			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
 	<?php
+		$output = ob_get_clean();
+		return $output;
 	}
 
 	/**

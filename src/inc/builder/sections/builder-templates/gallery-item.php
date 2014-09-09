@@ -23,7 +23,7 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 		<div class="sortable-background"></div>
 	</div>
 
-	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
+	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
 	<a href="#" class="edit-gallery-item-link">
 		<span>

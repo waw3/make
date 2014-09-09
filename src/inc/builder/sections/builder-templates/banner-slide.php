@@ -22,7 +22,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 <div class="ttfmake-banner-slide" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-section-type="banner-slide">
 <?php endif; ?>
 
-	<?php ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
+	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
 	<a href="#" class="edit-banner-slide-link">
 		<span>

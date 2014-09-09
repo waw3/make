@@ -54,8 +54,8 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 				break;
 
 			case 'image':
-				$name = $section_name . '[' . $input['name'] . ']';
-				ttfmake_get_builder_base()->add_uploader( $name );
+				$name        = $section_name . '[' . $input['name'] . ']';
+				$this_output = ttfmake_get_builder_base()->add_uploader( $name );
 				break;
 
 			case 'color':
