@@ -48,7 +48,9 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 				break;
 
 			case 'text':
-				$this_output = '<label>Dummy text</label><input type="text" />';
+				$id          = $section_name . '[' . $input['name'] . ']';
+				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $input['label'] ) . '</label>' : '';
+				$this_output = $label . '<input type="text" id="' . $id . '" name="' . $id . '" />';
 				break;
 		}
 	}
