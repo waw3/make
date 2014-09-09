@@ -19,13 +19,13 @@ $alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
 ?>
 
-<div title="<?php esc_attr_e( 'Drag-and-drop this slide into place', 'make' ); ?>" class="ttfmake-sortable-handle">
-	<div class="sortable-background"></div>
-</div>
-
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 <div class="ttfmake-banner-slide" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-section-type="banner-slide">
 <?php endif; ?>
+
+	<div title="<?php esc_attr_e( 'Drag-and-drop this slide into place', 'make' ); ?>" class="ttfmake-sortable-handle">
+		<div class="sortable-background"></div>
+	</div>
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
