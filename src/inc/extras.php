@@ -697,6 +697,7 @@ if ( ! function_exists( 'ttfmake_backcompat_action' ) ) :
  */
 function ttfmake_backcompat_action() {
 	$action = 'ttf' . current_action();
-	do_action_ref_array( $action, func_get_args() );
+	$args   = func_get_args();
+	do_action_ref_array( $action, $args );
 }
 endif;
