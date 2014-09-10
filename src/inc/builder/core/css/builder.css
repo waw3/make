@@ -581,8 +581,25 @@
 	border-bottom: 0 !important;
 }
 .ttfmake-configuration-overlay-button {
+	margin-top: 20px;
+}
+.ttfmake-configuration-overlay-button span {
 	text-align: center !important;
 	float: right !important;
+	line-height: 30px;
+	background-color: #2ea2cc;
+	border: 1px solid #0074a2;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	min-width: 50px;
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+	box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+}
+.ttfmake-configuration-overlay-button span:hover {
+	background-color: #1e8cbe;
 }
 /*---------------------------------------------------------
  iFrame (builder.css)
