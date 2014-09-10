@@ -17,6 +17,7 @@
 	display: flex;
 	display: -webkit-flex;
 	padding: 0 9px;
+	margin: 0;
 }
 /*---------------------------------------------------------
  Text and Gallery section (sections.css)

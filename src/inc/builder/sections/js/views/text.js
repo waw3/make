@@ -63,7 +63,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				}
 
 				$('.sortable-placeholder', $stage)
-					.height($item.height())
+					.height(parseInt($item.height(), 10) - 2) // -2 to account for placeholder border
 					.css({
 						'flex': $item.css('flex'),
 						'-webkit-flex': $item.css('-webkit-flex')
