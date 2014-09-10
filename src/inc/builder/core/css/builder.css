@@ -582,7 +582,13 @@
 	overflow-y: scroll;
 	max-height: 400px;
 }
-.ttfmake-configuration-overlay-input-wrap:nth-child(1) {
+.ttfmake-configuration-title {
+	width: 100%;
+	height: 41px;
+	padding: 0 8px;
+	font-size: 19px;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-title-wrap {
 	padding-top: 0 !important;
 	border-bottom: 0 !important;
 }
