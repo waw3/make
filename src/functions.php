@@ -508,6 +508,16 @@ function ttfmake_plus_styles() {
 		text-transform: uppercase;
 		-webkit-font-smoothing: subpixel-antialiased !important;
 	}
+	.ttfmake-plus-info p {
+		margin-top: 0;
+		margin-left: 10px;
+	}
+	.ttfmake-section-text .ttfmake-titlediv {
+		padding-right: 45px;
+	}
+	.edit-text-column-link {
+		right: 0;
+	}
 	a.ttfmake-customize-plus {
 		margin-left: 0;
 	}
