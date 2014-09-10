@@ -238,7 +238,6 @@
 .remove-gallery-item-link,
 .edit-banner-slide-link,
 .remove-banner-slide-link,
-.convert-widget-area-link,
 .edit-text-column-link {
 	position: absolute;
 	top: 0;
@@ -255,15 +254,13 @@
 	outline: none !important;
 }
 .remove-gallery-item-link,
-.remove-banner-slide-link,
-.convert-widget-area-link {
-	right: 0px;
+.remove-banner-slide-link {
+	right: 0;
 }
 .edit-gallery-item-link:hover,
 .remove-gallery-item-link:hover,
 .edit-banner-slide-link:hover,
 .remove-banner-slide-link:hover,
-.convert-widget-area-link:hover,
 .edit-text-column-link:hover {
 	color: #222222;
 }
@@ -271,7 +268,6 @@
 .remove-gallery-item-link span,
 .edit-banner-slide-link span,
 .remove-banner-slide-link span,
-.convert-widget-area-link span,
 .edit-text-column-link span {
 	display: none;
 	text-indent: -9999px;
@@ -288,11 +284,6 @@
 .remove-gallery-item-link:before,
 .remove-banner-slide-link:before {
 	content: "\f182";
-	font: 400 20px/39px dashicons;
-	speak: none;
-}
-.convert-widget-area-link:before {
-	content: "\f311";
 	font: 400 20px/39px dashicons;
 	speak: none;
 }

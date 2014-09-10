@@ -72,6 +72,27 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 		$image_id    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
 		$title       = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
 		$content     = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
+
+		$column_buttons = array(
+			100 => array(
+				'label'              => __( 'Edit text column', 'make' ),
+				'href'               => '#',
+				'class'              => 'edit-content-link edit-text-column-link',
+				'title'              => __( 'Edit content', 'make' ),
+				'other-a-attributes' => 'data-textarea="' . esc_attr( $textarea_id ) . '" data-iframe="' . esc_attr( $iframe_id ) . '"',
+			),
+		);
+
+		/**
+		 * Filter the buttons added to a text column.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param array    $column_buttons          The current list of buttons.
+		 * @param array    $column_data             The data for the current column.
+		 * @param array    $ttfmake_section_data    All data for the section.
+		 */
+		$column_buttons = apply_filters( 'make_column_buttons', $column_buttons, $ttfmake_section_data['data']['columns'][$i], $ttfmake_section_data );
 	?>
 	<div class="<?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
@@ -93,16 +114,18 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 			<div class="ttfmake-titlewrap">
 				<input placeholder="<?php esc_attr_e( 'Enter column title', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 
-				<a href="#" class="edit-content-link edit-text-column-link" title="<?php echo esc_attr( __( 'Edit content', 'make' ) ); ?>" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
+				<?php foreach ( $column_buttons as $button ) : ?>
+				<a href="<?php echo esc_url( $button['href'] ); ?>" class="<?php esc_attr_e( $button['class'] ); ?>" title="<?php esc_attr_e( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
 					<span>
-						<?php _e( 'Edit text column', 'make' ); ?>
+						<?php echo esc_html( $button['label'] ); ?>
 					</span>
 				</a>
-				<a href="#" class="convert-widget-area-link" title="<?php echo esc_attr( __( 'Convert to widget area', 'make' ) ); ?>">
+				<?php endforeach; ?>
+				<!--<a href="#" class="convert-widget-area-link ttfmp-create-widget-area" title="<?php echo esc_attr( __( 'Convert to widget area', 'make' ) ); ?>">
 					<span>
 						<?php _e( 'Convert text column to widget area', 'make' ); ?>
 					</span>
-				</a>
+				</a>-->
 			</div>
 		</div>
 
