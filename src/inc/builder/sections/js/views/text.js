@@ -62,7 +62,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage.addClass(addClass);
 				}
 
-				$('.sortable-placeholder', $stage).height($item.height());
+				$('.sortable-placeholder', $stage)
+					.height($item.height())
+					.css({
+						'flex': $item.css('flex'),
+						'-webkit-flex': $item.css('-webkit-flex')
+					});
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),

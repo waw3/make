@@ -9,7 +9,15 @@
 	border-top: 0; /*reset*/
 	border-bottom: 0; /*reset*/
 }
-
+.ttfmake-section-text .ttfmake-section-body {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.ttfmake-text-columns-stage .sortable-placeholder {
+	display: flex;
+	display: -webkit-flex;
+	padding: 0 9px;
+}
 /*---------------------------------------------------------
  Text and Gallery section (sections.css)
 -------------------------------------------------------- */
@@ -31,6 +39,11 @@
 }
 .ttfmake-plus-info {
 	float: left;
+}
+.ttfmake-text-column {
+	flex: 1;
+	-webkit-flex: 1;
+	padding: 0 10px;
 }
 /*---------------------------------------------------------
  Text and Gallery: One column (sections.css)
@@ -54,12 +67,6 @@
 	.ttfmake-text-columns-2 {
 		display: -webkit-flex;
 	}
-	.ttfmake-text-columns-2 .ttfmake-text-column {
-		padding-left: 20px;
-	}
-	.ttfmake-text-columns-2 .ttfmake-text-column-position-1 {
-		margin-left: -20px; /*offset*/
-	}
 }
 /*---------------------------------------------------------
  Text and Gallery: Three column (sections.css)
@@ -71,12 +78,6 @@
 	.ttfmake-text-columns-3 {
 		display: -webkit-flex;
 	}
-	.ttfmake-text-columns-3 .ttfmake-text-column {
-		padding-left: 20px;
-	}
-	.ttfmake-text-columns-3 .ttfmake-text-column-position-1 {
-		margin-left: -20px; /*offset*/
-	}
 }
 /*---------------------------------------------------------
  Text and Gallery: Four column (sections.css)
@@ -84,12 +85,6 @@
 @media screen and ( min-width: 1260px ) {
 	.ttfmake-text-columns-4 {
 		display: -webkit-flex;
-	}
-	.ttfmake-text-columns-4 .ttfmake-text-column {
-		padding-left: 20px;
-	}
-	.ttfmake-text-columns-4 .ttfmake-text-column-position-1 {
-		margin-left: -20px; /*offset*/
 	}
 }
 /*---------------------------------------------------------
