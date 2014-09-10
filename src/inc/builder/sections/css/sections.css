@@ -55,7 +55,6 @@
 		display: -webkit-flex;
 	}
 	.ttfmake-text-columns-2 .ttfmake-text-column {
-		width: 100%;
 		padding-left: 20px;
 	}
 	.ttfmake-text-columns-2 .ttfmake-text-column-position-1 {
@@ -73,7 +72,6 @@
 		display: -webkit-flex;
 	}
 	.ttfmake-text-columns-3 .ttfmake-text-column {
-		width: 100%;
 		padding-left: 20px;
 	}
 	.ttfmake-text-columns-3 .ttfmake-text-column-position-1 {
@@ -88,7 +86,6 @@
 		display: -webkit-flex;
 	}
 	.ttfmake-text-columns-4 .ttfmake-text-column {
-		width: 100%;
 		padding-left: 20px;
 	}
 	.ttfmake-text-columns-4 .ttfmake-text-column-position-1 {
