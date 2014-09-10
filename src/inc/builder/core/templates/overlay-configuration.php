@@ -58,13 +58,15 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 
 			case 'image':
 				$name        = $section_name . '[' . $input['name'] . ']';
-				$this_output = ttfmake_get_builder_base()->add_uploader( $name, $current_value );
+				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $input['label'] ) . '</label>' : '';
+				$this_output = $label . ttfmake_get_builder_base()->add_uploader( $name, $current_value );
 				break;
 
 			case 'color':
 				$name        = $section_name . '[' . $input['name'] . ']';
+				$label       = ( isset( $input['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $input['label'] ) . '</label>' : '';
 				$class       = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
-				$this_output = '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . $current_value . '" />';
+				$this_output = $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . $current_value . '" />';
 				break;
 		}
 	}
