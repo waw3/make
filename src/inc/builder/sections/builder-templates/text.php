@@ -93,6 +93,7 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 		 * @param array    $ttfmake_section_data    All data for the section.
 		 */
 		$column_buttons = apply_filters( 'make_column_buttons', $column_buttons, $ttfmake_section_data['data']['columns'][$i], $ttfmake_section_data );
+		ksort( $column_buttons );
 	?>
 	<div class="<?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
