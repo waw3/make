@@ -234,6 +234,13 @@
 	color: #bbb;
 	border-left: 1px solid #999;
 }
+/* hide configure button when section is closed */
+.ttfmake-section .ttfmake-section-configure {
+	display: none;
+}
+.ttfmake-section-open .ttfmake-section-configure {
+	display: inline-block;
+}
 
 /* hide text labels */
 .ttfmake-section-remove span,
