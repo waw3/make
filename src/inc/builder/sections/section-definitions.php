@@ -84,6 +84,7 @@ class TTFMAKE_Section_Definitions {
 					'type'  => 'section-title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
+					'class' => 'ttfmake-configuration-title',
 				),
 				200 => array(
 					'type'    => 'select',
@@ -96,7 +97,7 @@ class TTFMAKE_Section_Definitions {
 						2 => 2,
 						3 => 3,
 						4 => 4,
-					)
+					),
 				),
 			)
 		);
@@ -214,6 +215,7 @@ class TTFMAKE_Section_Definitions {
 					'type'  => 'section-title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
+					'class' => 'ttfmake-configuration-title',
 				),
 				200 => array(
 					'type'    => 'checkbox',
@@ -357,6 +359,7 @@ class TTFMAKE_Section_Definitions {
 					'type'  => 'section-title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
+					'class' => 'ttfmake-configuration-title',
 				),
 				200 => array(
 					'type'    => 'select',
@@ -405,9 +408,10 @@ class TTFMAKE_Section_Definitions {
 					)
 				),
 				600 => array(
-					'type' => 'image',
-					'name' => 'background-image',
+					'type'  => 'image',
+					'name'  => 'background-image',
 					'label' => __( 'Background image', 'make' ),
+					'class' => 'ttfmake-configuration-media'
 				),
 				700 => array(
 					'type'    => 'checkbox',
@@ -419,7 +423,7 @@ class TTFMAKE_Section_Definitions {
 					'type'    => 'color',
 					'label'   => __( 'Background color', 'make' ),
 					'name'    => 'background-color',
-					'class'   => 'ttfmake-gallery-background-color',
+					'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
 					'default' => '',
 				),
 				900 => array(
