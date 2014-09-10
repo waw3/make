@@ -528,6 +528,9 @@
 	color: #666;
 	cursor: pointer;
 }
+.ttfmake-configuration-overlay-input-wrap  .ttfmake-uploader {
+	width: 100%;
+}
 .ttfmake-overlay-close:hover {
 	color: #2ea2cc;
 }
@@ -574,10 +577,6 @@
 }
 .ttfmake-configuration-overlay-input-wrap:nth-child(1) {
 	padding-top: 0 !important;
-	border-bottom: 0 !important;
-}
-.ttfmake-configuration-overlay-input-wrap:nth-child(3) {
-	padding-bottom: 40px !important;
 	border-bottom: 0 !important;
 }
 .ttfmake-configuration-overlay-button {
