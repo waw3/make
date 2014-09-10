@@ -62,7 +62,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 
 		$selector.sortable({
-			handle: '.ttfmake-banner-slide-header',
+			handle: '.ttfmake-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
 			distance: 2,
