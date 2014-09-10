@@ -8,7 +8,7 @@
 		<div class="ttfmake-overlay-header">
 			<div class="ttfmake-overlay-window-head">
 				<div class="ttfmake-overlay-title">Configure Section</div>
-				<button type="button" class="ttfmake-overlay-close" aria-hidden="true">&#215;</button>
+				<span class="ttfmake-overlay-close" aria-hidden="true">&#215;</span>
 			</div>
 		</div>
 		<div class="ttfmake-overlay-body">

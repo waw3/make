@@ -1,5 +1,5 @@
-			<div class="mce-btn mce-primary ttfmake-configuration-overlay-button">
-				<button>OK</button>
+			<div class="ttfmake-configuration-overlay-button">
+				<span>OK</span>
 			</div>
 		</div>
 	</div>
