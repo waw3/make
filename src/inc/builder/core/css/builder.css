@@ -592,6 +592,15 @@
 	padding-top: 0 !important;
 	border-bottom: 0 !important;
 }
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-media-wrap {
+	display: block;
+	clear: both;
+	width: 100%;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-media-wrap label {
+	display: block;
+	margin-bottom: 20px;
+}
 .ttfmake-configuration-overlay-button {
 	margin-top: 20px;
 }
