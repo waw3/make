@@ -121,11 +121,6 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 					</span>
 				</a>
 				<?php endforeach; ?>
-				<!--<a href="#" class="convert-widget-area-link ttfmp-create-widget-area" title="<?php echo esc_attr( __( 'Convert to widget area', 'make' ) ); ?>">
-					<span>
-						<?php _e( 'Convert text column to widget area', 'make' ); ?>
-					</span>
-				</a>-->
 			</div>
 		</div>
 
