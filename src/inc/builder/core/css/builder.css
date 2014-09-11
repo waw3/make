@@ -1,5 +1,5 @@
 /*---------------------------------------------------------
- Defaults (builder.css)
+ Builder (builder.css)
 -------------------------------------------------------- */
 .ttfmake-titlediv {
 	position: relative;
@@ -23,9 +23,6 @@
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 }
-/*---------------------------------------------------------
- Builder (builder.css)
--------------------------------------------------------- */
 #ttfmake-builder .inside {
 	padding: 0; /*reset*/
 }
@@ -75,20 +72,31 @@
 .ttfmake-menu-list a:hover {
 	color: #333333 !important;
 }
+.ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
+	display: block;
+	visibility: hidden;
+	width: 84px;
+	height: 74px;
+	background: url(images/section-icons-hover.png) center center no-repeat;
+	background-size: 36px 36px;
+}
+.ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
+	visibility: visible;
+}
 .ttfmake-menu-list-item {
-	width: 50%;
 	float: left;
+	width: 50%;
+	height: 155px;
+	margin-bottom: 0; /*reset*/
 	text-align: center;
 	border-right: 1px solid #eeeeee;
 	border-bottom: 1px solid #eeeeee;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	margin-bottom: 0; /*reset*/
-	height: 155px;
 }
-.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
-	border-right: 0; /*reset*/
+.ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
+	border-color: #bbbbbb;
 }
 @media screen and (min-width: 1160px) {
 	.ttfmake-menu-list-item {
@@ -103,11 +111,11 @@
 		border-right: 0; /*reset*/
 	}
 }
+.ttfmake-menu-list-item:last-of-type {
+	margin-right: 0; /*reset*/
+}
 .ttfmake-menu-list-item:hover {
 	background-color: #fafafa;
-}
-.ttfmake-menu-list-item-link {
-	display: block;
 }
 .ttfmake-menu-list-item a {
 	color: #21759b;
@@ -115,19 +123,11 @@
 .ttfmake-menu-list-item a:hover {
 	color: #d54e21;
 }
-.ttfmake-menu-list-item:last-of-type {
-	margin-right: 0; /*reset*/
+.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
+	border-right: 0; /*reset*/
 }
-.ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
+.ttfmake-menu-list-item-link {
 	display: block;
-	visibility: hidden;
-	width: 84px;
-	height: 74px;
-	background: url(images/section-icons-hover.png) center center no-repeat;
-	background-size: 36px 36px;
-}
-.ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
-	visibility: visible;
 }
 .ttfmake-menu-list-item-link-icon-wrapper {
 	display: inline-block;
@@ -141,9 +141,6 @@
 	background-repeat: no-repeat;
 	background-size: 70px 60px;
 	border: 1px solid #dfdfdf;
-}
-.ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
-	border-color: #bbbbbb;
 }
 .section-type-description {
 	margin-top: 18px;
@@ -581,17 +578,17 @@
 	margin-top: 20px;
 }
 .ttfmake-configuration-overlay-button span {
-	text-align: center !important;
 	float: right !important;
 	min-width: 50px;
-	line-height: 30px;
 	font-size: 14px;
 	color: #fff;
+	line-height: 30px;
+	text-align: center !important;
 	border: 1px solid #0074a2;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
 	background-color: #2ea2cc;
 	cursor: pointer;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
 	box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
 }
@@ -612,8 +609,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;   /* Same as iframe */
-	height: 300px; /* Same as iframe */
+	width: 100%; /* same as iframe */
+	height: 300px; /* same as iframe */
 }
 .ttfmake-iframe-overlay .edit-content-link {
 	display: block;
