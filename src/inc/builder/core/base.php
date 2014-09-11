@@ -63,7 +63,6 @@ class TTFMAKE_Builder_Base {
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
-		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
 
 		if ( false === ttfmake_is_plus() ) {
@@ -528,23 +527,12 @@ class TTFMAKE_Builder_Base {
 		}
 
 		// Print the templates
-		foreach ( ttfmake_get_sections() as $key => $section ) : ?>
+		foreach ( ttfmake_get_sections() as $section ) : ?>
 			<script type="text/html" id="tmpl-ttfmake-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
 			$this->load_section( $section, array() );
 			$html = ob_get_clean();
-
-			$html = str_replace(
-				array(
-					'temp',
-				),
-				array(
-					'{{{ id }}}',
-				),
-				$html
-			);
-
 			echo $html;
 			?>
 		</script>
@@ -663,26 +651,6 @@ class TTFMAKE_Builder_Base {
 		}
 
 		return $mce_init;
-	}
-
-	/**
-	 * Denote the default editor for the user.
-	 *
-	 * Note that it would usually be ideal to expose this via a JS variable using wp_localize_script; however, it is
-	 * being printed here in order to guarantee that nothing changes this value before it would otherwise be printed.
-	 * The "after_wp_tiny_mce" action appears to be the most reliable place to print this variable.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  array    $settings   TinyMCE settings.
-	 * @return void
-	 */
-	public function after_wp_tiny_mce( $settings ) {
-		?>
-		<script type="text/javascript">
-			var ttfmakeMCE = '<?php echo esc_js( wp_default_editor() ); ?>';
-		</script>
-	<?php
 	}
 
 	/**
