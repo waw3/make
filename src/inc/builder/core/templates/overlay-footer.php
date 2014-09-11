@@ -1,5 +1,5 @@
 			<div class="ttfmake-configuration-overlay-button">
-				<span>OK</span>
+				<span class="ttfmake-overlay-close-action">OK</span>
 			</div>
 		</div>
 	</div>

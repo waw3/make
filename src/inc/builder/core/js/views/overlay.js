@@ -7,7 +7,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.OverlayView = Backbone.View.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttfmake-overlay-close' : 'closeOnClick'
+				'click .ttfmake-overlay-close-action' : 'closeOnClick'
 			});
 		},
 
