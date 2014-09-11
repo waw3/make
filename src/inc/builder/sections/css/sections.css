@@ -18,8 +18,10 @@
 .ttfmake-gallery-items-stage .sortable-placeholder {
 	display: flex;
 	display: -webkit-flex;
+	flex: 1;
+	-webkit-flex: 1;
+	margin: 0; /*reset*/
 	padding: 0 9px;
-	margin: 0;
 }
 .ttfmake-gallery-items-stage .sortable-placeholder {
 	padding: 0; /*reset*/
@@ -65,11 +67,6 @@
 .ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
 	display: none;
 }
-@media screen and ( min-width: 1260px ) {
-	.ttfmake-text-columns-2 {
-		display: -webkit-flex;
-	}
-}
 /*---------------------------------------------------------
  Text: Three column (sections.css)
 -------------------------------------------------------- */
@@ -77,15 +74,10 @@
 	display: none;
 }
 @media screen and ( min-width: 1260px ) {
-	.ttfmake-text-columns-3 {
-		display: -webkit-flex;
-	}
-}
-/*---------------------------------------------------------
- Text: Four column (sections.css)
--------------------------------------------------------- */
-@media screen and ( min-width: 1260px ) {
+	.ttfmake-text-columns-2,
+	.ttfmake-text-columns-3,
 	.ttfmake-text-columns-4 {
+		display: flex;
 		display: -webkit-flex;
 	}
 }
