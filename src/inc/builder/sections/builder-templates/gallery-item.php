@@ -15,6 +15,10 @@ $title       = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 $link        = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['link'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['link'] : '';
 $image_id    = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['image-id'] : 0;
 $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['description'] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ]['description'] : '';
+
+// Set up the combined section + slide ID
+$section_id  = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '';
+$combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }}}' : $section_id . '-' . $ttfmake_gallery_id;
 ?>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
@@ -27,7 +31,7 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-gallery-item-link">
+	<a href="#" class="edit-content-link edit-gallery-item-link" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
 		<span>
 			<?php _e( 'Edit gallery item', 'make' ); ?>
 		</span>
@@ -37,6 +41,8 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 			<?php _e( 'Remove gallery item', 'make' ); ?>
 		</span>
 	</a>
+
+	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $description, false ); ?>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
