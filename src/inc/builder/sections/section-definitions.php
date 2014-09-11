@@ -237,7 +237,7 @@ class TTFMAKE_Section_Definitions {
 				),
 				500 => array(
 					'type'    => 'text',
-					'label'   => __( 'Time between slides (in ms)', 'make' ),
+					'label'   => __( 'Time between slides (ms)', 'make' ),
 					'name'    => 'delay',
 					'default' => 6000
 				),
