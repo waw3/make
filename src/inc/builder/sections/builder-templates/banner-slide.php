@@ -17,6 +17,10 @@ $darken           = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 $image_id         = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] : 0;
 $alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] : 'none';
 $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
+
+// Set up the combined section + slide ID
+$section_id  = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '';
+$combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }}}' : $section_id . '-' . $ttfmake_slide_id;
 ?>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
@@ -29,7 +33,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-banner-slide-link" title="<?php esc_attr_e( 'Edit banner slide', 'make' ); ?>">
+	<a href="#" class="edit-content-link edit-banner-slide-link" title="<?php esc_attr_e( 'Edit banner slide', 'make' ); ?> " data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
 		<span>
 			<?php _e( 'Edit banner slide', 'make' ); ?>
 		</span>
@@ -39,6 +43,8 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 			<?php _e( 'Remove banner slide', 'make' ); ?>
 		</span>
 	</a>
+
+	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $content, false ); ?>
 
 	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
 <?php if ( true !== $ttfmake_is_js_template ) : ?>

@@ -199,7 +199,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.tinymceOverlay.open();
 
 			var $target = $(evt.target),
-				iframeID = $target.attr('data-iframe'),
+				iframeID = ($target.attr('data-iframe')) ? $target.attr('data-iframe') : '',
 				textAreaID = $target.attr('data-textarea');
 
 			oneApp.setMakeContentFromTextArea(iframeID, textAreaID);

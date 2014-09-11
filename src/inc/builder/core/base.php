@@ -388,13 +388,15 @@ class TTFMAKE_Builder_Base {
 	 * @param  string    $id               The unique ID to identify the different areas.
 	 * @param  string    $textarea_name    The name of the textarea.
 	 * @param  string    $content          The content for the text area.
+	 * @param  bool      $iframe           Whether or not to add an iframe to preview content.
 	 * @return void
 	 */
-	public function add_frame( $id, $textarea_name, $content = '' ) {
+	public function add_frame( $id, $textarea_name, $content = '', $iframe = true ) {
 		global $ttfmake_is_js_template;
 		$iframe_id   = 'ttfmake-iframe-' . $id;
 		$textarea_id = 'ttfmake-content-' . $id;
 	?>
+		<?php if ( true === $iframe ) : ?>
 		<div class="ttfmake-iframe-wrapper">
 			<div class="ttfmake-iframe-overlay">
 				<a href="#" class="edit-content-link" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
@@ -405,16 +407,21 @@ class TTFMAKE_Builder_Base {
 			</div>
 			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>"></iframe>
 		</div>
+		<?php endif; ?>
+
 		<textarea id="<?php echo esc_attr( $textarea_id ); ?>" name="<?php echo esc_attr( $textarea_name ); ?>" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
+
+		<?php if ( true === $iframe ) : ?>
 		<div id="ttmake-rendered-content-<?php echo $id; ?>" style="display:none;">
 			<?php echo apply_filters( 'the_content', $content ); ?>
 		</div>
+		<?php endif ; ?>
 
-		<?php if ( true !== $ttfmake_is_js_template ) : ?>
-			<script type="text/javascript">
-				var ttfMakeFrames = ttfMakeFrames || [];
-				ttfMakeFrames.push('<?php echo esc_js( $id ); ?>');
-			</script>
+		<?php if ( true !== $ttfmake_is_js_template && true === $iframe ) : ?>
+		<script type="text/javascript">
+			var ttfMakeFrames = ttfMakeFrames || [];
+			ttfMakeFrames.push('<?php echo esc_js( $id ); ?>');
+		</script>
 		<?php endif;
 	}
 
