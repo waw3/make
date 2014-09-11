@@ -160,11 +160,13 @@
 .sortable-background {
 	display: block;
 	height: 20px;
+	background: url(images/sortable-background.png) center center repeat-x;
+	opacity: .5;
 }
 .ttfmake-gallery-item:hover .sortable-background,
 .ttfmake-text-column:hover .sortable-background,
 .ttfmake-banner-slide:hover .sortable-background {
-	background: url(images/sortable-background.png) center center repeat-x;
+	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------
  Forms (builder.css)
@@ -399,7 +401,7 @@
 	position: relative;
 	display: block;
 	width: 100%;
-	height: 180px;
+	height: 200px;
 	border: 1px solid #dfdfdf;
 	background-color: #fafafa;
 	background-position: center;
@@ -416,7 +418,7 @@
 	content: "\f128";
 	display: block;
 	color: #d9d9d9;
-	font: 60px/180px dashicons;
+	font: 60px/200px dashicons;
 	text-align: center;
 }
 /*---------------------------------------------------------
