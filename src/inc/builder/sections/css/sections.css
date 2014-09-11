@@ -96,6 +96,9 @@
 .ttfmake-gallery-columns-1 .sortable-placeholder {
 	flex: 0 100%;
 	-webkit-flex: 0 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 /*---------------------------------------------------------
  Gallery: Two column (sections.css)
@@ -104,6 +107,9 @@
 .ttfmake-gallery-columns-2 .sortable-placeholder {
 	flex: 0 50%;
 	-webkit-flex: 0 50%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 /*---------------------------------------------------------
  Gallery: Three column (sections.css)
@@ -113,6 +119,9 @@
 .ttfmake-gallery-columns-3 .sortable-placeholder {
 	flex: 0 33.333%;
 	-webkit-flex: 0 33.333%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 /*---------------------------------------------------------
  Gallery: Four column (sections.css)
@@ -121,6 +130,9 @@
 .ttfmake-gallery-columns-4 .sortable-placeholder {
 	flex: 0 25%;
 	-webkit-flex: 0 25%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 /*---------------------------------------------------------
  Banner (sections.css)
