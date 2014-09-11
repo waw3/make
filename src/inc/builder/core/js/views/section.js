@@ -214,6 +214,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
 			$overlay.show();
+			$('.ttfmake-configuration-title:first', this.$el).focus();
 			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $section]);
 
 			this.setSize($overlay, $wrapper);
