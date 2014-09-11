@@ -48,7 +48,6 @@ class TTFMAKE_Section_Definitions {
 		$this->register_text_section();
 		$this->register_banner_section();
 		$this->register_gallery_section();
-		//$this->register_blank_section();
 
 		// Add the section JS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -144,49 +143,6 @@ class TTFMAKE_Section_Definitions {
 					$clean_data['columns'][ $id ]['content'] = sanitize_post_field( 'post_content', $item['content'], ( get_post() ) ? get_the_ID() : 0, 'db' );
 				}
 			}
-		}
-
-		return $clean_data;
-	}
-
-	/**
-	 * Register the blank section.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	public function register_blank_section() {
-		ttfmake_add_section(
-			'blank',
-			_x( 'Blank', 'section name', 'make' ),
-			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
-			__( 'A blank canvas for standard content or HTML code.', 'make' ),
-			array( $this, 'save_blank' ),
-			'sections/builder-templates/blank',
-			'sections/front-end-templates/blank',
-			200,
-			'inc/builder/'
-		);
-	}
-
-	/**
-	 * Save the data for the blank section.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  array    $data    The data from the $_POST array for the section.
-	 * @return array             The cleaned data.
-	 */
-	public function save_blank( $data ) {
-		$clean_data = array();
-
-		if ( isset( $data['title'] ) ) {
-			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-		}
-
-		if ( isset( $data['content'] ) ) {
-			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], ( get_post() ) ? get_the_ID() : 0, 'db' );
 		}
 
 		return $clean_data;

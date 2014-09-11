@@ -154,6 +154,61 @@ class TTFMAKE_Builder_Base {
 
 		// Print the current sections
 		foreach ( $section_data as $section ) {
+			/**
+			 * In Make 1.4.0, the blank section was deprecated. Any existing blank sections are converted to 1 column,
+			 * text sections.
+			 */
+			if ( isset( $section['section-type'] ) && 'blank' === $section['section-type'] && isset( $registered_sections['text'] ) ) {
+				// Convert the data for the section
+				$content = ( ! empty( $section['content'] ) ) ? $section['content'] : '';
+				$title   = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+				$label   = ( ! empty( $section['label'] ) ) ? $section['label'] : '';
+				$state   = ( ! empty( $section['state'] ) ) ? $section['state'] : 'open';
+				$id      = ( ! empty( $section['id'] ) ) ? $section['id'] : time();
+
+				// Set the data
+				$section = array(
+					'id'             => $id,
+					'state'          => $state,
+					'section-type'   => 'text',
+					'title'          => $title,
+					'label'          => $label,
+					'columns-number' => 1,
+					'columns-order'  => array(
+						0 => 1,
+						1 => 2,
+						2 => 3,
+						3 => 4,
+					),
+					'columns'        => array(
+						1 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => $content,
+							''
+						),
+						2 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => '',
+							''
+						),
+						3 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => '',
+							''
+						),
+						4 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => '',
+							''
+						),
+					)
+				);
+			}
+
 			if ( isset( $registered_sections[ $section['section-type'] ]['display_template'] ) ) {
 				// Print the saved section
 				$this->load_section( $registered_sections[ $section['section-type'] ], $section );
@@ -448,8 +503,8 @@ class TTFMAKE_Builder_Base {
 
 		// Include the template
 		ttfmake_load_section_template(
-			$section['builder_template'],
-			$section['path']
+			$ttfmake_section_data['section']['builder_template'],
+			$ttfmake_section_data['section']['path']
 		);
 
 		// Destroy the variable as a good citizen does
