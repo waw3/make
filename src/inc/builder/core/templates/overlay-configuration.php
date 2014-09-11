@@ -94,7 +94,8 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	$input_html = apply_filters( 'make_configuration_overlay_input', $this_output, $input, $ttfmake_section_data );
 
 	if ( $input_html ) {
-		$class   = ( isset( $input['class'] ) ) ? esc_attr( $input['class'] ) . '-wrap' : '';
+		// Add "-wrap" to each class
+		$class   = ( isset( $input['class'] ) ) ? esc_attr( str_replace( ' ', '-wrap ', $input['class'] ) . '-wrap' ) : '';
 		$output .= sprintf( $wrap, $class, $input_html );
 	}
 }
