@@ -70,11 +70,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage = $item.parents('.ttfmake-gallery-items-stage');
 
 				$('.sortable-placeholder', $stage)
-					.height(parseInt($item.height(), 10) - 2) // -2 to account for placeholder border
-					.css({
-						'flex': $item.css('flex'),
-						'-webkit-flex': $item.css('-webkit-flex')
-					});
+					.height(parseInt($item.height(), 10) - 2); // -2 to account for placeholder border
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
