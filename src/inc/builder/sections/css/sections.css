@@ -13,32 +13,19 @@
 	padding-left: 10px;
 	padding-right: 10px;
 }
-.ttfmake-text-columns-stage .sortable-placeholder {
+.ttfmake-text-columns-stage .sortable-placeholder,
+.ttfmake-gallery-items-stage .sortable-placeholder {
 	display: flex;
 	display: -webkit-flex;
 	padding: 0 9px;
 	margin: 0;
 }
-
-.ttfmake-gallery-columns-2,
-.ttfmake-gallery-columns-3 {
+.ttfmake-gallery-items-stage {
 	display: flex;
 	display: -webkit-flex;
-	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
 }
-.ttfmake-gallery-columns-2 .ttfmake-gallery-item {
-	-webkit-flex: 0 50%;
-	flex: 0 50%;
-}
-.ttfmake-gallery-columns-3 .ttfmake-gallery-item {
-	-webkit-flex: 0 33.333%;
-	flex: 0 33.333%;
-}
-
-/*---------------------------------------------------------
- Text and Gallery section (sections.css)
--------------------------------------------------------- */
 .ttfmake-text-column,
 .ttfmake-gallery-item {
 	margin-bottom: 40px;
@@ -61,7 +48,7 @@
 	padding: 0 10px;
 }
 /*---------------------------------------------------------
- Text and Gallery: One column (sections.css)
+ Text: One column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-1 .ttfmake-text-column-position-2,
 .ttfmake-text-columns-1 .ttfmake-text-column-position-3,
@@ -72,7 +59,7 @@
 	visibility: hidden;
 }
 /*---------------------------------------------------------
- Text and Gallery: Two column (sections.css)
+ Text: Two column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-2 .ttfmake-text-column-position-3,
 .ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
@@ -84,7 +71,7 @@
 	}
 }
 /*---------------------------------------------------------
- Text and Gallery: Three column (sections.css)
+ Text: Three column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
 	display: none;
@@ -95,12 +82,41 @@
 	}
 }
 /*---------------------------------------------------------
- Text and Gallery: Four column (sections.css)
+ Text: Four column (sections.css)
 -------------------------------------------------------- */
 @media screen and ( min-width: 1260px ) {
 	.ttfmake-text-columns-4 {
 		display: -webkit-flex;
 	}
+}
+/*---------------------------------------------------------
+ Gallery: One column (sections.css)
+-------------------------------------------------------- */
+.ttfmake-gallery-columns-1 .ttfmake-gallery-item {
+	flex: 0 100%;
+	-webkit-flex: 0 100%;
+}
+/*---------------------------------------------------------
+ Gallery: Two column (sections.css)
+-------------------------------------------------------- */
+.ttfmake-gallery-columns-2 .ttfmake-gallery-item {
+	flex: 0 50%;
+	-webkit-flex: 0 50%;
+}
+/*---------------------------------------------------------
+ Gallery: Three column (sections.css)
+-------------------------------------------------------- */
+
+.ttfmake-gallery-columns-3 .ttfmake-gallery-item {
+	flex: 0 33.333%;
+	-webkit-flex: 0 33.333%;
+}
+/*---------------------------------------------------------
+ Gallery: Four column (sections.css)
+-------------------------------------------------------- */
+.ttfmake-gallery-columns-4 .ttfmake-gallery-item {
+	flex: 0 25%;
+	-webkit-flex: 0 25%;
 }
 /*---------------------------------------------------------
  Banner (sections.css)
