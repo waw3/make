@@ -26,6 +26,10 @@
 #ttfmake-builder .inside {
 	padding: 0; /*reset*/
 }
+#ttfmake-builder *:focus {
+	outline: none !important; /*reset*/
+	box-shadow: none !important; /*reset*/
+}
 .ttfmake-stage {
 	clear: both;
 	padding-top: 10px;
