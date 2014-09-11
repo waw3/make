@@ -273,7 +273,8 @@ class TTFMAKE_Builder_Base {
 
 		// Add data needed for the JS
 		$data = array(
-			'pageID' => get_the_ID(),
+			'pageID'      => get_the_ID(),
+			'postRefresh' => true,
 		);
 
 		wp_localize_script(
