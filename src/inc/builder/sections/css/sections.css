@@ -19,6 +19,23 @@
 	padding: 0 9px;
 	margin: 0;
 }
+
+.ttfmake-gallery-columns-2,
+.ttfmake-gallery-columns-3 {
+	display: flex;
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.ttfmake-gallery-columns-2 .ttfmake-gallery-item {
+	-webkit-flex: 0 50%;
+	flex: 0 50%;
+}
+.ttfmake-gallery-columns-3 .ttfmake-gallery-item {
+	-webkit-flex: 0 33.333%;
+	flex: 0 33.333%;
+}
+
 /*---------------------------------------------------------
  Text and Gallery section (sections.css)
 -------------------------------------------------------- */
