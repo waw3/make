@@ -98,6 +98,12 @@
 .ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
 	border-color: #bbbbbb;
 }
+.ttfmake-menu-list-item:last-of-type {
+	margin-right: 0; /*reset*/
+}
+.ttfmake-menu-list-item:hover {
+	background-color: #fafafa;
+}
 @media screen and (min-width: 1160px) {
 	.ttfmake-menu-list-item {
 		width: 25%;
@@ -111,20 +117,11 @@
 		border-right: 0; /*reset*/
 	}
 }
-.ttfmake-menu-list-item:last-of-type {
-	margin-right: 0; /*reset*/
-}
-.ttfmake-menu-list-item:hover {
-	background-color: #fafafa;
-}
 .ttfmake-menu-list-item a {
 	color: #21759b;
 }
 .ttfmake-menu-list-item a:hover {
 	color: #d54e21;
-}
-.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
-	border-right: 0; /*reset*/
 }
 .ttfmake-menu-list-item-link {
 	display: block;
