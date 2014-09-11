@@ -29,12 +29,12 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-banner-slide-link">
+	<a href="#" class="edit-banner-slide-link" title="<?php esc_attr_e( 'Edit banner slide', 'make' ); ?>">
 		<span>
 			<?php _e( 'Edit banner slide', 'make' ); ?>
 		</span>
 	</a>
-	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove">
+	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove" title="<?php esc_attr_e( 'Remove banner slide', 'make' ); ?>">
 		<span>
 			<?php _e( 'Remove banner slide', 'make' ); ?>
 		</span>
