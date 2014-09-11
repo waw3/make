@@ -113,9 +113,9 @@
 .ttfmake-banner-add-item,
 .ttfmake-gallery-add-item {
 	clear: both;
+	height: 76px;
 	background-color: #fff;
 	border: 1px solid #dfdfdf;
-	height: 76px;
 }
 .ttfmake-banner-add-item:before,
 .ttfmake-gallery-add-item:before {
@@ -170,10 +170,10 @@
 .ttfmake-add-slide-wrapper a:before,
 .ttfmake-add-gallery-item-wrapper a:before {
 	content: "\f132";
-	font-family: Dashicons;
 	position: relative;
 	top: 1px;
 	padding-right: 4px;
+	font-family: Dashicons;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-add-slide-wrapper a:before,
@@ -185,7 +185,7 @@
 	display: none;
 }
 .ttfmake-banner-slide-open .ttfmake-banner-slide-body {
-	display: block;
+	display: block; /*reset*/
 }
 .ttfmake-stage .ttfmake-banner-slides .sortable-placeholder {
 	width: 100%;
@@ -208,10 +208,10 @@
 }
 #poststuff .ttfmake-large-title:before {
 	content: "\f108";
-	font-family: Dashicons;
 	position: relative;
 	top: 7px;
 	font-size: 30px;
+	font-family: Dashicons;
 }
 .ttfmake-gallery-background-options-wrapper label {
 	vertical-align: top;
@@ -229,23 +229,23 @@
 .edit-banner-slide-link,
 .remove-banner-slide-link,
 .edit-text-column-link {
+	display: inline-block;
 	position: absolute;
+	clear: both;
 	top: 0;
 	right: 45px;
-	padding: 0 12px;
 	height: 39px;
+	margin-bottom: 0; /*reset*/
+	padding: 0 12px;
 	border: 1px solid #d9d9d9;
 	background-color: #eeeeee;
-	display: inline-block;
-	clear: both;
-	margin-bottom: 0; /*reset*/
 	color: #aaaaaa;
 	text-decoration: none;  /*reset*/
 	outline: none !important;
 }
 .remove-gallery-item-link,
 .remove-banner-slide-link {
-	right: 0;
+	right: 0; /*reset*/
 }
 .edit-gallery-item-link:hover,
 .remove-gallery-item-link:hover,
@@ -269,20 +269,18 @@
 .edit-text-column-link:before {
 	content: "\f464";
 	font: 400 20px/39px dashicons;
-	speak: none;
+	speak: none; /*reset*/
 }
 .remove-gallery-item-link:before,
 .remove-banner-slide-link:before {
 	content: "\f182";
 	font: 400 20px/39px dashicons;
-	speak: none;
+	speak: none; /*reset*/
 }
 /*---------------------------------------------------------
  Quick Start info (sections.css)
 -------------------------------------------------------- */
-.ttfmp-import-message-hide {
-	display: none;
-}
+.ttfmp-import-message-hide,
 .ttfmake-default-active .ttfmp-import-message {
 	display: none;
 }
