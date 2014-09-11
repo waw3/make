@@ -115,7 +115,7 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 				<input placeholder="<?php esc_attr_e( 'Enter column title', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
 
 				<?php foreach ( $column_buttons as $button ) : ?>
-				<a href="<?php echo esc_url( $button['href'] ); ?>" class="<?php esc_attr_e( $button['class'] ); ?>" title="<?php esc_attr_e( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
+				<a href="<?php echo esc_url( $button['href'] ); ?>" class="<?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
 					<span>
 						<?php echo esc_html( $button['label'] ); ?>
 					</span>
