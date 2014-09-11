@@ -22,9 +22,10 @@
 	margin: 0;
 }
 .ttfmake-gallery-items-stage .sortable-placeholder {
-	padding: 0;
+	padding: 0; /*reset*/
 }
-.ttfmake-gallery-items-stage {
+.ttfmake-gallery-items-stage,
+.ttfmake-text-columns-stage {
 	display: flex;
 	display: -webkit-flex;
 	flex-wrap: wrap;
