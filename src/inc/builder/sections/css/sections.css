@@ -9,7 +9,8 @@
 	border-top: 0; /*reset*/
 	border-bottom: 0; /*reset*/
 }
-.ttfmake-section-text .ttfmake-section-body {
+.ttfmake-section-text .ttfmake-section-body,
+.ttfmake-section-gallery .ttfmake-section-body {
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -28,6 +29,9 @@
 }
 .ttfmake-text-column,
 .ttfmake-gallery-item {
+	flex: 1;
+	-webkit-flex: 1;
+	padding: 0 10px;
 	margin-bottom: 40px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -41,11 +45,6 @@
 }
 .ttfmake-section .ttfmake-gallery-items-stage .sortable-placeholder {
 	margin-bottom: 38px;
-}
-.ttfmake-text-column {
-	flex: 1;
-	-webkit-flex: 1;
-	padding: 0 10px;
 }
 /*---------------------------------------------------------
  Text: One column (sections.css)
@@ -142,6 +141,10 @@
 }
 .ttfmake-banner-options-title {
 	margin-top: 8px;
+}
+.ttfmake-gallery-add-item {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 .ttfmake-banner-add-item,
 .ttfmake-gallery-add-item {
@@ -279,6 +282,12 @@
 .remove-gallery-item-link,
 .remove-banner-slide-link {
 	right: 0; /*reset*/
+}
+.remove-gallery-item-link {
+	right: 10px;
+}
+.edit-gallery-item-link {
+	right: 55px; /*45px+10px*/
 }
 .edit-gallery-item-link:hover,
 .remove-gallery-item-link:hover,
