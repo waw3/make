@@ -410,7 +410,7 @@ class TTFMAKE_Builder_Base {
 	 * @return string                Either return the string or echo it.
 	 */
 	public function add_uploader( $section_name, $image_id = 0, $messages = array() ) {
-		$image        = ttfmake_get_image( $image_id, 'large' );
+		$image        = ttfmake_get_image_src( $image_id, 'large' );
 		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
 		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
 
@@ -421,12 +421,8 @@ class TTFMAKE_Builder_Base {
 
 		ob_start();
 		?>
-		<div class="ttfmake-uploader">
-			<div class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add">
-				<?php if ( '' !== $image ) : ?>
-					<?php echo $image; ?>
-				<?php endif; ?>
-			</div>
+		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
+			<div class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
 			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
 	<?php
