@@ -22,8 +22,8 @@ foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 			case 'section-title':
 				$placeholder = ( isset( $input['label'] ) ) ? ' placeholder="' . esc_attr( $input['label'] ) . '"' : '';
 				$name        = 'name="' . $section_name . '[' . esc_attr( $input['name'] ) . ']"';
-				$class       = ( isset( $input['class'] ) ) ? ' class="' . esc_attr( $input['class'] ) . '"' : '';
-				$this_output = '<input' . $placeholder . $class .' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title ttfmake-section-header-title-input" autocomplete="off">';
+				$class       = ( isset( $input['class'] ) ) ? ' ' . esc_attr( $input['class'] ) : '';
+				$this_output = '<input' . $placeholder . ' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title ttfmake-section-header-title-input ' . $class . '" autocomplete="off">';
 				break;
 
 			case 'select':
