@@ -129,12 +129,16 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent),
+			re = /^(\[.*\])$/gm,
 			content;
 
 		content = oneApp.getMakeContent();
 
+		// Wrap all shortcodes in div
+		content.replace(re, '<div class="shortcode-wrapper">$1</div>')
+
 		// Since content is being displayed in the iframe, run it through autop
-		content = switchEditors.wpautop(content);
+		content = switchEditors.wpautop(content.replace(re, content));
 
 		iframeBody.html(content);
 	};
