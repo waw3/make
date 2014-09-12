@@ -519,20 +519,19 @@
 .ttfmake-overlay-close {
 	display: block;
 	position: absolute;
-	width: 30px;
-	height: 30px;
-	top: 0;
-	right: 4px;
-	font: bold 20px/30px dashicons;
+	top: 0; /*reset*/
+	right: 0; /*reset*/
+	padding: 0 10px;
+	font-size: 15px;
+	font-size: 15px;
+	color: #fff;
+	line-height: 36px;
 	text-align: center;
-	color: #666;
+	background-color: #1bc865;
 	cursor: pointer;
 }
 .ttfmake-configuration-overlay-input-wrap  .ttfmake-uploader {
 	width: 100%;
-}
-.ttfmake-overlay-close:hover {
-	color: #2ea2cc;
 }
 .ttfmake-configuration-overlay .ttfmake-overlay-wrapper {
 	margin-left: -200px;
@@ -573,6 +572,10 @@
 	clear: both;
 	overflow-y: scroll;
 	max-height: 400px;
+}
+.ttfmake-overlay-body .ttfmake-configuration-overlay-input-wrap:last-of-type {
+	padding-bottom: 0 !important;
+	border-bottom: 0 !important;
 }
 .ttfmake-configuration-title {
 	width: 100%;

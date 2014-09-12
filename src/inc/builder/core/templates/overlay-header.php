@@ -11,7 +11,7 @@ $type = ( 'ttfmake-tinymce-overlay' === $ttfmake_overlay_id ) ? 'mce' : 'config'
 		<div class="ttfmake-overlay-header">
 			<div class="ttfmake-overlay-window-head">
 				<div class="ttfmake-overlay-title"><?php ( 'config' === $type ) ? _e( 'Configure Section', 'make' ) : _e( 'Edit Content', 'make' ); ?></div>
-				<span class="ttfmake-overlay-close ttfmake-overlay-close-action" aria-hidden="true">&#215;</span>
+				<span class="ttfmake-overlay-close ttfmake-overlay-close-action" aria-hidden="true"><?php _e( 'Done', 'make' ); ?></span>
 			</div>
 		</div>
 		<div class="ttfmake-overlay-body">
