@@ -31,7 +31,7 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-content-link edit-gallery-item-link" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
+	<a href="#" class="edit-content-link edit-gallery-item-link<?php if ( ! empty( $description ) ) : ?> item-has-content<?php endif; ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
 		<span>
 			<?php _e( 'Edit gallery item', 'make' ); ?>
 		</span>
@@ -42,7 +42,7 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 		</span>
 	</a>
 
-	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $description, false ); ?>
+	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[description]', $description, false ); ?>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>

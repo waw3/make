@@ -33,7 +33,7 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-content-link edit-banner-slide-link" title="<?php esc_attr_e( 'Edit banner slide', 'make' ); ?> " data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
+	<a href="#" class="edit-content-link edit-banner-slide-link<?php if ( ! empty( $content ) ) : ?> item-has-content<?php endif; ?>" title="<?php esc_attr_e( 'Edit banner slide', 'make' ); ?> " data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
 		<span>
 			<?php _e( 'Edit banner slide', 'make' ); ?>
 		</span>
