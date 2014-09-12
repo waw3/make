@@ -129,16 +129,12 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent),
-			re = /^(\[.*\])$/gm,
 			content;
 
 		content = oneApp.getMakeContent();
 
-		// Wrap all shortcodes in div
-		content.replace(re, '<div class="shortcode-wrapper">$1</div>')
-
 		// Since content is being displayed in the iframe, run it through autop
-		content = switchEditors.wpautop(content.replace(re, content));
+		content = switchEditors.wpautop(oneApp.wrapShortcodes(content));
 
 		iframeBody.html(content);
 	};
@@ -228,7 +224,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		link = link || oneApp.getFrameHeadLinks();
 
 		iframeHead.html(link);
-		iframeBody.html(switchEditors.wpautop(content));
+		iframeBody.html(switchEditors.wpautop(oneApp.wrapShortcodes(content)));
 	};
 
 	oneApp.getFrameHeadLinks = function() {
@@ -241,6 +237,10 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		});
 
 		return link;
+	};
+
+	oneApp.wrapShortcodes = function(content) {
+		return content.replace(/^(\[.*\])$/gm, '<div class="shortcode-wrapper">$1</div>');
 	};
 
 	oneApp.triggerInitFrames = function() {
