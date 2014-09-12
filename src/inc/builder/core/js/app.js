@@ -119,13 +119,13 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
 	};
 
-	oneApp.filliframe = function (iframeID, args) {
+	oneApp.filliframe = function (iframeID) {
 		var iframe = document.getElementById(iframeID),
 			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
 			iframeBody = $('body', iframeContent),
 			content;
 
-		content = oneApp.getMakeContent(args);
+		content = oneApp.getMakeContent();
 
 		// Since content is being displayed in the iframe, run it through autop
 		content = switchEditors.wpautop(content);
@@ -137,11 +137,12 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		$('#' + textAreaID).val(oneApp.getMakeContent());
 	};
 
-	oneApp.getMakeContent = function (args) {
+	oneApp.getMakeContent = function () {
 		var content = '';
 
 		if (oneApp.isVisualActive()) {
-			content = tinyMCE.get('make').getContent(args);
+			content = tinyMCE.get('make').getContent();
+			console.log(content);
 		} else {
 			content = oneApp.cache.$makeTextArea.val();
 		}

@@ -24,7 +24,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.setTextArea(oneApp.getActiveTextAreaID());
 
 			if ('' !== oneApp.getActiveiframeID()) {
-				oneApp.filliframe(oneApp.getActiveiframeID(), {format: 'raw'});
+				oneApp.filliframe(oneApp.getActiveiframeID());
 			}
 		},
 
