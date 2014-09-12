@@ -290,6 +290,14 @@
 	float: left;
 	width: 100%;
 }
+.edit-content-link.item-has-content {
+	color: #1bc865;
+}
+.edit-content-link.item-has-content.edit-gallery-item-link:before,
+.edit-content-link.item-has-content.edit-banner-slide-link:before,
+.edit-content-link.item-has-content.edit-text-column-link:before {
+	content: "\f214";
+}
 .edit-gallery-item-link,
 .remove-gallery-item-link,
 .edit-banner-slide-link,
