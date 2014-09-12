@@ -26,11 +26,28 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			if ('' !== oneApp.getActiveiframeID()) {
 				oneApp.filliframe(oneApp.getActiveiframeID());
 			}
+
+			this.toggleHasContent();
 		},
 
 		closeOnClick: function(e) {
 			e.preventDefault();
 			this.close();
+		},
+
+		toggleHasContent: function(textareaID) {
+			textareaID = textareaID || oneApp.getActiveTextAreaID();
+
+			var link = $('.edit-content-link[data-textarea="' + textareaID + '"]'),
+				content = oneApp.getMakeContent();
+
+			console.log(link, content, textareaID);
+
+			if ('' !== content) {
+				link.addClass('item-has-content');
+			} else {
+				link.removeClass('item-has-content');
+			}
 		}
 	});
 
