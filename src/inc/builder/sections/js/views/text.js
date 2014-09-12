@@ -71,9 +71,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttfmake-section-body'),
+					$section = $item.parents('.ttfmake-section'),
+					$stage = $('.ttfmake-section-body', $section),
 					$columnsStage = $item.parents('.ttfmake-text-columns-stage'),
 					$orderInput = $('.ttfmake-text-columns-order', $stage),
+					id = $section.attr('data-id'),
+					column = $item.attr('data-id'),
 					i;
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
@@ -86,6 +89,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 						.addClass('ttfmake-text-column-position-' + i);
 					i++;
 				});
+
+				oneApp.initFrame(id + '-' + column);
 
 				// Remove the temporary classes from stage
 				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-three-fourths current-item-one-half');

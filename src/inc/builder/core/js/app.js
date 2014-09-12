@@ -34,9 +34,15 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 				$('.sortable-placeholder', $stage).height($item.height());
 			},
 			stop: function (event, ui) {
-				var $item = $(ui.item.get(0));
+				var $item = $(ui.item.get(0)),
+					$frames = $('iframe', $item);
 
 				oneApp.setOrder( $(this).sortable('toArray', {attribute: 'data-id'}), oneApp.cache.$sectionOrder );
+
+				$.each($frames, function() {
+					var id = $(this).attr('id').replace('ttfmake-iframe-', '');
+					oneApp.initFrame(id);
+				});
 			}
 		});
 	};
@@ -200,27 +206,38 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 
 	oneApp.initFrames = function() {
 		if (ttfMakeFrames.length > 0) {
-			var scripts = tinyMCEPreInit.mceInit.make.content_css.split(','),
-				link = '',
-				content, iframe, iframeContent, iframeHead, iframeBody;
-
-			// Create the CSS links for the head
-			_.each(scripts, function(e) {
-				link += '<link type="text/css" rel="stylesheet" href="' + e + '" />';
-			});
+			var link = oneApp.getFrameHeadLinks();
 
 			// Add content and CSS
 			_.each(ttfMakeFrames, function(id) {
-				content = $('#ttfmake-content-' + id).val();
-				iframe = document.getElementById('ttfmake-iframe-' + id);
-				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
-				iframeHead = $('head', iframeContent);
-				iframeBody = $('body', iframeContent);
-
-				iframeHead.html(link);
-				iframeBody.html(switchEditors.wpautop(content));
+				oneApp.initFrame(id, link);
 			});
 		}
+	};
+
+	oneApp.initFrame = function(id, link) {
+		var content = $('#ttfmake-content-' + id).val(),
+			iframe = document.getElementById('ttfmake-iframe-' + id),
+			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+			iframeHead = $('head', iframeContent),
+			iframeBody = $('body', iframeContent);
+
+		link = link || oneApp.getFrameHeadLinks();
+
+		iframeHead.html(link);
+		iframeBody.html(switchEditors.wpautop(content));
+	};
+
+	oneApp.getFrameHeadLinks = function() {
+		var scripts = tinyMCEPreInit.mceInit.make.content_css.split(','),
+			link = '';
+
+		// Create the CSS links for the head
+		_.each(scripts, function(e) {
+			link += '<link type="text/css" rel="stylesheet" href="' + e + '" />';
+		});
+
+		return link;
 	};
 
 	oneApp.triggerInitFrames = function() {
