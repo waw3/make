@@ -16,12 +16,18 @@
 }
 .ttfmake-text-columns-stage .sortable-placeholder,
 .ttfmake-gallery-items-stage .sortable-placeholder {
-	display: flex;
-	display: -webkit-flex;
-	flex: 1;
-	-webkit-flex: 1;
+	width: 100%;
 	margin: 0; /*reset*/
 	padding: 0 9px;
+}
+@media screen and ( min-width: 1160px ) {
+	.ttfmake-text-columns-stage .sortable-placeholder,
+	.ttfmake-gallery-items-stage .sortable-placeholder {
+		display: flex;
+		display: -webkit-flex;
+		flex: 1;
+		-webkit-flex: 1;
+	}
 }
 .ttfmake-gallery-items-stage .sortable-placeholder {
 	padding: 0; /*reset*/
@@ -35,10 +41,9 @@
 }
 .ttfmake-text-column,
 .ttfmake-gallery-item {
-	flex: 1;
-	-webkit-flex: 1;
+	width: 100%;
 	padding: 0 10px;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -46,6 +51,8 @@
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-text-column,
 	.ttfmake-gallery-item {
+		flex: 1;
+		-webkit-flex: 1;
 		margin-bottom: 0; /*reset*/
 	}
 }
@@ -73,7 +80,7 @@
 .ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
 	display: none;
 }
-@media screen and ( min-width: 1260px ) {
+@media screen and ( min-width: 1160px ) {
 	.ttfmake-text-columns-2,
 	.ttfmake-text-columns-3,
 	.ttfmake-text-columns-4 {
@@ -97,34 +104,48 @@
 -------------------------------------------------------- */
 .ttfmake-gallery-columns-2 .ttfmake-gallery-item,
 .ttfmake-gallery-columns-2 .sortable-placeholder {
-	flex: 0 50%;
-	-webkit-flex: 0 50%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+@media screen and ( min-width: 1160px ) {
+	.ttfmake-gallery-columns-2 .ttfmake-gallery-item,
+	.ttfmake-gallery-columns-2 .sortable-placeholder {
+		flex: 0 50%;
+		-webkit-flex: 0 50%;
+	}
+}
 /*---------------------------------------------------------
  Gallery: Three column (sections.css)
 -------------------------------------------------------- */
-
 .ttfmake-gallery-columns-3 .ttfmake-gallery-item,
 .ttfmake-gallery-columns-3 .sortable-placeholder {
-	flex: 0 33.333%;
-	-webkit-flex: 0 33.333%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+@media screen and ( min-width: 1160px ) {
+	.ttfmake-gallery-columns-3 .ttfmake-gallery-item,
+	.ttfmake-gallery-columns-3 .sortable-placeholder {
+		flex: 0 33.333%;
+		-webkit-flex: 0 33.333%;
+	}
 }
 /*---------------------------------------------------------
  Gallery: Four column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-gallery-columns-4 .ttfmake-gallery-item,
 .ttfmake-gallery-columns-4 .sortable-placeholder {
-	flex: 0 25%;
-	-webkit-flex: 0 25%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+@media screen and ( min-width: 1160px ) {
+	.ttfmake-gallery-columns-4 .ttfmake-gallery-item,
+	.ttfmake-gallery-columns-4 .sortable-placeholder {
+		flex: 0 25%;
+		-webkit-flex: 0 25%;
+	}
 }
 /*---------------------------------------------------------
  Banner (sections.css)

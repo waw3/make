@@ -273,6 +273,12 @@
 	padding-left: 10px;
 	border-left: 1px solid #d9d9d9;
 }
+@media screen and ( max-width: 782px ) {
+	.ttfmake-section .handlediv {
+		height: 48px;
+		margin-top: 0; /*reset*/
+	}
+}
 .ttfmake-section-open .handlediv {
 	border-left-color: #999;
 }
@@ -295,6 +301,13 @@
 .ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
 	content: '\f140';
+	top: 1px;
+}
+@media screen and ( max-width: 782px ) {
+	.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
+	.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
+		top: 5px;
+	}
 }
 .ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:hover:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
