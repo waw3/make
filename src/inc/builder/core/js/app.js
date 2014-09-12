@@ -148,7 +148,6 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 
 		if (oneApp.isVisualActive()) {
 			content = tinyMCE.get('make').getContent();
-			console.log(content);
 		} else {
 			content = oneApp.cache.$makeTextArea.val();
 		}
