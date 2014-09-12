@@ -211,14 +211,14 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 
 			// Add content and CSS
 			_.each(ttfMakeFrames, function(id) {
-				content = $('#ttmake-rendered-content-' + id).html();
+				content = $('#ttfmake-content-' + id).val();
 				iframe = document.getElementById('ttfmake-iframe-' + id);
 				iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
 				iframeHead = $('head', iframeContent);
 				iframeBody = $('body', iframeContent);
 
 				iframeHead.html(link);
-				iframeBody.html(content);
+				iframeBody.html(switchEditors.wpautop(content));
 			});
 		}
 	};
