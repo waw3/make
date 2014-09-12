@@ -73,11 +73,13 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 		$title       = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
 		$content     = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
 
+		$item_has_content = ( ! empty( $content ) ) ? ' item-has-content' : '';
+
 		$column_buttons = array(
 			100 => array(
 				'label'              => __( 'Edit text column', 'make' ),
 				'href'               => '#',
-				'class'              => 'edit-content-link edit-text-column-link',
+				'class'              => 'edit-content-link edit-text-column-link' . $item_has_content,
 				'title'              => __( 'Edit content', 'make' ),
 				'other-a-attributes' => 'data-textarea="' . esc_attr( $textarea_id ) . '" data-iframe="' . esc_attr( $iframe_id ) . '"',
 			),
