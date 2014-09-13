@@ -525,7 +525,7 @@
 	font-size: 15px;
 	font-size: 15px;
 	color: #fff;
-	line-height: 36px;
+	line-height: 37px;
 	text-align: center;
 	background-color: #1bc865;
 	cursor: pointer;
@@ -596,27 +596,6 @@
 .ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-media-wrap label {
 	display: block;
 	margin-bottom: 20px;
-}
-.ttfmake-configuration-overlay-button {
-	margin-top: 20px;
-}
-.ttfmake-configuration-overlay-button span {
-	float: right !important;
-	min-width: 50px;
-	font-size: 14px;
-	color: #fff;
-	line-height: 30px;
-	text-align: center !important;
-	border: 1px solid #0074a2;
-	background-color: #2ea2cc;
-	cursor: pointer;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
-	box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
-}
-.ttfmake-configuration-overlay-button span:hover {
-	background-color: #1e8cbe;
 }
 /*---------------------------------------------------------
  iFrame (builder.css)
