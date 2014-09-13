@@ -302,7 +302,8 @@
 .remove-gallery-item-link,
 .edit-banner-slide-link,
 .remove-banner-slide-link,
-.edit-text-column-link {
+.edit-text-column-link,
+.configure-gallery-item-link {
 	display: inline-block;
 	position: absolute;
 	clear: both;
@@ -327,18 +328,23 @@
 .edit-gallery-item-link {
 	right: 55px; /*45px+10px*/
 }
+.configure-gallery-item-link {
+	right: 100px;
+}
 .edit-gallery-item-link:hover,
 .remove-gallery-item-link:hover,
 .edit-banner-slide-link:hover,
 .remove-banner-slide-link:hover,
-.edit-text-column-link:hover {
+.edit-text-column-link:hover,
+.configure-gallery-item-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
 .remove-gallery-item-link span,
 .edit-banner-slide-link span,
 .remove-banner-slide-link span,
-.edit-text-column-link span {
+.edit-text-column-link span,
+.configure-gallery-item-link span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
@@ -354,6 +360,11 @@
 .remove-gallery-item-link:before,
 .remove-banner-slide-link:before {
 	content: "\f182";
+	font: 400 20px/39px dashicons;
+	speak: none; /*reset*/
+}
+.configure-gallery-item-link:before {
+	content: "\f111";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
 }

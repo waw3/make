@@ -31,14 +31,19 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-content-link edit-gallery-item-link<?php if ( ! empty( $description ) ) : ?> item-has-content<?php endif; ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
+	<a href="#" class="configure-gallery-item-link" title="<?php _e( 'Configure gallery item', 'make' ); ?>">
+		<span>
+			<?php _e( 'Configure gallery item', 'make' ); ?>
+		</span>
+	</a>
+	<a href="#" class="edit-content-link edit-gallery-item-link<?php if ( ! empty( $description ) ) : ?> item-has-content<?php endif; ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>" title="<?php _e( 'Edit gallery item', 'make' ); ?>">
 		<span>
 			<?php _e( 'Edit gallery item', 'make' ); ?>
 		</span>
 	</a>
-	<a href="#" class="remove-gallery-item-link ttfmake-gallery-item-remove">
+	<a href="#" class="remove-gallery-item-link ttfmake-gallery-item-remove" title="<?php _e( 'Delete gallery item', 'make' ); ?>">
 		<span>
-			<?php _e( 'Remove gallery item', 'make' ); ?>
+			<?php _e( 'Delete gallery item', 'make' ); ?>
 		</span>
 	</a>
 
