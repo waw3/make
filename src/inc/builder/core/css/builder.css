@@ -557,6 +557,7 @@
 }
 .ttfmake-configuration-overlay-input-wrap {
 	display: flex;
+	display: -ms-flexbox;
 	display: -webkit-flex;
 	align-items: center;
 	-webkit-align-items: center;
