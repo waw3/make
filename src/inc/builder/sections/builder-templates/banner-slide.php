@@ -33,14 +33,19 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="edit-content-link edit-banner-slide-link<?php if ( ! empty( $content ) ) : ?> item-has-content<?php endif; ?>" title="<?php esc_attr_e( 'Edit banner slide', 'make' ); ?> " data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
+	<a href="#" class="configure-banner-slide-link ttfmake-baller-slide-configure" title="<?php esc_attr_e( 'Configure slide', 'make' ); ?>">
 		<span>
-			<?php _e( 'Edit banner slide', 'make' ); ?>
+			<?php _e( 'Configure slide', 'make' ); ?>
 		</span>
 	</a>
-	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove" title="<?php esc_attr_e( 'Remove banner slide', 'make' ); ?>">
+	<a href="#" class="edit-content-link edit-banner-slide-link<?php if ( ! empty( $content ) ) : ?> item-has-content<?php endif; ?>" title="<?php esc_attr_e( 'Edit content', 'make' ); ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
 		<span>
-			<?php _e( 'Remove banner slide', 'make' ); ?>
+			<?php _e( 'Edit content', 'make' ); ?>
+		</span>
+	</a>
+	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove" title="<?php esc_attr_e( 'Delete slide', 'make' ); ?>">
+		<span>
+			<?php _e( 'Delete slide', 'make' ); ?>
 		</span>
 	</a>
 
