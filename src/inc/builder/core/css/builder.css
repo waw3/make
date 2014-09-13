@@ -340,7 +340,7 @@
 -------------------------------------------------------- */
 .ttf-make-section-header-button-wrapper {
 	position: absolute;
-	right: 39px; /*width of .handlediv*/
+	right: 45px;
 }
 .ttfmake-section-remove,
 .ttfmake-section-configure,
