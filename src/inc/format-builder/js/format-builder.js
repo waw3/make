@@ -19,7 +19,24 @@
 			icon: 'ttfmake-format-builder',
 			tooltip: 'Format Builder',
 			onclick: function() {
+				editor.windowManager.open( {
+					title: 'Format Builder',
+					body: [
+						{
+							type: 'listbox',
+							name: 'format',
+							label: 'Choose a format',
+							values: [
+								{ value: 'button', text: 'Button' },
+								{ value: 'alert', text: 'Alert Box' }
+							]
+						}
+					],
+					minWidth: 400,
+					onsubmit: function(e) {
 
+					}
+				} );
 			}
 		});
 	});
