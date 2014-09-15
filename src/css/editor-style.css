@@ -132,6 +132,17 @@ table td {
     font-style: italic;
     text-align: left;
 }
+.shortcode-wrapper{
+	display: block;
+	margin-bottom: 22px;
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #aaa;
+	background-color: #fafafa;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	word-wrap: break-word;
+}
 /*---------------------------------------------------------
  Rules (editor-style.css)
 -------------------------------------------------------- */
@@ -240,10 +251,4 @@ ul.ttfmake-list-dot li:before,
 ol.ttfmake-list-dot li:before {
     content: "\f192";
     color: #0094c5;
-}
-.shortcode-wrapper{
-	background-color: grey;
-	display: block;
-	padding: 5px 10px;
-	text-align: center;
 }
