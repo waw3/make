@@ -210,7 +210,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			var $this = $(evt.target),
 				$section = $this.parents('.ttfmake-section'),
-				$overlay = $('.ttfmake-overlay', $section),
+				$overlay = $('.ttfmake-configuration-overlay', $section),
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
 			$overlay.show();
