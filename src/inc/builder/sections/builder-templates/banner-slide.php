@@ -52,6 +52,60 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $content, false ); ?>
 
 	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
+
+	<?php
+	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
+
+	$inputs = apply_filters( 'make_banner_slide_configuration', array(
+		100 => array(
+			'type'  => 'image',
+			'name'  => 'image-id',
+			'label' => __( 'Background image', 'make' ),
+			'class' => 'ttfmake-configuration-media'
+		),
+		200 => array(
+			'type'    => 'checkbox',
+			'label'   => __( 'Darken to improve readability', 'make' ),
+			'name'    => 'darken',
+			'default' => 0
+		),
+		300 => array(
+			'type'    => 'color',
+			'label'   => __( 'Background color', 'make' ),
+			'name'    => 'background-color',
+			'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
+			'default' => '',
+		),
+		400 => array(
+			'type'    => 'select',
+			'name'    => 'alignment',
+			'label'   => __( 'Content position', 'make' ),
+			'default' => 'none',
+			'options' => array(
+				'none'  => __( 'None', 'make' ),
+				'left'  => __( 'Left', 'make' ),
+				'right' => __( 'Right', 'make' ),
+			),
+		)
+	) );
+
+	// Sort the config in case 3rd party code added another input
+	ksort( $inputs, SORT_NUMERIC );
+
+	// Print the inputs
+	$output = '';
+
+	foreach ( $inputs as $input ) {
+		if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+			$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data );
+		}
+	}
+
+	echo $output;
+
+	get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
+	?>
+
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>
