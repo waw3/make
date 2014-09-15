@@ -51,8 +51,6 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $content, false ); ?>
 
-	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
-
 	<?php
 	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
@@ -106,6 +104,8 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 	get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
 	?>
 
-<?php if ( true !== $ttfmake_is_js_template ) : ?>
+	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
+
+	<?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>
