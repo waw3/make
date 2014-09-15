@@ -149,7 +149,7 @@ if ( ! function_exists( 'ttfmake_get_current_configuration_value' ) ) :
  */
 function ttfmake_get_current_configuration_value( $section_data, $args ) {
 	$default_value = ( isset( $args['default'] ) ) ? $args['default'] : '';
-	$current_value = ( isset( $section_data['data'][ $args['name'] ] ) ) ? $section_data['data'][ $args['name'] ] : $default_value;
+	$current_value = ( isset( $section_data[ $args['name'] ] ) ) ? $section_data[ $args['name'] ] : $default_value;
 	return $current_value;
 }
 endif;

@@ -15,7 +15,7 @@ $output = '';
 
 foreach ( $ttfmake_section_data['section']['config'] as $input ) {
 	if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-		$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data );
+		$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data['data'] );
 	}
 }
 
