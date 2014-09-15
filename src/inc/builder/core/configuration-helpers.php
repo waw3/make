@@ -49,7 +49,7 @@ function ttfmake_create_config_checkbox( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$id          = $section_name . '[' . $args['name'] . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
-	$args       = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>';
+	$args        = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>';
 
 	return  $label . $args;
 }
