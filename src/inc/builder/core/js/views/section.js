@@ -21,7 +21,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-media-uploader-add': 'initUploader',
 			'click .ttfmake-media-uploader-remove': 'removeImage',
 			'click .edit-content-link': 'openTinyMCEOverlay',
-			'click .ttfmake-section-configure': 'openConfigurationOverlay',
+			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 			'click .ttfmake-overlay-close': 'closeConfigurationOverlay'
 		},
 
@@ -209,9 +209,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$section = $this.parents('.ttfmake-section'),
-				$overlay = $('.ttfmake-configuration-overlay', $section),
+				$section = $this.parents('.' + $this.attr('data-overlay-parent')),
+				$overlay = $('.' + $this.attr('data-overlay'), $section),
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
+
+			console.log($this.attr('data-overlay'));
 
 			$overlay.show();
 			$('.ttfmake-configuration-title:first', this.$el).focus();

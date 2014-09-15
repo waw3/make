@@ -33,7 +33,7 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="configure-banner-slide-link ttfmake-banner-slide-configure" title="<?php esc_attr_e( 'Configure slide', 'make' ); ?>">
+	<a href="#" class="configure-banner-slide-link ttfmake-banner-slide-configure ttfmake-overlay-open" title="<?php esc_attr_e( 'Configure slide', 'make' ); ?>" data-overlay="ttfmake-overlay-slide" data-overlay-parent="ttfmake-banner-slide">
 		<span>
 			<?php _e( 'Configure slide', 'make' ); ?>
 		</span>

@@ -16,9 +16,10 @@ $links = array(
 if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
 	$links[25] = array(
 		'href'  => '#',
-		'class' => 'ttfmake-section-configure',
+		'class' => 'ttfmake-section-configure ttfmake-overlay-open',
 		'label' => __( 'Configure section', 'make' ),
 		'title' => __( 'Configure section', 'make' ),
+		'other' => 'data-overlay="ttfmake-configuration-overlay" data-overlay-parent="ttfmake-section"'
 	);
 }
 
@@ -49,12 +50,13 @@ ksort( $links );
 				$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
 				$label = ( isset( $link['label'] ) ) ? esc_html( $link['label'] ) : '';
 				$title = ( isset( $link['title'] ) ) ? ' title="' . esc_html( $link['title'] ) . '"' : '';
+				$other = ( isset( $link['other'] ) ) ? ' ' . $link['other'] : '';
 
 				// Set up the class value with a base class
 				$class_base = ' class="ttfmake-builder-section-link';
 				$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 				?>
-				<a<?php echo $href . $id . $class . $title; ?>>
+				<a<?php echo $href . $id . $class . $title . $other; ?>>
 					<span>
 						<?php echo $label; ?>
 					</span>
