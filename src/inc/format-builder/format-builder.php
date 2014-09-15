@@ -57,7 +57,7 @@ class TTFMAKE_Format_Builder {
 
 
 	public function register_plugin( $plugins ) {
-		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/format-builder.js';
+		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/plugin.js';
 		return $plugins;
 	}
 
