@@ -80,7 +80,7 @@ class TTFMAKE_Section_Definitions {
 			'inc/builder/',
 			array(
 				100 => array(
-					'type'  => 'section-title',
+					'type'  => 'section_title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
 					'class' => 'ttfmake-configuration-title',
@@ -168,7 +168,7 @@ class TTFMAKE_Section_Definitions {
 			'inc/builder/',
 			array(
 				100 => array(
-					'type'  => 'section-title',
+					'type'  => 'section_title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
 					'class' => 'ttfmake-configuration-title',
@@ -312,7 +312,7 @@ class TTFMAKE_Section_Definitions {
 			'inc/builder/',
 			array(
 				100 => array(
-					'type'  => 'section-title',
+					'type'  => 'section_title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
 					'class' => 'ttfmake-configuration-title',
