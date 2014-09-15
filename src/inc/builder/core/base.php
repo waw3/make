@@ -45,6 +45,9 @@ class TTFMAKE_Builder_Base {
 		// Include the API
 		require get_template_directory() . '/inc/builder/core/api.php';
 
+		// Include the configuration helpers
+		require get_template_directory() . '/inc/builder/core/configuration-helpers.php';
+
 		// Add the core sections
 		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
 
