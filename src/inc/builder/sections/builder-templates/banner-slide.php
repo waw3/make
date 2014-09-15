@@ -6,9 +6,9 @@
 global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_slide_id;
 $section_name = 'ttfmake-section';
 if ( true === $ttfmake_is_js_template ) {
-    $section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
+	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
 } else {
-    $section_name .= '[' . $ttfmake_section_data['data']['id'] . '][banner-slides][' . $ttfmake_slide_id . ']';
+	$section_name .= '[' . $ttfmake_section_data[ 'data' ][ 'id' ] . '][banner-slides][' . $ttfmake_slide_id . ']';
 }
 
 $content          = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] : '';
