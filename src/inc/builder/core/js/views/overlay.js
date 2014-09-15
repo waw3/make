@@ -41,8 +41,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var link = $('.edit-content-link[data-textarea="' + textareaID + '"]'),
 				content = oneApp.getMakeContent();
 
-			console.log(link, content, textareaID);
-
 			if ('' !== content) {
 				link.addClass('item-has-content');
 			} else {
