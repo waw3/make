@@ -27,9 +27,18 @@
 							name: 'format',
 							label: 'Choose a format',
 							values: [
+								{ value: '', text: '--- Formats ---', selected: 'selected', disabled: 'disabled' },
 								{ value: 'button', text: 'Button' },
 								{ value: 'alert', text: 'Alert Box' }
-							]
+							],
+							onselect: function(e) {
+								console.log(e);
+							}
+						},
+						{
+							type: 'container',
+							name: 'formatOptions',
+							html: '<div id="ttfmake-format-builder-options"></div>'
 						}
 					],
 					minWidth: 400,
