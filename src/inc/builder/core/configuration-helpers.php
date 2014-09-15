@@ -1,6 +1,16 @@
 <?php
 
-
+if ( ! function_exists( 'ttfmake_create_config_select' ) ) :
+/**
+ * Generate a select input for the configuration overlay.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_config_select( $section_name, $args, $section_data ) {
 	$return        = '';
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
@@ -22,7 +32,19 @@ function ttfmake_create_config_select( $section_name, $args, $section_data ) {
 
 	return $return;
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_create_config_checkbox' ) ) :
+/**
+ * Generate a checkbox input for the configuration overlay.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_config_checkbox( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$id          = $section_name . '[' . $args['name'] . ']';
@@ -31,7 +53,19 @@ function ttfmake_create_config_checkbox( $section_name, $args, $section_data ) {
 
 	return  $label . $args;
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_create_config_text' ) ) :
+/**
+ * Generate a text input for the configuration overlay.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_config_text( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$id          = $section_name . '[' . $args['name'] . ']';
@@ -39,7 +73,19 @@ function ttfmake_create_config_text( $section_name, $args, $section_data ) {
 
 	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . $current_value . '" />';
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_create_config_image' ) ) :
+/**
+ * Generate a image uploader input for the configuration overlay.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_config_image( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$name        = $section_name . '[' . $args['name'] . ']';
@@ -47,7 +93,19 @@ function ttfmake_create_config_image( $section_name, $args, $section_data ) {
 	
 	return $label . ttfmake_get_builder_base()->add_uploader( $name, $current_value );
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_create_config_color' ) ) :
+/**
+ * Generate a color picker input for the configuration overlay.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_config_color( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$name        = $section_name . '[' . $args['name'] . ']';
@@ -56,7 +114,19 @@ function ttfmake_create_config_color( $section_name, $args, $section_data ) {
 
 	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . $current_value . '" />';
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_create_config_section_title' ) ) :
+/**
+ * Generate a section title input for the configuration overlay.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_config_section_title( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$placeholder = ( isset( $args['label'] ) ) ? ' placeholder="' . esc_attr( $args['label'] ) . '"' : '';
@@ -65,13 +135,36 @@ function ttfmake_create_config_section_title( $section_name, $args, $section_dat
 
 	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title ttfmake-section-header-title-input ' . $class . '" autocomplete="off">';
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_get_current_configuration_value' ) ) :
+/**
+ * Get the current or default value for an input.
+ *
+ * @since  1.4.0.
+ *
+ * @param  array     $section_data    The data for the current section.
+ * @param  array     $args            Arguments for creating the input.
+ * @return string                     The current value for the input.
+ */
 function ttfmake_get_current_configuration_value( $section_data, $args ) {
 	$default_value = ( isset( $args['default'] ) ) ? $args['default'] : '';
 	$current_value = ( isset( $section_data['data'][ $args['name'] ] ) ) ? $section_data['data'][ $args['name'] ] : $default_value;
 	return $current_value;
 }
+endif;
 
+if ( ! function_exists( 'ttfmake_create_input' ) ) :
+/**
+ * Create an input with header and footer wrapper.
+ *
+ * @since  1.4.0.
+ *
+ * @param  string    $section_name    The section prefix for the input name.
+ * @param  array     $args            Arguments for creating the input.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
 function ttfmake_create_input( $section_name, $args, $section_data ) {
 	$final_output = '';
 
@@ -114,3 +207,4 @@ function ttfmake_create_input( $section_name, $args, $section_data ) {
 
 	return $final_output;
 }
+endif;
