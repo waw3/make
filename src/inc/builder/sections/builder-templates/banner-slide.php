@@ -52,6 +52,10 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $content, false ); ?>
 
 	<?php
+	global $ttfmake_overlay_class, $ttfmake_overaly_title;
+	$ttfmake_overlay_class = 'ttfmake-overlay-slide';
+	$ttfmake_overaly_title = __( 'Configure slide', 'make' );
+
 	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
 	$inputs = apply_filters( 'make_banner_slide_configuration', array(
