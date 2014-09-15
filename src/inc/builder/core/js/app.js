@@ -240,7 +240,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 	};
 
 	oneApp.wrapShortcodes = function(content) {
-		return content.replace(/^(\[.*\])$/gm, '<div class="shortcode-wrapper">$1</div>');
+		return content.replace(/^(<p>)?(\[.*\])(<\/p>)?$/gm, '<div class="shortcode-wrapper">$2</div>');
 	};
 
 	oneApp.triggerInitFrames = function() {
