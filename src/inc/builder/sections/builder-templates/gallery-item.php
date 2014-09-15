@@ -19,6 +19,7 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 // Set up the combined section + slide ID
 $section_id  = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '';
 $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }}}' : $section_id . '-' . $ttfmake_gallery_id;
+$overlay_id  = 'ttfmake-overlay-' . $combined_id;
 ?>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
@@ -31,7 +32,7 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
 
-	<a href="#" class="configure-gallery-item-link" title="<?php esc_attr_e( 'Configure item', 'make' ); ?>">
+	<a href="#" class="configure-gallery-item-link ttfmake-overlay-open" title="<?php esc_attr_e( 'Configure item', 'make' ); ?>" data-overlay="#<?php echo $overlay_id; ?>">
 		<span>
 			<?php _e( 'Configure item', 'make' ); ?>
 		</span>
@@ -48,6 +49,46 @@ $combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }
 	</a>
 
 	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[description]', $description, false ); ?>
+
+	<?php
+	global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overaly_title;
+	$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
+	$ttfmake_overlay_id    = $overlay_id;
+	$ttfmake_overaly_title = __( 'Configure gallery item', 'make' );
+
+	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
+
+	$inputs = apply_filters( 'make_banner_slide_configuration', array(
+		100 => array(
+			'type'    => 'text',
+			'name'    => 'link',
+			'label'   => __( 'Item link', 'make' ),
+			'default' => '',
+		),
+		200 => array(
+			'type'    => 'text',
+			'name'    => 'title',
+			'label'   => __( 'Title', 'make' ),
+			'default' => '',
+		),
+	) );
+
+	// Sort the config in case 3rd party code added another input
+	ksort( $inputs, SORT_NUMERIC );
+
+	// Print the inputs
+	$output = '';
+
+	foreach ( $inputs as $input ) {
+		if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+			$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data );
+		}
+	}
+
+	echo $output;
+
+	get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
+	?>
 
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
