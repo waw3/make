@@ -209,15 +209,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$section = $this.parents('.' + $this.attr('data-overlay-parent')),
-				$overlay = $('.' + $this.attr('data-overlay'), $section),
+				$overlay = $($this.attr('data-overlay')),
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
-
-			console.log($this.attr('data-overlay'));
 
 			$overlay.show();
 			$('.ttfmake-configuration-title:first', this.$el).focus();
-			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $section]);
+			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
 
 			this.setSize($overlay, $wrapper);
 		},
