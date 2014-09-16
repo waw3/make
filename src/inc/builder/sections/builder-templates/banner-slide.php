@@ -95,7 +95,8 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	foreach ( $inputs as $input ) {
 		if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-			$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ] );
+			$section_data  = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ] : array();
+			$output       .= ttfmake_create_input( $section_name, $input, $section_data );
 		}
 	}
 
