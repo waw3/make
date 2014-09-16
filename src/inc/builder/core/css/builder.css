@@ -556,13 +556,45 @@
 	float: right;
 }
 .ttfmake-configuration-overlay-input-wrap {
-	display: flex;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	align-items: center;
-	-webkit-align-items: center;
 	padding: 20px 0 !important;
 	border-bottom: 1px solid #efefef !important;
+}
+.ttfmake-configuration-overlay-input-wrap {
+	zoom: 1;
+}
+.ttfmake-configuration-overlay-input-wrap:before,
+.ttfmake-configuration-overlay-input-wrap:after {
+	display: table;
+	content: "";
+}
+.ttfmake-configuration-overlay-input-wrap:after {
+	clear: both;
+}
+.ttfmake-configuration-overlay-input-wrap label {
+	position: relative;
+	top: 2px;
+	float: left;
+}
+.ttfmake-configuration-overlay-input-wrap select,
+.ttfmake-configuration-overlay-input-wrap input {
+	float: right;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container,
+.ttfmake-configuration-overlay-input-wrap  .ttfmake-uploader {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 20px;
+}
+.ttfmake-configuration-overlay-input-wrap input[type=checkbox] {
+	position: relative;
+	top: 5px;
+}
+.ttfmake-configuration-description {
+	float: left;
+	margin-top: 20px;
+	color: #666;
+	font-style: italic;
 }
 .ttfmake-configuration-overlay-input-wrap select,
 .ttfmake-configuration-overlay-input-wrap input {
@@ -592,10 +624,6 @@
 	display: block; /*reset*/
 	clear: both;
 	width: 100%;
-}
-.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-media-wrap label {
-	display: block;
-	margin-bottom: 20px;
 }
 /*---------------------------------------------------------
  iFrame (builder.css)
