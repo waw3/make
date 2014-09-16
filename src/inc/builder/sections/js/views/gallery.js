@@ -94,7 +94,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 
 		$selector.wpColorPicker({
-			defaultColor: ''
+			defaultColor: '',
+			hide: false
 		});
 	};
 
