@@ -13,7 +13,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		open: function() {
 			$oneApp.trigger('overlayOpen', this.$el);
-			this.$el.fadeIn(200);
+			this.$el.show();
 		},
 
 		close: function() {
