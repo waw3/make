@@ -19,6 +19,7 @@ function ttfmake_create_config_select( $section_name, $args, $section_data ) {
 		$id     = $section_name . '[' . $args['name'] . ']';
 		$label  = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
 		$class  = ( isset( $args['class'] ) ) ? ' class="' . esc_attr( $args['class'] ) . '"' : '';
+		$description = ( isset( $args['description'] ) ) ? '<div class="ttfmake-configuration-description">' . esc_html( $args['description'] ) . '</div>': '';
 		$select = '<select id="' . $id . '"' . $class .' name="' . $id . '">%s</select>';
 
 		$options = '';
@@ -27,7 +28,7 @@ function ttfmake_create_config_select( $section_name, $args, $section_data ) {
 			$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $key, $current_value, false ) . '>' . $value . '</option>';
 		}
 
-		$return = $label . sprintf( $select, $options );
+		$return = $label . sprintf( $select, $options ) . $description;
 	}
 
 	return $return;
@@ -49,7 +50,8 @@ function ttfmake_create_config_checkbox( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$id          = $section_name . '[' . $args['name'] . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
-	$args        = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>';
+	$description = ( isset( $args['description'] ) ) ? '<div class="ttfmake-configuration-description">' . esc_html( $args['description'] ) . '</div>': '';
+	$args        = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>' . $description;
 
 	return  $label . $args;
 }

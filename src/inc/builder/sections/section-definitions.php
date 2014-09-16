@@ -215,11 +215,12 @@ class TTFMAKE_Section_Definitions {
 					'default' => 600
 				),
 				800 => array(
-					'type'    => 'select',
-					'label'   => __( 'Responsive behavior', 'make' ),
-					'name'    => 'responsive',
-					'default' => 'balanced',
-					'options' => array(
+					'type'        => 'select',
+					'label'       => __( 'Responsive behavior', 'make' ),
+					'name'        => 'responsive',
+					'default'     => 'balanced',
+					'description' => __( 'Choose how the banner will respond to varying screen widths', 'make' ),
+					'options'     => array(
 						'balanced' => __( 'Default', 'make' ),
 						'aspect'   => __( 'Aspect', 'make' ),
 					)
