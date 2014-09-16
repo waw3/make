@@ -208,15 +208,18 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		openConfigurationOverlay: function (evt) {
 			evt.preventDefault();
 
-			var $this = $(evt.target),
+			var self = this,
+				$this = $(evt.target),
 				$overlay = $($this.attr('data-overlay')),
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
-			$overlay.show();
-			$('.ttfmake-configuration-title:first', this.$el).focus();
-			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
+			$overlay.show(1, function(){
+				$('.wp-color-result', $overlay).click();
+				self.setSize($overlay, $wrapper);
+				$('.ttfmake-configuration-title:first', self.$el).focus();
+			});
 
-			this.setSize($overlay, $wrapper);
+			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
 		},
 
 		setSize: function($overlay, $wrapper) {
