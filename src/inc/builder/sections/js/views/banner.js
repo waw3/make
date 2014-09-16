@@ -90,9 +90,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		view = view || '';
 
 		if (view.$el) {
-			$selector = $('.ttfmake-banner-slide-background-color', view.$el);
+			$selector = $('.ttfmake-configuration-color-picker', view.$el);
 		} else {
-			$selector = $('.ttfmake-banner-slide-background-color');
+			$selector = $('.ttfmake-configuration-color-picker');
 		}
 
 		$selector.wpColorPicker({
