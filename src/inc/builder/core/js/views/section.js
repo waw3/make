@@ -212,7 +212,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$overlay = $($this.attr('data-overlay')),
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
-			$overlay.show();
+			$overlay.fadeIn(200);
 			$('.ttfmake-configuration-title:first', this.$el).focus();
 			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
 
