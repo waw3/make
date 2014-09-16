@@ -123,12 +123,10 @@
 
 		function openWindow() {
 			formatWindow = editor.windowManager.open( {
-				id: 'ttfmake-format-builder',
-				name: 'formatWindow',
 				title: 'Format Builder',
+				autoScroll: true,
 				width: 400,
 				height: 400,
-				autoScroll: true,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
@@ -175,9 +173,7 @@
 		editor.addButton('ttfmake_format_builder', {
 			icon: 'ttfmake-format-builder',
 			tooltip: 'Format Builder',
-			onclick: function() {
-				openWindow();
-			}
+			onclick: openWindow
 		});
 	});
 })(tinymce);

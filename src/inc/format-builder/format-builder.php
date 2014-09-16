@@ -79,6 +79,9 @@ class TTFMAKE_Format_Builder {
 
 	public function print_styles() { ?>
 		<style type="text/css">
+			body .mce-window .mce-container-body.mce-abs-layout {
+				overflow-y: hidden;
+			}
 			i.mce-i-ttfmake-format-builder {
 				font: normal 20px/1 'dashicons';
 				padding: 0;
