@@ -50,6 +50,38 @@
 							type: 'textbox',
 							name: 'buttonPaddingY',
 							label: 'Padding (vertical)'
+						},
+						{
+							type: 'textbox',
+							name: 'buttonLabel1',
+							label: 'Label',
+							value: ''
+						},
+						{
+							type: 'textbox',
+							name: 'buttonURL1',
+							label: 'URL',
+							value: ''
+						},
+						{
+							type: 'textbox',
+							name: 'buttonColorBG1',
+							label: 'Background Color'
+						},
+						{
+							type: 'textbox',
+							name: 'buttonColorText1',
+							label: 'Text Color'
+						},
+						{
+							type: 'textbox',
+							name: 'buttonPaddingX1',
+							label: 'Padding (horizontal)'
+						},
+						{
+							type: 'textbox',
+							name: 'buttonPaddingY1',
+							label: 'Padding (vertical)'
 						}
 					]
 				},
@@ -94,11 +126,13 @@
 				id: 'ttfmake-format-builder',
 				name: 'formatWindow',
 				title: 'Format Builder',
+				width: 400,
+				height: 400,
+				autoScroll: true,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
-					layout: 'flex',
-					direction: 'column',
+					layout: 'flow',
 					align: 'stretch',
 					padding: 5,
 					spacing: 10,
@@ -120,17 +154,20 @@
 									onselect: function() {
 										var choice = this.value();
 										formatWindow.find('#optionsForm').remove();
-										formatWindow.find('#formatContainer').append(formatOptions[choice]).reflow();
+										formatWindow.find('#formatContainer')[0].append(formatOptions[choice]).reflow();
 										formatWindow.repaint();
 									}
 								}
 							]
-						}
-					],
+						},
+						formatOptions['button']
+					]
 				},
-				minWidth: 400,
-				onsubmit: function(e) {
+				buttons: {
+					text: 'Insert',
+					onclick: function() {
 
+					}
 				}
 			} );
 		}
