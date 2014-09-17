@@ -52,6 +52,9 @@ class TTFMAKE_Format_Builder {
 			// Add styles for the plugin and button
 			add_action( 'admin_print_styles-post.php', array( $this, 'print_styles' ) );
 			add_action( 'admin_print_styles-post-new.php', array( $this, 'print_styles' ) );
+
+			// Enqueue scripts for plugin functionality
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 	}
 
@@ -97,6 +100,18 @@ class TTFMAKE_Format_Builder {
 			}
 		</style>
 	<?php }
+
+
+	public function enqueue_scripts( $hook_suffix ) {
+		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
+			wp_enqueue_script(
+				'ttfmake-format-builder',
+				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/core.js',
+				array(),
+				TTFMAKE_VERSION
+			);
+		}
+	}
 }
 endif;
 
