@@ -183,6 +183,46 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 
 		get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
 		?>
+
+		<?php
+		global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overaly_title;
+		$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
+		$ttfmake_overlay_id    = $overlay_id;
+		$ttfmake_overaly_title = __( 'Configure column', 'make' );
+
+		get_template_part( '/inc/builder/core/templates/overlay', 'header' );
+
+		$inputs = apply_filters( 'make_column_configuration', array(
+			100 => array(
+				'type'    => 'text',
+				'name'    => 'image-link',
+				'label'   => __( 'Image link', 'make' ),
+				'default' => '',
+			),
+			200 => array(
+				'type'    => 'text',
+				'name'    => 'title',
+				'label'   => __( 'Column title', 'make' ),
+				'default' => '',
+			),
+		) );
+
+		// Sort the config in case 3rd party code added another input
+		ksort( $inputs, SORT_NUMERIC );
+
+		// Print the inputs
+		$output = '';
+
+		foreach ( $inputs as $input ) {
+			if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+				$output .= ttfmake_create_input( $column_name, $input, $ttfmake_section_data['data']['columns'][ $i ] );
+			}
+		}
+
+		echo $output;
+
+		get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
+		?>
 	</div>
 	<?php $j++; endforeach; ?>
 </div>
