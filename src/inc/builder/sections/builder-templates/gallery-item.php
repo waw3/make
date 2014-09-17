@@ -30,7 +30,7 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 		<div class="sortable-background"></div>
 	</div>
 
-	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ) ); ?>
+	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ), __( 'Set gallery image', 'make' ) ); ?>
 
 	<a href="#" class="configure-gallery-item-link ttfmake-overlay-open" title="<?php esc_attr_e( 'Configure item', 'make' ); ?>" data-overlay="#<?php echo $overlay_id; ?>">
 		<span>

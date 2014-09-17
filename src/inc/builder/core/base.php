@@ -409,23 +409,16 @@ class TTFMAKE_Builder_Base {
 	 *
 	 * @param  string    $section_name    Name of the current section.
 	 * @param  int       $image_id        ID of the current image.
-	 * @param  array     $messages        Message to show.
-	 * @return string                Either return the string or echo it.
+	 * @param  string    $title           Title for the media modal.
+	 * @return string                     Either return the string or echo it.
 	 */
-	public function add_uploader( $section_name, $image_id = 0, $messages = array() ) {
-		$image        = ttfmake_get_image_src( $image_id, 'large' );
-		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
-		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
-
-		// Set default messages
-		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image', 'make' ) : $messages['remove'];
-		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
-		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
-
+	public function add_uploader( $section_name, $image_id = 0, $title = '' ) {
+		$image = ttfmake_get_image_src( $image_id, 'large' );
+		$title = ( ! empty( $title ) ) ? $title : __( 'Set image', 'make' );
 		ob_start();
 		?>
 		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
-			<div class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
+			<div data-title="<?php echo esc_attr( $title ); ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
 			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
 	<?php
