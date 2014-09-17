@@ -58,7 +58,7 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
-	$inputs = apply_filters( 'make_banner_slide_configuration', array(
+	$inputs = apply_filters( 'make_gallery_item_configuration', array(
 		100 => array(
 			'type'    => 'text',
 			'name'    => 'link',

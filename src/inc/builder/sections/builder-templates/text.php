@@ -68,6 +68,7 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 		$column_name = $section_name . '[columns][' . $i . ']';
 		$iframe_id   = 'ttfmake-iframe-' . $section_id . '-' . $i;
 		$textarea_id = 'ttfmake-content-' . $section_id . '-' . $i;
+		$overlay_id  = 'ttfmake-overlay-' . $section_id . '-' . $i;
 		$link        = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-link'] : '';
 		$image_id    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
 		$title       = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
@@ -77,6 +78,13 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 
 		$column_buttons = array(
 			100 => array(
+				'label'              => __( 'Configure column', 'make' ),
+				'href'               => '#',
+				'class'              => 'configure-column-link ttfmake-overlay-open',
+				'title'              => __( 'Edit content', 'make' ),
+				'other-a-attributes' => ' data-overlay="#' . $overlay_id .'"',
+			),
+			200 => array(
 				'label'              => __( 'Edit text column', 'make' ),
 				'href'               => '#',
 				'class'              => 'edit-content-link edit-text-column-link' . $item_has_content,
@@ -112,19 +120,13 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 		do_action( 'make_section_text_before_column', $ttfmake_section_data, $i );
 		?>
 
-		<div class="ttfmake-titlediv">
-			<div class="ttfmake-titlewrap">
-				<input placeholder="<?php esc_attr_e( 'Enter column title', 'make' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
-
-				<?php foreach ( $column_buttons as $button ) : ?>
-				<a href="<?php echo esc_url( $button['href'] ); ?>" class="<?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
-					<span>
-						<?php echo esc_html( $button['label'] ); ?>
-					</span>
-				</a>
-				<?php endforeach; ?>
-			</div>
-		</div>
+		<?php foreach ( $column_buttons as $button ) : ?>
+		<a href="<?php echo esc_url( $button['href'] ); ?>" class="column-buttons <?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
+			<span>
+				<?php echo esc_html( $button['label'] ); ?>
+			</span>
+		</a>
+		<?php endforeach; ?>
 
 		<?php echo ttfmake_get_builder_base()->add_uploader( $column_name, ttfmake_sanitize_image_id( $image_id ), __( 'Set image', 'make' ) ); ?>
 		<?php ttfmake_get_builder_base()->add_frame( $section_id . '-' . $i, $column_name . '[content]', $content ); ?>
@@ -138,6 +140,46 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 		 * @param array    $ttfmake_section_data    The data for the section.
 		 */
 		do_action( 'ttfmake_section_text_after_column', $ttfmake_section_data, $i );
+		?>
+
+		<?php
+		global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overaly_title;
+		$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
+		$ttfmake_overlay_id    = $overlay_id;
+		$ttfmake_overaly_title = __( 'Configure column', 'make' );
+
+		get_template_part( '/inc/builder/core/templates/overlay', 'header' );
+
+		$inputs = apply_filters( 'make_column_configuration', array(
+			100 => array(
+				'type'    => 'text',
+				'name'    => 'image-link',
+				'label'   => __( 'Image link', 'make' ),
+				'default' => '',
+			),
+			200 => array(
+				'type'    => 'text',
+				'name'    => 'title',
+				'label'   => __( 'Column title', 'make' ),
+				'default' => '',
+			),
+		) );
+
+		// Sort the config in case 3rd party code added another input
+		ksort( $inputs, SORT_NUMERIC );
+
+		// Print the inputs
+		$output = '';
+
+		foreach ( $inputs as $input ) {
+			if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+				$output .= ttfmake_create_input( $column_name, $input, $ttfmake_section_data['data']['columns'][ $i ] );
+			}
+		}
+
+		echo $output;
+
+		get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
 		?>
 	</div>
 	<?php $j++; endforeach; ?>
