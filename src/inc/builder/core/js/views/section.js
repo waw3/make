@@ -19,7 +19,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-section-remove': 'removeSection',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
-			'click .ttfmake-media-uploader-remove': 'removeImage',
 			'click .edit-content-link': 'openTinyMCEOverlay',
 			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 			'click .ttfmake-overlay-close': 'closeConfigurationOverlay'
@@ -124,6 +123,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				frame = frame || {},
 				props, image;
 
+			oneApp.$currentPlaceholder = $placeholder;
+
 			// If the media frame already exists, reopen it.
 			if ('function' === typeof frame.open) {
 				frame.open();
@@ -169,29 +170,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Finally, open the modal
 			frame.open();
-		},
-
-		removeImage: function (evt) {
-			evt.preventDefault();
-
-			var $this = $(evt.target),
-				$parent = $this.parents('.ttfmake-uploader'),
-				$placeholder = $('.ttfmake-media-uploader-placeholder', $parent),
-				$input = $('.ttfmake-media-uploader-value', $parent),
-				$set = $('.ttfmake-media-uploader-add', $parent);
-
-			// Remove the image
-			$placeholder.css('background-image', '');
-			$parent.removeClass('ttfmake-has-image-set');
-
-			// Remove the value from the input
-			$input.removeAttr('value');
-
-			// Hide the remove link
-			$this.hide();
-
-			// Show the set link
-			$set.show();
 		},
 
 		openTinyMCEOverlay: function (evt) {

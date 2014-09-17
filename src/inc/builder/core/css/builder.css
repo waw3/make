@@ -667,3 +667,10 @@
 	width: 100%;
 	height: 100%;
 }
+/*---------------------------------------------------------
+ Media Modal (builder.css)
+-------------------------------------------------------- */
+.media-frame a.ttfmake-remove-image-from-modal {
+	color: #d54e21;
+	text-decoration: none;
+}

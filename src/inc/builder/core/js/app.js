@@ -249,6 +249,29 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 		});
 	};
 
+	$('body').on('click', '.ttfmake-remove-image-from-modal', function(evt){
+		evt.preventDefault();
+
+		var $parent = oneApp.$currentPlaceholder.parents('.ttfmake-uploader'),
+			$input = $('.ttfmake-media-uploader-value', $parent);
+
+		// Remove the image
+		oneApp.$currentPlaceholder.css('background-image', '');
+		$parent.removeClass('ttfmake-has-image-set');
+
+		// Remove the value from the input
+		$input.removeAttr('value');
+
+		wp.media.frames.frame.close();
+	});
+
+	wp.media.view.Sidebar = wp.media.view.Sidebar.extend({
+		render: function() {
+			this.$el.html( wp.media.template( 'ttfmake-remove-image' ) );
+			return this;
+		}
+	});
+
 	// Leaving function to avoid errors if 3rd party code uses it. Deprecated in 1.4.0.
 	oneApp.initAllEditors = function(id, model) {};
 
