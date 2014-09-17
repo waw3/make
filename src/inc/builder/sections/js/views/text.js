@@ -102,6 +102,17 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('text' === view.model.get('sectionType')) {
 			oneApp.initializeTextColumnSortables(view);
+
+			// Initialize the iframes
+			var $frames = $('iframe', view.$el),
+				link = oneApp.getFrameHeadLinks(),
+				id, $this;
+
+			$.each($frames, function() {
+				$this = $(this);
+				id = $this.attr('id').replace('ttfmake-iframe-', '');
+				oneApp.initFrame(id, link);
+			});
 		}
 	});
 
