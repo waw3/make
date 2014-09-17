@@ -54,7 +54,7 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 	global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overaly_title;
 	$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
 	$ttfmake_overlay_id    = $overlay_id;
-	$ttfmake_overaly_title = __( 'Configure gallery item', 'make' );
+	$ttfmake_overaly_title = __( 'Configure item', 'make' );
 
 	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
