@@ -4,10 +4,21 @@ var ttfmakeFormatBuilder;
 
 ( function( $ ) {
 	var formatWindow;
-	
+
 	ttfmakeFormatBuilder = {
 
 		open: function(editor) {
+			var node = editor.selection.getNode(),
+				selection = editor.selection.getSel(),
+				content = editor.selection.getContent();
+
+			console.log(node);
+			console.log(selection);
+			console.log(content);
+
+
+
+			/*
 			formatWindow = editor.windowManager.open( {
 				title: 'Format Builder',
 				autoScroll: true,
@@ -24,28 +35,7 @@ var ttfmakeFormatBuilder;
 						{
 							type: 'form',
 							name: 'listboxForm',
-							items: [
-								{
-									type: 'listbox',
-									name: 'format',
-									label: 'Choose a format',
-									id: 'ttfmake-format-builder-picker',
-									values: [
-										{ value: '', text: '--- Formats ---', selected: 'selected', disabled: 'disabled' },
-										{ value: 'button', text: 'Button' },
-										{ value: 'alert', text: 'Alert Box' }
-									],
-									onselect: function() {
-										var choice = this.value(),
-											options = ttfmakeFormatBuilder.getOptionFields(choice);
-										formatWindow.find('#optionsForm').remove();
-										formatWindow.find('#formatContainer')[0].append(options).reflow();
-										formatWindow.repaint();
-									}
-								}
-							]
-						}
-					]
+							items: [ ttfmakeFormatBuilder.getFormatListBox() ]
 				},
 				buttons: {
 					text: 'Insert',
@@ -54,6 +44,35 @@ var ttfmakeFormatBuilder;
 					}
 				}
 			} );
+			*/
+		},
+
+
+		parseNode: function( node ) {
+
+		},
+
+
+		getFormatListBox: function() {
+			var listbox = {
+				type: 'listbox',
+				name: 'format',
+				label: 'Choose a format',
+				id: 'ttfmake-format-builder-picker',
+				values: [
+					{ value: '', text: '--- Formats ---', selected: 'selected', disabled: 'disabled' },
+					{ value: 'button', text: 'Button' }
+				],
+				onselect: function() {
+					var choice = this.value(),
+						options = ttfmakeFormatBuilder.getOptionFields(choice);
+					formatWindow.find('#optionsForm').remove();
+					formatWindow.find('#formatContainer')[0].append(options).reflow();
+					formatWindow.repaint();
+				}
+			};
+
+			return listbox;
 		},
 
 
@@ -147,7 +166,5 @@ var ttfmakeFormatBuilder;
 				.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
 				.replace(/[\r\n]/g, preserveCR);
 		}
-
 	};
-
 })( jQuery );
