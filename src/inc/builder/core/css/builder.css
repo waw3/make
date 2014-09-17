@@ -626,6 +626,22 @@
 	width: 100%;
 }
 /*---------------------------------------------------------
+ Color picker (builder.css)
+-------------------------------------------------------- */
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container .wp-color-result {
+	display: none;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container .button {
+	margin-left: 0; /*reset*/
+	margin-right: 4px; /*reset*/
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container .wp-picker-holder {
+	margin-left: -8px;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container .iris-picker {
+	border: 0; /*reset*/
+}
+/*---------------------------------------------------------
  iFrame (builder.css)
 -------------------------------------------------------- */
 .ttfmake-iframe-wrapper {
