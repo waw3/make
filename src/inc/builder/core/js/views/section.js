@@ -215,6 +215,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			$overlay.show(1, function(){
 				$('.wp-color-result', $overlay).click();
+				$( 'body' ).off( 'click.wpcolorpicker' );
 				self.setSize($overlay, $wrapper);
 				$('input:first', $overlay).focus();
 			});

@@ -628,7 +628,7 @@
 /*---------------------------------------------------------
  Color picker (builder.css)
 -------------------------------------------------------- */
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .wp-color-result {
+.wp-color-result.wp-picker-open:after {
 	display: none;
 }
 .ttfmake-configuration-overlay-input-wrap .wp-picker-container .button {
