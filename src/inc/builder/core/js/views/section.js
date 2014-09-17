@@ -216,7 +216,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			$overlay.show(1, function(){
 				$('.wp-color-result', $overlay).click();
 				self.setSize($overlay, $wrapper);
-				$('.ttfmake-configuration-title:first', self.$el).focus();
+				$('input:first', $overlay).focus();
 			});
 
 			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
