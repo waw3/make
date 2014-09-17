@@ -68,13 +68,6 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 			'default' => 0
 		),
 		200 => array(
-			'type'    => 'color',
-			'label'   => __( 'Background color', 'make' ),
-			'name'    => 'background-color',
-			'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
-			'default' => '',
-		),
-		300 => array(
 			'type'    => 'select',
 			'name'    => 'alignment',
 			'label'   => __( 'Content position', 'make' ),
@@ -84,7 +77,14 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 				'left'  => __( 'Left', 'make' ),
 				'right' => __( 'Right', 'make' ),
 			),
-		)
+		),
+		300 => array(
+			'type'    => 'color',
+			'label'   => __( 'Background color', 'make' ),
+			'name'    => 'background-color',
+			'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
+			'default' => '',
+		),
 	) );
 
 	// Sort the config in case 3rd party code added another input

@@ -377,13 +377,6 @@ class TTFMAKE_Section_Definitions {
 					'default' => 0,
 				),
 				800 => array(
-					'type'    => 'color',
-					'label'   => __( 'Background color', 'make' ),
-					'name'    => 'background-color',
-					'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
-					'default' => '',
-				),
-				900 => array(
 					'type'    => 'select',
 					'name'    => 'background-style',
 					'label'   => __( 'Background style', 'make' ),
@@ -392,6 +385,13 @@ class TTFMAKE_Section_Definitions {
 						'tile'  => __( 'Tile', 'make' ),
 						'cover' => __( 'Cover', 'make' ),
 					),
+				),
+				900 => array(
+					'type'    => 'color',
+					'label'   => __( 'Background color', 'make' ),
+					'name'    => 'background-color',
+					'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
+					'default' => '',
 				),
 			)
 		);
