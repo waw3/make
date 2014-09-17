@@ -458,7 +458,7 @@ class TTFMAKE_Builder_Base {
 					</span>
 				</a>
 			</div>
-			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>"></iframe>
+			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>" scrolling="no"></iframe>
 		</div>
 		<?php endif; ?>
 
