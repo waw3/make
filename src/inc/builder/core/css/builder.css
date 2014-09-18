@@ -554,6 +554,10 @@
 }
 .ttfmake-overlay-header .ttfmake-overlay-close {
 	float: right;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 .ttfmake-configuration-overlay-input-wrap {
 	padding: 20px 0 !important;
