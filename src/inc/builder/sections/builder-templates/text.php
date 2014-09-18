@@ -161,7 +161,7 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 			200 => array(
 				'type'    => 'text',
 				'name'    => 'image-link',
-				'label'   => __( 'Image link', 'make' ),
+				'label'   => __( 'Image link URL', 'make' ),
 				'default' => '',
 			),
 		) );

@@ -62,7 +62,7 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 		100 => array(
 			'type'    => 'text',
 			'name'    => 'link',
-			'label'   => __( 'Item link', 'make' ),
+			'label'   => __( 'Item link URL', 'make' ),
 			'default' => '',
 		),
 		200 => array(
