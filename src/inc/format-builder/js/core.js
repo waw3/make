@@ -15,10 +15,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			this.currentSelection.selection = editor.selection.getSel();
 			this.currentSelection.content = editor.selection.getContent();
 
-			//console.log(node);
-			//console.log(selection);
-			//console.log(content);
-
 			var format = this.parseNode( editor, this.currentSelection.node),
 				items;
 
@@ -27,7 +23,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					{
 						type: 'form',
 						name: 'listboxForm',
-						items: [ ttfmakeFormatBuilder.getFormatListBox() ]
+						items: ttfmakeFormatBuilder.getFormatListBox()
 					}
 				]
 			} else if ('undefined' !== typeof ttfmakeFormatBuilder.formats[format]) {
@@ -59,6 +55,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					text: 'Insert',
 					name: 'formatSubmit',
 					onclick: function() {
+						if ('undefined' === typeof formatWindow.find('#optionsForm')[0]) {
+							return;
+						}
+
 						var data = formatWindow.find('#optionsForm')[0].toJSON(),
 							html;
 
@@ -81,7 +81,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		parseNode: function( editor, node ) {
 			var format = '';
 
-			$.each(this.nodes, function(fmt, selector) {
+			$.each(this.nodes, function( fmt, selector ) {
 				var match = editor.dom.getParents( node, selector );
 				if ( match.length > 0 ) {
 					format = fmt;
@@ -99,7 +99,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				name: 'format',
 				label: 'Choose a format',
 				id: 'ttfmake-format-builder-picker',
-				values: ttfmakeFormatBuilder.getFormatChoices(),
+				values: this.getFormatChoices(),
 				onselect: function() {
 					var choice = this.value(),
 						fields = {
