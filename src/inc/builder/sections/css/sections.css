@@ -6,7 +6,6 @@
 	padding-right: 90px;
 }
 .ttfmake-section-text .ttfmake-media-uploader-placeholder {
-	border-top: 0; /*reset*/
 	border-bottom: 0; /*reset*/
 }
 .ttfmake-section-text .ttfmake-section-body,
@@ -319,7 +318,7 @@
 	display: inline-block;
 	position: absolute;
 	clear: both;
-	top: 0;
+	top: 20px;
 	right: 45px;
 	height: 39px;
 	margin-bottom: 0; /*reset*/
@@ -329,6 +328,10 @@
 	color: #aaaaaa;
 	text-decoration: none;  /*reset*/
 	outline: none !important;
+}
+.edit-text-column-link,
+.configure-column-link {
+	top: 0; /*reset*/
 }
 .remove-gallery-item-link,
 .remove-banner-slide-link {
