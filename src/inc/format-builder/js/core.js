@@ -31,7 +31,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					}
 				]
 			} else if ('undefined' !== typeof ttfmakeFormatBuilder.formats[format]) {
-				ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[format];
+				ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[format]({ update: true });
 				items = [
 					{
 						type: 'form',
@@ -58,7 +58,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				buttons: {
 					text: 'Insert',
 					name: 'formatSubmit',
-					disabled: ('' === format),
 					onclick: function() {
 						var data = formatWindow.find('#optionsForm')[0].toJSON(),
 							html;
@@ -114,7 +113,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						fields.items = ttfmakeFormatBuilder.currentFormat.getOptionFields();
 						formatWindow.find('#optionsForm').remove();
 						formatWindow.find('#formatContainer')[0].append(fields).reflow();
-						formatWindow.find('#formatSubmit').disabled( false );
 						formatWindow.repaint();
 					}
 				}

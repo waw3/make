@@ -9,6 +9,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 	ttfmakeFormatBuilder.formats.button = ttfmakeFormatBuilder.FormatModel.extend({
 		defaults: {
+			update: false,
 			text: 'Click Here',
 			url: '',
 			target: false,
@@ -23,15 +24,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		initialize: function() {
-			var content = ttfmakeFormatBuilder.currentSelection.content || '';
+			var content = ttfmakeFormatBuilder.currentSelection.content || '',
+				node = ttfmakeFormatBuilder.currentSelection.node || {};
 			if ( '' !== content ) {
 				this.set({ text: content });
 			}
-		},
-
-		parseAttributes: function() {
-			var node = ttfmakeFormatBuilder.currentSelection.node || {};
-			console.log(node);
+			if (true === this.get('update')) {
+				this.parseAttributes( node );
+			}
 		},
 
 		getOptionFields: function() {
@@ -120,6 +120,30 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					self.set(key, sanitized);
 				}
 			});
+		},
+
+		parseAttributes: function( node ) {
+			var $node = $(node),
+				fontSize, paddingHorz, paddingVert;
+			if ( $node.text() ) this.set('text', $node.text());
+			if ( $node.attr('href') ) this.set('url', $node.attr('href'));
+			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
+			if ( $node.attr('data-hover-color') ) this.set('colorTextHover', $node.attr('data-hover-color'));
+			if ( '_blank' === $node.attr('target') ) this.set('target', true);
+			if ( $node.css('backgroundColor') ) this.set('colorBackground', $node.css('backgroundColor'));
+			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
+			if ( $node.css('fontSize') ) {
+				fontSize = parseInt( $node.css('fontSize') );
+				this.set('fontSize', fontSize + '');
+			}
+			if ( $node.css('paddingLeft') ) {
+				paddingHorz = parseInt( $node.css('paddingLeft') );
+				this.set('paddingHorz', paddingHorz + '');
+			}
+			if ( $node.css('paddingTop') ) {
+				paddingVert = parseInt( $node.css('paddingTop') );
+				this.set('paddingVert', paddingVert + '');
+			}
 		},
 
 		getHTML: function() {
