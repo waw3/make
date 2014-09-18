@@ -28,7 +28,7 @@ $section_order    = ( ! empty( $ttfmake_section_data['data']['gallery-item-order
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
-	<a href="#" class="ttfmake-add-item ttfmake-gallery-add-item-link">
+	<a href="#" class="ttfmake-add-item ttfmake-gallery-add-item-link" title="<?php esc_attr_e( 'Add new item', 'make' ); ?>">
 		<div class="ttfmake-gallery-add-item">
 			<span>
 				<?php _e( 'Add Item', 'make' ); ?>
