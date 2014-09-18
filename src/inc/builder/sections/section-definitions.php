@@ -372,7 +372,7 @@ class TTFMAKE_Section_Definitions {
 				),
 				700 => array(
 					'type'    => 'checkbox',
-					'label'   => __( 'Darken to improve readability', 'make' ),
+					'label'   => __( 'Darken background to improve readability', 'make' ),
 					'name'    => 'darken',
 					'default' => 0,
 				),

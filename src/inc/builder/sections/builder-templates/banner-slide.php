@@ -63,7 +63,7 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 	$inputs = apply_filters( 'make_banner_slide_configuration', array(
 		100 => array(
 			'type'    => 'checkbox',
-			'label'   => __( 'Darken to improve readability', 'make' ),
+			'label'   => __( 'Darken background to improve readability', 'make' ),
 			'name'    => 'darken',
 			'default' => 0
 		),
