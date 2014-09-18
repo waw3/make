@@ -19,7 +19,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		initialize: function() {
-
+			var content = ttfmakeFormatBuilder.currentSelection.content || '';
+			if ( '' !== content ) {
+				this.set({ text: content });
+			}
 		},
 
 		parseAttributes: function() {

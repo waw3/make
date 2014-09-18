@@ -6,16 +6,16 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 	ttfmakeFormatBuilder = {
 		currentFormat: {},
+		currentSelection: {},
 
 		open: function( editor ) {
-			var node = editor.selection.getNode(),
-				selection = editor.selection.getSel(),
-				content = editor.selection.getContent();
+			this.currentSelection.node = editor.selection.getNode();
+			this.currentSelection.selection = editor.selection.getSel();
+			this.currentSelection.content = editor.selection.getContent();
 
 			//console.log(node);
 			//console.log(selection);
 			//console.log(content);
-
 
 			formatWindow = editor.windowManager.open( {
 				title: 'Format Builder',
@@ -42,6 +42,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					onclick: function() {
 
 					}
+				},
+				onclose: function() {
+					ttfmakeFormatBuilder.currentFormat = {};
+					ttfmakeFormatBuilder.currentSelection = {};
 				}
 			} );
 
