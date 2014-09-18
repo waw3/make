@@ -81,7 +81,8 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	foreach ( $inputs as $input ) {
 		if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-			$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ] );
+			$section_data  = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ] ) ) ? $ttfmake_section_data['data']['gallery-items'][ $ttfmake_gallery_id ] : array();
+			$output       .= ttfmake_create_input( $section_name, $input, $section_data );
 		}
 	}
 
