@@ -154,7 +154,7 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 			100 => array(
 				'type'    => 'section_title',
 				'name'    => 'title',
-				'label'   => __( 'Column title', 'make' ),
+				'label'   => __( 'Enter column title', 'make' ),
 				'default' => '',
 				'class'   => 'ttfmake-configuration-title',
 			),
