@@ -6,6 +6,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 	ttfmakeFormatBuilder = {
 		formats: {},
+		nodes: {},
 		currentFormat: {},
 		currentSelection: {},
 
@@ -17,6 +18,28 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			//console.log(node);
 			//console.log(selection);
 			//console.log(content);
+
+			var format = this.parseNode( editor, this.currentSelection.node),
+				items;
+
+			if ('' == format) {
+				items = [
+					{
+						type: 'form',
+						name: 'listboxForm',
+						items: [ ttfmakeFormatBuilder.getFormatListBox() ]
+					}
+				]
+			} else if ('undefined' !== typeof ttfmakeFormatBuilder.formats[format]) {
+				ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[format];
+				items = [
+					{
+						type: 'form',
+						name: 'optionsForm',
+						items: ttfmakeFormatBuilder.currentFormat.getOptionFields()
+					}
+				]
+			}
 
 			formatWindow = editor.windowManager.open( {
 				title: 'Format Builder',
@@ -30,16 +53,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					align: 'stretch',
 					padding: 5,
 					spacing: 10,
-					items: [
-						{
-							type: 'form',
-							name: 'listboxForm',
-							items: [ ttfmakeFormatBuilder.getFormatListBox() ]
-						}
-					]
+					items: items
 				},
 				buttons: {
 					text: 'Insert',
+					name: 'formatSubmit',
+					disabled: ('' === format),
 					onclick: function() {
 						var data = formatWindow.find('#optionsForm')[0].toJSON(),
 							html;
@@ -60,8 +79,18 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 
-		parseNode: function( node ) {
+		parseNode: function( editor, node ) {
+			var format = '';
 
+			$.each(this.nodes, function(fmt, selector) {
+				var match = editor.dom.getParents( node, selector );
+				if ( match.length > 0 ) {
+					format = fmt;
+					return false;
+				}
+			});
+
+			return format;
 		},
 
 
@@ -85,6 +114,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						fields.items = ttfmakeFormatBuilder.currentFormat.getOptionFields();
 						formatWindow.find('#optionsForm').remove();
 						formatWindow.find('#formatContainer')[0].append(fields).reflow();
+						formatWindow.find('#formatSubmit').disabled( false );
 						formatWindow.repaint();
 					}
 				}

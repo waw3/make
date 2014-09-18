@@ -5,6 +5,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	'use strict';
 
 	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
+	ttfmakeFormatBuilder.nodes.button = 'a.ttfmake-button';
 
 	ttfmakeFormatBuilder.formats.button = ttfmakeFormatBuilder.FormatModel.extend({
 		defaults: {
@@ -35,6 +36,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 		getOptionFields: function() {
 			var items = [
+				{
+					type: 'label',
+					label: 'Button'
+				},
 				{
 					type: 'textbox',
 					name: 'text',
