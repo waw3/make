@@ -152,15 +152,16 @@ do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 
 		$inputs = apply_filters( 'make_column_configuration', array(
 			100 => array(
-				'type'    => 'text',
-				'name'    => 'image-link',
-				'label'   => __( 'Image link', 'make' ),
+				'type'    => 'section_title',
+				'name'    => 'title',
+				'label'   => __( 'Column title', 'make' ),
 				'default' => '',
+				'class'   => 'ttfmake-configuration-title',
 			),
 			200 => array(
 				'type'    => 'text',
-				'name'    => 'title',
-				'label'   => __( 'Column title', 'make' ),
+				'name'    => 'image-link',
+				'label'   => __( 'Image link', 'make' ),
 				'default' => '',
 			),
 		) );

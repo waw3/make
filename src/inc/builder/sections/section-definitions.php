@@ -83,7 +83,7 @@ class TTFMAKE_Section_Definitions {
 					'type'  => 'section_title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title',
+					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
 				),
 				200 => array(
 					'type'    => 'select',
@@ -171,7 +171,7 @@ class TTFMAKE_Section_Definitions {
 					'type'  => 'section_title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title',
+					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
 				),
 				200 => array(
 					'type'    => 'checkbox',
@@ -316,7 +316,7 @@ class TTFMAKE_Section_Definitions {
 					'type'  => 'section_title',
 					'name'  => 'title',
 					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title',
+					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
 				),
 				200 => array(
 					'type'    => 'select',

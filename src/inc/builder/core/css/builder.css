@@ -6,7 +6,7 @@
 	margin-bottom: 20px;
 }
 .ttfmake-titlediv .ttfmake-title,
-.ttfmake-configuration-overlay-input-wrap .ttfmake-section-header-title-input {
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-title {
 	width: 100%;
 	height: 41px;
 	margin: 0; /*reset*/

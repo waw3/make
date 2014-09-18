@@ -135,7 +135,7 @@ function ttfmake_create_config_section_title( $section_name, $args, $section_dat
 	$name        = 'name="' . $section_name . '[' . esc_attr( $args['name'] ) . ']"';
 	$class       = ( isset( $args['class'] ) ) ? ' ' . esc_attr( $args['class'] ) : '';
 
-	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title ttfmake-section-header-title-input ' . $class . '" autocomplete="off">';
+	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title' . $class . '" autocomplete="off">';
 }
 endif;
 

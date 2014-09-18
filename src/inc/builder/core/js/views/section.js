@@ -85,7 +85,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}.bind(this));
 		},
 
-		constructHeader: function () {
+		constructHeader: function (evt) {
 			if ('' === this.$headerTitle) {
 				this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
 			}
