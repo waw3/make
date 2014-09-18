@@ -671,6 +671,9 @@
  Media Modal (builder.css)
 -------------------------------------------------------- */
 .media-frame a.ttfmake-remove-image-from-modal {
-	color: #d54e21;
-	text-decoration: none;
+	color: #bc0b0b;
+	text-decoration: none; /*reset*/
+}
+.media-frame a.ttfmake-remove-image-from-modal:hover {
+	color: red;
 }
