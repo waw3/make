@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.3.2' );
+define( 'TTFMAKE_VERSION', '1.4.0' );
 
 /**
  * The suffix to use for scripts.
