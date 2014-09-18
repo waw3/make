@@ -9,7 +9,19 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 		initialize: function () {},
 
-		getOptionFields: {}
+		getOptionFields: {},
+
+		escAttr: function(s, preserveCR) {
+			preserveCR = preserveCR ? '&#13;' : '\n';
+			return ('' + s) /* Forces the conversion to string. */
+				.replace(/&/g, '&amp;') /* This MUST be the 1st replacement. */
+				.replace(/'/g, '&apos;') /* The 4 other predefined entities, required. */
+				.replace(/"/g, '&quot;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
+				.replace(/[\r\n]/g, preserveCR);
+		}
 	});
 
 	// Set up this model as a "no URL model" where data is not synced with the server

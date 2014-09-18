@@ -10,11 +10,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		defaults: {
 			text: 'Click Here',
 			url: '',
-			target: 0,
+			target: false,
+			fontSize: '17',
 			colorBackground: '#000000',
 			colorBackgroundHover: '#e5e5e5',
 			colorText: '#ffffff',
 			colorTextHover: '#000000',
+			paddingHorz: '6',
+			paddingVert: '4',
 			icon: ''
 		},
 
@@ -26,56 +29,75 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		parseAttributes: function() {
-
+			var node = ttfmakeFormatBuilder.currentSelection.node || {};
+			console.log(node);
 		},
 
 		getOptionFields: function() {
 			var items = [
 				{
 					type: 'textbox',
-					name: 'buttonText',
+					name: 'text',
 					label: 'Text',
 					value: this.get('text')
 				},
 				{
 					type: 'textbox',
-					name: 'buttonUrl',
+					name: 'url',
 					label: 'URL',
 					value: this.get('url')
 				},
 				{
 					type: 'checkbox',
-					name: 'buttonTarget',
+					name: 'target',
 					label: 'Open link in a new window/tab',
-					value: this.get('target')
+					checked: this.get('target')
 				},
 				{
 					type: 'textbox',
-					name: 'buttonColorBackground',
+					name: 'fontSize',
+					label: 'Font Size (px)',
+					value: this.get('fontSize')
+				},
+				{
+					type: 'textbox',
+					name: 'colorBackground',
 					label: 'Background Color',
 					value: this.get('colorBackground')
 				},
 				{
 					type: 'textbox',
-					name: 'buttonColorBackgroundHover',
+					name: 'colorBackgroundHover',
 					label: 'Background Color (hover)',
 					value: this.get('colorBackgroundHover')
 				},
 				{
 					type: 'textbox',
-					name: 'buttonColorText',
+					name: 'colorText',
 					label: 'Text Color',
 					value: this.get('colorText')
 				},
 				{
 					type: 'textbox',
-					name: 'buttonColorTextHover',
+					name: 'colorTextHover',
 					label: 'Text Color (hover)',
 					value: this.get('colorTextHover')
 				},
 				{
 					type: 'textbox',
-					name: 'buttonIcon',
+					name: 'paddingHorz',
+					label: 'Horizontal Padding (px)',
+					value: this.get('paddingHorz')
+				},
+				{
+					type: 'textbox',
+					name: 'paddingVert',
+					label: 'Vertical Padding (px)',
+					value: this.get('paddingVert')
+				},
+				{
+					type: 'textbox',
+					name: 'icon',
 					label: 'Icon',
 					value: this.get('icon')
 				}
@@ -84,8 +106,45 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			return items;
 		},
 
-		getHTML: function() {
+		sanitizeOptions: function( data ) {
+			var self = this;
 
+			$.each(data, function(key, value) {
+				if (self.has(key)) {
+					var sanitized = self.escAttr(value);
+					self.set(key, sanitized);
+				}
+			});
+		},
+
+		getHTML: function() {
+			var $button = $('<a>'),
+				content;
+
+			$button.attr({
+				href: this.get('url'),
+				class: 'ttfmake-button',
+				'data-hover-background-color': this.get('colorBackgroundHover'),
+				'data-hover-color': this.get('colorTextHover')
+			});
+			if ( 'true' == this.get('target') ) {
+				$button.attr('target', '_blank');
+			}
+
+			$button.css({
+				backgroundColor: this.get('colorBackground'),
+				color: this.get('colorText'),
+				fontSize: this.get('fontSize') + 'px',
+				padding: this.get('paddingVert') + 'px ' + this.get('paddingHorz') + 'px'
+			});
+
+			content = this.get('text');
+			if ('' !== this.get('icon')) {
+				content = this.get('icon') + content;
+			}
+			$button.text(content);
+
+			return $button.wrap('<p>').parent().html();
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );

@@ -5,6 +5,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	var formatWindow;
 
 	ttfmakeFormatBuilder = {
+		formats: {},
 		currentFormat: {},
 		currentSelection: {},
 
@@ -40,7 +41,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				buttons: {
 					text: 'Insert',
 					onclick: function() {
+						var data = formatWindow.find('#optionsForm')[0].toJSON(),
+							html;
 
+						ttfmakeFormatBuilder.currentFormat.sanitizeOptions(data);
+						html = ttfmakeFormatBuilder.currentFormat.getHTML(data);
+
+						editor.insertContent(html);
+						formatWindow.fire('submit');
 					}
 				},
 				onclose: function() {
@@ -93,19 +101,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			];
 
 			return choices;
-		},
-
-
-		escAttr: function(s, preserveCR) {
-			preserveCR = preserveCR ? '&#13;' : '\n';
-			return ('' + s) /* Forces the conversion to string. */
-				.replace(/&/g, '&amp;') /* This MUST be the 1st replacement. */
-				.replace(/'/g, '&apos;') /* The 4 other predefined entities, required. */
-				.replace(/"/g, '&quot;')
-				.replace(/</g, '&lt;')
-				.replace(/>/g, '&gt;')
-				.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
-				.replace(/[\r\n]/g, preserveCR);
 		}
 	};
 })( jQuery );
