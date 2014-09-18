@@ -104,12 +104,39 @@ class TTFMAKE_Format_Builder {
 
 	public function enqueue_scripts( $hook_suffix ) {
 		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
+			$dependencies = array( 'backbone', 'underscore', 'jquery' );
+
+			// Core
 			wp_enqueue_script(
-				'ttfmake-format-builder',
+				'ttfmake-format-builder-core',
 				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/core.js',
-				array(),
+				$dependencies,
 				TTFMAKE_VERSION
 			);
+
+			// Base model
+			wp_enqueue_script(
+				'ttfmake-format-builder-model-base',
+				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/models/base.js',
+				$dependencies,
+				TTFMAKE_VERSION
+			);
+			$dependencies[] = 'ttfmake-format-builder-model-base';
+
+			// Format models
+			$models = array(
+				'button',
+			);
+			foreach ( $models as $model ) {
+				$handle = 'ttfmake-format-builder-model-' . $model;
+				wp_enqueue_script(
+					$handle,
+					trailingslashit( get_template_directory_uri() ) . "inc/format-builder/js/models/$model.js",
+					$dependencies,
+					TTFMAKE_VERSION
+				);
+				$dependencies[] = $handle;
+			}
 		}
 	}
 }

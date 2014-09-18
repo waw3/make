@@ -1,24 +1,22 @@
-/* global */
-
-var ttfmakeFormatBuilder;
+/* global jQuery, ttfmakeFormatBuilder */
+var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function( $ ) {
 	var formatWindow;
 
 	ttfmakeFormatBuilder = {
+		currentFormat: {},
 
-		open: function(editor) {
+		open: function( editor ) {
 			var node = editor.selection.getNode(),
 				selection = editor.selection.getSel(),
 				content = editor.selection.getContent();
 
-			console.log(node);
-			console.log(selection);
-			console.log(content);
+			//console.log(node);
+			//console.log(selection);
+			//console.log(content);
 
 
-
-			/*
 			formatWindow = editor.windowManager.open( {
 				title: 'Format Builder',
 				autoScroll: true,
@@ -36,6 +34,8 @@ var ttfmakeFormatBuilder;
 							type: 'form',
 							name: 'listboxForm',
 							items: [ ttfmakeFormatBuilder.getFormatListBox() ]
+						}
+					]
 				},
 				buttons: {
 					text: 'Insert',
@@ -44,7 +44,7 @@ var ttfmakeFormatBuilder;
 					}
 				}
 			} );
-			*/
+
 		},
 
 
@@ -65,93 +65,23 @@ var ttfmakeFormatBuilder;
 				],
 				onselect: function() {
 					var choice = this.value(),
-						options = ttfmakeFormatBuilder.getOptionFields(choice);
-					formatWindow.find('#optionsForm').remove();
-					formatWindow.find('#formatContainer')[0].append(options).reflow();
-					formatWindow.repaint();
+						fields = {
+							type: 'form',
+							name: 'optionsForm'
+						};
+
+					if ('undefined' !== typeof ttfmakeFormatBuilder.formats[choice]) {
+						ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[choice];
+
+						fields.items = ttfmakeFormatBuilder.currentFormat.getOptionFields();
+						formatWindow.find('#optionsForm').remove();
+						formatWindow.find('#formatContainer')[0].append(fields).reflow();
+						formatWindow.repaint();
+					}
 				}
 			};
 
 			return listbox;
-		},
-
-
-		getOptionFields: function( format, values ) {
-			var fields = {
-				type: 'form',
-				name: 'optionsForm'
-			};
-			switch(format) {
-				case 'button' :
-					fields.items = [
-						{
-							type: 'textbox',
-							name: 'buttonLabel',
-							label: 'Label',
-							value: ''
-						},
-						{
-							type: 'textbox',
-							name: 'buttonURL',
-							label: 'URL',
-							value: ''
-						},
-						{
-							type: 'textbox',
-							name: 'buttonColorBG',
-							label: 'Background Color'
-						},
-						{
-							type: 'textbox',
-							name: 'buttonColorText',
-							label: 'Text Color'
-						},
-						{
-							type: 'textbox',
-							name: 'buttonPaddingX',
-							label: 'Padding (horizontal)'
-						},
-						{
-							type: 'textbox',
-							name: 'buttonPaddingY',
-							label: 'Padding (vertical)'
-						}
-					];
-					break;
-				case 'alert' :
-					fields.items = [
-						{
-							type: 'textbox',
-							multiline: true,
-							name: 'alertText',
-							label: 'Text',
-							value: ''
-						},
-						{
-							type: 'textbox',
-							name: 'alertColorBG',
-							label: 'Background Color'
-						},
-						{
-							type: 'textbox',
-							name: 'alertColorText',
-							label: 'Text Color'
-						},
-						{
-							type: 'textbox',
-							name: 'alertPaddingX',
-							label: 'Padding (horizontal)'
-						},
-						{
-							type: 'textbox',
-							name: 'alertPaddingY',
-							label: 'Padding (vertical)'
-						}
-					];
-					break;
-			}
-
-			return fields;
 		},
 
 
