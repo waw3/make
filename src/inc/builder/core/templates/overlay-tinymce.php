@@ -10,7 +10,7 @@ wp_editor( '', 'make', array(
 		'wp_autoresize_on' => false,
 	),
 	'resize'        => false,
-	'editor_height' => 220
+	'editor_height' => 320
 ) );
 
 get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
