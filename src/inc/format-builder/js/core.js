@@ -59,10 +59,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				name: 'format',
 				label: 'Choose a format',
 				id: 'ttfmake-format-builder-picker',
-				values: [
-					{ value: '', text: '--- Formats ---', selected: 'selected', disabled: 'disabled' },
-					{ value: 'button', text: 'Button' }
-				],
+				values: ttfmakeFormatBuilder.getFormatChoices(),
 				onselect: function() {
 					var choice = this.value(),
 						fields = {
@@ -82,6 +79,16 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			};
 
 			return listbox;
+		},
+
+
+		getFormatChoices: function() {
+			var choices = [
+				{ value: '', text: '--- Formats ---', selected: 'selected', disabled: 'disabled' },
+				{ value: 'button', text: 'Button' }
+			];
+
+			return choices;
 		},
 
 
