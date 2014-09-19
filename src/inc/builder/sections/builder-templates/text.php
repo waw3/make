@@ -216,7 +216,8 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 
 		foreach ( $inputs as $input ) {
 			if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-				$output .= ttfmake_create_input( $column_name, $input, $ttfmake_section_data['data']['columns'][ $i ] );
+				$section_data  = ( isset( $ttfmake_section_data['data']['columns'][ $i ] ) ) ? $ttfmake_section_data['data']['columns'][ $i ] : array();
+				$output       .= ttfmake_create_input( $column_name, $input, $section_data );
 			}
 		}
 
