@@ -37,6 +37,9 @@
 .ttfmake-stage-closed {
 	padding-top: 0; /*reset*/
 }
+.ttfmake-stage .sortable-placeholder {
+	margin-bottom: 10px;
+}
 /*---------------------------------------------------------
  Common (builder.css)
 -------------------------------------------------------- */

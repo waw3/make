@@ -32,7 +32,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 					$stage = $item.parents('.ttfmake-stage');
 
 				$item.css('-webkit-transform', 'translateZ(0)');
-				$('.sortable-placeholder', $stage).height($item.height());
+				$('.sortable-placeholder', $stage).height(parseInt($item.height(), 10) - 2);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
