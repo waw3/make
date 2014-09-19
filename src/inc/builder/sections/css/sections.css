@@ -70,6 +70,7 @@
 .ttfmake-text-columns-1 .ttfmake-text-column-position-3,
 .ttfmake-text-columns-1 .ttfmake-text-column-position-4 {
 	display: none;
+	width: 0%;
 }
 .ttfmake-text-columns-1 .ttfmake-sortable-handle {
 	visibility: hidden;
@@ -80,12 +81,14 @@
 .ttfmake-text-columns-2 .ttfmake-text-column-position-3,
 .ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
 	display: none;
+	width: 0%;
 }
 /*---------------------------------------------------------
  Text: Three column (sections.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
 	display: none;
+	width: 0%;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-text-columns-2,
