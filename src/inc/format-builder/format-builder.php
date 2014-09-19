@@ -13,20 +13,20 @@ if ( ! class_exists( 'TTFMAKE_Format_Builder' ) ) :
  */
 class TTFMAKE_Format_Builder {
 	/**
-	 * The one instance of TTFMAKE_TinyMCE_Buttons.
+	 * The one instance of TTFMAKE_Format_Builder.
 	 *
-	 * @since 1.0.0.
+	 * @since 1.4.0.
 	 *
-	 * @var   TTFMAKE_TinyMCE_Buttons
+	 * @var   TTFMAKE_Format_Builder
 	 */
 	private static $instance;
 
 	/**
-	 * Instantiate or return the one TTFMAKE_TinyMCE_Buttons instance.
+	 * Instantiate or return the one TTFMAKE_Format_Builder instance.
 	 *
-	 * @since  1.0.0.
+	 * @since  1.4.0.
 	 *
-	 * @return TTFMAKE_TinyMCE_Buttons
+	 * @return TTFMAKE_Format_Builder
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -36,10 +36,22 @@ class TTFMAKE_Format_Builder {
 		return self::$instance;
 	}
 
-
+	/**
+	 * Construct the object.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @return TTFMAKE_Format_Builder
+	 */
 	public function __construct() {}
 
-
+	/**
+	 * Initialize the Format Builder functionality and hook into WordPress.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @return void
+	 */
 	public function init() {
 		if ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) {
 			// Add plugin and button
@@ -58,19 +70,40 @@ class TTFMAKE_Format_Builder {
 		}
 	}
 
-
+	/**
+	 * Add the plugin to TinyMCE.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @param  array    $plugins
+	 * @return mixed
+	 */
 	public function register_plugin( $plugins ) {
 		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/plugin.js';
 		return $plugins;
 	}
 
-
+	/**
+	 * Add the Format Builder to the TinyMCE toolbar.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @param  array    $buttons
+	 * @return array
+	 */
 	public function register_button( $buttons ) {
 		$buttons[] = 'ttfmake_format_builder';
 		return $buttons;
 	}
 
-
+	/**
+	 * Add translatable strings for the Format Builder UI.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @param  array    $translations
+	 * @return array
+	 */
 	public function add_translations( $translations ) {
 		$format_builder_translations = array(
 			'Format Builder' => __( 'Format Builder', 'make' ),
@@ -79,7 +112,13 @@ class TTFMAKE_Format_Builder {
 		return array_merge( $translations, $format_builder_translations );
 	}
 
-
+	/**
+	 * Output CSS rules for the Format Builder UI.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @return void
+	 */
 	public function print_styles() { ?>
 		<style type="text/css">
 			body .mce-window .mce-container-body.mce-abs-layout {
@@ -101,7 +140,13 @@ class TTFMAKE_Format_Builder {
 		</style>
 	<?php }
 
-
+	/**
+	 * Enqueue the Format Builder JS scripts.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @param $hook_suffix
+	 */
 	public function enqueue_scripts( $hook_suffix ) {
 		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
 			$dependencies = array( 'backbone', 'underscore', 'jquery' );
