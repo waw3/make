@@ -6,7 +6,7 @@
 ttfmake_load_section_header();
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
-$section_id     = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '';
+$section_id     = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '{{{ id }}}';
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 $columns_number = ( isset( $ttfmake_section_data['data']['columns-number'] ) ) ? $ttfmake_section_data['data']['columns-number'] : 3;
 $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, 4);
