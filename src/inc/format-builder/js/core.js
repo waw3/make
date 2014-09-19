@@ -57,7 +57,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			this.currentSelection.content = editor.selection.getContent();
 
 			var format = this.parseNode( editor, this.currentSelection.node),
-				items;
+				items, width, height;
 
 			if ('' == format) {
 				// No existing format. Show listbox to choose a new format.
@@ -67,7 +67,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						name: 'listboxForm',
 						items: ttfmakeFormatBuilder.getFormatListBox()
 					}
-				]
+				];
+				width = 400;
+				height = 100;
 			} else if ('undefined' !== typeof ttfmakeFormatBuilder.formats[format]) {
 				// Cursor is on an existing format. Only show the option form for that particular format.
 				ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[format]({ update: true });
@@ -77,15 +79,17 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						name: 'optionsForm',
 						items: ttfmakeFormatBuilder.currentFormat.getOptionFields()
 					}
-				]
+				];
+				width = 600;
+				height = 500;
 			}
 
 			// Open the window.
 			formatWindow = editor.windowManager.open( {
 				title: 'Format Builder',
 				autoScroll: true,
-				width: 400,
-				height: 400,
+				width: width,
+				height: height,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
@@ -181,6 +185,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 						// Remove previous option forms.
 						formatWindow.find('#optionsForm').remove();
+
+						// Resize the window
+						formatWindow.resizeTo(600, 500);
 
 						// Add the new option form and repaint the window.
 						formatWindow.find('#formatContainer')[0].append(fields).reflow();
