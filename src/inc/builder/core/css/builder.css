@@ -163,7 +163,7 @@
 }
 .sortable-background {
 	display: block;
-	height: 20px;
+	height: 18px;
 	background: url(images/sortable-background.png) center center repeat-x;
 	opacity: .5;
 }
