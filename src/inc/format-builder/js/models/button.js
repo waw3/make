@@ -5,9 +5,25 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	'use strict';
 
 	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
+
+	/**
+	 * Define the selector for detecting this format in existing content.
+	 *
+	 * @since 1.4.0.
+	 */
 	ttfmakeFormatBuilder.nodes.button = 'a.ttfmake-button';
 
+	/**
+	 * The Button format model.
+	 *
+	 * @since 1.4.0.
+	 */
 	ttfmakeFormatBuilder.formats.button = ttfmakeFormatBuilder.FormatModel.extend({
+		/**
+		 * Default format option values.
+		 *
+		 * @since 1.4.0.
+		 */
 		defaults: {
 			update: false,
 			text: 'Click Here',
@@ -23,6 +39,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			icon: ''
 		},
 
+		/**
+		 * Populate the options with any existing values.
+		 *
+		 * @since 1.4.0.
+		 */
 		initialize: function() {
 			var content = ttfmakeFormatBuilder.currentSelection.content || '',
 				node = ttfmakeFormatBuilder.currentSelection.node || {};
@@ -34,6 +55,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			}
 		},
 
+		/**
+		 * Defines the fields in the options form.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns array
+		 */
 		getOptionFields: function() {
 			var items = [
 				{
@@ -111,6 +139,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			return items;
 		},
 
+		/**
+		 * Sanitize incoming form values and store them in the model.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param data
+		 */
 		sanitizeOptions: function( data ) {
 			var self = this;
 
@@ -122,6 +157,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			});
 		},
 
+		/**
+		 * Parse an existing format node and extract its format options.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param node
+		 */
 		parseAttributes: function( node ) {
 			var $node = $(node),
 				fontSize, paddingHorz, paddingVert;
@@ -134,18 +176,25 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
 			if ( $node.css('fontSize') ) {
 				fontSize = parseInt( $node.css('fontSize') );
-				this.set('fontSize', fontSize + '');
+				this.set('fontSize', fontSize + ''); // Convert integer to string for TinyMCE
 			}
 			if ( $node.css('paddingLeft') ) {
 				paddingHorz = parseInt( $node.css('paddingLeft') );
-				this.set('paddingHorz', paddingHorz + '');
+				this.set('paddingHorz', paddingHorz + ''); // Convert integer to string for TinyMCE
 			}
 			if ( $node.css('paddingTop') ) {
 				paddingVert = parseInt( $node.css('paddingTop') );
-				this.set('paddingVert', paddingVert + '');
+				this.set('paddingVert', paddingVert + ''); // Convert integer to string for TinyMCE
 			}
 		},
 
+		/**
+		 * Render the format markup.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns string
+		 */
 		getHTML: function() {
 			var $button = $('<a>'),
 				content;
