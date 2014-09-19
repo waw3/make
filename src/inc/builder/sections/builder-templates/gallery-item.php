@@ -60,15 +60,16 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	$inputs = apply_filters( 'make_gallery_item_configuration', array(
 		100 => array(
-			'type'    => 'text',
-			'name'    => 'link',
-			'label'   => __( 'Item link URL', 'make' ),
+			'type'    => 'section_title',
+			'name'    => 'title',
+			'label'   => __( 'Title', 'make' ),
 			'default' => '',
+			'class'   => 'ttfmake-configuration-title',
 		),
 		200 => array(
 			'type'    => 'text',
-			'name'    => 'title',
-			'label'   => __( 'Title', 'make' ),
+			'name'    => 'link',
+			'label'   => __( 'Item link URL', 'make' ),
 			'default' => '',
 		),
 	) );
