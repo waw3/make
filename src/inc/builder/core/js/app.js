@@ -31,12 +31,14 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttfmake-stage');
 
+				$item.css('-webkit-transform', 'translateZ(0)');
 				$('.sortable-placeholder', $stage).height($item.height());
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
 					$frames = $('iframe', $item);
 
+				$item.css('-webkit-transform', '');
 				oneApp.setOrder( $(this).sortable('toArray', {attribute: 'data-id'}), oneApp.cache.$sectionOrder );
 
 				$.each($frames, function() {
