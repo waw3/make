@@ -62,12 +62,6 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	$inputs = apply_filters( 'make_banner_slide_configuration', array(
 		100 => array(
-			'type'    => 'checkbox',
-			'label'   => __( 'Darken background to improve readability', 'make' ),
-			'name'    => 'darken',
-			'default' => 0
-		),
-		200 => array(
 			'type'    => 'select',
 			'name'    => 'alignment',
 			'label'   => __( 'Content position', 'make' ),
@@ -77,6 +71,12 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 				'left'  => __( 'Left', 'make' ),
 				'right' => __( 'Right', 'make' ),
 			),
+		),
+		200 => array(
+			'type'    => 'checkbox',
+			'label'   => __( 'Darken background to improve readability', 'make' ),
+			'name'    => 'darken',
+			'default' => 0
 		),
 		300 => array(
 			'type'    => 'color',
