@@ -1,0 +1,19 @@
+/* Toolbar Icon */
+i.mce-i-ttfmake-format-builder {
+	font: normal 20px/1 'dashicons';
+	padding: 0;
+	vertical-align: top;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-left: -2px;
+	padding-right: 2px;
+}
+i.mce-i-ttfmake-format-builder:before {
+	content: '\f502';
+}
+
+/* Window */
+#ttfmake-format-builder .mce-container-body.mce-abs-layout {
+	overflow-y: hidden;
+}

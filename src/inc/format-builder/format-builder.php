@@ -61,11 +61,7 @@ class TTFMAKE_Format_Builder {
 			// Add translations for plugin
 			add_filter( 'wp_mce_translation', array( $this, 'add_translations' ), 10, 2 );
 
-			// Add styles for the plugin and button
-			add_action( 'admin_print_styles-post.php', array( $this, 'print_styles' ) );
-			add_action( 'admin_print_styles-post-new.php', array( $this, 'print_styles' ) );
-
-			// Enqueue scripts for plugin functionality
+			// Enqueue styles and scripts for plugin functionality
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 	}
@@ -113,34 +109,6 @@ class TTFMAKE_Format_Builder {
 	}
 
 	/**
-	 * Output CSS rules for the Format Builder UI.
-	 *
-	 * @since 1.4.0.
-	 *
-	 * @return void
-	 */
-	public function print_styles() { ?>
-		<style type="text/css">
-			body .mce-window .mce-container-body.mce-abs-layout {
-				overflow-y: hidden;
-			}
-			i.mce-i-ttfmake-format-builder {
-				font: normal 20px/1 'dashicons';
-				padding: 0;
-				vertical-align: top;
-				speak: none;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				margin-left: -2px;
-				padding-right: 2px;
-			}
-			i.mce-i-ttfmake-format-builder:before {
-				content: '\f502';
-			}
-		</style>
-	<?php }
-
-	/**
 	 * Enqueue the Format Builder JS scripts.
 	 *
 	 * @since 1.4.0.
@@ -149,6 +117,15 @@ class TTFMAKE_Format_Builder {
 	 */
 	public function enqueue_scripts( $hook_suffix ) {
 		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
+			// Styles
+			wp_enqueue_style(
+				'ttfmake-format-builder',
+				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/css/format-builder.css',
+				array(),
+				TTFMAKE_VERSION
+			);
+
+			// Scripts
 			$dependencies = array( 'backbone', 'underscore', 'jquery' );
 
 			// Core

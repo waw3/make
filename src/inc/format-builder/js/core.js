@@ -87,13 +87,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			// Open the window.
 			formatWindow = editor.windowManager.open( {
 				title: 'Format Builder',
+				id: 'ttfmake-format-builder',
 				autoScroll: true,
 				width: width,
 				height: height,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
-					layout: 'flow',
+					layout: 'stack',
 					align: 'stretch',
 					padding: 5,
 					spacing: 10,
@@ -174,7 +175,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					var choice = this.value(),
 						fields = {
 							type: 'form',
-							name: 'optionsForm'
+							name: 'optionsForm',
+							layout: 'stack'
 						};
 
 					// Only proceed if the chosen format has a model.
