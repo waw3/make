@@ -164,15 +164,17 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.sortable-background {
+.sortable-background,
+.ttfmp-widget-list li .sortable-background {
 	display: block;
 	height: 18px;
 	background: url(images/sortable-background.png) center center repeat-x;
 	opacity: .5;
 }
 .ttfmake-gallery-item:hover .sortable-background,
-.ttfmake-text-column:hover .sortable-background,
-.ttfmake-banner-slide:hover .sortable-background {
+.ttfmake-text-column:hover .sortable-background.column-sortable-background,
+.ttfmake-banner-slide:hover .sortable-background,
+.ttfmp-widget-list li:hover .sortable-background {
 	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------
