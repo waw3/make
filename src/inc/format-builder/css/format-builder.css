@@ -17,3 +17,6 @@ i.mce-i-ttfmake-format-builder:before {
 #ttfmake-format-builder .mce-container-body.mce-abs-layout {
 	overflow-y: hidden;
 }
+#ttfmake-format-builder .mce-i-checkbox {
+	background-image: none;
+}
