@@ -2,7 +2,7 @@
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function( $ ) {
-	var formatWindow;
+	var formatWindow, formatInsert;
 
 	/**
 	 * The Format Builder object
@@ -96,31 +96,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					direction: 'column',
 					items: items
 				},
-				buttons: {
-					text: 'Insert',
-					name: 'formatSubmit',
-					classes: 'button-primary',
-					onclick: function() {
-						// Bail if no format has been chosen from the dropdown yet.
-						if ('undefined' === typeof formatWindow.find('#optionsForm')[0]) {
-							return;
-						}
-
-						// Get the current data from the options form.
-						var data = formatWindow.find('#optionsForm')[0].toJSON(),
-							html;
-
-						// Feed the current data into the model and sanitize it.
-						ttfmakeFormatBuilder.currentFormat.sanitizeOptions(data);
-
-						// Generate the HTML markup for the format based on the current data.
-						html = ttfmakeFormatBuilder.currentFormat.getHTML(data);
-
-						// Insert the HTML into the editor and close the modal.
-						editor.insertContent(html);
-						formatWindow.fire('submit');
-					}
-				},
+				buttons: ttfmakeFormatBuilder.getInsertButton(),
 				onclose: function() {
 					// Clear the current* objects so there are no collisions when the Format Builder
 					// is opened again.
@@ -166,7 +142,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			var listbox = {
 				type: 'listbox',
 				name: 'format',
-				label: 'Choose a format',
+				//label: 'Choose a format',
 				id: 'ttfmake-format-builder-picker',
 				values: this.getFormatChoices(),
 				onselect: function() {
@@ -190,10 +166,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						// Remove previous option forms.
 						formatWindow.find('#optionsForm').remove();
 
-						// Add the new option form and repaint the window.
+						// Add the new option form.
 						formatWindow.find('#formatContainer')[0].append(fields).reflow();
 
-						// Resize the window
+						// Show the insert button.
+						formatInsert.visible( true );
+
+						// Resize the window (automatically repaints as well)
 						formatWindow.resizeToContent();
 						winWidth = formatWindow.layoutRect().w;
 						winHeight = formatWindow.layoutRect().h;
@@ -225,11 +204,54 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getFormatChoices: function() {
 			var choices = [
-				{ value: '', text: '--- Formats ---', selected: 'selected', disabled: 'disabled' },
+				{ value: '', text: 'Choose a format', selected: 'selected', disabled: 'disabled' },
 				{ value: 'button', text: 'Button' }
 			];
 
 			return choices;
+		},
+
+		/**
+		 * Get the insert button for the modal window.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns object
+		 */
+		getInsertButton: function() {
+			var button = {
+				text: 'Insert',
+				id: 'ttfmake-format-builder-insert',
+				name: 'formatSubmit',
+				classes: 'button-primary',
+				hidden: true,
+				onPostRender: function() {
+					// Store this control so it can be accessed later.
+					formatInsert = this;
+				},
+				onclick: function() {
+					// Bail if no format has been chosen from the dropdown yet.
+					if ( 'undefined' === typeof formatWindow.find( '#optionsForm' )[0] ) {
+						return;
+					}
+
+					// Get the current data from the options form.
+					var data = formatWindow.find( '#optionsForm' )[0].toJSON(),
+						html;
+
+					// Feed the current data into the model and sanitize it.
+					ttfmakeFormatBuilder.currentFormat.sanitizeOptions( data );
+
+					// Generate the HTML markup for the format based on the current data.
+					html = ttfmakeFormatBuilder.currentFormat.getHTML( data );
+
+					// Insert the HTML into the editor and close the modal.
+					ttfmakeFormatBuilder.editor.insertContent( html );
+					formatWindow.fire( 'submit' );
+				}
+			};
+
+			return button;
 		}
 	};
 })( jQuery );
