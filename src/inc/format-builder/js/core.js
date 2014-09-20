@@ -13,6 +13,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 * @since 1.4.0.
 	 */
 	ttfmakeFormatBuilder = {
+		editor: {},
+
 		/**
 		 * Stores the models for each available format.
 		 *
@@ -52,11 +54,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @param editor
 		 */
 		open: function( editor ) {
+			this.editor = editor;
 			this.currentSelection.node = editor.selection.getNode();
 			this.currentSelection.selection = editor.selection.getSel();
 			this.currentSelection.content = editor.selection.getContent();
 
-			var format = this.parseNode( editor, this.currentSelection.node),
+			var format = this.parseNode( this.currentSelection.node ),
 				items, width, height;
 
 			if ('' == format) {
@@ -89,15 +92,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				title: 'Format Builder',
 				id: 'ttfmake-format-builder',
 				autoScroll: true,
-				width: width,
-				height: height,
+				//width: width,
+				//height: height,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
-					layout: 'stack',
+					layout: 'flex',
 					align: 'stretch',
-					padding: 5,
-					spacing: 10,
+					direction: 'column',
 					items: items
 				},
 				buttons: {
@@ -127,6 +129,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				onclose: function() {
 					// Clear the current* objects so there are no collisions when the Format Builder
 					// is opened again.
+					ttfmakeFormatBuilder.editor = {};
 					ttfmakeFormatBuilder.currentFormat = {};
 					ttfmakeFormatBuilder.currentSelection = {};
 				}
@@ -143,11 +146,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @param node
 		 * @returns string
 		 */
-		parseNode: function( editor, node ) {
+		parseNode: function( node ) {
 			var format = '';
 
 			$.each(this.nodes, function( fmt, selector ) {
-				var match = editor.dom.getParents( node, selector );
+				var match = ttfmakeFormatBuilder.editor.dom.getParents( node, selector );
 				if ( match.length > 0 ) {
 					format = fmt;
 					return false;
@@ -176,24 +179,41 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						fields = {
 							type: 'form',
 							name: 'optionsForm',
-							layout: 'stack'
-						};
+							layout: 'flex',
+							align: 'stretch'
+						},
+						maxHeight = 500,
+						winWidth, winHeight, viewWidth, viewHeight, deltaW, deltaH;
 
 					// Only proceed if the chosen format has a model.
 					if ('undefined' !== typeof ttfmakeFormatBuilder.formats[choice]) {
 						ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[choice];
 
+						// Generate the options fields
 						fields.items = ttfmakeFormatBuilder.currentFormat.getOptionFields();
 
 						// Remove previous option forms.
 						formatWindow.find('#optionsForm').remove();
 
-						// Resize the window
-						formatWindow.resizeTo(600, 500);
-
 						// Add the new option form and repaint the window.
 						formatWindow.find('#formatContainer')[0].append(fields).reflow();
-						formatWindow.repaint();
+
+						// Resize the window
+						formatWindow.resizeToContent();
+						winWidth = formatWindow.layoutRect().w;
+						winHeight = formatWindow.layoutRect().h;
+						viewWidth = ttfmakeFormatBuilder.editor.dom.getViewPort().w;
+						viewHeight = ttfmakeFormatBuilder.editor.dom.getViewPort().h;
+						if (winHeight > maxHeight) {
+							formatWindow.resizeTo(winWidth, maxHeight);
+							winHeight = formatWindow.layoutRect().h;
+						}
+						deltaW = (viewWidth - winWidth) / 2;
+						deltaH = (viewHeight - winHeight) / 2;
+						formatWindow.moveTo(deltaW, deltaH);
+
+						// Repaint
+						//formatWindow.repaint();
 					}
 				}
 			};
