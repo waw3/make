@@ -71,8 +71,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						items: ttfmakeFormatBuilder.getFormatListBox()
 					}
 				];
-				width = 400;
-				height = 100;
 			} else if ('undefined' !== typeof ttfmakeFormatBuilder.formats[format]) {
 				// Cursor is on an existing format. Only show the option form for that particular format.
 				ttfmakeFormatBuilder.currentFormat = new ttfmakeFormatBuilder.formats[format]({ update: true });
@@ -83,8 +81,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						items: ttfmakeFormatBuilder.currentFormat.getOptionFields()
 					}
 				];
-				width = 600;
-				height = 500;
 			}
 
 			// Open the window.
@@ -92,8 +88,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				title: 'Format Builder',
 				id: 'ttfmake-format-builder',
 				autoScroll: true,
-				//width: width,
-				//height: height,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
@@ -105,6 +99,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				buttons: {
 					text: 'Insert',
 					name: 'formatSubmit',
+					classes: 'button-primary',
 					onclick: function() {
 						// Bail if no format has been chosen from the dropdown yet.
 						if ('undefined' === typeof formatWindow.find('#optionsForm')[0]) {
