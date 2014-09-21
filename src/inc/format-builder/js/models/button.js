@@ -82,13 +82,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		getOptionFields: function() {
 			var items = [
 				{
-					type: 'label',
-					label: 'Button'
-				},
-				{
 					type: 'textbox',
 					name: 'text',
-					label: 'Text',
+					hidden: true,
 					value: this.get('text')
 				},
 				{
