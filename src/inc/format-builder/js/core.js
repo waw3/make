@@ -15,12 +15,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	ttfmakeFormatBuilder = {
 		editor: {},
 
-		/**
-		 * Stores the models for each available format.
-		 *
-		 * @since 1.4.0.
-		 */
-		formats: {},
+		choices: {},
 
 		/**
 		 * Stores the selectors that identify the HTML wrappers for each format
@@ -29,6 +24,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		nodes: {},
+
+		/**
+		 * Stores the models for each available format.
+		 *
+		 * @since 1.4.0.
+		 */
+		formats: {},
 
 		/**
 		 * The current format model when the Format Builder window is open.
@@ -204,9 +206,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getFormatChoices: function() {
 			var choices = [
-				{ value: '', text: 'Choose a format', selected: 'selected', disabled: 'disabled' },
-				{ value: 'button', text: 'Button' }
+				{ value: '', text: 'Choose a format', selected: 'selected', disabled: 'disabled' }
 			];
+
+			$.each( this.choices, function( fmt, f ) {
+				choices.push( f() );
+			} );
 
 			return choices;
 		},

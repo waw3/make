@@ -7,6 +7,23 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
 
 	/**
+	 * Defines the listbox item in the 'Choose a format' dropdown.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @returns object
+	 */
+	ttfmakeFormatBuilder.choices.button = function() {
+		var choice = {
+			value: 'button',
+			text: 'Button',
+			disabled: ( '' == ttfmakeFormatBuilder.currentSelection.content )
+		};
+
+		return choice;
+	};
+
+	/**
 	 * Define the selector for detecting this format in existing content.
 	 *
 	 * @since 1.4.0.
