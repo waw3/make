@@ -2,7 +2,7 @@
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function( $ ) {
-	var formatWindow, formatInsert;
+	var formatWindow, formatInsert, formatRemove;
 
 	/**
 	 * The Format Builder object
@@ -57,12 +57,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		open: function( editor ) {
 			this.editor = editor;
-			this.currentSelection.node = editor.selection.getNode();
-			this.currentSelection.selection = editor.selection.getSel();
-			this.currentSelection.content = editor.selection.getContent();
+			this.currentSelection = editor.selection;
 
-			var format = this.parseNode( this.currentSelection.node ),
-				items, width, height;
+			var format = this.parseNode( this.currentSelection.getNode() ),
+				items;
 
 			if ('' == format) {
 				// No existing format. Show listbox to choose a new format.
@@ -98,7 +96,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					direction: 'column',
 					items: items
 				},
-				buttons: ttfmakeFormatBuilder.getInsertButton(),
+				buttons: [
+					ttfmakeFormatBuilder.getRemoveButton(),
+					ttfmakeFormatBuilder.getInsertButton()
+				],
 				onclose: function() {
 					// Clear the current* objects so there are no collisions when the Format Builder
 					// is opened again.
@@ -144,7 +145,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			var listbox = {
 				type: 'listbox',
 				name: 'format',
-				//label: 'Choose a format',
 				id: 'ttfmake-format-builder-picker',
 				values: this.getFormatChoices(),
 				onselect: function() {
@@ -171,7 +171,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						// Add the new option form.
 						formatWindow.find('#formatContainer')[0].append(fields).reflow();
 
-						// Show the insert button.
+						// Show the Insert button.
+						// (The Remove button is unnecessary for new formats)
 						formatInsert.visible( true );
 
 						// Resize the window (automatically repaints as well)
@@ -217,7 +218,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		/**
-		 * Get the insert button for the modal window.
+		 * Get the Insert button for the modal window.
 		 *
 		 * @since 1.4.0.
 		 *
@@ -235,11 +236,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					formatInsert = this;
 				},
 				onclick: function() {
-					// Bail if no format has been chosen from the dropdown yet.
-					if ( 'undefined' === typeof formatWindow.find( '#optionsForm' )[0] ) {
-						return;
-					}
-
 					// Get the current data from the options form.
 					var data = formatWindow.find( '#optionsForm' )[0].toJSON(),
 						html;
@@ -247,11 +243,35 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					// Feed the current data into the model and sanitize it.
 					ttfmakeFormatBuilder.currentFormat.sanitizeOptions( data );
 
-					// Generate the HTML markup for the format based on the current data.
-					html = ttfmakeFormatBuilder.currentFormat.getHTML( data );
-
 					// Insert the HTML into the editor and close the modal.
-					ttfmakeFormatBuilder.editor.insertContent( html );
+					ttfmakeFormatBuilder.currentFormat.insert();
+					formatWindow.fire( 'submit' );
+				}
+			};
+
+			return button;
+		},
+
+		/**
+		 * Get the Remove button for the modal window.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns object
+		 */
+		getRemoveButton: function() {
+			var button = {
+				text: 'Remove',
+				id: 'ttfmake-format-builder-remove',
+				name: 'formatRemove',
+				classes: 'button-secondary',
+				hidden: ( 'undefined' === typeof ttfmakeFormatBuilder.currentFormat.get || true !== ttfmakeFormatBuilder.currentFormat.get( 'update' ) ),
+				onPostRender: function() {
+					// Store this control so it can be accessed later.
+					formatRemove = this;
+				},
+				onclick: function() {
+					ttfmakeFormatBuilder.currentFormat.remove();
 					formatWindow.fire( 'submit' );
 				}
 			};

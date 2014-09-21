@@ -17,7 +17,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		var choice = {
 			value: 'button',
 			text: 'Button',
-			disabled: ( '' == ttfmakeFormatBuilder.currentSelection.content )
+			disabled: ( '' == ttfmakeFormatBuilder.currentSelection.getContent() )
 		};
 
 		return choice;
@@ -62,8 +62,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		initialize: function() {
-			var content = ttfmakeFormatBuilder.currentSelection.content || '',
-				node = ttfmakeFormatBuilder.currentSelection.node || {};
+			var content = ttfmakeFormatBuilder.currentSelection.getContent() || '',
+				node = ttfmakeFormatBuilder.currentSelection.getNode() || {};
 			if ( '' !== content ) {
 				this.set({ text: content });
 			}
@@ -220,6 +220,46 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			$button.text(content);
 
 			return $button.wrap('<p>').parent().html();
+		},
+
+		/**
+		 * Insert the format markup into the editor.
+		 *
+		 * @since 1.4.0.
+		 */
+		insert: function() {
+			var html = this.getHTML(),
+				node, parent;
+			if ( true === this.get( 'update' ) ) {
+				// Make sure we get the right node.
+				node = ttfmakeFormatBuilder.currentSelection.getNode(),
+				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button );
+
+				// Select the existing format markup.
+				ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+
+				// Replace with the new markup.
+				ttfmakeFormatBuilder.currentSelection.setContent( html );
+			} else {
+				// Insert the new markup.
+				ttfmakeFormatBuilder.currentSelection.setContent( html );
+			}
+		},
+
+		/**
+		 * Remove the existing format node.
+		 *
+		 * @since 1.4.0.
+		 */
+		remove: function() {
+			var node = ttfmakeFormatBuilder.currentSelection.getNode(),
+				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button );
+
+			// Select the existing format markup.
+			ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+
+			// Remove the markup.
+			ttfmakeFormatBuilder.currentSelection.setContent( '' );
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
