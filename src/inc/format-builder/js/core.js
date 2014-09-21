@@ -151,9 +151,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					var choice = this.value(),
 						fields = {
 							type: 'form',
-							name: 'optionsForm',
-							layout: 'flex',
-							align: 'stretch'
+							name: 'optionsForm'
 						},
 						maxHeight = 500,
 						winWidth, winHeight, viewWidth, viewHeight, deltaW, deltaH;
