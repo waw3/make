@@ -224,7 +224,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				id: 'ttfmake-format-builder-insert',
 				name: 'formatSubmit',
 				classes: 'button-primary',
-				hidden: true,
+				hidden: ( 'undefined' === typeof ttfmakeFormatBuilder.currentFormat.get ),
 				onPostRender: function() {
 					// Store this control so it can be accessed later.
 					formatInsert = this;
