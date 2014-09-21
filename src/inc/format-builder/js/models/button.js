@@ -92,30 +92,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					label: 'Font Size (px)',
 					value: this.get('fontSize')
 				},
-				{
-					type: 'textbox',
-					name: 'colorBackground',
-					label: 'Background Color',
-					value: this.get('colorBackground')
-				},
-				{
-					type: 'textbox',
-					name: 'colorBackgroundHover',
-					label: 'Background Color (hover)',
-					value: this.get('colorBackgroundHover')
-				},
-				{
-					type: 'textbox',
-					name: 'colorText',
-					label: 'Text Color',
-					value: this.get('colorText')
-				},
-				{
-					type: 'textbox',
-					name: 'colorTextHover',
-					label: 'Text Color (hover)',
-					value: this.get('colorTextHover')
-				},
+				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
+				ttfmakeFormatBuilder.getColorButton( 'colorBackgroundHover', 'Background Color (hover)' ),
+				ttfmakeFormatBuilder.getColorButton( 'colorText', 'Text Color' ),
+				ttfmakeFormatBuilder.getColorButton( 'colorTextHover', 'Text Color (hover)' ),
 				{
 					type: 'textbox',
 					name: 'paddingHorz',
