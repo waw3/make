@@ -103,6 +103,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'textbox',
 					name: 'fontSize',
 					label: 'Font Size (px)',
+					size: 3,
 					value: this.get('fontSize')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
@@ -113,12 +114,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'textbox',
 					name: 'paddingHorz',
 					label: 'Horizontal Padding (px)',
+					size: 3,
 					value: this.get('paddingHorz')
 				},
 				{
 					type: 'textbox',
 					name: 'paddingVert',
 					label: 'Vertical Padding (px)',
+					size: 3,
 					value: this.get('paddingVert')
 				},
 				{
