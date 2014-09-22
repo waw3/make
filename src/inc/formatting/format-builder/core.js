@@ -224,7 +224,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getInsertButton: function() {
 			var button = {
-				text: 'Insert',
+				text: ( 'undefined' === typeof ttfmakeFormatBuilder.currentFormat.get ) ? 'Insert' : 'Update',
 				id: 'ttfmake-format-builder-insert',
 				name: 'formatSubmit',
 				classes: 'button-primary',
