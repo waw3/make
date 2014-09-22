@@ -11,7 +11,7 @@
 
 		editor.addButton( 'ttfmake_icon_picker', {
 			icon: 'ttfmake-icon-picker',
-			tooltip: 'Icon Picker',
+			tooltip: 'Insert Icon',
 			cmd: 'Make_Icon_Picker'
 		} );
 	} );
