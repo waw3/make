@@ -75,7 +75,7 @@ class TTFMAKE_Format_Builder {
 	 * @return mixed
 	 */
 	public function register_plugin( $plugins ) {
-		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/plugin.js';
+		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/plugin.js';
 		return $plugins;
 	}
 
@@ -120,7 +120,7 @@ class TTFMAKE_Format_Builder {
 			// Styles
 			wp_enqueue_style(
 				'ttfmake-format-builder',
-				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/css/format-builder.css',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/formatting.css',
 				array(),
 				TTFMAKE_VERSION
 			);
@@ -139,7 +139,7 @@ class TTFMAKE_Format_Builder {
 			// Core
 			wp_enqueue_script(
 				'ttfmake-format-builder-core',
-				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/core.js',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/core.js',
 				$dependencies,
 				TTFMAKE_VERSION
 			);
@@ -147,7 +147,7 @@ class TTFMAKE_Format_Builder {
 			// Base model
 			wp_enqueue_script(
 				'ttfmake-format-builder-model-base',
-				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/models/base.js',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/models/base.js',
 				$dependencies,
 				TTFMAKE_VERSION
 			);
@@ -161,17 +161,17 @@ class TTFMAKE_Format_Builder {
 				$handle = 'ttfmake-format-builder-model-' . $model;
 				wp_enqueue_script(
 					$handle,
-					trailingslashit( get_template_directory_uri() ) . "inc/format-builder/js/models/$model.js",
+					trailingslashit( get_template_directory_uri() ) . "inc/formatting/format-builder/models/$model.js",
 					$dependencies,
 					TTFMAKE_VERSION
 				);
 				$dependencies[] = $handle;
 			}
 
-			// Icon list
+			// Icon definitions
 			wp_enqueue_script(
 				'ttfmake-icon-picker-list',
-				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/icons.js',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/icon-picker/icons.js',
 				array(),
 				TTFMAKE_VERSION
 			);
@@ -179,7 +179,7 @@ class TTFMAKE_Format_Builder {
 			// Icon Picker
 			wp_enqueue_script(
 				'ttfmake-icon-picker',
-				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/icon-picker.js',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/icon-picker/icon-picker.js',
 				array( 'ttfmake-icon-picker-list' ),
 				TTFMAKE_VERSION
 			);

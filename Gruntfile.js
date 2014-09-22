@@ -220,13 +220,14 @@ module.exports = function( grunt ) {
 				modifier: function( json ) {
 					var icons = json.icons,
 						newObj = {};
-					//console.log(icons);
+
 					_.forEach( icons, function( data ) {
 						_.forEach( data.categories, function( category ) {
 							if ( 'undefined' === typeof newObj[category] ) {
 								newObj[category] = [];
 							}
 							var icon = {
+								name: data.name,
 								id: 'fa-' + data.id,
 								unicode: data.unicode
 							};
@@ -250,7 +251,7 @@ module.exports = function( grunt ) {
 					}
 				},
 				src: [ 'assets/temp/fontawesome.json' ],
-				dest: 'src/inc/format-builder/js/icons.js'
+				dest: 'src/inc/formatting/icon-picker/icons.js'
 			}
 		}
 	});

@@ -79,7 +79,7 @@ if ( is_admin() ) {
 
 	// TinyMCE buttons
 	//require get_template_directory() . '/inc/tinymce-buttons/tinymce-buttons.php';
-	require get_template_directory() . '/inc/format-builder/format-builder.php';
+	require get_template_directory() . '/inc/formatting/formatting.php';
 
 	// Page customizations
 	require get_template_directory() . '/inc/edit-page.php';
