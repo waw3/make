@@ -130,15 +130,25 @@ var ttfmakeIconPicker;
 				icon;
 
 			$.each( icons, function( index, data ) {
+				function highlight( self ) {
+					ttfmakeIconPicker.el = self.getEl();
+					ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
+					ttfmakeIconPicker.el.style.color = '#2ea2cc';
+				}
+
+				function unhighlight() {
+					ttfmakeIconPicker.el.style.borderColor = '#e5e5e5';
+					ttfmakeIconPicker.el.style.color = 'inherit';
+					ttfmakeIconPicker.el = {};
+				}
+
 				icon = {
 					html: '<div data-icon-value="' + data.id + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
 					onPostRender: function() {
 						var currentValue = ttfmakeIconPicker.getChosenIcon();
 						if ( currentValue == data.id ) {
 							// Highlight the selected icon.
-							ttfmakeIconPicker.el = this.getEl();
-							ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
-							ttfmakeIconPicker.el.style.color = '#2ea2cc';
+							highlight( this );
 						}
 					},
 					onclick: function() {
@@ -146,14 +156,11 @@ var ttfmakeIconPicker;
 
 						// Un-highlight the previously selected icon.
 						if ( 'undefined' !== typeof ttfmakeIconPicker.el.style ) {
-							ttfmakeIconPicker.el.style.borderColor = '#e5e5e5';
-							ttfmakeIconPicker.el.style.color = 'inherit';
+							unhighlight();
 						}
 
 						// Highlight the selected icon.
-						ttfmakeIconPicker.el = this.getEl();
-						ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
-						ttfmakeIconPicker.el.style.color = '#2ea2cc';
+						highlight( this );
 
 						// Get the icon ID and store it in the hidden text field.
 						value = $( ttfmakeIconPicker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
@@ -192,11 +199,13 @@ var ttfmakeIconPicker;
 					// Get the currently selected icon.
 					var value = ttfmakeIconPicker.getChosenIcon();
 
-					// Fire the callback.
-					ttfmakeIconPicker.callback( value );
+					if ( 'function' === typeof ttfmakeIconPicker.callback ) {
+						// Fire the callback.
+						ttfmakeIconPicker.callback( value );
 
-					// Close the modal.
-					iconWindow.fire( 'submit' );
+						// Close the modal.
+						iconWindow.fire( 'submit' );
+					}
 				}
 			};
 
