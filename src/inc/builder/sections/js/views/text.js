@@ -62,19 +62,24 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage.addClass(addClass);
 				}
 
-				$('.sortable-placeholder', $stage).height($item.height());
-
-				oneApp.disableEditors($item);
+				$('.sortable-placeholder', $stage)
+					.height(parseInt($item.height(), 10) - 2) // -2 to account for placeholder border
+					.css({
+						'flex': $item.css('flex'),
+						'-webkit-flex': $item.css('-webkit-flex')
+					});
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttfmake-section-body'),
+					$section = $item.parents('.ttfmake-section'),
+					$stage = $('.ttfmake-section-body', $section),
 					$columnsStage = $item.parents('.ttfmake-text-columns-stage'),
 					$orderInput = $('.ttfmake-text-columns-order', $stage),
+					id = $section.attr('data-id'),
+					column = $item.attr('data-id'),
 					i;
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
-				oneApp.enableEditors($item);
 
 				// Label the columns according to the position they are in
 				i = 1;
@@ -84,6 +89,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 						.addClass('ttfmake-text-column-position-' + i);
 					i++;
 				});
+
+				oneApp.initFrame(id + '-' + column);
 
 				// Remove the temporary classes from stage
 				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-three-fourths current-item-one-half');
@@ -95,6 +102,17 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('text' === view.model.get('sectionType')) {
 			oneApp.initializeTextColumnSortables(view);
+
+			// Initialize the iframes
+			var $frames = $('iframe', view.$el),
+				link = oneApp.getFrameHeadLinks(),
+				id, $this;
+
+			$.each($frames, function() {
+				$this = $(this);
+				id = $this.attr('id').replace('ttfmake-iframe-', '');
+				oneApp.initFrame(id, link);
+			});
 		}
 	});
 
