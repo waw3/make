@@ -159,8 +159,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			var $node = $(node),
 				text, icon, fontSize, paddingHorz, paddingVert;
 
-			icon = $node.find( 'i.fa' ).attr( 'class').replace('fa ', '');
-			if ( icon ) this.set('icon', icon);
+			icon = $node.find( 'i.fa' ).attr( 'class');
+			if ( icon ) {
+				icon.replace('fa ', '');
+				this.set('icon', icon);
+			}
 			if ( $node.text() ) this.set('text', $node.text());
 			if ( $node.attr('href') ) this.set('url', $node.attr('href'));
 			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
