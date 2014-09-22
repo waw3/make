@@ -1,5 +1,7 @@
 /* jshint node:true */
 module.exports = function( grunt ) {
+	var _ = require( 'lodash' );
+
 	// Load all Grunt tasks
 	require( 'load-grunt-tasks' )( grunt );
 
@@ -153,6 +155,9 @@ module.exports = function( grunt ) {
 		clean:{
 			build: {
 				src: [ 'dist/temp' ]
+			},
+			fontawesome: {
+				src: [ 'assets/temp' ]
 			}
 		},
 		replace: {
@@ -197,6 +202,56 @@ module.exports = function( grunt ) {
 		},
 		other: {
 			changelog: 'src/changelog.md'
+		},
+		yaml: {
+			fontawesome: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets',
+						src: 'icons*.yml',
+						dest: 'assets/temp'
+					}
+				]
+			}
+		},
+		json_massager: {
+			fontawesome: {
+				modifier: function( json ) {
+					var icons = json.icons,
+						newObj = {};
+					//console.log(icons);
+					_.forEach( icons, function( data ) {
+						_.forEach( data.categories, function( category ) {
+							if ( 'undefined' === typeof newObj[category] ) {
+								newObj[category] = [];
+							}
+							var icon = {
+								id: 'fa-' + data.id,
+								unicode: data.unicode
+							};
+							newObj[category].push( icon );
+						} );
+					} );
+
+					return newObj;
+				},
+				files: {
+					'assets/temp/fontawesome.json': [ 'assets/temp/icons*.json' ]
+				}
+			}
+		},
+		json: {
+			fontawesome: {
+				options: {
+					namespace: 'ttfmakeIconObj',
+					processName: function( filename ) {
+						return filename.toLowerCase();
+					}
+				},
+				src: [ 'assets/temp/fontawesome.json' ],
+				dest: 'src/inc/format-builder/js/icons.js'
+			}
 		}
 	});
 
@@ -268,4 +323,12 @@ module.exports = function( grunt ) {
 		'compress:build',
 		'clean:build'
 	] );
+
+	// Process the icons YAML file
+	grunt.registerTask( 'fontawesome', [
+		'yaml:fontawesome',
+		'json_massager:fontawesome',
+		'json:fontawesome',
+		'clean:fontawesome'
+	] )
 };

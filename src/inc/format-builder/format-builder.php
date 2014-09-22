@@ -125,6 +125,14 @@ class TTFMAKE_Format_Builder {
 				TTFMAKE_VERSION
 			);
 
+			// Icons
+			wp_enqueue_style(
+				'ttfmake-font-awesome',
+				get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
+				array(),
+				'4.2.0'
+			);
+
 			// Scripts
 			$dependencies = array( 'backbone', 'underscore', 'jquery' );
 
@@ -159,6 +167,22 @@ class TTFMAKE_Format_Builder {
 				);
 				$dependencies[] = $handle;
 			}
+
+			// Icon list
+			wp_enqueue_script(
+				'ttfmake-icon-picker-list',
+				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/icons.js',
+				array(),
+				TTFMAKE_VERSION
+			);
+
+			// Icon Picker
+			wp_enqueue_script(
+				'ttfmake-icon-picker',
+				trailingslashit( get_template_directory_uri() ) . 'inc/format-builder/js/icon-picker.js',
+				array( 'ttfmake-icon-picker-list' ),
+				TTFMAKE_VERSION
+			);
 		}
 	}
 }

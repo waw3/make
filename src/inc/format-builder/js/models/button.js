@@ -128,7 +128,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'textbox',
 					name: 'icon',
 					label: 'Icon',
-					value: this.get('icon')
+					value: this.get('icon'),
+					onclick: function() {
+						ttfmakeIconPicker.open( ttfmakeFormatBuilder.editor );
+					}
 				}
 			];
 

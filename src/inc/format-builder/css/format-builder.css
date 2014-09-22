@@ -14,16 +14,29 @@ i.mce-i-ttfmake-format-builder:before {
 }
 
 /* Window */
-#ttfmake-format-builder .mce-container-body.mce-abs-layout {
+#ttfmake-format-builder .mce-container-body.mce-abs-layout,
+#ttfmake-icon-picker .mce-container-body.mce-abs-layout {
 	overflow-y: hidden;
 }
 #ttfmake-format-builder .mce-i-checkbox {
 	background-image: none;
 }
 
+/* Icons */
+#ttfmake-format-builder .mce-container .mce-icon-choice,
+#ttfmake-format-builder .mce-container .mce-icon-choice *,
+#ttfmake-icon-picker .mce-container .mce-icon-choice,
+#ttfmake-icon-picker .mce-container .mce-icon-choice * {
+	cursor: pointer;
+	font-family: 'FontAwesome';
+	font-size: 24px;
+}
+
 /* Buttons, copied from core */
 #ttfmake-format-builder .mce-button-primary button,
-#ttfmake-format-builder .mce-button-secondary button {
+#ttfmake-format-builder .mce-button-secondary button,
+#ttfmake-icon-picker .mce-button-primary button,
+#ttfmake-icon-picker .mce-button-secondary button {
 	display: inline-block;
 	text-decoration: none;
 	font-size: 13px;
@@ -43,7 +56,8 @@ i.mce-i-ttfmake-format-builder:before {
 	box-sizing: border-box;
 }
 
-#ttfmake-format-builder .mce-button-primary button {
+#ttfmake-format-builder .mce-button-primary button,
+#ttfmake-icon-picker .mce-button-primary button {
 	background: #2ea2cc;
 	border-color: #0074a2;
 	-webkit-box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.5), 0 1px 0 rgba( 0, 0, 0, 0.15 );
@@ -52,14 +66,17 @@ i.mce-i-ttfmake-format-builder:before {
 	text-decoration: none;
 }
 #ttfmake-format-builder .mce-button-primary button:hover,
-#ttfmake-format-builder .mce-button-primary button:focus {
+#ttfmake-format-builder .mce-button-primary button:focus,
+#ttfmake-icon-picker .mce-button-primary button:hover,
+#ttfmake-icon-picker .mce-button-primary button:focus {
 	background: #1e8cbe;
 	border-color: #0074a2;
 	-webkit-box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.6 );
 	box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.6 );
 	color: #fff;
 }
-#ttfmake-format-builder .mce-button-primary button:focus {
+#ttfmake-format-builder .mce-button-primary button:focus,
+#ttfmake-icon-picker .mce-button-primary button:focus {
 	border-color: #0e3950;
 	-webkit-box-shadow:
 		inset 0 1px 0 rgba( 120, 200, 230, 0.6 ),
@@ -70,7 +87,8 @@ i.mce-i-ttfmake-format-builder:before {
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
 }
-#ttfmake-format-builder .mce-button-primary button:active {
+#ttfmake-format-builder .mce-button-primary button:active,
+#ttfmake-icon-picker .mce-button-primary button:active {
 	background: #1b7aa6;
 	border-color: #005684;
 	color: rgba( 255, 255, 255, 0.95 );

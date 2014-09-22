@@ -289,33 +289,64 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		getColorButton: function( name, label ) {
 			var model = ttfmakeFormatBuilder.currentFormat,
 				button = {
-				type: 'container',
-				label: label,
-				items: [
-					{
-						type: 'button',
-						name: name + 'Button',
-						border: '1 1 1 1',
-						style: 'background-color: ' + model.get( name ) + '; border-color: #e5e5e5; box-shadow: none; width: 28px;',
-						onclick: function() {
-							var self = this, // Store the button for later access.
-								ctrl = this.next(); // Get the hidden text field with the hex code.
+					type: 'container',
+					label: label,
+					items: [
+						{
+							type: 'button',
+							name: name + 'Button',
+							border: '1 1 1 1',
+							style: 'background-color: ' + model.get( name ) + '; border-color: #e5e5e5; box-shadow: none; width: 28px;',
+							onclick: function() {
+								var self = this, // Store the button for later access.
+									ctrl = this.next(); // Get the hidden text field with the hex code.
 
-							// Open the TinyMCE color picker plugin
-							ttfmakeFormatBuilder.editor.settings.color_picker_callback( function( value ) {
-								self.getEl().style.backgroundColor = value;
-								ctrl.value( value );
-							}, ctrl.value() );
+								// Open the TinyMCE color picker plugin
+								ttfmakeFormatBuilder.editor.settings.color_picker_callback( function( value ) {
+									self.getEl().style.backgroundColor = value;
+									ctrl.value( value );
+								}, ctrl.value() );
+							}
+						},
+						{
+							type: 'textbox',
+							name: name,
+							hidden: true,
+							value: model.get( name )
 						}
-					},
-					{
-						type: 'textbox',
-						name: name,
-						hidden: true,
-						value: model.get( name )
-					}
-				]
-			};
+					]
+				};
+
+			return button;
+		},
+
+
+		getIconButton: function( name, label ) {
+			var model = ttfmakeFormatBuilder.currentFormat,
+				button = {
+					type: 'container',
+					label: label,
+					items: [
+						{
+							type: 'button',
+							name: name + 'Button',
+							border: '1 1 1 1',
+							style: 'border-color: #e5e5e5; box-shadow: none; width: 28px;',
+							onclick: function() {
+								var self = this, // Store the button for later access.
+									ctrl = this.next(); // Get the hidden text field with the icon code.
+
+
+							}
+						},
+						{
+							type: 'textbox',
+							name: name,
+							hidden: true,
+							value: model.get( name )
+						}
+					]
+				};
 
 			return button;
 		}
