@@ -2,35 +2,87 @@
 var ttfmakeIconPicker;
 
 ( function( $ ) {
-	var iconWindow, iconInsert;
+	var iconWindow, iconInsert, iconValue;
 
 	ttfmakeIconPicker = {
-		open: function( editor ) {
+		/**
+		 * Stores the callback to use when inserting the icon.
+		 *
+		 * @since 1.4.0.
+		 */
+		callback: {},
+
+		/**
+		 * Stores the element representing the currently chosen icon in the picker.
+		 *
+		 * @since 1.4.0.
+		 */
+		el: {},
+
+		/**
+		 * Opens the TinyMCE modal window, and initializes all of the Icon Picker
+		 * functionality.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param editor
+		 * @param callback
+		 */
+		open: function( editor, callback ) {
+			// Store the callback for later.
+			this.callback = callback;
+
+			// Open the window.
 			iconWindow = editor.windowManager.open( {
 				title: 'Choose an icon',
 				id: 'ttfmake-icon-picker',
 				autoScroll: true,
 				width: 420,
 				height: 500,
-				items: {
-					type: 'container',
-					layout: 'flex',
-					align: 'stretch',
-					direction: 'column',
-					padding: 20,
-					items: ttfmakeIconPicker.getIconCategories()
-				},
+				items: [
+					{
+						type: 'textbox',
+						name: 'chosenIcon',
+						hidden: true,
+						onPostRender: function() {
+							// Store this control for later use.
+							iconValue = this;
+						}
+					},
+					{
+						type: 'container',
+						layout: 'flex',
+						align: 'stretch',
+						direction: 'column',
+						padding: 20,
+						items: ttfmakeIconPicker.getIconCategories()
+					}
+				],
 				buttons: [
 					ttfmakeIconPicker.getInsertButton()
-				]
+				],
+				onclose: function() {
+					// Clear parameters to there are no collisions if the Icon Picker
+					// is opened again.
+					ttfmakeIconPicker.callback = {};
+					ttfmakeIconPicker.el = {};
+				}
 			} );
 		},
 
+		/**
+		 * Construct the definitions for each icon category section.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns {Array}
+		 */
 		getIconCategories: function() {
 			var items = [],
 				category, grid;
 
 			$.each( ttfmakeIconObj['fontawesome'], function( cat, icons ) {
+				// Icon category label.
 				category = {
 					type: 'container',
 					html: '<h3>' + cat + '</h3>',
@@ -38,6 +90,7 @@ var ttfmakeIconPicker;
 				};
 				items.push( category );
 
+				// Icon grid container.
 				grid = {
 					type: 'container',
 					layout: 'grid',
@@ -59,16 +112,40 @@ var ttfmakeIconPicker;
 			return items;
 		},
 
+		/**
+		 * Construct the definitions for each icon control in a grid.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param icons
+		 * @returns {Array}
+		 */
 		getIconGrid: function( icons ) {
 			var grid = [],
 				icon;
 
 			$.each( icons, function( index, data ) {
 				icon = {
-					html: '<div style="padding: 4px 0; text-align: center;"><i class="fa ' + data.id + '"></i></div>'
-					//onclick: {
+					html: '<div data-icon-value="' + data.id + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
+					onclick: function() {
+						var value;
 
-					//}
+						// Un-highlight the previously selected icon.
+						if ( 'undefined' !== typeof ttfmakeIconPicker.el.style ) {
+							ttfmakeIconPicker.el.style.borderColor = '#e5e5e5';
+						}
+
+						// Highlight the selected icon.
+						ttfmakeIconPicker.el = this.getEl();
+						ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
+
+						// Get the icon ID and store it in the hidden text field.
+						value = $( ttfmakeIconPicker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
+						iconWindow.find( '#chosenIcon' ).value( value );
+
+						// Enable the insert button
+						iconInsert.disabled( false );
+					}
 				};
 
 				grid.push( icon );
@@ -77,22 +154,48 @@ var ttfmakeIconPicker;
 			return grid;
 		},
 
+		/**
+		 * Get the "Choose" button for the modal window.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns object
+		 */
 		getInsertButton: function() {
 			var button = {
 				text: 'Choose',
 				id: 'ttfmake-icon-picker-insert',
 				name: 'iconInsert',
 				classes: 'button-primary',
+				disabled: true,
 				onPostRender: function() {
 					// Store this control so it can be accessed later.
 					iconInsert = this;
 				},
 				onclick: function() {
+					// Get the currently selected icon.
+					var value = ttfmakeIconPicker.getChosenIcon();
 
+					// Fire the callback.
+					ttfmakeIconPicker.callback( value );
+
+					// Close the modal.
+					iconWindow.fire( 'submit' );
 				}
 			};
 
 			return button;
+		},
+
+		/**
+		 * Grabs the selected icon ID from the hidden text field.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns string
+		 */
+		getChosenIcon: function() {
+			return iconValue.value();
 		}
 	};
 })( jQuery );
