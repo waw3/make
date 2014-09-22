@@ -1,9 +1,6 @@
 /* global jQuery, ttfmakeIconPicker, ttfmakeIconObj */
 var ttfmakeIconPicker;
 
-/**
- * Based on the charmap.js plugin
- */
 ( function( $ ) {
 	var iconWindow, iconInsert;
 
@@ -13,37 +10,19 @@ var ttfmakeIconPicker;
 				title: 'Choose an icon',
 				id: 'ttfmake-icon-picker',
 				autoScroll: true,
-				width: 340,
+				width: 420,
 				height: 500,
 				items: {
 					type: 'container',
 					layout: 'flex',
 					align: 'stretch',
 					direction: 'column',
+					padding: 20,
 					items: ttfmakeIconPicker.getIconCategories()
 				},
 				buttons: [
 					ttfmakeIconPicker.getInsertButton()
 				]
-				/*
-				onopen: function() {
-					var maxHeight = 500;
-
-					// Resize the window (automatically repaints as well)
-					iconWindow.resizeToContent();
-					winWidth = iconWindow.layoutRect().w;
-					winHeight = iconWindow.layoutRect().h;
-					viewWidth = ttfmakeIconPicker.editor.dom.getViewPort().w;
-					viewHeight = ttfmakeIconPicker.editor.dom.getViewPort().h;
-					if (winHeight > maxHeight) {
-						iconWindow.resizeTo(winWidth, maxHeight);
-						winHeight = iconWindow.layoutRect().h;
-					}
-					deltaW = (viewWidth - winWidth) / 2;
-					deltaH = (viewHeight - winHeight) / 2;
-					iconWindow.moveTo(deltaW, deltaH);
-				}
-				*/
 			} );
 		},
 
@@ -53,8 +32,9 @@ var ttfmakeIconPicker;
 
 			$.each( ttfmakeIconObj['fontawesome'], function( cat, icons ) {
 				category = {
-					type: 'label',
-					text: cat
+					type: 'container',
+					html: '<h3>' + cat + '</h3>',
+					style: 'padding: 20px 0 10px;'
 				};
 				items.push( category );
 
@@ -62,16 +42,19 @@ var ttfmakeIconPicker;
 					type: 'container',
 					layout: 'grid',
 					columns: 10,
+					spacing: 1,
 					defaults: {
 						type: 'container',
-						minWidth: 32,
-						minHeight: 32,
-						classes: 'icon-choice'
+						minWidth: 36,
+						minHeight: 36,
+						classes: 'icon-choice',
+						border: '1 1 1 1',
+						style: 'border-color: #e5e5e5; border-style: solid;'
 					},
 					items: ttfmakeIconPicker.getIconGrid( icons )
 				};
 				items.push( grid );
-			} ); console.log(items);
+			} );
 
 			return items;
 		},
@@ -82,7 +65,7 @@ var ttfmakeIconPicker;
 
 			$.each( icons, function( index, data ) {
 				icon = {
-					html: '<i class="fa fa-fw ' + data.id + '"></i>'
+					html: '<div style="padding: 4px 0; text-align: center;"><i class="fa ' + data.id + '"></i></div>'
 					//onclick: {
 
 					//}
