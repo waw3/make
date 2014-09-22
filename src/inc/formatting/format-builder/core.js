@@ -343,6 +343,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 							border: '1 1 1 1',
 							style: 'border-color: #e5e5e5; border-style: solid; width: 36px;',
 							html: '<div style="padding: 4px 0; text-align: center;"><i class="fa"></i></div>',
+							onPostRender: function() {
+								var ctrl = this.next(); // Get the hidden text field with the icon code.
+
+								// Show the existing icon, if one exists.
+								if ( ctrl.value() ) {
+									$( this.getEl() ).find( 'i').attr( 'class', 'fa ' + ctrl.value() );
+								}
+							},
 							onclick: function() {
 								var self = this, // Store the button for later access.
 									ctrl = this.next(); // Get the hidden text field with the icon code.

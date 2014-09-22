@@ -157,7 +157,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		parseAttributes: function( node ) {
 			var $node = $(node),
-				fontSize, paddingHorz, paddingVert;
+				text, icon, fontSize, paddingHorz, paddingVert;
+
+			icon = $node.find( 'i.fa' ).attr( 'class').replace('fa ', '');
+			if ( icon ) this.set('icon', icon);
 			if ( $node.text() ) this.set('text', $node.text());
 			if ( $node.attr('href') ) this.set('url', $node.attr('href'));
 			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
@@ -209,9 +212,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			content = this.get('text');
 			if ('' !== this.get('icon')) {
-				content = this.get('icon') + content;
+				content = '<i class="fa ' + this.get('icon') + '"></i> ' + content;
 			}
-			$button.text(content);
+			$button.html(content);
 
 			return $button.wrap('<p>').parent().html();
 		},
@@ -247,13 +250,17 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		remove: function() {
 			var node = ttfmakeFormatBuilder.currentSelection.getNode(),
-				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button );
+				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button),
+				content;
+
+			// Get the button text
+			content = $( parent[0]).text();
 
 			// Select the existing format markup.
 			ttfmakeFormatBuilder.currentSelection.select( parent[0] );
 
 			// Remove the markup.
-			ttfmakeFormatBuilder.currentSelection.setContent( '' );
+			ttfmakeFormatBuilder.currentSelection.setContent( content.trim() );
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );

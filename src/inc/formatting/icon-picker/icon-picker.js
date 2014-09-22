@@ -132,17 +132,28 @@ var ttfmakeIconPicker;
 			$.each( icons, function( index, data ) {
 				icon = {
 					html: '<div data-icon-value="' + data.id + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
+					onPostRender: function() {
+						var currentValue = ttfmakeIconPicker.getChosenIcon();
+						if ( currentValue == data.id ) {
+							// Highlight the selected icon.
+							ttfmakeIconPicker.el = this.getEl();
+							ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
+							ttfmakeIconPicker.el.style.color = '#2ea2cc';
+						}
+					},
 					onclick: function() {
 						var value;
 
 						// Un-highlight the previously selected icon.
 						if ( 'undefined' !== typeof ttfmakeIconPicker.el.style ) {
 							ttfmakeIconPicker.el.style.borderColor = '#e5e5e5';
+							ttfmakeIconPicker.el.style.color = 'inherit';
 						}
 
 						// Highlight the selected icon.
 						ttfmakeIconPicker.el = this.getEl();
 						ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
+						ttfmakeIconPicker.el.style.color = '#2ea2cc';
 
 						// Get the icon ID and store it in the hidden text field.
 						value = $( ttfmakeIconPicker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
