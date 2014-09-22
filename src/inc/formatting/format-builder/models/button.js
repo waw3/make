@@ -124,15 +124,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					size: 3,
 					value: this.get('paddingVert')
 				},
-				{
-					type: 'textbox',
-					name: 'icon',
-					label: 'Icon',
-					value: this.get('icon'),
-					onclick: function() {
-						ttfmakeIconPicker.open( ttfmakeFormatBuilder.editor );
-					}
-				}
+				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' )
 			];
 
 			return items;

@@ -320,7 +320,15 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			return button;
 		},
 
-
+		/**
+		 * Generate the definitions for a control group that picks and sets an icon.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param name
+		 * @param label
+		 * @returns object
+		 */
 		getIconButton: function( name, label ) {
 			var model = ttfmakeFormatBuilder.currentFormat,
 				button = {
@@ -328,15 +336,24 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					label: label,
 					items: [
 						{
-							type: 'button',
-							name: name + 'Button',
+							type: 'container',
+							minWidth: 36,
+							minHeight: 36,
+							classes: 'icon-choice',
 							border: '1 1 1 1',
-							style: 'border-color: #e5e5e5; box-shadow: none; width: 28px;',
+							style: 'border-color: #e5e5e5; border-style: solid; width: 36px;',
+							html: '<div style="padding: 4px 0; text-align: center;"><i class="fa"></i></div>',
 							onclick: function() {
 								var self = this, // Store the button for later access.
 									ctrl = this.next(); // Get the hidden text field with the icon code.
 
+								window.ttfmakeIconPicker.open( ttfmakeFormatBuilder.editor, function( value ) {
+									// Show the icon on the button.
+									$( self.getEl() ).find( 'i').attr( 'class', 'fa ' + value );
 
+									// Set the value of the hidden text field.
+									ctrl.value( value );
+								}, ctrl.value() );
 							}
 						},
 						{

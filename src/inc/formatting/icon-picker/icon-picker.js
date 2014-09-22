@@ -27,10 +27,14 @@ var ttfmakeIconPicker;
 		 *
 		 * @param editor
 		 * @param callback
+		 * @param value
 		 */
-		open: function( editor, callback ) {
+		open: function( editor, callback, value ) {
 			// Store the callback for later.
 			this.callback = callback;
+
+			// Check for an existing value
+			var currentValue = ( 'undefined' !== typeof value ) ? value : '';
 
 			// Open the window.
 			iconWindow = editor.windowManager.open( {
@@ -44,6 +48,7 @@ var ttfmakeIconPicker;
 						type: 'textbox',
 						name: 'chosenIcon',
 						hidden: true,
+						value: currentValue,
 						onPostRender: function() {
 							// Store this control for later use.
 							iconValue = this;
