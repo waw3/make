@@ -205,7 +205,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getFormatChoices: function() {
 			var choices = [
-				{ value: '', text: 'Choose a format', selected: 'selected', disabled: 'disabled' }
+				{ value: '', text: 'Choose a format', disabled: true }
 			];
 
 			$.each( this.choices, function( fmt, f ) {
