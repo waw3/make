@@ -27,7 +27,9 @@
 		/**
 		 *
 		 */
-		cacheElements: function() {},
+		cacheElements: function() {
+			this.cache.$buttonhover = $('a.ttfmake-button[data-hover-color], a.ttfmake-button[data-hover-background-color]');
+		},
 
 		/**
 		 *
@@ -39,6 +41,7 @@
 				self.navigationInit();
 				self.skipLinkFocusFix();
 				self.fitVidsInit();
+				self.buttonHover();
 			} );
 		},
 
@@ -141,6 +144,50 @@
 			// Fix padding issue with Blip.tv. Note that this *must* happen after Fitvids runs.
 			// The selector finds the Blip.tv iFrame, then grabs the .fluid-width-video-wrapper div sibling.
 			this.cache.$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
+		},
+
+		/**
+		 * Configure the hover behavior of buttons added with the Format Builder.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @return void
+		 */
+		buttonHover: function() {
+			if (this.cache.$buttonhover.length > 0) {
+				var origColor, origBackgroundColor;
+
+				this.cache.$buttonhover.hover(
+					function() {
+						var newColor, newBackgroundColor;
+
+						// Store the original colors.
+						origColor = $(this).css('color');
+						origBackgroundColor = $(this).css('backgroundColor');
+
+						// Get the new colors.
+						newColor = $(this).data('hover-color');
+						newBackgroundColor = $(this).data('hover-background-color');
+
+						// Set the new colors.
+						$(this).css({
+							color: newColor,
+							backgroundColor: newBackgroundColor
+						});
+					},
+					function() {
+						// Restore the original colors.
+						$(this).css({
+							color: origColor,
+							backgroundColor: origBackgroundColor
+						});
+
+						// Unset the original color vars to avoid collisions.
+						origColor = '';
+						origBackgroundColor = '';
+					}
+				);
+			}
 		}
 	};
 
