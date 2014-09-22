@@ -39,6 +39,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			forcePlaceholderSizeType: true,
 			distance: 2,
 			tolerance: 'pointer',
+			zIndex: 99999,
 			start: function (event, ui) {
 				// Set the height of the placeholder to that of the sorted item
 				var $item = $(ui.item.get(0)),
