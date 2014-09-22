@@ -107,7 +107,7 @@ var ttfmakeIconPicker;
 						minHeight: 36,
 						classes: 'icon-choice',
 						border: '1 1 1 1',
-						style: 'border-color: #e5e5e5; border-style: solid;'
+						style: 'border-color: #ffffff; border-style: solid;'
 					},
 					items: ttfmakeIconPicker.getIconGrid( icons )
 				};
@@ -137,7 +137,7 @@ var ttfmakeIconPicker;
 				}
 
 				function unhighlight() {
-					ttfmakeIconPicker.el.style.borderColor = '#e5e5e5';
+					ttfmakeIconPicker.el.style.borderColor = '#ffffff';
 					ttfmakeIconPicker.el.style.color = 'inherit';
 					ttfmakeIconPicker.el = {};
 				}
