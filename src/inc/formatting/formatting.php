@@ -55,8 +55,8 @@ class TTFMAKE_Format_Builder {
 	public function init() {
 		if ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) {
 			// Add plugin and button
-			add_filter( 'mce_external_plugins', array( $this, 'register_plugin' ) );
-			add_filter( 'mce_buttons', array( $this, 'register_button' ) );
+			add_filter( 'mce_external_plugins', array( $this, 'register_plugins' ) );
+			add_filter( 'mce_buttons', array( $this, 'register_buttons' ) );
 
 			// Add translations for plugin
 			add_filter( 'wp_mce_translation', array( $this, 'add_translations' ), 10, 2 );
@@ -74,8 +74,13 @@ class TTFMAKE_Format_Builder {
 	 * @param  array    $plugins
 	 * @return mixed
 	 */
-	public function register_plugin( $plugins ) {
+	public function register_plugins( $plugins ) {
+		// Format Builder
 		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/plugin.js';
+
+		// Icon Picker
+		$plugins['ttfmake_icon_picker'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/icon-picker/plugin.js';
+
 		return $plugins;
 	}
 
@@ -87,8 +92,13 @@ class TTFMAKE_Format_Builder {
 	 * @param  array    $buttons
 	 * @return array
 	 */
-	public function register_button( $buttons ) {
+	public function register_buttons( $buttons ) {
+		// Format Builder
 		$buttons[] = 'ttfmake_format_builder';
+
+		// Icon Picker
+		$buttons[] = 'ttfmake_icon_picker';
+
 		return $buttons;
 	}
 
@@ -101,11 +111,11 @@ class TTFMAKE_Format_Builder {
 	 * @return array
 	 */
 	public function add_translations( $translations ) {
-		$format_builder_translations = array(
+		$formatting_translations = array(
 			'Format Builder' => __( 'Format Builder', 'make' ),
 		);
 
-		return array_merge( $translations, $format_builder_translations );
+		return array_merge( $translations, $formatting_translations );
 	}
 
 	/**
@@ -117,23 +127,19 @@ class TTFMAKE_Format_Builder {
 	 */
 	public function enqueue_scripts( $hook_suffix ) {
 		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
-			// Styles
+			/**
+			 * Admin styles
+			 */
 			wp_enqueue_style(
-				'ttfmake-format-builder',
+				'ttfmake-formatting',
 				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/formatting.css',
 				array(),
 				TTFMAKE_VERSION
 			);
 
-			// Icons
-			wp_enqueue_style(
-				'ttfmake-font-awesome',
-				get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
-				array(),
-				'4.2.0'
-			);
-
-			// Scripts
+			/**
+			 * Format Builder
+			 */
 			$dependencies = array( 'backbone', 'underscore', 'jquery' );
 
 			// Core
@@ -167,6 +173,17 @@ class TTFMAKE_Format_Builder {
 				);
 				$dependencies[] = $handle;
 			}
+
+			/**
+			 * Icon Picker
+			 */
+			// Icon styles
+			wp_enqueue_style(
+				'ttfmake-font-awesome',
+				get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
+				array(),
+				'4.2.0'
+			);
 
 			// Icon definitions
 			wp_enqueue_script(
