@@ -212,7 +212,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		parseAttributes: function( node ) {
 			var self = this,
 				$node = $(node),
-				icon, iconClasses, iconSize, iconColor, fontSize, paddingHorz, paddingVert;
+				icon, iconClasses, iconSize, iconColor, fontSize, paddingHorz, paddingVert, borderWidth;
 
 			if ( $node.css('fontSize') ) {
 				fontSize = parseInt( $node.css('fontSize') );
@@ -246,8 +246,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				this.set('paddingVert', paddingVert + ''); // Convert integer to string for TinyMCE
 			}
 			if ( $node.css('borderTopStyle') ) this.set('borderStyle', $node.css('borderTopStyle'));
-			if ( $node.css('borderWidth') ) this.set('borderWidth', $node.css('borderWidth'));
-			if ( $node.css('borderColor') ) this.set('colorBorder', $node.css('borderColor'));
+			if ( $node.css('borderTopWidth') ) {
+				borderWidth = parseInt( $node.css('borderTopWidth') );
+				this.set('borderWidth', borderWidth + ''); // Convert integer to string for TinyMCE
+			}
+			if ( $node.css('borderTopColor') ) this.set('colorBorder', $node.css('borderTopColor'));
 			if ( $node.css('backgroundColor') ) this.set('colorBackground', $node.css('backgroundColor'));
 			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
 		},
