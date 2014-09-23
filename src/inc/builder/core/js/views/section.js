@@ -72,12 +72,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		removeSection: function (evt) {
 			evt.preventDefault();
-
-			// Confirm the action
-			if (false === window.confirm(ttfmakeBuilderData.confirmString)) {
-				return;
-			}
-
 			oneApp.removeOrderValue(this.model.get('id'), oneApp.cache.$sectionOrder);
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
