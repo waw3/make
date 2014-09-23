@@ -53,6 +53,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			colorTextHover: '#000000',
 			paddingHorz: '6',
 			paddingVert: '4',
+			borderRadius: '3',
 			icon: ''
 		},
 
@@ -124,6 +125,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					size: 3,
 					value: this.get('paddingVert')
 				},
+				{
+					type: 'textbox',
+					name: 'borderRadius',
+					label: 'Border Radius (px)',
+					size: 3,
+					value: this.get('borderRadius')
+				},
 				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' )
 			];
 
@@ -139,7 +147,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		parseAttributes: function( node ) {
 			var $node = $(node),
-				text, icon, fontSize, paddingHorz, paddingVert;
+				text, icon, fontSize, paddingHorz, paddingVert, borderRadius;
 
 			icon = $node.find( 'i.fa' ).attr( 'class');
 			if ( icon ) {
@@ -164,6 +172,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			if ( $node.css('paddingTop') ) {
 				paddingVert = parseInt( $node.css('paddingTop') );
 				this.set('paddingVert', paddingVert + ''); // Convert integer to string for TinyMCE
+			}
+			if ( $node.css('borderTopLeftRadius') ) {
+				borderRadius = parseInt( $node.css('borderTopLeftRadius') );
+				this.set('borderRadius', borderRadius + ''); // Convert integer to string for TinyMCE
 			}
 		},
 
@@ -192,7 +204,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				backgroundColor: this.get('colorBackground'),
 				color: this.get('colorText'),
 				fontSize: this.get('fontSize') + 'px',
-				padding: this.get('paddingVert') + 'px ' + this.get('paddingHorz') + 'px'
+				padding: this.get('paddingVert') + 'px ' + this.get('paddingHorz') + 'px',
+				borderRadius: this.get('borderRadius') + 'px'
 			});
 
 			content = this.get('text');
