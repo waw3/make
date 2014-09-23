@@ -1,4 +1,5 @@
 /* Toolbar Icons */
+/* Toolbar Icons */
 i.mce-i-ttfmake-format-builder,
 i.mce-i-ttfmake-icon-picker {
 	font: normal 20px/1 'dashicons';
@@ -139,4 +140,10 @@ i.mce-i-ttfmake-icon-picker:before {
 	color: #333;
 	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+}
+
+/* Resetting default button styles */
+#ttfmake-format-builder-picker {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
 }
