@@ -23,6 +23,10 @@ i.mce-i-ttfmake-icon-picker:before {
 #ttfmake-icon-picker .mce-container-body.mce-abs-layout {
 	overflow-y: hidden;
 }
+#ttfmake-format-builder .mce-foot,
+#ttfmake-icon-picker .mce-foot {
+	border-radius: 0;
+}
 #ttfmake-format-builder .mce-i-checkbox {
 	background-image: none;
 }
