@@ -1,3 +1,7 @@
+## 1.4.0
+
+* Updated Page Builder interface to improve performance, reduce clutter and better match WordPress' flat design
+
 ## 1.3.2
 
 * Fixed fatal error in PHP 5.2.
