@@ -133,7 +133,7 @@ var ttfmakeIconPicker;
 			$.each( icons, function( index, data ) {
 				function highlight( self ) {
 					ttfmakeIconPicker.el = self.getEl();
-					ttfmakeIconPicker.el.style.borderColor = '#2ea2cc';
+					ttfmakeIconPicker.el.style.borderColor = '#d9d9d9';
 					ttfmakeIconPicker.el.style.color = '#2ea2cc';
 				}
 
