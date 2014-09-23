@@ -60,7 +60,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			this.currentSelection = editor.selection;
 
 			var format = this.parseNode( this.currentSelection.getNode() ),
-				items;
+				args, items = [];
 
 			if ('' == format) {
 				// No existing format. Show listbox to choose a new format.
@@ -83,8 +83,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				];
 			}
 
-			// Open the window.
-			formatWindow = editor.windowManager.open( {
+			// Define the window args.
+			args = {
 				title: 'Format Builder',
 				id: 'ttfmake-format-builder',
 				autoScroll: true,
@@ -107,8 +107,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					ttfmakeFormatBuilder.currentFormat = {};
 					ttfmakeFormatBuilder.currentSelection = {};
 				}
-			} );
+			};
 
+			// Open the window.
+			formatWindow = editor.windowManager.open(args);
 		},
 
 		/**
@@ -146,6 +148,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				type: 'listbox',
 				name: 'format',
 				id: 'ttfmake-format-builder-picker',
+				minWidth: 400,
 				values: this.getFormatChoices(),
 				onselect: function() {
 					var choice = this.value(),
