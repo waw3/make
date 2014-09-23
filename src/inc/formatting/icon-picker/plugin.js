@@ -3,7 +3,7 @@
 		editor.addCommand( 'Make_Icon_Picker', function() {
 			if ( 'undefined' !== typeof window.ttfmakeIconPicker ) {
 				window.ttfmakeIconPicker.open( editor, function( value ) {
-					var icon = '<i class="fa ' + value + '"></i>';
+					var icon = '<i class="fa ' + value + '">&nbsp;</i>';
 					editor.insertContent( icon );
 				} );
 			}
