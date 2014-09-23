@@ -62,8 +62,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		initialize: function() {
-			var content = ttfmakeFormatBuilder.currentSelection.getContent() || '',
-				node = ttfmakeFormatBuilder.currentSelection.getNode() || {};
+			var content = ttfmakeFormatBuilder.currentSelection.getContent(),
+				node = ttfmakeFormatBuilder.currentSelection.getNode();
 			if ( '' !== content ) {
 				this.set({ text: content });
 			}
@@ -128,24 +128,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			];
 
 			return items;
-		},
-
-		/**
-		 * Sanitize incoming form values and store them in the model.
-		 *
-		 * @since 1.4.0.
-		 *
-		 * @param data
-		 */
-		sanitizeOptions: function( data ) {
-			var self = this;
-
-			$.each(data, function(key, value) {
-				if (self.has(key)) {
-					var sanitized = self.escAttr(value);
-					self.set(key, sanitized);
-				}
-			});
 		},
 
 		/**
@@ -230,9 +212,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		insert: function() {
 			var html = this.getHTML(),
 				node, parent;
+
 			if ( true === this.get( 'update' ) ) {
 				// Make sure we get the right node.
-				node = ttfmakeFormatBuilder.currentSelection.getNode(),
+				node = ttfmakeFormatBuilder.currentSelection.getNode();
 				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button );
 
 				// Select the existing format markup.
