@@ -11,6 +11,24 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 		getOptionFields: {},
 
+		/**
+		 * Sanitize incoming form values and store them in the model.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param data
+		 */
+		sanitizeOptions: function( data ) {
+			var self = this;
+
+			$.each(data, function(key, value) {
+				if (self.has(key)) {
+					var sanitized = self.escAttr(value);
+					self.set(key, sanitized);
+				}
+			});
+		},
+
 		escAttr: function(s, preserveCR) {
 			preserveCR = preserveCR ? '&#13;' : '\n';
 			return ('' + s) /* Forces the conversion to string. */

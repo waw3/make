@@ -160,9 +160,10 @@ class TTFMAKE_Format_Builder {
 			$dependencies[] = 'ttfmake-format-builder-model-base';
 
 			// Format models
-			$models = array(
+			$models = apply_filters( 'make_format_builder_format_models', array(
 				'button',
-			);
+				'alert',
+			) );
 			foreach ( $models as $model ) {
 				$handle = 'ttfmake-format-builder-model-' . $model;
 				wp_enqueue_script(
