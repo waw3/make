@@ -201,7 +201,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$('.wp-color-result', $overlay).click();
 				$( 'body' ).off( 'click.wpcolorpicker' );
 				self.setSize($overlay, $wrapper);
-				$('input:first', $overlay).focus();
+				$overlay.find('input,select').filter(':first').focus();
 			});
 
 			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
