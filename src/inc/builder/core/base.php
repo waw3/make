@@ -330,8 +330,9 @@ class TTFMAKE_Builder_Base {
 
 		// Add data needed for the JS
 		$data = array(
-			'pageID'      => get_the_ID(),
-			'postRefresh' => true,
+			'pageID'        => get_the_ID(),
+			'postRefresh'   => true,
+			'confirmString' => __( 'Delete the section?', 'make' ),
 		);
 
 		wp_localize_script(
