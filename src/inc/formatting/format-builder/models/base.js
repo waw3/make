@@ -7,9 +7,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	ttfmakeFormatBuilder.FormatModel = Backbone.Model.extend({
 		defaults: {},
 
-		initialize: function () {},
+		initialize: function() {},
 
-		getOptionFields: {},
+		getOptionFields: function() {},
+
+		parseAttributes: function() {},
 
 		/**
 		 * Sanitize incoming form values and store them in the model.
@@ -29,6 +31,23 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			});
 		},
 
+		getHTML: function() {},
+
+		insert: function() {},
+
+		remove: function() {},
+
+		/**
+		 * Sanitize an input for output as an HTML attribute.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @link http://stackoverflow.com/a/9756789/719811
+		 *
+		 * @param s
+		 * @param preserveCR
+		 * @returns {string}
+		 */
 		escAttr: function(s, preserveCR) {
 			preserveCR = preserveCR ? '&#13;' : '\n';
 			return ('' + s) /* Forces the conversion to string. */
