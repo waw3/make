@@ -2,7 +2,7 @@
 var ttfmakeIconPicker;
 
 ( function( $ ) {
-	var iconWindow, iconInsert, iconValue;
+	var iconWindow, iconInsert, iconRemove, iconValue;
 
 	ttfmakeIconPicker = {
 		/**
@@ -64,6 +64,7 @@ var ttfmakeIconPicker;
 					}
 				],
 				buttons: [
+					ttfmakeIconPicker.getRemoveButton(),
 					ttfmakeIconPicker.getInsertButton()
 				],
 				onclose: function() {
@@ -205,6 +206,43 @@ var ttfmakeIconPicker;
 
 						// Close the modal.
 						iconWindow.fire( 'submit' );
+					}
+				}
+			};
+
+			return button;
+		},
+
+		/**
+		 * Get the "Remove" button for the modal window.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns object
+		 */
+		getRemoveButton: function() {
+			var button = {
+				text: 'Remove',
+				id: 'ttfmake-icon-picker-remove',
+				name: 'iconRemove',
+				classes: 'button-secondary',
+				hidden: true,
+				onPostRender: function() {
+					// Store this control so it can be accessed later.
+					iconRemove = this;
+
+					//
+					if ('' !== ttfmakeIconPicker.getChosenIcon()) {
+						this.visible(true);
+					}
+				},
+				onclick: function() {
+					if ( 'function' === typeof ttfmakeIconPicker.callback ) {
+						// Fire the callback.
+						ttfmakeIconPicker.callback('');
+
+						// Close the modal.
+						iconWindow.fire('submit');
 					}
 				}
 			};
