@@ -737,7 +737,7 @@ function ttfmake_upgrade_notice() {
 			<?php
 			printf(
 				__(
-					'Please <a href="%1$s"><em>update to Make Plus 1.4.0 or greater</em></a> for compatibility with your version of Make. <a href="#" data-nonce="%2$s" class="%3$s">hide</a>',
+					'Please <a href="%1$s"><em>update to Make Plus 1.4.0 or later</em></a> for compatibility with your version of Make. <a href="#" data-nonce="%2$s" class="%3$s">hide</a>',
 					'make'
 				),
 				admin_url( 'update-core.php' ),
