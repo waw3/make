@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.3.2' );
+define( 'TTFMAKE_VERSION', '1.4.0' );
 
 /**
  * The suffix to use for scripts.
@@ -508,6 +508,16 @@ function ttfmake_plus_styles() {
 		text-transform: uppercase;
 		-webkit-font-smoothing: subpixel-antialiased !important;
 	}
+	.ttfmake-plus-info p {
+		margin-top: 0;
+		margin-left: 10px;
+	}
+	.ttfmake-section-text .ttfmake-titlediv {
+		padding-right: 45px;
+	}
+	.edit-text-column-link {
+		right: 0;
+	}
 	a.ttfmake-customize-plus {
 		margin-left: 0;
 	}
@@ -523,8 +533,9 @@ function ttfmake_plus_styles() {
 	}
 	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before {
 		position: relative;
-		top: 38px;
-		left: 17px;
+		top: 32px;
+		margin-left: -2px;
+		text-align: center;
 	}
 	.make-plus-products .section-type-description {
 		color: #777777;
