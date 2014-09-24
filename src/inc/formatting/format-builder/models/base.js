@@ -11,6 +11,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 		getOptionFields: function() {},
 
+		parseAttributes: function() {},
+
+		getHTML: function() {},
+
+		insert: function() {},
+
+		remove: function() {},
+
 		/**
 		 * Wrap each control in a customized form item.
 		 *
@@ -37,6 +45,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				item = {
 					type: 'formitem',
 					layout: 'stack',
+					minWidth: 300,
 					maxHeight: 50,
 					border: '0 0 1 0',
 					style: 'border-color: #e5e5e5; border-style: solid;',
@@ -56,8 +65,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			return wrapped;
 		},
 
-		parseAttributes: function() {},
-
 		/**
 		 * Sanitize incoming form values and store them in the model.
 		 *
@@ -75,12 +82,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				}
 			});
 		},
-
-		getHTML: function() {},
-
-		insert: function() {},
-
-		remove: function() {},
 
 		/**
 		 * Sanitize an input for output as an HTML attribute.

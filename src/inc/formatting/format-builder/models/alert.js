@@ -15,10 +15,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 */
 	ttfmakeFormatBuilder.choices.alert = function() {
 		var content = ttfmakeFormatBuilder.currentSelection.getContent(),
-			node = ttfmakeFormatBuilder.currentSelection.getNode(),
+			parent = ttfmakeFormatBuilder.getParentNode('p'),
 			choice, isP;
 
-		isP = ( $(node).is('p') );
+		isP = ( $(parent).is('p') );
 
 		choice = {
 			value: 'alert',
@@ -306,30 +306,33 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		insert: function() {
 			var html = this.getHTML(),
-				node = ttfmakeFormatBuilder.currentSelection.getNode(),
 				parent;
 
 			if ( true === this.get('update') ) {
 				// Make sure we get the right node.
-				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.alert );
+				parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
 
-				// Select the existing format markup.
-				ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+				if (parent) {
+					// Select the existing format markup.
+					ttfmakeFormatBuilder.currentSelection.select(parent);
 
-				// Replace with the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent( html );
+					// Replace with the new markup.
+					ttfmakeFormatBuilder.currentSelection.setContent(html);
+				}
 			} else if ('' != ttfmakeFormatBuilder.currentSelection.getContent()) {
 				// Insert the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent( html );
+				ttfmakeFormatBuilder.currentSelection.setContent(html);
 			} else {
 				// Make sure we get the right node.
-				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, 'p' );
+				parent = ttfmakeFormatBuilder.getParentNode('p');
 
-				// Select the existing format markup.
-				ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+				if (parent) {
+					// Select the existing format markup.
+					ttfmakeFormatBuilder.currentSelection.select(parent);
 
-				// Insert the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent( html );
+					// Insert the new markup.
+					ttfmakeFormatBuilder.currentSelection.setContent(html);
+				}
 			}
 		},
 
@@ -340,22 +343,24 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		remove: function() {
 			var node = ttfmakeFormatBuilder.currentSelection.getNode(),
-				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.alert),
+				parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert),
 				$alertContent, content;
 
-			// Process the alert content.
-			$alertContent = $('<p>');
-			$alertContent.html( $(parent[0]).html() );
-			$alertContent.find('i.ttfmake-alert-icon').remove();
+			if (parent) {
+				// Process the alert content.
+				$alertContent = $('<p>');
+				$alertContent.html( $(parent).html() );
+				$alertContent.find('i.ttfmake-alert-icon').remove();
 
-			// Prepare replacement content.
-			content = $alertContent.wrap('<div>').parent().html();
+				// Prepare replacement content.
+				content = $alertContent.wrap('<div>').parent().html();
 
-			// Select the existing format markup.
-			ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+				// Select the existing format markup.
+				ttfmakeFormatBuilder.currentSelection.select(parent);
 
-			// Remove the markup.
-			ttfmakeFormatBuilder.currentSelection.setContent( content.trim() );
+				// Remove the markup.
+				ttfmakeFormatBuilder.currentSelection.setContent(content.trim());
+			}
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );

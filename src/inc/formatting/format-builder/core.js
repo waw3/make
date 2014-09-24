@@ -88,6 +88,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				title: 'Format Builder',
 				id: 'ttfmake-format-builder',
 				autoScroll: true,
+				maxHeight: 500,
 				items: {
 					type: 'container',
 					name: 'formatContainer',
@@ -134,6 +135,29 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			});
 
 			return format;
+		},
+
+		/**
+		 * Search through the parents of the current node (plus the current node itself)
+		 * for one that matches the given selector.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param selector
+		 * @param node
+		 * @param editor
+		 * @returns {*}
+		 */
+		getParentNode: function(selector, node, editor) {
+			var Node = node || ttfmakeFormatBuilder.currentSelection.getNode(),
+				Editor = editor || ttfmakeFormatBuilder.editor,
+				matchedParents = Editor.dom.getParents(Node, selector);
+
+			if (matchedParents.length > 0) {
+				return matchedParents.shift();
+			} else {
+				return false;
+			}
 		},
 
 		/**
@@ -353,7 +377,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 								if ( ctrl.value() ) {
 									// Show the existing icon, if one is set.
-									$(this.getEl()).html(yesIcon).find( 'i').addClass(ctrl.value());
+									$(this.getEl()).html(yesIcon).find('i').addClass(ctrl.value());
 								} else {
 									// Show the "Add icon" pseudo link.
 									$(this.getEl()).html(noIcon);
@@ -366,7 +390,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 								window.ttfmakeIconPicker.open(ttfmakeFormatBuilder.editor, function(value) {
 									if ('' !== value) {
 										// Show the chosen icon.
-										$(self.getEl()).html(yesIcon).find( 'i').addClass(value);
+										$(self.getEl()).html(yesIcon).find('i').addClass(value);
 									} else {
 										// Show the "Add icon" pseudo link.
 										$(self.getEl()).html(noIcon);

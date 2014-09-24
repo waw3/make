@@ -14,10 +14,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 * @returns object
 	 */
 	ttfmakeFormatBuilder.choices.button = function() {
-		var choice = {
+		var content = ttfmakeFormatBuilder.currentSelection.getContent(),
+			choice;
+
+		choice = {
 			value: 'button',
 			text: 'Button',
-			disabled: ( '' == ttfmakeFormatBuilder.currentSelection.getContent() )
+			disabled: ( '' == content )
 		};
 
 		return choice;
@@ -65,6 +68,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		initialize: function() {
 			var content = ttfmakeFormatBuilder.currentSelection.getContent(),
 				node = ttfmakeFormatBuilder.currentSelection.getNode();
+
 			if ( '' !== content ) {
 				this.set({ text: content });
 			}
@@ -224,21 +228,22 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		insert: function() {
 			var html = this.getHTML(),
-				node, parent;
+				parent;
 
 			if ( true === this.get( 'update' ) ) {
 				// Make sure we get the right node.
-				node = ttfmakeFormatBuilder.currentSelection.getNode();
-				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button );
+				parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button);
 
-				// Select the existing format markup.
-				ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+				if (parent) {
+					// Select the existing format markup.
+					ttfmakeFormatBuilder.currentSelection.select(parent);
 
-				// Replace with the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent( html );
+					// Replace with the new markup.
+					ttfmakeFormatBuilder.currentSelection.setContent(html);
+				}
 			} else {
 				// Insert the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent( html );
+				ttfmakeFormatBuilder.currentSelection.setContent(html);
 			}
 		},
 
@@ -248,18 +253,19 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		remove: function() {
-			var node = ttfmakeFormatBuilder.currentSelection.getNode(),
-				parent = ttfmakeFormatBuilder.editor.dom.getParents( node, ttfmakeFormatBuilder.nodes.button),
+			var parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button),
 				content;
 
-			// Get the button text
-			content = $( parent[0]).text();
+			if (parent) {
+				// Get the button text
+				content = $(parent).text();
 
-			// Select the existing format markup.
-			ttfmakeFormatBuilder.currentSelection.select( parent[0] );
+				// Select the existing format markup.
+				ttfmakeFormatBuilder.currentSelection.select(parent);
 
-			// Remove the markup.
-			ttfmakeFormatBuilder.currentSelection.setContent( content.trim() );
+				// Remove the markup.
+				ttfmakeFormatBuilder.currentSelection.setContent(content.trim());
+			}
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
