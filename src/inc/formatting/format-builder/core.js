@@ -368,9 +368,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 							type: 'container',
 							minWidth: 36,
 							minHeight: 36,
-							//classes: 'icon-choice',
-							//border: '1 1 1 1',
-							//style: 'border-color: #e5e5e5; border-style: solid; width: 36px;',
 							html: '',
 							onPostRender: function() {
 								var ctrl = this.next(); // Get the hidden text field with the icon code.
