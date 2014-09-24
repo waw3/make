@@ -334,6 +334,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getIconButton: function( name, label ) {
 			var model = ttfmakeFormatBuilder.currentFormat,
+				noIcon = '<span class="mce-add-icon">Add icon</span>',
+				yesIcon = '<div class="mce-icon-choice"><i class="fa"></i></div>',
 				button = {
 					type: 'container',
 					label: label,
@@ -342,29 +344,37 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 							type: 'container',
 							minWidth: 36,
 							minHeight: 36,
-							classes: 'icon-choice',
-							border: '1 1 1 1',
-							style: 'border-color: #e5e5e5; border-style: solid; width: 36px;',
-							html: '<div style="padding: 4px 0; text-align: center;"><i class="fa"></i></div>',
+							//classes: 'icon-choice',
+							//border: '1 1 1 1',
+							//style: 'border-color: #e5e5e5; border-style: solid; width: 36px;',
+							html: '',
 							onPostRender: function() {
 								var ctrl = this.next(); // Get the hidden text field with the icon code.
 
-								// Show the existing icon, if one exists.
 								if ( ctrl.value() ) {
-									$( this.getEl() ).find( 'i').attr( 'class', 'fa ' + ctrl.value() );
+									// Show the existing icon, if one is set.
+									$(this.getEl()).html(yesIcon).find( 'i').addClass(ctrl.value());
+								} else {
+									// Show the "Add icon" pseudo link.
+									$(this.getEl()).html(noIcon);
 								}
 							},
 							onclick: function() {
 								var self = this, // Store the button for later access.
 									ctrl = this.next(); // Get the hidden text field with the icon code.
 
-								window.ttfmakeIconPicker.open( ttfmakeFormatBuilder.editor, function( value ) {
-									// Show the icon on the button.
-									$( self.getEl() ).find( 'i').attr( 'class', 'fa ' + value );
+								window.ttfmakeIconPicker.open(ttfmakeFormatBuilder.editor, function(value) {
+									if ('' !== value) {
+										// Show the chosen icon.
+										$(self.getEl()).html(yesIcon).find( 'i').addClass(value);
+									} else {
+										// Show the "Add icon" pseudo link.
+										$(self.getEl()).html(noIcon);
+									}
 
 									// Set the value of the hidden text field.
-									ctrl.value( value );
-								}, ctrl.value() );
+									ctrl.value(value);
+								}, ctrl.value());
 							}
 						},
 						{

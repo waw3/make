@@ -1,5 +1,4 @@
 /* Toolbar Icons */
-/* Toolbar Icons */
 i.mce-i-ttfmake-format-builder,
 i.mce-i-ttfmake-icon-picker {
 	font: normal 20px/1 'dashicons';
@@ -32,6 +31,14 @@ i.mce-i-ttfmake-icon-picker:before {
 }
 
 /* Icons */
+#ttfmake-format-builder .mce-container .mce-add-icon {
+	cursor: pointer;
+	font-family: "Open Sans", sans-serif;
+	font-size: 13px;
+	line-height: 2;
+	color: #2ea2cc;
+	text-decoration: underline;
+}
 #ttfmake-format-builder .mce-container .mce-icon-choice,
 #ttfmake-format-builder .mce-container .mce-icon-choice *,
 #ttfmake-icon-picker .mce-container .mce-icon-choice,
