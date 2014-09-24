@@ -148,7 +148,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				type: 'listbox',
 				name: 'format',
 				id: 'ttfmake-format-builder-picker',
-				minWidth: 400,
+				minWidth: 300,
 				values: this.getFormatChoices(),
 				onselect: function() {
 					var choice = this.value(),

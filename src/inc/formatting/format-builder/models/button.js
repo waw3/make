@@ -135,7 +135,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' )
 			];
 
-			return items;
+			return this.wrapOptionFields(items);
 		},
 
 		/**

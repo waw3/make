@@ -11,6 +11,51 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 		getOptionFields: function() {},
 
+		/**
+		 * Wrap each control in a customized form item.
+		 *
+		 * This is way harder than it should be. :/
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param fields
+		 * @returns {Array}
+		 */
+		wrapOptionFields: function(fields) {
+			var wrapped = [],
+				label, item,
+				spacer = {
+					type: 'spacer'
+				};
+
+			$.each(fields, function(index, field) {
+				label = {
+					type: 'label',
+					text: field.label,
+					style: 'float: left; line-height: 30px;'
+				};
+				item = {
+					type: 'formitem',
+					layout: 'stack',
+					maxHeight: 50,
+					border: '0 0 1 0',
+					style: 'border-color: #e5e5e5; border-style: solid;',
+					hidden: (true === field.hidden),
+					defaults: {
+						style: 'float: right; text-align: right;'
+					},
+					items: [
+						label,
+						field
+					]
+				};
+				wrapped.push(item);
+				wrapped.push(spacer);
+			});
+
+			return wrapped;
+		},
+
 		parseAttributes: function() {},
 
 		/**

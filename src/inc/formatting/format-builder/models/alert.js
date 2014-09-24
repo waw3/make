@@ -199,7 +199,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				ttfmakeFormatBuilder.getColorButton( 'colorBorder', 'Border Color' )
 			];
 
-			return items;
+			return this.wrapOptionFields(items);
 		},
 
 		/**
