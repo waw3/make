@@ -53,7 +53,7 @@ class TTFMAKE_Formatting {
 	 * @return void
 	 */
 	public function init() {
-		if ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) {
+		if ( is_admin() && ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) ) {
 			// Add plugin and button
 			add_filter( 'mce_external_plugins', array( $this, 'register_plugins' ) );
 			add_filter( 'mce_buttons', array( $this, 'register_buttons' ) );
