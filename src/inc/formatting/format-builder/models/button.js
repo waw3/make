@@ -46,6 +46,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		defaults: {
 			update: false,
+			id: 0,
 			text: 'Click Here',
 			url: '',
 			target: false,
@@ -68,6 +69,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		initialize: function() {
 			var content = ttfmakeFormatBuilder.currentSelection.getContent(),
 				node = ttfmakeFormatBuilder.currentSelection.getNode();
+
+			this.set('id', this.createID());
 
 			if ( '' !== content ) {
 				this.set({ text: content });
@@ -153,11 +156,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			var $node = $(node),
 				text, icon, fontSize, paddingHorz, paddingVert, borderRadius;
 
-			icon = $node.find( 'i.fa' ).attr( 'class');
-			if ( icon ) {
-				icon.replace('fa ', '');
-				this.set('icon', icon);
-			}
+			if ( $node.attr('id') ) this.set('id', $node.attr('id'));
 			if ( $node.text() ) this.set('text', $node.text());
 			if ( $node.attr('href') ) this.set('url', $node.attr('href'));
 			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
@@ -181,6 +180,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				borderRadius = parseInt( $node.css('borderTopLeftRadius') );
 				this.set('borderRadius', borderRadius + ''); // Convert integer to string for TinyMCE
 			}
+			icon = $node.find( 'i.fa' ).attr( 'class');
+			if ( icon ) {
+				icon.replace('fa ', '');
+				this.set('icon', icon);
+			}
 		},
 
 		/**
@@ -196,6 +200,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			$button.attr({
 				href: this.get('url'),
+				id: this.get('id'),
 				class: 'ttfmake-button',
 				'data-hover-background-color': this.get('colorBackgroundHover'),
 				'data-hover-color': this.get('colorTextHover')

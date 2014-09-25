@@ -61,9 +61,12 @@ class TTFMAKE_Format_Builder {
 			// Add translations for plugin
 			add_filter( 'wp_mce_translation', array( $this, 'add_translations' ), 10, 2 );
 
-			// Enqueue styles and scripts for plugin functionality
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			// Enqueue admin styles and scripts for plugin functionality
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		}
+
+		// Enqueue front end scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
 	}
 
 	/**
@@ -77,6 +80,9 @@ class TTFMAKE_Format_Builder {
 	public function register_plugins( $plugins ) {
 		// Format Builder
 		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/plugin.js';
+
+		// Dynamic Stylesheet
+		$plugins['ttfmake_dynamic_stylesheet'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/dynamic-stylesheet/plugin.js';
 
 		// Icon Picker
 		$plugins['ttfmake_icon_picker'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/icon-picker/plugin.js';
@@ -125,7 +131,7 @@ class TTFMAKE_Format_Builder {
 	 *
 	 * @param $hook_suffix
 	 */
-	public function enqueue_scripts( $hook_suffix ) {
+	public function enqueue_admin_scripts( $hook_suffix ) {
 		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
 			/**
 			 * Admin styles
@@ -176,6 +182,24 @@ class TTFMAKE_Format_Builder {
 			}
 
 			/**
+			 * Dynamic Stylesheet
+			 */
+			wp_enqueue_script(
+				'ttfmake-dynamic-stylesheet',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/dynamic-stylesheet/dynamic-stylesheet.js',
+				array( 'jquery', 'editor' ),
+				TTFMAKE_VERSION,
+				true
+			);
+			wp_localize_script(
+				'ttfmake-dynamic-stylesheet',
+				'ttfmakeDynamicStylesheetVars',
+				array(
+					'tinymce' => true
+				)
+			);
+
+			/**
 			 * Icon Picker
 			 */
 			// Icon styles
@@ -203,6 +227,24 @@ class TTFMAKE_Format_Builder {
 			);
 		}
 	}
+
+	/**
+	 * Enqueue scripts for the front end.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @return void
+	 */
+	public function enqueue_frontend_scripts() {
+		// Dynamic styles
+		wp_enqueue_script(
+			'ttfmake-dynamic-stylesheet',
+			trailingslashit( get_template_directory_uri() ) . 'inc/formatting/dynamic-stylesheet/dynamic-stylesheet.js',
+			array( 'jquery' ),
+			TTFMAKE_VERSION,
+			true
+		);
+	}
 }
 endif;
 
@@ -228,4 +270,4 @@ function ttfmake_format_builder_init() {
 	ttfmake_format_builder()->init();
 }
 
-add_action( 'admin_init', 'ttfmake_format_builder_init' );
+add_action( 'after_setup_theme', 'ttfmake_format_builder_init' );

@@ -102,6 +102,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					ttfmakeFormatBuilder.getInsertButton()
 				],
 				onclose: function() {
+					// Reset the dynamic stylesheet.
+					ttfmakeFormatBuilder.editor.execCommand('Make_Reset_Dynamic_Stylesheet');
+
 					// Clear the current* objects so there are no collisions when the Format Builder
 					// is opened again.
 					ttfmakeFormatBuilder.editor = {};

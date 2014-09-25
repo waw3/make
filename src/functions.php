@@ -70,6 +70,9 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
 // Gallery slider
 require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
 
+// Formatting
+require get_template_directory() . '/inc/formatting/formatting.php';
+
 /**
  * Admin includes.
  */
@@ -79,7 +82,6 @@ if ( is_admin() ) {
 
 	// TinyMCE buttons
 	//require get_template_directory() . '/inc/tinymce-buttons/tinymce-buttons.php';
-	require get_template_directory() . '/inc/formatting/formatting.php';
 
 	// Page customizations
 	require get_template_directory() . '/inc/edit-page.php';

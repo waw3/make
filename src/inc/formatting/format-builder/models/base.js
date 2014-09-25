@@ -104,6 +104,19 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				.replace(/>/g, '&gt;')
 				.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
 				.replace(/[\r\n]/g, preserveCR);
+		},
+
+		/**
+		 * @link http://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript
+		 */
+		createID: function() {
+			if (! Date.now) {
+				Date.now = function() { return new Date().getTime(); };
+			}
+
+			var newID = Date.now();
+
+			return 'ttfmake-' + Math.round(newID / 1000);
 		}
 	});
 
