@@ -54,15 +54,19 @@ class TTFMAKE_Formatting {
 	 */
 	public function init() {
 		if ( is_admin() && ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) ) {
-			// Add plugin and button
+			// Add plugins and buttons
 			add_filter( 'mce_external_plugins', array( $this, 'register_plugins' ) );
-			add_filter( 'mce_buttons', array( $this, 'register_buttons' ) );
+			add_filter( 'mce_buttons', array( $this, 'register_buttons_1' ) );
+			add_filter( 'mce_buttons_2', array( $this, 'register_buttons_2' ) );
 
-			// Add translations for plugin
+			// Add translations for plugins
 			add_filter( 'wp_mce_translation', array( $this, 'add_translations' ), 10, 2 );
 
 			// Enqueue admin styles and scripts for plugin functionality
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+
+			// Add items to the Formats dropdown
+			add_filter( 'tiny_mce_before_init', array( $this, 'formats_dropdown_items' ) );
 		}
 
 		// Enqueue front end scripts
@@ -91,19 +95,34 @@ class TTFMAKE_Formatting {
 	}
 
 	/**
-	 * Add buttons to the TinyMCE toolbar.
+	 * Add buttons to the TinyMCE toolbar row 1.
 	 *
 	 * @since 1.4.0.
 	 *
 	 * @param  array    $buttons
 	 * @return array
 	 */
-	public function register_buttons( $buttons ) {
+	public function register_buttons_1( $buttons ) {
 		// Format Builder
 		$buttons[] = 'ttfmake_format_builder';
 
 		// Icon Picker
 		$buttons[] = 'ttfmake_icon_picker';
+
+		return $buttons;
+	}
+
+	/**
+	 * Add buttons to the TinyMCE toolbar row 2.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @param  array    $buttons
+	 * @return array
+	 */
+	public function register_buttons_2( $buttons ) {
+		// Add the Formats dropdown
+		array_unshift( $buttons, 'styleselect' );
 
 		return $buttons;
 	}
@@ -245,6 +264,55 @@ class TTFMAKE_Formatting {
 			TTFMAKE_VERSION,
 			true
 		);
+	}
+
+	/**
+	 * Add items to the Formats dropdown.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $settings    TinyMCE settings array.
+	 * @return array                 Modified array.
+	 */
+	public function formats_dropdown_items( $settings ) {
+		$style_formats = array(
+			// Big (big)
+			array(
+				'title'  => __( 'Big', 'make' ),
+				'inline' => 'big'
+			),
+			// Small (small)
+			array(
+				'title'  => __( 'Small', 'make' ),
+				'inline' => 'small'
+			),
+			// Citation (cite)
+			array(
+				'title'  => __( 'Citation', 'make' ),
+				'inline' => 'cite'
+			),
+			// Testimonial (blockquote)
+			array(
+				'title'   => __( 'Blockquote: testimonial', 'make' ),
+				'block'   => 'blockquote',
+				'classes' => 'ttfmake-testimonial',
+				'wrapper' => true
+			),
+		);
+
+		/**
+		 * Filter the styles that are added to the TinyMCE Formats dropdown.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $style_formats    The format items being added to TinyMCE.
+		 */
+		$style_formats = apply_filters( 'make_style_formats', $style_formats );
+
+		// Encode
+		$settings['style_formats'] = json_encode( $style_formats );
+
+		return $settings;
 	}
 }
 endif;
