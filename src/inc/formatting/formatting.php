@@ -169,6 +169,7 @@ class TTFMAKE_Format_Builder {
 			$models = apply_filters( 'make_format_builder_format_models', array(
 				'button',
 				'alert',
+				'list'
 			) );
 			foreach ( $models as $model ) {
 				$handle = 'ttfmake-format-builder-model-' . $model;
