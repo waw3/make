@@ -13,8 +13,18 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 * @since 1.4.0.
 	 */
 	ttfmakeFormatBuilder = {
+		/**
+		 * Stores the activeEditor instance for usage within the class.
+		 *
+		 * @since 1.4.0.
+		 */
 		editor: {},
 
+		/**
+		 * Stores the items that appear in the Format Builder listbox.
+		 *
+		 * @since 1.4.0.
+		 */
 		choices: {},
 
 		/**
@@ -60,7 +70,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			this.currentSelection = editor.selection;
 
 			var format = this.parseNode( this.currentSelection.getNode() ),
-				args, items = [];
+				items = [],
+				args;
 
 			if ('' == format) {
 				// No existing format. Show listbox to choose a new format.
