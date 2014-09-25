@@ -2,11 +2,11 @@
  * Script for adding dynamic style rules to a page.
  *
  * Most useful for adding rules that use pseudo-selectors, which can't be inlined,
- * or other rules that can't be added in the normal stylesheet.
+ * or other rules that can't be added to the normal stylesheet.
  *
  * @since 1.4.0.
  */
-/* global jQuery, tinymce */
+/* global jQuery, ttfmakeDynamicStylesheet */
 
 var ttfmakeDynamicStylesheet;
 
@@ -15,14 +15,18 @@ var ttfmakeDynamicStylesheet;
 
 	ttfmakeDynamicStylesheet = {
 		/**
+		 * Container for caching jQuery objects.
 		 *
+		 * @since 1.4.0.
 		 */
 		cache: {
 			$document: $(document)
 		},
 
 		/**
+		 * List of selectors to use when populating the cache.
 		 *
+		 * @since 1.4.0.
 		 */
 		cacheSelector: {
 			$button: 'a.ttfmake-button[data-hover-color], a.ttfmake-button[data-hover-background-color]',
@@ -30,7 +34,9 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Container for callbacks that add rules to the dynamic stylesheet.
 		 *
+		 * @since 1.4.0.
 		 */
 		builder: {
 			button: function(self) {
@@ -66,7 +72,14 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Initialize the dynamic stylesheet functionality.
 		 *
+		 * Note that this only does something if the ttfmakeDynamicStylesheetVars object isn't present,
+		 * which indicates that it's not loaded in the admin.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @return void
 		 */
 		init: function() {
 			if ('undefined' === typeof ttfmakeDynamicStylesheetVars || ! ttfmakeDynamicStylesheetVars.tinymce) {
@@ -81,8 +94,12 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Initialize the dynamic stylesheet functionality in a TinyMCE instance.
+		 *
+		 * @since 1.4.0.
 		 *
 		 * @param editor
+		 * @return void
 		 */
 		tinymceInit: function(editor) {
 			this.root = $(editor.getBody());
@@ -92,7 +109,11 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Run through the list of selectors and populate the cache.
 		 *
+		 * @since 1.4.0.
+		 *
+		 * @return void
 		 */
 		cacheElements: function() {
 			var self = this;
@@ -103,7 +124,11 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Run through the list of callbacks and build the dynamic stylesheet.
 		 *
+		 * @since 1.4.0.
+		 *
+		 * @return void
 		 */
 		buildStyles: function() {
 			var self = this;
@@ -114,7 +139,16 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Create a stylesheet element and append it to the root element of the current context.
+		 *
+		 * On the front end, the context will just be document, but in TinyMCE, the context will be the body
+		 * element within the iframe.
+		 *
+		 * @since 1.4.0.
+		 *
 		 * @link http://davidwalsh.name/add-rules-stylesheets
+		 *
+		 * @return object
 		 */
 		createStylesheet: function() {
 			var self = this;
@@ -142,7 +176,11 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Remove the stylesheet element from the root and the property from the class.
 		 *
+		 * @since 1.4.0.
+		 *
+		 * @return void
 		 */
 		removeStylesheet: function() {
 			if (this.root.find('head').length > 0) {
@@ -154,7 +192,11 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Wrapper for removing the current stylesheet and generating a new one.
 		 *
+		 * @since 1.4.0.
+		 *
+		 * @return void
 		 */
 		resetStylesheet: function() {
 			this.removeStylesheet();
@@ -163,7 +205,9 @@ var ttfmakeDynamicStylesheet;
 		},
 
 		/**
+		 * Add a rule to the dynamic stylesheet.
 		 *
+		 * @since 1.4.0.
 		 *
 		 * @link http://davidwalsh.name/add-rules-stylesheets
 		 *
@@ -171,6 +215,7 @@ var ttfmakeDynamicStylesheet;
 		 * @param selector
 		 * @param rules
 		 * @param index
+		 * @return void
 		 */
 		addCSSRule: function(sheet, selector, rules, index) {
 			var ruleIndex = index || 0;
