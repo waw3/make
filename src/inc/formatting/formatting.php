@@ -3,30 +3,30 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTFMAKE_Format_Builder' ) ) :
+if ( ! class_exists( 'TTFMAKE_Formatting' ) ) :
 /**
- * Class TTFMAKE_Format_Builder
+ * Class TTFMAKE_Formatting
  *
- * TinyMCE plugin that adds a Format Builder dialog to the editor.
+ * TinyMCE plugin that adds formatting options and tools to the editor.
  *
  * @since 1.4.0.
  */
-class TTFMAKE_Format_Builder {
+class TTFMAKE_Formatting {
 	/**
-	 * The one instance of TTFMAKE_Format_Builder.
+	 * The one instance of TTFMAKE_Formatting.
 	 *
 	 * @since 1.4.0.
 	 *
-	 * @var   TTFMAKE_Format_Builder
+	 * @var   TTFMAKE_Formatting
 	 */
 	private static $instance;
 
 	/**
-	 * Instantiate or return the one TTFMAKE_Format_Builder instance.
+	 * Instantiate or return the one TTFMAKE_Formatting instance.
 	 *
 	 * @since  1.4.0.
 	 *
-	 * @return TTFMAKE_Format_Builder
+	 * @return TTFMAKE_Formatting
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -41,12 +41,12 @@ class TTFMAKE_Format_Builder {
 	 *
 	 * @since 1.4.0.
 	 *
-	 * @return TTFMAKE_Format_Builder
+	 * @return TTFMAKE_Formatting
 	 */
 	public function __construct() {}
 
 	/**
-	 * Initialize the Format Builder functionality and hook into WordPress.
+	 * Initialize the formatting functionality and hook into WordPress.
 	 *
 	 * @since 1.4.0.
 	 *
@@ -70,7 +70,7 @@ class TTFMAKE_Format_Builder {
 	}
 
 	/**
-	 * Add the plugin to TinyMCE.
+	 * Add plugins to TinyMCE.
 	 *
 	 * @since 1.4.0.
 	 *
@@ -91,7 +91,7 @@ class TTFMAKE_Format_Builder {
 	}
 
 	/**
-	 * Add the Format Builder to the TinyMCE toolbar.
+	 * Add buttons to the TinyMCE toolbar.
 	 *
 	 * @since 1.4.0.
 	 *
@@ -125,7 +125,7 @@ class TTFMAKE_Format_Builder {
 	}
 
 	/**
-	 * Enqueue the Format Builder JS scripts.
+	 * Enqueue formatting scripts for Post/Page editing screens in the admin.
 	 *
 	 * @since 1.4.0.
 	 *
@@ -151,7 +151,7 @@ class TTFMAKE_Format_Builder {
 			// Core
 			wp_enqueue_script(
 				'ttfmake-format-builder-core',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/core.js',
+				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/format-builder.js',
 				$dependencies,
 				TTFMAKE_VERSION
 			);
@@ -250,14 +250,14 @@ class TTFMAKE_Format_Builder {
 endif;
 
 /**
- * Instantiate or return the one TTFMAKE_Format_Builder instance.
+ * Instantiate or return the one TTFMAKE_Formatting instance.
  *
  * @since  1.4.0.
  *
- * @return TTFMAKE_Format_Builder
+ * @return TTFMAKE_Formatting
  */
-function ttfmake_format_builder() {
-	return TTFMAKE_Format_Builder::instance();
+function ttfmake_formatting() {
+	return TTFMAKE_Formatting::instance();
 }
 
 /**
@@ -267,8 +267,8 @@ function ttfmake_format_builder() {
  *
  * @return void
  */
-function ttfmake_format_builder_init() {
-	ttfmake_format_builder()->init();
+function ttfmake_formatting_init() {
+	ttfmake_formatting()->init();
 }
 
-add_action( 'after_setup_theme', 'ttfmake_format_builder_init' );
+add_action( 'after_setup_theme', 'ttfmake_formatting_init' );
