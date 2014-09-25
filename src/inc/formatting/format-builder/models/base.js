@@ -107,7 +107,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		/**
+		 * Generate an element ID based on the Unix timestamp.
+		 *
+		 * @since 1.4.0.
+		 *
 		 * @link http://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript
+		 *
+		 * @returns string
 		 */
 		createID: function() {
 			if (! Date.now) {
