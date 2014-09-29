@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _ */
+/* global Backbone, jQuery, _, ttfmakeFormatBuilder */
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
@@ -73,7 +73,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			this.set('id', this.createID());
 
 			if ( '' !== content ) {
-				this.set({ text: content });
+				this.set('text', content);
 			}
 			if (true === this.get('update')) {
 				this.parseAttributes( node );
@@ -93,13 +93,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'textbox',
 					name: 'text',
 					hidden: true,
-					value: this.get('text')
+					value: this.escape('text')
 				},
 				{
 					type: 'textbox',
 					name: 'url',
 					label: 'URL',
-					value: this.get('url')
+					value: this.escape('url')
 				},
 				{
 					type: 'checkbox',
@@ -112,7 +112,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'fontSize',
 					label: 'Font Size (px)',
 					size: 3,
-					value: this.get('fontSize')
+					value: this.escape('fontSize')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
 				ttfmakeFormatBuilder.getColorButton( 'colorBackgroundHover', 'Background Color (hover)' ),
@@ -123,21 +123,21 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'paddingHorz',
 					label: 'Horizontal Padding (px)',
 					size: 3,
-					value: this.get('paddingHorz')
+					value: this.escape('paddingHorz')
 				},
 				{
 					type: 'textbox',
 					name: 'paddingVert',
 					label: 'Vertical Padding (px)',
 					size: 3,
-					value: this.get('paddingVert')
+					value: this.escape('paddingVert')
 				},
 				{
 					type: 'textbox',
 					name: 'borderRadius',
 					label: 'Border Radius (px)',
 					size: 3,
-					value: this.get('borderRadius')
+					value: this.escape('borderRadius')
 				},
 				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' )
 			];
@@ -199,27 +199,27 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				content;
 
 			$button.attr({
-				href: this.get('url'),
-				id: this.get('id'),
+				href: this.escape('url'),
+				id: this.escape('id'),
 				class: 'ttfmake-button',
-				'data-hover-background-color': this.get('colorBackgroundHover'),
-				'data-hover-color': this.get('colorTextHover')
+				'data-hover-background-color': this.escape('colorBackgroundHover'),
+				'data-hover-color': this.escape('colorTextHover')
 			});
 			if ( 'true' == this.get('target') ) {
 				$button.attr('target', '_blank');
 			}
 
 			$button.css({
-				backgroundColor: this.get('colorBackground'),
-				color: this.get('colorText'),
-				fontSize: this.get('fontSize') + 'px',
-				padding: this.get('paddingVert') + 'px ' + this.get('paddingHorz') + 'px',
-				borderRadius: this.get('borderRadius') + 'px'
+				backgroundColor: this.escape('colorBackground'),
+				color: this.escape('colorText'),
+				fontSize: this.escape('fontSize') + 'px',
+				padding: this.escape('paddingVert') + 'px ' + this.escape('paddingHorz') + 'px',
+				borderRadius: this.escape('borderRadius') + 'px'
 			});
 
-			content = this.get('text');
+			content = _.unescape(this.get('text'));
 			if ('' !== this.get('icon')) {
-				content = '<i class="fa ' + this.get('icon') + '"></i> ' + content;
+				content = '<i class="fa ' + this.escape('icon') + '"></i> ' + content;
 			}
 			$button.html(content);
 

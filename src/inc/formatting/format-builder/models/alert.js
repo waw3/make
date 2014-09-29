@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _ */
+/* global Backbone, jQuery, _, ttfmakeFormatBuilder */
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
@@ -70,11 +70,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		initialize: function() {
-			var content = ttfmakeFormatBuilder.currentSelection.getContent(),
+			var content = ttfmakeFormatBuilder.currentSelection.getContent().trim(),
 				node = ttfmakeFormatBuilder.currentSelection.getNode();
 
 			if ( '' !== content ) {
-				this.set({ text: content });
+				this.set('text', content);
 			}
 			if (true === this.get('update')) {
 				this.parseAttributes( node );
@@ -95,7 +95,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'text',
 					multiline: true,
 					hidden: true,
-					value: this.get('text')
+					value: this.escape('text')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
 				ttfmakeFormatBuilder.getColorButton( 'colorText', 'Text Color' ),
@@ -104,7 +104,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'fontSize',
 					label: 'Font Size (px)',
 					size: 3,
-					value: this.get('fontSize')
+					value: this.escape('fontSize')
 				},
 				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' ),
 				{
@@ -112,14 +112,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'iconSize',
 					label: 'Icon Size (px)',
 					size: 3,
-					value: this.get('iconSize')
+					value: this.escape('iconSize')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorIcon', 'Icon Color' ),
 				{
 					type: 'listbox',
 					name: 'iconPosition',
 					label: 'Icon Position',
-					value: this.get('iconPosition'),
+					value: this.escape('iconPosition'),
 					values: [
 						{
 							text: 'Left',
@@ -136,20 +136,20 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'paddingHorz',
 					label: 'Horizontal Padding (px)',
 					size: 3,
-					value: this.get('paddingHorz')
+					value: this.escape('paddingHorz')
 				},
 				{
 					type: 'textbox',
 					name: 'paddingVert',
 					label: 'Vertical Padding (px)',
 					size: 3,
-					value: this.get('paddingVert')
+					value: this.escape('paddingVert')
 				},
 				{
 					type: 'listbox',
 					name: 'borderStyle',
 					label: 'Border Style',
-					value: this.get('borderStyle'),
+					value: this.escape('borderStyle'),
 					values: [
 						{
 							text: 'none',
@@ -194,7 +194,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'borderWidth',
 					label: 'Border Width (px)',
 					size: 3,
-					value: this.get('borderWidth')
+					value: this.escape('borderWidth')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBorder', 'Border Color' )
 			];
@@ -271,23 +271,23 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			});
 
 			$alert.css({
-				backgroundColor: this.get('colorBackground'),
-				color: this.get('colorText'),
-				fontSize: this.get('fontSize') + 'px',
-				padding: this.get('paddingVert') + 'px ' + this.get('paddingHorz') + 'px',
-				borderStyle: this.get('borderStyle'),
-				borderWidth: this.get('borderWidth') + 'px',
-				borderColor: this.get('colorBorder')
+				backgroundColor: this.escape('colorBackground'),
+				color: this.escape('colorText'),
+				fontSize: this.escape('fontSize') + 'px',
+				padding: this.escape('paddingVert') + 'px ' + this.escape('paddingHorz') + 'px',
+				borderStyle: this.escape('borderStyle'),
+				borderWidth: this.escape('borderWidth') + 'px',
+				borderColor: this.escape('colorBorder')
 			});
 
-			if ('' !== this.get('icon')) {
+			if ('' !== this.escape('icon')) {
 				$icon = $('<i>');
-				$icon.attr('class', 'ttfmake-alert-icon fa ' + this.get('icon') + ' pull-' + this.get('iconPosition'));
-				$icon.css('fontSize', this.get('iconSize') + 'px');
-				$icon.css('color', this.get('colorIcon'));
+				$icon.attr('class', 'ttfmake-alert-icon fa ' + this.escape('icon') + ' pull-' + this.escape('iconPosition'));
+				$icon.css('fontSize', this.escape('iconSize') + 'px');
+				$icon.css('color', this.escape('colorIcon'));
 			}
 
-			content = this.get('text');
+			content = _.unescape(this.get('text')).trim();
 			if ('' == content) {
 				node = ttfmakeFormatBuilder.currentSelection.getNode();
 				content = $(node).html();

@@ -119,7 +119,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			var parent,
 				iconClasses;
 
-			if ('' == this.get('icon')) {
+			if ('' == this.escape('icon')) {
 				return;
 			}
 
@@ -132,10 +132,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			}
 
 			if (! $(parent).attr('id')) {
-				$(parent).attr('id', this.get('id'));
+				$(parent).attr('id', this.escape('id'));
 			}
 			$(parent).addClass('ttfmake-list');
-			$(parent).attr('data-icon-color', this.get('colorIcon'));
+			$(parent).attr('data-icon-color', this.escape('colorIcon'));
 
 			iconClasses = $(parent).find('li').first().attr('class').split(/\s+/);
 			if (iconClasses) {
@@ -145,7 +145,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					}
 				});
 			}
-			$(parent).find('li').addClass(this.get('icon'));
+			$(parent).find('li').addClass(this.escape('icon'));
 		},
 
 		/**

@@ -1,4 +1,4 @@
-/* global jQuery, ttfmakeFormatBuilder */
+/* global jQuery, _, ttfmakeFormatBuilder */
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function( $ ) {
@@ -337,13 +337,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 							type: 'button',
 							name: name + 'Button',
 							border: '1 1 1 1',
-							style: 'background-color: ' + model.get( name ) + '; border-color: #e5e5e5; box-shadow: none; width: 28px;',
+							style: 'background-color: ' + model.escape( name ) + '; border-color: #e5e5e5; box-shadow: none; width: 28px;',
 							onclick: function() {
 								var self = this, // Store the button for later access.
 									ctrl = this.next(); // Get the hidden text field with the hex code.
 
 								// Open the TinyMCE color picker plugin
 								ttfmakeFormatBuilder.editor.settings.color_picker_callback( function( value ) {
+									value = _.escape(value);
 									self.getEl().style.backgroundColor = value;
 									ctrl.value( value );
 								}, ctrl.value() );
@@ -353,7 +354,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 							type: 'textbox',
 							name: name,
 							hidden: true,
-							value: model.get( name )
+							value: model.escape( name )
 						}
 					]
 				};
@@ -416,7 +417,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 							type: 'textbox',
 							name: name,
 							hidden: true,
-							value: model.get( name )
+							value: model.escape( name )
 						}
 					]
 				};

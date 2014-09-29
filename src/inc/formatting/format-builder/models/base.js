@@ -1,4 +1,4 @@
-/* global Backbone, jQuery, _ */
+/* global Backbone, jQuery, _, ttfmakeFormatBuilder */
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 ( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
@@ -77,7 +77,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			$.each(data, function(key, value) {
 				if (self.has(key)) {
-					var sanitized = self.escAttr(value);
+					var sanitized = _.escape(_.unescape(value));
 					self.set(key, sanitized);
 				}
 			});
