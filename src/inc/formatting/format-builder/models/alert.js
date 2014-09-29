@@ -268,12 +268,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		insert: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert),
-				$icon;
+			var node, $icon;
 
 			if (true !== this.get('update')) {
 				ttfmakeFormatBuilder.editor.formatter.apply('alert');
 			}
+
+			node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
 
 			$(node).attr('id', this.escape('id'));
 

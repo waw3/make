@@ -4,7 +4,22 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 ( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
 	'use strict';
 
-	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
+	/**
+	 * Defines the format parameters to register with the TinyMCE Formatter.
+	 *
+	 * @since 1.4.0.
+	 */
+	ttfmakeFormatBuilder.definitions.button = {
+		inline: 'a',
+		classes: 'ttfmake-button'
+	};
+
+	/**
+	 * Define the selector for detecting this format in existing content.
+	 *
+	 * @since 1.4.0.
+	 */
+	ttfmakeFormatBuilder.nodes.button = 'a.ttfmake-button';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
@@ -27,17 +42,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	};
 
 	/**
-	 * Define the selector for detecting this format in existing content.
-	 *
-	 * @since 1.4.0.
-	 */
-	ttfmakeFormatBuilder.nodes.button = 'a.ttfmake-button';
-
-	/**
 	 * The Button format model.
 	 *
 	 * @since 1.4.0.
 	 */
+	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
 	ttfmakeFormatBuilder.formats.button = ttfmakeFormatBuilder.FormatModel.extend({
 		/**
 		 * Default format option values.
@@ -47,7 +56,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		defaults: {
 			update: false,
 			id: 0,
-			text: 'Click Here',
 			url: '',
 			target: false,
 			fontSize: '17',
@@ -67,16 +75,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		initialize: function() {
-			var content = ttfmakeFormatBuilder.currentSelection.getContent(),
-				node = ttfmakeFormatBuilder.currentSelection.getNode();
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button);
 
 			this.set('id', this.createID());
 
-			if ( '' !== content ) {
-				this.set('text', content);
-			}
 			if (true === this.get('update')) {
-				this.parseAttributes( node );
+				this.parseAttributes(node);
 			}
 		},
 
@@ -89,12 +93,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getOptionFields: function() {
 			var items = [
-				{
-					type: 'textbox',
-					name: 'text',
-					hidden: true,
-					value: this.escape('text')
-				},
 				{
 					type: 'textbox',
 					name: 'url',
@@ -153,11 +151,23 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @param node
 		 */
 		parseAttributes: function( node ) {
-			var $node = $(node),
-				text, icon, fontSize, paddingHorz, paddingVert, borderRadius;
+			var self = this,
+				$node = $(node),
+				icon, iconClasses, fontSize, paddingHorz, paddingVert, borderRadius;
 
 			if ( $node.attr('id') ) this.set('id', $node.attr('id'));
-			if ( $node.text() ) this.set('text', $node.text());
+
+			icon = $node.find('i.ttfmake-button-icon');
+			if (icon.length > 0) {
+				iconClasses = icon.attr('class').split(/\s+/);
+				$.each(iconClasses, function(index, iconClass) {
+					if (iconClass.match(/^fa-/)) {
+						self.set('icon', iconClass);
+						return false;
+					}
+				});
+			}
+
 			if ( $node.attr('href') ) this.set('url', $node.attr('href'));
 			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
 			if ( $node.attr('data-hover-color') ) this.set('colorTextHover', $node.attr('data-hover-color'));
@@ -180,50 +190,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				borderRadius = parseInt( $node.css('borderTopLeftRadius') );
 				this.set('borderRadius', borderRadius + ''); // Convert integer to string for TinyMCE
 			}
-			icon = $node.find( 'i.fa' ).attr( 'class');
-			if ( icon ) {
-				icon.replace('fa ', '');
-				this.set('icon', icon);
-			}
-		},
-
-		/**
-		 * Render the format markup.
-		 *
-		 * @since 1.4.0.
-		 *
-		 * @returns string
-		 */
-		getHTML: function() {
-			var $button = $('<a>'),
-				content;
-
-			$button.attr({
-				href: this.escape('url'),
-				id: this.escape('id'),
-				class: 'ttfmake-button',
-				'data-hover-background-color': this.escape('colorBackgroundHover'),
-				'data-hover-color': this.escape('colorTextHover')
-			});
-			if ( 'true' == this.get('target') ) {
-				$button.attr('target', '_blank');
-			}
-
-			$button.css({
-				backgroundColor: this.escape('colorBackground'),
-				color: this.escape('colorText'),
-				fontSize: this.escape('fontSize') + 'px',
-				padding: this.escape('paddingVert') + 'px ' + this.escape('paddingHorz') + 'px',
-				borderRadius: this.escape('borderRadius') + 'px'
-			});
-
-			content = _.unescape(this.get('text'));
-			if ('' !== this.get('icon')) {
-				content = '<i class="fa ' + this.escape('icon') + '"></i> ' + content;
-			}
-			$button.html(content);
-
-			return $button.wrap('<p>').parent().html();
 		},
 
 		/**
@@ -232,23 +198,46 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		insert: function() {
-			var html = this.getHTML(),
-				parent;
+			var $node, $icon;
 
-			if ( true === this.get( 'update' ) ) {
-				// Make sure we get the right node.
-				parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button);
+			if (true !== this.get('update')) {
+				ttfmakeFormatBuilder.editor.formatter.apply('button');
+				ttfmakeFormatBuilder.currentSelection.getNode()
+			}
 
-				if (parent) {
-					// Select the existing format markup.
-					ttfmakeFormatBuilder.currentSelection.select(parent);
+			$node = $(ttfmakeFormatBuilder.currentSelection.getNode());
+			if (! $node.is(ttfmakeFormatBuilder.nodes.button)) {
+				$node = $node.find(ttfmakeFormatBuilder.nodes.button);
+			}
 
-					// Replace with the new markup.
-					ttfmakeFormatBuilder.currentSelection.setContent(html);
-				}
-			} else {
-				// Insert the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent(html);
+			$node.attr({
+				id: this.escape('id'),
+				href: this.escape('url'),
+				'data-hover-background-color': this.escape('colorBackgroundHover'),
+				'data-hover-color': this.escape('colorTextHover')
+			});
+			if ( 'true' == this.get('target') ) {
+				$node.attr('target', '_blank');
+			}
+
+			$node.css({
+				backgroundColor: this.escape('colorBackground'),
+				color: this.escape('colorText'),
+				fontSize: this.escape('fontSize') + 'px',
+				padding: this.escape('paddingVert') + 'px ' + this.escape('paddingHorz') + 'px',
+				borderRadius: this.escape('borderRadius') + 'px'
+			});
+
+			if ('' !== this.get('icon')) {
+				// Build the icon.
+				$icon = $('<i>');
+				$icon.attr('class', 'ttfmake-button-icon fa ' + this.escape('icon'));
+
+				// Remove any existing icons.
+				$node.find('i.ttfmake-button-icon').remove();
+
+				// Add the new icon.
+				$node.prepend($icon);
 			}
 		},
 
@@ -258,19 +247,20 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		remove: function() {
-			var parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button),
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button),
 				content;
 
-			if (parent) {
-				// Get the button text
-				content = $(parent).text();
+			// Remove the icon if it exists.
+			$(node).find('i.ttfmake-button-icon').remove();
 
-				// Select the existing format markup.
-				ttfmakeFormatBuilder.currentSelection.select(parent);
+			// Get inner content.
+			content = $(node).html().trim();
 
-				// Remove the markup.
-				ttfmakeFormatBuilder.currentSelection.setContent(content.trim());
-			}
+			// Set the selection to the whole node.
+			ttfmakeFormatBuilder.currentSelection.select(node);
+
+			// Replace the current selection with the inner content.
+			ttfmakeFormatBuilder.currentSelection.setContent(content);
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
