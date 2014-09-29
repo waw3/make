@@ -59,6 +59,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		defaults: {
 			update: false,
+			id: 0,
 			text: '',
 			fontSize: '17',
 			icon: '',
@@ -81,6 +82,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		initialize: function() {
 			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
+
+			this.set('id', this.createID());
 
 			if (true === this.get('update')) {
 				this.parseAttributes(node);
@@ -213,6 +216,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node = $(node),
 				icon, iconClasses, iconSize, iconColor, fontSize, paddingHorz, paddingVert, borderWidth;
 
+			// Get an existing ID.
+			if ($node.attr('id')) this.set('id', $node.attr('id'));
+
 			// Parse the icon.
 			icon = $node.find('i.ttfmake-alert-icon');
 			if ( icon.length > 0 ) {
@@ -268,6 +274,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			if (true !== this.get('update')) {
 				ttfmakeFormatBuilder.editor.formatter.apply('alert');
 			}
+
+			$(node).attr('id', this.escape('id'));
 
 			$(node).css({
 				backgroundColor: this.escape('colorBackground'),
