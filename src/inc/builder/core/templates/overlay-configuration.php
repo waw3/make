@@ -1,7 +1,7 @@
 <?php
-global $ttfmake_overlay_class, $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_overaly_title;
+global $ttfmake_overlay_class, $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_overlay_title;
 $ttfmake_overlay_class = 'ttfmake-configuration-overlay';
-$ttfmake_overaly_title = __( 'Configure section', 'make' );
+$ttfmake_overlay_title = __( 'Configure section', 'make' );
 $section_name          = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 
 // Include the header
