@@ -4,7 +4,23 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 ( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
 	'use strict';
 
-	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
+	/**
+	 * Defines the format parameters to register with the TinyMCE Formatter.
+	 *
+	 * @since 1.4.0.
+	 */
+	ttfmakeFormatBuilder.definitions.alert = {
+		block: 'div',
+		classes: 'ttfmake-alert',
+		wrapper: true
+	};
+
+	/**
+	 * Define the selector for detecting this format in existing content.
+	 *
+	 * @since 1.4.0.
+	 */
+	ttfmakeFormatBuilder.nodes.alert = 'div.ttfmake-alert';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
@@ -18,7 +34,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			parent = ttfmakeFormatBuilder.getParentNode('p'),
 			choice, isP;
 
-		isP = ( $(parent).is('p') );
+		isP = ($(parent).is('p'));
 
 		choice = {
 			value: 'alert',
@@ -30,17 +46,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	};
 
 	/**
-	 * Define the selector for detecting this format in existing content.
-	 *
-	 * @since 1.4.0.
-	 */
-	ttfmakeFormatBuilder.nodes.alert = 'div.ttfmake-alert';
-
-	/**
 	 * The Button format model.
 	 *
 	 * @since 1.4.0.
 	 */
+	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
 	ttfmakeFormatBuilder.formats.alert = ttfmakeFormatBuilder.FormatModel.extend({
 		/**
 		 * Default format option values.
@@ -55,7 +65,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			iconSize: '34',
 			colorIcon: '#808080',
 			iconPosition: 'left',
-			paddingHorz: '10',
+			paddingHorz: '20',
 			paddingVert: '10',
 			borderWidth: '2',
 			borderStyle: 'solid',
@@ -70,14 +80,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		initialize: function() {
-			var content = ttfmakeFormatBuilder.currentSelection.getContent().trim(),
-				node = ttfmakeFormatBuilder.currentSelection.getNode();
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
 
-			if ( '' !== content ) {
-				this.set('text', content);
-			}
 			if (true === this.get('update')) {
-				this.parseAttributes( node );
+				this.parseAttributes(node);
 			}
 		},
 
@@ -90,13 +96,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getOptionFields: function() {
 			var items = [
-				{
-					type: 'textbox',
-					name: 'text',
-					multiline: true,
-					hidden: true,
-					value: this.escape('text')
-				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
 				ttfmakeFormatBuilder.getColorButton( 'colorText', 'Text Color' ),
 				{
@@ -209,15 +208,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 *
 		 * @param node
 		 */
-		parseAttributes: function( node ) {
+		parseAttributes: function(node) {
 			var self = this,
 				$node = $(node),
 				icon, iconClasses, iconSize, iconColor, fontSize, paddingHorz, paddingVert, borderWidth;
 
-			if ( $node.css('fontSize') ) {
-				fontSize = parseInt( $node.css('fontSize') );
-				this.set('fontSize', fontSize + ''); // Convert integer to string for TinyMCE
-			}
+			// Parse the icon.
 			icon = $node.find('i.ttfmake-alert-icon');
 			if ( icon.length > 0 ) {
 				iconClasses = icon.attr('class').split(/\s+/);
@@ -236,6 +232,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					iconColor = icon.css('color');
 					this.set('colorIcon', iconColor);
 				}
+			}
+
+			if ( $node.css('fontSize') ) {
+				fontSize = parseInt( $node.css('fontSize') );
+				this.set('fontSize', fontSize + ''); // Convert integer to string for TinyMCE
 			}
 			if ( $node.css('paddingLeft') ) {
 				paddingHorz = parseInt( $node.css('paddingLeft') );
@@ -256,21 +257,19 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		/**
-		 * Render the format markup.
+		 * Insert the format markup into the editor.
 		 *
 		 * @since 1.4.0.
-		 *
-		 * @returns string
 		 */
-		getHTML: function() {
-			var $alert = $('<div>'),
-				$icon, content, node;
+		insert: function() {
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert),
+				$icon;
 
-			$alert.attr({
-				class: 'ttfmake-alert'
-			});
+			if (true !== this.get('update')) {
+				ttfmakeFormatBuilder.editor.formatter.apply('alert');
+			}
 
-			$alert.css({
+			$(node).css({
 				backgroundColor: this.escape('colorBackground'),
 				color: this.escape('colorText'),
 				fontSize: this.escape('fontSize') + 'px',
@@ -280,59 +279,20 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				borderColor: this.escape('colorBorder')
 			});
 
-			if ('' !== this.escape('icon')) {
+			if ('' !== this.get('icon')) {
+				// Build the icon.
 				$icon = $('<i>');
 				$icon.attr('class', 'ttfmake-alert-icon fa ' + this.escape('icon') + ' pull-' + this.escape('iconPosition'));
-				$icon.css('fontSize', this.escape('iconSize') + 'px');
-				$icon.css('color', this.escape('colorIcon'));
-			}
+				$icon.css({
+					fontSize: this.escape('iconSize') + 'px',
+					color: this.escape('colorIcon')
+				});
 
-			content = _.unescape(this.get('text')).trim();
-			if ('' == content) {
-				node = ttfmakeFormatBuilder.currentSelection.getNode();
-				content = $(node).html();
-			}
+				// Remove any existing icons.
+				$(node).find('i.ttfmake-alert-icon').remove();
 
-			$alert.html(content).find('i.ttfmake-alert-icon').remove();
-			$alert.prepend($icon);
-
-			return $alert.wrap('<div>').parent().html();
-		},
-
-		/**
-		 * Insert the format markup into the editor.
-		 *
-		 * @since 1.4.0.
-		 */
-		insert: function() {
-			var html = this.getHTML(),
-				parent;
-
-			if ( true === this.get('update') ) {
-				// Make sure we get the right node.
-				parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
-
-				if (parent) {
-					// Select the existing format markup.
-					ttfmakeFormatBuilder.currentSelection.select(parent);
-
-					// Replace with the new markup.
-					ttfmakeFormatBuilder.currentSelection.setContent(html);
-				}
-			} else if ('' != ttfmakeFormatBuilder.currentSelection.getContent()) {
-				// Insert the new markup.
-				ttfmakeFormatBuilder.currentSelection.setContent(html);
-			} else {
-				// Make sure we get the right node.
-				parent = ttfmakeFormatBuilder.getParentNode('p');
-
-				if (parent) {
-					// Select the existing format markup.
-					ttfmakeFormatBuilder.currentSelection.select(parent);
-
-					// Insert the new markup.
-					ttfmakeFormatBuilder.currentSelection.setContent(html);
-				}
+				// Add the new icon.
+				$(node).prepend($icon);
 			}
 		},
 
@@ -342,25 +302,20 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		remove: function() {
-			var node = ttfmakeFormatBuilder.currentSelection.getNode(),
-				parent = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert),
-				$alertContent, content;
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert),
+				content;
 
-			if (parent) {
-				// Process the alert content.
-				$alertContent = $('<p>');
-				$alertContent.html( $(parent).html() );
-				$alertContent.find('i.ttfmake-alert-icon').remove();
+			// Remove the icon if it exists.
+			$(node).find('i.ttfmake-alert-icon').remove();
 
-				// Prepare replacement content.
-				content = $alertContent.wrap('<div>').parent().html();
+			// Get inner content.
+			content = $(node).html().trim();
 
-				// Select the existing format markup.
-				ttfmakeFormatBuilder.currentSelection.select(parent);
+			// Set the selection to the whole node.
+			ttfmakeFormatBuilder.currentSelection.select(node);
 
-				// Remove the markup.
-				ttfmakeFormatBuilder.currentSelection.setContent(content.trim());
-			}
+			// Replace the current selection with the inner content.
+			ttfmakeFormatBuilder.currentSelection.setContent(content);
 		}
 	});
 })( window, Backbone, jQuery, _, ttfmakeFormatBuilder );

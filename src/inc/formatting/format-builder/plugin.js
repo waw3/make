@@ -1,4 +1,4 @@
-( function( tinymce ) {
+(function(tinymce, $) {
 	tinymce.PluginManager.add( 'ttfmake_format_builder', function( editor, url ) {
 		editor.addCommand( 'Make_Format_Builder', function() {
 			if ( 'undefined' !== typeof window.ttfmakeFormatBuilder ) {
@@ -11,5 +11,11 @@
 			tooltip: 'Format Builder',
 			cmd: 'Make_Format_Builder'
 		} );
+
+		editor.on('init', function() {
+			$.each(ttfmakeFormatBuilder.definitions, function(name, defs) {
+				editor.formatter.register(name, defs);
+			});
+		});
 	} );
-} )( tinymce );
+})(tinymce, jQuery);

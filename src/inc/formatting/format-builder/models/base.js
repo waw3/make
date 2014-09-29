@@ -13,8 +13,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 		parseAttributes: function() {},
 
-		getHTML: function() {},
-
 		insert: function() {},
 
 		remove: function() {},
@@ -77,7 +75,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			$.each(data, function(key, value) {
 				if (self.has(key)) {
-					var sanitized = _.escape(_.unescape(value));
+					var sanitized = _.escape(value);
 					self.set(key, sanitized);
 				}
 			});

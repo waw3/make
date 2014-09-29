@@ -21,11 +21,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		editor: {},
 
 		/**
-		 * Stores the items that appear in the Format Builder listbox.
+		 * Stores the parameters for each format to be registered with the TinyMCE Formatter.
 		 *
 		 * @since 1.4.0.
 		 */
-		choices: {},
+		definitions: {},
 
 		/**
 		 * Stores the selectors that identify the HTML wrappers for each format
@@ -34,6 +34,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		nodes: {},
+
+		/**
+		 * Stores the items that appear in the Format Builder listbox.
+		 *
+		 * @since 1.4.0.
+		 */
+		choices: {},
 
 		/**
 		 * Stores the models for each available format.
