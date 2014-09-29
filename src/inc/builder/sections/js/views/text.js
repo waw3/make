@@ -39,6 +39,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			forcePlaceholderSizeType: true,
 			distance: 2,
 			tolerance: 'pointer',
+			zIndex: 99999,
 			start: function (event, ui) {
 				// Set the height of the placeholder to that of the sorted item
 				var $item = $(ui.item.get(0)),
@@ -90,10 +91,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					i++;
 				});
 
-				oneApp.initFrame(id + '-' + column);
-
 				// Remove the temporary classes from stage
 				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-three-fourths current-item-one-half');
+
+				setTimeout(function() {
+					oneApp.initFrame(id + '-' + column);
+				}, 100);
 			}
 		});
 	};

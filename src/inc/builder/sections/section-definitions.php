@@ -360,8 +360,8 @@ class TTFMAKE_Section_Definitions {
 					'label'   => __( 'Caption color', 'make' ),
 					'default' => 'light',
 					'options' => array(
-						'reveal'  => __( 'Light', 'make' ),
-						'overlay' => __( 'Dark', 'make' ),
+						'light'  => __( 'Light', 'make' ),
+						'dark' => __( 'Dark', 'make' ),
 					)
 				),
 				600 => array(

@@ -43,7 +43,9 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 
 				$.each($frames, function() {
 					var id = $(this).attr('id').replace('ttfmake-iframe-', '');
-					oneApp.initFrame(id);
+					setTimeout(function() {
+						oneApp.initFrame(id);
+					}, 100);
 				});
 			}
 		});

@@ -394,15 +394,15 @@ class TTFMAKE_Builder_Base {
 		if ( ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && ttfmake_is_builder_page() ) ) {
 				$classes .= ' ttfmake-builder-active';
-
-				// Add a class to denote Make Plus
-				if ( ttfmake_is_plus() ) {
-					$classes .= ' make-plus-enabled';
-				} else {
-					$classes .= ' make-plus-disabled';
-				}
 			} else {
 				$classes .= ' ttfmake-default-active';
+			}
+
+			// Add a class to denote Make Plus
+			if ( ttfmake_is_plus() ) {
+				$classes .= ' make-plus-enabled';
+			} else {
+				$classes .= ' make-plus-disabled';
 			}
 		}
 

@@ -14,6 +14,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		open: function() {
 			$oneApp.trigger('overlayOpen', this.$el);
 			this.$el.show();
+
+			// Auto focus on the editor
+			var focusOn = (oneApp.isVisualActive()) ? tinyMCE.get('make') : oneApp.cache.$makeTextArea;
+			focusOn.focus();
 		},
 
 		close: function() {
