@@ -321,6 +321,7 @@
 .configure-gallery-item-link,
 .configure-banner-slide-link,
 .configure-column-link,
+.edit-widget-link,
 .remove-widget-link {
 	display: inline-block;
 	position: absolute;
@@ -338,11 +339,13 @@
 }
 .edit-text-column-link,
 .configure-column-link,
+.edit-widget-link,
 .remove-widget-link {
 	top: 0; /*reset*/
 }
 .remove-gallery-item-link,
 .remove-banner-slide-link,
+.edit-widget-link,
 .remove-widget-link {
 	right: 0; /*reset*/
 }
@@ -367,6 +370,7 @@
 .configure-gallery-item-link:hover,
 .configure-banner-slide-link:hover,
 .configure-column-link:hover,
+.edit-widget-link:hover,
 .remove-widget-link:hover {
 	color: #222222;
 }
@@ -378,6 +382,7 @@
 .configure-gallery-item-link span,
 .configure-banner-slide-link span,
 .configure-column-link span,
+.edit-widget-link span,
 .remove-widget-link span {
 	display: none;
 	text-indent: -9999px;
@@ -400,7 +405,8 @@
 }
 .configure-gallery-item-link:before,
 .configure-banner-slide-link:before,
-.configure-column-link:before {
+.configure-column-link:before,
+.edit-widget-link:before {
 	content: "\f111";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
