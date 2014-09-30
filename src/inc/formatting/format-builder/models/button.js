@@ -202,7 +202,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			if (true !== this.get('update')) {
 				ttfmakeFormatBuilder.editor.formatter.apply('button');
-				ttfmakeFormatBuilder.currentSelection.getNode()
 			}
 
 			$node = $(ttfmakeFormatBuilder.currentSelection.getNode());
@@ -210,8 +209,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node = $node.find(ttfmakeFormatBuilder.nodes.button);
 			}
 
+			if (! $node.attr('id')) {
+				$node.attr('id', this.escape('id'));
+			}
+
 			$node.attr({
-				id: this.escape('id'),
 				href: this.escape('url'),
 				'data-hover-background-color': this.escape('colorBackgroundHover'),
 				'data-hover-color': this.escape('colorTextHover')

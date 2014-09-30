@@ -268,17 +268,19 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.0.
 		 */
 		insert: function() {
-			var node, $icon;
+			var $node, $icon;
 
 			if (true !== this.get('update')) {
 				ttfmakeFormatBuilder.editor.formatter.apply('alert');
 			}
 
-			node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
+			$node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert));
 
-			$(node).attr('id', this.escape('id'));
+			if (! $node.attr('id')) {
+				$node.attr('id', this.escape('id'));
+			}
 
-			$(node).css({
+			$node.css({
 				backgroundColor: this.escape('colorBackground'),
 				color: this.escape('colorText'),
 				fontSize: this.escape('fontSize') + 'px',
@@ -298,10 +300,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				});
 
 				// Remove any existing icons.
-				$(node).find('i.ttfmake-alert-icon').remove();
+				$node.find('i.ttfmake-alert-icon').remove();
 
 				// Add the new icon.
-				$(node).prepend($icon);
+				$node.prepend($icon);
 			}
 		},
 
