@@ -173,6 +173,7 @@ input[type="submit"] {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+/* Deprecated in 1.4.1 */
 .color-primary-background {
     background-color: #0094c5;
 }
@@ -196,6 +197,7 @@ input[type="submit"] {
 /*---------------------------------------------------------
  Alerts (editor-style.css)
 -------------------------------------------------------- */
+/* Deprecated in 1.4.1 */
 .ttfmake-alert {
     margin-bottom: 22px;
     padding: 33px 32px;
@@ -238,6 +240,7 @@ ol.ttfmake-list li:before {
     padding-right: 10px;
     font-family: FontAwesome;
 }
+/* Deprecated in 1.4.1 */
 ul.ttfmake-list-check li:before,
 ol.ttfmake-list-check li:before {
     content: "\f14a";
