@@ -293,7 +293,7 @@ class TTFMAKE_Formatting {
 			),
 			// Testimonial (blockquote)
 			array(
-				'title'   => __( 'Blockquote: testimonial', 'make' ),
+				'title'   => __( 'Testimonial', 'make' ),
 				'block'   => 'blockquote',
 				'classes' => 'ttfmake-testimonial',
 				'wrapper' => true
