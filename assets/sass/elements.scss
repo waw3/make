@@ -353,6 +353,9 @@ Alerts (_elements.scss)
 		@include rem('right', -12px);
 		@include rem('font-size', 72px);
 	}
+	p:last-of-type {
+		margin-bottom: 0; //reset
+	}
 &.ttfmake-error {
 	color: #d04242;
 	border: 1px solid darken(#f7eeee, 15);
