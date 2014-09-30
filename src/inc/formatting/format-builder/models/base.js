@@ -29,12 +29,16 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		wrapOptionFields: function(fields) {
 			var wrapped = [],
-				label, item,
 				spacer = {
 					type: 'spacer'
-				};
+				},
+				label, item, i, c, last = false;
+
+			i = c = fields.length;
 
 			$.each(fields, function(index, field) {
+				if (1 == i) last = true;
+
 				label = {
 					type: 'label',
 					text: field.label,
@@ -45,7 +49,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					layout: 'stack',
 					minWidth: 300,
 					maxHeight: 50,
-					border: '0 0 1 0',
+					border: (last) ? '0 0 0 0' : '0 0 1 0',
 					style: 'border-color: #e5e5e5; border-style: solid;',
 					hidden: (true === field.hidden),
 					defaults: {
@@ -58,6 +62,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				};
 				wrapped.push(item);
 				wrapped.push(spacer);
+				i--;
 			});
 
 			return wrapped;
