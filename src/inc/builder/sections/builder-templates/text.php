@@ -143,10 +143,10 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 		?>
 
 		<?php
-		global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overaly_title;
+		global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overlay_title;
 		$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
 		$ttfmake_overlay_id    = $overlay_id;
-		$ttfmake_overaly_title = __( 'Configure column', 'make' );
+		$ttfmake_overlay_title = __( 'Configure column', 'make' );
 
 		get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
