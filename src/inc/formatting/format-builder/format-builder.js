@@ -253,7 +253,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getFormatChoices: function() {
 			var choices = [
-				{ value: '', text: 'Choose a format', disabled: true }
+				{
+					value: '',
+					text: 'Choose a format',
+					disabled: true, classes:
+					'listbox-placeholder'
+				}
 			];
 
 			$.each( this.choices, function( fmt, f ) {

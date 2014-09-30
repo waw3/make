@@ -30,6 +30,9 @@ i.mce-i-ttfmake-icon-picker:before {
 	background-image: none;
 	margin-top: 5px;
 }
+.mce-listbox-placeholder {
+	display: none !important;
+}
 
 /* Icons */
 #ttfmake-format-builder .mce-container .mce-add-icon {
