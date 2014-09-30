@@ -123,17 +123,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'listbox',
 					name: 'iconPosition',
 					label: 'Icon Position',
-					classes: 'widget btn monospace',
 					value: this.escape('iconPosition'),
 					values: [
 						{
 							text: 'left',
-							classes: 'monospace',
 							value: 'left'
 						},
 						{
 							text: 'right',
-							classes: 'monospace',
 							value: 'right'
 						}
 					]
@@ -158,52 +155,42 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'listbox',
 					name: 'borderStyle',
 					label: 'Border Style',
-					classes: 'widget btn monospace',
 					value: this.escape('borderStyle'),
 					values: [
 						{
 							text: 'none',
-							classes: 'monospace',
 							value: 'none'
 						},
 						{
 							text: 'solid',
-							classes: 'monospace',
 							value: 'solid'
 						},
 						{
 							text: 'dotted',
-							classes: 'monospace',
 							value: 'dotted'
 						},
 						{
 							text: 'dashed',
-							classes: 'monospace',
 							value: 'dashed'
 						},
 						{
 							text: 'double',
-							classes: 'monospace',
 							value: 'double'
 						},
 						{
 							text: 'groove',
-							classes: 'monospace',
 							value: 'groove'
 						},
 						{
 							text: 'ridge',
-							classes: 'monospace',
 							value: 'ridge'
 						},
 						{
 							text: 'inset',
-							classes: 'monospace',
 							value: 'inset'
 						},
 						{
 							text: 'outset',
-							classes: 'monospace',
 							value: 'outset'
 						}
 					]
