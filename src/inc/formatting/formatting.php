@@ -174,6 +174,15 @@ class TTFMAKE_Formatting {
 				$dependencies,
 				TTFMAKE_VERSION
 			);
+			wp_localize_script(
+				'ttfmake-format-builder-core',
+				'ttfmakeFormatBuilderVars',
+				array(
+					'userSettings' => array(
+						'fontSizeBody' => get_theme_mod( 'font-size-body', ttfmake_get_default( 'font-size-body' ) )
+					)
+				)
+			);
 
 			// Base model
 			wp_enqueue_script(

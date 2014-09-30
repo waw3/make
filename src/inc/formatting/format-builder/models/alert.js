@@ -1,7 +1,7 @@
-/* global Backbone, jQuery, _, ttfmakeFormatBuilder */
+/* global Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars */
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
-( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
+( function ( window, Backbone, $, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars ) {
 	'use strict';
 
 	/**
@@ -61,9 +61,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			update: false,
 			id: 0,
 			text: '',
-			fontSize: '17',
+			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeBody,
 			icon: '',
-			iconSize: '34',
+			iconSize: (parseInt(ttfmakeFormatBuilderVars.userSettings.fontSizeBody) * 2) + '',
 			colorIcon: '#808080',
 			iconPosition: 'left',
 			paddingHorz: '20',
@@ -288,12 +288,15 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			$node.css({
 				backgroundColor: this.escape('colorBackground'),
 				color: this.escape('colorText'),
-				fontSize: this.escape('fontSize') + 'px',
 				padding: this.escape('paddingVert') + 'px ' + this.escape('paddingHorz') + 'px',
 				borderStyle: this.escape('borderStyle'),
 				borderWidth: this.escape('borderWidth') + 'px',
 				borderColor: this.escape('colorBorder')
 			});
+
+			if (this.escape('fontSize') != ttfmakeFormatBuilderVars.userSettings.fontSizeBody) {
+				$node.css('fontSize', this.escape('fontSize') + 'px');
+			}
 
 			if ('' !== this.get('icon')) {
 				// Build the icon.
@@ -310,6 +313,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				// Add the new icon.
 				$node.prepend($icon);
 			}
+
+			$node.removeAttr('data-mce-style');
 		},
 
 		/**
@@ -334,4 +339,4 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			ttfmakeFormatBuilder.currentSelection.setContent(content);
 		}
 	});
-})( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
+})( window, Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars );
