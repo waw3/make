@@ -4,7 +4,7 @@
  * Most useful for adding rules that use pseudo-selectors, which can't be inlined,
  * or other rules that can't be added to the normal stylesheet.
  *
- * @since 1.4.0.
+ * @since 1.4.1.
  */
 /* global jQuery, ttfmakeDynamicStylesheet */
 
@@ -17,7 +17,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Container for caching jQuery objects.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		cache: {
 			$document: $(document)
@@ -26,7 +26,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * List of selectors to use when populating the cache.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		cacheSelector: {
 			$button: 'a.ttfmake-button[data-hover-color], a.ttfmake-button[data-hover-background-color]',
@@ -36,7 +36,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Container for callbacks that add rules to the dynamic stylesheet.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		builder: {
 			button: function(self) {
@@ -77,7 +77,7 @@ var ttfmakeDynamicStylesheet;
 		 * Note that this only does something if the ttfmakeDynamicStylesheetVars object isn't present,
 		 * which indicates that it's not loaded in the admin.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @return void
 		 */
@@ -96,7 +96,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Initialize the dynamic stylesheet functionality in a TinyMCE instance.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param editor
 		 * @return void
@@ -111,7 +111,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Run through the list of selectors and populate the cache.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @return void
 		 */
@@ -126,7 +126,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Run through the list of callbacks and build the dynamic stylesheet.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @return void
 		 */
@@ -144,7 +144,7 @@ var ttfmakeDynamicStylesheet;
 		 * On the front end, the context will just be document, but in TinyMCE, the context will be the body
 		 * element within the iframe.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @link http://davidwalsh.name/add-rules-stylesheets
 		 *
@@ -178,7 +178,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Remove the stylesheet element from the root and the property from the class.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @return void
 		 */
@@ -194,7 +194,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Wrapper for removing the current stylesheet and generating a new one.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @return void
 		 */
@@ -207,7 +207,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Add a rule to the dynamic stylesheet.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @link http://davidwalsh.name/add-rules-stylesheets
 		 *

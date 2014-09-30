@@ -22,7 +22,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 *
 		 * This is way harder than it should be. :/
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param fields
 		 * @returns {Array}
@@ -71,7 +71,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Sanitize incoming form values and store them in the model.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param data
 		 */
@@ -89,7 +89,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Generate an element ID based on the Unix timestamp.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @link http://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript
 		 *

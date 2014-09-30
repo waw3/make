@@ -8,14 +8,14 @@ var ttfmakeIconPicker;
 		/**
 		 * Stores the callback to use when inserting the icon.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		callback: {},
 
 		/**
 		 * Stores the element representing the currently chosen icon in the picker.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		el: {},
 
@@ -23,7 +23,7 @@ var ttfmakeIconPicker;
 		 * Opens the TinyMCE modal window, and initializes all of the Icon Picker
 		 * functionality.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param editor
 		 * @param callback
@@ -89,7 +89,7 @@ var ttfmakeIconPicker;
 		/**
 		 * Construct the definitions for each icon category section.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns {Array}
 		 */
@@ -131,7 +131,7 @@ var ttfmakeIconPicker;
 		/**
 		 * Construct the definitions for each icon control in a grid.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param icons
 		 * @returns {Array}
@@ -193,7 +193,7 @@ var ttfmakeIconPicker;
 		/**
 		 * Get the "Choose" button for the modal window.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns object
 		 */
@@ -229,7 +229,7 @@ var ttfmakeIconPicker;
 		/**
 		 * Get the "Remove" button for the modal window.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns object
 		 */
@@ -266,7 +266,7 @@ var ttfmakeIconPicker;
 		/**
 		 * Grabs the selected icon ID from the hidden text field.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns string
 		 */
@@ -277,7 +277,7 @@ var ttfmakeIconPicker;
 		/**
 		 * Grabs the selected icon unicode from the hidden text field.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns string
 		 */

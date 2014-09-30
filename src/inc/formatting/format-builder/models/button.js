@@ -7,7 +7,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	/**
 	 * Defines the format parameters to register with the TinyMCE Formatter.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 */
 	ttfmakeFormatBuilder.definitions.button = {
 		inline: 'a',
@@ -17,14 +17,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	/**
 	 * Define the selector for detecting this format in existing content.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 */
 	ttfmakeFormatBuilder.nodes.button = 'a.ttfmake-button';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @returns object
 	 */
@@ -44,14 +44,14 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	/**
 	 * The Button format model.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 */
 	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
 	ttfmakeFormatBuilder.formats.button = ttfmakeFormatBuilder.FormatModel.extend({
 		/**
 		 * Default format option values.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		defaults: {
 			update: false,
@@ -73,7 +73,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Populate the options with any existing values.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		initialize: function() {
 			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button);
@@ -88,7 +88,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Defines the fields in the options form.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns array
 		 */
@@ -168,7 +168,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Parse an existing format node and extract its format options.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param node
 		 */
@@ -223,7 +223,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Insert the format markup into the editor.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		insert: function() {
 			var $node, $icon;
@@ -283,7 +283,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Remove the existing format node.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		remove: function() {
 			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button),

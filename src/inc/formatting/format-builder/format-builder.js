@@ -10,20 +10,20 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 * This holds all the functionality of the format builder except the bits that
 	 * explicitly hook into TinyMCE. Those are found in plugin.js.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 */
 	ttfmakeFormatBuilder = {
 		/**
 		 * Stores the activeEditor instance for usage within the class.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		editor: {},
 
 		/**
 		 * Stores the parameters for each format to be registered with the TinyMCE Formatter.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		definitions: {},
 
@@ -31,28 +31,28 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * Stores the selectors that identify the HTML wrappers for each format
 		 * and associates them with format models.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		nodes: {},
 
 		/**
 		 * Stores the items that appear in the Format Builder listbox.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		choices: {},
 
 		/**
 		 * Stores the models for each available format.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		formats: {},
 
 		/**
 		 * The current format model when the Format Builder window is open.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		currentFormat: {},
 
@@ -60,7 +60,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * Data associated with the current position/selection of the cursor
 		 * in the TinyMCE editor.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 */
 		currentSelection: {},
 
@@ -68,7 +68,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * Opens the TinyMCE modal window, and initializes all of the Format Builder
 		 * functionality.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param editor
 		 */
@@ -138,7 +138,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Check to see if the cursor is currently on an existing format.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param editor
 		 * @param node
@@ -162,7 +162,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * Search through the parents of the current node (plus the current node itself)
 		 * for one that matches the given selector.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param selector
 		 * @param node
@@ -184,7 +184,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Get the JSON definition for the format chooser listbox.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns object
 		 */
@@ -247,7 +247,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Get the list of available formats for use in the format chooser listbox.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns array
 		 */
@@ -271,7 +271,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Get the Insert button for the modal window.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns object
 		 */
@@ -306,7 +306,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Get the Remove button for the modal window.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @returns object
 		 */
@@ -333,7 +333,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Generate the definitions for a control group that picks and sets a color.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param name
 		 * @param label
@@ -377,7 +377,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		/**
 		 * Generate the definitions for a control group that picks and sets an icon.
 		 *
-		 * @since 1.4.0.
+		 * @since 1.4.1.
 		 *
 		 * @param name
 		 * @param label

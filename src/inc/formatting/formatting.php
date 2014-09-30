@@ -9,13 +9,13 @@ if ( ! class_exists( 'TTFMAKE_Formatting' ) ) :
  *
  * TinyMCE plugin that adds formatting options and tools to the editor.
  *
- * @since 1.4.0.
+ * @since 1.4.1.
  */
 class TTFMAKE_Formatting {
 	/**
 	 * The one instance of TTFMAKE_Formatting.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @var   TTFMAKE_Formatting
 	 */
@@ -24,7 +24,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Instantiate or return the one TTFMAKE_Formatting instance.
 	 *
-	 * @since  1.4.0.
+	 * @since  1.4.1.
 	 *
 	 * @return TTFMAKE_Formatting
 	 */
@@ -39,7 +39,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Construct the object.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @return TTFMAKE_Formatting
 	 */
@@ -48,7 +48,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Initialize the formatting functionality and hook into WordPress.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @return void
 	 */
@@ -76,7 +76,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Add plugins to TinyMCE.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @param  array    $plugins
 	 * @return mixed
@@ -100,7 +100,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Add buttons to the TinyMCE toolbar row 1.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @param  array    $buttons
 	 * @return array
@@ -118,7 +118,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Add buttons to the TinyMCE toolbar row 2.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @param  array    $buttons
 	 * @return array
@@ -133,7 +133,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Add translatable strings for the Format Builder UI.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @param  array    $translations
 	 * @return array
@@ -205,7 +205,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Enqueue formatting scripts for Post/Page editing screens in the admin.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @param $hook_suffix
 	 */
@@ -319,7 +319,7 @@ class TTFMAKE_Formatting {
 	/**
 	 * Enqueue scripts for the front end.
 	 *
-	 * @since 1.4.0.
+	 * @since 1.4.1.
 	 *
 	 * @return void
 	 */
@@ -388,7 +388,7 @@ endif;
 /**
  * Instantiate or return the one TTFMAKE_Formatting instance.
  *
- * @since  1.4.0.
+ * @since  1.4.1.
  *
  * @return TTFMAKE_Formatting
  */
@@ -399,7 +399,7 @@ function ttfmake_formatting() {
 /**
  * Run the init function for the Format Builder
  *
- * @since 1.4.0.
+ * @since 1.4.1.
  *
  * @return void
  */
