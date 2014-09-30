@@ -1,4 +1,4 @@
-/* global jQuery, ttfmakeIconPicker, ttfmakeIconObj */
+/* global tinymce, jQuery, ttfmakeIconPicker, ttfmakeIconObj */
 var ttfmakeIconPicker;
 
 ( function( $ ) {
@@ -101,7 +101,7 @@ var ttfmakeIconPicker;
 				// Icon category label.
 				category = {
 					type: 'container',
-					html: '<span>' + cat + '</span>',
+					html: '<span>' + tinymce.i18n.translate(cat) + '</span>',
 					style: 'padding: 20px 0 10px;'
 				};
 				items.push( category );
