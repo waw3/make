@@ -87,29 +87,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		},
 
 		/**
-		 * Sanitize an input for output as an HTML attribute.
-		 *
-		 * @since 1.4.0.
-		 *
-		 * @link http://stackoverflow.com/a/9756789/719811
-		 *
-		 * @param s
-		 * @param preserveCR
-		 * @returns {string}
-		 */
-		escAttr: function(s, preserveCR) {
-			preserveCR = preserveCR ? '&#13;' : '\n';
-			return ('' + s) /* Forces the conversion to string. */
-				.replace(/&/g, '&amp;') /* This MUST be the 1st replacement. */
-				.replace(/'/g, '&apos;') /* The 4 other predefined entities, required. */
-				.replace(/"/g, '&quot;')
-				.replace(/</g, '&lt;')
-				.replace(/>/g, '&gt;')
-				.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
-				.replace(/[\r\n]/g, preserveCR);
-		},
-
-		/**
 		 * Generate an element ID based on the Unix timestamp.
 		 *
 		 * @since 1.4.0.
