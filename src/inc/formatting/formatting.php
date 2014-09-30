@@ -253,16 +253,18 @@ class TTFMAKE_Formatting {
 			$dependencies[] = 'ttfmake-format-builder-model-base';
 
 			// Format models
+			$default_uri = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/models';
 			$models = apply_filters( 'make_format_builder_format_models', array(
-				'button',
-				'alert',
-				'list'
+				'button' => array( 'uri' => $default_uri ),
+				'alert'  => array( 'uri' => $default_uri ),
+				'list'   => array( 'uri' => $default_uri ),
 			) );
-			foreach ( $models as $model ) {
+			foreach ( $models as $model => $atts ) {
 				$handle = 'ttfmake-format-builder-model-' . $model;
+				$url = trailingslashit( $atts['uri'] ) . "$model.js";
 				wp_enqueue_script(
 					$handle,
-					trailingslashit( get_template_directory_uri() ) . "inc/formatting/format-builder/models/$model.js",
+					$url,
 					$dependencies,
 					TTFMAKE_VERSION
 				);
@@ -310,7 +312,7 @@ class TTFMAKE_Formatting {
 			wp_enqueue_script(
 				'ttfmake-icon-picker',
 				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/icon-picker/icon-picker.js',
-				array( 'ttfmake-icon-picker-list' ),
+				array( 'ttfmake-icon-picker-list', 'jquery' ),
 				TTFMAKE_VERSION
 			);
 		}
