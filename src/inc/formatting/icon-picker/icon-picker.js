@@ -91,7 +91,7 @@ var ttfmakeIconPicker;
 				// Icon category label.
 				category = {
 					type: 'container',
-					html: '<h3>' + cat + '</h3>',
+					html: '<span>' + cat + '</span>',
 					style: 'padding: 20px 0 10px;'
 				};
 				items.push( category );
