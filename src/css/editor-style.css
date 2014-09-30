@@ -201,8 +201,20 @@ input[type="submit"] {
     font-family: FontAwesome;
 }
 /*---------------------------------------------------------
- Alerts (editor-style.css)
+ Notices / Alerts (editor-style.css)
 -------------------------------------------------------- */
+.ttfmake-notice {
+	background: #e5e5e5;
+	border: 2px solid #808080;
+	color: #808080;
+	padding: 10px 20px;
+}
+.ttfmake-notice p {
+	margin-top: 0;
+}
+.ttfmake-notice p:last-of-type {
+	margin-bottom: 0; //reset
+}
 /* Deprecated in 1.4.1 */
 .ttfmake-alert {
     margin-bottom: 22px;

@@ -9,9 +9,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.definitions.alert = {
+	ttfmakeFormatBuilder.definitions.notice = {
 		block: 'div',
-		classes: 'ttfmake-alert',
+		classes: 'ttfmake-notice',
 		wrapper: true
 	};
 
@@ -20,7 +20,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.nodes.alert = 'div.ttfmake-alert';
+	ttfmakeFormatBuilder.nodes.notice = 'div.ttfmake-notice';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
@@ -29,7 +29,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @returns object
 	 */
-	ttfmakeFormatBuilder.choices.alert = function() {
+	ttfmakeFormatBuilder.choices.notice = function() {
 		var content = ttfmakeFormatBuilder.currentSelection.getContent(),
 			parent = ttfmakeFormatBuilder.getParentNode('p'),
 			choice, isP;
@@ -38,8 +38,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		isP = ($(parent).is('p'));
 
 		choice = {
-			value: 'alert',
-			text: 'Alert Box',
+			value: 'notice',
+			text: 'Notice',
 			disabled: (false === isP && '' == content)
 		};
 
@@ -52,7 +52,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 * @since 1.4.1.
 	 */
 	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
-	ttfmakeFormatBuilder.formats.alert = ttfmakeFormatBuilder.FormatModel.extend({
+	ttfmakeFormatBuilder.formats.notice = ttfmakeFormatBuilder.FormatModel.extend({
 		/**
 		 * Default format option values.
 		 *
@@ -82,7 +82,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		initialize: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.notice);
 
 			// Create a new element ID.
 			this.set('id', this.createID());
@@ -179,22 +179,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						{
 							text: 'double',
 							value: 'double'
-						},
-						{
-							text: 'groove',
-							value: 'groove'
-						},
-						{
-							text: 'ridge',
-							value: 'ridge'
-						},
-						{
-							text: 'inset',
-							value: 'inset'
-						},
-						{
-							text: 'outset',
-							value: 'outset'
 						}
 					]
 				},
@@ -228,7 +212,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			if ($node.attr('id')) this.set('id', $node.attr('id'));
 
 			// Parse the icon.
-			icon = $node.find('i.ttfmake-alert-icon');
+			icon = $node.find('i.ttfmake-notice-icon');
 			if ( icon.length > 0 ) {
 				iconClasses = icon.attr('class').split(/\s+/);
 				// Look for relevant classes on the <i> element.
@@ -293,11 +277,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			// If not updating an existing format, apply to the current selection using the Formatter.
 			if (true !== this.get('update')) {
-				ttfmakeFormatBuilder.editor.formatter.apply('alert');
+				ttfmakeFormatBuilder.editor.formatter.apply('notice');
 			}
 
 			// Make sure the right node is selected.
-			$node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert));
+			$node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.notice));
 
 			// Set the element ID, if it doesn't have one yet.
 			if (! $node.attr('id')) {
@@ -320,13 +304,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			}
 
 			// Remove any existing icons.
-			$node.find('i.ttfmake-alert-icon').remove();
+			$node.find('i.ttfmake-notice-icon').remove();
 
 			// Add the current icon, if one is set.
 			if ('' !== this.get('icon')) {
 				// Build the icon.
 				$icon = $('<i>');
-				$icon.attr('class', 'ttfmake-alert-icon fa ' + this.escape('icon') + ' pull-' + this.escape('iconPosition'));
+				$icon.attr('class', 'ttfmake-notice-icon fa ' + this.escape('icon') + ' pull-' + this.escape('iconPosition'));
 				$icon.css({
 					fontSize: this.escape('iconSize') + 'px',
 					color: this.escape('colorIcon')
@@ -346,11 +330,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		remove: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert),
+			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.notice),
 				content;
 
 			// Remove the icon if it exists.
-			$(node).find('i.ttfmake-alert-icon').remove();
+			$(node).find('i.ttfmake-notice-icon').remove();
 
 			// Get inner content.
 			content = $(node).html().trim();

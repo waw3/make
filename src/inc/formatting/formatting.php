@@ -181,7 +181,7 @@ class TTFMAKE_Formatting {
 			'Update' => __( 'Update', 'make' ),
 			'Remove' => __( 'Remove', 'make' ),
 			'Add icon' => __( 'Add icon', 'make' ),
-			'Alert Box' => __( 'Alert Box', 'make' ),
+			'Notice' => __( 'Notice', 'make' ),
 			'Background Color' => __( 'Background Color', 'make' ),
 			'Text Color' => __( 'Text Color', 'make' ),
 			'Font Size (px)' => __( 'Font Size (px)', 'make' ),
@@ -293,8 +293,8 @@ class TTFMAKE_Formatting {
 			$default_uri = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/format-builder/models';
 			$models = apply_filters( 'make_format_builder_format_models', array(
 				'button' => array( 'uri' => $default_uri ),
-				'alert'  => array( 'uri' => $default_uri ),
 				'list'   => array( 'uri' => $default_uri ),
+				'notice' => array( 'uri' => $default_uri ),
 			) );
 			foreach ( $models as $model => $atts ) {
 				$handle = 'ttfmake-format-builder-model-' . $model;
