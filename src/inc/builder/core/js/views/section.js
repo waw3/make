@@ -192,7 +192,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
 			$overlay.show(1, function(){
-				$('.wp-color-result', $overlay).click();
+				$('.wp-color-result', $overlay).click().off('click');
 				$( 'body' ).off( 'click.wpcolorpicker' );
 				self.setSize($overlay, $wrapper);
 				$overlay.find('input,select').filter(':first').focus();
