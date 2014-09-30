@@ -189,3 +189,8 @@ i.mce-i-ttfmake-icon-picker:before {
 #ttfmake-format-builder-body input.mce-textbox:focus {
 	border: 1px solid #ddd;
 }
+
+/* Resetting default label styles */
+#ttfmake-format-builder-body label.mce-label {
+	font-size: 13px;
+}
