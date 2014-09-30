@@ -149,6 +149,12 @@ table td {
 /*---------------------------------------------------------
  Rules (editor-style.css)
 -------------------------------------------------------- */
+hr.ttfmake-hr {
+	border-color: #eaecee;
+	border-width: 0;
+	height: 1px;
+}
+/* Deprecated in 1.4.1 */
 hr.ttfmake-line-dashed {
     border-top: 1px dashed #eaecee;
 }

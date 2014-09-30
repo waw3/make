@@ -59,6 +59,9 @@ class TTFMAKE_Formatting {
 			add_filter( 'mce_buttons', array( $this, 'register_buttons_1' ) );
 			add_filter( 'mce_buttons_2', array( $this, 'register_buttons_2' ) );
 
+			// Reposition the hr button
+			add_filter( 'tiny_mce_before_init', array( $this, 'reposition_hr' ), 20, 2 );
+
 			// Add translations for plugins
 			add_filter( 'wp_mce_translation', array( $this, 'add_translations' ), 10, 2 );
 
@@ -94,6 +97,9 @@ class TTFMAKE_Formatting {
 		// Non-Editable
 		$plugins['noneditable'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/noneditable/plugin' . TTFMAKE_SUFFIX . '.js';
 
+		// HR
+		$plugins['ttfmake_hr'] = trailingslashit( get_template_directory_uri() ) .'inc/formatting/hr/plugin.js';
+
 		return $plugins;
 	}
 
@@ -112,6 +118,9 @@ class TTFMAKE_Formatting {
 		// Icon Picker
 		$buttons[] = 'ttfmake_icon_picker';
 
+		// HR
+		$buttons[] = 'ttfmake_hr';
+
 		return $buttons;
 	}
 
@@ -128,6 +137,31 @@ class TTFMAKE_Formatting {
 		array_unshift( $buttons, 'styleselect' );
 
 		return $buttons;
+	}
+
+	/**
+	 * Position the new hr button in the place that the old hr usually resides.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array     $mceInit      The configuration for the current editor.
+	 * @param  string    $editor_id    The ID for the current editor.
+	 * @return array                   The modified configuration array.
+	 */
+	public function reposition_hr( $mceInit, $editor_id ) {
+		if ( ! empty( $mceInit['toolbar1'] ) ) {
+			if ( in_array( 'hr', explode( ',', $mceInit['toolbar1'] ) ) ) {
+				// Remove the current positioning of the new hr button
+				$mceInit['toolbar1'] = str_replace( ',hr,', ',ttfmake_hr,', $mceInit['toolbar1'] );
+
+				// Remove the duplicated new hr button
+				$pieces              = explode( ',', $mceInit['toolbar1'] );
+				$pieces              = array_unique( $pieces );
+				$mceInit['toolbar1'] = implode( ',', $pieces );
+			}
+		}
+
+		return $mceInit;
 	}
 
 	/**
@@ -197,6 +231,9 @@ class TTFMAKE_Formatting {
 			'Currency Icons' => __( 'Currency Icons', 'make' ),
 			'Medical Icons' => __( 'Medical Icons', 'make' ),
 			'Choose' => __( 'Choose', 'make' ),
+			// HR
+			'Insert Horizontal Line' => __( 'Insert Horizontal Line', 'make' ),
+			'Choose a line style' => __( 'Choose a line style', 'make' ),
 		);
 
 		return array_merge( $translations, $formatting_translations );

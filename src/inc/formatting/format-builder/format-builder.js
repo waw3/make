@@ -256,8 +256,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				{
 					value: '',
 					text: 'Choose a format',
-					disabled: true, classes:
-					'listbox-placeholder'
+					disabled: true,
+					classes: 'listbox-placeholder'
 				}
 			];
 
