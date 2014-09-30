@@ -91,6 +91,9 @@ class TTFMAKE_Formatting {
 		// Icon Picker
 		$plugins['ttfmake_icon_picker'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/icon-picker/plugin.js';
 
+		// Non-Editable
+		$plugins['noneditable'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/noneditable/plugin' . TTFMAKE_SUFFIX . '.js';
+
 		return $plugins;
 	}
 

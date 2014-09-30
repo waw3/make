@@ -2,9 +2,11 @@
 	tinymce.PluginManager.add( 'ttfmake_icon_picker', function( editor, url ) {
 		editor.addCommand( 'Make_Icon_Picker', function() {
 			if ( 'undefined' !== typeof window.ttfmakeIconPicker ) {
-				window.ttfmakeIconPicker.open( editor, function( value ) {
-					var icon = '<i class="fa ' + value + '"><!-- icon --></i>';
-					editor.insertContent( icon );
+				window.ttfmakeIconPicker.open( editor, function( value, unicode ) {
+					if ('undefined' !== unicode) {
+						var icon = ' <span class="ttfmake-icon mceNonEditable fa">&#x' + unicode + ';</span> ';
+						editor.insertContent( icon );
+					}
 				} );
 			}
 		} );

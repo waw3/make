@@ -2,7 +2,7 @@
 var ttfmakeIconPicker;
 
 ( function( $ ) {
-	var iconWindow, iconInsert, iconRemove, iconValue;
+	var iconWindow, iconInsert, iconRemove, iconValue, iconUnicode;
 
 	ttfmakeIconPicker = {
 		/**
@@ -52,6 +52,16 @@ var ttfmakeIconPicker;
 						onPostRender: function() {
 							// Store this control for later use.
 							iconValue = this;
+						}
+					},
+					{
+						type: 'textbox',
+						name: 'chosenIconUnicode',
+						hidden: true,
+						value: '',
+						onPostRender: function() {
+							// Store this control for later use.
+							iconUnicode = this;
 						}
 					},
 					{
@@ -144,7 +154,7 @@ var ttfmakeIconPicker;
 				}
 
 				icon = {
-					html: '<div data-icon-value="' + data.id + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
+					html: '<div data-icon-value="' + data.id + '" data-icon-unicode="' + data.unicode + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
 					onPostRender: function() {
 						var currentValue = ttfmakeIconPicker.getChosenIcon();
 						if ( currentValue == data.id ) {
@@ -153,7 +163,7 @@ var ttfmakeIconPicker;
 						}
 					},
 					onclick: function() {
-						var value;
+						var value, unicode;
 
 						// Un-highlight the previously selected icon.
 						if ( 'undefined' !== typeof ttfmakeIconPicker.el.style ) {
@@ -163,9 +173,11 @@ var ttfmakeIconPicker;
 						// Highlight the selected icon.
 						highlight( this );
 
-						// Get the icon ID and store it in the hidden text field.
+						// Get the icon ID and unicode and store them in the hidden text fields.
 						value = $( ttfmakeIconPicker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
+						unicode = $( ttfmakeIconPicker.el ).find( '[data-icon-unicode]' ).data( 'icon-unicode' );
 						iconWindow.find( '#chosenIcon' ).value( value );
+						iconWindow.find( '#chosenIconUnicode' ).value( unicode );
 
 						// Enable the insert button
 						iconInsert.disabled( false );
@@ -198,11 +210,12 @@ var ttfmakeIconPicker;
 				},
 				onclick: function() {
 					// Get the currently selected icon.
-					var value = ttfmakeIconPicker.getChosenIcon();
+					var value = ttfmakeIconPicker.getChosenIcon(),
+						unicode = ttfmakeIconPicker.getChosenUnicode();
 
 					if ( 'function' === typeof ttfmakeIconPicker.callback ) {
 						// Fire the callback.
-						ttfmakeIconPicker.callback( value );
+						ttfmakeIconPicker.callback(value, unicode);
 
 						// Close the modal.
 						iconWindow.fire( 'submit' );
@@ -259,6 +272,17 @@ var ttfmakeIconPicker;
 		 */
 		getChosenIcon: function() {
 			return iconValue.value();
+		},
+
+		/**
+		 * Grabs the selected icon unicode from the hidden text field.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @returns string
+		 */
+		getChosenUnicode: function() {
+			return iconUnicode.value();
 		}
 	};
 })( jQuery );
