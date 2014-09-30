@@ -26,8 +26,12 @@ i.mce-i-ttfmake-icon-picker:before {
 #ttfmake-icon-picker .mce-foot {
 	border-radius: 0;
 }
-#ttfmake-format-builder .mce-i-checkbox {
+#ttfmake-format-builder .mce-i-checkbox,
+#ttfmake-format-builder .mce-btn {
 	background-image: none;
+	filter: none;
+}
+#ttfmake-format-builder .mce-i-checkbox {
 	margin-top: 5px;
 }
 #ttfmake-format-builder .mce-monospace {
