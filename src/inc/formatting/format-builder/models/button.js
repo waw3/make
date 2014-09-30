@@ -32,6 +32,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		var content = ttfmakeFormatBuilder.currentSelection.getContent(),
 			choice;
 
+		// This choice is disabled if no content is selected.
 		choice = {
 			value: 'button',
 			text: 'Button',
@@ -78,8 +79,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		initialize: function() {
 			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button);
 
+			// Create a new element ID.
 			this.set('id', this.createID());
 
+			// Check to see if we're updating an existing format.
 			if (true === this.get('update')) {
 				this.parseAttributes(node);
 			}
@@ -177,40 +180,54 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node = $(node),
 				icon, iconClasses, fontSize, paddingHorz, paddingVert, borderRadius;
 
+			// Get an existing ID.
 			if ( $node.attr('id') ) this.set('id', $node.attr('id'));
 
+			// The href attribute can't actually be empty, but we'll show the option field as blank if it's just a #.
 			if (! $node.attr('href') || '#' == $node.attr('href')) {
 				this.set('url', '');
 			} else {
 				this.set('url', $node.attr('href'));
 			}
 
+			// Background color hover
 			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
+			// Text color hover
 			if ( $node.attr('data-hover-color') ) this.set('colorTextHover', $node.attr('data-hover-color'));
+			// Target (Open link in new window)
 			if ( '_blank' === $node.attr('target') ) this.set('target', true);
+			// Background color
 			if ( $node.css('backgroundColor') ) this.set('colorBackground', $node.css('backgroundColor'));
+			// Text color
 			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
+			// Font weight
 			if ( $node.css('fontWeight') ) this.set('fontWeight', $node.css('fontWeight'));
+			// Font size
 			if ( $node.css('fontSize') ) {
 				fontSize = parseInt( $node.css('fontSize') );
 				this.set('fontSize', fontSize + ''); // Convert integer to string for TinyMCE
 			}
+			// Horizontal padding
 			if ( $node.css('paddingLeft') ) {
 				paddingHorz = parseInt( $node.css('paddingLeft') );
 				this.set('paddingHorz', paddingHorz + ''); // Convert integer to string for TinyMCE
 			}
+			// Vertical padding
 			if ( $node.css('paddingTop') ) {
 				paddingVert = parseInt( $node.css('paddingTop') );
 				this.set('paddingVert', paddingVert + ''); // Convert integer to string for TinyMCE
 			}
+			// Border radius
 			if ( $node.css('borderTopLeftRadius') ) {
 				borderRadius = parseInt( $node.css('borderTopLeftRadius') );
 				this.set('borderRadius', borderRadius + ''); // Convert integer to string for TinyMCE
 			}
 
+			// Parse the icon.
 			icon = $node.find('i.ttfmake-button-icon');
 			if (icon.length > 0) {
 				iconClasses = icon.attr('class').split(/\s+/);
+				// Look for relevant classes on the <i> element.
 				$.each(iconClasses, function(index, iconClass) {
 					if (iconClass.match(/^fa-/)) {
 						self.set('icon', iconClass);
@@ -228,24 +245,29 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		insert: function() {
 			var $node, $icon;
 
+			// If not updating an existing format, apply to the current selection using the Formatter.
 			if (true !== this.get('update')) {
 				ttfmakeFormatBuilder.editor.formatter.apply('button');
 			}
 
+			// Make sure the right node is selected.
 			$node = $(ttfmakeFormatBuilder.currentSelection.getNode());
 			if (! $node.is(ttfmakeFormatBuilder.nodes.button)) {
 				$node = $node.find(ttfmakeFormatBuilder.nodes.button);
 			}
 
+			// Set the element ID, if it doesn't have one yet.
 			if (! $node.attr('id')) {
 				$node.attr('id', this.escape('id'));
 			}
 
+			// Set the href attribute if the URL option is blank.
 			if (! this.escape('url')) {
 				// TinyMCE won't allow an <a> tag with no href to wrap content.
 				this.set('url', '#');
 			}
 
+			// Add attributes.
 			$node.attr({
 				href: this.escape('url'),
 				'data-hover-background-color': this.escape('colorBackgroundHover'),
@@ -255,6 +277,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node.attr('target', '_blank');
 			}
 
+			// Add inline styles.
 			$node.css({
 				backgroundColor: this.escape('colorBackground'),
 				color: this.escape('colorText'),
@@ -267,6 +290,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			// Remove any existing icons.
 			$node.find('i.ttfmake-button-icon').remove();
 
+			// Add the current icon, if one is set.
 			if ('' !== this.get('icon')) {
 				// Build the icon.
 				$icon = $('<i>');
@@ -277,6 +301,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node.prepend($icon);
 			}
 
+			// Remove TinyMCE attribute that breaks things when trying to update an existing format.
 			$node.removeAttr('data-mce-style');
 		},
 

@@ -34,6 +34,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			parent = ttfmakeFormatBuilder.getParentNode('p'),
 			choice, isP;
 
+		// Determine if the current node or a parent is a <p> tag.
 		isP = ($(parent).is('p'));
 
 		choice = {
@@ -83,8 +84,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		initialize: function() {
 			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert);
 
+			// Create a new element ID.
 			this.set('id', this.createID());
 
+			// Check to see if we're updating an existing format.
 			if (true === this.get('update')) {
 				this.parseAttributes(node);
 			}
@@ -228,42 +231,55 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			icon = $node.find('i.ttfmake-alert-icon');
 			if ( icon.length > 0 ) {
 				iconClasses = icon.attr('class').split(/\s+/);
+				// Look for relevant classes on the <i> element.
 				$.each(iconClasses, function(index, iconClass) {
 					if (iconClass.match(/^fa-/)) {
+						// Icon
 						self.set('icon', iconClass);
 					} else if (iconClass.match(/^pull-/)) {
+						// Icon position
 						self.set('iconPosition', iconClass.replace('pull-', ''));
 					}
 				});
+				// Icon font size
 				if (icon.css('fontSize')) {
 					iconSize = parseInt( icon.css('fontSize') );
 					this.set('iconSize', iconSize + ''); // Convert integer to string for TinyMCE
 				}
+				// Icon color
 				if (icon.css('color')) {
 					iconColor = icon.css('color');
 					this.set('colorIcon', iconColor);
 				}
 			}
 
+			// Font size
 			if ( $node.css('fontSize') ) {
 				fontSize = parseInt( $node.css('fontSize') );
 				this.set('fontSize', fontSize + ''); // Convert integer to string for TinyMCE
 			}
+			// Horizontal padding
 			if ( $node.css('paddingLeft') ) {
 				paddingHorz = parseInt( $node.css('paddingLeft') );
 				this.set('paddingHorz', paddingHorz + ''); // Convert integer to string for TinyMCE
 			}
+			// Vertical padding
 			if ( $node.css('paddingTop') ) {
 				paddingVert = parseInt( $node.css('paddingTop') );
 				this.set('paddingVert', paddingVert + ''); // Convert integer to string for TinyMCE
 			}
+			// Border style
 			if ( $node.css('borderTopStyle') ) this.set('borderStyle', $node.css('borderTopStyle'));
+			// Border width
 			if ( $node.css('borderTopWidth') ) {
 				borderWidth = parseInt( $node.css('borderTopWidth') );
 				this.set('borderWidth', borderWidth + ''); // Convert integer to string for TinyMCE
 			}
+			// Border color
 			if ( $node.css('borderTopColor') ) this.set('colorBorder', $node.css('borderTopColor'));
+			// Background color
 			if ( $node.css('backgroundColor') ) this.set('colorBackground', $node.css('backgroundColor'));
+			// Text color
 			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
 		},
 
@@ -275,16 +291,20 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		insert: function() {
 			var $node, $icon;
 
+			// If not updating an existing format, apply to the current selection using the Formatter.
 			if (true !== this.get('update')) {
 				ttfmakeFormatBuilder.editor.formatter.apply('alert');
 			}
 
+			// Make sure the right node is selected.
 			$node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.alert));
 
+			// Set the element ID, if it doesn't have one yet.
 			if (! $node.attr('id')) {
 				$node.attr('id', this.escape('id'));
 			}
 
+			// Add inline styles.
 			$node.css({
 				backgroundColor: this.escape('colorBackground'),
 				color: this.escape('colorText'),
@@ -294,6 +314,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				borderColor: this.escape('colorBorder')
 			});
 
+			// Add a font-size style if it's different than the user setting for the body font.
 			if (this.escape('fontSize') != ttfmakeFormatBuilderVars.userSettings.fontSizeBody) {
 				$node.css('fontSize', this.escape('fontSize') + 'px');
 			}
@@ -301,6 +322,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			// Remove any existing icons.
 			$node.find('i.ttfmake-alert-icon').remove();
 
+			// Add the current icon, if one is set.
 			if ('' !== this.get('icon')) {
 				// Build the icon.
 				$icon = $('<i>');
@@ -314,6 +336,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node.prepend($icon);
 			}
 
+			// Remove TinyMCE attribute that breaks things when trying to update an existing format.
 			$node.removeAttr('data-mce-style');
 		},
 

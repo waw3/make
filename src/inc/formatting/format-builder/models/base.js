@@ -34,8 +34,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				},
 				label, item, i, c, last = false;
 
+			// Counter for identifying the last option field.
 			i = c = fields.length;
 
+			// Wrap each field.
 			$.each(fields, function(index, field) {
 				if (1 == i) last = true;
 
@@ -96,12 +98,15 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @returns string
 		 */
 		createID: function() {
+			// Backcompat
 			if (! Date.now) {
 				Date.now = function() { return new Date().getTime(); };
 			}
 
+			// Get the number of milliseconds since the current epoch.
 			var newID = Date.now();
 
+			// Make it an ID.
 			return 'ttfmake-' + Math.round(newID / 1000);
 		}
 	});
