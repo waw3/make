@@ -1,7 +1,7 @@
-/* global Backbone, jQuery, _, ttfmakeFormatBuilder */
+/* global Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars */
 var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
-( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
+(function (window, Backbone, $, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars) {
 	'use strict';
 
 	/**
@@ -58,12 +58,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			id: 0,
 			url: '',
 			target: false,
-			fontSize: '17',
+			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeBody,
+			fontWeight: 'bold',
 			colorBackground: '#000000',
 			colorBackgroundHover: '#e5e5e5',
 			colorText: '#ffffff',
 			colorTextHover: '#000000',
-			paddingHorz: '6',
+			paddingHorz: '10',
 			paddingVert: '4',
 			borderRadius: '3',
 			icon: ''
@@ -114,6 +115,22 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					classes: 'monospace',
 					value: this.escape('fontSize')
 				},
+				{
+					type: 'listbox',
+					name: 'fontWeight',
+					label: 'Font Weight',
+					value: this.escape('fontWeight'),
+					values: [
+						{
+							text: 'normal',
+							value: 'normal'
+						},
+						{
+							text: 'bold',
+							value: 'bold'
+						}
+					]
+				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
 				ttfmakeFormatBuilder.getColorButton( 'colorBackgroundHover', 'Background Color (hover)' ),
 				ttfmakeFormatBuilder.getColorButton( 'colorText', 'Text Color' ),
@@ -162,23 +179,18 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			if ( $node.attr('id') ) this.set('id', $node.attr('id'));
 
-			icon = $node.find('i.ttfmake-button-icon');
-			if (icon.length > 0) {
-				iconClasses = icon.attr('class').split(/\s+/);
-				$.each(iconClasses, function(index, iconClass) {
-					if (iconClass.match(/^fa-/)) {
-						self.set('icon', iconClass);
-						return false;
-					}
-				});
+			if (! $node.attr('href') || '#' == $node.attr('href')) {
+				this.set('url', '');
+			} else {
+				this.set('url', $node.attr('href'));
 			}
 
-			if ( $node.attr('href') ) this.set('url', $node.attr('href'));
 			if ( $node.attr('data-hover-background-color') ) this.set('colorBackgroundHover', $node.attr('data-hover-background-color'));
 			if ( $node.attr('data-hover-color') ) this.set('colorTextHover', $node.attr('data-hover-color'));
 			if ( '_blank' === $node.attr('target') ) this.set('target', true);
 			if ( $node.css('backgroundColor') ) this.set('colorBackground', $node.css('backgroundColor'));
 			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
+			if ( $node.css('fontWeight') ) this.set('fontWeight', $node.css('fontWeight'));
 			if ( $node.css('fontSize') ) {
 				fontSize = parseInt( $node.css('fontSize') );
 				this.set('fontSize', fontSize + ''); // Convert integer to string for TinyMCE
@@ -194,6 +206,17 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			if ( $node.css('borderTopLeftRadius') ) {
 				borderRadius = parseInt( $node.css('borderTopLeftRadius') );
 				this.set('borderRadius', borderRadius + ''); // Convert integer to string for TinyMCE
+			}
+
+			icon = $node.find('i.ttfmake-button-icon');
+			if (icon.length > 0) {
+				iconClasses = icon.attr('class').split(/\s+/);
+				$.each(iconClasses, function(index, iconClass) {
+					if (iconClass.match(/^fa-/)) {
+						self.set('icon', iconClass);
+						return false;
+					}
+				});
 			}
 		},
 
@@ -218,6 +241,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node.attr('id', this.escape('id'));
 			}
 
+			if (! this.escape('url')) {
+				// TinyMCE won't allow an <a> tag with no href to wrap content.
+				this.set('url', '#');
+			}
+
 			$node.attr({
 				href: this.escape('url'),
 				'data-hover-background-color': this.escape('colorBackgroundHover'),
@@ -231,6 +259,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				backgroundColor: this.escape('colorBackground'),
 				color: this.escape('colorText'),
 				fontSize: this.escape('fontSize') + 'px',
+				fontWeight: this.escape('fontWeight'),
 				padding: this.escape('paddingVert') + 'px ' + this.escape('paddingHorz') + 'px',
 				borderRadius: this.escape('borderRadius') + 'px'
 			});
@@ -244,8 +273,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node.find('i.ttfmake-button-icon').remove();
 
 				// Add the new icon.
+				$node.prepend(' ');
 				$node.prepend($icon);
 			}
+
+			$node.removeAttr('data-mce-style');
 		},
 
 		/**
@@ -270,4 +302,4 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			ttfmakeFormatBuilder.currentSelection.setContent(content);
 		}
 	});
-})( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
+})(window, Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars);
