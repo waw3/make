@@ -81,7 +81,7 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 				'label'              => __( 'Configure column', 'make' ),
 				'href'               => '#',
 				'class'              => 'configure-column-link ttfmake-overlay-open',
-				'title'              => __( 'Edit content', 'make' ),
+				'title'              => __( 'Configure column', 'make' ),
 				'other-a-attributes' => ' data-overlay="#' . $overlay_id .'"',
 			),
 			200 => array(
