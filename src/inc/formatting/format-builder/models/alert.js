@@ -106,6 +106,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'fontSize',
 					label: 'Font Size (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('fontSize')
 				},
 				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' ),
@@ -114,6 +115,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'iconSize',
 					label: 'Icon Size (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('iconSize')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorIcon', 'Icon Color' ),
@@ -121,14 +123,17 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'listbox',
 					name: 'iconPosition',
 					label: 'Icon Position',
+					classes: 'widget btn monospace',
 					value: this.escape('iconPosition'),
 					values: [
 						{
-							text: 'Left',
+							text: 'left',
+							classes: 'monospace',
 							value: 'left'
 						},
 						{
-							text: 'Right',
+							text: 'right',
+							classes: 'monospace',
 							value: 'right'
 						}
 					]
@@ -138,6 +143,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'paddingHorz',
 					label: 'Horizontal Padding (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('paddingHorz')
 				},
 				{
@@ -145,48 +151,59 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'paddingVert',
 					label: 'Vertical Padding (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('paddingVert')
 				},
 				{
 					type: 'listbox',
 					name: 'borderStyle',
 					label: 'Border Style',
+					classes: 'widget btn monospace',
 					value: this.escape('borderStyle'),
 					values: [
 						{
 							text: 'none',
+							classes: 'monospace',
 							value: 'none'
 						},
 						{
 							text: 'solid',
+							classes: 'monospace',
 							value: 'solid'
 						},
 						{
 							text: 'dotted',
+							classes: 'monospace',
 							value: 'dotted'
 						},
 						{
 							text: 'dashed',
+							classes: 'monospace',
 							value: 'dashed'
 						},
 						{
 							text: 'double',
+							classes: 'monospace',
 							value: 'double'
 						},
 						{
 							text: 'groove',
+							classes: 'monospace',
 							value: 'groove'
 						},
 						{
 							text: 'ridge',
+							classes: 'monospace',
 							value: 'ridge'
 						},
 						{
 							text: 'inset',
+							classes: 'monospace',
 							value: 'inset'
 						},
 						{
 							text: 'outset',
+							classes: 'monospace',
 							value: 'outset'
 						}
 					]
@@ -196,6 +213,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'borderWidth',
 					label: 'Border Width (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('borderWidth')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBorder', 'Border Color' )

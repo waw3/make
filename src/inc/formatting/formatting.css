@@ -30,6 +30,9 @@ i.mce-i-ttfmake-icon-picker:before {
 	background-image: none;
 	margin-top: 5px;
 }
+.mce-monospace {
+	font-family: Consolas, Monaco, monospace !important;
+}
 .mce-listbox-placeholder {
 	display: none !important;
 }

@@ -97,6 +97,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					type: 'textbox',
 					name: 'url',
 					label: 'URL',
+					classes: 'monospace',
 					value: this.escape('url')
 				},
 				{
@@ -110,6 +111,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'fontSize',
 					label: 'Font Size (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('fontSize')
 				},
 				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
@@ -121,6 +123,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'paddingHorz',
 					label: 'Horizontal Padding (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('paddingHorz')
 				},
 				{
@@ -128,6 +131,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'paddingVert',
 					label: 'Vertical Padding (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('paddingVert')
 				},
 				{
@@ -135,6 +139,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					name: 'borderRadius',
 					label: 'Border Radius (px)',
 					size: 3,
+					classes: 'monospace',
 					value: this.escape('borderRadius')
 				},
 				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' )
