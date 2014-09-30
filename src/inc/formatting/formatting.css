@@ -180,3 +180,12 @@ i.mce-i-ttfmake-icon-picker:before {
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 }
+
+/* Resetting default input styles */
+#ttfmake-format-builder-body input.mce-textbox {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+#ttfmake-format-builder-body input.mce-textbox:focus {
+	border: 1px solid #ddd;
+}
