@@ -129,6 +129,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			var $node, iconClasses;
 
 			if ('' == this.escape('icon')) {
+				this.remove();
 				return;
 			}
 

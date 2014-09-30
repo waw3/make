@@ -264,13 +264,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				borderRadius: this.escape('borderRadius') + 'px'
 			});
 
+			// Remove any existing icons.
+			$node.find('i.ttfmake-button-icon').remove();
+
 			if ('' !== this.get('icon')) {
 				// Build the icon.
 				$icon = $('<i>');
 				$icon.attr('class', 'ttfmake-button-icon fa ' + this.escape('icon'));
-
-				// Remove any existing icons.
-				$node.find('i.ttfmake-button-icon').remove();
 
 				// Add the new icon.
 				$node.prepend(' ');

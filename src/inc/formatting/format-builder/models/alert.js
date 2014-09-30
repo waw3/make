@@ -298,6 +298,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 				$node.css('fontSize', this.escape('fontSize') + 'px');
 			}
 
+			// Remove any existing icons.
+			$node.find('i.ttfmake-alert-icon').remove();
+
 			if ('' !== this.get('icon')) {
 				// Build the icon.
 				$icon = $('<i>');
@@ -306,9 +309,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					fontSize: this.escape('iconSize') + 'px',
 					color: this.escape('colorIcon')
 				});
-
-				// Remove any existing icons.
-				$node.find('i.ttfmake-alert-icon').remove();
 
 				// Add the new icon.
 				$node.prepend($icon);
