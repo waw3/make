@@ -144,8 +144,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			$node.attr('data-icon-color', this.escape('colorIcon'));
 
-			iconClasses = $node.find('li').first().attr('class').split(/\s+/);
+			iconClasses = $node.find('li').first().attr('class');
 			if (iconClasses) {
+				iconClasses = iconClasses.split(/\s+/);
 				$.each(iconClasses, function(index, iconClass) {
 					if (iconClass.match(/^fa-/)) {
 						$node.find('li').removeClass(iconClass);
