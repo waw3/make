@@ -48,7 +48,6 @@ module.exports = function( grunt ) {
 		},
 		concat: {
 			options: {
-				banner: '/*! <%= pkg.version %> */\n',
 				separator: ';'
 			},
 			cycle2: {
@@ -272,6 +271,9 @@ module.exports = function( grunt ) {
 
 			// Build the SASS and scripts
 			grunt.task.run( 'default' );
+
+			// Process the icons file
+			grunt.task.run( 'fontawesome' );
 
 			// Zip it up
 			grunt.task.run( 'package' );
