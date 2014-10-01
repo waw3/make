@@ -60,7 +60,7 @@ textarea {
 /*---------------------------------------------------------
  Base (_scaffolding.scss)
 -------------------------------------------------------- */
-ul,ol,dl,p,details,address,.vcard,figure,pre,fieldset,table,dt,dd,hr,.ttfmake-alert {
+ul,ol,dl,p,details,address,.vcard,figure,pre,fieldset,table,dt,dd,hr,.ttfmake-alert,.ttfmake-notice {
 	@include rem('margin-bottom', $base);
 }
 p,ul,ol,dl,blockquote {
