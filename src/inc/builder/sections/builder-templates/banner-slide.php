@@ -53,10 +53,10 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $content, false ); ?>
 
 	<?php
-	global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overaly_title;
+	global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overlay_title;
 	$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
 	$ttfmake_overlay_id    = $overlay_id;
-	$ttfmake_overaly_title = __( 'Configure slide', 'make' );
+	$ttfmake_overlay_title = __( 'Configure slide', 'make' );
 
 	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 

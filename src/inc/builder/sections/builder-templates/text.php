@@ -81,7 +81,7 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 				'label'              => __( 'Configure column', 'make' ),
 				'href'               => '#',
 				'class'              => 'configure-column-link ttfmake-overlay-open',
-				'title'              => __( 'Edit content', 'make' ),
+				'title'              => __( 'Configure column', 'make' ),
 				'other-a-attributes' => ' data-overlay="#' . $overlay_id .'"',
 			),
 			200 => array(
@@ -140,6 +140,48 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 		 * @param array    $ttfmake_section_data    The data for the section.
 		 */
 		do_action( 'make_section_text_after_column', $ttfmake_section_data, $i );
+		?>
+
+		<?php
+		global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overlay_title;
+		$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
+		$ttfmake_overlay_id    = $overlay_id;
+		$ttfmake_overlay_title = __( 'Configure column', 'make' );
+
+		get_template_part( '/inc/builder/core/templates/overlay', 'header' );
+
+		$inputs = apply_filters( 'make_column_configuration', array(
+			100 => array(
+				'type'    => 'section_title',
+				'name'    => 'title',
+				'label'   => __( 'Enter column title', 'make' ),
+				'default' => '',
+				'class'   => 'ttfmake-configuration-title',
+			),
+			200 => array(
+				'type'    => 'text',
+				'name'    => 'image-link',
+				'label'   => __( 'Image link URL', 'make' ),
+				'default' => '',
+			),
+		) );
+
+		// Sort the config in case 3rd party code added another input
+		ksort( $inputs, SORT_NUMERIC );
+
+		// Print the inputs
+		$output = '';
+
+		foreach ( $inputs as $input ) {
+			if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+				$section_data  = ( isset( $ttfmake_section_data['data']['columns'][ $i ] ) ) ? $ttfmake_section_data['data']['columns'][ $i ] : array();
+				$output       .= ttfmake_create_input( $column_name, $input, $section_data );
+			}
+		}
+
+		echo $output;
+
+		get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
 		?>
 
 		<?php

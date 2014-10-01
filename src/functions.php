@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.4.0' );
+define( 'TTFMAKE_VERSION', '1.4.1' );
 
 /**
  * The suffix to use for scripts.
@@ -70,16 +70,13 @@ require get_template_directory() . '/inc/customizer/bootstrap.php';
 // Gallery slider
 require get_template_directory() . '/inc/gallery-slider/gallery-slider.php';
 
+// Formatting
+require get_template_directory() . '/inc/formatting/formatting.php';
+
 /**
  * Admin includes.
  */
 if ( is_admin() ) {
-	// TinyMCE customizations
-	require get_template_directory() . '/inc/tinymce.php';
-
-	// TinyMCE buttons
-	require get_template_directory() . '/inc/tinymce-buttons/tinymce-buttons.php';
-
 	// Page customizations
 	require get_template_directory() . '/inc/edit-page.php';
 

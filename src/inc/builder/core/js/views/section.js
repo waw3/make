@@ -72,6 +72,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		removeSection: function (evt) {
 			evt.preventDefault();
+
+			// Confirm the action
+			if (false === window.confirm(ttfmakeBuilderData.confirmString)) {
+				return;
+			}
+
 			oneApp.removeOrderValue(this.model.get('id'), oneApp.cache.$sectionOrder);
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
@@ -192,7 +198,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
 
 			$overlay.show(1, function(){
-				$('.wp-color-result', $overlay).click();
+				$('.wp-color-result', $overlay).click().off('click');
 				$( 'body' ).off( 'click.wpcolorpicker' );
 				self.setSize($overlay, $wrapper);
 				$overlay.find('input,select').filter(':first').focus();
