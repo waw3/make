@@ -1,3 +1,7 @@
+## 1.4.2
+
+* Fixed Column configuration data not saving correctly in the Page Builder
+
 ## 1.4.1
 
 * Added the Format Builder tool to the Visual Editor
