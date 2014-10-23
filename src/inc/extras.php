@@ -111,6 +111,46 @@ endif;
 
 add_action( 'wp', 'ttfmake_setup_author' );
 
+if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
+/**
+ * Allow only certain tags and attributes in a string.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $string    The unsanitized string.
+ * @return string               The sanitized string.
+ */
+function ttfmake_sanitize_text( $string ) {
+	global $allowedtags;
+	$expandedtags = $allowedtags;
+
+	// span
+	$expandedtags['span'] = array();
+
+	// Enable id, class, and style attributes for each tag
+	foreach ( $expandedtags as $tag => $attributes ) {
+		$expandedtags[$tag]['id']    = true;
+		$expandedtags[$tag]['class'] = true;
+		$expandedtags[$tag]['style'] = true;
+	}
+
+	// br (doesn't need attributes)
+	$expandedtags['br'] = array();
+
+	/**
+	 * Customize the tags and attributes that are allows during text sanitization.
+	 *
+	 * @since 1.4.3
+	 *
+	 * @param array     $expandedtags    The list of allowed tags and attributes.
+	 * @param string    $string          The text string being sanitized.
+	 */
+	apply_filters( 'make_sanitize_text_allowed_tags', $expandedtags, $string );
+
+	return wp_kses( $string, $expandedtags );
+}
+endif;
+
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
  * Sanitizes a hex color.
