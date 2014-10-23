@@ -298,10 +298,16 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 			// Check for a specialized control class
 			if ( isset( $control['control_type'] ) ) {
 				$class = $control['control_type'];
-				unset( $control['control_type'] );
-				$wp_customize->add_control(
-					new $class( $wp_customize, $control_id, $control )
-				);
+
+				if ( class_exists( $class ) ) {
+					unset( $control['control_type'] );
+
+					// Dynamically generate a new class instance
+					$reflection = new ReflectionClass( $class );
+					$class_instance = $reflection->newInstanceArgs( array( $wp_customize, $control_id, $control ) );
+
+					$wp_customize->add_control( $class_instance );
+				}
 			} else {
 				$wp_customize->add_control( $control_id, $control );
 			}
