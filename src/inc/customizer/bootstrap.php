@@ -15,7 +15,6 @@ function ttfmake_customizer_init() {
 	$path = get_template_directory() . '/inc/customizer/';
 
 	// Always load
-	require_once( $path . 'compatibility.php' );
 	require_once( $path . 'controls.php' );
 	require_once( $path . 'helpers.php' );
 	require_once( $path . 'helpers-css.php' );
