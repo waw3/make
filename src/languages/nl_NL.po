@@ -8,10 +8,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-11-10 11:44+0100\n"
-"Last-Translator: Leo Oosterloo <leo@pronamic.nl>\n"
+"PO-Revision-Date: 2014-11-10 21:26+0100\n"
+"Last-Translator: Leo Oosterloo <leo.oosterloo@gmail.com>\n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.10\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: nl_NL\n"
 
@@ -1588,7 +1588,7 @@ msgstr "Bericht"
 
 #: inc/edit-page.php:90
 msgid "Looking to configure a unique layout for this %1$s? %2$s."
-msgstr "Wil je een unieke layout instellen hiervoor %1$s opmaken? %2$s."
+msgstr "Wil je een unieke layout voor deze %1$s instellen? %2$s."
 
 #: inc/extras.php:78
 msgid "Page %s"
