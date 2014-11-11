@@ -111,7 +111,7 @@ module.exports = function( grunt ) {
 					type: 'wp-theme',
 					exclude: [],
 					processPot: function( pot, options ) {
-						pot.headers['report-msgid-bugs-to'] = 'https://thethemefoundry.com/support';
+						pot.headers['report-msgid-bugs-to'] = 'https://thethemefoundry.com/support/';
 						pot.headers['last-translator'] = 'The Theme Foundry';
 						pot.headers['language-team'] = 'The Theme Foundry';
 						return pot;
