@@ -174,12 +174,12 @@ a img {
 /*---------------------------------------------------------
  Extends (_preboot.scss)
 -------------------------------------------------------- */
-.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .builder-section, .site-content .container, .infinite-footer-container, #comments-nav, div.sharedaddy {
+.clear, .site-header, .site-header-main, .header-bar, .site-content, .site-footer, .gallery, .entry-content, .builder-section, .site-content .container, .infinite-footer-container, #comments-nav, div.sharedaddy {
 	zoom: 1; }
-.clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .builder-section:before, .site-content .container:before, .infinite-footer-container:before, #comments-nav:before, div.sharedaddy:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after, div.sharedaddy:after {
+.clear:before, .site-header:before, .site-header-main:before, .header-bar:before, .site-content:before, .site-footer:before, .gallery:before, .entry-content:before, .builder-section:before, .site-content .container:before, .infinite-footer-container:before, #comments-nav:before, div.sharedaddy:before, .clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .entry-content:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after, div.sharedaddy:after {
 	display: table;
 	content: ""; }
-.clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after, div.sharedaddy:after {
+.clear:after, .site-header:after, .site-header-main:after, .header-bar:after, .site-content:after, .site-footer:after, .gallery:after, .entry-content:after, .builder-section:after, .site-content .container:after, .infinite-footer-container:after, #comments-nav:after, div.sharedaddy:after {
 	clear: both; }
 
 .break, p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, pre, table {
