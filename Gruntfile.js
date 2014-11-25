@@ -89,12 +89,7 @@ module.exports = function( grunt ) {
 			}
 		},
 		shell: {
-			commit: {
-				command: 'git add . --all && git commit -m "Version <%= pkg.version %>"'
-			},
-			tag: {
-				command: 'git tag -a <%= pkg.version %> -m "Version <%= pkg.version %>"'
-			}
+
 		},
 		watch: {
 			css: {
@@ -277,10 +272,6 @@ module.exports = function( grunt ) {
 
 			// Zip it up
 			grunt.task.run( 'package' );
-
-			// Commit and tag version update
-			//grunt.task.run( 'shell:commit' );
-			//grunt.task.run( 'shell:tag' );
 		}
 	} );
 
