@@ -89,7 +89,11 @@ module.exports = function( grunt ) {
 			}
 		},
 		shell: {
-
+			googlefonts: {
+				command: [
+					'php -f assets/google-fonts-array.php'
+				].join('&&')
+			}
 		},
 		watch: {
 			css: {
@@ -234,6 +238,29 @@ module.exports = function( grunt ) {
 				files: {
 					'assets/temp/fontawesome.json': [ 'assets/temp/icons*.json' ]
 				}
+			},
+			googlefonts: {
+				modifier: function( json ) {
+					var fonts = json.items,
+						newObj = {};
+
+					_.forEach( fonts, function( data ) {
+						var label = data.family,
+							font = {
+								label: label,
+								variants: data.variants,
+								subsets: data.subsets,
+								category: data.category
+							};
+
+						newObj[label] = font;
+					} );
+
+					return newObj;
+				},
+				files: {
+					'assets/temp/googlefonts.json': [ 'assets/temp/googlefontsdata.json' ]
+				}
 			}
 		},
 		json: {
@@ -246,6 +273,12 @@ module.exports = function( grunt ) {
 				},
 				src: [ 'assets/temp/fontawesome.json' ],
 				dest: 'src/inc/formatting/icon-picker/icons.js'
+			}
+		},
+		curl: {
+			googlefonts: {
+				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyBYDt57B3dSYXu7HtWU6pHuMOBM8vpDJtc',
+				dest: 'assets/temp/googlefontsdata.json'
 			}
 		}
 	});
@@ -324,5 +357,12 @@ module.exports = function( grunt ) {
 		'json_massager:fontawesome',
 		'json:fontawesome',
 		'clean:fontawesome'
-	] )
+	] );
+
+	//
+	grunt.registerTask( 'googlefonts', [
+		'curl:googlefonts',
+		'json_massager:googlefonts',
+		'shell:googlefonts'
+	] );
 };
