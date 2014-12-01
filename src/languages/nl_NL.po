@@ -8,10 +8,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-11-10 21:26+0100\n"
-"Last-Translator: Leo Oosterloo <leo.oosterloo@gmail.com>\n"
+"PO-Revision-Date: 2014-12-01 09:56+0100\n"
+"Last-Translator: Leo Oosterloo <leo@pronamic.nl>\n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: nl_NL\n"
 
@@ -113,7 +113,7 @@ msgstr "Wil je enkele idee&euml;n?"
 
 #: inc/builder/core/base.php:1113
 msgid "%s and get a quick start with pre-made designer builder templates."
-msgstr "%s en krijg een snelle start met vooraf ontworpen bouwer templates."
+msgstr "%s en start snel met vooraf ontworpen bouwer templates."
 
 #: inc/builder/core/base.php:1118
 #: inc/builder/sections/builder-templates/text.php:27 inc/edit-page.php:96
@@ -314,12 +314,12 @@ msgstr "Overgang effect"
 #: inc/builder/sections/section-definitions.php:206
 #: inc/gallery-slider/gallery-slider.php:116
 msgid "Slide horizontal"
-msgstr "Verschuif horizontaal"
+msgstr "Horizontaal verschuiven"
 
 #: inc/builder/sections/section-definitions.php:207
 #: inc/gallery-slider/gallery-slider.php:117
 msgid "Fade"
-msgstr "Vervaag"
+msgstr "Vervagen"
 
 #: inc/builder/sections/section-definitions.php:213
 msgid "Section height (px)"
