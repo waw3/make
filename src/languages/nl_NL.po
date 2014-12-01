@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-12-01 09:56+0100\n"
+"PO-Revision-Date: 2014-12-01 11:11+0100\n"
 "Last-Translator: Leo Oosterloo <leo@pronamic.nl>\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.5.4\n"
@@ -437,7 +437,7 @@ msgstr "Footer"
 
 #: inc/customizer/bootstrap.php:113
 msgid "Sidebars & Widgets"
-msgstr "Sidebar & Widgets"
+msgstr "Sidebars & Widgets"
 
 #: inc/customizer/bootstrap.php:341 inc/customizer/sections/stylekit.php:23
 msgid "Style Kits"
@@ -789,7 +789,7 @@ msgstr "Footer randkleur"
 #: inc/customizer/legacy_sections/footer.php:142
 #: inc/customizer/sections/color-scheme.php:185
 msgid "Footer Background Color"
-msgstr "Fouter achtergrondkleur"
+msgstr "Footer achtergrondkleur"
 
 #: inc/customizer/legacy_sections/footer.php:165
 #: inc/customizer/sections/footer.php:33
@@ -810,7 +810,7 @@ msgstr "Achtergrondpositie"
 
 #: inc/customizer/legacy_sections/footer.php:267
 msgid "Footer Widget Areas"
-msgstr "Fouter widgetgebieden"
+msgstr "Footer widgetgebieden"
 
 #: inc/customizer/legacy_sections/footer.php:283
 msgid "Footer Options"
