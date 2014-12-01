@@ -28,6 +28,7 @@ $d3 = preg_replace( '/ /', "\t", $d3 );
 $d3 = preg_replace( "/\t+=>\t+/", ' => ', $d3 );
 $d3 = preg_replace( "/array\t+\(/", 'array(', $d3 );
 $d3 = preg_replace( "/(\w+)\t/", '\1 ', $d3 );
+$d3 = preg_replace( "/(\d+) => '/", "'", $d3 );
 $d3 = str_replace( "\t\t\t\t", "\t\t\t", $d3 );
 $d3 = str_replace( "\t\t\t\t\t", "\t\t\t\t", $d3 );
 
