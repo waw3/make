@@ -289,8 +289,22 @@ module.exports = function( grunt ) {
 		},
 		curl: {
 			googlefonts: {
-				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyBYDt57B3dSYXu7HtWU6pHuMOBM8vpDJtc',
+				apikey: '',
+				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=<%= curl.googlefonts.apikey %>',
 				dest: 'assets/temp/googlefontsdata.json'
+			}
+		},
+		prompt: {
+			googlefonts: {
+				options: {
+					questions: [
+						{
+							config: 'curl.googlefonts.apikey',
+							type: 'input',
+							message: 'Enter your Google Fonts API key'
+						}
+					]
+				}
 			}
 		}
 	});
@@ -373,6 +387,7 @@ module.exports = function( grunt ) {
 
 	// Process the Google Fonts list
 	grunt.registerTask( 'googlefonts', [
+		'prompt:googlefonts',
 		'curl:googlefonts',
 		'json_massager:googlefonts',
 		'shell:googlefonts',
