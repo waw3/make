@@ -89,11 +89,10 @@ module.exports = function( grunt ) {
 			}
 		},
 		shell: {
-			commit: {
-				command: 'git add . --all && git commit -m "Version <%= pkg.version %>"'
-			},
-			tag: {
-				command: 'git tag -a <%= pkg.version %> -m "Version <%= pkg.version %>"'
+			googlefonts: {
+				command: [
+					'php -f assets/google-fonts-array.php'
+				].join('&&')
 			}
 		},
 		watch: {
@@ -111,7 +110,7 @@ module.exports = function( grunt ) {
 					type: 'wp-theme',
 					exclude: [],
 					processPot: function( pot, options ) {
-						pot.headers['report-msgid-bugs-to'] = 'https://thethemefoundry.com/support';
+						pot.headers['report-msgid-bugs-to'] = 'https://thethemefoundry.com/support/';
 						pot.headers['last-translator'] = 'The Theme Foundry';
 						pot.headers['language-team'] = 'The Theme Foundry';
 						return pot;
@@ -131,6 +130,18 @@ module.exports = function( grunt ) {
 							'!**/.DS_Store/**'
 						],
 						dest: 'dist/temp'
+					}
+				]
+			},
+			googlefonts: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/temp/',
+						src: [
+							'google-fonts.php'
+						],
+						dest: 'src/inc/customizer'
 					}
 				]
 			}
@@ -155,7 +166,7 @@ module.exports = function( grunt ) {
 			build: {
 				src: [ 'dist/temp' ]
 			},
-			fontawesome: {
+			assets: {
 				src: [ 'assets/temp' ]
 			}
 		},
@@ -239,6 +250,29 @@ module.exports = function( grunt ) {
 				files: {
 					'assets/temp/fontawesome.json': [ 'assets/temp/icons*.json' ]
 				}
+			},
+			googlefonts: {
+				modifier: function( json ) {
+					var fonts = json.items,
+						newObj = {};
+
+					_.forEach( fonts, function( data ) {
+						var label = data.family,
+							font = {
+								label: label,
+								variants: data.variants,
+								subsets: data.subsets,
+								category: data.category
+							};
+
+						newObj[label] = font;
+					} );
+
+					return newObj;
+				},
+				files: {
+					'assets/temp/googlefonts.json': [ 'assets/temp/googlefontsdata.json' ]
+				}
 			}
 		},
 		json: {
@@ -251,6 +285,26 @@ module.exports = function( grunt ) {
 				},
 				src: [ 'assets/temp/fontawesome.json' ],
 				dest: 'src/inc/formatting/icon-picker/icons.js'
+			}
+		},
+		curl: {
+			googlefonts: {
+				apikey: '',
+				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=<%= curl.googlefonts.apikey %>',
+				dest: 'assets/temp/googlefontsdata.json'
+			}
+		},
+		prompt: {
+			googlefonts: {
+				options: {
+					questions: [
+						{
+							config: 'curl.googlefonts.apikey',
+							type: 'input',
+							message: 'Enter your Google Fonts API key'
+						}
+					]
+				}
 			}
 		}
 	});
@@ -275,12 +329,11 @@ module.exports = function( grunt ) {
 			// Process the icons file
 			grunt.task.run( 'fontawesome' );
 
+			// Update the Google Fonts array
+			grunt.task.run( 'googlefonts' );
+
 			// Zip it up
 			grunt.task.run( 'package' );
-
-			// Commit and tag version update
-			//grunt.task.run( 'shell:commit' );
-			//grunt.task.run( 'shell:tag' );
 		}
 	} );
 
@@ -332,6 +385,16 @@ module.exports = function( grunt ) {
 		'yaml:fontawesome',
 		'json_massager:fontawesome',
 		'json:fontawesome',
-		'clean:fontawesome'
-	] )
+		'clean:assets'
+	] );
+
+	// Process the Google Fonts list
+	grunt.registerTask( 'googlefonts', [
+		'prompt:googlefonts',
+		'curl:googlefonts',
+		'json_massager:googlefonts',
+		'shell:googlefonts',
+		'copy:googlefonts',
+		'clean:assets'
+	] );
 };
