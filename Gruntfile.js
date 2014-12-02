@@ -329,6 +329,9 @@ module.exports = function( grunt ) {
 			// Process the icons file
 			grunt.task.run( 'fontawesome' );
 
+			// Update the Google Fonts array
+			grunt.task.run( 'googlefonts' );
+
 			// Zip it up
 			grunt.task.run( 'package' );
 		}
