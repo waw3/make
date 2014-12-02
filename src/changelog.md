@@ -3,6 +3,7 @@
 * Fixed raw CSS appearing in rich snippet content in some situations
 * Fixed post meta alignment issues
 * Fixed blurry Page Builder overlays in Safari
+* Updated Google Fonts list
 * Updated documentation links
 * Updated Dutch translation
 
