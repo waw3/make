@@ -7,7 +7,7 @@
 // Define directories
 $base_dir = dirname( dirname( __FILE__ ) );
 $temp_dir = $base_dir . '/assets/temp/';
-$dest_dir = $base_dir . '/src/inc/customizer/';
+$dest_dir = $temp_dir;
 
 // Check for JSON file
 if ( ! is_file( $temp_dir . 'googlefonts.json' ) ) {

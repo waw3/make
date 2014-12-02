@@ -132,6 +132,18 @@ module.exports = function( grunt ) {
 						dest: 'dist/temp'
 					}
 				]
+			},
+			googlefonts: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/temp/',
+						src: [
+							'google-fonts.php'
+						],
+						dest: 'src/inc/customizer'
+					}
+				]
 			}
 		},
 		compress: {
@@ -154,7 +166,7 @@ module.exports = function( grunt ) {
 			build: {
 				src: [ 'dist/temp' ]
 			},
-			fontawesome: {
+			assets: {
 				src: [ 'assets/temp' ]
 			}
 		},
@@ -356,13 +368,15 @@ module.exports = function( grunt ) {
 		'yaml:fontawesome',
 		'json_massager:fontawesome',
 		'json:fontawesome',
-		'clean:fontawesome'
+		'clean:assets'
 	] );
 
-	//
+	// Process the Google Fonts list
 	grunt.registerTask( 'googlefonts', [
 		'curl:googlefonts',
 		'json_massager:googlefonts',
-		'shell:googlefonts'
+		'shell:googlefonts',
+		'copy:googlefonts',
+		'clean:assets'
 	] );
 };
