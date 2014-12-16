@@ -4,7 +4,7 @@
 
 * **Stable version:** 1.4.6
 * **Theme directory listing:** [https://wordpress.org/themes/make/](https://wordpress.org/themes/make/)
-* **Contributors:** @dstrojny, @scottrrollo, @tollmanz, @coreymckrill, @samikeijonen, @jeremyfelt, @stdt, Timm K, @mauryaratan, @LeoOosterloo
+* **Contributors:** @dstrojny, @scottrrollo, @tollmanz, @coreymckrill, @samikeijonen, @jeremyfelt, @stdt, Timm K, @mauryaratan, @LeoOosterloo, @Laurisade
 
 ## Documentation
 
