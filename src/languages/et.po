@@ -8,10 +8,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-11-10 21:26+0100\n"
+"PO-Revision-Date: 2014-12-10 18:01+0200\n"
 "Last-Translator: Lauri SÃ¤de <laurisade@gmail.com>\n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: et_ET\n"
 
@@ -53,7 +53,7 @@ msgstr "Parem kÃ¼ljeriba"
 
 #: functions.php:195
 msgid "Footer 1"
-msgstr "Footer 1"
+msgstr "Jalus 1"
 
 #: functions.php:204
 msgid "Footer 2"
@@ -80,8 +80,7 @@ msgstr "Kasuta lehe kohandajat"
 msgid "Set image"
 msgstr "MÃ¤Ã¤ra pilt"
 
-#: inc/builder/core/base.php:457
-#: inc/builder/core/templates/overlay-tinymce.php:4
+#: inc/builder/core/base.php:457 inc/builder/core/templates/overlay-tinymce.php:4
 #: inc/builder/sections/builder-templates/banner-slide.php:42
 #: inc/builder/sections/builder-templates/banner-slide.php:44
 #: inc/builder/sections/builder-templates/gallery-item.php:40
@@ -115,8 +114,8 @@ msgstr "Soovid ideid?"
 msgid "%s and get a quick start with pre-made designer builder templates."
 msgstr "%s ja saad kiirest alustada koos juba valmis loodud Å¡ablooniga."
 
-#: inc/builder/core/base.php:1118
-#: inc/builder/sections/builder-templates/text.php:27 inc/edit-page.php:96
+#: inc/builder/core/base.php:1118 inc/builder/sections/builder-templates/text.php:27
+#: inc/edit-page.php:96
 msgid "Upgrade to %s"
 msgstr "TÃ¤iusta tooteks %s"
 
@@ -177,10 +176,9 @@ msgstr "Sisu asukoht"
 #: inc/builder/sections/builder-templates/banner-slide.php:70
 #: inc/builder/sections/section-definitions.php:208
 #: inc/builder/sections/section-definitions.php:343
-#: inc/builder/sections/section-definitions.php:354
-#: inc/customizer/helpers.php:86 inc/customizer/helpers.php:98
-#: inc/customizer/helpers.php:109 inc/customizer/helpers.php:209
-#: inc/gallery-slider/gallery-slider.php:118
+#: inc/builder/sections/section-definitions.php:354 inc/customizer/helpers.php:86
+#: inc/customizer/helpers.php:98 inc/customizer/helpers.php:109
+#: inc/customizer/helpers.php:209 inc/gallery-slider/gallery-slider.php:118
 msgid "None"
 msgstr "Mitte midagi"
 
@@ -333,8 +331,7 @@ msgstr "Responsive kÃ¤itumine"
 msgid "Choose how the banner will respond to varying screen widths."
 msgstr "Vali kuidas bÃ¤nner erinevate ekraani laiuste korral kÃ¤itub."
 
-#: inc/builder/sections/section-definitions.php:224
-#: inc/customizer/helpers.php:148
+#: inc/builder/sections/section-definitions.php:224 inc/customizer/helpers.php:148
 msgid "Default"
 msgstr "Standard"
 
@@ -398,13 +395,11 @@ msgstr "Taustapilt"
 msgid "Background style"
 msgstr "Tausta stiil"
 
-#: inc/builder/sections/section-definitions.php:385
-#: inc/customizer/helpers.php:117
+#: inc/builder/sections/section-definitions.php:385 inc/customizer/helpers.php:117
 msgid "Tile"
 msgstr "Plaat"
 
-#: inc/builder/sections/section-definitions.php:386
-#: inc/customizer/helpers.php:142
+#: inc/builder/sections/section-definitions.php:386 inc/customizer/helpers.php:142
 msgid "Cover"
 msgstr "Kate"
 
@@ -483,8 +478,7 @@ msgstr "VÃ¤limus: Lehed"
 msgid "Social Profiles &amp; RSS"
 msgstr "Sotsiaalsed profiilid &amp; RSS"
 
-#: inc/customizer/bootstrap.php:492
-#: inc/customizer/legacy_sections/stylekit.php:32
+#: inc/customizer/bootstrap.php:492 inc/customizer/legacy_sections/stylekit.php:32
 #: inc/customizer/sections/stylekit.php:29
 msgid "Upgrade to Make Plus"
 msgstr "TÃ¤iusta Make Plus"
@@ -559,7 +553,7 @@ msgstr "Kastis"
 
 #: inc/customizer/helpers.php:84
 msgid "Post header"
-msgstr "ARtikli pÃ¤is"
+msgstr "Artikli pÃ¤is"
 
 #: inc/customizer/helpers.php:85
 msgid "Thumbnail"
@@ -641,8 +635,7 @@ msgstr "Koos ikooniga"
 msgid "With text"
 msgstr "Koos tekstiga"
 
-#: inc/customizer/helpers.php:326
-#: inc/customizer/legacy_sections/social.php:261
+#: inc/customizer/helpers.php:326 inc/customizer/legacy_sections/social.php:261
 msgid "Email"
 msgstr "E-post"
 
@@ -657,11 +650,11 @@ msgstr "Taust"
 
 #: inc/customizer/legacy_sections/background.php:36
 msgid ""
-"With the Site Layout option (under <em>General</em>) set to \"Full Width\", "
-"the background color and image will not be visible."
+"With the Site Layout option (under <em>General</em>) set to \"Full Width\", the "
+"background color and image will not be visible."
 msgstr ""
-"Koos lehe vÃ¤limuse valikuga \"TÃ¤is laius\" (menÃ¼Ã¼s <em>Ãœldine</em>), "
-"pole taustavÃ¤rv ega pilt nÃ¤htaval."
+"Koos lehe vÃ¤limuse valikuga \"TÃ¤is laius\" (menÃ¼Ã¼s <em>Ãœldine</em>), pole "
+"taustavÃ¤rv ega pilt nÃ¤htaval."
 
 #: inc/customizer/legacy_sections/background.php:64
 #: inc/customizer/legacy_sections/footer.php:231
@@ -691,9 +684,7 @@ msgid "Detail Color"
 msgstr "Detaili vÃ¤rv"
 
 #: inc/customizer/legacy_sections/font.php:31
-msgid ""
-"The list of Google fonts is long! You can %s before making your choices."
-msgstr ""
+msgid "The list of Google fonts is long! You can %s before making your choices."
 msgstr "Google fontide list on pikk! VÃµid kasutada enne valiku tegemist %s."
 
 #: inc/customizer/legacy_sections/font.php:35
@@ -723,8 +714,7 @@ msgstr "Soovid oma lehele lisada preemium fonte Typekit'st? %s."
 
 #: inc/customizer/legacy_sections/font.php:139
 #: inc/customizer/legacy_sections/footer.php:355
-#: inc/customizer/sections/footer.php:159
-#: inc/customizer/sections/typography.php:36
+#: inc/customizer/sections/footer.php:159 inc/customizer/sections/typography.php:36
 msgid "Upgrade to %1$s"
 msgstr "TÃ¤iusta %1$s"
 
@@ -794,7 +784,7 @@ msgstr "Jaluse tausta vÃ¤rv"
 #: inc/customizer/legacy_sections/footer.php:165
 #: inc/customizer/sections/footer.php:33
 msgid "Footer Background Image"
-msgstr "Footer achtergrondafbeelding"
+msgstr "Jaluse tausta pilt"
 
 #: inc/customizer/legacy_sections/footer.php:187
 #: inc/customizer/legacy_sections/header.php:291
@@ -839,13 +829,11 @@ msgstr "LehekÃ¼lje vÃ¤limus"
 msgid "Sticky Label"
 msgstr "Sticky label"
 
-#: inc/customizer/legacy_sections/header.php:36
-#: inc/customizer/sections/header.php:88
+#: inc/customizer/legacy_sections/header.php:36 inc/customizer/sections/header.php:88
 msgid "Header Layout"
 msgstr "PÃ¤ise vÃ¤limus"
 
-#: inc/customizer/legacy_sections/header.php:58
-#: inc/customizer/sections/header.php:98
+#: inc/customizer/legacy_sections/header.php:58 inc/customizer/sections/header.php:98
 msgid "Show Title/Logo On"
 msgstr "NÃ¤ita pealkirja/logo"
 
@@ -952,7 +940,7 @@ msgstr "Peida lehekÃ¼lje jalus"
 #: inc/customizer/sections/content-layout.php:647
 #: inc/customizer/sections/content-layout.php:812
 msgid "Show left sidebar"
-msgstr "NÃ¤ita paremat kÃ¼ljeriba"
+msgstr "NÃ¤ita vasakut kÃ¼ljeriba"
 
 #: inc/customizer/legacy_sections/layout-archive.php:114
 #: inc/customizer/legacy_sections/layout-blog.php:114
@@ -965,7 +953,7 @@ msgstr "NÃ¤ita paremat kÃ¼ljeriba"
 #: inc/customizer/sections/content-layout.php:656
 #: inc/customizer/sections/content-layout.php:821
 msgid "Show right sidebar"
-msgstr "NÃ¤ita vasakut kÃ¼ljeriba"
+msgstr "NÃ¤ita paremat kÃ¼ljeriba"
 
 #: inc/customizer/legacy_sections/layout-archive.php:135
 #: inc/customizer/legacy_sections/layout-blog.php:135
@@ -1126,8 +1114,7 @@ msgstr "Kommentaaride hulga asukoht"
 #: inc/customizer/sections/content-layout.php:829
 msgid "Sidebars are not available on pages using the Builder Template."
 msgstr ""
-"KÃ¼ljeribad pole saadaval lehtedel, mis kasutavad lehekÃ¼lje kohandaja "
-"Å¡ablooni."
+"KÃ¼ljeribad pole saadaval lehtedel, mis kasutavad lehekÃ¼lje kohandaja Å¡ablooni."
 
 #: inc/customizer/legacy_sections/layout-page.php:144
 #: inc/customizer/sections/content-layout.php:842
@@ -1139,28 +1126,23 @@ msgstr "LehekÃ¼lje pealkiri"
 msgid "Hide title"
 msgstr "Peida pealkiri"
 
-#: inc/customizer/legacy_sections/logo.php:38
-#: inc/customizer/sections/general.php:39
+#: inc/customizer/legacy_sections/logo.php:38 inc/customizer/sections/general.php:39
 msgid "Regular Logo"
 msgstr "Tavaline logo"
 
-#: inc/customizer/legacy_sections/logo.php:62
-#: inc/customizer/sections/general.php:49
+#: inc/customizer/legacy_sections/logo.php:62 inc/customizer/sections/general.php:49
 msgid "Retina Logo (2x)"
 msgstr "Retina logo (2x)"
 
-#: inc/customizer/legacy_sections/logo.php:78
-#: inc/customizer/sections/general.php:50
+#: inc/customizer/legacy_sections/logo.php:78 inc/customizer/sections/general.php:50
 msgid "The Retina Logo should be twice the size of the Regular Logo."
 msgstr "Retina logo peaks olema kaks korda suurem kui tavaline logo."
 
-#: inc/customizer/legacy_sections/logo.php:101
-#: inc/customizer/sections/general.php:60
+#: inc/customizer/legacy_sections/logo.php:101 inc/customizer/sections/general.php:60
 msgid "Favicon"
 msgstr "Favicon"
 
-#: inc/customizer/legacy_sections/logo.php:118
-#: inc/customizer/sections/general.php:61
+#: inc/customizer/legacy_sections/logo.php:118 inc/customizer/sections/general.php:61
 msgid ""
 "File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal "
 "dimensions: <strong>32px x 32px</strong>."
@@ -1168,26 +1150,24 @@ msgstr ""
 "Fail peab olema <strong>.png</strong> vÃµi <strong>.ico</strong> formaadis. "
 "Optimaalsed mÃµÃµdud: <strong>32px x 32px</strong>."
 
-#: inc/customizer/legacy_sections/logo.php:141
-#: inc/customizer/sections/general.php:72
+#: inc/customizer/legacy_sections/logo.php:141 inc/customizer/sections/general.php:72
 msgid "Apple Touch Icon"
 msgstr "Apple ikoon"
 
-#: inc/customizer/legacy_sections/logo.php:158
-#: inc/customizer/sections/general.php:73
+#: inc/customizer/legacy_sections/logo.php:158 inc/customizer/sections/general.php:73
 msgid ""
-"File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px "
-"x 152px</strong>."
+"File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x "
+"152px</strong>."
 msgstr ""
-"Fail peab olema <strong>.png</strong> formaadis. Optimaalsed mÃµÃµdud: "
-"<strong>152px x 152px</strong>."
+"Fail peab olema <strong>.png</strong> formaadis. Optimaalsed mÃµÃµdud: <strong>152px "
+"x 152px</strong>."
 
 #: inc/customizer/legacy_sections/main.php:38
 msgid "Background Color"
 msgstr "TaustavÃ¤rv"
 
-#: inc/customizer/legacy_sections/main.php:61
-#: inc/customizer/sections/footer.php:25 inc/customizer/sections/header.php:25
+#: inc/customizer/legacy_sections/main.php:61 inc/customizer/sections/footer.php:25
+#: inc/customizer/sections/header.php:25
 msgid "Background Image"
 msgstr "Taustapilt"
 
@@ -1229,19 +1209,17 @@ msgstr "Peida mÃ¤rksÃµnad"
 #: inc/customizer/legacy_sections/social.php:30
 #: inc/customizer/sections/general.php:93
 msgid ""
-"Enter the complete URL to your profile for each service below that you would "
-"like to share."
-msgstr ""
-"Sisesta tÃ¤ielikud lehekÃ¼lgede aadressid, mida soovid jagada, "
-"oma profiili"
+"Enter the complete URL to your profile for each service below that you would like "
+"to share."
+msgstr "Sisesta tÃ¤ielikud lehekÃ¼lgede aadressid, mida soovid jagada, oma profiili"
 
 #: inc/customizer/legacy_sections/social.php:235
 msgid ""
-"If you would like to add a social profile that is not listed above, or "
-"change the order of the icons, use %s."
+"If you would like to add a social profile that is not listed above, or change the "
+"order of the icons, use %s."
 msgstr ""
-"Kui soovid lisada listi mittekuuluvaid sotsiaalvÃµrgustike profiile, vÃµi "
-"muuta nende ikoonide jÃ¤rjekorda, kasuta %s."
+"Kui soovid lisada listi mittekuuluvaid sotsiaalvÃµrgustike profiile, vÃµi muuta nende "
+"ikoonide jÃ¤rjekorda, kasuta %s."
 
 #: inc/customizer/legacy_sections/social.php:238
 msgid "this alternate method"
@@ -1265,8 +1243,8 @@ msgstr "Kohandatud RSS URL (asendab vaikevÃ¤Ã¤rtuse)"
 #: inc/customizer/legacy_sections/stylekit.php:28
 #: inc/customizer/sections/stylekit.php:25
 msgid ""
-"%s to quickly apply designer-picked style choices (fonts, layout, colors) to "
-"your website."
+"%s to quickly apply designer-picked style choices (fonts, layout, colors) to your "
+"website."
 msgstr ""
 "%s ,et kiiresti disaineri valitud stiilivalikut rakendada (fondid, vÃ¤limus, vÃ¤rvid) "
 "oma veebilehele."
@@ -1402,11 +1380,11 @@ msgstr "Soovid teema informatsiooni jalusest eemaldada? %s."
 
 #: inc/customizer/sections/general.php:181
 msgid ""
-"If you would like to add a social profile that is not listed above, or "
-"change the order of the icons, create a custom menu %s."
+"If you would like to add a social profile that is not listed above, or change the "
+"order of the icons, create a custom menu %s."
 msgstr ""
-"Kui soovid lisada listi mittekuuluvaid sotsiaalvÃµrgustike profiile, vÃµi "
-"muuta nende ikoonide jÃ¤rjekorda, kasuta %s."
+"Kui soovid lisada listi mittekuuluvaid sotsiaalvÃµrgustike profiile, vÃµi muuta nende "
+"ikoonide jÃ¤rjekorda, kasuta %s."
 
 #: inc/customizer/sections/general.php:184
 msgid "as described here"
@@ -1426,8 +1404,8 @@ msgstr "PÃ¤ise tausta suurus"
 
 #: inc/customizer/sections/header.php:126
 msgid ""
-"This text only appears if a custom menu has not been assigned to the Header "
-"Bar Menu location in the Navigation section."
+"This text only appears if a custom menu has not been assigned to the Header Bar "
+"Menu location in the Navigation section."
 msgstr ""
 "See tekst ilmub ainult siis, kui kohandatud menÃ¼Ã¼d pole navigeerimise sektsioonis "
 "pÃ¤ise riba menÃ¼Ã¼ asukohta mÃ¤Ã¤ratud."
@@ -1442,19 +1420,16 @@ msgstr "NÃ¤ita pÃ¤ises otsingu vÃ¤lja"
 
 #: inc/customizer/sections/navigation.php:44
 msgid ""
-"After you have created your custom menu for social profile links, select it "
-"here."
-msgstr ""
-"PÃ¤rast kohandatud menÃ¼Ã¼ loomist sotsiaalvÃµrgustike linkidele, vali see "
-"siin."
+"After you have created your custom menu for social profile links, select it here."
+msgstr "PÃ¤rast kohandatud menÃ¼Ã¼ loomist sotsiaalvÃµrgustike linkidele, vali see siin."
 
 #: inc/customizer/sections/navigation.php:59
 msgid ""
-"Select which menu appears in each location. You can edit your menu content "
-"on the Menus screen in the Appearance section."
+"Select which menu appears in each location. You can edit your menu content on the "
+"Menus screen in the Appearance section."
 msgstr ""
-"Vali, milline menÃ¼Ã¼ ilmub igas asukohas. MenÃ¼Ã¼ sisu saab muuta "
-"MenÃ¼Ã¼ ekraanil VÃ¤limuse sektsioonis."
+"Vali, milline menÃ¼Ã¼ ilmub igas asukohas. MenÃ¼Ã¼ sisu saab muuta MenÃ¼Ã¼ ekraanil "
+"VÃ¤limuse sektsioonis."
 
 #: inc/customizer/sections/typography.php:26
 msgid "Looking to add premium fonts from Typekit to your website?"
@@ -1514,7 +1489,7 @@ msgstr "Vidina fondi perekond"
 
 #: inc/customizer/sections/typography.php:219
 msgid "Headers &amp; Body"
-msgstr "PÃ¤ised &amp; keha"
+msgstr "PÃ¤ised ja keha"
 
 #: inc/customizer/sections/typography.php:226
 msgid "H1 Font Family"
@@ -1572,8 +1547,7 @@ msgstr "Keha fondi perekond"
 msgid ""
 "Featured images are not available for this page while using the current page "
 "template."
-msgstr ""
-"Artikli pildid pole kasutatava Å¡ablooni tÃµttu sellele lehekÃ¼ljele saadaval. "
+msgstr "Artikli pildid pole kasutatava Å¡ablooni tÃµttu sellele lehekÃ¼ljele saadaval. "
 
 #: inc/edit-page.php:64
 msgid "Layout Settings"
@@ -1585,7 +1559,7 @@ msgstr "Postitus"
 
 #: inc/edit-page.php:90
 msgid "Looking to configure a unique layout for this %1$s? %2$s."
-msgstr "Soovid konfigureerida unikaalset vÃ¤limust sellele %1$s? %2$s."
+msgstr "Soovid konfigureerida unikaalset vÃ¤limust sellele postitusele? %2$s."
 
 #: inc/extras.php:78
 msgid "Page %s"
@@ -1593,47 +1567,45 @@ msgstr "LehekÃ¼lg %s"
 
 #: inc/extras.php:320
 msgid ""
-"This widget area is currently disabled. Enable it in the \"Footer\" panel of "
-"the Customizer."
+"This widget area is currently disabled. Enable it in the \"Footer\" panel of the "
+"Customizer."
 msgstr ""
 "See vidina ala pole praegu aktiivne. LÃ¼lita see sisse \"Jalus\" paneelis, mille "
 "leiad Kohandaja menÃ¼Ã¼st."
 
 #: inc/extras.php:331
 msgid ""
-"This widget area is currently disabled. Enable it in the \"Content & Layout"
-"\" panel of the Customizer."
+"This widget area is currently disabled. Enable it in the \"Content & Layout\" panel "
+"of the Customizer."
 msgstr ""
-"See vidina ala pole praegu aktiivne. LÃ¼lita see sisse \"Sisu ja vÃ¤limus\" "
-"paneelis Kohandaja menÃ¼Ã¼st."
+"See vidina ala pole praegu aktiivne. LÃ¼lita see sisse \"Sisu ja vÃ¤limus\" paneelis "
+"Kohandaja menÃ¼Ã¼st."
 
 #: inc/extras.php:336
 msgid ""
-"This widget area is currently enabled for the following views: %s. Change "
-"this in the \"Content & Layout\" panel of the Customizer."
+"This widget area is currently enabled for the following views: %s. Change this in "
+"the \"Content & Layout\" panel of the Customizer."
 msgstr ""
-"See vidina ala on praegu aktiivne jÃ¤rgnevatele vaatajatele: %s. Muuda "
-"seda \"Sisu ja vÃ¤limus\" paneelis Kohandaja menÃ¼Ã¼st."
+"See vidina ala on praegu aktiivne jÃ¤rgnevatele vaatajatele: %s. Muuda seda \"Sisu "
+"ja vÃ¤limus\" paneelis Kohandaja menÃ¼Ã¼st."
 
 #: inc/extras.php:359
 msgid "Blog (Post Page)"
 msgstr "Blogi (posituste lehekÃ¼lg)"
 
 #: inc/extras.php:427
-msgid ""
-"The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN."
-msgstr ""
-"Ãœles laaditud pakk paistab olevat plugin. PALUN PAIGALDA SEE PLUGINANA."
+msgid "The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN."
+msgstr "Ãœles laaditud pakk paistab olevat plugin. PALUN PAIGALDA SEE PLUGINANA."
 
 #: inc/extras.php:739
 msgid ""
 "Please <a href=\"%1$s\"><em>update to Make Plus 1.4.0 or later</em></a> for "
-"compatibility with your version of Make. <a href=\"#\" data-nonce=\"%2$s\" "
-"class=\"%3$s\">hide</a>"
+"compatibility with your version of Make. <a href=\"#\" data-nonce=\"%2$s\" class="
+"\"%3$s\">hide</a>"
 msgstr ""
-"Palun <a href=\"%1$s\"><em>uuenda Make Plus 1.4.0 vÃµi uuemaks</em></a> et "
-"see Ã¼hilduks sinu Make paigaldusega. <a href=\"#\" data-nonce=\"%2$s\" "
-"class=\"%3$s\">peida</a>"
+"Palun <a href=\"%1$s\"><em>uuenda Make Plus 1.4.0 vÃµi uuemaks</em></a> et see "
+"Ã¼hilduks sinu Make paigaldusega. <a href=\"#\" data-nonce=\"%2$s\" class=\"%3$s"
+"\">peida</a>"
 
 #: inc/gallery-slider/gallery-slider.php:91
 msgid "Slider Settings"
@@ -1792,27 +1764,22 @@ msgid "Nothing found"
 msgstr "Midagi ei leitud"
 
 #: partials/content-none.php:19
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"Oled valmis oma esimest postitust avaldama? <a href=\"%1$s\">Alusta siin</"
-"a>."
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Oled valmis oma esimest postitust avaldama? <a href=\"%1$s\">Alusta siin</a>."
 
 #: partials/content-none.php:25
 msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
+"Sorry, but nothing matched your search terms. Please try again with some different "
+"keywords."
 msgstr ""
-"Vabandame, aga otsing ei leidnud midagi. Palun proovi uuesi, kasutades "
-"otsimiseks teistsuguseid sÃµnu."
+"Vabandame, aga otsing ei leidnud midagi. Palun proovi uuesi, kasutades otsimiseks "
+"teistsuguseid sÃµnu."
 
 #: partials/content-none.php:27
 msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-"Paistab, et me ei suuda seda leida. Ehk "
-"on otsimine abiks."
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can "
+"help."
+msgstr "Paistab, et me ei suuda seda leida. Ehk on otsimine abiks."
 
 #: partials/entry-date.php:18
 msgid "%s ago"
@@ -1896,29 +1863,28 @@ msgstr "https://thethemefoundry.com/wordpress-themes/make/"
 
 #. Description of the plugin/theme
 msgid ""
-"Create your website without touching a line of code. Make's flexible "
-"customization features and a powerful drag and drop page builder make "
-"designing your site fun and easy. Build almost anything: a simple portfolio "
-"or photography site, an ecommerce business site, a minimalist blog, or even "
-"a professional magazine. You'll start by customizing your background, "
-"layouts, fonts, colors, and logo. Next, add and organize your content using "
-"the drag and drop page builder. Add a photo, a video, a gallery, or even a "
-"slider to any page on your website. Make is responsive, so your website will "
-"naturally look great on phones, tablets, and desktop screens. It's also "
-"fully compatible with popular plugins like WooCommerce, Gravity Forms, "
-"Contact Form 7, Jetpack, and WP PageNavi."
+"Create your website without touching a line of code. Make's flexible customization "
+"features and a powerful drag and drop page builder make designing your site fun and "
+"easy. Build almost anything: a simple portfolio or photography site, an ecommerce "
+"business site, a minimalist blog, or even a professional magazine. You'll start by "
+"customizing your background, layouts, fonts, colors, and logo. Next, add and "
+"organize your content using the drag and drop page builder. Add a photo, a video, a "
+"gallery, or even a slider to any page on your website. Make is responsive, so your "
+"website will naturally look great on phones, tablets, and desktop screens. It's "
+"also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact "
+"Form 7, Jetpack, and WP PageNavi."
 msgstr ""
-"Loo oma veebileht ilma, et puutuksid Ã¼htegi rida koodi. Make'i paindlikud"
-"kohandamise valikud ja vÃµimas lohista ja vabasta lehekÃ¼lje ehitaja muudavad"
-"sinu lehe disainimise kergeks ja lÃµbusaks. Ehita peaaegu kÃµike: lihtne portfoolio "
-"vÃµi fotograafia leht, internetipood, minimalistlik blogi vÃµi isegi professionaalne "
-"ajakiri. Alusta, kohandades tausta, vÃ¤limust, fonte, vÃ¤rve ja logo. "
-"JÃ¤rgmisena lisa ja organiseeri oma lehekÃ¼lje sisu, kasutades "
-"lohista ja vabasta veebilehe ehitajat. Lisa foto, video, galerii vÃµi isegi "
-"liugur mistahes veebilehele. Make on dÃ¼naamiline, seega sinu veebileht nÃ¤eb ilus "
-"vÃ¤lja nii tahvelarvutis, mobiilis kui ka tavalisel arvutil. Lisaks on see ka "
-"tÃ¤ielikult Ã¼hilduv populaarsete pluginatega nagu WooCommerce, Gravity Forms, "
-"Contact Form 7, Jetpack ja WP PageNavi."
+"Loo oma veebileht ilma, et puutuksid Ã¼htegi rida koodi. Make'i "
+"paindlikudkohandamise valikud ja vÃµimas lohista ja vabasta lehekÃ¼lje ehitaja "
+"muudavadsinu lehe disainimise kergeks ja lÃµbusaks. Ehita peaaegu kÃµike: lihtne "
+"portfoolio vÃµi fotograafia leht, internetipood, minimalistlik blogi vÃµi isegi "
+"professionaalne ajakiri. Alusta, kohandades tausta, vÃ¤limust, fonte, vÃ¤rve ja logo. "
+"JÃ¤rgmisena lisa ja organiseeri oma lehekÃ¼lje sisu, kasutades lohista ja vabasta "
+"veebilehe ehitajat. Lisa foto, video, galerii vÃµi isegi liugur mistahes "
+"veebilehele. Make on dÃ¼naamiline, seega sinu veebileht nÃ¤eb ilus vÃ¤lja nii "
+"tahvelarvutis, mobiilis kui ka tavalisel arvutil. Lisaks on see ka tÃ¤ielikult "
+"Ã¼hilduv populaarsete pluginatega nagu WooCommerce, Gravity Forms, Contact Form 7, "
+"Jetpack ja WP PageNavi."
 
 #. Author of the plugin/theme
 msgid "The Theme Foundry"
