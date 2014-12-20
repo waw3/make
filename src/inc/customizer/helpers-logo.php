@@ -312,7 +312,18 @@ class TTFMAKE_Logo {
 			}
 		}
 
-		// Allow logo settings to be overridden via filter
+		/**
+		 * Filter the URL and dimensions of the custom logo.
+		 *
+		 * This filter may be useful if you encounter problems getting your custom
+		 * logo to appear. Note, however, that using this filter will hard-code the logo
+		 * information and settings in the Logo interface in the Customizer won't be
+		 * reflected.
+		 *
+		 * @since 1.0.0.
+		 *
+		 * @param array    $logo_information    The array of information.
+		 */
 		$this->logo_information = apply_filters( 'ttfmake_custom_logo_information', $this->logo_information );
 
 		return $this->logo_information;
@@ -326,6 +337,13 @@ class TTFMAKE_Logo {
 	 * @return void
 	 */
 	function print_logo_css() {
+		/**
+		 * Filter the maximum allowable width for a custom logo.
+		 *
+		 * @since 1.0.0.
+		 *
+		 * @param string|int    $width    The maximum width, in pixels.
+		 */
 		$size = apply_filters( 'ttfmake_custom_logo_max_width', '960' );
 
 		// Grab the logo information
