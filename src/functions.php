@@ -140,6 +140,9 @@ function ttfmake_setup() {
 		'caption'
 	) );
 
+	// Title tag
+	add_theme_support( 'title-tag' );
+
 	// Menu locations
 	register_nav_menus( array(
 		'primary'    => __( 'Primary Menu', 'make' ),
@@ -240,12 +243,26 @@ if ( ! function_exists( 'ttfmake_head_early' ) ) :
  * @return void
  */
 function ttfmake_head_early() {
+	// Title tag fallback
+	if ( ! function_exists( '_wp_render_title_tag' ) ) : ?>
+		<title><?php wp_title( '|', true, 'right' ); ?></title>
+<?php
+	endif;
+
 	// JavaScript detection ?>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-		document.documentElement.className = document.documentElement.className.replace(new RegExp('(^|\\s)no-js(\\s|$)'), '$1js$2');
-		/* ]]> */
-	</script>
+
+		<script type="text/javascript">
+			/* <![CDATA[ */
+			document.documentElement.className = document.documentElement.className.replace(new RegExp('(^|\\s)no-js(\\s|$)'), '$1js$2');
+			/* ]]> */
+		</script>
+
+<?php
+	// Meta tags ?>
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 <?php
 }
 endif;
