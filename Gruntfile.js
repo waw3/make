@@ -260,8 +260,8 @@ module.exports = function( grunt ) {
 						var label = data.family,
 							font = {
 								label: label,
-								variants: data.variants,
-								subsets: data.subsets,
+								variants: data.variants.sort(),
+								subsets: data.subsets.sort(),
 								category: data.category
 							};
 
