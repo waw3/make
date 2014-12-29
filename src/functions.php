@@ -35,21 +35,33 @@ if ( ! function_exists( 'ttfmake_content_width' ) ) :
 function ttfmake_content_width() {
 	global $content_width;
 
+	$new_width = $content_width;
 	$left = ttfmake_has_sidebar( 'left' );
 	$right = ttfmake_has_sidebar( 'right' );
 
 	// No sidebars
 	if ( ! $left && ! $right ) {
-		$content_width = 960;
+		$new_width = 960;
 	}
 	// Both sidebars
 	else if ( $left && $right ) {
-		$content_width = 464;
+		$new_width = 464;
 	}
 	// One sidebar
 	else if ( $left || $right ) {
-		$content_width = 620;
+		$new_width = 620;
 	}
+
+	/**
+	 * Filter to modify the $content_width variable.
+	 *
+	 * @since 1.4.8
+	 *
+	 * @param int     $new_width    The new content width.
+	 * @param bool    $left         True if the current view has a left sidebar.
+	 * @param bool    $right        True if the current view has a right sidebar.
+	 */
+	$content_width = apply_filters( 'make_content_width', $new_width, $left, $right );
 }
 endif;
 
