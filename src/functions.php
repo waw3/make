@@ -256,7 +256,7 @@ if ( ! function_exists( 'ttfmake_head_early' ) ) :
  */
 function ttfmake_head_early() {
 	// Title tag fallback
-	if ( ! function_exists( '_wp_render_title_tag' ) ) : ?>
+	if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) : ?>
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
 <?php
 	endif;

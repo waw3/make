@@ -58,11 +58,11 @@ if ( ! function_exists( 'ttfmake_wp_title' ) ) :
  * @return string              The filtered title.
  */
 function ttfmake_wp_title( $title, $sep ) {
-	global $page, $paged;
-
-	if ( is_feed() ) {
+	if ( version_compare( $GLOBALS['wp_version'], '4.1', '>=' ) || is_feed() ) {
 		return $title;
 	}
+
+	global $page, $paged;
 
 	// Add the blog name
 	$title .= get_bloginfo( 'name' );
