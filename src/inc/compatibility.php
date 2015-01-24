@@ -409,6 +409,37 @@ endif;
 
 add_action( 'wp_ajax_ttfmake_hide_notice', 'ttfmake_hide_upgrade_notice' );
 
+
+function ttfmake_plus_upgrade_notices() {
+	if ( ttfmake_is_plus() ) {
+		$make_plus_version = ( function_exists( 'ttfmp_get_app' ) ) ? ttfmp_get_app()->version : 0;
+
+		if ( version_compare( $make_plus_version, '1.4.0', '<' ) ) {
+			ttfmake_register_admin_notice(
+				'make-plus-lt-140',
+				__( '', 'make' ),
+				array(
+					'cap'    => 'edit_plugins',
+					'screen' => array(),
+					'type'   => 'error',
+				)
+			);
+		} else if ( version_compare( $make_plus_version, '1.4.8', '<=' ) ) {
+			ttfmake_register_admin_notice(
+				'make-plus-lte-148',
+				__( '', 'make' ),
+				array(
+					'cap'    => 'edit_plugins',
+					'screen' => array(),
+					'type'   => 'warning',
+				)
+			);
+		}
+	}
+}
+
+add_action( 'after_setup_theme', 'ttfmake_plus_upgrade_notices' );
+
 function test() {
 	ttfmake_register_admin_notice(
 		'test1',
