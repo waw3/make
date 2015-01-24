@@ -408,3 +408,15 @@ function ttfmake_hide_upgrade_notice() {
 endif;
 
 add_action( 'wp_ajax_ttfmake_hide_notice', 'ttfmake_hide_upgrade_notice' );
+
+function test() {
+	ttfmake_register_admin_notice(
+		'test1',
+		'Hello, this is a test message.',
+		array(
+			'type' => 'warning'
+		)
+	);
+}
+
+add_action( 'after_setup_theme', 'test' );
