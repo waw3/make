@@ -81,7 +81,16 @@ class TTFMAKE_Admin_Notice {
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 	}
 
-
+	/**
+	 * Register an admin notice.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @param string    $id         A unique ID string for the admin notice.
+	 * @param string    $message    The content of the admin notice.
+	 * @param array     $args       Array of configuration parameters for the admin notice.
+	 * @return void
+	 */
 	public function register_admin_notice( $id, $message, $args = array() ) {
 		// Prep id
 		$id = sanitize_title_with_dashes( $id );
@@ -104,49 +113,65 @@ class TTFMAKE_Admin_Notice {
 		}
 	}
 
-
+	/**
+	 * Get the visible notices for a specified screen.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @param  string    $screen    The screen to display the notices on.
+	 * @return array                Array of notices to display on the specified screen.
+	 */
 	private function get_notices( $screen = '' ) {
 		if ( ! $screen ) {
 			return $this->notices;
 		}
 
+		// Get the array of notices that the current user has already dismissed
 		$user_id = get_current_user_id();
 		$dismissed = get_user_meta( $user_id, 'ttfmake-dismissed-notices', true );
-		$notices = $this->notices;
 
+		// Remove notices that don't meet requirements
+		$notices = $this->notices;
 		foreach( $notices as $id => $args ) {
-			if ( ! in_array( $screen, (array) $args['screen'] ) ) {
+			if (
+				! in_array( $screen, (array) $args['screen'] ) ||
+				! current_user_can( $args['cap'] ) ||
+				in_array( $id, (array) $dismissed )
+			) {
 				unset( $notices[ $id ] );
-				continue;
-			}
-			if ( ! current_user_can( $args['cap'] ) ) {
-				unset( $notices[ $id ] );
-				continue;
-			}
-			if ( in_array( $id, (array) $dismissed ) ) {
-				unset( $notices[ $id ] );
-				continue;
 			}
 		}
 
 		return $notices;
 	}
 
-
+	/**
+	 * Wrapper function for admin_notices hook that sets everything up.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @return void
+	 */
 	public function admin_notices() {
 		global $pagenow;
 		$current_notices = $this->get_notices( $pagenow );
 
 		if ( ! empty( $current_notices ) && file_exists( $this->template ) ) {
-			add_action( 'admin_print_footer_scripts', array( $this, 'print_footer_scripts' ) );
+			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
 			$this->render_notices( $current_notices );
 		}
 	}
 
-
+	/**
+	 * Output the markup and styles for admin notices.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @param  array    $notices    The array of notices to render.
+	 * @return void
+	 */
 	private function render_notices( $notices ) {
 		global $wp_version;
-
 		?>
 		<style type="text/css">
 			.ttfmake-dismiss {
@@ -181,8 +206,14 @@ class TTFMAKE_Admin_Notice {
 		}
 	}
 
-
-	public function print_footer_scripts() {
+	/**
+	 * Output the JS to hide admin notices.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @return void
+	 */
+	public function print_admin_notices_js() {
 		?>
 		<script type="application/javascript">
 			/* Make admin notices */
@@ -217,7 +248,13 @@ class TTFMAKE_Admin_Notice {
 	<?php
 	}
 
-
+	/**
+	 * Process the Ajax request to hide an admin notice.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @return void
+	 */
 	public function handle_ajax() {
 		// Check requirements
 		if (
@@ -261,11 +298,22 @@ function ttfmake_admin_notice() {
 	return TTFMAKE_Admin_Notice::instance();
 }
 
-ttfmake_admin_notice()->init();
-
-
+/**
+ * Wrapper function to register an admin notice.
+ *
+ * @since 1.4.9.
+ *
+ * @param string    $id         A unique ID string for the admin notice.
+ * @param string    $message    The content of the admin notice.
+ * @param array     $args       Array of configuration parameters for the admin notice.
+ * @return void
+ */
 function ttfmake_register_admin_notice( $id, $message, $args ) {
 	ttfmake_admin_notice()->register_admin_notice( $id, $message, $args );
 }
 
+/**
+ * Fire the init function immediately.
+ */
+ttfmake_admin_notice()->init();
 endif;
