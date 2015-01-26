@@ -12,18 +12,30 @@ if ( ! class_exists( 'TTFMAKE_Admin_Notice' ) ) :
  * @since 1.4.9.
  */
 class TTFMAKE_Admin_Notice {
-
-	var $notices = array();
-
-
-	var $template = '';
-
 	/**
-	 * The one instance of TTFMAKE_Admin_Notice.
+	 * The array of registered notices.
 	 *
 	 * @since 1.4.9.
 	 *
-	 * @var   TTFMAKE_Admin_Notice
+	 * @var    array    The array of registered notices.
+	 */
+	var $notices = array();
+
+	/**
+	 * The path to the notice template file.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @var    string    The path to the notice template file.
+	 */
+	var $template = '';
+
+	/**
+	 * The single instance of the class.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @var    object    The single instance of the class.
 	 */
 	private static $instance;
 
@@ -133,6 +145,8 @@ class TTFMAKE_Admin_Notice {
 
 
 	private function render_notices( $notices ) {
+		global $wp_version;
+
 		?>
 		<style type="text/css">
 			.ttfmake-dismiss {
@@ -152,6 +166,17 @@ class TTFMAKE_Admin_Notice {
 			$type    = $args['type'];
 			$nonce   = wp_create_nonce( 'ttfmake_dismiss_' . $id );
 
+			// CSS and JS in older version of WP rely on the error and updated classes.
+			$legacy_class = '';
+			if ( version_compare( $wp_version, '4.1', '<=' ) ) {
+				if ( in_array( $type, array( 'warning', 'error' ) ) ) {
+					$legacy_class = 'error';
+				} else if ( in_array( $type, array( 'success', 'info' ) ) ) {
+					$legacy_class = 'updated';
+				}
+			}
+
+			// Load the template
 			require( $this->template );
 		}
 	}
@@ -202,7 +227,7 @@ class TTFMAKE_Admin_Notice {
 			! isset( $_POST['nonce'] ) ||
 			! wp_verify_nonce( $_POST['nonce'], 'ttfmake_dismiss_' . $_POST['nid'] )
 		) {
-			return;
+			wp_die();
 		}
 
 		// Get array of dismissed notices
