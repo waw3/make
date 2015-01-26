@@ -96,7 +96,9 @@ class TTFMAKE_Admin_Notice {
 		$id = sanitize_title_with_dashes( $id );
 
 		// Prep message
-		$message = wp_kses( $message, wp_kses_allowed_html() );
+		$allowedtags = wp_kses_allowed_html();
+		$allowedtags['a']['target'] = true;
+		$message = wp_kses( $message, $allowedtags );
 
 		// Prep args
 		$defaults = array(
