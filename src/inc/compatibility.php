@@ -439,15 +439,3 @@ function ttfmake_plus_upgrade_notices() {
 }
 
 add_action( 'after_setup_theme', 'ttfmake_plus_upgrade_notices' );
-
-function test() {
-	ttfmake_register_admin_notice(
-		'test1',
-		'Hello, this is a test message.',
-		array(
-			'type' => 'warning'
-		)
-	);
-}
-
-add_action( 'after_setup_theme', 'test' );
