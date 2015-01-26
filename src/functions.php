@@ -97,6 +97,9 @@ if ( is_admin() ) {
 
 	// Page Builder
 	require get_template_directory() . '/inc/builder/core/base.php';
+
+	// Admin notices
+	require get_template_directory() . '/inc/admin-notice/admin-notice.php';
 }
 
 /**
