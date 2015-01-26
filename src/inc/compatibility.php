@@ -331,7 +331,7 @@ function ttfmake_upgrade_notices() {
 				sprintf(
 					'<a href="%1$s">%2$s</a>',
 					admin_url( 'update-core.php' ),
-					__( 'update', 'make' )
+					__( 'update WordPress', 'make' )
 				)
 			),
 			array(
