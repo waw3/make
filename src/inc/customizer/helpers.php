@@ -273,7 +273,7 @@ function ttfmake_get_social_links() {
 	$default_services = array(
 		'facebook' => array(
 			'title' => 'Facebook',
-			'class' => 'fa-facebook',
+			'class' => 'fa-facebook-official',
 		),
 		'twitter' => array(
 			'title' => 'Twitter',
