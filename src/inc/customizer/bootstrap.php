@@ -15,14 +15,15 @@ function ttfmake_customizer_init() {
 	$path = get_template_directory() . '/inc/customizer/';
 
 	// Always load
+	require_once( $path . 'choices.php' );
 	require_once( $path . 'controls.php' );
+	require_once( $path . 'css.php' );
+	require_once( $path . 'defaults.php' );
+	require_once( $path . 'display.php' );
+	require_once( $path . 'fonts.php' );
 	require_once( $path . 'google-fonts.php' );
 	require_once( $path . 'helpers.php' );
-	require_once( $path . 'helpers-css.php' );
-	require_once( $path . 'helpers-defaults.php' );
-	require_once( $path . 'helpers-display.php' );
-	require_once( $path . 'helpers-fonts.php' );
-	require_once( $path . 'helpers-logo.php' );
+	require_once( $path . 'logo.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
