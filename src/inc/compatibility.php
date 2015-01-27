@@ -400,3 +400,19 @@ function ttfmake_plus_upgrade_notices() {
 }
 
 add_action( 'admin_init', 'ttfmake_plus_upgrade_notices' );
+
+if ( ! function_exists( 'ttfmake_display_favicons' ) ) :
+/**
+ * Write the favicons to the head to implement the options.
+ *
+ * This function is deprecated. The functionality was moved to ttfmake_head_late().
+ *
+ * @since  1.0.0.
+ * @deprecated 1.5.0.
+ *
+ * @return void
+ */
+function ttfmake_display_favicons() {
+	_deprecated_function( __FUNCTION__, '1.5.0' );
+}
+endif;

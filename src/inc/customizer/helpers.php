@@ -3,29 +3,6 @@
  * @package Make
  */
 
-if ( ! function_exists( 'ttfmake_display_favicons' ) ) :
-/**
- * Write the favicons to the head to implement the options.
- *
- * @since  1.0.0.
- *
- * @return void
- */
-function ttfmake_display_favicons() {
-	$logo_favicon = get_theme_mod( 'logo-favicon', ttfmake_get_default( 'logo-favicon' ) );
-	if ( ! empty( $logo_favicon ) ) : ?>
-		<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
-	<?php endif;
-
-	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttfmake_get_default( 'logo-apple-touch' ) );
-	if ( ! empty( $logo_apple_touch ) ) : ?>
-		<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
-	<?php endif;
-}
-endif;
-
-add_action( 'wp_head', 'ttfmake_display_favicons' );
-
 if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
 /**
  * Add theme option body classes.
