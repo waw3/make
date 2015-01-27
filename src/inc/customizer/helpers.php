@@ -3,35 +3,6 @@
  * @package Make
  */
 
-if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
-/**
- * Add theme option body classes.
- *
- * @since  1.0.0.
- *
- * @param  array    $classes    Existing classes.
- * @return array                Modified classes.
- */
-function ttfmake_body_layout_classes( $classes ) {
-	// Full-width vs Boxed
-	$classes[] = get_theme_mod( 'general-layout', ttfmake_get_default( 'general-layout' ) );
-
-	// Header branding position
-	if ( 'right' === get_theme_mod( 'header-branding-position', ttfmake_get_default( 'header-branding-position' ) ) ) {
-		$classes[] = 'branding-right';
-	}
-
-	// Header Bar text position
-	if ( 'flipped' === get_theme_mod( 'header-bar-content-layout', ttfmake_get_default( 'header-bar-content-layout' ) ) ) {
-		$classes[] = 'header-bar-flipped';
-	}
-
-	return $classes;
-}
-endif;
-
-add_filter( 'body_class', 'ttfmake_body_layout_classes' );
-
 if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
 /**
  * Get the social links from options.

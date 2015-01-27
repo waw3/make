@@ -30,6 +30,19 @@ if ( ! function_exists( 'ttfmake_body_classes' ) ) :
  * @return array                Modified class list.
  */
 function ttfmake_body_classes( $classes ) {
+	// Full-width vs Boxed
+	$classes[] = get_theme_mod( 'general-layout', ttfmake_get_default( 'general-layout' ) );
+
+	// Header branding position
+	if ( 'right' === get_theme_mod( 'header-branding-position', ttfmake_get_default( 'header-branding-position' ) ) ) {
+		$classes[] = 'branding-right';
+	}
+
+	// Header Bar text position
+	if ( 'flipped' === get_theme_mod( 'header-bar-content-layout', ttfmake_get_default( 'header-bar-content-layout' ) ) ) {
+		$classes[] = 'header-bar-flipped';
+	}
+
 	// Left Sidebar
 	if ( true === ttfmake_has_sidebar( 'left' ) ) {
 		$classes[] = 'has-left-sidebar';

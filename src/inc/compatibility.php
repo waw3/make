@@ -416,3 +416,21 @@ function ttfmake_display_favicons() {
 	_deprecated_function( __FUNCTION__, '1.5.0' );
 }
 endif;
+
+if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
+/**
+ * Add theme option body classes.
+ *
+ * This function is deprecated. The functionality was moved to ttfmake_body_classes().
+ *
+ * @since  1.0.0.
+ * @deprecated 1.5.0.
+ *
+ * @param  array    $classes    Existing classes.
+ * @return array                Modified classes.
+ */
+function ttfmake_body_layout_classes( $classes ) {
+	_deprecated_function( __FUNCTION__, '1.5.0' );
+	return $classes;
+}
+endif;
