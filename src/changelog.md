@@ -1,3 +1,7 @@
+## 1.4.10 (unreleased)
+
+* Updated FontAwesome to 4.3.0.
+
 ## 1.4.9
 
 * Fixed bug that displayed page duplication info on custom post type screens.
