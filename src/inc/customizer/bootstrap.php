@@ -16,13 +16,13 @@ function ttfmake_customizer_init() {
 
 	// Always load
 	require_once( $path . 'choices.php' );
-	require_once( $path . 'controls.php' );
 	require_once( $path . 'css.php' );
 	require_once( $path . 'defaults.php' );
 	require_once( $path . 'display.php' );
 	require_once( $path . 'fonts.php' );
 	require_once( $path . 'google-fonts.php' );
 	require_once( $path . 'logo.php' );
+	require_once( $path . 'priority.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
@@ -329,6 +329,12 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 			// Check for a specialized control class
 			if ( isset( $control['control_type'] ) ) {
 				$class = $control['control_type'];
+
+				$control_path = apply_filters( 'make_customizer_control_path', get_template_directory() . '/inc/customizer/controls/' , $control );
+				$control_file = $control_path . $class . '.php';
+				if ( file_exists( $control_file ) ) {
+					require_once( $control_file );
+				}
 
 				if ( class_exists( $class ) ) {
 					unset( $control['control_type'] );
