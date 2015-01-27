@@ -22,7 +22,6 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'display.php' );
 	require_once( $path . 'fonts.php' );
 	require_once( $path . 'google-fonts.php' );
-	require_once( $path . 'helpers.php' );
 	require_once( $path . 'logo.php' );
 
 	// Hook up functions

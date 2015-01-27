@@ -408,6 +408,247 @@ function ttfmake_sidebar_list_enabled( $location ) {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
+/**
+ * Get the social links from options.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    Keys are service names and the values are links.
+ */
+function ttfmake_get_social_links() {
+	// Define default services; note that these are intentionally non-translatable
+	$default_services = array(
+		'facebook' => array(
+			'title' => 'Facebook',
+			'class' => 'fa-facebook-offical',
+		),
+		'twitter' => array(
+			'title' => 'Twitter',
+			'class' => 'fa-twitter',
+		),
+		'google-plus-square' => array(
+			'title' => 'Google+',
+			'class' => 'fa-google-plus-square',
+		),
+		'linkedin' => array(
+			'title' => 'LinkedIn',
+			'class' => 'fa-linkedin',
+		),
+		'instagram' => array(
+			'title' => 'Instagram',
+			'class' => 'fa-instagram',
+		),
+		'flickr' => array(
+			'title' => 'Flickr',
+			'class' => 'fa-flickr',
+		),
+		'youtube' => array(
+			'title' => 'YouTube',
+			'class' => 'fa-youtube',
+		),
+		'vimeo-square' => array(
+			'title' => 'Vimeo',
+			'class' => 'fa-vimeo-square',
+		),
+		'pinterest' => array(
+			'title' => 'Pinterest',
+			'class' => 'fa-pinterest',
+		),
+		'email' => array(
+			'title' => __( 'Email', 'make' ),
+			'class' => 'fa-envelope',
+		),
+		'rss' => array(
+			'title' => __( 'RSS', 'make' ),
+			'class' => 'fa-rss',
+		),
+	);
+
+	// Set up the collector array
+	$services_with_links = array();
+
+	// Get the links for these services
+	foreach ( $default_services as $service => $details ) {
+		$url = get_theme_mod( 'social-' . $service, ttfmake_get_default( 'social-' . $service ) );
+		if ( '' !== $url ) {
+			$services_with_links[ $service ] = array(
+				'title' => $details['title'],
+				'url'   => esc_url( $url ),
+				'class' => $details['class'],
+			);
+		}
+	}
+
+	// Special handling for RSS
+	$hide_rss = (int) get_theme_mod( 'social-hide-rss', ttfmake_get_default( 'social-hide-rss' ) );
+	if ( 0 === $hide_rss ) {
+		$custom_rss = get_theme_mod( 'social-custom-rss', ttfmake_get_default( 'social-custom-rss' ) );
+		if ( ! empty( $custom_rss ) ) {
+			$services_with_links['rss']['url'] = esc_url( $custom_rss );
+		} else {
+			$services_with_links['rss']['url'] = get_feed_link();
+		}
+	} else {
+		unset( $services_with_links['rss'] );
+	}
+
+	// Properly set the email
+	if ( isset( $services_with_links['email']['url'] ) ) {
+		$services_with_links['email']['url'] = esc_url( 'mailto:' . $services_with_links['email']['url'] );
+	}
+
+	/**
+	 * Filter the social links added to the site.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $services_with_links    The social services and links.
+	 */
+	return apply_filters( 'make_social_links', $services_with_links );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_pre_wp_nav_menu_social' ) ) :
+/**
+ * Alternative output for wp_nav_menu for the 'social' menu location.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $output    Output for the menu.
+ * @param  object    $args      wp_nav_menu arguments.
+ * @return string               Modified menu.
+ */
+function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
+	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
+		return $output;
+	}
+
+	// Get the menu object
+	$locations = get_nav_menu_locations();
+	$menu      = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
+
+	if ( ! $menu || is_wp_error( $menu ) ) {
+		return $output;
+	}
+
+	$output = '';
+
+	// Get the menu items
+	$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
+
+	// Set up the $menu_item variables
+	_wp_menu_item_classes_by_context( $menu_items );
+
+	// Sort the menu items
+	$sorted_menu_items = array();
+	foreach ( (array) $menu_items as $menu_item ) {
+		$sorted_menu_items[ $menu_item->menu_order ] = $menu_item;
+	}
+
+	unset( $menu_items, $menu_item );
+
+	/**
+	 * Filter the supported social icons.
+	 *
+	 * This array uses the url pattern for the key and the CSS class (as dictated by Font Awesome) as the array value.
+	 * The URL pattern is used to match the URL used by a menu item.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $icons    The array of supported social icons.
+	 */
+	$supported_icons = apply_filters( 'make_supported_social_icons', array(
+		'angel.co'           => 'fa-angellist',
+		'app.net'            => 'fa-adn',
+		'behance.net'        => 'fa-behance',
+		'bitbucket.org'      => 'fa-bitbucket',
+		'codepen.io'         => 'fa-codepen',
+		'delicious.com'      => 'fa-delicious',
+		'deviantart.com'     => 'fa-deviantart',
+		'digg.com'           => 'fa-digg',
+		'dribbble.com'       => 'fa-dribbble',
+		'facebook.com'       => 'fa-facebook-official',
+		'flickr.com'         => 'fa-flickr',
+		'foursquare.com'     => 'fa-foursquare',
+		'github.com'         => 'fa-github',
+		'gittip.com'         => 'fa-gittip',
+		'plus.google.com'    => 'fa-google-plus-square',
+		'instagram.com'      => 'fa-instagram',
+		'jsfiddle.net'       => 'fa-jsfiddle',
+		'last.fm'            => 'fa-lastfm',
+		'leanpub.com'        => 'fa-leanpub',
+		'linkedin.com'       => 'fa-linkedin',
+		'medium.com'         => 'fa-medium',
+		'pinterest.com'      => 'fa-pinterest',
+		'qzone.qq.com'       => 'fa-qq',
+		'reddit.com'         => 'fa-reddit',
+		'renren.com'         => 'fa-renren',
+		'slideshare.net'     => 'fa-slideshare',
+		'soundcloud.com'     => 'fa-soundcloud',
+		'spotify.com'        => 'fa-spotify',
+		'stackexchange.com'  => 'fa-stack-exchange',
+		'stackoverflow.com'  => 'fa-stack-overflow',
+		'steamcommunity.com' => 'fa-steam',
+		'stumbleupon.com'    => 'fa-stumbleupon',
+		't.qq.com'           => 'fa-tencent-weibo',
+		'trello.com'         => 'fa-trello',
+		'tumblr.com'         => 'fa-tumblr',
+		'twitch.tv'          => 'fa-twitch',
+		'twitter.com'        => 'fa-twitter',
+		'vimeo.com'          => 'fa-vimeo-square',
+		'vine.co'            => 'fa-vine',
+		'vk.com'             => 'fa-vk',
+		'weibo.com'          => 'fa-weibo',
+		'weixin.qq.com'      => 'fa-weixin',
+		'wordpress.com'      => 'fa-wordpress',
+		'xing.com'           => 'fa-xing',
+		'yahoo.com'          => 'fa-yahoo',
+		'yelp.com'           => 'fa-yelp',
+		'youtube.com'        => 'fa-youtube',
+	) );
+
+	// Process each menu item
+	foreach ( $sorted_menu_items as $item ) {
+		$item_output = '';
+
+		// Look for matching icons
+		foreach ( $supported_icons as $pattern => $class ) {
+			if ( false !== strpos( $item->url, $pattern ) ) {
+				$item_output .= '<li class="' . esc_attr( str_replace( 'fa-', '', $class ) ) . '">';
+				$item_output .= '<a href="' . esc_url( $item->url ) . '">';
+				$item_output .= '<i class="fa fa-fw ' . esc_attr( $class ) . '">';
+				$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
+				$item_output .= '</i></a></li>';
+				break;
+			}
+		}
+
+		// No matching icons
+		if ( '' === $item_output ) {
+			$item_output .= '<li class="external-link-square">';
+			$item_output .= '<a href="' . esc_url( $item->url ) . '">';
+			$item_output .= '<i class="fa fa-fw fa-external-link-square">';
+			$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
+			$item_output .= '</i></a></li>';
+		}
+
+		// Add item to list
+		$output .= $item_output;
+		unset( $item_output );
+	}
+
+	// If there are menu items, add a wrapper
+	if ( '' !== $output ) {
+		$output = '<ul class="' . esc_attr( $args->menu_class ) . '">' . $output . '</ul>';
+	}
+
+	return $output;
+}
+endif;
+
+add_filter( 'pre_wp_nav_menu', 'ttfmake_pre_wp_nav_menu_social', 10, 2 );
+
 if ( ! function_exists( 'ttfmake_get_section_data' ) ) :
 /**
  * Retrieve all of the data for the sections.
