@@ -332,49 +332,40 @@ a {
 			@extend .screen-reader-text;
 		}
 	}
-	&.social-customizer {
-		.facebook a:hover,
-		.facebook a:focus {
+	a:hover .fa,
+	a:focus .fa {
+		color: #808080;
+		&.fa-facebook-official {
 			color: #3B5999;
 		}
-		.twitter a:hover,
-		.twitter a:focus {
+		&.fa-twitter {
 			color: #4099ff;
 		}
-		.google-plus-square a:hover,
-		.google-plus-square a:focus {
+		&.fa-google-plus-square {
 			color: #d34836;
 		}
-		.linkedin a:hover,
-		.linkedin a:focus {
+		&.fa-linkedin {
 			color: #007bb6;
 		}
-		.instagram a:hover,
-		.instagram a:focus {
+		&.fa-instagram {
 			color: #517fa4;
 		}
-		.flickr a:hover,
-		.flickr a:focus {
+		&.fa-flickr {
 			color: #ff0084;
 		}
-		.youtube a:hover,
-		.youtube a:focus {
+		&.fa-youtube {
 			color: #e52d27;
 		}
-		.vimeo-square a:hover,
-		.vimeo-square a:focus {
+		&.fa-vimeo-square {
 			color: #1ab7ea;
 		}
-		.pinterest a:hover,
-		.pinterest a:focus {
+		&.fa-pinterest {
 			color: #c92228;
 		}
-		.email a:hover,
-		.email a:focus {
+		&.fa-envelope {
 			color: #ffae00;
 		}
-		.rss a:hover,
-		.rss a:focus {
+		&.fa-rss {
 			color: #ff6600;
 		}
 	}

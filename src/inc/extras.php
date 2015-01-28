@@ -419,9 +419,9 @@ if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
 function ttfmake_get_social_links() {
 	// Define default services; note that these are intentionally non-translatable
 	$default_services = array(
-		'facebook' => array(
+		'facebook-official' => array(
 			'title' => 'Facebook',
-			'class' => 'fa-facebook-offical',
+			'class' => 'fa-facebook-official',
 		),
 		'twitter' => array(
 			'title' => 'Twitter',
@@ -636,6 +636,23 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		// Add item to list
 		$output .= $item_output;
 		unset( $item_output );
+	}
+
+	// Email & RSS
+	$customizer_links = ttfmake_get_social_links();
+	if ( isset( $customizer_links['email'] ) ) {
+		$output .= '<li class="email">';
+		$output .= '<a href="' . esc_url( $customizer_links['email']['url'] ) . '">';
+		$output .= '<i class="fa fa-fw fa-envelope">';
+		$output .= '<span>' . esc_html( $customizer_links['email']['title'] ) . '</span>';
+		$output .= '</i></a></li>';
+	}
+	if ( isset( $customizer_links['rss'] ) ) {
+		$output .= '<li class="rss">';
+		$output .= '<a href="' . esc_url( $customizer_links['rss']['url'] ) . '">';
+		$output .= '<i class="fa fa-fw fa-rss">';
+		$output .= '<span>' . esc_html( $customizer_links['rss']['title'] ) . '</span>';
+		$output .= '</i></a></li>';
 	}
 
 	// If there are menu items, add a wrapper

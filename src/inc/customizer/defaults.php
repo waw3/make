@@ -35,7 +35,7 @@ function ttfmake_option_defaults() {
 		'main-background-position'                 => 'left',
 		'main-background-size'                     => 'auto',
 		// Social Profiles & RSS
-		'social-facebook'                          => '',
+		'social-facebook-official'                 => '',
 		'social-twitter'                           => '',
 		'social-google-plus-square'                => '',
 		'social-linkedin'                          => '',
@@ -236,6 +236,7 @@ function ttfmake_option_defaults() {
 		'font-header-size'                         => 46,
 		'font-widget-size'                         => 13,
 		'font-body-size'                           => 17,
+		'social-facebook'                          => '',
 	);
 
 	/**

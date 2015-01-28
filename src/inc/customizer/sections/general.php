@@ -85,14 +85,14 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	 */
 
 	/**
-	 * Social Profiles & RSS
+	 * Social Profiles
 	 */
 	$general_sections['social'] = array(
 		'panel'       => $panel,
-		'title'       => __( 'Social Profiles &amp; RSS', 'make' ),
+		'title'       => __( 'Social Profiles', 'make' ),
 		'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
 		'options'     => array(
-			'social-facebook'           => array(
+			'social-facebook-official'  => array(
 				'setting' => array(
 					'sanitize_callback' => 'esc_url_raw',
 				),
@@ -186,12 +186,17 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					),
 				),
 			),
-			'social-divider-line' => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'line',
-				),
-			),
+		),
+	);
+
+	/**
+	 * Email
+	 */
+	$general_sections['email'] = array(
+		'panel'       => $panel,
+		'title'       => __( 'Email', 'make' ),
+		'description' => __( 'Enter an email address to add an email icon link to your social profile icons.', 'make' ),
+		'options'     => array(
 			'social-email'              => array(
 				'setting' => array(
 					'sanitize_callback' => 'sanitize_email',
@@ -201,6 +206,17 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					'type'  => 'text',
 				),
 			),
+		),
+	);
+
+	/**
+	 * RSS
+	 */
+	$general_sections['rss'] = array(
+		'panel'       => $panel,
+		'title'       => __( 'RSS', 'make' ),
+		'description' => __( 'If configured, an RSS icon will appear with your social profile icons.', 'make' ),
+		'options'     => array(
 			'social-rss-heading'        => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
