@@ -34,16 +34,6 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 					'choices' => ttfmake_get_choices( 'general-layout' ),
 				),
 			),
-			'general-sticky-label'          => array(
-				'setting' => array(
-					'sanitize_callback' => 'esc_html',
-					'transport'         => 'postMessage',
-				),
-				'control' => array(
-					'label' => __( 'Sticky Label', 'make' ),
-					'type'  => 'text',
-				),
-			),
 			'layout-global-content-heading' => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',

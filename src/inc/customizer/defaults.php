@@ -34,7 +34,10 @@ function ttfmake_option_defaults() {
 		'main-background-repeat'                   => 'repeat',
 		'main-background-position'                 => 'left',
 		'main-background-size'                     => 'auto',
-		// Social Profiles & RSS
+		// Labels
+		'general-sticky-label'                     => __( 'Featured', 'make' ),
+		'navigation-mobile-label'                  => __( 'Menu', 'make' ),
+		// Social Profiles
 		'social-facebook-official'                 => '',
 		'social-twitter'                           => '',
 		'social-google-plus-square'                => '',
@@ -44,7 +47,9 @@ function ttfmake_option_defaults() {
 		'social-youtube'                           => '',
 		'social-vimeo-square'                      => '',
 		'social-pinterest'                         => '',
+		// Email
 		'social-email'                             => '',
+		// RSS
 		'social-hide-rss'                          => 0,
 		'social-custom-rss'                        => '',
 
@@ -114,8 +119,6 @@ function ttfmake_option_defaults() {
 		'header-background-repeat'                 => 'no-repeat',
 		'header-background-position'               => 'center',
 		'header-background-size'                   => 'cover',
-		// Navigation
-		'navigation-mobile-label'                  => __( 'Menu', 'make' ),
 		// Layout
 		'header-layout'                            => 1,
 		'header-branding-position'                 => 'left',
@@ -129,7 +132,6 @@ function ttfmake_option_defaults() {
 		 */
 		// Global
 		'general-layout'                           => 'full-width',
-		'general-sticky-label'                     => __( 'Featured', 'make' ),
 		'main-content-link-underline'              => 0,
 		// Blog (Posts Page)
 		'layout-blog-hide-header'                  => 0,

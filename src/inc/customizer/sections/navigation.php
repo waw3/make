@@ -60,24 +60,6 @@ function ttfmake_customizer_navigation() {
 	} else {
 		$section->description = '';
 	}
-
-	// Add new options
-	$options = array(
-		'navigation-mobile-label' => array(
-			'setting' => array(
-				'sanitize_callback' => 'esc_html',
-				'theme_supports'    => 'menus',
-				'transport'         => 'postMessage',
-			),
-			'control' => array(
-				'label'             => __( 'Mobile Menu Label', 'make' ),
-				'description'       => __( 'Resize your browser window to preview the mobile menu label.', 'make' ),
-				'type'              => 'text',
-			),
-		),
-	);
-	$new_priority = ttfmake_customizer_add_section_options( $section_id, $options, $priority->add() );
-	$priority->set( $new_priority );
 }
 endif;
 

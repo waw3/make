@@ -83,6 +83,36 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	 *
 	 * This is a built-in section.
 	 */
+	$general_sections['labels'] = array(
+		'panel'       => $panel,
+		'title'       => __( 'Labels', 'make' ),
+		//'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
+		'options'     => array(
+			'general-sticky-label'          => array(
+				'setting' => array(
+					'sanitize_callback' => 'esc_html',
+					'transport'         => 'postMessage',
+				),
+				'control' => array(
+					'label' => __( 'Sticky Label', 'make' ),
+					'type'  => 'text',
+				),
+			),
+			'navigation-mobile-label' => array(
+				'setting' => array(
+					'sanitize_callback' => 'esc_html',
+					'theme_supports'    => 'menus',
+					'transport'         => 'postMessage',
+				),
+				'control' => array(
+					'label'             => __( 'Mobile Menu Label', 'make' ),
+					'description'       => __( 'Resize your browser window to preview the mobile menu label.', 'make' ),
+					'type'              => 'text',
+				),
+			),
+		),
+	);
+
 
 	/**
 	 * Social Profiles
