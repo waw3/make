@@ -88,16 +88,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 		'title'       => __( 'Labels', 'make' ),
 		//'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
 		'options'     => array(
-			'general-sticky-label'          => array(
-				'setting' => array(
-					'sanitize_callback' => 'esc_html',
-					'transport'         => 'postMessage',
-				),
-				'control' => array(
-					'label' => __( 'Sticky Label', 'make' ),
-					'type'  => 'text',
-				),
-			),
 			'navigation-mobile-label' => array(
 				'setting' => array(
 					'sanitize_callback' => 'esc_html',
@@ -110,8 +100,33 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					'type'              => 'text',
 				),
 			),
+			'general-sticky-label'          => array(
+				'setting' => array(
+					'sanitize_callback' => 'esc_html',
+					'transport'         => 'postMessage',
+				),
+				'control' => array(
+					'label' => __( 'Sticky Label', 'make' ),
+					'type'  => 'text',
+				),
+			),
 		),
 	);
+
+	// Only show the Read More label option if no filters have been added to the deprecated filter hook.
+	/** This filter is documented in inc/template-tags.php */
+	if ( false === apply_filters( 'make_read_more_text', false ) ) {
+		$general_sections['labels']['options']['label-read-more'] = array(
+			'setting' => array(
+				'sanitize_callback' => 'esc_html',
+				'transport'         => 'postMessage',
+			),
+			'control' => array(
+				'label' => __( 'Read More Label', 'make' ),
+				'type'  => 'text',
+			),
+		);
+	}
 
 
 	/**

@@ -155,13 +155,23 @@ function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $af
 	}
 
 	/**
-	 * Filter the value of the read more text.
+	 * Deprecated: Filter the value of the read more text.
+	 *
+	 * This filter hook has been deprecated in favor of a theme option in the Customizer. The theme option
+	 * will only be available if no filters have been added to the hook.
 	 *
 	 * @since 1.2.3.
+	 * @deprecated 1.5.0.
 	 *
-	 * @param string    $read_more_text    The read more text value.
+	 * @param string $read_more_text The read more text value.
 	 */
-	$more = apply_filters( 'make_read_more_text', __( 'Read more', 'make' ) );
+	$more = apply_filters( 'make_read_more_text', false );
+
+	// No filters, get the theme option.
+	if ( false === $more ) {
+		$more = esc_html( get_theme_mod( 'label-read-more', ttfmake_get_default( 'label-read-more' ) ) );
+	}
+
 	return $before . $more . $after;
 }
 endif;

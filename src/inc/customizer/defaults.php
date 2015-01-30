@@ -35,8 +35,9 @@ function ttfmake_option_defaults() {
 		'main-background-position'                 => 'left',
 		'main-background-size'                     => 'auto',
 		// Labels
-		'general-sticky-label'                     => __( 'Featured', 'make' ),
 		'navigation-mobile-label'                  => __( 'Menu', 'make' ),
+		'general-sticky-label'                     => __( 'Featured', 'make' ),
+		'label-read-more'                          => __( 'Read more', 'make' ),
 		// Social Profiles
 		'social-facebook-official'                 => '',
 		'social-twitter'                           => '',
