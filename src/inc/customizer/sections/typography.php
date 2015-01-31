@@ -17,57 +17,12 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections = array();
 
 	/**
-	 * Typekit
+	 * Global
 	 */
-	if ( ! ttfmake_is_plus() ) {
-		$typography_sections['font-typekit'] = array(
-			'panel'       => $panel,
-			'title'       => __( 'Typekit', 'make' ),
-			'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ),
-			'options'     => array(
-				'font-typekit-update-text' => array(
-					'control' => array(
-						'control_type' => 'TTFMAKE_Customize_Misc_Control',
-						'type'         => 'text',
-						'description'  => sprintf(
-							'<a href="%1$s" target="_blank">%2$s</a>',
-							esc_url( ttfmake_get_plus_link( 'typekit' ) ),
-							sprintf(
-								__( 'Upgrade to %1$s', 'make' ),
-								'Make Plus'
-							)
-						),
-					),
-				)
-			)
-		);
-	}
-
-	/**
-	 * Google Web Fonts
-	 */
-	$typography_sections['font-google'] = array(
+	$typography_sections['font-global'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'Google Web Fonts', 'make' ),
-		'options' => array(
-			'font-subset'      => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_subset',
-				),
-				'control' => array(
-					'label'   => __( 'Character Subset', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_get_google_font_subsets(),
-				),
-			),
-			'font-subset-text' => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'text',
-					'description'  => __( 'Not all fonts provide each of these subsets.', 'make' ),
-				),
-			),
-		),
+		'title'   => __( 'Global', 'make' ),
+		'options' => ttfmake_customizer_font_property_definitions( 'body', '' ),
 	);
 
 	/**
@@ -76,46 +31,10 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections['font-site-title-tagline'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Site Title &amp; Tagline', 'make' ),
-		'options' => array(
-			'font-family-site-title'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Site Title Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-site-title'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Site Title Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-site-tagline' => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Site Tagline Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-site-tagline'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Site Tagline Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-		)
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'site-title', __( 'Site Title', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'site-tagline', __( 'Tagline', 'make' ) )
+		),
 	);
 
 	/**
@@ -332,27 +251,62 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
 				),
 			),
-			'font-family-body' => array(
+		),
+	);
+
+	/**
+	 * Google Web Fonts
+	 */
+	$typography_sections['font-google'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Google Web Fonts', 'make' ),
+		'options' => array(
+			'font-subset'      => array(
 				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
+					'sanitize_callback' => 'ttfmake_sanitize_font_subset',
 				),
 				'control' => array(
-					'label'   => __( 'Body Font Family', 'make' ),
+					'label'   => __( 'Character Subset', 'make' ),
 					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
+					'choices' => ttfmake_get_google_font_subsets(),
 				),
 			),
-			'font-size-body'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
+			'font-subset-text' => array(
 				'control' => array(
-					'label' => __( 'Body Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'type'         => 'text',
+					'description'  => __( 'Not all fonts provide each of these subsets.', 'make' ),
 				),
 			),
 		),
 	);
+
+	/**
+	 * Typekit
+	 */
+	if ( ! ttfmake_is_plus() ) {
+		$typography_sections['font-typekit'] = array(
+			'panel'       => $panel,
+			'title'       => __( 'Typekit', 'make' ),
+			'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ),
+			'options'     => array(
+				'font-typekit-update-text' => array(
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'type'         => 'text',
+						'description'  => sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a>',
+							esc_url( ttfmake_get_plus_link( 'typekit' ) ),
+							sprintf(
+								__( 'Upgrade to %1$s', 'make' ),
+								'Make Plus'
+							)
+						),
+					),
+				)
+			)
+		);
+	}
 
 	/**
 	 * Filter the definitions for the controls in the Typography panel of the Customizer.

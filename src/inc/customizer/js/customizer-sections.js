@@ -5,7 +5,7 @@
 /* global jQuery, ttfmakeCustomizerL10n */
 ( function( $ ) {
 	var api = wp.customize,
-		fontChoices,
+		fontChoices, customControls,
 		upgrade;
 
 	/**
@@ -50,9 +50,33 @@
 		}
 	};
 
+	/**
+	 *
+	 */
+	customControls = {
+		cache: { $document: $(document) },
+
+		//
+		init: function() {
+			// Populate cache
+			this.cache.$buttonset = $('.ttfmake-control-buttonset, .ttfmake-control-image');
+
+			// Initialize
+			if (this.cache.$buttonset.length > 0) {
+				this.buttonset();
+			}
+		},
+
+		//
+		buttonset: function() {
+			this.cache.$buttonset.buttonset();
+		}
+	};
+
 	// Load font choices after Customizer initialization is complete.
 	$(document).ready(function() {
 		fontChoices.init();
+		customControls.init();
 	});
 
 	/**

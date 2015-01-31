@@ -64,7 +64,7 @@ function ttfmake_css_fonts() {
 	 * Site Title
 	 */
 	$element = 'site-title';
-	$selectors = array( '.site-title', '.font-site-title' );
+	$selectors = array( '.site-title', '.site-title a', '.font-site-title' );
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
@@ -74,7 +74,7 @@ function ttfmake_css_fonts() {
 	 * Site Tagline
 	 */
 	$element = 'site-tagline';
-	$selectors = array( '.site-description', '.font-site-tagline' );
+	$selectors = array( '.site-description', '.site-description a', '.font-site-tagline' );
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
@@ -249,6 +249,102 @@ endif;
 
 add_action( 'make_css', 'ttfmake_css_fonts' );
 
+if ( ! function_exists( 'ttfmake_customizer_font_property_definitions' ) ) :
+/**
+ * Generate an array of Customizer option definitions for a particular HTML element.
+ *
+ * @since 1.5.0.
+ *
+ * @param  string    $element
+ * @param  string    $label
+ * @return mixed|void
+ */
+function ttfmake_customizer_font_property_definitions( $element, $label ) {
+	$definitions = array(
+		'font-family-' . $element   => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_font_choice',
+			),
+			'control' => array(
+				'label'   => sprintf(
+					__( '%s Font Family', 'make' ),
+					$label
+				),
+				'type'    => 'select',
+				'choices' => ttfmake_font_choices_placeholder(),
+			),
+		),
+		'font-size-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'absint',
+			),
+			'control' => array(
+				'label'   => sprintf(
+					__( '%s Font Size (in px)', 'make' ),
+					$label
+				),
+				'type'  => 'number',
+			),
+		),
+		'font-weight-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => sprintf(
+					__( '%s Font Weight', 'make' ),
+					$label
+				),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'font-weight-' . $element ),
+			),
+		),
+		'font-style-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => sprintf(
+					__( '%s Font Style', 'make' ),
+					$label
+				),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'font-style-' . $element ),
+			),
+		),
+		'text-transform-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => sprintf(
+					__( '%s Text Transform', 'make' ),
+					$label
+				),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'text-transform-' . $element ),
+			),
+		),
+	);
+
+	/**
+	 * Filter the Customizer's font control definitions.
+	 *
+	 * @since 1.5.0.
+	 *
+	 * @param array     $definitions    Array of Customizer options and their setting and control definitions.
+	 * @param string    $element        The HTML element that the font properties will apply to.
+	 */
+	return apply_filters( 'make_customizer_font_property_definitions', $definitions, $element );
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_parse_font_properties' ) ) :
 /**
  * Cycle through the font options for the given element and collect an array
@@ -270,15 +366,19 @@ function ttfmake_parse_font_properties( $element ) {
 	 * @param array    $properties    The array of font properties and callbacks.
 	 */
 	$properties = apply_filters( 'make_css_font_properties', array(
-		'font-family'	=> 'ttfmake_get_font_stack',
-		'font-size'		=> 'absint',
+		'font-family'	 => 'ttfmake_get_font_stack',
+		'font-size'		 => 'absint',
+		'font-weight'    => 'ttfmake_sanitize_choice',
+		'font-style'     => 'ttfmake_sanitize_choice',
+		'text-transform' => 'ttfmake_sanitize_choice',
 	), $element );
 
 	$declarations = array();
 	foreach ( $properties as $property => $callback ) {
-		$value = get_theme_mod( $property . '-' . $element, ttfmake_get_default( $property . '-' . $element ) );
-		if ( false !== $value && $value !== ttfmake_get_default( $property . '-' . $element ) ) {
-			$sanitized_value = call_user_func_array( $callback, array( $value ) );
+		$setting_id = $property . '-' . $element;
+		$value = get_theme_mod( $setting_id, ttfmake_get_default( $setting_id ) );
+		if ( false !== $value && $value !== ttfmake_get_default( $setting_id ) ) {
+			$sanitized_value = call_user_func_array( $callback, array( $value, $setting_id ) );
 			if ( 'font-size' === $property ) {
 				$declarations[$property . '-px'] = $sanitized_value . 'px';
 				$declarations[$property . '-rem'] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';

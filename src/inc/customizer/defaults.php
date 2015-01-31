@@ -57,13 +57,35 @@ function ttfmake_option_defaults() {
 		/**
 		 * Typography
 		 */
-		// Google Web Fonts
-		'font-subset'                              => 'latin',
+		// Global
+		'font-family-body'                         => 'Open Sans',
+		'font-size-body'                           => 17,
+		'font-weight-body'                         => 'normal',
+		'font-style-body'                          => 'normal',
+		'text-transform-body'                      => 'none',
+		'line-height-body'                         => 1.6,
+		'letter-spacing-body'                      => 0,
+		'word-spacing-body'                        => 0,
+		'links-underline-body'                     => 'never',
 		// Site Title & Tagline
 		'font-family-site-title'                   => 'sans-serif',
 		'font-size-site-title'                     => 34,
+		'font-weight-site-title'                   => 'bold',
+		'font-style-site-title'                    => 'normal',
+		'text-transform-site-title'                => 'none',
+		'line-height-site-title'                   => 1.2,
+		'letter-spacing-site-title'                => 0,
+		'word-spacing-site-title'                  => 0,
+		'links-underline-site-title'               => 'never',
 		'font-family-site-tagline'                 => 'Open Sans',
 		'font-size-site-tagline'                   => 12,
+		'font-weight-site-tagline'                 => 'normal',
+		'font-style-site-tagline'                  => 'normal',
+		'text-transform-site-tagline'              => 'uppercase',
+		'line-height-site-tagline'                 => 1.5,
+		'letter-spacing-site-tagline'              => 1,
+		'word-spacing-site-tagline'                => 0,
+		'links-underline-site-tagline'             => 'never',
 		// Main Menu
 		'font-family-nav'                          => 'Open Sans',
 		'font-size-nav'                            => 14,
@@ -86,8 +108,8 @@ function ttfmake_option_defaults() {
 		'font-size-h5'                             => 16,
 		'font-family-h6'                           => 'sans-serif',
 		'font-size-h6'                             => 14,
-		'font-family-body'                         => 'Open Sans',
-		'font-size-body'                           => 17,
+		// Google Web Fonts
+		'font-subset'                              => 'latin',
 
 		/**
 		 * Color Scheme

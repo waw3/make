@@ -30,8 +30,7 @@ function ttfmake_customizer_init() {
 	add_action( 'customize_register', 'ttfmake_customizer_set_transport' );
 	add_action( 'customize_preview_init', 'ttfmake_customizer_preview_script' );
 	add_action( 'customize_preview_init', 'ttfmake_add_customizations' );
-	add_action( 'customize_controls_enqueue_scripts', 'ttfmake_customizer_sections_script' );
-	add_action( 'customize_controls_print_styles', 'ttfmake_customizer_admin_styles' );
+	add_action( 'customize_controls_enqueue_scripts', 'ttfmake_customizer_scripts' );
 }
 endif;
 
@@ -503,17 +502,26 @@ function ttfmake_customizer_preview_script() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_customizer_sections_script' ) ) :
+if ( ! function_exists( 'ttfmake_customizer_scripts' ) ) :
 /**
  * Enqueue customizer sections script
  *
  * Hooked to 'customize_controls_enqueue_scripts' via ttfmake_customizer_init()
  *
- * @since  1.0.0.
+ * @since  1.5.0.
  *
  * @return void
  */
-function ttfmake_customizer_sections_script() {
+function ttfmake_customizer_scripts() {
+	// Styles
+	wp_enqueue_style(
+		'ttfmake-customizer-sections',
+		get_template_directory_uri() . '/inc/customizer/css/customizer-sections.css',
+		array(),
+		TTFMAKE_VERSION
+	);
+
+	// Scripts
 	wp_enqueue_script(
 		'ttfmake-customizer-sections',
 		get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
@@ -543,30 +551,6 @@ function ttfmake_customizer_sections_script() {
 		'ttfmakeCustomizerL10n',
 		$data
 	);
-}
-endif;
-
-if ( ! function_exists( 'ttfmake_customizer_admin_styles' ) ) :
-/**
- * Styles for our Customizer sections and controls. Prints in the <head>
- *
- * @since  1.0.0.
- *
- * @return void
- */
-function ttfmake_customizer_admin_styles() {
-?>
-	<style type="text/css">
-		.customize-control.customize-control-heading {
-			margin-top: 6px;
-			margin-bottom: -2px;
-		}
-		.customize-control.customize-control-line {
-			margin-top: 10px;
-			margin-bottom: 6px;
-		}
-	</style>
-<?php
 }
 endif;
 

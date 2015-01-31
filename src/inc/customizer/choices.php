@@ -20,6 +20,40 @@ function ttfmake_get_choices( $setting ) {
 	$choices = array( 0 );
 
 	switch ( $setting ) {
+		case 'font-weight-body' :
+		case 'font-weight-site-title' :
+		case 'font-weight-site-tagline' :
+			$choices = array(
+				'normal' => __( 'Normal', 'make' ),
+				'bold'   => __( 'Bold', 'make' ),
+			);
+			break;
+		case 'font-style-body' :
+		case 'font-style-site-title' :
+		case 'font-style-site-tagline' :
+			$choices = array(
+				'normal' => __( 'Normal', 'make' ),
+				'italic' => __( 'Italic', 'make' ),
+			);
+			break;
+		case 'text-transform-body' :
+		case 'text-transform-site-title' :
+		case 'text-transform-site-tagline' :
+			$choices = array(
+				'none'      => __( 'None', 'make' ),
+				'uppercase' => __( 'Uppercase', 'make' ),
+				'lowercase' => __( 'Lowercase', 'make' ),
+			);
+			break;
+		case 'links-underline-body' :
+		case 'links-underline-site-title' :
+		case 'links-underline-site-tagline' :
+			$choices = array(
+				'always' => __( 'Always', 'make' ),
+				'hover'  => __( 'On hover/focus', 'make' ),
+				'never'  => __( 'Never', 'make' ),
+			);
+			break;
 		case 'general-layout' :
 			$choices = array(
 				'full-width' => __( 'Full-width', 'make' ),
