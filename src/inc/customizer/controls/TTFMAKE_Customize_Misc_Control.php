@@ -31,15 +31,6 @@ class TTFMAKE_Customize_Misc_Control extends WP_Customize_Control {
 	public $description = '';
 
 	/**
-	 * The current setting group.
-	 *
-	 * @since 1.0.0.
-	 *
-	 * @var   string    The current setting group.
-	 */
-	public $group = '';
-
-	/**
 	 * Render the description and title for the section.
 	 *
 	 * Prints arbitrary HTML to a customizer section. This provides useful hints for how to properly set some custom
@@ -51,15 +42,16 @@ class TTFMAKE_Customize_Misc_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 		switch ( $this->type ) {
+			case 'group-title' :
+				echo '<h4 class="ttfmake-control-group-title">' . $this->label . '</h4>';
+				break;
+			case 'heading' :
+				echo '<span class="customize-control-title">' . $this->label . '</span>';
+				break;
 			default:
 			case 'text' :
 				echo '<p class="description">' . $this->description . '</p>';
 				break;
-
-			case 'heading':
-				echo '<span class="customize-control-title">' . $this->label . '</span>';
-				break;
-
 			case 'line' :
 				echo '<hr />';
 				break;

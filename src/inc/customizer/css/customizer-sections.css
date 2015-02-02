@@ -1,4 +1,19 @@
+/* jQuery UI theme tweaks */
+.ui-widget {
+	font-family: inherit;
+	font-size: 0.85em;
+}
+.ui-button-text-only .ui-button-text {
+	padding: 0;
+}
+
 /* Misc control styles */
+.ttfmake-control-group-title {
+	color: #222222;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 14px 0 6px;
+}
 .customize-control.customize-control-heading {
 	margin-top: 6px;
 	margin-bottom: -2px;
@@ -9,6 +24,11 @@
 }
 
 /* Radio control styles */
+.ttfmake-control-buttonset .customize-control-title,
+.ttfmake-control-image .customize-control-title {
+	line-height: 24px;
+	margin-bottom: 5px;
+}
 .customize-control-radio label {
 	line-height: 28px;
 	padding: 5px 10px;
@@ -34,5 +54,5 @@ li.customize-control.customize-control-range .ttfmake-control-range {
 li.customize-control.customize-control-range .ttfmake-range-slider {
 	float: right;
 	width: 70%;
-	margin-top: 6px;
+	margin-top: 8px;
 }

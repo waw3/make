@@ -37,6 +37,7 @@ class TTFMAKE_Customize_Radio_Control extends WP_Customize_Control {
 
 		$name = '_customize-radio-' . $this->id;
 		?>
+		<div id="input_<?php echo $this->id; ?>" class="ttfmake-control-<?php echo $this->mode; ?>">
 
 		<?php if ( ! empty( $this->label ) ) : ?>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
@@ -45,7 +46,6 @@ class TTFMAKE_Customize_Radio_Control extends WP_Customize_Control {
 			<span class="description customize-control-description"><?php echo $this->description; ?></span>
 		<?php endif; ?>
 
-		<div id="input_<?php echo $this->id; ?>" class="ttfmake-control-<?php echo $this->mode; ?>">
 			<?php
 			// Buttonset radios
 			if ( 'buttonset' == $this->mode ) {

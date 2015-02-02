@@ -261,15 +261,19 @@ if ( ! function_exists( 'ttfmake_customizer_font_property_definitions' ) ) :
  */
 function ttfmake_customizer_font_property_definitions( $element, $label ) {
 	$definitions = array(
+		$element . '-typography-group' => array(
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'label'   => $label,
+				'type'  => 'group-title',
+			),
+		),
 		'font-family-' . $element   => array(
 			'setting' => array(
 				'sanitize_callback' => 'ttfmake_sanitize_font_choice',
 			),
 			'control' => array(
-				'label'   => sprintf(
-					__( '%s Font Family', 'make' ),
-					$label
-				),
+				'label'   => __( 'Font Family', 'make' ),
 				'type'    => 'select',
 				'choices' => ttfmake_font_choices_placeholder(),
 			),
@@ -280,10 +284,7 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 			),
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Range_Control',
-				'label'   => sprintf(
-					__( '%s Font Size (in px)', 'make' ),
-					$label
-				),
+				'label'   => __( 'Font Size (in px)', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 6,
@@ -298,10 +299,7 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 			),
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Radio_Control',
-				'label'   => sprintf(
-					__( '%s Font Weight', 'make' ),
-					$label
-				),
+				'label'   => __( 'Font Weight', 'make' ),
 				'type'  => 'radio',
 				'mode'  => 'buttonset',
 				'choices' => ttfmake_get_choices( 'font-weight-' . $element ),
@@ -313,10 +311,7 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 			),
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Radio_Control',
-				'label'   => sprintf(
-					__( '%s Font Style', 'make' ),
-					$label
-				),
+				'label'   => __( 'Font Style', 'make' ),
 				'type'  => 'radio',
 				'mode'  => 'buttonset',
 				'choices' => ttfmake_get_choices( 'font-style-' . $element ),
@@ -328,10 +323,7 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 			),
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Radio_Control',
-				'label'   => sprintf(
-					__( '%s Text Transform', 'make' ),
-					$label
-				),
+				'label'   => __( 'Text Transform', 'make' ),
 				'type'  => 'radio',
 				'mode'  => 'buttonset',
 				'choices' => ttfmake_get_choices( 'text-transform-' . $element ),

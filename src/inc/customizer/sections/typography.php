@@ -22,7 +22,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections['font-global'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Global', 'make' ),
-		'options' => ttfmake_customizer_font_property_definitions( 'body', '' ),
+		'options' => ttfmake_customizer_font_property_definitions( 'body', __( 'Default', 'make' ) ),
 	);
 
 	/**
