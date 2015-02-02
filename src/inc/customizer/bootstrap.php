@@ -515,9 +515,15 @@ if ( ! function_exists( 'ttfmake_customizer_scripts' ) ) :
 function ttfmake_customizer_scripts() {
 	// Styles
 	wp_enqueue_style(
+		'ttfmake-customizer-jquery-ui',
+		get_template_directory_uri() . '/inc/customizer/css/jquery-ui-1.10.4.custom.css',
+		array(),
+		'1.10.4'
+	);
+	wp_enqueue_style(
 		'ttfmake-customizer-sections',
 		get_template_directory_uri() . '/inc/customizer/css/customizer-sections.css',
-		array(),
+		array( 'ttfmake-customizer-jquery-ui' ),
 		TTFMAKE_VERSION
 	);
 

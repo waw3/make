@@ -279,11 +279,17 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 				'sanitize_callback' => 'absint',
 			),
 			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
 				'label'   => sprintf(
 					__( '%s Font Size (in px)', 'make' ),
 					$label
 				),
-				'type'  => 'number',
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 6,
+					'max'  => 100,
+					'step' => 1,
+				),
 			),
 		),
 		'font-weight-' . $element => array(

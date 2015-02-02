@@ -54,22 +54,51 @@
 	 *
 	 */
 	customControls = {
-		cache: { $document: $(document) },
+		cache: {},
 
 		//
 		init: function() {
 			// Populate cache
 			this.cache.$buttonset = $('.ttfmake-control-buttonset, .ttfmake-control-image');
+			this.cache.$range     = $('.ttfmake-control-range');
 
-			// Initialize
+			// Initialize Button sets
 			if (this.cache.$buttonset.length > 0) {
 				this.buttonset();
+			}
+
+			// Initialize ranges
+			if (this.cache.$range.length > 0) {
+				this.range();
 			}
 		},
 
 		//
 		buttonset: function() {
 			this.cache.$buttonset.buttonset();
+		},
+
+		//
+		range: function() {
+			this.cache.$range.each(function() {
+				var $input = $(this),
+					$slider = $input.parent().find('.ttfmake-range-slider'),
+					value = parseInt( $input.val() ),
+					min = parseInt( $input.attr('min') ),
+					max = parseInt( $input.attr('max') ),
+					step = parseInt( $input.attr('step') );
+
+				$slider.slider({
+					value : value,
+					min   : min,
+					max   : max,
+					step  : step,
+					slide : function(e, ui) {
+						$input.val(ui.value).keyup().trigger('change');
+					}
+				});
+				$input.val( $slider.slider('value') );
+			});
 		}
 	};
 
