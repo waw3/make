@@ -344,6 +344,36 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 				),
 			),
 		),
+		'letter-spacing-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_float',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Letter Spacing (px)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 0,
+					'max'  => 10,
+					'step' => 0.5,
+				),
+			),
+		),
+		'word-spacing-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_float',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Word Spacing (px)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 0,
+					'max'  => 20,
+					'step' => 1,
+				),
+			),
+		),
 	);
 
 	/**
@@ -385,6 +415,8 @@ function ttfmake_parse_font_properties( $element ) {
 		'font-style'     => 'ttfmake_sanitize_choice',
 		'text-transform' => 'ttfmake_sanitize_choice',
 		'line-height'    => 'ttfmake_sanitize_float',
+		'letter-spacing' => 'ttfmake_sanitize_float',
+		'word-spacing'   => 'absint',
 	), $element );
 
 	$declarations = array();
@@ -396,6 +428,8 @@ function ttfmake_parse_font_properties( $element ) {
 			if ( 'font-size' === $property ) {
 				$declarations[$property . '-px'] = $sanitized_value . 'px';
 				$declarations[$property . '-rem'] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';
+			} else if ( in_array( $property, array( 'letter-spacing', 'word-spacing' ) ) ) {
+				$declarations[$property] = $sanitized_value . 'px';
 			} else {
 				$declarations[$property] = $sanitized_value;
 			}

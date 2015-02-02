@@ -57,7 +57,7 @@ function ttfmake_option_defaults() {
 		/**
 		 * Typography
 		 */
-		// Global
+		// Global/Default
 		'font-family-body'                         => 'Open Sans',
 		'font-size-body'                           => 17,
 		'font-weight-body'                         => 'normal',
@@ -67,7 +67,7 @@ function ttfmake_option_defaults() {
 		'letter-spacing-body'                      => 0,
 		'word-spacing-body'                        => 0,
 		'links-underline-body'                     => 'never',
-		// Site Title & Tagline
+		// Site Title
 		'font-family-site-title'                   => 'sans-serif',
 		'font-size-site-title'                     => 34,
 		'font-weight-site-title'                   => 'bold',
@@ -77,6 +77,7 @@ function ttfmake_option_defaults() {
 		'letter-spacing-site-title'                => 0,
 		'word-spacing-site-title'                  => 0,
 		'links-underline-site-title'               => 'never',
+		// Tagline
 		'font-family-site-tagline'                 => 'Open Sans',
 		'font-size-site-tagline'                   => 12,
 		'font-weight-site-tagline'                 => 'normal',
