@@ -97,6 +97,18 @@ endif;
 
 add_filter( 'wp_title', 'ttfmake_wp_title', 10, 2 );
 
+/**
+ * Sanitize a string to ensure that it is a float number.
+ *
+ * @since 1.5.0.
+ *
+ * @param  string|float    $value    The value to sanitize.
+ * @return float                     The sanitized value.
+ */
+function ttfmake_sanitize_float( $value ) {
+	return floatval( $value );
+}
+
 if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
 /**
  * Allow only certain tags and attributes in a string.

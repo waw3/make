@@ -83,10 +83,10 @@
 			this.cache.$range.each(function() {
 				var $input = $(this),
 					$slider = $input.parent().find('.ttfmake-range-slider'),
-					value = parseInt( $input.val() ),
-					min = parseInt( $input.attr('min') ),
-					max = parseInt( $input.attr('max') ),
-					step = parseInt( $input.attr('step') );
+					value = parseFloat( $input.val() ),
+					min = parseFloat( $input.attr('min') ),
+					max = parseFloat( $input.attr('max') ),
+					step = parseFloat( $input.attr('step') );
 
 				$slider.slider({
 					value : value,

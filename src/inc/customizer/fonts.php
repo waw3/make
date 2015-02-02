@@ -284,7 +284,7 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 			),
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Range_Control',
-				'label'   => __( 'Font Size (in px)', 'make' ),
+				'label'   => __( 'Font Size (px)', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 6,
@@ -329,6 +329,21 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 				'choices' => ttfmake_get_choices( 'text-transform-' . $element ),
 			),
 		),
+		'line-height-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_float',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Line Height (em)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 0,
+					'max'  => 5,
+					'step' => 0.1,
+				),
+			),
+		),
 	);
 
 	/**
@@ -369,6 +384,7 @@ function ttfmake_parse_font_properties( $element ) {
 		'font-weight'    => 'ttfmake_sanitize_choice',
 		'font-style'     => 'ttfmake_sanitize_choice',
 		'text-transform' => 'ttfmake_sanitize_choice',
+		'line-height'    => 'ttfmake_sanitize_float',
 	), $element );
 
 	$declarations = array();
