@@ -108,6 +108,18 @@ function ttfmake_option_defaults() {
 		'word-spacing-subnav'                      => 0,
 		'link-underline-subnav'                    => 'never',
 		'font-subnav-mobile'                       => 1,
+		// Header Bar Text
+		'font-family-header-bar-text'              => 'Open Sans',
+		'font-size-header-bar-text'                => 13,
+		'font-weight-header-bar-text'              => 'normal',
+		'font-style-header-bar-text'               => 'normal',
+		'text-transform-header-bar-text'           => 'none',
+		'line-height-header-bar-text'              => 1.6,
+		'letter-spacing-header-bar-text'           => 0,
+		'word-spacing-header-bar-text'             => 0,
+		'link-underline-header-bar-text'           => 'never',
+		// Header Bar Icons
+		'font-size-header-bar-icon'                => 20,
 		// Widget Title
 		'font-family-widget-title'                 => 'Open Sans',
 		'font-size-widget-title'                   => 13,

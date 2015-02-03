@@ -24,20 +24,22 @@ function ttfmake_font_get_relative_sizes() {
 	 */
 	return apply_filters( 'make_font_relative_size', array(
 		// Relative to navigation font size
-		'sub-menu'     => 93,  // Deprecated in 1.3.0.
-		// Relative to header font size
-		'h1'           => 100, // Deprecated in 1.3.0.
-		'h2'           => 74,  // Deprecated in 1.3.0.
-		'h3'           => 52,  // Deprecated in 1.3.0.
-		'h4'           => 52,  // Deprecated in 1.3.0.
-		'h5'           => 35,  // Deprecated in 1.3.0.
-		'h6'           => 30,  // Deprecated in 1.3.0.
-		'post-title'   => 74,
+		'sub-menu'        => 93,  // Deprecated in 1.3.0.
+		// Relative to Header Bar icon size
+		'header-bar-icon' => 85,
 		// Relative to widget font size
-		'widget-title' => 100, // Deprecated in 1.5.0.
+		'widget-title'    => 100, // Deprecated in 1.5.0.
+		// Relative to header font size
+		'h1'              => 100, // Deprecated in 1.3.0.
+		'h2'              => 74,  // Deprecated in 1.3.0.
+		'h3'              => 52,  // Deprecated in 1.3.0.
+		'h4'              => 52,  // Deprecated in 1.3.0.
+		'h5'              => 35,  // Deprecated in 1.3.0.
+		'h6'              => 30,  // Deprecated in 1.3.0.
+		'post-title'      => 74,
 		// Relative to body font size
-		'comments'     => 88,
-		'comment-date' => 82,
+		'comments'        => 88,
+		'comment-date'    => 82,
 	) );
 }
 endif;
@@ -167,6 +169,39 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $link_rule ) ) {
 		$link_rule['media'] = $media;
 		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * Header Bar Text
+	 */
+	$element = 'header-bar-text';
+	$selectors = array( '.header-bar', '.header-text', '.header-bar .search-form input', '.header-bar .menu a' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.header-bar a', '.header-text a', '.header-bar .menu a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+	// Header Bar Icons
+	$header_icon_size = absint( get_theme_mod( 'font-size-header-bar-icon', ttfmake_get_default( 'font-size-header-bar-icon' ) ) );
+	if ( $header_icon_size !== ttfmake_get_default( 'font-size-header-bar-icon' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors' => array( '.header-social-links li a' ),
+			'declarations' => array(
+				'font-size-px' => $header_icon_size . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( $header_icon_size ) . 'rem'
+			),
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors' => array( '.header-social-links li a' ),
+			'declarations' => array(
+				'font-size-px' => ttfmake_get_relative_font_size( $header_icon_size, $percent[ 'header-bar-icon' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $header_icon_size, $percent[ 'header-bar-icon' ] ) ) . 'rem'
+			),
+			'media' => 'screen and (min-width: 1100px)'
+		) );
 	}
 
 	/**
@@ -304,14 +339,16 @@ if ( ! function_exists( 'ttfmake_customizer_font_property_definitions' ) ) :
  *
  * @param  string    $element
  * @param  string    $label
- * @return mixed|void
+ * @param  string    $description
+ * @return array
  */
-function ttfmake_customizer_font_property_definitions( $element, $label ) {
+function ttfmake_customizer_font_property_definitions( $element, $label, $description = '' ) {
 	$definitions = array(
 		'typography-group-' . $element => array(
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Misc_Control',
 				'label'   => $label,
+				'description' => $description,
 				'type'  => 'group-title',
 			),
 		),
@@ -640,21 +677,13 @@ if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
 function ttfmake_get_google_font_uri() {
 	// Grab the font choices
 	if ( ttfmake_customizer_supports_panels() ) {
-		$font_keys = array(
-			'font-family-body',
-			'font-family-site-title',
-			'font-family-site-tagline',
-			'font-family-nav',
-			'font-family-subnav',
-			'font-family-widget-title',
-			'font-family-widget',
-			'font-family-h1',
-			'font-family-h2',
-			'font-family-h3',
-			'font-family-h4',
-			'font-family-h5',
-			'font-family-h6',
-		);
+		$all_keys = array_keys( ttfmake_option_defaults() );
+		$font_keys = array();
+		foreach ( $all_keys as $key ) {
+			if ( false !== strpos( $key, 'font-family-' ) ) {
+				$font_keys[] = $key;
+			}
+		}
 	} else {
 		$font_keys = array(
 			'font-site-title',

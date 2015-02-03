@@ -25,6 +25,7 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-weight-site-tagline' :
 		case 'font-weight-nav' :
 		case 'font-weight-subnav' :
+		case 'font-weight-header-bar-text' :
 		case 'font-weight-widget-title' :
 		case 'font-weight-widget' :
 		case 'font-weight-h1' :
@@ -43,6 +44,7 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-style-site-tagline' :
 		case 'font-style-nav' :
 		case 'font-style-subnav' :
+		case 'font-style-header-bar-text' :
 		case 'font-style-widget-title' :
 		case 'font-style-widget' :
 		case 'font-style-h1' :
@@ -61,6 +63,7 @@ function ttfmake_get_choices( $setting ) {
 		case 'text-transform-site-tagline' :
 		case 'text-transform-nav' :
 		case 'text-transform-subnav' :
+		case 'text-transform-header-bar-text' :
 		case 'text-transform-widget-title' :
 		case 'text-transform-widget' :
 		case 'text-transform-h1' :
@@ -80,6 +83,7 @@ function ttfmake_get_choices( $setting ) {
 		case 'link-underline-site-tagline' :
 		case 'link-underline-nav' :
 		case 'link-underline-subnav' :
+		case 'link-underline-header-bar-text' :
 		case 'link-underline-widget-title' :
 		case 'link-underline-widget' :
 		case 'link-underline-h1' :

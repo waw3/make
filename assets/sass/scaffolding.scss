@@ -307,7 +307,7 @@ a {
 	text-align: center;
 	display: block;
 	@include rem('margin-bottom', $base);
-	@include rem('font-size', 12px);
+	@include rem('font-size', 13px);
 	.header-bar-flipped & {
 		float: right;
 	}
