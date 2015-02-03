@@ -79,3 +79,13 @@ li.customize-control.customize-control-range .ttfmake-range-slider {
 	width: 70%;
 	margin-top: 8px;
 }
+li.customize-control.customize-control-range .ui-slider-handle {
+	top: -.4em;
+	border-color: #777;
+	background: #777;
+}
+li.customize-control.customize-control-range .ui-slider-horizontal {
+	height: .6em;
+	border-color: #eee;
+	background: #eee;
+}
