@@ -23,6 +23,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-weight-body' :
 		case 'font-weight-site-title' :
 		case 'font-weight-site-tagline' :
+		case 'font-weight-nav' :
+		case 'font-weight-subnav' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'bold'   => __( 'Bold', 'make' ),
@@ -31,6 +33,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-style-body' :
 		case 'font-style-site-title' :
 		case 'font-style-site-tagline' :
+		case 'font-style-nav' :
+		case 'font-style-subnav' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'italic' => __( 'Italic', 'make' ),
@@ -39,6 +43,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'text-transform-body' :
 		case 'text-transform-site-title' :
 		case 'text-transform-site-tagline' :
+		case 'text-transform-nav' :
+		case 'text-transform-subnav' :
 			$choices = array(
 				'none'      => __( 'None', 'make' ),
 				'uppercase' => __( 'Uppercase', 'make' ),
@@ -48,6 +54,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'link-underline-body' :
 		case 'link-underline-site-title' :
 		case 'link-underline-site-tagline' :
+		case 'link-underline-nav' :
+		case 'link-underline-subnav' :
 			$choices = array(
 				'always' => __( 'Always', 'make' ),
 				'hover'  => __( 'On hover/focus', 'make' ),

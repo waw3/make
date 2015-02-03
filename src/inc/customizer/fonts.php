@@ -69,7 +69,7 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
-	$link_rule = ttfmake_parse_link_underline( 'body', array( 'a' ) );
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
@@ -101,7 +101,7 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
-	$link_rule = ttfmake_parse_link_underline( 'site-title', array( '.site-title a' ) );
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.site-title a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
@@ -115,7 +115,7 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
-	$link_rule = ttfmake_parse_link_underline( 'site-tagline', array( '.site-description a' ) );
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.site-description a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
@@ -123,11 +123,17 @@ function ttfmake_css_fonts() {
 	/**
 	 * Menu Item
 	 */
+	$menu_items_customized = false;
 	$element = 'nav';
 	$selectors = array( '.site-navigation .menu li a', '.font-nav' );
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+		$menu_items_customized = true;
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.site-navigation .menu li a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
 	}
 	// Grandchild arrow position
 	if ( isset( $declarations['font-size-px'] ) ) {
@@ -148,22 +154,19 @@ function ttfmake_css_fonts() {
 	 */
 	$element = 'subnav';
 	$selectors = array( '.site-navigation .menu .sub-menu li a', '.site-navigation .menu .children li a' );
+	$declarations = ttfmake_parse_font_properties( $element, $menu_items_customized );
 	$simplify_mobile = (bool) get_theme_mod( 'font-' . $element . '-mobile', ttfmake_get_default( 'font-' . $element . '-mobile' ) );
-	if ( ! $simplify_mobile ) {
-		$subnav_family = get_theme_mod( 'font-family-' . $element, ttfmake_get_default( 'font-family-' . $element ) );
-		$subnav_size   = get_theme_mod( 'font-size-' . $element, ttfmake_get_default( 'font-size-' . $element ) );
-		$declarations = array(
-			'font-family'	=> ttfmake_get_font_stack( $subnav_family ),
-			'font-size-px'	=> absint( $subnav_size ) . 'px',
-			'font-size-rem'	=> ttfmake_convert_px_to_rem( $subnav_size ),
-		);
-		$media = 'all';
-	} else {
-		$declarations = ttfmake_parse_font_properties( $element );
+	$media = 'all';
+	if ( true === $simplify_mobile ) {
 		$media = 'screen and (min-width: 800px)';
 	}
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, 'media' => $media ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.site-navigation .menu .sub-menu li a', '.site-navigation .menu .children li a' ) );
+	if ( ! empty( $link_rule ) ) {
+		$link_rule['media'] = $media;
+		ttfmake_get_css()->add( $link_rule );
 	}
 
 	/**
@@ -395,7 +398,7 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 				'label'   => __( 'Link Underline', 'make' ),
 				'type'  => 'radio',
 				'mode'  => 'buttonset',
-				'choices' => ttfmake_get_choices( 'links-underline-' . $element ),
+				'choices' => ttfmake_get_choices( 'link-underline-' . $element ),
 			),
 		),
 	);
@@ -420,9 +423,10 @@ if ( ! function_exists( 'ttfmake_parse_font_properties' ) ) :
  * @since  1.3.0.
  *
  * @param  string    $element    The element to parse the options for.
+ * @param  bool      $force      True to include properties that have default values.
  * @return array                 An array of non-default CSS declarations.
  */
-function ttfmake_parse_font_properties( $element ) {
+function ttfmake_parse_font_properties( $element, $force = false ) {
 	/**
 	 * Filter the array of customizable font properties and their sanitization callbacks.
 	 *
@@ -447,7 +451,7 @@ function ttfmake_parse_font_properties( $element ) {
 	foreach ( $properties as $property => $callback ) {
 		$setting_id = $property . '-' . $element;
 		$value = get_theme_mod( $setting_id, ttfmake_get_default( $setting_id ) );
-		if ( false !== $value && $value !== ttfmake_get_default( $setting_id ) ) {
+		if ( false !== $value && ( $value !== ttfmake_get_default( $setting_id ) || true === $force ) ) {
 			$sanitized_value = call_user_func_array( $callback, array( $value, $setting_id ) );
 			if ( 'font-size' === $property ) {
 				$declarations[$property . '-px'] = $sanitized_value . 'px';

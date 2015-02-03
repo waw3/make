@@ -43,61 +43,27 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections['font-main-menu'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Main Menu', 'make' ),
-		'options' => array(
-			'font-family-nav'            => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'nav', __( 'Menu Items', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'subnav', __( 'Sub-Menu Items', 'make' ) ),
+			array(
+				'font-subnav-option-heading' => array(
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'type'         => 'heading',
+						'label'        => __( 'Sub-Menu Item Options', 'make' ),
+					),
 				),
-				'control' => array(
-					'label'   => __( 'Menu Item Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
+				'font-subnav-mobile'         => array(
+					'setting' => array(
+						'sanitize_callback' => 'absint',
+					),
+					'control' => array(
+						'label' => __( 'Use Menu Item styles in mobile view', 'make' ),
+						'type'  => 'checkbox',
+					),
 				),
-			),
-			'font-size-nav'              => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Menu Item Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-subnav'         => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Sub-Menu Item Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-subnav'           => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Sub-Menu Item Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-subnav-option-heading' => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'heading',
-					'label'        => __( 'Sub-Menu Item Options', 'make' ),
-				),
-			),
-			'font-subnav-mobile'         => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Use Menu Item styles in mobile view', 'make' ),
-					'type'  => 'checkbox',
-				),
-			),
+			)
 		),
 	);
 

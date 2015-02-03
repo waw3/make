@@ -66,7 +66,7 @@ function ttfmake_option_defaults() {
 		'line-height-body'                         => 1.6,
 		'letter-spacing-body'                      => 0,
 		'word-spacing-body'                        => 0,
-		'link-underline-body'                     => 'never',
+		'link-underline-body'                      => 'never',
 		// Site Title
 		'font-family-site-title'                   => 'sans-serif',
 		'font-size-site-title'                     => 34,
@@ -76,7 +76,7 @@ function ttfmake_option_defaults() {
 		'line-height-site-title'                   => 1.2,
 		'letter-spacing-site-title'                => 0,
 		'word-spacing-site-title'                  => 0,
-		'link-underline-site-title'               => 'never',
+		'link-underline-site-title'                => 'never',
 		// Tagline
 		'font-family-site-tagline'                 => 'Open Sans',
 		'font-size-site-tagline'                   => 12,
@@ -86,12 +86,27 @@ function ttfmake_option_defaults() {
 		'line-height-site-tagline'                 => 1.6,
 		'letter-spacing-site-tagline'              => 1,
 		'word-spacing-site-tagline'                => 0,
-		'link-underline-site-tagline'             => 'never',
-		// Main Menu
+		'link-underline-site-tagline'              => 'never',
+		// Menu Items
 		'font-family-nav'                          => 'Open Sans',
 		'font-size-nav'                            => 14,
+		'font-weight-nav'                          => 'normal',
+		'font-style-nav'                           => 'normal',
+		'text-transform-nav'                       => 'none',
+		'line-height-nav'                          => 1.4,
+		'letter-spacing-nav'                       => 0,
+		'word-spacing-nav'                         => 0,
+		'link-underline-nav'                       => 'never',
+		// Sub-Menu Items
 		'font-family-subnav'                       => 'Open Sans',
 		'font-size-subnav'                         => 13,
+		'font-weight-subnav'                       => 'normal',
+		'font-style-subnav'                        => 'normal',
+		'text-transform-subnav'                    => 'none',
+		'line-height-subnav'                       => 1.4,
+		'letter-spacing-subnav'                    => 0,
+		'word-spacing-subnav'                      => 0,
+		'link-underline-subnav'                    => 'never',
 		'font-subnav-mobile'                       => 1,
 		// Widgets
 		'font-family-widget'                       => 'Open Sans',
