@@ -45,7 +45,7 @@
 				api( key, function( setting ) {
 					element.on('chosen:ready', function() {
 						var v = setting.get();
-						element
+						$(this)
 							.html(fontChoices.cache.choices)
 							.val( v )
 							.trigger('chosen:updated');
