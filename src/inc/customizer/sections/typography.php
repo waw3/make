@@ -19,7 +19,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	/**
 	 * Global
 	 */
-	$typography_sections['font-global'] = array(
+	$typography_sections['font'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Global', 'make' ),
 		'options' => ttfmake_customizer_font_property_definitions( 'body', __( 'Default', 'make' ) ),
@@ -80,126 +80,18 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
-	 * Headers & Body
+	 * Headers
 	 */
-	$typography_sections['font'] = array(
+	$typography_sections['font-headers'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'Headers &amp; Body', 'make' ),
-		'options' => array(
-			'font-family-h1'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'H1 Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-h1'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'H1 Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-h2'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'H2 Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-h2'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'H2 Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-h3'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'H3 Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-h3'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'H3 Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-h4'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'H4 Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-h4'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'H4 Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-h5'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'H5 Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-h5'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'H5 Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
-			'font-family-h6'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'H6 Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-h6'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'H6 Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
+		'title'   => __( 'Headers', 'make' ),
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'h1', __( 'H1', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h2', __( 'H2', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h3', __( 'H3', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h4', __( 'H4', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h5', __( 'H5', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h6', __( 'H6', 'make' ) )
 		),
 	);
 

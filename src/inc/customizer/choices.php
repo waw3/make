@@ -27,6 +27,12 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-weight-subnav' :
 		case 'font-weight-widget-title' :
 		case 'font-weight-widget' :
+		case 'font-weight-h1' :
+		case 'font-weight-h2' :
+		case 'font-weight-h3' :
+		case 'font-weight-h4' :
+		case 'font-weight-h5' :
+		case 'font-weight-h6' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'bold'   => __( 'Bold', 'make' ),
@@ -39,6 +45,12 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-style-subnav' :
 		case 'font-style-widget-title' :
 		case 'font-style-widget' :
+		case 'font-style-h1' :
+		case 'font-style-h2' :
+		case 'font-style-h3' :
+		case 'font-style-h4' :
+		case 'font-style-h5' :
+		case 'font-style-h6' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'italic' => __( 'Italic', 'make' ),
@@ -51,6 +63,12 @@ function ttfmake_get_choices( $setting ) {
 		case 'text-transform-subnav' :
 		case 'text-transform-widget-title' :
 		case 'text-transform-widget' :
+		case 'text-transform-h1' :
+		case 'text-transform-h2' :
+		case 'text-transform-h3' :
+		case 'text-transform-h4' :
+		case 'text-transform-h5' :
+		case 'text-transform-h6' :
 			$choices = array(
 				'none'      => __( 'None', 'make' ),
 				'uppercase' => __( 'Uppercase', 'make' ),
@@ -64,6 +82,12 @@ function ttfmake_get_choices( $setting ) {
 		case 'link-underline-subnav' :
 		case 'link-underline-widget-title' :
 		case 'link-underline-widget' :
+		case 'link-underline-h1' :
+		case 'link-underline-h2' :
+		case 'link-underline-h3' :
+		case 'link-underline-h4' :
+		case 'link-underline-h5' :
+		case 'link-underline-h6' :
 			$choices = array(
 				'always' => __( 'Always', 'make' ),
 				'hover'  => __( 'On hover/focus', 'make' ),
