@@ -43,8 +43,18 @@
 		insertChoices: function() {
 			$.each(fontChoices.cache.options, function(key, element) {
 				api( key, function( setting ) {
-					var v = setting.get();
-					element.html(fontChoices.cache.choices).val( v );
+					element.on('chosen:ready', function() {
+						var v = setting.get();
+						element
+							.html(fontChoices.cache.choices)
+							.val( v )
+							.trigger('chosen:updated');
+					});
+					element.chosen({
+						no_results_text          : ttfmakeCustomizerL10n.chosen_no_results_fonts,
+						search_contains          : true,
+						width                    : '100%'
+					});
 				} );
 			});
 		}

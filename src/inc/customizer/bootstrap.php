@@ -516,22 +516,36 @@ function ttfmake_customizer_scripts() {
 	// Styles
 	wp_enqueue_style(
 		'ttfmake-customizer-jquery-ui',
-		get_template_directory_uri() . '/inc/customizer/css/jquery-ui-1.10.4.custom.css',
+		get_template_directory_uri() . '/inc/customizer/css/jquery-ui/jquery-ui-1.10.4.custom.css',
 		array(),
 		'1.10.4'
 	);
 	wp_enqueue_style(
+		'ttfmake-customizer-chosen',
+		get_template_directory_uri() . '/inc/customizer/css/chosen/chosen.css',
+		array(),
+		'1.3.0'
+	);
+	wp_enqueue_style(
 		'ttfmake-customizer-sections',
 		get_template_directory_uri() . '/inc/customizer/css/customizer-sections.css',
-		array( 'ttfmake-customizer-jquery-ui' ),
+		array( 'ttfmake-customizer-jquery-ui', 'ttfmake-customizer-chosen' ),
 		TTFMAKE_VERSION
 	);
 
 	// Scripts
 	wp_enqueue_script(
+		'ttfmake-customizer-chosen',
+		get_template_directory_uri() . '/inc/customizer/js/chosen.jquery.js',
+		array( 'jquery', 'customize-controls' ),
+		'1.3.0',
+		true
+	);
+
+	wp_enqueue_script(
 		'ttfmake-customizer-sections',
 		get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
-		array( 'customize-controls' ),
+		array( 'customize-controls', 'ttfmake-customizer-chosen' ),
 		TTFMAKE_VERSION,
 		true
 	);
@@ -542,11 +556,13 @@ function ttfmake_customizer_scripts() {
 		'allFontChoices'	=> ttfmake_all_font_choices_js(),
 	);
 
-	// Add localization strings for Upgrade button
+	// Add localization strings
 	if ( ! ttfmake_is_plus() ) {
 		$localize = array(
-			'plusURL'			=> esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-			'plusLabel'			=> __( 'Upgrade to Make Plus', 'make' ),
+			'chosen_no_results_default' => __( 'No results match', 'make' ),
+			'chosen_no_results_fonts'   => __( 'No matching fonts', 'make' ),
+			'plusURL'			        => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
+			'plusLabel'		        	=> __( 'Upgrade to Make Plus', 'make' ),
 		);
 		$data = $data + $localize;
 	}
