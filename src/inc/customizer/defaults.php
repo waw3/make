@@ -66,7 +66,7 @@ function ttfmake_option_defaults() {
 		'line-height-body'                         => 1.6,
 		'letter-spacing-body'                      => 0,
 		'word-spacing-body'                        => 0,
-		'links-underline-body'                     => 'never',
+		'link-underline-body'                     => 'never',
 		// Site Title
 		'font-family-site-title'                   => 'sans-serif',
 		'font-size-site-title'                     => 34,
@@ -76,7 +76,7 @@ function ttfmake_option_defaults() {
 		'line-height-site-title'                   => 1.2,
 		'letter-spacing-site-title'                => 0,
 		'word-spacing-site-title'                  => 0,
-		'links-underline-site-title'               => 'never',
+		'link-underline-site-title'               => 'never',
 		// Tagline
 		'font-family-site-tagline'                 => 'Open Sans',
 		'font-size-site-tagline'                   => 12,
@@ -86,7 +86,7 @@ function ttfmake_option_defaults() {
 		'line-height-site-tagline'                 => 1.5,
 		'letter-spacing-site-tagline'              => 1,
 		'word-spacing-site-tagline'                => 0,
-		'links-underline-site-tagline'             => 'never',
+		'link-underline-site-tagline'             => 'never',
 		// Main Menu
 		'font-family-nav'                          => 'Open Sans',
 		'font-size-nav'                            => 14,

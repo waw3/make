@@ -61,6 +61,38 @@ function ttfmake_css_fonts() {
 	$percent = ttfmake_font_get_relative_sizes();
 
 	/**
+	 * Body
+	 */
+	$element = 'body';
+	$selectors = array( 'body', '.font-body' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( 'body', array( 'a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+	// Comments
+	if ( isset( $declarations['font-size-px'] ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '#comments' ),
+			'declarations' => array(
+				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comments' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comments' ] ) ) . 'rem'
+			)
+		) );
+		// Comment date
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.comment-date' ),
+			'declarations' => array(
+				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comment-date' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comment-date' ] ) ) . 'rem'
+			)
+		) );
+	}
+
+	/**
 	 * Site Title
 	 */
 	$element = 'site-title';
@@ -68,6 +100,10 @@ function ttfmake_css_fonts() {
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( 'site-title', array( '.site-title a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
 	}
 
 	/**
@@ -78,6 +114,10 @@ function ttfmake_css_fonts() {
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( 'site-tagline', array( '.site-description a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
 	}
 
 	/**
@@ -216,34 +256,6 @@ function ttfmake_css_fonts() {
 			)
 		) );
 	}
-
-	/**
-	 * Body
-	 */
-	$element = 'body';
-	$selectors = array( 'body', '.font-body' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	// Comments
-	if ( isset( $declarations['font-size-px'] ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '#comments' ),
-			'declarations' => array(
-				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comments' ] ) . 'px',
-				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comments' ] ) ) . 'rem'
-			)
-		) );
-		// Comment date
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.comment-date' ),
-			'declarations' => array(
-				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comment-date' ] ) . 'px',
-				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'comment-date' ] ) ) . 'rem'
-			)
-		) );
-	}
 }
 endif;
 
@@ -374,6 +386,18 @@ function ttfmake_customizer_font_property_definitions( $element, $label ) {
 				),
 			),
 		),
+		'link-underline-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Link Underline', 'make' ),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'links-underline-' . $element ),
+			),
+		),
 	);
 
 	/**
@@ -439,6 +463,46 @@ function ttfmake_parse_font_properties( $element ) {
 	return $declarations;
 }
 endif;
+
+/**
+ * Generate a CSS rule definition array for an element's link underline property.
+ *
+ * @since 1.5.0.
+ *
+ * @param  string    $element      The element to look up in the theme options.
+ * @param  array     $selectors    The base selectors to use for the rule.
+ * @return array                   A CSS rule definition array.
+ */
+function ttfmake_parse_link_underline( $element, $selectors ) {
+	$setting_id = 'link-underline-' . $element;
+	$value = get_theme_mod( $setting_id, ttfmake_get_default( $setting_id ) );
+	if ( false !== $value && $value !== ttfmake_get_default( $setting_id ) ) {
+		$sanitized_value = ttfmake_sanitize_choice( $value, $setting_id );
+
+		// Declarations
+		$declarations = array( 'text-decoration' => 'underline' );
+		if ( 'never' === $sanitized_value ) {
+			$declarations['text-decoration'] = 'none';
+		}
+
+		// Selectors
+		$parsed_selectors = $selectors;
+		if ( 'hover' === $sanitized_value ) {
+			foreach ( $selectors as $key => $selector ) {
+				$parsed_selectors[ $key ] = $selector . ':hover';
+				$parsed_selectors[] = $selector . ':focus';
+			}
+		}
+
+		// Return CSS rule array
+		return array(
+			'selectors' => $parsed_selectors,
+			'declarations' => $declarations,
+		);
+	}
+
+	return array();
+}
 
 if ( ! function_exists( 'ttfmake_get_font_stack' ) ) :
 /**

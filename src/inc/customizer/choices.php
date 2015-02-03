@@ -45,9 +45,9 @@ function ttfmake_get_choices( $setting ) {
 				'lowercase' => __( 'Lowercase', 'make' ),
 			);
 			break;
-		case 'links-underline-body' :
-		case 'links-underline-site-title' :
-		case 'links-underline-site-tagline' :
+		case 'link-underline-body' :
+		case 'link-underline-site-title' :
+		case 'link-underline-site-tagline' :
 			$choices = array(
 				'always' => __( 'Always', 'make' ),
 				'hover'  => __( 'On hover/focus', 'make' ),
