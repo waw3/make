@@ -27,6 +27,7 @@ function ttfmake_font_get_relative_sizes() {
 		'sub-menu'        => 93,  // Deprecated in 1.3.0.
 		// Relative to Header Bar icon size
 		'header-bar-icon' => 85,
+		'footer-icon'     => 85,
 		// Relative to widget font size
 		'widget-title'    => 100, // Deprecated in 1.5.0.
 		// Relative to header font size
@@ -325,6 +326,39 @@ function ttfmake_css_fonts() {
 	$link_rule = ttfmake_parse_link_underline( $element, array( '.widget' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * Footer Text
+	 */
+	$element = 'footer-text';
+	$selectors = array( '.footer-text' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.footer-text a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+	// Footer Icons
+	$footer_icon_size = absint( get_theme_mod( 'font-size-footer-icon', ttfmake_get_default( 'font-size-footer-icon' ) ) );
+	if ( $footer_icon_size !== ttfmake_get_default( 'font-size-footer-icon' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors' => array( '.footer-social-links' ),
+			'declarations' => array(
+				'font-size-px' => $footer_icon_size . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( $footer_icon_size ) . 'rem'
+			),
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors' => array( '.footer-social-links' ),
+			'declarations' => array(
+				'font-size-px' => ttfmake_get_relative_font_size( $footer_icon_size, $percent[ 'footer-icon' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $footer_icon_size, $percent[ 'footer-icon' ] ) ) . 'rem'
+			),
+			'media' => 'screen and (min-width: 1100px)'
+		) );
 	}
 }
 endif;

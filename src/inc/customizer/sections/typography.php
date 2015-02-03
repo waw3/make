@@ -135,6 +135,41 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
+	 * Footer
+	 */
+	$typography_sections['font-footer'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Footer', 'make' ),
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'footer-text', __( 'Footer Text', 'make' ) ),
+			array(
+				'footer-icon-group' => array(
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'label'   => __( 'Social Icons', 'make' ),
+						'type'  => 'group-title',
+					),
+				),
+				'font-size-footer-icon'     => array(
+					'setting' => array(
+						'sanitize_callback' => 'absint',
+					),
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Range_Control',
+						'label'   => __( 'Icon Size (px)', 'make' ),
+						'type'  => 'range',
+						'input_attrs' => array(
+							'min'  => 6,
+							'max'  => 100,
+							'step' => 1,
+						),
+					),
+				),
+			)
+		),
+	);
+
+	/**
 	 * Google Web Fonts
 	 */
 	$typography_sections['font-google'] = array(

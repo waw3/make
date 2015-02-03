@@ -704,7 +704,7 @@ a {
 	clear: both;
 	text-align: center;
 	@include rem('margin-bottom', $base/4);
-	@include rem('font-size', 12px);
+	@include rem('font-size', 13px);
 }
 .footer-social-links {
 	@include for(medium-screens) {

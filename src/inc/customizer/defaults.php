@@ -200,6 +200,18 @@ function ttfmake_option_defaults() {
 		'letter-spacing-widget'                    => 0,
 		'word-spacing-widget'                      => 0,
 		'link-underline-widget'                    => 'never',
+		// Footer Text
+		'font-family-footer-text'                  => 'Open Sans',
+		'font-size-footer-text'                    => 13,
+		'font-weight-footer-text'                  => 'normal',
+		'font-style-footer-text'                   => 'normal',
+		'text-transform-footer-text'               => 'none',
+		'line-height-footer-text'                  => 1.6,
+		'letter-spacing-footer-text'               => 0,
+		'word-spacing-footer-text'                 => 0,
+		'link-underline-footer-text'               => 'never',
+		// Footer Icons
+		'font-size-footer-icon'                    => 20,
 		// Google Web Fonts
 		'font-subset'                              => 'latin',
 
