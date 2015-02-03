@@ -44,13 +44,16 @@ class TTFMAKE_Customize_Misc_Control extends WP_Customize_Control {
 		switch ( $this->type ) {
 			case 'group-title' :
 				echo '<h4 class="ttfmake-control-group-title">' . $this->label . '</h4>';
+				if ( '' !== $this->description ) {
+					echo '<span class="description customize-control-description">' . $this->description . '</span>';
+				}
 				break;
 			case 'heading' :
 				echo '<span class="customize-control-title">' . $this->label . '</span>';
 				break;
 			default:
 			case 'text' :
-				echo '<p class="description">' . $this->description . '</p>';
+				echo '<span class="description customize-control-description">' . $this->description . '</span>';
 				break;
 			case 'line' :
 				echo '<hr />';
