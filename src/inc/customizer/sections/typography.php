@@ -26,6 +26,22 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
+	 * Headers
+	 */
+	$typography_sections['font-headers'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Headers', 'make' ),
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'h1', __( 'H1', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h2', __( 'H2', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h3', __( 'H3', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h4', __( 'H4', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h5', __( 'H5', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'h6', __( 'H6', 'make' ) )
+		),
+	);
+
+	/**
 	 * Site Title & Tagline
 	 */
 	$typography_sections['font-site-title-tagline'] = array(
@@ -115,22 +131,6 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'options' => array_merge(
 			ttfmake_customizer_font_property_definitions( 'widget-title', __( 'Widget Title', 'make' ) ),
 			ttfmake_customizer_font_property_definitions( 'widget', __( 'Widget Body', 'make' ) )
-		),
-	);
-
-	/**
-	 * Headers
-	 */
-	$typography_sections['font-headers'] = array(
-		'panel'   => $panel,
-		'title'   => __( 'Headers', 'make' ),
-		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'h1', __( 'H1', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h2', __( 'H2', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h3', __( 'H3', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h4', __( 'H4', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h5', __( 'H5', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h6', __( 'H6', 'make' ) )
 		),
 	);
 

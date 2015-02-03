@@ -21,6 +21,12 @@ function ttfmake_get_choices( $setting ) {
 
 	switch ( $setting ) {
 		case 'font-weight-body' :
+		case 'font-weight-h1' :
+		case 'font-weight-h2' :
+		case 'font-weight-h3' :
+		case 'font-weight-h4' :
+		case 'font-weight-h5' :
+		case 'font-weight-h6' :
 		case 'font-weight-site-title' :
 		case 'font-weight-site-tagline' :
 		case 'font-weight-nav' :
@@ -28,18 +34,18 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-weight-header-bar-text' :
 		case 'font-weight-widget-title' :
 		case 'font-weight-widget' :
-		case 'font-weight-h1' :
-		case 'font-weight-h2' :
-		case 'font-weight-h3' :
-		case 'font-weight-h4' :
-		case 'font-weight-h5' :
-		case 'font-weight-h6' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'bold'   => __( 'Bold', 'make' ),
 			);
 			break;
 		case 'font-style-body' :
+		case 'font-style-h1' :
+		case 'font-style-h2' :
+		case 'font-style-h3' :
+		case 'font-style-h4' :
+		case 'font-style-h5' :
+		case 'font-style-h6' :
 		case 'font-style-site-title' :
 		case 'font-style-site-tagline' :
 		case 'font-style-nav' :
@@ -47,18 +53,18 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-style-header-bar-text' :
 		case 'font-style-widget-title' :
 		case 'font-style-widget' :
-		case 'font-style-h1' :
-		case 'font-style-h2' :
-		case 'font-style-h3' :
-		case 'font-style-h4' :
-		case 'font-style-h5' :
-		case 'font-style-h6' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'italic' => __( 'Italic', 'make' ),
 			);
 			break;
 		case 'text-transform-body' :
+		case 'text-transform-h1' :
+		case 'text-transform-h2' :
+		case 'text-transform-h3' :
+		case 'text-transform-h4' :
+		case 'text-transform-h5' :
+		case 'text-transform-h6' :
 		case 'text-transform-site-title' :
 		case 'text-transform-site-tagline' :
 		case 'text-transform-nav' :
@@ -66,12 +72,6 @@ function ttfmake_get_choices( $setting ) {
 		case 'text-transform-header-bar-text' :
 		case 'text-transform-widget-title' :
 		case 'text-transform-widget' :
-		case 'text-transform-h1' :
-		case 'text-transform-h2' :
-		case 'text-transform-h3' :
-		case 'text-transform-h4' :
-		case 'text-transform-h5' :
-		case 'text-transform-h6' :
 			$choices = array(
 				'none'      => __( 'None', 'make' ),
 				'uppercase' => __( 'Uppercase', 'make' ),
@@ -79,6 +79,12 @@ function ttfmake_get_choices( $setting ) {
 			);
 			break;
 		case 'link-underline-body' :
+		case 'link-underline-h1' :
+		case 'link-underline-h2' :
+		case 'link-underline-h3' :
+		case 'link-underline-h4' :
+		case 'link-underline-h5' :
+		case 'link-underline-h6' :
 		case 'link-underline-site-title' :
 		case 'link-underline-site-tagline' :
 		case 'link-underline-nav' :
@@ -86,12 +92,6 @@ function ttfmake_get_choices( $setting ) {
 		case 'link-underline-header-bar-text' :
 		case 'link-underline-widget-title' :
 		case 'link-underline-widget' :
-		case 'link-underline-h1' :
-		case 'link-underline-h2' :
-		case 'link-underline-h3' :
-		case 'link-underline-h4' :
-		case 'link-underline-h5' :
-		case 'link-underline-h6' :
 			$choices = array(
 				'always' => __( 'Always', 'make' ),
 				'hover'  => __( 'On hover/focus', 'make' ),

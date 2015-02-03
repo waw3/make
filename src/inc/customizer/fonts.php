@@ -95,6 +95,101 @@ function ttfmake_css_fonts() {
 	}
 
 	/**
+	 * H1
+	 */
+	$element = 'h1';
+	$selectors = array( 'h1', 'h1 a', '.font-header' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h1 a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * H2
+	 */
+	$element = 'h2';
+	$selectors = array( 'h2', 'h2 a' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h2 a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+	// Post title with two sidebars
+	if ( isset( $declarations['font-size-px'] ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
+			'declarations' => array(
+				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'post-title' ] ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'post-title' ] ) ) . 'rem'
+			),
+			'media'        => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	/**
+	 * H3
+	 */
+	$element = 'h3';
+	$selectors = array( 'h3', 'h3 a', '.builder-text-content .widget-title' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h3 a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * H4
+	 */
+	$element = 'h4';
+	$selectors = array( 'h4', 'h4 a' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h4 a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * H5
+	 */
+	$element = 'h5';
+	$selectors = array( 'h5', 'h5 a' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h5 a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * H6
+	 */
+	$element = 'h6';
+	$selectors = array( 'h6', 'h6 a' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h6 a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
 	 * Site Title
 	 */
 	$element = 'site-title';
@@ -228,101 +323,6 @@ function ttfmake_css_fonts() {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
 	$link_rule = ttfmake_parse_link_underline( $element, array( '.widget' ) );
-	if ( ! empty( $link_rule ) ) {
-		ttfmake_get_css()->add( $link_rule );
-	}
-
-	/**
-	 * H1
-	 */
-	$element = 'h1';
-	$selectors = array( 'h1', 'h1 a', '.font-header' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h1 a' ) );
-	if ( ! empty( $link_rule ) ) {
-		ttfmake_get_css()->add( $link_rule );
-	}
-
-	/**
-	 * H2
-	 */
-	$element = 'h2';
-	$selectors = array( 'h2', 'h2 a' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h2 a' ) );
-	if ( ! empty( $link_rule ) ) {
-		ttfmake_get_css()->add( $link_rule );
-	}
-	// Post title with two sidebars
-	if ( isset( $declarations['font-size-px'] ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.has-left-sidebar.has-right-sidebar .entry-title' ),
-			'declarations' => array(
-				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'post-title' ] ) . 'px',
-				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'post-title' ] ) ) . 'rem'
-			),
-			'media'        => 'screen and (min-width: 800px)'
-		) );
-	}
-
-	/**
-	 * H3
-	 */
-	$element = 'h3';
-	$selectors = array( 'h3', 'h3 a', '.builder-text-content .widget-title' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h3 a' ) );
-	if ( ! empty( $link_rule ) ) {
-		ttfmake_get_css()->add( $link_rule );
-	}
-
-	/**
-	 * H4
-	 */
-	$element = 'h4';
-	$selectors = array( 'h4', 'h4 a' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h4 a' ) );
-	if ( ! empty( $link_rule ) ) {
-		ttfmake_get_css()->add( $link_rule );
-	}
-
-	/**
-	 * H5
-	 */
-	$element = 'h5';
-	$selectors = array( 'h5', 'h5 a' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h5 a' ) );
-	if ( ! empty( $link_rule ) ) {
-		ttfmake_get_css()->add( $link_rule );
-	}
-
-	/**
-	 * H6
-	 */
-	$element = 'h6';
-	$selectors = array( 'h6', 'h6 a' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h6 a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
