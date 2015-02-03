@@ -53,7 +53,7 @@ class TTFMAKE_Customize_Misc_Control extends WP_Customize_Control {
 				break;
 			default:
 			case 'text' :
-				echo '<span class="description customize-control-description">' . $this->description . '</span>';
+				echo '<p class="description customize-control-description">' . $this->description . '</p>';
 				break;
 			case 'line' :
 				echo '<hr />';
