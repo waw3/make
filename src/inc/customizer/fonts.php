@@ -273,7 +273,7 @@ if ( ! function_exists( 'ttfmake_customizer_font_property_definitions' ) ) :
  */
 function ttfmake_customizer_font_property_definitions( $element, $label ) {
 	$definitions = array(
-		$element . '-typography-group' => array(
+		'typography-group-' . $element => array(
 			'control' => array(
 				'control_type' => 'TTFMAKE_Customize_Misc_Control',
 				'label'   => $label,
