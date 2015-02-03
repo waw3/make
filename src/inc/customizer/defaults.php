@@ -67,6 +67,8 @@ function ttfmake_option_defaults() {
 		'letter-spacing-body'                      => 0,
 		'word-spacing-body'                        => 0,
 		'link-underline-body'                      => 'never',
+		// Links
+		'font-weight-body-link'                    => 'bold',
 		// H1
 		'font-family-h1'                           => 'sans-serif',
 		'font-size-h1'                             => 46,

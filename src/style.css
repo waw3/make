@@ -322,7 +322,8 @@ a {
 	margin: 0;
 	color: #171717;}
 .site-title a {
-	color: #171717; }
+	font-weight: bold; 
+	color: #171717;}
 .no-site-tagline .site-title {
 	margin-bottom: 22px;
 	margin-bottom: 2.2rem; }

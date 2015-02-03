@@ -21,6 +21,7 @@ function ttfmake_get_choices( $setting ) {
 
 	switch ( $setting ) {
 		case 'font-weight-body' :
+		case 'font-weight-body-link' :
 		case 'font-weight-h1' :
 		case 'font-weight-h2' :
 		case 'font-weight-h3' :

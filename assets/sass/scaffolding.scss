@@ -154,6 +154,7 @@ a {
 	@include rem('font-size', 34px);
 	a {
 		color: $b;
+		font-weight: bold;
 	}
 	.no-site-tagline & {
 		@include rem('margin-bottom', $base);

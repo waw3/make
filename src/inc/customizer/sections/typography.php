@@ -22,7 +22,30 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections['font'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Global', 'make' ),
-		'options' => ttfmake_customizer_font_property_definitions( 'body', __( 'Default', 'make' ) ),
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'body', __( 'Default', 'make' ) ),
+			array(
+				'body-link-group' => array(
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'label'   => __( 'Links', 'make' ),
+						'type'  => 'group-title',
+					),
+				),
+				'font-weight-body-link' => array(
+					'setting' => array(
+						'sanitize_callback' => 'ttfmake_sanitize_choice',
+					),
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Radio_Control',
+						'label'   => __( 'Font Weight', 'make' ),
+						'type'  => 'radio',
+						'mode'  => 'buttonset',
+						'choices' => ttfmake_get_choices( 'font-weight-body-link' ),
+					),
+				),
+			)
+		),
 	);
 
 	/**

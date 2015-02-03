@@ -76,6 +76,16 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
+	// Links
+	$link_font_weight = ttfmake_sanitize_choice( get_theme_mod( 'font-weight-body-link', ttfmake_get_default( 'font-weight-body-link' ) ), 'font-weight-body-link' );
+	if ( $link_font_weight !== ttfmake_get_default( 'font-weight-body-link' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( 'a' ),
+			'declarations' => array(
+				'font-weight' => $link_font_weight,
+			)
+		) );
+	}
 	// Comments
 	if ( isset( $declarations['font-size-px'] ) ) {
 		ttfmake_get_css()->add( array(
