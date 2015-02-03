@@ -108,9 +108,26 @@ function ttfmake_option_defaults() {
 		'word-spacing-subnav'                      => 0,
 		'link-underline-subnav'                    => 'never',
 		'font-subnav-mobile'                       => 1,
-		// Widgets
+		// Widget Title
+		'font-family-widget-title'                 => 'Open Sans',
+		'font-size-widget-title'                   => 13,
+		'font-weight-widget-title'                 => 'bold',
+		'font-style-widget-title'                  => 'normal',
+		'text-transform-widget-title'              => 'none',
+		'line-height-widget-title'                 => 1.6,
+		'letter-spacing-widget-title'              => 0,
+		'word-spacing-widget-title'                => 0,
+		'link-underline-widget-title'              => 'never',
+		// Widget Body
 		'font-family-widget'                       => 'Open Sans',
 		'font-size-widget'                         => 13,
+		'font-weight-widget'                       => 'normal',
+		'font-style-widget'                        => 'normal',
+		'text-transform-widget'                    => 'none',
+		'line-height-widget'                       => 1.6,
+		'letter-spacing-widget'                    => 0,
+		'word-spacing-widget'                      => 0,
+		'link-underline-widget'                    => 'never',
 		// Headers & Body
 		'font-family-h1'                           => 'sans-serif',
 		'font-size-h1'                             => 46,

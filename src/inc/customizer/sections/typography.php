@@ -73,26 +73,9 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections['font-widget'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Widgets', 'make' ),
-		'options' => array(
-			'font-family-widget' => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_font_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Widget Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => ttfmake_font_choices_placeholder(),
-				),
-			),
-			'font-size-widget'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Widget Font Size (in px)', 'make' ),
-					'type'  => ( ttfmake_customizer_supports_panels() ) ? 'number' : 'text',
-				),
-			),
+		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'widget-title', __( 'Widget Title', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'widget', __( 'Widget Body', 'make' ) )
 		),
 	);
 

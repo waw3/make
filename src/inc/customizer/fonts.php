@@ -34,7 +34,7 @@ function ttfmake_font_get_relative_sizes() {
 		'h6'           => 30,  // Deprecated in 1.3.0.
 		'post-title'   => 74,
 		// Relative to widget font size
-		'widget-title' => 100,
+		'widget-title' => 100, // Deprecated in 1.5.0.
 		// Relative to body font size
 		'comments'     => 88,
 		'comment-date' => 82,
@@ -170,6 +170,34 @@ function ttfmake_css_fonts() {
 	}
 
 	/**
+	 * Widget Title
+	 */
+	$element = 'widget-title';
+	$selectors = array( '.widget-title', '.widgettitle', '.widget-title a', '.widgettitle a', '.font-widget-title' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.widget-title a', '.widgettitle a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * Widget Body
+	 */
+	$element = 'widget';
+	$selectors = array( '.widget', '.font-widget' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.widget' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
 	 * H1
 	 */
 	$element = 'h1';
@@ -238,26 +266,6 @@ function ttfmake_css_fonts() {
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-
-	/**
-	 * Widgets
-	 */
-	$element = 'widget';
-	$selectors = array( '.widget', '.font-widget' );
-	$declarations = ttfmake_parse_font_properties( $element );
-	if ( ! empty( $declarations ) ) {
-		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-	}
-	// Widget title
-	if ( isset( $declarations['font-size-px'] ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.widget-title' ),
-			'declarations' => array(
-				'font-size-px'  => ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'widget-title' ] ) . 'px',
-				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], $percent[ 'widget-title' ] ) ) . 'rem'
-			)
-		) );
 	}
 }
 endif;
@@ -609,10 +617,12 @@ function ttfmake_get_google_font_uri() {
 	// Grab the font choices
 	if ( ttfmake_customizer_supports_panels() ) {
 		$font_keys = array(
+			'font-family-body',
 			'font-family-site-title',
 			'font-family-site-tagline',
 			'font-family-nav',
 			'font-family-subnav',
+			'font-family-widget-title',
 			'font-family-widget',
 			'font-family-h1',
 			'font-family-h2',
@@ -620,7 +630,6 @@ function ttfmake_get_google_font_uri() {
 			'font-family-h4',
 			'font-family-h5',
 			'font-family-h6',
-			'font-family-body',
 		);
 	} else {
 		$font_keys = array(
