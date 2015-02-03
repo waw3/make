@@ -233,7 +233,7 @@ body.boxed .site-wrapper {
 
 body, button, input, select, textarea {
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-	line-height: 1.55; 
+	line-height: 1.6; 
 	color: #171717;}
 
 pre, code, input, textarea {
@@ -851,7 +851,7 @@ h1 {
 	font-size: 46px;
 	font-size: 4.6rem; 
 	font-weight: normal;
-	line-height: 1.15;}
+	line-height: 1.2;}
 
 h2 {
 	font-size: 34px;

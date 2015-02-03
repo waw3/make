@@ -83,7 +83,7 @@ function ttfmake_option_defaults() {
 		'font-weight-site-tagline'                 => 'normal',
 		'font-style-site-tagline'                  => 'normal',
 		'text-transform-site-tagline'              => 'uppercase',
-		'line-height-site-tagline'                 => 1.5,
+		'line-height-site-tagline'                 => 1.6,
 		'letter-spacing-site-tagline'              => 1,
 		'word-spacing-site-tagline'                => 0,
 		'link-underline-site-tagline'             => 'never',
