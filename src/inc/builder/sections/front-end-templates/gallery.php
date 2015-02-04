@@ -31,7 +31,7 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 			<?php endif; ?>
 			<?php if ( 'none' !== $captions && ( '' !== $item['title'] || '' !== $item['description'] || has_excerpt( $item['image-id'] ) ) ) : ?>
 			<div class="builder-gallery-content">
-				<div class="builder-gappery-content-inner">
+				<div class="builder-gallery-content-inner">
 					<?php if ( '' !== $item['title'] ) : ?>
 					<h4 class="builder-gallery-title">
 						<?php echo apply_filters( 'the_title', $item['title'] ); ?>
@@ -47,8 +47,8 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 					</div>
 					<?php endif; ?>
 				</div>
-				<?php endif; ?>
-				</div>
+			</div>
+			<?php endif; ?>
 		</div>
 		<?php endforeach; endif; ?>
 	</div>
