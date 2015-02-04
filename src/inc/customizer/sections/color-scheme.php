@@ -21,7 +21,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	 */
 	$colorscheme_sections['color'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'General', 'make' ),
+		'title'   => __( 'Global', 'make' ),
 		'options' => array(
 			'color-primary'   => array(
 				'setting' => array(

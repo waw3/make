@@ -68,8 +68,8 @@ if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
 function ttfmake_customizer_get_panels() {
 	$panels = array(
 		'general'        => array( 'title' => __( 'General', 'make' ), 'priority' => 100 ),
-		'typography'     => array( 'title' => __( 'Typography', 'make' ), 'priority' => 200 ),
-		'color-scheme'   => array( 'title' => __( 'Color Scheme', 'make' ), 'priority' => 300 ),
+		'typography'     => array( 'title' => __( 'Design: Typography', 'make' ), 'priority' => 200 ),
+		'color-scheme'   => array( 'title' => __( 'Design: Color', 'make' ), 'priority' => 300 ),
 		'header'         => array( 'title' => __( 'Header', 'make' ), 'priority' => 400 ),
 		'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ), 'priority' => 500 ),
 		'footer'         => array( 'title' => __( 'Footer', 'make' ), 'priority' => 600 ),
