@@ -25,6 +25,7 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'priority.php' );
 
 	// Style rendering
+	require_once( $path . 'style/color.php' );
 	require_once( $path . 'style/typography.php' );
 
 	// Hook up functions
