@@ -68,7 +68,6 @@ function ttfmake_css_add_rules() {
 	 */
 	// Get and escape options
 	$main_background_image       = get_theme_mod( 'main-background-image', ttfmake_get_default( 'main-background-image' ) );
-	$main_content_link_underline = absint( get_theme_mod( 'main-content-link-underline', ttfmake_get_default( 'main-content-link-underline' ) ) );
 
 	// Main background image
 	if ( ! empty( $main_background_image ) ) {
@@ -88,16 +87,6 @@ function ttfmake_css_add_rules() {
 				'background-size'     => $main_background_size,
 				'background-repeat'   => $main_background_repeat,
 				'background-position' => $main_background_position . ' top'
-			)
-		) );
-	}
-
-	// Main Content Link Underline
-	if ( 1 === $main_content_link_underline ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.entry-content a' ),
-			'declarations' => array(
-				'text-decoration' => 'underline'
 			)
 		) );
 	}

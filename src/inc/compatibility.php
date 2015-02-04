@@ -178,26 +178,27 @@ if ( ! function_exists( 'ttfmake_customizer_get_key_conversions' ) ) :
 function ttfmake_customizer_get_key_conversions() {
 	// $new_key => $old_key
 	$conversions = array(
-		'font-family-site-title'   => 'font-site-title',
-		'font-family-h1'           => 'font-header',
-		'font-family-h2'           => 'font-header',
-		'font-family-h3'           => 'font-header',
-		'font-family-h4'           => 'font-header',
-		'font-family-h5'           => 'font-header',
-		'font-family-h6'           => 'font-header',
-		'font-family-body'         => 'font-body',
-		'font-size-site-title'     => 'font-site-title-size',
-		'font-size-site-tagline'   => 'font-site-tagline-size',
-		'font-size-nav'            => 'font-nav-size',
-		'font-size-h1'             => 'font-header-size',
-		'font-size-h2'             => 'font-header-size',
-		'font-size-h3'             => 'font-header-size',
-		'font-size-h4'             => 'font-header-size',
-		'font-size-h5'             => 'font-header-size',
-		'font-size-h6'             => 'font-header-size',
-		'font-size-widget'         => 'font-widget-size',
-		'font-size-body'           => 'font-body-size',
-		'social-facebook-official' => 'social-facebook',
+		'font-family-site-title'      => 'font-site-title',
+		'font-family-h1'              => 'font-header',
+		'font-family-h2'              => 'font-header',
+		'font-family-h3'              => 'font-header',
+		'font-family-h4'              => 'font-header',
+		'font-family-h5'              => 'font-header',
+		'font-family-h6'              => 'font-header',
+		'font-family-body'            => 'font-body',
+		'font-size-site-title'        => 'font-site-title-size',
+		'font-size-site-tagline'      => 'font-site-tagline-size',
+		'font-size-nav'               => 'font-nav-size',
+		'font-size-h1'                => 'font-header-size',
+		'font-size-h2'                => 'font-header-size',
+		'font-size-h3'                => 'font-header-size',
+		'font-size-h4'                => 'font-header-size',
+		'font-size-h5'                => 'font-header-size',
+		'font-size-h6'                => 'font-header-size',
+		'font-size-widget'            => 'font-widget-size',
+		'font-size-body'              => 'font-body-size',
+		'social-facebook-official'    => 'social-facebook',
+		'main-content-link-underline' => 'link-underline-body',
 	);
 
 	/**
@@ -304,10 +305,14 @@ if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_values' ) ) :
  * @return mixed                 The convert mod value.
  */
 function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $value ) {
-	if ( in_array( $old_key, array( 'font-header-size' ) ) ) {
+	if ( 'font-header-size' === $old_key ) {
 		$percent = ttfmake_font_get_relative_sizes();
 		$h       = preg_replace( '/font-size-(h\d)/', '$1', $new_key );
 		$value   = ttfmake_get_relative_font_size( $value, $percent[$h] );
+	} else if ( 'main-content-link-underline' === $old_key ) {
+		if ( 1 == $value ) {
+			$value = 'always';
+		}
 	}
 
 	return $value;

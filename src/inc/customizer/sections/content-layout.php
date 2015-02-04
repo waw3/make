@@ -34,22 +34,6 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 					'choices' => ttfmake_get_choices( 'general-layout' ),
 				),
 			),
-			'layout-global-content-heading' => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'heading',
-					'label'        => __( 'Content Options', 'make' ),
-				),
-			),
-			'main-content-link-underline'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'absint',
-				),
-				'control' => array(
-					'label' => __( 'Underline links in content', 'make' ),
-					'type'  => 'checkbox',
-				),
-			),
 		),
 	);
 

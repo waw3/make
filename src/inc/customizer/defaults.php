@@ -261,7 +261,6 @@ function ttfmake_option_defaults() {
 		 */
 		// Global
 		'general-layout'                           => 'full-width',
-		'main-content-link-underline'              => 0,
 		// Blog (Posts Page)
 		'layout-blog-hide-header'                  => 0,
 		'layout-blog-hide-footer'                  => 0,
@@ -368,6 +367,7 @@ function ttfmake_option_defaults() {
 		'font-widget-size'                         => 13,
 		'font-body-size'                           => 17,
 		'social-facebook'                          => '',
+		'main-content-link-underline'              => 0,
 	);
 
 	/**
