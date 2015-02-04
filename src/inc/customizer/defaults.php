@@ -182,7 +182,7 @@ function ttfmake_option_defaults() {
 		'link-underline-header-bar-text'           => 'never',
 		// Header Bar Icons
 		'font-size-header-bar-icon'                => 20,
-		// Widget Title
+		// Sidebar Widget Title
 		'font-family-widget-title'                 => 'Open Sans',
 		'font-size-widget-title'                   => 13,
 		'font-weight-widget-title'                 => 'bold',
@@ -192,7 +192,7 @@ function ttfmake_option_defaults() {
 		'letter-spacing-widget-title'              => 0,
 		'word-spacing-widget-title'                => 0,
 		'link-underline-widget-title'              => 'never',
-		// Widget Body
+		// Sidebar Widget Body
 		'font-family-widget'                       => 'Open Sans',
 		'font-size-widget'                         => 13,
 		'font-weight-widget'                       => 'normal',
@@ -212,6 +212,26 @@ function ttfmake_option_defaults() {
 		'letter-spacing-footer-text'               => 0,
 		'word-spacing-footer-text'                 => 0,
 		'link-underline-footer-text'               => 'never',
+		// Footer Widget Title
+		'font-family-footer-widget-title'          => 'Open Sans',
+		'font-size-footer-widget-title'            => 13,
+		'font-weight-footer-widget-title'          => 'bold',
+		'font-style-footer-widget-title'           => 'normal',
+		'text-transform-footer-widget-title'       => 'none',
+		'line-height-footer-widget-title'          => 1.6,
+		'letter-spacing-footer-widget-title'       => 0,
+		'word-spacing-footer-widget-title'         => 0,
+		'link-underline-footer-widget-title'       => 'never',
+		// Footer Widget Body
+		'font-family-footer-widget'                => 'Open Sans',
+		'font-size-footer-widget'                  => 13,
+		'font-weight-footer-widget'                => 'normal',
+		'font-style-footer-widget'                 => 'normal',
+		'text-transform-footer-widget'             => 'none',
+		'line-height-footer-widget'                => 1.6,
+		'letter-spacing-footer-widget'             => 0,
+		'word-spacing-footer-widget'               => 0,
+		'link-underline-footer-widget'             => 'never',
 		// Footer Icons
 		'font-size-footer-icon'                    => 20,
 		// Google Web Fonts

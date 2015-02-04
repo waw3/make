@@ -36,6 +36,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-weight-widget-title' :
 		case 'font-weight-widget' :
 		case 'font-weight-footer-text' :
+		case 'font-weight-footer-widget-title' :
+		case 'font-weight-footer-widget' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'bold'   => __( 'Bold', 'make' ),
@@ -56,6 +58,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-style-widget-title' :
 		case 'font-style-widget' :
 		case 'font-style-footer-text' :
+		case 'font-style-footer-widget-title' :
+		case 'font-style-footer-widget' :
 			$choices = array(
 				'normal' => __( 'Normal', 'make' ),
 				'italic' => __( 'Italic', 'make' ),
@@ -76,6 +80,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'text-transform-widget-title' :
 		case 'text-transform-widget' :
 		case 'text-transform-footer-text' :
+		case 'text-transform-footer-widget-title' :
+		case 'text-transform-footer-widget' :
 			$choices = array(
 				'none'      => __( 'None', 'make' ),
 				'uppercase' => __( 'Uppercase', 'make' ),
@@ -97,6 +103,8 @@ function ttfmake_get_choices( $setting ) {
 		case 'link-underline-widget-title' :
 		case 'link-underline-widget' :
 		case 'link-underline-footer-text' :
+		case 'link-underline-footer-widget-title' :
+		case 'link-underline-footer-widget' :
 			$choices = array(
 				'always' => __( 'Always', 'make' ),
 				'hover'  => __( 'On hover/focus', 'make' ),

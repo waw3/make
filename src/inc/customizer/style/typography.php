@@ -269,29 +269,57 @@ function ttfmake_css_fonts() {
 	}
 
 	/**
-	 * Widget Title
+	 * Sidebar Widget Title
 	 */
 	$element = 'widget-title';
-	$selectors = array( '.widget-title', '.widgettitle', '.widget-title a', '.widgettitle a', '.font-widget-title' );
+	$selectors = array( '.sidebar .widget-title', '.sidebar .widgettitle', '.sidebar .widget-title a', '.sidebar .widgettitle a', '.font-widget-title' );
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( '.widget-title a', '.widgettitle a' ) );
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.sidebar .widget-title a', '.sidebar .widgettitle a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
 
 	/**
-	 * Widget Body
+	 * Sidebar Widget Body
 	 */
 	$element = 'widget';
-	$selectors = array( '.widget', '.font-widget' );
+	$selectors = array( '.sidebar .widget', '.font-widget' );
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( '.widget' ) );
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.sidebar .widget a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * Footer Widget Title
+	 */
+	$element = 'footer-widget-title';
+	$selectors = array( '.footer-widget-container .widget-title', '.footer-widget-container .widgettitle', '.footer-widget-container .widget-title a', '.footer-widget-container .widgettitle a' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.footer-widget-container .widget-title a', '.footer-widget-container .widgettitle a' ) );
+	if ( ! empty( $link_rule ) ) {
+		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * Footer Widget Body
+	 */
+	$element = 'footer-widget';
+	$selectors = array( '.footer-widget-container .widget' );
+	$declarations = ttfmake_parse_font_properties( $element );
+	if ( ! empty( $declarations ) ) {
+		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+	}
+	$link_rule = ttfmake_parse_link_underline( $element, array( '.footer-widget-container .widget a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}

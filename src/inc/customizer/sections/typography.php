@@ -146,11 +146,11 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
-	 * Widgets
+	 * Sidebars
 	 */
-	$typography_sections['font-widget'] = array(
+	$typography_sections['font-sidebar'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'Widgets', 'make' ),
+		'title'   => __( 'Sidebars', 'make' ),
 		'options' => array_merge(
 			ttfmake_customizer_font_property_definitions( 'widget-title', __( 'Widget Title', 'make' ) ),
 			ttfmake_customizer_font_property_definitions( 'widget', __( 'Widget Body', 'make' ) )
@@ -164,6 +164,8 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Footer', 'make' ),
 		'options' => array_merge(
+			ttfmake_customizer_font_property_definitions( 'footer-widget-title', __( 'Widget Title', 'make' ) ),
+			ttfmake_customizer_font_property_definitions( 'footer-widget', __( 'Widget Body', 'make' ) ),
 			ttfmake_customizer_font_property_definitions( 'footer-text', __( 'Footer Text', 'make' ) ),
 			array(
 				'footer-icon-group' => array(
