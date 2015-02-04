@@ -444,6 +444,7 @@ a {
 				border-bottom: $rule;
 				@include rem('padding', $base/2 0);
 				@include rem('font-size', 14px);
+				text-decoration: none;
 			}
 		}
 		.sub-menu,
