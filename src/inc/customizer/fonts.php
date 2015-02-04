@@ -156,6 +156,20 @@ function ttfmake_customizer_font_property_definitions( $element, $label, $descri
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_font_choices_placeholder' ) ) :
+/**
+ * Add a placeholder for the large font choices array, which will be loaded
+ * in via JavaScript.
+ *
+ * @since 1.3.0.
+ *
+ * @return array
+ */
+function ttfmake_font_choices_placeholder() {
+	return array( 'placeholder' => __( 'Loading&hellip;', 'make' ) );
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_get_font_property_option_keys' ) ) :
 /**
  * Return all the option keys for the specified font property.
@@ -176,6 +190,39 @@ function ttfmake_get_font_property_option_keys( $property ) {
 	}
 
 	return $font_keys;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
+/**
+ * Return an array of standard websafe fonts.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    Standard websafe fonts.
+ */
+function ttfmake_get_standard_fonts() {
+	/**
+	 * Allow for developers to modify the standard fonts.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $fonts    The list of standard fonts.
+	 */
+	return apply_filters( 'make_get_standard_fonts', array(
+		'serif' => array(
+			'label' => _x( 'Serif', 'font style', 'make' ),
+			'stack' => 'Georgia,Times,"Times New Roman",serif'
+		),
+		'sans-serif' => array(
+			'label' => _x( 'Sans Serif', 'font style', 'make' ),
+			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
+		),
+		'monospace' => array(
+			'label' => _x( 'Monospaced', 'font style', 'make' ),
+			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
+		)
+	) );
 }
 endif;
 
@@ -319,31 +366,6 @@ function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
-/**
- * Sanitize the Character Subset choice.
- *
- * @since  1.0.0
- *
- * @param  string    $value    The value to sanitize.
- * @return array               The sanitized value.
- */
-function ttfmake_sanitize_font_subset( $value ) {
-	if ( ! array_key_exists( $value, ttfmake_get_google_font_subsets() ) ) {
-		$value = ttfmake_get_default( 'font-subset' );
-	}
-
-	/**
-	 * Filter the sanitized subset choice.
-	 *
-	 * @since 1.2.3.
-	 *
-	 * @param string    $value    The chosen subset value.
-	 */
-	return apply_filters( 'make_sanitize_font_subset', $value );
-}
-endif;
-
 if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
 /**
  * Retrieve the list of available Google font subsets.
@@ -376,47 +398,28 @@ function ttfmake_get_google_font_subsets() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
+if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
 /**
- * Sanitize a font choice.
+ * Sanitize the Character Subset choice.
  *
- * @since  1.0.0.
+ * @since  1.0.0
  *
- * @param  string    $value    The font choice.
- * @return string              The sanitized font choice.
+ * @param  string    $value    The value to sanitize.
+ * @return array               The sanitized value.
  */
-function ttfmake_sanitize_font_choice( $value ) {
-	if ( ! is_string( $value ) ) {
-		// The array key is not a string, so the chosen option is not a real choice
-		return '';
-	} else if ( array_key_exists( $value, ttfmake_all_font_choices() ) ) {
-		return $value;
-	} else {
-		return '';
+function ttfmake_sanitize_font_subset( $value ) {
+	if ( ! array_key_exists( $value, ttfmake_get_google_font_subsets() ) ) {
+		$value = ttfmake_get_default( 'font-subset' );
 	}
 
 	/**
-	 * Filter the sanitized font choice.
+	 * Filter the sanitized subset choice.
 	 *
 	 * @since 1.2.3.
 	 *
-	 * @param string    $value    The chosen font value.
+	 * @param string    $value    The chosen subset value.
 	 */
-	return apply_filters( 'make_sanitize_font_choice', $return );
-}
-endif;
-
-if ( ! function_exists( 'ttfmake_font_choices_placeholder' ) ) :
-/**
- * Add a placeholder for the large font choices array, which will be loaded
- * in via JavaScript.
- *
- * @since 1.3.0.
- *
- * @return array
- */
-function ttfmake_font_choices_placeholder() {
-	return array( 'placeholder' => __( 'Loading&hellip;', 'make' ) );
+	return apply_filters( 'make_sanitize_font_subset', $value );
 }
 endif;
 
@@ -469,6 +472,36 @@ function ttfmake_all_font_choices_js() {
 }
 endif;
 
+if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
+/**
+ * Sanitize a font choice.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $value    The font choice.
+ * @return string              The sanitized font choice.
+ */
+function ttfmake_sanitize_font_choice( $value ) {
+	if ( ! is_string( $value ) ) {
+		// The array key is not a string, so the chosen option is not a real choice
+		return '';
+	} else if ( array_key_exists( $value, ttfmake_all_font_choices() ) ) {
+		return $value;
+	} else {
+		return '';
+	}
+
+	/**
+	 * Filter the sanitized font choice.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $value    The chosen font value.
+	 */
+	return apply_filters( 'make_sanitize_font_choice', $return );
+}
+endif;
+
 if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
 /**
  * Compile font options from different sources.
@@ -491,38 +524,5 @@ function ttfmake_get_all_fonts() {
 	 * @param array    $fonts    The list of all fonts.
 	 */
 	return apply_filters( 'make_all_fonts', array_merge( $heading1, $standard_fonts, $heading2, $google_fonts ) );
-}
-endif;
-
-if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
-/**
- * Return an array of standard websafe fonts.
- *
- * @since  1.0.0.
- *
- * @return array    Standard websafe fonts.
- */
-function ttfmake_get_standard_fonts() {
-	/**
-	 * Allow for developers to modify the standard fonts.
-	 *
-	 * @since 1.2.3.
-	 *
-	 * @param array    $fonts    The list of standard fonts.
-	 */
-	return apply_filters( 'make_get_standard_fonts', array(
-		'serif' => array(
-			'label' => _x( 'Serif', 'font style', 'make' ),
-			'stack' => 'Georgia,Times,"Times New Roman",serif'
-		),
-		'sans-serif' => array(
-			'label' => _x( 'Sans Serif', 'font style', 'make' ),
-			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
-		),
-		'monospace' => array(
-			'label' => _x( 'Monospaced', 'font style', 'make' ),
-			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
-		)
-	) );
 }
 endif;
