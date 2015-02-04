@@ -12,9 +12,9 @@ if ( ! function_exists( 'ttfmake_customizer_init' ) ) :
  * @return void
  */
 function ttfmake_customizer_init() {
-	$path = get_template_directory() . '/inc/customizer/';
+	$path = trailingslashit( get_template_directory() ) . 'inc/customizer/';
 
-	// Always load
+	// Utilities
 	require_once( $path . 'choices.php' );
 	require_once( $path . 'css.php' );
 	require_once( $path . 'defaults.php' );
@@ -23,6 +23,9 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'google-fonts.php' );
 	require_once( $path . 'logo.php' );
 	require_once( $path . 'priority.php' );
+
+	// Style rendering
+	require_once( $path . 'style/typography.php' );
 
 	// Hook up functions
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
@@ -552,7 +555,7 @@ function ttfmake_customizer_scripts() {
 
 	// Collect localization data
 	$data = array(
-		'fontOptions'		=> ttfmake_get_font_property_option_keys( 'family' ),
+		'fontOptions'		=> ttfmake_get_font_property_option_keys( 'font-family' ),
 		'allFontChoices'	=> ttfmake_all_font_choices_js(),
 	);
 
