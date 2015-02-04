@@ -1,4 +1,7 @@
 /* General Customizer style tweaks */
+.customize-control-title {
+	font-weight: normal;
+}
 span.description {
 	margin-bottom: 10px;
 }
