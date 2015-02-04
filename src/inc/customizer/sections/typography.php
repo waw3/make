@@ -199,7 +199,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	 */
 	$typography_sections['font-google'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'Google Fonts', 'make' ),
+		'title'   => __( 'Google Font Subsets', 'make' ),
 		'options' => array(
 			'font-subset'      => array(
 				'setting' => array(
