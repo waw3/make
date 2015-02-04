@@ -12,7 +12,7 @@
  */
 function ttfmake_css_color() {
 	/**
-	 * Colors section
+	 * Global
 	 */
 	// Primary color
 	$color_primary = maybe_hash_hex_color( get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ) );
@@ -230,6 +230,20 @@ function ttfmake_css_color() {
 		) );
 	}
 
+	// Main background color
+	$main_background_transparent = absint( get_theme_mod( 'main-background-color-transparent', ttfmake_get_default( 'main-background-color-transparent' ) ) );
+	$main_background_color = ( $main_background_transparent )
+		? 'transparent'
+		: maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttfmake_get_default( 'main-background-color' ) ) );
+	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-content', 'body.mce-content-body' ),
+			'declarations' => array(
+				'background-color' => $main_background_color
+			)
+		) );
+	}
+
 	/**
 	 * Header section
 	 */
@@ -303,21 +317,7 @@ function ttfmake_css_color() {
 		) );
 	}
 
-	/**
-	 * Main section
-	 */
-	// Get and escape options
-	$main_background_color       = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttfmake_get_default( 'main-background-color' ) ) );
 
-	// Main background color
-	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-content', 'body.mce-content-body' ),
-			'declarations' => array(
-				'background-color' => $main_background_color
-			)
-		) );
-	}
 
 	/**
 	 * Footer section

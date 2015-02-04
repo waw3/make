@@ -18,9 +18,10 @@ function ttfmake_customizer_background() {
 	$section = $wp_customize->get_section( $section_id );
 	$priority = new TTFMAKE_Prioritizer( 10, 5 );
 
-	// Move and rename Background Color control to General section of Color Scheme panel
-	$wp_customize->get_control( 'background_color' )->section = $theme_prefix . 'color-background';
+	// Move and rename Background Color control to Global section of Color panel
+	$wp_customize->get_control( 'background_color' )->section = $theme_prefix . 'color';
 	$wp_customize->get_control( 'background_color' )->label = __( 'Site Background Color', 'make' );
+	$wp_customize->get_control( 'background_color' )->priority = (int) $wp_customize->get_control( $theme_prefix . 'color-background-global-group' )->priority + 5;
 
 	// Move Background Image section to General panel
 	$section->panel = $theme_prefix . 'general';

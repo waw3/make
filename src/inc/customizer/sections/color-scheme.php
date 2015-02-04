@@ -23,6 +23,13 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Global', 'make' ),
 		'options' => array(
+			'color-scheme-global-group' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Color Scheme', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
 			'color-primary'   => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -45,7 +52,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'label'        => __( 'Secondary Color', 'make' ),
 					'description'  => sprintf(
 						__( 'Used for: %s', 'make' ),
-						__( 'slider buttons, form inputs, table borders, ruled lines', 'make' )
+						__( 'form inputs, table borders, ruled lines, slider buttons', 'make' )
 					),
 				),
 			),
@@ -75,6 +82,13 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					),
 				),
 			),
+			'color-link-global-group' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Links', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
 			'color-primary-link'    => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -82,18 +96,17 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Link Hover/Focus Color', 'make' ),
+					'description'  => __( 'The default link color is controlled by the "Primary Color" option above.' ),
 				),
 			),
-		),
-	);
-
-	/**
-	 * Background
-	 */
-	$colorscheme_sections['color-background'] = array(
-		'panel'   => $panel,
-		'title'   => __( 'Background', 'make' ),
-		'options' => array(
+			'color-background-global-group' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Background', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			// Site Background Color gets inserted here.
 			'main-background-color' => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -103,7 +116,27 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'label'        => __( 'Main Column Background Color', 'make' ),
 				),
 			),
+			'main-background-color-transparent' => array(
+				'setting' => array(
+					'sanitize_callback' => 'absint',
+				),
+				'control' => array(
+					'label' => __( 'Transparent', 'make' ),
+					'type'  => 'checkbox',
+				),
+			),
 		),
+	);
+
+	/**
+	 * Background
+	 *
+	 * @deprecated 1.5.0.
+	 */
+	$colorscheme_sections['color-background'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Background', 'make' ),
+		'options' => array(),
 	);
 
 	/**

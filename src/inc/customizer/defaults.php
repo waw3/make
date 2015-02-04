@@ -238,17 +238,19 @@ function ttfmake_option_defaults() {
 		'font-subset'                              => 'latin',
 
 		/**
-		 * Color Scheme
+		 * Color
 		 */
-		// General
+		// Color Scheme
 		'color-primary'                            => '#3070d1',
 		'color-secondary'                          => '#eaecee',
 		'color-text'                               => '#171717',
 		'color-detail'                             => '#b9bcbf',
+		// Links
 		'color-primary-link'                       => '#3070d1',
 		// Background
 		'background_color'                         => 'b9bcbf',
 		'main-background-color'                    => '#ffffff',
+		'main-background-color-transparent'        => 0,
 		// Header
 		'header-bar-background-color'              => '#171717',
 		'header-bar-text-color'                    => '#ffffff',
