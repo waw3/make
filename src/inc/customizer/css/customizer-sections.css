@@ -1,20 +1,6 @@
-/* jQuery UI theme tweaks */
-.ui-widget {
-	font-family: inherit;
-	font-size: 0.85em;
-}
-.ui-button-text-only .ui-button-text {
-	padding: 0;
-}
-
-/* Chosen tweaks */
-.chosen-container .chosen-drop {
-	box-shadow: none;
-}
-.chosen-container-active .chosen-choices,
-.chosen-container-active .chosen-single {
-	border: 1px solid #aaaaaa;
-	box-shadow: none;
+/* General Customizer style tweaks */
+span.description {
+	margin-bottom: 10px;
 }
 
 /* Misc control styles */
@@ -88,4 +74,23 @@ li.customize-control.customize-control-range .ui-slider-horizontal {
 	height: .6em;
 	border-color: #eee;
 	background: #eee;
+}
+
+/* jQuery UI theme tweaks */
+.ui-widget {
+	font-family: inherit;
+	font-size: 0.85em;
+}
+.ui-button-text-only .ui-button-text {
+	padding: 0;
+}
+
+/* Chosen tweaks */
+.chosen-container .chosen-drop {
+	box-shadow: none;
+}
+.chosen-container-active .chosen-choices,
+.chosen-container-active .chosen-single {
+	border: 1px solid #aaaaaa;
+	box-shadow: none;
 }

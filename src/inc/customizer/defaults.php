@@ -225,6 +225,7 @@ function ttfmake_option_defaults() {
 		'color-secondary'                          => '#eaecee',
 		'color-text'                               => '#171717',
 		'color-detail'                             => '#b9bcbf',
+		'color-primary-link'                       => '#3070d1',
 		// Background
 		'background_color'                         => 'b9bcbf',
 		'main-background-color'                    => '#ffffff',

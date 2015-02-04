@@ -14,13 +14,8 @@ function ttfmake_css_color() {
 	/**
 	 * Colors section
 	 */
-	// Get and escape options
-	$color_primary   = maybe_hash_hex_color( get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ) );
-	$color_secondary = maybe_hash_hex_color( get_theme_mod( 'color-secondary', ttfmake_get_default( 'color-secondary' ) ) );
-	$color_text      = maybe_hash_hex_color( get_theme_mod( 'color-text', ttfmake_get_default( 'color-text' ) ) );
-	$color_detail    = maybe_hash_hex_color( get_theme_mod( 'color-detail', ttfmake_get_default( 'color-detail' ) ) );
-
 	// Primary color
+	$color_primary = maybe_hash_hex_color( get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ) );
 	if ( $color_primary !== ttfmake_get_default( 'color-primary' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttfmake-list-dot li:before', 'ol.ttfmake-list-dot li:before', '.entry-comment-count a:hover',
@@ -51,6 +46,7 @@ function ttfmake_css_color() {
 	}
 
 	// Secondary color
+	$color_secondary = maybe_hash_hex_color( get_theme_mod( 'color-secondary', ttfmake_get_default( 'color-secondary' ) ) );
 	if ( $color_secondary !== ttfmake_get_default( 'color-secondary' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
@@ -149,6 +145,7 @@ function ttfmake_css_color() {
 	}
 
 	// Text color
+	$color_text = maybe_hash_hex_color( get_theme_mod( 'color-text', ttfmake_get_default( 'color-text' ) ) );
 	if ( $color_text !== ttfmake_get_default( 'color-text' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.color-text', 'body', '.entry-date a', 'body', 'button', 'input', 'select', 'textarea', '[class*="navigation"] .nav-previous a', '[class*="navigation"] .nav-previous span', '[class*="navigation"] .nav-next a', '[class*="navigation"] .nav-next span' ),
@@ -185,6 +182,7 @@ function ttfmake_css_color() {
 	}
 
 	// Detail color
+	$color_detail = maybe_hash_hex_color( get_theme_mod( 'color-detail', ttfmake_get_default( 'color-detail' ) ) );
 	if ( $color_detail !== ttfmake_get_default( 'color-detail' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.color-detail-text', '.builder-section-banner .cycle-pager .cycle-pager-active', '.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active', '.post-categories li:after', '.post-tags li:after', '.comment-count-icon:before', '.entry-comment-count a',
@@ -217,6 +215,17 @@ function ttfmake_css_color() {
 			'selectors'    => array( '.color-detail-border' ),
 			'declarations' => array(
 				'border-color' => $color_detail
+			)
+		) );
+	}
+
+	// Link Hover/Focus Color
+	$color_primary_link = maybe_hash_hex_color( get_theme_mod( 'color-primary-link', ttfmake_get_default( 'color-primary-link' ) ) );
+	if ( $color_primary_link !== ttfmake_get_default( 'color-primary-link' ) || $color_primary !== ttfmake_get_default( 'color-primary' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( 'a:hover', 'a:focus', '.entry-author-byline a.vcard:hover', '.entry-author-byline a.vcard:focus', ),
+			'declarations' => array(
+				'color' => $color_primary_link
 			)
 		) );
 	}

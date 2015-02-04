@@ -30,6 +30,10 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Primary Color', 'make' ),
+					'description'  => sprintf(
+						__( 'Used for: %s', 'make' ),
+						__( 'links', 'make' )
+					),
 				),
 			),
 			'color-secondary' => array(
@@ -39,6 +43,10 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Secondary Color', 'make' ),
+					'description'  => sprintf(
+						__( 'Used for: %s', 'make' ),
+						__( 'slider buttons, form inputs, table borders, ruled lines', 'make' )
+					),
 				),
 			),
 			'color-text'      => array(
@@ -48,6 +56,10 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Text Color', 'make' ),
+					'description'  => sprintf(
+						__( 'Used for: %s', 'make' ),
+						__( 'most text', 'make' )
+					),
 				),
 			),
 			'color-detail'    => array(
@@ -57,6 +69,19 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Detail Color', 'make' ),
+					'description'  => sprintf(
+						__( 'Used for: %s', 'make' ),
+						__( 'UI icons', 'make' )
+					),
+				),
+			),
+			'color-primary-link'    => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Hover/Focus Color', 'make' ),
 				),
 			),
 		),
