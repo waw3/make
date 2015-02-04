@@ -275,6 +275,7 @@
 	position: relative;
 	width: 100%;
 	z-index: 2;
+	overflow: hidden;
 }
 /*---------------------------------------------------------
  Gallery: Captions (_pages.scss)
@@ -319,7 +320,7 @@
 	}
 	.builder-gallery-description {
 		overflow: hidden;
-		height: 60%;
+		height: 100%;
 	}
 	.builder-gallery-title {
 		overflow: hidden;
