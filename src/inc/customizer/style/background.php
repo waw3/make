@@ -46,6 +46,32 @@ function ttfmake_css_background() {
 			) );
 		}
 	}
+
+	/**
+	 * Site background position and size
+	 *
+	 * Position: WordPress prevents vertical positioning options from working by adding "top" to the rule in the header.
+	 * This will override that rule.
+	 *
+	 * Size: WordPress does not offer this rule be default.
+	 */
+	$site_background_image = get_theme_mod( 'background_image', ttfmake_get_default( 'background_image' ) );
+	if ( ! empty( $site_background_image ) ) {
+		// Note that most site background options are handled by internal WordPress functions
+		$site_background_position = ttfmake_sanitize_choice( get_theme_mod( 'background_position_x', ttfmake_get_default( 'background_position_x' ) ), 'background_position_x' );
+		$site_background_size = ttfmake_sanitize_choice( get_theme_mod( 'background_size', ttfmake_get_default( 'background_size' ) ), 'background_size' );
+
+		// Convert position value
+		$site_background_position = str_replace( '-', ' ', $site_background_position );
+
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( 'body.custom-background' ),
+			'declarations' => array(
+				'background-position' => $site_background_position,
+				'background-size' => $site_background_size,
+			),
+		) );
+	}
 }
 
 add_action( 'make_css', 'ttfmake_css_background' );
