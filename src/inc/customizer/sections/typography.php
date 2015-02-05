@@ -49,11 +49,11 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
-	 * Headers
+	 * Text Headers
 	 */
 	$typography_sections['font-headers'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'Headers', 'make' ),
+		'title'   => __( 'Text Headers', 'make' ),
 		'options' => array_merge(
 			ttfmake_customizer_typography_group_definitions( 'h1', __( 'H1', 'make' ) ),
 			ttfmake_customizer_typography_group_definitions( 'h2', __( 'H2', 'make' ) ),
@@ -195,7 +195,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	);
 
 	/**
-	 * Google Fonts
+	 * Google Font Subsets
 	 */
 	$typography_sections['font-google'] = array(
 		'panel'   => $panel,
