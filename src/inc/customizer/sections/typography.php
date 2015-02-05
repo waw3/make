@@ -112,36 +112,10 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$typography_sections['font-header-bar'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Header Bar', 'make' ),
-		'options' => array_merge(
-			ttfmake_customizer_typography_group_definitions(
-				'header-bar-text',
-				__( 'Header Bar Text', 'make' ),
-				__( 'Includes Header Text, Header Bar Menu items, and the search field.', 'make' )
-			),
-			array(
-				'header-bar-icon-group' => array(
-					'control' => array(
-						'control_type' => 'TTFMAKE_Customize_Misc_Control',
-						'label'   => __( 'Social Icons', 'make' ),
-						'type'  => 'group-title',
-					),
-				),
-				'font-size-header-bar-icon'     => array(
-					'setting' => array(
-						'sanitize_callback' => 'absint',
-					),
-					'control' => array(
-						'control_type' => 'TTFMAKE_Customize_Range_Control',
-						'label'   => __( 'Icon Size (px)', 'make' ),
-						'type'  => 'range',
-						'input_attrs' => array(
-							'min'  => 6,
-							'max'  => 100,
-							'step' => 1,
-						),
-					),
-				),
-			)
+		'options' => ttfmake_customizer_typography_group_definitions(
+			'header-bar-text',
+			__( 'Header Bar Text', 'make' ),
+			__( 'Includes Header Text, Header Bar Menu items, and the search field.', 'make' )
 		),
 	);
 
@@ -166,31 +140,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'options' => array_merge(
 			ttfmake_customizer_typography_group_definitions( 'footer-widget-title', __( 'Widget Title', 'make' ) ),
 			ttfmake_customizer_typography_group_definitions( 'footer-widget', __( 'Widget Body', 'make' ) ),
-			ttfmake_customizer_typography_group_definitions( 'footer-text', __( 'Footer Text', 'make' ) ),
-			array(
-				'footer-icon-group' => array(
-					'control' => array(
-						'control_type' => 'TTFMAKE_Customize_Misc_Control',
-						'label'   => __( 'Social Icons', 'make' ),
-						'type'  => 'group-title',
-					),
-				),
-				'font-size-footer-icon'     => array(
-					'setting' => array(
-						'sanitize_callback' => 'absint',
-					),
-					'control' => array(
-						'control_type' => 'TTFMAKE_Customize_Range_Control',
-						'label'   => __( 'Icon Size (px)', 'make' ),
-						'type'  => 'range',
-						'input_attrs' => array(
-							'min'  => 6,
-							'max'  => 100,
-							'step' => 1,
-						),
-					),
-				),
-			)
+			ttfmake_customizer_typography_group_definitions( 'footer-text', __( 'Footer Text', 'make' ) )
 		),
 	);
 

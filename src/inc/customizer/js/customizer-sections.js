@@ -185,6 +185,14 @@
 			controls: [ 'ttfmake_header-branding-position' ],
 			callback: function( to ) { return ( '1' == to || '3' == to ); }
 		},
+		'header-show-social': {
+			controls: [ 'ttfmake_font-size-header-bar-icon' ],
+			callback: function( to ) { return !! to; }
+		},
+		'footer-show-social': {
+			controls: [ 'ttfmake_font-size-footer-icon' ],
+			callback: function( to ) { return !! to; }
+		},
 		'layout-blog-featured-images': {
 			controls: [ 'ttfmake_layout-blog-featured-images-alignment' ],
 			callback: function( to ) { return ( 'post-header' === to ); }

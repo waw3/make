@@ -112,6 +112,15 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 					'label'        => __( 'Optional Header Elements', 'make' ),
 				),
 			),
+			'header-show-search'        => array(
+				'setting' => array(
+					'sanitize_callback' => 'absint',
+				),
+				'control' => array(
+					'label' => __( 'Show search field', 'make' ),
+					'type'  => 'checkbox',
+				),
+			),
 			'header-show-social'        => array(
 				'setting' => array(
 					'sanitize_callback' => 'absint',
@@ -121,13 +130,19 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 					'type'  => 'checkbox',
 				),
 			),
-			'header-show-search'        => array(
+			'font-size-header-bar-icon'     => array(
 				'setting' => array(
 					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'label' => __( 'Show search field', 'make' ),
-					'type'  => 'checkbox',
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Icon Size (px)', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 6,
+						'max'  => 100,
+						'step' => 1,
+					),
 				),
 			),
 		),
@@ -219,6 +234,21 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 				'control' => array(
 					'label'				=> __( 'Show social icons', 'make' ),
 					'type'				=> 'checkbox',
+				),
+			),
+			'font-size-footer-icon'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'absint',
+				),
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Icon Size (px)', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 6,
+						'max'  => 100,
+						'step' => 1,
+					),
 				),
 			),
 		),
