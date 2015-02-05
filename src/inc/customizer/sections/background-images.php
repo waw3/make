@@ -126,12 +126,12 @@ function ttfmake_customizer_background_image_group_definitions( $region ) {
 	);
 
 	/**
-	 * Filter the Customizer's font control definitions.
+	 * Filter the Customizer's background image control definitions.
 	 *
 	 * @since 1.5.0.
 	 *
 	 * @param array     $definitions    Array of Customizer options and their setting and control definitions.
-	 * @param string    $element        The HTML element that the font properties will apply to.
+	 * @param string    $region         The site region that the background image properties will apply to.
 	 */
 	return apply_filters( 'make_customizer_background_image_group_definitions', $definitions, $region );
 }
