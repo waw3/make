@@ -229,7 +229,25 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				),
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Header Bar Text Color', 'make' ),
+					'label'        => __( 'Text Color', 'make' ),
+				),
+			),
+			'header-bar-link-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Color', 'make' ),
+				),
+			),
+			'header-bar-link-hover-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Hover/Focus Color', 'make' ),
 				),
 			),
 			'header-bar-border-color'     => array(
@@ -238,7 +256,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				),
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Header Bar Border Color', 'make' ),
+					'label'        => __( 'Border Color', 'make' ),
 				),
 			),
 			'header-bar-background-color-heading' => array(

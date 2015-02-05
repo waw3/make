@@ -271,13 +271,13 @@ function ttfmake_css_color() {
 	}
 
 	/**
-	 * Header section
+	 * Header
 	 */
 	// Header text color
 	// $header_text_color is retrieved and sanitized above in the Site Title & Tagline section
 	if ( $header_text_color !== ttfmake_get_default( 'header-text-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-header', '.site-header a', '.site-navigation .menu li a' ),
+			'selectors'    => array( '.site-header', '.site-navigation .menu li a' ),
 			'declarations' => array(
 				'color' => $header_text_color
 			)
@@ -308,6 +308,28 @@ function ttfmake_css_color() {
 			'selectors'    => array( '.header-bar', '.header-bar a', '.header-bar .menu li a' ),
 			'declarations' => array(
 				'color' => $header_bar_text_color
+			)
+		) );
+	}
+
+	// Header Bar link color
+	$header_bar_link_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-color', ttfmake_get_default( 'header-bar-link-color' ) ) );
+	if ( $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) || $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.header-bar a', '.header-bar .menu li a', '.header-bar .social-links a' ),
+			'declarations' => array(
+				'color' => $header_bar_link_color
+			)
+		) );
+	}
+
+	// Header Bar link hover color
+	$header_bar_link_hover_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-hover-color', ttfmake_get_default( 'header-bar-link-hover-color' ) ) );
+	if ( $header_bar_link_hover_color !== ttfmake_get_default( 'header-bar-link-hover-color' ) || $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) || $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.header-bar a:hover', '.header-bar a:focus', '.header-bar .menu li a:hover', '.header-bar .menu li a:focus' ),
+			'declarations' => array(
+				'color' => $header_bar_link_hover_color
 			)
 		) );
 	}

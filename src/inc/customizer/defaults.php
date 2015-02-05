@@ -261,6 +261,8 @@ function ttfmake_option_defaults() {
 		'header-background-transparent'            => 0,
 		// Header Bar
 		'header-bar-text-color'                    => '#ffffff',
+		'header-bar-link-color'                    => '#ffffff',
+		'header-bar-link-hover-color'              => '#ffffff',
 		'header-bar-border-color'                  => '#171717',
 		'header-bar-background-color'              => '#171717',
 		'header-bar-background-transparent'        => 0,
