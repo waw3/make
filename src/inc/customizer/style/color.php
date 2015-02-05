@@ -273,13 +273,8 @@ function ttfmake_css_color() {
 	/**
 	 * Header section
 	 */
-	// Get and escape options
-	$header_background_color     = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
-	$header_bar_text_color       = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
-	$header_bar_border_color     = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
-	$header_bar_background_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
-
 	// Header text color
+	// $header_text_color is retrieved and sanitized above in the Site Title & Tagline section
 	if ( $header_text_color !== ttfmake_get_default( 'header-text-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-header', '.site-header a', '.site-navigation .menu li a' ),
@@ -290,6 +285,10 @@ function ttfmake_css_color() {
 	}
 
 	// Header background color
+	$header_background_transparent = absint( get_theme_mod( 'header-background-transparent', ttfmake_get_default( 'header-background-transparent' ) ) );
+	$header_background_color = ( $header_background_transparent )
+		? 'transparent'
+		: maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
 	if ( $header_background_color !== ttfmake_get_default( 'header-background-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-header-main' ),
@@ -299,7 +298,11 @@ function ttfmake_css_color() {
 		) );
 	}
 
+	/**
+	 * Header Bar
+	 */
 	// Header Bar text color
+	$header_bar_text_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
 	if ( $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.header-bar', '.header-bar a', '.header-bar .menu li a' ),
@@ -310,6 +313,7 @@ function ttfmake_css_color() {
 	}
 
 	// Header Bar border color
+	$header_bar_border_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
 	if ( $header_bar_border_color !== ttfmake_get_default( 'header-bar-border-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.header-bar', '.header-bar .search-form input', '.header-social-links li:first-of-type', '.header-social-links li a' ),
@@ -320,6 +324,10 @@ function ttfmake_css_color() {
 	}
 
 	// Header Bar background color
+	$header_bar_background_transparent = absint( get_theme_mod( 'header-bar-background-transparent', ttfmake_get_default( 'header-bar-background-transparent' ) ) );
+	$header_bar_background_color = ( $header_bar_background_transparent )
+		? 'transparent'
+		: maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
 	if ( $header_bar_background_color !== ttfmake_get_default( 'header-bar-background-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.header-bar' ),
@@ -328,7 +336,6 @@ function ttfmake_css_color() {
 			)
 		) );
 	}
-
 
 	/**
 	 * Footer section

@@ -180,15 +180,49 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Header', 'make' ),
 		'options' => array(
-			'header-bar-background-color' => array(
+			'header-text-color'           => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
 				),
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Header Bar Background Color', 'make' ),
+					'label'        => __( 'Text Color', 'make' ),
 				),
 			),
+			'header-background-color-heading' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Background Color', 'make' ),
+					'type'  => 'heading',
+				),
+			),
+			'header-background-color'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+				),
+			),
+			'header-background-transparent' => array(
+				'setting' => array(
+					'sanitize_callback' => 'absint',
+				),
+				'control' => array(
+					'label' => __( 'Transparent', 'make' ),
+					'type'  => 'checkbox',
+				),
+			),
+		),
+	);
+
+	/**
+	 * Header Bar
+	 */
+	$colorscheme_sections['color-header-bar'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Header Bar', 'make' ),
+		'options' => array(
 			'header-bar-text-color'       => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -207,34 +241,28 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'label'        => __( 'Header Bar Border Color', 'make' ),
 				),
 			),
-			'header-color-line'           => array(
+			'header-bar-background-color-heading' => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'line',
+					'label'   => __( 'Background Color', 'make' ),
+					'type'  => 'heading',
 				),
 			),
-			'header-background-color'     => array(
+			'header-bar-background-color' => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
 				),
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Header Background Color', 'make' ),
 				),
 			),
-			'header-text-color'           => array(
+			'header-bar-background-transparent' => array(
 				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
+					'sanitize_callback' => 'absint',
 				),
 				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Header Text Color', 'make' ),
-				),
-			),
-			'header-element-color-line'   => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'type'         => 'line',
+					'label' => __( 'Transparent', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
 		),

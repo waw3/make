@@ -134,6 +134,14 @@
 			controls: [ 'ttfmake_main-background-color' ],
 			callback: function( to ) { return ! to; }
 		},
+		'header-background-transparent': {
+			controls: [ 'ttfmake_header-background-color' ],
+			callback: function( to ) { return ! to; }
+		},
+		'header-bar-background-transparent': {
+			controls: [ 'ttfmake_header-bar-background-color' ],
+			callback: function( to ) { return ! to; }
+		},
 		'header-background-image': {
 			controls: [ 'ttfmake_header-background-repeat', 'ttfmake_header-background-position', 'ttfmake_header-background-size' ],
 			callback: function( to ) { return !! to; }
