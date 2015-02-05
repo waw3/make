@@ -1,6 +1,7 @@
 /* General Customizer style tweaks */
 .customize-control-title {
 	font-weight: normal;
+	margin-top: 5px;
 }
 span.description {
 	margin-bottom: 10px;
@@ -23,8 +24,13 @@ span.description {
 }
 
 /* Radio control styles */
-.ttfmake-control-buttonset .customize-control-title,
-.ttfmake-control-image .customize-control-title,
+.customize-control-radio-buttonset,
+.customize-control-radio-image,
+.customize-control-radio-background-position {
+	padding: 0;
+}
+.customize-control-radio-buttonset .customize-control-title,
+.customize-control-radio-image .customize-control-title,
 .customize-control-radio-background-position .customize-control-title {
 	line-height: 24px;
 	margin-bottom: 5px;
