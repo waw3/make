@@ -293,21 +293,22 @@ function ttfmake_option_defaults() {
 		'footer-background-size'                   => 'cover',
 
 		/**
-		 * Header
+		 * Layout
 		 */
-		// Layout
+		// Global
+		'general-layout'                           => 'full-width',
+		// Header
 		'header-layout'                            => 1,
 		'header-branding-position'                 => 'left',
 		'header-bar-content-layout'                => 'default',
 		'header-text'                              => '',
 		'header-show-social'                       => 0,
 		'header-show-search'                       => 1,
-
-		/**
-		 * Content & Layout
-		 */
-		// Global
-		'general-layout'                           => 'full-width',
+		// Footer
+		'footer-widget-areas'                      => 3,
+		'footer-layout'                            => 1,
+		'footer-text'                              => '',
+		'footer-show-social'                       => 1,
 		// Blog (Posts Page)
 		'layout-blog-hide-header'                  => 0,
 		'layout-blog-hide-footer'                  => 0,
@@ -385,16 +386,6 @@ function ttfmake_option_defaults() {
 		'layout-page-post-author-location'         => 'post-footer',
 		'layout-page-comment-count'                => 'none',
 		'layout-page-comment-count-location'       => 'before-content',
-
-		/**
-		 * Footer
-		 */
-		// Widget Areas
-		'footer-widget-areas'                      => 3,
-		// Layout
-		'footer-layout'                            => 1,
-		'footer-text'                              => '',
-		'footer-show-social'                       => 1,
 
 		/**
 		 * Deprecated defaults

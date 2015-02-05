@@ -22,18 +22,18 @@ function ttfmake_customizer_navigation() {
 	$section = $wp_customize->get_section( $section_id );
 	$priority = new TTFMAKE_Prioritizer( 10, 5 );
 
-	// Move Navigation section to Header panel
-	$section->panel = $theme_prefix . 'header';
+	// Move Navigation section to General panel
+	$section->panel = $theme_prefix . 'general';
 
 	// Set Navigation section priority
-	$layout_priority = $wp_customize->get_section( $theme_prefix . 'header' )->priority;
-	$section->priority = $layout_priority - 5;
+	$logo_priority = $wp_customize->get_section( $theme_prefix . 'logo' )->priority;
+	$section->priority = $logo_priority + 5;
 
 	// Adjust section title if no panel support
 	if ( ! ttfmake_customizer_supports_panels() ) {
 		$panels = ttfmake_customizer_get_panels();
-		if ( isset( $panels['header']['title'] ) ) {
-			$section->title = $panels['header']['title'] . ': ' . $section->title;
+		if ( isset( $panels['general']['title'] ) ) {
+			$section->title = $panels['general']['title'] . ': ' . $section->title;
 		}
 	}
 

@@ -163,6 +163,40 @@ function ttfmake_get_choices( $setting ) {
 				'boxed'      => __( 'Boxed', 'make' )
 			);
 			break;
+		case 'header-layout' :
+			$choices = array(
+				1  => __( 'Traditional', 'make' ),
+				2  => __( 'Centered', 'make' ),
+				3  => __( 'Navigation Below', 'make' ),
+			);
+			break;
+		case 'header-branding-position' :
+			$choices = array(
+				'left'  => __( 'Left', 'make' ),
+				'right' => __( 'Right', 'make' )
+			);
+			break;
+		case 'header-bar-content-layout' :
+			$choices = array(
+				'default' => __( 'Default', 'make' ),
+				'flipped' => __( 'Flipped', 'make' )
+			);
+			break;
+		case 'footer-widget-areas' :
+			$choices = array(
+				0 => _x( '0', 'footer widget area number', 'make' ),
+				1 => _x( '1', 'footer widget area number', 'make' ),
+				2 => _x( '2', 'footer widget area number', 'make' ),
+				3 => _x( '3', 'footer widget area number', 'make' ),
+				4 => _x( '4', 'footer widget area number', 'make' )
+			);
+			break;
+		case 'footer-layout' :
+			$choices = array(
+				1  => __( 'Traditional', 'make' ),
+				2  => __( 'Centered', 'make' ),
+			);
+			break;
 		case 'layout-blog-featured-images' :
 		case 'layout-archive-featured-images' :
 		case 'layout-search-featured-images' :
@@ -206,40 +240,6 @@ function ttfmake_get_choices( $setting ) {
 				'left'   => __( 'Left', 'make' ),
 				'center' => __( 'Center', 'make' ),
 				'right'  => __( 'Right', 'make' )
-			);
-			break;
-		case 'header-bar-content-layout' :
-			$choices = array(
-				'default' => __( 'Default', 'make' ),
-				'flipped' => __( 'Flipped', 'make' )
-			);
-			break;
-		case 'header-layout' :
-			$choices = array(
-				1  => __( 'Traditional', 'make' ),
-				2  => __( 'Centered', 'make' ),
-				3  => __( 'Navigation Below', 'make' ),
-			);
-			break;
-		case 'header-branding-position' :
-			$choices = array(
-				'left'  => __( 'Left', 'make' ),
-				'right' => __( 'Right', 'make' )
-			);
-			break;
-		case 'footer-widget-areas' :
-			$choices = array(
-				0 => _x( '0', 'footer widget area number', 'make' ),
-				1 => _x( '1', 'footer widget area number', 'make' ),
-				2 => _x( '2', 'footer widget area number', 'make' ),
-				3 => _x( '3', 'footer widget area number', 'make' ),
-				4 => _x( '4', 'footer widget area number', 'make' )
-			);
-			break;
-		case 'footer-layout' :
-			$choices = array(
-				1  => __( 'Traditional', 'make' ),
-				2  => __( 'Centered', 'make' ),
 			);
 			break;
 		case 'layout-blog-post-date-location' :

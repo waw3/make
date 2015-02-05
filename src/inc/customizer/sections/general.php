@@ -79,9 +79,13 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	);
 
 	/**
-	 * Background Image
+	 * Navigation
 	 *
 	 * This is a built-in section.
+	 */
+
+	/**
+	 * Labels
 	 */
 	$general_sections['labels'] = array(
 		'panel'       => $panel,
@@ -295,6 +299,33 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	 *
 	 * This is a built-in section.
 	 */
+
+	/**
+	 * White Label
+	 */
+	if ( ! ttfmake_is_plus() ) {
+		$general_sections['footer-white-label'] = array(
+			'panel'       => $panel,
+			'title'       => __( 'White Label', 'make' ),
+			'description' => __( 'Want to remove the theme byline from your website&#8217;s footer?', 'make' ),
+			'options'     => array(
+				'footer-white-label-text' => array(
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'type'         => 'text',
+						'description'  => sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a>',
+							esc_url( ttfmake_get_plus_link( 'white-label' ) ),
+							sprintf(
+								__( 'Upgrade to %1$s', 'make' ),
+								'Make Plus'
+							)
+						),
+					),
+				),
+			),
+		);
+	}
 
 	/**
 	 * Filter the definitions for the controls in the General panel of the Customizer.

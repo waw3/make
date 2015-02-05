@@ -72,9 +72,7 @@ function ttfmake_customizer_get_panels() {
 		'typography'        => array( 'title' => __( 'Typography', 'make' ), 'priority' => 200 ),
 		'color-scheme'      => array( 'title' => __( 'Color', 'make' ), 'priority' => 300 ),
 		'background-images' => array( 'title' => __( 'Background Images', 'make' ), 'priority' => 400 ),
-		'header'            => array( 'title' => __( 'Header', 'make' ), 'priority' => 500 ),
-		'content-layout'    => array( 'title' => __( 'Content & Layout', 'make' ), 'priority' => 600 ),
-		'footer'            => array( 'title' => __( 'Footer', 'make' ), 'priority' => 700 ),
+		'content-layout'    => array( 'title' => __( 'Layout', 'make' ), 'priority' => 500 ),
 	);
 
 	/**

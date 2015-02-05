@@ -440,3 +440,34 @@ function ttfmake_body_layout_classes( $classes ) {
 	return $classes;
 }
 endif;
+
+if ( ! function_exists( 'ttfmake_customizer_define_header_sections' ) ) :
+/**
+ * Define the sections and settings for the Header panel.
+ *
+ * @since  1.3.0.
+ * @deprecated 1.5.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_header_sections( $sections ) {
+	_deprecated_function( __FUNCTION__, '1.5.0' );
+	return $sections;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_customizer_define_footer_sections' ) ) :
+/**
+ * Define the sections and settings for the Footer panel
+ *
+ * @since  1.3.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_footer_sections( $sections ) {
+	_deprecated_function( __FUNCTION__, '1.5.0' );
+	return $sections;
+}
+endif;
