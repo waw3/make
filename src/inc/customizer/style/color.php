@@ -362,22 +362,41 @@ function ttfmake_css_color() {
 	/**
 	 * Footer section
 	 */
-	// Get and escape options
-	$footer_text_color       = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', ttfmake_get_default( 'footer-text-color' ) ) );
-	$footer_border_color     = maybe_hash_hex_color( get_theme_mod( 'footer-border-color', ttfmake_get_default( 'footer-border-color' ) ) );
-	$footer_background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttfmake_get_default( 'footer-background-color' ) ) );
-
 	// Footer text color
+	$footer_text_color = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', ttfmake_get_default( 'footer-text-color' ) ) );
 	if ( $footer_text_color !== ttfmake_get_default( 'footer-text-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-footer' ),
+			'selectors'    => array( '.site-footer', '.site-footer .social-links a' ),
 			'declarations' => array(
 				'color' => $footer_text_color
 			)
 		) );
 	}
 
+	// Footer link color
+	$footer_link_color = maybe_hash_hex_color( get_theme_mod( 'footer-link-color', ttfmake_get_default( 'footer-link-color' ) ) );
+	if ( $footer_link_color !== ttfmake_get_default( 'footer-link-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-footer a' ),
+			'declarations' => array(
+				'color' => $footer_link_color
+			)
+		) );
+	}
+
+	// Footer link hover color
+	$footer_link_hover_color = maybe_hash_hex_color( get_theme_mod( 'footer-link-hover-color', ttfmake_get_default( 'footer-link-hover-color' ) ) );
+	if ( $footer_link_hover_color !== ttfmake_get_default( 'footer-link-hover-color' ) || $footer_link_color !== ttfmake_get_default( 'footer-link-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-footer a:hover', '.site-footer a:focus' ),
+			'declarations' => array(
+				'color' => $footer_link_hover_color
+			)
+		) );
+	}
+
 	// Footer border color
+	$footer_border_color = maybe_hash_hex_color( get_theme_mod( 'footer-border-color', ttfmake_get_default( 'footer-border-color' ) ) );
 	if ( $footer_border_color !== ttfmake_get_default( 'footer-border-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-footer *:not(select)' ),
@@ -388,6 +407,10 @@ function ttfmake_css_color() {
 	}
 
 	// Footer background color
+	$footer_background_transparent = absint( get_theme_mod( 'footer-background-transparent', ttfmake_get_default( 'footer-background-transparent' ) ) );
+	$footer_background_color = ( $footer_background_transparent )
+		? 'transparent'
+		: maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttfmake_get_default( 'footer-background-color' ) ) );
 	if ( $footer_background_color !== ttfmake_get_default( 'footer-background-color' ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-footer' ),

@@ -305,15 +305,6 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Footer', 'make' ),
 		'options' => array(
-			'footer-background-color' => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Footer Background Color', 'make' ),
-				),
-			),
 			'footer-text-color'       => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -323,6 +314,24 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'label'        => __( 'Footer Text Color', 'make' ),
 				),
 			),
+			'footer-link-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Color', 'make' ),
+				),
+			),
+			'footer-link-hover-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Hover/Focus Color', 'make' ),
+				),
+			),
 			'footer-border-color'     => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -330,6 +339,30 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Footer Border Color', 'make' ),
+				),
+			),
+			'footer-background-color-heading' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Background Color', 'make' ),
+					'type'  => 'heading',
+				),
+			),
+			'footer-background-color' => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+				),
+			),
+			'footer-background-transparent' => array(
+				'setting' => array(
+					'sanitize_callback' => 'absint',
+				),
+				'control' => array(
+					'label' => __( 'Transparent', 'make' ),
+					'type'  => 'checkbox',
 				),
 			),
 		),
