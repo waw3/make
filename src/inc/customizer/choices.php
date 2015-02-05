@@ -111,6 +111,21 @@ function ttfmake_get_choices( $setting ) {
 				'never'  => __( 'Never', 'make' ),
 			);
 			break;
+		case 'header-background-position' :
+		case 'main-background-position' :
+		case 'footer-background-position' :
+			$choices = array(
+				'top-left'      => __( 'Top Left', 'make' ),
+				'top'           => __( 'Top', 'make' ),
+				'top-right'     => __( 'Top Right', 'make' ),
+				'left'          => __( 'Left', 'make' ),
+				'center'        => __( 'Center', 'make' ),
+				'right'         => __( 'Right', 'make' ),
+				'bottom-left'   => __( 'Bottom Left', 'make' ),
+				'bottom'        => __( 'Bottom', 'make' ),
+				'bottom-right'  => __( 'Bottom Right', 'make' ),
+			);
+			break;
 		case 'general-layout' :
 			$choices = array(
 				'full-width' => __( 'Full-width', 'make' ),
@@ -161,9 +176,6 @@ function ttfmake_get_choices( $setting ) {
 				'repeat-y'  => __( 'Tile Vertically', 'make' )
 			);
 			break;
-		case 'header-background-position' :
-		case 'main-background-position' :
-		case 'footer-background-position' :
 		case 'layout-blog-featured-images-alignment' :
 		case 'layout-archive-featured-images-alignment' :
 		case 'layout-search-featured-images-alignment' :

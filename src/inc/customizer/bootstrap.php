@@ -25,6 +25,7 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'priority.php' );
 
 	// Style rendering
+	require_once( $path . 'style/background.php' );
 	require_once( $path . 'style/color.php' );
 	require_once( $path . 'style/typography.php' );
 
@@ -67,12 +68,13 @@ if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
  */
 function ttfmake_customizer_get_panels() {
 	$panels = array(
-		'general'        => array( 'title' => __( 'General', 'make' ), 'priority' => 100 ),
-		'typography'     => array( 'title' => __( 'Typography', 'make' ), 'priority' => 200 ),
-		'color-scheme'   => array( 'title' => __( 'Color', 'make' ), 'priority' => 300 ),
-		'header'         => array( 'title' => __( 'Header', 'make' ), 'priority' => 400 ),
-		'content-layout' => array( 'title' => __( 'Content & Layout', 'make' ), 'priority' => 500 ),
-		'footer'         => array( 'title' => __( 'Footer', 'make' ), 'priority' => 600 ),
+		'general'           => array( 'title' => __( 'General', 'make' ), 'priority' => 100 ),
+		'typography'        => array( 'title' => __( 'Typography', 'make' ), 'priority' => 200 ),
+		'color-scheme'      => array( 'title' => __( 'Color', 'make' ), 'priority' => 300 ),
+		'background-images' => array( 'title' => __( 'Background Images', 'make' ), 'priority' => 400 ),
+		'header'            => array( 'title' => __( 'Header', 'make' ), 'priority' => 500 ),
+		'content-layout'    => array( 'title' => __( 'Content & Layout', 'make' ), 'priority' => 600 ),
+		'footer'            => array( 'title' => __( 'Footer', 'make' ), 'priority' => 700 ),
 	);
 
 	/**

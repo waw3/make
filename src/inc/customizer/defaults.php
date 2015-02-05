@@ -24,16 +24,6 @@ function ttfmake_option_defaults() {
 		'logo-retina'                              => '',
 		'logo-favicon'                             => '',
 		'logo-apple-touch'                         => '',
-		// Background Image
-		'background_image'                         => '',
-		'background_repeat'                        => 'repeat',
-		'background_position_x'                    => 'left',
-		'background_attachment'                    => 'scroll',
-		'background_size'                          => 'auto',
-		'main-background-image'                    => '',
-		'main-background-repeat'                   => 'repeat',
-		'main-background-position'                 => 'left',
-		'main-background-size'                     => 'auto',
 		// Labels
 		'navigation-mobile-label'                  => __( 'Menu', 'make' ),
 		'general-sticky-label'                     => __( 'Featured', 'make' ),
@@ -275,13 +265,33 @@ function ttfmake_option_defaults() {
 		'footer-background-transparent'            => 0,
 
 		/**
-		 * Header
+		 * Background Images
 		 */
-		// Background Image
+		// Site
+		'background_image'                         => '',
+		'background_repeat'                        => 'repeat',
+		'background_position_x'                    => 'left',
+		'background_attachment'                    => 'scroll',
+		'background_size'                          => 'auto',
+		// Header
 		'header-background-image'                  => '',
 		'header-background-repeat'                 => 'no-repeat',
 		'header-background-position'               => 'center',
 		'header-background-size'                   => 'cover',
+		// Main column
+		'main-background-image'                    => '',
+		'main-background-repeat'                   => 'repeat',
+		'main-background-position'                 => 'left',
+		'main-background-size'                     => 'auto',
+		// Footer
+		'footer-background-image'                  => '',
+		'footer-background-repeat'                 => 'no-repeat',
+		'footer-background-position'               => 'center',
+		'footer-background-size'                   => 'cover',
+
+		/**
+		 * Header
+		 */
 		// Layout
 		'header-layout'                            => 1,
 		'header-branding-position'                 => 'left',
@@ -376,11 +386,6 @@ function ttfmake_option_defaults() {
 		/**
 		 * Footer
 		 */
-		// Background Image
-		'footer-background-image'                  => '',
-		'footer-background-repeat'                 => 'no-repeat',
-		'footer-background-position'               => 'center',
-		'footer-background-size'                   => 'cover',
 		// Widget Areas
 		'footer-widget-areas'                      => 3,
 		// Layout

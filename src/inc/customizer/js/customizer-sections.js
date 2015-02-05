@@ -69,12 +69,18 @@
 		//
 		init: function() {
 			// Populate cache
-			this.cache.$buttonset = $('.ttfmake-control-buttonset, .ttfmake-control-image');
-			this.cache.$range     = $('.ttfmake-control-range');
+			this.cache.$buttonset  = $('.ttfmake-control-buttonset, .ttfmake-control-image');
+			this.cache.$bgposition = $('.ttfmake-control-background-position');
+			this.cache.$range      = $('.ttfmake-control-range');
 
 			// Initialize Button sets
 			if (this.cache.$buttonset.length > 0) {
 				this.buttonset();
+			}
+
+			// Initialize Background Position
+			if (this.cache.$bgposition.length > 0) {
+				this.bgposition();
 			}
 
 			// Initialize ranges
@@ -86,6 +92,23 @@
 		//
 		buttonset: function() {
 			this.cache.$buttonset.buttonset();
+		},
+
+		//
+		bgposition: function() {
+			// Initialize button sets
+			this.cache.$bgposition.buttonset({
+				create : function(event) {
+					var $control = $(event.target),
+						$positionButton = $control.find('label'),
+						$caption = $control.parent().find('.background-position-caption');
+
+					$positionButton.on('click', function() {
+						var label = $(this).data('label');
+						$caption.text(label);
+					});
+				}
+			});
 		},
 
 		//
