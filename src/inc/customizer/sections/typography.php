@@ -23,7 +23,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Global', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'body', __( 'Default', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'body', __( 'Default', 'make' ) ),
 			array(
 				'body-link-group' => array(
 					'control' => array(
@@ -55,12 +55,12 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Headers', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'h1', __( 'H1', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h2', __( 'H2', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h3', __( 'H3', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h4', __( 'H4', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h5', __( 'H5', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'h6', __( 'H6', 'make' ) )
+			ttfmake_customizer_typography_group_definitions( 'h1', __( 'H1', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'h2', __( 'H2', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'h3', __( 'H3', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'h4', __( 'H4', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'h5', __( 'H5', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'h6', __( 'H6', 'make' ) )
 		),
 	);
 
@@ -71,8 +71,8 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Site Title &amp; Tagline', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'site-title', __( 'Site Title', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'site-tagline', __( 'Tagline', 'make' ) )
+			ttfmake_customizer_typography_group_definitions( 'site-title', __( 'Site Title', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'site-tagline', __( 'Tagline', 'make' ) )
 		),
 	);
 
@@ -83,8 +83,8 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Main Menu', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'nav', __( 'Menu Items', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'subnav', __( 'Sub-Menu Items', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'nav', __( 'Menu Items', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'subnav', __( 'Sub-Menu Items', 'make' ) ),
 			array(
 				'font-subnav-option-heading' => array(
 					'control' => array(
@@ -113,7 +113,7 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Header Bar', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions(
+			ttfmake_customizer_typography_group_definitions(
 				'header-bar-text',
 				__( 'Header Bar Text', 'make' ),
 				__( 'Includes Header Text, Header Bar Menu items, and the search field.', 'make' )
@@ -152,8 +152,8 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Sidebars', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'widget-title', __( 'Widget Title', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'widget', __( 'Widget Body', 'make' ) )
+			ttfmake_customizer_typography_group_definitions( 'widget-title', __( 'Widget Title', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'widget', __( 'Widget Body', 'make' ) )
 		),
 	);
 
@@ -164,9 +164,9 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Footer', 'make' ),
 		'options' => array_merge(
-			ttfmake_customizer_font_property_definitions( 'footer-widget-title', __( 'Widget Title', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'footer-widget', __( 'Widget Body', 'make' ) ),
-			ttfmake_customizer_font_property_definitions( 'footer-text', __( 'Footer Text', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'footer-widget-title', __( 'Widget Title', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'footer-widget', __( 'Widget Body', 'make' ) ),
+			ttfmake_customizer_typography_group_definitions( 'footer-text', __( 'Footer Text', 'make' ) ),
 			array(
 				'footer-icon-group' => array(
 					'control' => array(
@@ -263,3 +263,168 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 endif;
 
 add_filter( 'make_customizer_sections', 'ttfmake_customizer_define_typography_sections' );
+
+/**
+ * Generate an array of Customizer option definitions for a particular HTML element.
+ *
+ * @since 1.5.0.
+ *
+ * @param  string    $element
+ * @param  string    $label
+ * @param  string    $description
+ * @return array
+ */
+function ttfmake_customizer_typography_group_definitions( $element, $label, $description = '' ) {
+	$definitions = array(
+		'typography-group-' . $element => array(
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'label'   => $label,
+				'description' => $description,
+				'type'  => 'group-title',
+			),
+		),
+		'font-family-' . $element   => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_font_choice',
+			),
+			'control' => array(
+				'label'   => __( 'Font Family', 'make' ),
+				'type'    => 'select',
+				'choices' => ttfmake_font_choices_placeholder(),
+			),
+		),
+		'font-size-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'absint',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Font Size (px)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 6,
+					'max'  => 100,
+					'step' => 1,
+				),
+			),
+		),
+		'font-weight-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Font Weight', 'make' ),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'font-weight-' . $element ),
+			),
+		),
+		'font-style-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Font Style', 'make' ),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'font-style-' . $element ),
+			),
+		),
+		'text-transform-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Text Transform', 'make' ),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'text-transform-' . $element ),
+			),
+		),
+		'line-height-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_float',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Line Height (em)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 0,
+					'max'  => 5,
+					'step' => 0.1,
+				),
+			),
+		),
+		'letter-spacing-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_float',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Letter Spacing (px)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 0,
+					'max'  => 10,
+					'step' => 0.5,
+				),
+			),
+		),
+		'word-spacing-' . $element     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_float',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Word Spacing (px)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 0,
+					'max'  => 20,
+					'step' => 1,
+				),
+			),
+		),
+		'link-underline-' . $element => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Link Underline', 'make' ),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'link-underline-' . $element ),
+			),
+		),
+	);
+
+	/**
+	 * Filter the Customizer's font control definitions.
+	 *
+	 * @since 1.5.0.
+	 *
+	 * @param array     $definitions    Array of Customizer options and their setting and control definitions.
+	 * @param string    $element        The HTML element that the font properties will apply to.
+	 */
+	return apply_filters( 'make_customizer_typography_group_definitions', $definitions, $element );
+}
+
+if ( ! function_exists( 'ttfmake_font_choices_placeholder' ) ) :
+/**
+ * Add a placeholder for the large font choices array, which will be loaded
+ * in via JavaScript.
+ *
+ * @since 1.3.0.
+ *
+ * @return array
+ */
+function ttfmake_font_choices_placeholder() {
+	return array( 'placeholder' => __( 'Loading&hellip;', 'make' ) );
+}
+endif;
