@@ -19,7 +19,7 @@ class TTFMAKE_Customize_Radio_Control extends WP_Customize_Control {
 	public $mode = 'radio';
 
 	/**
-	 *
+	 * @since 1.5.0.
 	 */
 	public function enqueue() {
 		if ( 'buttonset' === $this->mode || 'image' === $this->mode ) {
@@ -28,9 +28,21 @@ class TTFMAKE_Customize_Radio_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 *
+	 * @since 1.5.0.
 	 */
-	public function render_content() {
+	protected function render() {
+		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
+		$class = 'customize-control customize-control-' . $this->type . ' customize-control-' . $this->type . '-' . $this->mode;
+
+		?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
+			<?php $this->render_content(); ?>
+		</li><?php
+	}
+
+	/**
+	 * @since 1.5.0.
+	 */
+	protected function render_content() {
 		if ( empty( $this->choices ) ) {
 			return;
 		}

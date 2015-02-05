@@ -16,18 +16,31 @@ if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'TTFMAKE_Customiz
  */
 class TTFMAKE_Customize_Range_Control extends WP_Customize_Control {
 	public $type = 'range';
+	public $mode = 'slider';
 
 	/**
-	 *
+	 * @since 1.5.0.
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-slider' );
 	}
 
 	/**
-	 *
+	 * @since 1.5.0.
 	 */
-	public function render_content() { ?>
+	protected function render() {
+		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
+		$class = 'customize-control customize-control-' . $this->type . ' customize-control-' . $this->type . '-' . $this->mode;
+
+		?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
+			<?php $this->render_content(); ?>
+		</li><?php
+	}
+
+	/**
+	 * @since 1.5.0.
+	 */
+	protected function render_content() { ?>
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
