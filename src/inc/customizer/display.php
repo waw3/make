@@ -36,62 +36,6 @@ function ttfmake_css_add_rules() {
 	}
 
 	/**
-	 * Main section
-	 */
-	// Get and escape options
-	$main_background_image       = get_theme_mod( 'main-background-image', ttfmake_get_default( 'main-background-image' ) );
-
-	// Main background image
-	if ( ! empty( $main_background_image ) ) {
-		// Escape the background image URL properly
-		$main_background_image = addcslashes( esc_url_raw( $main_background_image ), '"' );
-
-		// Get and escape related options
-		$main_background_size     = ttfmake_sanitize_choice( get_theme_mod( 'main-background-size', ttfmake_get_default( 'main-background-size' ) ), 'main-background-size' );
-		$main_background_repeat   = ttfmake_sanitize_choice( get_theme_mod( 'main-background-repeat', ttfmake_get_default( 'main-background-repeat' ) ), 'main-background-repeat' );
-		$main_background_position = ttfmake_sanitize_choice( get_theme_mod( 'main-background-position', ttfmake_get_default( 'main-background-position' ) ), 'main-background-position' );
-
-		// All variables are escaped at this point
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-content' ),
-			'declarations' => array(
-				'background-image'    => 'url("' . $main_background_image . '")',
-				'background-size'     => $main_background_size,
-				'background-repeat'   => $main_background_repeat,
-				'background-position' => $main_background_position . ' top'
-			)
-		) );
-	}
-
-	/**
-	 * Footer section
-	 */
-	// Get and escape options
-	$footer_background_image = get_theme_mod( 'footer-background-image', ttfmake_get_default( 'footer-background-image' ) );
-
-	// Footer background image
-	if ( ! empty( $footer_background_image ) ) {
-		// Escape the background image URL properly
-		$footer_background_image = addcslashes( esc_url_raw( $footer_background_image ), '"' );
-
-		// Get and escape related options
-		$footer_background_size     = ttfmake_sanitize_choice( get_theme_mod( 'footer-background-size', ttfmake_get_default( 'footer-background-size' ) ), 'footer-background-size' );
-		$footer_background_repeat   = ttfmake_sanitize_choice( get_theme_mod( 'footer-background-repeat', ttfmake_get_default( 'footer-background-repeat' ) ), 'footer-background-repeat' );
-		$footer_background_position = ttfmake_sanitize_choice( get_theme_mod( 'footer-background-position', ttfmake_get_default( 'footer-background-position' ) ), 'footer-background-position' );
-
-		// All variables are escaped at this point
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-footer' ),
-			'declarations' => array(
-				'background-image'    => 'url("' . $footer_background_image . '")',
-				'background-size'     => $footer_background_size,
-				'background-repeat'   => $footer_background_repeat,
-				'background-position' => $footer_background_position . ' center'
-			)
-		) );
-	}
-
-	/**
 	 * Featured image alignment
 	 */
 	$templates = array(

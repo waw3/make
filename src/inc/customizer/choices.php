@@ -111,6 +111,18 @@ function ttfmake_get_choices( $setting ) {
 				'never'  => __( 'Never', 'make' ),
 			);
 			break;
+		case 'background_repeat' :
+		case 'header-background-repeat' :
+		case 'main-background-repeat' :
+		case 'footer-background-repeat' :
+			$choices = array(
+				'no-repeat' => __( 'No Repeat', 'make' ),
+				'repeat'    => __( 'Tile', 'make' ),
+				'repeat-x'  => __( 'Tile Horizontally', 'make' ),
+				'repeat-y'  => __( 'Tile Vertically', 'make' )
+			);
+			break;
+		case 'background_position_x' :
 		case 'header-background-position' :
 		case 'main-background-position' :
 		case 'footer-background-position' :
@@ -124,6 +136,25 @@ function ttfmake_get_choices( $setting ) {
 				'bottom-left'   => __( 'Bottom Left', 'make' ),
 				'bottom'        => __( 'Bottom', 'make' ),
 				'bottom-right'  => __( 'Bottom Right', 'make' ),
+			);
+			break;
+		case 'background_attachment':
+		case 'header-background-attachment':
+		case 'main-background-attachment':
+		case 'footer-background-attachment':
+			$choices = array(
+				'scroll' => __( 'Scroll', 'make' ),
+				'fixed'  => __( 'Fixed', 'make' ),
+			);
+			break;
+		case 'background_size' :
+		case 'header-background-size' :
+		case 'main-background-size' :
+		case 'footer-background-size' :
+			$choices = array(
+				'auto'    => __( 'Auto', 'make' ),
+				'cover'   => __( 'Cover', 'make' ),
+				'contain' => __( 'Contain', 'make' )
 			);
 			break;
 		case 'general-layout' :
@@ -166,16 +197,6 @@ function ttfmake_get_choices( $setting ) {
 				'none'   => __( 'None', 'make' ),
 			);
 			break;
-		case 'header-background-repeat' :
-		case 'main-background-repeat' :
-		case 'footer-background-repeat' :
-			$choices = array(
-				'no-repeat' => __( 'No Repeat', 'make' ),
-				'repeat'    => __( 'Tile', 'make' ),
-				'repeat-x'  => __( 'Tile Horizontally', 'make' ),
-				'repeat-y'  => __( 'Tile Vertically', 'make' )
-			);
-			break;
 		case 'layout-blog-featured-images-alignment' :
 		case 'layout-archive-featured-images-alignment' :
 		case 'layout-search-featured-images-alignment' :
@@ -185,16 +206,6 @@ function ttfmake_get_choices( $setting ) {
 				'left'   => __( 'Left', 'make' ),
 				'center' => __( 'Center', 'make' ),
 				'right'  => __( 'Right', 'make' )
-			);
-			break;
-		case 'background_size' :
-		case 'header-background-size' :
-		case 'main-background-size' :
-		case 'footer-background-size' :
-			$choices = array(
-				'auto'    => __( 'Auto', 'make' ),
-				'cover'   => __( 'Cover', 'make' ),
-				'contain' => __( 'Contain', 'make' )
 			);
 			break;
 		case 'header-bar-content-layout' :

@@ -277,16 +277,19 @@ function ttfmake_option_defaults() {
 		'header-background-image'                  => '',
 		'header-background-repeat'                 => 'no-repeat',
 		'header-background-position'               => 'center',
+		'header-background-attachment'             => 'scroll',
 		'header-background-size'                   => 'cover',
 		// Main column
 		'main-background-image'                    => '',
 		'main-background-repeat'                   => 'repeat',
 		'main-background-position'                 => 'left',
+		'main-background-attachment'               => 'scroll',
 		'main-background-size'                     => 'auto',
 		// Footer
 		'footer-background-image'                  => '',
 		'footer-background-repeat'                 => 'no-repeat',
 		'footer-background-position'               => 'center',
+		'footer-background-attachment'             => 'scroll',
 		'footer-background-size'                   => 'cover',
 
 		/**

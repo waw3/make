@@ -18,56 +18,6 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 	$footer_sections = array();
 
 	/**
-	 * Background Image
-	 */
-	$footer_sections['footer-background'] = array(
-		'panel'   => $panel,
-		'title'   => __( 'Background Image', 'make' ),
-		'options' => array(
-			'footer-background-image'    => array(
-				'setting' => array(
-					'sanitize_callback' => 'esc_url_raw',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Image_Control',
-					'label'        => __( 'Footer Background Image', 'make' ),
-					'context'      => $theme_prefix . 'footer-background-image',
-				),
-			),
-			'footer-background-repeat'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Footer Background Repeat', 'make' ),
-					'type'    => 'radio',
-					'choices' => ttfmake_get_choices( 'footer-background-repeat' ),
-				),
-			),
-			'footer-background-position' => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Footer Background Position', 'make' ),
-					'type'    => 'radio',
-					'choices' => ttfmake_get_choices( 'footer-background-position' ),
-				),
-			),
-			'footer-background-size'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Footer Background Size', 'make' ),
-					'type'    => 'radio',
-					'choices' => ttfmake_get_choices( 'footer-background-size' ),
-				),
-			),
-		),
-	);
-
-	/**
 	 * Widget Areas
 	 */
 	$footer_sections['footer-widget'] = array(

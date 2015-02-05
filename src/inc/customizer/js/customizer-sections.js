@@ -149,10 +149,6 @@
 			controls: [ 'ttfmake_background-info' ],
 			callback: function( to ) { return 'full-width' === to; }
 		},
-		'background_image': {
-			controls: [ 'ttfmake_background_size' ],
-			callback: function( to ) { return !! to; }
-		},
 		'main-background-color-transparent': {
 			controls: [ 'ttfmake_main-background-color' ],
 			callback: function( to ) { return ! to; }
@@ -169,21 +165,25 @@
 			controls: [ 'ttfmake_footer-background-color' ],
 			callback: function( to ) { return ! to; }
 		},
+		'background_image': {
+			controls: [ 'ttfmake_background_position_x', 'ttfmake_background_attachment', 'ttfmake_background_size' ],
+			callback: function( to ) { return !! to; }
+		},
 		'header-background-image': {
-			controls: [ 'ttfmake_header-background-repeat', 'ttfmake_header-background-position', 'ttfmake_header-background-size' ],
+			controls: [ 'ttfmake_header-background-repeat', 'ttfmake_header-background-position', 'ttfmake_header-background-attachment', 'ttfmake_header-background-size' ],
+			callback: function( to ) { return !! to; }
+		},
+		'main-background-image': {
+			controls: [ 'ttfmake_main-background-repeat', 'ttfmake_main-background-position', 'ttfmake_main-background-attachment', 'ttfmake_main-background-size' ],
+			callback: function( to ) { return !! to; }
+		},
+		'footer-background-image': {
+			controls: [ 'ttfmake_footer-background-repeat', 'ttfmake_footer-background-position', 'ttfmake_footer-background-attachment', 'ttfmake_footer-background-size' ],
 			callback: function( to ) { return !! to; }
 		},
 		'header-layout': {
 			controls: [ 'ttfmake_header-branding-position' ],
 			callback: function( to ) { return ( '1' == to || '3' == to ); }
-		},
-		'main-background-image': {
-			controls: [ 'ttfmake_main-background-repeat', 'ttfmake_main-background-position', 'ttfmake_main-background-size' ],
-			callback: function( to ) { return !! to; }
-		},
-		'footer-background-image': {
-			controls: [ 'ttfmake_footer-background-repeat', 'ttfmake_footer-background-position', 'ttfmake_footer-background-size' ],
-			callback: function( to ) { return !! to; }
 		},
 		'layout-blog-featured-images': {
 			controls: [ 'ttfmake_layout-blog-featured-images-alignment' ],

@@ -22,51 +22,25 @@ function ttfmake_customizer_define_background_images_sections( $sections ) {
 	$background_sections['header-background'] = array(
 		'panel'   => $panel,
 		'title'   => __( 'Header', 'make' ),
-		'options' => array(
-			'header-background-image'    => array(
-				'setting' => array(
-					'sanitize_callback' => 'esc_url_raw',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Image_Control',
-					'label'        => __( 'Background Image', 'make' ),
-					'context'      => $theme_prefix . 'header-background-image',
-				),
-			),
-			'header-background-repeat'   => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_choice',
-				),
-				'control' => array(
-					'label'   => __( 'Repeat', 'make' ),
-					'type'    => 'radio',
-					'choices' => ttfmake_get_choices( 'header-background-repeat' ),
-				),
-			),
-			'header-background-position' => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_choice',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Background_Position_Control',
-					'label'   => __( 'Position', 'make' ),
-					'type'    => 'radio',
-					'choices' => ttfmake_get_choices( 'header-background-position' ),
-				),
-			),
-			'header-background-size'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_choice',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Radio_Control',
-					'label'   => __( 'Size', 'make' ),
-					'type'    => 'radio',
-					'mode'    => 'buttonset',
-					'choices' => ttfmake_get_choices( 'header-background-size' ),
-				),
-			),
-		),
+		'options' => ttfmake_customizer_background_image_group_definitions( 'header' ),
+	);
+
+	/**
+	 * Main Column
+	 */
+	$background_sections['main-background'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Main Column', 'make' ),
+		'options' => ttfmake_customizer_background_image_group_definitions( 'main' ),
+	);
+
+	/**
+	 * Footer
+	 */
+	$background_sections['footer-background'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Footer', 'make' ),
+		'options' => ttfmake_customizer_background_image_group_definitions( 'footer' ),
 	);
 
 	/**
@@ -83,3 +57,81 @@ function ttfmake_customizer_define_background_images_sections( $sections ) {
 }
 
 add_filter( 'make_customizer_sections', 'ttfmake_customizer_define_background_images_sections' );
+
+/**
+ * Generate an array of Customizer option definitions for a particular HTML element.
+ *
+ * @since 1.5.0.
+ *
+ * @param  $region
+ * @return array
+ */
+function ttfmake_customizer_background_image_group_definitions( $region ) {
+	$definitions = array(
+		$region . '-background-image'    => array(
+			'setting' => array(
+				'sanitize_callback' => 'esc_url_raw',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Image_Control',
+				'label'        => __( 'Background Image', 'make' ),
+				'context'      => 'ttfmake_' . $region . '-background-image',
+			),
+		),
+		$region . '-background-repeat'   => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'label'   => __( 'Repeat', 'make' ),
+				'type'    => 'radio',
+				'choices' => ttfmake_get_choices( $region . '-background-repeat' ),
+			),
+		),
+		$region . '-background-position' => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Background_Position_Control',
+				'label'   => __( 'Position', 'make' ),
+				'type'    => 'radio',
+				'choices' => ttfmake_get_choices( $region . '-background-position' ),
+			),
+		),
+		$region . '-background-attachment'     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Attachment', 'make' ),
+				'type'    => 'radio',
+				'mode'    => 'buttonset',
+				'choices' => ttfmake_get_choices( $region . '-background-attachment' ),
+			),
+		),
+		$region . '-background-size'     => array(
+			'setting' => array(
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Size', 'make' ),
+				'type'    => 'radio',
+				'mode'    => 'buttonset',
+				'choices' => ttfmake_get_choices( $region . '-background-size' ),
+			),
+		),
+	);
+
+	/**
+	 * Filter the Customizer's font control definitions.
+	 *
+	 * @since 1.5.0.
+	 *
+	 * @param array     $definitions    Array of Customizer options and their setting and control definitions.
+	 * @param string    $element        The HTML element that the font properties will apply to.
+	 */
+	return apply_filters( 'make_customizer_background_image_group_definitions', $definitions, $region );
+}

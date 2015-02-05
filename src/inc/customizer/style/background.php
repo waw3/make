@@ -11,33 +11,40 @@
  * @return void
  */
 function ttfmake_css_background() {
-	/**
-	 * Header
-	 */
-	// Header background image
-	$header_background_image = get_theme_mod( 'header-background-image', ttfmake_get_default( 'header-background-image' ) );
-	if ( ! empty( $header_background_image ) ) {
-		// Escape the background image URL properly
-		$header_background_image = addcslashes( esc_url_raw( $header_background_image ), '"' );
+	// Regions
+	$regions = array(
+		'header' => array( '.site-header-main' ),
+		'main'   => array( '.site-content' ),
+		'footer' => array( '.site-footer' ),
+	);
 
-		// Get and escape related options
-		$header_background_repeat   = ttfmake_sanitize_choice( get_theme_mod( 'header-background-repeat', ttfmake_get_default( 'header-background-repeat' ) ), 'header-background-repeat' );
-		$header_background_position = ttfmake_sanitize_choice( get_theme_mod( 'header-background-position', ttfmake_get_default( 'header-background-position' ) ), 'header-background-position' );
-		$header_background_size     = ttfmake_sanitize_choice( get_theme_mod( 'header-background-size', ttfmake_get_default( 'header-background-size' ) ), 'header-background-size' );
+	foreach ( $regions as $region => $selectors ) {
+		$background_image = get_theme_mod( $region . '-background-image', ttfmake_get_default( $region . '-background-image' ) );
+		if ( ! empty( $background_image ) ) {
+			// Escape the background image URL properly
+			$background_image = addcslashes( esc_url_raw( $background_image ), '"' );
 
-		// Convert position value
-		$header_background_position = str_replace( '-', ' ', $header_background_position );
+			// Get and escape related options
+			$background_repeat   = ttfmake_sanitize_choice( get_theme_mod( $region . '-background-repeat', ttfmake_get_default( $region . '-background-repeat' ) ), $region . '-background-repeat' );
+			$background_position = ttfmake_sanitize_choice( get_theme_mod( $region . '-background-position', ttfmake_get_default( $region . '-background-position' ) ), $region . '-background-position' );
+			$background_attachment = ttfmake_sanitize_choice( get_theme_mod( $region . '-background-attachment', ttfmake_get_default( $region . '-background-attachment' ) ), $region . '-background-attachment' );
+			$background_size     = ttfmake_sanitize_choice( get_theme_mod( $region . '-background-size', ttfmake_get_default( $region . '-background-size' ) ), $region . '-background-size' );
 
-		// All variables are escaped at this point
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-header-main' ),
-			'declarations' => array(
-				'background-image'    => 'url("' . $header_background_image . '")',
-				'background-repeat'   => $header_background_repeat,
-				'background-position' => $header_background_position,
-				'background-size'     => $header_background_size,
-			)
-		) );
+			// Convert position value
+			$background_position = str_replace( '-', ' ', $background_position );
+
+			// All variables are escaped at this point
+			ttfmake_get_css()->add( array(
+				'selectors'    => $selectors,
+				'declarations' => array(
+					'background-image'      => 'url("' . $background_image . '")',
+					'background-repeat'     => $background_repeat,
+					'background-position'   => $background_position,
+					'background-attachment' => $background_attachment,
+					'background-size'       => $background_size,
+				)
+			) );
+		}
 	}
 }
 
