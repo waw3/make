@@ -23,7 +23,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Global', 'make' ),
 		'options' => array(
-			'color-scheme-global-group' => array(
+			'color-group-color-scheme' => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
 					'label'   => __( 'Color Scheme', 'make' ),
@@ -82,7 +82,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					),
 				),
 			),
-			'color-link-global-group' => array(
+			'color-group-global-link' => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
 					'label'   => __( 'Links', 'make' ),
@@ -99,7 +99,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'description'  => __( 'The default link color is controlled by the "Primary Color" option above.' ),
 				),
 			),
-			'color-background-global-group' => array(
+			'color-group-global-background' => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
 					'label'   => __( 'Background', 'make' ),
@@ -143,6 +143,34 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 		'panel'   => $panel,
 		'title'   => __( 'Background', 'make' ),
 		'options' => array(),
+	);
+
+	/**
+	 * Site Title & Tagline
+	 */
+	$colorscheme_sections['color-site-title-tagline'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Site Title &amp; Tagline', 'make' ),
+		'options' => array(
+			'color-site-title'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Site Title Color', 'make' ),
+				),
+			),
+			'color-site-tagline'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Tagline Color', 'make' ),
+				),
+			),
+		),
 	);
 
 	/**
@@ -207,15 +235,6 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
 					'type'         => 'line',
-				),
-			),
-			'color-site-title'            => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Site Title Color', 'make' ),
 				),
 			),
 		),

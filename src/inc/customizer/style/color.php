@@ -245,10 +245,35 @@ function ttfmake_css_color() {
 	}
 
 	/**
+	 * Site Title & Tagline
+	 */
+	// Prereq
+	$header_text_color = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
+	// Site title
+	$color_site_title = maybe_hash_hex_color( get_theme_mod( 'color-site-title', ttfmake_get_default( 'color-site-title' ) ) );
+	if ( $color_site_title !== ttfmake_get_default( 'color-site-title' ) || $header_text_color !== $color_site_title ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-header .site-title', '.site-header .site-title a' ),
+			'declarations' => array(
+				'color' => $color_site_title
+			)
+		) );
+	}
+	// Tagline
+	$color_tagline = maybe_hash_hex_color( get_theme_mod( 'color-site-tagline', ttfmake_get_default( 'color-site-tagline' ) ) );
+	if ( $color_tagline !== ttfmake_get_default( 'color-site-tagline' ) || $header_text_color !== $color_tagline ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-header .site-description' ),
+			'declarations' => array(
+				'color' => $color_tagline
+			)
+		) );
+	}
+
+	/**
 	 * Header section
 	 */
 	// Get and escape options
-	$header_text_color           = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
 	$header_background_color     = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
 	$header_bar_text_color       = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
 	$header_bar_border_color     = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
@@ -303,20 +328,6 @@ function ttfmake_css_color() {
 			)
 		) );
 	}
-
-	/**
-	 * Site Title & Tagline section
-	 */
-	$color_site_title = maybe_hash_hex_color( get_theme_mod( 'color-site-title', ttfmake_get_default( 'color-site-title' ) ) );
-	if ( $color_site_title !== ttfmake_get_default( 'color-site-title' ) || $header_text_color !== $color_site_title ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-header .site-title', '.site-header .site-title a' ),
-			'declarations' => array(
-				'color' => $color_site_title
-			)
-		) );
-	}
-
 
 
 	/**
