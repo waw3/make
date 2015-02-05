@@ -18,7 +18,6 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'choices.php' );
 	require_once( $path . 'css.php' );
 	require_once( $path . 'defaults.php' );
-	require_once( $path . 'display.php' );
 	require_once( $path . 'fonts.php' );
 	require_once( $path . 'google-fonts.php' );
 	require_once( $path . 'logo.php' );
@@ -27,6 +26,7 @@ function ttfmake_customizer_init() {
 	// Style rendering
 	require_once( $path . 'style/background.php' );
 	require_once( $path . 'style/color.php' );
+	require_once( $path . 'style/layout.php' );
 	require_once( $path . 'style/typography.php' );
 
 	// Hook up functions

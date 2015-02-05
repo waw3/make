@@ -377,7 +377,6 @@ function ttfmake_option_defaults() {
 		'layout-page-hide-footer'                  => 0,
 		'layout-page-sidebar-left'                 => 0,
 		'layout-page-sidebar-right'                => 0,
-		'layout-page-hide-title'                   => 1,
 		'layout-page-featured-images'              => 'none',
 		'layout-page-post-date'                    => 'none',
 		'layout-page-post-author'                  => 'none',
@@ -386,6 +385,7 @@ function ttfmake_option_defaults() {
 		'layout-page-post-author-location'         => 'post-footer',
 		'layout-page-comment-count'                => 'none',
 		'layout-page-comment-count-location'       => 'before-content',
+		'layout-page-hide-title'                   => 1,
 
 		/**
 		 * Deprecated defaults

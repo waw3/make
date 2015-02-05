@@ -208,6 +208,17 @@ function ttfmake_get_choices( $setting ) {
 				'none'        => __( 'None', 'make' ),
 			);
 			break;
+		case 'layout-blog-featured-images-alignment' :
+		case 'layout-archive-featured-images-alignment' :
+		case 'layout-search-featured-images-alignment' :
+		case 'layout-post-featured-images-alignment' :
+		case 'layout-page-featured-images-alignment' :
+			$choices = array(
+				'left'   => __( 'Left', 'make' ),
+				'center' => __( 'Center', 'make' ),
+				'right'  => __( 'Right', 'make' )
+			);
+			break;
 		case 'layout-blog-post-date' :
 		case 'layout-archive-post-date' :
 		case 'layout-search-post-date' :
@@ -231,15 +242,15 @@ function ttfmake_get_choices( $setting ) {
 				'none'   => __( 'None', 'make' ),
 			);
 			break;
-		case 'layout-blog-featured-images-alignment' :
-		case 'layout-archive-featured-images-alignment' :
-		case 'layout-search-featured-images-alignment' :
-		case 'layout-post-featured-images-alignment' :
-		case 'layout-page-featured-images-alignment' :
+		case 'layout-blog-comment-count' :
+		case 'layout-archive-comment-count' :
+		case 'layout-search-comment-count' :
+		case 'layout-post-comment-count' :
+		case 'layout-page-comment-count' :
 			$choices = array(
-				'left'   => __( 'Left', 'make' ),
-				'center' => __( 'Center', 'make' ),
-				'right'  => __( 'Right', 'make' )
+				'icon' => __( 'With icon', 'make' ),
+				'text' => __( 'With text', 'make' ),
+				'none' => __( 'None', 'make' ),
 			);
 			break;
 		case 'layout-blog-post-date-location' :
@@ -261,17 +272,6 @@ function ttfmake_get_choices( $setting ) {
 				'top'            => __( 'Top', 'make' ),
 				'before-content' => __( 'Before content', 'make' ),
 				'post-footer'    => __( 'Post footer', 'make' ),
-			);
-			break;
-		case 'layout-blog-comment-count' :
-		case 'layout-archive-comment-count' :
-		case 'layout-search-comment-count' :
-		case 'layout-post-comment-count' :
-		case 'layout-page-comment-count' :
-			$choices = array(
-				'icon' => __( 'With icon', 'make' ),
-				'text' => __( 'With text', 'make' ),
-				'none' => __( 'None', 'make' ),
 			);
 			break;
 	}

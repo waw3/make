@@ -471,3 +471,19 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 	return $sections;
 }
 endif;
+
+if ( ! function_exists( 'ttfmake_css_add_rules' ) ) :
+/**
+ * Process user options to generate CSS needed to implement the choices.
+ *
+ * This function has been broken up into several files/functions in the inc/customizer/style directory.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.5.0.
+ *
+ * @return void
+ */
+function ttfmake_css_add_rules() {
+	_deprecated_function( __FUNCTION__, '1.5.0' );
+}
+endif;

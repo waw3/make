@@ -3,26 +3,19 @@
  * @package Make
  */
 
-if ( ! function_exists( 'ttfmake_css_add_rules' ) ) :
+if ( ! function_exists( 'ttfmake_css_layout' ) ) :
 /**
- * Process user options to generate CSS needed to implement the choices.
+ * Build the CSS rules for the custom layout options.
  *
- * This function reads in the options from theme mods and determines whether a CSS rule is needed to implement an
- * option. CSS is only written for choices that are non-default in order to avoid adding unnecessary CSS. All options
- * are also filterable allowing for more precise control via a child theme or plugin.
- *
- * Note that all CSS for options is present in this function except for the CSS for fonts and the logo, which require
- * a lot more code to implement.
- *
- * @since  1.0.0.
+ * @since  1.5.0.
  *
  * @return void
  */
-function ttfmake_css_add_rules() {
+function ttfmake_css_layout() {
 	/**
 	 * Featured image alignment
 	 */
-	$templates = array(
+	$views = array(
 		'blog',
 		'archive',
 		'search',
@@ -30,24 +23,24 @@ function ttfmake_css_add_rules() {
 		'page'
 	);
 
-	foreach ( $templates as $template_name ) {
-		$key       = 'layout-' . $template_name . '-featured-images-alignment';
+	foreach ( $views as $view ) {
+		$key       = 'layout-' . $view . '-featured-images-alignment';
 		$default   = ttfmake_get_default( $key );
 		$alignment = ttfmake_sanitize_choice( get_theme_mod( $key, $default ), $key );
 
 		if ( $alignment !== $default ) {
 			ttfmake_get_css()->add( array(
-				'selectors'    => array( '.' . $template_name . ' .entry-header .entry-thumbnail' ),
+				'selectors'    => array( '.' . $view . ' .entry-header .entry-thumbnail' ),
 				'declarations' => array(
 					'text-align' => $alignment,
-				)
+				),
 			) );
 		}
 	}
 }
 endif;
 
-add_action( 'make_css', 'ttfmake_css_add_rules' );
+add_action( 'make_css', 'ttfmake_css_layout' );
 
 if ( ! function_exists( 'ttfmake_maybe_add_with_avatar_class' ) ) :
 /**
