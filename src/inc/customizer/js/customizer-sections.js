@@ -130,6 +130,10 @@
 			controls: [ 'ttfmake_background_size' ],
 			callback: function( to ) { return !! to; }
 		},
+		'main-background-color-transparent': {
+			controls: [ 'ttfmake_main-background-color' ],
+			callback: function( to ) { return ! to; }
+		},
 		'header-background-image': {
 			controls: [ 'ttfmake_header-background-repeat', 'ttfmake_header-background-position', 'ttfmake_header-background-size' ],
 			callback: function( to ) { return !! to; }

@@ -107,13 +107,19 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				),
 			),
 			// Site Background Color gets inserted here.
+			'main-background-color-heading' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Main Column Background Color', 'make' ),
+					'type'  => 'heading',
+				),
+			),
 			'main-background-color' => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
 				),
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Main Column Background Color', 'make' ),
 				),
 			),
 			'main-background-color-transparent' => array(
