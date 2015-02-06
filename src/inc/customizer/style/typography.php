@@ -201,15 +201,17 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}
-	// Grandchild arrow position
+	// Arrow size and grandchild arrow size and position
 	if ( isset( $declarations['font-size-px'] ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
-				'.site-navigation .menu .sub-menu .menu-item-has-children a:after',
-				'.site-navigation .menu .children .menu-item-has-children a:after'
+				'.site-navigation .menu .page_item_has_children a:after',
+				'.site-navigation .menu .menu-item-has-children a:after'
 			),
 			'declarations' => array(
-				'top' => ( $declarations['font-size-px'] * 1.4 / 2 ) - 5 . 'px'
+				'top' => '-' . ttfmake_get_relative_font_size( $declarations['font-size-px'], 10 ) . 'px',
+				'font-size-px' => ttfmake_get_relative_font_size( $declarations['font-size-px'], 72 ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], 72 ) ) . 'rem'
 			),
 			'media'        => 'screen and (min-width: 800px)'
 		) );
@@ -235,6 +237,21 @@ function ttfmake_css_fonts() {
 	if ( ! empty( $link_rule ) ) {
 		$link_rule['media'] = $media;
 		ttfmake_get_css()->add( $link_rule );
+	}
+	// Grandchild arrow size
+	if ( isset( $declarations['font-size-px'] ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation .menu .children .page_item_has_children a:after',
+				'.site-navigation .menu .sub-menu .menu-item-has-children a:after'
+			),
+			'declarations' => array(
+				//'top' => ( $declarations['font-size-px'] * 0.7 ) - 5 . 'px',
+				'font-size-px' => ttfmake_get_relative_font_size( $declarations['font-size-px'], 72 ) . 'px',
+				'font-size-rem' => ttfmake_convert_px_to_rem( ttfmake_get_relative_font_size( $declarations['font-size-px'], 72 ) ) . 'rem'
+			),
+			'media'        => 'screen and (min-width: 800px)'
+		) );
 	}
 
 	/**

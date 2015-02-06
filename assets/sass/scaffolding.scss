@@ -463,8 +463,11 @@ a {
 				z-index: 99999;
 				overflow: hidden;
 				background-color: $d;
-				li:first-of-type a {
-					@include rem('padding', 15px $gut/2);
+				li {
+					width: 100%;
+					&:first-of-type a {
+						@include rem('padding', 15px $gut/2);
+					}
 				}
 				a {
 					border-bottom: 1px solid $e;
@@ -529,6 +532,8 @@ a {
 			color: $e;
 			@include rem('padding-left', 2px);
 			@include rem('font-size', 10px);
+			position: relative;
+			top: -1px;
 		}
 		ul.menu ul a,
 		.menu ul ul a {

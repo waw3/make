@@ -607,6 +607,8 @@ a {
 		display: none;
 		overflow: hidden;
 		background-color: #eaecee; }
+	.site-navigation .menu .sub-menu li, .site-navigation .menu .children li, .site-navigation .nav-menu .sub-menu li, .site-navigation .nav-menu .children li {
+		width: 100%; }
 	.site-navigation .menu .sub-menu li:first-of-type a, .site-navigation .menu .children li:first-of-type a, .site-navigation .nav-menu .sub-menu li:first-of-type a, .site-navigation .nav-menu .children li:first-of-type a {
 		padding: 15px 16px;
 		padding:  1.5rem 1.6rem; }
@@ -646,8 +648,10 @@ a {
 	.site-navigation .page_item_has_children a:after, .site-navigation .menu-item-has-children a:after {
 		font-family: FontAwesome;
 		font-size: 10px;
-		font-size: 1rem; 
+		font-size: 1rem;
 		font-weight: normal;
+		position: relative;
+		top: -1px; 
 		padding-left: 2px;
 		padding-left: .2rem;
 		content: "  \f078";
