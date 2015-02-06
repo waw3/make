@@ -566,8 +566,6 @@ a {
 		text-align: right; } }
 .site-navigation .menu, .site-navigation .nav-menu {
 	padding-left: 0; }
-.site-navigation .menu li:first-of-type a, .site-navigation .nav-menu li:first-of-type a {
-	padding-left: 0; }
 .site-navigation .menu ul, .site-navigation .menu ol, .site-navigation .nav-menu ul, .site-navigation .nav-menu ol {
 	margin-left: 0; }
 .site-navigation .menu li, .site-navigation .nav-menu li {
