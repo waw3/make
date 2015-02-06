@@ -362,6 +362,87 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	);
 
 	/**
+	 * Header Bar
+	 */
+	$colorscheme_sections['color-header-bar'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Header Bar', 'make' ),
+		'options' => array(
+			'header-bar-text-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Text Color', 'make' ),
+				),
+			),
+			'header-bar-link-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Color', 'make' ),
+				),
+			),
+			'header-bar-link-hover-color'       => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Hover/Focus Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Link Hover/Focus Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'header-bar-border-color'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Border Color', 'make' ),
+				),
+			),
+			'header-bar-background-color-heading' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Background Color', 'make' ),
+					'type'  => 'heading',
+				),
+			),
+			'header-bar-background-color' => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+				),
+			),
+			'header-bar-background-color-opacity'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'ttfmake_sanitize_float',
+				),
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
+				),
+			),
+		),
+	);
+
+	/**
 	 * Sidebars
 	 */
 	$colorscheme_sections['color-sidebar'] = array(
@@ -449,99 +530,6 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 			),
 		),
 	);
-
-	/**
-	 * Header Bar
-	 */
-	$colorscheme_sections['color-header-bar'] = array(
-		'panel'   => $panel,
-		'title'   => __( 'Header Bar', 'make' ),
-		'options' => array(
-			'header-bar-text-color'       => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Text Color', 'make' ),
-				),
-			),
-			'header-bar-link-color'       => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Link Color', 'make' ),
-				),
-			),
-			'header-bar-link-hover-color'       => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Link Hover/Focus Color', 'make' ),
-					'description' => sprintf(
-						__( 'This option overrides the %s option in the %s section.', 'make' ),
-						__( 'Link Hover/Focus Color', 'make' ),
-						__( 'Global', 'make' )
-					),
-				),
-			),
-			'header-bar-border-color'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Border Color', 'make' ),
-				),
-			),
-			'header-bar-background-color-heading' => array(
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'label'   => __( 'Background Color', 'make' ),
-					'type'  => 'heading',
-				),
-			),
-			'header-bar-background-color' => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-				),
-			),
-			'header-bar-background-color-opacity'     => array(
-				'setting' => array(
-					'sanitize_callback' => 'ttfmake_sanitize_float',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Range_Control',
-					'label'   => __( 'Opacity', 'make' ),
-					'type'  => 'range',
-					'input_attrs' => array(
-						'min'  => 0,
-						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
-						'step' => 0.05,
-					),
-				),
-			),
-		),
-	);
-
-	/**
-	 * Sidebars
-	 *
-	 * TODO
-	 */
-
-	/**
-	 * Widgets
-	 *
-	 * TODO
-	 */
 
 	/**
 	 * Footer

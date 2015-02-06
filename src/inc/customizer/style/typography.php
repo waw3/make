@@ -241,7 +241,7 @@ function ttfmake_css_fonts() {
 	 * Current Item
 	 */
 	$current_item_weight = ttfmake_sanitize_choice( get_theme_mod( 'font-weight-nav-current-item', ttfmake_get_default( 'font-weight-nav-current-item' ) ), 'font-weight-nav-current-item' );
-	if ( $current_item_weight !== ttfmake_get_default( 'font-weight-nav-current-item' || true === $menu_items_customized || true === $submenu_items_customized ) ) {
+	if ( $current_item_weight !== ttfmake_get_default( 'font-weight-nav-current-item' ) || true === $menu_items_customized || true === $submenu_items_customized ) {
 		ttfmake_get_css()->add( array(
 			'selectors' => array(
 				'.site-navigation .menu li.current_page_item > a',
@@ -495,7 +495,7 @@ function ttfmake_parse_font_properties( $element, $force = false ) {
 	 * @param array    $properties    The array of font properties and callbacks.
 	 */
 	$properties = apply_filters( 'make_css_font_properties', array(
-		'font-family'	 => 'ttfmake_get_font_stack',
+		'font-family'	 => 'ttfmake_sanitize_font_choice',
 		'font-size'		 => 'absint',
 		'font-weight'    => 'ttfmake_sanitize_choice',
 		'font-style'     => 'ttfmake_sanitize_choice',
@@ -509,15 +509,17 @@ function ttfmake_parse_font_properties( $element, $force = false ) {
 	foreach ( $properties as $property => $callback ) {
 		$setting_id = $property . '-' . $element;
 		$value = get_theme_mod( $setting_id, ttfmake_get_default( $setting_id ) );
-		if ( false !== $value && ( $value !== ttfmake_get_default( $setting_id ) || true === $force ) ) {
-			$sanitized_value = call_user_func_array( $callback, array( $value, $setting_id ) );
-			if ( 'font-size' === $property ) {
-				$declarations[$property . '-px'] = $sanitized_value . 'px';
-				$declarations[$property . '-rem'] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';
+		$sanitized_value = call_user_func_array( $callback, array( $value, $setting_id ) );
+		if ( true === $force || ( false !== $value && $value !== ttfmake_get_default( $setting_id ) ) ) {
+			if ( 'font-family' === $property ) {
+				$declarations[ $property ] = ttfmake_get_font_stack( $sanitized_value );
+			} else if ( 'font-size' === $property ) {
+				$declarations[ $property . '-px' ] = $sanitized_value . 'px';
+				$declarations[ $property . '-rem' ] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';
 			} else if ( in_array( $property, array( 'letter-spacing', 'word-spacing' ) ) ) {
-				$declarations[$property] = $sanitized_value . 'px';
+				$declarations[ $property ] = $sanitized_value . 'px';
 			} else {
-				$declarations[$property] = $sanitized_value;
+				$declarations[ $property ] = $sanitized_value;
 			}
 		}
 	}

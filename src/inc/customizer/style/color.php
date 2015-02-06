@@ -281,7 +281,7 @@ function ttfmake_css_color() {
 	// Main background color
 	$main_background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttfmake_get_default( 'main-background-color' ) ) );
 	$main_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'main-background-color-opacity', ttfmake_get_default( 'main-background-color-opacity' ) ) );
-	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) || $main_background_color_opacity !== ttfmake_get_default( 'main-background-color-opacity' ) ) {
+	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) || $main_background_color_opacity !== (float) ttfmake_get_default( 'main-background-color-opacity' ) ) {
 		// Convert to RGBa
 		$color_value = ttfmake_hex_to_rgb( $main_background_color ) . ', ' . $main_background_color_opacity;
 
@@ -318,7 +318,7 @@ function ttfmake_css_color() {
 	// Header background color
 	$header_background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
 	$header_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'header-background-color-opacity', ttfmake_get_default( 'header-background-color-opacity' ) ) );
-	if ( $header_background_color !== ttfmake_get_default( 'header-background-color' ) || $header_background_color_opacity !== ttfmake_get_default( 'header-background-color-opacity' ) ) {
+	if ( $header_background_color !== ttfmake_get_default( 'header-background-color' ) || $header_background_color_opacity !== (float) ttfmake_get_default( 'header-background-color-opacity' ) ) {
 		// Convert to RGBa
 		$color_value = ttfmake_hex_to_rgb( $header_background_color ) . ', ' . $header_background_color_opacity;
 
@@ -496,6 +496,86 @@ function ttfmake_css_color() {
 	}
 
 	/**
+	 * Header Bar
+	 */
+	// Header Bar text color
+	$header_bar_text_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
+	if ( $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.header-bar',
+				'.header-bar a',
+				'.header-bar .menu li a',
+			),
+			'declarations' => array(
+				'color' => $header_bar_text_color
+			)
+		) );
+	}
+
+	// Header Bar link color
+	$header_bar_link_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-color', ttfmake_get_default( 'header-bar-link-color' ) ) );
+	if ( $header_bar_link_color && $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.header-bar a',
+				'.header-bar .menu li a',
+				'.header-bar .social-links a',
+			),
+			'declarations' => array(
+				'color' => $header_bar_link_color
+			)
+		) );
+	}
+
+	// Header Bar link hover color
+	$header_bar_link_hover_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-hover-color', ttfmake_get_default( 'header-bar-link-hover-color' ) ) );
+	if ( $header_bar_link_hover_color && $header_bar_link_hover_color !== ttfmake_get_default( 'header-bar-link-hover-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.header-bar a:hover',
+				'.header-bar a:focus',
+				'.header-bar .menu li a:hover',
+				'.header-bar .menu li a:focus',
+			),
+			'declarations' => array(
+				'color' => $header_bar_link_hover_color
+			)
+		) );
+	}
+
+	// Header Bar border color
+	$header_bar_border_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
+	if ( $header_bar_border_color !== ttfmake_get_default( 'header-bar-border-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.header-bar',
+				'.header-bar .search-form input',
+				'.header-social-links li:first-of-type',
+				'.header-social-links li a',
+			),
+			'declarations' => array(
+				'border-color' => $header_bar_border_color
+			)
+		) );
+	}
+
+	// Header Bar background color
+	$header_bar_background_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
+	$header_bar_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'header-bar-background-color-opacity', ttfmake_get_default( 'header-bar-background-color-opacity' ) ) );
+	if ( $header_bar_background_color !== ttfmake_get_default( 'header-bar-background-color' ) || $header_bar_background_color_opacity !== (float) ttfmake_get_default( 'header-bar-background-color-opacity' ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $header_bar_background_color ) . ', ' . $header_bar_background_color_opacity;
+
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.header-bar' ),
+			'declarations' => array(
+				'background-color' => 'rgba(' . $color_value . ')'
+			)
+		) );
+	}
+
+	/**
 	 * Sidebars
 	 */
 	// Sidebar widget title
@@ -567,86 +647,6 @@ function ttfmake_css_color() {
 	}
 
 	/**
-	 * Header Bar
-	 */
-	// Header Bar text color
-	$header_bar_text_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
-	if ( $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array(
-				'.header-bar',
-				'.header-bar a',
-				'.header-bar .menu li a',
-			),
-			'declarations' => array(
-				'color' => $header_bar_text_color
-			)
-		) );
-	}
-
-	// Header Bar link color
-	$header_bar_link_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-color', ttfmake_get_default( 'header-bar-link-color' ) ) );
-	if ( $header_bar_link_color && $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array(
-				'.header-bar a',
-				'.header-bar .menu li a',
-				'.header-bar .social-links a',
-			),
-			'declarations' => array(
-				'color' => $header_bar_link_color
-			)
-		) );
-	}
-
-	// Header Bar link hover color
-	$header_bar_link_hover_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-hover-color', ttfmake_get_default( 'header-bar-link-hover-color' ) ) );
-	if ( $header_bar_link_hover_color && $header_bar_link_hover_color !== ttfmake_get_default( 'header-bar-link-hover-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array(
-				'.header-bar a:hover',
-				'.header-bar a:focus',
-				'.header-bar .menu li a:hover',
-				'.header-bar .menu li a:focus',
-			),
-			'declarations' => array(
-				'color' => $header_bar_link_hover_color
-			)
-		) );
-	}
-
-	// Header Bar border color
-	$header_bar_border_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
-	if ( $header_bar_border_color !== ttfmake_get_default( 'header-bar-border-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array(
-				'.header-bar',
-				'.header-bar .search-form input',
-				'.header-social-links li:first-of-type',
-				'.header-social-links li a',
-			),
-			'declarations' => array(
-				'border-color' => $header_bar_border_color
-			)
-		) );
-	}
-
-	// Header Bar background color
-	$header_bar_background_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
-	$header_bar_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'header-bar-background-color-opacity', ttfmake_get_default( 'header-bar-background-color-opacity' ) ) );
-	if ( $header_bar_background_color !== ttfmake_get_default( 'header-bar-background-color' ) || $header_bar_background_color_opacity !== ttfmake_get_default( 'header-bar-background-color-opacity' ) ) {
-		// Convert to RGBa
-		$color_value = ttfmake_hex_to_rgb( $header_bar_background_color ) . ', ' . $header_bar_background_color_opacity;
-
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.header-bar' ),
-			'declarations' => array(
-				'background-color' => 'rgba(' . $color_value . ')'
-			)
-		) );
-	}
-
-	/**
 	 * Footer section
 	 */
 	// Footer text color
@@ -702,7 +702,7 @@ function ttfmake_css_color() {
 	// Footer background color
 	$footer_background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttfmake_get_default( 'footer-background-color' ) ) );
 	$footer_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'footer-background-color-opacity', ttfmake_get_default( 'footer-background-color-opacity' ) ) );
-	if ( $footer_background_color !== ttfmake_get_default( 'footer-background-color' ) || $footer_background_color_opacity !== ttfmake_get_default( 'footer-background-color-opacity' ) ) {
+	if ( $footer_background_color !== ttfmake_get_default( 'footer-background-color' ) || $footer_background_color_opacity !== (float) ttfmake_get_default( 'footer-background-color-opacity' ) ) {
 		// Convert to RGBa
 		$color_value = ttfmake_hex_to_rgb( $footer_background_color ) . ', ' . $footer_background_color_opacity;
 
