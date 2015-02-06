@@ -236,30 +236,30 @@ function ttfmake_option_defaults() {
 		'color-text'                               => '#171717',
 		'color-detail'                             => '#b9bcbf',
 		// Links
-		'color-primary-link'                       => '#3070d1',
+		'color-primary-link'                       => '',
 		// Background
-		'background_color'                         => 'b9bcbf' , // # intentionally left off here
+		'background_color'                         => 'b9bcbf' , // '#' intentionally left off here
 		'main-background-color'                    => '#ffffff',
 		'main-background-color-transparent'        => 0,
-		// Site Title
-		'color-site-title'                         => '#171717',
-		// Tagline
-		'color-site-tagline'                       => '#171717',
 		// Header
-		'header-text-color'                        => '#171717',
+		'header-text-color'                        => '171717',
 		'header-background-color'                  => '#ffffff',
 		'header-background-transparent'            => 0,
+		// Site Title
+		'color-site-title'                         => '',
+		// Tagline
+		'color-site-tagline'                       => '',
 		// Header Bar
 		'header-bar-text-color'                    => '#ffffff',
-		'header-bar-link-color'                    => '#ffffff',
-		'header-bar-link-hover-color'              => '#ffffff',
+		'header-bar-link-color'                    => '',
+		'header-bar-link-hover-color'              => '',
 		'header-bar-border-color'                  => '#171717',
 		'header-bar-background-color'              => '#171717',
 		'header-bar-background-transparent'        => 0,
 		// Footer
 		'footer-text-color'                        => '#464849',
-		'footer-link-color'                        => '#3070d1',
-		'footer-link-hover-color'                  => '#3070d1',
+		'footer-link-color'                        => '',
+		'footer-link-hover-color'                  => '',
 		'footer-border-color'                      => '#b9bcbf',
 		'footer-background-color'                  => '#eaecee',
 		'footer-background-transparent'            => 0,

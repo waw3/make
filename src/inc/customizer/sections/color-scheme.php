@@ -146,39 +146,11 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	);
 
 	/**
-	 * Site Title & Tagline
-	 */
-	$colorscheme_sections['color-site-title-tagline'] = array(
-		'panel'   => $panel,
-		'title'   => __( 'Site Title &amp; Tagline', 'make' ),
-		'options' => array(
-			'color-site-title'            => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Site Title Color', 'make' ),
-				),
-			),
-			'color-site-tagline'            => array(
-				'setting' => array(
-					'sanitize_callback' => 'maybe_hash_hex_color',
-				),
-				'control' => array(
-					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Tagline Color', 'make' ),
-				),
-			),
-		),
-	);
-
-	/**
-	 * Header
+	 * Site Header
 	 */
 	$colorscheme_sections['color-header'] = array(
 		'panel'   => $panel,
-		'title'   => __( 'Header', 'make' ),
+		'title'   => __( 'Site Header', 'make' ),
 		'options' => array(
 			'header-text-color'           => array(
 				'setting' => array(
@@ -217,6 +189,39 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	);
 
 	/**
+	 * Site Title & Tagline
+	 */
+	$colorscheme_sections['color-site-title-tagline'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Site Title &amp; Tagline', 'make' ),
+		'description' => sprintf(
+			__( 'These options override the %s option in the %s section.', 'make' ),
+			__( 'Text Color', 'make' ),
+			__( 'Site Header', 'make' )
+		),
+		'options' => array(
+			'color-site-title'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Site Title Color', 'make' ),
+				),
+			),
+			'color-site-tagline'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Tagline Color', 'make' ),
+				),
+			),
+		),
+	);
+
+	/**
 	 * Header Bar
 	 */
 	$colorscheme_sections['color-header-bar'] = array(
@@ -248,6 +253,11 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Link Hover/Focus Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Link Hover/Focus Color', 'make' ),
+						__( 'Global', 'make' )
+					),
 				),
 			),
 			'header-bar-border-color'     => array(
@@ -321,6 +331,11 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Link Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Primary Color', 'make' ),
+						__( 'Global', 'make' )
+					),
 				),
 			),
 			'footer-link-hover-color'       => array(
@@ -330,6 +345,11 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Link Hover/Focus Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Link Hover/Focus Color', 'make' ),
+						__( 'Global', 'make' )
+					),
 				),
 			),
 			'footer-border-color'     => array(

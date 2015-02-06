@@ -18,14 +18,26 @@ function ttfmake_css_color() {
 	$color_primary = maybe_hash_hex_color( get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ) );
 	if ( $color_primary !== ttfmake_get_default( 'color-primary' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-primary-text', 'a', '.entry-author-byline a.vcard', '.entry-footer a:hover', '.comment-form .required', 'ul.ttfmake-list-dot li:before', 'ol.ttfmake-list-dot li:before', '.entry-comment-count a:hover',
-				'.comment-count-icon a:hover' ),
+			'selectors'    => array(
+				'.color-primary-text',
+				'a',
+				'.entry-author-byline a.vcard',
+				'.entry-footer a:hover',
+				'.comment-form .required',
+				'ul.ttfmake-list-dot li:before',
+				'ol.ttfmake-list-dot li:before',
+				'.entry-comment-count a:hover',
+				'.comment-count-icon a:hover',
+			),
 			'declarations' => array(
 				'color' => $color_primary
 			)
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-primary-background','.ttfmake-button.color-primary-background' ),
+			'selectors'    => array(
+				'.color-primary-background',
+				'.ttfmake-button.color-primary-background',
+			),
 			'declarations' => array(
 				'background-color' => $color_primary
 			)
@@ -37,7 +49,12 @@ function ttfmake_css_color() {
 			)
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-navigation ul.menu ul a:hover', '.site-navigation ul.menu ul a:focus', '.site-navigation .menu ul ul a:hover', '.site-navigation .menu ul ul a:focus' ),
+			'selectors'    => array(
+				'.site-navigation ul.menu ul a:hover',
+				'.site-navigation ul.menu ul a:focus',
+				'.site-navigation .menu ul ul a:hover',
+				'.site-navigation .menu ul ul a:focus',
+			),
 			'declarations' => array(
 				'background-color' => $color_primary
 			),
@@ -148,7 +165,19 @@ function ttfmake_css_color() {
 	$color_text = maybe_hash_hex_color( get_theme_mod( 'color-text', ttfmake_get_default( 'color-text' ) ) );
 	if ( $color_text !== ttfmake_get_default( 'color-text' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-text', 'body', '.entry-date a', 'body', 'button', 'input', 'select', 'textarea', '[class*="navigation"] .nav-previous a', '[class*="navigation"] .nav-previous span', '[class*="navigation"] .nav-next a', '[class*="navigation"] .nav-next span' ),
+			'selectors'    => array(
+				'.color-text',
+				'body',
+				'.entry-date a',
+				'button',
+				'input',
+				'select',
+				'textarea',
+				'[class*="navigation"] .nav-previous a',
+				'[class*="navigation"] .nav-previous span',
+				'[class*="navigation"] .nav-next a',
+				'[class*="navigation"] .nav-next span',
+			),
 			'declarations' => array(
 				'color' => $color_text
 			)
@@ -185,8 +214,16 @@ function ttfmake_css_color() {
 	$color_detail = maybe_hash_hex_color( get_theme_mod( 'color-detail', ttfmake_get_default( 'color-detail' ) ) );
 	if ( $color_detail !== ttfmake_get_default( 'color-detail' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.color-detail-text', '.builder-section-banner .cycle-pager .cycle-pager-active', '.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active', '.post-categories li:after', '.post-tags li:after', '.comment-count-icon:before', '.entry-comment-count a',
-				'.comment-count-icon a' ),
+			'selectors'    => array(
+				'.color-detail-text',
+				'.builder-section-banner .cycle-pager .cycle-pager-active',
+				'.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active',
+				'.post-categories li:after',
+				'.post-tags li:after',
+				'.comment-count-icon:before',
+				'.entry-comment-count a',
+				'.comment-count-icon a',
+			),
 			'declarations' => array(
 				'color' => $color_detail
 			)
@@ -199,7 +236,10 @@ function ttfmake_css_color() {
 			'media'        => 'screen and (min-width: 800px)'
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-navigation .menu .sub-menu a', '.site-navigation .menu .sub-menu a' ),
+			'selectors'    => array(
+				'.site-navigation .menu .sub-menu a',
+				'.site-navigation .menu .sub-menu a',
+			),
 			'declarations' => array(
 				'border-bottom-color' => $color_detail
 			),
@@ -221,9 +261,14 @@ function ttfmake_css_color() {
 
 	// Link Hover/Focus Color
 	$color_primary_link = maybe_hash_hex_color( get_theme_mod( 'color-primary-link', ttfmake_get_default( 'color-primary-link' ) ) );
-	if ( $color_primary_link !== ttfmake_get_default( 'color-primary-link' ) || $color_primary !== ttfmake_get_default( 'color-primary' ) ) {
+	if ( $color_primary_link && $color_primary_link !== ttfmake_get_default( 'color-primary-link' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( 'a:hover', 'a:focus', '.entry-author-byline a.vcard:hover', '.entry-author-byline a.vcard:focus', ),
+			'selectors'    => array(
+				'a:hover',
+				'a:focus',
+				'.entry-author-byline a.vcard:hover',
+				'.entry-author-byline a.vcard:focus',
+			),
 			'declarations' => array(
 				'color' => $color_primary_link
 			)
@@ -237,7 +282,10 @@ function ttfmake_css_color() {
 		: maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttfmake_get_default( 'main-background-color' ) ) );
 	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-content', 'body.mce-content-body' ),
+			'selectors'    => array(
+				'.site-content',
+				'body.mce-content-body',
+			),
 			'declarations' => array(
 				'background-color' => $main_background_color
 			)
@@ -251,9 +299,12 @@ function ttfmake_css_color() {
 	$header_text_color = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
 	// Site title
 	$color_site_title = maybe_hash_hex_color( get_theme_mod( 'color-site-title', ttfmake_get_default( 'color-site-title' ) ) );
-	if ( $color_site_title !== ttfmake_get_default( 'color-site-title' ) || $header_text_color !== $color_site_title ) {
+	if ( $color_site_title && ( $color_site_title !== ttfmake_get_default( 'color-site-title' ) || $header_text_color !== $color_site_title ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-header .site-title', '.site-header .site-title a' ),
+			'selectors'    => array(
+				'.site-header .site-title',
+				'.site-header .site-title a',
+			),
 			'declarations' => array(
 				'color' => $color_site_title
 			)
@@ -261,7 +312,7 @@ function ttfmake_css_color() {
 	}
 	// Tagline
 	$color_tagline = maybe_hash_hex_color( get_theme_mod( 'color-site-tagline', ttfmake_get_default( 'color-site-tagline' ) ) );
-	if ( $color_tagline !== ttfmake_get_default( 'color-site-tagline' ) || $header_text_color !== $color_tagline ) {
+	if ( $color_tagline && ( $color_tagline !== ttfmake_get_default( 'color-site-tagline' ) || $header_text_color !== $color_tagline ) ) {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-header .site-description' ),
 			'declarations' => array(
@@ -277,7 +328,12 @@ function ttfmake_css_color() {
 	// $header_text_color is retrieved and sanitized above in the Site Title & Tagline section
 	if ( $header_text_color !== ttfmake_get_default( 'header-text-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-header', '.site-navigation .menu li a' ),
+			'selectors'    => array(
+				'.site-header',
+				'.site-title',
+				'.site-title a',
+				'.site-navigation .menu li a',
+			),
 			'declarations' => array(
 				'color' => $header_text_color
 			)
@@ -305,7 +361,11 @@ function ttfmake_css_color() {
 	$header_bar_text_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-text-color', ttfmake_get_default( 'header-bar-text-color' ) ) );
 	if ( $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.header-bar', '.header-bar a', '.header-bar .menu li a' ),
+			'selectors'    => array(
+				'.header-bar',
+				'.header-bar a',
+				'.header-bar .menu li a',
+			),
 			'declarations' => array(
 				'color' => $header_bar_text_color
 			)
@@ -314,9 +374,13 @@ function ttfmake_css_color() {
 
 	// Header Bar link color
 	$header_bar_link_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-color', ttfmake_get_default( 'header-bar-link-color' ) ) );
-	if ( $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) || $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
+	if ( $header_bar_link_color && $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.header-bar a', '.header-bar .menu li a', '.header-bar .social-links a' ),
+			'selectors'    => array(
+				'.header-bar a',
+				'.header-bar .menu li a',
+				'.header-bar .social-links a',
+			),
 			'declarations' => array(
 				'color' => $header_bar_link_color
 			)
@@ -325,9 +389,14 @@ function ttfmake_css_color() {
 
 	// Header Bar link hover color
 	$header_bar_link_hover_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-link-hover-color', ttfmake_get_default( 'header-bar-link-hover-color' ) ) );
-	if ( $header_bar_link_hover_color !== ttfmake_get_default( 'header-bar-link-hover-color' ) || $header_bar_link_color !== ttfmake_get_default( 'header-bar-link-color' ) || $header_bar_text_color !== ttfmake_get_default( 'header-bar-text-color' ) ) {
+	if ( $header_bar_link_hover_color && $header_bar_link_hover_color !== ttfmake_get_default( 'header-bar-link-hover-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.header-bar a:hover', '.header-bar a:focus', '.header-bar .menu li a:hover', '.header-bar .menu li a:focus' ),
+			'selectors'    => array(
+				'.header-bar a:hover',
+				'.header-bar a:focus',
+				'.header-bar .menu li a:hover',
+				'.header-bar .menu li a:focus',
+			),
 			'declarations' => array(
 				'color' => $header_bar_link_hover_color
 			)
@@ -338,7 +407,12 @@ function ttfmake_css_color() {
 	$header_bar_border_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-border-color', ttfmake_get_default( 'header-bar-border-color' ) ) );
 	if ( $header_bar_border_color !== ttfmake_get_default( 'header-bar-border-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.header-bar', '.header-bar .search-form input', '.header-social-links li:first-of-type', '.header-social-links li a' ),
+			'selectors'    => array(
+				'.header-bar',
+				'.header-bar .search-form input',
+				'.header-social-links li:first-of-type',
+				'.header-social-links li a',
+			),
 			'declarations' => array(
 				'border-color' => $header_bar_border_color
 			)
@@ -366,7 +440,10 @@ function ttfmake_css_color() {
 	$footer_text_color = maybe_hash_hex_color( get_theme_mod( 'footer-text-color', ttfmake_get_default( 'footer-text-color' ) ) );
 	if ( $footer_text_color !== ttfmake_get_default( 'footer-text-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-footer', '.site-footer .social-links a' ),
+			'selectors'    => array(
+				'.site-footer',
+				'.site-footer .social-links a',
+			),
 			'declarations' => array(
 				'color' => $footer_text_color
 			)
@@ -388,7 +465,10 @@ function ttfmake_css_color() {
 	$footer_link_hover_color = maybe_hash_hex_color( get_theme_mod( 'footer-link-hover-color', ttfmake_get_default( 'footer-link-hover-color' ) ) );
 	if ( $footer_link_hover_color !== ttfmake_get_default( 'footer-link-hover-color' ) || $footer_link_color !== ttfmake_get_default( 'footer-link-color' ) ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-footer a:hover', '.site-footer a:focus' ),
+			'selectors'    => array(
+				'.site-footer a:hover',
+				'.site-footer a:focus',
+			),
 			'declarations' => array(
 				'color' => $footer_link_hover_color
 			)
