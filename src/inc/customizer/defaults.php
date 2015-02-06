@@ -240,11 +240,11 @@ function ttfmake_option_defaults() {
 		// Background
 		'background_color'                         => 'b9bcbf' , // '#' intentionally left off here
 		'main-background-color'                    => '#ffffff',
-		'main-background-color-transparent'        => 0,
+		'main-background-color-opacity'            => 1,
 		// Header
 		'header-text-color'                        => '171717',
 		'header-background-color'                  => '#ffffff',
-		'header-background-transparent'            => 0,
+		'header-background-color-opacity'          => 1,
 		// Site Title
 		'color-site-title'                         => '',
 		// Tagline
@@ -255,14 +255,14 @@ function ttfmake_option_defaults() {
 		'header-bar-link-hover-color'              => '',
 		'header-bar-border-color'                  => '#171717',
 		'header-bar-background-color'              => '#171717',
-		'header-bar-background-transparent'        => 0,
+		'header-bar-background-color-opacity'      => 1,
 		// Footer
 		'footer-text-color'                        => '#464849',
 		'footer-link-color'                        => '',
 		'footer-link-hover-color'                  => '',
 		'footer-border-color'                      => '#b9bcbf',
 		'footer-background-color'                  => '#eaecee',
-		'footer-background-transparent'            => 0,
+		'footer-background-color-opacity'          => 1,
 
 		/**
 		 * Background Images

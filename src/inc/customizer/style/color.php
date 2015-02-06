@@ -276,18 +276,53 @@ function ttfmake_css_color() {
 	}
 
 	// Main background color
-	$main_background_transparent = absint( get_theme_mod( 'main-background-color-transparent', ttfmake_get_default( 'main-background-color-transparent' ) ) );
-	$main_background_color = ( $main_background_transparent )
-		? 'transparent'
-		: maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttfmake_get_default( 'main-background-color' ) ) );
-	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) ) {
+	$main_background_color = maybe_hash_hex_color( get_theme_mod( 'main-background-color', ttfmake_get_default( 'main-background-color' ) ) );
+	$main_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'main-background-color-opacity', ttfmake_get_default( 'main-background-color-opacity' ) ) );
+	if ( $main_background_color !== ttfmake_get_default( 'main-background-color' ) || $main_background_color_opacity !== ttfmake_get_default( 'main-background-color-opacity' ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $main_background_color ) . ', ' . $main_background_color_opacity;
+
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-content',
 				'body.mce-content-body',
 			),
 			'declarations' => array(
-				'background-color' => $main_background_color
+				'background-color' => 'rgba(' . $color_value . ')'
+			)
+		) );
+	}
+
+	/**
+	 * Header
+	 */
+	// Header text color
+	$header_text_color = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
+	if ( $header_text_color !== ttfmake_get_default( 'header-text-color' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-header',
+				'.site-title',
+				'.site-title a',
+				'.site-navigation .menu li a',
+			),
+			'declarations' => array(
+				'color' => $header_text_color
+			)
+		) );
+	}
+
+	// Header background color
+	$header_background_color = maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
+	$header_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'header-background-color-opacity', ttfmake_get_default( 'header-background-color-opacity' ) ) );
+	if ( $header_background_color !== ttfmake_get_default( 'header-background-color' ) || $header_background_color_opacity !== ttfmake_get_default( 'header-background-color-opacity' ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $header_background_color ) . ', ' . $header_background_color_opacity;
+
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-header-main' ),
+			'declarations' => array(
+				'background-color' => 'rgba(' . $color_value . ')'
 			)
 		) );
 	}
@@ -295,8 +330,6 @@ function ttfmake_css_color() {
 	/**
 	 * Site Title & Tagline
 	 */
-	// Prereq
-	$header_text_color = maybe_hash_hex_color( get_theme_mod( 'header-text-color', ttfmake_get_default( 'header-text-color' ) ) );
 	// Site title
 	$color_site_title = maybe_hash_hex_color( get_theme_mod( 'color-site-title', ttfmake_get_default( 'color-site-title' ) ) );
 	if ( $color_site_title && ( $color_site_title !== ttfmake_get_default( 'color-site-title' ) || $header_text_color !== $color_site_title ) ) {
@@ -317,39 +350,6 @@ function ttfmake_css_color() {
 			'selectors'    => array( '.site-header .site-description' ),
 			'declarations' => array(
 				'color' => $color_tagline
-			)
-		) );
-	}
-
-	/**
-	 * Header
-	 */
-	// Header text color
-	// $header_text_color is retrieved and sanitized above in the Site Title & Tagline section
-	if ( $header_text_color !== ttfmake_get_default( 'header-text-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array(
-				'.site-header',
-				'.site-title',
-				'.site-title a',
-				'.site-navigation .menu li a',
-			),
-			'declarations' => array(
-				'color' => $header_text_color
-			)
-		) );
-	}
-
-	// Header background color
-	$header_background_transparent = absint( get_theme_mod( 'header-background-transparent', ttfmake_get_default( 'header-background-transparent' ) ) );
-	$header_background_color = ( $header_background_transparent )
-		? 'transparent'
-		: maybe_hash_hex_color( get_theme_mod( 'header-background-color', ttfmake_get_default( 'header-background-color' ) ) );
-	if ( $header_background_color !== ttfmake_get_default( 'header-background-color' ) ) {
-		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-header-main' ),
-			'declarations' => array(
-				'background-color' => $header_background_color
 			)
 		) );
 	}
@@ -420,15 +420,16 @@ function ttfmake_css_color() {
 	}
 
 	// Header Bar background color
-	$header_bar_background_transparent = absint( get_theme_mod( 'header-bar-background-transparent', ttfmake_get_default( 'header-bar-background-transparent' ) ) );
-	$header_bar_background_color = ( $header_bar_background_transparent )
-		? 'transparent'
-		: maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
-	if ( $header_bar_background_color !== ttfmake_get_default( 'header-bar-background-color' ) ) {
+	$header_bar_background_color = maybe_hash_hex_color( get_theme_mod( 'header-bar-background-color', ttfmake_get_default( 'header-bar-background-color' ) ) );
+	$header_bar_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'header-bar-background-color-opacity', ttfmake_get_default( 'header-bar-background-color-opacity' ) ) );
+	if ( $header_bar_background_color !== ttfmake_get_default( 'header-bar-background-color' ) || $header_bar_background_color_opacity !== ttfmake_get_default( 'header-bar-background-color-opacity' ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $header_bar_background_color ) . ', ' . $header_bar_background_color_opacity;
+
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.header-bar' ),
 			'declarations' => array(
-				'background-color' => $header_bar_background_color
+				'background-color' => 'rgba(' . $color_value . ')'
 			)
 		) );
 	}
@@ -487,18 +488,47 @@ function ttfmake_css_color() {
 	}
 
 	// Footer background color
-	$footer_background_transparent = absint( get_theme_mod( 'footer-background-transparent', ttfmake_get_default( 'footer-background-transparent' ) ) );
-	$footer_background_color = ( $footer_background_transparent )
-		? 'transparent'
-		: maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttfmake_get_default( 'footer-background-color' ) ) );
-	if ( $footer_background_color !== ttfmake_get_default( 'footer-background-color' ) ) {
+	$footer_background_color = maybe_hash_hex_color( get_theme_mod( 'footer-background-color', ttfmake_get_default( 'footer-background-color' ) ) );
+	$footer_background_color_opacity = ttfmake_sanitize_float( get_theme_mod( 'footer-background-color-opacity', ttfmake_get_default( 'footer-background-color-opacity' ) ) );
+	if ( $footer_background_color !== ttfmake_get_default( 'footer-background-color' ) || $footer_background_color_opacity !== ttfmake_get_default( 'footer-background-color-opacity' ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $footer_background_color ) . ', ' . $footer_background_color_opacity;
+
 		ttfmake_get_css()->add( array(
 			'selectors'    => array( '.site-footer' ),
 			'declarations' => array(
-				'background-color' => $footer_background_color
+				'background-color' => 'rgba(' . $color_value . ')'
 			)
 		) );
 	}
 }
 
 add_action( 'make_css', 'ttfmake_css_color' );
+
+/**
+ * Convert a hex string into a comma separated RGB string.
+ *
+ * @link http://bavotasan.com/2011/convert-hex-color-to-rgb-using-php/
+ *
+ * @since 1.5.0.
+ *
+ * @param  $value
+ * @return bool|string
+ */
+function ttfmake_hex_to_rgb( $value ) {
+	$hex = sanitize_hex_color_no_hash( $value );
+
+	if ( 6 === strlen( $hex ) ) {
+		$r = hexdec( substr( $hex, 0, 2 ) );
+		$g = hexdec( substr( $hex, 2, 2 ) );
+		$b = hexdec( substr( $hex, 4, 2 ) );
+	} else if ( 3 === strlen( $hex ) ) {
+		$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+		$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+		$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+	} else {
+		return false;
+	}
+
+	return "$r, $g, $b";
+}

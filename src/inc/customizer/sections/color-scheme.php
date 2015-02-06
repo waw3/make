@@ -122,13 +122,19 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'control_type' => 'WP_Customize_Color_Control',
 				),
 			),
-			'main-background-color-transparent' => array(
+			'main-background-color-opacity'     => array(
 				'setting' => array(
-					'sanitize_callback' => 'absint',
+					'sanitize_callback' => 'ttfmake_sanitize_float',
 				),
 				'control' => array(
-					'label' => __( 'Transparent', 'make' ),
-					'type'  => 'checkbox',
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
 				),
 			),
 		),
@@ -176,13 +182,19 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'control_type' => 'WP_Customize_Color_Control',
 				),
 			),
-			'header-background-transparent' => array(
+			'header-background-color-opacity'     => array(
 				'setting' => array(
-					'sanitize_callback' => 'absint',
+					'sanitize_callback' => 'ttfmake_sanitize_float',
 				),
 				'control' => array(
-					'label' => __( 'Transparent', 'make' ),
-					'type'  => 'checkbox',
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
 				),
 			),
 		),
@@ -284,13 +296,19 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'control_type' => 'WP_Customize_Color_Control',
 				),
 			),
-			'header-bar-background-transparent' => array(
+			'header-bar-background-color-opacity'     => array(
 				'setting' => array(
-					'sanitize_callback' => 'absint',
+					'sanitize_callback' => 'ttfmake_sanitize_float',
 				),
 				'control' => array(
-					'label' => __( 'Transparent', 'make' ),
-					'type'  => 'checkbox',
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
 				),
 			),
 		),
@@ -376,13 +394,19 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					'control_type' => 'WP_Customize_Color_Control',
 				),
 			),
-			'footer-background-transparent' => array(
+			'footer-background-color-opacity'     => array(
 				'setting' => array(
-					'sanitize_callback' => 'absint',
+					'sanitize_callback' => 'ttfmake_sanitize_float',
 				),
 				'control' => array(
-					'label' => __( 'Transparent', 'make' ),
-					'type'  => 'checkbox',
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
 				),
 			),
 		),
