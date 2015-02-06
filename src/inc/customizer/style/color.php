@@ -229,7 +229,10 @@ function ttfmake_css_color() {
 			)
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '.site-navigation .menu-item-has-children a:after' ),
+			'selectors'    => array(
+				'.site-navigation .page_item_has_children a:after',
+				'.site-navigation .menu-item-has-children a:after'
+			),
 			'declarations' => array(
 				'color' => $color_detail
 			),
@@ -238,7 +241,7 @@ function ttfmake_css_color() {
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-navigation .menu .sub-menu a',
-				'.site-navigation .menu .sub-menu a',
+				'.site-navigation .menu .children a',
 			),
 			'declarations' => array(
 				'border-bottom-color' => $color_detail
@@ -351,6 +354,144 @@ function ttfmake_css_color() {
 			'declarations' => array(
 				'color' => $color_tagline
 			)
+		) );
+	}
+
+	/**
+	 * Main Menu
+	 */
+	// Menu Item Text
+	$color_nav_text = maybe_hash_hex_color( get_theme_mod( 'color-nav-text', ttfmake_get_default( 'color-nav-text' ) ) );
+	if ( $color_nav_text && $color_nav_text !== ttfmake_get_default( 'color-nav-text' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.site-navigation .menu li a' ),
+			'declarations' => array(
+				'color' => $color_nav_text
+			)
+		) );
+	}
+
+	// Menu Item Text hover
+	$color_nav_text_hover = maybe_hash_hex_color( get_theme_mod( 'color-nav-text-hover', ttfmake_get_default( 'color-nav-text-hover' ) ) );
+	if ( $color_nav_text_hover && $color_nav_text_hover !== ttfmake_get_default( 'color-nav-text-hover' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation .menu li a:hover',
+				'.site-navigation .menu li a:focus',
+			),
+			'declarations' => array(
+				'color' => $color_nav_text_hover
+			)
+		) );
+	}
+
+	// Sub-Menu Item Text
+	$color_subnav_text = maybe_hash_hex_color( get_theme_mod( 'color-subnav-text', ttfmake_get_default( 'color-subnav-text' ) ) );
+	if ( $color_subnav_text && $color_subnav_text !== ttfmake_get_default( 'color-subnav-text' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation ul.menu ul a',
+				'.site-navigation ul.menu ul a',
+				'.site-navigation .menu ul ul a',
+				'.site-navigation .menu ul ul a',
+			),
+			'declarations' => array(
+				'color' => $color_subnav_text
+			),
+			'media' => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	// Sub-Menu Item Text hover
+	$color_subnav_text_hover = maybe_hash_hex_color( get_theme_mod( 'color-subnav-text-hover', ttfmake_get_default( 'color-subnav-text-hover' ) ) );
+	if ( $color_subnav_text_hover && $color_subnav_text_hover !== ttfmake_get_default( 'color-subnav-text-hover' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation ul.menu ul a:hover',
+				'.site-navigation ul.menu ul a:focus',
+				'.site-navigation .menu ul ul a:hover',
+				'.site-navigation .menu ul ul a:focus',
+			),
+			'declarations' => array(
+				'color' => $color_subnav_text_hover
+			),
+			'media' => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	// Sub-Menu Item Detail
+	$color_subnav_detail = maybe_hash_hex_color( get_theme_mod( 'color-subnav-detail', ttfmake_get_default( 'color-subnav-detail' ) ) );
+	if ( $color_subnav_detail && $color_subnav_detail !== ttfmake_get_default( 'color-subnav-detail' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation .page_item_has_children a:after',
+				'.site-navigation .menu-item-has-children a:after',
+			),
+			'declarations' => array(
+				'color' => $color_subnav_detail
+			),
+			'media' => 'screen and (min-width: 800px)'
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation .menu .sub-menu a',
+				'.site-navigation .menu .children a',
+			),
+			'declarations' => array(
+				'border-bottom-color' => $color_subnav_detail
+			),
+			'media' => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	// Sub-Menu Item Background
+	$color_subnav_background = maybe_hash_hex_color( get_theme_mod( 'color-subnav-background', ttfmake_get_default( 'color-subnav-background' ) ) );
+	if ( $color_subnav_background && $color_subnav_background !== ttfmake_get_default( 'color-subnav-background' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation .menu .sub-menu',
+				'.site-navigation .menu .children',
+			),
+			'declarations' => array(
+				'background-color' => $color_subnav_background
+			),
+			'media' => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	// Sub-Menu Item Background hover
+	$color_subnav_background_hover = maybe_hash_hex_color( get_theme_mod( 'color-subnav-background-hover', ttfmake_get_default( 'color-subnav-background-hover' ) ) );
+	if ( $color_subnav_background_hover && $color_subnav_background_hover !== ttfmake_get_default( 'color-subnav-background-hover' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation ul.menu ul a:hover',
+				'.site-navigation ul.menu ul a:focus',
+				'.site-navigation .menu ul ul a:hover',
+				'.site-navigation .menu ul ul a:focus',
+			),
+			'declarations' => array(
+				'background-color' => $color_subnav_background_hover
+			),
+			'media' => 'screen and (min-width: 800px)'
+		) );
+	}
+
+	// Current Item Background
+	$color_nav_current_item_background = maybe_hash_hex_color( get_theme_mod( 'color-nav-current-item-background', ttfmake_get_default( 'color-nav-current-item-background' ) ) );
+	if ( $color_nav_current_item_background && $color_nav_current_item_background !== ttfmake_get_default( 'color-nav-current-item-background' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.site-navigation .menu li.current_page_item',
+				'.site-navigation .menu .children li.current_page_item',
+				'.site-navigation .menu li.current_page_ancestor',
+				'.site-navigation .menu li.current-menu-item',
+				'.site-navigation .menu .sub-menu li.current-menu-item',
+				'.site-navigation .menu li.current-menu-ancestor',
+			),
+			'declarations' => array(
+				'background-color' => $color_nav_current_item_background
+			),
+			'media' => 'screen and (min-width: 800px)'
 		) );
 	}
 

@@ -234,6 +234,134 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	);
 
 	/**
+	 * Main Menu
+	 */
+	$colorscheme_sections['color-main-menu'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Main Menu', 'make' ),
+		'options' => array(
+			'color-group-nav-item' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Menu Items', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			'color-nav-text'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Text Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Text Color', 'make' ),
+						__( 'Site Header', 'make' )
+					),
+				),
+			),
+			'color-nav-text-hover'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Hover/Focus Text Color', 'make' ),
+				),
+			),
+			'color-group-subnav-item' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Sub-Menu Items', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			'color-subnav-text'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Text Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Text Color', 'make' ),
+						__( 'Site Header', 'make' )
+					),
+				),
+			),
+			'color-subnav-text-hover'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Hover/Focus Text Color', 'make' ),
+				),
+			),
+			'color-subnav-detail'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Detail Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Detail Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-subnav-background'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Background Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Secondary Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-subnav-background-hover'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Hover/Focus Background Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Primary Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-group-current-item' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Current Item', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			'color-nav-current-item-background'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Background Color', 'make' ),
+				),
+			),
+		),
+	);
+
+	/**
 	 * Header Bar
 	 */
 	$colorscheme_sections['color-header-bar'] = array(

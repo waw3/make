@@ -244,13 +244,24 @@ function ttfmake_option_defaults() {
 		'main-background-color'                    => '#ffffff',
 		'main-background-color-opacity'            => 1,
 		// Header
-		'header-text-color'                        => '171717',
+		'header-text-color'                        => '#171717',
 		'header-background-color'                  => '#ffffff',
 		'header-background-color-opacity'          => 1,
 		// Site Title
 		'color-site-title'                         => '',
 		// Tagline
 		'color-site-tagline'                       => '',
+		// Menu Items
+		'color-nav-text'                           => '',
+		'color-nav-text-hover'                     => '',
+		// Sub-Menu Items
+		'color-subnav-text'                        => '',
+		'color-subnav-text-hover'                  => '',
+		'color-subnav-detail'                      => '',
+		'color-subnav-background'                  => '',
+		'color-subnav-background-hover'            => '',
+		// Current Item
+		'color-nav-current-item-background'        => '',
 		// Header Bar
 		'header-bar-text-color'                    => '#ffffff',
 		'header-bar-link-color'                    => '',
