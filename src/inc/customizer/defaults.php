@@ -160,6 +160,8 @@ function ttfmake_option_defaults() {
 		'word-spacing-subnav'                      => 0,
 		'link-underline-subnav'                    => 'never',
 		'font-subnav-mobile'                       => 1,
+		// Current Item
+		'font-weight-nav-current-item'             => 'bold',
 		// Header Bar Text
 		'font-family-header-bar-text'              => 'Open Sans',
 		'font-size-header-bar-text'                => 13,

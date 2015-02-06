@@ -86,11 +86,11 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 			ttfmake_customizer_typography_group_definitions( 'nav', __( 'Menu Items', 'make' ) ),
 			ttfmake_customizer_typography_group_definitions( 'subnav', __( 'Sub-Menu Items', 'make' ) ),
 			array(
-				'font-subnav-option-heading' => array(
+				'font-nav-mobile-option-heading' => array(
 					'control' => array(
 						'control_type' => 'TTFMAKE_Customize_Misc_Control',
 						'type'         => 'heading',
-						'label'        => __( 'Sub-Menu Item Options', 'make' ),
+						'label'        => __( 'Mobile', 'make' ),
 					),
 				),
 				'font-subnav-mobile'         => array(
@@ -100,6 +100,25 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 					'control' => array(
 						'label' => __( 'Use Menu Item styles in mobile view', 'make' ),
 						'type'  => 'checkbox',
+					),
+				),
+				'font-nav-current-item-option-heading' => array(
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Misc_Control',
+						'type'         => 'group-title',
+						'label'        => __( 'Current Item', 'make' ),
+					),
+				),
+				'font-weight-nav-current-item' => array(
+					'setting' => array(
+						'sanitize_callback' => 'ttfmake_sanitize_choice',
+					),
+					'control' => array(
+						'control_type' => 'TTFMAKE_Customize_Radio_Control',
+						'label'   => __( 'Font Weight', 'make' ),
+						'type'  => 'radio',
+						'mode'  => 'buttonset',
+						'choices' => ttfmake_get_choices( 'font-weight-nav-current-item' ),
 					),
 				),
 			)

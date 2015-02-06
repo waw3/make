@@ -218,6 +218,7 @@ function ttfmake_css_fonts() {
 	/**
 	 * Sub-Menu Item
 	 */
+	$submenu_items_customized = false;
 	$element = 'subnav';
 	$selectors = array( '.site-navigation .menu .sub-menu li a', '.site-navigation .menu .children li a' );
 	$declarations = ttfmake_parse_font_properties( $element, $menu_items_customized );
@@ -228,11 +229,44 @@ function ttfmake_css_fonts() {
 	}
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, 'media' => $media ) );
+		$submenu_items_customized = true;
 	}
 	$link_rule = ttfmake_parse_link_underline( $element, array( '.site-navigation .menu .sub-menu li a', '.site-navigation .menu .children li a' ) );
 	if ( ! empty( $link_rule ) ) {
 		$link_rule['media'] = $media;
 		ttfmake_get_css()->add( $link_rule );
+	}
+
+	/**
+	 * Current Item
+	 */
+	$current_item_weight = ttfmake_sanitize_choice( get_theme_mod( 'font-weight-nav-current-item', ttfmake_get_default( 'font-weight-nav-current-item' ) ), 'font-weight-nav-current-item' );
+	if ( $current_item_weight !== ttfmake_get_default( 'font-weight-nav-current-item' || true === $menu_items_customized || true === $submenu_items_customized ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors' => array(
+				'.site-navigation .menu li.current_page_item > a',
+				'.site-navigation .menu .children li.current_page_item > a',
+				'.site-navigation .menu li.current-menu-item > a',
+				'.site-navigation .menu .sub-menu li.current-menu-item > a',
+			),
+			'declarations' => array(
+				'font-weight' => $current_item_weight
+			),
+		) );
+		ttfmake_get_css()->add( array(
+			'selectors' => array(
+				'.site-navigation .menu li.current_page_item > a',
+				'.site-navigation .menu .children li.current_page_item > a',
+				'.site-navigation .menu li.current_page_ancestor > a',
+				'.site-navigation .menu li.current-menu-item > a',
+				'.site-navigation .menu .sub-menu li.current-menu-item > a',
+				'.site-navigation .menu li.current-menu-ancestor > a',
+			),
+			'declarations' => array(
+				'font-weight' => $current_item_weight
+			),
+			'media' => 'screen and (min-width: 800px)',
+		) );
 	}
 
 	/**

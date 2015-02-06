@@ -32,6 +32,7 @@ function ttfmake_get_choices( $setting ) {
 		case 'font-weight-site-tagline' :
 		case 'font-weight-nav' :
 		case 'font-weight-subnav' :
+		case 'font-weight-nav-current-item' :
 		case 'font-weight-header-bar-text' :
 		case 'font-weight-widget-title' :
 		case 'font-weight-widget' :
