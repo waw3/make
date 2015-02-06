@@ -362,6 +362,95 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	);
 
 	/**
+	 * Sidebars
+	 */
+	$colorscheme_sections['color-sidebar'] = array(
+		'panel'   => $panel,
+		'title'   => __( 'Sidebars', 'make' ),
+		'options' => array(
+			'color-group-sidebar-widget' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Widgets', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			'color-widget-title-text'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Widget Title Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Text Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-widget-text'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Widget Body Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Text Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-widget-border'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Border Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Secondary Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-group-sidebar-link' => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Links', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			'color-widget-link'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Color', 'make' ),
+					'description' => sprintf(
+						__( 'This option overrides the %s option in the %s section.', 'make' ),
+						__( 'Primary Color', 'make' ),
+						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-widget-link-hover'            => array(
+				'setting' => array(
+					'sanitize_callback' => 'maybe_hash_hex_color',
+				),
+				'control' => array(
+					'control_type' => 'WP_Customize_Color_Control',
+					'label'        => __( 'Link Hover/Focus Color', 'make' ),
+				),
+			),
+		),
+	);
+
+	/**
 	 * Header Bar
 	 */
 	$colorscheme_sections['color-header-bar'] = array(

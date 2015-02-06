@@ -496,6 +496,77 @@ function ttfmake_css_color() {
 	}
 
 	/**
+	 * Sidebars
+	 */
+	// Sidebar widget title
+	$color_widget_title = maybe_hash_hex_color( get_theme_mod( 'color-widget-title-text', ttfmake_get_default( 'color-widget-title-text' ) ) );
+	if ( $color_widget_title && $color_widget_title !== ttfmake_get_default( 'color-widget-title-text' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.sidebar .widget-title',
+				'.sidebar .widgettitle',
+				'.sidebar .widget-title a',
+				'.sidebar .widgettitle a',
+			),
+			'declarations' => array(
+				'color' => $color_widget_title
+			),
+		) );
+	}
+
+	// Sidebar widget body
+	$color_widget_body = maybe_hash_hex_color( get_theme_mod( 'color-widget-text', ttfmake_get_default( 'color-widget-text' ) ) );
+	if ( $color_widget_body && $color_widget_body !== ttfmake_get_default( 'color-widget-text' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.sidebar .widget' ),
+			'declarations' => array(
+				'color' => $color_widget_body
+			),
+		) );
+	}
+
+	// Sidebar link
+	$color_widget_link = maybe_hash_hex_color( get_theme_mod( 'color-widget-link', ttfmake_get_default( 'color-widget-link' ) ) );
+	if ( $color_widget_link && $color_widget_link !== ttfmake_get_default( 'color-widget-link' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array( '.sidebar a' ),
+			'declarations' => array(
+				'color' => $color_widget_link
+			),
+		) );
+	}
+
+	// Sidebar link hover
+	$color_widget_link_hover = maybe_hash_hex_color( get_theme_mod( 'color-widget-link-hover', ttfmake_get_default( 'color-widget-link-hover' ) ) );
+	if ( $color_widget_link_hover && $color_widget_link_hover !== ttfmake_get_default( 'color-widget-link-hover' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.sidebar a:hover',
+				'.sidebar a:focus',
+			),
+			'declarations' => array(
+				'color' => $color_widget_link_hover
+			),
+		) );
+	}
+
+	// Sidebar widget border
+	$color_widget_border = maybe_hash_hex_color( get_theme_mod( 'color-widget-border', ttfmake_get_default( 'color-widget-border' ) ) );
+	if ( $color_widget_border && $color_widget_border !== ttfmake_get_default( 'color-widget-border' ) ) {
+		ttfmake_get_css()->add( array(
+			'selectors'    => array(
+				'.sidebar table',
+				'.sidebar table th',
+				'.sidebar table td',
+				'.sidebar .widget li',
+			),
+			'declarations' => array(
+				'border-color' => $color_widget_border
+			),
+		) );
+	}
+
+	/**
 	 * Header Bar
 	 */
 	// Header Bar text color

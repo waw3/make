@@ -269,6 +269,12 @@ function ttfmake_option_defaults() {
 		'header-bar-border-color'                  => '#171717',
 		'header-bar-background-color'              => '#171717',
 		'header-bar-background-color-opacity'      => 1,
+		// Sidebars
+		'color-widget-title-text'                  => '',
+		'color-widget-text'                        => '',
+		'color-widget-border'                      => '',
+		'color-widget-link'                        => '',
+		'color-widget-link-hover'                  => '',
 		// Footer
 		'footer-text-color'                        => '#464849',
 		'footer-link-color'                        => '',
