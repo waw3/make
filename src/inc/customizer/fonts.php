@@ -17,7 +17,7 @@ function ttfmake_get_font_property_option_keys( $property ) {
 
 	$font_keys = array();
 	foreach ( $all_keys as $key ) {
-		if ( preg_match( '/^' . $property . '-/', $key ) ) {
+		if ( preg_match( '/^' . $property . '-/', $key ) || preg_match( '/^font-' . $property . '-/', $key ) ) {
 			$font_keys[] = $key;
 		}
 	}
