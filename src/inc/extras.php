@@ -622,13 +622,19 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 
 	// Process each menu item
 	foreach ( $sorted_menu_items as $item ) {
+		// Item classes
+		$classes = ( isset( $item->classes ) && ! empty( $item->classes ) ) ? implode( ' ', (array) $item->classes ) : '';
+
+		// Item target
+		$target  = ( isset( $item->target ) && $item->target ) ? ' target="_blank"' : '';
+
 		$item_output = '';
 
 		// Look for matching icons
 		foreach ( $supported_icons as $pattern => $class ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
-				$item_output .= '<li class="' . esc_attr( str_replace( 'fa-', '', $class ) ) . '">';
-				$item_output .= '<a href="' . esc_url( $item->url ) . '">';
+				$item_output .= '<li class="' . esc_attr( str_replace( 'fa-', '', $class ) ) . ' ' . esc_attr( $classes ) . '">';
+				$item_output .= '<a href="' . esc_url( $item->url ) . '"' . $target . '>';
 				$item_output .= '<i class="fa fa-fw ' . esc_attr( $class ) . '">';
 				$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
 				$item_output .= '</i></a></li>';
@@ -638,8 +644,8 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 
 		// No matching icons
 		if ( '' === $item_output ) {
-			$item_output .= '<li class="external-link-square">';
-			$item_output .= '<a href="' . esc_url( $item->url ) . '">';
+			$item_output .= '<li class="external-link-square ' . esc_attr( $classes ) . '">';
+			$item_output .= '<a href="' . esc_url( $item->url ) . '"' . $target . '>';
 			$item_output .= '<i class="fa fa-fw fa-external-link-square">';
 			$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
 			$item_output .= '</i></a></li>';
@@ -653,14 +659,14 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 	// Email & RSS
 	$customizer_links = ttfmake_get_social_links();
 	if ( isset( $customizer_links['email'] ) ) {
-		$output .= '<li class="email">';
+		$output .= '<li class="email menu-item">';
 		$output .= '<a href="' . esc_url( $customizer_links['email']['url'] ) . '">';
 		$output .= '<i class="fa fa-fw fa-envelope">';
 		$output .= '<span>' . esc_html( $customizer_links['email']['title'] ) . '</span>';
 		$output .= '</i></a></li>';
 	}
 	if ( isset( $customizer_links['rss'] ) ) {
-		$output .= '<li class="rss">';
+		$output .= '<li class="rss menu-item">';
 		$output .= '<a href="' . esc_url( $customizer_links['rss']['url'] ) . '">';
 		$output .= '<i class="fa fa-fw fa-rss">';
 		$output .= '<span>' . esc_html( $customizer_links['rss']['title'] ) . '</span>';
