@@ -12,14 +12,6 @@ body {
 	text-rendering: optimizeLegibility;
 	@include rem('font-size', 17px);
 	&.boxed {
-		.container {
-			@include for(medium-screens) {
-				@include rem('padding', 0 $col);
-			}
-			max-width: 100%;
-			width: 100%;
-			@include rem('padding', 0 $gut);
-		}
 		.site-wrapper {
 			@include for(medium-screens) {
 				 max-width: $width+($col*2);

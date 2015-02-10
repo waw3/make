@@ -219,15 +219,6 @@ body {
 	background-color: #b9bcbf;
 
 	text-rendering: optimizeLegibility;}
-body.boxed .container, body.boxed .infinite-footer-container {
-	width: 100%;
-	max-width: 100%;
-	padding: 0 32px;
-	padding:  0 3.2rem; }
-@media screen and (min-width: 800px) {
-	body.boxed .container, body.boxed .infinite-footer-container {
-		padding: 0 92px;
-		padding:  0 9.2rem; } }
 body.boxed .site-wrapper {
 	max-width: 1024px; }
 @media screen and (min-width: 800px) {
