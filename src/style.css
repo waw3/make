@@ -2334,3 +2334,14 @@ div.sharedaddy {
 
 .infinity-end.neverending #site-footer {
 	display: block; }
+
+/*---------------------------------------------------------
+ Postmatic (_support.scss)
+-------------------------------------------------------- */
+.widget_prompt_subscribe_widget input {
+	display: block; }
+.widget_prompt_subscribe_widget input, .widget_prompt_subscribe_widget div.subscribe.prompt, .widget_prompt_subscribe_widget div.unsubscribe.prompt {
+	margin-bottom: 1em; }
+.widget_prompt_subscribe_widget div.unsubscribe.prompt h5 {
+	margin-bottom: 0;
+	text-transform: none; }

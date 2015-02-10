@@ -84,3 +84,22 @@ div.sharedaddy {
 .infinity-end.neverending #site-footer {
 	display: block;
 }
+/*---------------------------------------------------------
+ Postmatic (_support.scss)
+-------------------------------------------------------- */
+.widget_prompt_subscribe_widget {
+	input {
+		display: block;
+	}
+	input,
+	div.subscribe.prompt,
+	div.unsubscribe.prompt {
+		margin-bottom: 1em;
+	}
+	div.unsubscribe.prompt {
+		h5 {
+			margin-bottom: 0;
+			text-transform: none;
+		}
+	}
+}
