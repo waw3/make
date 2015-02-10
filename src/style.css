@@ -186,6 +186,24 @@ a img {
 	word-wrap: break-word; 
 	word-break: break-word;}
 
+.visuallyhidden, .widget_search .search-submit {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	width: 1px; 
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;}
+
+.visuallyhidden.focusable:active, .widget_search .search-submit:active, .visuallyhidden.focusable:focus, .widget_search .search-submit:focus {
+	position: static;
+	overflow: visible;
+	clip: auto;
+	width: auto; 
+	height: auto;
+	margin: 0;}
+
 /*---------------------------------------------------------
  3. Scaffolding (_scaffolding.scss)
 -------------------------------------------------------- */
@@ -2026,9 +2044,6 @@ iframe[src*="google.com/maps"] {
 .widget_calendar table {
 	margin-top: 0; }
 
-.widget_search .search-submit {
-	display: none; }
-
 .widget_rss .widget-title a {
 	text-decoration: none;
 	color: #171717; }
@@ -2160,7 +2175,7 @@ li #respond h3 {
 /*---------------------------------------------------------
  Form (_comments.scss)
 -------------------------------------------------------- */
-.comment-form input:not(#submit), .comment-form textarea {
+.comment-form input[type="text"], .comment-form input[type="email"], .comment-form input[type="url"], .comment-form textarea {
 	width: 100%; }
 .comment-form label {
 	display: block;
