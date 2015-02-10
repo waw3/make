@@ -328,6 +328,21 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 					),
 				),
 			),
+			'color-subnav-background-opacity'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'ttfmake_sanitize_float',
+				),
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
+				),
+			),
 			'color-subnav-background-hover'            => array(
 				'setting' => array(
 					'sanitize_callback' => 'maybe_hash_hex_color',
@@ -339,6 +354,21 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 						__( 'This option overrides the %s option in the %s section.', 'make' ),
 						__( 'Primary Color', 'make' ),
 						__( 'Global', 'make' )
+					),
+				),
+			),
+			'color-subnav-background-hover-opacity'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'ttfmake_sanitize_float',
+				),
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
 					),
 				),
 			),
@@ -356,6 +386,21 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Background Color', 'make' ),
+				),
+			),
+			'color-nav-current-item-background-opacity'     => array(
+				'setting' => array(
+					'sanitize_callback' => 'ttfmake_sanitize_float',
+				),
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Range_Control',
+					'label'   => __( 'Opacity', 'make' ),
+					'type'  => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
+						'step' => 0.05,
+					),
 				),
 			),
 		),

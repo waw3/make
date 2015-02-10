@@ -259,9 +259,12 @@ function ttfmake_option_defaults() {
 		'color-subnav-text-hover'                  => '',
 		'color-subnav-detail'                      => '',
 		'color-subnav-background'                  => '',
+		'color-subnav-background-opacity'          => 1,
 		'color-subnav-background-hover'            => '',
+		'color-subnav-background-hover-opacity'    => 1,
 		// Current Item
 		'color-nav-current-item-background'        => '',
+		'color-nav-current-item-background-opacity'=> 1,
 		// Header Bar
 		'header-bar-text-color'                    => '#ffffff',
 		'header-bar-link-color'                    => '',

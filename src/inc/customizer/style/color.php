@@ -446,14 +446,18 @@ function ttfmake_css_color() {
 
 	// Sub-Menu Item Background
 	$color_subnav_background = maybe_hash_hex_color( get_theme_mod( 'color-subnav-background', ttfmake_get_default( 'color-subnav-background' ) ) );
-	if ( $color_subnav_background && $color_subnav_background !== ttfmake_get_default( 'color-subnav-background' ) ) {
+	$color_subnav_background_opacity = ttfmake_sanitize_float( get_theme_mod( 'color-subnav-background-opacity', ttfmake_get_default( 'color-subnav-background-opacity' ) ) );
+	if ( $color_subnav_background && ( $color_subnav_background !== ttfmake_get_default( 'color-subnav-background' ) || $color_subnav_background_opacity !== ttfmake_get_default( 'color-subnav-background-opacity' ) ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $color_subnav_background ) . ', ' . $color_subnav_background_opacity;
+
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-navigation .menu .sub-menu',
 				'.site-navigation .menu .children',
 			),
 			'declarations' => array(
-				'background-color' => $color_subnav_background
+				'background-color' => 'rgba(' . $color_value . ')'
 			),
 			'media' => 'screen and (min-width: 800px)'
 		) );
@@ -461,7 +465,11 @@ function ttfmake_css_color() {
 
 	// Sub-Menu Item Background hover
 	$color_subnav_background_hover = maybe_hash_hex_color( get_theme_mod( 'color-subnav-background-hover', ttfmake_get_default( 'color-subnav-background-hover' ) ) );
-	if ( $color_subnav_background_hover && $color_subnav_background_hover !== ttfmake_get_default( 'color-subnav-background-hover' ) ) {
+	$color_subnav_background_hover_opacity = ttfmake_sanitize_float( get_theme_mod( 'color-subnav-background-hover-opacity', ttfmake_get_default( 'color-subnav-background-hover-opacity' ) ) );
+	if ( $color_subnav_background_hover && ( $color_subnav_background_hover !== ttfmake_get_default( 'color-subnav-background-hover' ) || $color_subnav_background_hover_opacity !== ttfmake_get_default( 'color-subnav-background-hover-opacity' ) ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $color_subnav_background_hover ) . ', ' . $color_subnav_background_hover_opacity;
+
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-navigation ul.menu ul a:hover',
@@ -470,7 +478,7 @@ function ttfmake_css_color() {
 				'.site-navigation .menu ul ul a:focus',
 			),
 			'declarations' => array(
-				'background-color' => $color_subnav_background_hover
+				'background-color' => 'rgba(' . $color_value . ')'
 			),
 			'media' => 'screen and (min-width: 800px)'
 		) );
@@ -478,7 +486,11 @@ function ttfmake_css_color() {
 
 	// Current Item Background
 	$color_nav_current_item_background = maybe_hash_hex_color( get_theme_mod( 'color-nav-current-item-background', ttfmake_get_default( 'color-nav-current-item-background' ) ) );
-	if ( $color_nav_current_item_background && $color_nav_current_item_background !== ttfmake_get_default( 'color-nav-current-item-background' ) ) {
+	$color_nav_current_item_background_opacity = ttfmake_sanitize_float( get_theme_mod( 'color-nav-current-item-background-opacity', ttfmake_get_default( 'color-nav-current-item-background-opacity' ) ) );
+	if ( $color_nav_current_item_background && ( $color_nav_current_item_background !== ttfmake_get_default( 'color-nav-current-item-background' ) || $color_nav_current_item_background_opacity !== ttfmake_get_default( 'color-nav-current-item-background-opacity' ) ) ) {
+		// Convert to RGBa
+		$color_value = ttfmake_hex_to_rgb( $color_nav_current_item_background ) . ', ' . $color_nav_current_item_background_opacity;
+
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
 				'.site-navigation .menu li.current_page_item',
@@ -489,7 +501,7 @@ function ttfmake_css_color() {
 				'.site-navigation .menu li.current-menu-ancestor',
 			),
 			'declarations' => array(
-				'background-color' => $color_nav_current_item_background
+				'background-color' => 'rgba(' . $color_value . ')'
 			),
 			'media' => 'screen and (min-width: 800px)'
 		) );
