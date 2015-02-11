@@ -16,6 +16,7 @@
 
 		init: function() {
 			// Cache elements
+			fontChoices.cache.rtl = $('body').hasClass('rtl');
 			fontChoices.cache.options = {};
 			$.each(ttfmakeCustomizerL10n.fontOptions, function(index, key) {
 				fontChoices.cache.options[key] = $('select', '#customize-control-ttfmake_' + key);
@@ -42,6 +43,9 @@
 		// Insert the HTML into each font family select
 		insertChoices: function() {
 			$.each(fontChoices.cache.options, function(key, element) {
+				if (fontChoices.cache.rtl) {
+					element.addClass('chosen-rtl');
+				}
 				api( key, function( setting ) {
 					element.on('chosen:ready', function() {
 						var v = setting.get();
