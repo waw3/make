@@ -433,7 +433,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 			'ttfmake-cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
 			$script_dependencies,
-			'2.1.3',
+			'2.1.6',
 			true
 		);
 
