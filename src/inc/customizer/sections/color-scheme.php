@@ -626,7 +626,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				),
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
-					'label'        => __( 'Footer Border Color', 'make' ),
+					'label'        => __( 'Border Color', 'make' ),
 				),
 			),
 			'footer-background-color-heading' => array(
