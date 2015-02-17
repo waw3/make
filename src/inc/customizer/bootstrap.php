@@ -73,6 +73,8 @@ function ttfmake_customizer_get_panels() {
 		'color-scheme'      => array( 'title' => __( 'Color', 'make' ), 'priority' => 300 ),
 		'background-images' => array( 'title' => __( 'Background Images', 'make' ), 'priority' => 400 ),
 		'content-layout'    => array( 'title' => __( 'Layout', 'make' ), 'priority' => 500 ),
+		'header'            => array( 'title' => __( 'Header', 'make' ) ), // Deprecated in 1.5.0
+		'footer'            => array( 'title' => __( 'Footer', 'make' ) ), // Deprecated in 1.5.0
 	);
 
 	/**
