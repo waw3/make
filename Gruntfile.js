@@ -8,6 +8,15 @@ module.exports = function( grunt ) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
+		watch: {
+			css: {
+				options: {
+					atBegin: true
+				},
+				files: 'assets/sass/**/*.scss',
+				tasks: [ 'sass', 'csscomb:style' ]
+			}
+		},
 		sass: {
 			theme: {
 				options: {
@@ -93,12 +102,6 @@ module.exports = function( grunt ) {
 				command: [
 					'php -f assets/google-fonts-array.php'
 				].join('&&')
-			}
-		},
-		watch: {
-			css: {
-				files: 'assets/sass/**/*.scss',
-				tasks: [ 'sass', 'csscomb:style' ]
 			}
 		},
 		makepot: {
@@ -242,6 +245,18 @@ module.exports = function( grunt ) {
 								unicode: data.unicode
 							};
 							newObj[category].push( icon );
+						} );
+					} );
+
+					_.forEach( newObj, function( category ) {
+						category.sort( function( a, b ) {
+							if (a.name.toLowerCase() > b.name.toLowerCase()) {
+								return 1;
+							}
+							if (a.name.toLowerCase() < b.name.toLowerCase()) {
+								return -1;
+							}
+							return 0;
 						} );
 					} );
 
