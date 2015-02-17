@@ -4,7 +4,7 @@
   * Added new typography options: line height, font weight, font style, letter spacing, word spacing, link underlining.
   * Added new typography option elements: widget title (separate from widget body), footer widget title, footer widget body.
   * Added font weight option for links.
-  * Improved UI for choosing fonts.
+  * Added Chosen.js for improved font choice UI.
   * Improved UI for other typography choices.
   * Added new color options: global link hover/focus, header bar links, footer links, sidebar color options, main menu color options.
   * Improved background image positioning options to account for both horizontal and vertical positioning.
