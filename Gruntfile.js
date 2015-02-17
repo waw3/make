@@ -8,6 +8,15 @@ module.exports = function( grunt ) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
+		watch: {
+			css: {
+				options: {
+					atBegin: true
+				},
+				files: 'assets/sass/**/*.scss',
+				tasks: [ 'sass', 'csscomb:style' ]
+			}
+		},
 		sass: {
 			theme: {
 				options: {
@@ -93,12 +102,6 @@ module.exports = function( grunt ) {
 				command: [
 					'php -f assets/google-fonts-array.php'
 				].join('&&')
-			}
-		},
-		watch: {
-			css: {
-				files: 'assets/sass/**/*.scss',
-				tasks: [ 'sass', 'csscomb:style' ]
 			}
 		},
 		makepot: {
