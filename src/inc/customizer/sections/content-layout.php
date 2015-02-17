@@ -149,18 +149,6 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	);
 
 	/**
-	 * Filter the definitions for the controls in the Header section of the Layout panel in the Customizer.
-	 *
-	 * This filter was introduced when the Header options were all in one panel instead of divided among
-	 * Typography, Color, Layout, etc.
-	 *
-	 * @since 1.3.0.
-	 *
-	 * @param array    $header_sections    The array of definitions.
-	 */
-	$contentlayout_sections['header'] = apply_filters( 'make_customizer_header_sections', $contentlayout_sections['header'] );
-
-	/**
 	 * Footer
 	 */
 	$contentlayout_sections['footer'] = array(
@@ -253,18 +241,6 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 			),
 		),
 	);
-
-	/**
-	 * Filter the definitions for the controls in the Footer section of the Layout panel in the Customizer.
-	 *
-	 * This filter was introduced when the Footer options were all in one panel instead of divided among
-	 * Typography, Color, Layout, etc.
-	 *
-	 * @since 1.3.0.
-	 *
-	 * @param array    $footer_sections    The array of definitions.
-	 */
-	$contentlayout_sections['footer'] = apply_filters( 'make_customizer_footer_sections', $contentlayout_sections['footer'] );
 
 	/**
 	 * Blog
@@ -386,7 +362,9 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	);
 
 	/**
-	 * Filter the definitions for the controls in the Content & Layout panel of the Customizer.
+	 * Filter the definitions for the controls in the Layout panel of the Customizer.
+	 *
+	 * The panel was previously labeled "Content & Layout".
 	 *
 	 * @since 1.3.0.
 	 *
@@ -394,8 +372,34 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	 */
 	$contentlayout_sections = apply_filters( 'make_customizer_contentlayout_sections', $contentlayout_sections );
 
+	/**
+	 * Deprecated: Filter the definitions for the controls in the Header panel of the Customizer.
+	 *
+	 * This filter was introduced when the Header options were all in one panel instead of divided among
+	 * Typography, Color, Layout, etc.
+	 *
+	 * @since 1.3.0.
+	 * @deprecated 1.5.0.
+	 *
+	 * @param array    $header_sections    The array of definitions.
+	 */
+	$header_sections = apply_filters( 'make_customizer_header_sections', array() );
+
+	/**
+	 * Deprecated: Filter the definitions for the controls in the Footer panel of the Customizer.
+	 *
+	 * This filter was introduced when the Footer options were all in one panel instead of divided among
+	 * Typography, Color, Layout, etc.
+	 *
+	 * @since 1.3.0.
+	 * @deprecated 1.5.0.
+	 *
+	 * @param array    $footer_sections    The array of definitions.
+	 */
+	$footer_sections = apply_filters( 'make_customizer_footer_sections', array() );
+
 	// Merge with master array
-	return array_merge( $sections, $contentlayout_sections );
+	return array_merge( $sections, $contentlayout_sections, $header_sections, $footer_sections );
 }
 endif;
 
