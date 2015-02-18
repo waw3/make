@@ -419,26 +419,6 @@ function ttfmake_plus_upgrade_notices() {
 				)
 			);
 		}
-		/*
-		else if ( version_compare( $make_plus_version, '1.5.0', '<' ) ) {
-			ttfmake_register_admin_notice(
-				'make-plus-lt-150',
-				sprintf(
-					__( 'A new version of Make Plus is available. Please %s to ensure compatibility with the Make theme.', 'make' ),
-					sprintf(
-						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( 'https://thethemefoundry.com/tutorials/updating-your-existing-theme/' ),
-						__( 'update to the latest version', 'make' )
-					)
-				),
-				array(
-					'cap'    => 'update_plugins',
-					'screen' => array( 'index.php', 'update-core.php', 'plugins.php' ),
-					'type'   => 'error',
-				)
-			);
-		}
-		*/
 	}
 }
 
