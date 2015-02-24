@@ -24,8 +24,12 @@ We don't answer support questions here on Github. Support is only available for 
 
 We welcome issues for bug reports and feature requests. Please be descriptive.
 
+### Translations
+
+Translations for Make are located in the [languages directory](https://github.com/thethemefoundry/make/tree/develop/src/languages). We welcome new translations as well as updates for existing ones. You can either submit your translation files as a pull request (see below) or in an [email](https://thethemefoundry.com/contact/).
+
 ### Pull Requests
 
-Submit a pull request at any time, whether an issue has been created or not. It may be helpful to discuss your goals in an issue first, though many things can best be shown with code.
+Please submit pull requests on the [**develop**](https://github.com/thethemefoundry/make/tree/develop) branch.
 
-Since **Make** is released in the WordPress.org theme directory, we ask that you submit your pull requests to the **develop** branch, to help us make sure everything is stable before we release a new version.
+Submit a pull request at any time, whether an issue has been created or not. It may be helpful to discuss your goals in an issue first, though many things can best be shown with code.
