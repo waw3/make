@@ -85,16 +85,6 @@ div.sharedaddy {
 	display: block;
 }
 /*---------------------------------------------------------
- WooCommerce (_support.scss)
--------------------------------------------------------- */
-.coupon #coupon_code {
-	width: auto;
-	line-height: 1.5;
-}
-.woocommerce-cart .cart-collaterals .cart_totals table {
-	border: none;
-}
-/*---------------------------------------------------------
  Postmatic (_support.scss)
 -------------------------------------------------------- */
 .widget_prompt_subscribe_widget {
@@ -112,4 +102,24 @@ div.sharedaddy {
 			text-transform: none;
 		}
 	}
+}
+/*---------------------------------------------------------
+ Twitter (_support.scss)
+-------------------------------------------------------- */
+.page-template-template-builder-php {
+	.entry-content {
+		> .twitter-share {
+			@extend .container;
+		}
+	}
+}
+/*---------------------------------------------------------
+ WooCommerce (_support.scss)
+-------------------------------------------------------- */
+.coupon #coupon_code {
+	width: auto;
+	line-height: 1.5;
+}
+.woocommerce-cart .cart-collaterals .cart_totals table {
+	border: none;
 }
