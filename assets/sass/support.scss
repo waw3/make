@@ -123,3 +123,10 @@ div.sharedaddy {
 .woocommerce-cart .cart-collaterals .cart_totals table {
 	border: none;
 }
+/*---------------------------------------------------------
+ Twitter (_support.scss)
+-------------------------------------------------------- */
+.twitter-tweet.twitter-tweet-rendered,
+.twitter-share-button.twitter-tweet-button {
+	margin-bottom: $base !important;
+}
