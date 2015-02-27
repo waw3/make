@@ -1242,8 +1242,11 @@ img {
 	margin: 0 auto; }
 
 .screen-reader-text, .social-links li i span {
-	position: absolute !important; 
-	clip: rect(1px, 1px, 1px, 1px);}
+	position: absolute !important;
+	overflow: hidden; 
+	clip: rect(1px, 1px, 1px, 1px);
+	width: 1px;
+	height: 1px;}
 
 img.wp-smiley {
 	margin-top: 0;
