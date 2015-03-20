@@ -12,6 +12,13 @@
 		line-height: 1.4;
 		@include rem('font-size', 24px);
 	}
+	a {
+		text-decoration: none;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
 }
 .widget {
 	max-width: 100%;
@@ -40,6 +47,13 @@
 			border-bottom: 0; //reset
 		}
 	}
+	a {
+		text-decoration: none;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
 	.children,
 	.sub-menu {
 		margin-bottom: 0; //reset
@@ -56,9 +70,6 @@
 	@include rem('margin-bottom', 5px);
 	@include rem('padding', 8px);
 	@include border-radius;
-	&:hover {
-		text-decoration: underline;
-	}
 }
 .widget_calendar table {
 	margin-top: 0; //reset

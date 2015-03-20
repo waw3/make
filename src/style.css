@@ -331,8 +331,11 @@ a {
 	margin: 0;
 	color: #171717;}
 .site-title a {
-	font-weight: bold; 
+	font-weight: bold;
+	text-decoration: none; 
 	color: #171717;}
+.site-title a:hover, .site-title a:focus {
+	text-decoration: none; }
 .no-site-tagline .site-title {
 	margin-bottom: 22px;
 	margin-bottom: 2.2rem; }
@@ -354,6 +357,10 @@ a {
 	letter-spacing: 1px;
 	letter-spacing: .1rem; 
 	text-transform: uppercase;}
+.site-description a {
+	text-decoration: none; }
+.site-description a:hover, .site-description a:focus {
+	text-decoration: none; }
 
 /*---------------------------------------------------------
  Custom logo (_scaffolding.scss)
@@ -402,7 +409,10 @@ a {
 		float: right; }
 	}
 .header-bar a {
-	color: inherit; }
+	text-decoration: none; 
+	color: inherit;}
+.header-bar a:hover, .header-bar a:focus {
+	text-decoration: none; }
 .header-bar textarea, .header-bar input {
 	font-size: 12px;
 	font-size: 1.2rem; 
@@ -755,6 +765,10 @@ a {
 	padding:  2.2rem 0; }
 .site-footer .search-form input {
 	border: 1px solid; }
+.site-footer a {
+	text-decoration: none; }
+.site-footer a:hover, .site-footer a:focus {
+	text-decoration: none; }
 .site-footer *:not(select) {
 	border-color: #b9bcbf !important; }
 @media screen and (min-width: 800px) {
@@ -1990,6 +2004,10 @@ iframe[src*="google.com/maps"] {
 	font-size: 24px;
 	font-size: 2.4rem; 
 	line-height: 1.4;}
+.widget-title a {
+	text-decoration: none; }
+.widget-title a:hover, .widget-title a:focus {
+	text-decoration: none; }
 
 .widget {
 	font-size: 13px;
@@ -2016,6 +2034,10 @@ iframe[src*="google.com/maps"] {
 	margin-bottom: 0;
 	padding-bottom: 0;
 	border-bottom: 0; }
+.widget a {
+	text-decoration: none; }
+.widget a:hover, .widget a:focus {
+	text-decoration: none; }
 .widget .children, .widget .sub-menu {
 	margin-bottom: 0; }
 .widget .children li:before, .widget .sub-menu li:before {
@@ -2032,8 +2054,6 @@ iframe[src*="google.com/maps"] {
 	-moz-border-radius: 3px;
 	border-radius: 3px; 
 	background-color: #eaecee;}
-.widget_tag_cloud a:hover, .widget_product_tag_cloud a:hover {
-	text-decoration: underline; }
 
 .widget_calendar table {
 	margin-top: 0; }
