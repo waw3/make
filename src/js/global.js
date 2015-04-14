@@ -40,6 +40,7 @@
 			this.cache.$document.on( 'ready', function() {
 				self.navigationInit();
 				self.skipLinkFocusFix();
+				self.navigationHoverFix();
 				self.fitVidsInit();
 			} );
 		},
@@ -112,6 +113,16 @@
 					}
 				}, false );
 			}
+		},
+
+		/**
+		 *
+		 */
+		navigationHoverFix: function() {
+			this.cache.$dropdown = this.cache.$dropdown || $('li:has(ul)', '#site-navigation');
+			this.cache.$dropdown.on('click', function() {
+				return true;
+			});
 		},
 
 		/**
