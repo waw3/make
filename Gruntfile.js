@@ -14,7 +14,7 @@ module.exports = function( grunt ) {
 					atBegin: true
 				},
 				files: 'assets/sass/**/*.scss',
-				tasks: [ 'sass', 'csscomb:style' ]
+				tasks: [ 'sass', 'wpcss:style' ]
 			}
 		},
 		sass: {
@@ -27,10 +27,11 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-		csscomb: {
+		wpcss: {
 			style: {
 				options: {
-					config: 'csscomb.json'
+					commentSpacing: true,
+					config: 'default'
 				},
 				files: {
 					'src/style.css': ['src/style.css']
@@ -353,7 +354,7 @@ module.exports = function( grunt ) {
 	} );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'sass', 'csscomb:style', 'concat', 'uglify' ] );
+	grunt.registerTask( 'default', [ 'sass', 'wpcss:style', 'concat', 'uglify' ] );
 
 	// Bump the version to the specified value; e.g., "grunt bumpto:patch"
 	grunt.registerTask( 'bumpto', function( releaseType ) {
