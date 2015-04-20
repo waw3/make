@@ -48,6 +48,11 @@ input[type="submit"] {
 	@include rem('padding', 10px 14px);
 	@include rem('font-size', 13px);
 	@include border-radius;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
 	&.color-primary-background {
 		background-color: $c;
 	}
