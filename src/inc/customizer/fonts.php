@@ -224,11 +224,13 @@ function ttfmake_get_google_font_subsets() {
 	 */
 	return apply_filters( 'make_get_google_font_subsets', array(
 		'all'          => __( 'All', 'make' ),
+		'arabic'       => __( 'Arabic', 'make' ),
 		'cyrillic'     => __( 'Cyrillic', 'make' ),
 		'cyrillic-ext' => __( 'Cyrillic Extended', 'make' ),
 		'devanagari'   => __( 'Devanagari', 'make' ),
 		'greek'        => __( 'Greek', 'make' ),
 		'greek-ext'    => __( 'Greek Extended', 'make' ),
+		'hebrew'       => __( 'Hebrew', 'make' ),
 		'khmer'        => __( 'Khmer', 'make' ),
 		'latin'        => __( 'Latin', 'make' ),
 		'latin-ext'    => __( 'Latin Extended', 'make' ),
