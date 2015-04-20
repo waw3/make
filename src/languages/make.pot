@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Make 1.5.2\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-04-20 20:32:36+00:00\n"
+"POT-Creation-Date: 2015-04-20 20:48:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -733,50 +733,58 @@ msgid "All"
 msgstr ""
 
 #: inc/customizer/fonts.php:227
-msgid "Cyrillic"
+msgid "Arabic"
 msgstr ""
 
 #: inc/customizer/fonts.php:228
-msgid "Cyrillic Extended"
+msgid "Cyrillic"
 msgstr ""
 
 #: inc/customizer/fonts.php:229
-msgid "Devanagari"
+msgid "Cyrillic Extended"
 msgstr ""
 
 #: inc/customizer/fonts.php:230
-msgid "Greek"
+msgid "Devanagari"
 msgstr ""
 
 #: inc/customizer/fonts.php:231
-msgid "Greek Extended"
+msgid "Greek"
 msgstr ""
 
 #: inc/customizer/fonts.php:232
-msgid "Khmer"
+msgid "Greek Extended"
 msgstr ""
 
 #: inc/customizer/fonts.php:233
-msgid "Latin"
+msgid "Hebrew"
 msgstr ""
 
 #: inc/customizer/fonts.php:234
-msgid "Latin Extended"
+msgid "Khmer"
 msgstr ""
 
 #: inc/customizer/fonts.php:235
-msgid "Telugu"
+msgid "Latin"
 msgstr ""
 
 #: inc/customizer/fonts.php:236
+msgid "Latin Extended"
+msgstr ""
+
+#: inc/customizer/fonts.php:237
+msgid "Telugu"
+msgstr ""
+
+#: inc/customizer/fonts.php:238
 msgid "Vietnamese"
 msgstr ""
 
-#: inc/customizer/fonts.php:354
+#: inc/customizer/fonts.php:356
 msgid "Standard Fonts"
 msgstr ""
 
-#: inc/customizer/fonts.php:356
+#: inc/customizer/fonts.php:358
 msgid "Google Fonts"
 msgstr ""
 
@@ -858,7 +866,7 @@ msgid "Body"
 msgstr ""
 
 #: inc/customizer/legacy_sections/font.php:119
-#: inc/customizer/sections/typography.php:199
+#: inc/customizer/sections/typography.php:206
 msgid "Typekit"
 msgstr ""
 
@@ -869,7 +877,7 @@ msgstr ""
 #: inc/customizer/legacy_sections/font.php:139
 #: inc/customizer/legacy_sections/footer.php:355
 #: inc/customizer/sections/general.php:320
-#: inc/customizer/sections/typography.php:210
+#: inc/customizer/sections/typography.php:217
 msgid "Upgrade to %1$s"
 msgstr ""
 
@@ -903,7 +911,6 @@ msgid "Character Subset"
 msgstr ""
 
 #: inc/customizer/legacy_sections/font.php:335
-#: inc/customizer/sections/typography.php:187
 msgid "Not all fonts provide each of these subsets."
 msgstr ""
 
@@ -1708,7 +1715,7 @@ msgstr ""
 
 #: inc/customizer/sections/typography.php:41
 #: inc/customizer/sections/typography.php:118
-#: inc/customizer/sections/typography.php:287 inc/formatting/formatting.php:211
+#: inc/customizer/sections/typography.php:294 inc/formatting/formatting.php:211
 msgid "Font Weight"
 msgstr ""
 
@@ -1770,43 +1777,53 @@ msgstr ""
 msgid "Google Font Subsets"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:200
+#: inc/customizer/sections/typography.php:188
+msgid ""
+"Not all fonts provide each of these subsets. Please visit the %s to see "
+"which subsets are available for each font."
+msgstr ""
+
+#: inc/customizer/sections/typography.php:192
+msgid "Google Fonts website"
+msgstr ""
+
+#: inc/customizer/sections/typography.php:207
 msgid "Looking to add premium fonts from Typekit to your website?"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:261
+#: inc/customizer/sections/typography.php:268
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:272 inc/formatting/formatting.php:187
+#: inc/customizer/sections/typography.php:279 inc/formatting/formatting.php:187
 msgid "Font Size (px)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:299
+#: inc/customizer/sections/typography.php:306
 msgid "Font Style"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:311
+#: inc/customizer/sections/typography.php:318
 msgid "Text Transform"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:323
+#: inc/customizer/sections/typography.php:330
 msgid "Line Height (em)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:338
+#: inc/customizer/sections/typography.php:345
 msgid "Letter Spacing (px)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:353
+#: inc/customizer/sections/typography.php:360
 msgid "Word Spacing (px)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:368
+#: inc/customizer/sections/typography.php:375
 msgid "Link Underline"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:397
+#: inc/customizer/sections/typography.php:404
 msgid "Loading&hellip;"
 msgstr ""
 
