@@ -4,11 +4,11 @@
  */
 
 /**
- * Class MAKE_Settings_Theme_Mods
+ * Class MAKE_Settings_Builder_Sections
  *
  *
  */
-class MAKE_Settings_Theme_Mods extends MAKE_Settings {
+class MAKE_Settings_Builder_Sections extends MAKE_Settings {
 	/**
 	 * The type of settings.
 	 *
@@ -16,7 +16,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	 *
 	 * @var string
 	 */
-	protected $type = 'theme_mods';
+	protected $type = 'builder_sections';
 
 	/**
 	 * TODO
@@ -38,9 +38,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 			// Sanitize the value before saving it.
 			$sanitized_value = $this->sanitize_value( $value, $setting_id );
 			if ( $this->undefined !== $sanitized_value ) {
-				// This function doesn't return anything, so we assume success here.
-				set_theme_mod( $setting_id, $sanitized_value );
-				return true;
+				//
 			}
 		}
 
@@ -58,9 +56,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	 */
 	public function unset_value( $setting_id ) {
 		if ( isset( $this->settings[ $setting_id ] ) ) {
-			// This function doesn't return anything, so we assume success here.
-			remove_theme_mod( $setting_id );
-			return true;
+			//
 		}
 
 		return false;
@@ -79,7 +75,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 		$value = $this->undefined;
 
 		if ( isset( $this->settings[ $setting_id ] ) ) {
-			$value = get_theme_mod( $setting_id, $this->undefined );
+			//
 		}
 
 		return $value;
