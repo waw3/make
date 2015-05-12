@@ -17,7 +17,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	/**
 	 * TODO
 	 */
-	protected function load_settings() {}
+	protected function load() {}
 
 	/**
 	 * Set a new value for a particular theme_mod setting.

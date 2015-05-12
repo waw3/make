@@ -6,7 +6,19 @@
 /**
  * Class MAKE_Settings
  *
- * An object for defining and managing theme settings, both within and outside of the Customizer.
+ * An object for defining and managing settings and their values.
+ *
+ * This is an abstract class, so it is unusable on its own. It must be extended by another class.
+ *
+ * The extending class is required to define the following methods:
+ * - load
+ * - set_value
+ * - unset_value
+ * - get_raw_value
+ *
+ * Additionally, the extending class should:
+ * - Supply a string value for the type property, e.g. 'theme_mods'
+ * - Update the array of required setting properties, if necessary
  *
  * @since 1.6.0.
  */
@@ -19,6 +31,15 @@ abstract class MAKE_Settings {
 	 * @var array
 	 */
 	protected $settings = array();
+
+	/**
+	 * The collection of choice sets.
+	 *
+	 * @since 1.6.0.
+	 *
+	 * @var array
+	 */
+	protected $choices = array();
 
 	/**
 	 * The value returned for an undefined setting.
@@ -54,25 +75,37 @@ abstract class MAKE_Settings {
 	 * Initialize the object.
 	 */
 	final function __construct() {
-		$this->load_settings();
+		$this->load();
 
 		/**
+		 * Action fires after the settings object's load method has been called.
 		 *
+		 * This action gives a developer the opportunity to run additional load routines
+		 * after the default ones have completed. For example, they could add additional
+		 * settings definitions or remove unneeded ones.
+		 *
+		 * Note that the hook contains the object's type parameter. So it use it, the
+		 * particular type of settings needs to be indicated, e.g. `make_settings_theme_mods_loaded`.
+		 *
+		 * @since 1.6.0.
+		 *
+		 * @param object    $settings    The settings object that has just finished loading.
 		 */
-		do_action( "make_settings_{$this->type}_loaded" );
+		do_action( "make_settings_{$this->type}_loaded", $this );
 	}
 
 	/**
-	 * Load setting definitions into the $settings class property.
+	 * Load the initial definitions for settings and choices.
 	 *
 	 * Must be defined by the child class.
 	 * - Should use the add_settings method.
+	 * - Should use the add_choices method if choices are necessary.
 	 *
 	 * @since 1.6.0.
 	 *
 	 * @return mixed
 	 */
-	abstract protected function load_settings();
+	abstract protected function load();
 
 	/**
 	 * Add settings definitions to the collection.
@@ -80,6 +113,14 @@ abstract class MAKE_Settings {
 	 * Each setting definition is an item in the associative array.
 	 * The item's array key is the setting ID. The item value is another
 	 * array that contains setting properties.
+	 *
+	 * Example:
+	 * array(
+	 *     'social-twitter' => array(
+	 *         'default'  => '',
+	 *         'sanitize' => 'esc_url',
+	 *     ),
+	 * )
 	 *
 	 * @since 1.6.0.
 	 *
@@ -95,6 +136,8 @@ abstract class MAKE_Settings {
 
 		// Check each setting definition for required properties before adding it.
 		foreach ( $settings as $setting_id => $setting_props ) {
+			$setting_id = sanitize_title_with_dashes( $setting_id );
+
 			if (
 				$this->has_required_properties( $setting_props )
 				&&
@@ -192,6 +235,79 @@ abstract class MAKE_Settings {
 		$setting_ids = array_keys( $this->settings );
 		$properties  = wp_list_pluck( $this->settings, $property );
 		return array_combine( $setting_ids, $properties );
+	}
+
+	/**
+	 * Add choice sets to the collection.
+	 *
+	 * Each choice set is an item in an associative array.
+	 * The item's array key is the choice ID. The item value is another
+	 * associative array that contains individual choices where the key
+	 * is the HTML option value and the value is the HTML option label.
+	 *
+	 * Example:
+	 * array(
+	 *     'horizontal-alignment' => array(
+	 *         'left'   => __( 'Left', 'make' ),
+	 *         'center' => __( 'Center', 'make' ),
+	 *         'right'  => __( 'Right', 'make' ),
+	 *     ),
+	 * )
+	 *
+	 * @since 1.6.0.
+	 *
+	 * @param          $choices      Array of choice sets to add.
+	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
+	 *
+	 * @return array|bool            The modified array of choices if successful, otherwise false.
+	 */
+	public function add_choices( $choices, $overwrite = false ) {
+		$choices = (array) $choices;
+		$existing_ids = array_keys( $this->choices );
+		$new_choices = array();
+
+		// Validate each choices set before adding it.
+		foreach ( $choices as $choice_id => $choice_set ) {
+			$choice_id = sanitize_title_with_dashes( $choice_id );
+
+			if (
+				is_array( $choice_set )
+				&&
+				( ! isset( $existing_ids[ $choice_id ] ) || true === $overwrite )
+			) {
+				$new_choices[ $choice_id ] = $choice_set;
+			}
+		}
+
+		// If no choices sets were valid, return false.
+		if ( empty( $new_choices ) ) {
+			return false;
+		}
+
+		// Add the valid new choices sets to the existing choices array.
+		$this->choices = array_merge( $this->choices, $new_choices );
+
+		return $this->choices;
+	}
+
+	/**
+	 * Get a particular choice set, using the set ID.
+	 *
+	 * @since 1.6.0.
+	 *
+	 * @param  string    $choice_id    The ID of the choice set to retrieve.
+	 *
+	 * @return array                   The array of choices.
+	 */
+	public function get_choices( $choice_id ) {
+		$all_choices = $this->choices;
+		$choices = array();
+
+		if ( isset( $all_choices[ $choice_id ] ) ) {
+			$choices = $all_choices[ $choice_id ];
+		}
+
+		return $choices;
 	}
 
 	/**
