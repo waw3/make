@@ -379,7 +379,7 @@
 .remove-widget-link:hover,
 .edit-panels-item-link:hover,
 .remove-panels-item-link:hover,
-.configure-panels-item-link:hover {
+.ttfmake-section-open .ttfmp-panels-item .configure-panels-item-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
