@@ -314,7 +314,8 @@
 }
 .edit-content-link.item-has-content.edit-gallery-item-link:before,
 .edit-content-link.item-has-content.edit-banner-slide-link:before,
-.edit-content-link.item-has-content.edit-text-column-link:before {
+.edit-content-link.item-has-content.edit-text-column-link:before,
+.edit-content-link.item-has-content.edit-panels-item-link:before {
 	content: "\f214";
 }
 .edit-gallery-item-link,
@@ -325,7 +326,9 @@
 .configure-gallery-item-link,
 .configure-banner-slide-link,
 .configure-column-link,
-.remove-widget-link {
+.remove-widget-link,
+.edit-panels-item-link,
+.remove-panels-item-link {
 	display: inline-block;
 	position: absolute;
 	clear: both;
@@ -347,7 +350,8 @@
 }
 .remove-gallery-item-link,
 .remove-banner-slide-link,
-.remove-widget-link {
+.remove-widget-link,
+.remove-panels-item-link {
 	right: 0; /*reset*/
 }
 .remove-gallery-item-link {
@@ -371,7 +375,9 @@
 .configure-gallery-item-link:hover,
 .configure-banner-slide-link:hover,
 .configure-column-link:hover,
-.remove-widget-link:hover {
+.remove-widget-link:hover,
+.edit-panels-item-link:hover,
+.remove-panels-item-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
@@ -382,7 +388,9 @@
 .configure-gallery-item-link span,
 .configure-banner-slide-link span,
 .configure-column-link span,
-.remove-widget-link span {
+.remove-widget-link span,
+.edit-panels-item-link span,
+.remove-panels-item-link span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
@@ -390,14 +398,16 @@
 }
 .edit-gallery-item-link:before,
 .edit-banner-slide-link:before,
-.edit-text-column-link:before {
+.edit-text-column-link:before,
+.edit-panels-item-link:before {
 	content: "\f464";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
 }
 .remove-gallery-item-link:before,
 .remove-banner-slide-link:before,
-.remove-widget-link:before {
+.remove-widget-link:before,
+.remove-panels-item-link:before {
 	content: "\f182";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
