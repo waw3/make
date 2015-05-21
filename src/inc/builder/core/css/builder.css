@@ -173,7 +173,8 @@
 }
 .ttfmake-gallery-item:hover .sortable-background,
 .ttfmake-text-column:hover .sortable-background.column-sortable-background,
-.ttfmake-banner-slide:hover .sortable-background {
+.ttfmake-banner-slide:hover .sortable-background,
+.ttfmp-panels-item:hover .sortable-background {
 	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------
@@ -249,10 +250,10 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	 -webkit-transition: background-color 300ms ease;
-    -moz-transition: background-color 300ms ease;
-    -o-transition: background-color 300ms ease;
-    -ms-transition: background-color 300ms ease;
-    transition: background-color 300ms ease;
+	-moz-transition: background-color 300ms ease;
+	-o-transition: background-color 300ms ease;
+	-ms-transition: background-color 300ms ease;
+	transition: background-color 300ms ease;
 }
 .ttfmake-section-open .ttfmake-section-header h3 {
 	color: #fff;
@@ -514,7 +515,7 @@
 	background: #fcfcfc;
 }
 .ttfmake-overlay-title {
-  	width: 300px;
+	  width: 300px;
 	margin: 0;
 	padding: 0 36px 0 10px;
 	color: #444;
