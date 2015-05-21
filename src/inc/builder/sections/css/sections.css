@@ -192,14 +192,16 @@
 	margin-right: 10px;
 }
 .ttfmake-banner-add-item,
-.ttfmake-gallery-add-item {
+.ttfmake-gallery-add-item,
+.ttfmp-panels-add-item {
 	clear: both;
 	height: 76px;
 	background-color: #fff;
 	border: 1px solid #dfdfdf;
 }
 .ttfmake-banner-add-item:before,
-.ttfmake-gallery-add-item:before {
+.ttfmake-gallery-add-item:before,
+.ttfmp-panels-add-item:before {
 	content: "\f502";
 	display: block;
 	color: #1bc865;
@@ -207,11 +209,13 @@
 	text-align: center;
 }
 .ttfmake-banner-add-item-link,
-.ttfmake-gallery-add-item-link {
+.ttfmake-gallery-add-item-link,
+.ttfmp-panels-add-item-link {
 	text-decoration: none; /*reset*/
 }
 .ttfmake-banner-add-item span,
-.ttfmake-gallery-add-item span {
+.ttfmake-gallery-add-item span,
+.ttfmp-panels-add-item span {
 	display: none; /*reset*/
 	text-indent: -9999px;
 	white-space: nowrap;
