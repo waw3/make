@@ -328,7 +328,8 @@
 .configure-column-link,
 .remove-widget-link,
 .edit-panels-item-link,
-.remove-panels-item-link {
+.remove-panels-item-link,
+.configure-panels-item-link {
 	display: inline-block;
 	position: absolute;
 	clear: both;
@@ -377,7 +378,8 @@
 .configure-column-link:hover,
 .remove-widget-link:hover,
 .edit-panels-item-link:hover,
-.remove-panels-item-link:hover {
+.remove-panels-item-link:hover,
+.configure-panels-item-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
@@ -390,7 +392,8 @@
 .configure-column-link span,
 .remove-widget-link span,
 .edit-panels-item-link span,
-.remove-panels-item-link span {
+.remove-panels-item-link span,
+.configure-panels-item-link span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
