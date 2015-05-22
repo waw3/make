@@ -231,6 +231,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		iframeBody.html(switchEditors.wpautop(oneApp.wrapShortcodes(content)));
 
 		// Firefox hack
+		// @link http://stackoverflow.com/a/24686535
 		$(iframe).on('load', function() {
 			$(this).contents().find('head').html(link);
 			$(this).contents().find('body').html(switchEditors.wpautop(oneApp.wrapShortcodes(content)));
