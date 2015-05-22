@@ -229,6 +229,12 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 
 		iframeHead.html(link);
 		iframeBody.html(switchEditors.wpautop(oneApp.wrapShortcodes(content)));
+
+		// Firefox hack
+		$(iframe).on('load', function() {
+			$(this).contents().find('head').html(link);
+			$(this).contents().find('body').html(switchEditors.wpautop(oneApp.wrapShortcodes(content)));
+		});
 	};
 
 	oneApp.getFrameHeadLinks = function() {
