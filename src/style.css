@@ -2044,12 +2044,12 @@ div.wp-video-shortcode {
  Google maps (_patterns.scss)
 -------------------------------------------------------- */
 
-iframe[src*="google.com/maps"] {
+.entry-content iframe[src*="google.com/maps"] {
 	width: 100%;
 	height: 300px;
 }
 @media screen and (min-width: 800px) {
-	iframe[src*="google.com/maps"] {
+	.entry-content iframe[src*="google.com/maps"] {
 		height: 600px;
 	}
 }
