@@ -173,8 +173,7 @@
 }
 .ttfmake-gallery-item:hover .sortable-background,
 .ttfmake-text-column:hover .sortable-background.column-sortable-background,
-.ttfmake-banner-slide:hover .sortable-background,
-.ttfmp-panels-item:hover .sortable-background {
+.ttfmake-banner-slide:hover .sortable-background {
 	opacity: 1; /*reset*/
 }
 /*---------------------------------------------------------
