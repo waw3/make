@@ -11,7 +11,7 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 		<ul class="ttfmake-menu-list">
 			<?php
 			/**
-			 * Execute code before the builder menu is displayed.
+			 * Execute code before the builder menu items are displayed.
 			 *
 			 * @since 1.2.3.
 			 */
@@ -33,14 +33,6 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 				</li>
 				</a>
 			<?php endforeach; ?>
-			<?php
-			/**
-			 * Execute code after the builder menu is displayed.
-			 *
-			 * @since 1.2.3.
-			 */
-			do_action( 'make_after_builder_menu' );
-			?>
 			<?php if ( ! ttfmake_is_plus() && in_array( 'woocommerce/woocommerce.php', get_option( 'active_plugins' ) ) ) : ?>
 				<li class="ttfmake-menu-list-item make-plus-products">
 					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="background-image: url('<?php echo addcslashes( esc_url_raw( get_template_directory_uri() . '/inc/builder/sections/css/images/woocommerce.png' ), '"' ); ?>');">
@@ -65,6 +57,14 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 					</div>
 				</li>
 			<?php endif; ?>
+			<?php
+			/**
+			 * Execute code after the builder menu items are displayed.
+			 *
+			 * @since 1.2.3.
+			 */
+			do_action( 'make_after_builder_menu' );
+			?>
 		</ul>
 	</div>
 </div>
