@@ -603,6 +603,12 @@
 	width: 100%;
 	margin-top: 20px;
 }
+.ttfmake-configuration-overlay-input-wrap.monospace-wrap input {
+	font-size: 12px;
+	font-family: monospace;
+	text-align: center;
+	line-height: 16px;
+}
 .ttfmake-configuration-overlay-input-wrap input[type=checkbox] {
 	position: relative;
 	top: 5px;
