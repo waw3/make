@@ -538,7 +538,8 @@ function ttfmake_plus_styles() {
 	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
 	.ttfmp-import-message strong:after,
 	#accordion-section-ttfmake_stylekit h3:before,
-	a.ttfmake-customize-plus {
+	a.ttfmake-customize-plus,
+	#ttfmake-menu-list-item-link-plus h4:after {
 		content: "Plus";
 		position: relative;
 		top: -1px;

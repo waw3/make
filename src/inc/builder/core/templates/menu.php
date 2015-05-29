@@ -34,18 +34,14 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 				</a>
 			<?php endforeach; ?>
 			<?php if ( ! ttfmake_is_plus() ) : ?>
-			<a href="<?php echo ttfmake_get_plus_link(); ?>" target="_blank">
-				<li class="ttfmake-menu-list-item">
-					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="">
-						<span class="ttfmake-menu-list-item-link-icon "></span>
-					</div>
-					<div class="section-type-description">
-						<h4>
-							<?php _e( 'Get more sections', 'make' ); ?>
-						</h4>
+
+				<li id="ttfmake-menu-list-item-link-plus" class="ttfmake-menu-list-item">
+				<div>
+					<h4>Get more.</h4>
+					<p class="howto">Looking for more sections and options? <a href="https://thethemefoundry.com/make-buy/">Upgrade to Make Plus</a>.</p>
 					</div>
 				</li>
-			</a>
+
 			<?php endif; ?>
 			<?php
 			/**
