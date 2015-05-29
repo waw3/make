@@ -317,6 +317,27 @@ function ttfmake_scripts() {
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 
+	// Parent stylesheet, if child theme is active
+	// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
+	if ( is_child_theme() && defined( 'TTFMAKE_CHILD_VERSION' ) && version_compare( TTFMAKE_CHILD_VERSION, '1.1.0', '>=' ) ) {
+		/**
+		 * Toggle for loading the parent stylesheet along with the child one.
+		 *
+		 * @since 1.6.0.
+		 *
+		 * @param bool    $enqueue    True enqueues the parent stylesheet.
+		 */
+		if ( true === apply_filters( 'make_enqueue_parent_stylesheet', true ) ) {
+			wp_enqueue_style(
+				'ttfmake-parent-style',
+				get_template_directory_uri() . '/style.css',
+				$style_dependencies,
+				TTFMAKE_VERSION
+			);
+			$style_dependencies[] = 'ttfmake-parent-style';
+		}
+	}
+
 	// Main stylesheet
 	wp_enqueue_style(
 		'ttfmake-main-style',
