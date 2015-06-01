@@ -873,6 +873,13 @@ if ( ! function_exists( 'ttfmake_builder_banner_css' ) ) :
  * @return void
  */
 function ttfmake_builder_banner_css( $data, $id ) {
+	$prefix = 'builder-section-';
+	$id = preg_replace( '/[^0-9]/', '', $data['id'] );
+	/**
+	 * This filter is documented in inc/builder/core/save.php
+	 */
+	$section_id = apply_filters( 'make_section_html_id', $prefix . $id, $data );
+
 	$responsive = ( isset( $data['responsive'] ) ) ? $data['responsive'] : 'balanced';
 	$slider_height = absint( $data['height'] );
 	if ( 0 === $slider_height ) {
@@ -882,20 +889,20 @@ function ttfmake_builder_banner_css( $data, $id ) {
 
 	if ( 'aspect' === $responsive ) {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '#builder-section-' . esc_attr( $id ) . ' .builder-banner-slide' ),
+			'selectors'    => array( '#' . esc_attr( $section_id ) . ' .builder-banner-slide' ),
 			'declarations' => array(
 				'padding-bottom' => $slider_ratio . '%'
 			),
 		) );
 	} else {
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '#builder-section-' . esc_attr( $id ) . ' .builder-banner-slide' ),
+			'selectors'    => array( '#' . esc_attr( $section_id ) . ' .builder-banner-slide' ),
 			'declarations' => array(
 				'padding-bottom' => $slider_height . 'px'
 			),
 		) );
 		ttfmake_get_css()->add( array(
-			'selectors'    => array( '#builder-section-' . esc_attr( $id ) . ' .builder-banner-slide' ),
+			'selectors'    => array( '#' . esc_attr( $section_id ) . ' .builder-banner-slide' ),
 			'declarations' => array(
 				'padding-bottom' => $slider_ratio . '%'
 			),
