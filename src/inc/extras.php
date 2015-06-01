@@ -874,7 +874,7 @@ if ( ! function_exists( 'ttfmake_builder_banner_css' ) ) :
  */
 function ttfmake_builder_banner_css( $data, $id ) {
 	$prefix = 'builder-section-';
-	$id = preg_replace( '/[^0-9]/', '', $data['id'] );
+	$id = sanitize_title_with_dashes( $data['id'] );
 	/**
 	 * This filter is documented in inc/builder/core/save.php
 	 */

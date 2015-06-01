@@ -561,7 +561,7 @@ class TTFMAKE_Builder_Save {
 	 */
 	public function section_html_id( $current_section ) {
 		$prefix = 'builder-section-';
-		$id = $this::clean_section_id( $current_section['id'] );
+		$id = sanitize_title_with_dashes( $current_section['id'] );
 
 		/**
 		 * Filter the section wrapper's HTML id attribute.
