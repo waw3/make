@@ -359,6 +359,16 @@ function ttfmake_scripts() {
 	// Scripts
 	$script_dependencies = array();
 
+	// FitVids
+	// Register only. Enqueued when necessary by the embed shortcode.
+	wp_register_script(
+		'ttfmake-fitvids',
+		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
+		array( 'jquery' ),
+		'1.1',
+		true
+	);
+
 	// jQuery
 	$script_dependencies[] = 'jquery';
 
@@ -366,16 +376,16 @@ function ttfmake_scripts() {
 	ttfmake_cycle2_script_setup( $script_dependencies );
 	$script_dependencies[] = 'ttfmake-cycle2';
 
-	// FitVids
+	// Global script
 	wp_enqueue_script(
-		'ttfmake-fitvids',
-		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
+		'ttfmake-global',
+		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
 		$script_dependencies,
-		'1.1',
+		TTFMAKE_VERSION,
 		true
 	);
 
-	// Default selectors
+	// FitVids selectors
 	$selector_array = array(
 		"iframe[src*='www.viddler.com']",
 		"iframe[src*='money.cnn.com']",
@@ -396,25 +406,16 @@ function ttfmake_scripts() {
 
 	// Compile selectors
 	$fitvids_custom_selectors = array(
-		'selectors' => implode( ',', $selector_array )
+		'fitvids' => array(
+			'selectors' => implode( ',', $selector_array )
+		),
 	);
 
 	// Send to the script
 	wp_localize_script(
-		'ttfmake-fitvids',
-		'ttfmakeFitVids',
-		$fitvids_custom_selectors
-	);
-
-	$script_dependencies[] = 'ttfmake-fitvids';
-
-	// Global script
-	wp_enqueue_script(
 		'ttfmake-global',
-		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
-		$script_dependencies,
-		TTFMAKE_VERSION,
-		true
+		'ttfmakeGlobal',
+		$fitvids_custom_selectors
 	);
 
 	// Comment reply script

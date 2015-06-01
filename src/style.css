@@ -1811,6 +1811,22 @@ table td[valign="bottom"] {
 
 
 /*---------------------------------------------------------
+Embeds (_elements.scss)
+-------------------------------------------------------- */
+
+.ttfmake-embed-wrapper {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 22px;
+	margin-bottom: 2.2rem;
+}
+.ttfmake-embed-wrapper.aligncenter {
+	margin-bottom: 22px;
+	margin-bottom: 2.2rem;
+}
+
+
+/*---------------------------------------------------------
 Galleries (_elements.scss)
 -------------------------------------------------------- */
 
