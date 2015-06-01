@@ -7,6 +7,7 @@
 * Fixed: Google Maps embeds now only resize to specific dimensions when added in post content.
 * Fixed: Taxonomy icons now align with their lists properly in the post footer even when other meta elements are present.
 * New filter: `make_builder_js_templates` modifies the array of JS templates loaded on the Page Builder screen.
+* Updated: The latest list of Google fonts.
 * Changed: New theme screenshot. CC0 compatible.
 
 ## 1.5.2
