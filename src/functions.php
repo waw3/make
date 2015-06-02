@@ -9,6 +9,11 @@
 define( 'TTFMAKE_VERSION', '1.5.2' );
 
 /**
+ * The minimum version of WordPress required for Finder.
+ */
+define( 'TTFMAKE_MIN_WP_VERSION', '4.0' );
+
+/**
  * The suffix to use for scripts.
  */
 if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
