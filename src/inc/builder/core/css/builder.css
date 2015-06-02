@@ -269,14 +269,14 @@
 .ttfmake-section-header h3 {
 	float: left;
 	width: 100%;
-	color: #222;
+	color: #23282d;
 	font-size: 13px !important;
 	font-weight: 700 !important;
 	font-family: 'Open Sans', sans-serif !important;
 	line-height: 1.7 !important;
-	border-top: 1px solid #d9d9d9;
-	border-bottom: 1px solid #d9d9d9;
-	background-color: #eee;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #fafafa;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -286,17 +286,25 @@
 	-ms-transition: background-color 300ms ease;
 	transition: background-color 300ms ease;
 }
+.ttfmake-section:hover .ttfmake-section-header h3 {
+	border-color: #999;
+}
 .ttfmake-section-open .ttfmake-section-header h3 {
 	color: #fff;
-	border-color: #222;
-	background-color: #222;
+	border-color: #23282d;
+	background-color: #23282d;
+}
+.ttfmake-section-open:hover .ttfmake-section-header h3 {
+	border-color: #23282d;
 }
 .ttfmake-section-header span {
 	font-weight: bold;
+	font-weight: 600;
 }
 .ttfmake-section-header em {
 	margin-left: 10px;
 	color: #777;
+	font-size: 12px;
 	font-weight: normal !important;
 	font-style: normal !important;
 }
@@ -307,7 +315,10 @@
 	position: relative;
 	height: 40px;
 	padding-left: 10px;
-	border-left: 1px solid #d9d9d9;
+	border-left: 1px solid #e5e5e5;
+}
+.ttfmake-section:hover .handlediv {
+	border-left-color: #999;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section .handlediv {
@@ -315,7 +326,8 @@
 		margin-top: 0; /*reset*/
 	}
 }
-.ttfmake-section-open .handlediv {
+.ttfmake-section-open .handlediv,
+.ttfmake-section-open:hover .handlediv {
 	border-left-color: #999;
 }
 .ttfmake-section-toggle:focus {
@@ -347,7 +359,7 @@
 }
 .ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:hover:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
-	color: #222;
+	color: #23282d;
 }
 .ttfmake-stage .ttfmake-section-open .ttfmake-section-header .handlediv:hover:before,
 .ttfmake-stage .ttfmake-section-open .ttfmake-banner-slide-header .handlediv:hover:before {
@@ -418,7 +430,7 @@
 .ttfmake-section-remove:hover,
 .ttfmake-section-configure:hover,
 .ttfmp-duplicate-section:hover {
-	color: #222;
+	color: #23282d;
 }
 .ttfmake-section-open .ttfmake-section-remove:hover,
 .ttfmake-section-open .ttfmake-section-configure:hover,
