@@ -71,7 +71,7 @@ div.wp-video-shortcode {
 /*---------------------------------------------------------
  Google maps (_patterns.scss)
 -------------------------------------------------------- */
-iframe[src*="google.com/maps"] {
+.entry-content iframe[src*="google.com/maps"] {
 	@include for(medium-screens) {
 		height: 600px;
 	}

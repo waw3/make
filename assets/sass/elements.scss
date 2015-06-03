@@ -278,6 +278,17 @@ table {
 	}
 }
 /*---------------------------------------------------------
+Embeds (_elements.scss)
+-------------------------------------------------------- */
+.ttfmake-embed-wrapper {
+	max-width: 100%;
+	width: 100%;
+	@include rem('margin-bottom', $base);
+	&.aligncenter {
+		@include rem('margin-bottom', $base);
+	}
+}
+/*---------------------------------------------------------
 Galleries (_elements.scss)
 -------------------------------------------------------- */
 .gallery {

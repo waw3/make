@@ -11,7 +11,8 @@ module.exports = function( grunt ) {
 		watch: {
 			css: {
 				options: {
-					atBegin: true
+					atBegin: true,
+					spawn: false
 				},
 				files: 'assets/sass/**/*.scss',
 				tasks: [ 'sass', 'wpcss:style' ]
