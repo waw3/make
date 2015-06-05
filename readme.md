@@ -10,15 +10,15 @@
 
 We recommend reading the [Make theme documentation](https://thethemefoundry.com/make-help/).
 
+### Support Questions
+
+We don't answer support questions here on Github. Support is only available for [Make Plus](https://thethemefoundry.com/make-buy/) customers in our [Help Center](https://thethemefoundry.com/support/).
+
 ## Contributing
 
 Contributions are welcome! Here are a few simple guidelines:
 
 Basically, be nice, stay on topic, and respect other contributors/participants.
-
-### Support Questions
-
-We don't answer support questions here on Github. Support is only available for [Make Plus](https://thethemefoundry.com/make-buy/) customers in our [Help Center](https://thethemefoundry.com/support/).
 
 ### Issues / Bugs
 
