@@ -4,7 +4,7 @@
  */
 
 /**
- * Class MAKE_Settings
+ * Class TTFMAKE_Utils_Settings
  *
  * An object for defining and managing settings and their values.
  *
@@ -22,7 +22,7 @@
  *
  * @since 1.6.0.
  */
-abstract class MAKE_Settings {
+abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * The collection of settings and their properties.
 	 *
