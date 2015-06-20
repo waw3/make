@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-06-20T03:37:48+00:00
+ * Updated: 2015-06-20T03:41:09+00:00
  *
  * @since  1.0.0.
  *

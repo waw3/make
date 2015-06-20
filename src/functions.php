@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.6.0' );
+define( 'TTFMAKE_VERSION', '1.6.1' );
 
 /**
  * The minimum version of WordPress required for Finder.
