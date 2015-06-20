@@ -43,6 +43,7 @@
 }
 .builder-section {
 	@include rem('margin-bottom', $base*2);
+	position: relative;
 	@extend .clear;
 }
 .builder-text-title,
@@ -63,6 +64,21 @@
 }
 .builder-text-section-title {
 	@include rem('margin-bottom', $base);
+}
+.builder-section-content,
+.builder-text-section-title,
+.builder-gallery-section-title,
+.builder-banner-section-title {
+	position: relative;
+	z-index: 2;
+}
+/*---------------------------------------------------------
+ Text section (_pages.scss)
+-------------------------------------------------------- */
+.builder-section-text {
+	&.has-background {
+		@include rem('padding', $base*2+$gut/4 0 $base);
+	}
 }
 /*---------------------------------------------------------
  Text section: Columns (_pages.scss)
@@ -93,6 +109,14 @@
 	text-align: center;
 	@include rem('margin-bottom', $base);
 
+}
+/*---------------------------------------------------------
+ Banner section (_pages.scss)
+-------------------------------------------------------- */
+.builder-section-banner {
+	&.has-background {
+		@include rem('padding', $base*2+$gut/4 0 0);
+	}
 }
 /*---------------------------------------------------------
  Banner section: Caption (_pages.scss)
