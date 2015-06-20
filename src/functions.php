@@ -374,12 +374,12 @@ function ttfmake_scripts() {
 		true
 	);
 
+	// Cycle2
+	// Register only. Enqueued when necessary by gallery shortcode or Banner section.
+	ttfmake_cycle2_script_setup( $script_dependencies );
+
 	// jQuery
 	$script_dependencies[] = 'jquery';
-
-	// Cycle2
-	ttfmake_cycle2_script_setup( $script_dependencies );
-	$script_dependencies[] = 'ttfmake-cycle2';
 
 	// Global script
 	wp_enqueue_script(
@@ -447,7 +447,7 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
  */
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	if ( defined( 'TTFMAKE_SUFFIX' ) && '.min' === TTFMAKE_SUFFIX ) {
-		wp_enqueue_script(
+		wp_register_script(
 			'ttfmake-cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTFMAKE_SUFFIX . '.js',
 			$script_dependencies,
@@ -456,7 +456,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 		);
 	} else {
 		// Core script
-		wp_enqueue_script(
+		wp_register_script(
 			'ttfmake-cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
 			$script_dependencies,
@@ -465,7 +465,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 		);
 
 		// Vertical centering
-		wp_enqueue_script(
+		wp_register_script(
 			'ttfmake-cycle2-center',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
 			'ttfmake-cycle2',
@@ -474,7 +474,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 		);
 
 		// Swipe support
-		wp_enqueue_script(
+		wp_register_script(
 			'ttfmake-cycle2-swipe',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
 			'ttfmake-cycle2',
