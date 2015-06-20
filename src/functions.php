@@ -376,7 +376,7 @@ function ttfmake_scripts() {
 
 	// Cycle2
 	// Register only. Enqueued when necessary by gallery shortcode or Banner section.
-	ttfmake_cycle2_script_setup( $script_dependencies );
+	ttfmake_cycle2_script_setup( array( 'jquery' ) );
 
 	// jQuery
 	$script_dependencies[] = 'jquery';
