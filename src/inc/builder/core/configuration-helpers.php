@@ -73,7 +73,7 @@ function ttfmake_create_config_text( $section_name, $args, $section_data ) {
 	$id          = $section_name . '[' . $args['name'] . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
 
-	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . $current_value . '" />';
+	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . esc_attr( $current_value ) . '" />';
 }
 endif;
 
@@ -114,7 +114,7 @@ function ttfmake_create_config_color( $section_name, $args, $section_data ) {
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $args['label'] ) . '</label>' : '';
 	$class       = ( isset( $args['class'] ) ) ? ' class="' . esc_attr( $args['class'] ) . '"' : '';
 
-	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . $current_value . '" />';
+	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . esc_attr( $current_value ) . '" />';
 }
 endif;
 
@@ -135,7 +135,7 @@ function ttfmake_create_config_section_title( $section_name, $args, $section_dat
 	$name        = 'name="' . $section_name . '[' . esc_attr( $args['name'] ) . ']"';
 	$class       = ( isset( $args['class'] ) ) ? ' ' . esc_attr( $args['class'] ) : '';
 
-	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title' . $class . '" autocomplete="off">';
+	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . esc_attr( $current_value ) . '" class="ttfmake-title' . $class . '" autocomplete="off">';
 }
 endif;
 
