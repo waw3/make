@@ -1,5 +1,5 @@
 /* jshint node:true */
-module.exports = function( grunt ) {
+module.exports = function( grunt ) { 
 	var _ = require( 'lodash' );
 
 	// Load all Grunt tasks
