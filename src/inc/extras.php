@@ -969,8 +969,8 @@ add_action( 'make_builder_banner_css', 'ttfmake_builder_banner_css', 10, 2 );
  * @return string             The wrapped HTML.
  */
 function ttfmake_embed_container( $html, $url, $attr ) {
-	// Bail if this is the admin
-	if ( is_admin() ) {
+	// Bail if this is the admin or an RSS feed
+	if ( is_admin() || is_feed() ) {
 		return $html;
 	}
 
