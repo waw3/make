@@ -143,7 +143,7 @@ function ttfmake_sanitize_text( $string ) {
 	 * @param array     $expandedtags    The list of allowed tags and attributes.
 	 * @param string    $string          The text string being sanitized.
 	 */
-	apply_filters( 'make_sanitize_text_allowed_tags', $expandedtags, $string );
+	$expandedtags = apply_filters( 'make_sanitize_text_allowed_tags', $expandedtags, $string );
 
 	return wp_kses( $string, $expandedtags );
 }
