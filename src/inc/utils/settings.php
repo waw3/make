@@ -20,13 +20,13 @@
  * - Supply a string value for the type property, e.g. 'theme_mods'
  * - Update the array of required setting properties, if necessary
  *
- * @since 1.6.0.
+ * @since 1.x.x.
  */
 abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * The collection of settings and their properties.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @var array
 	 */
@@ -35,7 +35,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * The collection of choice sets.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @var array
 	 */
@@ -44,7 +44,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * The value returned for an undefined setting.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @var null
 	 */
@@ -53,7 +53,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * The type of settings. Should be defined in the child class.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @var string
 	 */
@@ -62,7 +62,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Required properties for each setting added to the collection.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @var array
 	 */
@@ -87,7 +87,7 @@ abstract class TTFMAKE_Utils_Settings {
 		 * Note that the hook contains the object's type parameter. So it use it, the
 		 * particular type of settings needs to be indicated, e.g. `make_settings_theme_mods_loaded`.
 		 *
-		 * @since 1.6.0.
+		 * @since 1.x.x.
 		 *
 		 * @param object    $settings    The settings object that has just finished loading.
 		 */
@@ -101,7 +101,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 * - Should use the add_settings method.
 	 * - Should use the add_choices method if choices are necessary.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @return mixed
 	 */
@@ -122,7 +122,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 *     ),
 	 * )
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  array    $settings     Array of setting definitions to add.
 	 * @param  bool     $overwrite    True overwrites an existing definition of a setting.
@@ -161,7 +161,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Check an array of setting definition properties against another array of required ones.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  array    $properties    The array of properties to check.
 	 *
@@ -186,7 +186,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Remove setting definitions from the collection.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  array|string    $setting_ids    The array of settings to remove, or 'all'.
 	 *
@@ -221,7 +221,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Get the setting definitions, or a specific property of each one.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $property    The property to get, or 'all'.
 	 *
@@ -254,7 +254,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 *     ),
 	 * )
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param          $choices      Array of choice sets to add.
 	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
@@ -293,7 +293,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Get a particular choice set, using the set ID.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $choice_id    The ID of the choice set to retrieve.
 	 *
@@ -317,7 +317,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 * - Should use the sanitize_value method before storing the value.
 	 * - Should return true if value was successfully stored, otherwise false.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to set.
 	 * @param  mixed     $value         The value to assign to the setting.
@@ -333,7 +333,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 * Must be defined by the child class.
 	 * - Should return true if value was successfully removed, otherwise false.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to unset.
 	 *
@@ -347,7 +347,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 * Must be defined by the child class.
 	 * - Should return the $undefined class property if the setting isn't found.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -360,7 +360,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 *
 	 * This will return the default value for the settting if nothing is stored yet.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -380,7 +380,7 @@ abstract class TTFMAKE_Utils_Settings {
 		/**
 		 * Filter the current value for a particular setting.
 		 *
-		 * @since 1.6.0.
+		 * @since 1.x.x.
 		 *
 		 * @param string|array    $value         The current value of the setting.
 		 * @param string          $setting_id    The id of the setting.
@@ -391,7 +391,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Get the default value of a setting.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -410,7 +410,7 @@ abstract class TTFMAKE_Utils_Settings {
 		/**
 		 * Filter the default value for a particular setting.
 		 *
-		 * @since 1.6.0.
+		 * @since 1.x.x.
 		 *
 		 * @param string|array    $default_value    The default value of the setting.
 		 * @param string          $setting_id       The id of the setting.
@@ -421,7 +421,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Determine if a setting is currently set to its default value.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -437,7 +437,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Get the name of the callback function used to sanitize a particular setting.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -456,7 +456,7 @@ abstract class TTFMAKE_Utils_Settings {
 		/**
 		 * Filter the name of the sanitize callback function for a particular setting.
 		 *
-		 * @since 1.6.0.
+		 * @since 1.x.x.
 		 *
 		 * @param string|array    $callback      The name of the callback function.
 		 * @param string          $setting_id    The id of the setting.
@@ -467,7 +467,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Sanitize the value for a setting using the setting's specified callback function.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  mixed     $value         The value to sanitize.
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
