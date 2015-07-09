@@ -126,7 +126,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 * @param  array    $settings     Array of setting definitions to add.
 	 * @param  bool     $overwrite    True overwrites an existing definition of a setting.
 	 *
-	 * @return array|bool             The modified array of settings if successful, otherwise false.
+	 * @return array|WP_Error         The modified array of settings if successful, otherwise an error object.
 	 */
 	public function add_settings( $settings, $overwrite = false ) {
 		$settings = (array) $settings;
@@ -146,9 +146,9 @@ abstract class TTFMAKE_Utils_Settings {
 			}
 		}
 
-		// If no settings were valid, return false.
+		// If no settings were valid, return error.
 		if ( empty( $new_settings ) ) {
-			return false;
+			return new WP_Error( 'make_settings_add_settings_no_valid_settings', __( 'No valid settings definitions were found to add.', 'make' ) );
 		}
 
 		// Add the valid new settings to the existing settings array.
@@ -189,7 +189,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 *
 	 * @param  array|string    $setting_ids    The array of settings to remove, or 'all'.
 	 *
-	 * @return array|bool                      The modified array of settings if successful, otherwise false.
+	 * @return array|WP_Error                  The modified array of settings if successful, otherwise an error object.
 	 */
 	public function remove_settings( $setting_ids ) {
 		if ( 'all' === $setting_ids ) {
@@ -211,7 +211,7 @@ abstract class TTFMAKE_Utils_Settings {
 
 		if ( empty( $removed_ids ) ) {
 			// No settings were removed.
-			return false;
+			return new WP_Error( 'make_settings_remove_settings_none_removed', __( 'None of the specified settings were found in the collection, so none were removed.', 'make' ) );
 		} else {
 			return $this->settings;
 		}
@@ -402,7 +402,7 @@ abstract class TTFMAKE_Utils_Settings {
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
 	 *
-	 * @return mixed|null
+	 * @return mixed|WP_Error
 	 */
 	public function sanitize_value( &$value, $setting_id, $context = '' ) {
 		$sanitized_value = $this->undefined;
@@ -415,6 +415,8 @@ abstract class TTFMAKE_Utils_Settings {
 				( is_array( $callback ) && method_exists( $callback[0], $callback[1] ) && is_callable( $callback ) )
 			) {
 				$sanitized_value = call_user_func_array( $callback, (array) $value );
+			} else {
+				return new WP_Error( 'make_settings_sanitize_value_callback_not_valid', sprintf( __( 'The sanitize callback for %s is not valid.', 'make' ), esc_html( $setting_id ) ) );
 			}
 		}
 
