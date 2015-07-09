@@ -11,7 +11,6 @@
  * This is an abstract class, so it is unusable on its own. It must be extended by another class.
  *
  * The extending class is required to define the following methods:
- * - load
  * - set_value
  * - unset_value
  * - get_raw_value
@@ -33,13 +32,13 @@ abstract class TTFMAKE_Utils_Settings {
 	protected $settings = array();
 
 	/**
-	 * The collection of choice sets.
+	 * An instance of the choices class.
 	 *
 	 * @since 1.x.x.
 	 *
-	 * @var array
+	 * @var object
 	 */
-	protected $choices = array();
+	protected $choices = null;
 
 	/**
 	 * The value returned for an undefined setting.
@@ -73,6 +72,8 @@ abstract class TTFMAKE_Utils_Settings {
 
 	/**
 	 * Initialize the object.
+	 *
+	 * @since 1.x.x.
 	 */
 	final function __construct() {
 		$this->load();
@@ -80,11 +81,10 @@ abstract class TTFMAKE_Utils_Settings {
 		/**
 		 * Action fires after the settings object's load method has been called.
 		 *
-		 * This action gives a developer the opportunity to run additional load routines
-		 * after the default ones have completed. For example, they could add additional
-		 * settings definitions or remove unneeded ones.
+		 * This action gives a developer the opportunity add or modify setting definitions
+		 * and run additional load routines.
 		 *
-		 * Note that the hook contains the object's type parameter. So it use it, the
+		 * Note that the hook contains the object's type parameter. To use it, the
 		 * particular type of settings needs to be indicated, e.g. `make_settings_theme_mods_loaded`.
 		 *
 		 * @since 1.x.x.
@@ -95,17 +95,16 @@ abstract class TTFMAKE_Utils_Settings {
 	}
 
 	/**
-	 * Load the initial definitions for settings and choices.
-	 *
-	 * Must be defined by the child class.
-	 * - Should use the add_settings method.
-	 * - Should use the add_choices method if choices are necessary.
+	 * Set up the object.
 	 *
 	 * @since 1.x.x.
 	 *
-	 * @return mixed
+	 * @return void
 	 */
-	abstract protected function load();
+	protected function load() {
+		// Inject the choices class.
+		$this->choices = new TTFMAKE_Utils_Choices();
+	}
 
 	/**
 	 * Add settings definitions to the collection.
@@ -238,79 +237,6 @@ abstract class TTFMAKE_Utils_Settings {
 	}
 
 	/**
-	 * Add choice sets to the collection.
-	 *
-	 * Each choice set is an item in an associative array.
-	 * The item's array key is the choice ID. The item value is another
-	 * associative array that contains individual choices where the key
-	 * is the HTML option value and the value is the HTML option label.
-	 *
-	 * Example:
-	 * array(
-	 *     'horizontal-alignment' => array(
-	 *         'left'   => __( 'Left', 'make' ),
-	 *         'center' => __( 'Center', 'make' ),
-	 *         'right'  => __( 'Right', 'make' ),
-	 *     ),
-	 * )
-	 *
-	 * @since 1.x.x.
-	 *
-	 * @param          $choices      Array of choice sets to add.
-	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
-	 *
-	 * @return array|bool            The modified array of choices if successful, otherwise false.
-	 */
-	public function add_choices( $choices, $overwrite = false ) {
-		$choices = (array) $choices;
-		$existing_ids = array_keys( $this->choices );
-		$new_choices = array();
-
-		// Validate each choices set before adding it.
-		foreach ( $choices as $choice_id => $choice_set ) {
-			$choice_id = sanitize_key( $choice_id );
-
-			if (
-				is_array( $choice_set )
-				&&
-				( ! isset( $existing_ids[ $choice_id ] ) || true === $overwrite )
-			) {
-				$new_choices[ $choice_id ] = $choice_set;
-			}
-		}
-
-		// If no choices sets were valid, return false.
-		if ( empty( $new_choices ) ) {
-			return false;
-		}
-
-		// Add the valid new choices sets to the existing choices array.
-		$this->choices = array_merge( $this->choices, $new_choices );
-
-		return $this->choices;
-	}
-
-	/**
-	 * Get a particular choice set, using the set ID.
-	 *
-	 * @since 1.x.x.
-	 *
-	 * @param  string    $choice_id    The ID of the choice set to retrieve.
-	 *
-	 * @return array                   The array of choices.
-	 */
-	public function get_choices( $choice_id ) {
-		$all_choices = $this->choices;
-		$choices = array();
-
-		if ( isset( $all_choices[ $choice_id ] ) ) {
-			$choices = $all_choices[ $choice_id ];
-		}
-
-		return $choices;
-	}
-
-	/**
 	 * Set a new value for a particular setting.
 	 *
 	 * Must be defined by the child class.
@@ -325,7 +251,6 @@ abstract class TTFMAKE_Utils_Settings {
 	 * @return bool                     True if value was successfully set.
 	 */
 	abstract function set_value( $setting_id, $value );
-
 
 	/**
 	 * Unset the value for a particular setting.
@@ -358,7 +283,7 @@ abstract class TTFMAKE_Utils_Settings {
 	/**
 	 * Get the current value of a setting. Sanitize it first.
 	 *
-	 * This will return the default value for the settting if nothing is stored yet.
+	 * This will return the default value for the setting if nothing is stored yet.
 	 *
 	 * @since 1.x.x.
 	 *
