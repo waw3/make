@@ -418,6 +418,15 @@ abstract class TTFMAKE_Utils_Settings {
 			}
 		}
 
-		return $sanitized_value;
+		/**
+		 * Filter the sanitized value for a particular setting.
+		 *
+		 * @since 1.x.x.
+		 *
+		 * @param string|array    $default_value    The default value of the setting.
+		 * @param string          $setting_id       The id of the setting.
+		 * @param  string         $context          Optional. The context in which a setting needs to be sanitized.
+		 */
+		return apply_filters( "make_settings_{$this->type}_sanitized_value", $sanitized_value, $setting_id, $context );
 	}
 }
