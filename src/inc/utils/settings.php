@@ -365,15 +365,19 @@ abstract class TTFMAKE_Utils_Settings {
 	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
+	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
 	 *
 	 * @return string|null
 	 */
-	public function get_sanitize_callback( $setting_id ) {
+	public function get_sanitize_callback( $setting_id, $context = '' ) {
 		$callback = $this->undefined;
 
 		if ( isset( $this->settings[ $setting_id ] ) ) {
 			$setting = $this->settings[ $setting_id ];
-			if ( isset( $setting['sanitize'] ) ) {
+
+			if ( $context && isset( $setting[ 'sanitize_' . $context ] ) ) {
+				$callback = $setting[ 'sanitize_' . $context ];
+			} else if ( isset( $setting['sanitize'] ) ) {
 				$callback = $setting['sanitize'];
 			}
 		}
@@ -396,14 +400,15 @@ abstract class TTFMAKE_Utils_Settings {
 	 *
 	 * @param  mixed     $value         The value to sanitize.
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
+	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
 	 *
 	 * @return mixed|null
 	 */
-	public function sanitize_value( &$value, $setting_id ) {
+	public function sanitize_value( &$value, $setting_id, $context = '' ) {
 		$sanitized_value = $this->undefined;
 
 		if ( isset( $this->settings[ $setting_id ] ) ) {
-			$callback = $this->get_sanitize_callback( $setting_id );
+			$callback = $this->get_sanitize_callback( $setting_id, $context );
 			if (
 				( is_string( $callback ) && function_exists( $callback ) && is_callable( $callback ) )
 				||
