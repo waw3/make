@@ -325,11 +325,9 @@ abstract class TTFMAKE_Utils_Settings {
 	public function get_default( $setting_id ) {
 		$default_value = $this->undefined;
 
-		if ( isset( $this->settings[ $setting_id ] ) ) {
-			$setting = $this->settings[ $setting_id ];
-			if ( isset( $setting['default'] ) ) {
-				$default_value = $setting['default'];
-			}
+		$defaults = $this->get_settings( 'default' );
+		if ( isset( $defaults[ $setting_id ] ) ) {
+			$default_value = $defaults[ $setting_id ];
 		}
 
 		/**
