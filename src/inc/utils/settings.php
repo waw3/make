@@ -131,17 +131,17 @@ abstract class TTFMAKE_Utils_Settings {
 	 */
 	public function add_settings( $settings, $overwrite = false ) {
 		$settings = (array) $settings;
-		$existing_ids = array_keys( $this->settings );
+		$existing_settings = $this->settings;
 		$new_settings = array();
 
 		// Check each setting definition for required properties before adding it.
 		foreach ( $settings as $setting_id => $setting_props ) {
-			$setting_id = sanitize_title_with_dashes( $setting_id );
+			$setting_id = sanitize_key( $setting_id );
 
 			if (
 				$this->has_required_properties( $setting_props )
 				&&
-				( ! isset( $existing_ids[ $setting_id ] ) || true === $overwrite )
+				( ! isset( $existing_settings[ $setting_id ] ) || true === $overwrite )
 			) {
 				$new_settings[ $setting_id ] = $setting_props;
 			}
@@ -153,7 +153,7 @@ abstract class TTFMAKE_Utils_Settings {
 		}
 
 		// Add the valid new settings to the existing settings array.
-		$this->settings = array_merge( $this->settings, $new_settings );
+		$this->settings = array_merge( $existing_settings, $new_settings );
 
 		return $this->settings;
 	}
@@ -268,7 +268,7 @@ abstract class TTFMAKE_Utils_Settings {
 
 		// Validate each choices set before adding it.
 		foreach ( $choices as $choice_id => $choice_set ) {
-			$choice_id = sanitize_title_with_dashes( $choice_id );
+			$choice_id = sanitize_key( $choice_id );
 
 			if (
 				is_array( $choice_set )
