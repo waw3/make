@@ -148,7 +148,7 @@ abstract class TTFMAKE_Utils_Settings {
 
 		// If no settings were valid, return error.
 		if ( empty( $new_settings ) ) {
-			return new WP_Error( 'make_settings_add_settings_no_valid_settings', __( 'No valid settings definitions were found to add.', 'make' ) );
+			return new WP_Error( 'make_settings_add_settings_no_valid_settings', __( 'No valid settings definitions were found to add.', 'make' ), $settings );
 		}
 
 		// Add the valid new settings to the existing settings array.
@@ -211,7 +211,7 @@ abstract class TTFMAKE_Utils_Settings {
 
 		if ( empty( $removed_ids ) ) {
 			// No settings were removed.
-			return new WP_Error( 'make_settings_remove_settings_none_removed', __( 'None of the specified settings were found in the collection, so none were removed.', 'make' ) );
+			return new WP_Error( 'make_settings_remove_settings_none_removed', __( 'None of the specified settings were found in the collection, so none were removed.', 'make' ), $setting_ids );
 		} else {
 			return $this->settings;
 		}
@@ -414,7 +414,7 @@ abstract class TTFMAKE_Utils_Settings {
 			) {
 				$sanitized_value = call_user_func_array( $callback, (array) $value );
 			} else {
-				return new WP_Error( 'make_settings_sanitize_value_callback_not_valid', sprintf( __( 'The sanitize callback for %s is not valid.', 'make' ), esc_html( $setting_id ) ) );
+				return new WP_Error( 'make_settings_sanitize_value_callback_not_valid', sprintf( __( 'The sanitize callback for %s is not valid.', 'make' ), esc_html( $setting_id ) ), array( $setting_id, $context, $callback ) );
 			}
 		}
 

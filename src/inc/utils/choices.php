@@ -72,7 +72,7 @@ class TTFMAKE_Utils_Choices {
 	 * @param          $sets         Array of choice sets to add.
 	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
 	 *
-	 * @return array|bool            The modified array of choices if successful, otherwise false.
+	 * @return array|WP_Error        The modified array of choices if successful, otherwise an error object.
 	 */
 	public function add_choice_sets( $sets, $overwrite = false ) {
 		$sets = (array) $sets;
@@ -94,7 +94,7 @@ class TTFMAKE_Utils_Choices {
 
 		// If no choices sets were valid, return false.
 		if ( empty( $new_sets ) ) {
-			return false;
+			return new WP_Error( 'make_choices_add_choice_sets_no_valid_sets', __( 'No valid choice sets were found to add.', 'make' ), $sets );
 		}
 
 		// Add the valid new choices sets to the existing choices array.
@@ -110,7 +110,7 @@ class TTFMAKE_Utils_Choices {
 	 *
 	 * @param  array|string    $set_ids    The array of choice sets to remove, or 'all'.
 	 *
-	 * @return array|bool                  The modified array of choice sets if successful, otherwise false.
+	 * @return array|WP_Error              The modified array of choice sets if successful, otherwise an error object.
 	 */
 	public function remove_choice_sets( $set_ids ) {
 		if ( 'all' === $set_ids ) {
@@ -132,7 +132,7 @@ class TTFMAKE_Utils_Choices {
 
 		if ( empty( $removed_ids ) ) {
 			// No choice sets were removed.
-			return false;
+			return new WP_Error( 'make_choices_remove_choice_sets_none_removed', __( 'None of the specified choice sets were found in the collection, so none were removed.', 'make' ), $set_ids );
 		} else {
 			return $this->choice_sets;
 		}
@@ -178,7 +178,7 @@ class TTFMAKE_Utils_Choices {
 	 */
 	public function get_choice_label( $set_id, $choice ) {
 		if ( ! $this->is_valid_choice( $set_id, $choice ) ) {
-			return false;
+			return new WP_Error( 'make_choices_get_choice_label_not_valid_choice', __( 'The specified choice is not valid.', 'make' ), array( $set_id, $choice ) );
 		}
 
 		$choices = $this->get_choice_set( $set_id );
