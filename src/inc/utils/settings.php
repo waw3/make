@@ -288,18 +288,25 @@ abstract class TTFMAKE_Utils_Settings {
 	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
+	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
 	 *
 	 * @return mixed|null
 	 */
-	public function get_value( $setting_id ) {
-		$sanitized_value = $this->undefined;
+	public function get_value( $setting_id, $context = '' ) {
+		$value = $this->undefined;
 
 		if ( isset( $this->settings[ $setting_id ] ) ) {
 			$raw_value = $this->get_raw_value( $setting_id );
-			if ( $this->undefined === $raw_value ) {
-				$raw_value = $this->get_default( $setting_id );
+			$sanitized_value = $this->sanitize_value( $raw_value, $setting_id, $context );
+
+			if ( ! is_wp_error( $sanitized_value ) ) {
+				$value = $sanitized_value;
 			}
-			$sanitized_value = $this->sanitize_value( $raw_value, $setting_id );
+		}
+
+		// Use the default if the value is still undefined.
+		if ( $this->undefined === $value ) {
+			$value = $this->get_default( $setting_id );
 		}
 
 		/**
@@ -309,8 +316,9 @@ abstract class TTFMAKE_Utils_Settings {
 		 *
 		 * @param string|array    $value         The current value of the setting.
 		 * @param string          $setting_id    The id of the setting.
+		 * @param string          $context       Optional. The context in which a setting needs to be sanitized.
 		 */
-		return apply_filters( "make_settings_{$this->type}_current_value", $sanitized_value, $setting_id );
+		return apply_filters( "make_settings_{$this->type}_current_value", $value, $setting_id, $context );
 	}
 
 	/**
