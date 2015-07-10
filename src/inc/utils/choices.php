@@ -199,4 +199,23 @@ class TTFMAKE_Utils_Choices {
 		$choices = $this->get_choice_set( $set_id );
 		return isset( $choices[ $choice ] );
 	}
+
+	/**
+	 * Sanitize a value from a list of allowed values in a choice set.
+	 *
+	 * @since 1.x.x.
+	 *
+	 * @param  mixed     $value      The value given to sanitize.
+	 * @param  string    $set_id     The ID of the choice set to search for the given value.
+	 * @param  mixed     $default    The value to return if the given value is not valid.
+	 *
+	 * @return mixed                 The sanitized value.
+	 */
+	public function sanitize_choice( $value, $set_id, $default = '' ) {
+		if ( true === $this->is_valid_choice( $set_id, $value ) ) {
+			return $value;
+		} else {
+			return $default;
+		}
+	}
 }
