@@ -4,15 +4,17 @@
  */
 
 /**
- * Class MAKE_Settings_Theme_Mods
+ * Class TTFMAKE_Customizer_Settings
  *
+ * A child class of TTFMAKE_Utils_Settings for defining and managing Customizer settings and their values
  *
+ * @since 1.x.x.
  */
-class MAKE_Settings_Theme_Mods extends MAKE_Settings {
+class TTFMAKE_Customizer_Settings extends TTFMAKE_Utils_Settings {
 	/**
 	 * The type of settings.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @var string
 	 */
@@ -26,7 +28,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	/**
 	 * Set a new value for a particular theme_mod setting.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to set.
 	 * @param  mixed     $value         The value to assign to the theme_mod.
@@ -36,8 +38,8 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	public function set_value( $setting_id, $value ) {
 		if ( isset( $this->settings[ $setting_id ] ) ) {
 			// Sanitize the value before saving it.
-			$sanitized_value = $this->sanitize_value( $value, $setting_id );
-			if ( $this->undefined !== $sanitized_value ) {
+			$sanitized_value = $this->sanitize_value( $value, $setting_id, 'database' );
+			if ( ! is_wp_error( $sanitized_value ) && $this->undefined !== $sanitized_value ) {
 				// This function doesn't return anything, so we assume success here.
 				set_theme_mod( $setting_id, $sanitized_value );
 				return true;
@@ -50,7 +52,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	/**
 	 * Remove a particular theme_mod setting.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to remove.
 	 *
@@ -69,7 +71,7 @@ class MAKE_Settings_Theme_Mods extends MAKE_Settings {
 	/**
 	 * Get the stored value of a theme_mod, unaltered.
 	 *
-	 * @since 1.6.0.
+	 * @since 1.x.x.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to retrieve.
 	 *
