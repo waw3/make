@@ -509,7 +509,7 @@ function ttfmake_head_late() {
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 	// Core Site Icon option overrides Make's deprecated Favicon and Apple Touch Icon settings
-	if ( false !== get_option( 'site_icon', false ) ) :
+	if ( false === get_option( 'site_icon', false ) ) :
 		// Favicon
 		$logo_favicon = get_theme_mod( 'logo-favicon', ttfmake_get_default( 'logo-favicon' ) );
 		if ( ! empty( $logo_favicon ) ) : ?>
