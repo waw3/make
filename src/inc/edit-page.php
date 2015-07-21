@@ -26,7 +26,7 @@ function ttfmake_edit_page_script() {
 		'ttfmake-admin-edit-page',
 		'ttfmakeEditPageData',
 		array(
-			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
+			'featuredImage' => __( 'Note: the Builder Template does not display a featured image.', 'make' ),
 			'pageNow'       => esc_js( $pagenow ),
 		)
 	);
