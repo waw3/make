@@ -93,14 +93,7 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 			'logo-icons-text'      => array(
 				'control' => array(
 					'control_type' => 'TTFMAKE_Customize_Misc_Control',
-					'description'   => sprintf(
-						__( 'These options have been deprecated in favor of the Site Icon setting in WordPress core. Please visit %s to configure your site icon.', 'make' ),
-						sprintf(
-							'<a href="%1$s">%2$s</a>',
-							esc_url( admin_url( 'options-general.php' ) ),
-							__( 'General Settings', 'make' )
-						)
-					),
+					'description'   => __( 'These options have been deprecated in favor of the Site Icon setting in WordPress core. Please visit the Site Identity section to configure your site icon.', 'make' ),
 					'type'  => 'text',
 				),
 			),
