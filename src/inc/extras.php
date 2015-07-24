@@ -319,7 +319,7 @@ function ttfmake_has_sidebar( $location ) {
 	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttfmake_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
 
 	// Builder template doesn't support sidebars
-	if ( 'page' === $view && 'template-builder.php' === get_page_template_slug() ) {
+	if ( 'template-builder.php' === get_page_template_slug() ) {
 		$show_sidebar = false;
 	}
 
