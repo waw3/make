@@ -142,9 +142,12 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  * @return void
  */
 function ttfmake_setup() {
-	// Attempt to load text domain from child theme first
-	if ( ! load_theme_textdomain( 'make', get_stylesheet_directory() . '/languages' ) ) {
-		load_theme_textdomain( 'make', get_template_directory() . '/languages' );
+	// Load translation strings
+	load_theme_textdomain( 'make', get_template_directory() . '/languages' );
+
+	// Load translation strings from a child theme
+	if ( is_child_theme() ) {
+		load_theme_textdomain( 'make', get_stylesheet_directory() . '/languages' );
 	}
 
 	// Feed links
