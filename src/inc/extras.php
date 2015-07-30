@@ -571,6 +571,8 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 	 * @param array    $icons    The array of supported social icons.
 	 */
 	$supported_icons = apply_filters( 'make_supported_social_icons', array(
+		'500px.com'          => 'fa-500px',
+		'amazon.com'         => 'fa-amazon',
 		'angel.co'           => 'fa-angellist',
 		'app.net'            => 'fa-adn',
 		'behance.net'        => 'fa-behance',
@@ -586,12 +588,14 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'github.com'         => 'fa-github',
 		'gittip.com'         => 'fa-gittip',
 		'plus.google.com'    => 'fa-google-plus-square',
+		'houzz.com'          => 'fa-houzz',
 		'instagram.com'      => 'fa-instagram',
 		'jsfiddle.net'       => 'fa-jsfiddle',
 		'last.fm'            => 'fa-lastfm',
 		'leanpub.com'        => 'fa-leanpub',
 		'linkedin.com'       => 'fa-linkedin',
 		'medium.com'         => 'fa-medium',
+		'ok.ru'              => 'fa-odnoklassniki',
 		'pinterest.com'      => 'fa-pinterest',
 		'qzone.qq.com'       => 'fa-qq',
 		'reddit.com'         => 'fa-reddit',
