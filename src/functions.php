@@ -42,6 +42,8 @@ function ttfmake_require_files() {
 		get_template_directory() . '/inc/activation.php',
 		// Compatibility
 		get_template_directory() . '/inc/compatibility.php',
+		// Localization
+		get_template_directory() . '/inc/l10n.php',
 		// Customizer
 		get_template_directory() . '/inc/customizer/bootstrap.php',
 		// Gallery slider
@@ -143,12 +145,7 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  */
 function ttfmake_setup() {
 	// Load translation strings
-	load_theme_textdomain( 'make', get_template_directory() . '/languages' );
-
-	// Load translation strings from a child theme
-	if ( is_child_theme() ) {
-		load_theme_textdomain( 'make', get_stylesheet_directory() . '/languages' );
-	}
+	ttfmake_load_textdomains();
 
 	// Feed links
 	add_theme_support( 'automatic-feed-links' );
