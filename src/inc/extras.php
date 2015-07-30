@@ -88,7 +88,7 @@ function ttfmake_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', 'make' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'make' ), max( $paged, $page ) );
 	}
 
 	return $title;
@@ -366,13 +366,13 @@ function ttfmake_sidebar_description( $sidebar_id ) {
 
 		// Not enabled anywhere
 		if ( empty( $enabled_views ) ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Content & Layout" panel of the Customizer.', 'make' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" panel of the Customizer.', 'make' );
 		}
 		// List enabled views
 		else {
 			$description = sprintf(
-				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Content & Layout" panel of the Customizer.', 'make' ),
-				esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
+				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" panel of the Customizer.', 'make' ),
+				implode( _x( ', ', 'list item separator', 'make' ), $enabled_views )
 			);
 		}
 	}

@@ -422,10 +422,10 @@ function ttfmake_customizer_scripts() {
 	// Add localization strings
 	if ( ! ttfmake_is_plus() ) {
 		$localize = array(
-			'chosen_no_results_default' => __( 'No results match', 'make' ),
-			'chosen_no_results_fonts'   => __( 'No matching fonts', 'make' ),
+			'chosen_no_results_default' => esc_html__( 'No results match', 'make' ),
+			'chosen_no_results_fonts'   => esc_html__( 'No matching fonts', 'make' ),
 			'plusURL'			        => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-			'plusLabel'		        	=> __( 'Upgrade to Make Plus', 'make' ),
+			'plusLabel'		        	=> esc_html__( 'Upgrade to Make Plus', 'make' ),
 		);
 		$data = $data + $localize;
 	}

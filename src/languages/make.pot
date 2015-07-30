@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Make 1.6.1\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-06-20 03:40:59+00:00\n"
+"POT-Creation-Date: 2015-07-30 01:08:00+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,11 +21,13 @@ msgstr ""
 msgid "Maybe try searching this website:"
 msgstr ""
 
-#: comments.php:24 comments.php:40
+#: comments.php:25 comments.php:41
+#. Translators: this string appears as the title of the Comments section of a
+#. post.
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:49
+#: comments.php:50
 msgid "Comments are closed."
 msgstr ""
 
@@ -742,35 +744,35 @@ msgid "Main Column"
 msgstr ""
 
 #: inc/customizer/sections/background-images.php:77
-#: inc/customizer/sections/background.php:37
+#: inc/customizer/sections/background.php:42
 msgid "Background Image"
 msgstr ""
 
 #: inc/customizer/sections/background-images.php:86
-#: inc/customizer/sections/background.php:39
+#: inc/customizer/sections/background.php:44
 msgid "Repeat"
 msgstr ""
 
 #: inc/customizer/sections/background-images.php:97
-#: inc/customizer/sections/background.php:54
+#: inc/customizer/sections/background.php:59
 msgid "Position"
 msgstr ""
 
 #: inc/customizer/sections/background-images.php:108
-#: inc/customizer/sections/background.php:65
+#: inc/customizer/sections/background.php:70
 msgid "Attachment"
 msgstr ""
 
 #: inc/customizer/sections/background-images.php:120
-#: inc/customizer/sections/background.php:77
+#: inc/customizer/sections/background.php:82
 msgid "Size"
 msgstr ""
 
-#: inc/customizer/sections/background.php:23
+#: inc/customizer/sections/background.php:28
 msgid "Site Background Color"
 msgstr ""
 
-#: inc/customizer/sections/background.php:30
+#: inc/customizer/sections/background.php:35
 msgid "Site"
 msgstr ""
 
@@ -1207,116 +1209,127 @@ msgstr ""
 msgid "The Retina Logo should be twice the size of the Regular Logo."
 msgstr ""
 
-#: inc/customizer/sections/general.php:60
+#: inc/customizer/sections/general.php:65
 msgid "Favicon"
 msgstr ""
 
-#: inc/customizer/sections/general.php:61
+#: inc/customizer/sections/general.php:66
 msgid ""
 "File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal "
 "dimensions: <strong>32px x 32px</strong>."
 msgstr ""
 
-#: inc/customizer/sections/general.php:72
+#: inc/customizer/sections/general.php:77
 msgid "Apple Touch Icon"
 msgstr ""
 
-#: inc/customizer/sections/general.php:73
+#: inc/customizer/sections/general.php:78
 msgid ""
 "File must be <strong>.png</strong> format. Optimal dimensions: "
 "<strong>152px x 152px</strong>."
 msgstr ""
 
-#: inc/customizer/sections/general.php:92
+#: inc/customizer/sections/general.php:89
+msgid "Favicon & Apple Touch Icon"
+msgstr ""
+
+#: inc/customizer/sections/general.php:96
+msgid ""
+"These options have been deprecated in favor of the Site Icon setting in "
+"WordPress core. Please visit the Site Identity section to configure your "
+"site icon."
+msgstr ""
+
+#: inc/customizer/sections/general.php:115
 msgid "Labels"
 msgstr ""
 
-#: inc/customizer/sections/general.php:102
+#: inc/customizer/sections/general.php:124
 msgid "Mobile Menu Label"
 msgstr ""
 
-#: inc/customizer/sections/general.php:103
+#: inc/customizer/sections/general.php:125
 msgid "Resize your browser window to preview the mobile menu label."
 msgstr ""
 
-#: inc/customizer/sections/general.php:113
+#: inc/customizer/sections/general.php:135
 msgid "Sticky Label"
 msgstr ""
 
-#: inc/customizer/sections/general.php:129
+#: inc/customizer/sections/general.php:151
 msgid "Read More Label"
 msgstr ""
 
-#: inc/customizer/sections/general.php:141
+#: inc/customizer/sections/general.php:163
 msgid "Social Profiles"
 msgstr ""
 
-#: inc/customizer/sections/general.php:142
+#: inc/customizer/sections/general.php:164
 msgid ""
 "Enter the complete URL to your profile for each service below that you "
 "would like to share."
 msgstr ""
 
-#: inc/customizer/sections/general.php:230
+#: inc/customizer/sections/general.php:252
 msgid ""
 "If you would like to add a social profile that is not listed above, or "
 "change the order of the icons, create a custom menu %s."
 msgstr ""
 
-#: inc/customizer/sections/general.php:233
+#: inc/customizer/sections/general.php:255
 msgid "as described here"
 msgstr ""
 
-#: inc/customizer/sections/general.php:246 inc/extras.php:471
+#: inc/customizer/sections/general.php:268 inc/extras.php:471
 msgid "Email"
 msgstr ""
 
-#: inc/customizer/sections/general.php:247
+#: inc/customizer/sections/general.php:269
 msgid ""
 "Enter an email address to add an email icon link to your social profile "
 "icons."
 msgstr ""
 
-#: inc/customizer/sections/general.php:266 inc/extras.php:475
+#: inc/customizer/sections/general.php:288 inc/extras.php:475
 msgid "RSS"
 msgstr ""
 
-#: inc/customizer/sections/general.php:267
+#: inc/customizer/sections/general.php:289
 msgid "If configured, an RSS icon will appear with your social profile icons."
 msgstr ""
 
-#: inc/customizer/sections/general.php:273
+#: inc/customizer/sections/general.php:295
 msgid "Default RSS"
 msgstr ""
 
-#: inc/customizer/sections/general.php:281
+#: inc/customizer/sections/general.php:303
 msgid "Hide default RSS feed link"
 msgstr ""
 
-#: inc/customizer/sections/general.php:290
+#: inc/customizer/sections/general.php:312
 msgid "Custom RSS URL (replaces default)"
 msgstr ""
 
-#: inc/customizer/sections/general.php:309
+#: inc/customizer/sections/general.php:331
 msgid "White Label"
 msgstr ""
 
-#: inc/customizer/sections/general.php:310
+#: inc/customizer/sections/general.php:332
 msgid "Want to remove the theme byline from your website&#8217;s footer?"
 msgstr ""
 
-#: inc/customizer/sections/general.php:320
+#: inc/customizer/sections/general.php:342
 #: inc/customizer/sections/typography.php:217
 msgid "Upgrade to %1$s"
 msgstr ""
 
-#: inc/customizer/sections/navigation.php:36
+#: inc/customizer/sections/navigation.php:22
 msgid ""
 "After you have created your custom menu for social profile links, select it "
 "here."
 msgstr ""
 
-#: inc/customizer/sections/navigation.php:51
+#: inc/customizer/sections/navigation.php:58
 msgid ""
 "Select which menu appears in each location. You can edit your menu content "
 "on the Menus screen in the Appearance section."
@@ -1491,9 +1504,7 @@ msgid "Loading&hellip;"
 msgstr ""
 
 #: inc/edit-page.php:29
-msgid ""
-"Featured images are not available for this page while using the current "
-"page template."
+msgid "Note: the Builder Template does not display a featured image."
 msgstr ""
 
 #: inc/edit-page.php:64
@@ -1834,8 +1845,24 @@ msgid_plural "%s results found"
 msgstr[0] ""
 msgstr[1] ""
 
+#: searchform.php:9
+#. Translators: this string is a label for a search input that is only visible
+#. to screen readers
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:10
+#. Translators: this string is in the placeholder attribute of the search input
+msgid "Search&hellip;"
+msgstr ""
+
 #: searchform.php:10
 msgid "Press Enter to submit your search"
+msgstr ""
+
+#: searchform.php:12
+#. Translators: this string is the label on the search submit button
+msgid "Search"
 msgstr ""
 
 #. Theme Name of the plugin/theme
@@ -1872,13 +1899,6 @@ msgstr ""
 #. Template Name of the plugin/theme
 msgid "Builder Template"
 msgstr ""
-
-#: comments.php:16
-msgctxt "comments title"
-msgid "One comment"
-msgid_plural "%1$s comments"
-msgstr[0] ""
-msgstr[1] ""
 
 #: inc/builder/sections/section-definitions.php:73
 msgctxt "section name"
@@ -2073,19 +2093,4 @@ msgstr ""
 #: partials/section-title.php:37
 msgctxt "yearly archives date format"
 msgid "Y"
-msgstr ""
-
-#: searchform.php:9
-msgctxt "label"
-msgid "Search for:"
-msgstr ""
-
-#: searchform.php:10
-msgctxt "placeholder"
-msgid "Search&hellip;"
-msgstr ""
-
-#: searchform.php:12
-msgctxt "submit button"
-msgid "Search"
 msgstr ""

@@ -113,7 +113,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	$general_sections['labels'] = array(
 		'panel'       => $panel,
 		'title'       => __( 'Labels', 'make' ),
-		//'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
 		'options'     => array(
 			'navigation-mobile-label' => array(
 				'setting' => array(
