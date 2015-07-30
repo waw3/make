@@ -389,9 +389,16 @@ function ttfmake_customizer_scripts() {
 		array(),
 		'1.3.0'
 	);
+
+	// Custom styling depends on version of WP
+	// Nav menu panel was introduced in 4.3
+	$suffix = '';
+	if ( ! class_exists( 'WP_Customize_Nav_Menus' ) ) {
+		$suffix = '-legacy';
+	}
 	wp_enqueue_style(
 		'ttfmake-customizer-sections',
-		get_template_directory_uri() . '/inc/customizer/css/customizer-sections.css',
+		get_template_directory_uri() . "/inc/customizer/css/customizer-sections{$suffix}.css",
 		array( 'ttfmake-customizer-jquery-ui', 'ttfmake-customizer-chosen' ),
 		TTFMAKE_VERSION
 	);
