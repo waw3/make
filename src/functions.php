@@ -187,8 +187,8 @@ function ttfmake_setup() {
 		$editor_styles[] = $google_request;
 	}
 
-	$editor_styles[] = 'css/font-awesome.css';
-	$editor_styles[] = 'css/editor-style.css';
+	$editor_styles[] = add_query_arg( 'ver', '4.4.0', esc_url( get_template_directory_uri() . '/css/font-awesome.css' ) );
+	$editor_styles[] = add_query_arg( 'ver', TTFMAKE_VERSION, esc_url( get_template_directory_uri() . '/css/editor-style.css' ) );
 
 	// Another editor stylesheet is added via ttfmake_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
@@ -329,7 +329,7 @@ function ttfmake_scripts() {
 		'ttfmake-font-awesome',
 		get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 		$style_dependencies,
-		'4.3.0'
+		'4.4.0'
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 
