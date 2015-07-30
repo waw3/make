@@ -4,6 +4,10 @@
 }
 span.description {
 	margin-bottom: 10px;
+	font-style: normal;
+}
+#customize-controls .description {
+	color: #999;
 }
 
 /* Misc control styles */
@@ -52,7 +56,7 @@ li .image.ui-buttonset label.ui-button {
 }
 .ttfmake-control-buttonset label,
 .ttfmake-control-background-position label {
-	border-color: #eee;
+	border-color: #fff;
 }
 .ttfmake-control-buttonset label.ui-state-default,
 .ttfmake-control-background-position label.ui-state-default {
@@ -142,8 +146,15 @@ li.customize-control.customize-control-range .ui-slider-handle {
 }
 li.customize-control.customize-control-range .ui-slider-horizontal {
 	height: .6em;
-	border-color: #eee;
-	background: #eee;
+	border-color: #fff;
+	background: #fff;
+}
+
+li.customize-control.customize-control-range .ui-slider-handle {
+	border-radius: 100%;
+}
+li.customize-control.customize-control-range .ui-slider-handle:hover {
+	cursor: pointer;
 }
 
 /* jQuery UI theme tweaks */
