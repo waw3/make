@@ -65,6 +65,8 @@ li .image.ui-buttonset label.ui-button {
 .ttfmake-control-buttonset label.ui-state-hover,
 .ttfmake-control-background-position label.ui-state-hover {
 	color: #0074a2;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, .25);
 }
 .ttfmake-control-buttonset label.ui-state-active,
 .ttfmake-control-background-position label.ui-state-active {
@@ -87,36 +89,43 @@ li .image.ui-buttonset label.ui-button {
 	height: 28px;
 	width: 28px;
 }
+.ttfmake-control-background-position label.ui-state-default:hover {
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, .25);
+}
+.ttfmake-control-background-position label.ui-state-active:hover {
+	background-color: #fff;
+}
 .ttfmake-control-background-position .choice-1 {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 0px;
 }
 .ttfmake-control-background-position .choice-2 {
-	border-left-color: #cccccc;
-	border-right-color: #cccccc;
+	border-left-color: transparent;
+	border-right-color: transparent;
 }
 .ttfmake-control-background-position .choice-3 {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 0px;
 }
 .ttfmake-control-background-position .choice-4 {
-	border-top-color: #cccccc;
-	border-bottom-color: #cccccc;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
 }
 .ttfmake-control-background-position .choice-5 {
-	border-color: #cccccc;
+	border-color: transparent;
 }
 .ttfmake-control-background-position .choice-6 {
-	border-top-color: #cccccc;
-	border-bottom-color: #cccccc;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
 }
 .ttfmake-control-background-position .choice-7 {
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 4px;
 }
 .ttfmake-control-background-position .choice-8 {
-	border-left-color: #cccccc;
-	border-right-color: #cccccc;
+	border-left-color: transparent;
+	border-right-color: transparent;
 }
 .ttfmake-control-background-position .choice-9 {
 	border-top-right-radius: 0px;
