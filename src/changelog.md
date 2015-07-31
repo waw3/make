@@ -4,6 +4,7 @@
   * Deprecate Make's Favicon and Apple Touch Icon options in favor of the new Site Icon option.
   * Adjust styling of Customizer sections.
 * Updated: Font Awesome icon library updated to version 4.4.0.
+* Updated: The latest list of Google fonts.
 * Improved: Pages using the Builder template can now set a featured image (though it will not render on the page by default).
 * Improved: Better handling of localization:
   * Parent and child themes have separate text domains.
