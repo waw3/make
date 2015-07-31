@@ -275,7 +275,9 @@ class TTFMAKE_Formatting {
 				'ttfmakeFormatBuilderVars',
 				array(
 					'userSettings' => array(
-						'fontSizeBody' => get_theme_mod( 'font-size-body', ttfmake_get_default( 'font-size-body' ) )
+						'fontSizeBody' => get_theme_mod( 'font-size-body', ttfmake_get_default( 'font-size-body' ) ),
+						'colorPrimary' => get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ),
+						'colorSecondary' => get_theme_mod( 'color-secondary', ttfmake_get_default( 'color-secondary' ) ),
 					)
 				)
 			);
