@@ -4,10 +4,12 @@
   * Deprecate Make's Favicon and Apple Touch Icon options in favor of the new Site Icon option.
   * Adjust styling of Customizer sections.
 * Updated: Font Awesome icon library updated to version 4.4.0.
+* Updated: The latest list of Google fonts.
 * Improved: Pages using the Builder template can now set a featured image (though it will not render on the page by default).
 * Improved: Better handling of localization:
   * Parent and child themes have separate text domains.
   * Translation files for the parent theme can be stored in the child theme directory to prevent loss during updates.
+  * Improved translator notes for some strings.
   * Ensure that all translated strings are escaped for security hardening.
 * Improved: The Format Builder now uses the Global color scheme for color defaults.
 * Bug fix: PHP fatal error in RSS feed when feed item contained embedded video.
