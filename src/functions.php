@@ -9,7 +9,7 @@
 define( 'TTFMAKE_VERSION', '1.6.2' );
 
 /**
- * The minimum version of WordPress required for Finder.
+ * The minimum version of WordPress required for Make.
  */
 define( 'TTFMAKE_MIN_WP_VERSION', '4.0' );
 
