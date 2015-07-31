@@ -8,6 +8,7 @@
 * Improved: Better handling of localization:
   * Parent and child themes have separate text domains.
   * Translation files for the parent theme can be stored in the child theme directory to prevent loss during updates.
+  * Improved translator notes for some strings.
   * Ensure that all translated strings are escaped for security hardening.
 * Improved: The Format Builder now uses the Global color scheme for color defaults.
 * Bug fix: PHP fatal error in RSS feed when feed item contained embedded video.
