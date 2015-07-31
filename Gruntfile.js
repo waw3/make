@@ -171,6 +171,9 @@ module.exports = function( grunt ) {
 			build: {
 				src: [ 'dist/temp' ]
 			},
+			oldZip: {
+				src: [ 'dist/make-*.zip' ]
+			},
 			assets: {
 				src: [ 'assets/temp' ]
 			}
@@ -392,6 +395,7 @@ module.exports = function( grunt ) {
 
 	// Package a new release
 	grunt.registerTask( 'package', [
+		'clean:oldZip',
 		'copy:build',
 		'compress:build',
 		'clean:build'
@@ -415,3 +419,4 @@ module.exports = function( grunt ) {
 		'clean:assets'
 	] );
 };
+

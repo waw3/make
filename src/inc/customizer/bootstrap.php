@@ -389,9 +389,16 @@ function ttfmake_customizer_scripts() {
 		array(),
 		'1.3.0'
 	);
+
+	// Custom styling depends on version of WP
+	// Nav menu panel was introduced in 4.3
+	$suffix = '';
+	if ( ! class_exists( 'WP_Customize_Nav_Menus' ) ) {
+		$suffix = '-legacy';
+	}
 	wp_enqueue_style(
 		'ttfmake-customizer-sections',
-		get_template_directory_uri() . '/inc/customizer/css/customizer-sections.css',
+		get_template_directory_uri() . "/inc/customizer/css/customizer-sections{$suffix}.css",
 		array( 'ttfmake-customizer-jquery-ui', 'ttfmake-customizer-chosen' ),
 		TTFMAKE_VERSION
 	);
@@ -422,10 +429,10 @@ function ttfmake_customizer_scripts() {
 	// Add localization strings
 	if ( ! ttfmake_is_plus() ) {
 		$localize = array(
-			'chosen_no_results_default' => __( 'No results match', 'make' ),
-			'chosen_no_results_fonts'   => __( 'No matching fonts', 'make' ),
+			'chosen_no_results_default' => esc_html__( 'No results match', 'make' ),
+			'chosen_no_results_fonts'   => esc_html__( 'No matching fonts', 'make' ),
 			'plusURL'			        => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-			'plusLabel'		        	=> __( 'Upgrade to Make Plus', 'make' ),
+			'plusLabel'		        	=> esc_html__( 'Upgrade to Make Plus', 'make' ),
 		);
 		$data = $data + $localize;
 	}
