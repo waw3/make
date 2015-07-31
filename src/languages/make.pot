@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.1\n"
+"Project-Id-Version: Make 1.6.2\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-07-30 01:08:00+00:00\n"
+"POT-Creation-Date: 2015-07-31 18:18:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,6 +12,26 @@ msgstr ""
 "Last-Translator: The Theme Foundry\n"
 "Language-Team: The Theme Foundry\n"
 "X-Generator: grunt-wp-i18n 0.4.9\n"
+
+#: inc/customizer/choices.php:188
+msgid "0"
+msgstr ""
+
+#: inc/customizer/choices.php:189
+msgid "1"
+msgstr ""
+
+#: inc/customizer/choices.php:190
+msgid "2"
+msgstr ""
+
+#: inc/customizer/choices.php:191
+msgid "3"
+msgstr ""
+
+#: inc/customizer/choices.php:192
+msgid "4"
+msgstr ""
 
 #: 404.php:12
 msgid "Oops! That page can&rsquo;t be found."
@@ -125,7 +145,7 @@ msgid "%s and get a quick start with pre-made designer builder templates."
 msgstr ""
 
 #: inc/builder/core/base.php:1055
-#: inc/builder/sections/builder-templates/text.php:27 inc/edit-page.php:96
+#: inc/builder/sections/builder-templates/text.php:27
 msgid "Upgrade to %s"
 msgstr ""
 
@@ -134,17 +154,16 @@ msgid "Get more."
 msgstr ""
 
 #: inc/builder/core/templates/menu.php:43
-msgid "Looking for more sections and options? %s."
+msgid "Looking for more sections and options? %s"
 msgstr ""
 
-#: inc/builder/core/templates/menu.php:47 inc/customizer/bootstrap.php:428
-#: inc/customizer/sections/stylekit.php:29
-msgid "Upgrade to Make Plus"
+#: inc/builder/core/templates/menu.php:47
+msgid "Upgrade to Make Plus."
 msgstr ""
 
 #: inc/builder/core/templates/overlay-configuration.php:4
-#: inc/builder/core/templates/section-header.php:21
 #: inc/builder/core/templates/section-header.php:22
+#: inc/builder/core/templates/section-header.php:23
 msgid "Configure section"
 msgstr ""
 
@@ -161,7 +180,7 @@ msgstr ""
 msgid "Delete section"
 msgstr ""
 
-#: inc/builder/core/templates/section-header.php:84
+#: inc/builder/core/templates/section-header.php:85
 msgid "Click to toggle"
 msgstr ""
 
@@ -290,6 +309,12 @@ msgstr ""
 msgid "Image link URL"
 msgstr ""
 
+#: inc/builder/sections/section-definitions.php:73
+#: inc/builder/sections/section-definitions.php:92
+#: inc/builder/sections/section-definitions.php:422
+msgid "Columns"
+msgstr ""
+
 #: inc/builder/sections/section-definitions.php:75
 msgid "Create rearrangeable columns of content and images."
 msgstr ""
@@ -298,11 +323,6 @@ msgstr ""
 #: inc/builder/sections/section-definitions.php:222
 #: inc/builder/sections/section-definitions.php:416
 msgid "Enter section title"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:92
-#: inc/builder/sections/section-definitions.php:422
-msgid "Columns"
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:104
@@ -329,6 +349,10 @@ msgstr ""
 #: inc/builder/sections/section-definitions.php:484
 #: inc/customizer/choices.php:157
 msgid "Cover"
+msgstr ""
+
+#: inc/builder/sections/section-definitions.php:210
+msgid "Banner"
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:212
@@ -391,6 +415,10 @@ msgstr ""
 
 #: inc/builder/sections/section-definitions.php:274
 msgid "Aspect"
+msgstr ""
+
+#: inc/builder/sections/section-definitions.php:404
+msgid "Gallery"
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:406
@@ -507,12 +535,16 @@ msgstr ""
 msgid "Sidebars & Widgets"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:425
+#: inc/customizer/bootstrap.php:432
 msgid "No results match"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:426
+#: inc/customizer/bootstrap.php:433
 msgid "No matching fonts"
+msgstr ""
+
+#: inc/customizer/bootstrap.php:435 inc/customizer/sections/stylekit.php:29
+msgid "Upgrade to Make Plus"
 msgstr ""
 
 #: inc/customizer/choices.php:43 inc/customizer/choices.php:65
@@ -677,6 +709,18 @@ msgstr ""
 
 #: inc/customizer/defaults.php:30
 msgid "Read more"
+msgstr ""
+
+#: inc/customizer/fonts.php:47
+msgid "Serif"
+msgstr ""
+
+#: inc/customizer/fonts.php:51
+msgid "Sans Serif"
+msgstr ""
+
+#: inc/customizer/fonts.php:55
+msgid "Monospaced"
 msgstr ""
 
 #: inc/customizer/fonts.php:219
@@ -1516,7 +1560,11 @@ msgid "Post"
 msgstr ""
 
 #: inc/edit-page.php:90
-msgid "Looking to configure a unique layout for this %1$s? %2$s."
+msgid "Looking to configure a unique layout for this %1$s? %2$s"
+msgstr ""
+
+#: inc/edit-page.php:96
+msgid "Upgrade to %s."
 msgstr ""
 
 #: inc/extras.php:91
@@ -1531,14 +1579,14 @@ msgstr ""
 
 #: inc/extras.php:369
 msgid ""
-"This widget area is currently disabled. Enable it in the \"Content & "
-"Layout\" panel of the Customizer."
+"This widget area is currently disabled. Enable it in the \"Layout\" panel "
+"of the Customizer."
 msgstr ""
 
 #: inc/extras.php:374
 msgid ""
 "This widget area is currently enabled for the following views: %s. Change "
-"this in the \"Content & Layout\" panel of the Customizer."
+"this in the \"Layout\" panel of the Customizer."
 msgstr ""
 
 #: inc/extras.php:397
@@ -1609,6 +1657,38 @@ msgstr ""
 msgid "none"
 msgstr ""
 
+#: inc/formatting/formatting.php:198
+msgid "solid"
+msgstr ""
+
+#: inc/formatting/formatting.php:199
+msgid "dotted"
+msgstr ""
+
+#: inc/formatting/formatting.php:200
+msgid "dashed"
+msgstr ""
+
+#: inc/formatting/formatting.php:201
+msgid "double"
+msgstr ""
+
+#: inc/formatting/formatting.php:202
+msgid "groove"
+msgstr ""
+
+#: inc/formatting/formatting.php:203
+msgid "ridge"
+msgstr ""
+
+#: inc/formatting/formatting.php:204
+msgid "inset"
+msgstr ""
+
+#: inc/formatting/formatting.php:205
+msgid "outset"
+msgstr ""
+
 #: inc/formatting/formatting.php:206
 msgid "Border Width (px)"
 msgstr ""
@@ -1623,6 +1703,14 @@ msgstr ""
 
 #: inc/formatting/formatting.php:210
 msgid "Open link in a new window/tab"
+msgstr ""
+
+#: inc/formatting/formatting.php:212
+msgid "normal"
+msgstr ""
+
+#: inc/formatting/formatting.php:213
+msgid "bold"
 msgstr ""
 
 #: inc/formatting/formatting.php:214
@@ -1709,19 +1797,19 @@ msgstr ""
 msgid "Choose a line style"
 msgstr ""
 
-#: inc/formatting/formatting.php:399
+#: inc/formatting/formatting.php:401
 msgid "Big"
 msgstr ""
 
-#: inc/formatting/formatting.php:404
+#: inc/formatting/formatting.php:406
 msgid "Small"
 msgstr ""
 
-#: inc/formatting/formatting.php:409
+#: inc/formatting/formatting.php:411
 msgid "Citation"
 msgstr ""
 
-#: inc/formatting/formatting.php:414
+#: inc/formatting/formatting.php:416
 msgid "Testimonial"
 msgstr ""
 
@@ -1749,8 +1837,47 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:66
+#: inc/template-tags.php:61
+#. Translators: this string is a verb whose subject is a comment author. e.g.
+#. Bob says: Hello.
+msgid "says:"
+msgstr ""
+
+#: inc/template-tags.php:67
 msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:385
+#. Translators: this string denotes a camera f-stop. e.g. f/3.5
+msgid "f/"
+msgstr ""
+
+#: inc/template-tags.php:404
+msgid "Camera:"
+msgstr ""
+
+#: inc/template-tags.php:410
+#. Translators: this string is the label for the date that a photo was taken
+#. on.
+msgid "Taken:"
+msgstr ""
+
+#: inc/template-tags.php:417
+msgid "Focal length:"
+msgstr ""
+
+#: inc/template-tags.php:423
+msgid "Aperture:"
+msgstr ""
+
+#: inc/template-tags.php:429
+msgid "Exposure:"
+msgstr ""
+
+#: inc/template-tags.php:435
+#. Translators: this string is an acronym that refers to a camera's sensitivity
+#. to light.
+msgid "ISO:"
 msgstr ""
 
 #: partials/content-attachment.php:11
@@ -1765,32 +1892,52 @@ msgstr ""
 msgid "Nothing found"
 msgstr ""
 
-#: partials/content-none.php:19
+#: partials/content-none.php:16
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: partials/content-none.php:25
+#: partials/content-none.php:18
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: partials/content-none.php:27
+#: partials/content-none.php:20
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
+msgstr ""
+
+#: partials/entry-author.php:27
+#. Translators: this string is an attribution of a post author. e.g. by Ernest
+#. Hemingway
+msgid "by %s"
+msgstr ""
+
+#: partials/entry-date.php:14
+#. Translators: this string indicates an amount of passed time. e.g. 5 minutes
+#. ago
+msgid "%s ago"
 msgstr ""
 
 #: partials/entry-pagination.php:12
 msgid "Pages:"
 msgstr ""
 
-#: partials/entry-taxonomy.php:21
+#: partials/entry-taxonomy.php:22
+#. Translators: this HTML markup will display an icon representing blog
+#. categories.
 msgid "<i class=\"fa fa-file\"></i> "
 msgstr ""
 
-#: partials/entry-taxonomy.php:26
+#: partials/entry-taxonomy.php:28
+#. Translators: this HTML markup will display an icon representing blog tags.
 msgid "<i class=\"fa fa-tag\"></i> "
+msgstr ""
+
+#: partials/footer-credit.php:27
+#. Translators: this string indicates attribution.
+msgid "by"
 msgstr ""
 
 #: partials/footer-credit.php:29
@@ -1847,12 +1994,13 @@ msgstr[1] ""
 
 #: searchform.php:9
 #. Translators: this string is a label for a search input that is only visible
-#. to screen readers
+#. to screen readers.
 msgid "Search for:"
 msgstr ""
 
 #: searchform.php:10
-#. Translators: this string is in the placeholder attribute of the search input
+#. Translators: this string is in the placeholder attribute of the search
+#. input.
 msgid "Search&hellip;"
 msgstr ""
 
@@ -1861,7 +2009,7 @@ msgid "Press Enter to submit your search"
 msgstr ""
 
 #: searchform.php:12
-#. Translators: this string is the label on the search submit button
+#. Translators: this string is the label on the search submit button.
 msgid "Search"
 msgstr ""
 
@@ -1900,114 +2048,9 @@ msgstr ""
 msgid "Builder Template"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:73
-msgctxt "section name"
-msgid "Columns"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:210
-msgctxt "section name"
-msgid "Banner"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:404
-msgctxt "section name"
-msgid "Gallery"
-msgstr ""
-
-#: inc/customizer/choices.php:188
-msgctxt "footer widget area number"
-msgid "0"
-msgstr ""
-
-#: inc/customizer/choices.php:189
-msgctxt "footer widget area number"
-msgid "1"
-msgstr ""
-
-#: inc/customizer/choices.php:190
-msgctxt "footer widget area number"
-msgid "2"
-msgstr ""
-
-#: inc/customizer/choices.php:191
-msgctxt "footer widget area number"
-msgid "3"
-msgstr ""
-
-#: inc/customizer/choices.php:192
-msgctxt "footer widget area number"
-msgid "4"
-msgstr ""
-
-#: inc/customizer/fonts.php:47
-msgctxt "font style"
-msgid "Serif"
-msgstr ""
-
-#: inc/customizer/fonts.php:51
-msgctxt "font style"
-msgid "Sans Serif"
-msgstr ""
-
-#: inc/customizer/fonts.php:55
-msgctxt "font style"
-msgid "Monospaced"
-msgstr ""
-
 #: inc/extras.php:375
 msgctxt "list item separator"
 msgid ", "
-msgstr ""
-
-#: inc/formatting/formatting.php:198
-msgctxt "border style"
-msgid "solid"
-msgstr ""
-
-#: inc/formatting/formatting.php:199
-msgctxt "border style"
-msgid "dotted"
-msgstr ""
-
-#: inc/formatting/formatting.php:200
-msgctxt "border style"
-msgid "dashed"
-msgstr ""
-
-#: inc/formatting/formatting.php:201
-msgctxt "border style"
-msgid "double"
-msgstr ""
-
-#: inc/formatting/formatting.php:202
-msgctxt "border style"
-msgid "groove"
-msgstr ""
-
-#: inc/formatting/formatting.php:203
-msgctxt "border style"
-msgid "ridge"
-msgstr ""
-
-#: inc/formatting/formatting.php:204
-msgctxt "border style"
-msgid "inset"
-msgstr ""
-
-#: inc/formatting/formatting.php:205
-msgctxt "border style"
-msgid "outset"
-msgstr ""
-
-#: inc/formatting/formatting.php:212
-msgctxt "font weight"
-msgid "normal"
-msgstr ""
-
-#: inc/formatting/formatting.php:213
-msgctxt "font weight"
-msgid "bold"
 msgstr ""
 
 #: inc/template-tags.php:44
@@ -2015,74 +2058,19 @@ msgctxt "1: date, 2: time"
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/template-tags.php:60
-msgctxt "e.g. Bob says hello."
-msgid "says:"
-msgstr ""
-
-#: inc/template-tags.php:358
-msgctxt "time"
+#: inc/template-tags.php:359
+msgctxt "time unit"
 msgid "second"
 msgstr ""
 
-#: inc/template-tags.php:364
-msgctxt "time"
+#: inc/template-tags.php:365
+msgctxt "time unit"
 msgid "seconds"
 msgstr ""
 
-#: inc/template-tags.php:383
-msgctxt "camera f-stop"
-msgid "f/"
-msgstr ""
-
-#: inc/template-tags.php:402
-msgctxt "camera setting"
-msgid "Camera:"
-msgstr ""
-
-#: inc/template-tags.php:408
-msgctxt "camera setting"
-msgid "Taken:"
-msgstr ""
-
-#: inc/template-tags.php:415
-msgctxt "camera setting"
-msgid "Focal length:"
-msgstr ""
-
-#: inc/template-tags.php:421
-msgctxt "camera setting"
-msgid "Aperture:"
-msgstr ""
-
-#: inc/template-tags.php:427
-msgctxt "camera setting"
-msgid "Exposure:"
-msgstr ""
-
-#: inc/template-tags.php:433
-msgctxt "camera setting"
-msgid "ISO:"
-msgstr ""
-
-#: inc/template-tags.php:416
+#: inc/template-tags.php:418
 msgctxt "millimeters"
 msgid "mm"
-msgstr ""
-
-#: partials/entry-author.php:26
-msgctxt "author byline"
-msgid "by %s"
-msgstr ""
-
-#: partials/entry-date.php:13
-msgctxt "time period"
-msgid "%s ago"
-msgstr ""
-
-#: partials/footer-credit.php:27
-msgctxt "attribution"
-msgid "by"
 msgstr ""
 
 #: partials/section-title.php:31
