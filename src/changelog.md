@@ -1,3 +1,7 @@
+## 1.6.2.1
+
+* Bug fix: Undefined function fatal error.
+
 ## 1.6.2
 
 * Updated: Ensure compatibility with upcoming 4.3 version of WordPress:
