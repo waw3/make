@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.2\n"
+"Project-Id-Version: Make 1.6.2.1\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-07-31 18:18:57+00:00\n"
+"POT-Creation-Date: 2015-08-03 18:16:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,9 +41,15 @@ msgstr ""
 msgid "Maybe try searching this website:"
 msgstr ""
 
-#: comments.php:25 comments.php:41
+#: comments.php:17
 #. Translators: this string appears as the title of the Comments section of a
 #. post.
+msgid "One comment"
+msgid_plural "%1$s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:25 comments.php:41
 msgid "Comment navigation"
 msgstr ""
 
@@ -495,35 +501,35 @@ msgstr ""
 msgid "follow these steps"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:54
+#: inc/customizer/bootstrap.php:96
 msgid "General"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:55
+#: inc/customizer/bootstrap.php:97
 msgid "Typography"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:56
+#: inc/customizer/bootstrap.php:98
 msgid "Color"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:57
+#: inc/customizer/bootstrap.php:99
 msgid "Background Images"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:58
+#: inc/customizer/bootstrap.php:100
 #: inc/customizer/sections/content-layout.php:52
 #: inc/customizer/sections/content-layout.php:196
 msgid "Layout"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:59
+#: inc/customizer/bootstrap.php:101
 #: inc/customizer/sections/background-images.php:24
 #: inc/customizer/sections/content-layout.php:47
 msgid "Header"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:60
+#: inc/customizer/bootstrap.php:102
 #: inc/customizer/sections/background-images.php:42
 #: inc/customizer/sections/color-scheme.php:584
 #: inc/customizer/sections/content-layout.php:172
@@ -531,19 +537,19 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:106
+#: inc/customizer/bootstrap.php:148
 msgid "Sidebars & Widgets"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:432
+#: inc/customizer/bootstrap.php:470
 msgid "No results match"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:433
+#: inc/customizer/bootstrap.php:471
 msgid "No matching fonts"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:435 inc/customizer/sections/stylekit.php:29
+#: inc/customizer/bootstrap.php:473 inc/customizer/sections/stylekit.php:29
 msgid "Upgrade to Make Plus"
 msgstr ""
 
