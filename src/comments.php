@@ -14,7 +14,7 @@ endif;
 		<?php
 		printf(
 			// Translators: this string appears as the title of the Comments section of a post.
-			esc_html_n( 'One comment', '%1$s comments', get_comments_number(), 'make' ),
+			esc_html( _n( 'One comment', '%1$s comments', get_comments_number(), 'make' ) ),
 			number_format_i18n( get_comments_number() )
 		);
 		?>

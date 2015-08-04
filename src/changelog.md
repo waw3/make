@@ -1,3 +1,8 @@
+## 1.6.2.1
+
+* Bug fix: Undefined function fatal error.
+* Bug fix: Customizer control classes will now attempt to autoload if they have not been defined yet.
+
 ## 1.6.2
 
 * Updated: Ensure compatibility with upcoming 4.3 version of WordPress:
