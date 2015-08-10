@@ -981,7 +981,7 @@ function ttfmake_embed_container( $html, $url, $attr ) {
 	if ( isset( $attr['width'] ) ) {
 		// Add FitVids as a dependency for the Frontend script
 		global $wp_scripts;
-		if ( is_object( $wp_scripts ) && 'WP_Dependencies' === get_class( $wp_scripts ) ) {
+		if ( is_object( $wp_scripts ) && 'WP_Scripts' === get_class( $wp_scripts ) ) { var_dump(get_class( $wp_scripts ));
 			$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
 			if ( $script && ! in_array( 'ttfmake-fitvids', $script->deps ) ) {
 				$script->deps[] = 'ttfmake-fitvids';
