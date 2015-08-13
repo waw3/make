@@ -2430,6 +2430,9 @@ div.wp-video-shortcode {
  Gallery shortcode slider (_posts.scss)
 -------------------------------------------------------- */
 
+.ttfmake-shortcode-slider {
+	position: relative;
+}
 .ttfmake-shortcode-slider .cycle-slide {
 	position: relative;
 	width: 100%;
@@ -2453,10 +2456,6 @@ div.wp-video-shortcode {
 	.ttfmake-shortcode-slider .cycle-caption {
 		display: block;
 	}
-}
-.ttfmake-shortcode-slider .cycle-pager {
-	margin-top: 44px;
-	margin-top: 4.4rem;
 }
 
 
@@ -2814,8 +2813,8 @@ div.wp-video-shortcode {
 
 .ttfmake-shortcode-slider .cycle-prev:before,
 .ttfmake-shortcode-slider .cycle-next:before {
-	top: -12px;
-	top: -1.2rem;
+	top: -24px;
+	top: -2.4rem;
 }
 
 

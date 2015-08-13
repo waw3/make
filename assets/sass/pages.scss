@@ -276,7 +276,7 @@ position: relative;
 .ttfmake-shortcode-slider {
 	.cycle-prev:before,
 	.cycle-next:before {
-		@include rem('top', -12px);
+		@include rem('top', -24px);
 	}
 }
 /*---------------------------------------------------------
