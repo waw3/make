@@ -176,9 +176,9 @@ function ttfmake_setup() {
 
 	// Menu locations
 	register_nav_menus( array(
-		'primary'    => __( 'Primary Menu', 'make' ),
+		'primary'    => __( 'Primary Navigation', 'make' ),
 		'social'     => __( 'Social Profile Links', 'make' ),
-		'header-bar' => __( 'Header Bar Menu', 'make' ),
+		'header-bar' => __( 'Header Bar Navigation', 'make' ),
 	) );
 
 	// Editor styles
