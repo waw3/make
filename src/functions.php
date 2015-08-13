@@ -326,12 +326,12 @@ function ttfmake_scripts() {
 
 	// Font Awesome
 	wp_enqueue_style(
-		'ttfmake-font-awesome',
+		'font-awesome',
 		get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 		$style_dependencies,
 		'4.4.0'
 	);
-	$style_dependencies[] = 'ttfmake-font-awesome';
+	$style_dependencies[] = 'font-awesome';
 
 	// Parent stylesheet, if child theme is active
 	// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
@@ -378,7 +378,7 @@ function ttfmake_scripts() {
 	// FitVids
 	// Register only. Enqueued when necessary by the embed shortcode.
 	wp_register_script(
-		'ttfmake-fitvids',
+		'fitvids',
 		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
 		array( 'jquery' ),
 		'1.1',
@@ -459,7 +459,7 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	if ( defined( 'TTFMAKE_SUFFIX' ) && '.min' === TTFMAKE_SUFFIX ) {
 		wp_register_script(
-			'ttfmake-cycle2',
+			'cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTFMAKE_SUFFIX . '.js',
 			$script_dependencies,
 			TTFMAKE_VERSION,
@@ -468,7 +468,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	} else {
 		// Core script
 		wp_register_script(
-			'ttfmake-cycle2',
+			'cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
 			$script_dependencies,
 			'2.1.6',
@@ -477,18 +477,18 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 
 		// Vertical centering
 		wp_register_script(
-			'ttfmake-cycle2-center',
+			'cycle2-center',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
-			'ttfmake-cycle2',
+			array( 'cycle2' ),
 			'20140121',
 			true
 		);
 
 		// Swipe support
 		wp_register_script(
-			'ttfmake-cycle2-swipe',
+			'cycle2-swipe',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
-			'ttfmake-cycle2',
+			array( 'cycle2' ),
 			'20121120',
 			true
 		);

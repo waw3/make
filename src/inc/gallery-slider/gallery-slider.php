@@ -138,11 +138,11 @@ class TTFMAKE_Gallery_Slider {
 			// Add Cycle2 as a dependency for the Frontend script
 			global $wp_scripts;
 			$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
-			if ( $script && ! in_array( 'ttfmake-cycle2', $script->deps ) ) {
-				$script->deps[] = 'ttfmake-cycle2';
+			if ( $script && ! in_array( 'cycle2', $script->deps ) ) {
+				$script->deps[] = 'cycle2';
 				if ( ! defined( 'TTFMAKE_SUFFIX' ) || '.min' !== TTFMAKE_SUFFIX ) {
-					$script->deps[] = 'ttfmake-cycle2-center';
-					$script->deps[] = 'ttfmake-cycle2-swipe';
+					$script->deps[] = 'cycle2-center';
+					$script->deps[] = 'cycle2-swipe';
 				}
 			}
 
