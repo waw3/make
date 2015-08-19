@@ -45,6 +45,9 @@
 	@include rem('margin-bottom', $base*2);
 	position: relative;
 	@extend .clear;
+	&:focus {
+		outline: 0;
+	}
 }
 .builder-text-title,
 .builder-text-section-title,
@@ -276,7 +279,7 @@ position: relative;
 .ttfmake-shortcode-slider {
 	.cycle-prev:before,
 	.cycle-next:before {
-		@include rem('top', -12px);
+		@include rem('top', -24px);
 	}
 }
 /*---------------------------------------------------------

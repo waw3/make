@@ -264,6 +264,7 @@
  Gallery shortcode slider (_posts.scss)
 -------------------------------------------------------- */
 .ttfmake-shortcode-slider {
+	position: relative;
 	.cycle-slide {
 		position: relative;
 		width: 100%;
@@ -282,8 +283,5 @@
 		@include rem('left', $gut/2);
 		@include rem('right', $gut/2);
 		@include rem('bottom', $base);
-	}
-	.cycle-pager {
-		@include rem('margin-top', $base*2);
 	}
 }
