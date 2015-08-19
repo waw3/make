@@ -45,6 +45,9 @@
 	@include rem('margin-bottom', $base*2);
 	position: relative;
 	@extend .clear;
+	&:focus {
+		outline: 0;
+	}
 }
 .builder-text-title,
 .builder-text-section-title,

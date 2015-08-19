@@ -2517,6 +2517,9 @@ div.wp-video-shortcode {
 	margin-bottom: 44px;
 	margin-bottom: 4.4rem;
 }
+.builder-section:focus {
+	outline: 0;
+}
 
 .builder-text-title,
 .builder-text-section-title,
