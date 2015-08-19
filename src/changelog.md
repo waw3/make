@@ -2,6 +2,7 @@
 
 * Improved: Reduced the top margin on the Gallery Slider when it is displaying the navigation dots.
 * Improved: Better translation strings and notes in the EXIF template tag.
+* Updated: The latest list of Google fonts. Added Tamil and Thai font subset options.
 * Changed: The EXIF data markup no longer wraps each data label in a span.
 * Changed: Renamed the Menu locations to use the word "Navigation" instead of "Menu".
 * Changed: Removed the `ttfmake` prefix from most 3rd party script IDs when registering them.
