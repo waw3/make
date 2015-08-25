@@ -3688,3 +3688,12 @@ div.sharedaddy {
 .twitter-share-button.twitter-tweet-button {
 	margin-bottom: 22px !important;
 }
+
+
+/*---------------------------------------------------------
+ Yoast SEO (_support.scss)
+-------------------------------------------------------- */
+
+.yoast-seo-breadcrumb {
+	font-size: 0.8em;
+}
