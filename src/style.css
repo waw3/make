@@ -3679,6 +3679,40 @@ div.sharedaddy {
 	border: none;
 }
 
+.woocommerce .coupon,
+.woocommerce .coupon #coupon_code,
+.woocommerce table.cart td.actions input,
+.woocommerce table.cart td.actions .button {
+	width: 100% !important;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.woocommerce-page table.cart td.actions {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.woocommerce .coupon {
+	padding-top: 0;
+}
+
+.woocommerce .coupon #coupon_code {
+	margin-bottom: 0.5em;
+}
+
+.woocommerce .cart-collaterals .cart_totals,
+.woocommerce-page .cart-collaterals .cart_totals {
+	width: 100%;
+}
+
+@media screen and (min-width: 1100px) {
+	.woocommerce .cart-collaterals .cart_totals,
+	.woocommerce-page .cart-collaterals .cart_totals {
+		width: 48%;
+	}
+}
+
 
 /*---------------------------------------------------------
  Twitter (_support.scss)
