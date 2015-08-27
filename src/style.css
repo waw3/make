@@ -3712,6 +3712,12 @@ div.sharedaddy {
 	}
 }
 
+@media screen and (max-width: 800px) {
+	.woocommerce ul.products li.product {
+		width: 100% !important;
+	}
+}
+
 
 /*---------------------------------------------------------
  Twitter (_support.scss)
