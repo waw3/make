@@ -151,6 +151,14 @@ div.sharedaddy {
 		width: 48%;
 	}
 }
+@include for(large-screens) {
+	.has-left-sidebar .woocommerce .cart-collaterals .cart_totals,
+	.has-left-sidebar .woocommerce-page .cart-collaterals .cart_totals,
+	.has-right-sidebar .woocommerce .cart-collaterals .cart_totals,
+	.has-right-sidebar .woocommerce-page .cart-collaterals .cart_totals {
+		width: 100%;
+	}
+}
 @media screen and (max-width: 800px) {
 	.woocommerce ul.products li.product {
 		width: 100% !important;
