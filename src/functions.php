@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.6.3' );
+define( 'TTFMAKE_VERSION', '1.6.4' );
 
 /**
  * The minimum version of WordPress required for Make.
@@ -192,6 +192,9 @@ function ttfmake_setup() {
 
 	// Another editor stylesheet is added via ttfmake_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
+
+	// Yoast SEO breadcrumbs
+	add_theme_support( 'yoast-seo-breadcrumbs' );
 }
 endif;
 

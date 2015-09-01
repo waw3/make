@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-08-19T00:48:45+00:00
+ * Updated: 2015-09-01T00:34:34+00:00
  *
  * @since  1.0.0.
  *
@@ -7196,6 +7196,7 @@ function ttfmake_get_google_fonts() {
 		'Scheherazade' => array(
 			'label' => 'Scheherazade',
 			'variants' => array(
+				'700',
 				'regular',
 			),
 			'subsets' => array(
