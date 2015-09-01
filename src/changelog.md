@@ -2,7 +2,7 @@
 
 * New feature: Support for Yoast SEO's breadcrumb functionality.
   * Choose which views display the breadcrumb in the Customizer's Layout panel.
-* Improved: Better responsive layout for WooCommerce cart and checkout pages.
+* Improved: Better responsive layout for the WooCommerce product grid, as well as cart and checkout pages.
 * Bug fix: The Detail color option was not correctly setting the color for post categories and tags.
 
 ## 1.6.3
