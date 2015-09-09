@@ -9,18 +9,28 @@
 	 * Asynchronous updating
 	 */
 	// Site Title
-	api( 'blogname', function( value ) {
-		value.bind( function( to ) {
-			var $content = $('.site-title a');
-			if ( ! $content.length ) {
-				$('.site-title').prepend('<a>' + to + '</a>');
+	api('blogname', function(value) {
+		value.bind(function(to) { console.log(to);
+			var $content = $('.site-title'),
+				$logo = $('.custom-logo'),
+				$branding = $('.site-branding'),
+				$title, $to;
+			if (! $content.length) {
+				$title = ('<h1 class="site-title">');
+				if ($logo.length > 0) {
+					$logo.after($title);
+				} else {
+					$branding.prepend($title);
+				}
+				$content = $('.site-title');
 			}
-			if ( ! to ) {
+			if (! to) {
 				$content.remove();
 			}
-			$content.text( to );
-		} );
-	} );
+			$to = $('<a>').text(to); console.log($to);
+			$content.html($to);
+		});
+	});
 
 	// Tagline
 	api( 'blogdescription', function( value ) {
