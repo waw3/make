@@ -345,12 +345,12 @@ function ttfmake_upgrade_notices() {
 		);
 	}
 
-	// Notice of upcoming drop of support for 4.0
-	if ( version_compare( $wp_version, '4.1', '<' ) ) {
+	// Notice of upcoming drop of support for 4.0 and 4.1
+	if ( version_compare( $wp_version, '4.2', '<' ) ) {
 		ttfmake_register_admin_notice(
-			'make-wp-lt-41',
+			'make-wp-lt-42',
 			sprintf(
-				__( 'Make will soon be dropping support for WordPress version 4.0. Please %2$s to ensure full compatibility.', 'make' ),
+				__( 'Make will soon be dropping support for WordPress versions 4.0 and 4.1. Please %2$s to ensure full compatibility.', 'make' ),
 				TTFMAKE_MIN_WP_VERSION,
 				sprintf(
 					'<a href="%1$s">%2$s</a>',
