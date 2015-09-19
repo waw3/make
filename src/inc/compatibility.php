@@ -366,17 +366,6 @@ function ttfmake_upgrade_notices() {
 			)
 		);
 	}
-
-	ttfmake_register_admin_notice(
-		'test-notice-7',
-		'Test notice',
-		array(
-			'cap'     => 'update_core',
-			'dismiss' => true,
-			'screen'  => array( 'dashboard', 'themes.php', 'update-core.php' ),
-			'type'    => 'warning',
-		)
-	);
 }
 
 add_action( 'admin_init', 'ttfmake_upgrade_notices' );
