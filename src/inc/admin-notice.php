@@ -31,15 +31,6 @@ class TTFMAKE_Admin_Notice {
 	private $support = array();
 
 	/**
-	 * The path to the notice template file.
-	 *
-	 * @since 1.4.9.
-	 *
-	 * @var string    The path to the notice template file.
-	 */
-	public $template = '';
-
-	/**
 	 * The single instance of the class.
 	 *
 	 * @since 1.4.9.
@@ -79,9 +70,6 @@ class TTFMAKE_Admin_Notice {
 			'dismissible' => version_compare( $wp_version, '4.2', '>=' ),
 			'types'       => version_compare( $wp_version, '4.2', '>=' ),
 		);
-
-		// Define template path
-		$this->template = trailingslashit( dirname( __FILE__ ) ) . 'template.php';
 	}
 
 	/**
@@ -216,11 +204,6 @@ class TTFMAKE_Admin_Notice {
 	 * @return void
 	 */
 	private function render_notices( $notices ) {
-		// Bail if there's no template
-		if ( ! is_readable( $this->template ) ) {
-			return;
-		}
-
 		// Add styles and script to page if necessary
 		if ( in_array( true, wp_list_pluck( $notices, 'dismiss' ) ) ) {
 			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
@@ -268,8 +251,15 @@ class TTFMAKE_Admin_Notice {
 			// Convert classes to string
 			$classes = implode( ' ', $classes );
 
-			// Load the template
-			require( $this->template );
+			// Render
+			?>
+			<div id="ttfmake-notice-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>">
+				<?php if ( true === $dismiss && false === $this->support['dismissible'] ) : ?>
+					<a class="ttfmake-dismiss" href="#"><?php esc_html_e( 'Hide', 'make' ); ?></a>
+				<?php endif; ?>
+				<?php echo wpautop( $message ); ?>
+			</div>
+		<?php
 		}
 	}
 

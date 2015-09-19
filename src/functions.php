@@ -61,7 +61,7 @@ function ttfmake_require_files() {
 	if ( is_admin() ) {
 		$admin_files = array(
 			// Admin notices
-			get_template_directory() . '/inc/admin-notice/admin-notice.php',
+			get_template_directory() . '/inc/admin-notice.php',
 			// Page customizations
 			get_template_directory() . '/inc/edit-page.php',
 			// Page Builder
