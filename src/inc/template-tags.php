@@ -467,3 +467,21 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	return apply_filters( 'make_get_exif_data', $output, $attachment_id );
 }
 endif;
+
+/**
+ * Add the Yoast SEO breadcrumb, if the plugin is activated.
+ *
+ * @since 1.6.4.
+ *
+ * @return void
+ */
+function ttfmake_yoast_seo_breadcrumb() {
+	if ( function_exists( 'yoast_breadcrumb' ) ) {
+		$key    = 'layout-' . ttfmake_get_view() . '-yoast-breadcrumb';
+		$option = absint( get_theme_mod( $key, ttfmake_get_default( $key ) ) );
+
+		if ( ( 1 === $option && ! is_front_page() ) || is_404() ) {
+			yoast_breadcrumb( '<p class="yoast-seo-breadcrumb">', '</p>' );
+		}
+	}
+}

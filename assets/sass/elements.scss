@@ -254,7 +254,6 @@ table {
 	border: 1px solid $d;
 	border-left: 0; //reset
 	@include rem('margin', $base 0);
-	@extend .break;
 	caption {
 		font-weight: bold;
 		@include rem('margin-bottom', $base);
