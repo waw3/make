@@ -40,6 +40,8 @@ function ttfmake_require_files() {
 	$files = array(
 		// Activation
 		get_template_directory() . '/inc/activation.php',
+		// Autoloader
+		get_template_directory() . '/inc/autoload.php',
 		// Compatibility
 		get_template_directory() . '/inc/compatibility.php',
 		// Localization
