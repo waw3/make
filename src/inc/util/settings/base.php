@@ -110,7 +110,7 @@ abstract class TTFMAKE_Util_Settings_Base implements TTFMAKE_Util_Settings_Setti
 	 *
 	 * @param  array    $settings         Array of setting definitions to add.
 	 * @param  array    $default_props    Array of default properties for each setting definition.
-	 * @param  bool     $overwrite        True overwrites an existing definition of a setting.
+	 * @param  bool     $overwrite        True overwrites an existing setting definition.
 	 *
 	 * @return bool|WP_Error         True if addition was successful, otherwise an error object.
 	 */
@@ -124,12 +124,19 @@ abstract class TTFMAKE_Util_Settings_Base implements TTFMAKE_Util_Settings_Setti
 			$setting_id = sanitize_key( $setting_id );
 
 			// Merge any defaults.
-			$setting_props = wp_parse_args( $setting_props, $default_props );
+			if ( ! empty( $default_props ) ) {
+				$setting_props = wp_parse_args( $setting_props, $default_props );
+			}
 
-			if (
+			// Overwrite an existing setting.
+			if ( isset( $existing_settings[ $setting_id ] ) && true === $overwrite ) {
+				$new_settings[ $setting_id ] = wp_parse_args( $setting_props, $existing_settings[ $setting_id ] );
+			}
+			// Add a new setting.
+			else if (
 				$this->has_required_properties( $setting_props )
 				&&
-				( ! isset( $existing_settings[ $setting_id ] ) || true === $overwrite )
+				( ! isset( $existing_settings[ $setting_id ] ) )
 			) {
 				$new_settings[ $setting_id ] = $setting_props;
 			}
