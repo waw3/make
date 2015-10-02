@@ -4,24 +4,34 @@
  */
 
 /**
- * Class TTFMAKE_Utils_Settings
+ * Class TTFMAKE_Util_Settings_Base
  *
  * An object for defining and managing settings and their values.
  *
  * This is an abstract class, so it is unusable on its own. It must be extended by another class.
  *
  * The extending class is required to define the following methods:
+ * - load
  * - set_value
  * - unset_value
  * - get_raw_value
  *
  * Additionally, the extending class should:
- * - Supply a string value for the type property, e.g. 'theme_mods'
+ * - Supply a string value for the type property, e.g. 'thememod'
  * - Update the array of required setting properties, if necessary
  *
  * @since x.x.x.
  */
-abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface {
+abstract class TTFMAKE_Util_Settings_Base implements TTFMAKE_Util_Settings_SettingsInterface {
+	/**
+	 * Indicator of whether the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	protected $loaded = false;
+
 	/**
 	 * The collection of settings and their properties.
 	 *
@@ -60,6 +70,26 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 		'default',
 		'sanitize'
 	);
+
+	/**
+	 * Load settings definitions and other data into the object.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	abstract function load();
+
+	/**
+	 * Check if the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_loaded() {
+		return $this->loaded;
+	}
 
 	/**
 	 * Add settings definitions to the collection.

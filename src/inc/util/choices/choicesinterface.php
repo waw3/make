@@ -4,11 +4,11 @@
  */
 
 /**
- * Interface TTFMAKE_Utils_ChoicesInterface
+ * Interface TTFMAKE_Util_Choices_ChoicesInterface
  *
  * @since x.x.x.
  */
-interface TTFMAKE_Utils_ChoicesInterface {
+interface TTFMAKE_Util_Choices_ChoicesInterface extends TTFMAKE_Util_LoadInterface {
 	public function add_choice_sets( $sets, $overwrite = false );
 
 	public function remove_choice_sets( $set_ids );

@@ -4,13 +4,22 @@
  */
 
 /**
- * Class TTFMAKE_Utils_Choices
+ * Class TTFMAKE_Util_Choices_Base
  *
  * An object for defining and managing choice sets.
  *
  * @since x.x.x.
  */
-class TTFMAKE_Utils_Choices implements TTFMAKE_Utils_ChoicesInterface {
+class TTFMAKE_Util_Choices_Base implements TTFMAKE_Util_Choices_ChoicesInterface {
+	/**
+	 * Indicator of whether the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	protected $loaded = false;
+
 	/**
 	 * The collection of choice sets.
 	 *
@@ -21,13 +30,18 @@ class TTFMAKE_Utils_Choices implements TTFMAKE_Utils_ChoicesInterface {
 	protected $choice_sets = array();
 
 	/**
-	 * Set up the object.
+	 * Load data into the object.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	protected function load() {
+	public function load() {
+		// Bail if the load routine has already been run.
+		if ( true === $this->is_loaded() ) {
+			return;
+		}
+
 		// Add the default choice sets.
 		$this->add_choice_sets( array(
 			'0-4' => array(
@@ -135,6 +149,9 @@ class TTFMAKE_Utils_Choices implements TTFMAKE_Utils_ChoicesInterface {
 			),
 		) );
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the choices object's load method.
 		 *
@@ -146,6 +163,17 @@ class TTFMAKE_Utils_Choices implements TTFMAKE_Utils_ChoicesInterface {
 		 * @param TTFMAKE_Utils_Choices    $choices    The choices object that has just finished loading.
 		 */
 		do_action( 'make_choices_loaded', $this );
+	}
+
+	/**
+	 * Check if the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_loaded() {
+		return $this->loaded;
 	}
 
 	/**

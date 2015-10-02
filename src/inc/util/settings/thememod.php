@@ -4,13 +4,13 @@
  */
 
 /**
- * Class TTFMAKE_ThemeMod_Settings
+ * Class TTFMAKE_Util_Settings_ThemeMod
  *
- * A child class of TTFMAKE_Utils_Settings for defining and managing Customizer settings and their values
+ * A child class of TTFMAKE_Util_Settings_Base for defining and managing theme mod settings and their values.
  *
  * @since x.x.x.
  */
-class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
+class TTFMAKE_Util_Settings_ThemeMod extends TTFMAKE_Util_Settings_Base {
 	/**
 	 * The type of settings.
 	 *
@@ -18,7 +18,7 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 	 *
 	 * @var string
 	 */
-	protected $type = 'theme_mod';
+	protected $type = 'thememod';
 
 	/**
 	 * Load the settings definitions and hook into WordPress.
@@ -29,14 +29,14 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 	 */
 	public function load() {
 		// Load the setting definitions
-		$file = basename( __FILE__ ) . '/definitions.php';
+		$file = basename( __FILE__ ) . '/thememod-definitions.php';
 		if ( is_readable( $file ) ) {
-			require_once $file;
+			include_once $file;
 		}
 
 		// Add filter to give the sanitize_choice callback the parameters it needs.
-		if ( ! has_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ) ) ) {
-			add_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
+		if ( ! has_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ) ) ) {
+			add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
 		}
 
 		/**
@@ -112,6 +112,18 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 		}
 
 		return $value;
+	}
+
+
+	public function get_choice_set( $setting_id ) {
+		$choice_set = $this->undefined;
+
+		$choice_sets = $this->get_settings( 'choice_set' );
+		if ( isset( $choice_sets[ $setting_id ] ) ) {
+			$choice_set = $choice_sets[ $setting_id ];
+		}
+
+		return $choice_set;
 	}
 
 	/**
