@@ -29,7 +29,9 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 		}
 
 		//
-		add_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
+		if ( ! has_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ) ) ) {
+			add_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
+		}
 
 		/**
 		 * Action: Fires at the end of the ThemeMod settings object's load method.
@@ -106,8 +108,24 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 		return $value;
 	}
 
-
+	/**
+	 * Filter: Add items to the array of parameters to feed into the sanitize_choice callback.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $value
+	 * @param $callback
+	 * @param $setting_id
+	 *
+	 * @return array
+	 */
 	public function sanitize_choice_parameters( $value, $callback, $setting_id ) {
+		if ( 'ttfmake_sanitize_choice' === $callback ) {
+			$value = (array) $value;
+			$value[] = $setting_id;
+			$value[] = $this->undefined;
+		}
 
+		return $value;
 	}
 }
