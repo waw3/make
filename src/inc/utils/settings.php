@@ -265,7 +265,7 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 		}
 
 		/**
-		 * Filter the current value for a particular setting.
+		 * Filter: Modify the current value for a particular setting.
 		 *
 		 * @since x.x.x.
 		 *
@@ -294,7 +294,7 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 		}
 
 		/**
-		 * Filter the default value for a particular setting.
+		 * Filter: Modify the default value for a particular setting.
 		 *
 		 * @since x.x.x.
 		 *
@@ -344,7 +344,7 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 		}
 
 		/**
-		 * Filter the name of the sanitize callback function for a particular setting.
+		 * Filter: Modify the name of the sanitize callback function for a particular setting.
 		 *
 		 * @since x.x.x.
 		 *
@@ -365,20 +365,35 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 	 *
 	 * @return mixed|WP_Error
 	 */
-	public function sanitize_value( &$value, $setting_id, $context = '' ) {
+	public function sanitize_value( $value, $setting_id, $context = '' ) {
 		$sanitized_value = $this->undefined;
 
 		if ( isset( $this->settings[ $setting_id ] ) ) {
 			$callback = $this->get_sanitize_callback( $setting_id, $context );
+
 			if ( $callback && is_callable( $callback ) ) {
-				$sanitized_value = call_user_func_array( $callback, (array) $value );
+				/**
+				 * Filter: Prepare the array of parameters to feed into the sanitize callback function.
+				 *
+				 * Some callbacks may require more than one parameter. This filter provides an opportunity
+				 * to add additional items to the array that will become the callback's parameters.
+				 *
+				 * @since x.x.x.
+				 *
+				 * @param array     $value         The array of parameters, initially containing only the value to be sanitized.
+				 * @param string    $callback      The callable that will accept parameters.
+				 * @param string    $setting_id    The id of the setting being sanitized.
+				 */
+				$prepared_value = apply_filters( "make_settings_{$this->type}_sanitize_callback_parameters", (array) $value, $callback, $setting_id );
+
+				$sanitized_value = call_user_func_array( $callback, $prepared_value );
 			} else {
 				$sanitized_value = new WP_Error( 'make_settings_sanitize_value_callback_not_valid', sprintf( __( 'The sanitize callback for %s is not valid.', 'make' ), esc_html( $setting_id ) ), array( $setting_id, $context, $callback ) );
 			}
 		}
 
 		/**
-		 * Filter the sanitized value for a particular setting.
+		 * Filter: Modify the sanitized value for a particular setting.
 		 *
 		 * @since x.x.x.
 		 *

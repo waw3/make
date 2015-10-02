@@ -29,5 +29,5 @@ interface TTFMAKE_Utils_SettingsInterface {
 
 	public function get_sanitize_callback( $setting_id, $context = '' );
 
-	public function sanitize_value( &$value, $setting_id, $context = '' );
+	public function sanitize_value( $value, $setting_id, $context = '' );
 }
