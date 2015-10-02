@@ -4,31 +4,50 @@
  */
 
 /**
- * Class TTFMAKE_Customizer_Settings
+ * Class TTFMAKE_ThemeMod_Settings
  *
  * A child class of TTFMAKE_Utils_Settings for defining and managing Customizer settings and their values
  *
- * @since 1.x.x.
+ * @since x.x.x.
  */
-class TTFMAKE_Customizer_Settings extends TTFMAKE_Utils_Settings {
+class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 	/**
 	 * The type of settings.
 	 *
-	 * @since 1.x.x.
+	 * @since x.x.x.
 	 *
 	 * @var string
 	 */
-	protected $type = 'theme_mods';
+	protected $type = 'theme_mod';
 
-	/**
-	 * TODO
-	 */
-	protected function load() {}
+
+	public function load() {
+		// Load the setting definitions
+		$file = basename( __FILE__ ) . '/definitions.php';
+		if ( is_readable( $file ) ) {
+			require_once $file;
+		}
+
+		//
+		add_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
+
+		/**
+		 * Action: Fires at the end of the ThemeMod settings object's load method.
+		 *
+		 * This action gives a developer the opportunity to add or modify choice sets
+		 * and run additional load routines.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param TTFMAKE_ThemeMod_Settings    $settings     The settings object that has just finished loading.
+		 */
+		do_action( 'make_settings_theme_mod_loaded', $this );
+	}
 
 	/**
 	 * Set a new value for a particular theme_mod setting.
 	 *
-	 * @since 1.x.x.
+	 * @since x.x.x.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to set.
 	 * @param  mixed     $value         The value to assign to the theme_mod.
@@ -52,7 +71,7 @@ class TTFMAKE_Customizer_Settings extends TTFMAKE_Utils_Settings {
 	/**
 	 * Remove a particular theme_mod setting.
 	 *
-	 * @since 1.x.x.
+	 * @since x.x.x.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to remove.
 	 *
@@ -71,7 +90,7 @@ class TTFMAKE_Customizer_Settings extends TTFMAKE_Utils_Settings {
 	/**
 	 * Get the stored value of a theme_mod, unaltered.
 	 *
-	 * @since 1.x.x.
+	 * @since x.x.x.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to retrieve.
 	 *
@@ -85,5 +104,10 @@ class TTFMAKE_Customizer_Settings extends TTFMAKE_Utils_Settings {
 		}
 
 		return $value;
+	}
+
+
+	public function sanitize_choice_parameters( $value, $callback, $setting_id ) {
+
 	}
 }
