@@ -10,7 +10,7 @@
  *
  * @since x.x.x.
  */
-class TTFMAKE_Utils_Choices {
+class TTFMAKE_Utils_Choices implements TTFMAKE_Utils_ChoicesInterface {
 	/**
 	 * The collection of choice sets.
 	 *
