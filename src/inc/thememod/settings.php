@@ -20,7 +20,13 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 	 */
 	protected $type = 'theme_mod';
 
-
+	/**
+	 * Load the settings definitions and hook into WordPress.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
 	public function load() {
 		// Load the setting definitions
 		$file = basename( __FILE__ ) . '/definitions.php';
@@ -28,7 +34,7 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 			require_once $file;
 		}
 
-		//
+		// Add filter to give the sanitize_choice callback the parameters it needs.
 		if ( ! has_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ) ) ) {
 			add_filter( 'make_settings_theme_mod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
 		}
@@ -36,14 +42,14 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 		/**
 		 * Action: Fires at the end of the ThemeMod settings object's load method.
 		 *
-		 * This action gives a developer the opportunity to add or modify choice sets
+		 * This action gives a developer the opportunity to add or modify setting definitions
 		 * and run additional load routines.
 		 *
 		 * @since x.x.x.
 		 *
 		 * @param TTFMAKE_ThemeMod_Settings    $settings     The settings object that has just finished loading.
 		 */
-		do_action( 'make_settings_theme_mod_loaded', $this );
+		do_action( "make_settings_{$this->type}_loaded", $this );
 	}
 
 	/**
@@ -113,9 +119,9 @@ class TTFMAKE_ThemeMod_Settings extends TTFMAKE_Utils_Settings {
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param $value
-	 * @param $callback
-	 * @param $setting_id
+	 * @param  mixed     $value
+	 * @param  string    $callback
+	 * @param  string    $setting_id
 	 *
 	 * @return array
 	 */
