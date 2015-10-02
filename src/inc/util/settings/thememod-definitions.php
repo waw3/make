@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of TTFMAKE_Util_Settings_ThemeMod.
-if ( ! isset( $this ) || ! $this instanceof TTFMAKE_Util_Settings_ThemeMod ) {
+// Bail if this isn't being included inside of a TTFMAKE_Util_Settings_SettingsInterface.
+if ( ! isset( $this ) || ! $this instanceof TTFMAKE_Util_Settings_SettingsInterface ) {
 	return;
 }
 

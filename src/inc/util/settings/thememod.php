@@ -28,7 +28,7 @@ class TTFMAKE_Util_Settings_ThemeMod extends TTFMAKE_Util_Settings_Base {
 	 * @return void
 	 */
 	public function load() {
-		// Load the setting definitions
+		// Load the default setting definitions
 		$file = basename( __FILE__ ) . '/thememod-definitions.php';
 		if ( is_readable( $file ) ) {
 			include_once $file;
@@ -38,6 +38,9 @@ class TTFMAKE_Util_Settings_ThemeMod extends TTFMAKE_Util_Settings_Base {
 		if ( ! has_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ) ) ) {
 			add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'sanitize_choice_parameters' ), 10, 3 );
 		}
+
+		// Loading has occurred.
+		$this->loaded = true;
 
 		/**
 		 * Action: Fires at the end of the ThemeMod settings object's load method.
