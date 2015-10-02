@@ -78,12 +78,13 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param  array    $settings     Array of setting definitions to add.
-	 * @param  bool     $overwrite    True overwrites an existing definition of a setting.
+	 * @param  array    $settings         Array of setting definitions to add.
+	 * @param  array    $default_props    Array of default properties for each setting definition.
+	 * @param  bool     $overwrite        True overwrites an existing definition of a setting.
 	 *
 	 * @return bool|WP_Error         True if addition was successful, otherwise an error object.
 	 */
-	public function add_settings( $settings, $overwrite = false ) {
+	public function add_settings( $settings, $default_props = array(), $overwrite = false ) {
 		$settings = (array) $settings;
 		$existing_settings = $this->settings;
 		$new_settings = array();
@@ -91,6 +92,9 @@ abstract class TTFMAKE_Utils_Settings implements TTFMAKE_Utils_SettingsInterface
 		// Check each setting definition for required properties before adding it.
 		foreach ( $settings as $setting_id => $setting_props ) {
 			$setting_id = sanitize_key( $setting_id );
+
+			// Merge any defaults.
+			$setting_props = wp_parse_args( $setting_props, $default_props );
 
 			if (
 				$this->has_required_properties( $setting_props )
