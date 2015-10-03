@@ -14,7 +14,7 @@
  * @return void
  */
 function ttfmake_display_favicons() {
-	_deprecated_function( __FUNCTION__, '1.5.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
 }
 
 /**
@@ -29,7 +29,7 @@ function ttfmake_display_favicons() {
  * @return array                Modified classes.
  */
 function ttfmake_body_layout_classes( $classes ) {
-	_deprecated_function( __FUNCTION__, '1.5.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes' );
 	return $classes;
 }
 
@@ -43,7 +43,7 @@ function ttfmake_body_layout_classes( $classes ) {
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_header_sections( $sections ) {
-	_deprecated_function( __FUNCTION__, '1.5.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
 	return $sections;
 }
 
@@ -56,7 +56,7 @@ function ttfmake_customizer_define_header_sections( $sections ) {
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_footer_sections( $sections ) {
-	_deprecated_function( __FUNCTION__, '1.5.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
 	return $sections;
 }
 
@@ -71,7 +71,7 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
  * @return void
  */
 function ttfmake_css_add_rules() {
-	_deprecated_function( __FUNCTION__, '1.5.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
 }
 
 /**
@@ -88,7 +88,7 @@ function ttfmake_css_add_rules() {
  * @return bool    Whether or not panels are supported.
  */
 function ttfmake_customizer_supports_panels() {
-	_deprecated_function( __FUNCTION__, '1.6.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.6.0' );
 	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) ) || function_exists( 'wp_validate_boolean' );
 }
 
@@ -103,7 +103,7 @@ function ttfmake_customizer_supports_panels() {
  * @return void
  */
 function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
-	_deprecated_function( __FUNCTION__, '1.6.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.6.0' );
 }
 
 /**
@@ -116,5 +116,5 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
  * @return void
  */
 function ttfmake_css_legacy_fonts() {
-	_deprecated_function( __FUNCTION__, '1.6.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.6.0' );
 }
