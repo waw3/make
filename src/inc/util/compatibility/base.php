@@ -4,9 +4,9 @@
  */
 
 
-class TTFMAKE_Util_Compatibility_Base {
+final class TTFMAKE_Util_Compatibility_Base {
 
-	protected $mode = array(
+	private $mode = array(
 		'full' => array(
 			'deprecated-functions' => true,
 		),
@@ -16,7 +16,7 @@ class TTFMAKE_Util_Compatibility_Base {
 	);
 
 
-	protected $plus = false;
+	private $plus = false;
 
 	/**
 	 * Indicator of whether the load routine has been run.
@@ -25,7 +25,7 @@ class TTFMAKE_Util_Compatibility_Base {
 	 *
 	 * @var bool
 	 */
-	protected $loaded = false;
+	private $loaded = false;
 
 
 	public function __construct() {
