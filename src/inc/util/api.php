@@ -7,23 +7,36 @@
 class TTFMAKE_Util_API {
 
 	public function __construct(
-		TTFMAKE_Util_Choices_ChoicesInterface $choices = null,
+		TTFMAKE_Util_Compatibility_CompatibilityInterface $compatibility = null,
+		TTFMAKE_Util_Admin_NoticeInterface $notice = null,
 		TTFMAKE_Util_Settings_SettingsInterface $thememod = null,
-		TTFMAKE_Util_Admin_NoticeInterface $notice = null
+		TTFMAKE_Util_Choices_ChoicesInterface $choices = null
 	) {
-		// Choices
-		$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
-
-		// Theme mods
-		$this->thememod_instance = ( is_null( $thememod ) ) ? new TTFMAKE_Util_Settings_ThemeMod : $thememod;
+		// Compatibility (load right away)
+		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new TTFMAKE_Util_Compatibility_Base : $compatibility;
+		$this->compatibility_instance->load();
 
 		// Admin notices
 		if ( is_admin() ) {
 			$this->notice_instance = ( is_null( $notice ) ) ? new TTFMAKE_Util_Admin_Notice : $notice;
 		}
+
+		// Theme mods
+		$this->thememod_instance = ( is_null( $thememod ) ) ? new TTFMAKE_Util_Settings_ThemeMod : $thememod;
+
+		// Choices
+		$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
 	}
 
-
+	/**
+	 * Return the specified Util module, if it exists.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  string    $module_name
+	 *
+	 * @return object
+	 */
 	public function get_module( $module_name ) {
 		$property_name = $module_name . '_instance';
 
@@ -35,7 +48,15 @@ class TTFMAKE_Util_API {
 		}
 	}
 
-
+	/**
+	 * Check if a module's load function has run yet, and if not, run it.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param TTFMAKE_Util_LoadInterface $module
+	 *
+	 * @return void
+	 */
 	protected function maybe_run_load( TTFMAKE_Util_LoadInterface $module ) {
 		if ( false === $module->is_loaded() ) {
 			$module->load();
