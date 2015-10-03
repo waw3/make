@@ -15,9 +15,18 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 	private $mode = array(
 		'full' => array(
 			'deprecated-functions' => true,
+			'hook-prefixer'        => true,
+			'key-converter'        => true,
+		),
+		'1.5' => array(
+			'deprecated-functions' => true,
+			'hook-prefixer'        => false,
+			'key-converter'        => true,
 		),
 		'current' => array(
 			'deprecated-functions' => false,
+			'hook-prefixer'        => false,
+			'key-converter'        => false,
 		),
 	);
 
@@ -108,6 +117,18 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 			if ( is_readable( $file ) ) {
 				require_once $file;
 			}
+		}
+
+		// Load the hook prefixer
+		if ( true === $this->mode['hook-prefixer'] ) {
+			$this->hookprefixer_instance = new TTFMAKE_Util_Compatibility_HookPrefixer;
+			$this->hookprefixer_instance->init();
+		}
+
+		// Load the key converter
+		if ( true === $this->mode['hook-prefixer'] ) {
+			$this->keyconverter_instance = new TTFMAKE_Util_Compatibility_KeyConverter;
+			$this->keyconverter_instance->init();
 		}
 
 		// Loading has occurred.
