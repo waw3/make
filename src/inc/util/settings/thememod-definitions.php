@@ -265,7 +265,7 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'    => 'center',
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'alignment-horizontal-3',
 	)
 );
@@ -279,7 +279,7 @@ $this->add_settings(
 		'footer-background-position' => array( 'default' => 'center' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'alignment-full-9',
 	)
 );
@@ -294,7 +294,7 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'    => 'scroll',
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'background-attachment',
 	)
 );
@@ -308,7 +308,7 @@ $this->add_settings(
 		'footer-background-repeat' => array( 'default' => 'no-repeat' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'background-repeat',
 	)
 );
@@ -322,7 +322,7 @@ $this->add_settings(
 		'footer-background-size' => array( 'default' => 'cover' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'background-size',
 	)
 );
@@ -338,7 +338,7 @@ $this->add_settings(
 	),
 	array(
 		'default'    => 'none',
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'comment-count',
 	)
 );
@@ -353,7 +353,7 @@ $this->add_settings(
 		'layout-page-featured-images'    => array( 'default' => 'none' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'featured-images',
 	)
 );
@@ -408,7 +408,7 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'    => 'normal',
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'font-style',
 	)
 );
@@ -437,7 +437,7 @@ $this->add_settings(
 		'font-weight-footer-widget'       => array( 'default' => 'normal' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'font-weight',
 	)
 );
@@ -465,7 +465,7 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'    => 'never',
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'link-underline'
 	)
 );
@@ -480,7 +480,7 @@ $this->add_settings(
 		'layout-page-post-author'    => array( 'default' => 'none' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'post-author',
 	)
 );
@@ -495,7 +495,7 @@ $this->add_settings(
 		'layout-page-post-date'    => array( 'default' => 'none' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'post-date',
 	)
 );
@@ -520,7 +520,7 @@ $this->add_settings(
 		'layout-page-comment-count-location'    => array( 'default' => 'before-content' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'post-item-location',
 	)
 );
@@ -547,7 +547,7 @@ $this->add_settings(
 		'text-transform-footer-widget'       => array( 'default' => 'none' ),
 	),
 	array(
-		'sanitize'   => 'ttfmake_sanitize_choice',
+		'sanitize'   => 'make_sanitize_thememod_choice',
 		'choice_set' => 'text-transform'
 	)
 );
@@ -581,7 +581,7 @@ $this->add_settings(
 		),
 	),
 	array(
-		'sanitize' => 'ttfmake_sanitize_choice',
+		'sanitize' => 'make_sanitize_thememod_choice',
 	)
 );
 
