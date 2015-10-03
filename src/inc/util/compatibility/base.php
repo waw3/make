@@ -3,7 +3,11 @@
  * @package Make
  */
 
-
+/**
+ * Class TTFMAKE_Util_Compatibility_Base
+ *
+ * @since x.x.x.
+ */
 final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibility_CompatibilityInterface {
 	/**
 	 * The compatibility modes.
