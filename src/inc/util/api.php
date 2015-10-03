@@ -8,13 +8,19 @@ class TTFMAKE_Util_API {
 
 	public function __construct(
 		TTFMAKE_Util_Choices_ChoicesInterface $choices = null,
-		TTFMAKE_Util_Settings_SettingsInterface $thememod = null
+		TTFMAKE_Util_Settings_SettingsInterface $thememod = null,
+		TTFMAKE_Util_Admin_NoticeInterface $notice = null
 	) {
 		// Choices
 		$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
 
 		// Theme mods
 		$this->thememod_instance = ( is_null( $thememod ) ) ? new TTFMAKE_Util_Settings_ThemeMod : $thememod;
+
+		// Admin notices
+		if ( is_admin() ) {
+			$this->notice_instance = ( is_null( $notice ) ) ? new TTFMAKE_Util_Admin_Notice : $notice;
+		}
 	}
 
 
@@ -25,7 +31,7 @@ class TTFMAKE_Util_API {
 			$this->maybe_run_load( $this->$property_name );
 			return $this->$property_name;
 		} else {
-			return new WP_Error( 'make_util_module_not_valid', sprintf( __( 'The %s module doesn\'t exist.', 'make' ), $module_name ) );
+			return new WP_Error( 'make_util_module_not_valid', sprintf( __( 'The "%s" module doesn\'t exist.', 'make' ), $module_name ) );
 		}
 	}
 
@@ -75,4 +81,19 @@ function make_sanitize_thememod_choice( $value, $setting_id ) {
 	$default    = make_get_utils()->get_module( 'thememod' )->get_default( $setting_id );
 
 	return make_get_utils()->get_module( 'choices' )->sanitize_choice( $value, $choice_set_id, $default );
+}
+
+/**
+ * Wrapper function to register an admin notice.
+ *
+ * @since 1.4.9.
+ *
+ * @param string    $id         A unique ID string for the admin notice.
+ * @param string    $message    The content of the admin notice.
+ * @param array     $args       Array of configuration parameters for the admin notice.
+ *
+ * @return bool
+ */
+function make_register_admin_notice( $id, $message, $args ) {
+	return make_get_utils()->get_module( 'notice' )->register_admin_notice( $id, $message, $args );
 }
