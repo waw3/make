@@ -14,4 +14,6 @@ interface TTFMAKE_Util_Compatibility_CompatibilityInterface extends TTFMAKE_Util
 	public function deprecated_hook( $hook, $version, $message = null );
 
 	public function is_plus();
+
+	public function get_plus_version();
 }

@@ -3,6 +3,11 @@
  * @package Make
  */
 
+// Bail if this isn't being included inside of a TTFMAKE_Util_Compatibility_CompatibilityInterface.
+if ( ! isset( $this ) || ! $this instanceof TTFMAKE_Util_Compatibility_CompatibilityInterface ) {
+	return;
+}
+
 /**
  * Write the favicons to the head to implement the options.
  *

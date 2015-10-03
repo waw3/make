@@ -99,6 +99,9 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 			return;
 		}
 
+		// Add notice if user attempts to install Make Plus as a theme
+		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
+
 		// Load the deprecated functions file.
 		if ( true === $this->mode['deprecated-functions'] ) {
 			$file = basename( __FILE__ ) . '/deprecated-functions.php';
@@ -120,6 +123,42 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 	 */
 	public function is_loaded() {
 		return $this->loaded;
+	}
+
+	/**
+	 * Add notice if user attempts to install Make Plus as a theme.
+	 *
+	 * @since  1.1.2.
+	 *
+	 * @param  string         $source           File source location.
+	 * @param  string         $remote_source    Remove file source location.
+	 * @param  WP_Upgrader    $upgrader         WP_Upgrader instance.
+	 *
+	 * @return WP_Error                         Error or source on success.
+	 */
+	public function check_package( $source, $remote_source, $upgrader ) {
+		global $wp_filesystem;
+
+		if ( ! isset( $_GET['action'] ) || 'upload-theme' !== $_GET['action'] ) {
+			return $source;
+		}
+
+		if ( is_wp_error( $source ) ) {
+			return $source;
+		}
+
+		// Check the folder contains a valid theme
+		$working_directory = str_replace( $wp_filesystem->wp_content_dir(), trailingslashit( WP_CONTENT_DIR ), $source );
+		if ( ! is_dir( $working_directory ) ) { // Sanity check, if the above fails, lets not prevent installation.
+			return $source;
+		}
+
+		// A proper archive should have a style.css file in the single subdirectory
+		if ( ! file_exists( $working_directory . 'style.css' ) && strpos( $source, 'make-plus-' ) >= 0 ) {
+			return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings[ 'incompatible_archive' ], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.', 'make' ) );
+		}
+
+		return $source;
 	}
 
 	/**
@@ -218,5 +257,22 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 		 * @param bool    $is_plus    True if Make Plus is active.
 		 */
 		return apply_filters( 'make_is_plus', $this->plus );
+	}
+
+	/**
+	 * Get the version of Make Plus currently running.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return null
+	 */
+	public function get_plus_version() {
+		$version = null;
+
+		if ( true === $this->is_plus() ) {
+			$version = ttfmp_get_app()->version;
+		}
+
+		return $version;
 	}
 }

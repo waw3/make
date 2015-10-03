@@ -97,3 +97,8 @@ function make_sanitize_thememod_choice( $value, $setting_id ) {
 function make_register_admin_notice( $id, $message, $args ) {
 	return make_get_utils()->get_module( 'notice' )->register_admin_notice( $id, $message, $args );
 }
+
+
+function make_is_plus() {
+	return make_get_utils()->get_module( 'compatibility' )->is_plus();
+}
