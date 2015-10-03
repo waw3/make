@@ -60,6 +60,12 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 * @return void
 	 */
 	public function load() {
+		// Load the current notices
+		$file = basename( __FILE__ ) . '/current-notices.php';
+		if ( is_readable( $file ) ) {
+			include_once $file;
+		}
+
 		// Hook up notices
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
