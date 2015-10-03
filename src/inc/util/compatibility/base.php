@@ -37,7 +37,8 @@ final class TTFMAKE_Util_Compatibility_Base {
 			$this->mode = $this->mode['full'];
 		}
 
-		// is_plus
+		// Check for Make Plus
+		$this->plus = class_exists( 'TTFMP_App' );
 	}
 
 
@@ -78,5 +79,17 @@ final class TTFMAKE_Util_Compatibility_Base {
 
 	public function deprecated_filter() {
 
+	}
+
+
+	public function is_plus() {
+		/**
+		 * Filter: Modify the status of Make Plus.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param bool    $is_plus    True if Make Plus is active.
+		 */
+		return apply_filters( 'make_is_plus', $this->plus );
 	}
 }

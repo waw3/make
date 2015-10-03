@@ -12,4 +12,6 @@ interface TTFMAKE_Util_Compatibility_CompatibilityInterface extends TTFMAKE_Util
 	public function deprecated_function();
 
 	public function deprecated_filter();
+
+	public function is_plus();
 }
