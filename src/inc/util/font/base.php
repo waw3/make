@@ -8,6 +8,9 @@ class TTFMAKE_Util_Font_Base {
 
 	protected $font_modules = array();
 
+
+	public $default_stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
+
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
