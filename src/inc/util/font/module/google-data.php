@@ -11,7 +11,7 @@ if ( ! isset( $this ) || ! $this instanceof TTFMAKE_Util_Font_Module_Google ) {
 }
 
 // Import the data.
-$this->import_font_data( array(
+$this->load_font_data( array(
 	'ABeeZee' => array(
 		'label' => 'ABeeZee',
 		'variants' => array(

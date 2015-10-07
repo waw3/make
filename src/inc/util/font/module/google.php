@@ -13,41 +13,67 @@ class TTFMAKE_Util_Font_Module_Google implements TTFMAKE_Util_Font_Module_FontMo
 
 
 	private $stacks = array(
-		'serif' => 'Georgia,Times,Times New Roman,serif',
+		'serif' => 'Georgia,Times,"Times New Roman",serif',
 		'sans-serif' => '"Helvetica Neue",Helvetica,Arial,sans-serif',
 		'display' => 'Copperplate,Copperplate Gothic Light,fantasy',
 		'handwriting' => 'Brush Script MT,cursive',
-		'monospace' => 'Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace',
+		'monospace' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 	);
 
-
-	private $imported = false;
+	/**
+	 * Indicator of whether the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $loaded = false;
 
 
 	public function __construct() {
 		// Set the label
-		$this->label = __( 'Google fonts', 'make' );
+		$this->label = __( 'Google Fonts', 'make' );
+	}
+
+	/**
+	 * Load font data.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function load() {
+		// Load the font data file.
+		$file = basename( __FILE__ ) . '/google-data.php';
+		if ( is_readable( $file ) ) {
+			include_once $file;
+		}
+
+		// Loading has occurred.
+		$this->loaded = true;
+	}
+
+	/**
+	 * Check if the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_loaded() {
+		return $this->loaded;
 	}
 
 
-	public function import_font_data( array $data ) {
-		if ( true === $this->imported ) {
-			return;
-		}
-
+	public function load_font_data( array $data ) {
 		$this->data = $data;
 	}
 
 
 	public function get_font_data( $font = null ) {
-		// Load the font data if it hasn't yet.
-		if ( empty( $this->data ) && false === $this->imported ) {
-			// Load the font data
-			$file = basename( __FILE__ ) . '/google-data.php';
-			if ( is_readable( $file ) ) {
-				include_once $file;
-			}
-			$this->imported = true;
+		// Load the font data if necessary.
+		if ( false === $this->is_loaded() ) {
+			$this->load();
 		}
 
 		// Return data for a specific font.
