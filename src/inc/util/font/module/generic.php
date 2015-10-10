@@ -9,6 +9,9 @@ class TTFMAKE_Util_Font_Module_Generic implements TTFMAKE_Util_Font_Module_FontM
 	public $label = '';
 
 
+	public $priority = 10;
+
+
 	private $data = array();
 
 	/**

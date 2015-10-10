@@ -3,13 +3,14 @@
  * @package Make
  */
 
+/**
+ * Class TTFMAKE_Util_Font_Base
+ *
+ * @since x.x.x
+ */
+final class TTFMAKE_Util_Font_Base {
 
-class TTFMAKE_Util_Font_Base {
-
-	protected $font_modules = array();
-
-
-	public $default_stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
+	private $font_modules = array();
 
 	/**
 	 * Indicator of whether the load routine has been run.
@@ -18,7 +19,7 @@ class TTFMAKE_Util_Font_Base {
 	 *
 	 * @var bool
 	 */
-	protected $loaded = false;
+	private $loaded = false;
 
 	/**
 	 * Load font data and other data into the object.
@@ -48,6 +49,9 @@ class TTFMAKE_Util_Font_Base {
 		 * @param TTFMAKE_Util_Font_Base    $font    The font object that has just finished loading.
 		 */
 		do_action( 'make_font_loaded', $this );
+
+		// Sort font modules by priority
+		$this->font_modules = $this->sort_font_modules( $this->font_modules );
 	}
 
 	/**
@@ -93,8 +97,77 @@ class TTFMAKE_Util_Font_Base {
 	}
 
 
-	public function get_font_data() {}
+	private function sort_font_modules( $modules ) {
+		$sorted_modules = array();
+
+		$prioritizer = array();
+		foreach ( $modules as $module_id => $module ) {
+			$priority = $this->get_font_module_priority( $module_id );
+
+			if ( ! isset( $prioritizer[ $priority ] ) ) {
+				$prioritizer[ $priority ] = array();
+			}
+
+			$prioritizer[ $priority ][ $module_id ] = $module;
+		}
+
+		ksort( $prioritizer );
+
+		foreach ( $prioritizer as $module_group ) {
+			$sorted_modules = array_merge( $sorted_modules, $module_group );
+		}
+
+		return $sorted_modules;
+	}
 
 
-	public function get_font_choices() {}
+	public function get_font_module( $module_id ) {
+		if ( true === $this->has_font_module( $module_id ) ) {
+			return $this->font_modules[ $module_id ];
+		} else {
+			return new WP_Error( 'make_font_module_not_valid', sprintf( __( 'The "%s" font module doesn\'t exist.', 'make' ), $module_id ) );
+		}
+	}
+
+
+	public function get_font_module_label( $module_id ) {
+		$module = $this->get_font_module( $module_id );
+		return ( isset( $module->label ) ) ? $module->label : ucfirst( $module_id );
+	}
+
+
+	private function get_font_module_priority( $module_id ) {
+		$module = $this->get_font_module( $module_id );
+		return ( isset( $module->priority ) ) ? absint( $module->priority ) : 10;
+	}
+
+
+	public function get_font_choices( $module_id = null, $headings = true ) {
+		$heading_prefix = 'make-choice-heading-';
+		$choices = array();
+
+		if ( ! is_null( $module_id ) ) {
+			if ( $this->has_font_module( $module_id ) ) {
+				$choices = $this->font_modules[ $module_id ]->get_font_choices();
+				if ( true === $headings ) {
+					$label = $this->get_font_module_label( $module_id );
+					$choices = array_merge( array( $heading_prefix . $module_id => $label ), $choices );
+				}
+			}
+
+			return $choices;
+		}
+
+		foreach ( $this->font_modules as $module_id => $module ) {
+			$module_choices = $module->get_font_choices();
+			if ( true === $headings ) {
+				$label = $this->get_font_module_label( $module_id );
+				$module_choices = array_merge( array( $heading_prefix . $module_id => $label ), $module_choices );
+			}
+
+			$choices = array_merge( $choices, $module_choices );
+		}
+
+		return $choices;
+	}
 }

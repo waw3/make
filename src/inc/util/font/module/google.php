@@ -9,6 +9,9 @@ class TTFMAKE_Util_Font_Module_Google implements TTFMAKE_Util_Font_Module_FontMo
 	public $label = '';
 
 
+	public $priority = 20;
+
+
 	private $data = array();
 
 
