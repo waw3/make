@@ -170,4 +170,22 @@ final class TTFMAKE_Util_Font_Base {
 
 		return $choices;
 	}
+
+
+	public function sanitize_font_choice( $value, $source = null, $default = '' ) {
+		// Get fonts from one source, if specified. Otherwise, get all the fonts.
+		if ( ! is_null( $source ) && $this->has_font_module( $source ) ) {
+			$allowed_fonts = $this->get_font_choices( $source, false );
+		} else {
+			$allowed_fonts = $this->get_font_choices( null, false );
+		}
+
+		// Find the choice in the font list.
+		if ( array_key_exists( $value, $allowed_fonts ) ) {
+			return $value;
+		}
+
+		// Not a valid choice, return the default.
+		return $default;
+	}
 }

@@ -10,7 +10,8 @@ class TTFMAKE_Util_API {
 		TTFMAKE_Util_Compatibility_CompatibilityInterface $compatibility = null,
 		TTFMAKE_Util_Admin_NoticeInterface $notice = null,
 		TTFMAKE_Util_Settings_SettingsInterface $thememod = null,
-		TTFMAKE_Util_Choices_ChoicesInterface $choices = null
+		TTFMAKE_Util_Choices_ChoicesInterface $choices = null,
+		TTFMAKE_Util_Font_FontInterface $font
 	) {
 		// Compatibility (load right away)
 		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new TTFMAKE_Util_Compatibility_Base : $compatibility;
@@ -26,6 +27,9 @@ class TTFMAKE_Util_API {
 
 		// Choices
 		$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
+
+		// Font
+		$this->font_instance = ( is_null( $font ) ) ? new TTFMAKE_Util_Font_Base : $font;
 	}
 
 	/**
@@ -102,6 +106,11 @@ function make_sanitize_thememod_choice( $value, $setting_id ) {
 	$default    = make_get_utils()->get_module( 'thememod' )->get_default( $setting_id );
 
 	return make_get_utils()->get_module( 'choices' )->sanitize_choice( $value, $choice_set_id, $default );
+}
+
+
+function make_sanitize_font_choice( $value ) {
+	return make_get_utils()->get_module( 'font' )->sanitize_font_choice( $value );
 }
 
 /**

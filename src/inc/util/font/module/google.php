@@ -15,6 +15,9 @@ class TTFMAKE_Util_Font_Module_Google implements TTFMAKE_Util_Font_Module_FontMo
 	private $data = array();
 
 
+	private $subsets = array();
+
+
 	private $stacks = array(
 		'serif' => 'Georgia,Times,"Times New Roman",serif',
 		'sans-serif' => '"Helvetica Neue",Helvetica,Arial,sans-serif',
@@ -119,5 +122,112 @@ class TTFMAKE_Util_Font_Module_Google implements TTFMAKE_Util_Font_Module_FontMo
 		}
 
 		return $stack;
+	}
+
+
+	public function build_url( array $fonts, array $subsets ) {
+		$url = '';
+		$fonts = array_unique( $fonts );
+		$family = array();
+
+		foreach ( $fonts as $font ) {
+			$font_data = $this->get_font_data( trim( $font ) );
+
+			// Verify that the font exists
+			if ( ! empty( $font_data ) ) {
+				// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
+				$family[] = urlencode(
+					$font .
+					':' .
+					join( ',', $this->choose_font_variants( $font, $font_data['variants'] ) )
+				);
+			}
+		}
+
+		// Bail if there are no valid font families.
+		if ( empty( $family ) ) {
+			return $url;
+		}
+
+		// Start building the URL.
+		$base_url = '//fonts.googleapis.com/css';
+
+		// Add families
+		$url = add_query_arg( 'family', implode( '|', $family ), $base_url );
+
+		// Add subsets, if specified.
+		if ( ! empty( $subsets ) ) {
+			$subsets = array_map( 'sanitize_key', $subsets );
+			$url = add_query_arg( 'subset', join( ',', $subsets ), $url );
+		}
+
+		/**
+		 * Filter the Google Fonts URL.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $url    The URL to retrieve the Google Fonts.
+		 */
+		return apply_filters( 'make_get_google_font_uri', $url );
+	}
+
+
+	private function choose_font_variants( $font, array $available_variants = array() ) {
+		$chosen_variants = array();
+
+		if ( empty( $available_variants ) ) {
+			$font_data = $this->get_font_data( $font );
+			if ( ! empty( $font_data ) ) {
+				$available_variants = $font_data['variants'];
+			}
+		}
+
+		// If a "regular" variant is not found, get the first variant
+		if ( ! in_array( 'regular', $available_variants ) ) {
+			$chosen_variants[] = $available_variants[0];
+		} else {
+			$chosen_variants[] = 'regular';
+		}
+
+		// Only add "italic" if it exists
+		if ( in_array( 'italic', $available_variants ) ) {
+			$chosen_variants[] = 'italic';
+		}
+
+		// Only add "700" if it exists
+		if ( in_array( '700', $available_variants ) ) {
+			$chosen_variants[] = '700';
+		}
+
+		/**
+		 * Allow developers to alter the font variant choice.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array     $variants    The list of variants for a font.
+		 * @param string    $font        The font to load variants for.
+		 * @param array     $variants    The variants for the font.
+		 */
+		return apply_filters( 'make_font_variants', array_unique( $chosen_variants ), $font, $available_variants );
+	}
+
+
+	public function get_subsets() {
+		if ( empty( $this->subsets ) ) {
+			$subsets = array();
+			$data = $this->get_font_data();
+
+			foreach ( $data as $font_data ) {
+				if ( isset( $font_data['subsets'] ) ) {
+					$subsets = $subsets + $font_data['subsets'];
+				}
+			}
+
+			$subsets = array_unique( $subsets );
+			$this->subsets = $subsets;
+			return $subsets;
+		}
+
+		return $this->subsets;
 	}
 }

@@ -380,7 +380,8 @@ $this->add_settings(
 		'font-family-footer-widget'       => array( 'default' => 'Open Sans' ),
 	),
 	array(
-		'sanitize' => 'ttfmake_sanitize_font_choice',
+		'sanitize' => 'make_sanitize_font_choice',
+		'sanitize_frontend' => 'sanitize_text_field',
 		// The choice set for font family is too big, so is handled separately.
 	)
 );
