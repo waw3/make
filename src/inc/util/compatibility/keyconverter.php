@@ -47,8 +47,8 @@ class TTFMAKE_Util_Compatibility_KeyConverter {
 			'font-size-h6'                => 'font-header-size',
 			'font-size-widget'            => 'font-widget-size',
 			'font-size-body'              => 'font-body-size',
-			'social-facebook-official'    => 'social-facebook',
-			'main-content-link-underline' => 'link-underline-body',
+			'social-facebook-official'    => 'social-facebook', // 1.5.0
+			'main-content-link-underline' => 'link-underline-body', // 1.5.0
 		);
 
 		/**

@@ -18,19 +18,24 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 	 */
 	private $mode = array(
 		'full' => array(
-			'deprecated-functions' => true,
-			'hook-prefixer'        => true,
-			'key-converter'        => true,
+			'deprecated'    => array( '1.5', '1.6', '1.7' ),
+			'hook-prefixer' => true,
+			'key-converter' => true,
 		),
 		'1.5' => array(
-			'deprecated-functions' => true,
-			'hook-prefixer'        => false,
-			'key-converter'        => true,
+			'deprecated'    => array( '1.6', '1.7' ),
+			'hook-prefixer' => false,
+			'key-converter' => false,
+		),
+		'1.6' => array(
+			'deprecated'    => array( '1.7' ),
+			'hook-prefixer' => false,
+			'key-converter' => false,
 		),
 		'current' => array(
-			'deprecated-functions' => false,
-			'hook-prefixer'        => false,
-			'key-converter'        => false,
+			'deprecated'    => false,
+			'hook-prefixer' => false,
+			'key-converter' => false,
 		),
 	);
 
@@ -72,6 +77,8 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 		 *
 		 * - 'full' will load all the files to enable back compatibility with deprecated code.
 		 * - 'current' will not load any deprecated code. Use with caution! Could result in a fatal PHP error.
+		 * - A minor release value, such as '1.5', will load files necessary for back compatibility with version 1.5.x.
+		 *   (Note that there are no separate modes for releases prior to 1.5.)
 		 *
 		 * @since x.x.x.
 		 *
@@ -116,11 +123,8 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
 
 		// Load the deprecated functions file.
-		if ( true === $this->mode['deprecated-functions'] ) {
-			$file = basename( __FILE__ ) . '/deprecated-functions.php';
-			if ( is_readable( $file ) ) {
-				require_once $file;
-			}
+		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
+			$this->require_deprecated_files( $this->mode['deprecated'] );
 		}
 
 		// Load the hook prefixer
@@ -148,6 +152,22 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 	 */
 	public function is_loaded() {
 		return $this->loaded;
+	}
+
+	/**
+	 * Load back compat files for deprecated functionality based on specified version numbers.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array    $versions    The array of minor release versions.
+	 */
+	private function require_deprecated_files( array $versions ) {
+		foreach ( $versions as $version ) {
+			$file = basename( __FILE__ ) . '/deprecated/deprecated-' . $version . '.php';
+			if ( is_readable( $file ) ) {
+				require_once $file;
+			}
+		}
 	}
 
 	/**
