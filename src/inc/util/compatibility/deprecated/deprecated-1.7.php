@@ -20,7 +20,8 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Util_Compatibility_Compatibilit
  * @return WP_Error                         Error or source on success.
  */
 function ttfmake_check_package( $source, $remote_source, $upgrader ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 	return $source;
 }
 
@@ -37,7 +38,8 @@ function ttfmake_check_package( $source, $remote_source, $upgrader ) {
  * @return void
  */
 function ttfmake_filter_backcompat() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
 /**
@@ -49,7 +51,8 @@ function ttfmake_filter_backcompat() {
  * @return mixed    The result of the filter.
  */
 function ttfmake_backcompat_filter() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 
 	$filter = 'ttf' . current_filter();
 	$args   = func_get_args();
@@ -69,7 +72,8 @@ function ttfmake_backcompat_filter() {
  * @return void
  */
 function ttfmake_action_backcompat() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
 /**
@@ -81,7 +85,8 @@ function ttfmake_action_backcompat() {
  * @return mixed    The result of the filter.
  */
 function ttfmake_backcompat_action() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 
 	$action = 'ttf' . current_filter();
 	$args   = func_get_args();
@@ -97,7 +102,8 @@ function ttfmake_backcompat_action() {
  * @return array    The list of key migration sets.
  */
 function ttfmake_customizer_get_key_conversions() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
 /**
@@ -109,7 +115,8 @@ function ttfmake_customizer_get_key_conversions() {
  * @return void
  */
 function ttfmake_customizer_set_up_theme_mod_conversions() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
 /**
@@ -122,7 +129,8 @@ function ttfmake_customizer_set_up_theme_mod_conversions() {
  * @return mixed              The modified value.
  */
 function ttfmake_customizer_convert_theme_mods_filter( $value ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 	return $value;
 }
 
@@ -138,7 +146,8 @@ function ttfmake_customizer_convert_theme_mods_filter( $value ) {
  * @return mixed                 The convert mod value.
  */
 function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $value ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 	return $value;
 }
 
@@ -151,7 +160,8 @@ function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $valu
  * @return TTFMAKE_Admin_Notice
  */
 function ttfmake_admin_notice() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'notice\' )' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'notice\' )', $backtrace[0] );
 	return make_get_utils()->get_module( 'notice' );
 }
 
@@ -167,7 +177,8 @@ function ttfmake_admin_notice() {
  * @return void
  */
 function ttfmake_register_admin_notice( $id, $message, $args ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'notice\' )->register_admin_notice' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'notice\' )->register_admin_notice', $backtrace[0] );
 	make_get_utils()->get_module( 'notice' )->register_admin_notice( $id, $message, $args );
 }
 
@@ -180,7 +191,8 @@ function ttfmake_register_admin_notice( $id, $message, $args ) {
  * @return void
  */
 function ttfmake_upgrade_notices() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
 /**
@@ -191,7 +203,8 @@ function ttfmake_upgrade_notices() {
  * @return void
  */
 function ttfmake_plus_upgrade_notices() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
 /**
@@ -203,7 +216,8 @@ function ttfmake_plus_upgrade_notices() {
  * @return bool
  */
 function ttfmake_load_textdomains() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'l10n\' )->load_textdomains' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'l10n\' )->load_textdomains', $backtrace[0] );
 	return make_get_utils()->get_module( 'l10n' )->load_textdomains();
 }
 
@@ -216,7 +230,8 @@ function ttfmake_load_textdomains() {
  * @return array    The default values for all theme options.
  */
 function ttfmake_option_defaults() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_settings( \'default\' )' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_settings( \'default\' )', $backtrace[0] );
 	return make_get_utils()->get_module( 'thememod' )->get_settings( 'default' );
 }
 
@@ -230,7 +245,8 @@ function ttfmake_option_defaults() {
  * @return mixed                Default value if found; false if not found.
  */
 function ttfmake_get_default( $option ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_thememod_get_default' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_thememod_get_default', $backtrace[0] );
 	return make_get_utils()->get_module( 'thememod' )->get_default( $option );
 }
 
@@ -244,7 +260,8 @@ function ttfmake_get_default( $option ) {
  * @return array                        The options for the setting.
  */
 function ttfmake_get_choices( $setting ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_choice_set' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_choice_set', $backtrace[0] );
 	return make_get_utils()->get_module( 'thememod' )->get_choice_set( $setting );
 }
 
@@ -259,6 +276,7 @@ function ttfmake_get_choices( $setting ) {
  * @return mixed                The sanitized value.
  */
 function ttfmake_sanitize_choice( $value, $setting ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->sanitize_choice' );
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->sanitize_choice', $backtrace[0] );
 	return make_get_utils()->get_module( 'thememod' )->sanitize_choice( $value, $setting );
 }

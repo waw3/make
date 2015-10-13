@@ -45,15 +45,6 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	);
 
 	/**
-	 * Switch for showing compatibility errors.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var bool
-	 */
-	private $show_errors = true;
-
-	/**
 	 * The activation status of Make Plus.
 	 *
 	 * @since x.x.x.
@@ -72,11 +63,16 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	private $loaded = false;
 
 	/**
-	 * Initialize and set properties.
+	 * Inject dependencies and set properties.
 	 *
 	 * @since x.x.x.
 	 */
-	public function __construct() {
+	public function __construct(
+		MAKE_Util_Error_ErrorInterface $error
+	) {
+		// Errors
+		$this->error = $error;
+
 		/**
 		 * Filter: Set the mode for compatibility.
 		 *
@@ -96,17 +92,6 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 			$this->mode = $this->mode['full'];
 		}
 
-		/**
-		 * Filter: Toggle for showing compatibility errors.
-		 *
-		 * WP_DEBUG must also be set to true.
-		 *
-		 * @since x.x.x.
-		 *
-		 * @param bool    $show_errors    True to show errors.
-		 */
-		$this->show_errors = apply_filters( 'make_compatibility_show_errors', true );
-
 		// Check for Make Plus
 		$this->plus = class_exists( 'TTFMP_App' );
 	}
@@ -119,11 +104,6 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	 * @return void
 	 */
 	public function load() {
-		// Bail if the load routine has already been run.
-		if ( true === $this->is_loaded() ) {
-			return;
-		}
-
 		// Add notice if user attempts to install Make Plus as a theme
 		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
 
@@ -217,121 +197,6 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	}
 
 	/**
-	 * Mark a function as deprecated and inform when it has been used.
-	 *
-	 * Based on _deprecated_function() in WordPress core.
-	 *
-	 * @param      $function
-	 * @param      $version
-	 * @param null $replacement
-	 */
-	public function deprecated_function( $function, $version, $replacement = null ) {
-		/**
-		 * Fires when a deprecated function is called.
-		 *
-		 * @since x.x.x.
-		 *
-		 * @param string $function    The function that was called.
-		 * @param string $replacement The function that should have been called.
-		 * @param string $version     The version of Make that deprecated the function.
-		 */
-		do_action( 'make_deprecated_function_run', $function, $replacement, $version );
-
-		// Maybe show an error.
-		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && true === $this->show_errors ) {
-			if ( function_exists( '__' ) ) {
-				if ( ! is_null( $replacement ) ) {
-					trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
-				} else {
-					trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
-				}
-			} else {
-				if ( ! is_null( $replacement ) ) {
-					trigger_error( sprintf( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', $function, $version, $replacement ) );
-				} else {
-					trigger_error( sprintf( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', $function, $version ) );
-				}
-			}
-		}
-	}
-
-	/**
-	 * Mark an action or filter hook as deprecated and inform when it has been used.
-	 *
-	 * Based on _deprecated_argument() in WordPress core.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param string $hook     The hook that was used.
-	 * @param string $version  The version of WordPress that deprecated the hook.
-	 * @param string $message  Optional. A message regarding the change. Default null.
-	 */
-	public function deprecated_hook( $hook, $version, $message = null ) {
-		/**
-		 * Fires when a deprecated hook has an attached function/method.
-		 *
-		 * @since x.x.x.
-		 *
-		 * @param string $hook        The hook that was called.
-		 * @param string $message     Optional. A message regarding the change. Default null.
-		 * @param string $version     The version of Make that deprecated the hook.
-		 */
-		do_action( 'make_deprecated_hook_run', $hook, $message, $version );
-
-		// Maybe show an error.
-		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && true === $this->show_errors ) {
-			if ( function_exists( '__' ) ) {
-				if ( ! is_null( $message ) ) {
-					trigger_error( sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', 'make' ), $hook, $version, $message ) );
-				} else {
-					trigger_error( sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
-				}
-			} else {
-				if ( ! is_null( $message ) ) {
-					trigger_error( sprintf( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', $hook, $version, $message ) );
-				} else {
-					trigger_error( sprintf( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', $hook, $version ) );
-				}
-			}
-		}
-	}
-
-	/**
-	 * Mark something as being incorrectly called.
-	 *
-	 * Based on _doing_it_wrong() in WordPress core.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param string $function The function that was called.
-	 * @param string $message  A message explaining what has been done incorrectly.
-	 * @param string $version  The version of WordPress where the message was added.
-	 */
-	public function doing_it_wrong( $function, $message, $version = null ) {
-		/**
-		 * Fires when the given function is being used incorrectly.
-		 *
-		 * @since x.x.x.
-		 *
-		 * @param string $function The function that was called.
-		 * @param string $message  A message explaining what has been done incorrectly.
-		 * @param string $version  The version of Make where the message was added.
-		 */
-		do_action( 'make_doing_it_wrong_run', $function, $message, $version = null );
-
-		// Maybe show an error.
-		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && true === $this->show_errors ) {
-			if ( function_exists( '__' ) ) {
-				$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
-				trigger_error( sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
-			} else {
-				$version = is_null( $version ) ? '' : sprintf( '(This message was added in version %s.)', $version );
-				trigger_error( sprintf( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s', $function, $message, $version ) );
-			}
-		}
-	}
-
-	/**
 	 * Check to see if Make Plus is active.
 	 *
 	 * @since x.x.x.
@@ -364,5 +229,110 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 		}
 
 		return $version;
+	}
+
+	/**
+	 * Mark a function as deprecated and inform when it has been used.
+	 *
+	 * Based on _deprecated_function() in WordPress core.
+	 *
+	 * @param string      $function
+	 * @param string      $version
+	 * @param string|null $replacement
+	 * @param array|null  $backtrace
+	 */
+	public function deprecated_function( $function, $version, $replacement = null, $backtrace = null ) {
+		/**
+		 * Fires when a deprecated function is called.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string $function    The function that was called.
+		 * @param string $replacement The function that should have been called.
+		 * @param string $version     The version of Make that deprecated the function.
+		 */
+		do_action( 'make_deprecated_function_run', $function, $replacement, $version );
+
+		$error_code = 'make_deprecated_function';
+
+		// Add an error message.
+		if ( ! is_null( $replacement ) ) {
+			$this->error->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
+		} else {
+			$this->error->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
+		}
+
+		// Add a backtrace.
+		if ( is_array( $backtrace ) ) {
+			$this->error->add_error( $error_code, $backtrace );
+		}
+	}
+
+	/**
+	 * Mark an action or filter hook as deprecated and inform when it has been used.
+	 *
+	 * Based on _deprecated_argument() in WordPress core.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $hook     The hook that was used.
+	 * @param string $version  The version of WordPress that deprecated the hook.
+	 * @param string $message  Optional. A message regarding the change. Default null.
+	 */
+	public function deprecated_hook( $hook, $version, $message = null ) {
+		/**
+		 * Fires when a deprecated hook has an attached function/method.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string $hook        The hook that was called.
+		 * @param string $message     Optional. A message regarding the change. Default null.
+		 * @param string $version     The version of Make that deprecated the hook.
+		 */
+		do_action( 'make_deprecated_hook_run', $hook, $message, $version );
+
+		$error_code = 'make_deprecated_hook';
+
+		// Add an error
+		if ( ! is_null( $message ) ) {
+			$this->error->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', 'make' ), $hook, $version, $message ) );
+		} else {
+			$this->error->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
+		}
+	}
+
+	/**
+	 * Mark something as being incorrectly called.
+	 *
+	 * Based on _doing_it_wrong() in WordPress core.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $function The function that was called.
+	 * @param string $message  A message explaining what has been done incorrectly.
+	 * @param string $version  The version of WordPress where the message was added.
+	 */
+	public function doing_it_wrong( $function, $message, $version = null, $backtrace = null ) {
+		/**
+		 * Fires when the given function is being used incorrectly.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string $function The function that was called.
+		 * @param string $message  A message explaining what has been done incorrectly.
+		 * @param string $version  The version of Make where the message was added.
+		 */
+		do_action( 'make_doing_it_wrong_run', $function, $message, $version = null );
+
+		$error_code = 'make_doing_it_wrong';
+
+		// Add an error
+		$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
+		$this->error->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
+
+		// Add a backtrace.
+		if ( is_array( $backtrace ) ) {
+			$this->error->add_error( $error_code, $backtrace );
+		}
 	}
 }

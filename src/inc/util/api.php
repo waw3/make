@@ -7,15 +7,19 @@
 class MAKE_Util_API {
 
 	public function __construct(
+		MAKE_Util_Error_ErrorInterface $error = null,
 		MAKE_Util_Compatibility_CompatibilityInterface $compatibility = null,
 		MAKE_Util_Admin_NoticeInterface $notice = null,
 		MAKE_Util_L10n_L10nInterface $l10n = null,
-		MAKE_Util_Settings_SettingsInterface $thememod = null,
 		MAKE_Util_Choices_ChoicesInterface $choices = null,
-		MAKE_Util_Font_FontInterface $font = null
+		MAKE_Util_Font_FontInterface $font = null,
+		MAKE_Util_Settings_SettingsInterface $thememod = null
 	) {
+		// Errors
+		$this->error_instance = ( is_null( $error ) ) ? new MAKE_Util_Error_Base : $error;
+
 		// Compatibility (load right away)
-		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new MAKE_Util_Compatibility_Base : $compatibility;
+		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new MAKE_Util_Compatibility_Base( $this->error_instance ) : $compatibility;
 		$this->compatibility_instance->load();
 
 		// Admin notices (load right away)
@@ -98,9 +102,13 @@ function make_is_plus() {
 function make_thememod_update_settings( $settings, MAKE_Util_Settings_SettingsInterface $instance ) {
 	// Make sure we're not doing it wrong.
 	if ( 'make_settings_thememod_loaded' !== current_action() ) {
+		$backtrace = debug_backtrace();
+
 		make_get_utils()->get_module( 'compatibility' )->doing_it_wrong(
 			__FUNCTION__,
-			__( 'This function should only be called during the make_settings_thememod_loaded action.', 'make' )
+			__( 'This function should only be called during the make_settings_thememod_loaded action.', 'make' ),
+			null,
+			$backtrace[0]
 		);
 
 		return false;
@@ -113,9 +121,13 @@ function make_thememod_update_settings( $settings, MAKE_Util_Settings_SettingsIn
 function make_choices_update_choices( $choice_sets, MAKE_Util_Choices_ChoicesInterface $instance ) {
 	// Make sure we're not doing it wrong.
 	if ( 'make_choices_loaded' !== current_action() ) {
+		$backtrace = debug_backtrace();
+
 		make_get_utils()->get_module( 'compatibility' )->doing_it_wrong(
 			__FUNCTION__,
-			__( 'This function should only be called during the make_choices_loaded action.', 'make' )
+			__( 'This function should only be called during the make_choices_loaded action.', 'make' ),
+			null,
+			$backtrace[0]
 		);
 
 		return false;
