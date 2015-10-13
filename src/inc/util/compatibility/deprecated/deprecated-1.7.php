@@ -230,7 +230,7 @@ function ttfmake_option_defaults() {
  * @return mixed                Default value if found; false if not found.
  */
 function ttfmake_get_default( $option ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_default' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_thememod_get_default' );
 	return make_get_utils()->get_module( 'thememod' )->get_default( $option );
 }
 
