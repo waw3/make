@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a TTFMAKE_Util_Admin_NoticeInterface.
-if ( ! isset( $this ) || ! $this instanceof TTFMAKE_Util_Admin_NoticeInterface ) {
+// Bail if this isn't being included inside of a MAKE_Util_Admin_NoticeInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Util_Admin_NoticeInterface ) {
 	return;
 }
 

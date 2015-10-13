@@ -4,33 +4,33 @@
  */
 
 
-class TTFMAKE_Util_API {
+class MAKE_Util_API {
 
 	public function __construct(
-		TTFMAKE_Util_Compatibility_CompatibilityInterface $compatibility = null,
-		TTFMAKE_Util_Admin_NoticeInterface $notice = null,
-		TTFMAKE_Util_Settings_SettingsInterface $thememod = null,
-		TTFMAKE_Util_Choices_ChoicesInterface $choices = null,
-		TTFMAKE_Util_Font_FontInterface $font = null
+		MAKE_Util_Compatibility_CompatibilityInterface $compatibility = null,
+		MAKE_Util_Admin_NoticeInterface $notice = null,
+		MAKE_Util_Settings_SettingsInterface $thememod = null,
+		MAKE_Util_Choices_ChoicesInterface $choices = null,
+		MAKE_Util_Font_FontInterface $font = null
 	) {
 		// Compatibility (load right away)
-		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new TTFMAKE_Util_Compatibility_Base : $compatibility;
+		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new MAKE_Util_Compatibility_Base : $compatibility;
 		$this->compatibility_instance->load();
 
 		// Admin notices (load right away)
 		if ( is_admin() ) {
-			$this->notice_instance = ( is_null( $notice ) ) ? new TTFMAKE_Util_Admin_Notice : $notice;
+			$this->notice_instance = ( is_null( $notice ) ) ? new MAKE_Util_Admin_Notice : $notice;
 			$this->notice_instance->load();
 		}
 
 		// Theme mods
-		//$this->thememod_instance = ( is_null( $thememod ) ) ? new TTFMAKE_Util_Settings_ThemeMod : $thememod;
+		//$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod : $thememod;
 
 		// Choices
-		//$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
+		//$this->choices_instance = ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base : $choices;
 
 		// Font
-		//$this->font_instance = ( is_null( $font ) ) ? new TTFMAKE_Util_Font_Base : $font;
+		//$this->font_instance = ( is_null( $font ) ) ? new MAKE_Util_Font_Base : $font;
 	}
 
 	/**
@@ -58,11 +58,11 @@ class TTFMAKE_Util_API {
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param TTFMAKE_Util_LoadInterface $module
+	 * @param MAKE_Util_LoadInterface $module
 	 *
 	 * @return void
 	 */
-	protected function maybe_run_load( TTFMAKE_Util_LoadInterface $module ) {
+	protected function maybe_run_load( MAKE_Util_LoadInterface $module ) {
 		if ( false === $module->is_loaded() ) {
 			$module->load();
 		}
@@ -78,8 +78,8 @@ class TTFMAKE_Util_API {
 function make_get_utils() {
 	global $make_utils;
 
-	if ( ! $make_utils instanceof TTFMAKE_Util_API ) {
-		$make_utils = new TTFMAKE_Util_API;
+	if ( ! $make_utils instanceof MAKE_Util_API ) {
+		$make_utils = new MAKE_Util_API;
 	}
 
 	return $make_utils;

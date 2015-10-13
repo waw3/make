@@ -4,13 +4,13 @@
  */
 
 /**
- * Class TTFMAKE_Util_Choices_Base
+ * Class MAKE_Util_Choices_Base
  *
  * An object for defining and managing choice sets.
  *
  * @since x.x.x.
  */
-class TTFMAKE_Util_Choices_Base implements TTFMAKE_Util_Choices_ChoicesInterface {
+class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
@@ -59,7 +59,7 @@ class TTFMAKE_Util_Choices_Base implements TTFMAKE_Util_Choices_ChoicesInterface
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param TTFMAKE_Utils_Choices    $choices    The choices object that has just finished loading.
+		 * @param MAKE_Utils_Choices    $choices    The choices object that has just finished loading.
 		 */
 		do_action( 'make_choices_loaded', $this );
 	}

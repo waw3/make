@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a TTFMAKE_Util_Choices_ChoicesInterface.
-if ( ! isset( $this ) || ! $this instanceof TTFMAKE_Util_Choices_ChoicesInterface ) {
+// Bail if this isn't being included inside of a MAKE_Util_Choices_ChoicesInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Util_Choices_ChoicesInterface ) {
 	return;
 }
 

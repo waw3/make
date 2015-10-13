@@ -4,7 +4,7 @@
  */
 
 /**
- * Class TTFMAKE_Util_Settings_Base
+ * Class MAKE_Util_Settings_Base
  *
  * An object for defining and managing settings and their values.
  *
@@ -22,7 +22,7 @@
  *
  * @since x.x.x.
  */
-abstract class TTFMAKE_Util_Settings_Base implements TTFMAKE_Util_Settings_SettingsInterface {
+abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInterface {
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *

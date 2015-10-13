@@ -4,9 +4,9 @@
  */
 
 /**
- * Class TTFMAKE_Util_Compatibility_HookPrefixer
+ * Class MAKE_Util_Compatibility_HookPrefixer
  */
-final class TTFMAKE_Util_Compatibility_HookPrefixer {
+final class MAKE_Util_Compatibility_HookPrefixer {
 	/**
 	 * Initialize and hook into WordPress.
 	 *

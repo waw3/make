@@ -14,9 +14,9 @@
  *
  * @param string $class
  */
-function ttfmake_autoload( $class ) {
+function make_autoload( $class ) {
 	// Prefix for all Make classes
-	$prefix = 'TTFMAKE_';
+	$prefix = 'MAKE_';
 
 	// Prefix character length
 	$length = strlen( $prefix );
@@ -42,4 +42,4 @@ function ttfmake_autoload( $class ) {
 	}
 }
 
-spl_autoload_register( 'ttfmake_autoload' );
+spl_autoload_register( 'make_autoload' );

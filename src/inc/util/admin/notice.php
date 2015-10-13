@@ -4,11 +4,11 @@
  */
 
 /**
- * Class TTFMAKE_Util_Admin_Notice
+ * Class MAKE_Util_Admin_Notice
  *
  * @since 1.4.9.
  */
-class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
+class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *

@@ -4,11 +4,11 @@
  */
 
 /**
- * Class TTFMAKE_Util_Font_Base
+ * Class MAKE_Util_Font_Base
  *
  * @since x.x.x
  */
-final class TTFMAKE_Util_Font_Base {
+final class MAKE_Util_Font_Base {
 
 	private $font_modules = array();
 
@@ -30,10 +30,10 @@ final class TTFMAKE_Util_Font_Base {
 	 */
 	public function load() {
 		// Load generic font module
-		$this->add_font_module( 'generic', new TTFMAKE_Util_Font_Module_Generic );
+		$this->add_font_module( 'generic', new MAKE_Util_Font_Module_Generic );
 
 		// Load Google font module
-		$this->add_font_module( 'google', new TTFMAKE_Util_Font_Module_Google );
+		$this->add_font_module( 'google', new MAKE_Util_Font_Module_Google );
 
 		// Loading has occurred.
 		$this->loaded = true;
@@ -46,7 +46,7 @@ final class TTFMAKE_Util_Font_Base {
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param TTFMAKE_Util_Font_Base    $font    The font object that has just finished loading.
+		 * @param MAKE_Util_Font_Base    $font    The font object that has just finished loading.
 		 */
 		do_action( 'make_font_loaded', $this );
 
@@ -66,7 +66,7 @@ final class TTFMAKE_Util_Font_Base {
 	}
 
 
-	public function add_font_module( $module_id, TTFMAKE_Util_Font_Module_FontModuleInterface $module ) {
+	public function add_font_module( $module_id, MAKE_Util_Font_Module_FontModuleInterface $module ) {
 		// Font module already exists.
 		if ( $this->has_font_module( $module_id ) ) {
 			return new WP_Error( 'make_font_add_module_already_exists', sprintf( __( 'A font module with ID "%s" already exists. It cannot be added again.', 'make' ), $module_id ) );

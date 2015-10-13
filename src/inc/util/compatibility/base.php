@@ -4,11 +4,11 @@
  */
 
 /**
- * Class TTFMAKE_Util_Compatibility_Base
+ * Class MAKE_Util_Compatibility_Base
  *
  * @since x.x.x.
  */
-final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibility_CompatibilityInterface {
+final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_CompatibilityInterface {
 	/**
 	 * The compatibility modes.
 	 *
@@ -134,13 +134,13 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 
 		// Load the hook prefixer
 		if ( true === $this->mode['hook-prefixer'] ) {
-			$this->hookprefixer_instance = new TTFMAKE_Util_Compatibility_HookPrefixer;
+			$this->hookprefixer_instance = new MAKE_Util_Compatibility_HookPrefixer;
 			$this->hookprefixer_instance->init();
 		}
 
 		// Load the key converter
 		if ( true === $this->mode['key-converter'] ) {
-			$this->keyconverter_instance = new TTFMAKE_Util_Compatibility_KeyConverter;
+			$this->keyconverter_instance = new MAKE_Util_Compatibility_KeyConverter;
 			$this->keyconverter_instance->init();
 		}
 

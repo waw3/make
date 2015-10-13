@@ -4,11 +4,11 @@
  */
 
 /**
- * Interface TTFMAKE_Util_SettingsInterface
+ * Interface MAKE_Util_SettingsInterface
  *
  * @since x.x.x.
  */
-interface TTFMAKE_Util_Settings_SettingsInterface extends TTFMAKE_Util_LoadInterface {
+interface MAKE_Util_Settings_SettingsInterface extends MAKE_Util_LoadInterface {
 	public function add_settings( $settings, $overwrite = false );
 
 	public function remove_settings( $setting_ids );

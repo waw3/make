@@ -4,9 +4,9 @@
  */
 
 /**
- * Class TTFMAKE_Util_Compatibility_KeyConverter
+ * Class MAKE_Util_Compatibility_KeyConverter
  */
-final class TTFMAKE_Util_Compatibility_KeyConverter {
+final class MAKE_Util_Compatibility_KeyConverter {
 	/**
 	 * Initialize and hook into WordPress.
 	 *

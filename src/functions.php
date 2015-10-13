@@ -88,7 +88,7 @@ function ttfmake_require_files() {
 
 	// Load Utils
 	global $make_utils;
-	$make_utils = new TTFMAKE_Util_API;
+	$make_utils = new MAKE_Util_API;
 }
 
 // Load files immediately.

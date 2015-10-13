@@ -4,7 +4,7 @@
  */
 
 
-class TTFMAKE_Util_Font_Module_Google implements TTFMAKE_Util_Font_Module_FontModuleInterface {
+class MAKE_Util_Font_Module_Google implements MAKE_Util_Font_Module_FontModuleInterface {
 
 	public $label = '';
 

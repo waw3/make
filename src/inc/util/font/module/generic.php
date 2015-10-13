@@ -4,7 +4,7 @@
  */
 
 
-class TTFMAKE_Util_Font_Module_Generic implements TTFMAKE_Util_Font_Module_FontModuleInterface {
+class MAKE_Util_Font_Module_Generic implements MAKE_Util_Font_Module_FontModuleInterface {
 
 	public $label = '';
 

@@ -4,13 +4,13 @@
  */
 
 /**
- * Class TTFMAKE_Util_Settings_ThemeMod
+ * Class MAKE_Util_Settings_ThemeMod
  *
- * A child class of TTFMAKE_Util_Settings_Base for defining and managing theme mod settings and their values.
+ * A child class of MAKE_Util_Settings_Base for defining and managing theme mod settings and their values.
  *
  * @since x.x.x.
  */
-class TTFMAKE_Util_Settings_ThemeMod extends TTFMAKE_Util_Settings_Base {
+class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	/**
 	 * The type of settings.
 	 *
@@ -50,7 +50,7 @@ class TTFMAKE_Util_Settings_ThemeMod extends TTFMAKE_Util_Settings_Base {
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param TTFMAKE_ThemeMod_Settings    $settings     The settings object that has just finished loading.
+		 * @param MAKE_ThemeMod_Settings    $settings     The settings object that has just finished loading.
 		 */
 		do_action( "make_settings_{$this->type}_loaded", $this );
 	}
