@@ -9,6 +9,7 @@ class MAKE_Util_API {
 	public function __construct(
 		MAKE_Util_Compatibility_CompatibilityInterface $compatibility = null,
 		MAKE_Util_Admin_NoticeInterface $notice = null,
+		MAKE_Util_L10n_L10nInterface $l10n = null,
 		MAKE_Util_Settings_SettingsInterface $thememod = null,
 		MAKE_Util_Choices_ChoicesInterface $choices = null,
 		MAKE_Util_Font_FontInterface $font = null
@@ -22,6 +23,9 @@ class MAKE_Util_API {
 			$this->notice_instance = ( is_null( $notice ) ) ? new MAKE_Util_Admin_Notice : $notice;
 			$this->notice_instance->load();
 		}
+
+		// Localization
+		$this->l10n_instance = ( is_null( $l10n ) ) ? new MAKE_Util_L10n_Base : $l10n;
 
 		// Theme mods
 		//$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod : $thememod;

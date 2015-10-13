@@ -151,7 +151,7 @@ function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $valu
  * @return TTFMAKE_Admin_Notice
  */
 function ttfmake_admin_notice() {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'notice\' )' );
 	return make_get_utils()->get_module( 'notice' );
 }
 
@@ -167,7 +167,7 @@ function ttfmake_admin_notice() {
  * @return void
  */
 function ttfmake_register_admin_notice( $id, $message, $args ) {
-	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'notice\' )->register_admin_notice' );
 	make_get_utils()->get_module( 'notice' )->register_admin_notice( $id, $message, $args );
 }
 
@@ -192,4 +192,17 @@ function ttfmake_upgrade_notices() {
  */
 function ttfmake_plus_upgrade_notices() {
 	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0' );
+}
+
+/**
+ * Wrapper function to instantiate the L10n class and call the method to load text domains.
+ *
+ * @since 1.6.2.
+ * @deprecated 1.7.0.
+ *
+ * @return bool
+ */
+function ttfmake_load_textdomains() {
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'l10n\' )->load_textdomains' );
+	return make_get_utils()->get_module( 'l10n' )->load_textdomains();
 }
