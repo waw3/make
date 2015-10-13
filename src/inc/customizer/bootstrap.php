@@ -15,9 +15,9 @@ function ttfmake_customizer_init() {
 	$path = trailingslashit( get_template_directory() ) . 'inc/customizer/';
 
 	// Utilities
-	require_once( $path . 'choices.php' );
+	//require_once( $path . 'choices.php' );
 	require_once( $path . 'css.php' );
-	require_once( $path . 'defaults.php' );
+	//require_once( $path . 'defaults.php' );
 	require_once( $path . 'fonts.php' );
 	require_once( $path . 'google-fonts.php' );
 	require_once( $path . 'logo.php' );
