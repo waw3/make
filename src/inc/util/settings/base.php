@@ -225,6 +225,10 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	 * @return array                  An array of setting definitions and their specified properties.
 	 */
 	public function get_settings( $property = 'all' ) {
+		if ( false === $this->is_loaded() ) {
+			$this->load();
+		}
+
 		if ( 'all' === $property ) {
 			return $this->settings;
 		}
@@ -238,6 +242,43 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 		}
 
 		return $settings;
+	}
+
+	/**
+	 * Check if a setting definition exists.
+	 *
+	 * Can also be used to check if a setting definition has a specified property.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $setting_id
+	 * @param string $property
+	 *
+	 * @return bool
+	 */
+	protected function setting_exists( $setting_id, $property = 'all' ) {
+		$settings = $this->get_settings( $property );
+		return isset( $settings[ $setting_id ] );
+	}
+
+	/**
+	 * Get a specific setting definition.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $setting_id
+	 *
+	 * @return array|null
+	 */
+	protected function get_setting( $setting_id ) {
+		$setting = $this->undefined;
+
+		if ( $this->setting_exists( $setting_id ) ) {
+			$settings = $this->get_settings();
+			$setting = $settings[ $setting_id ];
+		}
+
+		return $setting;
 	}
 
 	/**
@@ -299,7 +340,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	public function get_value( $setting_id, $context = '' ) {
 		$value = $this->undefined;
 
-		if ( isset( $this->settings[ $setting_id ] ) ) {
+		if ( $this->setting_exists( $setting_id ) ) {
 			$raw_value = $this->get_raw_value( $setting_id );
 			$sanitized_value = $this->sanitize_value( $raw_value, $setting_id, $context );
 
@@ -337,9 +378,9 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	public function get_default( $setting_id ) {
 		$default_value = $this->undefined;
 
-		$defaults = $this->get_settings( 'default' );
-		if ( isset( $defaults[ $setting_id ] ) ) {
-			$default_value = $defaults[ $setting_id ];
+		if ( $this->setting_exists( $setting_id, 'default' ) ) {
+			$setting = $this->get_setting( $setting_id );
+			$default_value = $setting['default'];
 		}
 
 		/**
@@ -382,8 +423,8 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	public function get_sanitize_callback( $setting_id, $context = '' ) {
 		$callback = $this->undefined;
 
-		if ( isset( $this->settings[ $setting_id ] ) ) {
-			$setting = $this->settings[ $setting_id ];
+		if ( $this->setting_exists( $setting_id ) ) {
+			$setting = $this->get_setting( $setting_id );
 
 			if ( $context && isset( $setting[ 'sanitize_' . $context ] ) ) {
 				$callback = $setting[ 'sanitize_' . $context ];
@@ -418,7 +459,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	public function sanitize_value( $value, $setting_id, $context = '' ) {
 		$sanitized_value = $this->undefined;
 
-		if ( isset( $this->settings[ $setting_id ] ) ) {
+		if ( $this->setting_exists( $setting_id ) ) {
 			$callback = $this->get_sanitize_callback( $setting_id, $context );
 
 			if ( $callback && is_callable( $callback ) ) {

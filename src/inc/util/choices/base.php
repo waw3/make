@@ -179,6 +179,20 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	}
 
 	/**
+	 * Check if a choice set exists.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $set_id
+	 *
+	 * @return bool
+	 */
+	protected function choice_set_exists( $set_id ) {
+		$choice_sets = $this->get_choice_sets();
+		return isset( $choice_sets[ $set_id ] );
+	}
+
+	/**
 	 * Get a particular choice set, using the set ID.
 	 *
 	 * @since x.x.x.
@@ -188,11 +202,11 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 * @return array                The array of choices.
 	 */
 	public function get_choice_set( $set_id ) {
-		$all_sets = $this->get_choice_sets();
 		$choice_set = array();
 
-		if ( isset( $all_sets[ $set_id ] ) ) {
-			$choice_set = $all_sets[ $set_id ];
+		if ( $this->choice_set_exists( $set_id ) ) {
+			$choice_sets = $this->get_choice_sets();
+			$choice_set = $choice_sets[ $set_id ];
 		}
 
 		/**

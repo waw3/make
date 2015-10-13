@@ -117,7 +117,7 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	 * @return bool                     True if value was successfully set.
 	 */
 	public function set_value( $setting_id, $value ) {
-		if ( isset( $this->settings[ $setting_id ] ) ) {
+		if ( $this->setting_exists( $setting_id ) ) {
 			// Sanitize the value before saving it.
 			$sanitized_value = $this->sanitize_value( $value, $setting_id, 'database' );
 			if ( ! is_wp_error( $sanitized_value ) && $this->undefined !== $sanitized_value ) {
@@ -140,7 +140,7 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	 * @return bool                     True if the theme_mod was successfully removed.
 	 */
 	public function unset_value( $setting_id ) {
-		if ( isset( $this->settings[ $setting_id ] ) ) {
+		if ( $this->setting_exists( $setting_id ) ) {
 			// This function doesn't return anything, so we assume success here.
 			remove_theme_mod( $setting_id );
 			return true;
@@ -161,7 +161,7 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	public function get_raw_value( $setting_id ) {
 		$value = $this->undefined;
 
-		if ( isset( $this->settings[ $setting_id ] ) ) {
+		if ( $this->setting_exists( $setting_id ) ) {
 			$value = get_theme_mod( $setting_id, $this->undefined );
 		}
 
@@ -238,9 +238,9 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 		$choice_set_id = $this->undefined;
 		$choice_set = $this->undefined;
 
-		$choice_sets = $this->get_settings( 'choice_set_id' );
-		if ( isset( $choice_sets[ $setting_id ] ) ) {
-			$choice_set_id = $choice_sets[ $setting_id ];
+		if ( $this->setting_exists( $setting_id, 'choice_set_id' ) ) {
+			$setting = $this->get_setting( $setting_id );
+			$choice_set_id = $setting['choice_set_id'];
 		}
 
 		/**
