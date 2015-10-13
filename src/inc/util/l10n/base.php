@@ -18,7 +18,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	private $domain = '';
+	protected $domain = '';
 
 	/**
 	 * Parent theme directory.
@@ -27,7 +27,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	private $theme_dir = '';
+	protected $theme_dir = '';
 
 	/**
 	 * Child theme text domain.
@@ -36,7 +36,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	private $child_domain = '';
+	protected $child_domain = '';
 
 	/**
 	 * Child theme directory.
@@ -45,7 +45,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	private $child_theme_dir = '';
+	protected $child_theme_dir = '';
 
 	/**
 	 * Indicator of whether the load routine has been run.
