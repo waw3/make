@@ -32,6 +32,11 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 			'hook-prefixer' => false,
 			'key-converter' => false,
 		),
+		'1.7' => array(
+			'deprecated'    => false,
+			'hook-prefixer' => false,
+			'key-converter' => false,
+		),
 		'current' => array(
 			'deprecated'    => false,
 			'hook-prefixer' => false,
@@ -122,7 +127,7 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 		// Add notice if user attempts to install Make Plus as a theme
 		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
 
-		// Load the deprecated functions file.
+		// Load deprecated files.
 		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
 			$this->require_deprecated_files( $this->mode['deprecated'] );
 		}
@@ -134,7 +139,7 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 		}
 
 		// Load the key converter
-		if ( true === $this->mode['hook-prefixer'] ) {
+		if ( true === $this->mode['key-converter'] ) {
 			$this->keyconverter_instance = new TTFMAKE_Util_Compatibility_KeyConverter;
 			$this->keyconverter_instance->init();
 		}
@@ -163,7 +168,7 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 	 */
 	private function require_deprecated_files( array $versions ) {
 		foreach ( $versions as $version ) {
-			$file = basename( __FILE__ ) . '/deprecated/deprecated-' . $version . '.php';
+			$file = dirname( __FILE__ ) . '/deprecated/deprecated-' . $version . '.php';
 			if ( is_readable( $file ) ) {
 				require_once $file;
 			}
@@ -182,6 +187,11 @@ final class TTFMAKE_Util_Compatibility_Base implements TTFMAKE_Util_Compatibilit
 	 * @return WP_Error                         Error or source on success.
 	 */
 	public function check_package( $source, $remote_source, $upgrader ) {
+		// Only run this in the proper hook context.
+		if ( 'upgrader_source_selection' !== current_filter() ) {
+			return $source;
+		}
+
 		global $wp_filesystem;
 
 		if ( ! isset( $_GET['action'] ) || 'upload-theme' !== $_GET['action'] ) {

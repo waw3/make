@@ -43,7 +43,7 @@ class TTFMAKE_Util_Choices_Base implements TTFMAKE_Util_Choices_ChoicesInterface
 		}
 
 		// Load the default choices definitions
-		$file = basename( __FILE__ ) . '/choices-definitions.php';
+		$file = dirname( __FILE__ ) . '/choices-definitions.php';
 		if ( is_readable( $file ) ) {
 			include_once $file;
 		}

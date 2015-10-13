@@ -6,7 +6,7 @@
 /**
  * Class TTFMAKE_Util_Compatibility_KeyConverter
  */
-class TTFMAKE_Util_Compatibility_KeyConverter {
+final class TTFMAKE_Util_Compatibility_KeyConverter {
 	/**
 	 * Initialize and hook into WordPress.
 	 *
@@ -71,7 +71,12 @@ class TTFMAKE_Util_Compatibility_KeyConverter {
 	 *
 	 * @return void
 	 */
-	function set_up_theme_mod_conversions() {
+	public function set_up_theme_mod_conversions() {
+		// Only run this in the proper hook context.
+		if ( 'after_setup_theme' !== current_action() ) {
+			return;
+		}
+
 		// Set up the necessary filters
 		foreach ( $this->get_key_conversions() as $key => $value ) {
 			add_filter( 'theme_mod_' . $key, array( $this, 'convert_theme_mods_filter' ), 11 );
@@ -86,7 +91,12 @@ class TTFMAKE_Util_Compatibility_KeyConverter {
 	 * @param  mixed    $value    The current value.
 	 * @return mixed              The modified value.
 	 */
-	function convert_theme_mods_filter( $value ) {
+	public function convert_theme_mods_filter( $value ) {
+		// Only run this in the proper hook context.
+		if ( 0 !== strpos( current_filter(), 'theme_mod_' ) ) {
+			return $value;
+		}
+
 		$new_mod_name = str_replace( 'theme_mod_', '', current_filter() );
 		$conversions  = $this->get_key_conversions();
 		$mods         = get_theme_mods();
@@ -141,7 +151,7 @@ class TTFMAKE_Util_Compatibility_KeyConverter {
 	 * @param  mixed     $value      The value of the mod.
 	 * @return mixed                 The convert mod value.
 	 */
-	function convert_theme_mods_values( $old_key, $new_key, $value ) {
+	private function convert_theme_mods_values( $old_key, $new_key, $value ) {
 		if ( 'font-header-size' === $old_key ) {
 			$percent = ttfmake_font_get_relative_sizes();
 			$h       = preg_replace( '/font-size-(h\d)/', '$1', $new_key );

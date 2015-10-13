@@ -11,25 +11,26 @@ class TTFMAKE_Util_API {
 		TTFMAKE_Util_Admin_NoticeInterface $notice = null,
 		TTFMAKE_Util_Settings_SettingsInterface $thememod = null,
 		TTFMAKE_Util_Choices_ChoicesInterface $choices = null,
-		TTFMAKE_Util_Font_FontInterface $font
+		TTFMAKE_Util_Font_FontInterface $font = null
 	) {
 		// Compatibility (load right away)
 		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new TTFMAKE_Util_Compatibility_Base : $compatibility;
 		$this->compatibility_instance->load();
 
-		// Admin notices
+		// Admin notices (load right away)
 		if ( is_admin() ) {
 			$this->notice_instance = ( is_null( $notice ) ) ? new TTFMAKE_Util_Admin_Notice : $notice;
+			$this->notice_instance->load();
 		}
 
 		// Theme mods
-		$this->thememod_instance = ( is_null( $thememod ) ) ? new TTFMAKE_Util_Settings_ThemeMod : $thememod;
+		//$this->thememod_instance = ( is_null( $thememod ) ) ? new TTFMAKE_Util_Settings_ThemeMod : $thememod;
 
 		// Choices
-		$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
+		//$this->choices_instance = ( is_null( $choices ) ) ? new TTFMAKE_Util_Choices_Base : $choices;
 
 		// Font
-		$this->font_instance = ( is_null( $font ) ) ? new TTFMAKE_Util_Font_Base : $font;
+		//$this->font_instance = ( is_null( $font ) ) ? new TTFMAKE_Util_Font_Base : $font;
 	}
 
 	/**
@@ -111,21 +112,6 @@ function make_sanitize_thememod_choice( $value, $setting_id ) {
 
 function make_sanitize_font_choice( $value ) {
 	return make_get_utils()->get_module( 'font' )->sanitize_font_choice( $value );
-}
-
-/**
- * Wrapper function to register an admin notice.
- *
- * @since 1.4.9.
- *
- * @param string    $id         A unique ID string for the admin notice.
- * @param string    $message    The content of the admin notice.
- * @param array     $args       Array of configuration parameters for the admin notice.
- *
- * @return bool
- */
-function make_register_admin_notice( $id, $message, $args ) {
-	return make_get_utils()->get_module( 'notice' )->register_admin_notice( $id, $message, $args );
 }
 
 

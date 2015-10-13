@@ -29,7 +29,7 @@ class TTFMAKE_Util_Settings_ThemeMod extends TTFMAKE_Util_Settings_Base {
 	 */
 	public function load() {
 		// Load the default setting definitions
-		$file = basename( __FILE__ ) . '/thememod-definitions.php';
+		$file = dirname( __FILE__ ) . '/thememod-definitions.php';
 		if ( is_readable( $file ) ) {
 			include_once $file;
 		}

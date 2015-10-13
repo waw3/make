@@ -16,7 +16,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @var bool
 	 */
-	private $loaded = false;
+	protected $loaded = false;
 
 	/**
 	 * The array of registered notices.
@@ -25,7 +25,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @var array    The array of registered notices.
 	 */
-	private $notices = array();
+	protected $notices = array();
 
 	/**
 	 * Stores results of tests for support of various admin notice features.
@@ -34,7 +34,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @var array    The array of support test results.
 	 */
-	private $support = array();
+	protected $support = array();
 
 	/**
 	 * Construct the object.
@@ -61,7 +61,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 */
 	public function load() {
 		// Load the current notices
-		$file = basename( __FILE__ ) . '/current-notices.php';
+		$file = dirname( __FILE__ ) . '/current-notices.php';
 		if ( is_readable( $file ) ) {
 			include_once $file;
 		}
@@ -131,7 +131,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 * @param  string|object    $screen    The screen to display the notices on.
 	 * @return array                       Array of notices to display on the specified screen.
 	 */
-	private function get_notices( $screen = '' ) {
+	protected function get_notices( $screen = '' ) {
 		if ( ! $screen ) {
 			return array();
 		}
@@ -167,7 +167,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @return bool                             True if the given screen is enabled for displaying the notice.
 	 */
-	private function screen_is_enabled( $current_screen, $enabled_screens ) {
+	protected function screen_is_enabled( $current_screen, $enabled_screens ) {
 		// Validate current screen variable
 		if ( ! $current_screen instanceof WP_Screen ) {
 			return false;
@@ -193,6 +193,11 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 * @return void
 	 */
 	public function admin_notices() {
+		// Only run this in the proper hook context.
+		if ( 'admin_notices' !== current_action() ) {
+			return;
+		}
+
 		$current_notices = $this->get_notices( get_current_screen() );
 
 		if ( ! empty( $current_notices ) ) {
@@ -209,7 +214,7 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @return void
 	 */
-	private function render_notices( $notices ) {
+	protected function render_notices( $notices ) {
 		// Add styles and script to page if necessary
 		if ( in_array( true, wp_list_pluck( $notices, 'dismiss' ) ) ) {
 			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
@@ -277,6 +282,10 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 * @return void
 	 */
 	public function print_admin_notices_js() {
+		// Only run this in the proper hook context.
+		if ( 'admin_print_footer_scripts' !== current_action() ) {
+			return;
+		}
 		?>
 		<script type="application/javascript">
 			/* Make admin notices */
@@ -319,6 +328,11 @@ class TTFMAKE_Util_Admin_Notice implements TTFMAKE_Util_Admin_NoticeInterface {
 	 * @return void
 	 */
 	public function handle_ajax() {
+		// Only run this in the proper hook context.
+		if ( 'wp_ajax_make_hide_notice' !== current_action() ) {
+			return;
+		}
+
 		// Get POST parameters
 		$nid   = isset( $_POST['nid'] )   ? sanitize_key( $_POST['nid'] ) : false;
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce']               : false;

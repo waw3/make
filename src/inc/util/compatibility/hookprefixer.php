@@ -6,7 +6,7 @@
 /**
  * Class TTFMAKE_Util_Compatibility_HookPrefixer
  */
-class TTFMAKE_Util_Compatibility_HookPrefixer {
+final class TTFMAKE_Util_Compatibility_HookPrefixer {
 	/**
 	 * Initialize and hook into WordPress.
 	 *
@@ -32,6 +32,11 @@ class TTFMAKE_Util_Compatibility_HookPrefixer {
 	 * @return void
 	 */
 	public function add_filters() {
+		// Only run this in the proper hook context.
+		if ( 'after_setup_theme' !== current_action() ) {
+			return;
+		}
+
 		// All filters that need a name change
 		$old_filters = array(
 			'template_content_archive'     => 2,
@@ -106,6 +111,11 @@ class TTFMAKE_Util_Compatibility_HookPrefixer {
 	 * @return void
 	 */
 	public function add_actions() {
+		// Only run this in the proper hook context.
+		if ( 'after_setup_theme' !== current_action() ) {
+			return;
+		}
+
 		// All actions that need a name change
 		$old_actions = array(
 			'section_text_before_columns_select' => 1,
@@ -129,7 +139,7 @@ class TTFMAKE_Util_Compatibility_HookPrefixer {
 	 *
 	 * @return mixed    The result of the action.
 	 */
-	function mirror_action() {
+	public function mirror_action() {
 		$action = 'ttf' . current_action();
 		$args   = func_get_args();
 		do_action_ref_array( $action, $args );

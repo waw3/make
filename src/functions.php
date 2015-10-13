@@ -42,8 +42,6 @@ function ttfmake_require_files() {
 		get_template_directory() . '/inc/activation.php',
 		// Autoloader
 		get_template_directory() . '/inc/autoload.php',
-		// Compatibility
-		get_template_directory() . '/inc/compatibility.php',
 		// Localization
 		get_template_directory() . '/inc/l10n.php',
 		// Customizer
@@ -62,8 +60,6 @@ function ttfmake_require_files() {
 
 	if ( is_admin() ) {
 		$admin_files = array(
-			// Admin notices
-			get_template_directory() . '/inc/admin-notice.php',
 			// Page customizations
 			get_template_directory() . '/inc/edit-page.php',
 			// Page Builder
@@ -89,6 +85,10 @@ function ttfmake_require_files() {
 			require_once $file;
 		}
 	}
+
+	// Load Utils
+	global $make_utils;
+	$make_utils = new TTFMAKE_Util_API;
 }
 
 // Load files immediately.

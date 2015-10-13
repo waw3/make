@@ -50,7 +50,7 @@ class TTFMAKE_Util_Font_Module_Google implements TTFMAKE_Util_Font_Module_FontMo
 	 */
 	public function load() {
 		// Load the font data file.
-		$file = basename( __FILE__ ) . '/google-data.php';
+		$file = dirname( __FILE__ ) . '/google-data.php';
 		if ( is_readable( $file ) ) {
 			include_once $file;
 		}
