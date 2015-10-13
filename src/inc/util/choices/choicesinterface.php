@@ -15,9 +15,9 @@ interface MAKE_Util_Choices_ChoicesInterface extends MAKE_Util_LoadInterface {
 
 	public function get_choice_set( $set_id );
 
-	public function get_choice_label( $set_id, $choice );
+	public function get_choice_label( $value, $set_id );
 
-	public function is_valid_choice( $set_id, $choice );
+	public function is_valid_choice( $value, $set_id );
 
 	public function sanitize_choice( $value, $set_id, $default = '' );
 }

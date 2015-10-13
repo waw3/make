@@ -206,3 +206,59 @@ function ttfmake_load_textdomains() {
 	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'l10n\' )->load_textdomains' );
 	return make_get_utils()->get_module( 'l10n' )->load_textdomains();
 }
+
+/**
+ * The big array of global option defaults.
+ *
+ * @since  1.0.0
+ * @deprecated 1.7.0.
+ *
+ * @return array    The default values for all theme options.
+ */
+function ttfmake_option_defaults() {
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_settings( \'default\' )' );
+	return make_get_utils()->get_module( 'thememod' )->get_settings( 'default' );
+}
+
+/**
+ * Return a particular global option default.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $option    The key of the option to return.
+ * @return mixed                Default value if found; false if not found.
+ */
+function ttfmake_get_default( $option ) {
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_default' );
+	return make_get_utils()->get_module( 'thememod' )->get_default( $option );
+}
+
+/**
+ * Return the available choices for a given setting
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string|object    $setting    The setting to get options for.
+ * @return array                        The options for the setting.
+ */
+function ttfmake_get_choices( $setting ) {
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->get_choice_set' );
+	return make_get_utils()->get_module( 'thememod' )->get_choice_set( $setting );
+}
+
+/**
+ * Sanitize a value from a list of allowed values.
+ *
+ * @since 1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  mixed    $value      The value to sanitize.
+ * @param  mixed    $setting    The setting for which the sanitizing is occurring.
+ * @return mixed                The sanitized value.
+ */
+function ttfmake_sanitize_choice( $value, $setting ) {
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->sanitize_choice' );
+	return make_get_utils()->get_module( 'thememod' )->sanitize_choice( $value, $setting );
+}

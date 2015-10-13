@@ -27,14 +27,14 @@ class MAKE_Util_API {
 		// Localization
 		$this->l10n_instance = ( is_null( $l10n ) ) ? new MAKE_Util_L10n_Base : $l10n;
 
-		// Theme mods
-		//$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod : $thememod;
-
 		// Choices
-		//$this->choices_instance = ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base : $choices;
+		$this->choices_instance = ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base : $choices;
 
 		// Font
 		//$this->font_instance = ( is_null( $font ) ) ? new MAKE_Util_Font_Base : $font;
+
+		// Theme mods
+		$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod( $this->choices_instance, $this->compatibility_instance ) : $thememod;
 	}
 
 	/**
@@ -90,35 +90,51 @@ function make_get_utils() {
 }
 
 
-function make_get_thememod_value( $setting_id ) {
+function make_is_plus() {
+	return make_get_utils()->get_module( 'compatibility' )->is_plus();
+}
+
+
+function make_thememod_update_settings( $settings, MAKE_Util_Settings_SettingsInterface $instance ) {
+	// Make sure we're not doing it wrong.
+	if ( 'make_settings_thememod_loaded' !== current_action() ) {
+		make_get_utils()->get_module( 'compatibility' )->doing_it_wrong(
+			__FUNCTION__,
+			__( 'This function should only be called during the make_settings_thememod_loaded action.', 'make' )
+		);
+
+		return false;
+	}
+
+	return $instance->add_settings( $settings, array(), true );
+}
+
+
+function make_choices_update_choices( $choice_sets, MAKE_Util_Choices_ChoicesInterface $instance ) {
+	// Make sure we're not doing it wrong.
+	if ( 'make_choices_loaded' !== current_action() ) {
+		make_get_utils()->get_module( 'compatibility' )->doing_it_wrong(
+			__FUNCTION__,
+			__( 'This function should only be called during the make_choices_loaded action.', 'make' )
+		);
+
+		return false;
+	}
+
+	return $instance->add_choice_sets( $choice_sets, true );
+}
+
+
+function make_thememod_get_value( $setting_id ) {
 	return make_get_utils()->get_module( 'thememod' )->get_value( $setting_id );
 }
 
 
-function make_get_thememod_default( $setting_id ) {
+function make_thememod_get_default( $setting_id ) {
 	return make_get_utils()->get_module( 'thememod' )->get_default( $setting_id );
 }
 
 
-function make_get_thememod_choices( $setting_id ) {
-	$choice_set = make_get_utils()->get_module( 'thememod' )->get_choice_set( $setting_id );
-	return make_get_utils()->get_module( 'choices' )->get_choice_set( $choice_set );
-}
-
-
-function make_sanitize_thememod_choice( $value, $setting_id ) {
-	$choice_set_id = make_get_utils()->get_module( 'thememod' )->get_choice_set( $setting_id );
-	$default    = make_get_utils()->get_module( 'thememod' )->get_default( $setting_id );
-
-	return make_get_utils()->get_module( 'choices' )->sanitize_choice( $value, $choice_set_id, $default );
-}
-
-
-function make_sanitize_font_choice( $value ) {
+function make_font_sanitize_choice( $value ) {
 	return make_get_utils()->get_module( 'font' )->sanitize_font_choice( $value );
-}
-
-
-function make_is_plus() {
-	return make_get_utils()->get_module( 'compatibility' )->is_plus();
 }

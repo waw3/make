@@ -9,7 +9,7 @@
  * @since x.x.x.
  */
 interface MAKE_Util_Settings_SettingsInterface extends MAKE_Util_LoadInterface {
-	public function add_settings( $settings, $overwrite = false );
+	public function add_settings( $settings, $default_props = array(), $overwrite = false );
 
 	public function remove_settings( $setting_ids );
 

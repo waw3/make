@@ -216,6 +216,8 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	/**
 	 * Get the setting definitions, or a specific property of each one.
 	 *
+	 * If the setting definition doesn't have the specified property, it will be omitted.
+	 *
 	 * @since x.x.x.
 	 *
 	 * @param  string    $property    The property to get, or 'all'.
@@ -227,9 +229,15 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 			return $this->settings;
 		}
 
-		$setting_ids = array_keys( $this->settings );
-		$properties  = wp_list_pluck( $this->settings, $property );
-		return array_combine( $setting_ids, $properties );
+		$settings = array();
+
+		foreach ( $this->settings as $setting_id => $properties ) {
+			if ( isset( $properties[ $property ] ) ) {
+				$settings[ $setting_id ] = $properties[ $property ];
+			}
+		}
+
+		return $settings;
 	}
 
 	/**
@@ -391,8 +399,9 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 		 *
 		 * @param string|array    $callback      The name of the callback function.
 		 * @param string          $setting_id    The id of the setting.
+		 * @param string          $context       The context in which the setting needs to be sanitized.
 		 */
-		return apply_filters( "make_settings_{$this->type}_sanitize_callback", $callback, $setting_id );
+		return apply_filters( "make_settings_{$this->type}_sanitize_callback", $callback, $setting_id, $context );
 	}
 
 	/**

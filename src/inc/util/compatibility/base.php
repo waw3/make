@@ -297,6 +297,41 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	}
 
 	/**
+	 * Mark something as being incorrectly called.
+	 *
+	 * Based on _doing_it_wrong() in WordPress core.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $function The function that was called.
+	 * @param string $message  A message explaining what has been done incorrectly.
+	 * @param string $version  The version of WordPress where the message was added.
+	 */
+	public function doing_it_wrong( $function, $message, $version = null ) {
+		/**
+		 * Fires when the given function is being used incorrectly.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string $function The function that was called.
+		 * @param string $message  A message explaining what has been done incorrectly.
+		 * @param string $version  The version of Make where the message was added.
+		 */
+		do_action( 'make_doing_it_wrong_run', $function, $message, $version = null );
+
+		// Maybe show an error.
+		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && true === $this->show_errors ) {
+			if ( function_exists( '__' ) ) {
+				$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
+				trigger_error( sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
+			} else {
+				$version = is_null( $version ) ? '' : sprintf( '(This message was added in version %s.)', $version );
+				trigger_error( sprintf( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s', $function, $message, $version ) );
+			}
+		}
+	}
+
+	/**
 	 * Check to see if Make Plus is active.
 	 *
 	 * @since x.x.x.

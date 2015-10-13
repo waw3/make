@@ -59,7 +59,7 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param MAKE_Utils_Choices    $choices    The choices object that has just finished loading.
+		 * @param MAKE_Util_Choices_Base    $choices    The choices object that has just finished loading.
 		 */
 		do_action( 'make_choices_loaded', $this );
 	}
@@ -164,6 +164,21 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	}
 
 	/**
+	 * Getter for the choice sets that ensures the load routine has run first.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
+	protected function get_choice_sets() {
+		if ( false === $this->is_loaded() ) {
+			$this->load();
+		}
+
+		return $this->choice_sets;
+	}
+
+	/**
 	 * Get a particular choice set, using the set ID.
 	 *
 	 * @since x.x.x.
@@ -173,7 +188,7 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 * @return array                The array of choices.
 	 */
 	public function get_choice_set( $set_id ) {
-		$all_sets = $this->choice_sets;
+		$all_sets = $this->get_choice_sets();
 		$choice_set = array();
 
 		if ( isset( $all_sets[ $set_id ] ) ) {
@@ -196,16 +211,17 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 *
 	 * @since x.x.x.
 	 *
+	 * @param  string    $value     The array key representing the value of the choice.
 	 * @param  string    $set_id    The ID of the choice set.
-	 * @param  string    $choice    The array key representing the value of the choice.
 	 *
-	 * @return string|bool          The choice label, or false if not a valid choice.
+	 * @return string|WP_Error      The choice label, or a WP_Error instance if not a valid choice.
 	 */
-	public function get_choice_label( $set_id, $choice ) {
-		if ( ! $this->is_valid_choice( $set_id, $choice ) ) {
-			return new WP_Error( 'make_choices_get_choice_label_not_valid_choice', __( 'The specified choice is not valid.', 'make' ), array( $set_id, $choice ) );
+	public function get_choice_label( $value, $set_id ) {
+		if ( ! $this->is_valid_choice( $value, $set_id ) ) {
+			return new WP_Error( 'make_choices_get_choice_label_not_valid_choice', __( 'The specified choice is not valid.', 'make' ), array( $value, $set_id ) );
 		}
 
+		// Get the choice set.
 		$choices = $this->get_choice_set( $set_id );
 
 		/**
@@ -217,7 +233,7 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 		 * @param mixed     $choice    The value for the choice.
 		 * @param string    $set_id    The ID of the set that the choice belongs to.
 		 */
-		return apply_filters( 'make_choice_get_choice_label', $choices[ $choice ], $choice, $set_id );
+		return apply_filters( 'make_choice_get_choice_label', $choices[ $value ], $value, $set_id );
 	}
 
 	/**
@@ -225,14 +241,14 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 *
 	 * @since x.x.x.
 	 *
+	 * @param  string    $value     The array key representing the value of the choice.
 	 * @param  string    $set_id    The ID of the choice set.
-	 * @param  string    $choice    The array key representing the value of the choice.
 	 *
 	 * @return bool                 True if the choice exists in the set.
 	 */
-	public function is_valid_choice( $set_id, $choice ) {
+	public function is_valid_choice( $value, $set_id ) {
 		$choices = $this->get_choice_set( $set_id );
-		return isset( $choices[ $choice ] );
+		return isset( $choices[ $value ] );
 	}
 
 	/**
