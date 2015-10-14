@@ -12,6 +12,15 @@
  */
 class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	/**
+	 * The collection of choice sets.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $choice_sets = array();
+
+	/**
 	 * Indicator of whether the load routine has been run.
 	 *
 	 * @since x.x.x.
@@ -21,13 +30,18 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	protected $loaded = false;
 
 	/**
-	 * The collection of choice sets.
+	 * Inject dependencies.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var array
+	 * @param MAKE_Util_Error_ErrorInterface $error
 	 */
-	protected $choice_sets = array();
+	public function __construct(
+		MAKE_Util_Error_ErrorInterface $error
+	) {
+		// Errors
+		$this->error = $error;
+	}
 
 	/**
 	 * Load data into the object.
@@ -97,35 +111,40 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 * @param          $sets         Array of choice sets to add.
 	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
 	 *
-	 * @return bool|WP_Error        True if addition was successful, otherwise an error object.
+	 * @return bool                  True if addition was successful, false if there was an error.
 	 */
 	public function add_choice_sets( $sets, $overwrite = false ) {
 		$sets = (array) $sets;
 		$existing_sets = $this->choice_sets;
 		$new_sets = array();
+		$return = true;
 
 		// Validate each choice set before adding it.
 		foreach ( $sets as $set_id => $choices ) {
 			$set_id = sanitize_key( $set_id );
 
-			if (
-				is_array( $choices )
-				&&
-				( ! isset( $existing_sets[ $set_id ] ) || true === $overwrite )
-			) {
+			// Choice set isn't valid.
+			if ( ! is_array( $choices ) ) {
+				$this->error->add_error( 'make_choices_set_not_valid', sprintf( __( 'The "%s" choice set can\'t be added because it\'s not an array.', 'make' ), $set_id ) );
+				$return = false;
+			}
+			// Choice set already exists, overwriting disabled.
+			else if ( isset( $existing_sets[ $set_id ] ) && true !== $overwrite ) {
+				$this->error->add_error( 'make_choices_set_already_exists', sprintf( __( 'The "%s" choice set can\'t be added because it already exists.', 'make' ), $set_id ) );
+				$return = false;
+			}
+			// Add a new choice set.
+			else {
 				$new_sets[ $set_id ] = $choices;
 			}
 		}
 
-		// If no choices sets were valid, return false.
-		if ( empty( $new_sets ) ) {
-			return new WP_Error( 'make_choices_add_choice_sets_no_valid_sets', __( 'No valid choice sets were found to add.', 'make' ), $sets );
+		// Add the valid new choices sets to the existing choices array.
+		if ( ! empty( $new_sets ) ) {
+			$this->choice_sets = array_merge( $existing_sets, $new_sets );
 		}
 
-		// Add the valid new choices sets to the existing choices array.
-		$this->choice_sets = array_merge( $existing_sets, $new_sets );
-
-		return true;
+		return $return;
 	}
 
 	/**
@@ -135,7 +154,7 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 *
 	 * @param  array|string    $set_ids    The array of choice sets to remove, or 'all'.
 	 *
-	 * @return bool|WP_Error               True if removal was successful, otherwise an error object.
+	 * @return bool                        True if removal was successful, false if there was an error.
 	 */
 	public function remove_choice_sets( $set_ids ) {
 		if ( 'all' === $set_ids ) {
@@ -146,21 +165,20 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 
 		$set_ids = (array) $set_ids;
 		$removed_ids = array();
+		$return = true;
 
 		// Track each setting that's removed.
 		foreach ( $set_ids as $set_id ) {
 			if ( isset( $this->choice_sets[ $set_id ] ) ) {
 				unset( $this->choice_sets[ $set_id ] );
 				$removed_ids[] = $set_id;
+			} else {
+				$this->error->add_error( 'make_choices_cannot_remove', sprintf( __( 'The "%s" choice set can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $set_id ) ) );
+				$return = false;
 			}
 		}
 
-		if ( empty( $removed_ids ) ) {
-			// No choice sets were removed.
-			return new WP_Error( 'make_choices_remove_choice_sets_none_removed', __( 'None of the specified choice sets were found in the collection, so none were removed.', 'make' ), $set_ids );
-		} else {
-			return true;
-		}
+		return $return;
 	}
 
 	/**
@@ -228,11 +246,12 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 * @param  string    $value     The array key representing the value of the choice.
 	 * @param  string    $set_id    The ID of the choice set.
 	 *
-	 * @return string|WP_Error      The choice label, or a WP_Error instance if not a valid choice.
+	 * @return string               The choice label, or empty string if not a valid choice.
 	 */
 	public function get_choice_label( $value, $set_id ) {
 		if ( ! $this->is_valid_choice( $value, $set_id ) ) {
-			return new WP_Error( 'make_choices_get_choice_label_not_valid_choice', __( 'The specified choice is not valid.', 'make' ), array( $value, $set_id ) );
+			$this->error->add_error( 'make_choices_not_valid_choice', sprintf( __( '"%1$s" is not a valid choice in the "%2$s" set.', 'make' ), esc_html( $value ), esc_html( $set_id ) ) );
+			return '';
 		}
 
 		// Get the choice set.

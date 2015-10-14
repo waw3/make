@@ -25,18 +25,22 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Util_Choices_ChoicesInterface             $choices
+	 * @param MAKE_Util_Error_ErrorInterface                 $error
 	 * @param MAKE_Util_Compatibility_CompatibilityInterface $compatibility
+	 * @param MAKE_Util_Choices_ChoicesInterface             $choices
 	 */
 	public function __construct(
-		MAKE_Util_Choices_ChoicesInterface $choices,
-		MAKE_Util_Compatibility_CompatibilityInterface $compatibility
+		MAKE_Util_Error_ErrorInterface $error,
+		MAKE_Util_Compatibility_CompatibilityInterface $compatibility,
+		MAKE_Util_Choices_ChoicesInterface $choices
 	) {
-		// Choices
-		$this->choices = $choices;
+		parent::__construct( $error );
 
 		// Compatibility
 		$this->compatibility = $compatibility;
+
+		// Choices
+		$this->choices = $choices;
 	}
 
 	/**
@@ -120,7 +124,7 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 		if ( $this->setting_exists( $setting_id ) ) {
 			// Sanitize the value before saving it.
 			$sanitized_value = $this->sanitize_value( $value, $setting_id, 'database' );
-			if ( ! is_wp_error( $sanitized_value ) && $this->undefined !== $sanitized_value ) {
+			if ( $this->undefined !== $sanitized_value ) {
 				// This function doesn't return anything, so we assume success here.
 				set_theme_mod( $setting_id, $sanitized_value );
 				return true;
@@ -212,7 +216,7 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
 	 *
-	 * @return mixed|WP_Error
+	 * @return mixed
 	 */
 	public function sanitize_value( $value, $setting_id, $context = '' ) {
 		// Is this being called by the Customizer?

@@ -32,13 +32,13 @@ class MAKE_Util_API {
 		$this->l10n_instance = ( is_null( $l10n ) ) ? new MAKE_Util_L10n_Base : $l10n;
 
 		// Choices
-		$this->choices_instance = ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base : $choices;
+		$this->choices_instance = ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base( $this->error_instance ) : $choices;
 
 		// Font
 		//$this->font_instance = ( is_null( $font ) ) ? new MAKE_Util_Font_Base : $font;
 
 		// Theme mods
-		$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod( $this->choices_instance, $this->compatibility_instance ) : $thememod;
+		$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod( $this->error_instance, $this->compatibility_instance, $this->choices_instance ) : $thememod;
 	}
 
 	/**
@@ -57,7 +57,8 @@ class MAKE_Util_API {
 			$this->maybe_run_load( $this->$property_name );
 			return $this->$property_name;
 		} else {
-			return new WP_Error( 'make_util_module_not_valid', sprintf( __( 'The "%s" module doesn\'t exist.', 'make' ), $module_name ) );
+			$this->error_instance->add_error( 'make_util_module_not_valid', sprintf( __( 'The "%s" module doesn\'t exist.', 'make' ), $module_name ) );
+			return null;
 		}
 	}
 

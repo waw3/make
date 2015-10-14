@@ -72,6 +72,20 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	);
 
 	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_Util_Error_ErrorInterface $error
+	 */
+	public function __construct(
+		MAKE_Util_Error_ErrorInterface $error
+	) {
+		// Errors
+		$this->error = $error;
+	}
+
+	/**
 	 * Load settings definitions and other data into the object.
 	 *
 	 * @since x.x.x.
@@ -92,7 +106,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	}
 
 	/**
-	 * Add settings definitions to the collection.
+	 * Add or update settings definitions.
 	 *
 	 * Each setting definition is an item in the associative array.
 	 * The item's array key is the setting ID. The item value is another
@@ -112,12 +126,13 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	 * @param  array    $default_props    Array of default properties for each setting definition.
 	 * @param  bool     $overwrite        True overwrites an existing setting definition.
 	 *
-	 * @return bool|WP_Error         True if addition was successful, otherwise an error object.
+	 * @return bool                       True if all settings were added or updated, false if there was an error.
 	 */
 	public function add_settings( $settings, $default_props = array(), $overwrite = false ) {
 		$settings = (array) $settings;
 		$existing_settings = $this->settings;
 		$new_settings = array();
+		$return = true;
 
 		// Check each setting definition for required properties before adding it.
 		foreach ( $settings as $setting_id => $setting_props ) {
@@ -132,25 +147,28 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 			if ( isset( $existing_settings[ $setting_id ] ) && true === $overwrite ) {
 				$new_settings[ $setting_id ] = wp_parse_args( $setting_props, $existing_settings[ $setting_id ] );
 			}
+			// Setting already exists, overwriting disabled.
+			else if ( isset( $existing_settings[ $setting_id ] ) && true !== $overwrite ) {
+				$this->error->add_error( 'make_settings_already_exists', sprintf( __( 'The "%s" setting can\'t be added because it already exists.', 'make' ), esc_html( $setting_id ) ) );
+				$return = false;
+			}
+			// Setting does not have required properties.
+			else if ( ! $this->has_required_properties( $setting_props ) ) {
+				$this->error->add_error( 'make_settings_missing_required_properties', sprintf( __( 'The "%s" setting can\'t be added because it is missing required properties.', 'make' ), esc_html( $setting_id ) ) );
+				$return = false;
+			}
 			// Add a new setting.
-			else if (
-				$this->has_required_properties( $setting_props )
-				&&
-				( ! isset( $existing_settings[ $setting_id ] ) )
-			) {
+			else {
 				$new_settings[ $setting_id ] = $setting_props;
 			}
 		}
 
-		// If no settings were valid, return error.
-		if ( empty( $new_settings ) ) {
-			return new WP_Error( 'make_settings_add_settings_no_valid_settings', __( 'No valid settings definitions were found to add.', 'make' ), $settings );
+		// Add the valid new settings to the existing settings array.
+		if ( ! empty( $new_settings ) ) {
+			$this->settings = array_merge( $existing_settings, $new_settings );
 		}
 
-		// Add the valid new settings to the existing settings array.
-		$this->settings = array_merge( $existing_settings, $new_settings );
-
-		return true;
+		return $return;
 	}
 
 	/**
@@ -185,7 +203,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	 *
 	 * @param  array|string    $setting_ids    The array of settings to remove, or 'all'.
 	 *
-	 * @return bool|WP_Error                  True if removal was successful, otherwise an error object.
+	 * @return bool                            True if all setting definitions were successfully removed, false if there was an error.
 	 */
 	public function remove_settings( $setting_ids ) {
 		if ( 'all' === $setting_ids ) {
@@ -196,21 +214,20 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 
 		$setting_ids = (array) $setting_ids;
 		$removed_ids = array();
+		$return = true;
 
 		// Track each setting that's removed.
 		foreach ( $setting_ids as $setting_id ) {
 			if ( isset( $this->settings[ $setting_id ] ) ) {
 				unset( $this->settings[ $setting_id ] );
 				$removed_ids[] = $setting_id;
+			} else {
+				$this->error->add_error( 'make_settings_cannot_remove', sprintf( __( 'The "%s" setting can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $setting_id ) ) );
+				$return = false;
 			}
 		}
 
-		if ( empty( $removed_ids ) ) {
-			// No settings were removed.
-			return new WP_Error( 'make_settings_remove_settings_none_removed', __( 'None of the specified settings were found in the collection, so none were removed.', 'make' ), $setting_ids );
-		} else {
-			return true;
-		}
+		return $return;
 	}
 
 	/**
@@ -342,11 +359,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 
 		if ( $this->setting_exists( $setting_id ) ) {
 			$raw_value = $this->get_raw_value( $setting_id );
-			$sanitized_value = $this->sanitize_value( $raw_value, $setting_id, $context );
-
-			if ( ! is_wp_error( $sanitized_value ) ) {
-				$value = $sanitized_value;
-			}
+			$value = $this->sanitize_value( $raw_value, $setting_id, $context );
 
 			// Use the default if the value is still undefined.
 			if ( $this->undefined === $value ) {
@@ -454,7 +467,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
 	 *
-	 * @return mixed|WP_Error
+	 * @return mixed
 	 */
 	public function sanitize_value( $value, $setting_id, $context = '' ) {
 		$sanitized_value = $this->undefined;
@@ -479,7 +492,7 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 
 				$sanitized_value = call_user_func_array( $callback, $prepared_value );
 			} else {
-				$sanitized_value = new WP_Error( 'make_settings_sanitize_value_callback_not_valid', sprintf( __( 'The sanitize callback for %s is not valid.', 'make' ), esc_html( $setting_id ) ), array( $setting_id, $context, $callback ) );
+				$this->error->add_error( 'make_settings_callback_not_valid', sprintf( __( 'The sanitize callback (%1$s) for "%2$s" is not valid.', 'make' ), esc_html( print_r( $callback, true ) ), esc_html( $setting_id ) ) );
 			}
 		}
 
