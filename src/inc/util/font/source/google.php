@@ -4,7 +4,7 @@
  */
 
 
-class MAKE_Util_Font_Module_Google implements MAKE_Util_Font_Module_FontModuleInterface {
+class MAKE_Util_Font_Source_Google implements MAKE_Util_Font_Source_FontSourceInterface {
 
 	public $label = '';
 

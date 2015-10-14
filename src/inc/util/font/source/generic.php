@@ -4,7 +4,7 @@
  */
 
 
-class MAKE_Util_Font_Module_Generic implements MAKE_Util_Font_Module_FontModuleInterface {
+class MAKE_Util_Font_Source_Generic implements MAKE_Util_Font_Source_FontSourceInterface {
 
 	public $label = '';
 

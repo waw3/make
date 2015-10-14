@@ -5,8 +5,8 @@
  * Updated: 2015-09-01T00:34:34+00:00
  */
 
-// Bail if this isn't being included inside of MAKE_Util_Font_Module_Google.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Util_Font_Module_Google ) {
+// Bail if this isn't being included inside of MAKE_Util_Font_Source_Google.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Util_Font_Source_Google ) {
 	return;
 }
 
