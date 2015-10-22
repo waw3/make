@@ -408,12 +408,13 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param  string    $setting_id    The ID of the setting to retrieve.
+	 * @param  string        $setting_id    The ID of the setting to retrieve.
+	 * @param  mixed|null    $value         A value to compare to the default.
 	 *
 	 * @return bool
 	 */
-	public function is_default( $setting_id ) {
-		$current_value = $this->get_value( $setting_id );
+	public function is_default( $setting_id, $value = null ) {
+		$current_value = ( is_null( $value ) ) ? $this->get_value( $setting_id ) : $value;
 		$default_value = $this->get_default( $setting_id );
 
 		return $current_value === $default_value;

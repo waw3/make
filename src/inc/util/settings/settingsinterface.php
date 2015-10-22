@@ -25,7 +25,7 @@ interface MAKE_Util_Settings_SettingsInterface extends MAKE_Util_LoadInterface {
 
 	public function get_default( $setting_id );
 
-	public function is_default( $setting_id );
+	public function is_default( $setting_id, $value = null );
 
 	public function get_sanitize_callback( $setting_id, $context = '' );
 
