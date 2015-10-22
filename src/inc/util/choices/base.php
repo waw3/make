@@ -59,7 +59,7 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 		// Load the default choices definitions
 		$file = dirname( __FILE__ ) . '/choices-definitions.php';
 		if ( is_readable( $file ) ) {
-			include_once $file;
+			include $file;
 		}
 
 		// Loading has occurred.
@@ -163,15 +163,11 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 			return true;
 		}
 
-		$set_ids = (array) $set_ids;
-		$removed_ids = array();
 		$return = true;
 
-		// Track each setting that's removed.
-		foreach ( $set_ids as $set_id ) {
+		foreach ( (array) $set_ids as $set_id ) {
 			if ( isset( $this->choice_sets[ $set_id ] ) ) {
 				unset( $this->choice_sets[ $set_id ] );
-				$removed_ids[] = $set_id;
 			} else {
 				$this->error->add_error( 'make_choices_cannot_remove', sprintf( __( 'The "%s" choice set can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $set_id ) ) );
 				$return = false;

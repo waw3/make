@@ -212,15 +212,11 @@ abstract class MAKE_Util_Settings_Base implements MAKE_Util_Settings_SettingsInt
 			return true;
 		}
 
-		$setting_ids = (array) $setting_ids;
-		$removed_ids = array();
 		$return = true;
 
-		// Track each setting that's removed.
-		foreach ( $setting_ids as $setting_id ) {
+		foreach ( (array) $setting_ids as $setting_id ) {
 			if ( isset( $this->settings[ $setting_id ] ) ) {
 				unset( $this->settings[ $setting_id ] );
-				$removed_ids[] = $setting_id;
 			} else {
 				$this->error->add_error( 'make_settings_cannot_remove', sprintf( __( 'The "%s" setting can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $setting_id ) ) );
 				$return = false;

@@ -54,7 +54,7 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 		// Load the default setting definitions
 		$file = dirname( __FILE__ ) . '/thememod-definitions.php';
 		if ( is_readable( $file ) ) {
-			include_once $file;
+			include $file;
 		}
 
 		// Add filter to give the sanitize_choice callback the parameters it needs.
