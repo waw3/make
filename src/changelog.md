@@ -1,3 +1,10 @@
+## 1.6.5
+
+* Improved: Site title and tagline are now treated as screen reader text when hidden (instead of removed) for better accessibility.
+* Updated: Larger theme screenshot.
+* Bug fix: Don't show Yoast SEO's breadcrumb on a static front page (since it is only "Home").
+* Changed: Added a notice that Make will soon drop support for WP 4.0 and 4.1.
+
 ## 1.6.4
 
 * New feature: Support for Yoast SEO's breadcrumb functionality.
