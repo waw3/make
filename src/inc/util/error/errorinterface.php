@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-interface MAKE_Util_Error_ErrorInterface extends MAKE_Util_LoadInterface {
+interface MAKE_Util_Error_ErrorInterface {
 	public function add_error( $code, $message, $data = '' );
 
 	public function has_errors();

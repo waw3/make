@@ -8,16 +8,7 @@
  *
  * @since 1.4.9.
  */
-class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
-	/**
-	 * Indicator of whether the load routine has been run.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var bool
-	 */
-	protected $loaded = false;
-
+final class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
 	 * The array of registered notices.
 	 *
@@ -25,7 +16,7 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @var array    The array of registered notices.
 	 */
-	protected $notices = array();
+	private $notices = array();
 
 	/**
 	 * Stores results of tests for support of various admin notice features.
@@ -34,7 +25,25 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @var array    The array of support test results.
 	 */
-	protected $support = array();
+	private $support = array();
+
+	/**
+	 * Indicator of whether the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $hooked = false;
+
+	/**
+	 * Indicator of whether the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $loaded = false;
 
 	/**
 	 * Construct the object.
@@ -53,17 +62,15 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	}
 
 	/**
-	 * Initialize and hook into WordPress.
+	 * Hook into WordPress.
 	 *
-	 * @since 1.4.9.
+	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	public function load() {
-		// Load the current notices
-		$file = dirname( __FILE__ ) . '/current-notices.php';
-		if ( is_readable( $file ) ) {
-			include_once $file;
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
 		}
 
 		// Hook up notices
@@ -72,6 +79,39 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 		if ( is_admin() ) {
 			// Register Ajax action
 			add_action( 'wp_ajax_make_hide_notice', array( $this, 'handle_ajax' ) );
+		}
+
+		// Hooking has occurred.
+		$this->hooked = true;
+	}
+
+	/**
+	 * Check if the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_hooked() {
+		return $this->hooked;
+	}
+
+	/**
+	 * Load files.
+	 *
+	 * @since 1.4.9.
+	 *
+	 * @return void
+	 */
+	public function load() {
+		if ( $this->is_loaded() ) {
+			return;
+		}
+
+		// Load the current notices
+		$file = dirname( __FILE__ ) . '/current-notices.php';
+		if ( is_readable( $file ) ) {
+			include_once $file;
 		}
 
 		// Loading has occurred.
@@ -131,7 +171,7 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	 * @param  string|object    $screen    The screen to display the notices on.
 	 * @return array                       Array of notices to display on the specified screen.
 	 */
-	protected function get_notices( $screen = '' ) {
+	private function get_notices( $screen = '' ) {
 		if ( ! $screen ) {
 			return array();
 		}
@@ -167,7 +207,7 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @return bool                             True if the given screen is enabled for displaying the notice.
 	 */
-	protected function screen_is_enabled( $current_screen, $enabled_screens ) {
+	private function screen_is_enabled( $current_screen, $enabled_screens ) {
 		// Validate current screen variable
 		if ( ! $current_screen instanceof WP_Screen ) {
 			return false;
@@ -198,6 +238,11 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 			return;
 		}
 
+		// Make sure files are loaded first.
+		if ( ! $this->is_loaded() ) {
+			$this->load();
+		}
+
 		$current_notices = $this->get_notices( get_current_screen() );
 
 		if ( ! empty( $current_notices ) ) {
@@ -214,7 +259,7 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	 *
 	 * @return void
 	 */
-	protected function render_notices( $notices ) {
+	private function render_notices( $notices ) {
 		// Add styles and script to page if necessary
 		if ( in_array( true, wp_list_pluck( $notices, 'dismiss' ) ) ) {
 			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
@@ -375,7 +420,7 @@ class MAKE_Util_Admin_Notice implements MAKE_Util_Admin_NoticeInterface {
 	 * @param  string    $message    The message string to sanitize.
 	 * @return string                The sanitized message string.
 	 */
-	public function sanitize_message( $message ) {
+	private function sanitize_message( $message ) {
 		$allowedtags = wp_kses_allowed_html();
 		$allowedtags['a']['target'] = true;
 		return wp_kses( $message, $allowedtags );

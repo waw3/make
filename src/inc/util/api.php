@@ -5,6 +5,15 @@
 
 
 class MAKE_Util_API {
+	/**
+	 * Container for module objects.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $modules = array();
+
 
 	public function __construct(
 		MAKE_Util_Error_ErrorInterface $error = null,
@@ -13,32 +22,60 @@ class MAKE_Util_API {
 		MAKE_Util_L10n_L10nInterface $l10n = null,
 		MAKE_Util_Choices_ChoicesInterface $choices = null,
 		MAKE_Util_Font_FontInterface $font = null,
-		MAKE_Util_Settings_SettingsInterface $thememod = null
+		MAKE_Util_Settings_ThemeModInterface $thememod = null
 	) {
 		// Errors
-		$this->error_instance = ( is_null( $error ) ) ? new MAKE_Util_Error_Base : $error;
+		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Util_Error_Base : $error );
 
-		// Compatibility (load right away)
-		$this->compatibility_instance = ( is_null( $compatibility ) ) ? new MAKE_Util_Compatibility_Base( $this->error_instance ) : $compatibility;
-		$this->compatibility_instance->load();
+		// Compatibility
+		$this->add_module( 'compatibility', ( is_null( $compatibility ) ) ? new MAKE_Util_Compatibility_Base( $this->get_module( 'error' ) ) : $compatibility );
 
-		// Admin notices (load right away)
+		// Admin notices
 		if ( is_admin() ) {
-			$this->notice_instance = ( is_null( $notice ) ) ? new MAKE_Util_Admin_Notice : $notice;
-			$this->notice_instance->load();
+			$this->add_module( 'notice', ( is_null( $notice ) ) ? new MAKE_Util_Admin_Notice : $notice );
 		}
 
 		// Localization
-		$this->l10n_instance = ( is_null( $l10n ) ) ? new MAKE_Util_L10n_Base : $l10n;
+		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_Util_L10n_Base : $l10n );
 
 		// Choices
-		$this->choices_instance = ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base( $this->error_instance ) : $choices;
+		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Util_Choices_Base( $this->get_module( 'error' ) ) : $choices );
 
 		// Font
-		//$this->font_instance = ( is_null( $font ) ) ? new MAKE_Util_Font_Base : $font;
+		//$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Util_Font_Base : $font );
 
 		// Theme mods
-		$this->thememod_instance = ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod( $this->error_instance, $this->compatibility_instance, $this->choices_instance ) : $thememod;
+		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Util_Settings_ThemeMod( $this->get_module( 'error' ), $this->get_module( 'compatibility' ), $this->modules['choices'] ) : $thememod );
+	}
+
+	/**
+	 * Add a Util module, if it doesn't exist yet.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  string    $module_name
+	 * @param  object    $module
+	 *
+	 * @return bool
+	 */
+	protected function add_module( $module_name, $module ) {
+		// Module doesn't exist yet.
+		if ( ! isset( $this->modules[ $module_name ] ) ) {
+			$this->modules[ $module_name ] = $module;
+			if ( $this->modules[ $module_name ] instanceof MAKE_Util_HookInterface ) {
+				if ( ! $this->modules[ $module_name ]->is_hooked() ) {
+					$this->modules[ $module_name ]->hook();
+				}
+			}
+			return true;
+		}
+
+		// Module already exists. Generate an error if possible.
+		else if ( isset( $this->modules['error'] ) && $this->modules['error'] instanceof MAKE_Util_Error_ErrorInterface ) {
+			$this->modules['error']->add_error( 'make_util_module_already_exists', sprintf( __( 'The "%s" module already exists.', 'make' ), $module_name ) );
+		}
+
+		return false;
 	}
 
 	/**
@@ -48,33 +85,25 @@ class MAKE_Util_API {
 	 *
 	 * @param  string    $module_name
 	 *
-	 * @return object
+	 * @return mixed
 	 */
 	public function get_module( $module_name ) {
-		$property_name = $module_name . '_instance';
-
-		if ( isset( $this->$property_name ) ) {
-			$this->maybe_run_load( $this->$property_name );
-			return $this->$property_name;
-		} else {
-			$this->error_instance->add_error( 'make_util_module_not_valid', sprintf( __( 'The "%s" module doesn\'t exist.', 'make' ), $module_name ) );
-			return null;
+		// Module exists.
+		if ( isset( $this->modules[ $module_name ] ) ) {
+			if ( $this->modules[ $module_name ] instanceof MAKE_Util_LoadInterface ) {
+				if ( ! $this->modules[ $module_name ]->is_loaded() ) {
+					$this->modules[ $module_name ]->load();
+				}
+			}
+			return $this->modules[ $module_name ];
 		}
-	}
 
-	/**
-	 * Check if a module's load function has run yet, and if not, run it.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Util_LoadInterface $module
-	 *
-	 * @return void
-	 */
-	protected function maybe_run_load( MAKE_Util_LoadInterface $module ) {
-		if ( false === $module->is_loaded() ) {
-			$module->load();
+		// Module doesn't exist. Generate an error if possible.
+		else if ( isset( $this->modules['error'] ) && $this->modules['error'] instanceof MAKE_Util_Error_ErrorInterface ) {
+			$this->modules['error']->add_error( 'make_util_module_not_valid', sprintf( __( 'The "%s" module doesn\'t exist.', 'make' ), $module_name ) );
 		}
+
+		return null;
 	}
 }
 

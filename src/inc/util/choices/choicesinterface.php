@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-interface MAKE_Util_Choices_ChoicesInterface extends MAKE_Util_LoadInterface {
+interface MAKE_Util_Choices_ChoicesInterface {
 	public function add_choice_sets( $sets, $overwrite = false );
 
 	public function remove_choice_sets( $set_ids );

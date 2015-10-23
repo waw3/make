@@ -6,16 +6,43 @@
 /**
  * Class MAKE_Util_Compatibility_KeyConverter
  */
-final class MAKE_Util_Compatibility_KeyConverter {
+final class MAKE_Util_Compatibility_KeyConverter implements MAKE_Util_HookInterface {
 	/**
-	 * Initialize and hook into WordPress.
+	 * Indicator of whether the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $hooked = false;
+
+	/**
+	 * Hook into WordPress.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	public function init() {
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
 		add_action( 'after_setup_theme', array( $this, 'set_up_theme_mod_conversions' ), 11 );
+
+		// Hooking has occurred.
+		$this->hooked = true;
+	}
+
+	/**
+	 * Check if the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_hooked() {
+		return $this->hooked;
 	}
 
 	/**

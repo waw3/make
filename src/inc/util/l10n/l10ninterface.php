@@ -4,6 +4,6 @@
  */
 
 
-interface MAKE_Util_L10n_L10nInterface extends MAKE_Util_LoadInterface {
+interface MAKE_Util_L10n_L10nInterface {
 	public function load_textdomains();
 }

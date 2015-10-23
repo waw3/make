@@ -10,7 +10,16 @@
  *
  * @since x.x.x.
  */
-class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
+class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface, MAKE_Util_LoadInterface {
+	/**
+	 * Holds the instance of the error handling class.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var MAKE_Util_Error_ErrorInterface|null
+	 */
+	protected $error = null;
+
 	/**
 	 * The collection of choice sets.
 	 *
@@ -44,14 +53,13 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	}
 
 	/**
-	 * Load data into the object.
+	 * Load data files.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
 	public function load() {
-		// Bail if the load routine has already been run.
 		if ( true === $this->is_loaded() ) {
 			return;
 		}
@@ -61,9 +69,6 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 		if ( is_readable( $file ) ) {
 			include $file;
 		}
-
-		// Loading has occurred.
-		$this->loaded = true;
 
 		/**
 		 * Action: Fires at the end of the choices object's load method.
@@ -76,6 +81,9 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 		 * @param MAKE_Util_Choices_Base    $choices    The choices object that has just finished loading.
 		 */
 		do_action( 'make_choices_loaded', $this );
+
+		// Loading has occurred.
+		$this->loaded = true;
 	}
 
 	/**
@@ -185,7 +193,7 @@ class MAKE_Util_Choices_Base implements MAKE_Util_Choices_ChoicesInterface {
 	 * @return array
 	 */
 	protected function get_choice_sets() {
-		if ( false === $this->is_loaded() ) {
+		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
 

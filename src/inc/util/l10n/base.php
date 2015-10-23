@@ -10,7 +10,7 @@
  *
  * @since 1.6.2.
  */
-class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
+final class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface, MAKE_Util_HookInterface {
 	/**
 	 * Parent theme text domain.
 	 *
@@ -18,7 +18,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	protected $domain = '';
+	private $domain = '';
 
 	/**
 	 * Parent theme directory.
@@ -27,7 +27,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	protected $theme_dir = '';
+	private $theme_dir = '';
 
 	/**
 	 * Child theme text domain.
@@ -36,7 +36,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	protected $child_domain = '';
+	private $child_domain = '';
 
 	/**
 	 * Child theme directory.
@@ -45,16 +45,16 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @var string
 	 */
-	protected $child_theme_dir = '';
+	private $child_theme_dir = '';
 
 	/**
-	 * Indicator of whether the load routine has been run.
+	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @var bool
 	 */
-	protected $loaded = false;
+	private $hooked = false;
 
 	/**
 	 * Populate the class properties.
@@ -76,29 +76,33 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	}
 
 	/**
-	 * Load data into the object.
+	 * Hook into WordPress.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	public function load() {
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
 		// Filter to increase flexibility of .mo file location.
 		add_filter( 'load_textdomain_mofile', array( $this, 'mofile_path' ), 10, 2 );
 
-		// Loading has occurred.
-		$this->loaded = true;
+		// Hooking has occurred.
+		$this->hooked = true;
 	}
 
 	/**
-	 * Check if the load routine has been run.
+	 * Check if the hook routine has been run.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return bool
 	 */
-	public function is_loaded() {
-		return $this->loaded;
+	public function is_hooked() {
+		return $this->hooked;
 	}
 
 	/**
@@ -112,7 +116,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @return string                  The theme's text domain.
 	 */
-	protected function get_text_domain( $theme_slug ) {
+	private function get_text_domain( $theme_slug ) {
 		$theme  = wp_get_theme( $theme_slug );
 		$domain = $theme->get( 'TextDomain' ) ? $theme->get( 'TextDomain' ) : $theme_slug;
 		return sanitize_key( $domain );
@@ -127,7 +131,7 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 *
 	 * @return string                  The theme's root directory.
 	 */
-	protected function get_theme_dir( $theme_slug ) {
+	private function get_theme_dir( $theme_slug ) {
 		$theme = wp_get_theme( $theme_slug );
 		return untrailingslashit( $theme->get_stylesheet_directory() );
 	}
@@ -181,11 +185,6 @@ class MAKE_Util_L10n_Base implements MAKE_Util_L10n_L10nInterface {
 	 * @return bool    True if all relevant text domains successfully loaded a .mo file. Otherwise false.
 	 */
 	public function load_textdomains() {
-		// Make sure the module is loaded.
-		if ( false === $this->is_loaded() ) {
-			$this->load();
-		}
-
 		// Array to collect results of load commands.
 		$success = array();
 

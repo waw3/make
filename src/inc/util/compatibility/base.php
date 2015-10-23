@@ -8,7 +8,25 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_CompatibilityInterface {
+final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_CompatibilityInterface, MAKE_Util_HookInterface {
+	/**
+	 * Holds the instance of the error handling class.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var MAKE_Util_Error_ErrorInterface|null
+	 */
+	private $error = null;
+
+	/**
+	 * The activation status of Make Plus.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $plus = false;
+
 	/**
 	 * The compatibility modes.
 	 *
@@ -45,22 +63,13 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	);
 
 	/**
-	 * The activation status of Make Plus.
+	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @var bool
 	 */
-	private $plus = false;
-
-	/**
-	 * Indicator of whether the load routine has been run.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var bool
-	 */
-	private $loaded = false;
+	private $hooked = false;
 
 	/**
 	 * Inject dependencies and set properties.
@@ -72,6 +81,9 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 	) {
 		// Errors
 		$this->error = $error;
+
+		// Check for Make Plus
+		$this->plus = class_exists( 'TTFMP_App' );
 
 		/**
 		 * Filter: Set the mode for compatibility.
@@ -92,51 +104,53 @@ final class MAKE_Util_Compatibility_Base implements MAKE_Util_Compatibility_Comp
 			$this->mode = $this->mode['full'];
 		}
 
-		// Check for Make Plus
-		$this->plus = class_exists( 'TTFMP_App' );
+		// Load deprecated files.
+		// Do this on construct to make sure deprecated functions are defined ASAP.
+		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
+			$this->require_deprecated_files( $this->mode['deprecated'] );
+		}
 	}
 
 	/**
-	 * Load files and hook into WordPress.
+	 * Hook into WordPress.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	public function load() {
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
 		// Add notice if user attempts to install Make Plus as a theme
 		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
-
-		// Load deprecated files.
-		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
-			$this->require_deprecated_files( $this->mode['deprecated'] );
-		}
 
 		// Load the hook prefixer
 		if ( true === $this->mode['hook-prefixer'] ) {
 			$this->hookprefixer_instance = new MAKE_Util_Compatibility_HookPrefixer;
-			$this->hookprefixer_instance->init();
+			$this->hookprefixer_instance->hook();
 		}
 
 		// Load the key converter
 		if ( true === $this->mode['key-converter'] ) {
 			$this->keyconverter_instance = new MAKE_Util_Compatibility_KeyConverter;
-			$this->keyconverter_instance->init();
+			$this->keyconverter_instance->hook();
 		}
 
-		// Loading has occurred.
-		$this->loaded = true;
+		// Hooking has occurred.
+		$this->hooked = true;
 	}
 
 	/**
-	 * Check if the load routine has been run.
+	 * Check if the hook routine has been run.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return bool
 	 */
-	public function is_loaded() {
-		return $this->loaded;
+	public function is_hooked() {
+		return $this->hooked;
 	}
 
 	/**

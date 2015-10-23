@@ -10,7 +10,25 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
+final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base implements MAKE_Util_Settings_ThemeModInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
+	/**
+	 * Holds the instance of the compatibility class.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var MAKE_Util_Compatibility_CompatibilityInterface|null
+	 */
+	private $compatibility = null;
+
+	/**
+	 * Holds the instance of the choices class.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var MAKE_Util_Choices_ChoicesInterface|null
+	 */
+	private $choices = null;
+
 	/**
 	 * The type of settings.
 	 *
@@ -19,6 +37,24 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	 * @var string
 	 */
 	protected $type = 'thememod';
+
+	/**
+	 * Indicator of whether the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $hooked = false;
+
+	/**
+	 * Indicator of whether the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $loaded = false;
 
 	/**
 	 * Inject dependencies.
@@ -44,24 +80,52 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 	}
 
 	/**
-	 * Load the settings definitions and hook into WordPress.
+	 * Hook into WordPress.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
+		// Add filter to give the sanitize_choice callback the parameters it needs.
+		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'add_sanitize_choice_parameters' ), 10, 3 );
+
+		// Hooking has occurred.
+		$this->hooked = true;
+	}
+
+	/**
+	 * Check if the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_hooked() {
+		return $this->hooked;
+	}
+
+	/**
+	 * Load data files.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
 	public function load() {
+		if ( $this->is_loaded() ) {
+			return;
+		}
+
 		// Load the default setting definitions
 		$file = dirname( __FILE__ ) . '/thememod-definitions.php';
 		if ( is_readable( $file ) ) {
 			include $file;
 		}
-
-		// Add filter to give the sanitize_choice callback the parameters it needs.
-		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'add_sanitize_choice_parameters' ), 10, 3 );
-
-		// Loading has occurred.
-		$this->loaded = true;
 
 		/**
 		 * Action: Fires at the end of the ThemeMod settings object's load method.
@@ -74,6 +138,20 @@ final class MAKE_Util_Settings_ThemeMod extends MAKE_Util_Settings_Base {
 		 * @param MAKE_ThemeMod_Settings    $settings     The settings object that has just finished loading.
 		 */
 		do_action( "make_settings_{$this->type}_loaded", $this );
+
+		// Loading has occurred.
+		$this->loaded = true;
+	}
+
+	/**
+	 * Check if the load routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_loaded() {
+		return $this->loaded;
 	}
 
 	/**

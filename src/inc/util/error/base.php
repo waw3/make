@@ -10,7 +10,7 @@
  *
  * @since x.x.x.
  */
-class MAKE_Util_Error_Base implements MAKE_Util_Error_ErrorInterface {
+class MAKE_Util_Error_Base implements MAKE_Util_Error_ErrorInterface, MAKE_Util_HookInterface {
 	/**
 	 * Instance of WP_Error.
 	 *
@@ -30,13 +30,13 @@ class MAKE_Util_Error_Base implements MAKE_Util_Error_ErrorInterface {
 	private $show_errors = true;
 
 	/**
-	 * Indicator of whether the load routine has been run.
+	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @var bool
 	 */
-	private $loaded = false;
+	private $hooked = false;
 
 	/**
 	 * Inject dependencies and set properties.
@@ -70,7 +70,11 @@ class MAKE_Util_Error_Base implements MAKE_Util_Error_ErrorInterface {
 	 *
 	 * @return void
 	 */
-	public function load() {
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
 		// Render the error markup in the page footer.
 		if ( is_admin() ) {
 			add_action( 'admin_footer', array( $this, 'render_errors' ), 99 );
@@ -78,19 +82,19 @@ class MAKE_Util_Error_Base implements MAKE_Util_Error_ErrorInterface {
 			add_action( 'wp_footer', array( $this, 'render_errors' ), 99 );
 		}
 
-		// Loading has occurred.
-		$this->loaded = true;
+		// Hooking has occurred.
+		$this->hooked = true;
 	}
 
 	/**
-	 * Check if the load routine has been run.
+	 * Check if the hook routine has been run.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return bool
 	 */
-	public function is_loaded() {
-		return $this->loaded;
+	public function is_hooked() {
+		return $this->hooked;
 	}
 
 	/**
@@ -103,10 +107,6 @@ class MAKE_Util_Error_Base implements MAKE_Util_Error_ErrorInterface {
 	 * @param string $data
 	 */
 	public function add_error( $code, $message, $data = '' ) {
-		if ( ! $this->is_loaded() ) {
-			$this->load();
-		}
-
 		$this->errors->add( $code, $message, $data );
 	}
 
