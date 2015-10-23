@@ -10,7 +10,7 @@
 	 */
 	// Site Title
 	api('blogname', function(value) {
-		value.bind(function(to) { console.log(to);
+		value.bind(function(to) {
 			var $content = $('.site-title'),
 				$logo = $('.custom-logo'),
 				$branding = $('.site-branding'),
@@ -27,8 +27,18 @@
 			if (! to) {
 				$content.remove();
 			}
-			$to = $('<a>').text(to); console.log($to);
+			$to = $('<a>').text(to);
 			$content.html($to);
+		});
+	});
+	api('hide-site-title', function(value) {
+		value.bind(function(to) {
+			var $title = $('.site-title');
+			if (true == to) {
+				$title.addClass('screen-reader-text');
+			} else {
+				$title.removeClass('screen-reader-text');
+			}
 		});
 	});
 
@@ -43,8 +53,18 @@
 				$content.remove();
 			}
 			$content.text( to );
-		} );
-	} );
+		});
+	});
+	api('hide-tagline', function(value) {
+		value.bind(function(to) {
+			var $tagline = $('.site-description');
+			if (true == to) {
+				$tagline.addClass('screen-reader-text');
+			} else {
+				$tagline.removeClass('screen-reader-text');
+			}
+		});
+	});
 
 	// Mobile Menu Label
 	api( 'navigation-mobile-label', function( value ) {
