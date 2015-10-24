@@ -48,9 +48,6 @@ function ttfmake_require_files() {
 		get_template_directory() . '/inc/gallery-slider/gallery-slider.php',
 		// Formatting
 		get_template_directory() . '/inc/formatting/formatting.php',
-		// Integrations
-		get_template_directory() . '/inc/jetpack.php',
-		get_template_directory() . '/inc/woocommerce.php',
 		// Miscellaneous
 		get_template_directory() . '/inc/extras.php',
 		get_template_directory() . '/inc/template-tags.php',

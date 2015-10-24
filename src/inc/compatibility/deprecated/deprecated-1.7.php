@@ -293,3 +293,107 @@ function ttfmake_edit_page_script() {
 	$backtrace = debug_backtrace();
 	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+
+/**
+ * Jetpack compatibility.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_jetpack_setup() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Callback to render the special footer added by Infinite Scroll.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_jetpack_infinite_scroll_footer_callback() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Determine whether any footer widgets are actually showing.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return bool    Whether or not infinite scroll has footer widgets.
+ */
+function ttfmake_jetpack_infinite_scroll_has_footer_widgets() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Render the additional posts added by Infinite Scroll
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_jetpack_infinite_scroll_render() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Remove the Jetpack Sharing output from the end of the post content so it can be output elsewhere.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_jetpack_remove_sharing() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Add theme support and remove default action hooks so we can replace them with our own.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_woocommerce_init() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Markup to show before the main WooCommerce content.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_woocommerce_before_main_content() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Markup to show after the main WooCommerce content
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_woocommerce_after_main_content() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}

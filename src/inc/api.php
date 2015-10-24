@@ -13,7 +13,8 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_L10n_L10nInterface $l10n = null,
 		MAKE_Choices_ChoicesInterface $choices = null,
 		MAKE_Font_FontInterface $font = null,
-		MAKE_Settings_ThemeModInterface $thememod = null
+		MAKE_Settings_ThemeModInterface $thememod = null,
+		MAKE_Integration_IntegrationInterface $integration = null
 	) {
 		// Errors
 		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Base : $error );
@@ -37,6 +38,9 @@ class MAKE_API extends MAKE_Util_Modules {
 
 		// Theme mods
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->get_module( 'error' ), $this->get_module( 'compatibility' ), $this->modules['choices'] ) : $thememod );
+
+		// Integrations
+		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Base : $integration );
 	}
 }
 
