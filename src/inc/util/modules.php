@@ -30,7 +30,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 */
 	protected function add_module( $module_name, $module ) {
 		// Module doesn't exist yet.
-		if ( ! isset( $this->modules[ $module_name ] ) ) {
+		if ( ! $this->has_module( $module_name ) ) {
 			$this->modules[ $module_name ] = $module;
 			if ( $this->modules[ $module_name ] instanceof MAKE_Util_HookInterface ) {
 				if ( ! $this->modules[ $module_name ]->is_hooked() ) {
@@ -41,7 +41,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 		}
 
 		// Module already exists. Generate an error if possible.
-		else if ( isset( $this->modules['error'] ) && $this->modules['error'] instanceof MAKE_Error_ErrorInterface ) {
+		else if ( $this->has_module( 'error' ) && $this->modules['error'] instanceof MAKE_Error_ErrorInterface ) {
 			$this->modules['error']->add_error( 'make_util_module_already_exists', sprintf( __( 'The "%1$s" module can\'t be added to %2$s because it already exists.', 'make' ), $module_name, __CLASS__ ) );
 		}
 
@@ -59,7 +59,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 */
 	public function get_module( $module_name ) {
 		// Module exists.
-		if ( isset( $this->modules[ $module_name ] ) ) {
+		if ( $this->has_module( $module_name ) ) {
 			if ( $this->modules[ $module_name ] instanceof MAKE_Util_LoadInterface ) {
 				if ( ! $this->modules[ $module_name ]->is_loaded() ) {
 					$this->modules[ $module_name ]->load();
@@ -69,10 +69,23 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 		}
 
 		// Module doesn't exist. Generate an error if possible.
-		else if ( isset( $this->modules['error'] ) && $this->modules['error'] instanceof MAKE_Error_ErrorInterface ) {
+		else if ( $this->has_module( 'error' ) && $this->modules['error'] instanceof MAKE_Error_ErrorInterface ) {
 			$this->modules['error']->add_error( 'make_util_module_not_valid', sprintf( __( 'The "%1$s" module can\'t be retrieved from %2$s because it doesn\'t exist.', 'make' ), $module_name, __CLASS__ ) );
 		}
 
 		return null;
+	}
+
+	/**
+	 * Check if a module exists.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  string    $module_name
+	 *
+	 * @return bool
+	 */
+	public function has_module( $module_name ) {
+		return isset( $this->modules[ $module_name ] );
 	}
 }

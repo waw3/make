@@ -10,4 +10,6 @@
  */
 interface MAKE_Util_ModulesInterface {
 	public function get_module( $module_name );
+
+	public function has_module( $module_name );
 }
