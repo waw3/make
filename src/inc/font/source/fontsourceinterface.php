@@ -4,7 +4,11 @@
  */
 
 
-interface MAKE_Font_Source_FontSourceInterface extends MAKE_Util_LoadInterface {
+interface MAKE_Font_Source_FontSourceInterface {
+	public function get_label();
+
+	public function get_priority();
+
 	public function get_font_data( $font = null );
 
 	public function get_font_choices();

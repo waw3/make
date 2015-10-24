@@ -4,16 +4,7 @@
  */
 
 
-class MAKE_Font_Source_Google implements MAKE_Font_Source_FontSourceInterface {
-
-	public $label = '';
-
-
-	public $priority = 20;
-
-
-	private $data = array();
-
+final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAKE_Util_LoadInterface {
 
 	private $subsets = array();
 
@@ -39,10 +30,13 @@ class MAKE_Font_Source_Google implements MAKE_Font_Source_FontSourceInterface {
 	public function __construct() {
 		// Set the label
 		$this->label = __( 'Google Fonts', 'make' );
+
+		// Set the priority
+		$this->priority = 20;
 	}
 
 	/**
-	 * Load font data.
+	 * Load data files.
 	 *
 	 * @since x.x.x.
 	 *
@@ -78,36 +72,11 @@ class MAKE_Font_Source_Google implements MAKE_Font_Source_FontSourceInterface {
 
 	public function get_font_data( $font = null ) {
 		// Load the font data if necessary.
-		if ( false === $this->is_loaded() ) {
+		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
 
-		// Return data for a specific font.
-		if ( ! is_null( $font ) ) {
-			$data = array();
-
-			if ( array_key_exists( $font, $this->data ) ) {
-				$data = $this->data[ $font ];
-			}
-
-			return $data;
-		}
-
-		// Return all font data.
-		return $this->data;
-	}
-
-
-	public function get_font_choices() {
-		$choices = array();
-
-		foreach ( $this->get_font_data() as $key => $data ) {
-			if ( isset( $data['label'] ) ) {
-				$choices[ $key ] = $data['label'];
-			}
-		}
-
-		return $choices;
+		return parent::get_font_data( $font );
 	}
 
 
