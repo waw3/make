@@ -84,9 +84,9 @@ function ttfmake_require_files() {
 		}
 	}
 
-	// Load Utils
-	global $make_utils;
-	$make_utils = new MAKE_Util_API;
+	// Load API
+	global $Make;
+	$Make = new MAKE_API;
 }
 
 // Load files immediately.
@@ -145,7 +145,7 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  */
 function ttfmake_setup() {
 	// Load translation strings
-	make_get_utils()->get_module( 'l10n' )->load_textdomains();
+	Make()->get_module( 'l10n' )->load_textdomains();
 
 	// Feed links
 	add_theme_support( 'automatic-feed-links' );

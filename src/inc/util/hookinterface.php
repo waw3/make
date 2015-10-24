@@ -4,7 +4,7 @@
  */
 
 /**
- * Interface MAKE_Util_LoadInterface
+ * Interface MAKE_Util_HookInterface
  *
  * @since x.x.x.
  */
