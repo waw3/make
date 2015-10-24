@@ -280,3 +280,16 @@ function ttfmake_sanitize_choice( $value, $setting ) {
 	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_utils()->get_module( \'thememod\' )->sanitize_choice', $backtrace[0] );
 	return make_get_utils()->get_module( 'thememod' )->sanitize_choice( $value, $setting );
 }
+
+/**
+ * Enqueue scripts that run on the Edit Page screen
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_edit_page_script() {
+	$backtrace = debug_backtrace();
+	make_get_utils()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}

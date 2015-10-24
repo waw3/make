@@ -339,6 +339,26 @@ class TTFMAKE_Builder_Base {
 			'ttfmakeBuilderData',
 			$data
 		);
+
+		// Modifications to Edit Page UI
+		global $pagenow;
+
+		wp_enqueue_script(
+			'ttfmake-admin-edit-page',
+			get_template_directory_uri() . '/js/admin/edit-page.js',
+			array( 'jquery' ),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			'ttfmake-admin-edit-page',
+			'ttfmakeEditPageData',
+			array(
+				'featuredImage' => esc_html__( 'Note: the Builder Template does not display a featured image.', 'make' ),
+				'pageNow'       => esc_js( $pagenow ),
+			)
+		);
 	}
 
 	/**
