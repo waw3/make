@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Compatibility_Base implements MAKE_Compatibility_CompatibilityInterface, MAKE_Util_HookInterface {
+final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Compatibility_CompatibilityInterface, MAKE_Util_HookInterface {
 	/**
 	 * Holds the instance of the error handling class.
 	 *
@@ -128,14 +128,12 @@ final class MAKE_Compatibility_Base implements MAKE_Compatibility_CompatibilityI
 
 		// Load the hook prefixer
 		if ( true === $this->mode['hook-prefixer'] ) {
-			$this->hookprefixer_instance = new MAKE_Compatibility_HookPrefixer;
-			$this->hookprefixer_instance->hook();
+			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer );
 		}
 
 		// Load the key converter
 		if ( true === $this->mode['key-converter'] ) {
-			$this->keyconverter_instance = new MAKE_Compatibility_KeyConverter;
-			$this->keyconverter_instance->hook();
+			$this->add_module( 'keyconverter', new MAKE_Compatibility_KeyConverter );
 		}
 
 		// Hooking has occurred.
