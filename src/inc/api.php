@@ -20,7 +20,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Base : $error );
 
 		// Compatibility
-		$this->add_module( 'compatibility', ( is_null( $compatibility ) ) ? new MAKE_Compatibility_Base( $this->get_module( 'error' ) ) : $compatibility );
+		$this->add_module( 'compatibility', ( is_null( $compatibility ) ) ? new MAKE_Compatibility_Base( $this->inject_module( 'error' ) ) : $compatibility );
 
 		// Admin notices
 		if ( is_admin() ) {
@@ -31,13 +31,13 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_L10n_Base : $l10n );
 
 		// Choices
-		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Base( $this->get_module( 'error' ) ) : $choices );
+		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Base( $this->inject_module( 'error' ) ) : $choices );
 
 		// Font
 		//$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Base : $font );
 
 		// Theme mods
-		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->get_module( 'error' ), $this->get_module( 'compatibility' ), $this->modules['choices'] ) : $thememod );
+		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ) ) : $thememod );
 
 		// Integrations
 		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Base : $integration );

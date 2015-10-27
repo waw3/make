@@ -19,7 +19,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	protected $modules = array();
 
 	/**
-	 * Add a Util module, if it doesn't exist yet.
+	 * Add a module and run its hook routine.
 	 *
 	 * @since x.x.x.
 	 *
@@ -49,7 +49,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	}
 
 	/**
-	 * Return the specified Util module, if it exists.
+	 * Return the specified module and run its load routine.
 	 *
 	 * @since x.x.x.
 	 *
@@ -74,6 +74,27 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Return the specified module without running its load routine.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $module_name
+	 *
+	 * @return null
+	 */
+	protected function inject_module( $module_name ) {
+		// Module exists.
+		if ( $this->has_module( $module_name ) ) {
+			return $this->modules[ $module_name ];
+		}
+
+		// Module doesn't exist. Use the get_module method to generate an error.
+		else {
+			return $this->get_module( $module_name );
+		}
 	}
 
 	/**
