@@ -334,7 +334,11 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 
 		if ( $this->setting_exists( $setting_id ) ) {
 			$raw_value = $this->get_raw_value( $setting_id );
-			$value = $this->sanitize_value( $raw_value, $setting_id, $context );
+
+			// Sanitize the raw value.
+			if ( $this->undefined !== $raw_value ) {
+				$value = $this->sanitize_value( $raw_value, $setting_id, $context );
+			}
 
 			// Use the default if the value is still undefined.
 			if ( $this->undefined === $value ) {
