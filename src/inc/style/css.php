@@ -9,8 +9,10 @@
  * This class provides a mechanism to gather all of the CSS needed to implement theme options. It allows for handling
  * of conflicting rules and sorts out what the final CSS should be. The primary function is `add()`. It allows the
  * caller to add a new rule to be generated in the CSS.
+ *
+ * @since 1.0.0.
  */
-class MAKE_Style_CSS {
+class MAKE_Style_CSS implements MAKE_Style_CSSInterface {
 	/**
 	 * The array for storing added CSS rule data.
 	 *
@@ -18,7 +20,7 @@ class MAKE_Style_CSS {
 	 *
 	 * @var   array    Holds the data to be printed out.
 	 */
-	public $data = array();
+	private $data = array();
 
 	/**
 	 * Optional line ending character for debug mode.
@@ -34,9 +36,18 @@ class MAKE_Style_CSS {
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @var   string    Line ending character used to better style the CSS.
+	 * @var   string    Tab character used to better style the CSS.
 	 */
 	private $tab = '';
+
+	/**
+	 * Optional space character for debug mode.
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @var   string    Space character used to better style the CSS.
+	 */
+	private $space = '';
 
 	/**
 	 * Initialize the object.
@@ -50,6 +61,7 @@ class MAKE_Style_CSS {
 		if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
 			$this->line_ending = "\n";
 			$this->tab = "\t";
+			$this->space = " ";
 		}
 	}
 
@@ -135,6 +147,17 @@ class MAKE_Style_CSS {
 	}
 
 	/**
+	 * Check if there are any items in the private data property array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool    True if there are items.
+	 */
+	public function has_rules() {
+		return ! empty( $this->data );
+	}
+
+	/**
 	 * Compile the data array into standard CSS syntax
 	 *
 	 * @since  1.0.0.
@@ -142,11 +165,12 @@ class MAKE_Style_CSS {
 	 * @return string    The CSS that is built from the data.
 	 */
 	public function build() {
-		if ( empty( $this->data ) ) {
+		if ( ! $this->has_rules() ) {
 			return '';
 		}
 
 		$n = $this->line_ending;
+		$s = $this->space;
 
 		// Make sure the 'all' array is first
 		if ( isset( $this->data['all'] ) && count( $this->data ) > 1 ) {
@@ -161,13 +185,13 @@ class MAKE_Style_CSS {
 			$t = '';
 
 			if ( 'all' !== $query ) {
-				$output .= "\n@media " . $query . '{' . $n;
+				$output .= "\n@media " . $query . $s . '{' . $n;
 				$t = $this->tab;
 			}
 
 			// Build each rule
 			foreach ( $ruleset as $rule ) {
-				$output .= $this->parse_selectors( $rule['selectors'], $t ) . '{' . $n;
+				$output .= $this->parse_selectors( $rule['selectors'], $t ) . $s . '{' . $n;
 				$output .= $this->parse_declarations( $rule['declarations'], $t );
 				$output .= $t . '}' . $n;
 			}
@@ -211,6 +235,7 @@ class MAKE_Style_CSS {
 	private function parse_declarations( $declarations, $tab = '' ) {
 		$n = $this->line_ending;
 		$t = $this->tab . $tab;
+		$s = $this->space;
 
 		$output = '';
 
@@ -225,7 +250,7 @@ class MAKE_Style_CSS {
 				$property = 'font-size';
 			}
 
-			$parsed_value  = "{$t}{$property}:{$value};$n";
+			$parsed_value  = "{$t}{$property}:{$s}{$value};$n";
 
 			/**
 			 * Filter the final CSS declaration after being parsed.

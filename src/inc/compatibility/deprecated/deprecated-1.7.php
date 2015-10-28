@@ -397,3 +397,60 @@ function ttfmake_woocommerce_after_main_content() {
 	$backtrace = debug_backtrace();
 	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+
+/**
+ * Return the one TTFMAKE_CSS object.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return TTFMAKE_CSS    The one TTFMAKE_CSS object.
+ */
+function ttfmake_get_css() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'style\' )->css()', $backtrace[0] );
+	return Make()->get_module( 'style' )->css();
+}
+
+/**
+ * Build the CSS rules for the color scheme.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_css_background() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Build the CSS rules for the color scheme.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_css_color() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Convert a hex string into a comma separated RGB string.
+ *
+ * @link http://bavotasan.com/2011/convert-hex-color-to-rgb-using-php/
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  $value
+ * @return bool|string
+ */
+function ttfmake_hex_to_rgb( $value ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	return Make()->get_module( 'style' )->hex_to_rgb( $value );
+}

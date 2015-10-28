@@ -255,6 +255,7 @@ $this->add_settings(
 		'sanitize'            => 'esc_url',
 		'sanitize_customizer' => 'esc_url_raw',
 		'sanitize_database'   => 'esc_url_raw',
+		'sanitize_style'      => 'esc_url_raw',
 	)
 );
 
