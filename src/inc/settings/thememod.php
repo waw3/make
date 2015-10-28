@@ -135,7 +135,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param MAKE_ThemeMod_Settings    $settings     The settings object that has just finished loading.
+		 * @param MAKE_Settings_ThemeMod    $settings     The settings object that has just finished loading.
 		 */
 		do_action( "make_settings_{$this->type}_loaded", $this );
 
