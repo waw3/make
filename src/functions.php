@@ -42,8 +42,6 @@ function ttfmake_require_files() {
 		get_template_directory() . '/inc/activation.php',
 		// Autoloader
 		get_template_directory() . '/inc/autoload.php',
-		// Customizer
-		get_template_directory() . '/inc/customizer/bootstrap.php',
 		// Gallery slider
 		get_template_directory() . '/inc/gallery-slider/gallery-slider.php',
 		// Formatting
