@@ -4,7 +4,7 @@
  */
 
 
-interface MAKE_Customizer_SectionsInterface {
+interface MAKE_Customizer_ControlsInterface {
 	public function get_panel_definitions();
 
 	public function add_section_definitions( $section_id, array $data, $overwrite = false );

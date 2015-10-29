@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a MAKE_Customizer_SectionsInterface.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_SectionsInterface ) {
+// Bail if this isn't being included inside of a MAKE_Customizer_ControlsInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_ControlsInterface ) {
 	return;
 }
 
@@ -18,7 +18,7 @@ $this->add_section_definitions( 'color', array(
 	'controls' => array(
 		'color-group-color-scheme' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Color Scheme', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -69,7 +69,7 @@ $this->add_section_definitions( 'color', array(
 		),
 		'color-group-global-link' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Links', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -84,7 +84,7 @@ $this->add_section_definitions( 'color', array(
 		),
 		'color-group-global-background' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Background', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -92,7 +92,7 @@ $this->add_section_definitions( 'color', array(
 		// Site Background Color gets inserted here.
 		'main-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Main Column Background Color', 'make' ),
 				'type'  => 'heading',
 			),
@@ -106,7 +106,7 @@ $this->add_section_definitions( 'color', array(
 		'main-background-color-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
@@ -133,7 +133,7 @@ $this->add_section_definitions( 'color-header', array(
 		),
 		'header-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Background Color', 'make' ),
 				'type'  => 'heading',
 			),
@@ -147,7 +147,7 @@ $this->add_section_definitions( 'color-header', array(
 		'header-background-color-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
@@ -194,7 +194,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 	'controls' => array(
 		'color-group-nav-item' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Menu Items', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -220,7 +220,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 		),
 		'color-group-subnav-item' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Sub-Menu Items', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -271,7 +271,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 		'color-subnav-background-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
@@ -296,7 +296,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 		'color-subnav-background-hover-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
@@ -308,7 +308,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 		),
 		'color-group-current-item' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Current Item', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -323,7 +323,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 		'color-nav-current-item-background-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
@@ -376,7 +376,7 @@ $this->add_section_definitions( 'color-header-bar', array(
 		),
 		'header-bar-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Background Color', 'make' ),
 				'type'  => 'heading',
 			),
@@ -390,7 +390,7 @@ $this->add_section_definitions( 'color-header-bar', array(
 		'header-bar-background-color-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(
@@ -410,7 +410,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 	'controls' => array(
 		'color-group-sidebar-widget' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Widgets', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -453,7 +453,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 		),
 		'color-group-sidebar-link' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Links', 'make' ),
 				'type'  => 'group-title',
 			),
@@ -525,7 +525,7 @@ $this->add_section_definitions( 'color-footer', array(
 		),
 		'footer-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Misc_Control',
+				'control_type' => 'MAKE_Customizer_Control_Misc',
 				'label'   => __( 'Background Color', 'make' ),
 				'type'  => 'heading',
 			),
@@ -539,7 +539,7 @@ $this->add_section_definitions( 'color-footer', array(
 		'footer-background-color-opacity'     => array(
 			'setting' => array(),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
 				'type'  => 'range',
 				'input_attrs' => array(

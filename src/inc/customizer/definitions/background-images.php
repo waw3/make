@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a MAKE_Customizer_SectionsInterface.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_SectionsInterface ) {
+// Bail if this isn't being included inside of a MAKE_Customizer_ControlsInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_ControlsInterface ) {
 	return;
 }
 
@@ -25,7 +25,7 @@ foreach ( $regions as $prefix => $title ) {
 			$prefix . '-background-image'    => array(
 				'setting' => array(),
 				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Image_Control',
+					'control_type' => 'MAKE_Customizer_Control_Image',
 					'label'        => __( 'Background Image', 'make' ),
 				),
 			),
@@ -40,7 +40,7 @@ foreach ( $regions as $prefix => $title ) {
 			$prefix . '-background-position' => array(
 				'setting' => array(),
 				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Background_Position_Control',
+					'control_type' => 'MAKE_Customizer_Control_BackgroundPosition',
 					'label'   => __( 'Position', 'make' ),
 					'type'    => 'radio',
 					'choices' => $this->thememod->get_choice_set( $prefix . '-background-position' ),
@@ -49,7 +49,7 @@ foreach ( $regions as $prefix => $title ) {
 			$prefix . '-background-attachment'     => array(
 				'setting' => array(),
 				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Radio_Control',
+					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Attachment', 'make' ),
 					'type'    => 'radio',
 					'mode'    => 'buttonset',
@@ -59,7 +59,7 @@ foreach ( $regions as $prefix => $title ) {
 			$prefix . '-background-size'     => array(
 				'setting' => array(),
 				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Radio_Control',
+					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Size', 'make' ),
 					'type'    => 'radio',
 					'mode'    => 'buttonset',

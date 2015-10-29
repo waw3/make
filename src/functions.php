@@ -49,6 +49,8 @@ function ttfmake_require_files() {
 		// Miscellaneous
 		get_template_directory() . '/inc/extras.php',
 		get_template_directory() . '/inc/template-tags.php',
+		// Temp
+		get_template_directory() . '/inc/customizer/logo.php',
 	);
 
 	if ( is_admin() ) {
@@ -311,6 +313,7 @@ function ttfmake_scripts() {
 	$style_dependencies = array();
 
 	// Google fonts
+	/*
 	if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
 		// Enqueue the fonts
 		wp_enqueue_style(
@@ -320,7 +323,7 @@ function ttfmake_scripts() {
 			TTFMAKE_VERSION
 		);
 		$style_dependencies[] = 'ttfmake-google-fonts';
-	}
+	} */
 
 	// Font Awesome
 	wp_enqueue_style(

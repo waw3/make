@@ -456,6 +456,219 @@ function ttfmake_hex_to_rgb( $value ) {
 }
 
 /**
+ * Load the customizer files and enqueue scripts
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_init() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Register autoloaders for Customizer-related classes.
+ *
+ * This function is hooked to customize_register so that it is only registered within the Customizer.
+ *
+ * @since 1.6.3.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_register_autoload() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Autoloader callback for loading Make's custom Customizer control classes.
+ *
+ * @since 1.6.3.
+ * @deprecated 1.7.0.
+ *
+ * @param string    $class    The name of the class that is attempting to load.
+ *
+ * @return void
+ */
+function ttfmake_customizer_control_autoload( $class ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Return an array of panel definitions.
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    The array of panel definitions.
+ */
+function ttfmake_customizer_get_panels() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Register Customizer panels
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  WP_Customize_Manager    $wp_customize    Customizer object.
+ * @return void
+ */
+function ttfmake_customizer_add_panels( $wp_customize ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Return the master array of Customizer sections
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    The master array of Customizer sections
+ */
+function ttfmake_customizer_get_sections() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Add sections and controls to the customizer.
+ *
+ * Hooked to 'customize_register' via ttfmake_customizer_init().
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  WP_Customize_Manager    $wp_customize    Theme Customizer object.
+ * @return void
+ */
+function ttfmake_customizer_add_sections( $wp_customize ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Register settings and controls for a section.
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $section             Section ID
+ * @param  array     $args                Array of setting and control definitions
+ * @param  int       $initial_priority    The initial priority to use for controls
+ * @return int                            The last priority value assigned
+ */
+function ttfmake_customizer_add_section_options( $section, $args, $initial_priority = 100 ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Add postMessage support for certain built-in settings in the Theme Customizer.
+ *
+ * Allows these settings to update asynchronously in the Preview pane.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  WP_Customize_Manager    $wp_customize    Theme Customizer object.
+ * @return void
+ */
+function ttfmake_customizer_set_transport( $wp_customize ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Enqueue customizer preview script
+ *
+ * Hooked to 'customize_preview_init' via ttfmake_customizer_init()
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_preview_script() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Enqueue customizer sections script
+ *
+ * Hooked to 'customize_controls_enqueue_scripts' via ttfmake_customizer_init()
+ *
+ * @since  1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_scripts() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Configure settings and controls for the Background section.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_background() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Configure settings and controls for the Navigation section.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_navigation() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Configure settings and controls for the Site Title & Tagline section.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_sitetitletagline() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Configure settings and controls for the Static Front Page section.
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_customizer_staticfrontpage() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
  * Define the sections and settings for the Background Images panel
  *
  * @since 1.5.0.

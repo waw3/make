@@ -4,7 +4,7 @@
  */
 
 
-final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
+final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterface, MAKE_Util_HookInterface {
 	/**
 	 * Holds the instance of the error handling class.
 	 *
@@ -63,15 +63,14 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 	private $hooked = false;
 
 	/**
-	 * Indicator of whether the load routine has been run.
+	 * Inject dependencies.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var bool
+	 * @param MAKE_Error_ErrorInterface                 $error
+	 * @param MAKE_Compatibility_CompatibilityInterface $compatibility
+	 * @param MAKE_Settings_ThemeModInterface           $thememod
 	 */
-	private $loaded = false;
-
-
 	public function __construct(
 		MAKE_Error_ErrorInterface $error,
 		MAKE_Compatibility_CompatibilityInterface $compatibility,
@@ -85,30 +84,6 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 
 		// Theme mods
 		$this->thememod = $thememod;
-
-		// Populate Panel definitions.
-		$this->panel_definitions = array(
-			'general'           => array(
-				'title'    => __( 'General', 'make' ),
-				'priority' => 100
-			),
-			'typography'        => array(
-				'title'    => __( 'Typography', 'make' ),
-				'priority' => 200
-			),
-			'color-scheme'      => array(
-				'title'    => __( 'Color', 'make' ),
-				'priority' => 300
-			),
-			'background-images' => array(
-				'title'    => __( 'Background Images', 'make' ),
-				'priority' => 400
-			),
-			'content-layout'    => array(
-				'title'    => __( 'Layout', 'make' ),
-				'priority' => 500
-			),
-		);
 	}
 
 	/**
@@ -123,11 +98,20 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 			return;
 		}
 
+		// Load section definitions
+		add_action( 'customize_register', array( $this, 'load_definitions' ), 1 );
+
 		// Add panels
 		add_action( 'customize_register', array( $this, 'add_panels' ) );
 
 		// Add sections
 		add_action( 'customize_register', array( $this, 'add_sections' ) );
+
+		// Load section mods
+		add_action( 'customize_register', array( $this, 'load_mods' ), 99 );
+
+		// Control scripts
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_scripts' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -145,41 +129,87 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 	}
 
 	/**
-	 * Load data files.
+	 * Load data files for defining Make's sections.
 	 *
 	 * @since x.x.x.
 	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
 	 * @return void
 	 */
-	public function load() {
-		if ( $this->is_loaded() ) {
+	public function load_definitions( WP_Customize_Manager $wp_customize ) {
+		// Only run this in the proper hook context.
+		if ( 'customize_register' !== current_action() ) {
 			return;
 		}
 
-		$section_file_bases = array(
-			'background-images'
+		// Panel definitions.
+		$this->panel_definitions = array(
+			'general'           => array(
+				'title'    => __( 'General', 'make' ),
+				'priority' => 100
+			),
+			'typography'        => array(
+				'title'    => __( 'Typography', 'make' ),
+				'priority' => 200
+			),
+			'color'             => array(
+				'title'    => __( 'Color', 'make' ),
+				'priority' => 300
+			),
+			'background-images' => array(
+				'title'    => __( 'Background Images', 'make' ),
+				'priority' => 400
+			),
+			'content-layout'    => array(
+				'title'    => __( 'Layout', 'make' ),
+				'priority' => 500
+			),
 		);
 
-		foreach ( $section_file_bases as $name ) {
-			$file = dirname( __FILE__ ) . '/sections/' . $name . '.php';
+		$file_bases = array(
+			'background-images',
+			'color',
+		);
+
+		// Section/Control definitions
+		foreach ( $file_bases as $name ) {
+			$file = dirname( __FILE__ ) . '/definitions/' . $name . '.php';
 			if ( is_readable( $file ) ) {
 				include_once $file;
 			}
 		}
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**
-	 * Check if the load routine has been run.
+	 * Load data files for modifying core elements.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @return bool
+	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
 	 */
-	public function is_loaded() {
-		return $this->loaded;
+	public function load_mods( WP_Customize_Manager $wp_customize ) {
+		// Only run this in the proper hook context.
+		if ( 'customize_register' !== current_action() ) {
+			return;
+		}
+
+		$file_bases = array(
+			'background',
+			'navigation',
+			'site-title-tagline',
+			'static-front-page',
+			'widgets',
+		);
+
+		foreach ( $file_bases as $name ) {
+			$file = dirname( __FILE__ ) . '/mods/' . $name . '.php';
+			if ( is_readable( $file ) ) {
+				include_once $file;
+			}
+		}
 	}
 
 
@@ -213,18 +243,6 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 			// Add panel.
 			$wp_customize->add_panel( $this->prefix . $panel, $data );
 		}
-
-		// Get the last priority
-		$last_priority = $this->get_last_priority( $wp_customize->panels() );
-		$priority->set( $last_priority + 100 );
-
-		// Re-prioritize and rename the Widgets panel
-		if ( ! isset( $wp_customize->get_panel( 'widgets' )->priority ) ) {
-			// This function may fire before core has added the Widgets panel, in which case we add it.
-			$wp_customize->add_panel( 'widgets' );
-		}
-		$wp_customize->get_panel( 'widgets' )->priority = $priority->add();
-		$wp_customize->get_panel( 'widgets' )->title = __( 'Sidebars & Widgets', 'make' );
 	}
 
 
@@ -261,10 +279,6 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 		// Only run this in the proper hook context.
 		if ( 'customize_register' !== current_action() ) {
 			return;
-		}
-
-		if ( ! $this->is_loaded() ) {
-			$this->load();
 		}
 
 		// Bucket so each panel can have its own priority class.
@@ -312,11 +326,6 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 		$priority = new MAKE_Util_Priority( $initial_priority, 5 );
 
 		foreach ( $args as $setting_id => $definition ) {
-			// Skip this definition if the setting doesn't exist in theme mods.
-			if ( ! $this->thememod->setting_exists( $setting_id ) ) {
-				continue;
-			}
-
 			// Add setting
 			if ( isset( $definition['setting'] ) ) {
 				$defaults = array(
@@ -325,8 +334,8 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 					'theme_supports'       => '',
 					'default'              => $this->thememod->get_default( $setting_id ),
 					'transport'            => 'refresh',
-					'sanitize_callback'    => $this->thememod->get_sanitize_callback( $setting_id, 'from_customizer' ),
-					'sanitize_js_callback' => ( $this->thememod->has_sanitize_callback( $setting_id, 'to_customizer' ) ) ? $this->thememod->get_sanitize_callback( $setting_id, 'to_customizer' ) : '',
+					'sanitize_callback'    => array( $this, 'sanitize' ),
+					'sanitize_js_callback' => ( $this->thememod->has_sanitize_callback( $setting_id, 'to_customizer' ) ) ? array( $this, 'sanitize_js' ) : '',
 				);
 				$setting = wp_parse_args( $definition['setting'], $defaults );
 
@@ -386,6 +395,34 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 	}
 
 	/**
+	 * Wrapper method to sanitize any setting before the Customizer sends it to the database.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param                      $value
+	 * @param WP_Customize_Setting $setting
+	 *
+	 * @return mixed
+	 */
+	public function sanitize( $value, WP_Customize_Setting $setting ) {
+		return $this->thememod->sanitize_value( $value, $setting->id, 'from_customizer' );
+	}
+
+	/**
+	 * Wrapper method to sanitize any setting after the Customizer retrieves it from the database.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param                      $value
+	 * @param WP_Customize_Setting $setting
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_js( $value, WP_Customize_Setting $setting ) {
+		return $this->thememod->sanitize_value( $value, $setting->id, 'to_customizer' );
+	}
+
+	/**
 	 * Get the highest (last) priority from a collection of Customizer objects.
 	 *
 	 * Works with Panels, Sections, and Controls.
@@ -411,5 +448,81 @@ final class MAKE_Customizer_Sections implements MAKE_Customizer_SectionsInterfac
 
 		// Return highest (last) priority value.
 		return absint( array_pop( $parsed_items ) );
+	}
+
+
+	public function enqueue_control_scripts() {
+		// Only run this in the proper hook context.
+		if ( 'customize_controls_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
+		// Styles
+		wp_enqueue_style(
+			'ttfmake-customizer-jquery-ui',
+			get_template_directory_uri() . '/inc/customizer/css/jquery-ui/jquery-ui-1.10.4.custom.css',
+			array(),
+			'1.10.4'
+		);
+		wp_enqueue_style(
+			'ttfmake-customizer-chosen',
+			get_template_directory_uri() . '/inc/customizer/css/chosen/chosen.css',
+			array(),
+			'1.3.0'
+		);
+
+		// Custom styling depends on version of WP
+		// Nav menu panel was introduced in 4.3
+		$suffix = '';
+		if ( ! class_exists( 'WP_Customize_Nav_Menus' ) ) {
+			$suffix = '-legacy';
+		}
+		wp_enqueue_style(
+			'ttfmake-customizer-sections',
+			get_template_directory_uri() . "/inc/customizer/css/customizer-sections{$suffix}.css",
+			array( 'ttfmake-customizer-jquery-ui', 'ttfmake-customizer-chosen' ),
+			TTFMAKE_VERSION
+		);
+
+		// Scripts
+		wp_enqueue_script(
+			'ttfmake-customizer-chosen',
+			get_template_directory_uri() . '/inc/customizer/js/chosen.jquery.js',
+			array( 'jquery', 'customize-controls' ),
+			'1.3.0',
+			true
+		);
+
+		wp_enqueue_script(
+			'ttfmake-customizer-sections',
+			get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
+			array( 'customize-controls', 'ttfmake-customizer-chosen' ),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		// Collect localization data
+		$data = array(
+			//'fontOptions'		=> ttfmake_get_font_property_option_keys( 'font-family' ),
+			//'allFontChoices'	=> ttfmake_all_font_choices_js(),
+		);
+
+		// Add localization strings
+		if ( ! ttfmake_is_plus() ) {
+			$localize = array(
+				'chosen_no_results_default' => esc_html__( 'No results match', 'make' ),
+				'chosen_no_results_fonts'   => esc_html__( 'No matching fonts', 'make' ),
+				'plusURL'			        => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
+				'plusLabel'		        	=> esc_html__( 'Upgrade to Make Plus', 'make' ),
+			);
+			$data = $data + $localize;
+		}
+
+		// Localize the script
+		wp_localize_script(
+			'ttfmake-customizer-sections',
+			'ttfmakeCustomizerL10n',
+			$data
+		);
 	}
 }

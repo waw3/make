@@ -15,8 +15,8 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Font_FontInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
 		MAKE_Style_StyleInterface $style = null,
-		MAKE_Customizer_CustomizerInterface $customizer_base = null,
-		MAKE_Customizer_SectionsInterface $customizer_sections = null,
+		MAKE_Customizer_ControlsInterface $customizer_controls = null,
+		MAKE_Customizer_PreviewInterface $customizer_preview = null,
 		MAKE_Integration_IntegrationInterface $integration = null
 	) {
 		// Errors
@@ -47,10 +47,10 @@ class MAKE_API extends MAKE_Util_Modules {
 
 		// Customizer
 		if ( is_admin() ) {
-			// Base
-			$this->add_module( 'customizer-base', ( is_null( $customizer_base ) ) ? new MAKE_Customizer_Base : $customizer_base );
 			// Sections
-			$this->add_module( 'customizer-sections', ( is_null( $customizer_sections ) ) ? new MAKE_Customizer_Sections( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $customizer_sections );
+			$this->add_module( 'customizer-controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $customizer_controls );
+			// Preview
+			$this->add_module( 'customizer-preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview : $customizer_preview );
 		}
 
 		// Integrations
@@ -120,9 +120,4 @@ function make_thememod_get_value( $setting_id ) {
 
 function make_thememod_get_default( $setting_id ) {
 	return Make()->get_module( 'thememod' )->get_default( $setting_id );
-}
-
-
-function make_font_sanitize_choice( $value ) {
-	return Make()->get_module( 'font' )->sanitize_font_choice( $value );
 }
