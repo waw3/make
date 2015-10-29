@@ -251,11 +251,11 @@ $this->add_settings(
 		'footer-background-image',
 	), array() ),
 	array(
-		'default'             => '',
-		'sanitize'            => 'esc_url',
-		'sanitize_customizer' => 'esc_url_raw',
-		'sanitize_database'   => 'esc_url_raw',
-		'sanitize_style'      => 'esc_url_raw',
+		'default'                  => '',
+		'sanitize'                 => 'esc_url',
+		'sanitize_from_customizer' => 'esc_url_raw',
+		'sanitize_database'        => 'esc_url_raw',
+		'sanitize_style'           => 'esc_url_raw',
 	)
 );
 

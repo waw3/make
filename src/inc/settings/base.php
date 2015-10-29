@@ -248,7 +248,7 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 	 *
 	 * @return bool
 	 */
-	protected function setting_exists( $setting_id, $property = 'all' ) {
+	public function setting_exists( $setting_id, $property = 'all' ) {
 		$settings = $this->get_settings( $property );
 		return isset( $settings[ $setting_id ] );
 	}
@@ -436,6 +436,30 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 		 * @param string          $context       The context in which the setting needs to be sanitized.
 		 */
 		return apply_filters( "make_settings_{$this->type}_sanitize_callback", $callback, $setting_id, $context );
+	}
+
+	/**
+	 * Determine if a setting has a sanitize callback for a particular context.
+	 *
+	 * All settings must have a generic 'sanitize' callback. This function is only looking for extra, context-specific ones.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $setting_id
+	 * @param $context
+	 *
+	 * @return bool
+	 */
+	public function has_sanitize_callback( $setting_id, $context ) {
+		if ( $this->setting_exists( $setting_id ) ) {
+			$setting = $this->get_setting( $setting_id );
+
+			if ( isset( $setting[ 'sanitize_' . $context ] ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**

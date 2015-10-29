@@ -15,6 +15,8 @@ interface MAKE_Settings_SettingsInterface {
 
 	public function get_settings( $property = 'all' );
 
+	public function setting_exists( $setting_id, $property = 'all' );
+
 	public function set_value( $setting_id, $value );
 
 	public function unset_value( $setting_id );
@@ -28,6 +30,8 @@ interface MAKE_Settings_SettingsInterface {
 	public function is_default( $setting_id, $value = null );
 
 	public function get_sanitize_callback( $setting_id, $context = '' );
+
+	public function has_sanitize_callback( $setting_id, $context );
 
 	public function sanitize_value( $value, $setting_id, $context = '' );
 }
