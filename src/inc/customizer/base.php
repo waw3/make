@@ -50,5 +50,5 @@ class MAKE_Customizer_Base extends MAKE_Util_Modules implements MAKE_Customizer_
 	public function enqueue_preview_scripts() {}
 
 
-	public function enqueue_ui_scripts() {}
+	public function enqueue_control_scripts() {}
 }

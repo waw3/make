@@ -15,6 +15,8 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Font_FontInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
 		MAKE_Style_StyleInterface $style = null,
+		MAKE_Customizer_CustomizerInterface $customizer_base = null,
+		MAKE_Customizer_SectionsInterface $customizer_sections = null,
 		MAKE_Integration_IntegrationInterface $integration = null
 	) {
 		// Errors
@@ -41,7 +43,15 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ) ) : $thememod );
 
 		// Style
-		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Base( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $style );
+		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Base( $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $style );
+
+		// Customizer
+		if ( is_admin() ) {
+			// Base
+			$this->add_module( 'customizer-base', ( is_null( $customizer_base ) ) ? new MAKE_Customizer_Base : $customizer_base );
+			// Sections
+			$this->add_module( 'customizer-sections', ( is_null( $customizer_sections ) ) ? new MAKE_Customizer_Sections( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $customizer_sections );
+		}
 
 		// Integrations
 		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Base : $integration );

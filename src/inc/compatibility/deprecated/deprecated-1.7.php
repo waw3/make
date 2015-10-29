@@ -454,3 +454,46 @@ function ttfmake_hex_to_rgb( $value ) {
 	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 	return Make()->get_module( 'style' )->hex_to_rgb( $value );
 }
+
+/**
+ * Define the sections and settings for the Background Images panel
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_background_images_sections( $sections ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	return $sections;
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular HTML element.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  $region
+ * @return array
+ */
+function ttfmake_customizer_background_image_group_definitions( $region ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Define the sections and settings for the General panel
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_colorscheme_sections( $sections ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
