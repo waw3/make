@@ -6,6 +6,9 @@
 
 final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAKE_Util_LoadInterface {
 
+	private $compatibility = null;
+
+
 	private $subsets = array();
 
 
@@ -27,11 +30,19 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	private $loaded = false;
 
 
-	public function __construct() {
-		// Set the label
+	public function __construct(
+		MAKE_Compatibility_CompatibilityInterface $compatibility
+	) {
+		// Compatibility
+		$this->compatibility = $compatibility;
+
+		// Set the ID.
+		$this->id = 'google';
+
+		// Set the label.
 		$this->label = __( 'Google Fonts', 'make' );
 
-		// Set the priority
+		// Set the priority.
 		$this->priority = 20;
 	}
 
@@ -181,22 +192,57 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	}
 
 
+	private function collect_subsets( $font_data ) {
+		$subsets = array();
+
+		foreach ( $font_data as $font => $data ) {
+			if ( isset( $data['subsets'] ) ) {
+				$subsets = array_merge( $subsets, (array) $data['subsets'] );
+			}
+		}
+
+		$subsets = array_unique( $subsets );
+		sort( $subsets );
+
+		return $subsets;
+	}
+
+
 	public function get_subsets() {
 		if ( empty( $this->subsets ) ) {
-			$subsets = array();
-			$data = $this->get_font_data();
+			$this->subsets = $this->collect_subsets( $this->get_font_data() );
+		}
 
-			foreach ( $data as $font_data ) {
-				if ( isset( $font_data['subsets'] ) ) {
-					$subsets = $subsets + $font_data['subsets'];
-				}
-			}
+		// Check for deprecated filter
+		if ( has_filter( 'make_get_google_font_subsets' ) ) {
+			$this->compatibility->deprecated_hook(
+				'make_get_google_font_subsets',
+				'1.7.0',
+				__( 'To modify the list of available Google Fonts subsets, use the make_font_data_google hook instead.', 'make' )
+			);
 
-			$subsets = array_unique( $subsets );
-			$this->subsets = $subsets;
-			return $subsets;
+			return apply_filters( 'make_get_google_font_subsets', $this->subsets );
 		}
 
 		return $this->subsets;
+	}
+
+
+	public function sanitize_subset( $value, $default = 'latin' ) {
+		$subsets = $this->get_subsets();
+
+		// Check for deprecated filter
+		if ( has_filter( 'make_sanitize_font_subset' ) ) {
+			$this->compatibility->deprecated_hook(
+				'make_sanitize_font_subset',
+				'1.7.0'
+			);
+		}
+
+		if ( in_array( $value, $subsets[ $value ] ) ) {
+			return $value;
+		}
+
+		return $default;
 	}
 }

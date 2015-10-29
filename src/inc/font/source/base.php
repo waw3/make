@@ -6,6 +6,9 @@
 
 abstract class MAKE_Font_Source_Base implements MAKE_Font_Source_FontSourceInterface {
 
+	protected $id = '';
+
+
 	protected $label = '';
 
 
@@ -37,8 +40,14 @@ abstract class MAKE_Font_Source_Base implements MAKE_Font_Source_FontSourceInter
 			return $data;
 		}
 
-		// Return all font data.
-		return $this->data;
+		/**
+		 * Filter: Modify the font data from a particular source.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param array    $font_data
+		 */
+		return apply_filters( "make_font_data_{$this->id}", $this->data );
 	}
 
 

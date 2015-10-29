@@ -497,3 +497,137 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+
+/**
+ * Sanitize a font choice.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $value    The font choice.
+ * @return string              The sanitized font choice.
+ */
+function ttfmake_sanitize_font_choice( $value ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->sanitize_font_choice', $backtrace[0] );
+	return Make()->get_module( 'font' )->sanitize_font_choice( $value );
+}
+
+/**
+ * Sanitize the Character Subset choice.
+ *
+ * @since  1.0.0
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $value    The value to sanitize.
+ * @return array               The sanitized value.
+ */
+function ttfmake_sanitize_font_subset( $value ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->get_source( \'google\' )->sanitize_subset', $backtrace[0] );
+	return Make()->get_module( 'font' )->get_source( 'google' )->sanitize_subset( $value, make_thememod_get_default( 'font-subset' ) );
+}
+
+/**
+ * Compile font options from different sources.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    All available fonts.
+ */
+function ttfmake_get_all_fonts() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Packages the font choices into value/label pairs for use with the customizer.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    The fonts in value/label pairs.
+ */
+function ttfmake_all_font_choices() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->get_font_choices', $backtrace[0] );
+	return Make()->get_module( 'font' )->get_font_choices();
+}
+
+/**
+ * Return an array of standard websafe fonts.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    Standard websafe fonts.
+ */
+function ttfmake_get_standard_fonts() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->get_source( \'generic\' )->get_font_data', $backtrace[0] );
+	return Make()->get_module( 'font' )->get_source( 'generic' )->get_font_data();
+}
+
+/**
+ * Return an array of all available Google Fonts.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    All Google Fonts.
+ */
+function ttfmake_get_google_fonts() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->get_source( \'google\' )->get_font_data', $backtrace[0] );
+	return Make()->get_module( 'font' )->get_source( 'google' )->get_font_data();
+}
+
+/**
+ * Given a font, chose the variants to load for the theme.
+ *
+ * Attempts to load regular, italic, and 700. If regular is not found, the first variant in the family is chosen. italic
+ * and 700 are only loaded if found. No fallbacks are loaded for those fonts.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $font        The font to load variants for.
+ * @param  array     $variants    The variants for the font.
+ * @return array                  The chosen variants.
+ */
+function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->get_source( \'google\' )->choose_font_variants', $backtrace[0] );
+	return Make()->get_module( 'font' )->get_source( 'google' )->choose_font_variants( $font, $variants );
+}
+
+/**
+ * Retrieve the list of available Google font subsets.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    The available subsets.
+ */
+function ttfmake_get_google_font_subsets() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'font\' )->get_source( \'google\' )->get_subsets', $backtrace[0] );
+	return Make()->get_module( 'font' )->get_source( 'google' )->get_subsets();
+}
+
+/**
+ * Build the HTTP request URL for Google Fonts.
+ *
+ * The wp_enqueue_style function escapes the stylesheet URL, so no escaping is done here. If
+ * this function is used in a different context, make sure the output is escaped!
+ *
+ * @since  1.0.0.
+ * @deprecate 1.7.0.
+ *
+ * @return string    The URL for including Google Fonts.
+ */
+function ttfmake_get_google_font_uri() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}

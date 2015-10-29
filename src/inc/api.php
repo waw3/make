@@ -37,7 +37,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Base( $this->inject_module( 'error' ) ) : $choices );
 
 		// Font
-		//$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Base : $font );
+		$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Base( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $font );
 
 		// Theme mods
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ) ) : $thememod );

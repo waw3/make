@@ -15,10 +15,10 @@ $this->add_settings(
 		'hide-tagline'                    => array( 'default' => false ),
 		'social-hide-rss'                 => array( 'default' => false ),
 		'font-subnav-mobile'              => array( 'default' => true ),
-		'header-hide-padding-bottom'      => array( 'default' => false ),
+		'header-hide-padding-bottom'      => array( 'default' => false, 'css_rules' => true ),
 		'header-show-social'              => array( 'default' => false ),
 		'header-show-search'              => array( 'default' => true ),
-		'footer-hide-padding-top'         => array( 'default' => false ),
+		'footer-hide-padding-top'         => array( 'default' => false, 'css_rules' => true ),
 		'footer-show-social'              => array( 'default' => true ),
 		'layout-blog-hide-header'         => array( 'default' => false ),
 		'layout-blog-hide-footer'         => array( 'default' => false ),
@@ -254,6 +254,7 @@ $this->add_settings(
 		'default'                  => '',
 		'sanitize'                 => 'esc_url',
 		'sanitize_from_customizer' => 'esc_url_raw',
+		'sanitize_to_customizer'   => 'esc_url',
 		'sanitize_database'        => 'esc_url_raw',
 		'sanitize_style'           => 'esc_url_raw',
 	)
@@ -389,10 +390,11 @@ $this->add_settings(
 		'font-family-footer-widget'       => array( 'default' => 'Open Sans' ),
 	),
 	array(
-		'sanitize'          => 'make_font_sanitize_choice',
-		'sanitize_frontend' => 'sanitize_text_field',
-		'css_rules'         => true,
-		'font_family'       => true,
+		'sanitize'                 => 'sanitize_text_field',
+		'sanitize_from_customizer' => array( Make()->get_module( 'font' ), 'sanitize_font_choice' ),
+		'sanitize_to_customizer'   => array( Make()->get_module( 'font' ), 'sanitize_font_choice' ),
+		'css_rules'                => true,
+		'font_family'              => true,
 		// The choice set for font family is too big, so is handled separately.
 	)
 );
@@ -605,8 +607,10 @@ $this->add_settings(
 $this->add_settings(
 	array(
 		'font-subset' => array(
-			'default'  => 'latin',
-			'sanitize' => 'ttfmake_sanitize_font_subset',
+			'default'                  => 'latin',
+			'sanitize'                 => 'sanitize_key',
+			'sanitize_from_customizer' => array( Make()->get_module( 'font' )->inject_source( 'google' ), 'sanitize_subset' ),
+			'sanitize_to_customizer'   => array( Make()->get_module( 'font' )->inject_source( 'google' ), 'sanitize_subset' ),
 		),
 	)
 );
