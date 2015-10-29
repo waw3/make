@@ -46,7 +46,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Base( $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $style );
 
 		// Customizer
-		if ( is_admin() ) {
+		if ( is_admin() || is_customize_preview() ) {
 			// Sections
 			$this->add_module( 'customizer-controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $customizer_controls );
 			// Preview
