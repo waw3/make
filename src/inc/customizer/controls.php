@@ -333,7 +333,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 					'capability'           => 'edit_theme_options',
 					'theme_supports'       => '',
 					'default'              => $this->thememod->get_default( $setting_id ),
-					'transport'            => 'refresh',
+					'transport'            => $this->get_transport( $setting_id ),
 					'sanitize_callback'    => array( $this, 'sanitize' ),
 					'sanitize_js_callback' => ( $this->thememod->has_sanitize_callback( $setting_id, 'to_customizer' ) ) ? array( $this, 'sanitize_js' ) : '',
 				);
@@ -392,6 +392,21 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 
 		// Return the final priority.
 		return $priority->get();
+	}
+
+
+	private function get_transport( $setting_id ) {
+		$postMessage_settings = array();
+
+		foreach ( array( 'css_rules' ) as $property ) {
+			$postMessage_settings = array_merge( $postMessage_settings, $this->thememod->get_settings( $property ) );
+		}
+
+		if ( isset( $postMessage_settings[ $setting_id ] ) && true === $postMessage_settings[ $setting_id ] ) {
+			return 'postMessage';
+		}
+
+		return 'refresh';
 	}
 
 	/**

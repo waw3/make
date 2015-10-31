@@ -2,8 +2,9 @@
  * @package Make
  */
 
-( function( $ ) {
-	var api = wp.customize;
+(function($, MakePreview) {
+	var api = wp.customize,
+		Make;
 
 	/**
 	 * Asynchronous updating
@@ -136,4 +137,58 @@
 			$content.html( to );
 		} );
 	} );
-} )( jQuery );
+
+	Make = $.extend(MakePreview, {
+		cache: {
+			preview: {}
+		},
+
+		init: function() {
+			var self = this;
+
+			$.each(self.cssSettings, function(i, settingId) {
+				api(settingId, function(setting) {
+					setting.bind(function() {
+						self.getValues(self.cssSettings);
+						self.sendRequest();
+					});
+				});
+			});
+		},
+
+		getValues: function(settings) {
+			var self = this;
+
+			$.each(settings, function(i, settingId) {
+				api(settingId, function(setting) {
+					self.cache.preview[settingId] = setting();
+				});
+			});
+		},
+
+		sendRequest: function() {
+			var self = this,
+				data = {
+					action: 'make-css-inline',
+					preview: self.cache.preview
+				};
+
+			$.post(self.ajaxurl, data, function(response) {
+				self.updateStyles(response);
+			});
+		},
+
+		/**
+		 * @link https://css-tricks.com/snippets/javascript/inject-new-css-rules/
+		 *
+		 * @param content
+		 */
+		updateStyles: function(content) {
+			var $newStyles = $('<div>', {
+				html: '&shy;' + content
+			}).appendTo('body');
+		}
+	});
+
+	Make.init();
+})(jQuery, MakePreview);

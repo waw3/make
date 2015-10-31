@@ -50,7 +50,7 @@ class MAKE_API extends MAKE_Util_Modules {
 			// Sections
 			$this->add_module( 'customizer-controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $customizer_controls );
 			// Preview
-			$this->add_module( 'customizer-preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview : $customizer_preview );
+			$this->add_module( 'customizer-preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview( $this->inject_module( 'thememod' ) ) : $customizer_preview );
 		}
 
 		// Integrations

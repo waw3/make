@@ -127,6 +127,16 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 			return;
 		}
 
+		/**
+		 * Action: Fires before the Style class loads data files.
+		 *
+		 * This allows, for example, for filters to be added to thememod settings to change the values
+		 * before the style definitions are loaded.
+		 *
+		 * @since x.x.x.
+		 */
+		do_action( 'make_style_before_load' );
+
 		// Load the style includes.
 		foreach ( $this->includes as $file ) {
 			if ( is_readable( $file ) ) {
@@ -205,17 +215,10 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 	}
 
 
-	public function get_styles_as_inline( $include_tag = true ) {
+	public function get_styles_as_inline() {
 		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
-
-		/**
-		 * Action: Fires before CSS rules are rendered.
-		 *
-		 * @since x.x.x.
-		 */
-		do_action( 'make_style_before' );
 
 		/**
 		 * Action: Fires before the inline CSS rules are rendered and output.
@@ -226,15 +229,11 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 
 		// Echo the rules.
 		if ( $this->css()->has_rules() ) {
-			if ( $include_tag ) {
-				echo "\n<!-- Begin Make Inline CSS -->\n<style id=\"make-inline-css\" type=\"text/css\">\n";
-			}
+			echo "\n<!-- Begin Make Inline CSS -->\n<style type=\"text/css\">\n";
 
 			echo wp_filter_nohtml_kses( $this->css()->build() );
 
-			if ( $include_tag ) {
-				echo "\n</style>\n<!-- End Make Inline Custom CSS -->\n";
-			}
+			echo "\n</style>\n<!-- End Make Inline Custom CSS -->\n";
 		}
 	}
 
@@ -244,9 +243,8 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 		if ( ! in_array( current_action(), array( 'wp_ajax_' . $this->inline_action, 'wp_ajax_nopriv_' . $this->inline_action ) ) ) {
 			wp_die();
 		}
-
-		// Send the styles without a <style> tag wrap.
-		$this->get_styles_as_inline( false );
+		
+		$this->get_styles_as_inline();
 
 		// End the Ajax response.
 		wp_die();
@@ -266,11 +264,6 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
-
-		/**
-		 * This action is documented in the get_styles_as_inline() method.
-		 */
-		do_action( 'make_style_before' );
 
 		/**
 		 * Action: Fires before the CSS rules are rendered and output as a file.

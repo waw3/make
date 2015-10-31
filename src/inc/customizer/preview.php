@@ -4,7 +4,7 @@
  */
 
 
-class MAKE_Customizer_Preview implements MAKE_Customizer_PreviewInterface, MAKE_Util_HookInterface {
+class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customizer_PreviewInterface, MAKE_Util_HookInterface {
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -15,7 +15,12 @@ class MAKE_Customizer_Preview implements MAKE_Customizer_PreviewInterface, MAKE_
 	private $hooked = false;
 
 
-	public function __construct() {}
+	public function __construct(
+		MAKE_Settings_ThemeModInterface $thememod
+	) {
+		// Theme mods
+		$this->add_module( 'thememod', $thememod );
+	}
 
 	/**
 	 * Hook into WordPress.
@@ -34,6 +39,9 @@ class MAKE_Customizer_Preview implements MAKE_Customizer_PreviewInterface, MAKE_
 
 		// Preview pane scripts
 		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_scripts' ) );
+
+		//
+		add_action( 'make_style_before_load', array( $this, 'preview_styles' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -76,5 +84,57 @@ class MAKE_Customizer_Preview implements MAKE_Customizer_PreviewInterface, MAKE_
 			TTFMAKE_VERSION,
 			true
 		);
+
+		$data = array(
+			'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+			'cssSettings' => array_keys( $this->get_module( 'thememod' )->get_settings( 'css_rules' ) ),
+		);
+
+		wp_localize_script(
+			'ttfmake-customizer-preview',
+			'MakePreview',
+			$data
+		);
+	}
+
+
+	public function preview_styles() {
+		// Only run this in the proper hook context.
+		if ( 'make_style_before_load' !== current_action() ) {
+			return;
+		}
+
+		//
+		if ( ! isset( $_POST['preview'] ) ) {
+			return;
+		}
+
+		$preview = (array) $_POST['preview'];
+
+		foreach ( $preview as $setting_id => $value ) {
+			add_filter( "theme_mod_{$setting_id}", array( $this, 'preview_thememod_value' ) );
+		}
+	}
+
+
+	public function preview_thememod_value( $value ) {
+		// Only run this in the proper hook context.
+		if ( 0 !== strpos( current_filter(), 'theme_mod_' ) ) {
+			return $value;
+		}
+
+		//
+		if ( ! isset( $_POST['preview'] ) ) {
+			return $value;
+		}
+
+		$preview = (array) $_POST['preview'];
+		$setting_id = str_replace( 'theme_mod_', '', current_filter() );
+
+		if ( isset( $preview[ $setting_id ] ) ) {
+			return $preview[ $setting_id ];
+		}
+
+		return $value;
 	}
 }
