@@ -20,7 +20,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 
 
 	public function __construct(
-		MAKE_Error_ErrorInterface $error,
+		MAKE_Error_CollectorInterface $error,
 		MAKE_Compatibility_CompatibilityInterface $compatibility,
 		MAKE_Font_Source_FontSourceInterface $generic = null,
 		MAKE_Font_Source_FontSourceInterface $google = null

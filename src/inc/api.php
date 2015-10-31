@@ -7,7 +7,7 @@
 class MAKE_API extends MAKE_Util_Modules {
 
 	public function __construct(
-		MAKE_Error_ErrorInterface $error = null,
+		MAKE_Error_CollectorInterface $error = null,
 		MAKE_Compatibility_CompatibilityInterface $compatibility = null,
 		MAKE_Admin_NoticeInterface $notice = null,
 		MAKE_L10n_L10nInterface $l10n = null,
@@ -20,7 +20,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Integration_IntegrationInterface $integration = null
 	) {
 		// Errors
-		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Base : $error );
+		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Collector : $error );
 
 		// Compatibility
 		$this->add_module( 'compatibility', ( is_null( $compatibility ) ) ? new MAKE_Compatibility_Base( $this->inject_module( 'error' ) ) : $compatibility );

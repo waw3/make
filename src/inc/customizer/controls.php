@@ -10,7 +10,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var MAKE_Error_ErrorInterface|null
+	 * @var MAKE_Error_CollectorInterface|null
 	 */
 	private $error = null;
 
@@ -19,7 +19,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var MAKE_Error_ErrorInterface|null
+	 * @var MAKE_Error_CollectorInterface|null
 	 */
 	private $compatibility = null;
 
@@ -67,12 +67,12 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Error_ErrorInterface                 $error
+	 * @param MAKE_Error_CollectorInterface                 $error
 	 * @param MAKE_Compatibility_CompatibilityInterface $compatibility
 	 * @param MAKE_Settings_ThemeModInterface           $thememod
 	 */
 	public function __construct(
-		MAKE_Error_ErrorInterface $error,
+		MAKE_Error_CollectorInterface $error,
 		MAKE_Compatibility_CompatibilityInterface $compatibility,
 		MAKE_Settings_ThemeModInterface $thememod
 	) {

@@ -14,7 +14,7 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var MAKE_Error_ErrorInterface|null
+	 * @var MAKE_Error_CollectorInterface|null
 	 */
 	private $error = null;
 
@@ -77,7 +77,7 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 	 * @since x.x.x.
 	 */
 	public function __construct(
-		MAKE_Error_ErrorInterface $error
+		MAKE_Error_CollectorInterface $error
 	) {
 		// Errors
 		$this->error = $error;

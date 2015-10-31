@@ -16,7 +16,7 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var MAKE_Error_ErrorInterface|null
+	 * @var MAKE_Error_CollectorInterface|null
 	 */
 	protected $error = null;
 
@@ -43,10 +43,10 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Error_ErrorInterface $error
+	 * @param MAKE_Error_CollectorInterface $error
 	 */
 	public function __construct(
-		MAKE_Error_ErrorInterface $error
+		MAKE_Error_CollectorInterface $error
 	) {
 		// Errors
 		$this->error = $error;
