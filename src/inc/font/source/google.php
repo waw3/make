@@ -31,7 +31,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 
 
 	public function __construct(
-		MAKE_Compatibility_CompatibilityInterface $compatibility
+		MAKE_Compatibility_MethodsInterface $compatibility
 	) {
 		// Compatibility
 		$this->compatibility = $compatibility;

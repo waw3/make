@@ -10,7 +10,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 
 
 	public function __construct(
-		MAKE_Compatibility_CompatibilityInterface $compatibility
+		MAKE_Compatibility_MethodsInterface $compatibility
 	) {
 		// Compatibility
 		$this->compatibility = $compatibility;

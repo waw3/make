@@ -4,20 +4,11 @@
  */
 
 /**
- * Class MAKE_Compatibility_Base
+ * Class MAKE_Compatibility_Methods
  *
  * @since x.x.x.
  */
-final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Compatibility_CompatibilityInterface, MAKE_Util_HookInterface {
-	/**
-	 * Holds the instance of the error handling class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Error_CollectorInterface|null
-	 */
-	private $error = null;
-
+final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * The activation status of Make Plus.
 	 *
@@ -80,7 +71,7 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 		MAKE_Error_CollectorInterface $error
 	) {
 		// Errors
-		$this->error = $error;
+		$this->add_module( 'error', $error );
 
 		// Check for Make Plus
 		$this->plus = class_exists( 'TTFMP_App' );
@@ -109,6 +100,16 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
 			$this->require_deprecated_files( $this->mode['deprecated'] );
 		}
+
+		// Load the hook prefixer
+		if ( true === $this->mode['hook-prefixer'] ) {
+			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer );
+		}
+
+		// Load the key converter
+		if ( true === $this->mode['key-converter'] ) {
+			$this->add_module( 'keyconverter', new MAKE_Compatibility_KeyConverter );
+		}
 	}
 
 	/**
@@ -125,16 +126,6 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 
 		// Add notice if user attempts to install Make Plus as a theme
 		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
-
-		// Load the hook prefixer
-		if ( true === $this->mode['hook-prefixer'] ) {
-			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer );
-		}
-
-		// Load the key converter
-		if ( true === $this->mode['key-converter'] ) {
-			$this->add_module( 'keyconverter', new MAKE_Compatibility_KeyConverter );
-		}
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -236,7 +227,7 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 	public function get_plus_version() {
 		$version = null;
 
-		if ( true === $this->is_plus() ) {
+		if ( true === $this->is_plus() && function_exists( 'ttfmp_get_app' ) ) {
 			$version = ttfmp_get_app()->version;
 		}
 
@@ -269,14 +260,14 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 
 		// Add an error message.
 		if ( ! is_null( $replacement ) ) {
-			$this->error->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
+			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
 		} else {
-			$this->error->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
+			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
 		}
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$this->error->add_error( $error_code, $backtrace );
+			$this->get_module( 'error' )->add_error( $error_code, $backtrace );
 		}
 	}
 
@@ -307,9 +298,9 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 
 		// Add an error
 		if ( ! is_null( $message ) ) {
-			$this->error->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', 'make' ), $hook, $version, $message ) );
+			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', 'make' ), $hook, $version, $message ) );
 		} else {
-			$this->error->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
+			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
 		}
 	}
 
@@ -340,11 +331,11 @@ final class MAKE_Compatibility_Base extends MAKE_Util_Modules implements MAKE_Co
 
 		// Add an error
 		$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
-		$this->error->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
+		$this->get_module( 'error' )->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$this->error->add_error( $error_code, $backtrace );
+			$this->get_module( 'error' )->add_error( $error_code, $backtrace );
 		}
 	}
 }

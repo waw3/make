@@ -5,6 +5,8 @@
 
 /**
  * Class MAKE_Compatibility_KeyConverter
+ *
+ * @since x.x.x.
  */
 final class MAKE_Compatibility_KeyConverter implements MAKE_Util_HookInterface {
 	/**

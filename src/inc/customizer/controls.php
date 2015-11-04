@@ -68,12 +68,12 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 	 * @since x.x.x.
 	 *
 	 * @param MAKE_Error_CollectorInterface                 $error
-	 * @param MAKE_Compatibility_CompatibilityInterface $compatibility
+	 * @param MAKE_Compatibility_MethodsInterface $compatibility
 	 * @param MAKE_Settings_ThemeModInterface           $thememod
 	 */
 	public function __construct(
 		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_CompatibilityInterface $compatibility,
+		MAKE_Compatibility_MethodsInterface $compatibility,
 		MAKE_Settings_ThemeModInterface $thememod
 	) {
 		// Errors

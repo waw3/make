@@ -5,6 +5,8 @@
 
 /**
  * Class MAKE_Compatibility_HookPrefixer
+ *
+ * @since x.x.x.
  */
 final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 	/**

@@ -47,12 +47,12 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Compatibility_CompatibilityInterface $compatibility
+	 * @param MAKE_Compatibility_MethodsInterface $compatibility
 	 * @param MAKE_Settings_ThemeModInterface           $thememod
 	 * @param MAKE_Style_CSSInterface|null              $css
 	 */
 	public function __construct(
-		MAKE_Compatibility_CompatibilityInterface $compatibility,
+		MAKE_Compatibility_MethodsInterface $compatibility,
 		MAKE_Settings_ThemeModInterface $thememod,
 		MAKE_Style_CSSInterface $css = null
 	) {

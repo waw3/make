@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a MAKE_Compatibility_CompatibilityInterface.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_CompatibilityInterface ) {
+// Bail if this isn't being included inside of a MAKE_Compatibility_MethodsInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface ) {
 	return;
 }
 
