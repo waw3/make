@@ -141,9 +141,6 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  * @return void
  */
 function ttfmake_setup() {
-	// Load translation strings
-	Make()->get_module( 'l10n' )->load_textdomains();
-
 	// Feed links
 	add_theme_support( 'automatic-feed-links' );
 

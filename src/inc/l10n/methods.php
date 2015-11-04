@@ -4,13 +4,13 @@
  */
 
 /**
- * Class MAKE_L10n
+ * Class MAKE_L10n_Methods
  *
  * Methods for loading text domains.
  *
  * @since 1.6.2.
  */
-final class MAKE_L10n_Base implements MAKE_L10n_L10nInterface, MAKE_Util_HookInterface {
+final class MAKE_L10n_Methods implements MAKE_L10n_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * Parent theme text domain.
 	 *
@@ -89,6 +89,9 @@ final class MAKE_L10n_Base implements MAKE_L10n_L10nInterface, MAKE_Util_HookInt
 
 		// Filter to increase flexibility of .mo file location.
 		add_filter( 'load_textdomain_mofile', array( $this, 'mofile_path' ), 10, 2 );
+
+		// Load translation files.
+		add_action( 'after_setup_theme', array( $this, 'load_textdomains' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -185,6 +188,11 @@ final class MAKE_L10n_Base implements MAKE_L10n_L10nInterface, MAKE_Util_HookInt
 	 * @return bool    True if all relevant text domains successfully loaded a .mo file. Otherwise false.
 	 */
 	public function load_textdomains() {
+		// Only run this in the proper hook context.
+		if ( 'after_setup_theme' !== current_action() ) {
+			return false;
+		}
+
 		// Array to collect results of load commands.
 		$success = array();
 
@@ -197,6 +205,6 @@ final class MAKE_L10n_Base implements MAKE_L10n_L10nInterface, MAKE_Util_HookInt
 		}
 
 		// Return true if all relevant text domains successfully loaded a .mo file. Otherwise false.
-		return count( array_keys( $success, false ) ) === 0;
+		return 0 === count( array_keys( $success, false ) );
 	}
 }

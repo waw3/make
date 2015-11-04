@@ -10,7 +10,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Error_CollectorInterface $error = null,
 		MAKE_Compatibility_MethodsInterface $compatibility = null,
 		MAKE_Admin_NoticeInterface $notice = null,
-		MAKE_L10n_L10nInterface $l10n = null,
+		MAKE_L10n_MethodsInterface $l10n = null,
 		MAKE_Choices_ChoicesInterface $choices = null,
 		MAKE_Font_FontInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
@@ -31,7 +31,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		}
 
 		// Localization
-		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_L10n_Base : $l10n );
+		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_L10n_Methods : $l10n );
 
 		// Choices
 		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Base( $this->inject_module( 'error' ) ) : $choices );
