@@ -260,14 +260,14 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 
 		// Add an error message.
 		if ( ! is_null( $replacement ) ) {
-			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
+			$this->error()->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
 		} else {
-			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
+			$this->error()->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
 		}
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$this->get_module( 'error' )->add_error( $error_code, $backtrace );
+			$this->error()->add_error( $error_code, $backtrace );
 		}
 	}
 
@@ -298,9 +298,9 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 
 		// Add an error
 		if ( ! is_null( $message ) ) {
-			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', 'make' ), $hook, $version, $message ) );
+			$this->error()->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make! %3$s', 'make' ), $hook, $version, $message ) );
 		} else {
-			$this->get_module( 'error' )->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
+			$this->error()->add_error( $error_code, sprintf( __( 'The %1$s hook is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
 		}
 	}
 
@@ -331,11 +331,11 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 
 		// Add an error
 		$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
-		$this->get_module( 'error' )->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
+		$this->error()->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$this->get_module( 'error' )->add_error( $error_code, $backtrace );
+			$this->error()->add_error( $error_code, $backtrace );
 		}
 	}
 }
