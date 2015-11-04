@@ -10,16 +10,7 @@
  *
  * @since x.x.x.
  */
-class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_LoadInterface {
-	/**
-	 * Holds the instance of the error handling class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Error_CollectorInterface|null
-	 */
-	protected $error = null;
-
+class MAKE_Choices_Base extends MAKE_Util_Modules implements MAKE_Choices_ChoicesInterface, MAKE_Util_LoadInterface {
 	/**
 	 * The collection of choice sets.
 	 *
@@ -49,7 +40,7 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 		MAKE_Error_CollectorInterface $error
 	) {
 		// Errors
-		$this->error = $error;
+		$this->add_module( 'error', $error );
 	}
 
 	/**
@@ -133,12 +124,12 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 
 			// Choice set isn't valid.
 			if ( ! is_array( $choices ) ) {
-				$this->error->add_error( 'make_choices_set_not_valid', sprintf( __( 'The "%s" choice set can\'t be added because it\'s not an array.', 'make' ), $set_id ) );
+				$this->get_module( 'error' )->add_error( 'make_choices_set_not_valid', sprintf( __( 'The "%s" choice set can\'t be added because it\'s not an array.', 'make' ), $set_id ) );
 				$return = false;
 			}
 			// Choice set already exists, overwriting disabled.
 			else if ( isset( $existing_sets[ $set_id ] ) && true !== $overwrite ) {
-				$this->error->add_error( 'make_choices_set_already_exists', sprintf( __( 'The "%s" choice set can\'t be added because it already exists.', 'make' ), $set_id ) );
+				$this->get_module( 'error' )->add_error( 'make_choices_set_already_exists', sprintf( __( 'The "%s" choice set can\'t be added because it already exists.', 'make' ), $set_id ) );
 				$return = false;
 			}
 			// Add a new choice set.
@@ -177,7 +168,7 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 			if ( isset( $this->choice_sets[ $set_id ] ) ) {
 				unset( $this->choice_sets[ $set_id ] );
 			} else {
-				$this->error->add_error( 'make_choices_cannot_remove', sprintf( __( 'The "%s" choice set can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $set_id ) ) );
+				$this->get_module( 'error' )->add_error( 'make_choices_cannot_remove', sprintf( __( 'The "%s" choice set can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $set_id ) ) );
 				$return = false;
 			}
 		}
@@ -209,7 +200,7 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 	 *
 	 * @return bool
 	 */
-	protected function choice_set_exists( $set_id ) {
+	public function choice_set_exists( $set_id ) {
 		$choice_sets = $this->get_choice_sets();
 		return isset( $choice_sets[ $set_id ] );
 	}
@@ -254,7 +245,7 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 	 */
 	public function get_choice_label( $value, $set_id ) {
 		if ( ! $this->is_valid_choice( $value, $set_id ) ) {
-			$this->error->add_error( 'make_choices_not_valid_choice', sprintf( __( '"%1$s" is not a valid choice in the "%2$s" set.', 'make' ), esc_html( $value ), esc_html( $set_id ) ) );
+			$this->get_module( 'error' )->add_error( 'make_choices_not_valid_choice', sprintf( __( '"%1$s" is not a valid choice in the "%2$s" set.', 'make' ), esc_html( $value ), esc_html( $set_id ) ) );
 			return '';
 		}
 
@@ -270,7 +261,7 @@ class MAKE_Choices_Base implements MAKE_Choices_ChoicesInterface, MAKE_Util_Load
 		 * @param mixed     $choice    The value for the choice.
 		 * @param string    $set_id    The ID of the set that the choice belongs to.
 		 */
-		return apply_filters( 'make_choice_get_choice_label', $choices[ $value ], $value, $set_id );
+		return apply_filters( 'make_choices_get_choice_label', $choices[ $value ], $value, $set_id );
 	}
 
 	/**
