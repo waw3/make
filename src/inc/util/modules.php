@@ -19,6 +19,24 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	protected $modules = array();
 
 	/**
+	 * Allow modules to be accessed simply as a method with the same name.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $name
+	 * @param $arguments
+	 *
+	 * @return bool|mixed
+	 */
+	public function __call( $name, $arguments ) {
+		if ( $this->has_module( $name ) ) {
+			return $this->get_module( $name );
+		} else {
+			return trigger_error( sprintf( esc_html__( 'Call to undefined method %1$s::%2$s()', 'make' ), get_class( $this ), esc_html( $name ) ), E_USER_ERROR );
+		}
+	}
+
+	/**
 	 * Add a module and run its hook routine.
 	 *
 	 * @since x.x.x.
