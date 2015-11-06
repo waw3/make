@@ -75,7 +75,7 @@ function make_is_plus() {
 }
 
 
-function make_thememod_update_settings( $settings, MAKE_Settings_SettingsInterface $instance ) {
+function make_thememod_update_settings( $settings, MAKE_Settings_BaseInterface $instance ) {
 	// Make sure we're not doing it wrong.
 	if ( 'make_settings_thememod_loaded' !== current_action() ) {
 		$backtrace = debug_backtrace();

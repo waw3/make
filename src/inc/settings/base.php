@@ -21,16 +21,7 @@
  *
  * @since x.x.x.
  */
-abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
-	/**
-	 * Holds the instance of the error handling class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Error_CollectorInterface|null
-	 */
-	protected $error = null;
-
+abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Settings_BaseInterface {
 	/**
 	 * The collection of settings and their properties.
 	 *
@@ -81,7 +72,7 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 		MAKE_Error_CollectorInterface $error
 	) {
 		// Errors
-		$this->error = $error;
+		$this->add_module( 'error', $error );
 	}
 
 	/**
@@ -128,12 +119,12 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 			}
 			// Setting already exists, overwriting disabled.
 			else if ( isset( $existing_settings[ $setting_id ] ) && true !== $overwrite ) {
-				$this->error->add_error( 'make_settings_already_exists', sprintf( __( 'The "%s" setting can\'t be added because it already exists.', 'make' ), esc_html( $setting_id ) ) );
+				$this->error()->add_error( 'make_settings_already_exists', sprintf( __( 'The "%s" setting can\'t be added because it already exists.', 'make' ), esc_html( $setting_id ) ) );
 				$return = false;
 			}
 			// Setting does not have required properties.
 			else if ( ! $this->has_required_properties( $setting_props ) ) {
-				$this->error->add_error( 'make_settings_missing_required_properties', sprintf( __( 'The "%s" setting can\'t be added because it is missing required properties.', 'make' ), esc_html( $setting_id ) ) );
+				$this->error()->add_error( 'make_settings_missing_required_properties', sprintf( __( 'The "%s" setting can\'t be added because it is missing required properties.', 'make' ), esc_html( $setting_id ) ) );
 				$return = false;
 			}
 			// Add a new setting.
@@ -197,7 +188,7 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 			if ( isset( $this->settings[ $setting_id ] ) ) {
 				unset( $this->settings[ $setting_id ] );
 			} else {
-				$this->error->add_error( 'make_settings_cannot_remove', sprintf( __( 'The "%s" setting can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $setting_id ) ) );
+				$this->error()->add_error( 'make_settings_cannot_remove', sprintf( __( 'The "%s" setting can\'t be removed because it doesn\'t exist.', 'make' ), esc_html( $setting_id ) ) );
 				$return = false;
 			}
 		}
@@ -496,7 +487,7 @@ abstract class MAKE_Settings_Base implements MAKE_Settings_SettingsInterface {
 
 				$sanitized_value = call_user_func_array( $callback, $prepared_value );
 			} else {
-				$this->error->add_error( 'make_settings_callback_not_valid', sprintf( __( 'The sanitize callback (%1$s) for "%2$s" is not valid.', 'make' ), esc_html( print_r( $callback, true ) ), esc_html( $setting_id ) ) );
+				$this->error()->add_error( 'make_settings_callback_not_valid', sprintf( __( 'The sanitize callback (%1$s) for "%2$s" is not valid.', 'make' ), esc_html( print_r( $callback, true ) ), esc_html( $setting_id ) ) );
 			}
 		}
 

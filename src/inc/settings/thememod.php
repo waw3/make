@@ -12,24 +12,6 @@
  */
 final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Settings_ThemeModInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
-	 * Holds the instance of the compatibility class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Compatibility_MethodsInterface|null
-	 */
-	private $compatibility = null;
-
-	/**
-	 * Holds the instance of the choices class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Choices_ManagerInterface|null
-	 */
-	private $choices = null;
-
-	/**
 	 * The type of settings.
 	 *
 	 * @since x.x.x.
@@ -73,10 +55,10 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		parent::__construct( $error );
 
 		// Compatibility
-		$this->compatibility = $compatibility;
+		$this->add_module( 'compatibility', $compatibility );
 
 		// Choices
-		$this->choices = $choices;
+		$this->add_module( 'choices', $choices );
 	}
 
 	/**
@@ -168,7 +150,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 
 		// Check for deprecated filter.
 		if ( 'default' === $property && has_filter( 'make_setting_defaults' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_setting_defaults',
 				'1.7.0',
 				__( 'To add or modify theme options, use the function make_thememod_update_settings() instead.', 'make' )
@@ -264,7 +246,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 
 		// Check for deprecated filter.
 		if ( has_filter( 'make_get_default' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_get_default',
 				'1.7.0',
 				__( 'Use make_settings_thememod_default_value instead.', 'make' )
@@ -341,11 +323,11 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		}
 
 		// Get the choice set array.
-		$choice_set = $this->choices->get_choice_set( $choice_set_id );
+		$choice_set = $this->choices()->get_choice_set( $choice_set_id );
 
 		// Check for deprecated filter.
 		if ( has_filter( 'make_setting_choices' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_setting_choices',
 				'1.7.0',
 				__( 'To add or modify theme option choices, use the function make_choices_update_choices() instead.', 'make' )
@@ -381,11 +363,11 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		$default_value = $this->get_default( $setting_id );
 
 		// Sanitize the value.
-		$sanitized_value = $this->choices->sanitize_choice( $value, $choice_set_id, $default_value );
+		$sanitized_value = $this->choices()->sanitize_choice( $value, $choice_set_id, $default_value );
 
 		// Check for deprecated filter.
 		if ( has_filter( 'make_sanitize_choice' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_sanitize_choice',
 				'1.7.0',
 				__( 'Use make_settings_thememod_current_value instead.', 'make' )
