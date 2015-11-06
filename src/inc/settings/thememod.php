@@ -25,7 +25,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var MAKE_Choices_ChoicesInterface|null
+	 * @var MAKE_Choices_ManagerInterface|null
 	 */
 	private $choices = null;
 
@@ -63,12 +63,12 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @param MAKE_Error_CollectorInterface                 $error
 	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Choices_ChoicesInterface             $choices
+	 * @param MAKE_Choices_ManagerInterface             $choices
 	 */
 	public function __construct(
 		MAKE_Error_CollectorInterface $error,
 		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Choices_ChoicesInterface $choices
+		MAKE_Choices_ManagerInterface $choices
 	) {
 		parent::__construct( $error );
 

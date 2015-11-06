@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a MAKE_Choices_ChoicesInterface.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Choices_ChoicesInterface ) {
+// Bail if this isn't being included inside of a MAKE_Choices_ManagerInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Choices_ManagerInterface ) {
 	return;
 }
 

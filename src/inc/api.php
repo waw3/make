@@ -11,7 +11,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Compatibility_MethodsInterface $compatibility = null,
 		MAKE_Admin_NoticeInterface $notice = null,
 		MAKE_L10n_MethodsInterface $l10n = null,
-		MAKE_Choices_ChoicesInterface $choices = null,
+		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_FontInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
 		MAKE_Style_StyleInterface $style = null,
@@ -34,7 +34,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_L10n_Methods : $l10n );
 
 		// Choices
-		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Base( $this->inject_module( 'error' ) ) : $choices );
+		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Manager( $this->inject_module( 'error' ) ) : $choices );
 
 		// Font
 		$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Base( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $font );
@@ -94,7 +94,7 @@ function make_thememod_update_settings( $settings, MAKE_Settings_SettingsInterfa
 }
 
 
-function make_choices_update_choices( $choice_sets, MAKE_Choices_ChoicesInterface $instance ) {
+function make_choices_update_choices( $choice_sets, MAKE_Choices_ManagerInterface $instance ) {
 	// Make sure we're not doing it wrong.
 	if ( 'make_choices_loaded' !== current_action() ) {
 		$backtrace = debug_backtrace();

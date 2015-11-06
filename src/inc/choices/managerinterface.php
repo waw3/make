@@ -4,11 +4,11 @@
  */
 
 /**
- * Interface MAKE_Choices_ChoicesInterface
+ * Interface MAKE_Choices_ManagerInterface
  *
  * @since x.x.x.
  */
-interface MAKE_Choices_ChoicesInterface extends MAKE_Util_ModulesInterface {
+interface MAKE_Choices_ManagerInterface extends MAKE_Util_ModulesInterface {
 	public function add_choice_sets( $sets, $overwrite = false );
 
 	public function remove_choice_sets( $set_ids );
