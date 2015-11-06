@@ -6,14 +6,11 @@
 
 final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 
-	private $compatibility = null;
-
-
 	public function __construct(
 		MAKE_Compatibility_MethodsInterface $compatibility
 	) {
 		// Compatibility
-		$this->compatibility = $compatibility;
+		$this->add_module( 'compatibility', $compatibility );
 
 		// Set the ID.
 		$this->id = 'generic';
@@ -39,7 +36,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 
 		// Check for deprecated filters
 		if ( has_filter( 'make_get_standard_fonts' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_get_standard_fonts',
 				'1.7.0',
 				__( 'To add or modify Generic Fonts, use the make_font_data_generic hook instead.', 'make' )
@@ -48,7 +45,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 			$this->data = apply_filters( 'make_get_standard_fonts', $this->data );
 		}
 		if ( has_filter( 'make_all_fonts' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_all_fonts',
 				'1.7.0',
 				__( 'To add or modify fonts, use a hook for a specific font source instead, such as make_font_data_generic.', 'make' )

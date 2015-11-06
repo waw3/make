@@ -4,11 +4,11 @@
  */
 
 /**
- * Class MAKE_Font_Base
+ * Class MAKE_Font_Manager
  *
  * @since x.x.x
  */
-final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontInterface {
+final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerInterface {
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
@@ -22,8 +22,8 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 	public function __construct(
 		MAKE_Error_CollectorInterface $error,
 		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Font_Source_FontSourceInterface $generic = null,
-		MAKE_Font_Source_FontSourceInterface $google = null
+		MAKE_Font_Source_BaseInterface $generic = null,
+		MAKE_Font_Source_BaseInterface $google = null
 	) {
 		// Errors
 		$this->add_module( 'error', $error );
@@ -58,7 +58,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param MAKE_Font_Base    $font    The font object that has just finished loading.
+		 * @param MAKE_Font_Manager    $font    The font object that has just finished loading.
 		 */
 		do_action( 'make_font_loaded', $this );
 
@@ -78,7 +78,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 	}
 
 
-	public function add_source( $source_id, MAKE_Font_Source_FontSourceInterface $source ) {
+	public function add_source( $source_id, MAKE_Font_Source_BaseInterface $source ) {
 		return parent::add_module( $source_id, $source );
 	}
 
@@ -88,8 +88,8 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 			$this->load();
 		}
 
-		if ( ! parent::get_module( $source_id ) instanceof MAKE_Font_Source_FontSourceInterface ) {
-			$this->get_module( 'error' )->add_error( 'make_font_source_not_valid', sprintf( __( '"%s" can\'t be retrieved because it isn\'t a valid font source.', 'make' ), $source_id ) );
+		if ( ! parent::get_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface ) {
+			$this->error()->add_error( 'make_font_source_not_valid', sprintf( __( '"%s" can\'t be retrieved because it isn\'t a valid font source.', 'make' ), $source_id ) );
 			return null;
 		}
 
@@ -102,7 +102,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 			$this->load();
 		}
 
-		if ( ! parent::inject_module( $source_id ) instanceof MAKE_Font_Source_FontSourceInterface ) {
+		if ( ! parent::inject_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface ) {
 			// Use the get_source method to generate an error.
 			return $this->get_source( $source_id );
 		}
@@ -112,13 +112,13 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 
 
 	public function has_source( $source_id ) {
-		return parent::has_module( $source_id ) && parent::inject_module( $source_id ) instanceof MAKE_Font_Source_FontSourceInterface;
+		return parent::has_module( $source_id ) && parent::inject_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface;
 	}
 
 
 	public function remove_source( $source_id ) {
 		if ( ! $this->has_source( $source_id ) ) {
-			$this->get_module( 'error' )->add_error( 'make_font_source_not_valid', sprintf( __( 'The "%s" font source can\'t be removed because it doesn\'t exist.', 'make' ), $source_id ) );
+			$this->error()->add_error( 'make_font_source_not_valid', sprintf( __( 'The "%s" font source can\'t be removed because it doesn\'t exist.', 'make' ), $source_id ) );
 			return false;
 		}
 
@@ -131,7 +131,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 		$prioritizer = array();
 
 		foreach ( $this->modules as $source_id => $source ) {
-			if ( ! $source instanceof MAKE_Font_Source_FontSourceInterface ) {
+			if ( ! $source instanceof MAKE_Font_Source_BaseInterface ) {
 				continue;
 			}
 
@@ -185,7 +185,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 
 		// Check for deprecated filter
 		if ( has_filter( 'make_all_font_choices' ) ) {
-			$this->get_module( 'compatibility' )->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_all_font_choices',
 				'1.7.0',
 				__( 'To add or modify fonts, use a hook for a specific font source instead, such as make_font_data_generic.', 'make' )
@@ -208,7 +208,7 @@ final class MAKE_Font_Base extends MAKE_Util_Modules implements MAKE_Font_FontIn
 
 		// Check for deprecated filter
 		if ( has_filter( 'make_sanitize_font_choice' ) ) {
-			$this->get_module( 'compatibility' )->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_sanitize_font_choice',
 				'1.7.0'
 			);

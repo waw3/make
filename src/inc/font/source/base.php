@@ -3,8 +3,12 @@
  * @package Make
  */
 
-
-abstract class MAKE_Font_Source_Base implements MAKE_Font_Source_FontSourceInterface {
+/**
+ * Class MAKE_Font_Source_Base
+ *
+ * @since x.x.x.
+ */
+abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_Font_Source_BaseInterface {
 
 	protected $id = '';
 

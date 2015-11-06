@@ -6,9 +6,6 @@
 
 final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAKE_Util_LoadInterface {
 
-	private $compatibility = null;
-
-
 	private $subsets = array();
 
 
@@ -34,7 +31,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		MAKE_Compatibility_MethodsInterface $compatibility
 	) {
 		// Compatibility
-		$this->compatibility = $compatibility;
+		$this->add_module( 'compatibility', $compatibility );
 
 		// Set the ID.
 		$this->id = 'google';
@@ -215,7 +212,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 
 		// Check for deprecated filter
 		if ( has_filter( 'make_get_google_font_subsets' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_get_google_font_subsets',
 				'1.7.0',
 				__( 'To modify the list of available Google Fonts subsets, use the make_font_data_google hook instead.', 'make' )
@@ -233,7 +230,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 
 		// Check for deprecated filter
 		if ( has_filter( 'make_sanitize_font_subset' ) ) {
-			$this->compatibility->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_sanitize_font_subset',
 				'1.7.0'
 			);
