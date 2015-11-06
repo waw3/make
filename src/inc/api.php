@@ -17,7 +17,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Style_ManagerInterface $style = null,
 		MAKE_Customizer_ControlsInterface $customizer_controls = null,
 		MAKE_Customizer_PreviewInterface $customizer_preview = null,
-		MAKE_Integration_IntegrationInterface $integration = null
+		MAKE_Integration_ManagerInterface $integration = null
 	) {
 		// Errors
 		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Collector : $error );
@@ -54,7 +54,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		}
 
 		// Integrations
-		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Base : $integration );
+		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Manager : $integration );
 	}
 }
 

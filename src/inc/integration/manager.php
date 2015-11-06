@@ -4,11 +4,11 @@
  */
 
 /**
- * Class MAKE_Integration_Base
+ * Class MAKE_Integration_Manager
  *
  * @since x.x.x.
  */
-final class MAKE_Integration_Base extends MAKE_Util_Modules implements MAKE_Integration_IntegrationInterface, MAKE_Util_HookInterface {
+final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_Integration_ManagerInterface, MAKE_Util_HookInterface {
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -48,7 +48,7 @@ final class MAKE_Integration_Base extends MAKE_Util_Modules implements MAKE_Inte
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param MAKE_Integration_Base    $integration    The integrations object that has just finished hooking.
+		 * @param MAKE_Integration_Manager    $integration    The integrations object that has just finished hooking.
 		 */
 		do_action( 'make_integration_hooked', $this );
 
