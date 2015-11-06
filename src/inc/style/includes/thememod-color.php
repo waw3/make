@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a MAKE_Style_StyleInterface.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Style_StyleInterface ) {
+// Bail if this isn't being included inside of a MAKE_Style_ManagerInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Style_ManagerInterface ) {
 	return;
 }
 

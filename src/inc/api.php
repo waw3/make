@@ -14,7 +14,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_ManagerInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
-		MAKE_Style_StyleInterface $style = null,
+		MAKE_Style_ManagerInterface $style = null,
 		MAKE_Customizer_ControlsInterface $customizer_controls = null,
 		MAKE_Customizer_PreviewInterface $customizer_preview = null,
 		MAKE_Integration_IntegrationInterface $integration = null
@@ -43,7 +43,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ) ) : $thememod );
 
 		// Style
-		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Base( $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $style );
+		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Manager( $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $style );
 
 		// Customizer
 		if ( is_admin() || is_customize_preview() ) {

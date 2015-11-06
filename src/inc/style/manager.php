@@ -4,11 +4,11 @@
  */
 
 /**
- * Class MAKE_Style_Base
+ * Class MAKE_Style_Manager
  *
  * @since x.x.x.
  */
-final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_StyleInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
+final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_ManagerInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
 	 * Array for file paths to include in the load method.
 	 *
@@ -146,7 +146,7 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 
 		// Check for deprecated action.
 		if ( has_action( 'make_css' ) ) {
-			$this->get_module( 'compatibility' )->deprecated_hook(
+			$this->compatibility()->deprecated_hook(
 				'make_css',
 				'1.7.0',
 				__( 'To add dynamic CSS rules, hook into make_style_loaded instead.', 'make' )
@@ -173,7 +173,7 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 		 *
 		 * @since 1.2.3.
 		 *
-		 * @param MAKE_Style_Base    $style    The styles object
+		 * @param MAKE_Style_Manager    $style    The styles object
 		 */
 		do_action( 'make_style_loaded', $this );
 
@@ -190,28 +190,6 @@ final class MAKE_Style_Base extends MAKE_Util_Modules implements MAKE_Style_Styl
 	 */
 	public function is_loaded() {
 		return $this->loaded;
-	}
-
-	/**
-	 * Convenience method for getting the Theme mods class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return mixed
-	 */
-	public function thememod() {
-		return $this->get_module( 'thememod' );
-	}
-
-	/**
-	 * Convenience method for getting the CSS class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return mixed
-	 */
-	public function css() {
-		return $this->get_module( 'css' );
 	}
 
 
