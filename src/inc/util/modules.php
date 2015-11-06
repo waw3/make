@@ -60,7 +60,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 
 		// Module already exists. Generate an error if possible.
 		else if ( $this->has_module( 'error' ) && $this->modules['error'] instanceof MAKE_Error_CollectorInterface ) {
-			$this->modules['error']->add_error( 'make_util_module_already_exists', sprintf( __( 'The "%1$s" module can\'t be added to %2$s because it already exists.', 'make' ), $module_name, __CLASS__ ) );
+			$this->modules['error']->add_error( 'make_util_module_already_exists', sprintf( __( 'The "%1$s" module can\'t be added to %2$s because it already exists.', 'make' ), esc_html( $module_name ), get_class( $this ) ) );
 		}
 
 		return false;
@@ -88,7 +88,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 
 		// Module doesn't exist. Generate an error if possible.
 		else if ( $this->has_module( 'error' ) && $this->modules['error'] instanceof MAKE_Error_CollectorInterface ) {
-			$this->modules['error']->add_error( 'make_util_module_not_valid', sprintf( __( 'The "%1$s" module can\'t be retrieved from %2$s because it doesn\'t exist.', 'make' ), $module_name, __CLASS__ ) );
+			$this->modules['error']->add_error( 'make_util_module_not_valid', sprintf( __( 'The "%1$s" module can\'t be retrieved from %2$s because it doesn\'t exist.', 'make' ), esc_html( $module_name ), get_class( $this ) ) );
 		}
 
 		return null;
