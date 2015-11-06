@@ -54,7 +54,7 @@ $controls = array(
 			'control_type' => 'MAKE_Customizer_Control_BackgroundPosition',
 			'label'   => __( 'Position', 'make' ),
 			'type'    => 'radio',
-			'choices' => $this->thememod->get_choice_set( 'background_position_x' ),
+			'choices' => $this->thememod()->get_choice_set( 'background_position_x' ),
 		),
 	),
 	'background_attachment'     => array(
@@ -64,7 +64,7 @@ $controls = array(
 			'label'   => __( 'Attachment', 'make' ),
 			'type'    => 'radio',
 			'mode'    => 'buttonset',
-			'choices' => $this->thememod->get_choice_set( 'background_attachment' ),
+			'choices' => $this->thememod()->get_choice_set( 'background_attachment' ),
 		),
 	),
 	'background_size' => array(
@@ -74,7 +74,7 @@ $controls = array(
 			'label'   => __( 'Size', 'make' ),
 			'type'    => 'radio',
 			'mode'    => 'buttonset',
-			'choices' => $this->thememod->get_choice_set( 'background_size' ),
+			'choices' => $this->thememod()->get_choice_set( 'background_size' ),
 		),
 	),
 );

@@ -87,7 +87,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 
 		$data = array(
 			'ajaxurl'     => admin_url( 'admin-ajax.php' ),
-			'cssSettings' => array_keys( $this->get_module( 'thememod' )->get_settings( 'css_rules' ) ),
+			'cssSettings' => array_keys( $this->thememod()->get_settings( 'css_rules' ) ),
 		);
 
 		wp_localize_script(

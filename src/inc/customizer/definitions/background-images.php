@@ -34,7 +34,7 @@ foreach ( $regions as $prefix => $title ) {
 				'control' => array(
 					'label'   => __( 'Repeat', 'make' ),
 					'type'    => 'radio',
-					'choices' => $this->thememod->get_choice_set( $prefix . '-background-repeat' ),
+					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-repeat' ),
 				),
 			),
 			$prefix . '-background-position' => array(
@@ -43,7 +43,7 @@ foreach ( $regions as $prefix => $title ) {
 					'control_type' => 'MAKE_Customizer_Control_BackgroundPosition',
 					'label'   => __( 'Position', 'make' ),
 					'type'    => 'radio',
-					'choices' => $this->thememod->get_choice_set( $prefix . '-background-position' ),
+					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-position' ),
 				),
 			),
 			$prefix . '-background-attachment'     => array(
@@ -53,7 +53,7 @@ foreach ( $regions as $prefix => $title ) {
 					'label'   => __( 'Attachment', 'make' ),
 					'type'    => 'radio',
 					'mode'    => 'buttonset',
-					'choices' => $this->thememod->get_choice_set( $prefix . '-background-attachment' ),
+					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-attachment' ),
 				),
 			),
 			$prefix . '-background-size'     => array(
@@ -63,7 +63,7 @@ foreach ( $regions as $prefix => $title ) {
 					'label'   => __( 'Size', 'make' ),
 					'type'    => 'radio',
 					'mode'    => 'buttonset',
-					'choices' => $this->thememod->get_choice_set( $prefix . '-background-size' ),
+					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-size' ),
 				),
 			),
 		)

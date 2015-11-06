@@ -4,6 +4,6 @@
  */
 
 
-interface MAKE_Customizer_PreviewInterface {
+interface MAKE_Customizer_PreviewInterface extends MAKE_Util_ModulesInterface {
 
 }

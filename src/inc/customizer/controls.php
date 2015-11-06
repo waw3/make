@@ -4,34 +4,7 @@
  */
 
 
-final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterface, MAKE_Util_HookInterface {
-	/**
-	 * Holds the instance of the error handling class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Error_CollectorInterface|null
-	 */
-	private $error = null;
-
-	/**
-	 * Holds the instance of the compatibility class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Error_CollectorInterface|null
-	 */
-	private $compatibility = null;
-
-	/**
-	 * Holds the instance of the theme mod class.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var MAKE_Settings_ThemeModInterface|null
-	 */
-	private $thememod = null;
-
+final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_Customizer_ControlsInterface, MAKE_Util_HookInterface {
 	/**
 	 * Array to hold the Panel definitions.
 	 *
@@ -77,13 +50,13 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 		MAKE_Settings_ThemeModInterface $thememod
 	) {
 		// Errors
-		$this->error = $error;
+		$this->add_module( 'error', $error );
 
 		// Compatibility
-		$this->compatibility = $compatibility;
+		$this->add_module( 'compatibility', $compatibility );
 
 		// Theme mods
-		$this->thememod = $thememod;
+		$this->add_module( 'thememod', $thememod );
 	}
 
 	/**
@@ -251,7 +224,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 
 		// Section already exists, overwriting disabled.
 		if ( isset( $this->section_definitions[ $section_id ] ) && ! empty( $this->section_definitions[ $section_id ] ) && true !== $overwrite ) {
-			$this->error->add_error( 'make_section_already_exists', sprintf( __( 'The "%s" section can\'t be added because it already exists.', 'make' ), $section_id ) );
+			$this->error()->add_error( 'make_section_already_exists', sprintf( __( 'The "%s" section can\'t be added because it already exists.', 'make' ), $section_id ) );
 			return false;
 		}
 		// Add/overwrite a section
@@ -332,10 +305,10 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 					'type'                 => 'theme_mod',
 					'capability'           => 'edit_theme_options',
 					'theme_supports'       => '',
-					'default'              => $this->thememod->get_default( $setting_id ),
+					'default'              => $this->thememod()->get_default( $setting_id ),
 					'transport'            => $this->get_transport( $setting_id ),
 					'sanitize_callback'    => array( $this, 'sanitize' ),
-					'sanitize_js_callback' => ( $this->thememod->has_sanitize_callback( $setting_id, 'to_customizer' ) ) ? array( $this, 'sanitize_js' ) : '',
+					'sanitize_js_callback' => ( $this->thememod()->has_sanitize_callback( $setting_id, 'to_customizer' ) ) ? array( $this, 'sanitize_js' ) : '',
 				);
 				$setting = wp_parse_args( $definition['setting'], $defaults );
 
@@ -399,7 +372,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 		$postMessage_settings = array();
 
 		foreach ( array( 'css_rules' ) as $property ) {
-			$postMessage_settings = array_merge( $postMessage_settings, $this->thememod->get_settings( $property ) );
+			$postMessage_settings = array_merge( $postMessage_settings, $this->thememod()->get_settings( $property ) );
 		}
 
 		if ( isset( $postMessage_settings[ $setting_id ] ) && true === $postMessage_settings[ $setting_id ] ) {
@@ -420,7 +393,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 	 * @return mixed
 	 */
 	public function sanitize( $value, WP_Customize_Setting $setting ) {
-		return $this->thememod->sanitize_value( $value, $setting->id, 'from_customizer' );
+		return $this->thememod()->sanitize_value( $value, $setting->id, 'from_customizer' );
 	}
 
 	/**
@@ -434,7 +407,7 @@ final class MAKE_Customizer_Controls implements MAKE_Customizer_ControlsInterfac
 	 * @return mixed
 	 */
 	public function sanitize_js( $value, WP_Customize_Setting $setting ) {
-		return $this->thememod->sanitize_value( $value, $setting->id, 'to_customizer' );
+		return $this->thememod()->sanitize_value( $value, $setting->id, 'to_customizer' );
 	}
 
 	/**
