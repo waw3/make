@@ -208,10 +208,6 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 * @return array                  An array of setting definitions and their specified properties.
 	 */
 	public function get_settings( $property = 'all' ) {
-		if ( false === $this->is_loaded() ) {
-			$this->load();
-		}
-
 		if ( 'all' === $property ) {
 			return $this->settings;
 		}

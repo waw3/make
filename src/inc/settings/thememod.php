@@ -50,7 +50,8 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	public function __construct(
 		MAKE_Error_CollectorInterface $error,
 		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Choices_ManagerInterface $choices
+		MAKE_Choices_ManagerInterface $choices,
+		MAKE_Font_ManagerInterface $font
 	) {
 		parent::__construct( $error );
 
@@ -59,6 +60,9 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 
 		// Choices
 		$this->add_module( 'choices', $choices );
+
+		// Font
+		$this->add_module( 'font', $font );
 	}
 
 	/**
@@ -146,6 +150,10 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * @return array|mixed|void
 	 */
 	public function get_settings( $property = 'all' ) {
+		if ( false === $this->is_loaded() ) {
+			$this->load();
+		}
+
 		$settings = parent::get_settings( $property );
 
 		// Check for deprecated filter.
@@ -282,7 +290,6 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		// Is this being called by the Customizer?
 		if ( $setting_id instanceof WP_Customize_Setting ) {
 			$setting_id = $setting_id->id;
-			$context = 'customizer';
 		}
 
 		return parent::sanitize_value( $value, $setting_id, $context );
@@ -359,11 +366,8 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * @return mixed|void
 	 */
 	public function sanitize_choice( $value, $setting_id ) {
-		$choice_set_id = $this->get_choice_set( $setting_id, true );
-		$default_value = $this->get_default( $setting_id );
-
 		// Sanitize the value.
-		$sanitized_value = $this->choices()->sanitize_choice( $value, $choice_set_id, $default_value );
+		$sanitized_value = $this->choices()->sanitize_choice( $value, $this->get_choice_set( $setting_id, true ), $this->get_default( $setting_id ) );
 
 		// Check for deprecated filter.
 		if ( has_filter( 'make_sanitize_choice' ) ) {
@@ -411,5 +415,26 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		}
 
 		return $value;
+	}
+
+	/**
+	 * Sanitize the value of the font-subset setting.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  string    $value
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_google_font_subset( $value ) {
+		// Check for deprecated filter
+		if ( has_filter( 'make_sanitize_font_subset' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_sanitize_font_subset',
+				'1.7.0'
+			);
+		}
+
+		return $this->font()->get_source( 'google' )->sanitize_subset( $value, $this->get_default( 'font-subset' ) );
 	}
 }

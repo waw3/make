@@ -612,8 +612,8 @@ $this->add_settings(
 		'font-subset'  => array(
 			'default'                  => 'latin',
 			'sanitize'                 => 'sanitize_key',
-			'sanitize_from_customizer' => array( Make()->get_module( 'font' )->inject_source( 'google' ), 'sanitize_subset' ),
-			'sanitize_to_customizer'   => array( Make()->get_module( 'font' )->inject_source( 'google' ), 'sanitize_subset' ),
+			'sanitize_from_customizer' => array( $this, 'sanitize_google_font_subset' ),
+			'sanitize_to_customizer'   => array( $this, 'sanitize_google_font_subset' ),
 		),
 	)
 );

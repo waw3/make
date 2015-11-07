@@ -225,18 +225,8 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	}
 
 
-	public function sanitize_subset( $value, $default = 'latin' ) {
-		$subsets = $this->get_subsets();
-
-		// Check for deprecated filter
-		if ( has_filter( 'make_sanitize_font_subset' ) ) {
-			$this->compatibility()->deprecated_hook(
-				'make_sanitize_font_subset',
-				'1.7.0'
-			);
-		}
-
-		if ( in_array( $value, $subsets[ $value ] ) ) {
+	public function sanitize_subset( $value, $default = '' ) {
+		if ( in_array( $value, $this->get_subsets() ) ) {
 			return $value;
 		}
 

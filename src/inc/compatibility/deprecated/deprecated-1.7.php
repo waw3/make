@@ -884,6 +884,50 @@ function ttfmake_customizer_stylekit( $sections ) {
 }
 
 /**
+ * Define the sections and settings for the General panel
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_typography_sections( $sections ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular HTML element.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $element
+ * @param  string    $label
+ * @param  string    $description
+ * @return array
+ */
+function ttfmake_customizer_typography_group_definitions( $element, $label, $description = '' ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Add a placeholder for the large font choices array, which will be loaded
+ * in via JavaScript.
+ *
+ * @since 1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array
+ */
+function ttfmake_font_choices_placeholder() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
  * Sanitize a font choice.
  *
  * @since  1.0.0.

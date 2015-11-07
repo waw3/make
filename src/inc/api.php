@@ -40,7 +40,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $font );
 
 		// Theme mods
-		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ) ) : $thememod );
+		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ), $this->inject_module( 'font' ) ) : $thememod );
 
 		// Style
 		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Manager( $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $style );
@@ -48,7 +48,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		// Customizer
 		if ( is_admin() || is_customize_preview() ) {
 			// Sections
-			$this->add_module( 'customizer-controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ) ) : $customizer_controls );
+			$this->add_module( 'customizer-controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $customizer_controls );
 			// Preview
 			$this->add_module( 'customizer-preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview( $this->inject_module( 'thememod' ) ) : $customizer_preview );
 		}
