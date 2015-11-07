@@ -725,6 +725,134 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+
+/**
+ * Define the sections and settings for the Content & Layout panel
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_contentlayout_sections( $sections ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_region_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_featured_image_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_post_date_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_post_author_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_comment_count_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_post_meta_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ * @return array
+ */
+function ttfmake_customizer_layout_content_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.6.4.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $view
+ *
+ * @return array
+ */
+function ttfmake_customizer_layout_breadcrumb_group_definitions( $view ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
 /**
  * Filter to add a new Customizer section
  *

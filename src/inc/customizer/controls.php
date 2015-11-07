@@ -81,7 +81,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		add_action( 'customize_register', array( $this, 'add_sections' ) );
 
 		// Load section mods
-		add_action( 'customize_register', array( $this, 'load_mods' ), 99 );
+		add_action( 'customize_register', array( $this, 'load_mods' ), 50 );
 
 		// Control scripts
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_scripts' ) );
@@ -134,7 +134,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 				'title'    => __( 'Background Images', 'make' ),
 				'priority' => 400
 			),
-			'content-layout'    => array(
+			'layout'            => array(
 				'title'    => __( 'Layout', 'make' ),
 				'priority' => 500
 			),
@@ -144,6 +144,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'background-images',
 			'color',
 			'general',
+			'layout',
 		);
 
 		if ( ! $this->compatibility()->is_plus() ) {
@@ -509,7 +510,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		);
 
 		// Add localization strings
-		if ( ! ttfmake_is_plus() ) {
+		if ( ! make_is_plus() ) {
 			$localize = array(
 				'chosen_no_results_default' => esc_html__( 'No results match', 'make' ),
 				'chosen_no_results_fonts'   => esc_html__( 'No matching fonts', 'make' ),
