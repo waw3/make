@@ -143,6 +143,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		$file_bases = array(
 			'background-images',
 			'color',
+			'general',
 		);
 
 		// Section/Control definitions
@@ -223,11 +224,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		$section_id = sanitize_key( $section_id );
 
 		// Section already exists, overwriting disabled.
-		if ( isset( $this->section_definitions[ $section_id ] ) && ! empty( $this->section_definitions[ $section_id ] ) && true !== $overwrite ) {
+		if ( isset( $this->section_definitions[ $section_id ] ) && true !== $overwrite ) {
 			$this->error()->add_error( 'make_section_already_exists', sprintf( __( 'The "%s" section can\'t be added because it already exists.', 'make' ), $section_id ) );
 			return false;
 		}
-		// Add/overwrite a section
+		// Section already exists, overwriting enabled.
+		else if ( isset( $this->section_definitions[ $section_id ] ) && true === $overwrite ) {
+			$this->section_definitions[ $section_id ] = array_merge_recursive( $this->section_definitions[ $section_id ], $data );
+		}
+		// Add a new section
 		else {
 			$this->section_definitions[ $section_id ] = $data;
 		}

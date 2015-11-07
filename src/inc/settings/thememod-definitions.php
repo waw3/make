@@ -243,7 +243,6 @@ $this->add_settings(
 		'social-youtube',
 		'social-vimeo-square',
 		'social-pinterest',
-		'social-email',
 		'social-custom-rss',
 		'background_image',
 		'header-background-image',
@@ -606,7 +605,11 @@ $this->add_settings(
 // Misc settings
 $this->add_settings(
 	array(
-		'font-subset' => array(
+		'social-email' => array(
+			'default'  => '',
+			'sanitize' => 'sanitize_email',
+		),
+		'font-subset'  => array(
 			'default'                  => 'latin',
 			'sanitize'                 => 'sanitize_key',
 			'sanitize_from_customizer' => array( Make()->get_module( 'font' )->inject_source( 'google' ), 'sanitize_subset' ),
