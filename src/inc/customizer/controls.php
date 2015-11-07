@@ -305,7 +305,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 		foreach ( $args as $setting_id => $definition ) {
 			// Add setting
-			if ( isset( $definition['setting'] ) ) {
+			if ( isset( $definition['setting'] ) && ( is_array( $definition['setting'] ) || true === $definition['setting'] ) ) {
 				$defaults = array(
 					'type'                 => 'theme_mod',
 					'capability'           => 'edit_theme_options',
@@ -340,7 +340,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 				);
 
 				// If this control is not linked to a specific setting, remove settings from defaults.
-				if ( ! isset( $definition['setting'] ) ) {
+				if ( ! isset( $definition['setting'] ) || false === $definition['setting'] ) {
 					unset( $defaults['settings'] );
 				}
 

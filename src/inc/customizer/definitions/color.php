@@ -24,7 +24,7 @@ $this->add_section_definitions( 'color', array(
 			),
 		),
 		'color-primary'   => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Primary Color', 'make' ),
@@ -35,7 +35,7 @@ $this->add_section_definitions( 'color', array(
 			),
 		),
 		'color-secondary' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Secondary Color', 'make' ),
@@ -46,7 +46,7 @@ $this->add_section_definitions( 'color', array(
 			),
 		),
 		'color-text'      => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Text Color', 'make' ),
@@ -57,7 +57,7 @@ $this->add_section_definitions( 'color', array(
 			),
 		),
 		'color-detail'    => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Detail Color', 'make' ),
@@ -75,7 +75,7 @@ $this->add_section_definitions( 'color', array(
 			),
 		),
 		'color-primary-link'    => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Hover/Focus Color', 'make' ),
@@ -98,13 +98,13 @@ $this->add_section_definitions( 'color', array(
 			),
 		),
 		'main-background-color' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 			),
 		),
 		'main-background-color-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
@@ -125,7 +125,7 @@ $this->add_section_definitions( 'color-header', array(
 	'title'   => __( 'Site Header', 'make' ),
 	'controls' => array(
 		'header-text-color'           => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Text Color', 'make' ),
@@ -139,13 +139,13 @@ $this->add_section_definitions( 'color-header', array(
 			),
 		),
 		'header-background-color'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 			),
 		),
 		'header-background-color-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
@@ -171,14 +171,14 @@ $this->add_section_definitions( 'color-site-title-tagline', array(
 	),
 	'controls' => array(
 		'color-site-title'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Site Title Color', 'make' ),
 			),
 		),
 		'color-site-tagline'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Tagline Color', 'make' ),
@@ -200,7 +200,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-nav-text'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Text Color', 'make' ),
@@ -212,7 +212,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-nav-text-hover'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Hover/Focus Text Color', 'make' ),
@@ -226,7 +226,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-subnav-text'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Text Color', 'make' ),
@@ -238,14 +238,14 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-subnav-text-hover'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Hover/Focus Text Color', 'make' ),
 			),
 		),
 		'color-subnav-detail'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Detail Color', 'make' ),
@@ -257,7 +257,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-subnav-background'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Background Color', 'make' ),
@@ -269,7 +269,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-subnav-background-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
@@ -282,7 +282,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-subnav-background-hover'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Hover/Focus Background Color', 'make' ),
@@ -294,7 +294,7 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-subnav-background-hover-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
@@ -314,14 +314,14 @@ $this->add_section_definitions( 'color-main-menu', array(
 			),
 		),
 		'color-nav-current-item-background'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Background Color', 'make' ),
 			),
 		),
 		'color-nav-current-item-background-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
@@ -342,21 +342,21 @@ $this->add_section_definitions( 'color-header-bar', array(
 	'title'   => __( 'Header Bar', 'make' ),
 	'controls' => array(
 		'header-bar-text-color'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Text Color', 'make' ),
 			),
 		),
 		'header-bar-link-color'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Color', 'make' ),
 			),
 		),
 		'header-bar-link-hover-color'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Hover/Focus Color', 'make' ),
@@ -368,7 +368,7 @@ $this->add_section_definitions( 'color-header-bar', array(
 			),
 		),
 		'header-bar-border-color'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Border Color', 'make' ),
@@ -382,13 +382,13 @@ $this->add_section_definitions( 'color-header-bar', array(
 			),
 		),
 		'header-bar-background-color' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 			),
 		),
 		'header-bar-background-color-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
@@ -416,7 +416,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 			),
 		),
 		'color-widget-title-text'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Widget Title Color', 'make' ),
@@ -428,7 +428,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 			),
 		),
 		'color-widget-text'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Widget Body Color', 'make' ),
@@ -440,7 +440,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 			),
 		),
 		'color-widget-border'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Border Color', 'make' ),
@@ -459,7 +459,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 			),
 		),
 		'color-widget-link'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Color', 'make' ),
@@ -471,7 +471,7 @@ $this->add_section_definitions( 'color-sidebar', array(
 			),
 		),
 		'color-widget-link-hover'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Hover/Focus Color', 'make' ),
@@ -486,14 +486,14 @@ $this->add_section_definitions( 'color-footer', array(
 	'title'   => __( 'Footer', 'make' ),
 	'controls' => array(
 		'footer-text-color'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Footer Text Color', 'make' ),
 			),
 		),
 		'footer-link-color'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Color', 'make' ),
@@ -505,7 +505,7 @@ $this->add_section_definitions( 'color-footer', array(
 			),
 		),
 		'footer-link-hover-color'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Link Hover/Focus Color', 'make' ),
@@ -517,7 +517,7 @@ $this->add_section_definitions( 'color-footer', array(
 			),
 		),
 		'footer-border-color'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 				'label'        => __( 'Border Color', 'make' ),
@@ -531,13 +531,13 @@ $this->add_section_definitions( 'color-footer', array(
 			),
 		),
 		'footer-background-color' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 			),
 		),
 		'footer-background-color-opacity'     => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),

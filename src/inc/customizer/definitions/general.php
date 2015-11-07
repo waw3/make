@@ -17,7 +17,7 @@ $this->add_section_definitions( 'logo', array(
 	'title'    => __( 'Logo', 'make' ),
 	'controls' => array(
 		'logo-regular' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Image',
 				'label'        => __( 'Regular Logo', 'make' ),
@@ -25,7 +25,7 @@ $this->add_section_definitions( 'logo', array(
 			),
 		),
 		'logo-retina'  => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Image',
 				'label'        => __( 'Retina Logo (2x)', 'make' ),
@@ -60,7 +60,7 @@ if ( function_exists( 'has_site_icon' ) ) {
 	$this->add_section_definitions( 'logo', array(
 		'controls' => array(
 			'logo-favicon'     => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Image',
 					'label'        => __( 'Favicon', 'make' ),
@@ -70,7 +70,7 @@ if ( function_exists( 'has_site_icon' ) ) {
 				),
 			),
 			'logo-apple-touch' => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Image',
 					'label'        => __( 'Apple Touch Icon', 'make' ),
@@ -137,63 +137,63 @@ $this->add_section_definitions( 'social', array(
 	'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
 	'controls'    => array(
 		'social-facebook-official'  => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Facebook', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-twitter'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Twitter', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-google-plus-square' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Google +', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-linkedin'           => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'LinkedIn', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-instagram'          => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Instagram', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-flickr'             => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Flickr', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-youtube'            => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'YouTube', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-vimeo-square'       => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Vimeo', 'make' ),
 				'type'  => 'url',
 			),
 		),
 		'social-pinterest'          => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Pinterest', 'make' ),
 				'type'  => 'url',
@@ -222,7 +222,7 @@ $this->add_section_definitions( 'email', array(
 	'description' => __( 'Enter an email address to add an email icon link to your social profile icons.', 'make' ),
 	'controls'    => array(
 		'social-email' => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Email', 'make' ),
 				'type'  => 'email',
@@ -245,14 +245,14 @@ $this->add_section_definitions( 'rss', array(
 			),
 		),
 		'social-hide-rss'    => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Hide default RSS feed link', 'make' ),
 				'type'  => 'checkbox',
 			),
 		),
 		'social-custom-rss'  => array(
-			'setting' => array(),
+			'setting' => true,
 			'control' => array(
 				'label' => __( 'Custom RSS URL (replaces default)', 'make' ),
 				'type'  => 'url',

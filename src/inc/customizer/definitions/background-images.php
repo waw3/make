@@ -23,14 +23,14 @@ foreach ( $regions as $prefix => $title ) {
 		'title' => $title,
 		'controls' => array(
 			$prefix . '-background-image'    => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Image',
 					'label'        => __( 'Background Image', 'make' ),
 				),
 			),
 			$prefix . '-background-repeat'   => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'label'   => __( 'Repeat', 'make' ),
 					'type'    => 'radio',
@@ -38,7 +38,7 @@ foreach ( $regions as $prefix => $title ) {
 				),
 			),
 			$prefix . '-background-position' => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_BackgroundPosition',
 					'label'   => __( 'Position', 'make' ),
@@ -47,7 +47,7 @@ foreach ( $regions as $prefix => $title ) {
 				),
 			),
 			$prefix . '-background-attachment'     => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Attachment', 'make' ),
@@ -57,7 +57,7 @@ foreach ( $regions as $prefix => $title ) {
 				),
 			),
 			$prefix . '-background-size'     => array(
-				'setting' => array(),
+				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Size', 'make' ),

@@ -49,7 +49,7 @@ $wp_customize->remove_control( 'background_attachment' );
 // Add replacement and new controls
 $controls = array(
 	'background_position_x' => array(
-		'setting' => array(),
+		'setting' => true,
 		'control' => array(
 			'control_type' => 'MAKE_Customizer_Control_BackgroundPosition',
 			'label'   => __( 'Position', 'make' ),
@@ -58,7 +58,7 @@ $controls = array(
 		),
 	),
 	'background_attachment'     => array(
-		'setting' => array(),
+		'setting' => true,
 		'control' => array(
 			'control_type' => 'MAKE_Customizer_Control_Radio',
 			'label'   => __( 'Attachment', 'make' ),
@@ -68,7 +68,7 @@ $controls = array(
 		),
 	),
 	'background_size' => array(
-		'setting' => array(),
+		'setting' => true,
 		'control' => array(
 			'control_type' => 'MAKE_Customizer_Control_Radio',
 			'label'   => __( 'Size', 'make' ),
