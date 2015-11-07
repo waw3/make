@@ -184,9 +184,17 @@
 		 * @param content
 		 */
 		updateStyles: function(content) {
-			var $newStyles = $('<div>', {
+			var styleId = 'make-preview-style',
+				$newStyles = $('<div>', {
+				id: styleId,
 				html: '&shy;' + content
-			}).appendTo('body');
+			});
+
+			$('#'+styleId).remove();
+
+			if (content) {
+				$newStyles.appendTo('body');
+			}
 		}
 	});
 

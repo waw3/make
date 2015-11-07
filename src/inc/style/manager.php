@@ -71,6 +71,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 			$includes_path . 'builder.php',
 			$includes_path . 'thememod-background.php',
 			$includes_path . 'thememod-color.php',
+			$includes_path . 'thememod-layout.php',
 		);
 	}
 
