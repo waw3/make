@@ -146,6 +146,10 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'general',
 		);
 
+		if ( ! $this->compatibility()->is_plus() ) {
+			$file_bases[] = 'stylekit';
+		}
+
 		// Section/Control definitions
 		foreach ( $file_bases as $name ) {
 			$file = dirname( __FILE__ ) . '/definitions/' . $name . '.php';
@@ -177,6 +181,10 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'static-front-page',
 			'widgets',
 		);
+
+		if ( ! $this->compatibility()->is_plus() ) {
+			$file_bases[] = 'stylekit';
+		}
 
 		foreach ( $file_bases as $name ) {
 			$file = dirname( __FILE__ ) . '/mods/' . $name . '.php';

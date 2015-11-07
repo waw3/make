@@ -698,7 +698,7 @@ function ttfmake_customizer_background_image_group_definitions( $region ) {
 }
 
 /**
- * Define the sections and settings for the General panel
+ * Define the sections and settings for the Color panel
  *
  * @since  1.3.0.
  * @deprecated 1.7.0.
@@ -707,6 +707,37 @@ function ttfmake_customizer_background_image_group_definitions( $region ) {
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_colorscheme_sections( $sections ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Define the sections and settings for the General panel
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $sections    The master array of Customizer sections
+ * @return array                 The augmented master array
+ */
+function ttfmake_customizer_define_general_sections( $sections ) {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
+ * Filter to add a new Customizer section
+ *
+ * This function takes the main array of Customizer sections and adds a new one
+ * right before the first panel.
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $sections    The array of sections to add to the Customizer.
+ * @return array                 The modified array of sections.
+ */
+function ttfmake_customizer_stylekit( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
