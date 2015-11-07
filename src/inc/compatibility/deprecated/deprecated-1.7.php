@@ -439,6 +439,19 @@ function ttfmake_css_color() {
 }
 
 /**
+ * Build the CSS rules for the custom layout options.
+ *
+ * @since  1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_css_layout() {
+	$backtrace = debug_backtrace();
+	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+/**
  * Convert a hex string into a comma separated RGB string.
  *
  * @link http://bavotasan.com/2011/convert-hex-color-to-rgb-using-php/

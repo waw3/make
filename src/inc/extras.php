@@ -59,6 +59,31 @@ endif;
 
 add_filter( 'body_class', 'ttfmake_body_classes' );
 
+if ( ! function_exists( 'ttfmake_maybe_add_with_avatar_class' ) ) :
+/**
+ * Add a class to the bounding div if a post uses an avatar with the author byline.
+ *
+ * @since  1.0.11.
+ *
+ * @param  array     $classes    An array of post classes.
+ * @param  string    $class      A comma-separated list of additional classes added to the post.
+ * @param  int       $post_ID    The post ID.
+ * @return array                 The modified post class array.
+ */
+function ttfmake_maybe_add_with_avatar_class( $classes, $class, $post_ID ) {
+	$author_key    = 'layout-' . ttfmake_get_view() . '-post-author';
+	$author_option = ttfmake_sanitize_choice( get_theme_mod( $author_key, ttfmake_get_default( $author_key ) ), $author_key );
+
+	if ( 'avatar' === $author_option ) {
+		$classes[] = 'has-author-avatar';
+	}
+
+	return $classes;
+}
+endif;
+
+add_filter( 'post_class', 'ttfmake_maybe_add_with_avatar_class', 10, 3 );
+
 if ( ! function_exists( 'ttfmake_wp_title' ) ) :
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
