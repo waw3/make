@@ -20,11 +20,10 @@ $regions = array(
 foreach ( $regions as $region => $selectors ) {
 	$background_image = $this->thememod()->get_value( $region . '-background-image', 'style' );
 	if ( ! empty( $background_image ) ) {
-		// All variables are escaped at this point
 		$this->css()->add( array(
 			'selectors'    => $selectors,
 			'declarations' => array(
-				'background-image'      => 'url("' . addcslashes( $background_image, '"' ) . '")',
+				'background-image'      => 'url(' . addcslashes( $background_image, '"' ) . ')',
 				'background-repeat'     => $this->thememod()->get_value( $region . '-background-repeat', 'style' ),
 				'background-position'   => str_replace( '-', ' ', $this->thememod()->get_value( $region . '-background-position', 'style' ) ),
 				'background-attachment' => $this->thememod()->get_value( $region . '-background-attachment', 'style' ),

@@ -291,7 +291,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 * @return mixed                 The sanitized value.
 	 */
 	public function sanitize_choice( $value, $set_id, $default = '' ) {
-		if ( true === $this->is_valid_choice( $set_id, $value ) ) {
+		if ( true === $this->is_valid_choice( $value, $set_id ) ) {
 			return $value;
 		} else {
 			return $default;

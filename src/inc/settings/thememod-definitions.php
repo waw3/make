@@ -230,10 +230,6 @@ $this->add_settings(
 // URL settings
 $this->add_settings(
 	array_fill_keys( array(
-		'logo-regular',
-		'logo-retina',
-		'logo-favicon',
-		'logo-apple-touch',
 		'social-facebook-official',
 		'social-twitter',
 		'social-google-plus-square',
@@ -244,6 +240,23 @@ $this->add_settings(
 		'social-vimeo-square',
 		'social-pinterest',
 		'social-custom-rss',
+	), array() ),
+	array(
+		'default'                  => '',
+		'sanitize'                 => 'esc_url',
+		'sanitize_from_customizer' => 'esc_url_raw',
+		'sanitize_to_customizer'   => 'esc_url',
+		'sanitize_database'        => 'esc_url_raw',
+	)
+);
+
+// Image settings
+$this->add_settings(
+	array_fill_keys( array(
+		'logo-regular',
+		'logo-retina',
+		'logo-favicon',
+		'logo-apple-touch',
 		'background_image',
 		'header-background-image',
 		'main-background-image',
@@ -256,6 +269,7 @@ $this->add_settings(
 		'sanitize_to_customizer'   => 'esc_url',
 		'sanitize_database'        => 'esc_url_raw',
 		'sanitize_style'           => 'esc_url_raw',
+		'is_style'                 => true,
 	)
 );
 
