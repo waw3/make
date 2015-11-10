@@ -6,6 +6,72 @@
 	var api = wp.customize,
 		Make;
 
+	// Style previews
+	Make = $.extend(MakePreview, {
+		cache: {
+			preview: {}
+		},
+
+		init: function() {
+			var self = this;
+
+			self.styleSettings = self.styleSettings || {};
+			$.each(self.styleSettings, function(i, settingId) {
+				api(settingId, function(setting) {
+					setting.bind(function() {
+						self.getValues(self.styleSettings);
+						self.sendRequest();
+					});
+				});
+			});
+		},
+
+		getValues: function(settings) {
+			var self = this;
+
+			$.each(settings, function(i, settingId) {
+				api(settingId, function(setting) {
+					self.cache.preview[settingId] = setting();
+				});
+			});
+		},
+
+		sendRequest: function() {
+			var self = this,
+				data = {
+					action: 'make-css-inline',
+					preview: self.cache.preview
+				};
+
+			$.post(self.ajaxurl, data, function(response) {
+				self.updateStyles(response);
+			});
+		},
+
+		/**
+		 * @link https://css-tricks.com/snippets/javascript/inject-new-css-rules/
+		 *
+		 * @param content
+		 */
+		updateStyles: function(content) {
+			var styleId = 'make-preview-style',
+				$newStyles = $('<div>', {
+					id: styleId,
+					html: '&shy;' + content
+				});
+
+			// Remove old preview stylesheet
+			$('#'+styleId).remove();
+
+			// Add new preview stylesheet
+			if (content) {
+				$newStyles.appendTo('body');
+			}
+		}
+	});
+
+	Make.init();
+
 	/**
 	 * Asynchronous updating
 	 */
@@ -137,69 +203,4 @@
 			$content.html( to );
 		} );
 	} );
-
-	Make = $.extend(MakePreview, {
-		cache: {
-			preview: {}
-		},
-
-		init: function() {
-			var self = this;
-
-			self.styleSettings = self.styleSettings || {};
-			$.each(self.styleSettings, function(i, settingId) {
-				api(settingId, function(setting) {
-					setting.bind(function() {
-						self.getValues(self.styleSettings);
-						self.sendRequest();
-					});
-				});
-			});
-		},
-
-		getValues: function(settings) {
-			var self = this;
-
-			$.each(settings, function(i, settingId) {
-				api(settingId, function(setting) {
-					self.cache.preview[settingId] = setting();
-				});
-			});
-		},
-
-		sendRequest: function() {
-			var self = this,
-				data = {
-					action: 'make-css-inline',
-					preview: self.cache.preview
-				};
-
-			$.post(self.ajaxurl, data, function(response) {
-				self.updateStyles(response);
-			});
-		},
-
-		/**
-		 * @link https://css-tricks.com/snippets/javascript/inject-new-css-rules/
-		 *
-		 * @param content
-		 */
-		updateStyles: function(content) {
-			var styleId = 'make-preview-style',
-				$newStyles = $('<div>', {
-				id: styleId,
-				html: '&shy;' + content
-			});
-
-			// Remove old preview stylesheet
-			$('#'+styleId).remove();
-
-			// Add new preview stylesheet
-			if (content) {
-				$newStyles.appendTo('body');
-			}
-		}
-	});
-
-	Make.init();
 })(jQuery, MakePreview);
