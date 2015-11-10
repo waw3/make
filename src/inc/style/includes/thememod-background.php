@@ -31,6 +31,15 @@ foreach ( $regions as $region => $selectors ) {
 			)
 		) );
 	}
+	// Explicitly set empty background images if this is a style preview.
+	else if ( isset( $_POST['preview'] ) ) {
+		$this->css()->add( array(
+			'selectors'    => $selectors,
+			'declarations' => array(
+				'background-image' => 'none',
+			)
+		) );
+	}
 }
 
 /**
