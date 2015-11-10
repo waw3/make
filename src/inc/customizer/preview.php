@@ -132,7 +132,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		$setting_id = str_replace( 'theme_mod_', '', current_filter() );
 
 		if ( isset( $preview[ $setting_id ] ) ) {
-			return $preview[ $setting_id ];
+			return $this->thememod()->sanitize_value( $preview[ $setting_id ], $setting_id, 'to_customizer' );
 		}
 
 		return $value;
