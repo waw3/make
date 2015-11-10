@@ -146,10 +146,11 @@
 		init: function() {
 			var self = this;
 
-			$.each(self.cssSettings, function(i, settingId) {
+			self.styleSettings = self.styleSettings || {};
+			$.each(self.styleSettings, function(i, settingId) {
 				api(settingId, function(setting) {
 					setting.bind(function() {
-						self.getValues(self.cssSettings);
+						self.getValues(self.styleSettings);
 						self.sendRequest();
 					});
 				});
@@ -190,8 +191,10 @@
 				html: '&shy;' + content
 			});
 
+			// Remove old preview stylesheet
 			$('#'+styleId).remove();
 
+			// Add new preview stylesheet
 			if (content) {
 				$newStyles.appendTo('body');
 			}

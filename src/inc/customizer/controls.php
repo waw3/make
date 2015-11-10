@@ -390,7 +390,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	private function get_transport( $setting_id ) {
 		$postMessage_settings = array();
 
-		foreach ( array( 'css_rules' ) as $property ) {
+		foreach ( array( 'is_style' ) as $property ) {
 			$postMessage_settings = array_merge( $postMessage_settings, $this->thememod()->get_settings( $property ) );
 		}
 

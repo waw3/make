@@ -15,10 +15,10 @@ $this->add_settings(
 		'hide-tagline'                    => array( 'default' => false ),
 		'social-hide-rss'                 => array( 'default' => false ),
 		'font-subnav-mobile'              => array( 'default' => true ),
-		'header-hide-padding-bottom'      => array( 'default' => false, 'css_rules' => true ),
+		'header-hide-padding-bottom'      => array( 'default' => false, 'is_style' => true ),
 		'header-show-social'              => array( 'default' => false ),
 		'header-show-search'              => array( 'default' => true ),
-		'footer-hide-padding-top'         => array( 'default' => false, 'css_rules' => true ),
+		'footer-hide-padding-top'         => array( 'default' => false, 'is_style' => true ),
 		'footer-show-social'              => array( 'default' => true ),
 		'layout-blog-hide-header'         => array( 'default' => false ),
 		'layout-blog-hide-footer'         => array( 'default' => false ),
@@ -86,8 +86,8 @@ $this->add_settings(
 		'font-size-footer-icon'         => array( 'default' => 20 ),
 	),
 	array(
-		'sanitize'  => 'absint',
-		'css_rules' => true,
+		'sanitize' => 'absint',
+		'is_style' => true,
 	)
 );
 
@@ -154,8 +154,8 @@ $this->add_settings(
 		'footer-background-color-opacity'           => array( 'default' => (float) 1 ),
 	),
 	array(
-		'sanitize'  => 'ttfmake_sanitize_float',
-		'css_rules' => true,
+		'sanitize' => 'ttfmake_sanitize_float',
+		'is_style' => true,
 	)
 );
 
@@ -222,8 +222,8 @@ $this->add_settings(
 		'footer-background-color'           => array( 'default' => '#eaecee' ),
 	),
 	array(
-		'sanitize'  => 'maybe_hash_hex_color',
-		'css_rules' => true,
+		'sanitize' => 'maybe_hash_hex_color',
+		'is_style' => true,
 	)
 );
 
@@ -286,7 +286,7 @@ $this->add_settings(
 	array(
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'alignment-full-9',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -302,7 +302,7 @@ $this->add_settings(
 		'default'       => 'scroll',
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'background-attachment',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -317,7 +317,7 @@ $this->add_settings(
 	array(
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'background-repeat',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -332,7 +332,7 @@ $this->add_settings(
 	array(
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'background-size',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -392,7 +392,7 @@ $this->add_settings(
 		'sanitize'                 => 'sanitize_text_field',
 		'sanitize_from_customizer' => array( $this, 'sanitize_font_choice' ),
 		'sanitize_to_customizer'   => array( $this, 'sanitize_font_choice' ),
-		'css_rules'                => true,
+		'is_style'                 => true,
 		'font_family'              => true,
 		// The choice set for font family is too big, so is handled separately.
 	)
@@ -423,7 +423,7 @@ $this->add_settings(
 		'default'       => 'normal',
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'font-style',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -453,7 +453,7 @@ $this->add_settings(
 	array(
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'font-weight',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -482,7 +482,7 @@ $this->add_settings(
 		'default'       => 'never',
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'link-underline',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
@@ -565,7 +565,7 @@ $this->add_settings(
 	array(
 		'sanitize'      => array( $this, 'sanitize_choice' ),
 		'choice_set_id' => 'text-transform',
-		'css_rules'     => true,
+		'is_style'      => true,
 	)
 );
 
