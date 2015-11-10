@@ -390,8 +390,8 @@ $this->add_settings(
 	),
 	array(
 		'sanitize'                 => 'sanitize_text_field',
-		'sanitize_from_customizer' => array( Make()->get_module( 'font' ), 'sanitize_font_choice' ),
-		'sanitize_to_customizer'   => array( Make()->get_module( 'font' ), 'sanitize_font_choice' ),
+		'sanitize_from_customizer' => array( $this, 'sanitize_font_choice' ),
+		'sanitize_to_customizer'   => array( $this, 'sanitize_font_choice' ),
 		'css_rules'                => true,
 		'font_family'              => true,
 		// The choice set for font family is too big, so is handled separately.

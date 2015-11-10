@@ -393,6 +393,42 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	}
 
 	/**
+	 * Sanitize the value of a theme mod with a font family choice set.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  string    $value
+	 * @param  string    $setting_id
+	 *
+	 * @return mixed|void
+	 */
+	public function sanitize_font_choice( $value, $setting_id ) {
+		// Sanitize the value.
+		$sanitized_value = $this->font()->sanitize_font_choice( $value, null, $this->get_default( $setting_id ) );
+
+		// Check for deprecated filter.
+		if ( has_filter( 'make_sanitize_choice' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_sanitize_font_choice',
+				'1.7.0',
+				__( 'Use make_settings_thememod_current_value instead.', 'make' )
+			);
+
+			/**
+			 * Deprecated: Filter the sanitized font choice.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param string    $value    The chosen font value.
+			 */
+			$sanitized_value = apply_filters( 'make_sanitize_font_choice', $sanitized_value );
+		}
+
+		return $sanitized_value;
+	}
+
+	/**
 	 * Add items to the array of parameters to feed into the sanitize_choice callback.
 	 *
 	 * @since x.x.x.
@@ -409,7 +445,13 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			return $value;
 		}
 
-		if ( is_array( $callback ) && $callback[0] instanceof $this && 'sanitize_choice' === $callback[1] ) {
+		if (
+			is_array( $callback )
+			&&
+			$callback[0] instanceof $this
+			&&
+			in_array( $callback[1], array( 'sanitize_choice', 'sanitize_font_choice' ) )
+		) {
 			$value = (array) $value;
 			$value[] = $setting_id;
 		}
