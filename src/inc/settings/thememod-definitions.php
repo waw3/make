@@ -393,7 +393,7 @@ $this->add_settings(
 		'sanitize_from_customizer' => array( $this, 'sanitize_font_choice' ),
 		'sanitize_to_customizer'   => array( $this, 'sanitize_font_choice' ),
 		'is_style'                 => true,
-		'font_family'              => true,
+		'is_font'                  => true,
 		// The choice set for font family is too big, so is handled separately.
 	)
 );

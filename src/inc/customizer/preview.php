@@ -78,8 +78,8 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		}
 
 		wp_enqueue_script(
-			'ttfmake-customizer-preview',
-			get_template_directory_uri() . '/inc/customizer/js/customizer-preview' . TTFMAKE_SUFFIX . '.js',
+			'make-customizer-preview',
+			get_template_directory_uri() . '/inc/customizer/js/preview.js',
 			array( 'customize-preview' ),
 			TTFMAKE_VERSION,
 			true
@@ -91,7 +91,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		);
 
 		wp_localize_script(
-			'ttfmake-customizer-preview',
+			'make-customizer-preview',
 			'MakePreview',
 			$data
 		);

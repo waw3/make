@@ -90,6 +90,9 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		// Control scripts
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_scripts' ) );
 
+		// Font choices
+		add_action( 'wp_ajax_make-font-choices', array( $this, 'get_font_choices_ajax' ) );
+
 		// Hooking has occurred.
 		$this->hooked = true;
 	}
@@ -493,44 +496,63 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 		// Scripts
 		wp_enqueue_script(
-			'ttfmake-customizer-chosen',
-			get_template_directory_uri() . '/inc/customizer/js/chosen.jquery.js',
+			'make-customizer-chosen',
+			get_template_directory_uri() . '/inc/customizer/js/lib/chosen.jquery.min.js',
 			array( 'jquery', 'customize-controls' ),
-			'1.3.0',
+			'1.4.2',
 			true
 		);
 
 		wp_enqueue_script(
-			'ttfmake-customizer-sections',
-			get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
-			array( 'customize-controls', 'ttfmake-customizer-chosen' ),
+			'make-customizer-controls',
+			get_template_directory_uri() . '/inc/customizer/js/controls.js',
+			array( 'customize-controls', 'make-customizer-chosen', 'jquery-ui-button', 'jquery-ui-slider' ),
 			TTFMAKE_VERSION,
 			true
 		);
 
 		// Collect localization data
 		$data = array(
-			//'fontOptions'		=> ttfmake_get_font_property_option_keys( 'font-family' ),
-			//'allFontChoices'	=> ttfmake_all_font_choices_js(),
+			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+			'fontSettings' => array_keys( $this->thememod()->get_settings( 'is_font' ) ),
+			'l10n'         => array(
+				'chosen_loading'          => esc_html__( 'Loading&hellip;', 'make' ),
+				'chosen_no_results_fonts' => esc_html__( 'No matching fonts', 'make' ),
+			),
 		);
 
-		// Add localization strings
+		// Add Make Plus data
 		if ( ! make_is_plus() ) {
-			$localize = array(
-				'chosen_no_results_default' => esc_html__( 'No results match', 'make' ),
-				'chosen_no_results_fonts'   => esc_html__( 'No matching fonts', 'make' ),
-				'plusURL'			        => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-				'plusLabel'		        	=> esc_html__( 'Upgrade to Make Plus', 'make' ),
+			$data['plus'] = array(
+				'url'   => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
+				'label' => esc_html__( 'Upgrade to Make Plus', 'make' ),
 			);
-			$data = $data + $localize;
 		}
 
 		// Localize the script
 		wp_localize_script(
-			'ttfmake-customizer-sections',
-			'ttfmakeCustomizerL10n',
+			'make-customizer-controls',
+			'MakeControls',
 			$data
 		);
+	}
+
+
+	public function get_font_choices_ajax() {
+		// Only run this in the proper hook context.
+		if ( 'wp_ajax_make-font-choices' !== current_action() ) {
+			wp_die();
+		}
+
+		$choices = $this->font()->get_font_choices();
+
+		foreach ( $choices as $value => $label ) {
+			$disabled = ( 0 === strpos( $value, 'make-choice-heading-' ) ) ? 'disabled="disabled"' : '';
+			echo "<option value=\"$value\" $disabled>$label</option>";
+		}
+
+		// End the Ajax response.
+		wp_die();
 	}
 
 
