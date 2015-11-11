@@ -21,21 +21,13 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 
 	public function __construct(
 		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Font_Source_BaseInterface $generic = null,
-		MAKE_Font_Source_BaseInterface $google = null
+		MAKE_Compatibility_MethodsInterface $compatibility
 	) {
 		// Errors
 		$this->add_module( 'error', $error );
 
 		// Compatibility
 		$this->add_module( 'compatibility', $compatibility );
-
-		// Generic font source
-		$this->add_source( 'generic', ( is_null( $generic ) ) ? new MAKE_Font_Source_Generic( $this->inject_module( 'compatibility' ) ) : $generic );
-
-		// Google font source
-		$this->add_source( 'google', ( is_null( $google ) ) ? new MAKE_Font_Source_Google( $this->inject_module( 'compatibility' ) ) : $google );
 	}
 
 	/**
@@ -49,6 +41,12 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		if ( $this->is_loaded() ) {
 			return;
 		}
+
+		// Generic font source
+		$this->add_source( 'generic', new MAKE_Font_Source_Generic( $this->inject_module( 'compatibility' ) ) );
+
+		// Google font source
+		$this->add_source( 'google', new MAKE_Font_Source_Google( $this->inject_module( 'compatibility' ) ) );
 
 		/**
 		 * Action: Fires at the end of the font object's load method.
@@ -97,21 +95,11 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	}
 
 
-	public function inject_source( $source_id ) {
+	public function has_source( $source_id ) {
 		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
 
-		if ( ! parent::inject_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface ) {
-			// Use the get_source method to generate an error.
-			return $this->get_source( $source_id );
-		}
-
-		return parent::inject_module( $source_id );
-	}
-
-
-	public function has_source( $source_id ) {
 		return parent::has_module( $source_id ) && parent::inject_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface;
 	}
 
@@ -128,6 +116,10 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 
 
 	private function get_sorted_font_sources() {
+		if ( ! $this->is_loaded() ) {
+			$this->load();
+		}
+
 		$prioritizer = array();
 
 		foreach ( $this->modules as $source_id => $source ) {
@@ -152,6 +144,47 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		}
 
 		return $sorted_sources;
+	}
+
+
+	public function get_font_stack( $font, $default = 'sans-serif', $source_id = null ) {
+		$stack = '';
+
+		// Look for the stack in a particular source.
+		if ( ! is_null( $source_id ) && $this->has_source( $source_id ) ) {
+			$stack = $this->get_source( $source_id )->get_font_stack( $font, $default );
+		}
+		// Search all sources for the stack.
+		else {
+			foreach ( $this->get_sorted_font_sources() as $source ) {
+				if ( $source->has_font( $font ) ) {
+					$stack = $source->get_font_stack( $font, $default );
+					break;
+				}
+			}
+		}
+
+		// Check for deprecated filter
+		if ( has_filter( 'make_font_stack' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_font_stack',
+				'1.7.0',
+				__( 'To add or modify fonts, use a hook for a specific font source instead, such as make_font_data_generic.', 'make' )
+			);
+
+			/**
+			 * Allow developers to filter the full font stack.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param string    $stack    The font stack.
+			 * @param string    $font     The font.
+			 */
+			$stack = apply_filters( 'make_font_stack', $stack, $font );
+		}
+
+		return $stack;
 	}
 
 

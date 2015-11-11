@@ -9,20 +9,14 @@
  * @since x.x.x.
  */
 final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_ManagerInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
-	/**
-	 * Array for file paths to include in the load method.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var array
-	 */
-	private $includes = array();
-
 
 	private $file_action = 'make-css';
 
 
 	private $inline_action = 'make-css-inline';
+
+
+	private $helper = null;
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -43,7 +37,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	private $loaded = false;
 
 	/**
-	 * Inject dependencies, populate class properties.
+	 * Inject dependencies.
 	 *
 	 * @since x.x.x.
 	 *
@@ -53,26 +47,21 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 */
 	public function __construct(
 		MAKE_Compatibility_MethodsInterface $compatibility,
+		MAKE_Font_ManagerInterface $font,
 		MAKE_Settings_ThemeModInterface $thememod,
 		MAKE_Style_CSSInterface $css = null
 	) {
 		// Compatibility
 		$this->add_module( 'compatibility', $compatibility );
 
+		// Fonts
+		$this->add_module( 'font', $font );
+
 		// Theme mods
 		$this->add_module( 'thememod', $thememod );
 
 		// CSS
 		$this->add_module( 'css', ( is_null( $css ) ) ? new MAKE_Style_CSS : $css );
-
-		// Define includes
-		$includes_path = dirname( __FILE__ ) . '/includes/';
-		$this->includes = array(
-			$includes_path . 'builder.php',
-			$includes_path . 'thememod-background.php',
-			$includes_path . 'thememod-color.php',
-			$includes_path . 'thememod-layout.php',
-		);
 	}
 
 	/**
@@ -138,10 +127,19 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		 */
 		do_action( 'make_style_before_load' );
 
+		$file_bases = array(
+			'thememod-typography',
+			'thememod-color',
+			'thememod-background',
+			'thememod-layout',
+			'builder',
+		);
+
 		// Load the style includes.
-		foreach ( $this->includes as $file ) {
+		foreach ( $file_bases as $name ) {
+			$file = dirname( __FILE__ ) . '/definitions/' . $name . '.php';
 			if ( is_readable( $file ) ) {
-				include $file;
+				include_once $file;
 			}
 		}
 
@@ -191,6 +189,15 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 */
 	public function is_loaded() {
 		return $this->loaded;
+	}
+
+
+	private function helper() {
+		if ( is_null( $this->helper ) ) {
+			$this->helper = new MAKE_Style_DataHelper( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) );
+		}
+
+		return $this->helper;
 	}
 
 
@@ -304,33 +311,5 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		}
 
 		return $stylesheets;
-	}
-
-	/**
-	 * Convert a hex string into a comma separated RGB string.
-	 *
-	 * @link http://bavotasan.com/2011/convert-hex-color-to-rgb-using-php/
-	 *
-	 * @since 1.5.0.
-	 *
-	 * @param  $value
-	 * @return bool|string
-	 */
-	public function hex_to_rgb( $value ) {
-		$hex = sanitize_hex_color_no_hash( $value );
-
-		if ( 6 === strlen( $hex ) ) {
-			$r = hexdec( substr( $hex, 0, 2 ) );
-			$g = hexdec( substr( $hex, 2, 2 ) );
-			$b = hexdec( substr( $hex, 4, 2 ) );
-		} else if ( 3 === strlen( $hex ) ) {
-			$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
-			$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
-			$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
-		} else {
-			return false;
-		}
-
-		return "$r, $g, $b";
 	}
 }

@@ -55,6 +55,12 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	}
 
 
+	public function has_font( $font ) {
+		$data = $this->get_font_data( $font );
+		return ! empty( $data );
+	}
+
+
 	public function get_font_choices() {
 		$choices = array();
 

@@ -280,7 +280,7 @@ if ( ! $this->thememod()->is_default( 'color-primary-link' ) ) {
 // Main background color
 if ( ! $this->thememod()->is_default( 'main-background-color' ) || ! $this->thememod()->is_default( 'main-background-color-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'main-background-color' ) ) . ', ' . $this->thememod()->get_value( 'main-background-color-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'main-background-color' ) ) . ', ' . $this->thememod()->get_value( 'main-background-color-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array(
@@ -315,7 +315,7 @@ if ( ! $this->thememod()->is_default( 'header-text-color' ) ) {
 // Header background color
 if ( ! $this->thememod()->is_default( 'header-background-color' ) || ! $this->thememod()->is_default( 'header-background-color-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'header-background-color' ) ) . ', ' . $this->thememod()->get_value( 'header-background-color-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'header-background-color' ) ) . ', ' . $this->thememod()->get_value( 'header-background-color-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array( '.site-header-main' ),
@@ -439,7 +439,7 @@ if ( ! $this->thememod()->is_default( 'color-subnav-detail' ) ) {
 // Sub-Menu Item Background
 if ( ! $this->thememod()->is_default( 'color-subnav-background' ) || ! $this->thememod()->is_default( 'color-subnav-background-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'color-subnav-background' ) ) . ', ' . $this->thememod()->get_value( 'color-subnav-background-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'color-subnav-background' ) ) . ', ' . $this->thememod()->get_value( 'color-subnav-background-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array(
@@ -456,7 +456,7 @@ if ( ! $this->thememod()->is_default( 'color-subnav-background' ) || ! $this->th
 // Sub-Menu Item Background hover
 if ( ! $this->thememod()->is_default( 'color-subnav-background-hover' ) || ! $this->thememod()->is_default( 'color-subnav-background-hover-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'color-subnav-background-hover' ) ) . ', ' . $this->thememod()->get_value( 'color-subnav-background-hover-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'color-subnav-background-hover' ) ) . ', ' . $this->thememod()->get_value( 'color-subnav-background-hover-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array(
@@ -475,7 +475,7 @@ if ( ! $this->thememod()->is_default( 'color-subnav-background-hover' ) || ! $th
 // Current Item Background
 if ( ! $this->thememod()->is_default( 'color-nav-current-item-background' ) || ! $this->thememod()->is_default( 'color-nav-current-item-background-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'color-nav-current-item-background' ) ) . ', ' . $this->thememod()->get_value( 'color-nav-current-item-background-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'color-nav-current-item-background' ) ) . ', ' . $this->thememod()->get_value( 'color-nav-current-item-background-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array(
@@ -558,7 +558,7 @@ if ( ! $this->thememod()->is_default( 'header-bar-border-color' ) ) {
 // Header Bar background color
 if ( ! $this->thememod()->is_default( 'header-bar-background-color' ) || ! $this->thememod()->is_default( 'header-bar-background-color-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'header-bar-background-color' ) ) . ', ' . $this->thememod()->get_value( 'header-bar-background-color-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'header-bar-background-color' ) ) . ', ' . $this->thememod()->get_value( 'header-bar-background-color-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array( '.header-bar' ),
@@ -688,7 +688,7 @@ if ( ! $this->thememod()->is_default( 'footer-border-color' ) ) {
 // Footer background color
 if ( ! $this->thememod()->is_default( 'footer-background-color' ) || ! $this->thememod()->is_default( 'footer-background-color-opacity' ) ) {
 	// Convert to RGBa
-	$color = $this->hex_to_rgb( $this->thememod()->get_value( 'footer-background-color' ) ) . ', ' . $this->thememod()->get_value( 'footer-background-color-opacity' );
+	$color = $this->helper()->hex_to_rgb( $this->thememod()->get_value( 'footer-background-color' ) ) . ', ' . $this->thememod()->get_value( 'footer-background-color-opacity' );
 
 	$this->css()->add( array(
 		'selectors'    => array( '.site-footer' ),
