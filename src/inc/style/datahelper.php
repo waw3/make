@@ -3,8 +3,12 @@
  * @package Make
  */
 
-
-class MAKE_Style_DataHelper extends MAKE_Util_Modules {
+/**
+ * Class MAKE_Style_DataHelper
+ *
+ * @since x.x.x.
+ */
+final class MAKE_Style_DataHelper extends MAKE_Util_Modules {
 	/**
 	 * Inject dependencies.
 	 *
