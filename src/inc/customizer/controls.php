@@ -506,7 +506,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		wp_enqueue_script(
 			'make-customizer-controls',
 			get_template_directory_uri() . '/inc/customizer/js/controls.js',
-			array( 'customize-controls', 'make-customizer-chosen', 'jquery-ui-button', 'jquery-ui-slider' ),
+			array( 'customize-controls', 'make-customizer-chosen', 'underscore', 'jquery-ui-button', 'jquery-ui-slider' ),
 			TTFMAKE_VERSION,
 			true
 		);
