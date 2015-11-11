@@ -4,13 +4,13 @@
  */
 
 /**
- * Class MAKE_L10n_Methods
+ * Class MAKE_Setup_L10n
  *
  * Methods for loading text domains.
  *
  * @since 1.6.2.
  */
-final class MAKE_L10n_Methods implements MAKE_L10n_MethodsInterface, MAKE_Util_HookInterface {
+final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookInterface {
 	/**
 	 * Parent theme text domain.
 	 *
