@@ -108,16 +108,13 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		$family = array();
 
 		foreach ( $fonts as $font ) {
-			$font_data = $this->get_font_data( trim( $font ) );
-
 			// Verify that the font exists
-			if ( ! empty( $font_data ) ) {
+			if ( $this->has_font( $font ) ) {
+				$font_data = $this->get_font_data( $font );
+				$font_variants = ( isset( $font_data['variants'] ) ) ? $font_data['variants'] : array();
+
 				// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
-				$family[] = urlencode(
-					$font .
-					':' .
-					join( ',', $this->choose_font_variants( $font, $font_data['variants'] ) )
-				);
+				$family[] = urlencode( $font . ':' . join( ',', $this->choose_font_variants( $font, $font_variants ) ) );
 			}
 		}
 
@@ -149,31 +146,38 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	}
 
 
-	private function choose_font_variants( $font, array $available_variants = array() ) {
+	private function choose_font_variants( $font, array $available_variants ) {
 		$chosen_variants = array();
 
-		if ( empty( $available_variants ) ) {
-			$font_data = $this->get_font_data( $font );
-			if ( ! empty( $font_data ) ) {
-				$available_variants = $font_data['variants'];
-			}
-		}
-
-		// If a "regular" variant is not found, get the first variant
-		if ( ! in_array( 'regular', $available_variants ) ) {
+		// If a "regular" variant is not found, get the first variant.
+		if ( ! in_array( 'regular', $available_variants ) && count( $available_variants ) >= 1 ) {
 			$chosen_variants[] = $available_variants[0];
 		} else {
 			$chosen_variants[] = 'regular';
 		}
 
-		// Only add "italic" if it exists
+		// Only add "italic" if it exists.
 		if ( in_array( 'italic', $available_variants ) ) {
 			$chosen_variants[] = 'italic';
 		}
 
-		// Only add "700" if it exists
+		// Only add "700" if it exists.
 		if ( in_array( '700', $available_variants ) ) {
 			$chosen_variants[] = '700';
+		}
+
+		// De-dupe.
+		$chosen_variants = array_unique( $chosen_variants );
+
+		// Check for deprecated filter
+		if ( has_filter( 'make_font_variants' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_font_variants',
+				'1.7.0',
+				__( 'Use the make_font_google_variants hook instead.', 'make' )
+			);
+
+			return apply_filters( 'make_font_variants', $chosen_variants, $font, $available_variants );
 		}
 
 		/**
@@ -185,7 +189,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		 * @param string    $font        The font to load variants for.
 		 * @param array     $variants    The variants for the font.
 		 */
-		return apply_filters( 'make_font_variants', array_unique( $chosen_variants ), $font, $available_variants );
+		return apply_filters( 'make_font_google_variants', $chosen_variants, $font, $available_variants );
 	}
 
 

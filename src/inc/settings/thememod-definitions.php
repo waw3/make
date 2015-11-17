@@ -629,5 +629,10 @@ $this->add_settings(
 			'sanitize_from_customizer' => array( $this, 'sanitize_google_font_subset' ),
 			'sanitize_to_customizer'   => array( $this, 'sanitize_google_font_subset' ),
 		),
+		'google-font-url' => array(
+			'default' => '',
+			'sanitize' => 'esc_url',
+			'sanitize_database' => 'esc_url_raw',
+		),
 	)
 );
