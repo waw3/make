@@ -269,6 +269,8 @@
 .ttfmake-section-header h3 {
 	float: left;
 	width: 100%;
+	margin: 0;
+	padding: 8px 12px;
 	color: #23282d;
 	font-size: 13px !important;
 	font-weight: 700 !important;
@@ -350,6 +352,7 @@
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
 	content: '\f140';
 	top: 1px;
+	font: 400 20px/40px dashicons;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
@@ -395,9 +398,12 @@
 .ttfmp-duplicate-section {
 	display: inline-block;
 	height: 100%;
-	padding: 0 10px 0 7px;
+	padding: 0 8px;
 	color: #aaa;
 	text-decoration: none;  /*reset*/
+}
+.ttfmake-section-remove {
+	padding-right: 16px;
 }
 .ttfmake-section-open .ttfmake-section-remove,
 .ttfmake-section-open .ttfmake-section-configure,
@@ -459,7 +465,7 @@
 	.ttfmake-section-remove:before,
 	.ttfmake-section-configure:before,
 	.ttfmp-duplicate-section:before {
-		line-height: 48px;
+		line-height: 40px;
 	}
 }
 /*---------------------------------------------------------
