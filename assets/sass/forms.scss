@@ -45,6 +45,7 @@ input[type="submit"] {
 	border: 0; //reset
 	background: $b;
 	cursor: pointer;
+	display: inline-block;
 	@include rem('padding', 10px 14px);
 	@include rem('font-size', 13px);
 	@include border-radius;
