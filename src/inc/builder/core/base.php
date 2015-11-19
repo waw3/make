@@ -248,6 +248,7 @@ class TTFMAKE_Builder_Base {
 		$dependencies = array(
 			'wplink',
 			'utils',
+			'media-views',
 			'wp-color-picker',
 			'jquery-effects-core',
 			'jquery-ui-sortable',
