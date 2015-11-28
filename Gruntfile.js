@@ -81,11 +81,6 @@ module.exports = function( grunt ) {
 					'src/js/libs/fitvids/jquery.fitvids.min.js': ['src/js/libs/fitvids/jquery.fitvids.js']
 				}
 			},
-			theme: {
-				files: {
-					'src/js/global.min.js': ['src/js/global.js']
-				}
-			},
 			admin: {
 				files:{
 					'src/js/admin/edit-page.min.js': ['src/js/admin/edit-page.js'],
