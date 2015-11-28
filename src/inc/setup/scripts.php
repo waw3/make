@@ -53,7 +53,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
 
 		// Admin styles and scripts.
-		add_action( 'admin_enqueue_scripts', array( $this, 'editor_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_editor_styles' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -125,7 +125,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	}
 
 
-	public function editor_styles() {
+	public function add_editor_styles() {
 		// Only run this in the proper hook context.
 		if ( 'admin_enqueue_scripts' !== current_action() ) {
 			return;
@@ -133,13 +133,16 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 
 		$this->register_style_libs();
 
-		$editor_styles = array(
-			$this->get_style_url( 'font-awesome' ),
-			$this->get_style_url( 'make-editor' ),
-		);
+		$editor_styles = array();
 
-		if ( $this->style_is_registered( 'make-google-font' ) ) {
-			array_unshift( $editor_styles, $this->get_style_url( 'make-google-font' ) );
+		foreach ( array(
+			'make-google-font',
+			'font-awesome',
+			'make-editor'
+		) as $lib ) {
+			if ( $this->style_is_registered( $lib ) ) {
+				$editor_styles[] = $this->get_style_url( $lib );
+			}
 		}
 
 		add_editor_style( $editor_styles );
@@ -185,7 +188,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Main script
 		wp_enqueue_script(
 			'make-frontend',
-			get_template_directory_uri() . '/js/frontend.js',
+			$this->get_located_file_url( array( 'frontend.js', 'js/frontend.js' ) ),
 			array( 'jquery' ),
 			TTFMAKE_VERSION,
 			true
