@@ -2,31 +2,36 @@
  * @package Make
  */
 
-(function($, MakePreview) {
+(function($, wp, MakePreview) {
 	var api = wp.customize,
 		Make;
 
-	// Style previews
+	// Cache
 	Make = $.extend(MakePreview, {
+
+	});
+
+	// Style previews
+	Make = $.extend(Make, {
 		cache: {
 			preview: {}
 		},
 
-		init: function() {
+		initStyles: function() {
 			var self = this;
 
 			self.styleSettings = self.styleSettings || {};
 			$.each(self.styleSettings, function(i, settingId) {
 				api(settingId, function(setting) {
 					setting.bind(function() {
-						self.getValues(self.styleSettings);
-						self.sendRequest();
+						self.getStylesValues(self.styleSettings);
+						self.sendStylesRequest();
 					});
 				});
 			});
 		},
 
-		getValues: function(settings) {
+		getStylesValues: function(settings) {
 			var self = this;
 
 			$.each(settings, function(i, settingId) {
@@ -36,7 +41,7 @@
 			});
 		},
 
-		sendRequest: function() {
+		sendStylesRequest: function() {
 			var self = this,
 				data = {
 					action: 'make-css-inline',
@@ -70,7 +75,33 @@
 		}
 	});
 
-	Make.init();
+	// Google URL
+	Make = $.extend(Make, {
+		initGoogleURL: function() {
+			var self = this;
+
+
+		},
+
+		sendGoogleURLRequest: function() {
+			var self = this,
+				data = {
+					action: 'make-google-url',
+					fonts: self.cache.fonts
+				};
+
+			$.post(self.ajaxurl, data, function(response) {
+				self.updateStyles(response);
+			});
+		},
+
+		updateGoogleURL: function() {
+
+		}
+	});
+
+	Make.initStyles();
+	Make.initGoogleURL();
 
 	/**
 	 * Asynchronous updating
@@ -203,4 +234,4 @@
 			$content.html( to );
 		} );
 	} );
-})(jQuery, MakePreview);
+})(jQuery, wp, MakePreview);
