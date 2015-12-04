@@ -270,7 +270,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 
 		// Web Font Loader
 		wp_register_script(
-			'google-web-font',
+			'web-font-loader',
 			'//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js'
 		);
 	}
