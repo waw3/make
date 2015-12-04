@@ -8,15 +8,14 @@
 
 	// Cache
 	Make = $.extend(MakePreview, {
-
+		cache: {
+			preview: {},
+			fonts: {}
+		}
 	});
 
 	// Style previews
 	Make = $.extend(Make, {
-		cache: {
-			preview: {}
-		},
-
 		initStyles: function() {
 			var self = this;
 
@@ -45,7 +44,7 @@
 			var self = this,
 				data = {
 					action: 'make-css-inline',
-					preview: self.cache.preview
+					'make-preview': self.cache.preview
 				};
 
 			$.post(self.ajaxurl, data, function(response) {
@@ -75,33 +74,59 @@
 		}
 	});
 
-	// Google URL
+	// Font Loader
 	Make = $.extend(Make, {
-		initGoogleURL: function() {
+		initFontLoader: function() {
 			var self = this;
 
-
-		},
-
-		sendGoogleURLRequest: function() {
-			var self = this,
-				data = {
-					action: 'make-google-url',
-					fonts: self.cache.fonts
-				};
-
-			$.post(self.ajaxurl, data, function(response) {
-				self.updateStyles(response);
+			$.getScript(self.webfonturl, function() {
+				self.fontSettings = self.fontSettings || {};
+				$.each(self.fontSettings, function(i, settingId) {
+					api(settingId, function(setting) {
+						setting.bind(function() {
+							self.getFontValues(self.fontSettings);
+							self.sendFontRequest();
+						});
+					});
+				});
 			});
 		},
 
-		updateGoogleURL: function() {
+		getFontValues: function(settings) {
+			var self = this;
 
+			$.each(settings, function(i, settingId) {
+				api(settingId, function(setting) {
+					self.cache.fonts[settingId] = setting();
+				});
+			});
+		},
+
+		sendFontRequest: function() {
+			var self = this,
+				data = {
+					action: 'make-google-json',
+					'make-preview': self.cache.fonts
+				};
+
+			$.post(self.ajaxurl, data, function(response) {
+				self.loadFonts(response);
+			});
+		},
+
+		loadFonts: function(response) {
+			if ('undefined' === typeof response.data || 'undefined' === typeof WebFont) {
+				return;
+			}
+
+			WebFont.load({
+				google: $.parseJSON(response.data)
+			});
 		}
 	});
 
 	Make.initStyles();
-	Make.initGoogleURL();
+	Make.initFontLoader();
 
 	/**
 	 * Asynchronous updating

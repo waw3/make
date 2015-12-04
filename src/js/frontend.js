@@ -3,7 +3,7 @@
  *
  * @since 1.0.0
  */
-/* global jQuery, ttfmakeGlobal */
+/* global jQuery, MakeFrontEnd */
 (function($, Make) {
 	'use strict';
 
@@ -219,4 +219,4 @@
 	};
 
 	ttfmake.init();
-})(jQuery, ttfmakeGlobal);
+})(jQuery, MakeFrontEnd);

@@ -175,18 +175,6 @@ function ttfmake_setup() {
 		'header-bar' => __( 'Header Bar Navigation', 'make' ),
 	) );
 
-	// Editor styles
-	$editor_styles = array();
-	if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
-		$editor_styles[] = $google_request;
-	}
-
-	$editor_styles[] = add_query_arg( 'ver', '4.4.0', esc_url( get_template_directory_uri() . '/css/font-awesome.css' ) );
-	$editor_styles[] = add_query_arg( 'ver', TTFMAKE_VERSION, esc_url( get_template_directory_uri() . '/css/editor-style.css' ) );
-
-	// Another editor stylesheet is added via ttfmake_mce_css() in inc/customizer/bootstrap.php
-	add_editor_style( $editor_styles );
-
 	// Yoast SEO breadcrumbs
 	add_theme_support( 'yoast-seo-breadcrumbs' );
 }
@@ -439,7 +427,7 @@ function ttfmake_scripts() {
 }
 endif;
 
-add_action( 'wp_enqueue_scripts', 'ttfmake_scripts' );
+//add_action( 'wp_enqueue_scripts', 'ttfmake_scripts' );
 
 if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
 /**

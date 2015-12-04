@@ -146,6 +146,26 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	}
 
 
+	public function build_json( array $fonts, array $subsets ) {
+		$data = array( 'families' => array() );
+		$fonts = array_unique( $fonts );
+		$subsets = array_map( 'sanitize_key', $subsets );
+
+		foreach ( $fonts as $font ) {
+			// Verify that the font exists
+			if ( $this->has_font( $font ) ) {
+				$font_data = $this->get_font_data( $font );
+				$font_variants = ( isset( $font_data['variants'] ) ) ? $font_data['variants'] : array();
+
+				// Build the family name, variant, and subset string (e.g., "Open+Sans:regular,italic,700:latin")
+				$data['families'][] = urlencode( $font ) . ':' . join( ',', $this->choose_font_variants( $font, $font_variants ) ) . ':' . join( ',', $subsets );
+			}
+		}
+
+		return wp_json_encode( $data );
+	}
+
+
 	private function choose_font_variants( $font, array $available_variants ) {
 		$chosen_variants = array();
 

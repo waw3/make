@@ -16,10 +16,14 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 
 
 	public function __construct(
-		MAKE_Settings_ThemeModInterface $thememod
+		MAKE_Settings_ThemeModInterface $thememod,
+		MAKE_Setup_ScriptsInterface $scripts
 	) {
 		// Theme mods
 		$this->add_module( 'thememod', $thememod );
+
+		// Scripts
+		$this->add_module( 'scripts', $scripts );
 	}
 
 	/**
@@ -41,7 +45,8 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_scripts' ) );
 
 		//
-		add_action( 'make_style_before_load', array( $this, 'preview_styles' ) );
+		add_action( 'make_style_before_load', array( $this, 'preview_thememods' ) );
+		add_action( 'wp_ajax_make-google-json', array( $this, 'preview_thememods' ), 1 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -77,6 +82,8 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 			return;
 		}
 
+		$this->scripts()->register_script_libs();
+
 		wp_enqueue_script(
 			'make-customizer-preview',
 			get_template_directory_uri() . '/inc/customizer/js/preview.js',
@@ -87,6 +94,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 
 		$data = array(
 			'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+			'webfonturl'    => esc_url( $this->scripts()->get_script_url( 'google-web-font' ) ),
 			'fontSettings'  => array_keys( $this->thememod()->get_settings( 'is_font' ) ),
 			'styleSettings' => array_keys( $this->thememod()->get_settings( 'is_style' ) ),
 		);
@@ -99,18 +107,18 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	}
 
 
-	public function preview_styles() {
+	public function preview_thememods() {
 		// Only run this in the proper hook context.
-		if ( 'make_style_before_load' !== current_action() ) {
+		if ( ! in_array( current_action(), array( 'make_style_before_load', 'wp_ajax_make-google-json' ) ) ) {
 			return;
 		}
 
 		//
-		if ( ! isset( $_POST['preview'] ) ) {
+		if ( ! isset( $_POST['make-preview'] ) ) {
 			return;
 		}
 
-		$preview = (array) $_POST['preview'];
+		$preview = (array) $_POST['make-preview'];
 
 		foreach ( $preview as $setting_id => $value ) {
 			add_filter( "theme_mod_{$setting_id}", array( $this, 'preview_thememod_value' ) );
@@ -125,11 +133,11 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		}
 
 		//
-		if ( ! isset( $_POST['preview'] ) ) {
+		if ( ! isset( $_POST['make-preview'] ) ) {
 			return $value;
 		}
 
-		$preview = (array) $_POST['preview'];
+		$preview = (array) $_POST['make-preview'];
 		$setting_id = str_replace( 'theme_mod_', '', current_filter() );
 
 		if ( isset( $preview[ $setting_id ] ) ) {

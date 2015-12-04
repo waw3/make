@@ -14,6 +14,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_ManagerInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
+		MAKE_Setup_ScriptsInterface $scripts = null,
 		MAKE_Style_ManagerInterface $style = null,
 		MAKE_Customizer_ControlsInterface $customizer_controls = null,
 		MAKE_Customizer_PreviewInterface $customizer_preview = null,
@@ -42,6 +43,9 @@ class MAKE_API extends MAKE_Util_Modules {
 		// Theme mods
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ), $this->inject_module( 'font' ) ) : $thememod );
 
+		// Scripts
+		$this->add_module( 'scripts', ( is_null( $scripts ) ) ? new MAKE_Setup_Scripts( $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $scripts );
+
 		// Style
 		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Manager( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $style );
 
@@ -50,7 +54,7 @@ class MAKE_API extends MAKE_Util_Modules {
 			// Sections
 			$this->add_module( 'customizer-controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $customizer_controls );
 			// Preview
-			$this->add_module( 'customizer-preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview( $this->inject_module( 'thememod' ) ) : $customizer_preview );
+			$this->add_module( 'customizer-preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview( $this->inject_module( 'thememod' ), $this->inject_module( 'scripts' ) ) : $customizer_preview );
 		}
 
 		// Integrations

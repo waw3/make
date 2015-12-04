@@ -55,6 +55,11 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Admin styles and scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_editor_styles' ) );
 
+		//
+		if ( is_admin() || is_customize_preview() ) {
+			add_action( 'wp_ajax_make-google-json', array( $this, 'get_google_json' ) );
+		}
+
 		// Hooking has occurred.
 		$this->hooked = true;
 	}
@@ -149,7 +154,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	}
 
 
-	private function register_style_libs() {
+	public function register_style_libs() {
 		// Editor styles
 		wp_register_style(
 			'make-editor',
@@ -171,7 +176,9 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		if ( $url = $this->get_google_url() ) {
 			wp_register_style(
 				'make-google-font',
-				$url
+				$url,
+				array(),
+				TTFMAKE_VERSION
 			);
 		}
 	}
@@ -213,7 +220,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	}
 
 
-	private function register_script_libs() {
+	public function register_script_libs() {
 		// Cycle2
 		if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
 			// Core script
@@ -259,6 +266,12 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			array( 'jquery' ),
 			'1.1',
 			true
+		);
+
+		// Web Font Loader
+		wp_register_script(
+			'google-web-font',
+			'//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js'
 		);
 	}
 
@@ -433,10 +446,12 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 
 
 	private function get_google_url( $force = false, $preview = false ) {
-		if ( ! $this->thememod()->setting_exists( 'google-font-url' ) ) {
+		$setting_id = 'google-font-url';
+
+		if ( ! $this->thememod()->setting_exists( $setting_id ) ) {
 			return '';
-		} else if ( true !== $force && $this->thememod()->get_raw_value( 'google-font-url' ) ) {
-			return $this->thememod()->get_value( 'google-font-url' );
+		} else if ( true !== $force && $this->thememod()->get_raw_value( $setting_id ) ) {
+			return $this->thememod()->get_value( $setting_id );
 		}
 
 		$font_keys = array_keys( $this->thememod()->get_settings( 'is_font' ) );
@@ -454,10 +469,32 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		$url = $this->font()->get_source( 'google' )->build_url( $fonts, $subsets );
 
 		if ( true !== $preview ) {
-			$this->thememod()->set_value( 'google-font-url', $url );
+			$this->thememod()->set_value( $setting_id, $url );
 		}
 
 		return $url;
+	}
+
+
+	public function get_google_json() {
+		// Only run this in the proper hook context.
+		if ( 'wp_ajax_make-google-json' !== current_action() ) {
+			wp_send_json_error();
+		}
+
+		$font_keys = array_keys( $this->thememod()->get_settings( 'is_font' ) );
+		$fonts = array();
+
+		foreach ( $font_keys as $font_key ) {
+			$font = $this->thememod()->get_value( $font_key );
+			if ( $font ) {
+				$fonts[] = $font;
+			}
+		}
+
+		$subsets = (array) $this->thememod()->get_value( 'font-subset' );
+
+		wp_send_json_success( $this->font()->get_source( 'google' )->build_json( $fonts, $subsets ) );
 	}
 
 
