@@ -155,6 +155,14 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 
 
 	public function register_style_libs() {
+		// Chosen
+		wp_register_style(
+			'chosen',
+			get_template_directory_uri() . '/css/libs/chosen/chosen.css',
+			array(),
+			'1.4.2'
+		);
+
 		// Editor styles
 		wp_register_style(
 			'make-editor',
@@ -167,7 +175,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Font Awesome
 		wp_register_style(
 			'font-awesome',
-			get_template_directory_uri() . '/css/font-awesome.min.css',
+			get_template_directory_uri() . '/css/libs/font-awesome/font-awesome.min.css',
 			array(),
 			'4.4.0'
 		);
@@ -221,6 +229,15 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 
 
 	public function register_script_libs() {
+		// Chosen
+		wp_register_script(
+			'chosen',
+			get_template_directory_uri() . '/js/libs/chosen/chosen.jquery.min.js',
+			array( 'jquery' ),
+			'1.4.2',
+			true
+		);
+
 		// Cycle2
 		if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
 			// Core script

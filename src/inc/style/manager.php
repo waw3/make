@@ -193,7 +193,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 
 
 	private function helper() {
-		if ( is_null( $this->helper ) ) {
+		if ( ! $this->helper instanceof MAKE_Style_DataHelper ) {
 			$this->helper = new MAKE_Style_DataHelper( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) );
 		}
 

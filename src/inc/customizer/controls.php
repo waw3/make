@@ -26,6 +26,9 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 	private $prefix = 'make_';
 
+
+	private $helper = null;
+
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -40,15 +43,18 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Error_CollectorInterface                 $error
+	 * @param MAKE_Error_CollectorInterface       $error
 	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Settings_ThemeModInterface           $thememod
+	 * @param MAKE_Font_ManagerInterface          $font
+	 * @param MAKE_Settings_ThemeModInterface     $thememod
+	 * @param MAKE_Setup_ScriptsInterface         $scripts
 	 */
 	public function __construct(
 		MAKE_Error_CollectorInterface $error,
 		MAKE_Compatibility_MethodsInterface $compatibility,
 		MAKE_Font_ManagerInterface $font,
-		MAKE_Settings_ThemeModInterface $thememod
+		MAKE_Settings_ThemeModInterface $thememod,
+		MAKE_Setup_ScriptsInterface $scripts
 	) {
 		// Errors
 		$this->add_module( 'error', $error );
@@ -61,6 +67,9 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 		// Theme mods
 		$this->add_module( 'thememod', $thememod );
+
+		// Scripts
+		$this->add_module( 'scripts', $scripts );
 	}
 
 	/**
@@ -106,6 +115,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 */
 	public function is_hooked() {
 		return $this->hooked;
+	}
+
+
+	private function helper() {
+		if ( ! $this->helper instanceof MAKE_Customizer_DataHelper ) {
+			$this->helper = new MAKE_Customizer_DataHelper( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) );
+		}
+
+		return $this->helper;
 	}
 
 	/**
@@ -468,17 +486,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 
 		// Styles
+		$this->scripts()->register_style_libs();
+
 		wp_enqueue_style(
 			'ttfmake-customizer-jquery-ui',
 			get_template_directory_uri() . '/inc/customizer/css/jquery-ui/jquery-ui-1.10.4.custom.css',
 			array(),
 			'1.10.4'
-		);
-		wp_enqueue_style(
-			'ttfmake-customizer-chosen',
-			get_template_directory_uri() . '/inc/customizer/css/chosen/chosen.css',
-			array(),
-			'1.3.0'
 		);
 
 		// Custom styling depends on version of WP
@@ -488,25 +502,19 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			$suffix = '-legacy';
 		}
 		wp_enqueue_style(
-			'ttfmake-customizer-sections',
-			get_template_directory_uri() . "/inc/customizer/css/customizer-sections{$suffix}.css",
-			array( 'ttfmake-customizer-jquery-ui', 'ttfmake-customizer-chosen' ),
+			'make-customizer-controls',
+			get_template_directory_uri() . "/inc/customizer/css/controls{$suffix}.css",
+			array( 'ttfmake-customizer-jquery-ui', 'chosen' ),
 			TTFMAKE_VERSION
 		);
 
 		// Scripts
-		wp_enqueue_script(
-			'make-customizer-chosen',
-			get_template_directory_uri() . '/inc/customizer/js/lib/chosen.jquery.min.js',
-			array( 'jquery', 'customize-controls' ),
-			'1.4.2',
-			true
-		);
+		$this->scripts()->register_script_libs();
 
 		wp_enqueue_script(
 			'make-customizer-controls',
 			get_template_directory_uri() . '/inc/customizer/js/controls.js',
-			array( 'customize-controls', 'make-customizer-chosen', 'underscore', 'jquery-ui-button', 'jquery-ui-slider' ),
+			array( 'customize-controls', 'chosen', 'underscore', 'jquery-ui-button', 'jquery-ui-slider' ),
 			TTFMAKE_VERSION,
 			true
 		);
@@ -553,134 +561,5 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 		// End the Ajax response.
 		wp_die();
-	}
-
-
-	private function get_typography_group_definitions( $element, $label, $description = '' ) {
-		// Check for deprecated filter
-		foreach ( array( 'make_customizer_typography_group_definitions' ) as $filter ) {
-			if ( has_filter( $filter ) ) {
-				$this->compatibility->deprecated_hook(
-					$filter,
-					'1.7.0',
-					__( 'To add or modify Customizer sections and controls, use the make_customizer_sections hook instead, or the core $wp_customize methods.', 'make' )
-				);
-			}
-		}
-
-		$font_value = $this->thememod()->get_value( 'font-family-' . $element );
-		$font_choices = $this->font()->get_font_choices( null, false );
-		$font_label = isset( $font_choices[ $font_value ] ) ? $font_choices[ $font_value ] : '';
-
-		return array(
-			'typography-group-' . $element => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'label'   => $label,
-					'description' => $description,
-					'type'  => 'group-title',
-				),
-			),
-			'font-family-' . $element   => array(
-				'setting' => true,
-				'control' => array(
-					'label'   => __( 'Font Family', 'make' ),
-					'type'    => 'select',
-					'choices' => array( $font_value => $font_label ),
-				),
-			),
-			'font-style-' . $element => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Radio',
-					'label'   => __( 'Font Style', 'make' ),
-					'type'  => 'radio',
-					'mode'  => 'buttonset',
-					'choices' => $this->thememod()->get_choice_set( 'font-style-' . $element ),
-				),
-			),
-			'font-weight-' . $element => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Radio',
-					'label'   => __( 'Font Weight', 'make' ),
-					'type'  => 'radio',
-					'mode'  => 'buttonset',
-					'choices' => $this->thememod()->get_choice_set( 'font-weight-' . $element ),
-				),
-			),
-			'font-size-' . $element     => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Range',
-					'label'   => __( 'Font Size (px)', 'make' ),
-					'type'  => 'range',
-					'input_attrs' => array(
-						'min'  => 6,
-						'max'  => 100,
-						'step' => 1,
-					),
-				),
-			),
-			'text-transform-' . $element => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Radio',
-					'label'   => __( 'Text Transform', 'make' ),
-					'type'  => 'radio',
-					'mode'  => 'buttonset',
-					'choices' => $this->thememod()->get_choice_set( 'text-transform-' . $element ),
-				),
-			),
-			'line-height-' . $element     => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Range',
-					'label'   => __( 'Line Height (em)', 'make' ),
-					'type'  => 'range',
-					'input_attrs' => array(
-						'min'  => 0,
-						'max'  => 5,
-						'step' => 0.1,
-					),
-				),
-			),
-			'letter-spacing-' . $element     => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Range',
-					'label'   => __( 'Letter Spacing (px)', 'make' ),
-					'type'  => 'range',
-					'input_attrs' => array(
-						'min'  => 0,
-						'max'  => 10,
-						'step' => 0.5,
-					),
-				),
-			),
-			'word-spacing-' . $element     => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Range',
-					'label'   => __( 'Word Spacing (px)', 'make' ),
-					'type'  => 'range',
-					'input_attrs' => array(
-						'min'  => 0,
-						'max'  => 20,
-						'step' => 1,
-					),
-				),
-			),
-			'link-underline-' . $element => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Radio',
-					'label'   => __( 'Link Underline', 'make' ),
-					'type'  => 'radio',
-					'mode'  => 'buttonset',
-					'choices' => $this->thememod()->get_choice_set( 'link-underline-' . $element ),
-				),
-			),
-		);
 	}
 }

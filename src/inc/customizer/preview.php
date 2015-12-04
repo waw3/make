@@ -14,7 +14,14 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	 */
 	private $hooked = false;
 
-
+	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_Settings_ThemeModInterface $thememod
+	 * @param MAKE_Setup_ScriptsInterface     $scripts
+	 */
 	public function __construct(
 		MAKE_Settings_ThemeModInterface $thememod,
 		MAKE_Setup_ScriptsInterface $scripts

@@ -15,6 +15,7 @@ final class MAKE_Style_DataHelper extends MAKE_Util_Modules {
 	 * @since x.x.x.
 	 *
 	 * @param MAKE_Compatibility_MethodsInterface $compatibility
+	 * @param MAKE_Font_ManagerInterface          $font
 	 * @param MAKE_Settings_ThemeModInterface     $thememod
 	 */
 	public function __construct(
