@@ -7,7 +7,7 @@
 (function($, Make) {
 	'use strict';
 
-	var ttfmake = {
+	var Make = $.extend(MakeFrontEnd, {
 		/**
 		 *
 		 */
@@ -41,14 +41,14 @@
 				self.navigationInit();
 				self.skipLinkFocusFix();
 				self.navigationHoverFix();
-				self.fitVidsInit($('.ttfmake-embed-wrapper'), Make);
+				self.fitVidsInit( $('.ttfmake-embed-wrapper') );
 			} );
 
 			// Infinite Scroll support
 			self.cache.$document.on('post-load', function() {
 				// FitVids
 				var $elements = $('.ttfmake-embed-wrapper:not(:has(".fluid-width-video-wrapper"))');
-				self.fitVidsInit($elements, Make);
+				self.fitVidsInit($elements);
 			});
 		},
 
@@ -194,14 +194,15 @@
 		 *
 		 * @return void
 		 */
-		fitVidsInit: function($elements, Make) {
+		fitVidsInit: function($elements) {
 			// Make sure lib is loaded.
 			if (! $.fn.fitVids) {
 				return;
 			}
 
-			var $container = $elements || $('.ttfmake-embed-wrapper'),
-				selectors = Make.fitvids.selectors || '',
+			var self = this,
+				$container = $elements || $('.ttfmake-embed-wrapper'),
+				selectors = self.fitvids.selectors || '',
 				args = {};
 
 			// Get custom selectors
@@ -216,7 +217,7 @@
 			// The selector finds the Blip.tv iFrame, then grabs the .fluid-width-video-wrapper div sibling.
 			$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
 		}
-	};
+	});
 
-	ttfmake.init();
+	Make.init();
 })(jQuery, MakeFrontEnd);
