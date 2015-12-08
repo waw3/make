@@ -10,6 +10,15 @@
  */
 final class MAKE_Setup_Widgets implements MAKE_Setup_WidgetsInterface, MAKE_Util_HookInterface {
 	/**
+	 * Indicator of whether the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $hooked = false;
+
+	/**
 	 * Inject dependencies.
 	 *
 	 * @since x.x.x.
