@@ -19,7 +19,8 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
  * @return void
  */
 function ttfmake_display_favicons() {
-	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 }
 
 /**
@@ -34,7 +35,8 @@ function ttfmake_display_favicons() {
  * @return array                Modified classes.
  */
 function ttfmake_body_layout_classes( $classes ) {
-	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes' );
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes', $backtrace[0] );
 	return $classes;
 }
 
@@ -48,7 +50,8 @@ function ttfmake_body_layout_classes( $classes ) {
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_header_sections( $sections ) {
-	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 	return $sections;
 }
 
@@ -62,7 +65,8 @@ function ttfmake_customizer_define_header_sections( $sections ) {
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_footer_sections( $sections ) {
-	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 	return $sections;
 }
 
@@ -77,5 +81,6 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
  * @return void
  */
 function ttfmake_css_add_rules() {
-	Make()->get_module( 'compatibility' )->deprecated_function( __FUNCTION__, '1.5.0' );
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 }

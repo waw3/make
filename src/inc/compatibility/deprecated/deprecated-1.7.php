@@ -8,23 +8,6 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 	return;
 }
 
-/**
- * Add notice if Make Plus is installed as a theme.
- *
- * @since  1.1.2.
- * @deprecated 1.7.0.
- *
- * @param  string         $source           File source location.
- * @param  string         $remote_source    Remove file source location.
- * @param  WP_Upgrader    $upgrader         WP_Upgrader instance.
- * @return WP_Error                         Error or source on success.
- */
-function ttfmake_check_package( $source, $remote_source, $upgrader ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
-	return $source;
-}
-
 if ( ! function_exists( 'ttfmake_scripts' ) ) :
 /**
  * Enqueue styles and scripts.
@@ -125,6 +108,24 @@ function ttfmake_plus_styles() {
 }
 
 /**
+ * Add notice if Make Plus is installed as a theme.
+ *
+ * @since  1.1.2.
+ * @deprecated 1.7.0.
+ *
+ * @param  string         $source           File source location.
+ * @param  string         $remote_source    Remove file source location.
+ * @param  WP_Upgrader    $upgrader         WP_Upgrader instance.
+ * @return WP_Error                         Error or source on success.
+ */
+function ttfmake_check_package( $source, $remote_source, $upgrader ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	return $source;
+}
+
+if ( ! function_exists( 'ttfmake_filter_backcompat' ) ) :
+/**
  * Adds back compat for filters with changed names.
  *
  * In Make 1.2.3, filters were all changed from "ttfmake_" to "make_". In order to maintain back compatibility, the old
@@ -140,7 +141,11 @@ function ttfmake_filter_backcompat() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_backcompat_filter' ) ) :
 /**
  * Prepends "ttf" to a filter name and calls that new filter variant.
  *
@@ -157,7 +162,11 @@ function ttfmake_backcompat_filter() {
 	$args   = func_get_args();
 	return apply_filters_ref_array( $filter, $args );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_action_backcompat' ) ) :
 /**
  * Adds back compat for actions with changed names.
  *
@@ -174,7 +183,11 @@ function ttfmake_action_backcompat() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_backcompat_action' ) ) :
 /**
  * Prepends "ttf" to a filter name and calls that new filter variant.
  *
@@ -191,7 +204,11 @@ function ttfmake_backcompat_action() {
 	$args   = func_get_args();
 	do_action_ref_array( $action, $args );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_get_key_conversions' ) ) :
 /**
  * Return an array of option key migration sets.
  *
@@ -204,7 +221,11 @@ function ttfmake_customizer_get_key_conversions() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_set_up_theme_mod_conversions' ) ) :
 /**
  * Convert old theme mod values to their newer equivalents.
  *
@@ -217,7 +238,11 @@ function ttfmake_customizer_set_up_theme_mod_conversions() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_filter' ) ) :
 /**
  * Convert a new theme mod value from an old one.
  *
@@ -232,7 +257,11 @@ function ttfmake_customizer_convert_theme_mods_filter( $value ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 	return $value;
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_values' ) ) :
 /**
  * This function converts values from old mods to values for new mods.
  *
@@ -249,6 +278,9 @@ function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $valu
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 	return $value;
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Instantiate or return the one TTFMAKE_Admin_Notice instance.
@@ -260,7 +292,7 @@ function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $valu
  */
 function ttfmake_admin_notice() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'notice\' )', $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->notice()', $backtrace[0] );
 	return Make()->notice();
 }
 
@@ -277,7 +309,7 @@ function ttfmake_admin_notice() {
  */
 function ttfmake_register_admin_notice( $id, $message, $args ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'notice\' )->register_admin_notice', $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->notice()->register_admin_notice', $backtrace[0] );
 	Make()->notice()->register_admin_notice( $id, $message, $args );
 }
 
@@ -316,10 +348,11 @@ function ttfmake_plus_upgrade_notices() {
  */
 function ttfmake_load_textdomains() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'l10n\' )->load_textdomains', $backtrace[0] );
-	return Make()->get_module( 'l10n' )->load_textdomains();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->l10n()->load_textdomains', $backtrace[0] );
+	return Make()->l10n()->load_textdomains();
 }
 
+if ( ! function_exists( 'ttfmake_option_defaults' ) ) :
 /**
  * The big array of global option defaults.
  *
@@ -333,7 +366,11 @@ function ttfmake_option_defaults() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_settings( \'default\' )', $backtrace[0] );
 	return Make()->thememod()->get_settings( 'default' );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_settings( \'default\' )' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_default' ) ) :
 /**
  * Return a particular global option default.
  *
@@ -348,7 +385,11 @@ function ttfmake_get_default( $option ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_thememod_get_default', $backtrace[0] );
 	return Make()->thememod()->get_default( $option );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_thememod_get_default' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_choices' ) ) :
 /**
  * Return the available choices for a given setting
  *
@@ -363,7 +404,11 @@ function ttfmake_get_choices( $setting ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_choice_set', $backtrace[0] );
 	return Make()->thememod()->get_choice_set( $setting );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_choice_set' );
+endif;
 
+if ( ! function_exists( 'ttfmake_sanitize_choice' ) ) :
 /**
  * Sanitize a value from a list of allowed values.
  *
@@ -379,7 +424,11 @@ function ttfmake_sanitize_choice( $value, $setting ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_choice', $backtrace[0] );
 	return Make()->thememod()->sanitize_choice( $value, $setting );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_choice' );
+endif;
 
+if ( ! function_exists( 'ttfmake_edit_page_script' ) ) :
 /**
  * Enqueue scripts that run on the Edit Page screen
  *
@@ -392,7 +441,11 @@ function ttfmake_edit_page_script() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_jetpack_setup' ) ) :
 /**
  * Jetpack compatibility.
  *
@@ -405,7 +458,11 @@ function ttfmake_jetpack_setup() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_footer_callback' ) ) :
 /**
  * Callback to render the special footer added by Infinite Scroll.
  *
@@ -418,7 +475,11 @@ function ttfmake_jetpack_infinite_scroll_footer_callback() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_has_footer_widgets' ) ) :
 /**
  * Determine whether any footer widgets are actually showing.
  *
@@ -431,7 +492,11 @@ function ttfmake_jetpack_infinite_scroll_has_footer_widgets() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_render' ) ) :
 /**
  * Render the additional posts added by Infinite Scroll
  *
@@ -444,7 +509,11 @@ function ttfmake_jetpack_infinite_scroll_render() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_jetpack_remove_sharing' ) ) :
 /**
  * Remove the Jetpack Sharing output from the end of the post content so it can be output elsewhere.
  *
@@ -457,7 +526,11 @@ function ttfmake_jetpack_remove_sharing() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_woocommerce_init' ) ) :
 /**
  * Add theme support and remove default action hooks so we can replace them with our own.
  *
@@ -470,7 +543,11 @@ function ttfmake_woocommerce_init() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_woocommerce_before_main_content' ) ) :
 /**
  * Markup to show before the main WooCommerce content.
  *
@@ -483,7 +560,11 @@ function ttfmake_woocommerce_before_main_content() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_woocommerce_after_main_content' ) ) :
 /**
  * Markup to show after the main WooCommerce content
  *
@@ -496,7 +577,11 @@ function ttfmake_woocommerce_after_main_content() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_css' ) ) :
 /**
  * Return the one TTFMAKE_CSS object.
  *
@@ -507,9 +592,12 @@ function ttfmake_woocommerce_after_main_content() {
  */
 function ttfmake_get_css() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->get_module( \'style\' )->css()', $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->style()->css()', $backtrace[0] );
 	return Make()->style()->css();
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->style()->css()' );
+endif;
 
 /**
  * Build the CSS rules for the color scheme.
@@ -537,6 +625,7 @@ function ttfmake_css_color() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_css_layout' ) ) :
 /**
  * Build the CSS rules for the custom layout options.
  *
@@ -549,7 +638,11 @@ function ttfmake_css_layout() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_css_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts
  *
@@ -562,7 +655,11 @@ function ttfmake_css_fonts() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_font_stack' ) ) :
 /**
  * Validate the font choice and get a font stack for it.
  *
@@ -574,9 +671,14 @@ function ttfmake_css_fonts() {
  */
 function ttfmake_get_font_stack( $font ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_stack', $backtrace[0] );
+	return Make()->font()->get_font_stack( $font );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_stack' );
+endif;
 
+if ( ! function_exists( 'ttfmake_font_get_relative_sizes' ) ) :
 /**
  * Return an array of percentages to use when calculating certain font sizes.
  *
@@ -589,7 +691,11 @@ function ttfmake_font_get_relative_sizes() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_parse_font_properties' ) ) :
 /**
  * Cycle through the font options for the given element and collect an array
  * of option values that are non-default.
@@ -605,6 +711,9 @@ function ttfmake_parse_font_properties( $element, $force = false ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Generate a CSS rule definition array for an element's link underline property.
@@ -621,6 +730,7 @@ function ttfmake_parse_link_underline( $element, $selectors ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_get_relative_font_size' ) ) :
 /**
  * Convert a font size to a relative size based on a starting value and percentage.
  *
@@ -635,7 +745,11 @@ function ttfmake_get_relative_font_size( $value, $percentage ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_convert_px_to_rem' ) ) :
 /**
  * Given a px value, return a rem value.
  *
@@ -650,6 +764,9 @@ function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Convert a hex string into a comma separated RGB string.
@@ -668,6 +785,7 @@ function ttfmake_hex_to_rgb( $value ) {
 	return Make()->style()->hex_to_rgb( $value );
 }
 
+if ( ! function_exists( 'ttfmake_customizer_init' ) ) :
 /**
  * Load the customizer files and enqueue scripts
  *
@@ -680,6 +798,9 @@ function ttfmake_customizer_init() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Register autoloaders for Customizer-related classes.
@@ -711,6 +832,7 @@ function ttfmake_customizer_control_autoload( $class ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
 /**
  * Return an array of panel definitions.
  *
@@ -723,7 +845,11 @@ function ttfmake_customizer_get_panels() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
 /**
  * Register Customizer panels
  *
@@ -737,7 +863,11 @@ function ttfmake_customizer_add_panels( $wp_customize ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_get_sections' ) ) :
 /**
  * Return the master array of Customizer sections
  *
@@ -750,7 +880,11 @@ function ttfmake_customizer_get_sections() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_add_sections' ) ) :
 /**
  * Add sections and controls to the customizer.
  *
@@ -766,7 +900,11 @@ function ttfmake_customizer_add_sections( $wp_customize ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_add_section_options' ) ) :
 /**
  * Register settings and controls for a section.
  *
@@ -782,7 +920,11 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_set_transport' ) ) :
 /**
  * Add postMessage support for certain built-in settings in the Theme Customizer.
  *
@@ -798,7 +940,11 @@ function ttfmake_customizer_set_transport( $wp_customize ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_preview_script' ) ) :
 /**
  * Enqueue customizer preview script
  *
@@ -813,7 +959,11 @@ function ttfmake_customizer_preview_script() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_scripts' ) ) :
 /**
  * Enqueue customizer sections script
  *
@@ -828,7 +978,27 @@ function ttfmake_customizer_scripts() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
+/**
+ * Make sure the 'make_css' action only runs once.
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttfmake_add_customizations() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
+
+if ( ! function_exists( 'ttfmake_customizer_background' ) ) :
 /**
  * Configure settings and controls for the Background section.
  *
@@ -841,7 +1011,11 @@ function ttfmake_customizer_background() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_navigation' ) ) :
 /**
  * Configure settings and controls for the Navigation section.
  *
@@ -854,7 +1028,11 @@ function ttfmake_customizer_navigation() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_sitetitletagline' ) ) :
 /**
  * Configure settings and controls for the Site Title & Tagline section.
  *
@@ -867,7 +1045,11 @@ function ttfmake_customizer_sitetitletagline() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_staticfrontpage' ) ) :
 /**
  * Configure settings and controls for the Static Front Page section.
  *
@@ -880,6 +1062,9 @@ function ttfmake_customizer_staticfrontpage() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Define the sections and settings for the Background Images panel
@@ -893,7 +1078,6 @@ function ttfmake_customizer_staticfrontpage() {
 function ttfmake_customizer_define_background_images_sections( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
-	return $sections;
 }
 
 /**
@@ -910,6 +1094,7 @@ function ttfmake_customizer_background_image_group_definitions( $region ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_customizer_define_colorscheme_sections' ) ) :
 /**
  * Define the sections and settings for the Color panel
  *
@@ -923,7 +1108,11 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_define_general_sections' ) ) :
 /**
  * Define the sections and settings for the General panel
  *
@@ -937,8 +1126,11 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
-
+if ( ! function_exists( 'ttfmake_customizer_define_contentlayout_sections' ) ) :
 /**
  * Define the sections and settings for the Content & Layout panel
  *
@@ -952,6 +1144,9 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Generate an array of Customizer option definitions for a particular view.
@@ -1066,6 +1261,7 @@ function ttfmake_customizer_layout_breadcrumb_group_definitions( $view ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_customizer_stylekit' ) ) :
 /**
  * Filter to add a new Customizer section
  *
@@ -1082,7 +1278,11 @@ function ttfmake_customizer_stylekit( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_define_typography_sections' ) ) :
 /**
  * Define the sections and settings for the General panel
  *
@@ -1096,6 +1296,9 @@ function ttfmake_customizer_define_typography_sections( $sections ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
 /**
  * Generate an array of Customizer option definitions for a particular HTML element.
@@ -1113,6 +1316,7 @@ function ttfmake_customizer_typography_group_definitions( $element, $label, $des
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_font_choices_placeholder' ) ) :
 /**
  * Add a placeholder for the large font choices array, which will be loaded
  * in via JavaScript.
@@ -1126,7 +1330,11 @@ function ttfmake_font_choices_placeholder() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
 /**
  * Sanitize a font choice.
  *
@@ -1141,7 +1349,11 @@ function ttfmake_sanitize_font_choice( $value ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->sanitize_font_choice', $backtrace[0] );
 	return Make()->font()->sanitize_font_choice( $value );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->sanitize_font_choice' );
+endif;
 
+if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
 /**
  * Sanitize the Character Subset choice.
  *
@@ -1156,7 +1368,11 @@ function ttfmake_sanitize_font_subset( $value ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->sanitize_subset', $backtrace[0] );
 	return Make()->font()->get_source( 'google' )->sanitize_subset( $value, make_thememod_get_default( 'font-subset' ) );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->sanitize_subset' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
 /**
  * Compile font options from different sources.
  *
@@ -1169,7 +1385,11 @@ function ttfmake_get_all_fonts() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_all_font_choices' ) ) :
 /**
  * Packages the font choices into value/label pairs for use with the customizer.
  *
@@ -1183,7 +1403,27 @@ function ttfmake_all_font_choices() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_choices', $backtrace[0] );
 	return Make()->font()->get_font_choices();
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_choices' );
+endif;
 
+if ( ! function_exists( 'ttfmake_all_font_choices_js' ) ) :
+/**
+ * Compile the font choices for better handling as a JSON object
+ *
+ * @since 1.3.0.
+ *
+ * @return array
+ */
+function ttfmake_all_font_choices_js() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
+
+if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
 /**
  * Return an array of standard websafe fonts.
  *
@@ -1197,7 +1437,11 @@ function ttfmake_get_standard_fonts() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'generic\' )->get_font_data', $backtrace[0] );
 	return Make()->font()->get_source( 'generic' )->get_font_data();
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'generic\' )->get_font_data' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
@@ -1211,7 +1455,11 @@ function ttfmake_get_google_fonts() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_font_data', $backtrace[0] );
 	return Make()->font()->get_source( 'google' )->get_font_data();
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_font_data' );
+endif;
 
+if ( ! function_exists( 'ttfmake_choose_google_font_variants' ) ) :
 /**
  * Given a font, chose the variants to load for the theme.
  *
@@ -1230,7 +1478,11 @@ function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->choose_font_variants', $backtrace[0] );
 	return Make()->font()->get_source( 'google' )->choose_font_variants( $font, $variants );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->choose_font_variants' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
 /**
  * Retrieve the list of available Google font subsets.
  *
@@ -1244,7 +1496,11 @@ function ttfmake_get_google_font_subsets() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_subsets', $backtrace[0] );
 	return Make()->font()->get_source( 'google' )->get_subsets();
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_subsets' );
+endif;
 
+if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
 /**
  * Build the HTTP request URL for Google Fonts.
  *
@@ -1258,5 +1514,8 @@ function ttfmake_get_google_font_subsets() {
  */
 function ttfmake_get_google_font_uri() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->scripts()->get_google_url', $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->scripts()->get_google_url' );
+endif;
