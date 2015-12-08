@@ -14,6 +14,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_ManagerInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
+		MAKE_Setup_WidgetsInterface $widgets = null,
 		MAKE_Setup_ScriptsInterface $scripts = null,
 		MAKE_Style_ManagerInterface $style = null,
 		MAKE_Customizer_ControlsInterface $customizer_controls = null,
@@ -42,6 +43,9 @@ class MAKE_API extends MAKE_Util_Modules {
 
 		// Theme mods
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ), $this->inject_module( 'font' ) ) : $thememod );
+
+		// Widgets
+		$this->add_module( 'widgets', ( is_null( $widgets ) ) ? new MAKE_Setup_Widgets() : $widgets );
 
 		// Scripts
 		$this->add_module( 'scripts', ( is_null( $scripts ) ) ? new MAKE_Setup_Scripts( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $scripts );
