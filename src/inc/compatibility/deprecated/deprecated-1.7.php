@@ -25,6 +25,105 @@ function ttfmake_check_package( $source, $remote_source, $upgrader ) {
 	return $source;
 }
 
+if ( ! function_exists( 'ttfmake_scripts' ) ) :
+/**
+ * Enqueue styles and scripts.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_scripts() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script / wp_dequeue_script', $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script / wp_dequeue_script' );
+endif;
+
+if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
+/**
+ * Enqueue Cycle2 scripts
+ *
+ * If the environment is set up for minified scripts, load one concatenated, minified
+ * Cycle 2 script. Otherwise, load each module separately.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $script_dependencies    Scripts that Cycle2 depends on.
+ *
+ * @return void
+ */
+function ttfmake_cycle2_script_setup( $script_dependencies ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_register_script / wp_deregister_script', $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_register_script / wp_deregister_script' );
+endif;
+
+if ( ! function_exists( 'ttfmake_is_preview' ) ) :
+/**
+ * Check if the current view is rendering in the Customizer preview pane.
+ *
+ * @since 1.2.0.
+ * @deprecated 1.7.0.
+ *
+ * @return bool    True if in the preview pane.
+ */
+function ttfmake_is_preview() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'is_customize_preview', $backtrace[0] );
+	return is_customize_preview();
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'is_customize_preview' );
+endif;
+
+/**
+ * Determine if the companion plugin is installed.
+ *
+ * @since  1.0.4.
+ * @deprecated 1.7.0.
+ *
+ * @return bool    Whether or not the companion plugin is installed.
+ */
+function ttfmake_is_plus() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_is_plus', $backtrace[0] );
+	return make_is_plus();
+}
+
+/**
+ * Generate a link to the Make info page.
+ *
+ * @since  1.0.6.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $deprecated    This parameter is no longer used.
+ * @return string                   The link.
+ */
+function ttfmake_get_plus_link( $deprecated = '' ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	return Make()->compatibility()->get_plus_link();
+}
+
+/**
+ * Add styles to admin head for Make Plus
+ *
+ * @since 1.0.6.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_plus_styles() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
 /**
  * Adds back compat for filters with changed names.
  *

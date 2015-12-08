@@ -218,6 +218,17 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	}
 
 	/**
+	 * Generate a link to the Make info page.
+	 *
+	 * @since  1.0.6.
+	 *
+	 * @return string                   The link.
+	 */
+	public function get_plus_link() {
+		return 'https://thethemefoundry.com/make-buy/';
+	}
+
+	/**
 	 * Get the version of Make Plus currently running.
 	 *
 	 * @since x.x.x.

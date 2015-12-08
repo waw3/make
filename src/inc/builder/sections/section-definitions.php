@@ -651,7 +651,7 @@ class TTFMAKE_Section_Definitions {
 			true
 		);
 
-		if ( false === ttfmake_is_plus() ) {
+		if ( false === make_is_plus() ) {
 			wp_enqueue_script(
 				'ttfmake-sections/js/quick-start.js',
 				get_template_directory_uri() . '/inc/builder/sections/js/quick-start.js',

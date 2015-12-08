@@ -67,7 +67,7 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
 
-		if ( false === ttfmake_is_plus() ) {
+		if ( false === make_is_plus() ) {
 			add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
 		}
 	}
@@ -416,7 +416,7 @@ class TTFMAKE_Builder_Base {
 				$classes .= ' ttfmake-builder-active';
 
 				// Add a class to denote Make Plus
-				if ( ttfmake_is_plus() ) {
+				if ( make_is_plus() ) {
 					$classes .= ' make-plus-enabled';
 				} else {
 					$classes .= ' make-plus-disabled';
@@ -426,7 +426,7 @@ class TTFMAKE_Builder_Base {
 			}
 
 			// Add a class to denote Make Plus
-			if ( ttfmake_is_plus() ) {
+			if ( make_is_plus() ) {
 				$classes .= ' make-plus-enabled';
 			} else {
 				$classes .= ' make-plus-disabled';
@@ -1055,7 +1055,7 @@ endif;
  * @return void
  */
 function ttfmake_plus_quick_start() {
-	if ( false !== ttfmake_is_plus() || 'page' !== get_post_type() ) {
+	if ( false !== make_is_plus() || 'page' !== get_post_type() ) {
 		return;
 	}
 

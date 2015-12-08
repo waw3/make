@@ -11,7 +11,7 @@
  * @return void
  */
 function ttfmake_add_plus_metabox() {
-	if ( ttfmake_is_plus() || ! is_super_admin() ) {
+	if ( make_is_plus() || ! is_super_admin() ) {
 		return;
 	}
 

@@ -13,7 +13,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfmake_is_js_template ) ? $columns_number : 3;
 ?>
 
-<?php if ( false === ttfmake_is_plus() ) : ?>
+<?php if ( false === make_is_plus() ) : ?>
 <div class="ttfmake-plus-info">
 	<p>
 		<em>

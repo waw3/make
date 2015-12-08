@@ -33,7 +33,7 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 				</li>
 				</a>
 			<?php endforeach; ?>
-			<?php if ( ! ttfmake_is_plus() ) : ?>
+			<?php if ( ! make_is_plus() ) : ?>
 				<li id="ttfmake-menu-list-item-link-plus" class="ttfmake-menu-list-item">
 					<div>
 						<h4><?php esc_html_e( 'Get more.', 'make' ); ?></h4>

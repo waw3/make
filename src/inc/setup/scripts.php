@@ -23,12 +23,18 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Font_ManagerInterface $font
+	 * @param MAKE_Compatibility_MethodsInterface $compatibility
+	 * @param MAKE_Font_ManagerInterface          $font
+	 * @param MAKE_Settings_ThemeModInterface     $thememod
 	 */
 	public function __construct(
+		MAKE_Compatibility_MethodsInterface $compatibility,
 		MAKE_Font_ManagerInterface $font,
 		MAKE_Settings_ThemeModInterface $thememod
 	) {
+		// Compatibility
+		$this->add_module( 'compatibility', $compatibility );
+
 		// Fonts
 		$this->add_module( 'font', $font );
 
@@ -53,6 +59,8 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
 
 		// Admin styles and scripts.
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 20 );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_editor_styles' ) );
 
 		//
@@ -130,6 +138,20 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	}
 
 
+	public function enqueue_admin_styles() {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_action(), array( 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts' ) ) ) {
+			return;
+		}
+
+		$this->register_style_libs();
+
+		if ( ! $this->compatibility()->is_plus() ) {
+			wp_enqueue_style( 'make-plus' );
+		}
+	}
+
+
 	public function add_editor_styles() {
 		// Only run this in the proper hook context.
 		if ( 'admin_enqueue_scripts' !== current_action() ) {
@@ -189,6 +211,14 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 				TTFMAKE_VERSION
 			);
 		}
+
+		// Plus
+		wp_register_style(
+			'make-plus',
+			get_template_directory_uri() . '/css/plus.css',
+			array(),
+			TTFMAKE_VERSION
+		);
 	}
 
 
