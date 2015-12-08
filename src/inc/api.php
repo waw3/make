@@ -7,10 +7,10 @@
 class MAKE_API extends MAKE_Util_Modules {
 
 	public function __construct(
+		MAKE_Setup_L10nInterface $l10n = null,
 		MAKE_Error_CollectorInterface $error = null,
 		MAKE_Compatibility_MethodsInterface $compatibility = null,
 		MAKE_Admin_NoticeInterface $notice = null,
-		MAKE_Setup_L10nInterface $l10n = null,
 		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_ManagerInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
@@ -20,6 +20,9 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Customizer_PreviewInterface $customizer_preview = null,
 		MAKE_Integration_ManagerInterface $integration = null
 	) {
+		// Localization
+		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_Setup_L10n : $l10n );
+
 		// Errors
 		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Collector : $error );
 
@@ -30,9 +33,6 @@ class MAKE_API extends MAKE_Util_Modules {
 		if ( is_admin() ) {
 			$this->add_module( 'notice', ( is_null( $notice ) ) ? new MAKE_Admin_Notice : $notice );
 		}
-
-		// Localization
-		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_Setup_L10n : $l10n );
 
 		// Choices
 		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Manager( $this->inject_module( 'error' ) ) : $choices );

@@ -91,7 +91,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 		add_filter( 'load_textdomain_mofile', array( $this, 'mofile_path' ), 10, 2 );
 
 		// Load translation files.
-		add_action( 'after_setup_theme', array( $this, 'load_textdomains' ) );
+		add_action( 'after_setup_theme', array( $this, 'load_textdomains' ), 1 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
