@@ -54,16 +54,21 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			return;
 		}
 
-		// Front end styles and scripts.
+		// Register style and script libs
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_libs' ), 1 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_libs' ), 1 );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'register_libs' ), 1 );
+
+		// Enqueue front end styles and scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
 
-		// Admin styles and scripts.
+		// Enqueue admin styles and scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 20 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_editor_styles' ) );
 
-		//
+		// Register Ajax
 		if ( is_admin() || is_customize_preview() ) {
 			add_action( 'wp_ajax_make-google-json', array( $this, 'get_google_json' ) );
 		}
@@ -83,100 +88,31 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		return $this->hooked;
 	}
 
-
-	public function enqueue_frontend_styles() {
+	/**
+	 * Wrapper function to register style and script libraries for usage throughout the site.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function register_libs() {
 		// Only run this in the proper hook context.
-		if ( 'wp_enqueue_scripts' !== current_action() ) {
+		if ( ! in_array( current_action(), array( 'wp_enqueue_scripts', 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts', 'login_enqueue_scripts' ) ) ) {
 			return;
 		}
 
 		$this->register_style_libs();
-
-		// Parent stylesheet, if child theme is active
-		// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
-		if ( is_child_theme() && defined( 'TTFMAKE_CHILD_VERSION' ) && version_compare( TTFMAKE_CHILD_VERSION, '1.1.0', '>=' ) ) {
-			/**
-			 * Toggle for loading the parent stylesheet along with the child one.
-			 *
-			 * @since 1.6.0.
-			 *
-			 * @param bool    $enqueue    True enqueues the parent stylesheet.
-			 */
-			if ( true === apply_filters( 'make_enqueue_parent_stylesheet', true ) ) {
-				wp_enqueue_style(
-					'make-parent',
-					get_template_directory_uri() . '/style.css',
-					array(),
-					TTFMAKE_VERSION
-				);
-			}
-		}
-
-		// Main stylesheet
-		wp_enqueue_style(
-			'make-main',
-			get_stylesheet_uri(),
-			array(),
-			TTFMAKE_VERSION
-		);
-
-		// Stylesheet dependencies
-		$stylesheet = ( $this->style_is_registered( 'make-parent' ) ) ? 'make-parent' : 'make-main';
-		$this->add_style_dependency( $stylesheet, 'make-google-font' );
-		$this->add_style_dependency( $stylesheet, 'font-awesome' );
-
-		// Print stylesheet
-		if ( $url = $this->get_located_file_url( array( 'print.css', 'css/print.css' ) ) ) {
-			wp_enqueue_style(
-				'make-print',
-				$url,
-				array( 'make-main' ),
-				TTFMAKE_VERSION,
-				'print'
-			);
-		}
+		$this->register_script_libs();
 	}
 
-
-	public function enqueue_admin_styles() {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts' ) ) ) {
-			return;
-		}
-
-		$this->register_style_libs();
-
-		if ( ! $this->compatibility()->is_plus() ) {
-			wp_enqueue_style( 'make-plus' );
-		}
-	}
-
-
-	public function add_editor_styles() {
-		// Only run this in the proper hook context.
-		if ( 'admin_enqueue_scripts' !== current_action() ) {
-			return;
-		}
-
-		$this->register_style_libs();
-
-		$editor_styles = array();
-
-		foreach ( array(
-			'make-google-font',
-			'font-awesome',
-			'make-editor'
-		) as $lib ) {
-			if ( $this->style_is_registered( $lib ) ) {
-				$editor_styles[] = $this->get_style_url( $lib );
-			}
-		}
-
-		add_editor_style( $editor_styles );
-	}
-
-
-	public function register_style_libs() {
+	/**
+	 * Register style libraries.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	private function register_style_libs() {
 		// Chosen
 		wp_register_style(
 			'chosen',
@@ -211,54 +147,16 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 				TTFMAKE_VERSION
 			);
 		}
-
-		// Plus
-		wp_register_style(
-			'make-plus',
-			get_template_directory_uri() . '/css/plus.css',
-			array(),
-			TTFMAKE_VERSION
-		);
 	}
 
-
-	public function enqueue_frontend_scripts() {
-		// Only run this in the proper hook context.
-		if ( 'wp_enqueue_scripts' !== current_action() ) {
-			return;
-		}
-
-		$this->register_script_libs();
-
-		// Main script
-		wp_enqueue_script(
-			'make-frontend',
-			$this->get_located_file_url( array( 'frontend.js', 'js/frontend.js' ) ),
-			array( 'jquery' ),
-			TTFMAKE_VERSION,
-			true
-		);
-
-		// Define JS data
-		$data = array(
-			'fitvids' => $this->get_fitvids_selectors()
-		);
-
-		// Add JS data
-		wp_localize_script(
-			'make-frontend',
-			'MakeFrontEnd',
-			$data
-		);
-
-		// Comment reply script
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
-	}
-
-
-	public function register_script_libs() {
+	/**
+	 * Register JavaScript libraries.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	private function register_script_libs() {
 		// Chosen
 		wp_register_script(
 			'chosen',
@@ -322,6 +220,155 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		);
 	}
 
+	/**
+	 * Enqueue styles for the front end of the site.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function enqueue_frontend_styles() {
+		// Only run this in the proper hook context.
+		if ( 'wp_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
+		// Parent stylesheet, if child theme is active
+		// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
+		if ( is_child_theme() && defined( 'TTFMAKE_CHILD_VERSION' ) && version_compare( TTFMAKE_CHILD_VERSION, '1.1.0', '>=' ) ) {
+			/**
+			 * Toggle for loading the parent stylesheet along with the child one.
+			 *
+			 * @since 1.6.0.
+			 *
+			 * @param bool    $enqueue    True enqueues the parent stylesheet.
+			 */
+			if ( true === apply_filters( 'make_enqueue_parent_stylesheet', true ) ) {
+				wp_enqueue_style(
+					'make-parent',
+					get_template_directory_uri() . '/style.css',
+					array(),
+					TTFMAKE_VERSION
+				);
+			}
+		}
+
+		// Main stylesheet
+		wp_enqueue_style(
+			'make-main',
+			get_stylesheet_uri(),
+			array(),
+			TTFMAKE_VERSION
+		);
+
+		// Add stylesheet dependencies
+		$stylesheet = ( $this->is_registered( 'make-parent', 'style' ) ) ? 'make-parent' : 'make-main';
+		$this->add_dependency( $stylesheet, 'make-google-font', 'style' );
+		$this->add_dependency( $stylesheet, 'font-awesome', 'style' );
+
+		// Print stylesheet
+		if ( $url = $this->get_located_file_url( array( 'print.css', 'css/print.css' ) ) ) {
+			wp_enqueue_style(
+				'make-print',
+				$url,
+				array( 'make-main' ),
+				TTFMAKE_VERSION,
+				'print'
+			);
+		}
+	}
+
+	/**
+	 * Enqueue styles for the site admin.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function enqueue_admin_styles() {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_action(), array( 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts' ) ) ) {
+			return;
+		}
+
+		if ( ! $this->compatibility()->is_plus() ) {
+			wp_enqueue_style(
+				'make-plus',
+				get_template_directory_uri() . '/css/plus.css',
+				array(),
+				TTFMAKE_VERSION
+			);
+		}
+	}
+
+	/**
+	 * Add stylesheet URLs to be loaded into the Visual Editor's iframe.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function add_editor_styles() {
+		// Only run this in the proper hook context.
+		if ( 'admin_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
+		$editor_styles = array();
+
+		foreach ( array(
+			'make-google-font',
+			'font-awesome',
+			'make-editor'
+		) as $lib ) {
+			if ( $this->is_registered( $lib, 'style' ) ) {
+				$editor_styles[] = $this->get_url( $lib, 'style' );
+			}
+		}
+
+		add_editor_style( $editor_styles );
+	}
+
+	/**
+	 * Enqueue scripts for the front end of the site.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function enqueue_frontend_scripts() {
+		// Only run this in the proper hook context.
+		if ( 'wp_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
+		// Main script
+		wp_enqueue_script(
+			'make-frontend',
+			$this->get_located_file_url( array( 'frontend.js', 'js/frontend.js' ) ),
+			array( 'jquery' ),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		// Define JS data
+		$data = array(
+			'fitvids' => $this->get_fitvids_selectors()
+		);
+
+		// Add JS data
+		wp_localize_script(
+			'make-frontend',
+			'MakeFrontEnd',
+			$data
+		);
+
+		// Comment reply script
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+	}
+
 
 	/**
 	 * Get the URL of a theme file.
@@ -351,7 +398,16 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		return $url;
 	}
 
-
+	/**
+	 * Return a specified style or script object.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $dependency_id The ID of the dependency object.
+	 * @param string $type          The type of dependency object. Valid options are style and script.
+	 *
+	 * @return _WP_Dependency|null
+	 */
 	private function get_dependency_object( $dependency_id, $type ) {
 		switch ( $type ) {
 			case 'style' :
@@ -378,120 +434,131 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		return null;
 	}
 
+	/**
+	 * Check if a specified style or script object has been registered.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $dependency_id The ID of the dependency object.
+	 * @param string $type          The type of dependency object. Valid options are style and script.
+	 *
+	 * @return bool                 True if the object has been registered.
+	 */
+	public function is_registered( $dependency_id, $type ) {
+		return ! is_null( $this->get_dependency_object( $dependency_id, $type ) );
+	}
 
+	/**
+	 * Add a dependency to a specified style or script object.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $recipient_id  The ID of the object to add a dependency to.
+	 * @param string $dependency_id The ID of the object to add as a dependency.
+	 * @param string $type          The type of dependency object. Valid options are style and script.
+	 *
+	 * @return bool                 True if a dependency was successfully added. Otherwise false.
+	 */
+	public function add_dependency( $recipient_id, $dependency_id, $type ) {
+		if ( $this->is_registered( $recipient_id, $type ) && $this->is_registered( $dependency_id, $type ) ) {
+			$obj = $this->get_dependency_object( $recipient_id, $type );
+			if ( ! in_array( $dependency_id, $obj->deps ) ) {
+				$obj->deps[] = $dependency_id;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Remove a dependency from a specified style or script object.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $recipient_id  The ID of the object to remove a dependency from.
+	 * @param string $dependency_id The ID of the dependency object to remove.
+	 * @param string $type          The type of dependency object. Valid options are style and script.
+	 *
+	 * @return bool                 True if the dependency existed and was removed. Otherwise false.
+	 */
+	public function remove_dependency( $recipient_id, $dependency_id, $type ) {
+		if ( $this->is_registered( $recipient_id, $type ) ) {
+			$obj = $this->get_dependency_object( $recipient_id, $type );
+			if ( false !== $key = array_search( $dependency_id, $obj->deps ) ) {
+				unset( $obj->deps[ $key ] );
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Update the version property of a specified style or script object.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $recipient_id The ID of the object to update.
+	 * @param string $version      The new version to add to the object.
+	 * @param string $type         The type of dependency object. Valid options are style and script.
+	 *
+	 * @return bool                True if the version was successfully updated. Otherwise false.
+	 */
+	public function update_version( $recipient_id, $version, $type ) {
+		if ( $this->is_registered( $recipient_id, $type ) ) {
+			$obj = $this->get_dependency_object( $recipient_id, $type );
+			$obj->ver = $this->sanitize_version( $version );
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Return the URL of a specified registered style or script.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $dependency_id The ID of the style or script to determine the URL of.
+	 * @param string $type          The type of dependency object. Valid options are style and script.
+	 *
+	 * @return string               The URL, or an empty string.
+	 */
+	public function get_url( $dependency_id, $type ) {
+		$url = '';
+
+		if ( $this->is_registered( $dependency_id, $type ) ) {
+			$obj = $this->get_dependency_object( $dependency_id, $type );
+			$url = add_query_arg( 'ver', $obj->ver, $obj->src );
+		}
+
+		return $url;
+	}
+
+	/**
+	 * Restrict the characters allowed in a version string.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $version The version string to sanitize.
+	 *
+	 * @return string         The sanitized version string.
+	 */
 	private function sanitize_version( $version ) {
 		return preg_replace( '/[^A-Za-z0-9\-_\.]+/', '', $version );
 	}
 
-
-	public function style_is_registered( $style_id ) {
-		return ! is_null( $this->get_dependency_object( $style_id, 'style' ) );
-	}
-
-
-	public function add_style_dependency( $style_id, $dependency_id ) {
-		if ( $this->style_is_registered( $style_id ) && $this->style_is_registered( $dependency_id ) ) {
-			$style = $this->get_dependency_object( $style_id, 'style' );
-			if ( ! in_array( $dependency_id, $style->deps ) ) {
-				$style->deps[] = $dependency_id;
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-
-	public function remove_style_dependency( $style_id, $dependency_id ) {
-		if ( $this->style_is_registered( $style_id ) ) {
-			$style = $this->get_dependency_object( $style_id, 'style' );
-			if ( false !== $key = array_search( $dependency_id, $style->deps ) ) {
-				unset( $style->deps[ $key ] );
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-
-	public function update_style_version( $style_id, $version ) {
-		if ( $this->style_is_registered( $style_id ) ) {
-			$style = $this->get_dependency_object( $style_id, 'style' );
-			$style->ver = $this->sanitize_version( $version );
-			return true;
-		}
-
-		return false;
-	}
-
-
-	public function get_style_url( $style_id ) {
-		$url = '';
-
-		if ( $this->style_is_registered( $style_id ) ) {
-			$style = $this->get_dependency_object( $style_id, 'style' );
-			$url = add_query_arg( 'ver', $style->ver, $style->src );
-		}
-
-		return $url;
-	}
-
-
-	public function script_is_registered( $script_id ) {
-		return ! is_null( $this->get_dependency_object( $script_id, 'script' ) );
-	}
-
-
-	public function add_script_dependency( $script_id, $dependency_id ) {
-		if ( $this->script_is_registered( $script_id ) && $this->script_is_registered( $dependency_id ) ) {
-			$script = $this->get_dependency_object( $script_id, 'script' );
-			if ( ! in_array( $dependency_id, $script->deps ) ) {
-				$script->deps[] = $dependency_id;
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-
-	public function remove_script_dependency( $script_id, $dependency_id ) {
-		if ( $this->script_is_registered( $script_id ) ) {
-			$script = $this->get_dependency_object( $script_id, 'script' );
-			if ( false !== $key = array_search( $dependency_id, $script->deps ) ) {
-				unset( $script->deps[ $key ] );
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-
-	public function update_script_version( $script_id, $version ) {
-		if ( $this->script_is_registered( $script_id ) ) {
-			$script = $this->get_dependency_object( $script_id, 'script' );
-			$script->ver = $this->sanitize_version( $version );
-			return true;
-		}
-
-		return false;
-	}
-
-
-	public function get_script_url( $script_id ) {
-		$url = '';
-
-		if ( $this->script_is_registered( $script_id ) ) {
-			$script = $this->get_dependency_object( $script_id, 'script' );
-			$url = add_query_arg( 'ver', $script->ver, $script->src );
-		}
-
-		return $url;
-	}
-
-
+	/**
+	 * Return the URL for loading the Google fonts currently used in the theme.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param bool $force   True to generate the URL from scratch, rather than preferencing a saved value in the database.
+	 * @param bool $preview True if the URL is for previewing new fonts (don't save the URL to the database).
+	 *
+	 * @return string       The URL, or an empty string.
+	 */
 	private function get_google_url( $force = false, $preview = false ) {
 		$setting_id = 'google-font-url';
 
@@ -522,7 +589,15 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		return $url;
 	}
 
-
+	/**
+	 * Return a JSON string of data for the Google fonts currently used in the theme.
+	 *
+	 * This is used to retrieve font data for the Customizer preview pane.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
 	public function get_google_json() {
 		// Only run this in the proper hook context.
 		if ( 'wp_ajax_make-google-json' !== current_action() ) {
@@ -544,7 +619,13 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		wp_send_json_success( $this->font()->get_source( 'google' )->build_json( $fonts, $subsets ) );
 	}
 
-
+	/**
+	 * Return data used by the FitVids.js script.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
 	private function get_fitvids_selectors() {
 		/**
 		 * Filter: Allow customization of the selectors that are used to apply FitVids.
