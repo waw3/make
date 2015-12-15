@@ -11,7 +11,7 @@ define( 'TTFMAKE_VERSION', '1.6.6' );
 /**
  * The minimum version of WordPress required for Make.
  */
-define( 'TTFMAKE_MIN_WP_VERSION', '4.0' );
+define( 'TTFMAKE_MIN_WP_VERSION', '4.2' );
 
 /**
  * The suffix to use for scripts.
