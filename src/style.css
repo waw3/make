@@ -4008,6 +4008,35 @@ div.sharedaddy {
 	}
 }
 
+@media screen and (max-width: 480px) {
+	.woocommerce-page table.shop_table,
+	.woocommerce-page table.shop_table thead,
+	.woocommerce-page table.shop_table tbody,
+	.woocommerce-page table.shop_table th,
+	.woocommerce-page table.shop_table td,
+	.woocommerce-page table.shop_table tr {
+		display: block;
+	}
+
+	.woocommerce-page table.shop_table thead,
+	.woocommerce-page table.shop_table tbody,
+	.woocommerce-page table.shop_table th,
+	.woocommerce-page table.shop_table td,
+	.woocommerce-page table.shop_table tr {
+		border: none;
+	}
+
+	.woocommerce-page table.shop_table thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	.woocommerce-cart .cart-collaterals .cart_totals table th {
+		padding-right: 0.5em;
+	}
+}
+
 
 /*---------------------------------------------------------
  Twitter (_support.scss)
