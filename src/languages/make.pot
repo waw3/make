@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.6\n"
+"Project-Id-Version: Make 1.6.7\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-12-03 19:49:29+00:00\n"
+"POT-Creation-Date: 2015-12-17 22:49:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -97,10 +97,6 @@ msgstr ""
 msgid ""
 "Make requires at least WordPress version %1$s. You are running version "
 "%2$s. Please upgrade and try again."
-msgstr ""
-
-#: inc/admin-notice.php:258
-msgid "Hide"
 msgstr ""
 
 #: inc/builder/core/base.php:97
@@ -483,27 +479,21 @@ msgid ""
 "full compatibility."
 msgstr ""
 
-#: inc/compatibility.php:336 inc/compatibility.php:358
+#: inc/compatibility.php:336
 msgid "update WordPress"
 msgstr ""
 
-#: inc/compatibility.php:353
-msgid ""
-"Make will soon be dropping support for WordPress versions 4.0 and 4.1. "
-"Please %2$s to ensure full compatibility."
-msgstr ""
-
-#: inc/compatibility.php:388
+#: inc/compatibility.php:366
 msgid ""
 "A new version of Make Plus is available. If you encounter problems updating "
 "through %1$s, please %2$s to update manually."
 msgstr ""
 
-#: inc/compatibility.php:392
+#: inc/compatibility.php:370
 msgid "the WordPress interface"
 msgstr ""
 
-#: inc/compatibility.php:397
+#: inc/compatibility.php:375
 msgid "follow these steps"
 msgstr ""
 

@@ -164,7 +164,36 @@ div.sharedaddy {
 		width: 100% !important;
 	}
 }
-
+// http://css-tricks.com/responsive-data-tables/
+@media screen and (max-width: 480px) {
+	// Force table elements to display block instead
+	.woocommerce-page table.shop_table,
+	.woocommerce-page table.shop_table thead,
+	.woocommerce-page table.shop_table tbody,
+	.woocommerce-page table.shop_table th,
+	.woocommerce-page table.shop_table td,
+	.woocommerce-page table.shop_table tr {
+	    display: block;
+	}
+	// Remove all internal table borders
+	.woocommerce-page table.shop_table thead,
+	.woocommerce-page table.shop_table tbody,
+	.woocommerce-page table.shop_table th,
+	.woocommerce-page table.shop_table td,
+	.woocommerce-page table.shop_table tr {
+			border: none;
+	}
+	// Hide table headers (but not display: none;, for accessibility)
+	.woocommerce-page table.shop_table thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	// Apply padding to cart totals
+	.woocommerce-cart .cart-collaterals .cart_totals table th {
+		padding-right: .5em;
+	}
+}
 /*---------------------------------------------------------
  Twitter (_support.scss)
 -------------------------------------------------------- */
