@@ -107,6 +107,26 @@ function ttfmake_plus_styles() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_get_view' ) ) :
+/**
+ * Determine the current view.
+ *
+ * For use with view-related theme options.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return string    The string representing the current view.
+ */
+function ttfmake_get_view() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_current_view', $backtrace[0] );
+	return make_get_current_view();
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_current_view' );
+endif;
+
 /**
  * Add notice if Make Plus is installed as a theme.
  *

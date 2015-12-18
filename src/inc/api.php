@@ -14,6 +14,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_ManagerInterface $font = null,
 		MAKE_Settings_ThemeModInterface $thememod = null,
+		MAKE_View_ManagerInterface $view = null,
 		MAKE_Setup_WidgetsInterface $widgets = null,
 		MAKE_Setup_ScriptsInterface $scripts = null,
 		MAKE_Style_ManagerInterface $style = null,
@@ -36,13 +37,16 @@ class MAKE_API extends MAKE_Util_Modules {
 		}
 
 		// Choices
-		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Manager( $this->inject_module( 'error' ) ) : $choices );
+		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $choices );
 
 		// Font
 		$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $font );
 
 		// Theme mods
 		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ), $this->inject_module( 'font' ) ) : $thememod );
+
+		// View
+		$this->add_module( 'view', ( is_null( $view ) ) ? new MAKE_View_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $view );
 
 		// Widgets
 		$this->add_module( 'widgets', ( is_null( $widgets ) ) ? new MAKE_Setup_Widgets() : $widgets );
@@ -79,53 +83,48 @@ function Make() {
 
 
 function make_is_plus() {
-	return Make()->get_module( 'compatibility' )->is_plus();
+	return Make()->compatibility()->is_plus();
 }
 
 
-function make_thememod_update_settings( $settings, MAKE_Settings_BaseInterface $instance ) {
-	// Make sure we're not doing it wrong.
-	if ( 'make_settings_thememod_loaded' !== current_action() ) {
-		$backtrace = debug_backtrace();
-
-		Make()->get_module( 'compatibility' )->doing_it_wrong(
-			__FUNCTION__,
-			__( 'This function should only be called during the make_settings_thememod_loaded action.', 'make' ),
-			null,
-			$backtrace[0]
-		);
-
-		return false;
-	}
-
-	return $instance->add_settings( $settings, array(), true );
-}
-
-
-function make_choices_update_choices( $choice_sets, MAKE_Choices_ManagerInterface $instance ) {
-	// Make sure we're not doing it wrong.
-	if ( 'make_choices_loaded' !== current_action() ) {
-		$backtrace = debug_backtrace();
-
-		Make()->get_module( 'compatibility' )->doing_it_wrong(
-			__FUNCTION__,
-			__( 'This function should only be called during the make_choices_loaded action.', 'make' ),
-			null,
-			$backtrace[0]
-		);
-
-		return false;
+function make_update_choices( $choice_sets, MAKE_Choices_ManagerInterface $instance = null ) {
+	if ( is_null( $instance ) ) {
+		$instance = Make()->choices();
 	}
 
 	return $instance->add_choice_sets( $choice_sets, true );
 }
 
 
+function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterface $instance = null ) {
+	if ( is_null( $instance ) ) {
+		$instance = Make()->thememod();
+	}
+
+	return $instance->add_settings( $settings, array(), true );
+}
+
+
 function make_thememod_get_value( $setting_id ) {
-	return Make()->get_module( 'thememod' )->get_value( $setting_id );
+	return Make()->thememod()->get_value( $setting_id );
 }
 
 
 function make_thememod_get_default( $setting_id ) {
-	return Make()->get_module( 'thememod' )->get_default( $setting_id );
+	return Make()->thememod()->get_default( $setting_id );
+}
+
+
+function make_add_view( $view_id, array $args = array(), $overwrite = false ) {
+	return Make()->view()->add_view( $view_id, $args, $overwrite );
+}
+
+
+function make_get_current_view() {
+	return Make()->view()->get_current_view();
+}
+
+
+function make_is_current_view( $view_id ) {
+	return Make()->view()->is_current_view( $view_id );
 }
