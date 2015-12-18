@@ -49,7 +49,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		$this->add_module( 'view', ( is_null( $view ) ) ? new MAKE_View_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $view );
 
 		// Widgets
-		$this->add_module( 'widgets', ( is_null( $widgets ) ) ? new MAKE_Setup_Widgets() : $widgets );
+		$this->add_module( 'widgets', ( is_null( $widgets ) ) ? new MAKE_Setup_Widgets( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ), $this->inject_module( 'view' ) ) : $widgets );
 
 		// Scripts
 		$this->add_module( 'scripts', ( is_null( $scripts ) ) ? new MAKE_Setup_Scripts( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $scripts );
@@ -127,4 +127,9 @@ function make_get_current_view() {
 
 function make_is_current_view( $view_id ) {
 	return Make()->view()->is_current_view( $view_id );
+}
+
+
+function make_has_sidebar( $location ) {
+	return Make()->widgets()->has_sidebar( $location );
 }

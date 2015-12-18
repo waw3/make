@@ -127,6 +127,60 @@ else :
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_current_view' );
 endif;
 
+if ( ! function_exists( 'ttfmake_has_sidebar' ) ) :
+/**
+ * Determine if the current view should show a sidebar in the given location.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $location    The location to test for.
+ * @return bool                   Whether or not the location has a sidebar.
+ */
+function ttfmake_has_sidebar( $location ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_has_sidebar', $backtrace[0] );
+	return make_has_sidebar( $location );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_has_sidebar' );
+endif;
+
+if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
+/**
+ * Output a sidebar description that reflects its current status.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $sidebar_id    The sidebar to look up the description for.
+ * @return string                   The description.
+ */
+function ttfmake_sidebar_description( $sidebar_id ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
+
+if ( ! function_exists( 'ttfmake_sidebar_list_enabled' ) ) :
+/**
+ * Compile a list of views where a particular sidebar is enabled.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $location    The sidebar to look up.
+ * @return array                  The sidebar's current locations.
+ */
+function ttfmake_sidebar_list_enabled( $location ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+endif;
+
 /**
  * Add notice if Make Plus is installed as a theme.
  *

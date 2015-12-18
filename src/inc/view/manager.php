@@ -54,11 +54,26 @@ final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_Man
 		}
 
 		$views = array(
-			'blog' => array( 'callback' => 'is_home' ),
-			'archive' => array( 'callback' => 'is_archive' ),
-			'search' => array( 'callback' => 'is_search' ),
-			'page' => array( 'callback' => array( $this, 'callback_page' ) ),
-			'post' => array( 'callback' => array( $this, 'callback_post' ) ),
+			'blog' => array(
+				'label'    => __( 'Blog (Post Page)', 'make' ),
+				'callback' => 'is_home',
+			),
+			'archive' => array(
+				'label'    => __( 'Archives', 'make' ),
+				'callback' => 'is_archive',
+			),
+			'search' => array(
+				'label'    => __( 'Search Results', 'make' ),
+				'callback' => 'is_search',
+			),
+			'page' => array(
+				'label'    => __( 'Pages', 'make' ),
+				'callback' => array( $this, 'callback_page' ),
+			),
+			'post' => array(
+				'label'    => __( 'Posts', 'make' ),
+				'callback' => array( $this, 'callback_post' ),
+			),
 		);
 
 		foreach ( $views as $view_id => $view_args ) {
@@ -112,6 +127,7 @@ final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_Man
 		$return = true;
 
 		$defaults = array(
+			'label'    => ucwords( preg_replace( '/[\-_]*/', ' ', $view_id ) ),
 			'callback' => '',
 			'priority' => 10,
 		);
@@ -166,7 +182,7 @@ final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_Man
 				$prioritizer[ $priority ] = array();
 			}
 
-			$prioritizer[ $priority ][ $view_id ] = $view_args['callback'];
+			$prioritizer[ $priority ][ $view_id ] = $view_args;
 		}
 
 		ksort( $prioritizer );
@@ -181,18 +197,44 @@ final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_Man
 	}
 
 
+	public function view_exists( $view_id ) {
+		$views = $this->get_sorted_views();
+		return isset( $views[ $view_id ] );
+	}
+
+
+	public function get_view_label( $view_id ) {
+		$label = '';
+
+		if ( $this->view_exists( $view_id ) ) {
+			$views = $this->get_sorted_views();
+			$label = ( isset( $views[ $view_id ]['label'] ) ) ? $views[ $view_id ]['label'] : '';
+		}
+
+		return $label;
+	}
+
+
 	public function get_current_view() {
+		// Make sure we're not doing it wrong.
 		if ( ! did_action( 'template_redirect' ) ) {
 			$backtrace = debug_backtrace();
-			$this->compatibility()->doing_it_wrong( __FUNCTION__, __( 'View cannot be accurately determined until after the <code>template_redirect</code> action has run.', 'make' ), '1.7.0', $backtrace[0] );
+
+			$this->compatibility()->doing_it_wrong(
+				__FUNCTION__,
+				__( 'View cannot be accurately determined until after the <code>template_redirect</code> action has run.', 'make' ),
+				'1.7.0',
+				$backtrace[0]
+			);
+
 			return null;
 		}
 
 		$views = $this->get_sorted_views();
 		$view = $this->default_view;
 
-		foreach ( $views as $view_id => $callback ) {
-			if ( is_callable( $callback ) && true === call_user_func( $callback ) ) {
+		foreach ( $views as $view_id => $view_args ) {
+			if ( is_callable( $view_args['callback'] ) && true === call_user_func( $view_args['callback'] ) ) {
 				$view = $view_id;
 			}
 		}
