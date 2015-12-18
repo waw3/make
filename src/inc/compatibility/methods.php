@@ -325,6 +325,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 * @param string $function The function that was called.
 	 * @param string $message  A message explaining what has been done incorrectly.
 	 * @param string $version  The version of WordPress where the message was added.
+	 * @param null $backtrace
 	 */
 	public function doing_it_wrong( $function, $message, $version = null, $backtrace = null ) {
 		/**
@@ -336,13 +337,13 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 		 * @param string $message  A message explaining what has been done incorrectly.
 		 * @param string $version  The version of Make where the message was added.
 		 */
-		do_action( 'make_doing_it_wrong_run', $function, $message, $version = null );
+		do_action( 'make_doing_it_wrong_run', $function, $message, $version );
 
 		$error_code = 'make_doing_it_wrong';
 
 		// Add an error
-		$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
-		$this->error()->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
+		$message .= ( ! is_null( $version ) ) ? ' ' . sprintf( __( '(This message was added in version %s.)', 'make' ), $version ) : '';
+		$this->error()->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s' ), $function, $message ) );
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {

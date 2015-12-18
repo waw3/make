@@ -124,8 +124,8 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 
 			$this->compatibility()->doing_it_wrong(
 				__FUNCTION__,
-				__( 'This function should only be called during or before the make_choices_loaded action.', 'make' ),
-				null,
+				__( 'This function should only be called during or before the <code>make_choices_loaded</code> action.', 'make' ),
+				'1.7.0',
 				$backtrace[0]
 			);
 

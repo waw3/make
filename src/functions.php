@@ -37,13 +37,18 @@ if ( ! isset( $content_width ) ) {
  * @return void
  */
 function ttfmake_require_files() {
+	// Activation
+	require_once get_template_directory() . '/inc/activation.php';
+
+	// Autoloader
+	require_once get_template_directory() . '/inc/autoload.php';
+
+	// Load API
+	global $Make;
+	$Make = new MAKE_API;
+
+	// Load other files
 	$files = array(
-		// Activation
-		get_template_directory() . '/inc/activation.php',
-		// Autoloader
-		get_template_directory() . '/inc/autoload.php',
-		// API
-		get_template_directory() . '/inc/api.php',
 		// Gallery slider
 		get_template_directory() . '/inc/gallery-slider/gallery-slider.php',
 		// Formatting
@@ -82,10 +87,6 @@ function ttfmake_require_files() {
 			require_once $file;
 		}
 	}
-
-	// Load API
-	global $Make;
-	$Make = new MAKE_API;
 }
 
 // Load files immediately.
