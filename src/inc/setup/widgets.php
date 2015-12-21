@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Setup_Widgets implements MAKE_Setup_WidgetsInterface, MAKE_Util_HookInterface {
+final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_WidgetsInterface, MAKE_Util_HookInterface {
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -165,7 +165,7 @@ final class MAKE_Setup_Widgets implements MAKE_Setup_WidgetsInterface, MAKE_Util
 	private function get_enabled_view_labels( $location ) {
 		$enabled_views = array();
 
-		$views = $this->view()->get_sorted_views();
+		$views = array_keys( $this->view()->get_sorted_views() );
 
 		foreach ( $views as $view_id ) {
 			$setting_id = 'layout-' . $view_id . '-sidebar-' . $location;
