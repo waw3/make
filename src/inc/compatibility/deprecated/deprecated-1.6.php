@@ -8,6 +8,7 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 	return;
 }
 
+if ( ! function_exists( 'ttfmake_customizer_supports_panels' ) ) :
 /**
  * Detect support for Customizer panels.
  *
@@ -27,7 +28,11 @@ function ttfmake_customizer_supports_panels() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace[0] );
 	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) ) || function_exists( 'wp_validate_boolean' );
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_supports_panels', '1.6.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_add_legacy_sections' ) ) :
 /**
  * Add the old sections and controls to the customizer for WP installations with no panel support.
  *
@@ -43,7 +48,11 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_add_legacy_sections', '1.6.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_css_legacy_fonts' ) ) :
 /**
  * Build the CSS rules for the custom fonts.
  *
@@ -58,3 +67,6 @@ function ttfmake_css_legacy_fonts() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_css_legacy_fonts', '1.6.0' );
+endif;

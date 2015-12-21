@@ -8,6 +8,7 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 	return;
 }
 
+if ( ! function_exists( 'ttfmake_display_favicons' ) ) :
 /**
  * Write the favicons to the head to implement the options.
  *
@@ -22,7 +23,11 @@ function ttfmake_display_favicons() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_display_favicons', '1.5.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
 /**
  * Add theme option body classes.
  *
@@ -39,7 +44,11 @@ function ttfmake_body_layout_classes( $classes ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes', $backtrace[0] );
 	return $classes;
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_body_layout_classes', '1.5.0', 'ttfmake_body_classes' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_define_header_sections' ) ) :
 /**
  * Define the sections and settings for the Header panel.
  *
@@ -54,7 +63,11 @@ function ttfmake_customizer_define_header_sections( $sections ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 	return $sections;
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_define_header_sections', '1.5.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_customizer_define_footer_sections' ) ) :
 /**
  * Define the sections and settings for the Footer panel
  *
@@ -69,7 +82,11 @@ function ttfmake_customizer_define_footer_sections( $sections ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 	return $sections;
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_define_footer_sections', '1.5.0' );
+endif;
 
+if ( ! function_exists( 'ttfmake_css_add_rules' ) ) :
 /**
  * Process user options to generate CSS needed to implement the choices.
  *
@@ -84,3 +101,6 @@ function ttfmake_css_add_rules() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
 }
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_css_add_rules', '1.5.0' );
+endif;
