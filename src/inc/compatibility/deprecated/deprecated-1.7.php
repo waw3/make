@@ -8,6 +8,23 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 	return;
 }
 
+if ( ! function_exists( 'ttfmake_widgets_init' ) ) :
+/**
+ * Register widget areas
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_widgets_init() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'register_sidebar / unregister_sidebar', $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_widgets_init', '1.7.0', 'register_sidebar / unregister_sidebar' );
+endif;
+
 if ( ! function_exists( 'ttfmake_scripts' ) ) :
 /**
  * Enqueue styles and scripts.
