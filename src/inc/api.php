@@ -105,12 +105,12 @@ function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterfa
 }
 
 
-function make_thememod_get_value( $setting_id ) {
+function make_get_thememod_value( $setting_id ) {
 	return Make()->thememod()->get_value( $setting_id );
 }
 
 
-function make_thememod_get_default( $setting_id ) {
+function make_get_thememod_default( $setting_id ) {
 	return Make()->thememod()->get_default( $setting_id );
 }
 

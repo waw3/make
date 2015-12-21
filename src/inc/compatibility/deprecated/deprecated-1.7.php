@@ -451,11 +451,11 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  */
 function ttfmake_get_default( $option ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_thememod_get_default', $backtrace[0] );
-	return make_thememod_get_default( $option );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_thememod_default', $backtrace[0] );
+	return make_get_thememod_default( $option );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_get_default', '1.7.0', 'make_thememod_get_default' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_get_default', '1.7.0', 'make_get_thememod_default' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_choices' ) ) :
@@ -1461,7 +1461,7 @@ if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
 function ttfmake_sanitize_font_subset( $value ) {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->sanitize_subset', $backtrace[0] );
-	return Make()->font()->get_source( 'google' )->sanitize_subset( $value, make_thememod_get_default( 'font-subset' ) );
+	return Make()->font()->get_source( 'google' )->sanitize_subset( $value, make_get_thememod_default( 'font-subset' ) );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_subset', '1.7.0', 'Make()->font()->get_source( \'google\' )->sanitize_subset' );
