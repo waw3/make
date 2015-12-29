@@ -594,6 +594,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'last.fm'            => 'fa-lastfm',
 		'leanpub.com'        => 'fa-leanpub',
 		'linkedin.com'       => 'fa-linkedin',
+		'mailto:'            => 'fa-envelope',
 		'medium.com'         => 'fa-medium',
 		'ok.ru'              => 'fa-odnoklassniki',
 		'pinterest.com'      => 'fa-pinterest',
