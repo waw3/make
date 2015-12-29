@@ -3,7 +3,7 @@
 -------------------------------------------------------- */
 .ttfmake-section-text .ttfmake-titlediv {
 	margin-bottom: 0; /*reset*/
-	padding-right: 90px;
+	padding-right: 0;
 }
 .ttfmake-section-text .ttfmake-media-uploader-placeholder {
 	border-bottom: 0; /*reset*/
