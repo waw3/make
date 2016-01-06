@@ -352,4 +352,74 @@ class TEST_Settings_Base extends WP_UnitTestCase {
 		$this->populate_settings( $instance );
 		$this->assertNull( $instance->is_default( 'test_invalid', 'default1' ) );
 	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_get_sanitize_callback_standard_context() {
+		// Standard context callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertEquals( 'strtolower', $instance->get_sanitize_callback( 'test2' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_get_sanitize_callback_alternate_context() {
+		// Alternate context callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertEquals( 'absint', $instance->get_sanitize_callback( 'test2', 'alternate' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_get_sanitize_callback_invalid_context() {
+		// Invalid context, return standard callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertEquals( 'strtolower', $instance->get_sanitize_callback( 'test2', 'invalid' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_get_sanitize_callback_invalid() {
+		// Setting does not exist
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertNull( $instance->get_sanitize_callback( 'test_invalid', 'alternate' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_has_sanitize_callback_true() {
+		// Context does have callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertTrue( $instance->has_sanitize_callback( 'test2', 'alternate' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_has_sanitize_callback_false() {
+		// Context does not have callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertFalse( $instance->has_sanitize_callback( 'test1', 'alternate' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_has_sanitize_callback_invalid() {
+		// Setting does not exist
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertFalse( $instance->has_sanitize_callback( 'test_invalid', 'alternate' ) );
+	}
 }
