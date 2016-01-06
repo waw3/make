@@ -10,7 +10,7 @@
  */
 class TEST_Settings_Base extends WP_UnitTestCase {
 	/**
-	 * Get an object instance with mocked dependencies.
+	 * Get an instance of the subject class with mocked dependencies.
 	 *
 	 * @since x.x.x.
 	 *
@@ -421,5 +421,45 @@ class TEST_Settings_Base extends WP_UnitTestCase {
 		$instance = $this->get_instance();
 		$this->populate_settings( $instance );
 		$this->assertFalse( $instance->has_sanitize_callback( 'test_invalid', 'alternate' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_sanitize_value_standard_context() {
+		// Sanitize value with standard callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertEquals( 'capitalized', $instance->sanitize_value( 'Capitalized', 'test2' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_sanitize_value_alternate_context() {
+		// Sanitize value with "alternate" context callback
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertEquals( 0, $instance->sanitize_value( 'Capitalized', 'test2', 'alternate' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_sanitize_value_not_callable() {
+		// Callback is not callable
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertNull( $instance->sanitize_value( 'Capitalized', 'test3' ) );
+	}
+
+	/**
+	 * @since x.x.x.
+	 */
+	function test_sanitize_value_invalid() {
+		// Setting does not exist
+		$instance = $this->get_instance();
+		$this->populate_settings( $instance );
+		$this->assertNull( $instance->sanitize_value( 'Capitalized', 'test_invalid' ) );
 	}
 }
