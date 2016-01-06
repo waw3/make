@@ -391,7 +391,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 			return $current_value === $default_value;
 		}
 
-		return $this->undefined;
+		return false;
 	}
 
 	/**

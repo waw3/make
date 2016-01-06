@@ -350,7 +350,7 @@ class TEST_Settings_Base extends WP_UnitTestCase {
 		// Setting does not exist
 		$instance = $this->get_instance();
 		$this->populate_settings( $instance );
-		$this->assertNull( $instance->is_default( 'test_invalid', 'default1' ) );
+		$this->assertFalse( $instance->is_default( 'test_invalid', 'default1' ) );
 	}
 
 	/**
