@@ -384,10 +384,14 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 * @return bool
 	 */
 	public function is_default( $setting_id, $value = null ) {
-		$current_value = ( is_null( $value ) ) ? $this->get_value( $setting_id ) : $value;
-		$default_value = $this->get_default( $setting_id );
+		if ( $this->setting_exists( $setting_id, 'default' ) ) {
+			$current_value = ( is_null( $value ) ) ? $this->get_value( $setting_id ) : $value;
+			$default_value = $this->get_default( $setting_id );
 
-		return $current_value === $default_value;
+			return $current_value === $default_value;
+		}
+
+		return $this->undefined;
 	}
 
 	/**
