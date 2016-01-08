@@ -1538,6 +1538,35 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_all_font_choices_js', '1.7.0' );
 endif;
 
+if ( ! function_exists( 'ttfmake_get_font_property_option_keys' ) ) :
+/**
+ * Return all the option keys for the specified font property.
+ *
+ * @since  1.3.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $property    The font property to search for.
+ * @return array                  Array of matching font option keys.
+ */
+function ttfmake_get_font_property_option_keys( $property ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+
+	$all_keys = array_keys( ttfmake_option_defaults() );
+
+	$font_keys = array();
+	foreach ( $all_keys as $key ) {
+		if ( preg_match( '/^' . $property . '-/', $key ) || preg_match( '/^font-' . $property . '-/', $key ) ) {
+			$font_keys[] = $key;
+		}
+	}
+
+	return $font_keys;
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_get_font_property_option_keys', '1.7.0' );
+endif;
+
 if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
 /**
  * Return an array of standard websafe fonts.
