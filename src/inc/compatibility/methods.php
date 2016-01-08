@@ -19,13 +19,13 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	private $plus = false;
 
 	/**
-	 * The compatibility modes.
+	 * The available compatibility modes.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @var array
 	 */
-	private $mode = array(
+	private $modes = array(
 		'full' => array(
 			'deprecated'    => array( '1.5', '1.6', '1.7' ),
 			'hook-prefixer' => true,
@@ -52,6 +52,15 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 			'key-converter' => false,
 		),
 	);
+
+	/**
+	 * The current compatibility mode.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	private $mode = array();
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -89,10 +98,10 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 		 * @param string    $mode    The compatibility mode to run the theme in.
 		 */
 		$mode = apply_filters( 'make_compatibility_mode', 'full' );
-		if ( isset( $this->mode[ $mode ] ) ) {
-			$this->mode = $this->mode[ $mode ];
+		if ( isset( $this->modes[ $mode ] ) ) {
+			$this->mode = $this->modes[ $mode ];
 		} else {
-			$this->mode = $this->mode['full'];
+			$this->mode = $this->modes['full'];
 		}
 
 		// Load deprecated files.
