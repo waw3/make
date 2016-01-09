@@ -13,7 +13,7 @@ global $wp_version;
 // Notice of unsupported WordPress version
 if ( version_compare( $wp_version, TTFMAKE_MIN_WP_VERSION, '<' ) ) {
 	$this->register_admin_notice(
-		'make-wp-lt-min-version',
+		'make-wp-lt-min-version-' . TTFMAKE_MIN_WP_VERSION,
 		sprintf(
 			__( 'Make requires version %1$s of WordPress or higher. Please <a href="%2$s">update WordPress</a> to ensure full compatibility.', 'make' ),
 			TTFMAKE_MIN_WP_VERSION,
@@ -40,24 +40,6 @@ if ( version_compare( $wp_version, '4.2', '<' ) ) {
 			'cap'     => 'update_core',
 			'dismiss' => true,
 			'screen'  => array( 'dashboard', 'themes.php', 'update-core.php' ),
-			'type'    => 'warning',
-		)
-	);
-}
-
-// Notice to help with potential update issues with Make Plus
-if ( true === make_is_plus() && version_compare( Make()->get_module( 'compatibility' )->get_plus_version(), '1.4.7', '<=' ) ) {
-	$this->register_admin_notice(
-		'make-plus-lte-147',
-		sprintf(
-			__( 'A new version of Make Plus is available. If you encounter problems updating through <a href="%1$s">the WordPress interface</a>, please <a href="%2$s" target="_blank">follow these steps</a> to update manually.', 'make' ),
-			admin_url( 'update-core.php' ),
-			'https://thethemefoundry.com/tutorials/updating-your-existing-theme/'
-		),
-		array(
-			'cap'     => 'update_plugins',
-			'dismiss' => true,
-			'screen'  => array( 'dashboard', 'update-core.php', 'plugins.php' ),
 			'type'    => 'warning',
 		)
 	);

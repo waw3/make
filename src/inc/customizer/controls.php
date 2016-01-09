@@ -173,10 +173,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'layout',
 		);
 
-		if ( ! $this->compatibility()->is_plus() ) {
-			$file_bases[] = 'stylekit';
-		}
-
 		// Section/Control definitions
 		foreach ( $file_bases as $name ) {
 			$file = dirname( __FILE__ ) . '/definitions/' . $name . '.php';
@@ -208,10 +204,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'static-front-page',
 			'widgets',
 		);
-
-		if ( ! $this->compatibility()->is_plus() ) {
-			$file_bases[] = 'stylekit';
-		}
 
 		foreach ( $file_bases as $name ) {
 			$file = dirname( __FILE__ ) . '/mods/' . $name . '.php';
@@ -485,9 +477,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			return;
 		}
 
-		// Styles
-		$this->scripts()->register_style_libs();
-
 		wp_enqueue_style(
 			'ttfmake-customizer-jquery-ui',
 			get_template_directory_uri() . '/inc/customizer/css/jquery-ui/jquery-ui-1.10.4.custom.css',
@@ -508,9 +497,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			TTFMAKE_VERSION
 		);
 
-		// Scripts
-		$this->scripts()->register_script_libs();
-
 		wp_enqueue_script(
 			'make-customizer-controls',
 			get_template_directory_uri() . '/inc/customizer/js/controls.js',
@@ -528,14 +514,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 				'chosen_no_results_fonts' => esc_html__( 'No matching fonts', 'make' ),
 			),
 		);
-
-		// Add Make Plus data
-		if ( ! make_is_plus() ) {
-			$data['plus'] = array(
-				'url'   => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-				'label' => esc_html__( 'Upgrade to Make Plus', 'make' ),
-			);
-		}
 
 		// Localize the script
 		wp_localize_script(

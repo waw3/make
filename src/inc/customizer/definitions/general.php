@@ -261,31 +261,6 @@ $this->add_section_definitions( 'rss', array(
 	),
 ) );
 
-// White Label
-if ( ! make_is_plus() ) {
-	$this->add_section_definitions( 'white-label', array(
-		'panel'       => $panel,
-		'title'       => __( 'White Label', 'make' ),
-		'description' => __( 'Want to remove the theme byline from your website&#8217;s footer?', 'make' ),
-		'controls'     => array(
-			'footer-white-label-text' => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'type'         => 'text',
-					'description'  => sprintf(
-						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( ttfmake_get_plus_link( 'white-label' ) ),
-						sprintf(
-							__( 'Upgrade to %1$s', 'make' ),
-							'Make Plus'
-						)
-					),
-				),
-			),
-		),
-	) );
-}
-
 // Check for deprecated filters
 foreach ( array( 'make_customizer_general_sections' ) as $filter ) {
 	if ( has_filter( $filter ) ) {

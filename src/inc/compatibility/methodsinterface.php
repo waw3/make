@@ -9,10 +9,6 @@
  * @since x.x.x.
  */
 interface MAKE_Compatibility_MethodsInterface extends MAKE_Util_ModulesInterface {
-	public function is_plus();
-
-	public function get_plus_version();
-
 	public function deprecated_function( $function, $version, $replacement = null );
 
 	public function deprecated_hook( $hook, $version, $message = null );

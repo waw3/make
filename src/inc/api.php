@@ -10,6 +10,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		MAKE_Setup_L10nInterface $l10n = null,
 		MAKE_Error_CollectorInterface $error = null,
 		MAKE_Compatibility_MethodsInterface $compatibility = null,
+		MAKE_Plus_MethodsInterface $plus = null,
 		MAKE_Admin_NoticeInterface $notice = null,
 		MAKE_Choices_ManagerInterface $choices = null,
 		MAKE_Font_ManagerInterface $font = null,
@@ -30,6 +31,9 @@ class MAKE_API extends MAKE_Util_Modules {
 
 		// Compatibility
 		$this->add_module( 'compatibility', ( is_null( $compatibility ) ) ? new MAKE_Compatibility_Methods( $this->inject_module( 'error' ) ) : $compatibility );
+
+		// Plus
+		$this->add_module( 'plus', ( is_null( $plus ) ) ? new MAKE_Plus_Methods() : $plus );
 
 		// Admin notices
 		if ( is_admin() ) {
@@ -83,7 +87,7 @@ function Make() {
 
 
 function make_is_plus() {
-	return Make()->compatibility()->is_plus();
+	return Make()->plus()->is_plus();
 }
 
 

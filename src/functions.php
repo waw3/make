@@ -62,8 +62,6 @@ function ttfmake_require_files() {
 
 	if ( is_admin() ) {
 		$admin_files = array(
-			// Page customizations
-			get_template_directory() . '/inc/edit-page.php',
 			// Page Builder
 			get_template_directory() . '/inc/builder/core/base.php'
 		);

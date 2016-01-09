@@ -10,15 +10,6 @@
  */
 final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
 	/**
-	 * The activation status of Make Plus.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var bool
-	 */
-	private $plus = false;
-
-	/**
 	 * The available compatibility modes.
 	 *
 	 * @since x.x.x.
@@ -81,9 +72,6 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	) {
 		// Errors
 		$this->add_module( 'error', $error );
-
-		// Check for Make Plus
-		$this->plus = class_exists( 'TTFMP_App' );
 
 		/**
 		 * Filter: Set the mode for compatibility.
@@ -206,52 +194,6 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 		}
 
 		return $source;
-	}
-
-	/**
-	 * Check to see if Make Plus is active.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return bool
-	 */
-	public function is_plus() {
-		/**
-		 * Filter: Modify the status of Make Plus.
-		 *
-		 * @since 1.2.3.
-		 *
-		 * @param bool    $is_plus    True if Make Plus is active.
-		 */
-		return apply_filters( 'make_is_plus', $this->plus );
-	}
-
-	/**
-	 * Generate a link to the Make info page.
-	 *
-	 * @since  1.0.6.
-	 *
-	 * @return string                   The link.
-	 */
-	public function get_plus_link() {
-		return 'https://thethemefoundry.com/make-buy/';
-	}
-
-	/**
-	 * Get the version of Make Plus currently running.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return null
-	 */
-	public function get_plus_version() {
-		$version = null;
-
-		if ( true === $this->is_plus() && function_exists( 'ttfmp_get_app' ) ) {
-			$version = ttfmp_get_app()->version;
-		}
-
-		return $version;
 	}
 
 	/**

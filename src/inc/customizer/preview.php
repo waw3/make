@@ -89,8 +89,6 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 			return;
 		}
 
-		$this->scripts()->register_script_libs();
-
 		wp_enqueue_script(
 			'make-customizer-preview',
 			get_template_directory_uri() . '/inc/customizer/js/preview.js',

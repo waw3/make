@@ -168,31 +168,6 @@ $this->add_section_definitions( 'font-google', array(
 	),
 ) );
 
-// Typekit
-if ( ! $this->compatibility()->is_plus() ) {
-	$this->add_section_definitions( 'font-typekit', array(
-		'panel'       => $panel,
-		'title'       => __( 'Typekit', 'make' ),
-		'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ),
-		'controls'     => array(
-			'font-typekit-update-text' => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'type'         => 'text',
-					'description'  => sprintf(
-						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( ttfmake_get_plus_link( 'typekit' ) ),
-						sprintf(
-							__( 'Upgrade to %1$s', 'make' ),
-							'Make Plus'
-						)
-					),
-				),
-			)
-		)
-	) );
-}
-
 // Check for deprecated filters
 foreach ( array( 'make_customizer_typography_sections' ) as $filter ) {
 	if ( has_filter( $filter ) ) {

@@ -114,6 +114,18 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			include_once $file;
 		}
 
+		/**
+		 * Action: Fires at the end of the Admin Notice object's load method.
+		 *
+		 * This action gives a developer the opportunity to add additional admin notices
+		 * and run additional load routines.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param MAKE_Admin_Notice    $notice     The notice object that has just finished loading.
+		 */
+		do_action( 'make_notice_loaded', $this );
+
 		// Loading has occurred.
 		$this->loaded = true;
 	}

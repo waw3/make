@@ -58,6 +58,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_libs' ), 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_libs' ), 1 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'register_libs' ), 1 );
+		add_action( 'customize_preview_init', array( $this, 'register_libs' ), 1 );
 
 		// Enqueue front end styles and scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_styles' ) );
@@ -97,7 +98,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 */
 	public function register_libs() {
 		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'wp_enqueue_scripts', 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts', 'login_enqueue_scripts' ) ) ) {
+		if ( ! in_array( current_action(), array( 'wp_enqueue_scripts', 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts', 'customize_preview_init', 'login_enqueue_scripts' ) ) ) {
 			return;
 		}
 
@@ -291,7 +292,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			return;
 		}
 
-		if ( ! $this->compatibility()->is_plus() ) {
+		if ( ! make_is_plus() ) {
 			wp_enqueue_style(
 				'make-plus',
 				get_template_directory_uri() . '/css/plus.css',

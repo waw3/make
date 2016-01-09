@@ -164,33 +164,8 @@
 		}
 	});
 
-	// Make Plus message
-	Make = $.extend(Make, {
-		initMakePlus: function() {
-			var self = this;
-
-			if ('undefined' === typeof self.plus) {
-				return;
-			}
-
-			self.cache.$document.one('ready', function() {
-				upgrade = $('<a class="ttfmake-customize-plus"></a>')
-					.attr('href', self.plus.url)
-					.attr('target', '_blank')
-					.text(self.plus.label)
-				;
-				$('.preview-notice').append(upgrade);
-				// Remove accordion click event
-				$('.ttfmake-customize-plus').on('click', function(e) {
-					e.stopPropagation();
-				});
-			});
-		}
-	});
-
 	Make.initFont();
 	Make.initControls();
-	Make.initMakePlus();
 
 	/**
 	 * Visibility toggling for some controls

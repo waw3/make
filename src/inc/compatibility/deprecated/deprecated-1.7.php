@@ -107,8 +107,8 @@ function ttfmake_is_plus() {
  */
 function ttfmake_get_plus_link( $deprecated = '' ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->compatibility()->get_plus_link', $backtrace[0] );
-	return Make()->compatibility()->get_plus_link();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->plus()->get_plus_link', $backtrace[0] );
+	return Make()->plus()->get_plus_link();
 }
 
 /**
