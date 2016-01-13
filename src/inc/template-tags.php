@@ -331,7 +331,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	$output = '';
 
 	$attachment_meta = wp_get_attachment_metadata( $attachment_id );
-	$image_meta      = ( isset( $attachment_meta['image_meta'] ) ) ? array_filter( $attachment_meta['image_meta'], 'trim' ) : array();
+	$image_meta      = ( isset( $attachment_meta['image_meta'] ) ) ? $attachment_meta['image_meta'] : array();
 	if ( ! empty( $image_meta ) ) {
 		// Defaults
 		$defaults = array(
@@ -345,7 +345,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 		$image_meta = wp_parse_args( $image_meta, $defaults );
 
 		// Convert the shutter speed to a fraction and add units
-		if ( 0 !== $image_meta[ 'shutter_speed' ] ) {
+		if ( 0 != $image_meta[ 'shutter_speed' ] ) {
 			$raw_ss = floatval( $image_meta['shutter_speed'] );
 			$denominator = 1 / $raw_ss;
 			if ( $denominator > 1 ) {
@@ -370,15 +370,17 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 			 * Filter the shutter speed value.
 			 *
 			 * @since 1.2.3.
+			 * @since 1.7.0. Added $attachment_id parameter.
 			 *
 			 * @param string    $converted_as         The shutter speed value.
 			 * @param float     $raw_shutter_speed    The raw shutter speed value.
+			 * @param int       $attachment_id        The ID of the attachment.
 			 */
-			$image_meta['shutter_speed'] = apply_filters( 'make_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
+			$image_meta['shutter_speed'] = apply_filters( 'make_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'], $attachment_id );
 		}
 
 		// Convert the aperture to an F-stop
-		if ( 0 !== $image_meta[ 'aperture' ] ) {
+		if ( 0 != $image_meta[ 'aperture' ] ) {
 			// Translators: this string denotes a camera f-stop. %s is a placeholder for the f-stop value. E.g. f/3.5
 			$f_stop = sprintf(
 				__( 'f/%s', 'make' ),
@@ -389,11 +391,13 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 			 * Filter the aperture value.
 			 *
 			 * @since 1.2.3.
+			 * @since 1.7.0. Added $attachment_id parameter.
 			 *
 			 * @param string    $f_stop          The aperture value.
 			 * @param int       $raw_aperture    The raw aperture value.
+			 * @param int       $attachment_id   The ID of the attachment.
 			 */
-			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'] );
+			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'], $attachment_id );
 		}
 
 		$output .= "<ul class=\"entry-exif-list\">\n";
