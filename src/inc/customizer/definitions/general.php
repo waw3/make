@@ -40,18 +40,11 @@ $this->add_section_definitions( 'logo', array(
 if ( function_exists( 'has_site_icon' ) ) {
 	$this->add_section_definitions( 'logo', array(
 		'controls' => array(
-			'logo-icons-heading' => array(
+			'logo-icons-notice' => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
+					'control_type' => 'MAKE_Customizer_Control_Html',
 					'label'        => __( 'Favicon & Apple Touch Icon', 'make' ),
-					'type'         => 'heading',
-				),
-			),
-			'logo-icons-text'    => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
 					'description'  => __( 'These options have been deprecated in favor of the Site Icon setting in WordPress core. Please visit the Site Identity section to configure your site icon.', 'make' ),
-					'type'         => 'text',
 				),
 			),
 		)
@@ -201,8 +194,7 @@ $this->add_section_definitions( 'social', array(
 		),
 		'social-custom-menu-text'   => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'text',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'description'  => sprintf(
 					__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, create a custom menu %s.', 'make' ),
 					sprintf(
@@ -239,8 +231,7 @@ $this->add_section_definitions( 'rss', array(
 	'controls'    => array(
 		'social-rss-heading' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'heading',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'        => __( 'Default RSS', 'make' ),
 			),
 		),

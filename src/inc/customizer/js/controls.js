@@ -7,14 +7,17 @@
 	var api = wp.customize,
 		Make;
 
-	// Font choice loader
+	// Setup
 	Make = $.extend(MakeControls, {
 		cache: {
 			$document: $(document)
 		},
 
-		rtl: $('body').hasClass('rtl'),
+		rtl: $('body').hasClass('rtl')
+	});
 
+	// Font choice loader
+	Make = $.extend(Make, {
 		fontElements: {},
 
 		initFont: function() {

@@ -18,9 +18,8 @@ $this->add_section_definitions( 'color', array(
 	'controls' => array(
 		'color-group-color-scheme' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Color Scheme', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Color Scheme', 'make' ) . '</h4>',
 			),
 		),
 		'color-primary'   => array(
@@ -69,9 +68,8 @@ $this->add_section_definitions( 'color', array(
 		),
 		'color-group-global-link' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Links', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Links', 'make' ) . '</h4>',
 			),
 		),
 		'color-primary-link'    => array(
@@ -84,17 +82,17 @@ $this->add_section_definitions( 'color', array(
 		),
 		'color-group-global-background' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Background', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Background', 'make' ) . '</h4>',
 			),
 		),
-		// Site Background Color gets inserted here.
+		/**
+		 * Site Background Color gets inserted here.
+		 */
 		'main-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'   => __( 'Main Column Background Color', 'make' ),
-				'type'  => 'heading',
 			),
 		),
 		'main-background-color' => array(
@@ -133,9 +131,8 @@ $this->add_section_definitions( 'color-header', array(
 		),
 		'header-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'   => __( 'Background Color', 'make' ),
-				'type'  => 'heading',
 			),
 		),
 		'header-background-color'     => array(
@@ -194,9 +191,8 @@ $this->add_section_definitions( 'color-main-menu', array(
 	'controls' => array(
 		'color-group-nav-item' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Menu Items', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Menu Items', 'make' ) . '</h4>',
 			),
 		),
 		'color-nav-text'            => array(
@@ -220,9 +216,8 @@ $this->add_section_definitions( 'color-main-menu', array(
 		),
 		'color-group-subnav-item' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Sub-Menu Items', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Sub-Menu Items', 'make' ) . '</h4>',
 			),
 		),
 		'color-subnav-text'            => array(
@@ -308,9 +303,8 @@ $this->add_section_definitions( 'color-main-menu', array(
 		),
 		'color-group-current-item' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Current Item', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Current Item', 'make' ) . '</h4>',
 			),
 		),
 		'color-nav-current-item-background'            => array(
@@ -376,9 +370,8 @@ $this->add_section_definitions( 'color-header-bar', array(
 		),
 		'header-bar-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'   => __( 'Background Color', 'make' ),
-				'type'  => 'heading',
 			),
 		),
 		'header-bar-background-color' => array(
@@ -410,9 +403,8 @@ $this->add_section_definitions( 'color-sidebar', array(
 	'controls' => array(
 		'color-group-sidebar-widget' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Widgets', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Widgets', 'make' ) . '</h4>',
 			),
 		),
 		'color-widget-title-text'            => array(
@@ -453,9 +445,8 @@ $this->add_section_definitions( 'color-sidebar', array(
 		),
 		'color-group-sidebar-link' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'   => __( 'Links', 'make' ),
-				'type'  => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Links', 'make' ) . '</h4>',
 			),
 		),
 		'color-widget-link'            => array(
@@ -525,9 +516,8 @@ $this->add_section_definitions( 'color-footer', array(
 		),
 		'footer-background-color-heading' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'   => __( 'Background Color', 'make' ),
-				'type'  => 'heading',
 			),
 		),
 		'footer-background-color' => array(

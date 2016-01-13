@@ -36,9 +36,8 @@ $this->add_section_definitions( 'header', array(
 	'controls' => array(
 		'header-layout-group'        => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Layout', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Layout', 'make' ) . '</h4>',
 			),
 		),
 		'header-layout'              => array(
@@ -71,8 +70,7 @@ $this->add_section_definitions( 'header', array(
 		),
 		'header-padding-heading'     => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'heading',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'        => __( 'Padding', 'make' ),
 			),
 		),
@@ -85,9 +83,8 @@ $this->add_section_definitions( 'header', array(
 		),
 		'header-options-group'       => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Options', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Options', 'make' ) . '</h4>',
 			),
 		),
 		'header-text'                => array(
@@ -100,8 +97,7 @@ $this->add_section_definitions( 'header', array(
 		),
 		'header-options-heading'     => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'heading',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'        => __( 'Optional Header Elements', 'make' ),
 			),
 		),
@@ -142,9 +138,8 @@ $this->add_section_definitions( 'footer', array(
 	'controls' => array(
 		'footer-widgets-group'    => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Widgets', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Widgets', 'make' ) . '</h4>',
 			),
 		),
 		'footer-widget-areas'     => array(
@@ -159,9 +154,8 @@ $this->add_section_definitions( 'footer', array(
 		),
 		'footer-layout-group'     => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Layout', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Layout', 'make' ) . '</h4>',
 			),
 		),
 		'footer-layout'           => array(
@@ -174,8 +168,7 @@ $this->add_section_definitions( 'footer', array(
 		),
 		'footer-padding-heading'  => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'heading',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'        => __( 'Padding', 'make' ),
 			),
 		),
@@ -188,9 +181,8 @@ $this->add_section_definitions( 'footer', array(
 		),
 		'footer-options-group'    => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Options', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Options', 'make' ) . '</h4>',
 			),
 		),
 		'footer-text'             => array(
@@ -202,8 +194,7 @@ $this->add_section_definitions( 'footer', array(
 		),
 		'footer-options-heading'  => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'heading',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'label'        => __( 'Optional Footer Elements', 'make' ),
 			),
 		),
@@ -247,9 +238,8 @@ foreach ( $views as $view => $label ) {
 	$controls = array_merge( $controls, array(
 		$prefix . 'sidebars-heading'          => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'group-title',
-				'label'        => __( 'Header, Footer, Sidebars', 'make' ),
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Header, Footer, Sidebars', 'make' ) . '</h4>',
 			),
 		),
 		$prefix . 'hide-header'               => array(
@@ -287,8 +277,7 @@ foreach ( $views as $view => $label ) {
 		$controls = array_merge( $controls, array(
 			$prefix . 'sidebars-text' => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'type'         => 'text',
+					'control_type' => 'MAKE_Customizer_Control_Html',
 					'description'  => __( 'Sidebars are not available on pages using the Builder Template.', 'make' ),
 				),
 			),
@@ -299,9 +288,8 @@ foreach ( $views as $view => $label ) {
 	$controls = array_merge( $controls, array(
 		'featured-images-group-' . $view      => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Featured Images', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Featured Images', 'make' ) . '</h4>',
 			),
 		),
 		$prefix . 'featured-images'           => array(
@@ -324,9 +312,8 @@ foreach ( $views as $view => $label ) {
 		),
 		'post-date-group-' . $view            => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Post Date', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Post Date', 'make' ) . '</h4>',
 			),
 		),
 		$prefix . 'post-date'                 => array(
@@ -349,9 +336,8 @@ foreach ( $views as $view => $label ) {
 		),
 		'post-author-group-' . $view          => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Post Author', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Post Author', 'make' ) . '</h4>',
 			),
 		),
 		$prefix . 'post-author'               => array(
@@ -379,9 +365,8 @@ foreach ( $views as $view => $label ) {
 		$controls = array_merge( $controls, array(
 			'content-group-' . $view => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'label'        => __( 'Content', 'make' ),
-					'type'         => 'group-title',
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Content', 'make' ) . '</h4>',
 				),
 			),
 			$prefix . 'auto-excerpt' => array(
@@ -399,9 +384,8 @@ foreach ( $views as $view => $label ) {
 		$controls = array_merge( $controls, array(
 			'post-meta-group-' . $view  => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'label'        => __( 'Post Meta', 'make' ),
-					'type'         => 'group-title',
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Post Meta', 'make' ) . '</h4>',
 				),
 			),
 			$prefix . 'show-categories' => array(
@@ -425,9 +409,8 @@ foreach ( $views as $view => $label ) {
 	$controls = array_merge( $controls, array(
 		'comment-count-group-' . $view     => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'label'        => __( 'Comment Count', 'make' ),
-				'type'         => 'group-title',
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Comment Count', 'make' ) . '</h4>',
 			),
 		),
 		$prefix . 'comment-count'          => array(
@@ -455,9 +438,8 @@ foreach ( $views as $view => $label ) {
 		$controls = array_merge( $controls, array(
 			$prefix . 'pagetitle-heading' => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'type'         => 'group-title',
-					'label'        => __( 'Page Title', 'make' ),
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Page Title', 'make' ) . '</h4>',
 				),
 			),
 			$prefix . 'hide-title'        => array(
@@ -475,10 +457,8 @@ foreach ( $views as $view => $label ) {
 		$controls = array_merge( $controls, array(
 			'breadcrumb-group-' . $view  => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'label'        => __( 'Breadcrumbs', 'make' ),
-					'description'  => esc_html__( 'The Yoast SEO plugin enables this option.', 'make' ),
-					'type'         => 'group-title',
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Breadcrumbs', 'make' ) . '</h4><span class="description customize-control-description">' . esc_html__( 'The Yoast SEO plugin enables this option.', 'make' ) . '</span>',
 				),
 			),
 			$prefix . 'yoast-breadcrumb' => array(

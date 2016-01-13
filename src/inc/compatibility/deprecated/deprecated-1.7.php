@@ -1664,3 +1664,14 @@ function ttfmake_get_google_font_uri() {
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_font_uri', '1.7.0', 'Make()->scripts()->get_google_url' );
 endif;
+
+
+/**
+ * Class TTFMAKE_Customize_Misc_Control
+ *
+ * Control for adding arbitrary HTML to a Customizer section.
+ *
+ * @since 1.0.0.
+ * @deprecated 1.7.0.
+ */
+class TTFMAKE_Customize_Misc_Control extends MAKE_Customizer_Control_Misc {}

@@ -8,55 +8,41 @@
  *
  * Control for adding arbitrary HTML to a Customizer section.
  *
+ * This control has been deprecated in favor of MAKE_Customizer_Control_Html.
+ *
  * @since 1.0.0.
+ * @deprecated 1.7.0.
  */
-class MAKE_Customizer_Control_Misc extends WP_Customize_Control {
+class MAKE_Customizer_Control_Misc extends MAKE_Customizer_Control_Html {
 	/**
-	 * The current setting name.
+	 * Convert the ID and args for use with MAKE_Customizer_Control_Html.
 	 *
-	 * @since 1.0.0.
+	 * @since x.x.x.
 	 *
-	 * @var   string    The current setting name.
+	 * @param WP_Customize_Manager $manager
+	 * @param string               $id
+	 * @param array                $args
 	 */
-	public $settings = 'blogname';
+	public function __construct( WP_Customize_Manager $manager, $id, array $args = array() ) {
+		parent::__construct( $manager, $id, $args );
 
-	/**
-	 * The current setting description.
-	 *
-	 * @since 1.0.0.
-	 *
-	 * @var   string    The current setting description.
-	 */
-	public $description = '';
+		$type = $this->type;
+		$this->type = 'make-html';
 
-	/**
-	 * Render the description and title for the section.
-	 *
-	 * Prints arbitrary HTML to a customizer section. This provides useful hints for how to properly set some custom
-	 * options for optimal performance for the option.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	public function render_content() {
-		switch ( $this->type ) {
+		switch ( $type ) {
 			case 'group-title' :
-				echo '<h4 class="ttfmake-control-group-title">' . esc_html( $this->label ) . '</h4>';
+				$this->html = '<h4 class="make-group-title">' . esc_html( $this->label ) . '</h4>';
 				if ( '' !== $this->description ) {
-					echo '<span class="description customize-control-description">' . $this->description . '</span>';
+					$this->html .= '<span class="description customize-control-description">' . $this->description . '</span>';
 				}
-				break;
-			case 'heading' :
-				echo '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
-				break;
-			default:
-			case 'text' :
-				echo '<p class="description customize-control-description">' . $this->description . '</p>';
+				$this->label = '';
+				$this->description = '';
 				break;
 			case 'line' :
-				echo '<hr />';
+				$this->html = '<hr class="make-ruled-line" />';
 				break;
 		}
+
+		Make()->error()->add_error( 'make_customizer_control_misc_deprecated', __( 'The TTFMAKE_Customize_Misc_Control control is deprecated. Use MAKE_Customizer_Control_Html instead.', 'make' ) );
 	}
 }

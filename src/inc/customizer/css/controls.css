@@ -11,17 +11,19 @@ span.description {
 }
 
 /* Misc control styles */
-.ttfmake-control-group-title {
+.customize-control-make-html {
+	margin-bottom: -2px;
+}
+.make-customize-control-html-container {
+	margin-bottom: 14px;
+}
+.make-group-title {
 	color: #222222;
 	font-size: 18px;
 	font-weight: bold;
 	margin: 14px 0 6px;
 }
-.customize-control.customize-control-heading {
-	margin-top: 6px;
-	margin-bottom: -2px;
-}
-.customize-control.customize-control-line {
+.make-ruled-line {
 	margin-top: 10px;
 	margin-bottom: 6px;
 }

@@ -84,8 +84,11 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			return;
 		}
 
+		// Register control types
+		add_action( 'customize_register', array( $this, 'setup_control_types' ), 1 );
+
 		// Load section definitions
-		add_action( 'customize_register', array( $this, 'load_definitions' ), 1 );
+		add_action( 'customize_register', array( $this, 'load_definitions' ), 5 );
 
 		// Add panels
 		add_action( 'customize_register', array( $this, 'add_panels' ) );
@@ -124,6 +127,31 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 
 		return $this->helper;
+	}
+
+
+	public function setup_control_types( WP_Customize_Manager $wp_customize ) {
+		// Only run this in the proper hook context.
+		if ( 'customize_register' !== current_action() ) {
+			return;
+		}
+
+		// The types
+		$types = array(
+			'MAKE_Customizer_Control_Html'
+		);
+
+		// Register each type
+		foreach ( $types as $type ) {
+			$wp_customize->register_control_type( $type );
+		}
+
+		// Add a dummy setting for MAKE_Customize_Control_Html
+		$wp_customize->add_setting( 'make-customize-control-html', array(
+			'type'                 => 'number',
+			'default'              => 0,
+			'sanitize_callback'    => 'absint',
+		) );
 	}
 
 	/**

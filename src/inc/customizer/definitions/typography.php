@@ -20,9 +20,8 @@ $this->add_section_definitions( 'font', array(
 		array(
 			'body-link-group' => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'label'   => __( 'Links', 'make' ),
-					'type'  => 'group-title',
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Links', 'make' ) . '</h4>',
 				),
 			),
 			'font-weight-body-link' => array(
@@ -73,8 +72,7 @@ $this->add_section_definitions( 'font-main-menu', array(
 		array(
 			'font-nav-mobile-option-heading' => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'type'         => 'heading',
+					'control_type' => 'MAKE_Customizer_Control_Html',
 					'label'        => __( 'Mobile', 'make' ),
 				),
 			),
@@ -87,9 +85,8 @@ $this->add_section_definitions( 'font-main-menu', array(
 			),
 			'font-nav-current-item-option-heading' => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'type'         => 'group-title',
-					'label'        => __( 'Current Item', 'make' ),
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Current Item', 'make' ) . '</h4>',
 				),
 			),
 			'font-weight-nav-current-item' => array(
@@ -153,8 +150,7 @@ $this->add_section_definitions( 'font-google', array(
 		),
 		'font-subset-text' => array(
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Misc',
-				'type'         => 'text',
+				'control_type' => 'MAKE_Customizer_Control_Html',
 				'description'  => sprintf(
 					__( 'Not all fonts provide each of these subsets. Please visit the %s to see which subsets are available for each font.', 'make' ),
 					sprintf(
