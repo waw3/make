@@ -3,7 +3,11 @@
  * @package Make
  */
 
-
+/**
+ * Class MAKE_Customizer_Controls
+ *
+ * @since x.x.x.
+ */
 final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_Customizer_ControlsInterface, MAKE_Util_HookInterface {
 	/**
 	 * Array to hold the Panel definitions.
@@ -23,10 +27,22 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 */
 	private $section_definitions = array();
 
-
+	/**
+	 * Prefix string for panels, sections, and controls.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var string
+	 */
 	private $prefix = 'make_';
 
-
+	/**
+	 * Container for helper class.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var null
+	 */
 	private $helper = null;
 
 	/**
@@ -120,7 +136,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return $this->hooked;
 	}
 
-
+	/**
+	 * Getter for the helper class.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return MAKE_Customizer_DataHelper|null
+	 */
 	private function helper() {
 		if ( ! $this->helper instanceof MAKE_Customizer_DataHelper ) {
 			$this->helper = new MAKE_Customizer_DataHelper( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) );
@@ -129,7 +151,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return $this->helper;
 	}
 
-
+	/**
+	 * Preliminary setup for Make's custom control classes.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
+	 */
 	public function setup_control_types( WP_Customize_Manager $wp_customize ) {
 		// Only run this in the proper hook context.
 		if ( 'customize_register' !== current_action() ) {
@@ -241,7 +271,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 	}
 
-
+	/**
+	 * Get the array of panel definitions.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
 	public function get_panel_definitions() {
 		/**
 		 * Filter: Modify the array of panel definitions for the Customizer.
@@ -253,7 +289,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return apply_filters( 'make_customizer_panels', $this->panel_definitions );
 	}
 
-
+	/**
+	 * Register Customizer panels from the panel definitions array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
+	 */
 	public function add_panels( WP_Customize_Manager $wp_customize ) {
 		// Only run this in the proper hook context.
 		if ( 'customize_register' !== current_action() ) {
@@ -274,7 +318,17 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 	}
 
-
+	/**
+	 * Add a section definition to the array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param       $section_id
+	 * @param array $data
+	 * @param bool  $overwrite
+	 *
+	 * @return bool
+	 */
 	public function add_section_definitions( $section_id, array $data, $overwrite = false ) {
 		$section_id = sanitize_key( $section_id );
 
@@ -295,7 +349,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return true;
 	}
 
-
+	/**
+	 * Get the array of section/control definitions.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return mixed|void
+	 */
 	public function get_section_definitions() {
 		/**
 		 * Filter: Modify the array of section definitions for the Customizer.
@@ -307,7 +367,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return apply_filters( 'make_customizer_sections', $this->section_definitions );
 	}
 
-
+	/**
+	 * Register Customizer sections and controls from the section definitions array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
+	 */
 	public function add_sections( WP_Customize_Manager $wp_customize ) {
 		// Only run this in the proper hook context.
 		if ( 'customize_register' !== current_action() ) {
@@ -354,7 +422,18 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 	}
 
-
+	/**
+	 * Register settings and controls for a section from the controls array in a section definition.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 * @param                      $section
+	 * @param array                $args
+	 * @param int                  $initial_priority
+	 *
+	 * @return int
+	 */
 	private function add_section_controls( WP_Customize_Manager $wp_customize, $section, array $args, $initial_priority = 10 ) {
 		$priority = new MAKE_Util_Priority( $initial_priority, 5 );
 
@@ -427,7 +506,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return $priority->get();
 	}
 
-
+	/**
+	 * Shortcut to programmatically determine the appropriate transport for a setting.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $setting_id
+	 *
+	 * @return string
+	 */
 	private function get_transport( $setting_id ) {
 		$postMessage_settings = array();
 
@@ -498,13 +585,20 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		return absint( array_pop( $parsed_items ) );
 	}
 
-
+	/**
+	 * Enqueue styles and scripts for Customizer controls.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
 	public function enqueue_control_scripts() {
 		// Only run this in the proper hook context.
 		if ( 'customize_controls_enqueue_scripts' !== current_action() ) {
 			return;
 		}
 
+		// jQuery UI styles are for our custom Range and Buttonset controls.
 		wp_enqueue_style(
 			'ttfmake-customizer-jquery-ui',
 			get_template_directory_uri() . '/inc/customizer/css/jquery-ui/jquery-ui-1.10.4.custom.css',
@@ -551,7 +645,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		);
 	}
 
-
+	/**
+	 * Ajax handler for retrieving HTML markup for the list of available fonts in Typography settings.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
 	public function get_font_choices_ajax() {
 		// Only run this in the proper hook context.
 		if ( 'wp_ajax_make-font-choices' !== current_action() ) {
