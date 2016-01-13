@@ -258,15 +258,10 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		) );
 
 		// Add controls for Style Kits
-		$wp_customize->add_control( new MAKE_Customizer_Control_Misc( $wp_customize, 'make_stylekit-heading', array(
+		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'make_stylekit-info', array(
 			'section' => 'make_stylekit',
 			'label'   => __( 'Kits', 'make' ),
-			'type'    => 'heading',
-		) ) );
-		$wp_customize->add_control( new MAKE_Customizer_Control_Misc( $wp_customize, 'make_stylekit-dropdown', array(
-			'section'     => 'make_stylekit',
-			'type'        => 'text',
-			'description' => '
+			'html' => '
 				<select>
 					<option selected="selected" disabled="disabled">--- ' . __( "Choose a kit", "make" ) . ' ---</option>
 					<option disabled="disabled">' . __( "Default", "make" ) . '</option>
@@ -289,9 +284,8 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		) );
 
 		// Add control for Typekit
-		$wp_customize->add_control( new MAKE_Customizer_Control_Misc( $wp_customize, 'make_font-typekit-update-text', array(
+		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'make_font-typekit-update-text', array(
 			'section'     => 'make_font-typekit',
-			'type'        => 'text',
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),
@@ -311,9 +305,8 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		) );
 
 		// Add control for White Label
-		$wp_customize->add_control( new MAKE_Customizer_Control_Misc( $wp_customize, 'make_footer-white-label-text', array(
+		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'make_footer-white-label-text', array(
 			'section'     => 'make_white-label',
-			'type'        => 'text',
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),

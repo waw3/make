@@ -6,8 +6,7 @@
 /**
  * Class MAKE_Customizer_Control_Html
  *
- * JS-based control for adding arbitrary HTML to Customizer sections. Is the successor to
- * TTFMAKE_Customize_Misc_Control / MAKE_Customizer_Control_Misc
+ * JS-based control for adding arbitrary HTML to Customizer sections. Is the successor to TTFMAKE_Customize_Misc_Control
  *
  * @since x.x.x.
  */

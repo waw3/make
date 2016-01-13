@@ -46,13 +46,16 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 		$font_choices = $this->font()->get_font_choices( null, false );
 		$font_label = isset( $font_choices[ $font_value ] ) ? $font_choices[ $font_value ] : '';
 
+		$group_title = '<h4 class="make-group-title">' . esc_html( $label ) . '</h4>';
+		if ( $description ) {
+			$group_title .= '<span class="description customize-control-description">' . $description . '</span>';
+		}
+
 		return array(
 			'typography-group-' . $element => array(
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Misc',
-					'label'   => $label,
-					'description' => $description,
-					'type'  => 'group-title',
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'html'  => $group_title,
 				),
 			),
 			'font-family-' . $element   => array(
