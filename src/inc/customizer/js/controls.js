@@ -96,17 +96,11 @@
 			self.cache.$document.one('ready', function() {
 				// Populate cache
 				self.cache.$buttonset  = $('.ttfmake-control-buttonset, .ttfmake-control-image');
-				self.cache.$bgposition = $('.ttfmake-control-background-position');
 				self.cache.$range      = $('.ttfmake-control-range');
 
 				// Initialize Button sets
 				if (self.cache.$buttonset.length > 0) {
 					self.buttonset();
-				}
-
-				// Initialize Background Position
-				if (self.cache.$bgposition.length > 0) {
-					self.bgposition();
 				}
 
 				// Initialize ranges
@@ -118,22 +112,6 @@
 
 		buttonset: function() {
 			this.cache.$buttonset.buttonset();
-		},
-
-		bgposition: function() {
-			// Initialize button sets
-			this.cache.$bgposition.buttonset({
-				create : function(event) {
-					var $control = $(event.target),
-						$positionButton = $control.find('label'),
-						$caption = $control.parent().find('.background-position-caption');
-
-					$positionButton.on('click', function() {
-						var label = $(this).data('label');
-						$caption.text(label);
-					});
-				}
-			});
 		},
 
 		range: function() {
@@ -169,6 +147,43 @@
 
 	Make.initFont();
 	Make.initControls();
+
+	/**
+	 * Initialize instances of MAKE_Customizer_Control_BackgroundPosition
+	 *
+	 * @since x.x.x.
+	 */
+	api.controlConstructor.make_backgroundposition = api.Control.extend({
+		ready: function() {
+			var control = this,
+				$container = control.container.find('.make-customize-control-backgroundposition-container');
+
+			// Initialize the buttonset.
+			$container.buttonset({
+				create : function(event) {
+					var $control = $(event.target),
+						$positionButton = $control.find('label'),
+						$caption = $control.parent().find('.background-position-caption');
+
+					$positionButton.on('click', function() {
+						var label = $(this).data('label');
+						$caption.text(label);
+					});
+				}
+			});
+
+			// Listen for changes to the buttonset.
+			$container.on('change', 'input:radio', function() {
+				var value = $(this).parent().find('input:radio:checked').val();
+				control.setting.set(value);
+			});
+
+			// Update the buttonset if the setting changes.
+			control.setting.bind(function(value) {
+				$container.find('input:radio').filter('[value=' + value + ']').prop('checked', true);
+			});
+		}
+	});
 
 	/**
 	 * Visibility toggling for some controls

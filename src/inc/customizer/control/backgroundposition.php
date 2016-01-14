@@ -11,61 +11,71 @@
  * @since 1.5.0.
  */
 class MAKE_Customizer_Control_BackgroundPosition extends WP_Customize_Control {
-	public $type = 'radio';
-	public $mode = 'background-position';
+	/**
+	 * The control type.
+	 *
+	 * @since 1.5.0.
+	 * @since x.x.x. Changed to 'make_backgroundposition'
+	 *
+	 * @var string
+	 */
+	public $type = 'make_backgroundposition';
 
 	/**
+	 * Enqueue necessary scripts for this control.
+	 *
 	 * @since 1.5.0.
+	 *
+	 * @return void
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
 	}
 
 	/**
-	 * @since 1.5.0.
+	 * Add extra properties to JSON array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
 	 */
-	protected function render() {
-		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-' . $this->type . ' customize-control-' . $this->type . '-' . $this->mode;
-
-		?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-			<?php $this->render_content(); ?>
-		</li><?php
+	public function to_json() {
+		parent::to_json();
+		$this->json['id'] = $this->id;
+		$this->json['choices'] = $this->choices;
+		$this->json['value'] = $this->value();
+		$this->json['link'] = $this->get_link();
 	}
 
 	/**
-	 * @since 1.5.0.
+	 * Define the JS template for the control.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
 	 */
-	protected function render_content() {
-		if ( empty( $this->choices ) || count( $this->choices ) !== 9 ) {
-			return;
-		}
-
-		$name = '_customize-radio-' . $this->id;
+	protected function content_template() {
 		?>
+		<# if (data.label) { #>
+			<span class="customize-control-title">{{ data.label }}</span>
+		<# } #>
+		<# if (data.description) { #>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
+		<# } #>
 
-		<?php if ( ! empty( $this->label ) ) : ?>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-		<?php endif;
-		if ( ! empty( $this->description ) ) : ?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
-		<?php endif; ?>
-
-			<div id="input_<?php echo $this->id; ?>" class="ttfmake-control-<?php echo $this->mode; ?>">
-			<?php
-			$i = 1;
-			foreach ( $this->choices as $value => $label ) : ?>
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $this->id . $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-				<label class="choice-<?php echo esc_attr( $i ); ?>" data-label="<?php echo esc_attr( $label ); ?>" for="<?php echo $this->id . $value; ?>"></label>
-			<?php
-				$i++;
-			endforeach; ?>
-			</div>
-			<div class="background-position-caption">
-				<?php if ( isset( $this->choices[ $this->value() ] ) ) : ?>
-				<?php echo esc_html( $this->choices[ $this->value() ] ); ?>
-				<?php endif; ?>
-			</div>
+		<div id="input_{{ data.id }}" class="make-customize-control-backgroundposition-container">
+		<# var i = 1;
+		for ( key in data.choices ) { #>
+			<input id="{{ data.id }}{{ key }}" name="_customize-radio-{{ data.id }}" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />
+			<label for="{{ data.id }}{{ key }}" class="choice-{{ i }}" data-label="{{ data.choices[ key ] }}"></label>
+		<# i++;
+		} #>
+		</div>
+		<div class="background-position-caption">
+			<# if (data.value) { #>
+				{{ data.choices[ data.value ] }}
+			<# } #>
+		</div>
 	<?php
 	}
 }

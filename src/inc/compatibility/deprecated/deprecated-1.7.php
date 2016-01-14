@@ -1667,6 +1667,22 @@ endif;
 
 if ( class_exists( 'WP_Customize_Control' ) ) :
 /**
+ * Class TTFMAKE_Customize_Background_Position_Control
+ *
+ * Specialized radio control for choosing background image positioning.
+ *
+ * @since 1.5.0.
+ */
+class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Control_BackgroundPosition {
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+		$this->type = 'make_backgroundposition';
+
+		Make()->error()->add_error( 'make_customizer_control_misc_deprecated', __( 'The TTFMAKE_Customize_Background_Position_Control control is deprecated. Use MAKE_Customizer_Control_BackgroundPosition instead.', 'make' ) );
+	}
+}
+
+/**
  * Class TTFMAKE_Customize_Misc_Control
  *
  * Control for adding arbitrary HTML to a Customizer section.
@@ -1706,7 +1722,7 @@ class TTFMAKE_Customize_Misc_Control extends MAKE_Customizer_Control_Html {
 				break;
 		}
 
-		Make()->error()->add_error( 'make_customizer_control_misc_deprecated', __( 'The TTFMAKE_Customize_Misc_Control control is deprecated. Use MAKE_Customizer_Control_Html instead.', 'make' ) );
+		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Misc_Control control is deprecated. Use MAKE_Customizer_Control_Html instead.', 'make' ) );
 	}
 }
 endif;

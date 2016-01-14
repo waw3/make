@@ -30,7 +30,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	 *
 	 * @var string
 	 */
-	public $type = 'make-html';
+	public $type = 'make_html';
 
 	/**
 	 * The HTML to display with the control.
@@ -60,7 +60,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	 *
 	 * @return void
 	 */
-	public function content_template() { ?>
+	protected function content_template() { ?>
 		<label>
 			<# if (data.label) { #>
 				<span class="customize-control-title">{{ data.label }}</span>

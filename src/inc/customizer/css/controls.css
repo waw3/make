@@ -11,7 +11,7 @@ span.description {
 }
 
 /* Misc control styles */
-.customize-control-make-html {
+.customize-control-make_html {
 	margin-bottom: -2px;
 }
 .make-customize-control-html-container {
@@ -57,79 +57,79 @@ li .image.ui-buttonset label.ui-button {
 	margin-right: 15px;
 }
 .ttfmake-control-buttonset label,
-.ttfmake-control-background-position label {
+.make-customize-control-backgroundposition-container label {
 	border-color: #fff;
 }
 .ttfmake-control-buttonset label.ui-state-default,
-.ttfmake-control-background-position label.ui-state-default {
+.make-customize-control-backgroundposition-container label.ui-state-default {
 	background: #eee;
 }
 .ttfmake-control-buttonset label.ui-state-hover,
-.ttfmake-control-background-position label.ui-state-hover {
+.make-customize-control-backgroundposition-container label.ui-state-hover {
 	color: #0074a2;
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .25);
 }
 .ttfmake-control-buttonset label.ui-state-active,
-.ttfmake-control-background-position label.ui-state-active {
+.make-customize-control-backgroundposition-container label.ui-state-active {
 	color: #212121;
 	background: #fff;
 }
 
 /* Background Position Button Set */
-.ttfmake-control-background-position.ui-buttonset {
+.make-customize-control-backgroundposition-container.ui-buttonset {
 	float: left;
 	height: 90px;
 	width: 90px;
 }
-.ttfmake-control-background-position.ui-buttonset .ui-button {
+.make-customize-control-backgroundposition-container.ui-buttonset .ui-button {
 	margin-right: 0;
 }
-.ttfmake-control-background-position label {
+.make-customize-control-backgroundposition-container label {
 	display: block;
 	float: left;
 	height: 28px;
 	width: 28px;
 }
-.ttfmake-control-background-position label.ui-state-default:hover {
+.make-customize-control-backgroundposition-container label.ui-state-default:hover {
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .25);
 }
-.ttfmake-control-background-position label.ui-state-active:hover {
+.make-customize-control-backgroundposition-container label.ui-state-active:hover {
 	background-color: #fff;
 }
-.ttfmake-control-background-position .choice-1 {
+.make-customize-control-backgroundposition-container .choice-1 {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 0px;
 }
-.ttfmake-control-background-position .choice-2 {
+.make-customize-control-backgroundposition-container .choice-2 {
 	border-left-color: transparent;
 	border-right-color: transparent;
 }
-.ttfmake-control-background-position .choice-3 {
+.make-customize-control-backgroundposition-container .choice-3 {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 0px;
 }
-.ttfmake-control-background-position .choice-4 {
+.make-customize-control-backgroundposition-container .choice-4 {
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
-.ttfmake-control-background-position .choice-5 {
+.make-customize-control-backgroundposition-container .choice-5 {
 	border-color: transparent;
 }
-.ttfmake-control-background-position .choice-6 {
+.make-customize-control-backgroundposition-container .choice-6 {
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
-.ttfmake-control-background-position .choice-7 {
+.make-customize-control-backgroundposition-container .choice-7 {
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 4px;
 }
-.ttfmake-control-background-position .choice-8 {
+.make-customize-control-backgroundposition-container .choice-8 {
 	border-left-color: transparent;
 	border-right-color: transparent;
 }
-.ttfmake-control-background-position .choice-9 {
+.make-customize-control-backgroundposition-container .choice-9 {
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 4px;
 }

@@ -42,7 +42,6 @@ foreach ( $regions as $prefix => $title ) {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_BackgroundPosition',
 					'label'   => __( 'Position', 'make' ),
-					'type'    => 'radio',
 					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-position' ),
 				),
 			),
