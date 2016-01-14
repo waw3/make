@@ -25,7 +25,7 @@ foreach ( $regions as $prefix => $title ) {
 			$prefix . '-background-image'    => array(
 				'setting' => true,
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Image',
+					'control_type' => 'WP_Customize_Image_Control',
 					'label'        => __( 'Background Image', 'make' ),
 				),
 			),

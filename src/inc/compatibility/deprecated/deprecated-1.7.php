@@ -1685,6 +1685,16 @@ class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Cont
 }
 
 /**
+ * Class TTFMAKE_Customize_Image_Control
+ *
+ * Extend WP_Customize_Image_Control allowing access to uploads made within the same context.
+ *
+ * @since 1.0.0.
+ * @deprecated 1.7.0.
+ */
+class TTFMAKE_Customize_Image_Control extends WP_Customize_Image_Control {}
+
+/**
  * Class TTFMAKE_Customize_Misc_Control
  *
  * Control for adding arbitrary HTML to a Customizer section.

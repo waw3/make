@@ -19,7 +19,7 @@ $this->add_section_definitions( 'logo', array(
 		'logo-regular' => array(
 			'setting' => true,
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Image',
+				'control_type' => 'WP_Customize_Image_Control',
 				'label'        => __( 'Regular Logo', 'make' ),
 				'context'      => $this->prefix . 'logo-regular',
 			),
@@ -27,7 +27,7 @@ $this->add_section_definitions( 'logo', array(
 		'logo-retina'  => array(
 			'setting' => true,
 			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Image',
+				'control_type' => 'WP_Customize_Image_Control',
 				'label'        => __( 'Retina Logo (2x)', 'make' ),
 				'description'  => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
 				'context'      => $this->prefix . 'logo-retina',
@@ -55,7 +55,7 @@ if ( function_exists( 'has_site_icon' ) ) {
 			'logo-favicon'     => array(
 				'setting' => true,
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Image',
+					'control_type' => 'WP_Customize_Image_Control',
 					'label'        => __( 'Favicon', 'make' ),
 					'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
 					'context'      => $this->prefix . 'logo-favicon',
@@ -65,7 +65,7 @@ if ( function_exists( 'has_site_icon' ) ) {
 			'logo-apple-touch' => array(
 				'setting' => true,
 				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Image',
+					'control_type' => 'WP_Customize_Image_Control',
 					'label'        => __( 'Apple Touch Icon', 'make' ),
 					'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
 					'context'      => $this->prefix . 'logo-apple-touch',
