@@ -46,11 +46,14 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	 *
 	 * @since x.x.x.
 	 *
-	 * @return void
+	 * @return array
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['html'] = $this->html;
+	public function json() {
+		$json = parent::json();
+
+		$json['html'] = $this->html;
+
+		return $json;
 	}
 
 	/**

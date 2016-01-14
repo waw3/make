@@ -37,14 +37,17 @@ class MAKE_Customizer_Control_BackgroundPosition extends WP_Customize_Control {
 	 *
 	 * @since x.x.x.
 	 *
-	 * @return void
+	 * @return array
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['id'] = $this->id;
-		$this->json['choices'] = $this->choices;
-		$this->json['value'] = $this->value();
-		$this->json['link'] = $this->get_link();
+	public function json() {
+		$json = parent::json();
+
+		$json['id'] = $this->id;
+		$json['choices'] = $this->choices;
+		$json['value'] = $this->value();
+		$json['link'] = $this->get_link();
+
+		return $json;
 	}
 
 	/**
