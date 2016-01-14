@@ -117,7 +117,6 @@ $this->add_section_definitions( 'header', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'        => __( 'Icon Size (px)', 'make' ),
-				'type'         => 'range',
 				'input_attrs'  => array(
 					'min'  => 6,
 					'max'  => 100,
@@ -206,7 +205,6 @@ $this->add_section_definitions( 'footer', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'        => __( 'Icon Size (px)', 'make' ),
-				'type'         => 'range',
 				'input_attrs'  => array(
 					'min'  => 6,
 					'max'  => 100,

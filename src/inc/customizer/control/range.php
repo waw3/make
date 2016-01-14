@@ -12,44 +12,91 @@
  * @link https://github.com/aristath/kirki/blob/0.5/includes/controls/class-Kirki_Customize_Sliderui_Control.php
  *
  * @since 1.5.0.
+ * @since 1.7.0. Converted to content_template().
  */
 class MAKE_Customizer_Control_Range extends WP_Customize_Control {
-	public $type = 'range';
-	public $mode = 'slider';
+	/**
+	 * The control type.
+	 *
+	 * @since 1.5.0.
+	 * @since 1.7.0. Changed to 'make_range'
+	 *
+	 * @var string
+	 */
+	public $type = 'make_range';
 
 	/**
+	 * MAKE_Customizer_Control_Range constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $manager
+	 * @param string               $id
+	 * @param array                $args
+	 */
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+
+		// Ensure this instance maintains the proper type value.
+		$this->type = 'make_range';
+	}
+
+	/**
+	 * Enqueue necessary scripts for this control.
+	 *
 	 * @since 1.5.0.
+	 *
+	 * @return void
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-slider' );
 	}
 
 	/**
-	 * @since 1.5.0.
+	 * Add extra properties to JSON array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
 	 */
-	protected function render() {
-		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-' . $this->type . ' customize-control-' . $this->type . '-' . $this->mode;
+	public function json() {
+		$json = parent::json();
 
-		?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-			<?php $this->render_content(); ?>
-		</li><?php
+		$json['id'] = $this->id;
+		$json['value'] = $this->value();
+		$json['link'] = $this->get_link();
+		$json['input_attrs'] = $this->input_attrs;
+
+		return $json;
 	}
 
 	/**
-	 * @since 1.5.0.
+	 * Define the JS template for the control.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
 	 */
-	protected function render_content() { ?>
+	protected function content_template() { ?>
 		<label>
-			<?php if ( ! empty( $this->label ) ) : ?>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif;
-			if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
-			<div id="slider_<?php echo $this->id; ?>" class="ttfmake-range-slider"></div>
-			<input id="input_<?php echo $this->id; ?>" class="ttfmake-control-range" type="number" <?php $this->input_attrs(); ?> value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<# if (data.label) { #>
+				<span class="customize-control-title">{{ data.label }}</span>
+			<# } #>
+			<# if (data.description) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+
+			<div id="range_{{ data.id }}" class="make-range-container">
+				<div id="slider_{{ data.id }}" class="make-range-slider"></div>
+				<input
+					id="input_{{ data.id }}"
+					class="make-range-input"
+					type="number"
+					<# for (key in data.input_attrs) { #> {{ key }}="{{ data.input_attrs[ key ] }}" <# } #>
+					value="{{ data.value }}"
+					{{{ data.link }}}
+				/>
+			</div>
 		</label>
-	<?php
-	}
+	<?php }
 }

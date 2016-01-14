@@ -89,7 +89,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
 					'label'   => __( 'Font Size (px)', 'make' ),
-					'type'  => 'range',
 					'input_attrs' => array(
 						'min'  => 6,
 						'max'  => 100,
@@ -111,7 +110,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
 					'label'   => __( 'Line Height (em)', 'make' ),
-					'type'  => 'range',
 					'input_attrs' => array(
 						'min'  => 0,
 						'max'  => 5,
@@ -124,7 +122,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
 					'label'   => __( 'Letter Spacing (px)', 'make' ),
-					'type'  => 'range',
 					'input_attrs' => array(
 						'min'  => 0,
 						'max'  => 10,
@@ -137,7 +134,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
 					'label'   => __( 'Word Spacing (px)', 'make' ),
-					'type'  => 'range',
 					'input_attrs' => array(
 						'min'  => 0,
 						'max'  => 20,

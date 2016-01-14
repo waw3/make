@@ -106,7 +106,6 @@ $this->add_section_definitions( 'color', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
@@ -146,7 +145,6 @@ $this->add_section_definitions( 'color-header', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
@@ -268,7 +266,6 @@ $this->add_section_definitions( 'color-main-menu', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
@@ -293,7 +290,6 @@ $this->add_section_definitions( 'color-main-menu', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
@@ -319,7 +315,6 @@ $this->add_section_definitions( 'color-main-menu', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
@@ -385,7 +380,6 @@ $this->add_section_definitions( 'color-header-bar', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
@@ -531,7 +525,6 @@ $this->add_section_definitions( 'color-footer', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
 				'label'   => __( 'Opacity', 'make' ),
-				'type'  => 'range',
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.

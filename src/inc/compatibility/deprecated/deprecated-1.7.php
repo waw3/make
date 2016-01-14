@@ -1680,7 +1680,7 @@ class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Cont
 		parent::__construct( $manager, $id, $args );
 		$this->type = 'make_backgroundposition';
 
-		Make()->error()->add_error( 'make_customizer_control_misc_deprecated', __( 'The TTFMAKE_Customize_Background_Position_Control control is deprecated. Use MAKE_Customizer_Control_BackgroundPosition instead.', 'make' ) );
+		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Background_Position_Control control is deprecated. Use MAKE_Customizer_Control_BackgroundPosition instead.', 'make' ) );
 	}
 }
 
@@ -1746,7 +1746,29 @@ class TTFMAKE_Customize_Radio_Control extends MAKE_Customizer_Control_Radio {
 		parent::__construct( $manager, $id, $args );
 		$this->type = 'make_radio';
 
-		Make()->error()->add_error( 'make_customizer_control_misc_deprecated', __( 'The TTFMAKE_Customize_Radio_Control control is deprecated. Use MAKE_Customizer_Control_Radio instead.', 'make' ) );
+		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Radio_Control control is deprecated. Use MAKE_Customizer_Control_Radio instead.', 'make' ) );
+	}
+}
+
+/**
+ * Class TTFMAKE_Customize_Range_Control
+ *
+ * Specialized range control to enable a slider with an accompanying number field.
+ *
+ * Inspired by Kirki.
+ * @link https://github.com/aristath/kirki/blob/0.5/includes/controls/class-Kirki_Customize_Sliderui_Control.php
+ *
+ * This control has been deprecated in favor of MAKE_Customizer_Control_Range.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ */
+class TTFMAKE_Customize_Range_Control extends MAKE_Customizer_Control_Range {
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+		$this->type = 'make_range';
+
+		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Range_Control control is deprecated. Use MAKE_Customizer_Control_Range instead.', 'make' ) );
 	}
 }
 endif;

@@ -66,12 +66,12 @@
 
 			$.post(self.ajaxurl, data, function(response) {
 				if (response) {
-					self.insertChoices(response);
+					self.insertFontChoices(response);
 				}
 			});
 		},
 
-		insertChoices: function(content) {
+		insertFontChoices: function(content) {
 			var self = this;
 
 			$.each(self.fontElements, function(settingId, $element) {
@@ -88,55 +88,7 @@
 		}
 	});
 
-	// Make controls
-	Make = $.extend(Make, {
-		initControls: function() {
-			var self = this;
-
-			self.cache.$document.one('ready', function() {
-				// Populate cache
-				self.cache.$range      = $('.ttfmake-control-range');
-
-				// Initialize ranges
-				if (self.cache.$range.length > 0) {
-					self.range();
-				}
-			});
-		},
-
-		range: function() {
-			this.cache.$range.each(function() {
-				var $input = $(this),
-					$slider = $input.parent().find('.ttfmake-range-slider'),
-					value = parseFloat( $input.val() ),
-					min = parseFloat( $input.attr('min') ),
-					max = parseFloat( $input.attr('max') ),
-					step = parseFloat( $input.attr('step') );
-
-				// Configure the slider
-				$slider.slider({
-					value : value,
-					min   : min,
-					max   : max,
-					step  : step,
-					slide : function(e, ui) { $input.val(ui.value) }
-				});
-
-				// Debounce the slide event so the preview pane doesn't update too often
-				$slider.on('slide', _.debounce(function(e, ui) {
-					$input.keyup().trigger('change');
-				}, 300));
-
-				// Sync values of number input and slider
-				$input.val( $slider.slider('value')).on('change', function() {
-					$slider.slider('value', $(this).val());
-				});
-			});
-		}
-	});
-
 	Make.initFont();
-	Make.initControls();
 
 	/**
 	 * Initialize instances of MAKE_Customizer_Control_BackgroundPosition
@@ -200,6 +152,57 @@
 			// Update the radio group if the setting changes.
 			control.setting.bind(function(value) {
 				$container.find('input:radio').filter('[value=' + value + ']').prop('checked', true);
+			});
+		}
+	});
+
+	/**
+	 * Initialize instances of MAKE_Customizer_Control_Range
+	 *
+	 * @since x.x.x.
+	 */
+	api.controlConstructor.make_range = api.Control.extend({
+		ready: function() {
+			var control = this,
+				$container = control.container.find('.make-range-container');
+
+			$container.each(function() {
+				var $input = $(this).find('.make-range-input'),
+					$slider = $(this).find('.make-range-slider'),
+					value = parseFloat( $input.val() ),
+					min = parseFloat( $input.attr('min') ),
+					max = parseFloat( $input.attr('max') ),
+					step = parseFloat( $input.attr('step') );
+
+				// Configure the slider
+				$slider.slider({
+					value : value,
+					min   : min,
+					max   : max,
+					step  : step,
+					slide : function(e, ui) { $input.val(ui.value) }
+				});
+
+				// Debounce the slide event so the preview pane doesn't update too often
+				$slider.on('slide', _.debounce(function(e, ui) {
+					$input.keyup().trigger('change');
+				}, 300));
+
+				// Sync values of number input and slider
+				$input.val( $slider.slider('value')).on('change', function() {
+					$slider.slider('value', $(this).val());
+				});
+
+				// Listen for changes to the range.
+				$input.on('change', function() {
+					var value = $(this).val();
+					control.setting.set(value);
+				});
+
+				// Update the range if the setting changes.
+				control.setting.bind(function(value) {
+					$input.val(value);
+				});
 			});
 		}
 	});

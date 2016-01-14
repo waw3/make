@@ -166,11 +166,12 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			return;
 		}
 
-		// The types
+		// The control types with JS templates
 		$types = array(
 			'MAKE_Customizer_Control_BackgroundPosition',
 			'MAKE_Customizer_Control_Html',
 			'MAKE_Customizer_Control_Radio',
+			'MAKE_Customizer_Control_Range',
 		);
 
 		// Register each type
