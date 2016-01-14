@@ -66,7 +66,7 @@ class MAKE_Customizer_Control_BackgroundPosition extends WP_Customize_Control {
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 
-		<div id="input_{{ data.id }}" class="make-customize-control-backgroundposition-container">
+		<div id="input_{{ data.id }}" class="make-backgroundposition-container">
 		<# var i = 1;
 		for ( key in data.choices ) { #>
 			<input id="{{ data.id }}{{ key }}" name="_customize-radio-{{ data.id }}" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />

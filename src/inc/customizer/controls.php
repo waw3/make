@@ -170,6 +170,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		$types = array(
 			'MAKE_Customizer_Control_BackgroundPosition',
 			'MAKE_Customizer_Control_Html',
+			'MAKE_Customizer_Control_Radio',
 		);
 
 		// Register each type

@@ -10,11 +10,11 @@ span.description {
 	color: #999;
 }
 
-/* Misc control styles */
+/* Html control styles */
 .customize-control-make_html {
 	margin-bottom: -2px;
 }
-.make-customize-control-html-container {
+.make-html-container {
 	margin-bottom: 14px;
 }
 .make-group-title {
@@ -29,18 +29,16 @@ span.description {
 }
 
 /* Radio control styles */
-.customize-control-radio-buttonset,
-.customize-control-radio-image,
-.customize-control-radio-background-position {
+.customize-control-make_radio,
+.customize-control-make_backgroundposition {
 	padding: 0;
 }
-.customize-control-radio-buttonset .customize-control-title,
-.customize-control-radio-image .customize-control-title,
-.customize-control-radio-background-position .customize-control-title {
+.customize-control-make_radio .customize-control-title,
+.customize-control-make_backgroundposition .customize-control-title {
 	line-height: 24px;
 	margin-bottom: 5px;
 }
-.ttfmake-control-buttonset label {
+.make-radio-buttonset-container label {
 	line-height: 28px;
 	padding: 5px 10px;
 }
@@ -56,80 +54,94 @@ li .image.ui-buttonset label.ui-button {
 	margin-bottom: 10px;
 	margin-right: 15px;
 }
-.ttfmake-control-buttonset label,
-.make-customize-control-backgroundposition-container label {
+.make-radio-buttonset-container .ui-corner-left,
+.make-radio-buttonset-container .ui-corner-right {
+	border-radius: 0;
+}
+.make-radio-buttonset-container .ui-button {
+	margin-right: 0;
+}
+.make-radio-buttonset-container label {
+	display: inline-block;
+	float: left;
+	font-size: 13px;
+	border: none;
+	outline: 1px solid #fff;
+}
+.make-radio-buttonset-container label,
+.make-backgroundposition-container label {
 	border-color: #fff;
 }
-.ttfmake-control-buttonset label.ui-state-default,
-.make-customize-control-backgroundposition-container label.ui-state-default {
+.make-radio-buttonset-container label.ui-state-default,
+.make-backgroundposition-container label.ui-state-default {
 	background: #eee;
 }
-.ttfmake-control-buttonset label.ui-state-hover,
-.make-customize-control-backgroundposition-container label.ui-state-hover {
-	color: #0074a2;
+.make-radio-buttonset-container label.ui-state-hover,
+.make-backgroundposition-container label.ui-state-hover {
+	color: #0073aa;
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .25);
 }
-.ttfmake-control-buttonset label.ui-state-active,
-.make-customize-control-backgroundposition-container label.ui-state-active {
+.make-radio-buttonset-container label.ui-state-active,
+.make-backgroundposition-container label.ui-state-active {
 	color: #212121;
 	background: #fff;
 }
 
 /* Background Position Button Set */
-.make-customize-control-backgroundposition-container.ui-buttonset {
+.make-backgroundposition-container.ui-buttonset {
 	float: left;
 	height: 90px;
 	width: 90px;
 }
-.make-customize-control-backgroundposition-container.ui-buttonset .ui-button {
+.make-backgroundposition-container.ui-buttonset .ui-button {
 	margin-right: 0;
 }
-.make-customize-control-backgroundposition-container label {
+.make-backgroundposition-container label {
 	display: block;
 	float: left;
 	height: 28px;
 	width: 28px;
 }
-.make-customize-control-backgroundposition-container label.ui-state-default:hover {
+.make-backgroundposition-container label.ui-state-default:hover {
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .25);
 }
-.make-customize-control-backgroundposition-container label.ui-state-active:hover {
+.make-backgroundposition-container label.ui-state-active:hover {
 	background-color: #fff;
 }
-.make-customize-control-backgroundposition-container .choice-1 {
+.make-backgroundposition-container .choice-1 {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 0px;
 }
-.make-customize-control-backgroundposition-container .choice-2 {
+.make-backgroundposition-container .choice-2 {
 	border-left-color: transparent;
 	border-right-color: transparent;
 }
-.make-customize-control-backgroundposition-container .choice-3 {
+.make-backgroundposition-container .choice-3 {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 0px;
 }
-.make-customize-control-backgroundposition-container .choice-4 {
+.make-backgroundposition-container .choice-4 {
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
-.make-customize-control-backgroundposition-container .choice-5 {
+.make-backgroundposition-container .choice-5 {
 	border-color: transparent;
 }
-.make-customize-control-backgroundposition-container .choice-6 {
+.make-backgroundposition-container .choice-6 {
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
-.make-customize-control-backgroundposition-container .choice-7 {
+.make-backgroundposition-container .choice-7 {
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 4px;
 }
-.make-customize-control-backgroundposition-container .choice-8 {
+.make-backgroundposition-container .choice-8 {
 	border-left-color: transparent;
 	border-right-color: transparent;
 }
-.make-customize-control-backgroundposition-container .choice-9 {
+.make-backgroundposition-container .choice-9 {
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 4px;
 }

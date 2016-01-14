@@ -95,23 +95,13 @@
 
 			self.cache.$document.one('ready', function() {
 				// Populate cache
-				self.cache.$buttonset  = $('.ttfmake-control-buttonset, .ttfmake-control-image');
 				self.cache.$range      = $('.ttfmake-control-range');
-
-				// Initialize Button sets
-				if (self.cache.$buttonset.length > 0) {
-					self.buttonset();
-				}
 
 				// Initialize ranges
 				if (self.cache.$range.length > 0) {
 					self.range();
 				}
 			});
-		},
-
-		buttonset: function() {
-			this.cache.$buttonset.buttonset();
 		},
 
 		range: function() {
@@ -156,7 +146,7 @@
 	api.controlConstructor.make_backgroundposition = api.Control.extend({
 		ready: function() {
 			var control = this,
-				$container = control.container.find('.make-customize-control-backgroundposition-container');
+				$container = control.container.find('.make-backgroundposition-container');
 
 			// Initialize the buttonset.
 			$container.buttonset({
@@ -179,6 +169,35 @@
 			});
 
 			// Update the buttonset if the setting changes.
+			control.setting.bind(function(value) {
+				$container.find('input:radio').filter('[value=' + value + ']').prop('checked', true);
+			});
+		}
+	});
+
+	/**
+	 * Initialize instances of MAKE_Customizer_Control_Radio
+	 *
+	 * @since x.x.x.
+	 */
+	api.controlConstructor.make_radio = api.Control.extend({
+		ready: function() {
+			var control = this,
+				$container = control.container.find('.make-radio-container');
+
+			$container.each(function() {
+				if ($(this).hasClass('make-radio-buttonset-container') || $(this).hasClass('make-radio-image-container')) {
+					$(this).buttonset();
+				}
+			});
+
+			// Listen for changes to the radio group.
+			$container.on('change', 'input:radio', function() {
+				var value = $(this).parent().find('input:radio:checked').val();
+				control.setting.set(value);
+			});
+
+			// Update the radio group if the setting changes.
 			control.setting.bind(function(value) {
 				$container.find('input:radio').filter('[value=' + value + ']').prop('checked', true);
 			});

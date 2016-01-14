@@ -14,7 +14,14 @@
  * @since 1.5.0.
  */
 class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
-	public $type = 'radio';
+	/**
+	 * @var string
+	 */
+	public $type = 'make_radio';
+
+	/**
+	 * @var string
+	 */
 	public $mode = 'radio';
 
 	/**
@@ -29,66 +36,54 @@ class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	/**
 	 * @since 1.5.0.
 	 */
-	protected function render() {
-		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-' . $this->type . ' customize-control-' . $this->type . '-' . $this->mode;
+	protected function render_content() {}
 
-		?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-			<?php $this->render_content(); ?>
-		</li><?php
+	/**
+	 * @return array
+	 */
+	public function json() {
+		$json = parent::json();
+
+		$json['id'] = $this->id;
+		$json['mode'] = $this->mode;
+		$json['choices'] = $this->choices;
+		$json['value'] = $this->value();
+		$json['link'] = $this->get_link();
+
+		return $json;
 	}
 
 	/**
-	 * @since 1.5.0.
+	 *
 	 */
-	protected function render_content() {
-		if ( empty( $this->choices ) ) {
-			return;
-		}
-
-		$name = '_customize-radio-' . $this->id;
+	protected function content_template() {
 		?>
-		<div id="input_<?php echo $this->id; ?>" class="ttfmake-control-<?php echo $this->mode; ?>">
+		<# if (data.label) { #>
+			<span class="customize-control-title">{{ data.label }}</span>
+		<# } #>
+		<# if (data.description) { #>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
+		<# } #>
 
-		<?php if ( ! empty( $this->label ) ) : ?>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-		<?php endif;
-		if ( ! empty( $this->description ) ) : ?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
-		<?php endif; ?>
-
-			<?php
-			// Buttonset radios
-			if ( 'buttonset' == $this->mode ) {
-				foreach ( $this->choices as $value => $label ) : ?>
-					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $this->id . $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-					<label for="<?php echo $this->id . $value; ?>">
-						<?php echo esc_html( $label ); ?>
+		<div id="input_{{ data.id }}" class="make-radio-container<# if (0 <= ['buttonset', 'image'].indexOf( data.mode )) { #> make-radio-{{ data.mode }}-container<# } #>">
+			<# if ('buttonset' === data.mode) { #>
+				<# for (key in data.choices) { #>
+					<input id="{{ data.id }}{{ key }}" name="_customize-radio-{{ data.id }}" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />
+					<label for="{{ data.id }}{{ key }}">{{ data.choices[ key ] }}</label>
+				<# } #>
+			<# } else if ('image' === data.mode) { #>
+				<# for (key in data.choices) { #>
+					<input id="{{ data.id }}{{ key }}" name="_customize-radio-{{ data.id }}" class="image-select" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />
+					<label for="{{ data.id }}{{ key }}"><img src="{{ data.choices[ key ] }}" alt="{{ key }}" /></label>
+				<# } #>
+			<# } else { #>
+				<# for (key in data.choices) { #>
+					<label for="{{ data.id }}{{ key }}" class="customizer-radio">
+						<input id="{{ data.id }}{{ key }}" name="_customize-radio-{{ data.id }}" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />
+						{{ data.choices[ key ] }}<br />
 					</label>
-					<?php
-				endforeach;
-			}
-			// Image radios
-			elseif ( 'image' == $this->mode ) {
-				foreach ( $this->choices as $value => $label ) : ?>
-					<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $this->id . $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-					<label for="<?php echo $this->id . $value; ?>">
-						<img src="<?php echo esc_html( $label ); ?>" alt="<?php echo esc_attr( $value ); ?>">
-					</label>
-					<?php
-				endforeach;
-			}
-			// Normal radios
-			else {
-				foreach ( $this->choices as $value => $label ) : ?>
-					<label class="customizer-radio">
-						<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-						<?php echo esc_html( $label ); ?><br/>
-					</label>
-				<?php
-				endforeach;
-			}
-			?>
+				<# } #>
+			<# } #>
 		</div>
 	<?php
 	}

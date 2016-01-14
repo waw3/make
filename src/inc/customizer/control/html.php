@@ -72,7 +72,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<# if (data.html) { #>
-				<div class="make-customize-control-html-container">
+				<div class="make-html-container">
 					{{{ data.html }}}
 				</div>
 			<# } #>
