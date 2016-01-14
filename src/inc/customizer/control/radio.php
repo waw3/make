@@ -12,20 +12,52 @@
  * @link https://github.com/aristath/kirki/blob/0.5/includes/controls/class-Kirki_Customize_Radio_Control.php
  *
  * @since 1.5.0.
+ * @since 1.7.0. Converted to content_template().
  */
 class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	/**
+	 * The control type.
+	 *
+	 * @since 1.5.0.
+	 * @since 1.7.0. Changed to 'make_radio'
+	 *
 	 * @var string
 	 */
 	public $type = 'make_radio';
 
 	/**
+	 * The control mode.
+	 *
+	 * Possible values are 'buttonset', 'image', and 'radio'.
+	 *
+	 * @since 1.5.0.
+	 *
 	 * @var string
 	 */
 	public $mode = 'radio';
 
 	/**
+	 * MAKE_Customizer_Control_Radio constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $manager
+	 * @param string               $id
+	 * @param array                $args
+	 */
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+
+		// Ensure this instance maintains the proper type value.
+		$this->type = 'make_radio';
+	}
+
+	/**
+	 * Enqueue necessary scripts for this control.
+	 *
 	 * @since 1.5.0.
+	 *
+	 * @return void
 	 */
 	public function enqueue() {
 		if ( 'buttonset' === $this->mode || 'image' === $this->mode ) {
@@ -34,11 +66,10 @@ class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	}
 
 	/**
-	 * @since 1.5.0.
-	 */
-	protected function render_content() {}
-
-	/**
+	 * Add extra properties to JSON array.
+	 *
+	 * @since x.x.x.
+	 *
 	 * @return array
 	 */
 	public function json() {
@@ -54,7 +85,11 @@ class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	}
 
 	/**
+	 * Define the JS template for the control.
 	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

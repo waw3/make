@@ -62,7 +62,6 @@ $controls = array(
 		'control' => array(
 			'control_type' => 'MAKE_Customizer_Control_Radio',
 			'label'   => __( 'Attachment', 'make' ),
-			'type'    => 'radio',
 			'mode'    => 'buttonset',
 			'choices' => $this->thememod()->get_choice_set( 'background_attachment' ),
 		),
@@ -72,7 +71,6 @@ $controls = array(
 		'control' => array(
 			'control_type' => 'MAKE_Customizer_Control_Radio',
 			'label'   => __( 'Size', 'make' ),
-			'type'    => 'radio',
 			'mode'    => 'buttonset',
 			'choices' => $this->thememod()->get_choice_set( 'background_size' ),
 		),

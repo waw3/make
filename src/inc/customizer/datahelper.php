@@ -71,7 +71,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Font Style', 'make' ),
-					'type'  => 'radio',
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'font-style-' . $element ),
 				),
@@ -81,7 +80,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Font Weight', 'make' ),
-					'type'  => 'radio',
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'font-weight-' . $element ),
 				),
@@ -104,7 +102,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Text Transform', 'make' ),
-					'type'  => 'radio',
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'text-transform-' . $element ),
 				),
@@ -153,7 +150,6 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Link Underline', 'make' ),
-					'type'  => 'radio',
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'link-underline-' . $element ),
 				),

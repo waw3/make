@@ -29,7 +29,6 @@ $this->add_section_definitions( 'font', array(
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Font Weight', 'make' ),
-					'type'  => 'radio',
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'font-weight-body-link' ),
 				),
@@ -94,7 +93,6 @@ $this->add_section_definitions( 'font-main-menu', array(
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Font Weight', 'make' ),
-					'type'  => 'radio',
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'font-weight-nav-current-item' ),
 				),

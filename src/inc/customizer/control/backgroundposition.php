@@ -22,6 +22,22 @@ class MAKE_Customizer_Control_BackgroundPosition extends WP_Customize_Control {
 	public $type = 'make_backgroundposition';
 
 	/**
+	 * MAKE_Customizer_Control_BackgroundPosition constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $manager
+	 * @param string               $id
+	 * @param array                $args
+	 */
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+
+		// Ensure this instance maintains the proper type value.
+		$this->type = 'make_backgroundposition';
+	}
+
+	/**
 	 * Enqueue necessary scripts for this control.
 	 *
 	 * @since 1.5.0.

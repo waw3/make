@@ -1671,6 +1671,8 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
  *
  * Specialized radio control for choosing background image positioning.
  *
+ * This control has been deprecated in favor of MAKE_Customizer_Control_BackgroundPosition.
+ *
  * @since 1.5.0.
  */
 class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Control_BackgroundPosition {
@@ -1706,7 +1708,7 @@ class TTFMAKE_Customize_Misc_Control extends MAKE_Customizer_Control_Html {
 		parent::__construct( $manager, $id, $args );
 
 		$type = $this->type;
-		$this->type = 'make-html';
+		$this->type = 'make_html';
 
 		switch ( $type ) {
 			case 'group-title' :
@@ -1723,6 +1725,28 @@ class TTFMAKE_Customize_Misc_Control extends MAKE_Customizer_Control_Html {
 		}
 
 		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Misc_Control control is deprecated. Use MAKE_Customizer_Control_Html instead.', 'make' ) );
+	}
+}
+
+/**
+ * Class TTFMAKE_Customize_Radio_Control
+ *
+ * Specialized radio control to enable buttonset-style choices.
+ *
+ * Inspired by Kirki.
+ * @link https://github.com/aristath/kirki/blob/0.5/includes/controls/class-Kirki_Customize_Radio_Control.php
+ *
+ * This control has been deprecated in favor of MAKE_Customizer_Control_Radio.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ */
+class TTFMAKE_Customize_Radio_Control extends MAKE_Customizer_Control_Radio {
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+		$this->type = 'make_radio';
+
+		Make()->error()->add_error( 'make_customizer_control_misc_deprecated', __( 'The TTFMAKE_Customize_Radio_Control control is deprecated. Use MAKE_Customizer_Control_Radio instead.', 'make' ) );
 	}
 }
 endif;

@@ -21,7 +21,6 @@ $this->add_section_definitions( 'layout-global', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Site Layout', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( 'general-layout' ),
 			),
@@ -53,7 +52,6 @@ $this->add_section_definitions( 'header', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Show Title/Logo On', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( 'header-branding-position' ),
 			),
@@ -63,7 +61,6 @@ $this->add_section_definitions( 'header', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Header Bar Layout', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( 'header-bar-content-layout' ),
 			),
@@ -147,7 +144,6 @@ $this->add_section_definitions( 'footer', array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Number of Widget Areas', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( 'footer-widget-areas' ),
 			),
@@ -305,7 +301,6 @@ foreach ( $views as $view => $label ) {
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Alignment', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( $prefix . 'featured-images-alignment' ),
 			),
@@ -329,7 +324,6 @@ foreach ( $views as $view => $label ) {
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Location', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( $prefix . 'post-date-location' ),
 			),
@@ -353,7 +347,6 @@ foreach ( $views as $view => $label ) {
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Location', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( $prefix . 'post-author-location' ),
 			),
@@ -426,7 +419,6 @@ foreach ( $views as $view => $label ) {
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Location', 'make' ),
-				'type'         => 'radio',
 				'mode'         => 'buttonset',
 				'choices'      => $this->thememod()->get_choice_set( $prefix . 'comment-count-location' ),
 			),

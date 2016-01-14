@@ -50,7 +50,6 @@ foreach ( $regions as $prefix => $title ) {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Attachment', 'make' ),
-					'type'    => 'radio',
 					'mode'    => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-attachment' ),
 				),
@@ -60,7 +59,6 @@ foreach ( $regions as $prefix => $title ) {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
 					'label'   => __( 'Size', 'make' ),
-					'type'    => 'radio',
 					'mode'    => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( $prefix . '-background-size' ),
 				),

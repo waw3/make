@@ -42,6 +42,22 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	public $html = '';
 
 	/**
+	 * MAKE_Customizer_Control_Html constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $manager
+	 * @param string               $id
+	 * @param array                $args
+	 */
+	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
+		parent::__construct( $manager, $id, $args );
+
+		// Ensure this instance maintains the proper type value.
+		$this->type = 'make_html';
+	}
+
+	/**
 	 * Add extra properties to JSON array.
 	 *
 	 * @since x.x.x.
