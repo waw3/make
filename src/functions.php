@@ -233,14 +233,24 @@ function ttfmake_head_late() {
 	// Core Site Icon option overrides Make's deprecated Favicon and Apple Touch Icon settings
 	if ( false === get_option( 'site_icon', false ) ) :
 		// Favicon
-		$logo_favicon = get_theme_mod( 'logo-favicon', ttfmake_get_default( 'logo-favicon' ) );
-		if ( ! empty( $logo_favicon ) ) : ?>
+		$logo_favicon = make_get_thememod_value( 'logo-favicon' );
+		if ( ! empty( $logo_favicon ) ) :
+			if ( is_int( $logo_favicon ) ) :
+				$logo_favicon_src = wp_get_attachment_image_src( $logo_favicon, 'full' );
+				$logo_favicon = isset( $logo_favicon_src[0] ) ? $logo_favicon_src[0] : '';
+			endif;
+			?>
 			<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
 		<?php endif;
 
 		// Apple Touch icon
-		$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttfmake_get_default( 'logo-apple-touch' ) );
-		if ( ! empty( $logo_apple_touch ) ) : ?>
+		$logo_apple_touch = make_get_thememod_value( 'logo-apple-touch' );
+		if ( ! empty( $logo_apple_touch ) ) :
+			if ( is_int( $logo_apple_touch ) ) :
+				$logo_apple_touch_src = wp_get_attachment_image_src( $logo_apple_touch, 'full' );
+				$logo_apple_touch = isset( $logo_apple_touch_src[0] ) ? $logo_apple_touch_src[0] : '';
+			endif;
+			?>
 			<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
 		<?php endif;
 	endif;

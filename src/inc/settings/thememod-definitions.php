@@ -250,13 +250,9 @@ $this->add_settings(
 	)
 );
 
-// Image settings
+// Image URL settings
 $this->add_settings(
 	array_fill_keys( array(
-		'logo-regular',
-		'logo-retina',
-		'logo-favicon',
-		'logo-apple-touch',
 		'background_image',
 		'header-background-image',
 		'main-background-image',
@@ -264,12 +260,29 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'                  => '',
-		'sanitize'                 => 'esc_url',
-		'sanitize_from_customizer' => 'esc_url_raw',
-		'sanitize_to_customizer'   => 'esc_url',
-		'sanitize_database'        => 'esc_url_raw',
-		'sanitize_style'           => 'esc_url_raw',
+		'sanitize'                 => array( $this, 'esc_url' ),
+		'sanitize_from_customizer' => array( $this, 'esc_url_raw' ),
+		'sanitize_to_customizer'   => array( $this, 'esc_url' ),
+		'sanitize_database'        => array( $this, 'esc_url_raw' ),
+		'sanitize_style'           => array( $this, 'esc_url_raw' ),
 		'is_style'                 => true,
+	)
+);
+
+// Image ID settings
+$this->add_settings(
+	array_fill_keys( array(
+		'logo-regular',
+		'logo-retina',
+		'logo-favicon',
+		'logo-apple-touch',
+	), array() ),
+	array(
+		'default'                  => '',
+		'sanitize'                 => array( $this, 'sanitize_image' ),
+		'sanitize_from_customizer' => array( $this, 'sanitize_image_raw' ),
+		'sanitize_to_customizer'   => array( $this, 'sanitize_image' ),
+		'sanitize_database'        => array( $this, 'sanitize_image_raw' ),
 	)
 );
 
