@@ -214,7 +214,7 @@
 	// Read More Label
 	api( 'label-read-more', function( value ) {
 		value.bind( function( to ) {
-			var $content = $('.read-more');
+			var $content = $('.more-link');
 			$content.text( to );
 		} );
 	} );

@@ -147,7 +147,7 @@ if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
  * @param  string    $after     HTML after the text.
  * @return string               Full read more HTML.
  */
-function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
+function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $after = '</a>' ) {
 	if ( strpos( $before, '%s' ) ) {
 		$before = sprintf(
 			$before,
