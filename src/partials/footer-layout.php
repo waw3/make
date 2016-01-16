@@ -6,8 +6,6 @@
 // Footer Options
 $footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'footer-layout' ) );
 $sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
-$social_links  = ttfmake_get_social_links();
-$show_social   = (int) get_theme_mod( 'footer-show-social', ttfmake_get_default( 'footer-show-social' ) );
 
 // Test for enabled sidebars that contain widgets
 $has_active_sidebar = false;

@@ -4,7 +4,6 @@
  */
 
 // Header Options
-$header_text     = get_theme_mod( 'header-text', false );
 $social_links    = ttfmake_get_social_links();
 $show_social     = (int) get_theme_mod( 'header-show-social', ttfmake_get_default( 'header-show-social' ) );
 $show_search     = (int) get_theme_mod( 'header-show-search', ttfmake_get_default( 'header-show-search' ) );
@@ -23,16 +22,16 @@ $header_bar_menu = wp_nav_menu( array(
 
 <header id="site-header" class="<?php echo esc_attr( ttfmake_get_site_header_class() ); ?>" role="banner">
 	<?php // Only show Sub Header if it has content
-	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) || ! empty( $header_bar_menu ) ) : ?>
+	if ( make_get_thememod_value( 'header-text', 'template' ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) || ! empty( $header_bar_menu ) ) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
 			<a class="skip-link screen-reader-text" href="#site-content"><?php esc_html_e( 'Skip to content', 'make' ); ?></a>
 			<?php // Social links
 			ttfmake_maybe_show_social_links( 'header' ); ?>
 			<?php // Header text; shown only if there is no header menu
-			if ( ( ! empty( $header_text ) || ttfmake_is_preview() ) && empty( $header_bar_menu ) ) : ?>
+			if ( ( make_get_thememod_value( 'header-text', 'template' ) || is_customize_preview() ) && empty( $header_bar_menu ) ) : ?>
 				<span class="header-text">
-				<?php echo ttfmake_sanitize_text( $header_text ); ?>
+				<?php echo make_get_thememod_value( 'header-text', 'template' ); ?>
 				</span>
 			<?php endif; ?>
 			<?php echo $header_bar_menu; ?>

@@ -17,7 +17,9 @@ $this->add_section_definitions( 'layout-global', array(
 	'title'    => __( 'Global', 'make' ),
 	'controls' => array(
 		'general-layout' => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage',
+			),
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Site Layout', 'make' ),
@@ -48,7 +50,9 @@ $this->add_section_definitions( 'header', array(
 			),
 		),
 		'header-branding-position'   => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage'
+			),
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Show Title/Logo On', 'make' ),
@@ -57,7 +61,9 @@ $this->add_section_definitions( 'header', array(
 			),
 		),
 		'header-bar-content-layout'  => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage'
+			),
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Radio',
 				'label'        => __( 'Header Bar Layout', 'make' ),

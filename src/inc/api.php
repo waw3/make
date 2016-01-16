@@ -109,8 +109,8 @@ function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterfa
 }
 
 
-function make_get_thememod_value( $setting_id ) {
-	return Make()->thememod()->get_value( $setting_id );
+function make_get_thememod_value( $setting_id, $context = '' ) {
+	return Make()->thememod()->get_value( $setting_id, $context );
 }
 
 

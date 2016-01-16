@@ -219,6 +219,48 @@
 		} );
 	} );
 
+	// Site Layout
+	api('general-layout', function(value) {
+		value.bind(function(to) {
+			var $body = $('body');
+
+			switch(to) {
+				case 'full-width':
+					$body.removeClass('boxed').addClass('full-width');
+					break;
+				case 'boxed':
+					$body.removeClass('full-width').addClass('boxed');
+					break;
+			}
+		});
+	});
+
+	// Header branding position
+	api('header-branding-position', function(value) {
+		value.bind(function(to) {
+			var $body = $('body');
+
+			if ('right' === to) {
+				$body.addClass('branding-right');
+			} else {
+				$body.removeClass('branding-right');
+			}
+		});
+	});
+
+	// Header Bar text position
+	api('header-bar-content-layout', function(value) {
+		value.bind(function(to) {
+			var $body = $('body');
+
+			if ('flipped' === to) {
+				$body.addClass('header-bar-flipped');
+			} else {
+				$body.removeClass('header-bar-flipped');
+			}
+		});
+	});
+
 	// Header Text
 	api( 'header-text', function( value ) {
 		value.bind( function( to ) {
