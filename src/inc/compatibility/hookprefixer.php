@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
+final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -17,6 +17,18 @@ final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 	 * @var bool
 	 */
 	private $hooked = false;
+
+	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 */
+	public function __construct(
+		MAKE_Compatibility_MethodsInterface $compatibility
+	) {
+		// Compatibility
+		$this->add_module( 'compatibility', $compatibility );
+	}
 
 	/**
 	 * Hook into WordPress.
@@ -29,10 +41,10 @@ final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 		}
 
 		// Filters
-		add_action( 'after_setup_theme', array( $this, 'add_filters' ), 1 );
+		add_action( 'after_setup_theme', array( $this, 'add_filters' ), 99 );
 
 		// Actions
-		add_action( 'after_setup_theme', array( $this, 'add_actions' ), 1 );
+		add_action( 'after_setup_theme', array( $this, 'add_actions' ), 99 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -67,7 +79,7 @@ final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 		}
 
 		// All filters that need a name change
-		$old_filters = array(
+		$filter_slugs = array(
 			'template_content_archive'     => 2,
 			'fitvids_custom_selectors'     => 1,
 			'template_content_page'        => 2,
@@ -110,8 +122,22 @@ final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 			'is_plus'                      => 1,
 		);
 
-		foreach ( $old_filters as $filter => $args ) {
-			add_filter( 'make_' . $filter, array( $this, 'mirror_filter' ), 10, $args );
+		foreach ( $filter_slugs as $filter_slug => $args ) {
+			$old_filter = 'ttfmake_' . $filter_slug;
+			$new_filter = 'make_' . $filter_slug;
+
+			if ( has_filter( $old_filter ) ) {
+				$this->compatibility()->deprecated_hook(
+					$old_filter,
+					'1.2.3',
+					sprintf(
+						__( 'Use %s instead.', 'make' ),
+						$new_filter
+					)
+				);
+
+				add_filter( $new_filter, array( $this, 'mirror_filter' ), 1, $args );
+			}
 		}
 	}
 
@@ -146,7 +172,7 @@ final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 		}
 
 		// All actions that need a name change
-		$old_actions = array(
+		$action_slugs = array(
 			'section_text_before_columns_select' => 1,
 			'section_text_after_columns_select'  => 1,
 			'section_text_after_title'           => 1,
@@ -156,8 +182,22 @@ final class MAKE_Compatibility_HookPrefixer implements MAKE_Util_HookInterface {
 			'css'                                => 1,
 		);
 
-		foreach ( $old_actions as $action => $args ) {
-			add_action( 'make_' . $action, array( $this, 'mirror_action' ), 10, $args );
+		foreach ( $action_slugs as $action_slug => $args ) {
+			$old_action = 'ttfmake_' . $action_slug;
+			$new_action = 'make_' . $action_slug;
+
+			if ( has_action( $old_action ) ) {
+				$this->compatibility()->deprecated_hook(
+					$old_action,
+					'1.2.3',
+					sprintf(
+						__( 'Use %s instead.', 'make' ),
+						$new_action
+					)
+				);
+
+				add_action( $new_action, array( $this, 'mirror_action' ), 1, $args );
+			}
 		}
 	}
 

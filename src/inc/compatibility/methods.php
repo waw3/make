@@ -100,7 +100,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 
 		// Load the hook prefixer
 		if ( true === $this->mode['hook-prefixer'] ) {
-			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer );
+			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $this ) );
 		}
 
 		// Load the key converter
