@@ -400,8 +400,6 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'], $attachment_id );
 		}
 
-		$output .= "<ul class=\"entry-exif-list\">\n";
-
 		// Camera
 		if ( ! empty( $image_meta['camera'] ) ) {
 			// Translators: "Camera" refers to the model name of a camera. %s is a placeholder for the model name.
@@ -456,8 +454,11 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 				absint( $image_meta['iso'] )
 			);
 		}
+	}
 
-		$output .= "</ul>\n";
+	// Wrap list items
+	if ( '' !== $output ) {
+		$output = "<ul class=\"entry-exif-list\">\n" . $output . "</ul>\n";
 	}
 
 	/**
