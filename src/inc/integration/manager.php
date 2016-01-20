@@ -19,6 +19,20 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	private $hooked = false;
 
 	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_Util_ModulesInterface $api
+	 */
+	public function __construct(
+		MAKE_Util_ModulesInterface $api
+	) {
+		// API
+		$this->add_module( 'api', $api );
+	}
+
+	/**
 	 * Hook into WordPress.
 	 *
 	 * @since x.x.x.
@@ -78,7 +92,46 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	 * @return bool
 	 */
 	public function add_integration( $module_name, $module ) {
-		return parent::add_module( $module_name, $module );
+		/**
+		 * Filter: Switch to turn off an integration.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param bool    $add_integration    True to allow the integration to be added.
+		 */
+		$add_integration = apply_filters( 'make_add_integration_' . $module_name, true );
+
+		if ( true === $add_integration ) {
+			return parent::add_module( $module_name, $module );
+		}
+
+		return false;
+	}
+
+	/**
+	 * Wrapper function for returning the specified integration module and running its load routine.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $module_name
+	 *
+	 * @return mixed
+	 */
+	public function get_integration( $module_name ) {
+		return parent::get_module( $module_name );
+	}
+
+	/**
+	 * Wrapper function for checking if an integration module exists.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $module_name
+	 *
+	 * @return bool
+	 */
+	public function has_integration( $module_name ) {
+		return parent::has_module( $module_name );
 	}
 
 	/**

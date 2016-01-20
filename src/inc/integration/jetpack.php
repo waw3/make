@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
+class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -17,6 +17,26 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 	 * @var bool
 	 */
 	private $hooked = false;
+
+	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_Util_ModulesInterface $api
+	 */
+	public function __construct(
+		MAKE_Util_ModulesInterface $api
+	) {
+		// API
+		$this->add_module( 'api', $api );
+
+		// Theme mods
+		$this->add_module( 'thememod', $this->api()->inject_module( 'thememod' ) );
+
+		// Views
+		$this->add_module( 'view', $this->api()->inject_module( 'view' ) );
+	}
 
 	/**
 	 * Hook into WordPress.
@@ -85,7 +105,7 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 	 * @return void
 	 */
 	public function infinite_scroll_footer_callback() {
-		$footer_layout = make_get_thememod_value( 'footer-layout' );
+		$footer_layout = $this->thememod()->get_value( 'footer-layout' );
 		?>
 		<div id="infinite-footer">
 			<footer class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
@@ -111,11 +131,11 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 		}
 
 		// Get the view
-		$view = make_get_current_view();
+		$view = $this->view()->get_current_view();
 
 		// Get the relevant options
-		$hide_footer  = make_get_thememod_value( 'layout-' . $view . '-hide-footer' );
-		$widget_areas = make_get_thememod_value( 'footer-widget-areas' );
+		$hide_footer  = $this->thememod()->get_value( 'layout-' . $view . '-hide-footer' );
+		$widget_areas = $this->thememod()->get_value( 'footer-widget-areas' );
 
 		// No widget areas are visible
 		if ( true === $hide_footer || $widget_areas < 1 ) {

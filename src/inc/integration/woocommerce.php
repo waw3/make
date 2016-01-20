@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-class MAKE_Integration_WooCommerce implements MAKE_Util_HookInterface {
+class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -17,6 +17,26 @@ class MAKE_Integration_WooCommerce implements MAKE_Util_HookInterface {
 	 * @var bool
 	 */
 	private $hooked = false;
+
+	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_Util_ModulesInterface $api
+	 */
+	public function __construct(
+		MAKE_Util_ModulesInterface $api
+	) {
+		// API
+		$this->add_module( 'api', $api );
+
+		// Widgets
+		$this->add_module( 'widgets', $this->api()->inject_module( 'widgets' ) );
+
+		// Integrations
+		$this->add_module( 'integration', $this->api()->inject_module( 'integration' ) );
+	}
 
 	/**
 	 * Hook into WordPress.
@@ -78,9 +98,9 @@ class MAKE_Integration_WooCommerce implements MAKE_Util_HookInterface {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar' );
 
 		// Replace the WooCommerce breadcrumbs with Yoast SEO breadcrumbs, if available.
-		if ( function_exists( 'yoast_breadcrumb' ) ) {
+		if ( $this->integration()->has_integration( 'yoastseo' ) ) {
 			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-			add_action( 'woocommerce_before_main_content', 'ttfmake_yoast_seo_breadcrumb', 20 );
+			add_action( 'woocommerce_before_main_content', 'make_breadcrumb', 20 );
 		}
 	}
 
