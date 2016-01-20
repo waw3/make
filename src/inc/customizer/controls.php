@@ -332,7 +332,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @return bool
 	 */
-	public function add_section_definitions( $section_id, array $data, $overwrite = false ) {
+	private function add_section_definitions( $section_id, array $data, $overwrite = false ) {
 		$section_id = sanitize_key( $section_id );
 
 		// Section already exists, overwriting disabled.
@@ -561,17 +561,77 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	}
 
 	/**
+	 * Get an array of section objects for the specified panel.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 * @param                      $panel_id
+	 *
+	 * @return array
+	 */
+	public function get_panel_sections( WP_Customize_Manager $wp_customize, $panel_id ) {
+		$all_sections = $wp_customize->sections();
+		$panel_sections = array();
+
+		if ( $wp_customize->get_panel( $panel_id ) instanceof WP_Customize_Panel ) {
+			foreach ( $all_sections as $section ) {
+				if ( $panel_id === $section->panel ) {
+					$panel_sections[] = $section;
+				}
+			}
+		} else {
+			$this->error()->add_error( 'make_panel_not_valid', sprintf(
+				__( '"%s" is not a valid panel.', 'make' ),
+				esc_html( $panel_id )
+			) );
+		}
+
+		return $panel_sections;
+	}
+
+	/**
+	 * Get an array of control objects for the specified section.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 * @param                      $section_id
+	 *
+	 * @return array
+	 */
+	public function get_section_controls( WP_Customize_Manager $wp_customize, $section_id ) {
+		$all_controls = $wp_customize->controls();
+		$section_controls = array();
+
+		if ( $wp_customize->get_section( $section_id ) instanceof WP_Customize_Section ) {
+			foreach ( $all_controls as $control ) {
+				if ( $section_id === $control->section ) {
+					$section_controls[] = $control;
+				}
+			}
+		} else {
+			$this->error()->add_error( 'make_section_not_valid', sprintf(
+				__( '"%s" is not a valid section.', 'make' ),
+				esc_html( $section_id )
+			) );
+		}
+
+		return $section_controls;
+	}
+
+	/**
 	 * Get the highest (last) priority from a collection of Customizer objects.
 	 *
 	 * Works with Panels, Sections, and Controls.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param $items
+	 * @param array $items
 	 *
 	 * @return int
 	 */
-	public function get_last_priority( $items ) {
+	public function get_last_priority( array $items ) {
 		// Get the IDs.
 		$ids = wp_list_pluck( $items, 'id' );
 

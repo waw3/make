@@ -7,9 +7,11 @@
 interface MAKE_Customizer_ControlsInterface extends MAKE_Util_ModulesInterface {
 	public function get_panel_definitions();
 
-	public function add_section_definitions( $section_id, array $data, $overwrite = false );
-
 	public function get_section_definitions();
 
-	public function get_last_priority( $items );
+	public function get_panel_sections( WP_Customize_Manager $wp_customize, $panel_id );
+
+	public function get_section_controls( WP_Customize_Manager $wp_customize, $section_id );
+
+	public function get_last_priority( array $items );
 }
