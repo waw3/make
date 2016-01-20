@@ -85,7 +85,7 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 	 * @return void
 	 */
 	public function infinite_scroll_footer_callback() {
-		$footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'footer-layout' ) );
+		$footer_layout = make_get_thememod_value( 'footer-layout' );
 		?>
 		<div id="infinite-footer">
 			<footer class="site-footer footer-layout-<?php echo esc_attr( $footer_layout ); ?>" role="contentinfo">
@@ -104,18 +104,18 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 	 *
 	 * @return bool    Whether or not infinite scroll has footer widgets.
 	 */
-	function infinite_scroll_has_footer_widgets() {
+	public function infinite_scroll_has_footer_widgets() {
 		// Only run this in the proper hook context.
 		if ( 'infinite_scroll_has_footer_widgets' !== current_filter() ) {
 			return false;
 		}
 
 		// Get the view
-		$view = ttfmake_get_view();
+		$view = make_get_current_view();
 
 		// Get the relevant options
-		$hide_footer  = (bool) get_theme_mod( 'layout-' . $view . '-hide-footer', ttfmake_get_default( 'layout-' . $view . '-hide-footer' ) );
-		$widget_areas = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
+		$hide_footer  = make_get_thememod_value( 'layout-' . $view . '-hide-footer' );
+		$widget_areas = make_get_thememod_value( 'footer-widget-areas' );
 
 		// No widget areas are visible
 		if ( true === $hide_footer || $widget_areas < 1 ) {
@@ -142,7 +142,7 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 	 *
 	 * @return void
 	 */
-	function infinite_scroll_render() {
+	public function infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			get_template_part( 'partials/content', 'archive' );
@@ -156,7 +156,7 @@ class MAKE_Integration_Jetpack implements MAKE_Util_HookInterface {
 	 *
 	 * @return void
 	 */
-	function remove_sharing() {
+	public function remove_sharing() {
 		remove_filter( 'the_content', 'sharing_display', 19 );
 		remove_filter( 'the_excerpt', 'sharing_display', 19 );
 		if ( class_exists( 'Jetpack_Likes' ) ) {
