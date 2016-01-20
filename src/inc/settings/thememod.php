@@ -18,7 +18,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @var string
 	 */
-	protected $type = 'thememod';
+	private $type = 'thememod';
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -123,7 +123,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		 *
 		 * @param MAKE_Settings_ThemeMod    $settings     The settings object that has just finished loading.
 		 */
-		do_action( "make_settings_{$this->type}_loaded", $this );
+		do_action( "make_settings_thememod_loaded", $this );
 
 		// Loading has occurred.
 		$this->loaded = true;
