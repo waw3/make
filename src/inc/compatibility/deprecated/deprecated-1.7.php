@@ -201,6 +201,20 @@ else :
 endif;
 
 /**
+ * Add the Yoast SEO breadcrumb, if the plugin is activated.
+ *
+ * @since 1.6.4.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_yoast_seo_breadcrumb() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_breadcrumb', $backtrace[0] );
+	make_breadcrumb();
+}
+
+/**
  * Add notice if Make Plus is installed as a theme.
  *
  * @since  1.1.2.

@@ -46,12 +46,17 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 
 		// Jetpack
 		if ( $this->is_plugin_active( 'jetpack/jetpack.php' ) ) {
-			$this->add_integration( 'jetpack', new MAKE_Integration_Jetpack );
+			$this->add_integration( 'jetpack', new MAKE_Integration_Jetpack( $this->inject_module( 'api' ) ) );
 		}
 
 		// WooCommerce
 		if ( $this->is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-			$this->add_integration( 'woocommerce', new MAKE_Integration_WooCommerce );
+			$this->add_integration( 'woocommerce', new MAKE_Integration_WooCommerce( $this->inject_module( 'api' ) ) );
+		}
+
+		// Yoast SEO
+		if ( $this->is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+			$this->add_integration( 'yoastseo', new MAKE_Integration_YoastSEO( $this->inject_module( 'api' ) ) );
 		}
 
 		/**

@@ -175,9 +175,6 @@ function ttfmake_setup() {
 		'social'     => __( 'Social Profile Links', 'make' ),
 		'header-bar' => __( 'Header Bar Navigation', 'make' ),
 	) );
-
-	// Yoast SEO breadcrumbs
-	add_theme_support( 'yoast-seo-breadcrumbs' );
 }
 endif;
 

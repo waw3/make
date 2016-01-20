@@ -448,25 +448,6 @@ foreach ( $views as $view => $label ) {
 		) );
 	}
 
-	// Breadcrumbs
-	if ( function_exists( 'yoast_breadcrumb' ) && in_array( $view, array( 'archive', 'search', 'post', 'page' ) ) ) {
-		$controls = array_merge( $controls, array(
-			'breadcrumb-group-' . $view  => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Html',
-					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Breadcrumbs', 'make' ) . '</h4><span class="description customize-control-description">' . esc_html__( 'The Yoast SEO plugin enables this option.', 'make' ) . '</span>',
-				),
-			),
-			$prefix . 'yoast-breadcrumb' => array(
-				'setting' => true,
-				'control' => array(
-					'label' => __( 'Show breadcrumbs', 'make' ),
-					'type'  => 'checkbox',
-				),
-			),
-		) );
-	}
-
 	// Add the definitions
 	$this->add_section_definitions( 'layout-' . $view, array(
 		'panel'   => $panel,

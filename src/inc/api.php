@@ -78,7 +78,7 @@ class MAKE_API extends MAKE_Util_Modules {
 		}
 
 		// Integrations
-		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Manager : $integration );
+		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Manager( $this ) : $integration );
 	}
 }
 
@@ -215,4 +215,21 @@ function make_is_current_view( $view_id ) {
  */
 function make_has_sidebar( $location ) {
 	return Make()->widgets()->has_sidebar( $location );
+}
+
+/**
+ * Display a breadcrumb.
+ *
+ * @since x.x.x.
+ *
+ * @param string $before
+ * @param string $after
+ *
+ * @return void
+ */
+function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after = '</p>' ) {
+	//
+	if ( Make()->integration()->has_integration( 'yoastseo' ) ) {
+		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
+	}
 }
