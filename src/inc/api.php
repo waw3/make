@@ -3,9 +3,17 @@
  * @package Make
  */
 
-
+/**
+ * Class MAKE_API
+ *
+ * @since x.x.x.
+ */
 class MAKE_API extends MAKE_Util_Modules {
-
+	/**
+	 * Inject dependencies.
+	 *
+	 * @since x.x.x.
+	 */
 	public function __construct(
 		MAKE_Setup_L10nInterface $l10n = null,
 		MAKE_Error_CollectorInterface $error = null,
@@ -74,7 +82,13 @@ class MAKE_API extends MAKE_Util_Modules {
 	}
 }
 
-
+/**
+ * Get the global Make object.
+ *
+ * @since x.x.x.
+ *
+ * @return MAKE_API
+ */
 function Make() {
 	global $Make;
 
@@ -85,12 +99,27 @@ function Make() {
 	return $Make;
 }
 
-
+/**
+ * Check if Make Plus is active.
+ *
+ * @since x.x.x.
+ *
+ * @return bool
+ */
 function make_is_plus() {
 	return Make()->plus()->is_plus();
 }
 
-
+/**
+ * Add or modify a choice set.
+ *
+ * @since x.x.x.
+ *
+ * @param array                              $choice_sets
+ * @param MAKE_Choices_ManagerInterface|null $instance
+ *
+ * @return mixed
+ */
 function make_update_choices( $choice_sets, MAKE_Choices_ManagerInterface $instance = null ) {
 	if ( is_null( $instance ) ) {
 		$instance = Make()->choices();
@@ -99,7 +128,16 @@ function make_update_choices( $choice_sets, MAKE_Choices_ManagerInterface $insta
 	return $instance->add_choice_sets( $choice_sets, true );
 }
 
-
+/**
+ * Add or modify a Theme Mod setting.
+ *
+ * @since x.x.x.
+ *
+ * @param array                                $settings
+ * @param MAKE_Settings_ThemeModInterface|null $instance
+ *
+ * @return mixed
+ */
 function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterface $instance = null ) {
 	if ( is_null( $instance ) ) {
 		$instance = Make()->thememod();
@@ -108,32 +146,73 @@ function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterfa
 	return $instance->add_settings( $settings, array(), true );
 }
 
-
+/**
+ * Get a sanitized value for a Theme Mod setting.
+ *
+ * @since x.x.x.
+ *
+ * @param        $setting_id
+ * @param string $context
+ *
+ * @return mixed
+ */
 function make_get_thememod_value( $setting_id, $context = '' ) {
 	return Make()->thememod()->get_value( $setting_id, $context );
 }
 
-
+/**
+ * Get the default value for a Theme Mod setting.
+ *
+ * @since x.x.x.
+ *
+ * @param $setting_id
+ *
+ * @return mixed
+ */
 function make_get_thememod_default( $setting_id ) {
 	return Make()->thememod()->get_default( $setting_id );
 }
 
-
+/**
+ *
+ */
 function make_add_view( $view_id, array $args = array(), $overwrite = false ) {
 	return Make()->view()->add_view( $view_id, $args, $overwrite );
 }
 
-
+/**
+ * Get the current view.
+ *
+ * @since x.x.x.
+ *
+ * @return mixed
+ */
 function make_get_current_view() {
 	return Make()->view()->get_current_view();
 }
 
-
+/**
+ * Check if a particular view is the current one.
+ *
+ * @since x.x.x.
+ *
+ * @param $view_id
+ *
+ * @return mixed
+ */
 function make_is_current_view( $view_id ) {
 	return Make()->view()->is_current_view( $view_id );
 }
 
-
+/**
+ * Check if the current view has a sidebar in the specified location (left or right).
+ *
+ * @since x.x.x.
+ *
+ * @param $location
+ *
+ * @return mixed
+ */
 function make_has_sidebar( $location ) {
 	return Make()->widgets()->has_sidebar( $location );
 }
