@@ -18,7 +18,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @var string
 	 */
-	private $type = 'thememod';
+	protected $type = 'thememod';
 
 	/**
 	 * Indicator of whether the hook routine has been run.
