@@ -84,10 +84,16 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 			}
 			return true;
 		}
-
-		// Module already exists. Generate an error if possible.
-		else if ( $this->has_module( 'error' ) && $this->modules['error'] instanceof MAKE_Error_CollectorInterface ) {
-			$this->modules['error']->add_error( 'make_util_module_already_exists', sprintf( __( 'The "%1$s" module can\'t be added to %2$s because it already exists.', 'make' ), esc_html( $module_name ), get_class( $this ) ) );
+		// Module already exists. Generate a warning.
+		else {
+			trigger_error(
+				sprintf(
+					esc_html__( 'The %1$s module cannot be added to %2$s because it already exists.', 'make' ),
+					esc_html( $module_name ),
+					get_class( $this )
+				),
+				E_USER_WARNING
+			);
 		}
 
 		return false;
@@ -120,7 +126,6 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 			}
 			// Provided by API
 			else if ( $api->has_module( $dependency_name ) && is_a( $api->inject_module( $dependency_name ), $dependency_type ) ) {
-
 				$this->add_module( $dependency_name, $api->inject_module( $dependency_name ) );
 				continue;
 			}
