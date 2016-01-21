@@ -9,6 +9,20 @@
  * @since x.x.x.
  */
 final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_ManagerInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
+	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'font'          => 'MAKE_Font_ManagerInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+		'css'           => 'MAKE_Style_CSSInterface',
+	);
+
 
 	private $file_action = 'make-css';
 
@@ -37,31 +51,27 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	private $loaded = false;
 
 	/**
-	 * Inject dependencies.
+	 * MAKE_Style_Manager constructor.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Settings_ThemeModInterface           $thememod
-	 * @param MAKE_Style_CSSInterface|null              $css
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
 	 */
 	public function __construct(
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Font_ManagerInterface $font,
-		MAKE_Settings_ThemeModInterface $thememod,
-		MAKE_Style_CSSInterface $css = null
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
+		// Module defaults.
+		$modules = wp_parse_args( $modules, array(
+			'css' => 'MAKE_Style_CSS',
+		) );
 
-		// Fonts
-		$this->add_module( 'font', $font );
+		// Load dependencies.
+		parent::__construct( $api, $modules );
 
-		// Theme mods
-		$this->add_module( 'thememod', $thememod );
-
-		// CSS
-		$this->add_module( 'css', ( is_null( $css ) ) ? new MAKE_Style_CSS : $css );
+		// Load private helper module.
+		$this->helper = new MAKE_Style_DataHelper( $api );
 	}
 
 	/**
@@ -193,10 +203,6 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 
 
 	private function helper() {
-		if ( ! $this->helper instanceof MAKE_Style_DataHelper ) {
-			$this->helper = new MAKE_Style_DataHelper( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) );
-		}
-
 		return $this->helper;
 	}
 

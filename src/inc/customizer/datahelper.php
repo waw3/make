@@ -6,28 +6,17 @@
 
 final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 	/**
-	 * Inject dependencies.
+	 * An associative array of required modules.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Font_ManagerInterface          $font
-	 * @param MAKE_Settings_ThemeModInterface     $thememod
+	 * @var array
 	 */
-	public function __construct(
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Font_ManagerInterface $font,
-		MAKE_Settings_ThemeModInterface $thememod
-	) {
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-
-		// Fonts
-		$this->add_module( 'font', $font );
-
-		// Theme mods
-		$this->add_module( 'thememod', $thememod );
-	}
+	protected $dependencies = array(
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'font'          => 'MAKE_Font_ManagerInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+	);
 
 
 	public function get_typography_group_definitions( $element, $label, $description = '' ) {

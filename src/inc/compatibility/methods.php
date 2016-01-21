@@ -10,6 +10,17 @@
  */
 final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error' => 'MAKE_Error_CollectorInterface',
+	);
+
+	/**
 	 * The available compatibility modes.
 	 *
 	 * @since x.x.x.
@@ -17,22 +28,22 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 * @var array
 	 */
 	private $modes = array(
-		'full' => array(
+		'full'    => array(
 			'deprecated'    => array( '1.5', '1.6', '1.7' ),
 			'hook-prefixer' => true,
 			'key-converter' => true,
 		),
-		'1.5' => array(
+		'1.5'     => array(
 			'deprecated'    => array( '1.6', '1.7' ),
 			'hook-prefixer' => false,
 			'key-converter' => false,
 		),
-		'1.6' => array(
+		'1.6'     => array(
 			'deprecated'    => array( '1.7' ),
 			'hook-prefixer' => false,
 			'key-converter' => false,
 		),
-		'1.7' => array(
+		'1.7'     => array(
 			'deprecated'    => false,
 			'hook-prefixer' => false,
 			'key-converter' => false,
@@ -63,15 +74,19 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	private $hooked = false;
 
 	/**
-	 * Inject dependencies and set properties.
+	 * MAKE_Compatibility_Methods constructor.
 	 *
 	 * @since x.x.x.
+	 *
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
 	 */
 	public function __construct(
-		MAKE_Error_CollectorInterface $error
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// Errors
-		$this->add_module( 'error', $error );
+		// Load dependencies.
+		parent::__construct( $api, $modules );
 
 		/**
 		 * Filter: Set the mode for compatibility.
@@ -92,7 +107,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 			$this->mode = $this->modes['full'];
 		}
 
-		// Load deprecated files.
+		// Load deprecated function files.
 		// Do this on construct to make sure deprecated functions are defined ASAP.
 		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
 			$this->require_deprecated_files( $this->mode['deprecated'] );
@@ -100,7 +115,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 
 		// Load the hook prefixer
 		if ( true === $this->mode['hook-prefixer'] ) {
-			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $this ) );
+			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $api, array( 'compatibility' => $this ) ) );
 		}
 
 		// Load the key converter

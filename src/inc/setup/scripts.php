@@ -10,6 +10,19 @@
  */
 final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_ScriptsInterface, MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'font'          => 'MAKE_Font_ManagerInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -17,30 +30,6 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Font_ManagerInterface          $font
-	 * @param MAKE_Settings_ThemeModInterface     $thememod
-	 */
-	public function __construct(
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Font_ManagerInterface $font,
-		MAKE_Settings_ThemeModInterface $thememod
-	) {
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-
-		// Fonts
-		$this->add_module( 'font', $font );
-
-		// Theme Mods
-		$this->add_module( 'thememod', $thememod );
-	}
 
 	/**
 	 * Hook into WordPress.

@@ -8,77 +8,104 @@
  *
  * @since x.x.x.
  */
-class MAKE_API extends MAKE_Util_Modules {
+class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
-	 * Inject dependencies.
+	 * An associative array of required modules.
 	 *
 	 * @since x.x.x.
+	 *
+	 * @var array
 	 */
-	public function __construct(
-		MAKE_Setup_L10nInterface $l10n = null,
-		MAKE_Error_CollectorInterface $error = null,
-		MAKE_Compatibility_MethodsInterface $compatibility = null,
-		MAKE_Plus_MethodsInterface $plus = null,
-		MAKE_Admin_NoticeInterface $notice = null,
-		MAKE_Choices_ManagerInterface $choices = null,
-		MAKE_Font_ManagerInterface $font = null,
-		MAKE_Settings_ThemeModInterface $thememod = null,
-		MAKE_View_ManagerInterface $view = null,
-		MAKE_Setup_WidgetsInterface $widgets = null,
-		MAKE_Setup_ScriptsInterface $scripts = null,
-		MAKE_Style_ManagerInterface $style = null,
-		MAKE_Customizer_ControlsInterface $customizer_controls = null,
-		MAKE_Customizer_PreviewInterface $customizer_preview = null,
-		MAKE_Integration_ManagerInterface $integration = null
-	) {
-		// Localization
-		$this->add_module( 'l10n', ( is_null( $l10n ) ) ? new MAKE_Setup_L10n : $l10n );
+	protected $dependencies = array(
+		'l10n'                => 'MAKE_Setup_L10nInterface',
+		'error'               => 'MAKE_Error_CollectorInterface',
+		'compatibility'       => 'MAKE_Compatibility_MethodsInterface',
+		'plus'                => 'MAKE_Plus_MethodsInterface',
+		'notice'              => 'MAKE_Admin_NoticeInterface',
+		'choices'             => 'MAKE_Choices_ManagerInterface',
+		'font'                => 'MAKE_Font_ManagerInterface',
+		'view'                => 'MAKE_View_ManagerInterface',
+		'thememod'            => 'MAKE_Settings_ThemeModInterface',
+		'widgets'             => 'MAKE_Setup_WidgetsInterface',
+		'scripts'             => 'MAKE_Setup_ScriptsInterface',
+		'style'               => 'MAKE_Style_ManagerInterface',
+		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
+		'customizer_preview'  => 'MAKE_Customizer_PreviewInterface',
+		'integration'         => 'MAKE_Integration_ManagerInterface',
+	);
 
-		// Errors
-		$this->add_module( 'error', ( is_null( $error ) ) ? new MAKE_Error_Collector : $error );
+	/**
+	 * An associative array of the default classes to use for each dependency.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	private $defaults = array(
+		'l10n'                => 'MAKE_Setup_L10n',
+		'error'               => 'MAKE_Error_Collector',
+		'compatibility'       => 'MAKE_Compatibility_Methods',
+		'plus'                => 'MAKE_Plus_Methods',
+		'notice'              => 'MAKE_Admin_Notice',
+		'choices'             => 'MAKE_Choices_Manager',
+		'font'                => 'MAKE_Font_Manager',
+		'view'                => 'MAKE_View_Manager',
+		'thememod'            => 'MAKE_Settings_ThemeMod',
+		'widgets'             => 'MAKE_Setup_Widgets',
+		'scripts'             => 'MAKE_Setup_Scripts',
+		'style'               => 'MAKE_Style_Manager',
+		'customizer_controls' => 'MAKE_Customizer_Controls',
+		'customizer_preview'  => 'MAKE_Customizer_Preview',
+		'integration'         => 'MAKE_Integration_Manager',
+	);
 
-		// Compatibility
-		$this->add_module( 'compatibility', ( is_null( $compatibility ) ) ? new MAKE_Compatibility_Methods( $this->inject_module( 'error' ) ) : $compatibility );
+	/**
+	 * MAKE_API constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array $modules
+	 */
+	public function __construct( array $modules = array() ) {
+		$modules = wp_parse_args( $modules, $this->get_default_modules() );
 
-		// Plus
-		$this->add_module( 'plus', ( is_null( $plus ) ) ? new MAKE_Plus_Methods() : $plus );
+		// Remove conditional dependencies
+		if ( ! is_admin() ) {
+			unset( $this->dependencies['notice'] );
 
-		// Admin notices
-		if ( is_admin() ) {
-			$this->add_module( 'notice', ( is_null( $notice ) ) ? new MAKE_Admin_Notice : $notice );
+			if ( ! is_customize_preview() ) {
+				unset( $this->dependencies['customizer_controls'] );
+				unset( $this->dependencies['customizer_preview'] );
+			}
 		}
 
-		// Choices
-		$this->add_module( 'choices', ( is_null( $choices ) ) ? new MAKE_Choices_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $choices );
+		parent::__construct( $this, $modules );
+	}
 
-		// Font
-		$this->add_module( 'font', ( is_null( $font ) ) ? new MAKE_Font_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $font );
 
-		// Theme mods
-		$this->add_module( 'thememod', ( is_null( $thememod ) ) ? new MAKE_Settings_ThemeMod( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'choices' ), $this->inject_module( 'font' ) ) : $thememod );
+	private function get_default_modules() {
+		return $this->defaults;
+	}
 
-		// View
-		$this->add_module( 'view', ( is_null( $view ) ) ? new MAKE_View_Manager( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ) ) : $view );
-
-		// Widgets
-		$this->add_module( 'widgets', ( is_null( $widgets ) ) ? new MAKE_Setup_Widgets( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'thememod' ), $this->inject_module( 'view' ) ) : $widgets );
-
-		// Scripts
-		$this->add_module( 'scripts', ( is_null( $scripts ) ) ? new MAKE_Setup_Scripts( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $scripts );
-
-		// Style
-		$this->add_module( 'style', ( is_null( $style ) ) ? new MAKE_Style_Manager( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) ) : $style );
-
-		// Customizer
-		if ( is_admin() || is_customize_preview() ) {
-			// Sections
-			$this->add_module( 'customizer_controls', ( is_null( $customizer_controls ) ) ? new MAKE_Customizer_Controls( $this->inject_module( 'error' ), $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ), $this->inject_module( 'scripts' ) ) : $customizer_controls );
-			// Preview
-			$this->add_module( 'customizer_preview', ( is_null( $customizer_preview ) ) ? new MAKE_Customizer_Preview( $this->inject_module( 'thememod' ), $this->inject_module( 'scripts' ) ) : $customizer_preview );
+	/**
+	 * Return the specified module without running its load routine.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $module_name
+	 *
+	 * @return null
+	 */
+	public function inject_module( $module_name ) {
+		// Module exists.
+		if ( $this->has_module( $module_name ) ) {
+			return $this->modules[ $module_name ];
 		}
 
-		// Integrations
-		$this->add_module( 'integration', ( is_null( $integration ) ) ? new MAKE_Integration_Manager( $this ) : $integration );
+		// Module doesn't exist. Use the get_module method to generate an error.
+		else {
+			return $this->get_module( $module_name );
+		}
 	}
 }
 

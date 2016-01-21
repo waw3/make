@@ -10,6 +10,18 @@
  */
 class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'widgets'     => 'MAKE_Setup_WidgetsInterface',
+		'integration' => 'MAKE_Integration_ManagerInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -17,26 +29,6 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Util_ModulesInterface $api
-	 */
-	public function __construct(
-		MAKE_Util_ModulesInterface $api
-	) {
-		// API
-		$this->add_module( 'api', $api );
-
-		// Widgets
-		$this->add_module( 'widgets', $this->api()->inject_module( 'widgets' ) );
-
-		// Integrations
-		$this->add_module( 'integration', $this->api()->inject_module( 'integration' ) );
-	}
 
 	/**
 	 * Hook into WordPress.

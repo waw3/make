@@ -6,6 +6,18 @@
 
 final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_ManagerInterface, MAKE_Util_LoadInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error'         => 'MAKE_Error_CollectorInterface',
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+	);
+
+	/**
 	 * @var array
 	 */
 	private $views = array();
@@ -21,25 +33,6 @@ final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_Man
 	 * @var bool
 	 */
 	private $loaded = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Error_CollectorInterface       $error
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 */
-	public function __construct(
-		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility
-	) {
-		// Errors
-		$this->add_module( 'error', $error );
-
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-	}
 
 	/**
 	 * Load data files.

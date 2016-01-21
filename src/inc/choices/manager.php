@@ -12,6 +12,18 @@
  */
 class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_ManagerInterface, MAKE_Util_LoadInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error'         => 'MAKE_Error_CollectorInterface',
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+	);
+
+	/**
 	 * The collection of choice sets.
 	 *
 	 * @since x.x.x.
@@ -28,25 +40,6 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 * @var bool
 	 */
 	protected $loaded = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Error_CollectorInterface       $error
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 */
-	public function __construct(
-		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility
-	) {
-		// Errors
-		$this->add_module( 'error', $error );
-
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-	}
 
 	/**
 	 * Load data files.

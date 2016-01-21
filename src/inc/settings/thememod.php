@@ -12,6 +12,20 @@
  */
 final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Settings_ThemeModInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error'         => 'MAKE_Error_CollectorInterface',
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'choices'       => 'MAKE_Choices_ManagerInterface',
+		'font'          => 'MAKE_Font_ManagerInterface',
+	);
+
+	/**
 	 * The type of settings.
 	 *
 	 * @since x.x.x.
@@ -37,33 +51,6 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * @var bool
 	 */
 	private $loaded = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Error_CollectorInterface                 $error
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Choices_ManagerInterface             $choices
-	 */
-	public function __construct(
-		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Choices_ManagerInterface $choices,
-		MAKE_Font_ManagerInterface $font
-	) {
-		parent::__construct( $error );
-
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-
-		// Choices
-		$this->add_module( 'choices', $choices );
-
-		// Font
-		$this->add_module( 'font', $font );
-	}
 
 	/**
 	 * Hook into WordPress.

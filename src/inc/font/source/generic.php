@@ -5,12 +5,31 @@
 
 
 final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
+	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+	);
 
+	/**
+	 * MAKE_Font_Source_Generic constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
+	 */
 	public function __construct(
-		MAKE_Compatibility_MethodsInterface $compatibility
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
+		// Load dependencies.
+		parent::__construct( $api, $modules );
 
 		// Set the ID.
 		$this->id = 'generic';

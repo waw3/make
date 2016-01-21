@@ -6,6 +6,18 @@
 
 class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customizer_PreviewInterface, MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'thememod' => 'MAKE_Settings_ThemeModInterface',
+		'scripts'  => 'MAKE_Setup_ScriptsInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -13,25 +25,6 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Settings_ThemeModInterface $thememod
-	 * @param MAKE_Setup_ScriptsInterface     $scripts
-	 */
-	public function __construct(
-		MAKE_Settings_ThemeModInterface $thememod,
-		MAKE_Setup_ScriptsInterface $scripts
-	) {
-		// Theme mods
-		$this->add_module( 'thememod', $thememod );
-
-		// Scripts
-		$this->add_module( 'scripts', $scripts );
-	}
 
 	/**
 	 * Hook into WordPress.

@@ -10,6 +10,20 @@
  */
 final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_WidgetsInterface, MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error'         => 'MAKE_Error_CollectorInterface',
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'view'          => 'MAKE_View_ManagerInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -17,35 +31,6 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Error_CollectorInterface       $error
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Settings_ThemeModInterface     $thememod
-	 * @param MAKE_View_ManagerInterface          $view
-	 */
-	public function __construct(
-		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Settings_ThemeModInterface $thememod,
-		MAKE_View_ManagerInterface $view
-	) {
-		// Errors
-		$this->add_module( 'error', $error );
-
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-
-		// Theme mods
-		$this->add_module( 'thememod', $thememod );
-
-		// View
-		$this->add_module( 'view', $view );
-	}
 
 	/**
 	 * Hook into WordPress.

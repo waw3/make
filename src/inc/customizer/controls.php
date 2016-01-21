@@ -10,6 +10,21 @@
  */
 final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_Customizer_ControlsInterface, MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error'         => 'MAKE_Error_CollectorInterface',
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'font'          => 'MAKE_Font_ManagerInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+		'scripts'       => 'MAKE_Setup_ScriptsInterface',
+	);
+
+	/**
 	 * Array to hold the Panel definitions.
 	 *
 	 * @since x.x.x.
@@ -55,37 +70,22 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	private $hooked = false;
 
 	/**
-	 * Inject dependencies.
+	 * MAKE_Customizer_Controls constructor.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Error_CollectorInterface       $error
-	 * @param MAKE_Compatibility_MethodsInterface $compatibility
-	 * @param MAKE_Font_ManagerInterface          $font
-	 * @param MAKE_Settings_ThemeModInterface     $thememod
-	 * @param MAKE_Setup_ScriptsInterface         $scripts
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
 	 */
 	public function __construct(
-		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility,
-		MAKE_Font_ManagerInterface $font,
-		MAKE_Settings_ThemeModInterface $thememod,
-		MAKE_Setup_ScriptsInterface $scripts
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// Errors
-		$this->add_module( 'error', $error );
+		// Load dependencies.
+		parent::__construct( $api, $modules );
 
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-
-		// Fonts
-		$this->add_module( 'font', $font );
-
-		// Theme mods
-		$this->add_module( 'thememod', $thememod );
-
-		// Scripts
-		$this->add_module( 'scripts', $scripts );
+		// Load private helper module.
+		$this->helper = new MAKE_Customizer_DataHelper( $api );
 	}
 
 	/**
@@ -144,10 +144,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 * @return MAKE_Customizer_DataHelper|null
 	 */
 	private function helper() {
-		if ( ! $this->helper instanceof MAKE_Customizer_DataHelper ) {
-			$this->helper = new MAKE_Customizer_DataHelper( $this->inject_module( 'compatibility' ), $this->inject_module( 'font' ), $this->inject_module( 'thememod' ) );
-		}
-
 		return $this->helper;
 	}
 

@@ -10,6 +10,18 @@
  */
 final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error'         => 'MAKE_Error_CollectorInterface',
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+	);
+
+	/**
 	 * Indicator of whether the load routine has been run.
 	 *
 	 * @since x.x.x.
@@ -18,16 +30,26 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 */
 	private $loaded = false;
 
-
+	/**
+	 * MAKE_Font_Manager constructor.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
+	 */
 	public function __construct(
-		MAKE_Error_CollectorInterface $error,
-		MAKE_Compatibility_MethodsInterface $compatibility
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// Errors
-		$this->add_module( 'error', $error );
+		// Load dependencies.
+		parent::__construct( $api, $modules );
 
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
+		// Generic font source
+		$this->add_source( 'generic', new MAKE_Font_Source_Generic( $api ) );
+
+		// Google font source
+		$this->add_source( 'google', new MAKE_Font_Source_Google( $api ) );
 	}
 
 	/**
@@ -41,12 +63,6 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		if ( $this->is_loaded() ) {
 			return;
 		}
-
-		// Generic font source
-		$this->add_source( 'generic', new MAKE_Font_Source_Generic( $this->inject_module( 'compatibility' ) ) );
-
-		// Google font source
-		$this->add_source( 'google', new MAKE_Font_Source_Google( $this->inject_module( 'compatibility' ) ) );
 
 		/**
 		 * Action: Fires at the end of the font object's load method.

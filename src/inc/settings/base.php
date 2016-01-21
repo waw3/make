@@ -23,6 +23,17 @@
  */
 abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Settings_BaseInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'error' => 'MAKE_Error_CollectorInterface',
+	);
+
+	/**
 	 * The collection of settings and their properties.
 	 *
 	 * @since x.x.x.
@@ -60,20 +71,6 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 		'default',
 		'sanitize'
 	);
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Error_CollectorInterface $error
-	 */
-	public function __construct(
-		MAKE_Error_CollectorInterface $error
-	) {
-		// Errors
-		$this->add_module( 'error', $error );
-	}
 
 	/**
 	 * Add or update settings definitions.

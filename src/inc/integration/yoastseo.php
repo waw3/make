@@ -10,6 +10,18 @@
  */
 class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'thememod' => 'MAKE_Settings_ThemeModInterface',
+		'view' => 'MAKE_View_ManagerInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -23,25 +35,19 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Util_ModulesInterface $api
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
 	 */
 	public function __construct(
-		MAKE_Util_ModulesInterface $api
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// API
-		$this->add_module( 'api', $api );
-
-		// Theme mods
-		$this->add_module( 'thememod', $this->api()->inject_module( 'thememod' ) );
-
-		// View
-		$this->add_module( 'view', $this->api()->inject_module( 'view' ) );
-
-		// Customizer controls
-		// This module only exists in a Customizer context.
-		if ( $this->api()->has_module( 'customizer_controls' ) ) {
-			$this->add_module( 'customizer_controls', $this->api()->inject_module( 'customizer_controls' ) );
+		// The Customizer Controls module only exists in a Customizer context.
+		if ( $api->has_module( 'customizer_controls' ) ) {
+			$this->dependencies['customizer_controls'] = 'MAKE_Customizer_ControlsInterface';
 		}
+
+		parent::__construct( $api, $modules );
 	}
 
 	/**

@@ -10,6 +10,17 @@
  */
 final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -17,18 +28,6 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 */
-	public function __construct(
-		MAKE_Compatibility_MethodsInterface $compatibility
-	) {
-		// Compatibility
-		$this->add_module( 'compatibility', $compatibility );
-	}
 
 	/**
 	 * Hook into WordPress.

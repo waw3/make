@@ -10,6 +10,18 @@
  */
 class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'thememod' => 'MAKE_Settings_ThemeModInterface',
+		'view'     => 'MAKE_View_ManagerInterface',
+	);
+
+	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
 	 * @since x.x.x.
@@ -17,26 +29,6 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Inject dependencies.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param MAKE_Util_ModulesInterface $api
-	 */
-	public function __construct(
-		MAKE_Util_ModulesInterface $api
-	) {
-		// API
-		$this->add_module( 'api', $api );
-
-		// Theme mods
-		$this->add_module( 'thememod', $this->api()->inject_module( 'thememod' ) );
-
-		// Views
-		$this->add_module( 'view', $this->api()->inject_module( 'view' ) );
-	}
 
 	/**
 	 * Hook into WordPress.

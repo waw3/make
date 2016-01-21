@@ -10,15 +10,17 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Error_Collector implements MAKE_Error_CollectorInterface, MAKE_Util_HookInterface {
+final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error_CollectorInterface, MAKE_Util_HookInterface {
 	/**
-	 * Instance of WP_Error.
+	 * An associative array of required modules.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @var
+	 * @var array
 	 */
-	private $errors;
+	protected $dependencies = array(
+		'errors' => 'WP_Error',
+	);
 
 	/**
 	 * Switch for showing errors.
@@ -39,28 +41,33 @@ final class MAKE_Error_Collector implements MAKE_Error_CollectorInterface, MAKE_
 	private $hooked = false;
 
 	/**
-	 * Inject dependencies and set properties.
+	 * MAKE_Error_Collector constructor.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param WP_Error $errors
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
 	 */
 	public function __construct(
-		WP_Error $errors = null
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// Set the WP_Error object.
-		$this->errors = ( is_null( $errors ) ) ? new WP_Error : $errors;
+		// Module defaults.
+		$modules = wp_parse_args( $modules, array(
+			'errors' => new WP_Error,
+		) );
+
+		// Load dependencies.
+		parent::__construct( $api, $modules );
 
 		/**
 		 * Filter: Toggle for showing Make errors.
-		 *
-		 * WP_DEBUG must also be set to true.
 		 *
 		 * @since x.x.x.
 		 *
 		 * @param bool    $show_errors    True to show errors.
 		 */
-		$this->show_errors = defined( 'WP_DEBUG' ) && true === WP_DEBUG && apply_filters( 'make_show_errors', true );
+		$this->show_errors = apply_filters( 'make_show_errors', true );
 	}
 
 	/**
@@ -113,7 +120,7 @@ final class MAKE_Error_Collector implements MAKE_Error_CollectorInterface, MAKE_
 	 * @param string $data
 	 */
 	public function add_error( $code, $message, $data = '' ) {
-		$this->errors->add( $code, $message, $data );
+		$this->errors()->add( $code, $message, $data );
 	}
 
 	/**
@@ -124,7 +131,7 @@ final class MAKE_Error_Collector implements MAKE_Error_CollectorInterface, MAKE_
 	 * @return bool
 	 */
 	public function has_errors() {
-		return ! empty( $this->errors->errors );
+		return ! empty( $this->errors()->errors );
 	}
 
 	/**
@@ -286,11 +293,11 @@ final class MAKE_Error_Collector implements MAKE_Error_CollectorInterface, MAKE_
 						<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>
 					' ) ); ?>
 				</p>
-				<?php foreach ( $this->errors->get_error_codes() as $code ) : ?>
+				<?php foreach ( $this->errors()->get_error_codes() as $code ) : ?>
 					<hr />
 					<h3><?php printf( esc_html__( 'Error code: %s', 'make' ), esc_html( $code ) ); ?></h3>
 					<p>
-						<?php foreach ( $this->errors->get_error_messages( $code ) as $message ) :
+						<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
 							if ( is_array( $message ) ) :
 								$message = $this->parse_backtrace( $message );
 							endif;
@@ -341,7 +348,7 @@ final class MAKE_Error_Collector implements MAKE_Error_CollectorInterface, MAKE_
 	 */
 	private function get_errors_title() {
 		// Get the error message count.
-		$error_count = count( $this->errors->get_error_messages() );
+		$error_count = count( $this->errors()->get_error_messages() );
 		return sprintf( _n( '%s Make error', '%s Make errors', $error_count, 'make' ), number_format_i18n( $error_count ) );
 	}
 

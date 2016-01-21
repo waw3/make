@@ -8,82 +8,35 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_Integration_ManagerInterface, MAKE_Util_HookInterface {
-	/**
-	 * Indicator of whether the hook routine has been run.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @var bool
-	 */
-	private $hooked = false;
-
+final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_Integration_ManagerInterface {
 	/**
 	 * Inject dependencies.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_Util_ModulesInterface $api
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
 	 */
 	public function __construct(
-		MAKE_Util_ModulesInterface $api
+		MAKE_APIInterface $api,
+		array $modules = array()
 	) {
-		// API
-		$this->add_module( 'api', $api );
-	}
-
-	/**
-	 * Hook into WordPress.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return void
-	 */
-	public function hook() {
-		if ( $this->is_hooked() ) {
-			return;
-		}
+		parent::__construct( $api, $modules );
 
 		// Jetpack
 		if ( $this->is_plugin_active( 'jetpack/jetpack.php' ) ) {
-			$this->add_integration( 'jetpack', new MAKE_Integration_Jetpack( $this->inject_module( 'api' ) ) );
+			$this->add_integration( 'jetpack', new MAKE_Integration_Jetpack( $api ) );
 		}
 
 		// WooCommerce
 		if ( $this->is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-			$this->add_integration( 'woocommerce', new MAKE_Integration_WooCommerce( $this->inject_module( 'api' ) ) );
+			$this->add_integration( 'woocommerce', new MAKE_Integration_WooCommerce( $api ) );
 		}
 
 		// Yoast SEO
 		if ( $this->is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-			$this->add_integration( 'yoastseo', new MAKE_Integration_YoastSEO( $this->inject_module( 'api' ) ) );
+			$this->add_integration( 'yoastseo', new MAKE_Integration_YoastSEO( $api ) );
 		}
-
-		/**
-		 * Action: Fires at the end of the integration object's hook method.
-		 *
-		 * This action gives a developer the opportunity to add integrations
-		 * and run additional hook routines.
-		 *
-		 * @since x.x.x.
-		 *
-		 * @param MAKE_Integration_Manager    $integration    The integrations object that has just finished hooking.
-		 */
-		do_action( 'make_integration_hooked', $this );
-
-		// Hooking has occurred.
-		$this->hooked = true;
-	}
-
-	/**
-	 * Check if the hook routine has been run.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return bool
-	 */
-	public function is_hooked() {
-		return $this->hooked;
 	}
 
 	/**
