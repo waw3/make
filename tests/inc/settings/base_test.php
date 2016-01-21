@@ -20,7 +20,10 @@ class TEST_Settings_Base extends WP_UnitTestCase {
 		// Because the subject class is abstract, this returns a mock instead of an actual instance.
 		return $this->getMockBuilder( 'MAKE_Settings_Base' )
 			        ->setConstructorArgs( array(
-				        $this->getMock( 'MAKE_Error_CollectorInterface' )
+				        $this->getMock( 'MAKE_APIInterface' ),
+				        array(
+					        'error' => $this->getMock( 'MAKE_Error_CollectorInterface' )
+				        )
 			        ) )
 			        ->getMockForAbstractClass();
 	}
