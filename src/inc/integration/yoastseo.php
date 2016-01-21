@@ -17,8 +17,9 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 * @var array
 	 */
 	protected $dependencies = array(
-		'thememod' => 'MAKE_Settings_ThemeModInterface',
-		'view' => 'MAKE_View_ManagerInterface',
+		'view'                => 'MAKE_View_ManagerInterface',
+		'thememod'            => 'MAKE_Settings_ThemeModInterface',
+		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
 	);
 
 	/**
@@ -43,8 +44,8 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		array $modules = array()
 	) {
 		// The Customizer Controls module only exists in a Customizer context.
-		if ( $api->has_module( 'customizer_controls' ) ) {
-			$this->dependencies['customizer_controls'] = 'MAKE_Customizer_ControlsInterface';
+		if ( ! $api->has_module( 'customizer_controls' ) ) {
+			unset( $this->dependencies['customizer_controls'] );
 		}
 
 		parent::__construct( $api, $modules );
