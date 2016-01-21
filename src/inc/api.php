@@ -82,7 +82,13 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		parent::__construct( $this, $modules );
 	}
 
-
+	/**
+	 * Getter for the private defaults array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
 	private function get_default_modules() {
 		return $this->defaults;
 	}
