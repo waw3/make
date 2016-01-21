@@ -122,6 +122,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		// Integration settings
 		return $thememod->add_settings(
 			array_fill_keys( array(
+				'layout-blog-yoast-breadcrumb',
 				'layout-archive-yoast-breadcrumb',
 				'layout-search-yoast-breadcrumb',
 				'layout-post-yoast-breadcrumb',
@@ -149,6 +150,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 
 		// Views that can have breadcrumbs
 		$views = array(
+			'blog',
 			'archive',
 			'search',
 			'post',
