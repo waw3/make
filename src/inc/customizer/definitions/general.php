@@ -81,6 +81,15 @@ $this->add_section_definitions( 'labels', array(
 	'panel'    => $panel,
 	'title'    => __( 'Labels', 'make' ),
 	'controls' => array(
+		'label-search-field'      => array(
+			'setting' => array(
+				'transport' => 'postMessage',
+			),
+			'control' => array(
+				'label' => __( 'Search Field Label', 'make' ),
+				'type'  => 'text',
+			),
+		),
 		'navigation-mobile-label' => array(
 			'setting' => array(
 				'theme_supports' => 'menus',

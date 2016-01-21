@@ -189,6 +189,14 @@
 		});
 	});
 
+	// Search Field
+	api('label-search-field', function(value) {
+		value.bind(function(to) {
+			var $content = $('input.search-field');
+			$content.attr('placeholder', to);
+		});
+	});
+
 	// Mobile Menu Label
 	api( 'navigation-mobile-label', function( value ) {
 		value.bind( function( to ) {

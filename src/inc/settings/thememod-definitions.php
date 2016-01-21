@@ -161,6 +161,7 @@ $this->add_settings(
 		'navigation-mobile-label' => array( 'default' => __( 'Menu', 'make' ) ),
 		'general-sticky-label'    => array( 'default' => __( 'Featured', 'make' ) ),
 		'label-read-more'         => array( 'default' => __( 'Read more', 'make' ) ),
+		'label-search-field'      => array( 'default' => __( 'Search&hellip;', 'make' ) ),
 	),
 	array(
 		'sanitize' => 'esc_html',
