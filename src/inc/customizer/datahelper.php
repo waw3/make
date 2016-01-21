@@ -35,27 +35,23 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 		$font_choices = $this->font()->get_font_choices( null, false );
 		$font_label = isset( $font_choices[ $font_value ] ) ? $font_choices[ $font_value ] : '';
 
-		$group_title = '<h4 class="make-group-title">' . esc_html( $label ) . '</h4>';
-		if ( $description ) {
-			$group_title .= '<span class="description customize-control-description">' . $description . '</span>';
-		}
+		// Definitions collector
+		$definitions = array();
 
-		return array(
-			'typography-group-' . $element => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Html',
-					'html'  => $group_title,
-				),
-			),
-			'font-family-' . $element   => array(
+		// Font Family
+		if ( $this->thememod()->setting_exists( 'font-family-' . $element ) ) {
+			$definitions[ 'font-family-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'label'   => __( 'Font Family', 'make' ),
 					'type'    => 'select',
 					'choices' => array( $font_value => $font_label ),
 				),
-			),
-			'font-style-' . $element => array(
+			);
+		}
+		// Font Style
+		if ( $this->thememod()->setting_exists( 'font-style-' . $element ) ) {
+			$definitions[ 'font-style-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
@@ -63,8 +59,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'font-style-' . $element ),
 				),
-			),
-			'font-weight-' . $element => array(
+			);
+		}
+		// Font Weight
+		if ( $this->thememod()->setting_exists( 'font-weight-' . $element ) ) {
+			$definitions[ 'font-weight-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
@@ -72,8 +71,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'font-weight-' . $element ),
 				),
-			),
-			'font-size-' . $element     => array(
+			);
+		}
+		// Font Size
+		if ( $this->thememod()->setting_exists( 'font-size-' . $element ) ) {
+			$definitions[ 'font-size-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
@@ -84,8 +86,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 						'step' => 1,
 					),
 				),
-			),
-			'text-transform-' . $element => array(
+			);
+		}
+		// Text Transform
+		if ( $this->thememod()->setting_exists( 'text-transform-' . $element ) ) {
+			$definitions[ 'text-transform-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
@@ -93,8 +98,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'text-transform-' . $element ),
 				),
-			),
-			'line-height-' . $element     => array(
+			);
+		}
+		// Line Height
+		if ( $this->thememod()->setting_exists( 'line-height-' . $element ) ) {
+			$definitions[ 'line-height-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
@@ -105,8 +113,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 						'step' => 0.1,
 					),
 				),
-			),
-			'letter-spacing-' . $element     => array(
+			);
+		}
+		// Letter Spacing
+		if ( $this->thememod()->setting_exists( 'letter-spacing-' . $element ) ) {
+			$definitions[ 'letter-spacing-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
@@ -117,8 +128,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 						'step' => 0.5,
 					),
 				),
-			),
-			'word-spacing-' . $element     => array(
+			);
+		}
+		// Word Spacing
+		if ( $this->thememod()->setting_exists( 'word-spacing-' . $element ) ) {
+			$definitions[ 'word-spacing-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Range',
@@ -129,8 +143,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 						'step' => 1,
 					),
 				),
-			),
-			'link-underline-' . $element => array(
+			);
+		}
+		// Link Underline
+		if ( $this->thememod()->setting_exists( 'link-underline-' . $element ) ) {
+			$definitions[ 'link-underline-' . $element ] = array(
 				'setting' => true,
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Radio',
@@ -138,7 +155,25 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 					'mode'  => 'buttonset',
 					'choices' => $this->thememod()->get_choice_set( 'link-underline-' . $element ),
 				),
-			),
-		);
+			);
+		}
+		// Group Title
+		if ( ! empty( $definitions ) ) {
+			$group_title = '<h4 class="make-group-title">' . esc_html( $label ) . '</h4>';
+			if ( $description ) {
+				$group_title .= '<span class="description customize-control-description">' . $description . '</span>';
+			}
+
+			$definitions = array_merge( array(
+				'typography-group-' . $element => array(
+					'control' => array(
+						'control_type' => 'MAKE_Customizer_Control_Html',
+						'html'  => $group_title,
+					),
+				),
+			), $definitions );
+		}
+
+		return $definitions;
 	}
 }

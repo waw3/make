@@ -17,23 +17,7 @@ $this->add_section_definitions( 'font', array(
 	'title'   => __( 'Global', 'make' ),
 	'controls' => array_merge(
 		$this->helper()->get_typography_group_definitions( 'body', __( 'Default', 'make' ) ),
-		array(
-			'body-link-group' => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Html',
-					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Links', 'make' ) . '</h4>',
-				),
-			),
-			'font-weight-body-link' => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Radio',
-					'label'   => __( 'Font Weight', 'make' ),
-					'mode'  => 'buttonset',
-					'choices' => $this->thememod()->get_choice_set( 'font-weight-body-link' ),
-				),
-			),
-		)
+		$this->helper()->get_typography_group_definitions( 'body-link', __( 'Links', 'make' ) )
 	),
 ) );
 
@@ -82,22 +66,8 @@ $this->add_section_definitions( 'font-main-menu', array(
 					'type'  => 'checkbox',
 				),
 			),
-			'font-nav-current-item-option-heading' => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Html',
-					'html'  => '<h4 class="make-group-title">' . esc_html__( 'Current Item', 'make' ) . '</h4>',
-				),
-			),
-			'font-weight-nav-current-item' => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Radio',
-					'label'   => __( 'Font Weight', 'make' ),
-					'mode'  => 'buttonset',
-					'choices' => $this->thememod()->get_choice_set( 'font-weight-nav-current-item' ),
-				),
-			),
-		)
+		),
+		$this->helper()->get_typography_group_definitions( 'nav-current-item', __( 'Current Item', 'make' ) )
 	),
 ) );
 
