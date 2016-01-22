@@ -30,6 +30,13 @@ if ( ! $this->thememod()->is_default( 'font-weight-body-link' ) ) {
 		)
 	) );
 }
+// Buttons
+$element = 'button';
+$selectors = array( 'button', '.ttfmake-button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' );
+$declarations = $this->helper()->parse_font_properties( $element );
+if ( ! empty( $declarations ) ) {
+	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
+}
 // Comments
 if ( isset( $declarations['font-size-px'] ) ) {
 	$this->css()->add( array(

@@ -17,7 +17,8 @@ $this->add_section_definitions( 'font', array(
 	'title'   => __( 'Global', 'make' ),
 	'controls' => array_merge(
 		$this->helper()->get_typography_group_definitions( 'body', __( 'Default', 'make' ) ),
-		$this->helper()->get_typography_group_definitions( 'body-link', __( 'Links', 'make' ) )
+		$this->helper()->get_typography_group_definitions( 'body-link', __( 'Links', 'make' ) ),
+		$this->helper()->get_typography_group_definitions( 'button', __( 'Buttons', 'make' ) )
 	),
 ) );
 

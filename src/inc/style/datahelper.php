@@ -59,24 +59,27 @@ final class MAKE_Style_DataHelper extends MAKE_Util_Modules {
 
 		foreach ( $properties as $property ) {
 			$setting_id = $property . '-' . $element;
-			$sanitized_value = $this->thememod()->get_value( $setting_id, 'style' );
 
-			if ( true === $force || ( ! $this->thememod()->is_default( $setting_id ) ) ) {
-				switch ( $property ) {
-					case 'font-family' :
-						$declarations[ $property ] = $this->font()->get_font_stack( $sanitized_value );
-						break;
-					case 'font-size' :
-						$declarations[ $property . '-px' ] = $sanitized_value . 'px';
-						$declarations[ $property . '-rem' ] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';
-						break;
-					case 'letter-spacing' :
-					case 'word-spacing' :
-						$declarations[ $property ] = $sanitized_value . 'px';
-						break;
-					default :
-						$declarations[ $property ] = $sanitized_value;
-						break;
+			if ( $this->thememod()->setting_exists( $setting_id ) ) {
+				$sanitized_value = $this->thememod()->get_value( $setting_id, 'style' );
+
+				if ( true === $force || ( ! $this->thememod()->is_default( $setting_id ) ) ) {
+					switch ( $property ) {
+						case 'font-family' :
+							$declarations[ $property ] = $this->font()->get_font_stack( $sanitized_value );
+							break;
+						case 'font-size' :
+							$declarations[ $property . '-px' ]  = $sanitized_value . 'px';
+							$declarations[ $property . '-rem' ] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';
+							break;
+						case 'letter-spacing' :
+						case 'word-spacing' :
+							$declarations[ $property ] = $sanitized_value . 'px';
+							break;
+						default :
+							$declarations[ $property ] = $sanitized_value;
+							break;
+					}
 				}
 			}
 		}

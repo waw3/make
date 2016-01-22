@@ -62,6 +62,7 @@ $this->add_settings(
 $this->add_settings(
 	array(
 		'font-size-body'                => array( 'default' => 17 ),
+		'font-size-button'              => array( 'default' => 13 ),
 		'font-size-h1'                  => array( 'default' => 46 ),
 		'font-size-h2'                  => array( 'default' => 34 ),
 		'font-size-h3'                  => array( 'default' => 24 ),
@@ -93,6 +94,9 @@ $this->add_settings(
 		'line-height-body'                          => array( 'default' => (float) 1.6 ),
 		'letter-spacing-body'                       => array( 'default' => (float) 0 ),
 		'word-spacing-body'                         => array( 'default' => (float) 0 ),
+		'line-height-button'                        => array( 'default' => (float) 1.6 ),
+		'letter-spacing-button'                     => array( 'default' => (float) 0 ),
+		'word-spacing-button'                       => array( 'default' => (float) 0 ),
 		'line-height-h1'                            => array( 'default' => (float) 1.2 ),
 		'letter-spacing-h1'                         => array( 'default' => (float) 0 ),
 		'word-spacing-h1'                           => array( 'default' => (float) 0 ),
@@ -395,6 +399,7 @@ $this->add_settings(
 $this->add_settings(
 	array(
 		'font-family-body'                => array( 'default' => 'Open Sans' ),
+		'font-family-button'              => array( 'default' => 'Open Sans' ),
 		'font-family-h1'                  => array( 'default' => 'sans-serif' ),
 		'font-family-h2'                  => array( 'default' => 'sans-serif' ),
 		'font-family-h3'                  => array( 'default' => 'sans-serif' ),
@@ -426,6 +431,7 @@ $this->add_settings(
 $this->add_settings(
 	array_fill_keys( array(
 		'font-style-body',
+		'font-style-button',
 		'font-style-h1',
 		'font-style-h2',
 		'font-style-h3',
@@ -456,6 +462,7 @@ $this->add_settings(
 	array(
 		'font-weight-body'                => array( 'default' => 'normal' ),
 		'font-weight-body-link'           => array( 'default' => 'bold' ),
+		'font-weight-button'              => array( 'default' => 'normal' ),
 		'font-weight-h1'                  => array( 'default' => 'normal' ),
 		'font-weight-h2'                  => array( 'default' => 'bold' ),
 		'font-weight-h3'                  => array( 'default' => 'bold' ),
@@ -569,6 +576,7 @@ $this->add_settings(
 $this->add_settings(
 	array(
 		'text-transform-body'                => array( 'default' => 'none' ),
+		'text-transform-button'              => array( 'default' => 'none' ),
 		'text-transform-h1'                  => array( 'default' => 'none' ),
 		'text-transform-h2'                  => array( 'default' => 'none' ),
 		'text-transform-h3'                  => array( 'default' => 'none' ),
