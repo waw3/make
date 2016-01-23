@@ -59,7 +59,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			id: 0,
 			url: '',
 			target: false,
-			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeBody,
+			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeButton,
 			fontWeight: 'bold',
 			colorBackground: ttfmakeFormatBuilderVars.userSettings.colorPrimary,
 			colorBackgroundHover: ttfmakeFormatBuilderVars.userSettings.colorSecondary,
