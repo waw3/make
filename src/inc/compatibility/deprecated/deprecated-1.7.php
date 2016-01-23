@@ -1679,6 +1679,33 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_font_uri', '1.7.0', 'Make()->scripts()->get_google_url' );
 endif;
 
+/**
+ * Instantiate or return the one TTFMAKE_Formatting instance.
+ *
+ * @since  1.4.1.
+ * @deprecated 1.7.0.
+ *
+ * @return TTFMAKE_Formatting
+ */
+function ttfmake_formatting() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->formatting()', $backtrace[0] );
+	return Make()->formatting();
+}
+
+/**
+ * Run the init function for the Format Builder
+ *
+ * @since 1.4.1.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_formatting_init() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
 if ( class_exists( 'WP_Customize_Control' ) ) :
 /**
  * Class TTFMAKE_Customize_Background_Position_Control
