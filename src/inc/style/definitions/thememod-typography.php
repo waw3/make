@@ -30,13 +30,6 @@ if ( ! $this->thememod()->is_default( 'font-weight-body-link' ) ) {
 		)
 	) );
 }
-// Buttons
-$element = 'button';
-$selectors = array( 'button', '.ttfmake-button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' );
-$declarations = $this->helper()->parse_font_properties( $element );
-if ( ! empty( $declarations ) ) {
-	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
-}
 // Comments
 if ( isset( $declarations['font-size-px'] ) ) {
 	$this->css()->add( array(
@@ -54,6 +47,13 @@ if ( isset( $declarations['font-size-px'] ) ) {
 			'font-size-rem' => $this->helper()->convert_px_to_rem( $this->helper()->get_relative_font_size( $declarations['font-size-px'], $this->helper()->get_relative_size( 'comment-date' ) ) ) . 'rem'
 		)
 	) );
+}
+// Buttons
+$element = 'button';
+$selectors = array( 'button', '.ttfmake-button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' );
+$declarations = $this->helper()->parse_font_properties( $element );
+if ( ! empty( $declarations ) ) {
+	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 }
 
 /**
