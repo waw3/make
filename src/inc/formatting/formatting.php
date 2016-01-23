@@ -279,6 +279,10 @@ class TTFMAKE_Formatting {
 						'fontSizeButton' => get_theme_mod( 'font-size-button', ttfmake_get_default( 'font-size-button' ) ),
 						'colorPrimary'   => get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ),
 						'colorSecondary' => get_theme_mod( 'color-secondary', ttfmake_get_default( 'color-secondary' ) ),
+						'colorButtonText' => get_theme_mod( 'color-button-text', ttfmake_get_default( 'color-button-text' ) ),
+						'colorButtonTextHover' => get_theme_mod( 'color-button-text-hover', ttfmake_get_default( 'color-button-text-hover' ) ),
+						'colorButtonBackground' => get_theme_mod( 'color-button-background', ttfmake_get_default( 'color-button-background' ) ),
+						'colorButtonBackgroundHover' => get_theme_mod( 'color-button-background-hover', ttfmake_get_default( 'color-button-background-hover' ) ),
 					)
 				)
 			);

@@ -16,13 +16,13 @@ $this->add_section_definitions( 'color', array(
 	'panel'   => $panel,
 	'title'   => __( 'Global', 'make' ),
 	'controls' => array(
-		'color-group-color-scheme' => array(
+		'color-group-color-scheme'      => array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Html',
-				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Color Scheme', 'make' ) . '</h4>',
+				'html'         => '<h4 class="make-group-title">' . esc_html__( 'Color Scheme', 'make' ) . '</h4>',
 			),
 		),
-		'color-primary'   => array(
+		'color-primary'                 => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
@@ -33,7 +33,7 @@ $this->add_section_definitions( 'color', array(
 				),
 			),
 		),
-		'color-secondary' => array(
+		'color-secondary'               => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
@@ -44,7 +44,7 @@ $this->add_section_definitions( 'color', array(
 				),
 			),
 		),
-		'color-text'      => array(
+		'color-text'                    => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
@@ -55,7 +55,7 @@ $this->add_section_definitions( 'color', array(
 				),
 			),
 		),
-		'color-detail'    => array(
+		'color-detail'                  => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
@@ -66,13 +66,13 @@ $this->add_section_definitions( 'color', array(
 				),
 			),
 		),
-		'color-group-global-link' => array(
+		'color-group-global-link'       => array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Html',
-				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Links', 'make' ) . '</h4>',
+				'html'         => '<h4 class="make-group-title">' . esc_html__( 'Links', 'make' ) . '</h4>',
 			),
 		),
-		'color-primary-link'    => array(
+		'color-primary-link'            => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
@@ -80,10 +80,44 @@ $this->add_section_definitions( 'color', array(
 				'description'  => __( 'The default link color is controlled by the "Primary Color" option above.', 'make' ),
 			),
 		),
+		'color-group-global-button'     => array(
+			'control' => array(
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'         => '<h4 class="make-group-title">' . esc_html__( 'Buttons', 'make' ) . '</h4>',
+			),
+		),
+		'color-button-text'             => array(
+			'setting' => true,
+			'control' => array(
+				'control_type' => 'WP_Customize_Color_Control',
+				'label'        => __( 'Button Text Color', 'make' ),
+			),
+		),
+		'color-button-background'       => array(
+			'setting' => true,
+			'control' => array(
+				'control_type' => 'WP_Customize_Color_Control',
+				'label'        => __( 'Button Background Color', 'make' ),
+			),
+		),
+		'color-button-text-hover'       => array(
+			'setting' => true,
+			'control' => array(
+				'control_type' => 'WP_Customize_Color_Control',
+				'label'        => __( 'Button Text Hover/Focus Color', 'make' ),
+			),
+		),
+		'color-button-background-hover' => array(
+			'setting' => true,
+			'control' => array(
+				'control_type' => 'WP_Customize_Color_Control',
+				'label'        => __( 'Button Background Hover/Focus Color', 'make' ),
+			),
+		),
 		'color-group-global-background' => array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Html',
-				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Background', 'make' ) . '</h4>',
+				'html'         => '<h4 class="make-group-title">' . esc_html__( 'Background', 'make' ) . '</h4>',
 			),
 		),
 		/**
@@ -92,21 +126,21 @@ $this->add_section_definitions( 'color', array(
 		'main-background-color-heading' => array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Html',
-				'label'   => __( 'Main Column Background Color', 'make' ),
+				'label'        => __( 'Main Column Background Color', 'make' ),
 			),
 		),
-		'main-background-color' => array(
+		'main-background-color'         => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'WP_Customize_Color_Control',
 			),
 		),
-		'main-background-color-opacity'     => array(
+		'main-background-color-opacity' => array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Range',
-				'label'   => __( 'Opacity', 'make' ),
-				'input_attrs' => array(
+				'label'        => __( 'Opacity', 'make' ),
+				'input_attrs'  => array(
 					'min'  => 0,
 					'max'  => 1.01, // Needs to be slightly over 1 to handle rounding error.
 					'step' => 0.05,

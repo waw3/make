@@ -192,6 +192,10 @@ $this->add_settings(
 		'color-text'                        => array( 'default' => '#171717' ),
 		'color-detail'                      => array( 'default' => '#b9bcbf' ),
 		'color-primary-link'                => array( 'default' => '' ),
+		'color-button-text'                 => array( 'default' => '#ffffff' ),
+		'color-button-text-hover'           => array( 'default' => '' ),
+		'color-button-background'           => array( 'default' => '#171717' ),
+		'color-button-background-hover'     => array( 'default' => '' ),
 		'background_color'                  => array( 'default' => 'b9bcbf' ), // '#' intentionally left off here
 		'main-background-color'             => array( 'default' => '#ffffff' ),
 		'header-text-color'                 => array( 'default' => '#171717' ),

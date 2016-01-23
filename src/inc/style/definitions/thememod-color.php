@@ -277,6 +277,67 @@ if ( ! $this->thememod()->is_default( 'color-primary-link' ) ) {
 	) );
 }
 
+// Button Text Color
+if ( ! $this->thememod()->is_default( 'color-button-text' ) ) {
+	$this->css()->add( array(
+		'selectors'    => array(
+			'button',
+			'.ttfmake-button',
+			'input[type="button"]',
+			'input[type="reset"]',
+			'input[type="submit"]'
+		),
+		'declarations' => array(
+			'color' => $this->thememod()->get_value( 'color-button-text' )
+		)
+	) );
+}
+// Button Text Hover/Focus Color
+if ( ! $this->thememod()->is_default( 'color-button-text-hover' ) && $this->thememod()->get_value( 'color-button-text-hover' ) !== $this->thememod()->get_value( 'color-button-text' ) ) {
+	$this->css()->add( array(
+		'selectors'    => array(
+			'button:hover', 'button:focus',
+			'.ttfmake-button:hover', '.ttfmake-button:focus',
+			'input[type="button"]:hover', 'input[type="button"]:focus',
+			'input[type="reset"]:hover', 'input[type="reset"]:focus',
+			'input[type="submit"]:hover', 'input[type="submit"]:focus',
+		),
+		'declarations' => array(
+			'color' => $this->thememod()->get_value( 'color-button-text-hover' )
+		)
+	) );
+}
+// Button Background Color
+if ( ! $this->thememod()->is_default( 'color-button-background' ) ) {
+	$this->css()->add( array(
+		'selectors'    => array(
+			'button',
+			'.ttfmake-button',
+			'input[type="button"]',
+			'input[type="reset"]',
+			'input[type="submit"]'
+		),
+		'declarations' => array(
+			'background-color' => $this->thememod()->get_value( 'color-button-background' )
+		)
+	) );
+}
+// Button Background Hover/Focus Color
+if ( ! $this->thememod()->is_default( 'color-button-background-hover' ) && $this->thememod()->get_value( 'color-button-background-hover' ) !== $this->thememod()->get_value( 'color-button-background' ) ) {
+	$this->css()->add( array(
+		'selectors'    => array(
+			'button:hover', 'button:focus',
+			'.ttfmake-button:hover', '.ttfmake-button:focus',
+			'input[type="button"]:hover', 'input[type="button"]:focus',
+			'input[type="reset"]:hover', 'input[type="reset"]:focus',
+			'input[type="submit"]:hover', 'input[type="submit"]:focus',
+		),
+		'declarations' => array(
+			'background-color' => $this->thememod()->get_value( 'color-button-background-hover' )
+		)
+	) );
+}
+
 // Main background color
 if ( ! $this->thememod()->is_default( 'main-background-color' ) || ! $this->thememod()->is_default( 'main-background-color-opacity' ) ) {
 	// Convert to RGBa
