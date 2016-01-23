@@ -42,7 +42,9 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 		MAKE_APIInterface $api = null,
 		array $modules = array()
 	) {
-		$this->load_dependencies( $api, $modules );
+		if ( ! empty( $this->dependencies ) ) {
+			$this->load_dependencies( $api, $modules );
+		}
 	}
 
 	/**
