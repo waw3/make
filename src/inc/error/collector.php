@@ -387,9 +387,9 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 *
 	 * @param array $backtrace
 	 *
-	 * @return mixed|string
+	 * @return string
 	 */
-	private function parse_backtrace( array $backtrace ) {
+	public function parse_backtrace( array $backtrace ) {
 		if ( isset( $backtrace['file'] ) && isset( $backtrace['line'] ) ) {
 			return sprintf( __( 'Called in <strong>%1$s</strong> on line <strong>%2$s</strong>.' ), $backtrace['file'], $backtrace['line'] );
 		} else {

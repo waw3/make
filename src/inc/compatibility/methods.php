@@ -234,18 +234,24 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 		do_action( 'make_deprecated_function_run', $function, $replacement, $version );
 
 		$error_code = 'make_deprecated_function';
+		$message = __( '%1$s is <strong>deprecated</strong> since version %2$s of Make. %3$s', 'make' );
 
 		// Add an error message.
 		if ( ! is_null( $replacement ) ) {
-			$this->error()->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make! Use %3$s instead.', 'make' ), $function, $version, $replacement ) );
+			$message2 = sprintf( __( 'Use %s instead.', 'make' ), $replacement );
+			$message = sprintf( $message, $function, $version, $message2 );
 		} else {
-			$this->error()->add_error( $error_code, sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of Make, with no alternative available.', 'make' ), $function, $version ) );
+			$message2 = __( 'No alternative is available.', 'make' );
+			$message = sprintf( $message, $function, $version, $message2 );
 		}
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$this->error()->add_error( $error_code, $backtrace );
+			$message .= ' ' . $this->error()->parse_backtrace( $backtrace );
 		}
+
+		// Add the error.
+		$this->error()->add_error( $error_code, $message );
 	}
 
 	/**
@@ -307,13 +313,15 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 
 		$error_code = 'make_doing_it_wrong';
 
-		// Add an error
+		// Add a version.
 		$message .= ( ! is_null( $version ) ) ? ' ' . sprintf( __( '(This message was added in version %s.)', 'make' ), $version ) : '';
-		$this->error()->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s' ), $function, $message ) );
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$this->error()->add_error( $error_code, $backtrace );
+			$message .= ' ' . $this->error()->parse_backtrace( $backtrace );
 		}
+
+		// Add the error.
+		$this->error()->add_error( $error_code, sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s' ), $function, $message ) );
 	}
 }

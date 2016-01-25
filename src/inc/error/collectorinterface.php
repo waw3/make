@@ -12,4 +12,6 @@ interface MAKE_Error_CollectorInterface {
 	public function add_error( $code, $message, $data = '' );
 
 	public function has_errors();
+
+	public function parse_backtrace( array $backtrace );
 }
