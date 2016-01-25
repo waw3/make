@@ -167,6 +167,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return void
 	 */
 	public function add_formats() {
+		// Only run this in the proper hook context.
+		if ( 'admin_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
 		$formats_uri = get_template_directory_uri() . '/inc/formatting/js/format-builder/models';
 
 		// Button
@@ -183,7 +188,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			$this->compatibility()->deprecated_hook(
 				'make_format_builder_format_models',
 				'1.7.0',
-				__( 'To add or modify Format Builder formats, use the function make_add_format() instead.', 'make' )
+				__( 'To add or modify Format Builder formats, use the add_format() method instead.', 'make' )
 			);
 
 			/**
@@ -485,7 +490,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			'make-dynamic-stylesheet',
 			$js_uri . '/dynamic-stylesheet/dynamic-stylesheet.js',
 			array( 'jquery', 'editor' ),
-			time(),
+			TTFMAKE_VERSION,
 			true
 		);
 
