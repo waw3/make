@@ -178,7 +178,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		parseAttributes: function( node ) {
 			var self = this,
 				$node = $(node),
-				icon, iconClasses, fontSize, paddingHorz, paddingVert, borderRadius;
+				icon, iconClasses, fontWeight, fontSize, paddingHorz, paddingVert, borderRadius;
 
 			// Get an existing ID.
 			if ( $node.attr('id') ) this.set('id', $node.attr('id'));
@@ -201,7 +201,16 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			// Text color
 			if ( $node.css('color') ) this.set('colorText', $node.css('color'));
 			// Font weight
-			if ( $node.css('fontWeight') ) this.set('fontWeight', $node.css('fontWeight'));
+			if ( $node.css('fontWeight') ) {
+				fontWeight = $node.css('fontWeight');
+				if (400 == fontWeight) {
+					fontWeight = 'normal';
+				}
+				if (700 == fontWeight) {
+					fontWeight = 'bold';
+				}
+				this.set('fontWeight', fontWeight);
+			}
 			// Font size
 			if ( $node.css('fontSize') ) {
 				fontSize = parseInt( $node.css('fontSize') );

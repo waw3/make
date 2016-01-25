@@ -19,9 +19,19 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @var array
 	 */
 	protected $dependencies = array(
+		'error'    => 'MAKE_Error_CollectorInterface',
 		'thememod' => 'MAKE_Settings_ThemeModInterface',
 		'scripts'  => 'MAKE_Setup_ScriptsInterface',
 	);
+
+	/**
+	 * An associative array of definitions for the Format Builder.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	private $formats = array();
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -44,7 +54,17 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			return;
 		}
 
+		// Register styles and scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles_scripts' ), 9 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_styles_scripts' ), 9 );
+
 		if ( is_admin() && ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) ) {
+			// Add formats
+			add_action( 'admin_enqueue_scripts', array( $this, 'add_formats' ), 8 );
+
+			// Enqueue admin styles and scripts for plugin functionality
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+
 			// Add plugins and buttons
 			add_filter( 'mce_external_plugins', array( $this, 'register_plugins' ) );
 			add_filter( 'mce_buttons', array( $this, 'register_buttons_1' ) );
@@ -55,9 +75,6 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 
 			// Add translations for plugins
 			add_filter( 'wp_mce_translation', array( $this, 'add_translations' ), 10, 2 );
-
-			// Enqueue admin styles and scripts for plugin functionality
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
 			// Add items to the Formats dropdown
 			add_filter( 'tiny_mce_before_init', array( $this, 'formats_dropdown_items' ) );
@@ -82,6 +99,119 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	}
 
 	/**
+	 * Add a format definition for use with the Format Builder.
+	 *
+	 * See one of the built-in format models for an example of what the script file should contain.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param        $format_name
+	 * @param        $script_uri
+	 * @param string $script_version
+	 *
+	 * @return bool
+	 */
+	public function add_format( $format_name, $script_uri, $script_version = '' ) {
+		$format_name = sanitize_key( $format_name );
+		$return = true;
+
+		if ( isset( $this->formats[ $format_name ] ) ) {
+			$this->error()->add_error( 'make_format_already_exists', sprintf(
+				__( 'The "%s" format can\'t be added because it already exists.', 'make' ),
+				esc_html( $format_name )
+			) );
+			$return = false;
+		} else {
+			$format_data = array(
+				'uri'     => esc_url( $script_uri ),
+				'version' => esc_html( $script_version ),
+			);
+
+			$this->formats[ $format_name ] = $format_data;
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Remove a format definition from the Format Builder.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $format_name
+	 *
+	 * @return bool
+	 */
+	public function remove_format( $format_name ) {
+		$format_name = sanitize_key( $format_name );
+		$return = true;
+
+		if ( isset( $this->formats[ $format_name ] ) ) {
+			unset( $this->formats[ $format_name ] );
+		} else {
+			$this->error()->add_error( 'make_format_does_not_exist', sprintf(
+				__( 'The "%s" format can\'t be removed because it doesn\'t exist.', 'make' ),
+				esc_html( $format_name )
+			) );
+			$return = false;
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Add the built-in formats to the Format Builder.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function add_formats() {
+		$formats_uri = get_template_directory_uri() . '/inc/formatting/js/format-builder/models';
+
+		// Button
+		$this->add_format( 'button', $formats_uri . '/button.js' );
+
+		// List
+		$this->add_format( 'list', $formats_uri . '/list.js' );
+
+		// Notice
+		$this->add_format( 'notice', $formats_uri . '/notice.js' );
+
+		// Check for deprecated filter
+		if ( has_filter( 'make_format_builder_format_models' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_format_builder_format_models',
+				'1.7.0',
+				__( 'To add or modify Format Builder formats, use the function make_add_format() instead.', 'make' )
+			);
+
+			/**
+			 * Filter the format model definitions and their script locations.
+			 *
+			 * model => URI of the model's script file
+			 *
+			 * @since 1.4.1
+			 * @deprecated 1.7.0
+			 *
+			 * @param array    $models    The array of format models.
+			 */
+			$this->formats = apply_filters( 'make_format_builder_format_models', $this->formats );
+		}
+
+		/**
+		 * Action: Fires at the end of the Formatting object's add_formats method.
+		 *
+		 * This action gives a developer the opportunity to add or remove formats.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param MAKE_Formatting_Manager    $formatting     The Formatting object.
+		 */
+		do_action( 'make_add_formats', $this );
+	}
+
+	/**
 	 * Add plugins to TinyMCE.
 	 *
 	 * @since 1.4.1.
@@ -90,20 +220,25 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return mixed
 	 */
 	public function register_plugins( $plugins ) {
+		// Only run this in the proper hook context.
+		if ( 'mce_external_plugins' !== current_filter() ) {
+			return $plugins;
+		}
+
 		// Format Builder
-		$plugins['ttfmake_format_builder'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/format-builder/plugin.js';
+		$plugins['ttfmake_format_builder'] = $this->scripts()->get_url( 'make-format-builder-plugin', 'script' );
 
 		// Dynamic Stylesheet
-		$plugins['ttfmake_dynamic_stylesheet'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/dynamic-stylesheet/plugin.js';
+		$plugins['ttfmake_dynamic_stylesheet'] = $this->scripts()->get_url( 'make-dynamic-stylesheet-plugin', 'script' );
 
 		// Icon Picker
-		$plugins['ttfmake_icon_picker'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/icon-picker/plugin.js';
+		$plugins['ttfmake_icon_picker'] = $this->scripts()->get_url( 'make-icon-picker-plugin', 'script' );
 
 		// Non-Editable
-		$plugins['noneditable'] = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/noneditable/plugin' . TTFMAKE_SUFFIX . '.js';
+		$plugins['noneditable'] = $this->scripts()->get_url( 'noneditable-plugin', 'script' );
 
 		// HR
-		$plugins['ttfmake_hr'] = trailingslashit( get_template_directory_uri() ) .'inc/formatting/js/hr/plugin.js';
+		$plugins['ttfmake_hr'] = $this->scripts()->get_url( 'make-hr-plugin', 'script' );
 
 		return $plugins;
 	}
@@ -117,6 +252,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return array
 	 */
 	public function register_buttons_1( $buttons ) {
+		// Only run this in the proper hook context.
+		if ( 'mce_buttons' !== current_filter() ) {
+			return $buttons;
+		}
+
 		// Format Builder
 		$buttons[] = 'ttfmake_format_builder';
 
@@ -138,6 +278,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return array
 	 */
 	public function register_buttons_2( $buttons ) {
+		// Only run this in the proper hook context.
+		if ( 'mce_buttons_2' !== current_filter() ) {
+			return $buttons;
+		}
+
 		// Add the Formats dropdown
 		array_unshift( $buttons, 'styleselect' );
 
@@ -154,6 +299,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return array                   The modified configuration array.
 	 */
 	public function reposition_hr( $mceInit, $editor_id ) {
+		// Only run this in the proper hook context.
+		if ( 'tiny_mce_before_init' !== current_filter() ) {
+			return $mceInit;
+		}
+
 		if ( ! empty( $mceInit['toolbar1'] ) ) {
 			if ( in_array( 'hr', explode( ',', $mceInit['toolbar1'] ) ) ) {
 				// Remove the current positioning of the new hr button
@@ -178,6 +328,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return array
 	 */
 	public function add_translations( $translations ) {
+		// Only run this in the proper hook context.
+		if ( 'wp_mce_translation' !== current_filter() ) {
+			return $translations;
+		}
+
 		$formatting_translations = array(
 			// Format Builder
 			'Format Builder' => __( 'Format Builder', 'make' ),
@@ -245,159 +400,6 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	}
 
 	/**
-	 * Enqueue formatting scripts for Post/Page editing screens in the admin.
-	 *
-	 * @since 1.4.1.
-	 *
-	 * @param $hook_suffix
-	 */
-	public function enqueue_admin_scripts( $hook_suffix ) {
-		// Only enqueue for content editing screens
-		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
-			/**
-			 * Admin styles
-			 */
-			wp_enqueue_style(
-				'ttfmake-formatting',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/css/formatting.css',
-				array(),
-				TTFMAKE_VERSION
-			);
-
-			/**
-			 * Format Builder
-			 */
-			$dependencies = array( 'backbone', 'underscore', 'jquery' );
-
-			// Core
-			wp_enqueue_script(
-				'ttfmake-format-builder-core',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/format-builder/format-builder.js',
-				$dependencies,
-				TTFMAKE_VERSION
-			);
-			wp_localize_script(
-				'ttfmake-format-builder-core',
-				'ttfmakeFormatBuilderVars',
-				array(
-					'userSettings' => array(
-						'fontSizeBody'               => $this->thememod()->get_value( 'font-size-body' ),
-						'fontSizeButton'             => $this->thememod()->get_value( 'font-size-button' ),
-						'colorPrimary'               => $this->thememod()->get_value( 'color-primary' ),
-						'colorSecondary'             => $this->thememod()->get_value( 'color-secondary' ),
-						'colorButtonText'            => $this->thememod()->get_value( 'color-button-text' ),
-						'colorButtonTextHover'       => $this->thememod()->get_value( 'color-button-text-hover' ),
-						'colorButtonBackground'      => $this->thememod()->get_value( 'color-button-background' ),
-						'colorButtonBackgroundHover' => $this->thememod()->get_value( 'color-button-background-hover' ),
-					)
-				)
-			);
-
-			// Base model
-			wp_enqueue_script(
-				'ttfmake-format-builder-model-base',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/format-builder/models/base.js',
-				$dependencies,
-				TTFMAKE_VERSION
-			);
-			$dependencies[] = 'ttfmake-format-builder-model-base';
-
-			// Format models
-			$default_uri = trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/format-builder/models';
-
-			/**
-			 * Filter the format model definitions and their script locations.
-			 *
-			 * model => URI of the model's script file
-			 *
-			 * @since 1.4.1
-			 *
-			 * @param array    $models    The array of format models.
-			 */
-			$models = apply_filters( 'make_format_builder_format_models', array(
-				'button' => array( 'uri' => $default_uri ),
-				'list'   => array( 'uri' => $default_uri ),
-				'notice' => array( 'uri' => $default_uri ),
-			) );
-
-			foreach ( $models as $model => $atts ) {
-				$handle = 'ttfmake-format-builder-model-' . $model;
-				$url = trailingslashit( $atts['uri'] ) . "$model.js";
-				wp_enqueue_script(
-					$handle,
-					$url,
-					$dependencies,
-					TTFMAKE_VERSION
-				);
-				$dependencies[] = $handle;
-			}
-
-			/**
-			 * Dynamic Stylesheet
-			 */
-			wp_enqueue_script(
-				'ttfmake-dynamic-stylesheet',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/dynamic-stylesheet/dynamic-stylesheet.js',
-				array( 'jquery', 'editor' ),
-				TTFMAKE_VERSION,
-				true
-			);
-			wp_localize_script(
-				'ttfmake-dynamic-stylesheet',
-				'ttfmakeDynamicStylesheetVars',
-				array(
-					'tinymce' => true
-				)
-			);
-
-			/**
-			 * Icon Picker
-			 */
-			// Icon styles
-			wp_enqueue_style(
-				'font-awesome',
-				get_template_directory_uri() . '/css/libs/font-awesome/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
-				array(),
-				'4.5.0'
-			);
-
-			// Icon definitions
-			wp_enqueue_script(
-				'ttfmake-icon-picker-list',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/icon-picker/icons.js',
-				array(),
-				TTFMAKE_VERSION
-			);
-
-			// Icon Picker
-			wp_enqueue_script(
-				'ttfmake-icon-picker',
-				trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/icon-picker/icon-picker.js',
-				array( 'ttfmake-icon-picker-list', 'jquery' ),
-				TTFMAKE_VERSION
-			);
-		}
-	}
-
-	/**
-	 * Enqueue scripts for the front end.
-	 *
-	 * @since 1.4.1.
-	 *
-	 * @return void
-	 */
-	public function enqueue_frontend_scripts() {
-		// Dynamic styles
-		wp_enqueue_script(
-			'ttfmake-dynamic-stylesheet',
-			trailingslashit( get_template_directory_uri() ) . 'inc/formatting/js/dynamic-stylesheet/dynamic-stylesheet.js',
-			array( 'jquery' ),
-			TTFMAKE_VERSION,
-			true
-		);
-	}
-
-	/**
 	 * Add items to the Formats dropdown.
 	 *
 	 * @since  1.0.0.
@@ -406,6 +408,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return array                 Modified array.
 	 */
 	public function formats_dropdown_items( $settings ) {
+		// Only run this in the proper hook context.
+		if ( 'tiny_mce_before_init' !== current_filter() ) {
+			return $settings;
+		}
+
 		$style_formats = array(
 			// Big (big)
 			array(
@@ -444,5 +451,207 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		$settings['style_formats'] = json_encode( $style_formats );
 
 		return $settings;
+	}
+
+	/**
+	 * Register styles and scripts.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function register_styles_scripts() {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_action(), array( 'wp_enqueue_scripts', 'admin_enqueue_scripts' ) ) ) {
+			return;
+		}
+
+		// Register styles
+		$css_uri = get_template_directory_uri() . '/inc/formatting/css';
+
+		// Admin styles
+		wp_register_style(
+			'make-formatting',
+			$css_uri . '/formatting.css',
+			array(),
+			TTFMAKE_VERSION
+		);
+
+		// Register scripts
+		$js_uri = get_template_directory_uri() . '/inc/formatting/js';
+
+		// Dynamic Stylesheet
+		wp_register_script(
+			'make-dynamic-stylesheet',
+			$js_uri . '/dynamic-stylesheet/dynamic-stylesheet.js',
+			array( 'jquery', 'editor' ),
+			time(),
+			true
+		);
+
+		// Icon Picker
+		wp_register_script(
+			'make-icon-picker-list',
+			$js_uri . '/icon-picker/icons.js',
+			array(),
+			TTFMAKE_VERSION
+		);
+		wp_register_script(
+			'make-icon-picker',
+			$js_uri . '/icon-picker/icon-picker.js',
+			array( 'make-icon-picker-list', 'jquery' ),
+			TTFMAKE_VERSION
+		);
+
+		// Format Builder
+		wp_register_script(
+			'make-format-builder-core',
+			$js_uri . '/format-builder/format-builder.js',
+			array( 'backbone', 'underscore', 'jquery', 'make-icon-picker', 'make-dynamic-stylesheet' ),
+			TTFMAKE_VERSION
+		);
+		wp_register_script(
+			'make-format-builder-model-base',
+			$js_uri . '/format-builder/models/base.js',
+			array( 'make-format-builder-core' ),
+			TTFMAKE_VERSION
+		);
+
+		// Formats
+		foreach ( $this->formats as $name => $data ) {
+			$version = ( $data['version'] ) ? $data['version'] : TTFMAKE_VERSION;
+			wp_register_script(
+				'make-format-builder-model-' . $name,
+				$data['uri'],
+				array( 'make-format-builder-model-base' ),
+				$version
+			);
+		}
+
+		// TinyMCE plugins
+		wp_register_script(
+			'make-dynamic-stylesheet-plugin',
+			$js_uri . '/dynamic-stylesheet/plugin.js',
+			array( 'editor', 'jquery' ),
+			TTFMAKE_VERSION
+		);
+		wp_register_script(
+			'make-icon-picker-plugin',
+			$js_uri . '/icon-picker/plugin.js',
+			array( 'editor', 'jquery' ),
+			TTFMAKE_VERSION
+		);
+		wp_register_script(
+			'make-format-builder-plugin',
+			$js_uri . '/format-builder/plugin.js',
+			array( 'editor', 'jquery' ),
+			TTFMAKE_VERSION
+		);
+		wp_register_script(
+			'make-hr-plugin',
+			$js_uri . '/hr/plugin.js',
+			array( 'editor', 'jquery' ),
+			TTFMAKE_VERSION
+		);
+		wp_register_script(
+			'noneditable-plugin',
+			$js_uri . '/noneditable/plugin.js',
+			array( 'editor', 'jquery' ),
+			TTFMAKE_VERSION
+		);
+	}
+
+	/**
+	 * Enqueue formatting scripts for Post/Page editing screens in the admin.
+	 *
+	 * @since 1.4.1.
+	 *
+	 * @param $hook_suffix
+	 */
+	public function enqueue_admin_scripts( $hook_suffix ) {
+		// Only run this in the proper hook context.
+		if ( 'admin_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
+		// Only enqueue for content editing screens
+		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
+			/**
+			 * Admin styles
+			 */
+			wp_enqueue_style( 'font-awesome' );
+			wp_enqueue_style( 'make-formatting' );
+
+			/**
+			 * Dynamic Stylesheet
+			 */
+			wp_enqueue_script( 'make-dynamic-stylesheet' );
+			wp_localize_script(
+				'make-dynamic-stylesheet',
+				'ttfmakeDynamicStylesheetVars',
+				array(
+					'tinymce' => true
+				)
+			);
+
+			/**
+			 * Icon Picker
+			 */
+			wp_enqueue_script( 'make-icon-picker-list' );
+			wp_enqueue_script( 'make-icon-picker');
+
+			/**
+			 * Format Builder
+			 */
+			// Core
+			wp_enqueue_script( 'make-format-builder-core' );
+			wp_localize_script(
+				'make-format-builder-core',
+				'ttfmakeFormatBuilderVars',
+				array(
+					'userSettings' => array(
+						'fontSizeBody'               => $this->thememod()->get_value( 'font-size-body' ),
+						'fontSizeButton'             => $this->thememod()->get_value( 'font-size-button' ),
+						'colorPrimary'               => $this->thememod()->get_value( 'color-primary' ),
+						'colorSecondary'             => $this->thememod()->get_value( 'color-secondary' ),
+						'colorButtonText'            => $this->thememod()->get_value( 'color-button-text' ),
+						'colorButtonTextHover'       => $this->thememod()->get_value( 'color-button-text-hover' ),
+						'colorButtonBackground'      => $this->thememod()->get_value( 'color-button-background' ),
+						'colorButtonBackgroundHover' => $this->thememod()->get_value( 'color-button-background-hover' ),
+					)
+				)
+			);
+
+			// Base model
+			wp_enqueue_script( 'make-format-builder-model-base' );
+
+			// Format models
+			foreach ( $this->formats as $name => $data ) {
+				wp_enqueue_script( 'make-format-builder-model-' . $name );
+			}
+		}
+	}
+
+	/**
+	 * Enqueue scripts for the front end.
+	 *
+	 * @since 1.4.1.
+	 *
+	 * @return void
+	 */
+	public function enqueue_frontend_scripts() {
+		// Only run this in the proper hook context.
+		if ( 'wp_enqueue_scripts' !== current_action() ) {
+			return;
+		}
+
+		// Dynamic styles
+		wp_enqueue_script(
+			'make-dynamic-stylesheet',
+			get_template_directory_uri() . '/inc/formatting/js/dynamic-stylesheet/dynamic-stylesheet.js',
+			array( 'jquery' ),
+			TTFMAKE_VERSION,
+			true
+		);
 	}
 }

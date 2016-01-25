@@ -234,9 +234,6 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						deltaW = (viewWidth - winWidth) / 2;
 						deltaH = (viewHeight - winHeight) / 2;
 						formatWindow.moveTo(deltaW, deltaH);
-
-						// Repaint
-						//formatWindow.repaint();
 					}
 				}
 			};

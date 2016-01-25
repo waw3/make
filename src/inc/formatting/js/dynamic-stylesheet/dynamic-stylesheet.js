@@ -45,8 +45,8 @@ var ttfmakeDynamicStylesheet;
 
 					self.cache.$button.each(function() {
 						var buttonID = $(this).attr('id'),
-							backgroundColor = $(this).data('hover-background-color'),
-							color = $(this).data('hover-color');
+							backgroundColor = $(this).attr('data-hover-background-color'),
+							color = $(this).attr('data-hover-color');
 
 						if (buttonID) {
 							if (backgroundColor) self.addCSSRule(self.stylesheet, '#' + buttonID + ':hover', 'background-color: ' + backgroundColor + ' !important');
@@ -86,7 +86,7 @@ var ttfmakeDynamicStylesheet;
 				this.root = this.cache.$document;
 
 				var self = this;
-				this.cache.$document.ready(function() {
+				self.cache.$document.ready(function() {
 					self.cacheElements();
 					self.buildStyles();
 				} );
@@ -118,7 +118,7 @@ var ttfmakeDynamicStylesheet;
 		cacheElements: function() {
 			var self = this;
 
-			$.each(this.cacheSelector, function(name, selector) {
+			$.each(self.cacheSelector, function(name, selector) {
 				self.cache[name] = $(selector, self.root);
 			});
 		},
@@ -161,8 +161,7 @@ var ttfmakeDynamicStylesheet;
 				$style.attr('id', 'ttfmake-dynamic-styles');
 
 				// WebKit hack :(
-				//style.appendChild(document.createTextNode(''));
-				$style.text('');
+				$style.html('&shy;');
 
 				// Add the <style> element to the page
 				if (self.root.find('head').length > 0) {
