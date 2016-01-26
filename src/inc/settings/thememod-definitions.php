@@ -370,13 +370,13 @@ $this->add_settings(
 
 // Choice settings (comment-count)
 $this->add_settings(
-	array(
+	array_fill_keys( array(
 		'layout-blog-comment-count',
 		'layout-archive-comment-count',
 		'layout-search-comment-count',
 		'layout-post-comment-count',
 		'layout-page-comment-count',
-	),
+	), array() ),
 	array(
 		'default'       => 'none',
 		'sanitize'      => array( $this, 'sanitize_choice' ),
