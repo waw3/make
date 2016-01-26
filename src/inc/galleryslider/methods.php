@@ -82,7 +82,7 @@ class MAKE_GallerySlider_Methods extends MAKE_Util_Modules implements MAKE_Galle
 
 		wp_enqueue_script(
 			'make-admin-gallery-settings',
-			get_template_directory_uri() . '/inc/galleryslider/js/gallery-slider' . TTFMAKE_SUFFIX . '.js',
+			$this->scripts()->get_js_directory_uri() . '/galleryslider/galleryslider.js',
 			array( 'media-views' ),
 			TTFMAKE_VERSION,
 			true

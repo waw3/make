@@ -5,6 +5,14 @@
 
 
 interface MAKE_Setup_ScriptsInterface extends MAKE_Util_ModulesInterface {
+	public function get_css_directory();
+
+	public function get_css_directory_uri();
+
+	public function get_js_directory();
+
+	public function get_js_directory_uri();
+
 	public function get_located_file_url( $file_names );
 
 	public function is_registered( $style_id, $type );

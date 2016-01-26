@@ -658,12 +658,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 
 		// jQuery UI styles are for our custom Range and Buttonset controls.
-		wp_enqueue_style(
-			'ttfmake-customizer-jquery-ui',
-			get_template_directory_uri() . '/inc/customizer/css/jquery-ui/jquery-ui-1.10.4.custom.css',
-			array(),
-			'1.10.4'
-		);
+		wp_enqueue_style( 'make-jquery-ui-custom' );
 
 		// Custom styling depends on version of WP
 		// Nav menu panel was introduced in 4.3
@@ -673,14 +668,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 		wp_enqueue_style(
 			'make-customizer-controls',
-			get_template_directory_uri() . "/inc/customizer/css/controls{$suffix}.css",
-			array( 'ttfmake-customizer-jquery-ui', 'chosen' ),
+			$this->scripts()->get_css_directory_uri() . "/customizer/controls{$suffix}.css",
+			array( 'make-jquery-ui-custom', 'chosen' ),
 			TTFMAKE_VERSION
 		);
 
+		// Scripts
 		wp_enqueue_script(
 			'make-customizer-controls',
-			get_template_directory_uri() . '/inc/customizer/js/controls.js',
+			$this->scripts()->get_js_directory_uri() . '/customizer/controls.js',
 			array( 'customize-controls', 'chosen', 'underscore', 'jquery-ui-button', 'jquery-ui-slider' ),
 			TTFMAKE_VERSION,
 			true

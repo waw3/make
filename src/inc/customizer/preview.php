@@ -84,7 +84,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 
 		wp_enqueue_script(
 			'make-customizer-preview',
-			get_template_directory_uri() . '/inc/customizer/js/preview.js',
+			$this->scripts()->get_js_directory_uri() . '/customizer/preview.js',
 			array( 'customize-preview' ),
 			TTFMAKE_VERSION,
 			true

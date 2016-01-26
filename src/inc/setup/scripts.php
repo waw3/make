@@ -79,6 +79,50 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	}
 
 	/**
+	 * Wrapper for getting the path to the theme's CSS directory.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return string
+	 */
+	public function get_css_directory() {
+		return get_template_directory() . '/css';
+	}
+
+	/**
+	 * Wrapper for getting the URL for the theme's CSS directory.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return string
+	 */
+	public function get_css_directory_uri() {
+		return get_template_directory_uri() . '/css';
+	}
+
+	/**
+	 * Wrapper for getting the path to the theme's JS directory.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return string
+	 */
+	public function get_js_directory() {
+		return get_template_directory() . '/js';
+	}
+
+	/**
+	 * Wrapper for getting the URL for the theme's JS directory.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return string
+	 */
+	public function get_js_directory_uri() {
+		return get_template_directory_uri() . '/js';
+	}
+
+	/**
 	 * Wrapper function to register style and script libraries for usage throughout the site.
 	 *
 	 * @since x.x.x.
@@ -106,7 +150,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Chosen
 		wp_register_style(
 			'chosen',
-			get_template_directory_uri() . '/css/libs/chosen/chosen.css',
+			$this->get_css_directory_uri() . '/libs/chosen/chosen.css',
 			array(),
 			'1.4.2'
 		);
@@ -123,7 +167,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Font Awesome
 		wp_register_style(
 			'font-awesome',
-			get_template_directory_uri() . '/css/libs/font-awesome/css/font-awesome.min.css',
+			$this->get_css_directory_uri() . '/libs/font-awesome/css/font-awesome.min.css',
 			array(),
 			'4.5.0'
 		);
@@ -137,6 +181,14 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 				TTFMAKE_VERSION
 			);
 		}
+
+		// jQuery UI
+		wp_register_style(
+			'make-jquery-ui-custom',
+			$this->get_css_directory_uri() . '/libs/jquery-ui/jquery-ui-1.10.4.custom.css',
+			array(),
+			'1.10.4'
+		);
 	}
 
 	/**
@@ -150,7 +202,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Chosen
 		wp_register_script(
 			'chosen',
-			get_template_directory_uri() . '/js/libs/chosen/chosen.jquery.min.js',
+			$this->get_js_directory_uri() . '/libs/chosen/chosen.jquery.min.js',
 			array( 'jquery' ),
 			'1.4.2',
 			true
@@ -161,7 +213,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			// Core script
 			wp_register_script(
 				'cycle2',
-				get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
+				$this->get_js_directory_uri() . '/libs/cycle2/jquery.cycle2.js',
 				array( 'jquery' ),
 				'2.1.6',
 				true
@@ -170,7 +222,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			// Vertical centering
 			wp_register_script(
 				'cycle2-center',
-				get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
+				$this->get_js_directory_uri() . '/libs/cycle2/jquery.cycle2.center.js',
 				array( 'cycle2' ),
 				'20140121',
 				true
@@ -179,7 +231,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			// Swipe support
 			wp_register_script(
 				'cycle2-swipe',
-				get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
+				$this->get_js_directory_uri() . '/libs/cycle2/jquery.cycle2.swipe.js',
 				array( 'cycle2' ),
 				'20121120',
 				true
@@ -187,7 +239,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		} else {
 			wp_register_script(
 				'cycle2',
-				get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.min.js',
+				$this->get_js_directory_uri() . '/libs/cycle2/jquery.cycle2.min.js',
 				array( 'jquery' ),
 				'2.1.6',
 				true
@@ -197,7 +249,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// FitVids
 		wp_register_script(
 			'fitvids',
-			get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids.min.js',
+			$this->get_js_directory_uri() . '/libs/fitvids/jquery.fitvids.min.js',
 			array( 'jquery' ),
 			'1.1',
 			true
@@ -284,7 +336,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		if ( ! make_is_plus() ) {
 			wp_enqueue_style(
 				'make-plus',
-				get_template_directory_uri() . '/css/plus.css',
+				$this->get_css_directory_uri() . '/plus/plus.css',
 				array(),
 				TTFMAKE_VERSION
 			);

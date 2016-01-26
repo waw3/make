@@ -172,7 +172,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			return;
 		}
 
-		$formats_uri = get_template_directory_uri() . '/inc/formatting/js/format-builder/models';
+		$formats_uri = $this->scripts()->get_js_directory_uri() . '/formatting/format-builder/models';
 
 		// Button
 		$this->add_format( 'button', $formats_uri . '/button.js' );
@@ -471,39 +471,27 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			return;
 		}
 
-		// Register styles
-		$css_uri = get_template_directory_uri() . '/inc/formatting/css';
-
 		// Admin styles
 		wp_register_style(
 			'make-formatting',
-			$css_uri . '/formatting.css',
+			$this->scripts()->get_css_directory_uri() . '/formatting/formatting.css',
 			array(),
 			TTFMAKE_VERSION
 		);
 
-		// Register scripts
-		$js_uri = get_template_directory_uri() . '/inc/formatting/js';
-
 		// Dynamic Stylesheet
 		wp_register_script(
 			'make-dynamic-stylesheet',
-			$js_uri . '/dynamic-stylesheet/dynamic-stylesheet.js',
-			array( 'editor', 'jquery' ),
+			$this->scripts()->get_js_directory_uri() . '/formatting/dynamic-stylesheet/dynamic-stylesheet.js',
+			array( 'jquery' ),
 			TTFMAKE_VERSION,
 			true
 		);
 
 		// Icon Picker
 		wp_register_script(
-			'make-icon-picker-list',
-			$js_uri . '/icon-picker/icons.js',
-			array(),
-			TTFMAKE_VERSION
-		);
-		wp_register_script(
 			'make-icon-picker',
-			$js_uri . '/icon-picker/icon-picker.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/icon-picker/icon-picker.js',
 			array( 'editor', 'jquery' ),
 			TTFMAKE_VERSION
 		);
@@ -511,13 +499,13 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		// Format Builder
 		wp_register_script(
 			'make-format-builder-core',
-			$js_uri . '/format-builder/format-builder.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/format-builder/format-builder.js',
 			array( 'editor', 'backbone', 'underscore', 'jquery', 'make-icon-picker', 'make-dynamic-stylesheet' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'make-format-builder-model-base',
-			$js_uri . '/format-builder/models/base.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/format-builder/models/base.js',
 			array( 'make-format-builder-core' ),
 			TTFMAKE_VERSION
 		);
@@ -536,31 +524,31 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		// TinyMCE plugins
 		wp_register_script(
 			'make-dynamic-stylesheet-plugin',
-			$js_uri . '/dynamic-stylesheet/plugin.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/dynamic-stylesheet/plugin.js',
 			array( 'editor', 'jquery', 'make-dynamic-stylesheet' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'make-icon-picker-plugin',
-			$js_uri . '/icon-picker/plugin.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/icon-picker/plugin.js',
 			array( 'editor', 'jquery', 'make-icon-picker' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'make-format-builder-plugin',
-			$js_uri . '/format-builder/plugin.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/format-builder/plugin.js',
 			array( 'editor', 'jquery', 'make-format-builder-core' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'make-hr-plugin',
-			$js_uri . '/hr/plugin.js',
+			$this->scripts()->get_js_directory_uri() . '/formatting/hr/plugin.js',
 			array( 'editor', 'jquery' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'noneditable-plugin',
-			$js_uri . '/noneditable/plugin.js',
+			$this->scripts()->get_js_directory_uri() . '/libs/tinymce/plugins/noneditable/plugin.js',
 			array( 'editor', 'jquery' ),
 			'4.2.8'
 		);
@@ -598,6 +586,8 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 					'tinymce' => true
 				)
 			);
+			// Add TinyMCE as a dependency on the Admin side.
+			$this->scripts()->add_dependency( 'make-dynamic-stylesheet', 'editor', 'script' );
 
 			/**
 			 * Icon Picker
@@ -659,12 +649,6 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		}
 
 		// Dynamic styles
-		wp_enqueue_script(
-			'make-dynamic-stylesheet',
-			get_template_directory_uri() . '/inc/formatting/js/dynamic-stylesheet/dynamic-stylesheet.js',
-			array( 'jquery' ),
-			TTFMAKE_VERSION,
-			true
-		);
+		wp_enqueue_script( 'make-dynamic-stylesheet' );
 	}
 }
