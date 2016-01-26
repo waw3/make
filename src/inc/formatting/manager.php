@@ -562,7 +562,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			'noneditable-plugin',
 			$js_uri . '/noneditable/plugin.js',
 			array( 'editor', 'jquery' ),
-			TTFMAKE_VERSION
+			'4.2.8'
 		);
 	}
 
