@@ -80,18 +80,16 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	 * @return void
 	 */
 	protected function content_template() { ?>
-		<label>
-			<# if (data.label) { #>
-				<span class="customize-control-title">{{ data.label }}</span>
-			<# } #>
-			<# if (data.description) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
-			<# if (data.html) { #>
-				<div class="make-html-container">
-					{{{ data.html }}}
-				</div>
-			<# } #>
-		</label>
+		<# if (data.label) { #>
+			<span class="customize-control-title">{{ data.label }}</span>
+		<# } #>
+		<# if (data.description) { #>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
+		<# } #>
+		<# if (data.html) { #>
+			<div class="make-html-container">
+				{{{ data.html }}}
+			</div>
+		<# } #>
 	<?php }
 }
