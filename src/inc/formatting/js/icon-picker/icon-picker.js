@@ -1,10 +1,10 @@
-/* global tinymce, jQuery, ttfmakeIconPicker, ttfmakeIconObj */
-var ttfmakeIconPicker;
+/* global jQuery, MakeIconPicker */
+var MakeIconPicker = MakeIconPicker || {};
 
-( function( $ ) {
+(function($, picker) {
 	var iconWindow, iconInsert, iconRemove, iconValue, iconUnicode;
 
-	ttfmakeIconPicker = {
+	picker = $.extend(picker, {
 		/**
 		 * Stores the callback to use when inserting the icon.
 		 *
@@ -20,7 +20,27 @@ var ttfmakeIconPicker;
 		el: {},
 
 		/**
-		 * Opens the TinyMCE modal window, and initializes all of the Icon Picker
+		 * Stores the icon data.
+		 *
+		 * @since 1.7.0.
+		 */
+		icons: {},
+
+		/**
+		 * Load the JSON data for all the icons.
+		 *
+		 * @since 1.7.0.
+		 */
+		loadIcons: function() {
+			if ($.isEmptyObject(picker.icons)) {
+				$.getJSON(picker.sources.fontawesome, function(data) {
+					picker.icons = data;
+				});
+			}
+		},
+
+		/**
+		 * Opens a TinyMCE modal window, and initializes all of the Icon Picker
 		 * functionality.
 		 *
 		 * @since 1.4.1.
@@ -29,7 +49,7 @@ var ttfmakeIconPicker;
 		 * @param callback
 		 * @param value
 		 */
-		open: function( editor, callback, value ) {
+		open: function(editor, callback, value) {
 			// Store the callback for later.
 			this.callback = callback;
 
@@ -70,18 +90,18 @@ var ttfmakeIconPicker;
 						align: 'stretch',
 						direction: 'column',
 						padding: 20,
-						items: ttfmakeIconPicker.getIconCategories()
+						items: picker.getIconCategories()
 					}
 				],
 				buttons: [
-					ttfmakeIconPicker.getRemoveButton(),
-					ttfmakeIconPicker.getInsertButton()
+					picker.getRemoveButton(),
+					picker.getInsertButton()
 				],
 				onclose: function() {
 					// Clear parameters to there are no collisions if the Icon Picker
 					// is opened again.
-					ttfmakeIconPicker.callback = {};
-					ttfmakeIconPicker.el = {};
+					picker.callback = {};
+					picker.el = {};
 				}
 			} );
 		},
@@ -97,14 +117,14 @@ var ttfmakeIconPicker;
 			var items = [],
 				category, grid;
 
-			$.each( ttfmakeIconObj['fontawesome'], function( cat, icons ) {
+			$.each(picker.icons, function(cat, icons) {
 				// Icon category label.
 				category = {
 					type: 'container',
 					html: '<span>' + tinymce.i18n.translate(cat) + '</span>',
 					style: 'padding: 20px 0 10px;'
 				};
-				items.push( category );
+				items.push(category);
 
 				// Icon grid container.
 				grid = {
@@ -120,10 +140,10 @@ var ttfmakeIconPicker;
 						border: '1 1 1 1',
 						style: 'border-color: #ffffff; border-style: solid;'
 					},
-					items: ttfmakeIconPicker.getIconGrid( icons )
+					items: picker.getIconGrid(icons)
 				};
-				items.push( grid );
-			} );
+				items.push(grid);
+			});
 
 			return items;
 		},
@@ -136,27 +156,27 @@ var ttfmakeIconPicker;
 		 * @param icons
 		 * @returns {Array}
 		 */
-		getIconGrid: function( icons ) {
+		getIconGrid: function(icons) {
 			var grid = [],
 				icon;
 
-			$.each( icons, function( index, data ) {
+			$.each(icons, function(index, data) {
 				function highlight( self ) {
-					ttfmakeIconPicker.el = self.getEl();
-					ttfmakeIconPicker.el.style.borderColor = '#d9d9d9';
-					ttfmakeIconPicker.el.style.color = '#2ea2cc';
+					picker.el = self.getEl();
+					picker.el.style.borderColor = '#d9d9d9';
+					picker.el.style.color = '#2ea2cc';
 				}
 
 				function unhighlight() {
-					ttfmakeIconPicker.el.style.borderColor = '#ffffff';
-					ttfmakeIconPicker.el.style.color = 'inherit';
-					ttfmakeIconPicker.el = {};
+					picker.el.style.borderColor = '#ffffff';
+					picker.el.style.color = 'inherit';
+					picker.el = {};
 				}
 
 				icon = {
 					html: '<div data-icon-value="' + data.id + '" data-icon-unicode="' + data.unicode + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
 					onPostRender: function() {
-						var currentValue = ttfmakeIconPicker.getChosenIcon();
+						var currentValue = picker.getChosenIcon();
 						if ( currentValue == data.id ) {
 							// Highlight the selected icon.
 							highlight( this );
@@ -166,7 +186,7 @@ var ttfmakeIconPicker;
 						var value, unicode;
 
 						// Un-highlight the previously selected icon.
-						if ( 'undefined' !== typeof ttfmakeIconPicker.el.style ) {
+						if ( 'undefined' !== typeof picker.el.style ) {
 							unhighlight();
 						}
 
@@ -174,8 +194,8 @@ var ttfmakeIconPicker;
 						highlight( this );
 
 						// Get the icon ID and unicode and store them in the hidden text fields.
-						value = $( ttfmakeIconPicker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
-						unicode = $( ttfmakeIconPicker.el ).find( '[data-icon-unicode]' ).data( 'icon-unicode' );
+						value = $( picker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
+						unicode = $( picker.el ).find( '[data-icon-unicode]' ).data( 'icon-unicode' );
 						iconWindow.find( '#chosenIcon' ).value( value );
 						iconWindow.find( '#chosenIconUnicode' ).value( unicode );
 
@@ -184,8 +204,8 @@ var ttfmakeIconPicker;
 					}
 				};
 
-				grid.push( icon );
-			} );
+				grid.push(icon);
+			});
 
 			return grid;
 		},
@@ -210,12 +230,12 @@ var ttfmakeIconPicker;
 				},
 				onclick: function() {
 					// Get the currently selected icon.
-					var value = ttfmakeIconPicker.getChosenIcon(),
-						unicode = ttfmakeIconPicker.getChosenUnicode();
+					var value = picker.getChosenIcon(),
+						unicode = picker.getChosenUnicode();
 
-					if ( 'function' === typeof ttfmakeIconPicker.callback ) {
+					if ( 'function' === typeof picker.callback ) {
 						// Fire the callback.
-						ttfmakeIconPicker.callback(value, unicode);
+						picker.callback(value, unicode);
 
 						// Close the modal.
 						iconWindow.fire( 'submit' );
@@ -245,14 +265,14 @@ var ttfmakeIconPicker;
 					iconRemove = this;
 
 					//
-					if ('' !== ttfmakeIconPicker.getChosenIcon()) {
+					if ('' !== picker.getChosenIcon()) {
 						this.visible(true);
 					}
 				},
 				onclick: function() {
-					if ( 'function' === typeof ttfmakeIconPicker.callback ) {
+					if ( 'function' === typeof picker.callback ) {
 						// Fire the callback.
-						ttfmakeIconPicker.callback('');
+						picker.callback('');
 
 						// Close the modal.
 						iconWindow.fire('submit');
@@ -284,5 +304,8 @@ var ttfmakeIconPicker;
 		getChosenUnicode: function() {
 			return iconUnicode.value();
 		}
-	};
-})( jQuery );
+	});
+
+	// Kick things off.
+	picker.loadIcons();
+})(jQuery, MakeIconPicker);

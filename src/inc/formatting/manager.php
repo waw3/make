@@ -489,7 +489,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		wp_register_script(
 			'make-dynamic-stylesheet',
 			$js_uri . '/dynamic-stylesheet/dynamic-stylesheet.js',
-			array( 'jquery', 'editor' ),
+			array( 'editor', 'jquery' ),
 			TTFMAKE_VERSION,
 			true
 		);
@@ -504,7 +504,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		wp_register_script(
 			'make-icon-picker',
 			$js_uri . '/icon-picker/icon-picker.js',
-			array( 'make-icon-picker-list', 'jquery' ),
+			array( 'editor', 'jquery', 'make-icon-picker-list' ),
 			TTFMAKE_VERSION
 		);
 
@@ -512,7 +512,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		wp_register_script(
 			'make-format-builder-core',
 			$js_uri . '/format-builder/format-builder.js',
-			array( 'backbone', 'underscore', 'jquery', 'make-icon-picker', 'make-dynamic-stylesheet' ),
+			array( 'editor', 'backbone', 'underscore', 'jquery', 'make-icon-picker', 'make-dynamic-stylesheet' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
@@ -537,19 +537,19 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		wp_register_script(
 			'make-dynamic-stylesheet-plugin',
 			$js_uri . '/dynamic-stylesheet/plugin.js',
-			array( 'editor', 'jquery' ),
+			array( 'editor', 'jquery', 'make-dynamic-stylesheet' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'make-icon-picker-plugin',
 			$js_uri . '/icon-picker/plugin.js',
-			array( 'editor', 'jquery' ),
+			array( 'editor', 'jquery', 'make-icon-picker' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
 			'make-format-builder-plugin',
 			$js_uri . '/format-builder/plugin.js',
-			array( 'editor', 'jquery' ),
+			array( 'editor', 'jquery', 'make-format-builder-core' ),
 			TTFMAKE_VERSION
 		);
 		wp_register_script(
@@ -593,7 +593,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			wp_enqueue_script( 'make-dynamic-stylesheet' );
 			wp_localize_script(
 				'make-dynamic-stylesheet',
-				'ttfmakeDynamicStylesheetVars',
+				'MakeDynamicStylesheet',
 				array(
 					'tinymce' => true
 				)
@@ -602,8 +602,16 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			/**
 			 * Icon Picker
 			 */
-			wp_enqueue_script( 'make-icon-picker-list' );
-			wp_enqueue_script( 'make-icon-picker');
+			wp_enqueue_script( 'make-icon-picker' );
+			wp_localize_script(
+				'make-icon-picker',
+				'MakeIconPicker',
+				array(
+					'sources' => array(
+						'fontawesome' => get_template_directory_uri() . '/inc/formatting/js/icon-picker/fontawesome.json'
+					)
+				)
+			);
 
 			/**
 			 * Format Builder
@@ -612,7 +620,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			wp_enqueue_script( 'make-format-builder-core' );
 			wp_localize_script(
 				'make-format-builder-core',
-				'ttfmakeFormatBuilderVars',
+				'MakeFormatBuilder',
 				array(
 					'userSettings' => array(
 						'fontSizeBody'               => $this->thememod()->get_value( 'font-size-body' ),

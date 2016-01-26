@@ -1,7 +1,7 @@
-/* global Backbone, jQuery, _ */
-var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
+/* global Backbone, jQuery, _, MakeFormatBuilder */
+var MakeFormatBuilder = MakeFormatBuilder || {};
 
-( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
+(function(Backbone, $, _, builder) {
 	'use strict';
 
 	/**
@@ -9,7 +9,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.definitions.list = {
+	builder.definitions.list = {
 		selector: 'ul',
 		classes: 'ttfmake-list'
 	};
@@ -19,7 +19,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.nodes.list = 'ul.ttfmake-list';
+	builder.nodes.list = 'ul.ttfmake-list';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
@@ -28,8 +28,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @returns object
 	 */
-	ttfmakeFormatBuilder.choices.list = function() {
-		var parent = ttfmakeFormatBuilder.getParentNode('ul'),
+	builder.choices.list = function() {
+		var parent = builder.getParentNode('ul'),
 			choice, isUL;
 
 		// Determine if the current node or a parent is an unordered list.
@@ -49,8 +49,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
-	ttfmakeFormatBuilder.formats.list = ttfmakeFormatBuilder.FormatModel.extend({
+	builder.formats = builder.formats || {};
+	builder.formats.list = builder.FormatModel.extend({
 		/**
 		 * Default format option values.
 		 *
@@ -69,7 +69,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		initialize: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.list);
+			var node = builder.getParentNode(builder.nodes.list);
 
 			// Create a new element ID.
 			this.set('id', this.createID());
@@ -89,8 +89,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getOptionFields: function() {
 			var items = [
-				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' ),
-				ttfmakeFormatBuilder.getColorButton( 'colorIcon', 'Icon Color' )
+				builder.getIconButton( 'icon', 'Icon' ),
+				builder.getColorButton( 'colorIcon', 'Icon Color' )
 			];
 
 			return this.wrapOptionFields(items);
@@ -142,11 +142,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			// If not updating an existing format, apply to the current selection using the Formatter.
 			if (true !== this.get('update')) {
-				ttfmakeFormatBuilder.editor.formatter.apply('list');
+				builder.editor.formatter.apply('list');
 			}
 
 			// Make sure the right node is selected.
-			$node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.list));
+			$node = $(builder.getParentNode(builder.nodes.list));
 
 			// Set the element ID, if it doesn't have one yet.
 			if (! $node.attr('id')) {
@@ -177,7 +177,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		remove: function() {
-			var $node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.list)),
+			var $node = $(builder.getParentNode(builder.nodes.list)),
 				listID = $node.attr('id'),
 				iconClasses = $node.find('li').first().attr('class').split(/\s+/);
 
@@ -200,4 +200,4 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			}
 		}
 	});
-})( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
+})(Backbone, jQuery, _, MakeFormatBuilder);

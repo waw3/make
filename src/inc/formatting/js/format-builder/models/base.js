@@ -1,10 +1,10 @@
-/* global Backbone, jQuery, _, ttfmakeFormatBuilder */
-var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
+/* global Backbone, jQuery, _, MakeFormatBuilder */
+var MakeFormatBuilder = MakeFormatBuilder || {};
 
-( function ( window, Backbone, $, _, ttfmakeFormatBuilder ) {
+(function(Backbone, $, _, builder) {
 	'use strict';
 
-	ttfmakeFormatBuilder.FormatModel = Backbone.Model.extend({
+	builder.FormatModel = Backbone.Model.extend({
 		defaults: {},
 
 		initialize: function() {},
@@ -112,7 +112,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	});
 
 	// Set up this model as a "no URL model" where data is not synced with the server
-	ttfmakeFormatBuilder.FormatModel.prototype.sync  = function () { return null; };
-	ttfmakeFormatBuilder.FormatModel.prototype.fetch = function () { return null; };
-	ttfmakeFormatBuilder.FormatModel.prototype.save  = function () { return null; };
-})( window, Backbone, jQuery, _, ttfmakeFormatBuilder );
+	builder.FormatModel.prototype.sync  = function () { return null; };
+	builder.FormatModel.prototype.fetch = function () { return null; };
+	builder.FormatModel.prototype.save  = function () { return null; };
+})(Backbone, jQuery, _, MakeFormatBuilder);

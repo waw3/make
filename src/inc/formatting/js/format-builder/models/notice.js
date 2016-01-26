@@ -1,7 +1,7 @@
-/* global Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars */
-var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
+/* global Backbone, jQuery, _, MakeFormatBuilder */
+var MakeFormatBuilder = MakeFormatBuilder || {};
 
-( function ( window, Backbone, $, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars ) {
+(function(Backbone, $, _, builder) {
 	'use strict';
 
 	/**
@@ -9,7 +9,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.definitions.notice = {
+	builder.definitions.notice = {
 		block: 'div',
 		classes: 'ttfmake-notice',
 		wrapper: true
@@ -20,7 +20,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.nodes.notice = 'div.ttfmake-notice';
+	builder.nodes.notice = 'div.ttfmake-notice';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
@@ -29,9 +29,9 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @returns object
 	 */
-	ttfmakeFormatBuilder.choices.notice = function() {
-		var content = ttfmakeFormatBuilder.currentSelection.getContent(),
-			parent = ttfmakeFormatBuilder.getParentNode('p'),
+	builder.choices.notice = function() {
+		var content = builder.currentSelection.getContent(),
+			parent = builder.getParentNode('p'),
 			choice, isP;
 
 		// Determine if the current node or a parent is a <p> tag.
@@ -51,8 +51,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
-	ttfmakeFormatBuilder.formats.notice = ttfmakeFormatBuilder.FormatModel.extend({
+	builder.formats = builder.formats || {};
+	builder.formats.notice = builder.FormatModel.extend({
 		/**
 		 * Default format option values.
 		 *
@@ -62,18 +62,18 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			update: false,
 			id: 0,
 			text: '',
-			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeBody,
+			fontSize: builder.userSettings.fontSizeBody,
 			icon: '',
-			iconSize: (parseInt(ttfmakeFormatBuilderVars.userSettings.fontSizeBody) * 2) + '',
-			colorIcon: ttfmakeFormatBuilderVars.userSettings.colorPrimary,
+			iconSize: (parseInt(builder.userSettings.fontSizeBody) * 2) + '',
+			colorIcon: builder.userSettings.colorPrimary,
 			iconPosition: 'left',
 			paddingHorz: '20',
 			paddingVert: '10',
 			borderWidth: '2',
 			borderStyle: 'solid',
-			colorBorder: ttfmakeFormatBuilderVars.userSettings.colorPrimary,
-			colorBackground: ttfmakeFormatBuilderVars.userSettings.colorSecondary,
-			colorText: ttfmakeFormatBuilderVars.userSettings.colorPrimary
+			colorBorder: builder.userSettings.colorPrimary,
+			colorBackground: builder.userSettings.colorSecondary,
+			colorText: builder.userSettings.colorPrimary
 		},
 
 		/**
@@ -82,7 +82,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		initialize: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.notice);
+			var node = builder.getParentNode(builder.nodes.notice);
 
 			// Create a new element ID.
 			this.set('id', this.createID());
@@ -102,8 +102,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 */
 		getOptionFields: function() {
 			var items = [
-				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
-				ttfmakeFormatBuilder.getColorButton( 'colorText', 'Text Color' ),
+				builder.getColorButton( 'colorBackground', 'Background Color' ),
+				builder.getColorButton( 'colorText', 'Text Color' ),
 				{
 					type: 'textbox',
 					name: 'fontSize',
@@ -112,7 +112,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					classes: 'monospace',
 					value: this.escape('fontSize')
 				},
-				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' ),
+				builder.getIconButton( 'icon', 'Icon' ),
 				{
 					type: 'textbox',
 					name: 'iconSize',
@@ -121,7 +121,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					classes: 'monospace',
 					value: this.escape('iconSize')
 				},
-				ttfmakeFormatBuilder.getColorButton( 'colorIcon', 'Icon Color' ),
+				builder.getColorButton( 'colorIcon', 'Icon Color' ),
 				{
 					type: 'listbox',
 					name: 'iconPosition',
@@ -190,7 +190,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					classes: 'monospace',
 					value: this.escape('borderWidth')
 				},
-				ttfmakeFormatBuilder.getColorButton( 'colorBorder', 'Border Color' )
+				builder.getColorButton( 'colorBorder', 'Border Color' )
 			];
 
 			return this.wrapOptionFields(items);
@@ -277,11 +277,11 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			// If not updating an existing format, apply to the current selection using the Formatter.
 			if (true !== this.get('update')) {
-				ttfmakeFormatBuilder.editor.formatter.apply('notice');
+				builder.editor.formatter.apply('notice');
 			}
 
 			// Make sure the right node is selected.
-			$node = $(ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.notice));
+			$node = $(builder.getParentNode(builder.nodes.notice));
 
 			// Set the element ID, if it doesn't have one yet.
 			if (! $node.attr('id')) {
@@ -299,7 +299,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			});
 
 			// Add a font-size style if it's different than the user setting for the body font.
-			if (this.escape('fontSize') != ttfmakeFormatBuilderVars.userSettings.fontSizeBody) {
+			if (this.escape('fontSize') != builder.userSettings.fontSizeBody) {
 				$node.css('fontSize', this.escape('fontSize') + 'px');
 			}
 
@@ -330,7 +330,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		remove: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.notice),
+			var node = builder.getParentNode(builder.nodes.notice),
 				content;
 
 			// Remove the icon if it exists.
@@ -340,10 +340,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			content = $(node).html().trim();
 
 			// Set the selection to the whole node.
-			ttfmakeFormatBuilder.currentSelection.select(node);
+			builder.currentSelection.select(node);
 
 			// Replace the current selection with the inner content.
-			ttfmakeFormatBuilder.currentSelection.setContent(content);
+			builder.currentSelection.setContent(content);
 		}
 	});
-})( window, Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars );
+})(Backbone, jQuery, _, MakeFormatBuilder);

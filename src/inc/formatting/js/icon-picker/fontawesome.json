@@ -1,5 +1,4 @@
-var ttfmakeIconObj = ttfmakeIconObj || {};
-ttfmakeIconObj["fontawesome"] = {
+{
   "Web Application Icons": [
     {
       "name": "Add to Shopping Cart",
@@ -3540,4 +3539,4 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f228"
     }
   ]
-};
+}

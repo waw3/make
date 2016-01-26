@@ -6,14 +6,13 @@
  *
  * @since 1.4.1.
  */
-/* global jQuery, ttfmakeDynamicStylesheet */
+/* global jQuery, MakeDynamicStylesheet */
+var MakeDynamicStylesheet = MakeDynamicStylesheet || {};
 
-var ttfmakeDynamicStylesheet;
-
-(function($) {
+(function($, DynamicStylesheet) {
 	'use strict';
 
-	ttfmakeDynamicStylesheet = {
+	DynamicStylesheet = $.extend(DynamicStylesheet, {
 		/**
 		 * Container for caching jQuery objects.
 		 *
@@ -74,7 +73,7 @@ var ttfmakeDynamicStylesheet;
 		/**
 		 * Initialize the dynamic stylesheet functionality.
 		 *
-		 * Note that this only does something if the ttfmakeDynamicStylesheetVars object isn't present,
+		 * Note that this only does something if DynamicStylesheet.tinymce isn't present,
 		 * which indicates that it's not loaded in the admin.
 		 *
 		 * @since 1.4.1.
@@ -82,7 +81,7 @@ var ttfmakeDynamicStylesheet;
 		 * @return void
 		 */
 		init: function() {
-			if ('undefined' === typeof ttfmakeDynamicStylesheetVars || ! ttfmakeDynamicStylesheetVars.tinymce) {
+			if ('undefined' === typeof DynamicStylesheet.tinymce || true !== DynamicStylesheet.tinymce) {
 				this.root = this.cache.$document;
 
 				var self = this;
@@ -226,7 +225,7 @@ var ttfmakeDynamicStylesheet;
 				sheet.addRule(selector, rules, ruleIndex);
 			}
 		}
-	};
+	});
 
-	ttfmakeDynamicStylesheet.init();
-})(jQuery);
+	DynamicStylesheet.init();
+})(jQuery, MakeDynamicStylesheet);

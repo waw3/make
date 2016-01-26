@@ -1,7 +1,7 @@
-/* global Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars */
-var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
+/* global Backbone, jQuery, _, MakeFormatBuilder */
+var MakeFormatBuilder = MakeFormatBuilder || {};
 
-(function (window, Backbone, $, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars) {
+(function(Backbone, $, _, builder) {
 	'use strict';
 
 	/**
@@ -9,7 +9,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.definitions.button = {
+	builder.definitions.button = {
 		inline: 'a',
 		classes: 'ttfmake-button'
 	};
@@ -19,7 +19,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.nodes.button = 'a.ttfmake-button';
+	builder.nodes.button = 'a.ttfmake-button';
 
 	/**
 	 * Defines the listbox item in the 'Choose a format' dropdown.
@@ -28,8 +28,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @returns object
 	 */
-	ttfmakeFormatBuilder.choices.button = function() {
-		var content = ttfmakeFormatBuilder.currentSelection.getContent(),
+	builder.choices.button = function() {
+		var content = builder.currentSelection.getContent(),
 			choice;
 
 		// This choice is disabled if no content is selected.
@@ -47,8 +47,8 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 	 *
 	 * @since 1.4.1.
 	 */
-	ttfmakeFormatBuilder.formats = ttfmakeFormatBuilder.formats || {};
-	ttfmakeFormatBuilder.formats.button = ttfmakeFormatBuilder.FormatModel.extend({
+	builder.formats = builder.formats || {};
+	builder.formats.button = builder.FormatModel.extend({
 		/**
 		 * Default format option values.
 		 *
@@ -59,12 +59,12 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			id: 0,
 			url: '',
 			target: false,
-			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeButton,
+			fontSize: builder.userSettings.fontSizeButton,
 			fontWeight: 'bold',
-			colorBackground: ttfmakeFormatBuilderVars.userSettings.colorButtonBackground,
-			colorBackgroundHover: ttfmakeFormatBuilderVars.userSettings.colorButtonBackgroundHover || ttfmakeFormatBuilderVars.userSettings.colorButtonBackground,
-			colorText: ttfmakeFormatBuilderVars.userSettings.colorButtonText,
-			colorTextHover: ttfmakeFormatBuilderVars.userSettings.colorButtonTextHover || ttfmakeFormatBuilderVars.userSettings.colorButtonText,
+			colorBackground: builder.userSettings.colorButtonBackground,
+			colorBackgroundHover: builder.userSettings.colorButtonBackgroundHover || builder.userSettings.colorButtonBackground,
+			colorText: builder.userSettings.colorButtonText,
+			colorTextHover: builder.userSettings.colorButtonTextHover || builder.userSettings.colorButtonText,
 			paddingHorz: '10',
 			paddingVert: '4',
 			borderRadius: '3',
@@ -77,7 +77,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		initialize: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button);
+			var node = builder.getParentNode(builder.nodes.button);
 
 			// Create a new element ID.
 			this.set('id', this.createID());
@@ -134,10 +134,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 						}
 					]
 				},
-				ttfmakeFormatBuilder.getColorButton( 'colorBackground', 'Background Color' ),
-				ttfmakeFormatBuilder.getColorButton( 'colorBackgroundHover', 'Background Color (hover)' ),
-				ttfmakeFormatBuilder.getColorButton( 'colorText', 'Text Color' ),
-				ttfmakeFormatBuilder.getColorButton( 'colorTextHover', 'Text Color (hover)' ),
+				builder.getColorButton( 'colorBackground', 'Background Color' ),
+				builder.getColorButton( 'colorBackgroundHover', 'Background Color (hover)' ),
+				builder.getColorButton( 'colorText', 'Text Color' ),
+				builder.getColorButton( 'colorTextHover', 'Text Color (hover)' ),
 				{
 					type: 'textbox',
 					name: 'paddingHorz',
@@ -162,7 +162,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 					classes: 'monospace',
 					value: this.escape('borderRadius')
 				},
-				ttfmakeFormatBuilder.getIconButton( 'icon', 'Icon' )
+				builder.getIconButton( 'icon', 'Icon' )
 			];
 
 			return this.wrapOptionFields(items);
@@ -256,13 +256,13 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 
 			// If not updating an existing format, apply to the current selection using the Formatter.
 			if (true !== this.get('update')) {
-				ttfmakeFormatBuilder.editor.formatter.apply('button');
+				builder.editor.formatter.apply('button');
 			}
 
 			// Make sure the right node is selected.
-			$node = $(ttfmakeFormatBuilder.currentSelection.getNode());
-			if (! $node.is(ttfmakeFormatBuilder.nodes.button)) {
-				$node = $node.find(ttfmakeFormatBuilder.nodes.button);
+			$node = $(builder.currentSelection.getNode());
+			if (! $node.is(builder.nodes.button)) {
+				$node = $node.find(builder.nodes.button);
 			}
 
 			// Set the element ID, if it doesn't have one yet.
@@ -323,7 +323,7 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 		 * @since 1.4.1.
 		 */
 		remove: function() {
-			var node = ttfmakeFormatBuilder.getParentNode(ttfmakeFormatBuilder.nodes.button),
+			var node = builder.getParentNode(builder.nodes.button),
 				content;
 
 			// Remove the icon if it exists.
@@ -333,10 +333,10 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			content = $(node).html().trim();
 
 			// Set the selection to the whole node.
-			ttfmakeFormatBuilder.currentSelection.select(node);
+			builder.currentSelection.select(node);
 
 			// Replace the current selection with the inner content.
-			ttfmakeFormatBuilder.currentSelection.setContent(content);
+			builder.currentSelection.setContent(content);
 		}
 	});
-})(window, Backbone, jQuery, _, ttfmakeFormatBuilder, ttfmakeFormatBuilderVars);
+})(Backbone, jQuery, _, MakeFormatBuilder);

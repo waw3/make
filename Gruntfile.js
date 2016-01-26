@@ -257,7 +257,7 @@ module.exports = function( grunt ) {
 					return newObj;
 				},
 				files: {
-					'assets/temp/fontawesome.json': [ 'assets/temp/icons*.json' ]
+					'src/inc/formatting/js/icon-picker/fontawesome.json': [ 'assets/temp/icons*.json' ]
 				}
 			},
 			googlefonts: {
@@ -282,18 +282,6 @@ module.exports = function( grunt ) {
 				files: {
 					'assets/temp/googlefonts.json': [ 'assets/temp/googlefontsdata.json' ]
 				}
-			}
-		},
-		json: {
-			fontawesome: {
-				options: {
-					namespace: 'ttfmakeIconObj',
-					processName: function( filename ) {
-						return filename.toLowerCase();
-					}
-				},
-				src: [ 'assets/temp/fontawesome.json' ],
-				dest: 'src/inc/formatting/icon-picker/icons.js'
 			}
 		},
 		curl: {
@@ -394,7 +382,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'fontawesome', [
 		'yaml:fontawesome',
 		'json_massager:fontawesome',
-		'json:fontawesome',
 		'clean:assets'
 	] );
 

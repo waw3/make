@@ -1,15 +1,16 @@
-( function( tinymce ) {
-	if ( 'undefined' !== typeof window.ttfmakeDynamicStylesheet ) {
-		tinymce.PluginManager.add('ttfmake_dynamic_stylesheet', function (editor, url) {
-			if ('undefined' !== typeof ttfmakeDynamicStylesheetVars && ttfmakeDynamicStylesheetVars.tinymce) {
-				editor.on('init', function () {
-					ttfmakeDynamicStylesheet.tinymceInit(editor);
-				});
+/* global tinymce, MakeDynamicStylesheet */
+var MakeDynamicStylesheet = MakeDynamicStylesheet || {};
 
-				editor.addCommand('Make_Reset_Dynamic_Stylesheet', function () {
-					ttfmakeDynamicStylesheet.resetStylesheet();
-				});
-			}
+(function(tinymce, DynamicStylesheet) {
+	if (DynamicStylesheet.tinymce) {
+		tinymce.PluginManager.add('ttfmake_dynamic_stylesheet', function (editor, url) {
+			editor.on('init', function () {
+				DynamicStylesheet.tinymceInit(editor);
+			});
+
+			editor.addCommand('Make_Reset_Dynamic_Stylesheet', function () {
+				DynamicStylesheet.resetStylesheet();
+			});
 		});
 	}
-} )( tinymce );
+})(tinymce, MakeDynamicStylesheet);
