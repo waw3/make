@@ -51,8 +51,6 @@ function ttfmake_require_files() {
 	$files = array(
 		// Gallery slider
 		get_template_directory() . '/inc/gallery-slider/gallery-slider.php',
-		// Formatting
-		get_template_directory() . '/inc/formatting/formatting.php',
 		// Miscellaneous
 		get_template_directory() . '/inc/extras.php',
 		get_template_directory() . '/inc/template-tags.php',
