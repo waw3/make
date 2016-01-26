@@ -373,7 +373,8 @@ if ( ! empty( $link_rule ) ) {
  */
 $element = 'footer-text';
 $selectors = array( '.footer-text' );
-$declarations = $this->helper()->parse_font_properties( $element );
+$force = ( ! $this->thememod()->is_default( 'font-family-body' ) );
+$declarations = $this->helper()->parse_font_properties( $element, $force );
 if ( ! empty( $declarations ) ) {
 	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 }
