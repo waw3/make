@@ -132,10 +132,8 @@ module.exports = function( grunt ) {
 					{
 						expand: true,
 						cwd: 'assets/temp/',
-						src: [
-							'google-fonts.php'
-						],
-						dest: 'src/inc/customizer'
+						src: ['google-data.php'],
+						dest: 'src/inc/font/source/'
 					}
 				]
 			}

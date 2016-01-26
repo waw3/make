@@ -1,9 +1,9 @@
 <?php
 /**
  * @package Make
- *
- * Updated: 2015-09-01T00:34:34+00:00
  */
+
+// Updated: 2016-01-26T20:46:23+00:00
 
 // Bail if this isn't being included inside of MAKE_Font_Source_Google.
 if ( ! isset( $this ) || ! $this instanceof MAKE_Font_Source_Google ) {
@@ -1480,6 +1480,29 @@ $this->load_font_data( array(
 			'latin-ext',
 		),
 		'category' => 'serif',
+	),
+	'Caveat' => array(
+		'label' => 'Caveat',
+		'variants' => array(
+			'700',
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+		),
+		'category' => 'handwriting',
+	),
+	'Caveat Brush' => array(
+		'label' => 'Caveat Brush',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+		),
+		'category' => 'handwriting',
 	),
 	'Cedarville Cursive' => array(
 		'label' => 'Cedarville Cursive',
@@ -3368,6 +3391,38 @@ $this->load_font_data( array(
 		),
 		'category' => 'sans-serif',
 	),
+	'Hind Siliguri' => array(
+		'label' => 'Hind Siliguri',
+		'variants' => array(
+			'300',
+			'500',
+			'600',
+			'700',
+			'regular',
+		),
+		'subsets' => array(
+			'bengali',
+			'latin',
+			'latin-ext',
+		),
+		'category' => 'sans-serif',
+	),
+	'Hind Vadodara' => array(
+		'label' => 'Hind Vadodara',
+		'variants' => array(
+			'300',
+			'500',
+			'600',
+			'700',
+			'regular',
+		),
+		'subsets' => array(
+			'gujarati',
+			'latin',
+			'latin-ext',
+		),
+		'category' => 'sans-serif',
+	),
 	'Holtwood One SC' => array(
 		'label' => 'Holtwood One SC',
 		'variants' => array(
@@ -3783,6 +3838,8 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'serif',
 	),
@@ -3891,6 +3948,36 @@ $this->load_font_data( array(
 			'latin',
 		),
 		'category' => 'serif',
+	),
+	'Kanit' => array(
+		'label' => 'Kanit',
+		'variants' => array(
+			'100',
+			'100italic',
+			'200',
+			'200italic',
+			'300',
+			'300italic',
+			'500',
+			'500italic',
+			'600',
+			'600italic',
+			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
+			'italic',
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+			'thai',
+			'vietnamese',
+		),
+		'category' => 'sans-serif',
 	),
 	'Kantumruy' => array(
 		'label' => 'Kantumruy',
@@ -4807,6 +4894,7 @@ $this->load_font_data( array(
 			'regular',
 		),
 		'subsets' => array(
+			'cyrillic',
 			'latin',
 			'latin-ext',
 		),
