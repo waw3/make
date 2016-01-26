@@ -3,62 +3,68 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTFMAKE_Gallery_Slider' ) ) :
 /**
- * class TTFMAKE_Gallery_Slider
+ * class MAKE_GallerySlider_Methods
  *
  * A class that defines the slider for the gallery section.
  *
  * @since 1.0.0.
  */
-class TTFMAKE_Gallery_Slider {
-
+class MAKE_GallerySlider_Methods extends MAKE_Util_Modules implements MAKE_GallerySlider_MethodsInterface, MAKE_Util_HookInterface {
 	/**
-	 * The one instance of TTFMAKE_Gallery_Slider
+	 * An associative array of required modules.
 	 *
-	 * @since 1.0.0.
+	 * @since x.x.x.
 	 *
-	 * @var TTFMAKE_Gallery_Slider
+	 * @var array
 	 */
-	private static $instance;
+	protected $dependencies = array(
+		'scripts' => 'MAKE_Setup_ScriptsInterface',
+	);
 
 	/**
-	 * Instantiate or return the one TTFMAKE_Gallery_Slider instance.
+	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since  1.0.0.
+	 * @since x.x.x.
 	 *
-	 * @return TTFMAKE_Gallery_Slider
+	 * @var bool
 	 */
-	public static function instance() {
-		if ( is_null( self::$instance ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
+	private $hooked = false;
 
 	/**
-	 * Add the action and filter hooks.
+	 * Hook into WordPress.
 	 *
-	 * @since  1.0.0.
-	 *
-	 * @return TTFMAKE_Gallery_Slider
-	 */
-	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_filter( 'post_gallery', array( $this, 'render_gallery' ), 1001, 2 );
-	}
-
-	/**
-	 * Add admin-only action hooks
-	 *
-	 * @since  1.0.0.
+	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	function admin_init() {
-		add_action( 'wp_enqueue_media', array( $this, 'enqueue_media' ), 99 );
-		add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
+		// Filter the gallery shortcode output
+		add_filter( 'post_gallery', array( $this, 'render_gallery' ), 1001, 2 );
+
+		// Admin scripts
+		if ( is_admin() ) {
+			add_action( 'wp_enqueue_media', array( $this, 'enqueue_media' ), 99 );
+			add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
+		}
+
+		// Hooking has occurred.
+		$this->hooked = true;
+	}
+
+	/**
+	 * Check if the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_hooked() {
+		return $this->hooked;
 	}
 
 	/**
@@ -69,9 +75,14 @@ class TTFMAKE_Gallery_Slider {
 	 * @return void
 	 */
 	function enqueue_media() {
+		// Only run this in the proper hook context.
+		if ( 'wp_enqueue_media' !== current_action() ) {
+			return;
+		}
+
 		wp_enqueue_script(
-			'ttfmake-admin-gallery-settings',
-			get_template_directory_uri() . '/inc/gallery-slider/gallery-slider' . TTFMAKE_SUFFIX . '.js',
+			'make-admin-gallery-settings',
+			get_template_directory_uri() . '/inc/galleryslider/js/gallery-slider' . TTFMAKE_SUFFIX . '.js',
 			array( 'media-views' ),
 			TTFMAKE_VERSION,
 			true
@@ -86,6 +97,10 @@ class TTFMAKE_Gallery_Slider {
 	 * @return void
 	 */
 	function print_media_templates() {
+		// Only run this in the proper hook context.
+		if ( 'print_media_templates' !== current_action() ) {
+			return;
+		}
 	?>
 		<script type="text/html" id="tmpl-ttfmake-gallery-settings">
 			<h3 style="float:left;margin-top:10px;"><?php esc_html_e( 'Slider Settings', 'make' ); ?></h3>
@@ -133,17 +148,18 @@ class TTFMAKE_Gallery_Slider {
 	 * @return string               The modified gallery code.
 	 */
 	function render_gallery( $output, $attr ) {
+		// Only run this in the proper hook context.
+		if ( 'post_gallery' !== current_filter() ) {
+			return $output;
+		}
+
 		// Only use this alternative output if the slider is set to true
 		if ( isset( $attr['ttfmake_slider'] ) && true == $attr['ttfmake_slider'] ) {
 			// Add Cycle2 as a dependency for the Frontend script
-			global $wp_scripts;
-			$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
-			if ( $script && ! in_array( 'cycle2', $script->deps ) ) {
-				$script->deps[] = 'cycle2';
-				if ( ! defined( 'TTFMAKE_SUFFIX' ) || '.min' !== TTFMAKE_SUFFIX ) {
-					$script->deps[] = 'cycle2-center';
-					$script->deps[] = 'cycle2-swipe';
-				}
+			$this->scripts()->add_dependency( 'make-frontend', 'cycle2', 'script' );
+			if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
+				$this->scripts()->add_dependency( 'make-frontend', 'cycle2-center', 'script' );
+				$this->scripts()->add_dependency( 'make-frontend', 'cycle2-swipe', 'script' );
 			}
 
 			$post = get_post();
@@ -314,19 +330,3 @@ class TTFMAKE_Gallery_Slider {
 		return $output;
 	}
 }
-endif;
-
-if ( ! function_exists( 'ttfmake_get_gallery_slider' ) ) :
-/**
- * Return the one TTFMAKE_Gallery_Slider object.
- *
- * @since  1.0.0.
- *
- * @return TTFMAKE_Gallery_Slider
- */
-function ttfmake_get_gallery_slider() {
-	return TTFMAKE_Gallery_Slider::instance();
-}
-endif;
-
-add_action( 'init', 'ttfmake_get_gallery_slider', 1 );

@@ -1706,6 +1706,24 @@ function ttfmake_formatting_init() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_get_gallery_slider' ) ) :
+/**
+ * Return the one TTFMAKE_Gallery_Slider object.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return TTFMAKE_Gallery_Slider
+ */
+function ttfmake_get_gallery_slider() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->galleryslider()', $backtrace[0] );
+	return Make()->galleryslider();
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_get_gallery_slider', '1.7.0', 'Make()->galleryslider()' );
+endif;
+
 if ( class_exists( 'WP_Customize_Control' ) ) :
 /**
  * Class TTFMAKE_Customize_Background_Position_Control
