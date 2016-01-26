@@ -329,7 +329,8 @@ if ( ! empty( $link_rule ) ) {
  */
 $element = 'widget';
 $selectors = array( '.sidebar .widget', '.font-widget' );
-$declarations = $this->helper()->parse_font_properties( $element );
+$force = ( ! $this->thememod()->is_default( 'font-family-body' ) );
+$declarations = $this->helper()->parse_font_properties( $element, $force );
 if ( ! empty( $declarations ) ) {
 	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 }
@@ -357,7 +358,8 @@ if ( ! empty( $link_rule ) ) {
  */
 $element = 'footer-widget';
 $selectors = array( '.footer-widget-container .widget' );
-$declarations = $this->helper()->parse_font_properties( $element );
+$force = ( ! $this->thememod()->is_default( 'font-family-body' ) );
+$declarations = $this->helper()->parse_font_properties( $element, $force );
 if ( ! empty( $declarations ) ) {
 	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 }
