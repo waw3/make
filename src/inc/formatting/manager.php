@@ -504,7 +504,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		wp_register_script(
 			'make-icon-picker',
 			$js_uri . '/icon-picker/icon-picker.js',
-			array( 'editor', 'jquery', 'make-icon-picker-list' ),
+			array( 'editor', 'jquery' ),
 			TTFMAKE_VERSION
 		);
 
