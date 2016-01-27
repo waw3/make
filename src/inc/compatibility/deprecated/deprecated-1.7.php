@@ -156,6 +156,25 @@ function ttfmake_plus_styles() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
 }
 
+if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
+/**
+ * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0
+ *
+ * @param  array    $args    Configuration arguments.
+ * @return array             Modified page menu args.
+ */
+function ttfmake_page_menu_args( $args ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	return $args;
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_page_menu_args', '1.7.0' );
+endif;
+
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
 /**
  * Determine the current view.
