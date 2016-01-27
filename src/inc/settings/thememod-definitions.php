@@ -154,7 +154,7 @@ $this->add_settings(
 		'footer-background-color-opacity'           => array( 'default' => (float) 1 ),
 	),
 	array(
-		'sanitize' => 'ttfmake_sanitize_float',
+		'sanitize' => array( $this, 'sanitize_float' ),
 		'is_style' => true,
 	)
 );
@@ -180,7 +180,7 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'  => '',
-		'sanitize' => 'ttfmake_sanitize_text',
+		'sanitize' => array( $this, 'sanitize_text' ),
 	)
 );
 
@@ -227,7 +227,7 @@ $this->add_settings(
 		'footer-background-color'           => array( 'default' => '#eaecee' ),
 	),
 	array(
-		'sanitize' => 'maybe_hash_hex_color',
+		'sanitize' => array( $this, 'maybe_hash_hex_color' ),
 		'is_style' => true,
 	)
 );

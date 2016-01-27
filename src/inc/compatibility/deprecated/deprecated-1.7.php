@@ -196,6 +196,39 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_wp_title', '1.7.0' );
 endif;
 
+/**
+ * Sanitize a string to ensure that it is a float number.
+ *
+ * @since 1.5.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string|float    $value    The value to sanitize.
+ * @return float                     The sanitized value.
+ */
+function ttfmake_sanitize_float( $value ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_float', $backtrace[0] );
+	return Make()->thememod()->sanitize_float( $value );
+}
+
+if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
+/**
+ * Allow only certain tags and attributes in a string.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $string    The unsanitized string.
+ * @return string               The sanitized string.
+ */
+function ttfmake_sanitize_text( $string ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_text', $backtrace[0] );
+	return Make()->thememod()->sanitize_text( $string );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_text', '1.7.0', 'Make()->thememod()->sanitize_text' );
+endif;
+
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
 /**
  * Determine the current view.

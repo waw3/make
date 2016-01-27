@@ -495,49 +495,4 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 
 		return $this->font()->get_source( 'google' )->sanitize_subset( $value, $this->get_default( 'font-subset' ) );
 	}
-
-	/**
-	 * Sanitize the value of an image setting.
-	 *
-	 * If the given value is a URL instead of an attachment ID, this tries to find the URL's associated attachment.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param      $value
-	 * @param bool $raw
-	 *
-	 * @return int|string    The attachment ID, or a sanitized URL if the attachment can't be found.
-	 */
-	public function sanitize_image( $value, $raw = false ) {
-		if ( is_string( $value ) && 0 === strpos( $value, 'http' ) ) {
-			// Value is URL. Try to find the attachment ID.
-			$find_attachment = attachment_url_to_postid( $value );
-			if ( 0 !== $find_attachment ) {
-				return $find_attachment;
-			}
-
-			// Attachment ID is unavailable. Return sanitized URL.
-			if ( true === $raw ) {
-				return esc_url_raw( $value );
-			} else {
-				return esc_url( $value );
-			}
-		} else {
-			// Value is not URL. Treat as attachment ID.
-			return absint( $value );
-		}
-	}
-
-	/**
-	 * Wrapper for using the sanitize_image method with raw set to true.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param $value
-	 *
-	 * @return int|string
-	 */
-	public function sanitize_image_raw( $value ) {
-		return $this->sanitize_image( $value, true );
-	}
 }

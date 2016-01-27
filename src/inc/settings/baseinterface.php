@@ -34,4 +34,18 @@ interface MAKE_Settings_BaseInterface extends MAKE_Util_ModulesInterface {
 	public function has_sanitize_callback( $setting_id, $context );
 
 	public function sanitize_value( $value, $setting_id, $context = '' );
+
+	public function sanitize_float( $value );
+
+	public function sanitize_hex_color( $color );
+
+	public function sanitize_hex_color_no_hash( $color );
+
+	public function maybe_hash_hex_color( $color );
+
+	public function sanitize_image( $value, $raw = false );
+
+	public function sanitize_image_raw( $value );
+
+	public function sanitize_text( $string );
 }

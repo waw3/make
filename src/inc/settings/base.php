@@ -499,4 +499,165 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 		 */
 		return apply_filters( "make_settings_{$this->type}_sanitized_value", $sanitized_value, $setting_id, $context );
 	}
+
+	/**
+	 * Sanitize a string to ensure that it is a float number.
+	 *
+	 * @since 1.5.0.
+	 *
+	 * @param  string|float    $value    The value to sanitize.
+	 *
+	 * @return float                     The sanitized value.
+	 */
+	public function sanitize_float( $value ) {
+		return floatval( $value );
+	}
+
+	/**
+	 * Sanitizes a hex color.
+	 *
+	 * This is a copy of the core function sanitize_hex_color().
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string         $color    The proposed color.
+	 *
+	 * @return string|null              The sanitized color.
+	 */
+	public function sanitize_hex_color( $color ) {
+		if ( '' === $color ) {
+			return '';
+		}
+
+		// 3 or 6 hex digits, or the empty string.
+		if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
+			return $color;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
+	 *
+	 * This is a copy of the core function sanitize_hex_color_no_hash().
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string         $color    The proposed color.
+	 *
+	 * @return string|null              The sanitized color.
+	 */
+	public function sanitize_hex_color_no_hash( $color ) {
+		$color = ltrim( $color, '#' );
+
+		if ( '' === $color ) {
+			return '';
+		}
+
+		return $this->sanitize_hex_color( '#' . $color ) ? $color : null;
+	}
+
+	/**
+	 * Ensures that any hex color is properly hashed.
+	 *
+	 * This is a copy of the core function maybe_hash_hex_color().
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string         $color    The proposed color.
+	 *
+	 * @return string|null              The sanitized color.
+	 */
+	public function maybe_hash_hex_color( $color ) {
+		if ( $unhashed = $this->sanitize_hex_color_no_hash( $color ) ) {
+			return '#' . $unhashed;
+		}
+
+		return $color;
+	}
+
+	/**
+	 * Sanitize the value of an image setting.
+	 *
+	 * If the given value is a URL instead of an attachment ID, this tries to find the URL's associated attachment.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param      $value
+	 * @param bool $raw
+	 *
+	 * @return int|string    The attachment ID, or a sanitized URL if the attachment can't be found.
+	 */
+	public function sanitize_image( $value, $raw = false ) {
+		if ( is_string( $value ) && 0 === strpos( $value, 'http' ) ) {
+			// Value is URL. Try to find the attachment ID.
+			$find_attachment = attachment_url_to_postid( $value );
+			if ( 0 !== $find_attachment ) {
+				return $find_attachment;
+			}
+
+			// Attachment ID is unavailable. Return sanitized URL.
+			if ( true === $raw ) {
+				return esc_url_raw( $value );
+			} else {
+				return esc_url( $value );
+			}
+		} else {
+			// Value is not URL. Treat as attachment ID.
+			return absint( $value );
+		}
+	}
+
+	/**
+	 * Wrapper for using the sanitize_image method with raw set to true.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $value
+	 *
+	 * @return int|string
+	 */
+	public function sanitize_image_raw( $value ) {
+		return $this->sanitize_image( $value, true );
+	}
+
+	/**
+	 * Allow only certain tags and attributes in a string.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $string    The unsanitized string.
+	 *
+	 * @return string               The sanitized string.
+	 */
+	public function sanitize_text( $string ) {
+		global $allowedtags;
+		$expandedtags = $allowedtags;
+
+		// span
+		$expandedtags['span'] = array();
+
+		// Enable id, class, and style attributes for each tag
+		foreach ( $expandedtags as $tag => $attributes ) {
+			$expandedtags[ $tag ]['id']    = true;
+			$expandedtags[ $tag ]['class'] = true;
+			$expandedtags[ $tag ]['style'] = true;
+		}
+
+		// br (doesn't need attributes)
+		$expandedtags['br'] = array();
+
+		/**
+		 * Customize the tags and attributes that are allowed during text sanitization.
+		 *
+		 * @since 1.4.3
+		 *
+		 * @param array     $expandedtags    The list of allowed tags and attributes.
+		 * @param string    $string          The text string being sanitized.
+		 */
+		$expandedtags = apply_filters( 'make_sanitize_text_allowed_tags', $expandedtags, $string );
+
+		return wp_kses( $string, $expandedtags );
+	}
 }
