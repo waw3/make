@@ -224,7 +224,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		// WooCommerce
 		if ( false !== $priority = has_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb' ) ) {
 			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', $priority );
-			add_action( 'woocommerce_before_main_content', 'make_breadcrumb', $priority );
+			add_action( 'woocommerce_before_main_content', 'make_breadcrumb', $priority, 0 );
 		}
 	}
 }
