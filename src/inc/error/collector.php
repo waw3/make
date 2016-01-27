@@ -154,7 +154,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				#wpadminbar #wp-admin-bar-make-errors {
 					display: none;
 				}
-			</style
+			</style>
 		<?php
 			return;
 		}
