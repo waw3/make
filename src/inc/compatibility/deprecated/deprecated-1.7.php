@@ -8,6 +8,38 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 	return;
 }
 
+if ( ! function_exists( 'ttfmake_setup' ) ) :
+/**
+ * Sets up text domain, theme support, menus, and editor styles
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttfmake_setup() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', __( 'a separate setup function', 'make' ), $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_setup', '1.7.0', __( 'a separate setup function', 'make' ) );
+endif;
+
+if ( ! function_exists( 'ttfmake_content_width' ) ) :
+/**
+ * Set the content width based on current layout
+ *
+ * @since  1.0.0.
+ *
+ * @return void
+ */
+function ttfmake_content_width() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_content_width', '1.7.0' );
+endif;
+
 if ( ! function_exists( 'ttfmake_widgets_init' ) ) :
 /**
  * Register widget areas

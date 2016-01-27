@@ -33,6 +33,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'galleryslider'       => 'MAKE_GallerySlider_MethodsInterface',
 		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
 		'customizer_preview'  => 'MAKE_Customizer_PreviewInterface',
+		'setup'               => 'MAKE_Setup_MiscInterface',
 		'integration'         => 'MAKE_Integration_ManagerInterface',
 	);
 
@@ -60,6 +61,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'galleryslider'       => 'MAKE_GallerySlider_Methods',
 		'customizer_controls' => 'MAKE_Customizer_Controls',
 		'customizer_preview'  => 'MAKE_Customizer_Preview',
+		'setup'               => 'MAKE_Setup_Misc',
 		'integration'         => 'MAKE_Integration_Manager',
 	);
 
