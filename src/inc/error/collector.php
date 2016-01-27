@@ -149,15 +149,19 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 
 		// Bail if there aren't any errors, or if showing them has been disabled.
 		if ( ! $this->has_errors() || false === $this->show_errors ) {
+			?>
+			<style type="text/css">
+				#wpadminbar #wp-admin-bar-make-errors {
+					display: none;
+				}
+			</style
+		<?php
 			return;
 		}
 
 		?>
 		<style type="text/css">
 			#wpadminbar #wp-admin-bar-make-errors {
-				display: none;
-			}
-			#wpadminbar #wp-admin-bar-make-errors.has-errors {
 				display: list-item;
 				background-color: red;
 			}
@@ -318,8 +322,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 							$closebutton = $('#make-error-detail-close'),
 							$overlay     = $('#make-error-detail-wrapper'),
 							$content     = $('#make-error-detail-container');
-
-						$container.addClass('has-errors');
+						
 						$barbutton.html('<span class="ab-icon"></span><span class="ab-label"><?php echo $this->get_errors_title(); ?></span>');
 						$overlay.append($content.html());
 
