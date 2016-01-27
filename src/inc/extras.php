@@ -67,44 +67,6 @@ endif;
 
 add_filter( 'post_class', 'ttfmake_maybe_add_with_avatar_class', 10, 3 );
 
-if ( ! function_exists( 'ttfmake_wp_title' ) ) :
-/**
- * Filters wp_title to print a neat <title> tag based on what is being viewed.
- *
- * @since  1.0.0.
- *
- * @param  string    $title    Default title text for current view.
- * @param  string    $sep      Optional separator.
- *
- * @return string              The filtered title.
- */
-function ttfmake_wp_title( $title, $sep ) {
-	if ( version_compare( $GLOBALS['wp_version'], '4.1', '>=' ) || is_feed() ) {
-		return $title;
-	}
-
-	global $page, $paged;
-
-	// Add the blog name
-	$title .= get_bloginfo( 'name' );
-
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title .= " $sep $site_description";
-	}
-
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'make' ), max( $paged, $page ) );
-	}
-
-	return $title;
-}
-endif;
-
-add_filter( 'wp_title', 'ttfmake_wp_title', 10, 2 );
-
 /**
  * Sanitize a string to ensure that it is a float number.
  *

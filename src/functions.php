@@ -123,12 +123,6 @@ if ( ! function_exists( 'ttfmake_head_early' ) ) :
  * @return void
  */
 function ttfmake_head_early() {
-	// Title tag fallback
-	if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) : ?>
-		<title><?php wp_title( '|', true, 'right' ); ?></title>
-<?php
-	endif;
-
 	// JavaScript detection ?>
 
 		<script type="text/javascript">
