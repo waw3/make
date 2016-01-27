@@ -50,7 +50,7 @@ if ( isset( $declarations['font-size-px'] ) ) {
 }
 // Buttons
 $element = 'button';
-$selectors = array( 'button', '.ttfmake-button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' );
+$selectors = array( 'button', '.ttfmake-button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.site-main .gform_wrapper .gform_footer input.button' );
 $declarations = $this->helper()->parse_font_properties( $element );
 if ( ! empty( $declarations ) ) {
 	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );

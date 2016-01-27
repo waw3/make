@@ -285,7 +285,8 @@ if ( ! $this->thememod()->is_default( 'color-button-text' ) ) {
 			'.ttfmake-button',
 			'input[type="button"]',
 			'input[type="reset"]',
-			'input[type="submit"]'
+			'input[type="submit"]',
+			'.site-main .gform_wrapper .gform_footer input.button',
 		),
 		'declarations' => array(
 			'color' => $this->thememod()->get_value( 'color-button-text' )
@@ -301,6 +302,7 @@ if ( ! $this->thememod()->is_default( 'color-button-text-hover' ) && $this->them
 			'input[type="button"]:hover', 'input[type="button"]:focus',
 			'input[type="reset"]:hover', 'input[type="reset"]:focus',
 			'input[type="submit"]:hover', 'input[type="submit"]:focus',
+			'.site-main .gform_wrapper .gform_footer input.button:hover', '.site-main .gform_wrapper .gform_footer input.button:focus',
 		),
 		'declarations' => array(
 			'color' => $this->thememod()->get_value( 'color-button-text-hover' )
@@ -315,7 +317,8 @@ if ( ! $this->thememod()->is_default( 'color-button-background' ) ) {
 			'.ttfmake-button',
 			'input[type="button"]',
 			'input[type="reset"]',
-			'input[type="submit"]'
+			'input[type="submit"]',
+			'.site-main .gform_wrapper .gform_footer input.button',
 		),
 		'declarations' => array(
 			'background-color' => $this->thememod()->get_value( 'color-button-background' )
@@ -331,6 +334,7 @@ if ( ! $this->thememod()->is_default( 'color-button-background-hover' ) && $this
 			'input[type="button"]:hover', 'input[type="button"]:focus',
 			'input[type="reset"]:hover', 'input[type="reset"]:focus',
 			'input[type="submit"]:hover', 'input[type="submit"]:focus',
+			'.site-main .gform_wrapper .gform_footer input.button:hover', '.site-main .gform_wrapper .gform_footer input.button:focus',
 		),
 		'declarations' => array(
 			'background-color' => $this->thememod()->get_value( 'color-button-background-hover' )
