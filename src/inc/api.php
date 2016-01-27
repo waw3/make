@@ -122,23 +122,6 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 }
 
 /**
- * Get the global Make object.
- *
- * @since x.x.x.
- *
- * @return MAKE_API
- */
-function Make() {
-	global $Make;
-
-	if ( ! $Make instanceof MAKE_API ) {
-		$Make = new MAKE_API;
-	}
-
-	return $Make;
-}
-
-/**
  * Check if Make Plus is active.
  *
  * @since x.x.x.

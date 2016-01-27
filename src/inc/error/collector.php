@@ -322,7 +322,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 							$closebutton = $('#make-error-detail-close'),
 							$overlay     = $('#make-error-detail-wrapper'),
 							$content     = $('#make-error-detail-container');
-						
+
 						$barbutton.html('<span class="ab-icon"></span><span class="ab-label"><?php echo $this->get_errors_title(); ?></span>');
 						$overlay.append($content.html());
 

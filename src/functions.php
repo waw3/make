@@ -47,6 +47,13 @@ function ttfmake_require_files() {
 	global $Make;
 	$Make = new MAKE_API;
 
+	/**
+	 * Action: Fire when the Make API has finished loading.
+	 *
+	 * @since x.x.x.
+	 */
+	do_action( 'make_api_loaded' );
+
 	// Load other files
 	$files = array(
 		// Miscellaneous
@@ -85,6 +92,27 @@ function ttfmake_require_files() {
 
 // Load files immediately.
 ttfmake_require_files();
+
+/**
+ * Get the global Make API object.
+ *
+ * @since x.x.x.
+ *
+ * @return MAKE_API|null
+ */
+function Make() {
+	global $Make;
+
+	if ( ! did_action( 'make_api_loaded' ) || ! $Make instanceof MAKE_APIInterface ) {
+		trigger_error(
+			__( 'The Make() function should not be called before the make_api_loaded action has fired.', 'make' ),
+			E_USER_WARNING
+		);
+		return null;
+	}
+
+	return $Make;
+}
 
 if ( ! function_exists( 'ttfmake_head_early' ) ) :
 /**
