@@ -66,6 +66,9 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		// Theme support
 		add_action( 'after_setup_theme', array( $this, 'theme_support' ) );
 
+		// Breadcrumb replacement
+		add_action( 'after_setup_theme', array( $this, 'replace_breadcrumb' ) );
+
 		// Theme Mod settings
 		add_action( 'make_settings_thememod_loaded', array( $this, 'load_thememod_definitions' ) );
 
@@ -208,5 +211,20 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		}
 
 		return '';
+	}
+
+	/**
+	 * Replace other breadcrumbs with the Yoast SEO version, for unified breadcrumbs.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function replace_breadcrumb() {
+		// WooCommerce
+		if ( false !== $priority = has_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb' ) ) {
+			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', $priority );
+			add_action( 'woocommerce_before_main_content', 'make_breadcrumb', $priority );
+		}
 	}
 }

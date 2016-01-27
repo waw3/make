@@ -18,7 +18,6 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	 */
 	protected $dependencies = array(
 		'widgets'     => 'MAKE_Setup_WidgetsInterface',
-		'integration' => 'MAKE_Integration_ManagerInterface',
 	);
 
 	/**
@@ -88,12 +87,6 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 
 		// Sidebar
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar' );
-
-		// Replace the WooCommerce breadcrumbs with Yoast SEO breadcrumbs, if available.
-		if ( $this->integration()->has_integration( 'yoastseo' ) ) {
-			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-			add_action( 'woocommerce_before_main_content', 'make_breadcrumb', 20 );
-		}
 	}
 
 	/**
