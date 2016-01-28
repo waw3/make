@@ -3,8 +3,8 @@
  * @package Make
  */
 
-// Bail if this isn't being included inside of a MAKE_Settings_BaseInterface.
-if ( ! isset( $this ) || ! $this instanceof MAKE_Settings_BaseInterface ) {
+// Bail if this isn't being included inside of a MAKE_Settings_ThemeModInterface.
+if ( ! isset( $this ) || ! $this instanceof MAKE_Settings_ThemeModInterface ) {
 	return;
 }
 
