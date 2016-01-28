@@ -95,7 +95,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		}
 
 		// Load the default setting definitions
-		$file = dirname( __FILE__ ) . '/thememod-definitions.php';
+		$file = dirname( __FILE__ ) . '/definitions/thememod.php';
 		if ( is_readable( $file ) ) {
 			include $file;
 		}
