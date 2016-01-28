@@ -18,7 +18,7 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	 */
 	protected $dependencies = array(
 		'thememod' => 'MAKE_Settings_ThemeModInterface',
-		'view'     => 'MAKE_View_ManagerInterface',
+		'view'     => 'MAKE_Layout_ViewInterface',
 	);
 
 	/**

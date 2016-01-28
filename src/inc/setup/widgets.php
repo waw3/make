@@ -19,7 +19,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	protected $dependencies = array(
 		'error'         => 'MAKE_Error_CollectorInterface',
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
-		'view'          => 'MAKE_View_ManagerInterface',
+		'view'          => 'MAKE_Layout_ViewInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 	);
 

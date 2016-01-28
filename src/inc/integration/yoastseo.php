@@ -17,7 +17,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 * @var array
 	 */
 	protected $dependencies = array(
-		'view'                => 'MAKE_View_ManagerInterface',
+		'view'                => 'MAKE_Layout_ViewInterface',
 		'thememod'            => 'MAKE_Settings_ThemeModInterface',
 		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
 	);
