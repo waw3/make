@@ -4,7 +4,7 @@
  */
 
 
-final class MAKE_View_Manager extends MAKE_Util_Modules implements MAKE_View_ManagerInterface, MAKE_Util_LoadInterface {
+final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_ViewInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *

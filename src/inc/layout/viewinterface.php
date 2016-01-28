@@ -4,7 +4,7 @@
  */
 
 
-interface MAKE_View_ManagerInterface extends MAKE_Util_ModulesInterface {
+interface MAKE_Layout_ViewInterface extends MAKE_Util_ModulesInterface {
 	public function add_view( $view_id, array $args = array(), $overwrite = false );
 
 	public function remove_view( $view_id );
