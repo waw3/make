@@ -118,6 +118,9 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		// Control scripts
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_scripts' ) );
 
+		// Print additional JS templates
+		add_action( 'customize_controls_print_footer_scripts', array( $this, 'render_templates' ) );
+
 		// Font choices
 		add_action( 'wp_ajax_make-font-choices', array( $this, 'get_font_choices_ajax' ) );
 
@@ -168,6 +171,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'MAKE_Customizer_Control_Html',
 			'MAKE_Customizer_Control_Radio',
 			'MAKE_Customizer_Control_Range',
+			'MAKE_Customizer_Control_SocialIcons',
 		);
 
 		// Register each type
@@ -698,6 +702,26 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'MakeControls',
 			$data
 		);
+	}
+
+	/**
+	 * Render additional JS templates.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function render_templates() {
+		// Only run this in the proper hook context.
+		if ( 'customize_controls_print_footer_scripts' !== current_action() ) {
+			return;
+		}
+
+		global $wp_customize;
+
+		// Social Icons
+		$control = new MAKE_Customizer_Control_SocialIcons( $wp_customize, 'temp', array() );
+		$control->print_sub_templates();
 	}
 
 	/**

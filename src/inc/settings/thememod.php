@@ -495,4 +495,19 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 
 		return $this->font()->get_source( 'google' )->sanitize_subset( $value, $this->get_default( 'font-subset' ) );
 	}
+
+
+	public function sanitize_socialicons_for_display( $array ) {
+		return print_r( $array, true );
+	}
+
+
+	public function sanitize_socialicons_from_customizer( $json ) {
+		return json_decode( $json, true );
+	}
+
+
+	public function sanitize_socialicons_to_customizer( $array ) {
+		return wp_json_encode( $array );
+	}
 }

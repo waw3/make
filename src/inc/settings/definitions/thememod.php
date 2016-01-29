@@ -656,5 +656,23 @@ $this->add_settings(
 			'sanitize' => 'esc_url',
 			'sanitize_database' => 'esc_url_raw',
 		),
+		'social-icons-list' => array(
+			'default'  => array(
+				'items' => array(
+					'https://facebook.com',
+					'email',
+					'https://twitter.com',
+					'rss',
+				),
+				'email-toggle' => true,
+				'email-address' => '',
+				'rss-toggle' => true,
+				'rss-url' => '',
+				'new-window' => true,
+			),
+			'sanitize' => array( $this, 'sanitize_socialicons_for_display' ),
+			'sanitize_from_customizer' => array( $this, 'sanitize_socialicons_from_customizer' ),
+			'sanitize_to_customizer' => array( $this, 'sanitize_socialicons_to_customizer' ),
+		)
 	)
 );

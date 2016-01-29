@@ -23,7 +23,7 @@
 		initFont: function() {
 			var self = this;
 
-			self.cache.$document.one('ready', function() {
+			self.cache.$document.ready(function() {
 				self.getFontElements();
 
 				$.each(self.fontElements, function(settingId, $element) {
@@ -204,6 +204,161 @@
 					$input.val(value);
 				});
 			});
+		}
+	});
+
+	/**
+	 * Initialize instances of MAKE_Customizer_Control_SocialIcons
+	 *
+	 * @since x.x.x.
+	 */
+	api.controlConstructor.make_socialicons = api.Control.extend({
+		/**
+		 * Additions to the default initialize routine.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param id
+		 * @param options
+		 */
+		initialize: function(id, options) {
+			var control = this;
+
+			// Add template function
+			options.params.itemTemplate = control.getItemTemplate();
+
+			// Do parent stuff
+			api.Control.prototype.initialize.apply(control, arguments);
+		},
+
+		/**
+		 * Generate a templating function for the item sub-template.
+		 *
+		 * @since x.x.x.
+		 */
+		getItemTemplate: function() {
+			var control = this,
+				templateID = 'customize-control-make_socialicons-item';
+
+			// Replace the container element's content with the control.
+			if ( 0 !== $( '#tmpl-' + templateID ).length ) {
+				return wp.template( templateID );
+			}
+		},
+
+		/**
+		 * Kick things off when the template has been embedded.
+		 *
+		 * @since x.x.x.
+		 */
+		ready: function() {
+			var control = this,
+				$container = control.container.find('.make-socialicons-container'),
+				$stage = $container.find('.make-socialicons-stage'),
+				$addbutton = $container.find('#add-icon_' + control.id),
+				$emailtoggle = $container.find('#email-toggle_' + control.id),
+				$emailaddress = $container.find('#email-address_' + control.id),
+				$rsstoggle = $container.find('#rss-toggle_' + control.id),
+				$rssurl = $container.find('#rss-url_' + control.id),
+				$newwindow = $container.find('#new-window_' + control.id);
+
+			// Set up sortable items
+			$stage.sortable({
+				handle: '.make-socialicons-item-handle',
+				placeholder: 'make-socialicons-item-placeholder'
+			});
+
+			// Add icon button
+			$addbutton.on('click', function(evt) {
+				evt.preventDefault();
+				$stage.append( control.params.itemTemplate({type:'link'}) );
+			});
+
+			// Remove button
+			$stage.on('click', '.make-socialicons-item-remove', function(evt) {
+				evt.preventDefault();
+				$(this).parent().remove();
+			});
+
+			// Item inputs
+			$stage.on('change', 'input', function() {
+				control.updateValue();
+				console.log('Look up icon');
+			});
+
+			// Email toggle
+			$emailtoggle.on('change', function(evt) {
+				var checked = $(evt.target).prop('checked');
+
+				if (checked) {
+					$stage.append( control.params.itemTemplate({type:'email'}) );
+					$emailaddress.parent().show();
+				} else {
+					$stage.find('.make-socialicons-item-email').remove();
+					$emailaddress.parent().hide();
+				}
+
+				control.updateValue();
+			});
+
+			// RSS toggle
+			$rsstoggle.on('change', function(evt) {
+				var checked = $(evt.target).prop('checked');
+
+				if (checked) {
+					$stage.append( control.params.itemTemplate({type:'rss'}) );
+					$rssurl.parent().show();
+				} else {
+					$stage.find('.make-socialicons-item-rss').remove();
+					$rssurl.parent().hide();
+				}
+
+				control.updateValue();
+			});
+
+			// Additional options
+			$emailaddress.add($rssurl).add($newwindow).on('change', function() {
+				control.updateValue();
+			});
+		},
+
+		/**
+		 * Update the value field with data from all the inputs.
+		 *
+		 * @since x.x.x.
+		 */
+		updateValue: function() { console.log('Updating value');
+			var control = this,
+				$items = control.container.find('.make-socialicons-item'),
+				$options = control.container.find('.make-socialicons-options input'),
+				$value = control.container.find('.make-socialicons-value'),
+				newValue = { items: [] };
+
+			$items.each(function() {
+				var type = $(this).data('type');
+				if ('link' === type) {
+					newValue.items.push($(this).find('input').val());
+				} else {
+					newValue.items.push(type);
+				}
+			});
+
+			$options.each(function() {
+				var name = $(this).data('name');
+				switch (name) {
+					case 'email-toggle' :
+					case 'rss-toggle' :
+					case 'new-window' :
+						newValue[name] = $(this).prop('checked');
+						break;
+					case 'email-address' :
+					case 'rss-url' :
+						newValue[name] = $(this).val();
+						break;
+				}
+			});
+
+			$value.val(JSON.stringify(newValue));
 		}
 	});
 
