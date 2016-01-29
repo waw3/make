@@ -19,6 +19,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	protected $dependencies = array(
 		'error'         => 'MAKE_Error_CollectorInterface',
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'socialicons'   => 'MAKE_SocialIcons_ManagerInterface',
 		'font'          => 'MAKE_Font_ManagerInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 		'scripts'       => 'MAKE_Setup_ScriptsInterface',
@@ -123,6 +124,9 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 		// Font choices
 		add_action( 'wp_ajax_make-font-choices', array( $this, 'get_font_choices_ajax' ) );
+
+		// Social icons
+		add_action( 'wp_ajax_make-social-icons', array( $this, 'get_socialicons_ajax' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -746,5 +750,32 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 
 		// End the Ajax response.
 		wp_die();
+	}
+
+	/**
+	 * Ajax handler for retrieving a social icon for a URL.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function get_socialicons_ajax() {
+		// Only run this in the proper hook context.
+		if ( 'wp_ajax_make-social-icons' !== current_action() ) {
+			wp_die();
+		}
+
+		if ( ! isset( $_POST['url'] ) ) {
+			wp_send_json_error();
+		}
+
+		$url = esc_url( $_POST['url'] );
+		$classes = $this->socialicons()->find_match( $url );
+
+		if ( empty( $classes ) ) {
+			wp_send_json_success( 'fa fa-external-link-square' );
+		} else {
+			wp_send_json_success( implode( ' ', $classes ) );
+		}
 	}
 }

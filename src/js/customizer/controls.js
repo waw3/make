@@ -266,8 +266,10 @@
 			$stage.sortable({
 				handle: '.make-socialicons-item-handle',
 				placeholder: 'make-socialicons-item-placeholder',
-				update: function() {
-					control.updateValue();
+				create: function() {
+					$stage.on('sortupdate', function() {
+						control.updateValue();
+					});
 				}
 			});
 
@@ -286,9 +288,13 @@
 
 			// Item inputs
 			$stage.on('change', 'input', function() {
+				control.sendIconRequest($(this));
 				control.updateValue();
+			});
 
-				console.log('Look up icon...');
+			// Existing items
+			$stage.find('input').each(function() {
+				control.sendIconRequest($(this));
 			});
 
 			// Email toggle
@@ -325,6 +331,43 @@
 			$emailaddress.add($rssurl).add($newwindow).on('change', function() {
 				control.updateValue();
 			});
+		},
+
+		/**
+		 * Look up an icon match for the current URL in an item input.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param $el
+		 */
+		sendIconRequest: function($el) {
+			var control = this,
+				data = {
+				action: 'make-social-icons',
+				url: $el.val()
+			};
+
+			$.post(MakeControls.ajaxurl, data, function(response) {
+				if ('undefined' !== response.data) {
+					control.updateIcon($el, response.data);
+				}
+			});
+		},
+
+		/**
+		 * Update the icon classes in the item handle, or remove them.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param $el
+		 * @param classes
+		 */
+		updateIcon: function($el, classes) {
+			$el.parent().find('.make-socialicons-item-handle i').removeAttr('class');
+
+			if (classes) {
+				$el.parent().find('.make-socialicons-item-handle i').addClass(classes);
+			}
 		},
 
 		/**
