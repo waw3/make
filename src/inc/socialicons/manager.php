@@ -30,6 +30,12 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 */
 	private $icons = array();
 
+
+	private $required_properties = array(
+		'title',
+		'class'
+	);
+
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
@@ -80,22 +86,24 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		$return = true;
 
 		// Check each setting definition for required properties before adding it.
-		foreach ( $icons as $pattern => $classes ) {
-			// Make sure classes is an array
-			$classes = array_filter( (array) $classes, 'sanitize_key' );
-
+		foreach ( $icons as $pattern => $icon_props ) {
 			// Overwrite an existing icon.
 			if ( isset( $existing_icons[ $pattern ] ) && true === $overwrite ) {
-				$new_icons[ $pattern ] = $classes;
+				$new_icons[ $pattern ] = wp_parse_args( $icon_props, $existing_icons[ $pattern ] );
 			}
 			// Icon already exists, overwriting disabled.
 			else if ( isset( $existing_icons[ $pattern ] ) && true !== $overwrite ) {
 				$this->error()->add_error( 'make_socialicons_already_exists', sprintf( __( 'The social icon URL pattern "%s" can\'t be added because it already exists.', 'make' ), esc_html( $pattern ) ) );
 				$return = false;
 			}
+			// Icon does not have required properties.
+			else if ( ! $this->has_required_properties( $icon_props ) ) {
+				$this->error()->add_error( 'make_socialicons_missing_required_properties', sprintf( __( 'The social icon URL pattern "%s" setting can\'t be added because it is missing required properties.', 'make' ), esc_html( $pattern ) ) );
+				$return = false;
+			}
 			// Add a new icon.
 			else {
-				$new_icons[ $pattern ] = $classes;
+				$new_icons[ $pattern ] = $icon_props;
 			}
 		}
 
@@ -105,6 +113,23 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		}
 
 		return $return;
+	}
+
+
+	private function has_required_properties( $properties ) {
+		$properties = (array) $properties;
+		$required_properties = $this->required_properties;
+		$existing_properties = array_keys( $properties );
+
+		// If there aren't any required properties, return true.
+		if ( empty( $required_properties ) ) {
+			return true;
+		}
+
+		// This variable will contain any array keys that aren't found in $existing_properties.
+		$diff = array_diff_key( $required_properties, $existing_properties );
+
+		return empty( $diff );
 	}
 
 
@@ -142,9 +167,9 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	public function find_match( $url ) {
 		$icons = $this->get_icons();
 
-		foreach ( $icons as $pattern => $classes ) {
+		foreach ( $icons as $pattern => $props ) {
 			if ( false !== stripos( $url, $pattern ) ) {
-				return $classes;
+				return array_map( 'sanitize_key', (array) $props['class'] );
 			}
 		}
 

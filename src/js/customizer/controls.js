@@ -343,9 +343,9 @@
 		sendIconRequest: function($el) {
 			var control = this,
 				data = {
-				action: 'make-social-icons',
-				url: $el.val()
-			};
+					action: 'make-social-icons',
+					url: $el.val()
+				};
 
 			$.post(MakeControls.ajaxurl, data, function(response) {
 				if ('undefined' !== response.data) {
