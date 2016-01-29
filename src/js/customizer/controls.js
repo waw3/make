@@ -265,7 +265,10 @@
 			// Set up sortable items
 			$stage.sortable({
 				handle: '.make-socialicons-item-handle',
-				placeholder: 'make-socialicons-item-placeholder'
+				placeholder: 'make-socialicons-item-placeholder',
+				update: function() {
+					control.updateValue();
+				}
 			});
 
 			// Add icon button
@@ -278,12 +281,14 @@
 			$stage.on('click', '.make-socialicons-item-remove', function(evt) {
 				evt.preventDefault();
 				$(this).parent().remove();
+				control.updateValue();
 			});
 
 			// Item inputs
 			$stage.on('change', 'input', function() {
 				control.updateValue();
-				console.log('Look up icon');
+
+				console.log('Look up icon...');
 			});
 
 			// Email toggle
@@ -327,7 +332,7 @@
 		 *
 		 * @since x.x.x.
 		 */
-		updateValue: function() { console.log('Updating value');
+		updateValue: function() {
 			var control = this,
 				$items = control.container.find('.make-socialicons-item'),
 				$options = control.container.find('.make-socialicons-options input'),
@@ -358,7 +363,10 @@
 				}
 			});
 
-			$value.val(JSON.stringify(newValue));
+			newValue = JSON.stringify(newValue);
+
+			$value.val(newValue);
+			control.setting.set(newValue);
 		}
 	});
 
