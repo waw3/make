@@ -213,7 +213,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		?>
 		<script type="application/javascript">
 			(function($) {
-				$(document).one('ready', function() {
+				$(document).ready(function() {
 					var upgrade = $('<a class="ttfmake-customize-plus"></a>')
 						.attr('href', '<?php echo esc_js( $this->get_plus_link() ); ?>')
 						.attr('target', '_blank')
