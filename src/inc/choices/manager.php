@@ -54,7 +54,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		}
 
 		// Load the default choices definitions
-		$file = dirname( __FILE__ ) . '/choices-definitions.php';
+		$file = dirname( __FILE__ ) . '/definitions/choices.php';
 		if ( is_readable( $file ) ) {
 			include $file;
 		}
