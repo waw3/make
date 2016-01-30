@@ -206,6 +206,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		}
 
 		// If it's not a valid URL, return empty
+		$string = esc_url( $string );
 		if ( function_exists( 'filter_var' ) ) {
 			if ( false === filter_var( $string, FILTER_VALIDATE_URL ) ) {
 				return array();
