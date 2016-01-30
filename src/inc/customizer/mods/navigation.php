@@ -8,15 +8,6 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_ControlsInterface ) 
 	return;
 }
 
-// Move the Social Profile Links option to the General > Social section, if a custom menu has been created
-$social_menu = $wp_customize->get_control( 'nav_menu_locations[social]' );
-if ( $social_menu instanceof WP_Customize_Control ) {
-	$social_menu->section = $this->prefix . 'social';
-	$social_menu->description = __( 'After you have created your custom menu for social profile links, select it here.', 'make' );
-	$custom_menu_text_priority = $wp_customize->get_control( $this->prefix . 'social-custom-menu-text' )->priority;
-	$social_menu->priority = $custom_menu_text_priority + 1;
-}
-
 // Navigation section is deprecated in WP 4.3 in favor of Menu panel
 // so bail if it exists.
 if ( class_exists( 'WP_Customize_Nav_Menus' ) ) {
