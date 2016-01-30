@@ -311,6 +311,9 @@
 
 				control.updateValue();
 			});
+			if (! $emailtoggle.prop('checked')) {
+				$emailaddress.parent().hide();
+			}
 
 			// RSS toggle
 			$rsstoggle.on('change', function(evt) {
@@ -326,6 +329,9 @@
 
 				control.updateValue();
 			});
+			if (! $rsstoggle.prop('checked')) {
+				$rssurl.parent().hide();
+			}
 
 			// Additional options
 			$emailaddress.add($rssurl).add($newwindow).on('change', function() {

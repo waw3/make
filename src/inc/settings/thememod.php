@@ -496,18 +496,85 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		return $this->font()->get_source( 'google' )->sanitize_subset( $value, $this->get_default( 'font-subset' ) );
 	}
 
+	/**
+	 * Sanitize the individual items in the social icons array.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array $icon_data
+	 *
+	 * @return array
+	 */
+	public function sanitize_socialicons( array $icon_data ) {
+		$sanitized_icon_data = array();
 
-	public function sanitize_socialicons_for_display( $array ) {
-		return print_r( $array, true );
+		// Options
+		$options = array_keys( $this->get_settings( 'social_icon_option' ) );
+		foreach ( $options as $setting_id ) {
+			$option_id = str_replace( 'social-icons-', '', $setting_id );
+			if ( isset( $icon_data[ $option_id ] ) ) {
+				$sanitized_icon_data[ $option_id ] = $this->sanitize_value( $icon_data[ $option_id ], $setting_id );
+			} else {
+				$sanitized_icon_data[ $option_id ] = $this->get_default( $setting_id );
+			}
+		}
+
+		// Items
+		if ( isset( $icon_data['items'] ) && is_array( $icon_data['items'] ) ) {
+			$sanitized_icon_data['items'] = $icon_data['items'];
+		} else {
+			$sanitized_icon_data['items'] = array();
+		}
+		foreach ( $sanitized_icon_data['items'] as $key => $item ) {
+			if ( ! in_array( $item, array( 'email', 'rss' ) ) ) {
+				$sanitized_icon_data['items'][ $key ] = esc_url( $item );
+			}
+		}
+
+		// Email item
+		if ( true === $sanitized_icon_data[ 'email-toggle' ] && ! in_array( 'email', $sanitized_icon_data['items'] ) ) {
+			array_push( $sanitized_icon_data['items'], 'email' );
+		} else if ( true !== $sanitized_icon_data[ 'email-toggle' ] && $key = array_search( 'email', $sanitized_icon_data['items'] ) ) {
+			unset( $sanitized_icon_data['items'][ $key ] );
+		}
+
+		// RSS item
+		if ( true === $sanitized_icon_data[ 'rss-toggle' ] && ! in_array( 'rss', $sanitized_icon_data['items'] ) ) {
+			array_push( $sanitized_icon_data['items'], 'rss' );
+		} else if ( true !== $sanitized_icon_data[ 'rss-toggle' ] && $key = array_search( 'rss', $sanitized_icon_data['items'] ) ) {
+			unset( $sanitized_icon_data['items'][ $key ] );
+		}
+
+		return $sanitized_icon_data;
 	}
 
-
+	/**
+	 * Convert the social icons JSON string into an array and sanitize it for storage in the database.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $json
+	 *
+	 * @return array
+	 */
 	public function sanitize_socialicons_from_customizer( $json ) {
-		return json_decode( $json, true );
+		$value = json_decode( $json, true );
+		return $this->sanitize_socialicons( $value );
 	}
 
-
-	public function sanitize_socialicons_to_customizer( $array ) {
-		return wp_json_encode( $array );
+	/**
+	 * Sanitize the social icons array from the database for use in the Customizer.
+	 *
+	 * When the array is retrieved from theme mods, each array item is applied as a separate
+	 * argument to the sanitize function, thus the reason for func_get_args() instead of one
+	 * array parameter.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool|false|string
+	 */
+	public function sanitize_socialicons_to_customizer() {
+		$value = $this->sanitize_socialicons( func_get_args() );
+		return wp_json_encode( $value );
 	}
 }

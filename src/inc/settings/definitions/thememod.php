@@ -656,21 +656,51 @@ $this->add_settings(
 			'sanitize' => 'esc_url',
 			'sanitize_database' => 'esc_url_raw',
 		),
-		'social-icons-list' => array(
+	)
+);
+
+// Social Icons
+$this->add_settings(
+	array(
+		'social-icons-email-toggle' => array(
+			'default'            => false,
+			'sanitize'           => 'wp_validate_boolean',
+			'social_icon_option' => true,
+		),
+		'social-icons-email-address' => array(
+			'default'            => get_bloginfo( 'admin_email' ),
+			'sanitize'           => 'sanitize_email',
+			'social_icon_option' => true,
+		),
+		'social-icons-rss-toggle' => array(
+			'default'            => true,
+			'sanitize'           => 'wp_validate_boolean',
+			'social_icon_option' => true,
+		),
+		'social-icons-rss-url' => array(
+			'default'            => '',
+			'sanitize'           => 'esc_url',
+			'social_icon_option' => true,
+		),
+		'social-icons-new-window' => array(
+			'default'            => false,
+			'sanitize'           => 'wp_validate_boolean',
+			'social_icon_option' => true,
+		),
+		'social-icons' => array(
 			'default'  => array(
-				'items' => array(
-					'https://facebook.com',
-					'email',
-					'https://twitter.com',
-					'rss',
-				),
-				'email-toggle' => true,
-				'email-address' => '',
+				'email-toggle' => false,
+				'email-address' => get_bloginfo( 'admin_email' ),
 				'rss-toggle' => true,
 				'rss-url' => '',
-				'new-window' => true,
+				'new-window' => false,
+				'items' => array(
+					'https://facebook.com/thethemefoundry',
+					'https://twitter.com/thethemefoundry',
+					'rss',
+				),
 			),
-			'sanitize' => array( $this, 'sanitize_socialicons_for_display' ),
+			'sanitize' => array( $this, 'sanitize_socialicons' ),
 			'sanitize_from_customizer' => array( $this, 'sanitize_socialicons_from_customizer' ),
 			'sanitize_to_customizer' => array( $this, 'sanitize_socialicons_to_customizer' ),
 		)

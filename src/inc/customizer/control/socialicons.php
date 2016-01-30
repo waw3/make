@@ -104,7 +104,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 					<?php esc_html_e( 'Open links in a new window', 'make' ); ?>
 				</label>
 			</div>
-			<input id="input_{{ data.id }}" class="make-socialicons-value" type="text" value="{{ data.value }}" {{{ data.link }}} />
+			<input id="input_{{ data.id }}" class="make-socialicons-value" type="hidden" value="{{ data.value }}" {{{ data.link }}} />
 		</div>
 	<?php
 	}

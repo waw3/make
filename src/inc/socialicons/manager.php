@@ -177,5 +177,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	}
 
 
-	public function render_icons( $icon_data ) {}
+	public function render_icons( $icon_data ) {
+
+	}
 }

@@ -19,10 +19,10 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	protected $dependencies = array(
 		'error'         => 'MAKE_Error_CollectorInterface',
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
-		'socialicons'   => 'MAKE_SocialIcons_ManagerInterface',
 		'font'          => 'MAKE_Font_ManagerInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 		'scripts'       => 'MAKE_Setup_ScriptsInterface',
+		'socialicons'   => 'MAKE_SocialIcons_ManagerInterface',
 	);
 
 	/**
