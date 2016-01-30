@@ -64,8 +64,9 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			return;
 		}
 
-		// Add filter to give the sanitize_choice callback the parameters it needs.
+		// Add filters to adjust sanitize callback parameters.
 		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'add_sanitize_choice_parameters' ), 10, 3 );
+		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'wrap_array_values' ), 10, 3 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -457,7 +458,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 */
 	public function add_sanitize_choice_parameters( $value, $callback, $setting_id ) {
 		// Only run this in the proper hook context.
-		if ( "make_settings_{$this->type}_sanitize_callback_parameters" !== current_filter() ) {
+		if ( "make_settings_thememod_sanitize_callback_parameters" !== current_filter() ) {
 			return $value;
 		}
 
@@ -470,6 +471,40 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		) {
 			$value = (array) $value;
 			$value[] = $setting_id;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Wrap setting values that are arrays in another array so that the data will remain intact
+	 * when it passes through call_user_func_array().
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $value
+	 * @param $callback
+	 * @param $setting_id
+	 *
+	 * @return array
+	 */
+	public function wrap_array_values( $value, $callback, $setting_id ) {
+		// Only run this in the proper hook context.
+		if ( "make_settings_thememod_sanitize_callback_parameters" !== current_filter() ) {
+			return $value;
+		}
+
+		// Social icons
+		if (
+			is_array( $callback )
+			&&
+			$callback[0] instanceof $this
+			&&
+			in_array( $callback[1], array( 'sanitize_socialicons', 'sanitize_socialicons_to_customizer' ) )
+			&&
+		    is_array( $value )
+		) {
+			$value = array( $value );
 		}
 
 		return $value;
@@ -565,16 +600,14 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Sanitize the social icons array from the database for use in the Customizer.
 	 *
-	 * When the array is retrieved from theme mods, each array item is applied as a separate
-	 * argument to the sanitize function, thus the reason for func_get_args() instead of one
-	 * array parameter.
-	 *
 	 * @since x.x.x.
+	 *
+	 * @param array $icon_data
 	 *
 	 * @return bool|false|string
 	 */
-	public function sanitize_socialicons_to_customizer() {
-		$value = $this->sanitize_socialicons( func_get_args() );
+	public function sanitize_socialicons_to_customizer( array $icon_data ) {
+		$value = $this->sanitize_socialicons( $icon_data );
 		return wp_json_encode( $value );
 	}
 }

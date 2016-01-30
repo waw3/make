@@ -288,12 +288,12 @@
 
 			// Item inputs
 			$stage.on('change', 'input', function() {
-				control.sendIconRequest($(this));
+				control.sendIconRequest($(this).parent());
 				control.updateValue();
 			});
 
 			// Existing items
-			$stage.find('input').each(function() {
+			$stage.find('.make-socialicons-item').each(function() {
 				control.sendIconRequest($(this));
 			});
 
@@ -303,6 +303,7 @@
 
 				if (checked) {
 					$stage.append( control.params.itemTemplate({type:'email'}) );
+					control.sendIconRequest( $stage.find('.make-socialicons-item-email') );
 					$emailaddress.parent().show();
 				} else {
 					$stage.find('.make-socialicons-item-email').remove();
@@ -321,6 +322,7 @@
 
 				if (checked) {
 					$stage.append( control.params.itemTemplate({type:'rss'}) );
+					control.sendIconRequest( $stage.find('.make-socialicons-item-rss') );
 					$rssurl.parent().show();
 				} else {
 					$stage.find('.make-socialicons-item-rss').remove();
@@ -344,14 +346,22 @@
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param $el
+		 * @param jQuery    $el    The item container
 		 */
 		sendIconRequest: function($el) {
 			var control = this,
-				data = {
-					action: 'make-social-icons',
-					url: $el.val()
-				};
+				value, data;
+
+			if ('email' === $el.data('type') || 'rss' === $el.data('type')) {
+				value = $el.data('type');
+			} else {
+				value = $el.find('input').val();
+			}
+
+			data = {
+				action: 'make-social-icons',
+				pattern: value
+			};
 
 			$.post(MakeControls.ajaxurl, data, function(response) {
 				if ('undefined' !== response.data) {
@@ -365,14 +375,14 @@
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param $el
-		 * @param classes
+		 * @param jQuery    $el        The item container
+		 * @param string    classes    String of class names
 		 */
 		updateIcon: function($el, classes) {
-			$el.parent().find('.make-socialicons-item-handle i').removeAttr('class');
+			$el.find('.make-socialicons-item-handle i').removeAttr('class');
 
 			if (classes) {
-				$el.parent().find('.make-socialicons-item-handle i').addClass(classes);
+				$el.find('.make-socialicons-item-handle i').addClass(classes);
 			}
 		},
 

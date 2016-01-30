@@ -164,20 +164,97 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	}
 
 
-	public function find_match( $url ) {
-		$icons = $this->get_icons();
+	private function get_email_props() {
+		/**
+		 *
+		 */
+		return apply_filters( 'make_socialicons_email', array(
+			'title' => esc_html__( 'Email', 'make' ),
+			'class' => array( 'fa', 'fa-fw', 'fa-envelope' ),
+		) );
+	}
 
-		foreach ( $icons as $pattern => $props ) {
-			if ( false !== stripos( $url, $pattern ) ) {
-				return array_map( 'sanitize_key', (array) $props['class'] );
+
+	private function get_rss_props() {
+		/**
+		 *
+		 */
+		return apply_filters( 'make_socialicons_rss', array(
+			'title' => esc_html__( 'RSS', 'make' ),
+			'class' => array( 'fa', 'fa-fw', 'fa-rss' ),
+		) );
+	}
+
+
+	private function get_default_props() {
+		/**
+		 *
+		 */
+		return apply_filters( 'make_socialicons_default', array(
+			'title' => esc_html__( 'Link', 'make' ),
+			'class' => array( 'fa', 'fa-fw', 'fa-external-link-square' ),
+		) );
+	}
+
+
+	public function find_match( $string ) {
+		// Special cases for email and rss
+		if ( 'email' === $string ) {
+			return $this->get_email_props();
+		} else if ( 'rss' === $string ) {
+			return $this->get_rss_props();
+		}
+
+		// If it's not a valid URL, return empty
+		if ( function_exists( 'filter_var' ) ) {
+			if ( false === filter_var( $string, FILTER_VALIDATE_URL ) ) {
+				return array();
 			}
 		}
 
-		return array();
+		// Search for a pattern match
+		$icons = $this->get_icons();
+		foreach ( $icons as $pattern => $props ) {
+			if ( false !== stripos( $string, $pattern ) ) {
+				return $props;
+			}
+		}
+
+		// If we've made it this far, return the default
+		return $this->get_default_props();
 	}
 
 
 	public function render_icons( $icon_data ) {
+		$items = ( isset( $icon_data['items'] ) ) ? $icon_data['items'] : array();
 
+		ob_start();
+
+		foreach( $items as $content ) {
+			$icon = $this->find_match( $content );
+			if ( ! empty( $icon ) ) {
+				$title = $icon['title'];
+				$class = implode( ' ', $icon['class'] );
+				if ( 'email' === $content ) {
+					$content = 'mailto:' . $icon_data['email-address'];
+				} else if ( 'rss' === $content ) {
+					if ( $icon_data['rss-url'] ) {
+						$content = $icon_data['rss-url'];
+					} else {
+						$content = get_feed_link();
+					}
+				}
+				?>
+				<li class="make-social-icon">
+					<a href="<?php echo esc_attr( $content ); ?>"<?php if ( true === $icon_data['new-window'] ) : ?> target="_blank"<?php endif; ?>>
+						<i class="<?php echo esc_attr( $class ); ?>"></i>
+						<span class="screen-reader-text"><?php echo esc_attr( $title ); ?></span>
+					</a>
+				</li>
+			<?php
+			}
+		}
+
+		return ob_get_clean();
 	}
 }

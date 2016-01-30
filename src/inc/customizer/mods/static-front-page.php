@@ -23,4 +23,4 @@ if ( ! $section instanceof WP_Customize_Section ) {
 $section->panel = $this->prefix . 'general';
 
 // Set Static Front Page section priority
-$section->priority = $wp_customize->get_section( $this->prefix . 'rss' )->priority + 5;
+$section->priority = $wp_customize->get_section( $this->prefix . 'social' )->priority + 5;

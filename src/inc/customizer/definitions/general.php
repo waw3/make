@@ -135,127 +135,13 @@ if ( false === apply_filters( 'make_read_more_text', false ) ) {
 // Social Profiles
 $this->add_section_definitions( 'social', array(
 	'panel'       => $panel,
-	'title'       => __( 'Social Profiles', 'make' ),
-	'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
+	'title'       => __( 'Social Icons', 'make' ),
 	'controls'    => array(
-		'social-facebook-official'  => array(
+		'social-icons'  => array(
 			'setting' => true,
 			'control' => array(
-				'label' => __( 'Facebook', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-twitter'            => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Twitter', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-google-plus-square' => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Google +', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-linkedin'           => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'LinkedIn', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-instagram'          => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Instagram', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-flickr'             => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Flickr', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-youtube'            => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'YouTube', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-vimeo-square'       => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Vimeo', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-pinterest'          => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Pinterest', 'make' ),
-				'type'  => 'url',
-			),
-		),
-		'social-custom-menu-text'   => array(
-			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Html',
-				'description'  => sprintf(
-					__( 'If you would like to add a social profile that is not listed above, or change the order of the icons, create a custom menu %s.', 'make' ),
-					sprintf(
-						'<a href="' . esc_url( 'https://thethemefoundry.com/docs/make-docs/tutorials/set-social-profile-links-using-custom-menu/' ) . '">%s</a>',
-						__( 'as described here', 'make' )
-					)
-				),
-			),
-		),
-	),
-) );
-
-// Email
-$this->add_section_definitions( 'email', array(
-	'panel'       => $panel,
-	'title'       => __( 'Email', 'make' ),
-	'description' => __( 'Enter an email address to add an email icon link to your social profile icons.', 'make' ),
-	'controls'    => array(
-		'social-email' => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Email', 'make' ),
-				'type'  => 'email',
-			),
-		),
-	),
-) );
-
-// RSS
-$this->add_section_definitions( 'rss', array(
-	'panel'       => $panel,
-	'title'       => __( 'RSS', 'make' ),
-	'description' => __( 'If configured, an RSS icon will appear with your social profile icons.', 'make' ),
-	'controls'    => array(
-		'social-rss-heading' => array(
-			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Html',
-				'label'        => __( 'Default RSS', 'make' ),
-			),
-		),
-		'social-hide-rss'    => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Hide default RSS feed link', 'make' ),
-				'type'  => 'checkbox',
-			),
-		),
-		'social-custom-rss'  => array(
-			'setting' => true,
-			'control' => array(
-				'label' => __( 'Custom RSS URL (replaces default)', 'make' ),
-				'type'  => 'url',
+				'control_type' => 'MAKE_Customizer_Control_SocialIcons',
+				'description' => __( 'Drag and drop to arrange your icons.', 'make' )
 			),
 		),
 	),

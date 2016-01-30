@@ -124,13 +124,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 		#>
 		<div class="make-socialicons-item make-socialicons-item-{{ data.type }}" data-type="{{ data.type }}">
 			<div class="make-socialicons-item-handle">
-				<# if ('email' === type) { #>
-					<i class="fa fa-envelope"></i>
-				<# } else if ('rss' === type) { #>
-					<i class="fa fa-rss"></i>
-				<# } else { #>
-					<i></i>
-				<# } #>
+				<i></i>
 			</div>
 			<# if ('email' === type) { #>
 				<span class="make-socialicons-item-content"><?php esc_html_e( 'Email', 'make' ); ?></span>

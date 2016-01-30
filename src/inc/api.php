@@ -257,3 +257,30 @@ function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after =
 		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
 	}
 }
+
+if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
+/**
+ * Show the social links markup if the theme options and/or menus are configured for it.
+ *
+ * @since  1.0.0.
+ * @since  1.7.0. Uses new Social Icons module.
+ *
+ * @param  string    $region    The site region (header or footer).
+ * @return void
+ */
+function ttfmake_maybe_show_social_links( $region ) {
+	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
+		return;
+	}
+
+	$show_social = make_get_thememod_value( $region . '-show-social' );
+
+	if ( true === $show_social ) {
+		?>
+		<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
+			<?php echo Make()->socialicons()->render_icons( make_get_thememod_value( 'social-icons' ) ); ?>
+		</ul>
+	<?php
+	}
+}
+endif;

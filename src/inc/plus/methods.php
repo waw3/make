@@ -301,7 +301,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			'panel'       => 'make_general',
 			'title'       => __( 'White Label', 'make' ),
 			'description' => __( 'Want to remove the theme byline from your website&#8217;s footer?', 'make' ),
-			'priority'    => $wp_customize->get_section( 'make_rss' )->priority + 2
+			'priority'    => $wp_customize->get_section( 'make_social' )->priority + 2
 		) );
 
 		// Add control for White Label

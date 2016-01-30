@@ -262,57 +262,6 @@ function ttfmake_maybe_show_sidebar( $location ) {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
-/**
- * Show the social links markup if the theme options and/or menus are configured for it.
- *
- * @since  1.0.0.
- *
- * @param  string    $region    The site region (header or footer).
- * @return void
- */
-function ttfmake_maybe_show_social_links( $region ) {
-	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
-		return;
-	}
-
-	$show_social = (bool) get_theme_mod( $region . '-show-social', ttfmake_get_default( $region . '-show-social' ) );
-
-	if ( true === $show_social ) {
-		// First look for the alternate custom menu method
-		if ( has_nav_menu( 'social' ) ) {
-			wp_nav_menu(
-				array(
-					'theme_location' => 'social',
-					'container'      => false,
-					'menu_id'        => '',
-					'menu_class'     => 'social-menu social-links ' . $region . '-social-links',
-					'depth'          => 1,
-					'fallback_cb'    => '',
-				)
-			);
-		}
-		// Then look for the Customizer theme option method
-		else {
-			$social_links = ttfmake_get_social_links();
-			if ( ! empty( $social_links ) ) { ?>
-				<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
-				<?php foreach ( $social_links as $key => $link ) : ?>
-					<li class="<?php echo esc_attr( $key ); ?>">
-						<a href="<?php echo esc_url( $link['url'] ); ?>">
-							<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>">
-								<span><?php echo esc_html( $link['title'] ); ?></span>
-							</i>
-						</a>
-					</li>
-				<?php endforeach; ?>
-				</ul>
-			<?php }
-		}
-	}
-}
-endif;
-
 if ( ! function_exists( 'ttfmake_get_exif_data' ) ) :
 /**
  * Get EXIF data from an attachment.

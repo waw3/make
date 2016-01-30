@@ -765,17 +765,16 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			wp_die();
 		}
 
-		if ( ! isset( $_POST['url'] ) ) {
+		if ( ! isset( $_POST['pattern'] ) ) {
 			wp_send_json_error();
 		}
 
-		$url = esc_url( $_POST['url'] );
-		$classes = $this->socialicons()->find_match( $url );
+		$icon = $this->socialicons()->find_match( $_POST['pattern'] );
 
-		if ( empty( $classes ) ) {
-			wp_send_json_success( 'fa fa-external-link-square' );
+		if ( isset( $icon['class'] ) && is_array( $icon['class'] ) ) {
+			wp_send_json_success( implode( ' ', array_map( 'sanitize_key', $icon['class'] ) ) );
 		} else {
-			wp_send_json_success( implode( ' ', $classes ) );
+			wp_send_json_error( $icon );
 		}
 	}
 }
