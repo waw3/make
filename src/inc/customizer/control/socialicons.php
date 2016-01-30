@@ -97,11 +97,11 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				</label>
 				<label for="rss-url_{{ data.id }}">
 					<span class="description customize-control-description"><?php esc_html_e( 'Leave this field blank to use the WordPress default RSS feed.', 'make' ); ?></span>
-					<input id="rss-url_{{ data.id }}" data-name="rss-url" type="text" placeholder="<?php esc_html_e( 'RSS feed address', 'make' ); ?>" value="{{ data.socialicons['rss-url'] }}" />
+					<input id="rss-url_{{ data.id }}" data-name="rss-url" type="text" placeholder="<?php esc_html_e( 'Custom RSS feed URL', 'make' ); ?>" value="{{ data.socialicons['rss-url'] }}" />
 				</label>
 				<label for="new-window_{{ data.id }}">
 					<input id="new-window_{{ data.id }}" data-name="new-window" type="checkbox"<# if (true == data.socialicons['new-window']) { #> checked="checked" <# } #> />
-					<?php esc_html_e( 'Open links in a new window', 'make' ); ?>
+					<?php esc_html_e( 'Open icon links in a new tab/window', 'make' ); ?>
 				</label>
 			</div>
 			<input id="input_{{ data.id }}" class="make-socialicons-value" type="hidden" value="{{ data.value }}" {{{ data.link }}} />
@@ -131,7 +131,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 			<# } else if ('rss' === type) { #>
 				<span class="make-socialicons-item-content"><?php esc_html_e( 'RSS', 'make' ); ?></span>
 			<# } else { #>
-				<input class="make-socialicons-item-content" type="text" value="{{ data.content }}" />
+				<input class="make-socialicons-item-content" type="text" placeholder="<?php esc_html_e( 'Profile URL', 'make' ); ?>" value="{{ data.content }}" />
 				<button class="make-socialicons-item-remove">
 					<span class="screen-reader-text"><?php esc_html_e( 'Remove', 'make' ); ?></span>
 					<span class="make-socialicons-item-remove-icon"></span>
