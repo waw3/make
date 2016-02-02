@@ -30,7 +30,13 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 */
 	private $icons = array();
 
-
+	/**
+	 * Required properties for icon definitions.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
 	private $required_properties = array(
 		'title',
 		'class'
@@ -78,7 +84,16 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		return $this->loaded;
 	}
 
-
+	/**
+	 * Add or update icon definitions.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param      $icons
+	 * @param bool $overwrite
+	 *
+	 * @return bool
+	 */
 	public function add_icons( $icons, $overwrite = false ) {
 		$icons = (array) $icons;
 		$existing_icons = $this->icons;
@@ -115,7 +130,15 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		return $return;
 	}
 
-
+	/**
+	 * Check an array of icon definition properties against another array of required ones.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  array    $properties    The array of properties to check.
+	 *
+	 * @return bool                    True if all required properties are present.
+	 */
 	private function has_required_properties( $properties ) {
 		$properties = (array) $properties;
 		$required_properties = $this->required_properties;
@@ -132,7 +155,15 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		return empty( $diff );
 	}
 
-
+	/**
+	 * Remove icon definitions from the collection.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $icons
+	 *
+	 * @return bool
+	 */
 	public function remove_icons( $icons ) {
 		if ( 'all' === $icons ) {
 			// Clear the entire settings array.
@@ -154,7 +185,13 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		return $return;
 	}
 
-
+	/**
+	 * Return the property containing the array of icon definitions.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
 	private function get_icons() {
 		if ( false === $this->is_loaded() ) {
 			$this->load();
@@ -163,10 +200,20 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		return $this->icons;
 	}
 
-
+	/**
+	 * Get the icon definition for an email address.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return mixed|void
+	 */
 	private function get_email_props() {
 		/**
+		 * Filter: Modify the icon definition for an email address.
 		 *
+		 * @since x.x.x.
+		 *
+		 * @param array    $icon    The icon definition.
 		 */
 		return apply_filters( 'make_socialicons_email', array(
 			'title' => esc_html__( 'Email', 'make' ),
@@ -174,10 +221,20 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		) );
 	}
 
-
+	/**
+	 * Get the icon definition for an RSS feed.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return mixed|void
+	 */
 	private function get_rss_props() {
 		/**
+		 * Filter: Modify the icon definition for an RSS feed.
 		 *
+		 * @since x.x.x.
+		 *
+		 * @param array    $icon    The icon definition.
 		 */
 		return apply_filters( 'make_socialicons_rss', array(
 			'title' => esc_html__( 'RSS', 'make' ),
@@ -185,10 +242,20 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		) );
 	}
 
-
+	/**
+	 * Get the icon definition for a URL that doesn't match any icon URL pattern.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return mixed|void
+	 */
 	private function get_default_props() {
 		/**
+		 * Filter: Modify the icon definition for a URL that doesn't match any icon URL pattern.
 		 *
+		 * @since x.x.x.
+		 *
+		 * @param array    $icon    The icon definition.
 		 */
 		return apply_filters( 'make_socialicons_default', array(
 			'title' => esc_html__( 'Link', 'make' ),
@@ -196,7 +263,15 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		) );
 	}
 
-
+	/**
+	 * Compare a string to the icon URL patterns to find a match.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $string
+	 *
+	 * @return array|mixed|void
+	 */
 	public function find_match( $string ) {
 		// Special cases for email and rss
 		if ( 'email' === $string ) {
@@ -207,7 +282,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 
 		// If it's not a valid URL, return empty
 		$string = esc_url( $string );
-		if ( function_exists( 'filter_var' ) ) {
+		if ( function_exists( 'filter_var' ) ) { // Some hosts don't enable this function
 			if ( false === filter_var( $string, FILTER_VALIDATE_URL ) ) {
 				return array();
 			}
@@ -225,7 +300,15 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		return $this->get_default_props();
 	}
 
-
+	/**
+	 * Render each social icon as an HTML list item.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $icon_data
+	 *
+	 * @return string
+	 */
 	public function render_icons( $icon_data ) {
 		$items = ( isset( $icon_data['items'] ) ) ? $icon_data['items'] : array();
 
