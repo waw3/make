@@ -15,5 +15,5 @@ interface MAKE_SocialIcons_ManagerInterface extends MAKE_Util_ModulesInterface {
 
 	public function find_match( $url );
 
-	public function render_icons( $icon_data );
+	public function render_icons();
 }

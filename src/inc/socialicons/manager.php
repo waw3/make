@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialIcons_ManagerInterface, MAKE_Util_LoadInterface {
+class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialIcons_ManagerInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -19,6 +19,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	protected $dependencies = array(
 		'error'         => 'MAKE_Error_CollectorInterface',
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 	);
 
 	/**
@@ -43,6 +44,15 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	);
 
 	/**
+	 * Indicator of whether the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var bool
+	 */
+	private $hooked = false;
+
+	/**
 	 * Indicator of whether the load routine has been run.
 	 *
 	 * @since x.x.x.
@@ -50,6 +60,36 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @var bool
 	 */
 	private $loaded = false;
+
+	/**
+	 * Hook into WordPress.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
+		// Add filter to convert deprecated social profile settings if necessary
+		add_filter( 'theme_mod_social-icons', array( $this, 'filter_theme_mod' ), 1 );
+
+		// Hooking has occurred.
+		$this->hooked = true;
+	}
+
+	/**
+	 * Check if the hook routine has been run.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function is_hooked() {
+		return $this->hooked;
+	}
 
 	/**
 	 * Load data files.
@@ -301,15 +341,165 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	}
 
 	/**
-	 * Render each social icon as an HTML list item.
+	 * Gather the data from deprecated social profile settings and convert it into the current icon data array.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param $icon_data
+	 * @return array
+	 */
+	private function get_icon_data_from_old_settings() {
+		$old_settings = array(
+			'social-facebook-official',
+			'social-twitter',
+			'social-google-plus-square',
+			'social-linkedin',
+			'social-instagram',
+			'social-flickr',
+			'social-youtube',
+			'social-vimeo-square',
+			'social-pinterest',
+			'social-email',
+			'social-hide-rss',
+			'social-custom-rss',
+		);
+
+		$icon_data = array();
+
+		// Populate from Customizer settings first
+		foreach ( $old_settings as $setting_id ) {
+			$value = get_theme_mod( $setting_id, null );
+
+			if ( ! is_null( $value ) ) {
+				switch ( $setting_id ) {
+					default :
+					case 'social-facebook-official' :
+					case 'social-twitter' :
+					case 'social-google-plus-square' :
+					case 'social-linkedin' :
+					case 'social-instagram' :
+					case 'social-flickr' :
+					case 'social-youtube' :
+					case 'social-vimeo-square' :
+					case 'social-pinterest' :
+						if ( ! isset( $icon_data['items'] ) ) {
+							$icon_data['items'] = array();
+						}
+						$icon_data['items'][] = $value;
+						break;
+
+					case 'social-email' :
+						$icon_data['email-toggle'] = true;
+						$icon_data['email-address'] = $value;
+						break;
+
+					case 'social-hide-rss' :
+						$icon_data['rss-toggle'] = ! wp_validate_boolean( $value );
+						break;
+
+					case 'social-custom-rss' :
+						$icon_data['rss-url'] = $value;
+						break;
+				}
+			}
+		}
+
+		// Look for an overriding custom menu
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'social' ] ) ) {
+			$menu = wp_get_nav_menu_object( $locations[ 'social' ] );
+			if ( $menu && ! is_wp_error( $menu ) ) {
+				$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
+
+				// Set up the $menu_item variables
+				_wp_menu_item_classes_by_context( $menu_items );
+
+				// Sort the menu items
+				$sorted_menu_items = array();
+				foreach ( (array) $menu_items as $menu_item ) {
+					$sorted_menu_items[ $menu_item->menu_order ] = $menu_item;
+				}
+
+				unset( $menu_items, $menu_item );
+
+				// Reset the items array, since the menu overrides the Customizer fields.
+				$icon_data['items'] = array();
+
+				foreach ( $sorted_menu_items as $item ) {
+					$content = $item->url;
+
+					if ( 0 === strpos( $content, 'mailto:' ) ) {
+						$icon_data['items'][] = 'email';
+						$icon_data['email-toggle'] = true;
+						$icon_data['email-address'] = str_replace( 'mailto:', '', $content );
+					} else {
+						$icon_data['items'][] = $item->url;
+					}
+
+					if ( isset( $item->target ) && $item->target ) {
+						$icon_data['new-window'] = true;
+					}
+				}
+			}
+		}
+
+		// Make sure the Email and RSS items are placed correctly.
+		if ( isset( $icon_data['email-toggle'] ) && true === $icon_data['email-toggle'] ) {
+			if ( ! isset( $icon_data['items'] ) ) {
+				$icon_data['items'] = array();
+			}
+
+			if ( false === array_search( 'email', $icon_data['items'] ) ) {
+				$icon_data['items'][] = 'email';
+			}
+		}
+		if ( isset( $icon_data['rss-toggle'] ) && true === $icon_data['rss-toggle'] ) {
+			if ( ! isset( $icon_data['items'] ) ) {
+				$icon_data['items'] = array();
+			}
+
+			if ( false === array_search( 'rss', $icon_data['items'] ) ) {
+				$icon_data['items'][] = 'rss';
+			}
+		}
+
+		return $icon_data;
+	}
+
+	/**
+	 * If the 'social-icons' setting doesn't exist yet, fall back on deprecated social profile settings.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param  array $value
+	 *
+	 * @return array
+	 */
+	public function filter_theme_mod( $value ) {
+		// Only run this in the proper hook context.
+		if ( "theme_mod_social-icons" !== current_filter() ) {
+			return $value;
+		}
+
+		$all_mods = get_theme_mods();
+
+		if ( ! isset( $all_mods['social-icons'] ) ) {
+			$icon_data = $this->get_icon_data_from_old_settings();
+			if ( ! empty( $icon_data ) ) {
+				return $icon_data;
+			}
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Render the social icons as an HTML unordered list.
+	 *
+	 * @since x.x.x.
 	 *
 	 * @return string
 	 */
-	public function render_icons( $icon_data ) {
+	public function render_icons() {
+		$icon_data = $this->thememod()->get_value( 'social-icons', 'template' );
 		$items = ( isset( $icon_data['items'] ) ) ? $icon_data['items'] : array();
 
 		ob_start();
@@ -339,6 +529,13 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			}
 		}
 
-		return ob_get_clean();
+		$output = ob_get_clean();
+
+		// Add the list wrapper
+		if ( $output ) {
+			$output = "<ul class=\"social-customizer social-links\">\n" . $output . "</ul>\n";
+		}
+
+		return $output;
 	}
 }

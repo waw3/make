@@ -277,9 +277,9 @@ function ttfmake_maybe_show_social_links( $region ) {
 
 	if ( true === $show_social ) {
 		?>
-		<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
-			<?php echo Make()->socialicons()->render_icons( make_get_thememod_value( 'social-icons' ) ); ?>
-		</ul>
+		<div class="<?php echo $region; ?>-social-links">
+			<?php echo Make()->socialicons()->render_icons(); ?>
+		</div>
 	<?php
 	}
 }
