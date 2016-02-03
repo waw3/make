@@ -338,9 +338,6 @@ a {
 			color: inherit;
 			text-decoration: none; //reset
 		}
-		i span {
-			@extend .screen-reader-text;
-		}
 	}
 	a:hover .fa,
 	a:focus .fa {
@@ -390,6 +387,9 @@ a {
 	@include for(large-screens) {
 		float: right;
 		margin-bottom: 0; //reset
+	}
+	ul {
+		margin-bottom: 0;
 	}
 	li {
 		a {
@@ -732,6 +732,9 @@ a {
 	}
 	@include rem('margin-top', $base/2);
 	@include rem('font-size', 20px);
+	ul {
+		margin-bottom: 0;
+	}
 }
 #site-footer {
 	.infinite-scroll.neverending & {

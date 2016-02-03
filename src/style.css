@@ -995,6 +995,10 @@ a {
 	}
 }
 
+.header-social-links ul {
+	margin-bottom: 0;
+}
+
 .header-social-links li a {
 	padding: 4px 4px;
 	padding: 0.4rem 0.4rem;
@@ -1531,6 +1535,10 @@ a {
 		font-size: 17px;
 		font-size: 1.7rem;
 	}
+}
+
+.footer-social-links ul {
+	margin-bottom: 0;
 }
 
 .infinite-scroll.neverending #site-footer {
@@ -2152,8 +2160,7 @@ img {
 	margin: 0 auto;
 }
 
-.screen-reader-text,
-.social-links li i span {
+.screen-reader-text {
 	overflow: hidden;
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
