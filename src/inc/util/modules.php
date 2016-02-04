@@ -114,17 +114,20 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 		foreach ( $this->dependencies as $dependency_name => $dependency_type ) {
 			// Provided by modules array
 			if ( isset( $modules[ $dependency_name ] ) ) {
+				// Module is an object already.
 				if ( is_object( $modules[ $dependency_name ] ) ) {
 					$module_instance = $modules[ $dependency_name ];
-				} else {
+				}
+				// Module is a name string. Create an instance.
+				else {
 					$reflection = new ReflectionClass( $modules[ $dependency_name ] );
-					$args = array();
+					$class_parents = class_parents( $modules[ $dependency_name ] );
 
-					if ( $reflection->getConstructor() ) {
-						$args[] = $api;
+					if ( $class_parents && in_array( 'MAKE_Util_Modules', $class_parents ) ) {
+						$module_instance = $reflection->newInstanceArgs( array( $api ) );
+					} else {
+						$module_instance = $reflection->newInstance();
 					}
-
-					$module_instance = $reflection->newInstanceArgs( $args );
 				}
 
 				if ( is_a( $module_instance, $dependency_type ) ) {
