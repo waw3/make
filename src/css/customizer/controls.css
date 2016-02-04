@@ -217,6 +217,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
 }
 .make-socialicons-item-placeholder {
+	border: none;
 	background: transparent;
 	height: 52px;
 }

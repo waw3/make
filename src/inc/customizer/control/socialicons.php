@@ -86,7 +86,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 			<div class="make-socialicons-options">
 				<label for="email-toggle_{{ data.id }}">
 					<input id="email-toggle_{{ data.id }}" data-name="email-toggle" type="checkbox"<# if (true == data.socialicons['email-toggle']) { #> checked="checked" <# } #> />
-					<?php esc_html_e( 'Include email address icon', 'make' ); ?>
+					<?php esc_html_e( 'Include email icon', 'make' ); ?>
 				</label>
 				<label for="email-address_{{ data.id }}">
 					<input id="email-address_{{ data.id }}" data-name="email-address" type="text" placeholder="<?php esc_html_e( 'Email address', 'make' ); ?>" value="{{ data.socialicons['email-address'] }}" />
@@ -101,7 +101,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				</label>
 				<label for="new-window_{{ data.id }}">
 					<input id="new-window_{{ data.id }}" data-name="new-window" type="checkbox"<# if (true == data.socialicons['new-window']) { #> checked="checked" <# } #> />
-					<?php esc_html_e( 'Open icon links in a new tab/window', 'make' ); ?>
+					<?php esc_html_e( 'Open icon links in a new tab', 'make' ); ?>
 				</label>
 			</div>
 			<input id="input_{{ data.id }}" class="make-socialicons-value" type="hidden" value="{{ data.value }}" {{{ data.link }}} />
@@ -131,7 +131,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 			<# } else if ('rss' === type) { #>
 				<span class="make-socialicons-item-content"><?php esc_html_e( 'RSS', 'make' ); ?></span>
 			<# } else { #>
-				<input class="make-socialicons-item-content" type="text" placeholder="<?php esc_html_e( 'Profile URL', 'make' ); ?>" value="{{ data.content }}" />
+				<input class="make-socialicons-item-content" type="text" placeholder="<?php esc_html_e( 'http://', 'make' ); ?>" value="{{ data.content }}" />
 				<button class="make-socialicons-item-remove">
 					<span class="screen-reader-text"><?php esc_html_e( 'Remove', 'make' ); ?></span>
 					<span class="make-socialicons-item-remove-icon"></span>
