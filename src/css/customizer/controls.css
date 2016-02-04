@@ -211,6 +211,11 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	width: 100%;
 	clear: both;
 }
+.make-socialicons-item {
+	margin-bottom: 12px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+}
 .make-socialicons-item-placeholder {
 	background: transparent;
 	height: 40px;
@@ -240,12 +245,16 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	width: auto;
 }
 .make-socialicons-item-remove {
+	visibility: hidden;
 	float: right;
 	cursor: pointer;
 	height: 30px;
 	width: 30px;
 	border: 0;
 	background: #fff;
+}
+.make-socialicons-item:hover .make-socialicons-item-remove {
+	visibility: visible;
 }
 .make-socialicons-item-remove-icon:after {
 	font: 20px/1 dashicons;
@@ -254,11 +263,12 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	border-radius: 50%;
 	vertical-align: middle;
 }
-
+.make-socialicons-item-remove:hover .make-socialicons-item-remove-icon:after {
+	color: red;
+}
 .make-socialicons-buttons {
 	text-align: right;
 }
-
 #add-icon_make_social-icons:before {
 	content: "\f132";
 	display: inline-block;
