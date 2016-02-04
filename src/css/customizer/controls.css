@@ -214,7 +214,8 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 .make-socialicons-item {
 	margin-bottom: 12px;
 	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+	text-align: center;
 }
 .make-socialicons-item-placeholder {
 	border: none;
@@ -241,9 +242,10 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	width: auto;
 }
 .customize-control input.make-socialicons-item-content {
-	margin-left: 0;
-	margin-right: 0;
 	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
 }
 .make-socialicons-item-remove {
 	visibility: hidden;
@@ -251,6 +253,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	cursor: pointer;
 	height: 30px;
 	width: 30px;
+	margin-right: 3px; /* Offset from width of icon */
 	border: 0;
 	background: #fff;
 }
