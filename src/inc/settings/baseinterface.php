@@ -17,11 +17,14 @@ interface MAKE_Settings_BaseInterface extends MAKE_Util_ModulesInterface {
 
 	public function setting_exists( $setting_id, $property = 'all' );
 
-	public function set_value( $setting_id, $value );
+	// The abstract functions can't be included in the interface because of a bug in PHP versions
+	// prior to 5.3.9. @link https://bugs.php.net/bug.php?id=43200
 
-	public function unset_value( $setting_id );
+	//public function set_value( $setting_id, $value );
 
-	public function get_raw_value( $setting_id );
+	//public function unset_value( $setting_id );
+
+	//public function get_raw_value( $setting_id );
 
 	public function get_value( $setting_id, $context = '' );
 
