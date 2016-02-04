@@ -218,8 +218,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 }
 .make-socialicons-item-placeholder {
 	background: transparent;
-	height: 40px;
-	border: 2px dashed #dfdfdf;
+	height: 52px;
 }
 .make-socialicons-item-handle {
 	float: left;
@@ -233,7 +232,8 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	text-align: center;
 }
 .make-socialicons-item-handle i {
-	color: #A0A5AA;
+	font-size: 22px;
+	color: #a0a5aa;
 	vertical-align: middle;
 }
 .customize-control span.make-socialicons-item-content {
@@ -259,7 +259,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 .make-socialicons-item-remove-icon:after {
 	font: 20px/1 dashicons;
 	content: "\f158";
-	color: #A0A5AA;
+	color: #a0a5aa;
 	border-radius: 50%;
 	vertical-align: middle;
 }
