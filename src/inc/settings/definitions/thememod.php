@@ -13,7 +13,6 @@ $this->add_settings(
 	array(
 		'hide-site-title'                 => array( 'default' => false ),
 		'hide-tagline'                    => array( 'default' => false ),
-		'social-hide-rss'                 => array( 'default' => false ),
 		'font-subnav-mobile'              => array( 'default' => true ),
 		'header-hide-padding-bottom'      => array( 'default' => false, 'is_style' => true ),
 		'header-show-social'              => array( 'default' => false ),
@@ -229,29 +228,6 @@ $this->add_settings(
 	array(
 		'sanitize' => array( $this, 'maybe_hash_hex_color' ),
 		'is_style' => true,
-	)
-);
-
-// URL settings
-$this->add_settings(
-	array_fill_keys( array(
-		'social-facebook-official',
-		'social-twitter',
-		'social-google-plus-square',
-		'social-linkedin',
-		'social-instagram',
-		'social-flickr',
-		'social-youtube',
-		'social-vimeo-square',
-		'social-pinterest',
-		'social-custom-rss',
-	), array() ),
-	array(
-		'default'                  => '',
-		'sanitize'                 => 'esc_url',
-		'sanitize_from_customizer' => 'esc_url_raw',
-		'sanitize_to_customizer'   => 'esc_url',
-		'sanitize_database'        => 'esc_url_raw',
 	)
 );
 
@@ -641,10 +617,6 @@ $this->add_settings(
 // Misc settings
 $this->add_settings(
 	array(
-		'social-email' => array(
-			'default'  => '',
-			'sanitize' => 'sanitize_email',
-		),
 		'font-subset'  => array(
 			'default'                  => 'latin',
 			'sanitize'                 => 'sanitize_key',

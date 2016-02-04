@@ -123,7 +123,6 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 		register_nav_menus( array(
 			'primary'    => __( 'Primary Navigation', 'make' ),
 			'header-bar' => __( 'Header Bar Navigation', 'make' ),
-			'social'     => __( 'Social Profile Links', 'make' ),
 		) );
 	}
 
