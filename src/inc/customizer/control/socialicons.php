@@ -81,7 +81,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				<# }) #>
 			</div>
 			<div class="make-socialicons-buttons">
-				<button id="add-icon_{{ data.id }}" class="button-secondary"><?php esc_html_e( 'Add icon', 'make' ); ?></button>
+				<button id="add-icon_{{ data.id }}" class="button-secondary"><?php esc_html_e( 'Add Icon', 'make' ); ?></button>
 			</div>
 			<div class="make-socialicons-options">
 				<label for="email-toggle_{{ data.id }}">
