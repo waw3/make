@@ -230,12 +230,16 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 			}
 			#wpadminbar .make-error-detail p,
 			#wpadminbar .make-error-detail a,
+			#wpadminbar .make-error-detail em,
 			#wpadminbar .make-error-detail strong {
 				font: 16px/20px "Open Sans",sans-serif;
 			}
 			#wpadminbar .make-error-detail a {
 				display: inline;
 				padding: 0;
+			}
+			#wpadminbar .make-error-detail em {
+				font-style: italic;
 			}
 			#wpadminbar .make-error-detail strong {
 				font-weight: bold;
