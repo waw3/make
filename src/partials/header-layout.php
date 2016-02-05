@@ -4,10 +4,7 @@
  */
 
 // Header Options
-$social_links    = ttfmake_get_social_links();
-$show_social     = (int) get_theme_mod( 'header-show-social', ttfmake_get_default( 'header-show-social' ) );
-$show_search     = (int) get_theme_mod( 'header-show-search', ttfmake_get_default( 'header-show-search' ) );
-$subheader_class = ( 1 === $show_social || 1 === $show_search ) ? ' right-content' : '';
+$subheader_class = ( make_get_thememod_value( 'header-show-social', 'template' ) || make_get_thememod_value( 'header-show-search', 'template' ) ) ? ' right-content' : '';
 $hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
 $hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
 $menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default( 'navigation-mobile-label' ) );
@@ -22,16 +19,24 @@ $header_bar_menu = wp_nav_menu( array(
 
 <header id="site-header" class="<?php echo esc_attr( ttfmake_get_site_header_class() ); ?>" role="banner">
 	<?php // Only show Sub Header if it has content
-	if ( make_get_thememod_value( 'header-text', 'template' ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) || ! empty( $header_bar_menu ) ) : ?>
+	if (
+		make_get_thememod_value( 'header-text', 'template' )
+		||
+		make_get_thememod_value( 'header-show-search', 'template' )
+		||
+		( make_has_socialicons() && make_get_thememod_value( 'header-show-social', 'template' ) )
+		||
+		! empty( $header_bar_menu )
+	) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
 			<a class="skip-link screen-reader-text" href="#site-content"><?php esc_html_e( 'Skip to content', 'make' ); ?></a>
 			<?php // Search form
-			if ( 1 === $show_search ) :
+			if ( make_get_thememod_value( 'header-show-search', 'template' ) ) :
 				get_search_form();
 			endif; ?>
 			<?php // Social links
-			ttfmake_maybe_show_social_links( 'header' ); ?>
+			make_socialicons( 'header' ); ?>
 			<?php // Header text; shown only if there is no header menu
 			if ( ( make_get_thememod_value( 'header-text', 'template' ) || is_customize_preview() ) && empty( $header_bar_menu ) ) : ?>
 				<span class="header-text">

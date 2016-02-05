@@ -305,6 +305,62 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_sidebar_list_enabled', '1.7.0' );
 endif;
 
+if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
+/**
+ * Get the social links from options.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return array    Keys are service names and the values are links.
+ */
+function ttfmake_get_social_links() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_get_social_links', '1.7.0' );
+endif;
+
+if ( ! function_exists( 'ttfmake_pre_wp_nav_menu_social' ) ) :
+/**
+ * Alternative output for wp_nav_menu for the 'social' menu location.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $output    Output for the menu.
+ * @param  object    $args      wp_nav_menu arguments.
+ * @return string               Modified menu.
+ */
+function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+	return $output;
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_pre_wp_nav_menu_social', '1.7.0' );
+endif;
+
+if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
+/**
+ * Show the social links markup if the theme options and/or menus are configured for it.
+ *
+ * @since 1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $region    The site region (header or footer).
+ * @return void
+ */
+function ttfmake_maybe_show_social_links( $region ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_socialicons', $backtrace[0] );
+	make_socialicons( $region );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_maybe_show_social_links', '1.7.0', 'make_socialicons' );
+endif;
+
 /**
  * Add the Yoast SEO breadcrumb, if the plugin is activated.
  *

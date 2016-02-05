@@ -38,6 +38,6 @@ if ( $sidebar_count > 0 ) {
 		<?php // Footer text and credit line
 		get_template_part( 'partials/footer', 'credit' ); ?>
 
-		<?php ttfmake_maybe_show_social_links( 'footer' ); ?>
+		<?php make_socialicons( 'footer' ); ?>
 	</div>
 </footer>

@@ -242,6 +242,58 @@ function make_has_sidebar( $location ) {
 }
 
 /**
+ * Add or modify social icons.
+ *
+ * @since x.x.x.
+ *
+ * @param                                        $icons
+ * @param MAKE_SocialIcons_ManagerInterface|null $instance
+ *
+ * @return mixed
+ */
+function make_update_socialicons( $icons, MAKE_SocialIcons_ManagerInterface $instance = null ) {
+	if ( is_null( $instance ) ) {
+		$instance = Make()->socialicons();
+	}
+
+	return $instance->add_icons( $icons, true );
+}
+
+/**
+ * Check to see if social icons have been configured for display.
+ *
+ * @since x.x.x.
+ *
+ * @return bool
+ */
+function make_has_socialicons() {
+	return Make()->socialicons()->has_icons();
+}
+
+/**
+ * Display social icons for the site header or footer.
+ *
+ * @since x.x.x.
+ *
+ * @param $region
+ *
+ * @return void
+ */
+function make_socialicons( $region ) {
+	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
+		return;
+	}
+
+	if ( make_has_socialicons() && make_get_thememod_value( $region . '-show-social' ) ) {
+		?>
+		<div class="<?php echo $region; ?>-social-links">
+			<?php echo Make()->socialicons()->render_icons(); ?>
+		</div>
+		<?php
+	}
+}
+
+/**
  * Display a breadcrumb.
  *
  * @since x.x.x.
@@ -252,35 +304,7 @@ function make_has_sidebar( $location ) {
  * @return void
  */
 function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after = '</p>' ) {
-	//
 	if ( Make()->integration()->has_integration( 'yoastseo' ) ) {
 		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
 	}
 }
-
-if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
-/**
- * Show the social links markup if the theme options and/or menus are configured for it.
- *
- * @since  1.0.0.
- * @since  1.7.0. Uses new Social Icons module.
- *
- * @param  string    $region    The site region (header or footer).
- * @return void
- */
-function ttfmake_maybe_show_social_links( $region ) {
-	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
-		return;
-	}
-
-	$show_social = make_get_thememod_value( $region . '-show-social' );
-
-	if ( true === $show_social ) {
-		?>
-		<div class="<?php echo $region; ?>-social-links">
-			<?php echo Make()->socialicons()->render_icons(); ?>
-		</div>
-	<?php
-	}
-}
-endif;

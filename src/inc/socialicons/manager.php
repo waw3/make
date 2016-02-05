@@ -439,6 +439,9 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 
 		// Look for an overriding custom menu
 		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'social' ] ) ) {
+			// Add an error message
+			$this->error()->add_error( 'make_deprecated_social_menu', __( 'Make no longer uses a custom menu to output social icons. Instead, use the interface in the Customizer under <em>General &rarr; Social Icons</em>.', 'make' ) );
+
 			$menu = wp_get_nav_menu_object( $locations[ 'social' ] );
 			if ( $menu && ! is_wp_error( $menu ) ) {
 				$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
@@ -526,6 +529,18 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	}
 
 	/**
+	 * Check to see if social icons have been configured for display.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return bool
+	 */
+	public function has_icons() {
+		$icon_data = $this->thememod()->get_value( 'social-icons', 'template' );
+		return ( isset( $icon_data['items'] ) && ! empty( $icon_data['items'] ) );
+	}
+
+	/**
 	 * Render the social icons as an HTML unordered list.
 	 *
 	 * @since x.x.x.
@@ -536,17 +551,31 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		$icon_data = $this->thememod()->get_value( 'social-icons', 'template' );
 		$items = ( isset( $icon_data['items'] ) ) ? $icon_data['items'] : array();
 
+		/**
+		 * Filter: Override the default social icons rendered output.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string|null    $override     This value will be returned if it is not null.
+		 * @param array          $icon_data    The array of icon data to use for rendering.
+		 */
+		$override = apply_filters( 'make_socialicons_render_override', null, $icon_data );
+		if ( is_string( $override ) ) {
+			return $override;
+		}
+
 		// Check for deprecated filter.
 		if ( has_filter( 'make_social_links' ) ) {
 			$this->compatibility()->deprecated_hook(
 				'make_social_links',
 				'1.7.0',
-				__( 'To add or modify social icons, use the function make_update_socialicons() instead.', 'make' )
+				__( 'To add or modify the available social icons, use the function make_update_socialicons() instead.', 'make' )
 			);
 		}
 
 		ob_start();
 
+		// Render list items
 		foreach( $items as $content ) {
 			$icon = $this->find_match( $content );
 			if ( ! empty( $icon ) ) {
