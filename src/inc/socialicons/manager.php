@@ -237,7 +237,41 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			$this->load();
 		}
 
-		return $this->icons;
+		$icons = $this->icons;
+
+		// Check for deprecated filter.
+		if ( has_filter( 'make_supported_social_icons' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_supported_social_icons',
+				'1.7.0',
+				__( 'To add or modify social icons, use the function make_update_socialicons() instead.', 'make' )
+			);
+
+			/**
+			 * Filter the supported social icons.
+			 *
+			 * This array uses the url pattern for the key and the CSS class (as dictated by Font Awesome) as the array value.
+			 * The URL pattern is used to match the URL used by a menu item.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param array    $icons    The array of supported social icons.
+			 */
+			$icons = apply_filters( 'make_supported_social_icons', $icons );
+
+			// Convert any additional icons added to the new format
+			foreach ( $icons as $pattern => $data ) {
+				if ( ! is_array( $data ) ) {
+					$icons[ $pattern ] = array(
+						'title' => __( 'Link', 'make' ),
+						'class' => ( 0 === strpos( $data, 'fa-' ) ) ? array( 'fa', 'fa-fw', $data ) : array( $data ),
+					);
+				}
+			}
+		}
+
+		return $icons;
 	}
 
 	/**
@@ -501,6 +535,15 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	public function render_icons() {
 		$icon_data = $this->thememod()->get_value( 'social-icons', 'template' );
 		$items = ( isset( $icon_data['items'] ) ) ? $icon_data['items'] : array();
+
+		// Check for deprecated filter.
+		if ( has_filter( 'make_social_links' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_social_links',
+				'1.7.0',
+				__( 'To add or modify social icons, use the function make_update_socialicons() instead.', 'make' )
+			);
+		}
 
 		ob_start();
 
