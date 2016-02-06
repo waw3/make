@@ -109,6 +109,18 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			include $file;
 		}
 
+		/**
+		 * Action: Fires at the end of the Social Icons object's load method.
+		 *
+		 * This action gives a developer the opportunity to add or modify icon definitions
+		 * and run additional load routines.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param MAKE_SocialIcons_Manager    $socialicons     The settings object that has just finished loading.
+		 */
+		do_action( "make_socialicons_loaded", $this );
+
 		// Loading has occurred.
 		$this->loaded = true;
 	}
@@ -135,6 +147,20 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @return bool
 	 */
 	public function add_icons( $icons, $overwrite = false ) {
+		// Make sure we're not doing it wrong.
+		if ( "make_socialicons_loaded" !== current_action() && did_action( "make_socialicons_loaded" ) ) {
+			$backtrace = debug_backtrace();
+
+			$this->compatibility()->doing_it_wrong(
+				__FUNCTION__,
+				__( 'This function should only be called during or before the <code>make_socialicons_loaded</code> action.', 'make' ),
+				'1.7.0',
+				$backtrace[0]
+			);
+
+			return false;
+		}
+
 		$icons = (array) $icons;
 		$existing_icons = $this->icons;
 		$new_icons = array();
@@ -338,24 +364,39 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	}
 
 	/**
+	 * Make sure an item is an array with specific keys.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param mixed $item
+	 *
+	 * @return array
+	 */
+	private function sanitize_item( $item ) {
+		return wp_parse_args( (array) $item, array( 'type' => '', 'content' => '' ) );
+	}
+
+	/**
 	 * Compare a string to the icon URL patterns to find a match.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param $string
+	 * @param array $item
 	 *
 	 * @return array|mixed|void
 	 */
-	public function find_match( $string ) {
+	public function find_match( $item ) {
+		$item = $this->sanitize_item( $item );
+
 		// Special cases for email and rss
-		if ( 'email' === $string ) {
+		if ( 'email' === $item['type'] ) {
 			return $this->get_email_props();
-		} else if ( 'rss' === $string ) {
+		} else if ( 'rss' === $item['type'] ) {
 			return $this->get_rss_props();
 		}
 
 		// If it's not a valid URL, return empty
-		$string = esc_url( $string );
+		$string = esc_url( $item['content'] );
 		if ( function_exists( 'filter_var' ) ) { // Some hosts don't enable this function
 			if ( false === filter_var( $string, FILTER_VALIDATE_URL ) ) {
 				return array();
@@ -418,12 +459,21 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 						if ( ! isset( $icon_data['items'] ) ) {
 							$icon_data['items'] = array();
 						}
-						$icon_data['items'][] = $value;
+						$icon_data['items'][] = array(
+							'type'    => 'link',
+							'content' => $value,
+						);
 						break;
 
 					case 'social-email' :
 						$icon_data['email-toggle'] = true;
-						$icon_data['email-address'] = $value;
+						if ( ! isset( $icon_data['items'] ) ) {
+							$icon_data['items'] = array();
+						}
+						$icon_data['items'][] = array(
+							'type'    => 'email',
+							'content' => $value,
+						);
 						break;
 
 					case 'social-hide-rss' :
@@ -431,7 +481,13 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 						break;
 
 					case 'social-custom-rss' :
-						$icon_data['rss-url'] = $value;
+						if ( ! isset( $icon_data['items'] ) ) {
+							$icon_data['items'] = array();
+						}
+						$icon_data['items'][] = array(
+							'type'    => 'rss',
+							'content' => $value,
+						);
 						break;
 				}
 			}
@@ -461,14 +517,17 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				$icon_data['items'] = array();
 
 				foreach ( $sorted_menu_items as $item ) {
-					$content = $item->url;
-
-					if ( 0 === strpos( $content, 'mailto:' ) ) {
-						$icon_data['items'][] = 'email';
+					if ( 0 === strpos( $item->url, 'mailto:' ) ) {
 						$icon_data['email-toggle'] = true;
-						$icon_data['email-address'] = str_replace( 'mailto:', '', $content );
+						$icon_data['items'][] = array(
+							'type'    => 'email',
+							'content' => str_replace( 'mailto:', '', $item->url ),
+						);
 					} else {
-						$icon_data['items'][] = $item->url;
+						$icon_data['items'][] = array(
+							'type'    => 'link',
+							'content' => $item->url,
+						);
 					}
 
 					if ( isset( $item->target ) && $item->target ) {
@@ -484,8 +543,11 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				$icon_data['items'] = array();
 			}
 
-			if ( false === array_search( 'email', $icon_data['items'] ) ) {
-				$icon_data['items'][] = 'email';
+			if ( false === array_search( 'email', wp_list_pluck( $icon_data['items'], 'type' ) ) ) {
+				$icon_data['items'][] = array(
+					'type'    => 'email',
+					'content' => $this->thememod()->get_default( 'social-icons-item-email' ),
+				);
 			}
 		}
 		if ( isset( $icon_data['rss-toggle'] ) && true === $icon_data['rss-toggle'] ) {
@@ -493,8 +555,11 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				$icon_data['items'] = array();
 			}
 
-			if ( false === array_search( 'rss', $icon_data['items'] ) ) {
-				$icon_data['items'][] = 'rss';
+			if ( false === array_search( 'rss', wp_list_pluck( $icon_data['items'], 'type' ) ) ) {
+				$icon_data['items'][] = array(
+					'type'    => 'rss',
+					'content' => $this->thememod()->get_default( 'social-icons-item-rss' ),
+				);
 			}
 		}
 
@@ -576,19 +641,29 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		ob_start();
 
 		// Render list items
-		foreach( $items as $content ) {
-			$icon = $this->find_match( $content );
+		foreach( $items as $item ) {
+			$item = $this->sanitize_item( $item );
+			$icon = $this->find_match( $item );
 			if ( ! empty( $icon ) ) {
 				$title = $icon['title'];
 				$class = implode( ' ', $icon['class'] );
-				if ( 'email' === $content ) {
-					$content = 'mailto:' . $icon_data['email-address'];
-				} else if ( 'rss' === $content ) {
-					if ( $icon_data['rss-url'] ) {
-						$content = $icon_data['rss-url'];
+
+				// Prep the content
+				if ( 'email' === $item['type'] && $item['content'] ) {
+					$content = 'mailto:' . $item['content'];
+				} else if ( 'rss' === $item['type'] ) {
+					if ( $item['content'] ) {
+						$content = $item['content'];
 					} else {
 						$content = get_feed_link();
 					}
+				} else {
+					$content = $item['content'];
+				}
+
+				// Don't render items with no content
+				if ( empty( $content ) ) {
+					continue;
 				}
 				?>
 				<li class="make-social-icon">

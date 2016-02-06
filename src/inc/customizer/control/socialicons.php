@@ -70,14 +70,8 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 
 		<div class="make-socialicons-container">
 			<div class="make-socialicons-stage">
-				<# _.each(data.socialicons.items, function(content) { #>
-					<# if ('email' === content) { #>
-						{{{ data.itemTemplate({ type: 'email' }) }}}
-					<# } else if ('rss' === content) { #>
-						{{{ data.itemTemplate({ type: 'rss' }) }}}
-					<# } else { #>
-						{{{ data.itemTemplate({ type: 'link', content: content }) }}}
-					<# } #>
+				<# _.each(data.socialicons.items, function(item) { #>
+					{{{ data.itemTemplate(item) }}}
 				<# }) #>
 			</div>
 			<div class="make-socialicons-buttons">
@@ -88,17 +82,11 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 					<input id="email-toggle_{{ data.id }}" data-name="email-toggle" type="checkbox"<# if (true == data.socialicons['email-toggle']) { #> checked="checked" <# } #> />
 					<?php esc_html_e( 'Include email icon', 'make' ); ?>
 				</label>
-				<label for="email-address_{{ data.id }}">
-					<input id="email-address_{{ data.id }}" data-name="email-address" type="text" placeholder="<?php esc_html_e( 'Email address', 'make' ); ?>" value="{{ data.socialicons['email-address'] }}" />
-				</label>
 				<label for="rss-toggle_{{ data.id }}">
 					<input id="rss-toggle_{{ data.id }}" data-name="rss-toggle" type="checkbox"<# if (true == data.socialicons['rss-toggle']) { #> checked="checked" <# } #> />
 					<?php esc_html_e( 'Include RSS feed icon', 'make' ); ?>
 				</label>
-				<label for="rss-url_{{ data.id }}">
-					<span class="description customize-control-description"><?php esc_html_e( 'Leave this field blank to use the WordPress default RSS feed.', 'make' ); ?></span>
-					<input id="rss-url_{{ data.id }}" data-name="rss-url" type="text" placeholder="<?php esc_html_e( 'Custom RSS feed URL', 'make' ); ?>" value="{{ data.socialicons['rss-url'] }}" />
-				</label>
+				<span id="rss-help_{{ data.id }}" class="description customize-control-description"><?php esc_html_e( 'Leave the RSS field blank to use the default RSS feed URL.', 'make' ); ?></span>
 				<label for="new-window_{{ data.id }}">
 					<input id="new-window_{{ data.id }}" data-name="new-window" type="checkbox"<# if (true == data.socialicons['new-window']) { #> checked="checked" <# } #> />
 					<?php esc_html_e( 'Open icon links in a new tab', 'make' ); ?>
@@ -127,11 +115,14 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				<i></i>
 			</div>
 			<# if ('email' === type) { #>
-				<span class="make-socialicons-item-content"><?php esc_html_e( 'Email', 'make' ); ?></span>
+				<label class="screen-reader-text"><?php esc_html_e( 'Email address', 'make' ); ?></label>
+				<input class="make-socialicons-item-content" type="email" placeholder="<?php esc_html_e( 'Email address', 'make' ) ?>" value="{{ data.content }}" />
 			<# } else if ('rss' === type) { #>
-				<span class="make-socialicons-item-content"><?php esc_html_e( 'RSS', 'make' ); ?></span>
+				<label class="screen-reader-text"><?php esc_html_e( 'Custom RSS feed URL', 'make' ); ?></label>
+				<input class="make-socialicons-item-content" type="url" placeholder="<?php esc_html_e( 'Custom RSS feed URL', 'make' ) ?>" value="{{ data.content }}" />
 			<# } else { #>
-				<input class="make-socialicons-item-content" type="text" placeholder="<?php esc_html_e( 'http://', 'make' ); ?>" value="{{ data.content }}" />
+				<label class="screen-reader-text"><?php esc_html_e( 'Social profile URL', 'make' ); ?></label>
+				<input class="make-socialicons-item-content" type="url" placeholder="http://" value="{{ data.content }}" />
 				<button class="make-socialicons-item-remove">
 					<span class="screen-reader-text"><?php esc_html_e( 'Remove', 'make' ); ?></span>
 					<span class="make-socialicons-item-remove-icon"></span>

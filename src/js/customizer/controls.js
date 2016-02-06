@@ -257,14 +257,12 @@
 				$stage = $container.find('.make-socialicons-stage'),
 				$addbutton = $container.find('#add-icon_' + control.id),
 				$emailtoggle = $container.find('#email-toggle_' + control.id),
-				$emailaddress = $container.find('#email-address_' + control.id),
 				$rsstoggle = $container.find('#rss-toggle_' + control.id),
-				$rssurl = $container.find('#rss-url_' + control.id),
+				$rsshelp = $container.find('#rss-help_' + control.id),
 				$newwindow = $container.find('#new-window_' + control.id);
 
 			// Set up sortable items
 			$stage.sortable({
-				handle: '.make-socialicons-item-handle',
 				placeholder: 'make-socialicons-item-placeholder',
 				create: function() {
 					$stage.on('sortupdate', function() {
@@ -276,7 +274,13 @@
 			// Add icon button
 			$addbutton.on('click', function(evt) {
 				evt.preventDefault();
-				$stage.append( control.params.itemTemplate({type:'link'}) );
+
+				var $item;
+
+				$item = $(control.params.itemTemplate({type:'link'}));
+				$stage.append($item);
+				$item.find('input').focus();
+				control.doneTyping($item);
 			});
 
 			// Remove button
@@ -287,57 +291,102 @@
 			});
 
 			// Item inputs
-			$stage.on('change', 'input', function() {
+			$stage.on('change, make:donetyping', 'input', function() {
 				control.sendIconRequest($(this).parent());
 				control.updateValue();
 			});
 
 			// Existing items
 			$stage.find('.make-socialicons-item').each(function() {
+				control.doneTyping($(this));
 				control.sendIconRequest($(this));
 			});
 
 			// Email toggle
 			$emailtoggle.on('change', function(evt) {
-				var checked = $(evt.target).prop('checked');
+				var checked = $(evt.target).prop('checked'),
+					$item;
 
 				if (checked) {
-					$stage.append( control.params.itemTemplate({type:'email'}) );
+					$item = $(control.params.itemTemplate({type:'email'}));
+					$stage.append($item);
+					$item.find('input').focus();
+					control.doneTyping($item);
 					control.sendIconRequest( $stage.find('.make-socialicons-item-email') );
-					$emailaddress.parent().show();
 				} else {
 					$stage.find('.make-socialicons-item-email').remove();
-					$emailaddress.parent().hide();
+					control.updateValue();
 				}
-
-				control.updateValue();
 			});
 			if (! $emailtoggle.prop('checked')) {
-				$emailaddress.parent().hide();
+				$stage.find('.make-socialicons-item-email').remove();
 			}
 
 			// RSS toggle
 			$rsstoggle.on('change', function(evt) {
-				var checked = $(evt.target).prop('checked');
+				var checked = $(evt.target).prop('checked'),
+					$item;
 
 				if (checked) {
-					$stage.append( control.params.itemTemplate({type:'rss'}) );
+					$item = $(control.params.itemTemplate({type:'rss'}));
+					$stage.append($item);
+					$item.find('input').focus();
+					control.doneTyping($item);
 					control.sendIconRequest( $stage.find('.make-socialicons-item-rss') );
-					$rssurl.parent().show();
+					$rsshelp.show();
 				} else {
 					$stage.find('.make-socialicons-item-rss').remove();
-					$rssurl.parent().hide();
+					$rsshelp.hide();
 				}
 
 				control.updateValue();
 			});
 			if (! $rsstoggle.prop('checked')) {
-				$rssurl.parent().hide();
+				$stage.find('.make-socialicons-item-rss').remove();
+				$rsshelp.hide();
 			}
 
-			// Additional options
-			$emailaddress.add($rssurl).add($newwindow).on('change', function() {
+			// New window toggle
+			$newwindow.on('change', function() {
 				control.updateValue();
+			});
+		},
+
+		/**
+		 * Listen for a pause in typing into an icon item's input and trigger an event.
+		 *
+		 * @link http://stackoverflow.com/a/14042239
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param $el jQuery element set
+		 */
+		doneTyping: function($el) {
+			var timeout = 900,
+				timeoutReference,
+				doneTyping = function($el){
+					if (! timeoutReference) return;
+					timeoutReference = null;
+					$el.find('input').trigger('make:donetyping');
+				};
+
+			$el.find('input').on('keyup keypress paste', function(evt) {
+				// This catches the backspace button in chrome, but also prevents
+				// the event from triggering too preemptively. Without this line,
+				// using tab/shift+tab will make the focused element fire the callback.
+				if ('keyup' == evt.type && evt.keyCode != 8) return;
+
+				// Check if timeout has been set. If it has, "reset" the clock and
+				// start over again.
+				if (timeoutReference) clearTimeout(timeoutReference);
+				timeoutReference = setTimeout(function() {
+					// if we made it here, our timeout has elapsed. Fire the
+					// callback
+					doneTyping($el);
+				}, timeout);
+			}).on('blur', function() {
+				// If we can, fire the event since we're leaving the field
+				doneTyping($el);
 			});
 		},
 
@@ -350,17 +399,15 @@
 		 */
 		sendIconRequest: function($el) {
 			var control = this,
-				value, data;
+				data, type, content;
 
-			if ('email' === $el.data('type') || 'rss' === $el.data('type')) {
-				value = $el.data('type');
-			} else {
-				value = $el.find('input').val();
-			}
+			type = $el.data('type');
+			content = $el.find('input').val();
 
 			data = {
 				action: 'make-social-icons',
-				pattern: value
+				type: type,
+				content: content
 			};
 
 			$.post(MakeControls.ajaxurl, data, function(response) {
@@ -399,33 +446,23 @@
 				newValue = { items: [] };
 
 			$items.each(function() {
-				var type = $(this).data('type');
-				if ('link' === type) {
-					newValue.items.push($(this).find('input').val());
-				} else {
-					newValue.items.push(type);
-				}
+				var type = $(this).data('type'),
+					content = $(this).find('input').val();
+
+				newValue.items.push({type: type, content: content});
 			});
 
 			$options.each(function() {
 				var name = $(this).data('name');
-				switch (name) {
-					case 'email-toggle' :
-					case 'rss-toggle' :
-					case 'new-window' :
-						newValue[name] = $(this).prop('checked');
-						break;
-					case 'email-address' :
-					case 'rss-url' :
-						newValue[name] = $(this).val();
-						break;
-				}
+				newValue[name] = $(this).prop('checked');
 			});
 
 			newValue = JSON.stringify(newValue);
 
-			$value.val(newValue);
-			control.setting.set(newValue);
+			if ($value.val() != newValue) {
+				$value.val(newValue);
+				control.setting.set(newValue);
+			}
 		}
 	});
 

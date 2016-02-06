@@ -544,8 +544,8 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		$sanitized_icon_data = array();
 
 		// Options
-		$options = array_keys( $this->get_settings( 'social_icon_option' ) );
-		foreach ( $options as $setting_id ) {
+		$settings = array_keys( $this->get_settings( 'social_icon_option' ) );
+		foreach ( $settings as $setting_id ) {
 			$option_id = str_replace( 'social-icons-', '', $setting_id );
 			if ( isset( $icon_data[ $option_id ] ) ) {
 				$sanitized_icon_data[ $option_id ] = $this->sanitize_value( $icon_data[ $option_id ], $setting_id );
@@ -561,22 +561,34 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			$sanitized_icon_data['items'] = array();
 		}
 		foreach ( $sanitized_icon_data['items'] as $key => $item ) {
-			if ( ! in_array( $item, array( 'email', 'rss' ) ) ) {
-				$sanitized_icon_data['items'][ $key ] = esc_url( $item );
-			}
+			$item = wp_parse_args( (array) $item, array( 'type' => '', 'content' => '' ) );
+			$sanitized_icon_data['items'][ $key ]['type'] = $type = $this->sanitize_value( $item['type'], 'social-icons-item-type' );
+			$sanitized_icon_data['items'][ $key ]['content'] = $this->sanitize_value( $item['content'], 'social-icons-item-content-' . $type );
 		}
 
 		// Email item
-		if ( true === $sanitized_icon_data[ 'email-toggle' ] && ! in_array( 'email', $sanitized_icon_data['items'] ) ) {
-			array_push( $sanitized_icon_data['items'], 'email' );
-		} else if ( true !== $sanitized_icon_data[ 'email-toggle' ] && $key = array_search( 'email', $sanitized_icon_data['items'] ) ) {
+		if ( true === $sanitized_icon_data[ 'email-toggle' ] && ! in_array( 'email', wp_list_pluck( $sanitized_icon_data['items'], 'type' ) ) ) {
+			array_push(
+				$sanitized_icon_data['items'],
+				array(
+					'type'    => 'email',
+					'content' => $this->get_default( 'social-icons-item-email' ),
+				)
+			);
+		} else if ( true !== $sanitized_icon_data[ 'email-toggle' ] && $key = array_search( 'email', wp_list_pluck( $sanitized_icon_data['items'], 'type' ) ) ) {
 			unset( $sanitized_icon_data['items'][ $key ] );
 		}
 
 		// RSS item
-		if ( true === $sanitized_icon_data[ 'rss-toggle' ] && ! in_array( 'rss', $sanitized_icon_data['items'] ) ) {
-			array_push( $sanitized_icon_data['items'], 'rss' );
-		} else if ( true !== $sanitized_icon_data[ 'rss-toggle' ] && $key = array_search( 'rss', $sanitized_icon_data['items'] ) ) {
+		if ( true === $sanitized_icon_data[ 'rss-toggle' ] && ! in_array( 'rss', wp_list_pluck( $sanitized_icon_data['items'], 'type' ) ) ) {
+			array_push(
+				$sanitized_icon_data['items'],
+				array(
+					'type'    => 'rss',
+					'content' => $this->get_default( 'social-icons-item-rss' ),
+				)
+			);
+		} else if ( true !== $sanitized_icon_data[ 'rss-toggle' ] && $key = array_search( 'rss', wp_list_pluck( $sanitized_icon_data['items'], 'type' ) ) ) {
 			unset( $sanitized_icon_data['items'][ $key ] );
 		}
 

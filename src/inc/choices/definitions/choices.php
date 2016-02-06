@@ -108,6 +108,11 @@ $this->add_choice_sets( array(
 		'before-content' => __( 'Before content', 'make' ),
 		'post-footer'    => __( 'Post footer', 'make' ),
 	),
+	'social-icon-type' => array(
+		'email' => __( 'Email', 'make' ),
+		'rss'   => __( 'RSS', 'make' ),
+		'link'  => __( 'Link', 'make' ),
+	),
 	'text-transform' => array(
 		'none'      => __( 'None', 'make' ),
 		'uppercase' => __( 'Uppercase', 'make' ),

@@ -639,19 +639,9 @@ $this->add_settings(
 			'sanitize'           => 'wp_validate_boolean',
 			'social_icon_option' => true,
 		),
-		'social-icons-email-address' => array(
-			'default'            => get_bloginfo( 'admin_email' ),
-			'sanitize'           => 'sanitize_email',
-			'social_icon_option' => true,
-		),
 		'social-icons-rss-toggle' => array(
 			'default'            => true,
 			'sanitize'           => 'wp_validate_boolean',
-			'social_icon_option' => true,
-		),
-		'social-icons-rss-url' => array(
-			'default'            => '',
-			'sanitize'           => 'esc_url',
 			'social_icon_option' => true,
 		),
 		'social-icons-new-window' => array(
@@ -659,18 +649,34 @@ $this->add_settings(
 			'sanitize'           => 'wp_validate_boolean',
 			'social_icon_option' => true,
 		),
+		'social-icons-item-type'  => array(
+			'default'            => 'link',
+			'sanitize'           => array( $this, 'sanitize_choice' ),
+			'choice_set_id'      => 'social-icon-type',
+		),
+		'social-icons-item-content-email' => array(
+			'default'            => '',
+			'sanitize'           => 'sanitize_email',
+		),
+		'social-icons-item-content-rss'   => array(
+			'default'            => '',
+			'sanitize'           => 'esc_url',
+		),
+		'social-icons-item-content-link'  => array(
+			'default'            => '',
+			'sanitize'           => 'esc_url',
+		),
 		'social-icons' => array(
 			'default'  => array(
-				'email-toggle' => false,
-				'email-address' => get_bloginfo( 'admin_email' ),
-				'rss-toggle' => true,
-				'rss-url' => '',
-				'new-window' => false,
 				'items' => array(
-					'https://facebook.com/thethemefoundry',
-					'https://twitter.com/thethemefoundry',
-					'rss',
+					array(
+						'type'    => 'rss',
+						'content' => '',
+					),
 				),
+				'email-toggle' => false,
+				'rss-toggle' => true,
+				'new-window' => false,
 			),
 			'sanitize' => array( $this, 'sanitize_socialicons' ),
 			'sanitize_from_customizer' => array( $this, 'sanitize_socialicons_from_customizer' ),
