@@ -75,6 +75,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				<# }) #>
 			</div>
 			<div class="make-socialicons-buttons">
+				<a id="list-icons_{{ data.id }}" href="#"><?php esc_html_e( 'Available icons', 'make' ); ?></a>
 				<button id="add-icon_{{ data.id }}" class="button-secondary"><?php esc_html_e( 'Add Icon', 'make' ); ?></button>
 			</div>
 			<div class="make-socialicons-options">
@@ -133,6 +134,30 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	}
 
 	/**
+	 *
+	 */
+	protected function list_template() {
+		?>
+		<div id="make-socialicons-list-wrapper">
+			<button id="make-socialicons-list-close">
+				<span class="screen-reader-text"><?php esc_html_e( 'Close', 'make' ); ?></span>
+				<span class="make-socialicons-list-close-icon"></span>
+			</button>
+			<ul id="make-socialicons-list">
+			<# for (pattern in data) { #>
+				<# var classes = data[pattern].class.join(' '); #>
+				<li>
+					<i class="{{ classes }}"></i>
+					<?php esc_html_e( 'Name:', 'make' ); ?> {{ data[pattern].title }}<br />
+					<?php esc_html_e( 'Pattern:', 'make' ); ?> <code>{{ pattern }}</code>
+				</li>
+			<# } #>
+			</ul>
+		</div>
+	<?php
+	}
+
+	/**
 	 * Print additional JS templates.
 	 *
 	 * @since x.x.x.
@@ -143,6 +168,9 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 		?>
 		<script type="text/html" id="tmpl-customize-control-<?php echo $this->type; ?>-item">
 			<?php $this->item_template(); ?>
+		</script>
+		<script type="text/html" id="tmpl-customize-control-<?php echo $this->type; ?>-list">
+			<?php $this->list_template(); ?>
 		</script>
 		<?php
 	}

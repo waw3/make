@@ -258,7 +258,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 *
 	 * @return array
 	 */
-	private function get_icons() {
+	public function get_icons() {
 		if ( false === $this->is_loaded() ) {
 			$this->load();
 		}

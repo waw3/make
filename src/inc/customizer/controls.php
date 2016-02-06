@@ -122,11 +122,12 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		// Print additional JS templates
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'render_templates' ) );
 
-		// Font choices
+		// Font choices ajax
 		add_action( 'wp_ajax_make-font-choices', array( $this, 'get_font_choices_ajax' ) );
 
-		// Social icons
+		// Social icons ajax
 		add_action( 'wp_ajax_make-social-icons', array( $this, 'get_socialicons_ajax' ) );
+		add_action( 'wp_ajax_make-social-icons-list', array( $this, 'get_socialicons_list_ajax' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -776,5 +777,21 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		} else {
 			wp_send_json_error( $icon );
 		}
+	}
+
+	/**
+	 * Ajax handler for retrieving all the social icon definitions.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function get_socialicons_list_ajax() {
+		// Only run this in the proper hook context.
+		if ( 'wp_ajax_make-social-icons-list' !== current_action() ) {
+			wp_die();
+		}
+
+		wp_send_json_success( $this->socialicons()->get_icons() );
 	}
 }

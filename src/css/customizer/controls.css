@@ -287,6 +287,73 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+#list-icons_make_social-icons {
+	line-height: 26px;
+	margin-right: 10px;
+}
+#make-socialicons-list-wrapper {
+	display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;
+	-webkit-box-pack: center;-webkit-justify-content: center;-ms-flex-pack: center;justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, .8);
+	-webkit-font-smoothing: subpixel-antialiased; /*fix font-weight bug with transparent backgrounds*/
+}
+#make-socialicons-list {
+	-webkit-align-self: center;-ms-flex-item-align: center;align-self: center;
+	z-index: 999;
+	width: 100%;
+	max-width: 1200px;
+	max-height: 90%;
+	margin: 24px;
+	background: #ffffff;
+	box-sizing: border-box;
+	overflow-x: auto;
+	overflow-y: scroll;
+	list-style: none;
+}
+#make-socialicons-list li {
+	display: block;
+	float: left;
+	font-size: 16px;
+	line-height: 1.3;
+	padding: 24px;
+	box-sizing: border-box;
+	border: 1px solid #eee;
+	width: 380px;
+	height: 88px;
+	margin: 5px;
+}
+#make-socialicons-list i {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	font-size: 42px;
+	line-height: 1;
+}
+#make-socialicons-list-close {
+	display: block;
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+}
+#make-socialicons-list-close:after {
+	font: 20px/1 dashicons;
+	content: "\f158";
+	color: #a0a5aa;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+#make-socialicons-list-close:hover:after {
+	color: red;
+}
 
 /* jQuery UI theme tweaks */
 .ui-widget {

@@ -224,8 +224,9 @@
 		initialize: function(id, options) {
 			var control = this;
 
-			// Add template function
+			// Add template functions
 			options.params.itemTemplate = control.getItemTemplate();
+			options.params.listTemplate = control.getListTemplate();
 
 			// Do parent stuff
 			api.Control.prototype.initialize.apply(control, arguments);
@@ -247,6 +248,21 @@
 		},
 
 		/**
+		 * Generate a templating function for the list overlay sub-template.
+		 *
+		 * @since x.x.x.
+		 */
+		getListTemplate: function() {
+			var control = this,
+				templateID = 'customize-control-make_socialicons-list';
+
+			// Replace the container element's content with the control.
+			if ( 0 !== $( '#tmpl-' + templateID ).length ) {
+				return wp.template( templateID );
+			}
+		},
+
+		/**
 		 * Kick things off when the template has been embedded.
 		 *
 		 * @since x.x.x.
@@ -259,7 +275,8 @@
 				$emailtoggle = $container.find('#email-toggle_' + control.id),
 				$rsstoggle = $container.find('#rss-toggle_' + control.id),
 				$rsshelp = $container.find('#rss-help_' + control.id),
-				$newwindow = $container.find('#new-window_' + control.id);
+				$newwindow = $container.find('#new-window_' + control.id),
+				$iconslink = $container.find('#list-icons_' + control.id);
 
 			// Set up sortable items
 			$stage.sortable({
@@ -350,6 +367,26 @@
 			$newwindow.on('change', function() {
 				control.updateValue();
 			});
+
+			// Available icons link
+			$iconslink.on('click', function(evt) {
+				evt.preventDefault();
+
+				var $openList = $openList = $('#make-socialicons-list-wrapper');
+
+				if ($openList.length < 1) {
+					control.sendListRequest(function(data) {
+						var $newList = $(control.params.listTemplate(data));
+						$container.append($newList);
+					});
+				}
+			});
+
+			// Close button for icons list
+			$container.on('click', '#make-socialicons-list-close', function(evt) {
+				evt.preventDefault();
+				$(this).parent().remove();
+			});
 		},
 
 		/**
@@ -413,6 +450,25 @@
 			$.post(MakeControls.ajaxurl, data, function(response) {
 				if ('undefined' !== response.data) {
 					control.updateIcon($el, response.data);
+				}
+			});
+		},
+
+		/**
+		 * Retrieve the data for all available icons.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param function    callback
+		 */
+		sendListRequest: function(callback) {
+			var data = {
+				action: 'make-social-icons-list'
+			};
+
+			$.post(MakeControls.ajaxurl, data, function(response) {
+				if ('undefined' !== response.data && 'function' === typeof callback) {
+					callback(response.data);
 				}
 			});
 		},
