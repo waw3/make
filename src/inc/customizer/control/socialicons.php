@@ -86,7 +86,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 					<input id="rss-toggle_{{ data.id }}" data-name="rss-toggle" type="checkbox"<# if (true == data.socialicons['rss-toggle']) { #> checked="checked" <# } #> />
 					<?php esc_html_e( 'Include RSS feed icon', 'make' ); ?>
 				</label>
-				<span id="rss-help_{{ data.id }}" class="description customize-control-description"><?php esc_html_e( 'Leave the RSS field blank to use the default RSS feed URL.', 'make' ); ?></span>
+				<span id="rss-help_{{ data.id }}" class="description customize-control-description"><?php esc_html_e( 'Leave the &ldquo;Custom RSS feed URL&rdquo; field blank to use the default RSS feed URL.', 'make' ); ?></span>
 				<label for="new-window_{{ data.id }}">
 					<input id="new-window_{{ data.id }}" data-name="new-window" type="checkbox"<# if (true == data.socialicons['new-window']) { #> checked="checked" <# } #> />
 					<?php esc_html_e( 'Open icon links in a new tab', 'make' ); ?>
