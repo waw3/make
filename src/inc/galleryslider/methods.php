@@ -259,6 +259,7 @@ class MAKE_GallerySlider_Methods extends MAKE_Util_Modules implements MAKE_Galle
 
 			// Data attributes
 			$data_attributes  = ' data-cycle-slides=".cycle-slide"';
+			$data_attributes .= ' data-cycle-loader="wait"';
 			$data_attributes .= ' data-cycle-auto-height="calc"';
 			$data_attributes .= ' data-cycle-center-horz="true"';
     		$data_attributes .= ' data-cycle-center-vert="true"';
