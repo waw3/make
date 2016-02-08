@@ -243,6 +243,7 @@ class TTFMAKE_Gallery_Slider {
 
 			// Data attributes
 			$data_attributes  = ' data-cycle-slides=".cycle-slide"';
+			$data_attributes .= ' data-cycle-load="wait"';
 			$data_attributes .= ' data-cycle-auto-height="calc"';
 			$data_attributes .= ' data-cycle-center-horz="true"';
     		$data_attributes .= ' data-cycle-center-vert="true"';
