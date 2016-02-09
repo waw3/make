@@ -1913,7 +1913,12 @@ class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Cont
  * @since 1.0.0.
  * @deprecated 1.7.0.
  */
-class TTFMAKE_Customize_Image_Control extends WP_Customize_Image_Control {}
+class TTFMAKE_Customize_Image_Control extends WP_Customize_Image_Control {
+	public function __construct( WP_Customize_Manager $manager, $id, $args = array() ) {
+		parent::__construct( $manager, $id, $args );
+		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Image_Control control is deprecated. Use the core WP_Customize_Image_Control instead.', 'make' ) );
+	}
+}
 
 /**
  * Class TTFMAKE_Customize_Misc_Control
