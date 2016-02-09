@@ -359,18 +359,23 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 					<p><strong><?php esc_html_e( 'What is a Make error?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( __( '
-							This site is using the Make theme. A Make error occurs when Make\'s functionality is used
-							incorrectly, often in a child theme or plugin that extends the theme. The messages below
-							help to identify the cause of the errors so they can be fixed.
+							Make errors occurs when Make\'s functionality is used
+							incorrectly or has been deprecated through an update. Often these errors will come from code in a child theme or plugin that extends the theme. The messages below
+							help you to identify the cause of the errors so they can be fixed.
+						', 'make' ) ); ?>
+					</p>
+					<p><strong><?php esc_html_e( 'Is it important to fix these errors?', 'make' ); ?></strong></p>
+					<p>
+						<?php echo $this->sanitize_message( __( '
+							Absolutely! Not fixing these errors may mean that parts of your theme are broken. We don\'t want that.
 						', 'make' ) ); ?>
 					</p>
 					<p><strong><?php esc_html_e( 'How do I fix a Make error?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( __( '
-							Check to see if your child theme or plugin has an update available, as a new version may
-							address the issues. If it is custom, you will need to modify the code to fix the errors.
-							Consult the <a href="https://thethemefoundry.com/make-help/" target="_blank">Make
-							documentation</a> for more information.
+							Be sure to update your child theme or plugin to the latest version as an update may be avaible that
+							patches up the errors. If you can see it\'s an error caused by a theme modification, you\'ll need to edit the code to fix the errors.
+							Check our article about <a href="https://thethemefoundry.com/make-help/" target="_blank">dealing with Make Errors</a> to learn more.
 						', 'make' ) ); ?>
 					</p>
 					<p><strong><?php esc_html_e( 'How can I hide this notification?', 'make' ); ?></strong></p>
