@@ -328,8 +328,25 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	height: 88px;
 	margin: 0;
 }
-#make-socialicons-list ul li:nth-child(even) {
-	border-left: 1px solid #eee;
+#make-socialicons-list ul li {
+	border-right: 1px solid #eee;
+}
+#make-socialicons-list ul li:nth-child(4n+0) {
+	border-right: none;
+}
+@media screen and (min-width: 1160px) {
+	#make-socialicons-list li {
+		width: 25%;
+	}
+	#make-socialicons-list ul li {
+		border-right: 1px solid #eee;
+	}
+	#make-socialicons-list ul li:nth-child(2n+0) {
+		border-right: none;
+	}
+}
+#make-socialicons-list ul li:nth-child(2n+0) {
+	border-right: 1px solid #eee;
 }
 #make-socialicons-list i {
 	display: block;
