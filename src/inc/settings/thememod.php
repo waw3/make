@@ -556,12 +556,14 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 
 		// Items
 		if ( isset( $icon_data['items'] ) && is_array( $icon_data['items'] ) ) {
-			$sanitized_icon_data['items'] = $icon_data['items'];
+			$raw_items = $icon_data['items'];
 		} else {
-			$sanitized_icon_data['items'] = array();
+			$raw_items = array();
 		}
-		foreach ( $sanitized_icon_data['items'] as $key => $item ) {
+		$sanitized_icon_data['items'] = array();
+		foreach ( $raw_items as $key => $item ) {
 			$item = wp_parse_args( (array) $item, array( 'type' => '', 'content' => '' ) );
+			$sanitized_icon_data['items'][ $key ] = array();
 			$sanitized_icon_data['items'][ $key ]['type'] = $type = $this->sanitize_value( $item['type'], 'social-icons-item-type' );
 			$sanitized_icon_data['items'][ $key ]['content'] = $this->sanitize_value( $item['content'], 'social-icons-item-content-' . $type );
 		}
@@ -572,7 +574,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 				$sanitized_icon_data['items'],
 				array(
 					'type'    => 'email',
-					'content' => $this->get_default( 'social-icons-item-email' ),
+					'content' => $this->get_default( 'social-icons-item-content-email' ),
 				)
 			);
 		} else if ( true !== $sanitized_icon_data[ 'email-toggle' ] && $key = array_search( 'email', wp_list_pluck( $sanitized_icon_data['items'], 'type' ) ) ) {
@@ -585,7 +587,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 				$sanitized_icon_data['items'],
 				array(
 					'type'    => 'rss',
-					'content' => $this->get_default( 'social-icons-item-rss' ),
+					'content' => $this->get_default( 'social-icons-item-content-rss' ),
 				)
 			);
 		} else if ( true !== $sanitized_icon_data[ 'rss-toggle' ] && $key = array_search( 'rss', wp_list_pluck( $sanitized_icon_data['items'], 'type' ) ) ) {
