@@ -4,7 +4,7 @@
  */
 
 /**
- * Class MAKE_Modules
+ * Class MAKE_Util_Modules
  *
  * @since x.x.x.
  */
