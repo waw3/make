@@ -360,6 +360,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 }
 #make-socialicons-list-close {
 	display: block;
+	height: 36px;
 	float: right;
 	background: transparent;
 	border: 0;
