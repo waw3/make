@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
+class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -62,7 +62,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 *
 	 * @var array
 	 */
-	private $mode = array();
+	protected $mode = array();
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -88,24 +88,8 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
-		/**
-		 * Filter: Set the mode for compatibility.
-		 *
-		 * - 'full' will load all the files to enable back compatibility with deprecated code.
-		 * - 'current' will not load any deprecated code. Use with caution! Could result in a fatal PHP error.
-		 * - A minor release value, such as '1.5', will load files necessary for back compatibility with version 1.5.x.
-		 *   (Note that there are no separate modes for releases prior to 1.5.)
-		 *
-		 * @since x.x.x.
-		 *
-		 * @param string    $mode    The compatibility mode to run the theme in.
-		 */
-		$mode = apply_filters( 'make_compatibility_mode', 'full' );
-		if ( isset( $this->modes[ $mode ] ) ) {
-			$this->mode = $this->modes[ $mode ];
-		} else {
-			$this->mode = $this->modes['full'];
-		}
+		// Set the compatibility mode.
+		$this->set_mode();
 
 		// Load deprecated function files.
 		// Do this on construct to make sure deprecated functions are defined ASAP.
@@ -152,6 +136,36 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 */
 	public function is_hooked() {
 		return $this->hooked;
+	}
+
+	/**
+	 * Set the mode for compatibility.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return string    $mode    The mode that was set.
+	 */
+	protected function set_mode() {
+		/**
+		 * Filter: Set the mode for compatibility.
+		 *
+		 * - 'full' will load all the files to enable back compatibility with deprecated code.
+		 * - 'current' will not load any deprecated code. Use with caution! Could result in a fatal PHP error.
+		 * - A minor release value, such as '1.5', will load files necessary for back compatibility with version 1.5.x.
+		 *   (Note that there are no separate modes for releases prior to 1.5.)
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string    $mode    The compatibility mode to run the theme in.
+		 */
+		$mode = apply_filters( 'make_compatibility_mode', 'full' );
+
+		if ( ! isset( $this->modes[ $mode ] ) ) {
+			$mode = 'full';
+		}
+
+		$this->mode = $this->modes[ $mode ];
+		return $mode;
 	}
 
 	/**
