@@ -319,8 +319,8 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 #make-socialicons-list li {
 	display: block;
 	float: left;
-	font-size: 16px;
-	line-height: 1.3;
+	font-size: 17px;
+	line-height: 2;
 	padding: 24px;
 	box-sizing: border-box;
 	border: 1px solid #eee;
@@ -331,8 +331,11 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 #make-socialicons-list i {
 	display: block;
 	float: left;
-	margin-right: 5px;
-	font-size: 42px;
+	margin-right: 6px;
+	font-size: 34px;
+	line-height: 1;
+}
+#make-socialicons-list .make-socialicons-list-item-title {
 	line-height: 1;
 }
 #make-socialicons-list-close {

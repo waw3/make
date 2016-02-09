@@ -134,7 +134,11 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	}
 
 	/**
+	 * Define the list sub-template for the control.
 	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
 	 */
 	protected function list_template() {
 		?>
@@ -148,8 +152,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				<# var classes = data[pattern].class.join(' '); #>
 				<li>
 					<i class="{{ classes }}"></i>
-					<?php esc_html_e( 'Name:', 'make' ); ?> {{ data[pattern].title }}<br />
-					<?php esc_html_e( 'Pattern:', 'make' ); ?> <code>{{ pattern }}</code>
+					<span class="make-socialicons-list-item-title">{{ data[pattern].title }}</span>
 				</li>
 			<# } #>
 			</ul>
