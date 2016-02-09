@@ -214,6 +214,25 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				overflow-y: scroll;
 				color: black;
 			}
+			#wpadminbar .notice-warning {
+				padding: 10px 20px;
+				color: #444;
+				border-left: 4px solid #ffb900;
+				background-color: #fff8e5;
+			}
+			#wpadminbar .notice-warning p,
+			#wpadminbar .notice-warning a {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 13px !important;
+				font-weight: 600 !important;
+			}
+			#wpadminbar .notice-warning p strong {
+				display: block;;
+				font-size: 18px;
+				font-weight: 600;
+				line-height: 18px;
+				padding: 9px 0;
+			}
 			#wpadminbar .make-error-detail h2 {
 				font: bold 18px/36px "Open Sans",sans-serif;
 				color: #444;
@@ -356,6 +375,9 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 					<h2><?php echo esc_html( $this->get_errors_title() ); ?></h2>
 				</div>
 				<div class="make-error-detail-body">
+					<div class="notice notice-warning notice-alt notice-large">
+
+
 					<p><strong><?php esc_html_e( 'What is a Make error?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( __( '
@@ -378,18 +400,18 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 							Check our article about <a href="https://thethemefoundry.com/make-help/" target="_blank">dealing with Make Errors</a> to learn more.
 						', 'make' ) ); ?>
 					</p>
-					<p><strong><?php esc_html_e( 'How can I hide this notification?', 'make' ); ?></strong></p>
+					<p><strong><?php esc_html_e( 'How can I hide this notification in the Admin Bar?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( sprintf( __( '
 							This notification is only visible to users who are logged in and have the capability to
 							install themes. To hide it, set <code>WP_DEBUG</code> to <code>false</code>, or add this
-							code to your <strong>functions.php</strong> file: %s
+							code to your functions.php file: %s
 						', 'make' ), '
 							<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>
 						' ) ); ?>
 					</p>
+					</div>
 					<?php foreach ( $this->errors()->get_error_codes() as $code ) : ?>
-						<hr />
 						<h3><?php printf( esc_html__( 'Error code: %s', 'make' ), esc_html( $code ) ); ?></h3>
 						<p>
 							<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
@@ -400,6 +422,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 								<?php echo $this->sanitize_message( $message ); ?><br />
 							<?php endforeach; ?>
 						</p>
+						<hr />
 					<?php endforeach; ?>
 				</div>
 			</div>
