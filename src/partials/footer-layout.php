@@ -4,8 +4,8 @@
  */
 
 // Footer Options
-$footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'footer-layout' ) );
-$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
+$footer_layout = make_get_thememod_value( 'footer-layout' );
+$sidebar_count = make_get_thememod_value( 'footer-widget-areas' );
 
 // Test for enabled sidebars that contain widgets
 $has_active_sidebar = false;

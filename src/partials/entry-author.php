@@ -3,8 +3,8 @@
  * @package Make
  */
 
-$author_key    = 'layout-' . ttfmake_get_view() . '-post-author';
-$author_option = ttfmake_sanitize_choice( get_theme_mod( $author_key, ttfmake_get_default( $author_key ) ), $author_key );
+$author_key    = 'layout-' . make_get_current_view() . '-post-author';
+$author_option = make_get_thememod_value( $author_key );
 ?>
 
 <?php if ( 'none' !== $author_option ) : ?>

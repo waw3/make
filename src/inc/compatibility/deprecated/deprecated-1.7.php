@@ -216,6 +216,7 @@ if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
  * Allow only certain tags and attributes in a string.
  *
  * @since  1.0.0.
+ * @deprecated 1.7.0.
  *
  * @param  string    $string    The unsanitized string.
  * @return string               The sanitized string.

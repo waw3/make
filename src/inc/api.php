@@ -180,7 +180,7 @@ function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterfa
  *
  * @return mixed
  */
-function make_get_thememod_value( $setting_id, $context = '' ) {
+function make_get_thememod_value( $setting_id, $context = 'template' ) {
 	return Make()->thememod()->get_value( $setting_id, $context );
 }
 

@@ -13,9 +13,9 @@
 $footer_credit = apply_filters( 'make_show_footer_credit', true );
 ?>
 
-<?php if ( make_get_thememod_value( 'footer-text', 'template' ) || is_customize_preview() ) : ?>
+<?php if ( make_get_thememod_value( 'footer-text' ) || is_customize_preview() ) : ?>
 <div class="footer-text">
-	<?php echo make_get_thememod_value( 'footer-text', 'template' ); ?>
+	<?php echo make_get_thememod_value( 'footer-text' ); ?>
 </div>
 <?php endif; ?>
 
