@@ -415,6 +415,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	private function sanitize_message( $message ) {
 		$allowedtags = wp_kses_allowed_html();
 		$allowedtags['a']['target'] = true;
+		$allowedtags['br'] = true;
 		return wp_kses( $message, $allowedtags );
 	}
 }
