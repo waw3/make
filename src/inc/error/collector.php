@@ -144,6 +144,22 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	private function render_adminbar_css() {
 		?>
 		<style type="text/css">
+			#wpadminbar .make-error-detail-head {
+				background: #fcfcfc;
+				border-bottom: 1px solid #dfdfdf;
+				padding: 0;
+				min-height: 36px
+			}
+			#wpadminbar .make-error-detail-body {
+				padding: 16px;
+			}
+			#wpadminbar .make-error-detail-body a {
+				color: #0073aa;
+				text-decoration: underline;
+			}
+			#wpadminbar .make-error-detail-body a:hover {
+				color: #00a0d2;
+			}
 			#wpadminbar #wp-admin-bar-make-errors {
 				display: list-item;
 				background-color: red;
@@ -177,7 +193,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				color: #fff;
 				z-index: 1000;
 			}
-			#wpadminbar .make-error-detail__close .ab-icon {
+			#wpadminbar .make-error-detail__ .ab-icon {
 				margin: 0;
 				padding: 0;
 				color: #fff;
@@ -192,7 +208,6 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				max-width: 1200px;
 				max-height: 90%;
 				margin: 24px;
-				padding: 24px;
 				background: #ffffff;
 				box-sizing: border-box;
 				overflow-x: auto;
@@ -200,8 +215,10 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				color: black;
 			}
 			#wpadminbar .make-error-detail h2 {
-				font: bold 24px/32px "Open Sans",sans-serif;
-				margin-bottom: 1.4em;
+				font: bold 18px/36px "Open Sans",sans-serif;
+				color: #444;
+				margin: 0;
+				padding: 0 36px 0 16px
 			}
 			#wpadminbar .make-error-detail h3 {
 				font: bold 20px/32px "Open Sans",sans-serif;
@@ -335,47 +352,51 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 		?>
 		<div id="make-error-detail-container">
 			<div class="make-error-detail">
-				<h2><?php echo esc_html( $this->get_errors_title() ); ?></h2>
-				<p><strong><?php esc_html_e( 'What is a &ldquo;Make error&rdquo;?', 'make' ); ?></strong></p>
-				<p>
-					<?php echo $this->sanitize_message( __( '
-						This site is using the Make theme. A Make error occurs when Make\'s functionality is used
-						incorrectly, often in a child theme or plugin that extends the theme. The messages below
-						help to identify the cause of the errors so they can be fixed.
-					', 'make' ) ); ?>
-				</p>
-				<p><strong><?php esc_html_e( 'How do I fix a Make error?', 'make' ); ?></strong></p>
-				<p>
-					<?php echo $this->sanitize_message( __( '
-						Check to see if your child theme or plugin has an update available, as a new version may
-						address the issues. If it is custom, you will need to modify the code to fix the errors.
-						Consult the <a href="https://thethemefoundry.com/make-help/" target="_blank">Make
-						documentation</a> for more information.
-					', 'make' ) ); ?>
-				</p>
-				<p><strong><?php esc_html_e( 'How can I hide this notification?', 'make' ); ?></strong></p>
-				<p>
-					<?php echo $this->sanitize_message( sprintf( __( '
-						This notification is only visible to users who are logged in and have the capability to
-						install themes. To hide it, set <code>WP_DEBUG</code> to <code>false</code>, or add this
-						code to your <strong>functions.php</strong> file: %s
-					', 'make' ), '
-						<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>
-					' ) ); ?>
-				</p>
-				<?php foreach ( $this->errors()->get_error_codes() as $code ) : ?>
-					<hr />
-					<h3><?php printf( esc_html__( 'Error code: %s', 'make' ), esc_html( $code ) ); ?></h3>
+				<div class="make-error-detail-head">
+					<h2><?php echo esc_html( $this->get_errors_title() ); ?></h2>
+				</div>
+				<div class="make-error-detail-body">
+					<p><strong><?php esc_html_e( 'What is a Make error?', 'make' ); ?></strong></p>
 					<p>
-						<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
-							if ( is_array( $message ) ) :
-								$message = $this->parse_backtrace( $message );
-							endif;
-							?>
-							<?php echo $this->sanitize_message( $message ); ?><br />
-						<?php endforeach; ?>
+						<?php echo $this->sanitize_message( __( '
+							This site is using the Make theme. A Make error occurs when Make\'s functionality is used
+							incorrectly, often in a child theme or plugin that extends the theme. The messages below
+							help to identify the cause of the errors so they can be fixed.
+						', 'make' ) ); ?>
 					</p>
-				<?php endforeach; ?>
+					<p><strong><?php esc_html_e( 'How do I fix a Make error?', 'make' ); ?></strong></p>
+					<p>
+						<?php echo $this->sanitize_message( __( '
+							Check to see if your child theme or plugin has an update available, as a new version may
+							address the issues. If it is custom, you will need to modify the code to fix the errors.
+							Consult the <a href="https://thethemefoundry.com/make-help/" target="_blank">Make
+							documentation</a> for more information.
+						', 'make' ) ); ?>
+					</p>
+					<p><strong><?php esc_html_e( 'How can I hide this notification?', 'make' ); ?></strong></p>
+					<p>
+						<?php echo $this->sanitize_message( sprintf( __( '
+							This notification is only visible to users who are logged in and have the capability to
+							install themes. To hide it, set <code>WP_DEBUG</code> to <code>false</code>, or add this
+							code to your <strong>functions.php</strong> file: %s
+						', 'make' ), '
+							<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>
+						' ) ); ?>
+					</p>
+					<?php foreach ( $this->errors()->get_error_codes() as $code ) : ?>
+						<hr />
+						<h3><?php printf( esc_html__( 'Error code: %s', 'make' ), esc_html( $code ) ); ?></h3>
+						<p>
+							<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
+								if ( is_array( $message ) ) :
+									$message = $this->parse_backtrace( $message );
+								endif;
+								?>
+								<?php echo $this->sanitize_message( $message ); ?><br />
+							<?php endforeach; ?>
+						</p>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	<?php
@@ -393,7 +414,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	private function get_errors_title() {
 		// Get the error message count.
 		$error_count = count( $this->errors()->get_error_messages() );
-		return sprintf( _n( '%s Make error', '%s Make errors', $error_count, 'make' ), number_format_i18n( $error_count ) );
+		return sprintf( _n( '%s Make Error', '%s Make Errors', $error_count, 'make' ), number_format_i18n( $error_count ) );
 	}
 
 	/**
@@ -417,7 +438,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 			'meta'   => array(
 				'html' => '
 					<div id="make-error-detail-wrapper" class="make-error-detail-wrapper">
-						<a id="make-error-detail-close" class="make-error-detail__close" href="#"><span class="ab-icon"></span></span>' . esc_html__( 'Close', 'make' ) . '</a>
+						<a id="make-error-detail-close" class="make-error-detail__close" href="#"><span class="ab-icon"></span></a>
 					</div>
 				',
 			),
