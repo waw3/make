@@ -135,30 +135,13 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	}
 
 	/**
-	 * Render the error messages within a container, include help text.
+	 * Render the CSS for the Make Errors button in the Admin Bar.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return void
 	 */
-	public function render_errors() {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'admin_footer', 'wp_footer' ) ) ) {
-			return;
-		}
-
-		// Bail if there aren't any errors, or if showing them has been disabled.
-		if ( ! $this->has_errors() || false === $this->show_errors ) {
-			?>
-			<style type="text/css">
-				#wpadminbar #wp-admin-bar-make-errors {
-					display: none;
-				}
-			</style>
-		<?php
-			return;
-		}
-
+	private function render_adminbar_css() {
 		?>
 		<style type="text/css">
 			#wpadminbar #wp-admin-bar-make-errors {
@@ -270,7 +253,86 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				}
 			}
 		</style>
+	<?php
+	}
 
+	/**
+	 * Render the CSS for the Make Errors button in the Admin Bar when there are no errors to display.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	private function render_adminbar_css_no_errors() {
+		?>
+		<style type="text/css">
+			#wpadminbar #wp-admin-bar-make-errors {
+				display: none;
+			}
+		</style>
+	<?php
+	}
+
+	/**
+	 * Render the JavaScript for handling the Make Errors button in the Admin Bar.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	private function render_adminbar_js() {
+		?>
+		<script type="application/javascript">
+			if ('undefined' !== typeof jQuery) {
+				(function($) {
+					$(document).ready(function() {
+						var $container   = $('#wp-admin-bar-make-errors'),
+							$barbutton   = $container.find('> .ab-item'),
+							$closebutton = $('#make-error-detail-close'),
+							$overlay     = $('#make-error-detail-wrapper'),
+							$content     = $('#make-error-detail-container');
+
+						$barbutton.html('<span class="ab-icon"></span><span class="ab-label"><?php echo $this->get_errors_title(); ?></span>');
+						$overlay.append($content.html());
+
+						$barbutton.on('click', function(evt) {
+							evt.preventDefault();
+							$overlay.addClass('make-error-detail-wrapper--active');
+						});
+
+						$closebutton.on('click', function(evt) {
+							evt.preventDefault();
+							$overlay.removeClass('make-error-detail-wrapper--active');
+						});
+					});
+				})(jQuery);
+			}
+		</script>
+	<?php
+	}
+
+	/**
+	 * Render the error messages within a container, include help text.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function render_errors() {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_action(), array( 'admin_footer', 'wp_footer' ) ) ) {
+			return;
+		}
+
+		// Bail if there aren't any errors, or if showing them has been disabled.
+		if ( ! $this->has_errors() || false === $this->show_errors ) {
+			$this->render_adminbar_css_no_errors();
+			return;
+		}
+
+		// CSS
+		$this->render_adminbar_css();
+		?>
 		<div id="make-error-detail-container">
 			<div class="make-error-detail">
 				<h2><?php echo esc_html( $this->get_errors_title() ); ?></h2>
@@ -316,34 +378,9 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				<?php endforeach; ?>
 			</div>
 		</div>
-
-		<script type="application/javascript">
-			if ('undefined' !== typeof jQuery) {
-				(function($) {
-					$(document).ready(function() {
-						var $container   = $('#wp-admin-bar-make-errors'),
-							$barbutton   = $container.find('> .ab-item'),
-							$closebutton = $('#make-error-detail-close'),
-							$overlay     = $('#make-error-detail-wrapper'),
-							$content     = $('#make-error-detail-container');
-
-						$barbutton.html('<span class="ab-icon"></span><span class="ab-label"><?php echo $this->get_errors_title(); ?></span>');
-						$overlay.append($content.html());
-
-						$barbutton.on('click', function(evt) {
-							evt.preventDefault();
-							$overlay.addClass('make-error-detail-wrapper--active');
-						});
-
-						$closebutton.on('click', function(evt) {
-							evt.preventDefault();
-							$overlay.removeClass('make-error-detail-wrapper--active');
-						});
-					});
-				})(jQuery);
-			}
-		</script>
 	<?php
+		// JavaScript
+		$this->render_adminbar_js();
 	}
 
 	/**
