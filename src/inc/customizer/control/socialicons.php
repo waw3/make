@@ -75,7 +75,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 				<# }) #>
 			</div>
 			<div class="make-socialicons-buttons">
-				<a id="list-icons_{{ data.id }}" href="#"><?php esc_html_e( 'Available icons', 'make' ); ?></a>
+				<a id="list-icons_{{ data.id }}" href="#"><?php esc_html_e( 'See Available Icons', 'make' ); ?></a>
 				<button id="add-icon_{{ data.id }}" class="button-secondary"><?php esc_html_e( 'Add Icon', 'make' ); ?></button>
 			</div>
 			<div class="make-socialicons-options">
