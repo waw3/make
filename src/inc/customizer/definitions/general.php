@@ -141,7 +141,7 @@ $this->add_section_definitions( 'social', array(
 			'setting' => true,
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_SocialIcons',
-				'description' => __( 'Add icons linking to each of your social profiles. Drag and drop to rearrange.', 'make' )
+				'description' => __( 'Add a link to each of your social profiles and we&#8217;ll add the icon to match — it&#8217;s that simple. Drag and drop to rearrange.', 'make' )
 			),
 		),
 	),
