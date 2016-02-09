@@ -143,7 +143,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	protected function list_template() {
 		?>
 		<div id="make-socialicons-list-wrapper">
-			<ul id="make-socialicons-list">
+			<div id="make-socialicons-list">
 				<div class="make-socialicons-overlay-window-head-wrapper">
 					<div class="make-socialicons-overlay-window-head">Available Social Icons
 					<button id="make-socialicons-list-close">
@@ -152,14 +152,16 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 					</button>
 					</div>
 				</div>
-			<# for (pattern in data) { #>
-				<# var classes = data[pattern].class.join(' '); #>
-				<li>
-					<i class="{{ classes }}"></i>
-					<span class="make-socialicons-list-item-title">{{ data[pattern].title }}</span>
-				</li>
-			<# } #>
-			</ul>
+				<ul>
+				<# for (pattern in data) { #>
+					<# var classes = data[pattern].class.join(' '); #>
+					<li>
+						<i class="{{ classes }}"></i>
+						<span class="make-socialicons-list-item-title">{{ data[pattern].title }}</span>
+					</li>
+				<# } #>
+				</ul>
+			</div>
 		</div>
 	<?php
 	}

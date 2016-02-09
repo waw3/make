@@ -328,7 +328,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	height: 88px;
 	margin: 0;
 }
-#make-socialicons-list li:nth-child(odd) {
+#make-socialicons-list ul li:nth-child(even) {
 	border-left: 1px solid #eee;
 }
 #make-socialicons-list i {
