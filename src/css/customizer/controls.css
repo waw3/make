@@ -227,14 +227,14 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	float: left;
 	height: 30px;
 	width: 30px;
-	margin-left: 4px;
-	margin-right: 4px;
+	margin-left: 6px;
+	margin-right: 3px;
 	font-size: 24px;
 	line-height: 1;
 	text-align: center;
 }
 .make-socialicons-item-handle i {
-	font-size: 22px;
+	font-size: 20px;
 	color: #a0a5aa;
 	vertical-align: middle;
 }
@@ -319,14 +319,17 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 #make-socialicons-list li {
 	display: block;
 	float: left;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 2;
 	padding: 24px;
 	box-sizing: border-box;
-	border: 1px solid #eee;
-	width: 380px;
+	border-bottom: 1px solid #eee;
+	width: 50%;
 	height: 88px;
-	margin: 5px;
+	margin: 0;
+}
+#make-socialicons-list li:nth-child(odd) {
+	border-left: 1px solid #eee;
 }
 #make-socialicons-list i {
 	display: block;
@@ -340,9 +343,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 }
 #make-socialicons-list-close {
 	display: block;
-	position: absolute;
-	top: 24px;
-	right: 24px;
+	float: right;
 	background: transparent;
 	border: 0;
 	cursor: pointer;
@@ -355,7 +356,19 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	vertical-align: middle;
 }
 #make-socialicons-list-close:hover:after {
-	color: red;
+	color: #00a0d2;
+}
+.make-socialicons-overlay-window-head-wrapper {
+	background: #fcfcfc;
+	border-bottom: 1px solid #dfdfdf;
+	height: 36px;
+}
+.make-socialicons-overlay-window-head {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 36px;
+	padding: 0 0 0 16px;
+	color: #444;
 }
 
 /* jQuery UI theme tweaks */
