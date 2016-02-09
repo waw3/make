@@ -385,7 +385,7 @@
 			// Close button for icons list
 			$container.on('click', '#make-socialicons-list-close', function(evt) {
 				evt.preventDefault();
-				$(this).parent().remove();
+				$(this).parents('#make-socialicons-list-wrapper').remove();
 			});
 		},
 
