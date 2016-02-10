@@ -183,22 +183,35 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 			#wpadminbar .make-error-detail-wrapper--active {
 				display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;
 			}
+			#make-error-detail-close {
+				border: 0;
+				top: 0;
+				right: 0;
+				width: 36px;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+				cursor: pointer;
+			}
 			#wpadminbar .make-error-detail__close {
 				display: block;
 				float: right;
 				margin: 0;
 				font: 17px/17px "Open Sans",sans-serif;
-				color: black;
 				background: #fff;
 				z-index: 1000;
 			}
 			#wpadminbar .make-error-detail__close .ab-icon {
 				margin: 0;
 				padding: 0;
-				color: black;
+				width: 100%;
 			}
 			#wpadminbar .make-error-detail__close .ab-icon:before {
 				content: "\f158";
+				color: #666 !important;
+			}
+			#wpadminbar .make-error-detail__close:hover .ab-icon:before {
+				color: #00a0d2 !important;
 			}
 			#wpadminbar .make-error-detail {
 				-webkit-align-self: center;-ms-flex-item-align: center;align-self: center;
@@ -213,19 +226,19 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				overflow-y: scroll;
 				color: black;
 			}
-			#wpadminbar .notice-warning {
+			#wpadminbar .callout-warning {
 				padding: 10px 20px;
 				color: #444;
 				border-left: 4px solid #ffb900;
 				background-color: #fff8e5;
 			}
-			#wpadminbar .notice-warning p,
-			#wpadminbar .notice-warning a {
+			#wpadminbar .callout-warning p,
+			#wpadminbar .callout-warning a {
 				font-family: 'Open Sans', sans-serif;
 				font-size: 13px !important;
 				font-weight: 600 !important;
 			}
-			#wpadminbar .notice-warning p strong {
+			#wpadminbar .callout-warning p strong {
 				display: block;;
 				font-size: 18px;
 				font-weight: 600;
@@ -233,6 +246,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				padding: 9px 0;
 			}
 			#wpadminbar .make-error-detail h2 {
+				float: left;
 				font: bold 18px/36px "Open Sans",sans-serif;
 				color: #444;
 				margin: 0;
@@ -276,7 +290,6 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				#wpadminbar .quicklinks .make-error-detail__close {
 					-webkit-align-self: center;-ms-flex-item-align: center;align-self: center;
 					position: static;
-					margin: 12px;
 				}
 				#wpadminbar .make-error-detail {
 					margin: 0 24px;
@@ -370,14 +383,14 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 		<div id="make-error-detail-container">
 			<div class="make-error-detail">
 				<div class="make-error-detail-head">
+					<h2><?php echo esc_html( $this->get_errors_title() ); ?></h2>
 					<button id="make-error-detail-close" class="make-error-detail__close" href="#">
 						<span class="ab-icon"></span>
 						<span class="screen-reader-text"><?php esc_html_e( 'Close', 'make' ); ?></span>
 					</button>
-					<h2><?php echo esc_html( $this->get_errors_title() ); ?></h2>
 				</div>
 				<div class="make-error-detail-body">
-					<div class="notice notice-warning notice-alt notice-large">
+					<div class="callout-warning">
 						<p><strong><?php esc_html_e( 'What is a Make error?', 'make' ); ?></strong></p>
 						<p>
 							<?php echo $this->sanitize_message( __( '
