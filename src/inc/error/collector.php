@@ -298,6 +298,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 			@media screen and (max-width: 782px) {
 				#wpadminbar .quicklinks .make-error-detail__close {
 					font: 36px/1 "Open Sans",sans-serif;
+					margin-right: 16px;
 				}
 			}
 		</style>
