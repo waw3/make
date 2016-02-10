@@ -146,7 +146,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 			<div id="make-socialicons-list">
 				<div class="make-socialicons-overlay-window-head-wrapper">
 					<div class="make-socialicons-overlay-window-head">
-						Available Social Icons
+						<?php esc_html_e( 'Available Social Icons', 'make' ); ?>
 						<button id="make-socialicons-list-close">
 							<span class="screen-reader-text"><?php esc_html_e( 'Close', 'make' ); ?></span>
 							<span class="make-socialicons-list-close-icon"></span>
