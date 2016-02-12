@@ -120,13 +120,12 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 				}
 				// Module is a name string. Create an instance.
 				else {
-					$reflection = new ReflectionClass( $modules[ $dependency_name ] );
 					$class_parents = class_parents( $modules[ $dependency_name ] );
 
 					if ( $class_parents && in_array( 'MAKE_Util_Modules', $class_parents ) ) {
-						$module_instance = $reflection->newInstanceArgs( array( $api ) );
+						$module_instance = $this->create_instance( $modules[ $dependency_name ], array( $api ) );
 					} else {
-						$module_instance = $reflection->newInstance();
+						$module_instance = $this->create_instance( $modules[ $dependency_name ] );
 					}
 				}
 
@@ -150,6 +149,25 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 				),
 				E_USER_ERROR
 			);
+		}
+	}
+
+	/**
+	 * Create a new instance of a class, given the class's name as a string, in a way that is compatible with PHP 5.2.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $class_name       The name of the class to create.
+	 * @param array  $instance_args    The class's __construct parameters, as an array.
+	 *
+	 * @return object
+	 */
+	protected function create_instance( $class_name, $instance_args = array() ) {
+		$reflection = new ReflectionClass( $class_name );
+		if ( ! empty( $instance_args ) ) {
+			return $reflection->newInstanceArgs( $instance_args );
+		} else {
+			return $reflection->newInstance();
 		}
 	}
 
