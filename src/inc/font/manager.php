@@ -224,7 +224,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		foreach ( $this->get_sorted_font_sources() as $source_id => $source ) {
 			$source_choices = $source->get_font_choices();
 
-			if ( true === $headings ) {
+			if ( ! empty( $source_choices ) && true === $headings ) {
 				$label = $source->get_label();
 				$source_choices = array_merge( array( $heading_prefix . $source_id => $label ), $source_choices );
 			}
