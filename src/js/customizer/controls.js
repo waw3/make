@@ -27,7 +27,7 @@
 				self.getFontElements();
 
 				$.each(self.fontElements, function(settingId, $element) {
-					$element.on('chosen:showing_dropdown', self.sendFontRequest);
+					$element.on('chosen:showing_dropdown', self.updateElement);
 
 					$element.chosen({
 						no_results_text: self.l10n.chosen_no_results_fonts,
@@ -54,15 +54,21 @@
 			});
 		},
 
+		updateElement: function() {
+			var self = Make;
+
+			$(this)
+				.html('<option>' + self.l10n.chosen_loading + '</option>')
+				.trigger('chosen:updated');
+
+			self.sendFontRequest();
+		},
+
 		sendFontRequest: function() {
 			var self = Make,
 				data = {
 					action: 'make-font-choices'
 				};
-
-			$(this)
-				.html('<option>' + self.l10n.chosen_loading + '</option>')
-				.trigger('chosen:updated');
 
 			$.post(self.ajaxurl, data, function(response) {
 				if (response) {
@@ -81,7 +87,7 @@
 					var v = setting();
 					$element
 						.val(v)
-						.off('chosen:showing_dropdown', self.sendFontRequest)
+						.off('chosen:showing_dropdown', self.updateElement)
 						.trigger('chosen:updated');
 				});
 			});
