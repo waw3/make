@@ -152,7 +152,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			'chosen',
 			$this->get_css_directory_uri() . '/libs/chosen/chosen.css',
 			array(),
-			'1.4.2'
+			'1.5.0'
 		);
 
 		// Editor styles
