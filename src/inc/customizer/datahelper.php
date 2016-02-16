@@ -18,7 +18,17 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 	);
 
-
+	/**
+	 * Generate a set of typography control definitions for a given element.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $element
+	 * @param string $label
+	 * @param string $description
+	 *
+	 * @return array
+	 */
 	public function get_typography_group_definitions( $element, $label, $description = '' ) {
 		// Check for deprecated filter
 		foreach ( array( 'make_customizer_typography_group_definitions' ) as $filter ) {
