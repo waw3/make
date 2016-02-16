@@ -44,9 +44,11 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		// Preview pane scripts
 		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_scripts' ) );
 
-		//
-		add_action( 'make_style_before_load', array( $this, 'preview_thememods' ) );
-		add_action( 'wp_ajax_make-google-json', array( $this, 'preview_thememods' ), 1 );
+		// Preview theme mod values
+		if ( is_admin() || is_customize_preview() ) {
+			add_action( 'make_style_before_load', array( $this, 'preview_thememods' ) );
+			add_action( 'wp_ajax_make-google-json', array( $this, 'preview_thememods' ), 1 );
+		}
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -63,8 +65,16 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		return $this->hooked;
 	}
 
-
-	public function setting_mods( $wp_customize ) {
+	/**
+	 * Modifications to core/existing settings.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
+	 */
+	public function setting_mods( WP_Customize_Manager $wp_customize ) {
 		// Only run this in the proper hook context.
 		if ( 'customize_register' !== current_action() ) {
 			return;
@@ -75,7 +85,13 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 	}
 
-
+	/**
+	 * Enqueue scripts for the Customizer preview pane.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
 	public function enqueue_preview_scripts() {
 		// Only run this in the proper hook context.
 		if ( 'customize_preview_init' !== current_action() ) {
@@ -104,14 +120,19 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		);
 	}
 
-
+	/**
+	 * Wrapper function for substituting preview values in theme mod settings.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
 	public function preview_thememods() {
 		// Only run this in the proper hook context.
 		if ( ! in_array( current_action(), array( 'make_style_before_load', 'wp_ajax_make-google-json' ) ) ) {
 			return;
 		}
 
-		//
 		if ( ! isset( $_POST['make-preview'] ) ) {
 			return;
 		}
@@ -123,14 +144,21 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		}
 	}
 
-
+	/**
+	 * Return a preview value for a particular theme mod setting.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $value
+	 *
+	 * @return mixed
+	 */
 	public function preview_thememod_value( $value ) {
 		// Only run this in the proper hook context.
 		if ( 0 !== strpos( current_filter(), 'theme_mod_' ) ) {
 			return $value;
 		}
 
-		//
 		if ( ! isset( $_POST['make-preview'] ) ) {
 			return $value;
 		}

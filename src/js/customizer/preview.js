@@ -2,6 +2,8 @@
  * @package Make
  */
 
+/* global jQuery, wp, MakePreview */
+
 (function($, wp, MakePreview) {
 	var api = wp.customize,
 		Make;
