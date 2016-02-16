@@ -91,46 +91,89 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		return $this->loaded;
 	}
 
+	/**
+	 * Add a font source as a special type of module.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string                         $source_id
+	 * @param MAKE_Font_Source_BaseInterface $source
+	 *
+	 * @return bool
+	 */
+	public function add_source( $source_id, $source ) {
+		if ( ! $source instanceof MAKE_Font_Source_BaseInterface ) {
+			$this->error()->add_error( 'make_font_source_not_valid', sprintf( __( '"%s" can\'t be added because it isn\'t a valid font source.', 'make' ), $source_id ) );
+			return false;
+		}
 
-	public function add_source( $source_id, MAKE_Font_Source_BaseInterface $source ) {
-		return parent::add_module( $source_id, $source );
+		$module_name = 'source_' . $source_id;
+		return parent::add_module( $module_name, $source );
 	}
 
-
+	/**
+	 * Get a font source module.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $source_id
+	 *
+	 * @return mixed|null
+	 */
 	public function get_source( $source_id ) {
-		if ( ! $this->is_loaded() ) {
-			$this->load();
+		if ( $this->has_source( $source_id ) ) {
+			$module_name = 'source_' . $source_id;
+			return parent::get_module( $module_name );
 		}
 
-		if ( ! parent::get_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface ) {
-			$this->error()->add_error( 'make_font_source_not_valid', sprintf( __( '"%s" can\'t be retrieved because it isn\'t a valid font source.', 'make' ), $source_id ) );
-			return null;
-		}
-
-		return parent::get_module( $source_id );
+		return null;
 	}
 
-
+	/**
+	 * Check if a particular font source exists, based on its ID.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $source_id
+	 *
+	 * @return bool
+	 */
 	public function has_source( $source_id ) {
 		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
 
-		return parent::has_module( $source_id ) && parent::inject_module( $source_id ) instanceof MAKE_Font_Source_BaseInterface;
+		$module_name = 'source_' . $source_id;
+		return parent::has_module( $module_name ) && parent::inject_module( $module_name ) instanceof MAKE_Font_Source_BaseInterface;
 	}
 
-
+	/**
+	 * Remove a font source module, if it exists.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $source_id
+	 *
+	 * @return bool
+	 */
 	public function remove_source( $source_id ) {
 		if ( ! $this->has_source( $source_id ) ) {
 			$this->error()->add_error( 'make_font_source_not_valid', sprintf( __( 'The "%s" font source can\'t be removed because it doesn\'t exist.', 'make' ), $source_id ) );
 			return false;
 		}
 
-		unset( $this->modules[ $source_id ] );
+		$module_name = 'source_' . $source_id;
+		unset( $this->modules[ $module_name ] );
 		return true;
 	}
 
-
+	/**
+	 * Return an array of font source objects, sorted by their priority property.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
 	private function get_sorted_font_sources() {
 		if ( ! $this->is_loaded() ) {
 			$this->load();
@@ -162,7 +205,77 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		return $sorted_sources;
 	}
 
+	/**
+	 * Get the source of a particular font, if it exists.
+	 *
+	 * Returns the source object, or just the source's ID.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $font
+	 * @param string $return
+	 *
+	 * @return MAKE_Font_Source_BaseInterface|string|null
+	 */
+	public function get_font_source( $font, $return = 'object' ) {
+		foreach ( $this->get_sorted_font_sources() as $source ) {
+			if ( $source->has_font( $font ) ) {
+				return ( 'id' === $return ) ? $source->get_id() : $source;
+			}
+		}
 
+		return null;
+	}
+
+	/**
+	 * Get the data for a particular font, if it exists.
+	 *
+	 * Increase the efficiency of this method by specifying the font's source.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $font
+	 * @param string $source_id
+	 *
+	 * @return array
+	 */
+	public function get_font_data( $font, $source_id = null ) {
+		$font_data = array();
+
+		// Look for the font in a particular source.
+		if ( ! is_null( $source_id ) && $this->has_source( $source_id ) ) {
+			$font_data = $this->get_source( $source_id )->get_font_data( $font );
+			if ( ! empty( $font_data ) ) {
+				$font_data['source'] = $this->get_source( $source_id )->get_id();
+			}
+		}
+		// Search all sources for the stack.
+		else {
+			$source = $this->get_font_source( $font );
+			if ( ! is_null( $source ) ) {
+				$font_data = $source->get_font_data( $font );
+				if ( ! empty( $font_data ) ) {
+					$font_data['source'] = $source->get_id();
+				}
+			}
+		}
+
+		return $font_data;
+	}
+
+	/**
+	 * Get the CSS font stack for a particular font, if it exists. If not, fall back on a default stack.
+	 *
+	 * Increase the efficiency of this method by specifying the font's source.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $font
+	 * @param string $default
+	 * @param string $source_id
+	 *
+	 * @return mixed|string|void
+	 */
 	public function get_font_stack( $font, $default = 'sans-serif', $source_id = null ) {
 		$stack = '';
 
@@ -172,38 +285,36 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		}
 		// Search all sources for the stack.
 		else {
-			foreach ( $this->get_sorted_font_sources() as $source ) {
-				if ( $source->has_font( $font ) ) {
-					$stack = $source->get_font_stack( $font, $default );
-					break;
-				}
+			$source = $this->get_font_source( $font );
+			if ( ! is_null( $source ) ) {
+				$stack = $source->get_font_stack( $font, $default );
+				$source_id = $source->get_id();
 			}
 		}
 
-		// Check for deprecated filter
-		if ( has_filter( 'make_font_stack' ) ) {
-			$this->compatibility()->deprecated_hook(
-				'make_font_stack',
-				'1.7.0',
-				__( 'To add or modify fonts, use a hook for a specific font source instead, such as make_font_data_generic.', 'make' )
-			);
-
-			/**
-			 * Allow developers to filter the full font stack.
-			 *
-			 * @since 1.2.3.
-			 * @deprecated 1.7.0.
-			 *
-			 * @param string    $stack    The font stack.
-			 * @param string    $font     The font.
-			 */
-			$stack = apply_filters( 'make_font_stack', $stack, $font );
-		}
-
-		return $stack;
+		/**
+		 * Allow developers to filter the full font stack.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $stack    The font stack.
+		 * @param string    $font     The font.
+		 */
+		return apply_filters( 'make_font_stack', $stack, $font, $source_id );
 	}
 
-
+	/**
+	 * Get the array of all font choices, or for a particular source.
+	 *
+	 * If headings are set to true, extra array items will be added as separators between sources.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $source_id
+	 * @param bool   $headings
+	 *
+	 * @return array
+	 */
 	public function get_font_choices( $source_id = null, $headings = true ) {
 		$heading_prefix = 'make-choice-heading-';
 		$choices = array();
@@ -246,7 +357,19 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		return $choices;
 	}
 
-
+	/**
+	 * Verify that a font choice is valid. Return a default value if not.
+	 *
+	 * Increase the efficiency of this method by specifying the font's source.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $value
+	 * @param string $source
+	 * @param string $default
+	 *
+	 * @return string
+	 */
 	public function sanitize_font_choice( $value, $source = null, $default = '' ) {
 		// Get fonts from one source, if specified. Otherwise, get all the fonts.
 		if ( ! is_null( $source ) && $this->has_source( $source ) ) {

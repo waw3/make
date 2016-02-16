@@ -5,6 +5,8 @@
 
 
 interface MAKE_Font_Source_BaseInterface extends MAKE_Util_ModulesInterface {
+	public function get_id();
+
 	public function get_label();
 
 	public function get_priority();

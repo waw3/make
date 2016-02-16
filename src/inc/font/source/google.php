@@ -16,10 +16,22 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
 	);
 
-
+	/**
+	 * Array to collect the available subsets in the Google data.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
 	private $subsets = array();
 
-
+	/**
+	 * CSS font stacks for Google's font categories.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
 	private $stacks = array(
 		'serif' => 'Georgia,Times,"Times New Roman",serif',
 		'sans-serif' => '"Helvetica Neue",Helvetica,Arial,sans-serif',
@@ -91,12 +103,26 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return $this->loaded;
 	}
 
-
-	public function load_font_data( array $data ) {
+	/**
+	 * Setter for the source's data property.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array $data
+	 */
+	private function load_font_data( array $data ) {
 		$this->data = $data;
 	}
 
-
+	/**
+	 * Wrapper to ensure the font data is loaded before retrieving it.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $font
+	 *
+	 * @return array
+	 */
 	public function get_font_data( $font = null ) {
 		// Load the font data if necessary.
 		if ( ! $this->is_loaded() ) {
@@ -106,13 +132,21 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return parent::get_font_data( $font );
 	}
 
-
+	/**
+	 * Append a CSS font stack to a font, based on its category. Return a default stack if the font doesn't exist.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $font
+	 * @param string $default_stack
+	 *
+	 * @return string
+	 */
 	public function get_font_stack( $font, $default_stack = 'sans-serif' ) {
 		$data = $this->get_font_data( $font );
-		$stack = '';
 
-		if ( isset( $data['category'] ) && isset( $this->stacks[ $data['category'] ] ) ) {
-			$stack = "\"$font\"," . $this->stacks[ $data['category'] ];
+		if ( isset( $data['category'] ) && $category_stack = $this->get_category_stack( $data['category'] ) ) {
+			$stack = "\"$font\"," . $category_stack;
 		} else {
 			$stack = $default_stack;
 		}
@@ -120,8 +154,44 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return $stack;
 	}
 
+	/**
+	 * Retrieve the CSS font stack for a particular font category.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param $category
+	 *
+	 * @return mixed|void
+	 */
+	private function get_category_stack( $category ) {
+		$stack = '';
 
-	public function build_url( array $fonts, array $subsets ) {
+		if ( isset( $this->stacks[ $category ] ) ) {
+			$stack = $this->stacks[ $category ];
+		}
+
+		/**
+		 * Filter: Modify the CSS font stack for a particular category of Google font.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param string $stack    The CSS font stack.
+		 * @param string $category The font category.
+		 */
+		return apply_filters( 'make_font_google_stack', $stack, $category );
+	}
+
+	/**
+	 * Build the URL for loading Google fonts, given an array of fonts used in the theme and an array of subsets.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array $fonts
+	 * @param array $subsets
+	 *
+	 * @return mixed|string|void
+	 */
+	public function build_url( array $fonts, array $subsets = array() ) {
 		$url = '';
 		$fonts = array_unique( $fonts );
 		$family = array();
@@ -137,21 +207,18 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 			}
 		}
 
-		// Bail if there are no valid font families.
-		if ( empty( $family ) ) {
-			return $url;
-		}
+		if ( ! empty( $family ) ) {
+			// Start building the URL.
+			$base_url = '//fonts.googleapis.com/css';
 
-		// Start building the URL.
-		$base_url = '//fonts.googleapis.com/css';
+			// Add families
+			$url = add_query_arg( 'family', implode( '|', $family ), $base_url );
 
-		// Add families
-		$url = add_query_arg( 'family', implode( '|', $family ), $base_url );
-
-		// Add subsets, if specified.
-		if ( ! empty( $subsets ) ) {
-			$subsets = array_map( 'sanitize_key', $subsets );
-			$url = add_query_arg( 'subset', join( ',', $subsets ), $url );
+			// Add subsets, if specified.
+			if ( ! empty( $subsets ) ) {
+				$subsets = array_map( 'sanitize_key', $subsets );
+				$url = add_query_arg( 'subset', join( ',', $subsets ), $url );
+			}
 		}
 
 		/**
@@ -164,8 +231,15 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return apply_filters( 'make_get_google_font_uri', $url );
 	}
 
-
-	public function build_json( array $fonts, array $subsets ) {
+	/**
+	 * Build a JSON string for loading Google fonts, given an array of fonts used in the theme and an array of subsets.
+	 *
+	 * @param array $fonts
+	 * @param array $subsets
+	 *
+	 * @return bool|false|string
+	 */
+	public function build_json( array $fonts, array $subsets = array() ) {
 		$data = array( 'families' => array() );
 		$fonts = array_unique( $fonts );
 		$subsets = array_map( 'sanitize_key', $subsets );
@@ -184,7 +258,16 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return wp_json_encode( $data );
 	}
 
-
+	/**
+	 * Choose font variants to load for a given font, based on what's available.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $font
+	 * @param array  $available_variants
+	 *
+	 * @return array
+	 */
 	private function choose_font_variants( $font, array $available_variants ) {
 		$chosen_variants = array();
 
@@ -216,13 +299,23 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 				__( 'Use the make_font_google_variants hook instead.', 'make' )
 			);
 
-			return apply_filters( 'make_font_variants', $chosen_variants, $font, $available_variants );
+			/**
+			 * Allow developers to alter the font variant choice.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated x.x.x.
+			 *
+			 * @param array     $variants    The list of variants for a font.
+			 * @param string    $font        The font to load variants for.
+			 * @param array     $variants    The variants for the font.
+			 */
+			$chosen_variants = apply_filters( 'make_font_variants', $chosen_variants, $font, $available_variants );
 		}
 
 		/**
-		 * Allow developers to alter the font variant choice.
+		 * Allow developers to alter the Google font variant choice.
 		 *
-		 * @since 1.2.3.
+		 * @since x.x.x.
 		 *
 		 * @param array     $variants    The list of variants for a font.
 		 * @param string    $font        The font to load variants for.
@@ -231,8 +324,16 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return apply_filters( 'make_font_google_variants', $chosen_variants, $font, $available_variants );
 	}
 
-
-	private function collect_subsets( $font_data ) {
+	/**
+	 * Iterate through all the Google font data and build a list of unique subset options.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array $font_data
+	 *
+	 * @return array
+	 */
+	private function collect_subsets( array $font_data ) {
 		$subsets = array();
 
 		foreach ( $font_data as $font => $data ) {
@@ -247,7 +348,13 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		return $subsets;
 	}
 
-
+	/**
+	 * Getter for the $subsets property.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
 	public function get_subsets() {
 		if ( empty( $this->subsets ) ) {
 			$this->subsets = $this->collect_subsets( $this->get_font_data() );
@@ -257,17 +364,23 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		if ( has_filter( 'make_get_google_font_subsets' ) ) {
 			$this->compatibility()->deprecated_hook(
 				'make_get_google_font_subsets',
-				'1.7.0',
-				__( 'To modify the list of available Google Fonts subsets, use the make_font_data_google hook instead.', 'make' )
+				'1.7.0'
 			);
-
-			return apply_filters( 'make_get_google_font_subsets', $this->subsets );
 		}
 
 		return $this->subsets;
 	}
 
-
+	/**
+	 * Verify that a subset choice is valid. Return a default value if it's not.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param        $value
+	 * @param string $default
+	 *
+	 * @return string
+	 */
 	public function sanitize_subset( $value, $default = '' ) {
 		if ( in_array( $value, $this->get_subsets() ) ) {
 			return $value;
