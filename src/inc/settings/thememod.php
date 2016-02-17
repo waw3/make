@@ -101,6 +101,9 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			include $file;
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the ThemeMod settings object's load method.
 		 *
@@ -111,10 +114,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		 *
 		 * @param MAKE_Settings_ThemeMod    $settings     The settings object that has just finished loading.
 		 */
-		do_action( "make_settings_thememod_loaded", $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
+		do_action( 'make_settings_thememod_loaded', $this );
 	}
 
 	/**

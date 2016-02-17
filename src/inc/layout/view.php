@@ -73,6 +73,9 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 			$this->add_view( $view_id, $view_args );
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the view object's load method.
 		 *
@@ -84,9 +87,6 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		 * @param MAKE_View_Manager    $view    The view object that has just finished loading.
 		 */
 		do_action( 'make_view_loaded', $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**

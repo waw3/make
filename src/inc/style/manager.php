@@ -153,6 +153,9 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 			}
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		// Check for deprecated action.
 		if ( has_action( 'make_css' ) ) {
 			$this->compatibility()->deprecated_hook(
@@ -185,9 +188,6 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		 * @param MAKE_Style_Manager    $style    The styles object
 		 */
 		do_action( 'make_style_loaded', $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**

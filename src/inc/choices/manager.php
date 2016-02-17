@@ -59,6 +59,9 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 			include $file;
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the choices object's load method.
 		 *
@@ -70,9 +73,6 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		 * @param MAKE_Choices_Manager    $choices    The choices object that has just finished loading.
 		 */
 		do_action( 'make_choices_loaded', $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**

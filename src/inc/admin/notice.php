@@ -89,6 +89,9 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			include_once $file;
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the Admin Notice object's load method.
 		 *
@@ -100,9 +103,6 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 		 * @param MAKE_Admin_Notice    $notice     The notice object that has just finished loading.
 		 */
 		do_action( 'make_notice_loaded', $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**

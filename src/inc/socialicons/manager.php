@@ -109,6 +109,9 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			include $file;
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the Social Icons object's load method.
 		 *
@@ -120,9 +123,6 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		 * @param MAKE_SocialIcons_Manager    $socialicons     The settings object that has just finished loading.
 		 */
 		do_action( "make_socialicons_loaded", $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**

@@ -64,6 +64,9 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 			return;
 		}
 
+		// Loading has occurred.
+		$this->loaded = true;
+
 		/**
 		 * Action: Fires at the end of the font object's load method.
 		 *
@@ -75,9 +78,6 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		 * @param MAKE_Font_Manager    $font    The font object that has just finished loading.
 		 */
 		do_action( 'make_font_loaded', $this );
-
-		// Loading has occurred.
-		$this->loaded = true;
 	}
 
 	/**
