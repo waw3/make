@@ -135,42 +135,6 @@ function make_is_plus() {
 }
 
 /**
- * Add or modify a choice set.
- *
- * @since x.x.x.
- *
- * @param array                              $choice_sets
- * @param MAKE_Choices_ManagerInterface|null $instance
- *
- * @return mixed
- */
-function make_update_choices( $choice_sets, MAKE_Choices_ManagerInterface $instance = null ) {
-	if ( is_null( $instance ) ) {
-		$instance = Make()->choices();
-	}
-
-	return $instance->add_choice_sets( $choice_sets, true );
-}
-
-/**
- * Add or modify a Theme Mod setting.
- *
- * @since x.x.x.
- *
- * @param array                                $settings
- * @param MAKE_Settings_ThemeModInterface|null $instance
- *
- * @return mixed
- */
-function make_update_thememod_settings( $settings, MAKE_Settings_ThemeModInterface $instance = null ) {
-	if ( is_null( $instance ) ) {
-		$instance = Make()->thememod();
-	}
-
-	return $instance->add_settings( $settings, array(), true );
-}
-
-/**
  * Get a sanitized value for a Theme Mod setting.
  *
  * @since x.x.x.
@@ -195,13 +159,6 @@ function make_get_thememod_value( $setting_id, $context = 'template' ) {
  */
 function make_get_thememod_default( $setting_id ) {
 	return Make()->thememod()->get_default( $setting_id );
-}
-
-/**
- *
- */
-function make_add_view( $view_id, array $args = array(), $overwrite = false ) {
-	return Make()->view()->add_view( $view_id, $args, $overwrite );
 }
 
 /**
@@ -239,24 +196,6 @@ function make_is_current_view( $view_id ) {
  */
 function make_has_sidebar( $location ) {
 	return Make()->widgets()->has_sidebar( $location );
-}
-
-/**
- * Add or modify social icons.
- *
- * @since x.x.x.
- *
- * @param                                        $icons
- * @param MAKE_SocialIcons_ManagerInterface|null $instance
- *
- * @return mixed
- */
-function make_update_socialicons( $icons, MAKE_SocialIcons_ManagerInterface $instance = null ) {
-	if ( is_null( $instance ) ) {
-		$instance = Make()->socialicons();
-	}
-
-	return $instance->add_icons( $icons, true );
 }
 
 /**
