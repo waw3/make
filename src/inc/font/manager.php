@@ -144,7 +144,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		}
 
 		$module_name = 'source_' . $source_id;
-		return parent::has_module( $module_name ) && parent::inject_module( $module_name ) instanceof MAKE_Font_Source_BaseInterface;
+		return parent::has_module( $module_name );
 	}
 
 	/**
