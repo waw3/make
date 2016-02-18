@@ -3,6 +3,7 @@
  */
 
 /* global jQuery, MakeControls */
+
 (function($, MakeControls) {
 	var api = wp.customize,
 		Make;
@@ -64,13 +65,17 @@
 			self.sendFontRequest();
 		},
 
-		sendFontRequest: function() {
+		sendFontRequest: function(data) {
 			var self = Make,
-				data = {
+				postdata = {
 					action: 'make-font-choices'
 				};
 
-			$.post(self.ajaxurl, data, function(response) {
+			if ('object' === typeof data) {
+				postdata = $.extend(postdata, data);
+			}
+
+			$.post(self.ajaxurl, postdata, function(response) {
 				if (response) {
 					self.insertFontChoices(response);
 				}
