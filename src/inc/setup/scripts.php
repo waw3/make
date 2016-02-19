@@ -58,11 +58,6 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_editor_styles' ) );
 
-		// Register Ajax
-		if ( is_admin() || is_customize_preview() ) {
-			add_action( 'wp_ajax_make-google-json', array( $this, 'get_google_json' ) );
-		}
-
 		// Hooking has occurred.
 		$this->hooked = true;
 	}
@@ -629,36 +624,6 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		}
 
 		return $url;
-	}
-
-	/**
-	 * Return a JSON string of data for the Google fonts currently used in the theme.
-	 *
-	 * This is used to retrieve font data for the Customizer preview pane.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @return void
-	 */
-	public function get_google_json() {
-		// Only run this in the proper hook context.
-		if ( 'wp_ajax_make-google-json' !== current_action() ) {
-			wp_send_json_error();
-		}
-
-		$font_keys = array_keys( $this->thememod()->get_settings( 'is_font' ) );
-		$fonts = array();
-
-		foreach ( $font_keys as $font_key ) {
-			$font = $this->thememod()->get_value( $font_key );
-			if ( $font ) {
-				$fonts[] = $font;
-			}
-		}
-
-		$subsets = (array) $this->thememod()->get_value( 'font-subset' );
-
-		wp_send_json_success( $this->font()->get_source( 'google' )->build_json( $fonts, $subsets ) );
 	}
 
 	/**

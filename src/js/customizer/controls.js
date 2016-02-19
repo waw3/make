@@ -2,24 +2,43 @@
  * @package Make
  */
 
-/* global jQuery, MakeControls */
+/* global jQuery, wp, MakeControls */
 
-(function($, MakeControls) {
+(function($, wp, MakeControls) {
+	'use strict';
+
+	if ( ! wp || ! wp.customize || ! MakeControls ) { return; }
+
 	var api = wp.customize,
 		Make;
 
 	// Setup
 	Make = $.extend(MakeControls, {
 		cache: {
-			$document: $(document)
+			$document: $(document),
+			ajax:      {}
 		},
 
-		rtl: $('body').hasClass('rtl')
+		rtl: $('body').hasClass('rtl'),
+
+		sendRequest: function(data, callback) {
+			var self = this;
+
+			if ('undefined' !== typeof data.action && 'object' === typeof self.cache.ajax[data.action]) {
+				data = $.extend(data, self.cache.ajax[data.action]);
+			}
+
+			$.post(self.ajaxurl, data, function(response) {
+				if ('function' === typeof callback) {
+					callback(response);
+				}
+			});
+		}
 	});
 
 	// Font choice loader
 	Make = $.extend(Make, {
-		fontElements: {},
+		fontElements: $(),
 
 		initFont: function() {
 			var self = this;
@@ -27,14 +46,18 @@
 			self.cache.$document.ready(function() {
 				self.getFontElements();
 
-				$.each(self.fontElements, function(settingId, $element) {
-					$element.on('chosen:showing_dropdown', self.updateElement);
+				self.fontElements.each(function() {
+					if (self.rtl) {
+						$(this).addClass('chosen-rtl');
+					}
 
-					$element.chosen({
+					$(this).chosen({
 						no_results_text: self.l10n.chosen_no_results_fonts,
 						search_contains: true,
 						width          : '100%'
 					});
+
+					$(this).on('chosen:showing_dropdown', self.updateFontElements);
 				});
 			});
 		},
@@ -44,38 +67,27 @@
 
 			self.fontSettings = self.fontSettings || {};
 			$.each(self.fontSettings, function(i, settingId) {
-				var $element = $('select', '#customize-control-make_' + settingId);
-				if ( $element.length > 0 ) {
-					if (self.rtl) {
-						$element.addClass('chosen-rtl');
-					}
-
-					self.fontElements[ settingId ] = $element;
-				}
+				api.control('make_' + settingId, function(control) {
+					var $element = control.container.find('select');
+					$element.data('settingId', settingId);
+					self.fontElements = self.fontElements.add($element);
+				});
 			});
 		},
 
-		updateElement: function() {
-			var self = Make;
-
-			$(this)
-				.html('<option>' + self.l10n.chosen_loading + '</option>')
-				.trigger('chosen:updated');
-
-			self.sendFontRequest();
-		},
-
-		sendFontRequest: function(data) {
+		updateFontElements: function() {
 			var self = Make,
-				postdata = {
+				data = {
 					action: 'make-font-choices'
 				};
 
-			if ('object' === typeof data) {
-				postdata = $.extend(postdata, data);
-			}
+			self.fontElements.each(function() {
+				$(this)
+					.html('<option>' + self.l10n.chosen_loading + '</option>')
+					.trigger('chosen:updated');
+			});
 
-			$.post(self.ajaxurl, postdata, function(response) {
+			self.sendRequest(data, function(response) {
 				if (response) {
 					self.insertFontChoices(response);
 				}
@@ -85,21 +97,26 @@
 		insertFontChoices: function(content) {
 			var self = this;
 
-			$.each(self.fontElements, function(settingId, $element) {
+			self.fontElements.each(function() {
+				var $element = $(this),
+					settingId = $element.data('settingId');
+
 				$element.html(content);
 
 				api(settingId, function(setting) {
 					var v = setting();
 					$element
 						.val(v)
-						.off('chosen:showing_dropdown', self.updateElement)
-						.trigger('chosen:updated');
+						.trigger('chosen:updated')
+						.off('chosen:showing_dropdown', self.updateFontElements);
 				});
 			});
 		}
 	});
 
-	Make.initFont();
+	$(document).ready(function() {
+		Make.initFont();
+	});
 
 	/**
 	 * Initialize instances of MAKE_Customizer_Control_BackgroundPosition
@@ -383,7 +400,7 @@
 			$iconslink.on('click', function(evt) {
 				evt.preventDefault();
 
-				var $openList = $openList = $('#make-socialicons-list-wrapper');
+				var $openList = $('#make-socialicons-list-wrapper');
 
 				if ($openList.length < 1) {
 					control.sendListRequest(function(data) {
@@ -679,4 +696,4 @@
 			});
 		});
 	});
-})(jQuery, MakeControls);
+})(jQuery, wp, MakeControls);

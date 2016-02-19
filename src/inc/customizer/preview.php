@@ -13,6 +13,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	 * @var array
 	 */
 	protected $dependencies = array(
+		'font'     => 'MAKE_Font_ManagerInterface',
 		'thememod' => 'MAKE_Settings_ThemeModInterface',
 		'scripts'  => 'MAKE_Setup_ScriptsInterface',
 	);
@@ -45,10 +46,11 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_scripts' ) );
 
 		// Preview theme mod values
-		if ( is_admin() || is_customize_preview() ) {
-			add_action( 'make_style_before_load', array( $this, 'preview_thememods' ) );
-			add_action( 'wp_ajax_make-google-json', array( $this, 'preview_thememods' ), 1 );
-		}
+		add_action( 'make_style_before_load', array( $this, 'preview_thememods' ) );
+		add_action( 'wp_ajax_make-font-json', array( $this, 'preview_thememods' ), 1 );
+
+		// Register Ajax
+		add_action( 'wp_ajax_make-font-json', array( $this, 'get_font_json_ajax' ) );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -129,7 +131,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	 */
 	public function preview_thememods() {
 		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'make_style_before_load', 'wp_ajax_make-google-json' ) ) ) {
+		if ( ! in_array( current_action(), array( 'make_style_before_load', 'wp_ajax_make-font-json' ) ) ) {
 			return;
 		}
 
@@ -171,5 +173,51 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		}
 
 		return $value;
+	}
+
+	/**
+	 * Return a JSON string that can be fed into the Web Font Loader in the Customizer preview pane.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function get_font_json_ajax() {
+		// Only run this in the proper hook context.
+		if ( 'wp_ajax_make-font-json' !== current_action() ) {
+			wp_send_json_error();
+		}
+
+		// Get the font values to preview.
+		$font_keys = array_keys( $this->thememod()->get_settings( 'is_font' ) );
+		$fonts = array();
+		foreach ( $font_keys as $font_key ) {
+			$font = $this->thememod()->get_value( $font_key );
+			if ( $font ) {
+				$fonts[] = $font;
+			}
+		}
+
+		$response = array();
+
+		// Google
+		$google_subsets = (array) $this->thememod()->get_value( 'font-subset' );
+		$google_data = $this->font()->get_source( 'google' )->build_loader_array( $fonts, $google_subsets );
+		if ( ! empty( $google_data ) ) {
+			$response = array_merge( $response, $google_data );
+		}
+
+		/**
+		 * Filter: Modify the preview font data array before it is converted to JSON and sent as an Ajax response.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param array $response    The array of font data.
+		 * @param array $fonts       The font values to preview.
+		 */
+		$response = apply_filters( 'make_preview_font_data', $response, $fonts );
+
+		// Send the data.
+		wp_send_json_success( $response );
 	}
 }

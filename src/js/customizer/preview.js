@@ -5,14 +5,33 @@
 /* global jQuery, wp, MakePreview */
 
 (function($, wp, MakePreview) {
+	'use strict';
+
+	if ( ! wp || ! wp.customize || ! MakePreview ) { return; }
+
 	var api = wp.customize,
 		Make;
 
-	// Cache
+	// Shared functionality
 	Make = $.extend(MakePreview, {
 		cache: {
-			preview: {},
-			fonts: {}
+			ajax:  {},
+			fonts: {},
+			style: {}
+		},
+
+		sendRequest: function(data, callback) {
+			var self = this;
+
+			if ('undefined' !== typeof data.action && 'object' === typeof self.cache.ajax[data.action]) {
+				data = $.extend(data, self.cache.ajax[data.action]);
+			}
+
+			$.post(self.ajaxurl, data, function(response) {
+				if ('function' === typeof callback) {
+					callback(response);
+				}
+			});
 		}
 	});
 
@@ -25,33 +44,31 @@
 			$.each(self.styleSettings, function(i, settingId) {
 				api(settingId, function(setting) {
 					setting.bind(function() {
-						self.getStylesValues(self.styleSettings);
-						self.sendStylesRequest();
+						var data = {
+								action:         'make-css-inline',
+								'make-preview': self.getStylesValues(self.styleSettings)
+							};
+
+						self.sendRequest(data, function(response) {
+							if ('undefined' !== response) {
+								self.updateStyles(response);
+							}
+						});
 					});
 				});
 			});
 		},
 
 		getStylesValues: function(settings) {
-			var self = this;
+			var style = {};
 
 			$.each(settings, function(i, settingId) {
 				api(settingId, function(setting) {
-					self.cache.preview[settingId] = setting();
+					style[settingId] = setting();
 				});
 			});
-		},
 
-		sendStylesRequest: function() {
-			var self = this,
-				data = {
-					action: 'make-css-inline',
-					'make-preview': self.cache.preview
-				};
-
-			$.post(self.ajaxurl, data, function(response) {
-				self.updateStyles(response);
-			});
+			return style;
 		},
 
 		/**
@@ -86,8 +103,16 @@
 				$.each(self.fontSettings, function(i, settingId) {
 					api(settingId, function(setting) {
 						setting.bind(function() {
-							self.getFontValues(self.fontSettings);
-							self.sendFontRequest();
+							var data = {
+									action:         'make-font-json',
+									'make-preview': self.getFontValues(self.fontSettings)
+								};
+
+							self.sendRequest(data, function(response) {
+								if ('object' === typeof response.data) {
+									self.loadFonts(response.data);
+								}
+							});
 						});
 					});
 				});
@@ -95,40 +120,28 @@
 		},
 
 		getFontValues: function(settings) {
-			var self = this;
+			var fonts = {};
 
 			$.each(settings, function(i, settingId) {
 				api(settingId, function(setting) {
-					self.cache.fonts[settingId] = setting();
+					fonts[settingId] = setting();
 				});
 			});
+
+			return fonts;
 		},
 
-		sendFontRequest: function() {
-			var self = this,
-				data = {
-					action: 'make-google-json',
-					'make-preview': self.cache.fonts
-				};
-
-			$.post(self.ajaxurl, data, function(response) {
-				self.loadFonts(response);
-			});
-		},
-
-		loadFonts: function(response) {
-			if ('undefined' === typeof response.data || 'undefined' === typeof WebFont) {
-				return;
+		loadFonts: function(data) {
+			if ('object' === typeof WebFont) {
+				WebFont.load(data);
 			}
-
-			WebFont.load({
-				google: $.parseJSON(response.data)
-			});
 		}
 	});
 
-	Make.initStyles();
-	Make.initFontLoader();
+	$(document).ready(function() {
+		Make.initStyles();
+		Make.initFontLoader();
+	});
 
 	/**
 	 * Asynchronous updating

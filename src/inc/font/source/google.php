@@ -232,15 +232,16 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	}
 
 	/**
-	 * Build a JSON string for loading Google fonts, given an array of fonts used in the theme and an array of subsets.
+	 * Build an array of data that can be converted to JSON and fed into the Web Font Loader, given an array of fonts used in the theme and an array of subsets.
 	 *
 	 * @param array $fonts
 	 * @param array $subsets
 	 *
-	 * @return bool|false|string
+	 * @return array
 	 */
-	public function build_json( array $fonts, array $subsets = array() ) {
-		$data = array( 'families' => array() );
+	public function build_loader_array( array $fonts, array $subsets = array() ) {
+		$data = array();
+		$families = array();
 		$fonts = array_unique( $fonts );
 		$subsets = array_map( 'sanitize_key', $subsets );
 
@@ -251,11 +252,17 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 				$font_variants = ( isset( $font_data['variants'] ) ) ? $font_data['variants'] : array();
 
 				// Build the family name, variant, and subset string (e.g., "Open+Sans:regular,italic,700:latin")
-				$data['families'][] = urlencode( $font ) . ':' . join( ',', $this->choose_font_variants( $font, $font_variants ) ) . ':' . join( ',', $subsets );
+				$families[] = urlencode( $font ) . ':' . join( ',', $this->choose_font_variants( $font, $font_variants ) ) . ':' . join( ',', $subsets );
 			}
 		}
 
-		return wp_json_encode( $data );
+		if ( ! empty( $families ) ) {
+			$data['google'] = array(
+				'families' => $families
+			);
+		}
+
+		return $data;
 	}
 
 	/**
