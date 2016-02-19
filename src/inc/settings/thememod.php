@@ -68,6 +68,9 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'add_sanitize_choice_parameters' ), 10, 3 );
 		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'wrap_array_values' ), 10, 3 );
 
+		// Handle cache settings
+		add_action( 'customize_save_after', array( $this, 'clear_thememod_cache' ) );
+
 		// Hooking has occurred.
 		$this->hooked = true;
 	}
@@ -623,5 +626,25 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	public function sanitize_socialicons_to_customizer( array $icon_data ) {
 		$value = $this->sanitize_socialicons( $icon_data );
 		return wp_json_encode( $value );
+	}
+
+	/**
+	 * Clear values for settings that have the is_cache property.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function clear_thememod_cache() {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_action(), array( 'customize_save_after' ) ) ) {
+			return;
+		}
+
+		$cache_settings = array_keys( $this->get_settings( 'is_cache' ), true );
+
+		foreach ( $cache_settings as $setting_id ) {
+			$this->unset_value( $setting_id );
+		}
 	}
 }

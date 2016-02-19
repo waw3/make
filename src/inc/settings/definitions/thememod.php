@@ -617,16 +617,17 @@ $this->add_settings(
 // Misc settings
 $this->add_settings(
 	array(
-		'font-subset'  => array(
+		'font-subset'     => array(
 			'default'                  => 'latin',
 			'sanitize'                 => 'sanitize_key',
 			'sanitize_from_customizer' => array( $this, 'sanitize_google_font_subset' ),
 			'sanitize_to_customizer'   => array( $this, 'sanitize_google_font_subset' ),
 		),
 		'google-font-url' => array(
-			'default' => '',
-			'sanitize' => 'esc_url',
+			'default'           => '',
+			'sanitize'          => 'esc_url',
 			'sanitize_database' => 'esc_url_raw',
+			'is_cache'          => true,
 		),
 	)
 );

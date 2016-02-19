@@ -168,7 +168,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		);
 
 		// Google Fonts
-		if ( $url = $this->get_google_url() ) {
+		if ( ! is_customize_preview() && $url = $this->get_google_url() ) {
 			wp_register_style(
 				'make-google-font',
 				$url,
@@ -592,11 +592,10 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 * @since x.x.x.
 	 *
 	 * @param bool $force   True to generate the URL from scratch, rather than preferencing a saved value in the database.
-	 * @param bool $preview True if the URL is for previewing new fonts (don't save the URL to the database).
 	 *
 	 * @return string       The URL, or an empty string.
 	 */
-	private function get_google_url( $force = false, $preview = false ) {
+	private function get_google_url( $force = false ) {
 		$setting_id = 'google-font-url';
 
 		if ( ! $this->thememod()->setting_exists( $setting_id ) ) {
@@ -605,6 +604,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			return $this->thememod()->get_value( $setting_id );
 		}
 
+		// Get fonts
 		$font_keys = array_keys( $this->thememod()->get_settings( 'is_font' ) );
 		$fonts = array();
 
@@ -615,13 +615,14 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			}
 		}
 
+		// Get subsets
 		$subsets = (array) $this->thememod()->get_value( 'font-subset' );
 
+		// Generate the URL
 		$url = $this->font()->get_source( 'google' )->build_url( $fonts, $subsets );
 
-		if ( true !== $preview ) {
-			$this->thememod()->set_value( $setting_id, $url );
-		}
+		// Cache the URL
+		$this->thememod()->set_value( $setting_id, $url );
 
 		return $url;
 	}
