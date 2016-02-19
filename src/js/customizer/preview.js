@@ -43,18 +43,7 @@
 			self.styleSettings = self.styleSettings || {};
 			$.each(self.styleSettings, function(i, settingId) {
 				api(settingId, function(setting) {
-					setting.bind(function() {
-						var data = {
-								action:         'make-css-inline',
-								'make-preview': self.getStylesValues(self.styleSettings)
-							};
-
-						self.sendRequest(data, function(response) {
-							if ('undefined' !== response) {
-								self.updateStyles(response);
-							}
-						});
-					});
+					setting.bind(self.updateStyles);
 				});
 			});
 		},
@@ -76,7 +65,7 @@
 		 *
 		 * @param content
 		 */
-		updateStyles: function(content) {
+		loadStyles: function(content) {
 			var styleId = 'make-preview-style',
 				$newStyles = $('<div>', {
 					id: styleId,
@@ -90,6 +79,20 @@
 			if (content) {
 				$newStyles.appendTo('body');
 			}
+		},
+
+		updateStyles: function() {
+			var self = Make,
+				data = {
+					action:         'make-css-inline',
+					'make-preview': self.getStylesValues(self.styleSettings)
+				};
+
+			self.sendRequest(data, function(response) {
+				if ('undefined' !== response) {
+					self.loadStyles(response);
+				}
+			});
 		}
 	});
 
@@ -102,20 +105,11 @@
 				self.fontSettings = self.fontSettings || {};
 				$.each(self.fontSettings, function(i, settingId) {
 					api(settingId, function(setting) {
-						setting.bind(function() {
-							var data = {
-									action:         'make-font-json',
-									'make-preview': self.getFontValues(self.fontSettings)
-								};
-
-							self.sendRequest(data, function(response) {
-								if ('object' === typeof response.data) {
-									self.loadFonts(response.data);
-								}
-							});
-						});
+						setting.bind(self.updateFonts);
 					});
 				});
+
+				self.updateFonts();
 			});
 		},
 
@@ -135,6 +129,20 @@
 			if ('object' === typeof WebFont) {
 				WebFont.load(data);
 			}
+		},
+
+		updateFonts: function() {
+			var self = Make,
+				data = {
+					action:         'make-font-json',
+					'make-preview': self.getFontValues(self.fontSettings)
+				};
+
+			self.sendRequest(data, function(response) {
+				if ('object' === typeof response.data) {
+					self.loadFonts(response.data);
+				}
+			});
 		}
 	});
 
