@@ -25,7 +25,7 @@ $this->add_section_definitions( 'font', array(
 // Text headers
 $this->add_section_definitions( 'font-headers', array(
 	'panel'   => $panel,
-	'title'   => __( 'Text Headers', 'make' ),
+	'title'   => __( 'Content Headings', 'make' ),
 	'controls' => array_merge(
 		$this->helper()->get_typography_group_definitions( 'h1', __( 'H1', 'make' ) ),
 		$this->helper()->get_typography_group_definitions( 'h2', __( 'H2', 'make' ) ),
