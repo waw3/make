@@ -70,7 +70,7 @@ final class MAKE_Style_DataHelper extends MAKE_Util_Modules {
 							break;
 						case 'font-size' :
 							$declarations[ $property . '-px' ]  = $sanitized_value . 'px';
-							$declarations[ $property . '-rem' ] = ttfmake_convert_px_to_rem( $sanitized_value ) . 'rem';
+							$declarations[ $property . '-rem' ] = $this->convert_px_to_rem( $sanitized_value ) . 'rem';
 							break;
 						case 'letter-spacing' :
 						case 'word-spacing' :
