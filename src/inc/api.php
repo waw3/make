@@ -254,7 +254,7 @@ if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
  * Sanitizes a hex color.
  *
- * This is based on the core function that unfortunately is only available in the Customizer.
+ * This replicates the core function that is unfortunately only available in the Customizer.
  *
  * @since  1.0.0.
  *
@@ -280,7 +280,7 @@ if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
 /**
  * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
  *
- * This is based on the core function that unfortunately is only available in the Customizer.
+ * This replicates the core function that is unfortunately only available in the Customizer.
  *
  * @since  1.0.0.
  *
@@ -301,7 +301,7 @@ if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
 /**
  * Ensures that any hex color is properly hashed.
  *
- * This is based on the core function that unfortunately is only available in the Customizer.
+ * This replicates the core function that is unfortunately only available in the Customizer.
  *
  * @since  1.0.0.
  *
