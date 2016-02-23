@@ -249,3 +249,70 @@ function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after =
 		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
 	}
 }
+
+if ( ! function_exists( 'sanitize_hex_color' ) ) :
+/**
+ * Sanitizes a hex color.
+ *
+ * This is based on the core function that unfortunately is only available in the Customizer.
+ *
+ * @since  1.0.0.
+ *
+ * @param string $color    The proposed color.
+ *
+ * @return string    The sanitized color.
+ */
+function sanitize_hex_color( $color ) {
+	if ( '' === $color ) {
+		return '';
+	}
+
+	// 3 or 6 hex digits, or the empty string.
+	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
+		return $color;
+	}
+
+	return '';
+}
+endif;
+
+if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
+/**
+ * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
+ *
+ * This is based on the core function that unfortunately is only available in the Customizer.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function sanitize_hex_color_no_hash( $color ) {
+	$color = ltrim( $color, '#' );
+	if ( '' === $color ) {
+		return '';
+	}
+
+	return sanitize_hex_color( '#' . $color ) ? $color : null;
+}
+endif;
+
+if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
+/**
+ * Ensures that any hex color is properly hashed.
+ *
+ * This is based on the core function that unfortunately is only available in the Customizer.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function maybe_hash_hex_color( $color ) {
+	if ( $unhashed = sanitize_hex_color_no_hash( $color ) ) {
+		return '#' . $unhashed;
+	}
+
+	return $color;
+}
+endif;
