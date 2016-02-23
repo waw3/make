@@ -13,6 +13,7 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  * Sets up text domain, theme support, menus, and editor styles
  *
  * @since  1.0.0.
+ * @deprecated 1.7.0.
  *
  * @return void
  */
@@ -29,6 +30,7 @@ if ( ! function_exists( 'ttfmake_content_width' ) ) :
  * Set the content width based on current layout
  *
  * @since  1.0.0.
+ * @deprecated 1.7.0.
  *
  * @return void
  */
@@ -644,6 +646,7 @@ function ttfmake_upgrade_notices() {
  * Upgrade notices related to Make Plus.
  *
  * @since 1.4.9.
+ * @deprecated 1.7.0.
  *
  * @return void
  */
@@ -1310,6 +1313,7 @@ if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
  * Make sure the 'make_css' action only runs once.
  *
  * @since  1.0.0.
+ * @deprecated 1.7.0.
  *
  * @return void
  */
@@ -1947,6 +1951,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
  * This control has been deprecated in favor of MAKE_Customizer_Control_BackgroundPosition.
  *
  * @since 1.5.0.
+ * @deprecated 1.7.0.
  */
 class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Control_BackgroundPosition {
 	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
