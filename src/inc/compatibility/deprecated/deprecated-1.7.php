@@ -343,6 +343,57 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_pre_wp_nav_menu_social', '1.7.0' );
 endif;
 
+/**
+ * Handle frontend scripts for use with the existing sections on the current Builder page.
+ *
+ * @since 1.6.1.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_frontend_builder_scripts() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+
+if ( ! function_exists( 'ttfmake_builder_css' ) ) :
+/**
+ * Trigger an action hook for each section on a Builder page for the purpose
+ * of adding section-specific CSS rules to the document head.
+ *
+ * @since 1.4.5.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_builder_css() {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_builder_css', '1.7.0' );
+endif;
+
+if ( ! function_exists( 'ttfmake_builder_banner_css' ) ) :
+/**
+ * Add frontend CSS rules for Banner sections based on certain section options.
+ *
+ * @since 1.4.5.
+ * @deprecated 1.7.0.
+ *
+ * @param array    $data    The banner's section data.
+ * @param int      $id      The banner's section ID.
+ *
+ * @return void
+ */
+function ttfmake_builder_banner_css( $data, $id ) {
+	$backtrace = debug_backtrace();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace[0] );
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_builder_banner_css', '1.7.0' );
+endif;
+
 if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
 /**
  * Show the social links markup if the theme options and/or menus are configured for it.

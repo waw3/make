@@ -63,15 +63,6 @@ function ttfmake_require_files() {
 		get_template_directory() . '/inc/customizer/logo.php',
 	);
 
-	if ( is_admin() ) {
-		$admin_files = array(
-			// Page Builder
-			get_template_directory() . '/inc/builder/core/base.php'
-		);
-
-		$files = array_merge( $files, $admin_files );
-	}
-
 	/**
 	 * Filter the list of theme files to load.
 	 *

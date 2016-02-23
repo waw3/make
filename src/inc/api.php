@@ -35,6 +35,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
 		'customizer_preview'  => 'MAKE_Customizer_PreviewInterface',
 		'setup'               => 'MAKE_Setup_MiscInterface',
+		'builder'             => 'MAKE_Builder_SetupInterface',
 		'integration'         => 'MAKE_Integration_ManagerInterface',
 	);
 
@@ -64,6 +65,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'customizer_controls' => 'MAKE_Customizer_Controls',
 		'customizer_preview'  => 'MAKE_Customizer_Preview',
 		'setup'               => 'MAKE_Setup_Misc',
+		'builder'             => 'MAKE_Builder_Setup',
 		'integration'         => 'MAKE_Integration_Manager',
 	);
 
