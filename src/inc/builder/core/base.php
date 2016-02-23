@@ -43,19 +43,19 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function __construct() {
 		// Include the API
-		require get_template_directory() . '/inc/builder/core/api.php';
+		require_once get_template_directory() . '/inc/builder/core/api.php';
 
 		// Include the configuration helpers
-		require get_template_directory() . '/inc/builder/core/configuration-helpers.php';
+		require_once get_template_directory() . '/inc/builder/core/configuration-helpers.php';
 
 		// Add the core sections
-		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
+		require_once get_template_directory() . '/inc/builder/sections/section-definitions.php';
 
 		// Include the save routines
-		require get_template_directory() . '/inc/builder/core/save.php';
+		require_once get_template_directory() . '/inc/builder/core/save.php';
 
 		// Include the front-end helpers
-		require get_template_directory() . '/inc/builder/sections/section-front-end-helpers.php';
+		require_once get_template_directory() . '/inc/builder/sections/section-front-end-helpers.php';
 
 		// Set up actions
 		add_action( 'admin_init', array( $this, 'register_post_type_support_for_builder' ) );
