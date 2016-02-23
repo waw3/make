@@ -437,7 +437,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		// Enqueue helper script
 		wp_enqueue_script(
 			'ttfmake-sections/js/quick-start.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/quick-start.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/quick-start.js',
 			array( 'ttfmake-builder' ),
 			TTFMAKE_VERSION,
 			true

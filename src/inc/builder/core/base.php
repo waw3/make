@@ -237,7 +237,7 @@ class TTFMAKE_Builder_Base {
 		// Enqueue the CSS
 		wp_enqueue_style(
 			'ttfmake-builder',
-			get_template_directory_uri() . '/inc/builder/core/css/builder.css',
+			Make()->scripts()->get_css_directory_uri() . '/builder/core/builder.css',
 			array(),
 			TTFMAKE_VERSION
 		);
@@ -257,7 +257,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/models/section.js',
-			get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/models/section.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -265,7 +265,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/collections/sections.js',
-			get_template_directory_uri() . '/inc/builder/core/js/collections/sections.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/collections/sections.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -273,7 +273,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/views/menu.js',
-			get_template_directory_uri() . '/inc/builder/core/js/views/menu.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/views/menu.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -281,7 +281,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/views/section.js',
-			get_template_directory_uri() . '/inc/builder/core/js/views/section.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/views/section.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -289,7 +289,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/views/overlay.js',
-			get_template_directory_uri() . '/inc/builder/core/js/views/overlay.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/views/overlay.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -318,7 +318,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_enqueue_script(
 			'ttfmake-builder',
-			get_template_directory_uri() . '/inc/builder/core/js/app.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/app.js',
 			$dependencies,
 			TTFMAKE_VERSION,
 			true
@@ -341,15 +341,15 @@ class TTFMAKE_Builder_Base {
 		global $pagenow;
 
 		wp_enqueue_script(
-			'ttfmake-admin-edit-page',
-			get_template_directory_uri() . '/js/admin/edit-page.js',
+			'ttfmake-builder-edit-page',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/edit-page.js',
 			array( 'jquery' ),
 			TTFMAKE_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'ttfmake-admin-edit-page',
+			'ttfmake-builder-edit-page',
 			'ttfmakeEditPageData',
 			array(
 				'featuredImage' => esc_html__( 'Note: the Builder Template does not display a featured image.', 'make' ),
