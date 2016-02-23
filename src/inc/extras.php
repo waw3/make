@@ -54,6 +54,10 @@ if ( ! function_exists( 'ttfmake_maybe_add_with_avatar_class' ) ) :
  * @return array                 The modified post class array.
  */
 function ttfmake_maybe_add_with_avatar_class( $classes, $class, $post_ID ) {
+	if ( is_admin() ) {
+		return $classes;
+	}
+
 	$author_key    = 'layout-' . make_get_current_view() . '-post-author';
 	$author_option = make_get_thememod_value( $author_key );
 
