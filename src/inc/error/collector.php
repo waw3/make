@@ -520,7 +520,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 		 *
 		 * @param int $limit    The number of backtrace steps to show.
 		 */
-		$limit = absint( apply_filters( 'make_error_backtrace_limit', 3 ) );
+		$limit = absint( apply_filters( 'make_error_backtrace_limit', 1 ) );
 
 		$output = '';
 
