@@ -1709,11 +1709,11 @@ if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
  */
 function ttfmake_sanitize_font_subset( $value ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->sanitize_subset', $backtrace );
-	return Make()->font()->get_source( 'google' )->sanitize_subset( $value, make_get_thememod_default( 'font-subset' ) );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_google_font_subset', $backtrace );
+	return Make()->thememod()->sanitize_google_font_subset( $value );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_subset', '1.7.0', 'Make()->font()->get_source( \'google\' )->sanitize_subset' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_subset', '1.7.0', 'Make()->thememod()->sanitize_google_font_subset' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
@@ -1829,7 +1829,12 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 function ttfmake_get_google_fonts() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_font_data', $backtrace );
-	return Make()->font()->get_source( 'google' )->get_font_data();
+
+	if ( Make()->font()->has_source( 'google' ) ) {
+		return Make()->font()->get_source( 'google' )->get_font_data();
+	}
+
+	return array();
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_fonts', '1.7.0', 'Make()->font()->get_source( \'google\' )->get_font_data' );
@@ -1851,11 +1856,11 @@ if ( ! function_exists( 'ttfmake_choose_google_font_variants' ) ) :
  */
 function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->choose_font_variants', $backtrace );
-	return Make()->font()->get_source( 'google' )->choose_font_variants( $font, $variants );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	return array();
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_choose_google_font_variants', '1.7.0', 'Make()->font()->get_source( \'google\' )->choose_font_variants' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_choose_google_font_variants', '1.7.0' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
@@ -1870,7 +1875,12 @@ if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
 function ttfmake_get_google_font_subsets() {
 	$backtrace = debug_backtrace();
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_subsets', $backtrace );
-	return Make()->font()->get_source( 'google' )->get_subsets();
+
+	if ( Make()->font()->has_source( 'google' ) ) {
+		return Make()->font()->get_source( 'google' )->get_subsets();
+	}
+
+	return array();
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_font_subsets', '1.7.0', 'Make()->font()->get_source( \'google\' )->get_subsets' );

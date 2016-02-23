@@ -520,9 +520,14 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @param  string    $value
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public function sanitize_google_font_subset( $value ) {
+		// Make sure the Google font source is available.
+		if ( ! $this->font()->has_source( 'google' ) ) {
+			return '';
+		}
+
 		// Check for deprecated filter
 		if ( has_filter( 'make_sanitize_font_subset' ) ) {
 			$this->compatibility()->deprecated_hook(

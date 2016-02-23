@@ -201,10 +201,12 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		$response = array();
 
 		// Google
-		$google_subsets = (array) $this->thememod()->get_value( 'font-subset' );
-		$google_data = $this->font()->get_source( 'google' )->build_loader_array( $fonts, $google_subsets );
-		if ( ! empty( $google_data ) ) {
-			$response = array_merge( $response, $google_data );
+		if ( $this->font()->has_source( 'google' ) ) {
+			$google_subsets = (array) $this->thememod()->get_value( 'font-subset' );
+			$google_data = $this->font()->get_source( 'google' )->build_loader_array( $fonts, $google_subsets );
+			if ( ! empty( $google_data ) ) {
+				$response = array_merge( $response, $google_data );
+			}
 		}
 
 		/**

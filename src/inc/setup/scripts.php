@@ -598,7 +598,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	private function get_google_url( $force = false ) {
 		$setting_id = 'google-font-url';
 
-		if ( ! $this->thememod()->setting_exists( $setting_id ) ) {
+		if ( ! $this->thememod()->setting_exists( $setting_id ) || ! $this->font()->has_source( 'google' ) ) {
 			return '';
 		} else if ( true !== $force && $this->thememod()->get_raw_value( $setting_id ) ) {
 			return $this->thememod()->get_value( $setting_id );

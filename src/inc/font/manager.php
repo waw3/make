@@ -107,8 +107,21 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 			return false;
 		}
 
-		$module_name = 'source_' . $source_id;
-		return parent::add_module( $module_name, $source );
+		/**
+		 * Filter: Switch to turn off a font source.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param bool $add_source    True to allow the font source to be added.
+		 */
+		$add_source = apply_filters( 'make_add_font_source_' . $source_id, true );
+
+		if ( true === $add_source ) {
+			$module_name = 'source_' . $source_id;
+			return parent::add_module( $module_name, $source );
+		}
+
+		return false;
 	}
 
 	/**

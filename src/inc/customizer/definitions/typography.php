@@ -105,33 +105,35 @@ $this->add_section_definitions( 'font-footer', array(
 ) );
 
 // Google fonts
-$this->add_section_definitions( 'font-google', array(
-	'panel'    => $panel,
-	'title'    => __( 'Google Font Subsets', 'make' ),
-	'controls' => array(
-		'font-subset'      => array(
-			'setting' => true,
-			'control' => array(
-				'label'   => __( 'Character Subset', 'make' ),
-				'type'    => 'select',
-				'choices' => array_combine( $this->font()->get_source( 'google' )->get_subsets(), $this->font()->get_source( 'google' )->get_subsets() ),
+if ( $this->font()->has_source( 'google' ) ) {
+	$this->add_section_definitions( 'font-google', array(
+		'panel'    => $panel,
+		'title'    => __( 'Google Font Subsets', 'make' ),
+		'controls' => array(
+			'font-subset'      => array(
+				'setting' => true,
+				'control' => array(
+					'label'   => __( 'Character Subset', 'make' ),
+					'type'    => 'select',
+					'choices' => array_combine( $this->font()->get_source( 'google' )->get_subsets(), $this->font()->get_source( 'google' )->get_subsets() ),
+				),
 			),
-		),
-		'font-subset-text' => array(
-			'control' => array(
-				'control_type' => 'MAKE_Customizer_Control_Html',
-				'description'  => sprintf(
-					__( 'Not all fonts provide each of these subsets. Please visit the %s to see which subsets are available for each font.', 'make' ),
-					sprintf(
-						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( 'https://www.google.com/fonts' ),
-						__( 'Google Fonts website', 'make' )
-					)
+			'font-subset-text' => array(
+				'control' => array(
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'description'  => sprintf(
+						__( 'Not all fonts provide each of these subsets. Please visit the %s to see which subsets are available for each font.', 'make' ),
+						sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a>',
+							esc_url( 'https://www.google.com/fonts' ),
+							__( 'Google Fonts website', 'make' )
+						)
+					),
 				),
 			),
 		),
-	),
-) );
+	) );
+}
 
 // Check for deprecated filters
 foreach ( array( 'make_customizer_typography_sections' ) as $filter ) {

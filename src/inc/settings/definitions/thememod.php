@@ -614,23 +614,25 @@ $this->add_settings(
 	)
 );
 
-// Misc settings
-$this->add_settings(
-	array(
-		'font-subset'     => array(
-			'default'                  => 'latin',
-			'sanitize'                 => 'sanitize_key',
-			'sanitize_from_customizer' => array( $this, 'sanitize_google_font_subset' ),
-			'sanitize_to_customizer'   => array( $this, 'sanitize_google_font_subset' ),
-		),
-		'google-font-url' => array(
-			'default'           => '',
-			'sanitize'          => 'esc_url',
-			'sanitize_database' => 'esc_url_raw',
-			'is_cache'          => true,
-		),
-	)
-);
+// Google fonts
+if ( $this->font()->has_source( 'google' ) ) {
+	$this->add_settings(
+		array(
+			'font-subset'     => array(
+				'default'                  => 'latin',
+				'sanitize'                 => 'sanitize_key',
+				'sanitize_from_customizer' => array( $this, 'sanitize_google_font_subset' ),
+				'sanitize_to_customizer'   => array( $this, 'sanitize_google_font_subset' ),
+			),
+			'google-font-url' => array(
+				'default'           => '',
+				'sanitize'          => 'esc_url',
+				'sanitize_database' => 'esc_url_raw',
+				'is_cache'          => true,
+			),
+		)
+	);
+}
 
 // Social Icons
 $this->add_settings(
