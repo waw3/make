@@ -167,7 +167,7 @@ $this->add_settings(
 		'label-search-field'      => array( 'default' => __( 'Search&hellip;', 'make' ) ),
 	),
 	array(
-		'sanitize' => 'esc_html',
+		'sanitize' => 'sanitize_text_field',
 	)
 );
 
