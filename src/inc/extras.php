@@ -14,25 +14,25 @@ if ( ! function_exists( 'ttfmake_body_classes' ) ) :
  */
 function ttfmake_body_classes( $classes ) {
 	// Full-width vs Boxed
-	$classes[] = get_theme_mod( 'general-layout', ttfmake_get_default( 'general-layout' ) );
+	$classes[] = make_get_thememod_value( 'general-layout' );
 
 	// Header branding position
-	if ( 'right' === get_theme_mod( 'header-branding-position', ttfmake_get_default( 'header-branding-position' ) ) ) {
+	if ( 'right' === make_get_thememod_value( 'header-branding-position' ) ) {
 		$classes[] = 'branding-right';
 	}
 
 	// Header Bar text position
-	if ( 'flipped' === get_theme_mod( 'header-bar-content-layout', ttfmake_get_default( 'header-bar-content-layout' ) ) ) {
+	if ( 'flipped' === make_get_thememod_value( 'header-bar-content-layout' ) ) {
 		$classes[] = 'header-bar-flipped';
 	}
 
 	// Left Sidebar
-	if ( true === ttfmake_has_sidebar( 'left' ) ) {
+	if ( true === make_has_sidebar( 'left' ) ) {
 		$classes[] = 'has-left-sidebar';
 	}
 
 	// Right Sidebar
-	if ( true === ttfmake_has_sidebar( 'right' ) ) {
+	if ( true === make_has_sidebar( 'right' ) ) {
 		$classes[] = 'has-right-sidebar';
 	}
 
@@ -54,8 +54,8 @@ if ( ! function_exists( 'ttfmake_maybe_add_with_avatar_class' ) ) :
  * @return array                 The modified post class array.
  */
 function ttfmake_maybe_add_with_avatar_class( $classes, $class, $post_ID ) {
-	$author_key    = 'layout-' . ttfmake_get_view() . '-post-author';
-	$author_option = ttfmake_sanitize_choice( get_theme_mod( $author_key, ttfmake_get_default( $author_key ) ), $author_key );
+	$author_key    = 'layout-' . make_get_current_view() . '-post-author';
+	$author_option = make_get_thememod_value( $author_key );
 
 	if ( 'avatar' === $author_option ) {
 		$classes[] = 'has-author-avatar';
@@ -66,68 +66,6 @@ function ttfmake_maybe_add_with_avatar_class( $classes, $class, $post_ID ) {
 endif;
 
 add_filter( 'post_class', 'ttfmake_maybe_add_with_avatar_class', 10, 3 );
-
-if ( ! function_exists( 'sanitize_hex_color' ) ) :
-/**
- * Sanitizes a hex color.
- *
- * This is a copy of the core function for use when the customizer is not being shown.
- *
- * @since  1.0.0.
- *
- * @param  string         $color    The proposed color.
- * @return string|null              The sanitized color.
- */
-function sanitize_hex_color( $color ) {
-	if ( '' === $color ) {
-		return '';
-	}
-	// 3 or 6 hex digits, or the empty string.
-	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
-		return $color;
-	}
-	return null;
-}
-endif;
-
-if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
-/**
- * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
- *
- * This is a copy of the core function for use when the customizer is not being shown.
- *
- * @since  1.0.0.
- *
- * @param  string         $color    The proposed color.
- * @return string|null              The sanitized color.
- */
-function sanitize_hex_color_no_hash( $color ) {
-	$color = ltrim( $color, '#' );
-	if ( '' === $color ) {
-		return '';
-	}
-	return sanitize_hex_color( '#' . $color ) ? $color : null;
-}
-endif;
-
-if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
-/**
- * Ensures that any hex color is properly hashed.
- *
- * This is a copy of the core function for use when the customizer is not being shown.
- *
- * @since  1.0.0.
- *
- * @param  string         $color    The proposed color.
- * @return string|null              The sanitized color.
- */
-function maybe_hash_hex_color( $color ) {
-	if ( $unhashed = sanitize_hex_color_no_hash( $color ) ) {
-		return '#' . $unhashed;
-	}
-	return $color;
-}
-endif;
 
 if ( ! function_exists( 'ttfmake_excerpt_more' ) ) :
 /**

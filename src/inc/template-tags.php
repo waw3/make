@@ -170,7 +170,7 @@ function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $af
 
 	// No filters, get the theme option.
 	if ( false === $more ) {
-		$more = esc_html( get_theme_mod( 'label-read-more', ttfmake_get_default( 'label-read-more' ) ) );
+		$more = make_get_thememod_value( 'label-read-more' );
 	}
 
 	return $before . $more . $after;
@@ -192,15 +192,15 @@ function ttfmake_maybe_show_site_region( $region ) {
 	}
 
 	// Get the view
-	$view = ttfmake_get_view();
+	$view = make_get_current_view();
 
 	// Get the relevant option
-	$hide_region = (bool) get_theme_mod( 'layout-' . $view . '-hide-' . $region, ttfmake_get_default( 'layout-' . $view . '-hide-' . $region ) );
+	$hide_region = make_get_thememod_value( 'layout-' . $view . '-hide-' . $region );
 
 	if ( true !== $hide_region ) {
 		get_template_part(
 			'partials/' . $region . '-layout',
-			get_theme_mod( $region . '-layout', ttfmake_get_default( $region . '-layout' ) )
+			make_get_thememod_value( $region . '-layout' )
 		);
 	}
 }
@@ -219,16 +219,16 @@ function ttfmake_get_site_header_class() {
 	$class = 'site-header';
 
 	// Layout
-	$class .= ' header-layout-' . get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) );
+	$class .= ' header-layout-' . make_get_thememod_value( 'header-layout' );
 
 	// Title
-	$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
+	$hide_site_title = make_get_thememod_value( 'hide-site-title' );
 	if ( 1 === $hide_site_title || ! get_bloginfo( 'name' ) ) {
 		$class .= ' no-site-title';
 	}
 
 	// Tagline
-	$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
+	$hide_tagline    = make_get_thememod_value( 'hide-tagline' );
 	if ( 1 === $hide_tagline || ! get_bloginfo( 'description' ) ) {
 		$class .= ' no-site-tagline';
 	}
@@ -253,7 +253,7 @@ if ( ! function_exists( 'ttfmake_maybe_show_sidebar' ) ) :
  */
 function ttfmake_maybe_show_sidebar( $location ) {
 	// Get sidebar status
-	$show_sidebar = ttfmake_has_sidebar( $location );
+	$show_sidebar = make_has_sidebar( $location );
 
 	// Output the sidebar
 	if ( true === $show_sidebar ) {
