@@ -260,6 +260,20 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		});
 	};
 
+	// Initialize color pickers
+	$oneApp.on('viewInit afterSectionViewAdded', function(evt, view) {
+		var $selector;
+		view = view || '';
+
+		if (view.$el) {
+			$selector = $('.ttfmake-configuration-color-picker', view.$el);
+		} else {
+			$selector = $('.ttfmake-configuration-color-picker');
+		}
+
+		$selector.wpColorPicker();
+	});
+
 	$('body').on('click', '.ttfmake-remove-image-from-modal', function(evt){
 		evt.preventDefault();
 
