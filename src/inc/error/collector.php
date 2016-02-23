@@ -258,9 +258,15 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 				margin-bottom: 1em;
 			}
 			#wpadminbar .make-error-detail p {
+				margin-bottom: 0.5em;
+			}
+			#wpadminbar .make-error-detail p + p,
+			#wpadminbar .make-error-detail p + ol {
 				margin-bottom: 1em;
 			}
 			#wpadminbar .make-error-detail p,
+			#wpadminbar .make-error-detail ol,
+			#wpadminbar .make-error-detail li,
 			#wpadminbar .make-error-detail a,
 			#wpadminbar .make-error-detail em,
 			#wpadminbar .make-error-detail strong {
@@ -276,9 +282,20 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 			#wpadminbar .make-error-detail strong {
 				font-weight: bold;
 			}
+			#wpadminbar .make-error-detail pre,
 			#wpadminbar .make-error-detail code {
 				font: 16px/20px monospace;
 				padding: 2px 6px;
+			}
+			#wpadminbar .make-error-detail ol {
+				list-style: decimal outside;
+				clear: both;
+				padding: 0 16px;
+			}
+			#wpadminbar .make-error-detail li {
+				display: list-item;
+				float: none;
+				list-style-type: decimal;
 			}
 			#make-error-detail-container {
 				display: none;
@@ -430,15 +447,13 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 					</div>
 					<?php foreach ( $this->errors()->get_error_codes() as $code ) : ?>
 						<h3><?php printf( esc_html__( 'Error code: %s', 'make' ), esc_html( $code ) ); ?></h3>
-						<p>
-							<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
-								if ( is_array( $message ) ) :
-									$message = $this->parse_backtrace( $message );
-								endif;
-								?>
-								<?php echo $this->sanitize_message( $message ); ?><br />
-							<?php endforeach; ?>
-						</p>
+						<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
+							if ( is_array( $message ) ) :
+								$message = $this->parse_backtrace( $message );
+							endif;
+							?>
+							<?php echo wpautop( $this->sanitize_message( $message ) ); ?>
+						<?php endforeach; ?>
 						<hr />
 					<?php endforeach; ?>
 				</div>
@@ -498,11 +513,36 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 * @return string
 	 */
 	public function parse_backtrace( array $backtrace ) {
-		if ( isset( $backtrace['file'] ) && isset( $backtrace['line'] ) ) {
-			return sprintf( __( 'Called in <strong>%1$s</strong> on line <strong>%2$s</strong>.' ), $backtrace['file'], $backtrace['line'] );
-		} else {
-			return print_r( $backtrace, true );
+		/**
+		 * Filter: Change the number of steps shown in a Make Error backtrace.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param int $limit    The number of backtrace steps to show.
+		 */
+		$limit = absint( apply_filters( 'make_error_backtrace_limit', 3 ) );
+
+		$output = '';
+
+		foreach ( $backtrace as $stack => $data ) {
+			if ( $stack >= $limit ) {
+				break;
+			}
+
+			if ( isset( $data['function'] ) && isset( $data['file'] ) && isset( $data['line'] ) ) {
+				$output .= '<li>' . sprintf( __( 'Called by <strong>%1$s</strong> in <strong>%2$s</strong> on line <strong>%3$s</strong>.' ), $data['function'], $data['file'], $data['line'] ) . '</li>';
+			} else if ( isset( $data['function'] ) && isset( $data['class'] ) ) {
+				$output .= '<li>' . sprintf( __( 'Called by <strong>%1$s</strong> in the <strong>%2$s</strong> class.' ), $data['function'], $data['class'] ) . '</li>';
+			} else {
+				$output .= '<li>' . '<pre>' . print_r( $data, true ) . '</pre></li>';
+			}
 		}
+
+		if ( $output ) {
+			$output = '<ol>' . $output . '</ol>';
+		}
+
+		return $output;
 	}
 
 	/**
@@ -514,9 +554,18 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 * @return string                The sanitized message string.
 	 */
 	private function sanitize_message( $message ) {
-		$allowedtags = wp_kses_allowed_html();
-		$allowedtags['a']['target'] = true;
-		$allowedtags['br'] = true;
+		$allowedtags = array_merge(
+			wp_kses_allowed_html(),
+			array(
+				'a'   => array(
+					'target' => true,
+				),
+				'ol'  => true,
+				'li'  => true,
+				'pre' => true,
+				'br'  => true,
+			)
+		);
 		return wp_kses( $message, $allowedtags );
 	}
 }

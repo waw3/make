@@ -151,7 +151,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 				__FUNCTION__,
 				__( 'This function should only be called during or before the <code>make_settings_thememod_loaded</code> action.', 'make' ),
 				'1.7.0',
-				$backtrace[0]
+				$backtrace
 			);
 
 			return false;

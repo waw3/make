@@ -261,7 +261,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$message .= '<br />&emsp;' . $this->error()->parse_backtrace( $backtrace );
+			$message .= $this->error()->parse_backtrace( $backtrace );
 		}
 
 		// Add the error.
@@ -332,7 +332,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		// Add a backtrace.
 		if ( is_array( $backtrace ) ) {
-			$message .= '<br />&emsp;' . $this->error()->parse_backtrace( $backtrace );
+			$message .= $this->error()->parse_backtrace( $backtrace );
 		}
 
 		// Add the error.

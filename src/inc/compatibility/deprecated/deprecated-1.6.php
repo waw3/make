@@ -25,7 +25,7 @@ if ( ! function_exists( 'ttfmake_customizer_supports_panels' ) ) :
  */
 function ttfmake_customizer_supports_panels() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace );
 	return ( class_exists( 'WP_Customize_Manager' ) && method_exists( 'WP_Customize_Manager', 'add_panel' ) ) || function_exists( 'wp_validate_boolean' );
 }
 else :
@@ -46,7 +46,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_legacy_sections' ) ) :
  */
 function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_add_legacy_sections', '1.6.0' );
@@ -65,7 +65,7 @@ if ( ! function_exists( 'ttfmake_css_legacy_fonts' ) ) :
  */
 function ttfmake_css_legacy_fonts() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.6.0', null, $backtrace );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_css_legacy_fonts', '1.6.0' );

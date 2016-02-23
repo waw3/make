@@ -21,7 +21,7 @@ if ( ! function_exists( 'ttfmake_display_favicons' ) ) :
  */
 function ttfmake_display_favicons() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_display_favicons', '1.5.0' );
@@ -41,7 +41,7 @@ if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
  */
 function ttfmake_body_layout_classes( $classes ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes', $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes', $backtrace );
 	return $classes;
 }
 else :
@@ -60,7 +60,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_header_sections' ) ) :
  */
 function ttfmake_customizer_define_header_sections( $sections ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace );
 	return $sections;
 }
 else :
@@ -79,7 +79,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_footer_sections' ) ) :
  */
 function ttfmake_customizer_define_footer_sections( $sections ) {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace );
 	return $sections;
 }
 else :
@@ -99,7 +99,7 @@ if ( ! function_exists( 'ttfmake_css_add_rules' ) ) :
  */
 function ttfmake_css_add_rules() {
 	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace[0] );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', null, $backtrace );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_css_add_rules', '1.5.0' );

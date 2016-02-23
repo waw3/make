@@ -110,7 +110,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 				__FUNCTION__,
 				__( 'This function should only be called during or before the <code>make_view_loaded</code> action.', 'make' ),
 				'1.7.0',
-				$backtrace[0]
+				$backtrace
 			);
 
 			return false;
@@ -217,7 +217,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 				__FUNCTION__,
 				__( 'View cannot be accurately determined until after the <code>template_redirect</code> action has run.', 'make' ),
 				'1.7.0',
-				$backtrace[0]
+				$backtrace
 			);
 
 			return null;

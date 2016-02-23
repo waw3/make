@@ -155,7 +155,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				__FUNCTION__,
 				__( 'This function should only be called during or before the <code>make_socialicons_loaded</code> action.', 'make' ),
 				'1.7.0',
-				$backtrace[0]
+				$backtrace
 			);
 
 			return false;
