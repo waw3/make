@@ -255,6 +255,7 @@ if ( ! function_exists( 'ttfmake_has_sidebar' ) ) :
  * Determine if the current view should show a sidebar in the given location.
  *
  * @since  1.0.0.
+ * @deprecated 1.7.0.
  *
  * @param  string    $location    The location to test for.
  * @return bool                   Whether or not the location has a sidebar.
