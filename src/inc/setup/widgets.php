@@ -177,11 +177,11 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 
 		// Get the relevant theme mod
 		$setting_id = 'layout-' . $view . '-sidebar-' . $location;
-		$show_sidebar = $this->thememod()->get_value( $setting_id );
+		$has_sidebar = $this->thememod()->get_value( $setting_id );
 
 		// Builder template doesn't support sidebars
 		if ( 'template-builder.php' === get_page_template_slug() ) {
-			$show_sidebar = false;
+			$has_sidebar = false;
 		}
 
 		/**
@@ -189,10 +189,10 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		 *
 		 * @since 1.2.3.
 		 *
-		 * @param bool      $show_sidebar    Whether or not to show the sidebar.
-		 * @param string    $location        The location of the sidebar being evaluated.
-		 * @param string    $view            The view name.
+		 * @param bool      $has_sidebar    Whether or not to show the sidebar.
+		 * @param string    $location       The location of the sidebar being evaluated.
+		 * @param string    $view           The view name.
 		 */
-		return apply_filters( 'make_has_sidebar', $show_sidebar, $location, $view );
+		return apply_filters( 'make_has_sidebar', $has_sidebar, $location, $view );
 	}
 }
