@@ -62,9 +62,6 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			// Per Page info
 			add_action( 'add_meta_boxes', array( $this, 'perpage_add_info' ) );
 
-			// Quick Start info
-			add_action( 'edit_form_after_title', array( $this, 'quickstart_add_info' ) );
-
 			// Sections info
 			add_action( 'make_after_builder_menu', array( $this, 'sections_add_info' ) );
 
@@ -243,38 +240,6 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			return;
 		}
 
-		// Add section for Style Kits
-		$wp_customize->add_section( 'make_stylekit', array(
-			'title' => __( 'Style Kits', 'make' ),
-			'description' => sprintf(
-				__( '%s to quickly apply designer-picked style choices (fonts, layout, colors) to your website.', 'make' ),
-				sprintf(
-					'<a href="%1$s" target="_blank">%2$s</a>',
-					esc_url( $this->get_plus_link() ),
-					__( 'Upgrade to Make Plus', 'make' )
-				)
-			),
-			'priority' => $wp_customize->get_panel( 'make_general' )->priority - 5
-		) );
-
-		// Add controls for Style Kits
-		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'make_stylekit-info', array(
-			'section' => 'make_stylekit',
-			'label'   => __( 'Kits', 'make' ),
-			'html' => '
-				<select>
-					<option selected="selected" disabled="disabled">--- ' . __( "Choose a kit", "make" ) . ' ---</option>
-					<option disabled="disabled">' . __( "Default", "make" ) . '</option>
-					<option disabled="disabled">' . __( "Hello", "make" ) . '</option>
-					<option disabled="disabled">' . __( "Light", "make" ) . '</option>
-					<option disabled="disabled">' . __( "Dark", "make" ) . '</option>
-					<option disabled="disabled">' . __( "Modern", "make" ) . '</option>
-					<option disabled="disabled">' . __( "Creative", "make" ) . '</option>
-					<option disabled="disabled">' . __( "Vintage", "make" ) . '</option>
-				</select>
-			',
-		) ) );
-
 		// Add section for Typekit
 		$wp_customize->add_section( 'make_font-typekit', array(
 			'panel'       => 'make_typography',
@@ -414,57 +379,6 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			)
 		);
 		echo '</p>';
-	}
-
-	/**
-	 * Add information about Quick Start.
-	 *
-	 * @since  1.0.6.
-	 *
-	 * @return void
-	 */
-	public function quickstart_add_info() {
-		// Only run this in the proper hook context.
-		if ( 'edit_form_after_title' !== current_action() ) {
-			return;
-		}
-
-		// Only show this on the Edit Page screen.
-		if ( 'page' !== get_post_type() ) {
-			return;
-		}
-
-		// Enqueue helper script
-		wp_enqueue_script(
-			'ttfmake-sections/js/quick-start.js',
-			Make()->scripts()->get_js_directory_uri() . '/builder/sections/quick-start.js',
-			array( 'ttfmake-builder' ),
-			TTFMAKE_VERSION,
-			true
-		);
-
-		$section_ids        = get_post_meta( get_the_ID(), '_ttfmake-section-ids', true );
-		$additional_classes = ( ! empty( $section_ids ) ) ? ' ttfmp-import-message-hide' : '';
-		?>
-		<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
-			<p>
-				<strong><?php esc_html_e( 'Want some ideas?', 'make' ); ?></strong><br />
-				<?php
-				printf(
-					esc_html__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
-					sprintf(
-						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( $this->get_plus_link() ),
-						sprintf(
-							esc_html__( 'Upgrade to %s', 'make' ),
-							'Make Plus'
-						)
-					)
-				);
-				?>
-			</p>
-		</div>
-	<?php
 	}
 
 	/**
