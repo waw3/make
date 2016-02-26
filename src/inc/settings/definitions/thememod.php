@@ -670,20 +670,21 @@ $this->add_settings(
 			'sanitize'           => 'esc_url',
 		),
 		'social-icons' => array(
-			'default'  => array(
-				'items' => array(
+			'default'                  => array(
+				'items'        => array(
 					array(
 						'type'    => 'rss',
 						'content' => '',
 					),
 				),
 				'email-toggle' => false,
-				'rss-toggle' => true,
-				'new-window' => false,
+				'rss-toggle'   => true,
+				'new-window'   => false,
 			),
-			'sanitize' => array( $this, 'sanitize_socialicons' ),
+			'sanitize'                 => array( $this, 'sanitize_socialicons' ),
 			'sanitize_from_customizer' => array( $this, 'sanitize_socialicons_from_customizer' ),
-			'sanitize_to_customizer' => array( $this, 'sanitize_socialicons_to_customizer' ),
+			'sanitize_to_customizer'   => array( $this, 'sanitize_socialicons_to_customizer' ),
+			'is_array'                 => true,
 		)
 	)
 );

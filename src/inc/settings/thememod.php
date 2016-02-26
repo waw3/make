@@ -449,7 +449,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	}
 
 	/**
-	 * Add items to the array of parameters to feed into the sanitize_choice callback.
+	 * Add items to the array of parameters to feed into the sanitize callback.
 	 *
 	 * @since x.x.x.
 	 *
@@ -461,17 +461,16 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 */
 	public function add_sanitize_choice_parameters( $value, $callback, $setting_id ) {
 		// Only run this in the proper hook context.
-		if ( "make_settings_thememod_sanitize_callback_parameters" !== current_filter() ) {
+		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
 			return $value;
 		}
 
-		if (
-			is_array( $callback )
-			&&
-			$callback[0] instanceof $this
-			&&
-			in_array( $callback[1], array( 'sanitize_choice', 'sanitize_font_choice' ) )
-		) {
+		$choice_settings = array_merge(
+			array_keys( $this->get_settings( 'choice_set_id' ), true ),
+			array_keys( $this->get_settings( 'is_font' ), true )
+		);
+
+		if ( in_array( $setting_id, $choice_settings ) ) {
 			$value = (array) $value;
 			$value[] = $setting_id;
 		}
@@ -493,20 +492,11 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 */
 	public function wrap_array_values( $value, $callback, $setting_id ) {
 		// Only run this in the proper hook context.
-		if ( "make_settings_thememod_sanitize_callback_parameters" !== current_filter() ) {
+		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
 			return $value;
 		}
 
-		// Social icons
-		if (
-			is_array( $callback )
-			&&
-			$callback[0] instanceof $this
-			&&
-			in_array( $callback[1], array( 'sanitize_socialicons', 'sanitize_socialicons_to_customizer' ) )
-			&&
-		    is_array( $value )
-		) {
+		if ( in_array( $setting_id, array_keys( $this->get_settings( 'is_array' ), true ) ) ) {
 			$value = array( $value );
 		}
 
