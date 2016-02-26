@@ -71,7 +71,7 @@ $this->register_admin_notice(
 	array(
 		'cap'     => 'switch_themes',
 		'dismiss' => true,
-		'screen'  => array( 'themes' ),
+		'screen'  => array( 'theme-editor' ),
 		'type'    => 'info',
 	)
 );
@@ -92,8 +92,8 @@ $this->register_admin_notice(
 	'make-plugins-integrations',
 	sprintf(
 		__( 'So you’re looking for more. Did you know Make has custom integrations with <a href="%1$s" target="_blank">WooCommerce</a>, <a href="%2$s" target="_blank">Easy Digital Downloads</a>, and <a href="%3$s" target="_blank">Yoast SEO</a>?', 'make' ),
-		'https://thethemefoundry.com/docs/make-docs/integrations/easy-digital-downloads/',
 		'https://thethemefoundry.com/docs/make-docs/integrations/woocommerce/',
+		'https://thethemefoundry.com/docs/make-docs/integrations/easy-digital-downloads/',
 		'https://thethemefoundry.com/docs/make-docs/integrations/yoast-seo/'
 	),
 	array(
