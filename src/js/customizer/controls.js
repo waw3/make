@@ -336,7 +336,7 @@
 			});
 
 			// Item inputs
-			$stage.on('change, make:donetyping', 'input', function() {
+			$stage.on('make:socialicons:donetyping', 'input', function() {
 				control.sendIconRequest($(this).parent());
 				control.updateValue();
 			});
@@ -432,7 +432,7 @@
 				doneTyping = function($el){
 					if (! timeoutReference) return;
 					timeoutReference = null;
-					$el.find('input').trigger('make:donetyping');
+					$el.find('input').trigger('make:socialicons:donetyping');
 				};
 
 			$el.find('input').on('keyup keypress paste', function(evt) {

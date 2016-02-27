@@ -73,8 +73,11 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			return;
 		}
 
-		// Add filter to convert deprecated social profile settings if necessary
+		// Convert deprecated social profile settings if necessary
 		add_filter( 'theme_mod_social-icons', array( $this, 'filter_theme_mod' ), 1 );
+
+		// Fix sanitization of values coming from the Customizer
+		add_filter( 'make_settings_thememod_sanitize_callback_parameters', array( $this, 'not_always_an_array' ), 20, 3 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -577,7 +580,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 */
 	public function filter_theme_mod( $value ) {
 		// Only run this in the proper hook context.
-		if ( "theme_mod_social-icons" !== current_filter() ) {
+		if ( 'theme_mod_social-icons' !== current_filter() ) {
 			return $value;
 		}
 
@@ -594,14 +597,25 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	}
 
 	/**
+	 * Wrapper function for retrieving social icon data.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return array
+	 */
+	public function get_icon_data() {
+		return $this->thememod()->get_value( 'social-icons' );
+	}
+
+	/**
 	 * Check to see if social icons have been configured for display.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @return bool
 	 */
-	public function has_icons() {
-		$icon_data = $this->thememod()->get_value( 'social-icons', 'template' );
+	public function has_icon_data() {
+		$icon_data = $this->get_icon_data();
 		return ( isset( $icon_data['items'] ) && ! empty( $icon_data['items'] ) );
 	}
 
@@ -613,7 +627,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @return string
 	 */
 	public function render_icons() {
-		$icon_data = $this->thememod()->get_value( 'social-icons', 'template' );
+		$icon_data = $this->get_icon_data();
 		$items = ( isset( $icon_data['items'] ) ) ? $icon_data['items'] : array();
 
 		/**
@@ -684,5 +698,38 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		}
 
 		return $output;
+	}
+
+	/**
+	 * When the social icons data is coming from the Customizer, it's not an array, in which
+	 * case the wrap_array_values filter needs to be undone.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param mixed        $value
+	 * @param array|string $callback
+	 * @param string       $setting_id
+	 *
+	 * @return array
+	 */
+	public function not_always_an_array( $value, $callback, $setting_id ) {
+		// Only run this in the proper hook context.
+		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
+			return $value;
+		}
+
+		if (
+			'social-icons' === $setting_id
+			&&
+			is_array( $callback )
+			&&
+		    $callback[0] instanceof MAKE_Settings_ThemeModInterface
+			&&
+		    $callback[1] === 'sanitize_socialicons_from_customizer'
+		) {
+			$value = $value[0];
+		}
+
+		return $value;
 	}
 }

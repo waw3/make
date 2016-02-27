@@ -208,7 +208,7 @@ function make_has_sidebar( $location ) {
  * @return bool
  */
 function make_has_socialicons() {
-	return Make()->socialicons()->has_icons();
+	return Make()->socialicons()->has_icon_data();
 }
 
 /**
