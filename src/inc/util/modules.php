@@ -107,10 +107,10 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param MAKE_APIInterface $api
-	 * @param array             $modules
+	 * @param MAKE_APIInterface|null $api
+	 * @param array                  $modules
 	 */
-	protected function load_dependencies( MAKE_APIInterface $api, array $modules = array() ) {
+	protected function load_dependencies( MAKE_APIInterface $api = null, array $modules = array() ) {
 		foreach ( $this->dependencies as $dependency_name => $dependency_type ) {
 			// Provided by modules array
 			if ( isset( $modules[ $dependency_name ] ) ) {
@@ -135,7 +135,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 				}
 			}
 			// Provided by API
-			else if ( $api->has_module( $dependency_name ) && is_a( $api->inject_module( $dependency_name ), $dependency_type ) ) {
+			else if ( ! is_null( $api ) && $api->has_module( $dependency_name ) && is_a( $api->inject_module( $dependency_name ), $dependency_type ) ) {
 				$this->add_module( $dependency_name, $api->inject_module( $dependency_name ) );
 				continue;
 			}
