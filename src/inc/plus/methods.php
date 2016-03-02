@@ -5,13 +5,13 @@
 
 final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_HookInterface {
 	/**
-	 * The activation status of Make Plus.
+	 * Whether Make Plus is installed and active.
 	 *
 	 * @since x.x.x.
 	 *
 	 * @var bool
 	 */
-	private $plus = false;
+	private $plus = null;
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -21,16 +21,6 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 * @var bool
 	 */
 	private $hooked = false;
-
-	/**
-	 * Set properties.
-	 *
-	 * @since x.x.x.
-	 */
-	public function __construct() {
-		// Check for Make Plus
-		$this->plus = class_exists( 'TTFMP_App' );
-	}
 
 	/**
 	 * Hook into WordPress.
@@ -92,6 +82,36 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 * @return bool
 	 */
 	public function is_plus() {
+		if ( ! is_null( $this->plus ) ) {
+			return $this->plus;
+		}
+
+		$is_plus = false;
+
+		// Look for active plugin
+		$relative_path = 'make-plus/make-plus.php';
+		if ( is_multisite() ) {
+			$active_network_plugins = (array) get_site_option( 'active_sitewide_plugins' );
+			if ( isset( $active_network_plugins[ $relative_path ] ) ) {
+				$is_plus = true;
+			}
+		} else {
+			$active_plugins = (array) get_option( 'active_plugins' );
+			if ( in_array( $relative_path, $active_plugins ) ) {
+				$is_plus = true;
+			}
+		}
+
+		// Look for API
+		if ( false === $is_plus && function_exists( 'MakePlus' ) ) {
+			$is_plus = true;
+		}
+
+		// Look for deprecated class
+		if ( false === $is_plus && class_exists( 'TTFMP_App' ) ) {
+			$is_plus = true;
+		}
+
 		/**
 		 * Filter: Modify the status of Make Plus.
 		 *
@@ -99,7 +119,9 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		 *
 		 * @param bool    $is_plus    True if Make Plus is active.
 		 */
-		return apply_filters( 'make_is_plus', $this->plus );
+		$this->plus = apply_filters( 'make_is_plus', $is_plus );
+
+		return $this->plus;
 	}
 
 	/**
@@ -134,8 +156,12 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	public function get_plus_version() {
 		$version = null;
 
-		if ( true === $this->is_plus() && function_exists( 'ttfmp_get_app' ) ) {
-			$version = ttfmp_get_app()->version;
+		if ( true === $this->is_plus() ) {
+			if ( defined( 'MAKEPLUS_VERSION' ) && MAKEPLUS_VERSION ) {
+				$version = MAKEPLUS_VERSION;
+			} else if ( function_exists( 'ttfmp_get_app' ) ) {
+				$version = ttfmp_get_app()->version;
+			}
 		}
 
 		return $version;
