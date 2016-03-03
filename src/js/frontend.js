@@ -3,18 +3,26 @@
  *
  * @since 1.0.0
  */
+
 /* global jQuery, MakeFrontEnd */
-(function($, Make) {
+
+var MakeFrontEnd = MakeFrontEnd || {};
+
+(function($, MakeFrontEnd) {
 	'use strict';
 
 	var Make = $.extend(MakeFrontEnd, {
 		/**
+		 * Object for storing data.
 		 *
+		 * @since 1.0.0
 		 */
 		cache: {},
 
 		/**
+		 * Initialize the script.
 		 *
+		 * @since 1.0.0
 		 */
 		init: function() {
 			this.cacheElements();
@@ -22,7 +30,9 @@
 		},
 
 		/**
+		 * Cache jQuery objects for later.
 		 *
+		 * @since 1.0.0
 		 */
 		cacheElements: function() {
 			this.cache = {
@@ -32,7 +42,9 @@
 		},
 
 		/**
+		 * Set up event listeners.
 		 *
+		 * @since 1.0.0
 		 */
 		bindEvents: function() {
 			var self = this;
