@@ -350,6 +350,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		$error_message = sprintf(
 			__( '<strong>%1$s</strong> was called incorrectly. %2$s', 'make' ),
+			$function,
 			$message
 		);
 
