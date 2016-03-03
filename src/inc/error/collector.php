@@ -447,11 +447,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 					</div>
 					<?php foreach ( $this->errors()->get_error_codes() as $code ) : ?>
 						<h3><?php printf( esc_html__( 'Error code: %s', 'make' ), esc_html( $code ) ); ?></h3>
-						<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) :
-							if ( is_array( $message ) ) :
-								$message = $this->parse_backtrace( $message );
-							endif;
-							?>
+						<?php foreach ( $this->errors()->get_error_messages( $code ) as $message ) : ?>
 							<?php echo wpautop( $this->sanitize_message( $message ) ); ?>
 						<?php endforeach; ?>
 						<hr />
@@ -504,15 +500,27 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	}
 
 	/**
-	 * Attempt to parse the backtrace components of an array.
+	 * Generate a backtrace and return either as an ordered list or a raw array.
+	 *
+	 * Based on wp_debug_backtrace_summary() in Core.
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param array $backtrace
+	 * @param array  $ignore_class    An array of class names to ignore in the call stack.
+	 * @param string $output          'list' outputs an HTML ordered list. Otherwise an array.
 	 *
-	 * @return string
+	 * @return array|string
 	 */
-	public function parse_backtrace( array $backtrace ) {
+	public function generate_backtrace( array $ignore_class = array(), $output = 'list' ) {
+		if ( version_compare( PHP_VERSION, '5.2.5', '>=' ) ) {
+			$trace = debug_backtrace( false );
+		} else {
+			$trace = debug_backtrace();
+		}
+
+		// Add the error collector to the ignore class list.
+		$ignore_class[] = get_class( $this );
+
 		/**
 		 * Filter: Change the number of steps shown in a Make Error backtrace.
 		 *
@@ -522,27 +530,48 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 		 */
 		$limit = absint( apply_filters( 'make_error_backtrace_limit', 1 ) );
 
-		$output = '';
+		// Start the stack
+		$stack = array();
+		$count = 0;
 
-		foreach ( $backtrace as $stack => $data ) {
-			if ( $stack >= $limit ) {
+		foreach ( $trace as $call ) {
+			if ( $count >= $limit ) {
 				break;
 			}
 
-			if ( isset( $data['function'] ) && isset( $data['file'] ) && isset( $data['line'] ) ) {
-				$output .= '<li>' . sprintf( __( 'Called by <strong>%1$s</strong> in <strong>%2$s</strong> on line <strong>%3$s</strong>.' ), $data['function'], $data['file'], $data['line'] ) . '</li>';
-			} else if ( isset( $data['function'] ) && isset( $data['class'] ) ) {
-				$output .= '<li>' . sprintf( __( 'Called by <strong>%1$s</strong> in the <strong>%2$s</strong> class.' ), $data['function'], $data['class'] ) . '</li>';
+			if ( isset( $call['class'] ) ) {
+				// Skip calls from classes in the ignore class array.
+				if ( in_array( $call['class'], $ignore_class ) ) {
+					continue;
+				}
+				$caller = "{$call['class']}{$call['type']}{$call['function']}";
 			} else {
-				$output .= '<li>' . '<pre>' . print_r( $data, true ) . '</pre></li>';
+				if ( in_array( $call['function'], array( 'do_action', 'apply_filters' ) ) ) {
+					$caller = "{$call['function']}( '{$call['args'][0]}' )";
+				} else if ( in_array( $call['function'], array( 'include', 'include_once', 'require', 'require_once' ) ) ) {
+					$caller = $call['function'] . "( '" . str_replace( array( WP_CONTENT_DIR, ABSPATH ) , '', $call['args'][0] ) . "' )";
+				} else {
+					$caller = $call['function'];
+				}
 			}
+
+			if ( isset( $call['file'] ) && isset( $call['line'] ) ) {
+				$caller .= " in <strong>{$call['file']}</strong> on line <strong>{$call['line']}</strong>";
+			}
+
+			$stack[] = $caller;
+			$count++;
 		}
 
-		if ( $output ) {
-			$output = '<ol>' . $output . '</ol>';
+		if ( 'list' === $output ) {
+			if ( ! empty( $stack ) ) {
+				return '<ol><li>' . implode( '</li><li>', $stack ) . '</li></ol>';
+			} else {
+				return '';
+			}
+		} else {
+			return $stack;
 		}
-
-		return $output;
 	}
 
 	/**

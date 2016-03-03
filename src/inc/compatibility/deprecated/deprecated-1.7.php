@@ -18,8 +18,7 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  * @return void
  */
 function ttfmake_setup() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', __( 'a separate setup function', 'make' ), $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', __( 'a separate setup function', 'make' ) );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_setup', '1.7.0', __( 'a separate setup function', 'make' ) );
@@ -35,8 +34,7 @@ if ( ! function_exists( 'ttfmake_content_width' ) ) :
  * @return void
  */
 function ttfmake_content_width() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_content_width', '1.7.0' );
@@ -52,8 +50,7 @@ if ( ! function_exists( 'ttfmake_widgets_init' ) ) :
  * @return void
  */
 function ttfmake_widgets_init() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'register_sidebar / unregister_sidebar', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'register_sidebar / unregister_sidebar' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_widgets_init', '1.7.0', 'register_sidebar / unregister_sidebar' );
@@ -69,8 +66,7 @@ if ( ! function_exists( 'ttfmake_scripts' ) ) :
  * @return void
  */
 function ttfmake_scripts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script / wp_dequeue_script', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script / wp_dequeue_script' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_scripts', '1.7.0', 'wp_enqueue_script / wp_dequeue_script' );
@@ -91,8 +87,7 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
  * @return void
  */
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_register_script / wp_deregister_script', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_register_script / wp_deregister_script' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_cycle2_script_setup', '1.7.0', 'wp_register_script / wp_deregister_script' );
@@ -108,8 +103,7 @@ if ( ! function_exists( 'ttfmake_is_preview' ) ) :
  * @return bool    True if in the preview pane.
  */
 function ttfmake_is_preview() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'is_customize_preview', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'is_customize_preview' );
 	return is_customize_preview();
 }
 else :
@@ -125,8 +119,7 @@ endif;
  * @return bool    Whether or not the companion plugin is installed.
  */
 function ttfmake_is_plus() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_is_plus', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_is_plus' );
 	return make_is_plus();
 }
 
@@ -140,8 +133,7 @@ function ttfmake_is_plus() {
  * @return string                   The link.
  */
 function ttfmake_get_plus_link( $deprecated = '' ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->plus()->get_plus_link', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->plus()->get_plus_link' );
 	return Make()->plus()->get_plus_link();
 }
 
@@ -154,8 +146,7 @@ function ttfmake_get_plus_link( $deprecated = '' ) {
  * @return void
  */
 function ttfmake_plus_styles() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
@@ -169,8 +160,7 @@ if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
  * @return array             Modified page menu args.
  */
 function ttfmake_page_menu_args( $args ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $args;
 }
 else :
@@ -190,8 +180,7 @@ if ( ! function_exists( 'ttfmake_wp_title' ) ) :
  * @return string              The filtered title.
  */
 function ttfmake_wp_title( $title, $sep ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $title;
 }
 else :
@@ -208,8 +197,7 @@ endif;
  * @return float                     The sanitized value.
  */
 function ttfmake_sanitize_float( $value ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_float', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_float' );
 	return Make()->thememod()->sanitize_float( $value );
 }
 
@@ -224,8 +212,7 @@ if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
  * @return string               The sanitized string.
  */
 function ttfmake_sanitize_text( $string ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_text', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_text' );
 	return Make()->thememod()->sanitize_text( $string );
 }
 else :
@@ -244,8 +231,7 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
  * @return string    The string representing the current view.
  */
 function ttfmake_get_view() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_current_view', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_current_view' );
 	return make_get_current_view();
 }
 else :
@@ -263,8 +249,7 @@ if ( ! function_exists( 'ttfmake_has_sidebar' ) ) :
  * @return bool                   Whether or not the location has a sidebar.
  */
 function ttfmake_has_sidebar( $location ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_has_sidebar', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_has_sidebar' );
 	return make_has_sidebar( $location );
 }
 else :
@@ -282,8 +267,7 @@ if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
  * @return string                   The description.
  */
 function ttfmake_sidebar_description( $sidebar_id ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return '';
 }
 else :
@@ -301,8 +285,7 @@ if ( ! function_exists( 'ttfmake_sidebar_list_enabled' ) ) :
  * @return array                  The sidebar's current locations.
  */
 function ttfmake_sidebar_list_enabled( $location ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return '';
 }
 else :
@@ -319,8 +302,7 @@ if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
  * @return array    Keys are service names and the values are links.
  */
 function ttfmake_get_social_links() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_get_social_links', '1.7.0' );
@@ -338,8 +320,7 @@ if ( ! function_exists( 'ttfmake_pre_wp_nav_menu_social' ) ) :
  * @return string               Modified menu.
  */
 function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $output;
 }
 else :
@@ -355,8 +336,7 @@ endif;
  * @return void
  */
 function ttfmake_frontend_builder_scripts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 if ( ! function_exists( 'ttfmake_builder_css' ) ) :
@@ -370,8 +350,7 @@ if ( ! function_exists( 'ttfmake_builder_css' ) ) :
  * @return void
  */
 function ttfmake_builder_css() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_builder_css', '1.7.0' );
@@ -390,8 +369,7 @@ if ( ! function_exists( 'ttfmake_builder_banner_css' ) ) :
  * @return void
  */
 function ttfmake_builder_banner_css( $data, $id ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_builder_banner_css', '1.7.0' );
@@ -408,8 +386,7 @@ if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
  * @return void
  */
 function ttfmake_maybe_show_social_links( $region ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_socialicons', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_socialicons' );
 	make_socialicons( $region );
 }
 else :
@@ -425,8 +402,7 @@ endif;
  * @return void
  */
 function ttfmake_yoast_seo_breadcrumb() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_breadcrumb', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_breadcrumb' );
 	make_breadcrumb();
 }
 
@@ -442,8 +418,7 @@ function ttfmake_yoast_seo_breadcrumb() {
  * @return WP_Error                         Error or source on success.
  */
 function ttfmake_check_package( $source, $remote_source, $upgrader ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $source;
 }
 
@@ -461,8 +436,7 @@ if ( ! function_exists( 'ttfmake_filter_backcompat' ) ) :
  * @return void
  */
 function ttfmake_filter_backcompat() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_filter_backcompat', '1.7.0' );
@@ -478,8 +452,7 @@ if ( ! function_exists( 'ttfmake_backcompat_filter' ) ) :
  * @return mixed    The result of the filter.
  */
 function ttfmake_backcompat_filter() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_backcompat_filter', '1.7.0' );
@@ -499,8 +472,7 @@ if ( ! function_exists( 'ttfmake_action_backcompat' ) ) :
  * @return void
  */
 function ttfmake_action_backcompat() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_action_backcompat', '1.7.0' );
@@ -516,8 +488,7 @@ if ( ! function_exists( 'ttfmake_backcompat_action' ) ) :
  * @return mixed    The result of the filter.
  */
 function ttfmake_backcompat_action() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_backcompat_action', '1.7.0' );
@@ -533,8 +504,7 @@ if ( ! function_exists( 'ttfmake_customizer_get_key_conversions' ) ) :
  * @return array    The list of key migration sets.
  */
 function ttfmake_customizer_get_key_conversions() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 else :
@@ -551,8 +521,7 @@ if ( ! function_exists( 'ttfmake_customizer_set_up_theme_mod_conversions' ) ) :
  * @return void
  */
 function ttfmake_customizer_set_up_theme_mod_conversions() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_set_up_theme_mod_conversions', '1.7.0' );
@@ -569,8 +538,7 @@ if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_filter' ) ) :
  * @return mixed              The modified value.
  */
 function ttfmake_customizer_convert_theme_mods_filter( $value ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $value;
 }
 else :
@@ -590,8 +558,7 @@ if ( ! function_exists( 'ttfmake_customizer_convert_theme_mods_values' ) ) :
  * @return mixed                 The convert mod value.
  */
 function ttfmake_customizer_convert_theme_mods_values( $old_key, $new_key, $value ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $value;
 }
 else :
@@ -607,8 +574,7 @@ endif;
  * @return TTFMAKE_Admin_Notice
  */
 function ttfmake_admin_notice() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->notice()', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->notice()' );
 	return Make()->notice();
 }
 
@@ -624,8 +590,7 @@ function ttfmake_admin_notice() {
  * @return void
  */
 function ttfmake_register_admin_notice( $id, $message, $args ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->notice()->register_admin_notice', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->notice()->register_admin_notice' );
 	Make()->notice()->register_admin_notice( $id, $message, $args );
 }
 
@@ -638,8 +603,7 @@ function ttfmake_register_admin_notice( $id, $message, $args ) {
  * @return void
  */
 function ttfmake_upgrade_notices() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 /**
@@ -651,8 +615,7 @@ function ttfmake_upgrade_notices() {
  * @return void
  */
 function ttfmake_plus_upgrade_notices() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 /**
@@ -664,8 +627,7 @@ function ttfmake_plus_upgrade_notices() {
  * @return bool
  */
 function ttfmake_load_textdomains() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->l10n()->load_textdomains', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->l10n()->load_textdomains' );
 	return Make()->l10n()->load_textdomains();
 }
 
@@ -679,8 +641,7 @@ if ( ! function_exists( 'ttfmake_option_defaults' ) ) :
  * @return array    The default values for all theme options.
  */
 function ttfmake_option_defaults() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_settings( \'default\' )', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_settings( \'default\' )' );
 	return Make()->thememod()->get_settings( 'default' );
 }
 else :
@@ -698,8 +659,7 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  * @return mixed                Default value if found; false if not found.
  */
 function ttfmake_get_default( $option ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_thememod_default', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_thememod_default' );
 	return make_get_thememod_default( $option );
 }
 else :
@@ -717,8 +677,7 @@ if ( ! function_exists( 'ttfmake_get_choices' ) ) :
  * @return array                        The options for the setting.
  */
 function ttfmake_get_choices( $setting ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_choice_set', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_choice_set' );
 	return Make()->thememod()->get_choice_set( $setting );
 }
 else :
@@ -737,8 +696,7 @@ if ( ! function_exists( 'ttfmake_sanitize_choice' ) ) :
  * @return mixed                The sanitized value.
  */
 function ttfmake_sanitize_choice( $value, $setting ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_choice', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_choice' );
 	return Make()->thememod()->sanitize_choice( $value, $setting );
 }
 else :
@@ -755,8 +713,7 @@ if ( ! function_exists( 'ttfmake_edit_page_script' ) ) :
  * @return void
  */
 function ttfmake_edit_page_script() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_edit_page_script', '1.7.0' );
@@ -772,8 +729,7 @@ if ( ! function_exists( 'ttfmake_jetpack_setup' ) ) :
  * @return void
  */
 function ttfmake_jetpack_setup() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_jetpack_setup', '1.7.0' );
@@ -789,8 +745,7 @@ if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_footer_callback' ) ) :
  * @return void
  */
 function ttfmake_jetpack_infinite_scroll_footer_callback() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_jetpack_infinite_scroll_footer_callback', '1.7.0' );
@@ -806,8 +761,7 @@ if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_has_footer_widgets' ) )
  * @return bool    Whether or not infinite scroll has footer widgets.
  */
 function ttfmake_jetpack_infinite_scroll_has_footer_widgets() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return true;
 }
 else :
@@ -824,8 +778,7 @@ if ( ! function_exists( 'ttfmake_jetpack_infinite_scroll_render' ) ) :
  * @return void
  */
 function ttfmake_jetpack_infinite_scroll_render() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_jetpack_infinite_scroll_render', '1.7.0' );
@@ -841,8 +794,7 @@ if ( ! function_exists( 'ttfmake_jetpack_remove_sharing' ) ) :
  * @return void
  */
 function ttfmake_jetpack_remove_sharing() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_jetpack_remove_sharing', '1.7.0' );
@@ -858,8 +810,7 @@ if ( ! function_exists( 'ttfmake_woocommerce_init' ) ) :
  * @return void
  */
 function ttfmake_woocommerce_init() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_woocommerce_init', '1.7.0' );
@@ -875,8 +826,7 @@ if ( ! function_exists( 'ttfmake_woocommerce_before_main_content' ) ) :
  * @return void
  */
 function ttfmake_woocommerce_before_main_content() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_woocommerce_before_main_content', '1.7.0' );
@@ -892,8 +842,7 @@ if ( ! function_exists( 'ttfmake_woocommerce_after_main_content' ) ) :
  * @return void
  */
 function ttfmake_woocommerce_after_main_content() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_woocommerce_after_main_content', '1.7.0' );
@@ -909,8 +858,7 @@ if ( ! function_exists( 'ttfmake_get_css' ) ) :
  * @return TTFMAKE_CSS    The one TTFMAKE_CSS object.
  */
 function ttfmake_get_css() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->style()->css()', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->style()->css()' );
 	return Make()->style()->css();
 }
 else :
@@ -926,8 +874,7 @@ endif;
  * @return void
  */
 function ttfmake_css_background() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 /**
@@ -939,8 +886,7 @@ function ttfmake_css_background() {
  * @return void
  */
 function ttfmake_css_color() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 if ( ! function_exists( 'ttfmake_css_layout' ) ) :
@@ -953,8 +899,7 @@ if ( ! function_exists( 'ttfmake_css_layout' ) ) :
  * @return void
  */
 function ttfmake_css_layout() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_css_layout', '1.7.0' );
@@ -970,8 +915,7 @@ if ( ! function_exists( 'ttfmake_css_fonts' ) ) :
  * @return void
  */
 function ttfmake_css_fonts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_css_fonts', '1.7.0' );
@@ -988,8 +932,7 @@ if ( ! function_exists( 'ttfmake_get_font_stack' ) ) :
  * @return string             The full font stack.
  */
 function ttfmake_get_font_stack( $font ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_stack', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_stack' );
 	return Make()->font()->get_font_stack( $font );
 }
 else :
@@ -1006,8 +949,7 @@ if ( ! function_exists( 'ttfmake_font_get_relative_sizes' ) ) :
  * @return array    The percentage value relative to another specific size
  */
 function ttfmake_font_get_relative_sizes() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 else :
@@ -1027,8 +969,7 @@ if ( ! function_exists( 'ttfmake_parse_font_properties' ) ) :
  * @return array                 An array of non-default CSS declarations.
  */
 function ttfmake_parse_font_properties( $element, $force = false ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 else :
@@ -1046,8 +987,7 @@ endif;
  * @return array                   A CSS rule definition array.
  */
 function ttfmake_parse_link_underline( $element, $selectors ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1063,8 +1003,7 @@ if ( ! function_exists( 'ttfmake_get_relative_font_size' ) ) :
  * @return float                   The converted value.
  */
 function ttfmake_get_relative_font_size( $value, $percentage ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return round( (float) $value * ( $percentage / 100 ) );
 }
 else :
@@ -1083,8 +1022,7 @@ if ( ! function_exists( 'ttfmake_convert_px_to_rem' ) ) :
  * @return float             The converted value.
  */
 function ttfmake_convert_px_to_rem( $px, $base = 0 ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return (float) $px / 10;
 }
 else :
@@ -1103,8 +1041,7 @@ endif;
  * @return bool|string
  */
 function ttfmake_hex_to_rgb( $value ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return '';
 }
 
@@ -1118,8 +1055,7 @@ if ( ! function_exists( 'ttfmake_customizer_init' ) ) :
  * @return void
  */
 function ttfmake_customizer_init() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_init', '1.7.0' );
@@ -1136,8 +1072,7 @@ endif;
  * @return void
  */
 function ttfmake_customizer_register_autoload() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 /**
@@ -1151,8 +1086,7 @@ function ttfmake_customizer_register_autoload() {
  * @return void
  */
 function ttfmake_customizer_control_autoload( $class ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
@@ -1165,8 +1099,7 @@ if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
  * @return array    The array of panel definitions.
  */
 function ttfmake_customizer_get_panels() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->customizer_controls()->get_panel_definitions', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->customizer_controls()->get_panel_definitions' );
 	return Make()->customizer_controls()->get_panel_definitions();
 }
 else :
@@ -1184,8 +1117,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_panels' ) ) :
  * @return void
  */
 function ttfmake_customizer_add_panels( $wp_customize ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', '$wp_customize->add_panel', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', '$wp_customize->add_panel' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_add_panels', '1.7.0', '$wp_customize->add_panel' );
@@ -1201,8 +1133,7 @@ if ( ! function_exists( 'ttfmake_customizer_get_sections' ) ) :
  * @return array    The master array of Customizer sections
  */
 function ttfmake_customizer_get_sections() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->customizer_controls()->get_section_definitions', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->customizer_controls()->get_section_definitions' );
 	Make()->customizer_controls()->get_section_definitions();
 }
 else :
@@ -1222,8 +1153,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_sections' ) ) :
  * @return void
  */
 function ttfmake_customizer_add_sections( $wp_customize ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', '$wp_customize->add_section', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', '$wp_customize->add_section' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_add_sections', '1.7.0', '$wp_customize->add_section' );
@@ -1242,8 +1172,7 @@ if ( ! function_exists( 'ttfmake_customizer_add_section_options' ) ) :
  * @return int                            The last priority value assigned
  */
 function ttfmake_customizer_add_section_options( $section, $args, $initial_priority = 100 ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', '$wp_customize->add_setting / $wp_customize->add_control', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', '$wp_customize->add_setting / $wp_customize->add_control' );
 	return $initial_priority;
 }
 else :
@@ -1263,8 +1192,7 @@ if ( ! function_exists( 'ttfmake_customizer_set_transport' ) ) :
  * @return void
  */
 function ttfmake_customizer_set_transport( $wp_customize ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_set_transport', '1.7.0' );
@@ -1282,8 +1210,7 @@ if ( ! function_exists( 'ttfmake_customizer_preview_script' ) ) :
  * @return void
  */
 function ttfmake_customizer_preview_script() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_preview_script', '1.7.0', 'wp_enqueue_script' );
@@ -1301,8 +1228,7 @@ if ( ! function_exists( 'ttfmake_customizer_scripts' ) ) :
  * @return void
  */
 function ttfmake_customizer_scripts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_scripts', '1.7.0', 'wp_enqueue_script' );
@@ -1318,8 +1244,7 @@ if ( ! function_exists( 'ttfmake_add_customizations' ) ) :
  * @return void
  */
 function ttfmake_add_customizations() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_add_customizations', '1.7.0' );
@@ -1335,8 +1260,7 @@ if ( ! function_exists( 'ttfmake_customizer_background' ) ) :
  * @return void
  */
 function ttfmake_customizer_background() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_background', '1.7.0' );
@@ -1352,8 +1276,7 @@ if ( ! function_exists( 'ttfmake_customizer_navigation' ) ) :
  * @return void
  */
 function ttfmake_customizer_navigation() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_navigation', '1.7.0' );
@@ -1369,8 +1292,7 @@ if ( ! function_exists( 'ttfmake_customizer_sitetitletagline' ) ) :
  * @return void
  */
 function ttfmake_customizer_sitetitletagline() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_sitetitletagline', '1.7.0' );
@@ -1386,8 +1308,7 @@ if ( ! function_exists( 'ttfmake_customizer_staticfrontpage' ) ) :
  * @return void
  */
 function ttfmake_customizer_staticfrontpage() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_customizer_staticfrontpage', '1.7.0' );
@@ -1403,8 +1324,7 @@ endif;
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_background_images_sections( $sections ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $sections;
 }
 
@@ -1418,8 +1338,7 @@ function ttfmake_customizer_define_background_images_sections( $sections ) {
  * @return array
  */
 function ttfmake_customizer_background_image_group_definitions( $region ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1434,8 +1353,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_colorscheme_sections' ) ) :
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_colorscheme_sections( $sections ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $sections;
 }
 else :
@@ -1453,8 +1371,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_general_sections' ) ) :
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_general_sections( $sections ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $sections;
 }
 else :
@@ -1472,8 +1389,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_contentlayout_sections' ) ) :
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_contentlayout_sections( $sections ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $sections;
 }
 else :
@@ -1490,8 +1406,7 @@ endif;
  * @return array
  */
 function ttfmake_customizer_layout_region_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1505,8 +1420,7 @@ function ttfmake_customizer_layout_region_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_featured_image_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1520,8 +1434,7 @@ function ttfmake_customizer_layout_featured_image_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_post_date_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1535,8 +1448,7 @@ function ttfmake_customizer_layout_post_date_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_post_author_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1550,8 +1462,7 @@ function ttfmake_customizer_layout_post_author_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_comment_count_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1565,8 +1476,7 @@ function ttfmake_customizer_layout_comment_count_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_post_meta_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1580,8 +1490,7 @@ function ttfmake_customizer_layout_post_meta_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_content_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1596,8 +1505,7 @@ function ttfmake_customizer_layout_content_group_definitions( $view ) {
  * @return array
  */
 function ttfmake_customizer_layout_breadcrumb_group_definitions( $view ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1615,8 +1523,7 @@ if ( ! function_exists( 'ttfmake_customizer_stylekit' ) ) :
  * @return array                 The modified array of sections.
  */
 function ttfmake_customizer_stylekit( $sections ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $sections;
 }
 else :
@@ -1634,8 +1541,7 @@ if ( ! function_exists( 'ttfmake_customizer_define_typography_sections' ) ) :
  * @return array                 The augmented master array
  */
 function ttfmake_customizer_define_typography_sections( $sections ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return $sections;
 }
 else :
@@ -1654,8 +1560,7 @@ endif;
  * @return array
  */
 function ttfmake_customizer_typography_group_definitions( $element, $label, $description = '' ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 
@@ -1670,8 +1575,7 @@ if ( ! function_exists( 'ttfmake_font_choices_placeholder' ) ) :
  * @return array
  */
 function ttfmake_font_choices_placeholder() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array( 'placeholder' => __( 'Loading&hellip;', 'make' ) );
 }
 else :
@@ -1689,8 +1593,7 @@ if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
  * @return string              The sanitized font choice.
  */
 function ttfmake_sanitize_font_choice( $value ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->sanitize_font_choice', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->sanitize_font_choice' );
 	return Make()->font()->sanitize_font_choice( $value );
 }
 else :
@@ -1708,8 +1611,7 @@ if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
  * @return array               The sanitized value.
  */
 function ttfmake_sanitize_font_subset( $value ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_google_font_subset', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_google_font_subset' );
 	return Make()->thememod()->sanitize_google_font_subset( $value );
 }
 else :
@@ -1726,8 +1628,7 @@ if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :
  * @return array    All available fonts.
  */
 function ttfmake_get_all_fonts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_choices', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_choices' );
 	return Make()->font()->get_font_choices();
 }
 else :
@@ -1744,8 +1645,7 @@ if ( ! function_exists( 'ttfmake_all_font_choices' ) ) :
  * @return array    The fonts in value/label pairs.
  */
 function ttfmake_all_font_choices() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_choices', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_font_choices' );
 	return Make()->font()->get_font_choices();
 }
 else :
@@ -1762,8 +1662,7 @@ if ( ! function_exists( 'ttfmake_all_font_choices_js' ) ) :
  * @return array
  */
 function ttfmake_all_font_choices_js() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 else :
@@ -1781,8 +1680,7 @@ if ( ! function_exists( 'ttfmake_get_font_property_option_keys' ) ) :
  * @return array                  Array of matching font option keys.
  */
 function ttfmake_get_font_property_option_keys( $property ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 
 	$all_keys = array_keys( ttfmake_option_defaults() );
 
@@ -1809,8 +1707,7 @@ if ( ! function_exists( 'ttfmake_get_standard_fonts' ) ) :
  * @return array    Standard websafe fonts.
  */
 function ttfmake_get_standard_fonts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'generic\' )->get_font_data', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'generic\' )->get_font_data' );
 	return Make()->font()->get_source( 'generic' )->get_font_data();
 }
 else :
@@ -1827,8 +1724,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
  * @return array    All Google Fonts.
  */
 function ttfmake_get_google_fonts() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_font_data', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_font_data' );
 
 	if ( Make()->font()->has_source( 'google' ) ) {
 		return Make()->font()->get_source( 'google' )->get_font_data();
@@ -1855,8 +1751,7 @@ if ( ! function_exists( 'ttfmake_choose_google_font_variants' ) ) :
  * @return array                  The chosen variants.
  */
 function ttfmake_choose_google_font_variants( $font, $variants = array() ) {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 	return array();
 }
 else :
@@ -1873,8 +1768,7 @@ if ( ! function_exists( 'ttfmake_get_google_font_subsets' ) ) :
  * @return array    The available subsets.
  */
 function ttfmake_get_google_font_subsets() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_subsets', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->font()->get_source( \'google\' )->get_subsets' );
 
 	if ( Make()->font()->has_source( 'google' ) ) {
 		return Make()->font()->get_source( 'google' )->get_subsets();
@@ -1899,8 +1793,7 @@ if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
  * @return string    The URL for including Google Fonts.
  */
 function ttfmake_get_google_font_uri() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->scripts()->get_google_url', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->scripts()->get_google_url' );
 	return Make()->scripts()->get_google_url();
 }
 else :
@@ -1916,8 +1809,7 @@ endif;
  * @return TTFMAKE_Formatting
  */
 function ttfmake_formatting() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->formatting()', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->formatting()' );
 	return Make()->formatting();
 }
 
@@ -1930,8 +1822,7 @@ function ttfmake_formatting() {
  * @return void
  */
 function ttfmake_formatting_init() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', null, $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
 if ( ! function_exists( 'ttfmake_get_gallery_slider' ) ) :
@@ -1944,8 +1835,7 @@ if ( ! function_exists( 'ttfmake_get_gallery_slider' ) ) :
  * @return TTFMAKE_Gallery_Slider
  */
 function ttfmake_get_gallery_slider() {
-	$backtrace = debug_backtrace();
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->galleryslider()', $backtrace );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->galleryslider()' );
 	return Make()->galleryslider();
 }
 else :

@@ -233,9 +233,9 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @param string      $function
 	 * @param string      $version
 	 * @param string|null $replacement
-	 * @param array|null  $backtrace
+	 * @param bool        $backtrace
 	 */
-	public function deprecated_function( $function, $version, $replacement = null, $backtrace = null ) {
+	public function deprecated_function( $function, $version, $replacement = null, $backtrace = true ) {
 		/**
 		 * Fires when a deprecated function is called.
 		 *
@@ -260,8 +260,8 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		}
 
 		// Add a backtrace.
-		if ( is_array( $backtrace ) ) {
-			$message .= $this->error()->parse_backtrace( $backtrace );
+		if ( $backtrace ) {
+			$message .= $this->error()->generate_backtrace( array( get_class( $this ) ) );
 		}
 
 		// Add the error.
@@ -293,12 +293,19 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		$error_code = 'make_deprecated_hook';
 
-		// Add an error
-		if ( ! is_null( $message ) ) {
-			$this->error()->add_error( $error_code, sprintf( __( 'The <strong>%1$s</strong> hook is deprecated since version %2$s of Make. %3$s', 'make' ), $hook, $version, $message ) );
-		} else {
-			$this->error()->add_error( $error_code, sprintf( __( 'The <strong>%1$s</strong> hook is deprecated since version %2$s of Make, with no alternative available.', 'make' ), $hook, $version ) );
+		if ( is_null( $message ) ) {
+			$message = __( 'No alternative is available.', 'make' );
 		}
+
+		$error_message = sprintf(
+			__( 'The <strong>%1$s</strong> hook is deprecated since version %2$s of Make. %3$s', 'make' ),
+			$hook,
+			$version,
+			$message
+		);
+
+		// Add an error
+		$this->error()->add_error( $error_code, $error_message );
 	}
 
 	/**
@@ -311,9 +318,9 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @param string $function The function that was called.
 	 * @param string $message  A message explaining what has been done incorrectly.
 	 * @param string $version  The version of WordPress where the message was added.
-	 * @param null $backtrace
+	 * @param bool   $backtrace
 	 */
-	public function doing_it_wrong( $function, $message, $version = null, $backtrace = null ) {
+	public function doing_it_wrong( $function, $message, $version = null, $backtrace = true ) {
 		/**
 		 * Fires when the given function is being used incorrectly.
 		 *
@@ -328,14 +335,25 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		$error_code = 'make_doing_it_wrong';
 
 		// Add a version.
-		$message .= ( ! is_null( $version ) ) ? ' ' . sprintf( __( '(This message was added in version %s.)', 'make' ), $version ) : '';
-
-		// Add a backtrace.
-		if ( is_array( $backtrace ) ) {
-			$message .= $this->error()->parse_backtrace( $backtrace );
+		if ( ! is_null( $version ) ) {
+			$message = sprintf(
+				__( '%1$s (This message was added in version %2$s.)', 'make' ),
+				$message,
+				$version
+			);
 		}
 
+		// Add a backtrace.
+		if ( $backtrace ) {
+			$message .= $this->error()->generate_backtrace( array( get_class( $this ) ) );
+		}
+
+		$error_message = sprintf(
+			__( '<strong>%1$s</strong> was called incorrectly. %2$s', 'make' ),
+			$message
+		);
+
 		// Add the error.
-		$this->error()->add_error( $error_code, sprintf( __( '<strong>%1$s</strong> was called incorrectly. %2$s' ), $function, $message ) );
+		$this->error()->add_error( $error_code, $error_message );
 	}
 }
