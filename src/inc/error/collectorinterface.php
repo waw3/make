@@ -13,5 +13,9 @@ interface MAKE_Error_CollectorInterface {
 
 	public function has_errors();
 
+	public function get_codes();
+
+	public function get_messages( $code = '' );
+
 	public function generate_backtrace( array $ignore_class = array(), $output = 'list' );
 }
