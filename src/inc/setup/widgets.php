@@ -63,7 +63,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	}
 
 
-	private function get_widget_defaults( $sidebar_id ) {
+	public function get_widget_display_defaults( $sidebar_id ) {
 		$widget_defaults = array(
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
@@ -79,7 +79,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		 * @param array     $widget_defaults    The default widget markup for sidebars.
 		 * @param string    $sidebar_id         The ID of the sidebar that the widget markup will apply to.
 		 */
-		return apply_filters( 'make_widget_defaults', $widget_defaults, $sidebar_id );
+		return apply_filters( 'make_widget_display_defaults', $widget_defaults, $sidebar_id );
 	}
 
 
@@ -107,7 +107,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 				'description' => esc_html( $this->get_sidebar_description( $sidebar_id ) ),
 			);
 
-			register_sidebar( $args + $this->get_widget_defaults( $sidebar_id ) );
+			register_sidebar( $args + $this->get_widget_display_defaults( $sidebar_id ) );
 		}
 	}
 
