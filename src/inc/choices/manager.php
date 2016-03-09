@@ -113,13 +113,10 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	public function add_choice_sets( $sets, $overwrite = false ) {
 		// Make sure we're not doing it wrong.
 		if ( 'make_choices_loaded' !== current_action() && did_action( 'make_choices_loaded' ) ) {
-			$backtrace = debug_backtrace();
-
 			$this->compatibility()->doing_it_wrong(
 				__FUNCTION__,
 				__( 'This function should only be called during or before the <code>make_choices_loaded</code> action.', 'make' ),
-				'1.7.0',
-				$backtrace
+				'1.7.0'
 			);
 
 			return false;
