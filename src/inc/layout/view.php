@@ -84,7 +84,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		 *
 		 * @since x.x.x.
 		 *
-		 * @param MAKE_View_Manager    $view    The view object that has just finished loading.
+		 * @param MAKE_Layout_View    $view    The view object that has just finished loading.
 		 */
 		do_action( 'make_view_loaded', $this );
 	}
