@@ -303,7 +303,7 @@ class TTFMAKE_Builder_Base {
 		 * @param array    $dependencies    The list of dependencies.
 		 */
 		$dependencies = apply_filters(
-			'ttfmake_builder_js_dependencies',
+			'make_builder_js_dependencies',
 			array_merge(
 				$dependencies,
 				array(

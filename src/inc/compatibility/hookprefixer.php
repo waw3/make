@@ -119,6 +119,7 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 			'social_links'                 => 1,
 			'show_footer_credit'           => 1,
 			'is_plus'                      => 1,
+			'builder_js_dependencies'      => 1,
 		);
 
 		foreach ( $filter_slugs as $filter_slug => $args ) {

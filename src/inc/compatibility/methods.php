@@ -35,12 +35,12 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		),
 		'1.5'     => array(
 			'deprecated'    => array( '1.6', '1.7' ),
-			'hook-prefixer' => false,
+			'hook-prefixer' => true,
 			'key-converter' => false,
 		),
 		'1.6'     => array(
 			'deprecated'    => array( '1.7' ),
-			'hook-prefixer' => false,
+			'hook-prefixer' => true,
 			'key-converter' => false,
 		),
 		'1.7'     => array(
