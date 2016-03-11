@@ -27,6 +27,7 @@
 			this.cache.$featuredImage = $('#postimagediv');
 			this.cache.$commentstatus = $('#comment_status');
 			this.cache.$pingstatus = $('#ping_status');
+			this.cache.$helpnotice = $('#ttfmake-notice-make-page-builder-welcome');
 			this.cache.$body = $('body');
 		},
 
@@ -39,8 +40,15 @@
 
 			// Change default settings for new pages
 			if ( typeof ttfmakeEditPageData !== 'undefined' && 'post-new.php' === ttfmakeEditPageData.pageNow && 'page' === pagenow ) {
-				// Builder template is selected by default
-				self.cache.$pageTemplate.val('template-builder.php');
+				if ( ttfmakeEditPageData.defaultTemplate ) {
+					// Builder template is selected by default
+					self.cache.$pageTemplate.val('template-builder.php');
+				}
+
+				if ( ! ttfmakeEditPageData.defaultTemplate ) {
+					// Hide the Builder help notice if Builder is not the default template.
+					self.cache.$helpnotice.hide();
+				}
 
 				// Comments and pings turned off by default
 				self.cache.$commentstatus.prop('checked', '');
@@ -64,6 +72,7 @@
 				self.cache.$duplicator.show();
 				self.cache.$builderHide.prop('checked', true).parent().show();
 				self.featuredImageToggle('message');
+				self.cache.$helpnotice.show();
 				self.cache.$body.addClass('ttfmake-builder-active').removeClass('ttfmake-default-active');
 			} else {
 				self.cache.$mainEditor.show();
@@ -71,6 +80,7 @@
 				self.cache.$duplicator.hide();
 				self.cache.$builderHide.prop('checked', false).parent().hide();
 				self.featuredImageToggle('show');
+				self.cache.$helpnotice.hide();
 				self.cache.$body.removeClass('ttfmake-builder-active').addClass('ttfmake-default-active');
 			}
 		},

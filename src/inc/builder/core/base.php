@@ -348,13 +348,24 @@ class TTFMAKE_Builder_Base {
 			true
 		);
 
+		$data = array(
+			'featuredImage' => esc_html__( 'Note: the Builder Template does not display a featured image.', 'make' ),
+			'pageNow'       => esc_js( $pagenow ),
+		);
+
+		/**
+		 * Filter: Modify whether new pages default to the Builder template.
+		 *
+		 * @since x.x.x.
+		 *
+		 * @param bool $is_default
+		 */
+		$data['defaultTemplate'] = apply_filters( 'make_builder_is_default', true );
+
 		wp_localize_script(
 			'ttfmake-builder-edit-page',
 			'ttfmakeEditPageData',
-			array(
-				'featuredImage' => esc_html__( 'Note: the Builder Template does not display a featured image.', 'make' ),
-				'pageNow'       => esc_js( $pagenow ),
-			)
+			$data
 		);
 	}
 
