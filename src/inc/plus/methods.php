@@ -175,6 +175,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 * @param MAKE_Admin_NoticeInterface $notice
 	 */
 	public function admin_notices( MAKE_Admin_NoticeInterface $notice ) {
+		// Only run this in the proper hook context.
+		if ( 'make_notice_loaded' !== current_action() ) {
+			return;
+		}
+
 		// Notice to help with potential update issues with Make Plus
 		if ( true === $this->is_plus() && version_compare( $this->get_plus_version(), '1.4.7', '<=' ) ) {
 			$notice->register_admin_notice(

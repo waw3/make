@@ -17,7 +17,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	 * @var array
 	 */
 	protected $dependencies = array(
-		'widgets'     => 'MAKE_Setup_WidgetsInterface',
+		'widgets' => 'MAKE_Setup_WidgetsInterface',
 	);
 
 	/**
