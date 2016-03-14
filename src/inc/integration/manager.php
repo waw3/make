@@ -97,22 +97,25 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	 *
 	 * @since x.x.x.
 	 *
-	 * @link http://queryloop.com/how-to-detect-if-a-wordpress-plugin-is-active/
-	 *
-	 * @param  string    $plugin_relative_path
+	 * @param string $plugin_relative_path
 	 *
 	 * @return bool
 	 */
 	public function is_plugin_active( $plugin_relative_path ) {
-		$network_active = false;
+		$is_active = false;
 
 		if ( is_multisite() ) {
-			$plugins = get_site_option( 'active_sitewide_plugins' );
-			if ( isset( $plugins[ $plugin_relative_path ] ) ) {
-				$network_active = true;
+			$active_network_plugins = (array) get_site_option( 'active_sitewide_plugins' );
+			if ( isset( $active_network_plugins[ $plugin_relative_path ] ) ) {
+				$is_active = true;
+			}
+		} else {
+			$active_plugins = (array) get_option( 'active_plugins' );
+			if ( in_array( $plugin_relative_path, $active_plugins ) ) {
+				$is_active = true;
 			}
 		}
 
-		return in_array( $plugin_relative_path, (array) get_option( 'active_plugins' ) ) || $network_active;
+		return $is_active;
 	}
 }
