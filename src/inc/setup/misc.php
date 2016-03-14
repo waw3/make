@@ -43,7 +43,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 		}
 
 		// Theme support
-		add_action( 'after_setup_theme', array( $this, 'theme_support' ) );
+		add_action( 'after_setup_theme', array( $this, 'theme_support' ), 20 );
 
 		// Menu locations
 		add_action( 'after_setup_theme', array( $this, 'menu_locations' ) );
