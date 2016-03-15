@@ -167,7 +167,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * @return array|mixed|void
 	 */
 	public function get_settings( $property = 'all' ) {
-		if ( false === $this->is_loaded() ) {
+		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
 
