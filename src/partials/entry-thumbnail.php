@@ -31,7 +31,7 @@ endif;
 	<?php if ( ! is_singular() ) : ?></a><?php endif; ?>
 	<?php if ( is_singular() && has_excerpt( $thumbnail_id ) ) : ?>
 	<figcaption class="entry-thumbnail-caption">
-		<?php echo ttfmake_sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
+		<?php echo Make()->thememod()->sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
 	</figcaption>
 	<?php endif; ?>
 </figure>
