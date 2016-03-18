@@ -243,6 +243,26 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	}
 
 	/**
+	 * Get an view definition array for a particular view.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $view_id
+	 *
+	 * @return array
+	 */
+	public function get_view( $view_id ) {
+		$view = array();
+
+		if ( $this->view_exists( $view_id ) ) {
+			$views = $this->get_views();
+			$view = $views[ $view_id ];
+		}
+
+		return $view;
+	}
+
+	/**
 	 * Get a sorted array of view definitions, based on the priority property.
 	 *
 	 * @since x.x.x.
@@ -301,11 +321,37 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		$label = '';
 
 		if ( $this->view_exists( $view_id ) ) {
-			$views = $this->get_views();
-			$label = ( isset( $views[ $view_id ]['label'] ) ) ? $views[ $view_id ]['label'] : '';
+			$view = $this->get_view( $view_id );
+			$label = ( isset( $view['label'] ) ) ? $view['label'] : '';
 		}
 
 		return $label;
+	}
+
+	/**
+	 * Get the name of the callback function used to test for a particular view.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string $view_id
+	 * @param string $context
+	 *
+	 * @return null
+	 */
+	public function get_view_callback( $view_id, $context = '' ) {
+		$callback = null;
+
+		if ( $this->view_exists( $view_id ) ) {
+			$view = $this->get_view( $view_id );
+
+			if ( $context && isset( $view[ 'callback_' . $context ] ) ) {
+				$callback = $view[ 'callback_' . $context ];
+			} else if ( isset( $view['callback'] ) ) {
+				$callback = $view['callback'];
+			}
+		}
+
+		return $callback;
 	}
 
 	/**
@@ -313,14 +359,22 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *
 	 * @since x.x.x.
 	 *
+	 * @param string $context
+	 *
 	 * @return string|null
 	 */
-	public function get_current_view() {
+	public function get_current_view( $context = '' ) {
 		// Make sure we're not doing it wrong.
-		if ( 'parse_query' !== current_action() && ! did_action( 'parse_query' ) ) {
+		$action = ( is_admin() ) ? 'current_screen' : 'parse_query';
+		$too_early = $action !== current_action() && ! did_action( $action );
+
+		if ( $too_early ) {
 			$this->compatibility()->doing_it_wrong(
 				__FUNCTION__,
-				__( 'View cannot be accurately determined until during or after the <code>parse_query</code> action.', 'make' ),
+				sprintf(
+					__( 'View cannot be accurately determined until during or after the %s action.', 'make' ),
+					"<code>$action</code>"
+				),
 				'1.7.0'
 			);
 
@@ -331,7 +385,9 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		$view = $this->default_view;
 
 		foreach ( $views as $view_id => $view_args ) {
-			if ( is_callable( $view_args['callback'] ) && true === call_user_func( $view_args['callback'] ) ) {
+			$callback = $this->get_view_callback( $view_id, $context );
+
+			if ( is_callable( $callback ) && true === call_user_func( $callback ) ) {
 				$view = $view_id;
 			}
 		}
@@ -341,7 +397,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 			$this->compatibility()->deprecated_hook(
 				'make_get_view',
 				'1.7.0',
-				__( 'To add or modify theme views, use the function make_add_view() instead.', 'make' )
+				__( 'To add or modify theme views, use Make()->view()->add_view() instead.', 'make' )
 			);
 
 			/**
