@@ -91,12 +91,6 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		// Set the compatibility mode.
 		$this->set_mode();
 
-		// Load deprecated function files.
-		// Do this on construct to make sure deprecated functions are defined ASAP.
-		if ( false !== $this->mode['deprecated'] && is_array( $this->mode['deprecated'] ) ) {
-			$this->require_deprecated_files( $this->mode['deprecated'] );
-		}
-
 		// Load the hook prefixer
 		if ( true === $this->mode['hook-prefixer'] ) {
 			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $api, array( 'compatibility' => $this ) ) );
@@ -122,6 +116,9 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		// Add notice if user attempts to install Make Plus as a theme
 		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
+
+		// Deprecated files
+		add_action( 'make_api_loaded', array( $this, 'require_deprecated_files' ), 0 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -173,13 +170,20 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param array    $versions    The array of minor release versions.
+	 * @return void
 	 */
-	private function require_deprecated_files( array $versions ) {
-		foreach ( $versions as $version ) {
-			$file = dirname( __FILE__ ) . '/deprecated/deprecated-' . $version . '.php';
-			if ( is_readable( $file ) ) {
-				require_once $file;
+	public function require_deprecated_files() {
+		// Only run this in the proper hook context.
+		if ( 'makeplus_api_loaded' !== current_action() ) {
+			return;
+		}
+
+		if ( isset( $this->mode['deprecated'] ) && is_array( $this->mode['deprecated'] ) ) {
+			foreach ( $this->mode['deprecated'] as $version ) {
+				$file = dirname( __FILE__ ) . '/deprecated/deprecated-' . $version . '.php';
+				if ( is_readable( $file ) ) {
+					require_once $file;
+				}
 			}
 		}
 	}
