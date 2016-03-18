@@ -23,5 +23,5 @@ interface MAKE_Layout_ViewInterface extends MAKE_Util_ModulesInterface {
 
 	public function get_current_view();
 
-	public function is_current_view( $view_id );
+
 }

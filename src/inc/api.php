@@ -175,19 +175,6 @@ function make_get_current_view() {
 }
 
 /**
- * Check if a particular view is the current one.
- *
- * @since x.x.x.
- *
- * @param $view_id
- *
- * @return mixed
- */
-function make_is_current_view( $view_id ) {
-	return Make()->view()->is_current_view( $view_id );
-}
-
-/**
  * Check if the current view has a sidebar in the specified location (left or right).
  *
  * @since x.x.x.

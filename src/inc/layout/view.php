@@ -57,24 +57,24 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		}
 
 		$views = array(
-			'blog' => array(
+			'blog'    => array(
 				'label'    => __( 'Blog (Post Page)', 'make' ),
 				'callback' => 'is_home',
 			),
 			'archive' => array(
-				'label'    => __( 'Archives', 'make' ),
+				'label'    => __( 'Archive', 'make' ),
 				'callback' => 'is_archive',
 			),
-			'search' => array(
+			'search'  => array(
 				'label'    => __( 'Search Results', 'make' ),
 				'callback' => 'is_search',
 			),
-			'page' => array(
-				'label'    => __( 'Pages', 'make' ),
+			'page'    => array(
+				'label'    => __( 'Page', 'make' ),
 				'callback' => array( $this, 'callback_page' ),
 			),
-			'post' => array(
-				'label'    => __( 'Posts', 'make' ),
+			'post'    => array(
+				'label'    => __( 'Post', 'make' ),
 				'callback' => array( $this, 'callback_post' ),
 			),
 		);
@@ -317,10 +317,10 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 */
 	public function get_current_view() {
 		// Make sure we're not doing it wrong.
-		if ( ! did_action( 'template_redirect' ) ) {
+		if ( 'parse_query' !== current_action() && ! did_action( 'parse_query' ) ) {
 			$this->compatibility()->doing_it_wrong(
 				__FUNCTION__,
-				__( 'View cannot be accurately determined until after the <code>template_redirect</code> action has run.', 'make' ),
+				__( 'View cannot be accurately determined until during or after the <code>parse_query</code> action.', 'make' ),
 				'1.7.0'
 			);
 
@@ -360,19 +360,6 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	}
 
 	/**
-	 * Check if a specified view is the current one.
-	 *
-	 * @since x.x.x.
-	 *
-	 * @param string $view_id
-	 *
-	 * @return bool
-	 */
-	public function is_current_view( $view_id ) {
-		return $view_id === $this->get_current_view();
-	}
-
-	/**
 	 * Determine if the current view is "post".
 	 *
 	 * The "post" view includes the standard post along with all public custom post types and attachments that are
@@ -382,7 +369,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *
 	 * @return bool
 	 */
-	private function callback_post() {
+	public function callback_post() {
 		// Post types
 		$post_types = get_post_types(
 			array(
@@ -404,7 +391,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *
 	 * @return bool
 	 */
-	private function callback_page() {
+	public function callback_page() {
 		return is_page() || ( is_attachment() && 'page' === $this->get_parent_post_type( get_post() ) );
 	}
 
@@ -413,11 +400,15 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param WP_Post $post
+	 * @param WP_Post|null $post
 	 *
 	 * @return false|string
 	 */
-	private function get_parent_post_type( WP_Post $post ) {
-		return get_post_type( $post->post_parent );
+	private function get_parent_post_type( WP_Post $post = null ) {
+		if ( is_null( $post ) ) {
+			return false;
+		} else {
+			return get_post_type( $post->post_parent );
+		}
 	}
 }
