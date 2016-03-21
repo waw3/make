@@ -80,6 +80,7 @@ $this->add_settings(
 		'font-size-footer-widget-title' => array( 'default' => 13 ),
 		'font-size-footer-widget'       => array( 'default' => 13 ),
 		'font-size-footer-icon'         => array( 'default' => 20 ),
+		'custom_logo'                   => array( 'default' => 0, 'is_style' => false )
 	),
 	array(
 		'sanitize' => 'absint',
@@ -231,7 +232,7 @@ $this->add_settings(
 	)
 );
 
-// Image URL settings
+// Background image settings
 $this->add_settings(
 	array_fill_keys( array(
 		'background_image',
@@ -250,7 +251,7 @@ $this->add_settings(
 	)
 );
 
-// Image ID settings
+// Logo image settings
 $this->add_settings(
 	array_fill_keys( array(
 		'logo-regular',
@@ -260,10 +261,11 @@ $this->add_settings(
 	), array() ),
 	array(
 		'default'                  => '',
-		'sanitize'                 => array( $this, 'sanitize_image' ),
-		'sanitize_from_customizer' => array( $this, 'sanitize_image_raw' ),
-		'sanitize_to_customizer'   => array( $this, 'sanitize_image' ),
-		'sanitize_database'        => array( $this, 'sanitize_image_raw' ),
+		'sanitize'                 => 'esc_url',
+		'sanitize_from_customizer' => 'esc_url_raw',
+		'sanitize_to_customizer'   => 'esc_url',
+		'sanitize_database'        => 'esc_url_raw',
+		'is_style'                 => true,
 	)
 );
 

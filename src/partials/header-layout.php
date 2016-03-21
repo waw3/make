@@ -48,10 +48,8 @@ $header_bar_menu = wp_nav_menu( array(
 		<div class="container">
 			<div class="site-branding">
 				<?php // Logo
-				if ( ttfmake_get_logo()->has_logo() ) : ?>
-				<div class="custom-logo">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"></a>
-				</div>
+				if ( make_has_logo() ) : ?>
+					<?php make_logo(); ?>
 				<?php endif; ?>
 				<?php // Site title
 				if ( get_bloginfo( 'name' ) ) : ?>

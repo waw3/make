@@ -1800,6 +1800,41 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_font_uri', '1.7.0', 'Make()->scripts()->get_google_url' );
 endif;
 
+if ( ! function_exists( 'ttfmake_get_logo' ) ) :
+/**
+ * Return the one TTFMAKE_Logo object.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return TTFMAKE_Logo
+ */
+function ttfmake_get_logo() {
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->logo()->legacy()' );
+	return Make()->logo()->legacy();
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_get_logo', '1.7.0', 'Make()->logo()->legacy()' );
+endif;
+
+if ( ! function_exists( 'ttfmake_refresh_logo_cache' ) ) :
+/**
+ * Refresh the logo cache after the customizer is saved.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  object    $wp_customize    The customizer object.
+ * @return void
+ */
+function ttfmake_refresh_logo_cache( $wp_customize ) {
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->logo()->legacy()->refresh_logo_cache' );
+	Make()->logo()->legacy()->refresh_logo_cache();
+}
+else :
+	Make()->compatibility()->deprecated_function( 'ttfmake_refresh_logo_cache', '1.7.0', 'Make()->logo()->legacy()->refresh_logo_cache' );
+endif;
+
 /**
  * Instantiate or return the one TTFMAKE_Formatting instance.
  *

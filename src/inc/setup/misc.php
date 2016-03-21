@@ -91,6 +91,11 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 			'default-attachment' => $this->thememod()->get_default( 'background_attachment' ),
 		) );
 
+		// Custom logo
+		add_theme_support( 'custom-logo', array(
+			'size' => 'large',
+		) );
+
 		// HTML5
 		add_theme_support( 'html5', array(
 			'comment-list',

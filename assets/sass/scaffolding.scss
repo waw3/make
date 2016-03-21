@@ -95,7 +95,10 @@ a {
 		margin-right: auto;
 		text-align: center;
 	}
-	.custom-logo {
+	a.custom-logo-link {
+		display: inline-block;
+	}
+	div.custom-logo {
 		display: inline-block;
 	}
 }
@@ -183,7 +186,18 @@ a {
 /*---------------------------------------------------------
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
-.custom-logo {
+/* Core */
+a.custom-logo-link {
+	display: block;
+	@include rem('margin-bottom', $base/2);
+}
+img.custom-logo {
+	height: auto;
+	max-width: 100%;
+	width: 100%;
+}
+/* Legacy */
+div.custom-logo {
 	display: block;
 	max-width: 100%;
 	background-repeat: no-repeat;

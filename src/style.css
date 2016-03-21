@@ -566,7 +566,11 @@ a {
 	text-align: center;
 }
 
-.header-layout-2 .custom-logo {
+.header-layout-2 a.custom-logo-link {
+	display: inline-block;
+}
+
+.header-layout-2 div.custom-logo {
 	display: inline-block;
 }
 
@@ -686,7 +690,21 @@ a {
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
 
-.custom-logo {
+/* Core */
+a.custom-logo-link {
+	display: block;
+	margin-bottom: 11px;
+	margin-bottom: 1.1rem;
+}
+
+img.custom-logo {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Legacy */
+div.custom-logo {
 	display: block;
 	max-width: 100%;
 	margin-bottom: 11px;
@@ -696,7 +714,7 @@ a {
 	background-size: contain;
 }
 
-.custom-logo a {
+div.custom-logo a {
 	display: block;
 	width: 100%;
 	height: 0;
@@ -706,7 +724,7 @@ a {
 	text-decoration: none;
 }
 
-.no-site-title.no-site-tagline .custom-logo {
+.no-site-title.no-site-tagline div.custom-logo {
 	margin-bottom: 0;
 }
 

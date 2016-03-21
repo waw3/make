@@ -31,6 +31,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'style'               => 'MAKE_Style_ManagerInterface',
 		'formatting'          => 'MAKE_Formatting_ManagerInterface',
 		'galleryslider'       => 'MAKE_GallerySlider_MethodsInterface',
+		'logo'                => 'MAKE_Logo_MethodsInterface',
 		'socialicons'         => 'MAKE_SocialIcons_ManagerInterface',
 		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
 		'customizer_preview'  => 'MAKE_Customizer_PreviewInterface',
@@ -61,6 +62,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'style'               => 'MAKE_Style_Manager',
 		'formatting'          => 'MAKE_Formatting_Manager',
 		'galleryslider'       => 'MAKE_GallerySlider_Methods',
+		'logo'                => 'MAKE_Logo_Methods',
 		'socialicons'         => 'MAKE_SocialIcons_Manager',
 		'customizer_controls' => 'MAKE_Customizer_Controls',
 		'customizer_preview'  => 'MAKE_Customizer_Preview',
@@ -185,6 +187,28 @@ function make_get_current_view() {
  */
 function make_has_sidebar( $location ) {
 	return Make()->widgets()->has_sidebar( $location );
+}
+
+/**
+ * Check if a custom logo has been set.
+ *
+ * @since x.x.x.
+ *
+ * @return bool
+ */
+function make_has_logo() {
+	return Make()->logo()->has_logo();
+}
+
+/**
+ * Output the markup for a custom logo.
+ *
+ * @since x.x.x.
+ *
+ * return void
+ */
+function make_logo() {
+	echo Make()->logo()->get_logo();
 }
 
 /**

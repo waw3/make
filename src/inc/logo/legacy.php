@@ -3,24 +3,26 @@
  * @package Make
  */
 
-if ( ! class_exists( 'TTFMAKE_Logo' ) ) :
 /**
- * class TTFMAKE_Logo
+ * Class MAKE_Logo_Legacy
  *
  * A class that adds custom logo functionality.
  *
  * @since 1.0.0.
+ * @since x.x.x. Renamed from TTFMAKE_Logo
  */
-class TTFMAKE_Logo {
-
+class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInterface, MAKE_Util_HookInterface {
 	/**
-	 * The one instance of TTFMAKE_Logo
+	 * An associative array of required modules.
 	 *
-	 * @since 1.0.0.
+	 * @since x.x.x.
 	 *
-	 * @var   TTFMAKE_Logo    The one instance.
+	 * @var array
 	 */
-	private static $instance;
+	protected $dependencies = array(
+		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+	);
 
 	/**
 	 * Stores the logo image, width, and height information.
@@ -45,29 +47,45 @@ class TTFMAKE_Logo {
 	var $has_logo_by_type = array();
 
 	/**
-	 * Instantiate or return the one TTFMAKE_Logo instance.
+	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since  1.0.0.
+	 * @since x.x.x.
 	 *
-	 * @return TTFMAKE_Logo
+	 * @var bool
 	 */
-	public static function instance() {
-		if ( is_null( self::$instance ) ) {
-			self::$instance = new self();
+	private $hooked = false;
+
+	/**
+	 * Hook into WordPress.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
 		}
 
-		return self::$instance;
+		// Add styles
+		add_action( 'make_style_loaded', array( $this, 'print_logo_css' ) );
+
+		// Refresh logo cache
+		add_action( 'customize_save_after', array( $this, 'refresh_logo_cache' ) );
+
+		// Hooking has occurred.
+		$this->hooked = true;
 	}
 
 	/**
-	 * Initiate the actions.
+	 * Check if the hook routine has been run.
 	 *
-	 * @since  1.0.0.
+	 * @since x.x.x.
 	 *
-	 * @return TTFMAKE_Logo
+	 * @return bool
 	 */
-	public function __construct() {
-		add_action( 'make_css', array( $this, 'print_logo_css' ) );
+	public function is_hooked() {
+		return $this->hooked;
 	}
 
 	/**
@@ -77,9 +95,10 @@ class TTFMAKE_Logo {
 	 * @since   1.0.0.
 	 *
 	 * @param   string      $url    The path to an image.
+	 *
 	 * @return  int|bool            ID of the attachment or 0 on failure.
 	 */
-	function get_attachment_id_from_url( $url = '' ) {
+	private function get_attachment_id_from_url( $url = '' ) {
 		// If there is no url, return.
 		if ( '' === $url ) {
 			return false;
@@ -143,9 +162,10 @@ class TTFMAKE_Logo {
 	 *
 	 * @param  string    $url      The URL of the image in question.
 	 * @param  bool      $force    Cause a cache refresh.
+	 *
 	 * @return array               The dimensions array on success, and a blank array on failure.
 	 */
-	function get_logo_dimensions( $url, $force = false ) {
+	private function get_logo_dimensions( $url, $force = false ) {
 		// Build the cache key
 		$key = 'ttfmake-' . md5( 'logo-dimensions-' . $url . TTFMAKE_VERSION );
 
@@ -157,7 +177,7 @@ class TTFMAKE_Logo {
 			$dimensions = array();
 
 			// Get the ID of the attachment
-			$attachment_id = $this->get_attachment_id_from_url( $url );
+			$attachment_id = ( is_int( $url ) ) ? $url : $this->get_attachment_id_from_url( $url );
 
 			// Get the dimensions
 			$info = wp_get_attachment_image_src( $attachment_id, 'full' );
@@ -231,7 +251,7 @@ class TTFMAKE_Logo {
 	 * @return bool    True if a logo should be displayed. False if a logo shouldn't be displayed.
 	 */
 	public function has_logo() {
-		return ( $this->has_logo_by_type( 'logo-regular' ) || $this->has_logo_by_type( 'logo-retina' ) );
+		return ( $this->has_logo_by_type( 'logo-regular' ) || $this->has_logo_by_type( 'logo-retina' ) || $this->has_logo_by_type( 'custom_logo' ) );
 	}
 
 	/**
@@ -242,7 +262,7 @@ class TTFMAKE_Logo {
 	 * @param  string    $type    The type of logo to inspect for.
 	 * @return bool               True if all information is available. False is something is missing.
 	 */
-	function has_logo_by_type( $type ) {
+	private function has_logo_by_type( $type ) {
 		// Clean the type value
 		$type = sanitize_key( $type );
 
@@ -287,7 +307,7 @@ class TTFMAKE_Logo {
 	 * @param  bool     $force    Update the dimension cache.
 	 * @return array              Array containing image file, width, and height for each logo.
 	 */
-	function get_logo_information( $force = false) {
+	private function get_logo_information( $force = false) {
 		// If the logo information is cached to an instance var, pull from there
 		if ( ! empty( $this->logo_information ) ) {
 			return $this->logo_information;
@@ -297,11 +317,12 @@ class TTFMAKE_Logo {
 		$logos = array(
 			'logo-regular',
 			'logo-retina',
+			'custom_logo',
 		);
 
 		// For each logo slug, get the image, width and height
 		foreach ( $logos as $logo ) {
-			$this->logo_information[ $logo ]['image'] = get_theme_mod( $logo, ttfmake_get_default( $logo ) );
+			$this->logo_information[ $logo ]['image'] = $this->thememod()->get_value( $logo );
 
 			// Set the defaults
 			$this->logo_information[ $logo ]['width']  = '';
@@ -319,6 +340,33 @@ class TTFMAKE_Logo {
 			}
 		}
 
+		// Check for deprecated filter.
+		if ( has_filter( 'ttfmake_custom_logo_information' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'ttfmake_custom_logo_information',
+				'1.7.0',
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make-plus' ),
+					'<code>make_logo_information</code>'
+				)
+			);
+
+			/**
+			 * Filter the URL and dimensions of the custom logo.
+			 *
+			 * This filter may be useful if you encounter problems getting your custom
+			 * logo to appear. Note, however, that using this filter will hard-code the logo
+			 * information and settings in the Logo interface in the Customizer won't be
+			 * reflected.
+			 *
+			 * @since 1.0.0.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param array    $logo_information    The array of information.
+			 */
+			$this->logo_information = apply_filters( 'ttfmake_custom_logo_information', $this->logo_information );
+		}
+
 		/**
 		 * Filter the URL and dimensions of the custom logo.
 		 *
@@ -327,11 +375,11 @@ class TTFMAKE_Logo {
 		 * information and settings in the Logo interface in the Customizer won't be
 		 * reflected.
 		 *
-		 * @since 1.0.0.
+		 * @since x.x.x.
 		 *
 		 * @param array    $logo_information    The array of information.
 		 */
-		$this->logo_information = apply_filters( 'ttfmake_custom_logo_information', $this->logo_information );
+		$this->logo_information = apply_filters( 'make_logo_information', $this->logo_information );
 
 		return $this->logo_information;
 	}
@@ -339,28 +387,69 @@ class TTFMAKE_Logo {
 	/**
 	 * Print CSS in the head for the logo.
 	 *
-	 * @since  1.0.0.
+	 * @since 1.0.0.
+	 * @since x.x.x. Added $style parameter
 	 *
 	 * @return void
 	 */
-	function print_logo_css() {
-		/**
-		 * Filter the maximum allowable width for a custom logo.
-		 *
-		 * @since 1.0.0.
-		 *
-		 * @param string|int    $width    The maximum width, in pixels.
-		 */
-		$size = apply_filters( 'ttfmake_custom_logo_max_width', '960' );
+	public function print_logo_css( MAKE_Style_ManagerInterface $style ) {
+		// Only run this in the proper hook context.
+		if ( 'make_style_loaded' !== current_action() ) {
+			return;
+		}
+
+		// Max logo width
+		$size = 960;
+
+		// Check for deprecated filter.
+		if ( has_filter( 'ttfmake_custom_logo_max_width' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'ttfmake_custom_logo_max_width',
+				'1.7.0',
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make-plus' ),
+					'<code>make_logo_max_width</code>'
+				)
+			);
+
+			/** This filter is documented in inc/logo/methods.php */
+			$size = apply_filters( 'ttfmake_custom_logo_max_width', $size );
+		}
+
+		/** This filter is documented in inc/logo/methods.php */
+		$size = apply_filters( 'make_logo_max_width', $size );
 
 		// Grab the logo information
 		$info = $this->get_logo_information();
 
+		// Core custom logo
+		// We are still outputting CSS for the Core custom logo in case a child theme is using a custom header
+		// template file that doesn't include the template tag that outputs the logo markup.
+		if ( $this->has_logo_by_type( 'custom_logo' ) ) {
+			$final_dimensions = $this->adjust_dimensions( $info['custom_logo']['width'], $info['custom_logo']['height'], $size );
+
+			$image = wp_get_attachment_image_src( $info['custom_logo']['image'], 'full' );
+
+			$style->css()->add( array(
+				'selectors' => array( 'div.custom-logo' ),
+				'declarations' => array(
+					'background-image' => 'url("' . addcslashes( esc_url_raw( $image[0] ), '"' ) . '")',
+					'width'            => absint( $final_dimensions['width'] ) . 'px'
+				)
+			) );
+
+			$style->css()->add( array(
+				'selectors' => array( 'div.custom-logo a' ),
+				'declarations' => array(
+					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
+				)
+			) );
+		}
 		// Both logo types are available
-		if ( $this->has_logo_by_type( 'logo-regular' ) && $this->has_logo_by_type( 'logo-retina' ) ) {
+		else if ( $this->has_logo_by_type( 'logo-regular' ) && $this->has_logo_by_type( 'logo-retina' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-regular']['width'], $info['logo-regular']['height'], $size, false );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ) . '")',
@@ -368,14 +457,14 @@ class TTFMAKE_Logo {
 				)
 			) );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
 					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
 				)
 			) );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ) . '")'
@@ -387,7 +476,7 @@ class TTFMAKE_Logo {
 		else if ( $this->has_logo_by_type( 'logo-regular' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-regular']['width'], $info['logo-regular']['height'], $size );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-regular']['image'] ), '"' ) . '")',
@@ -395,7 +484,7 @@ class TTFMAKE_Logo {
 				)
 			) );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
 					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
@@ -406,7 +495,7 @@ class TTFMAKE_Logo {
 		else if ( $this->has_logo_by_type( 'logo-retina' ) ) {
 			$final_dimensions = $this->adjust_dimensions( $info['logo-retina']['width'], $info['logo-retina']['height'], $size, true );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo' ),
 				'declarations' => array(
 					'background-image' => 'url("' . addcslashes( esc_url_raw( $info['logo-retina']['image'] ), '"' ) . '")',
@@ -414,7 +503,7 @@ class TTFMAKE_Logo {
 				)
 			) );
 
-			ttfmake_get_css()->add( array(
+			$style->css()->add( array(
 				'selectors' => array( '.custom-logo a' ),
 				'declarations' => array(
 					'padding-bottom' => (float) $final_dimensions['ratio'] . '%'
@@ -434,7 +523,7 @@ class TTFMAKE_Logo {
 	 * @param  bool     $retina            Whether or not to divide the dimensions by 2.
 	 * @return array                       Resulting height/width dimensions.
 	 */
-	function adjust_dimensions( $width, $height, $width_boundary, $retina = false ) {
+	private function adjust_dimensions( $width, $height, $width_boundary, $retina = false ) {
 		// Divide the dimensions by 2 for retina logos
 		$divisor = ( true === $retina ) ? 2 : 1;
 		$width   = $width / $divisor;
@@ -457,36 +546,21 @@ class TTFMAKE_Logo {
 			'ratio'  => $ratio
 		);
 	}
+
+	/**
+	 * Refresh the logo cache after the Customizer is saved.
+	 *
+	 * @since 1.0.0.
+	 * @since x.x.x. Changed from global function to method.
+	 *
+	 * @return void
+	 */
+	public function refresh_logo_cache() {
+		// Only run this in the proper hook context.
+		if ( 'customize_save_after' !== current_action() ) {
+			return;
+		}
+
+		$this->get_logo_information( true );
+	}
 }
-endif;
-
-if ( ! function_exists( 'ttfmake_get_logo' ) ) :
-/**
- * Return the one TTFMAKE_Logo object.
- *
- * @since  1.0.0.
- *
- * @return TTFMAKE_Logo
- */
-function ttfmake_get_logo() {
-	return TTFMAKE_Logo::instance();
-}
-endif;
-
-add_action( 'init', 'ttfmake_get_logo', 11 );
-
-if ( ! function_exists( 'ttfmake_refresh_logo_cache' ) ) :
-/**
- * Refresh the logo cache after the customizer is saved.
- *
- * @since  1.0.0.
- *
- * @param  object    $wp_customize    The customizer object.
- * @return void
- */
-function ttfmake_refresh_logo_cache( $wp_customize ) {
-	ttfmake_get_logo()->get_logo_information( true );
-}
-endif;
-
-add_action( 'customize_save_after', 'ttfmake_refresh_logo_cache' );
