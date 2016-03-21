@@ -111,8 +111,8 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		$data = array(
 			'ajaxurl'       => admin_url( 'admin-ajax.php' ),
 			'webfonturl'    => esc_url( $this->scripts()->get_url( 'web-font-loader', 'script' ) ),
-			'fontSettings'  => array_keys( $this->thememod()->get_settings( 'is_font' ) ),
-			'styleSettings' => array_keys( $this->thememod()->get_settings( 'is_style' ) ),
+			'fontSettings'  => array_keys( $this->thememod()->get_settings( 'is_font' ), true ),
+			'styleSettings' => array_keys( $this->thememod()->get_settings( 'is_style' ), true ),
 		);
 
 		wp_localize_script(
