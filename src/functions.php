@@ -26,7 +26,7 @@ if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
  * Initial content width.
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 620;
+	$content_width = 960;
 }
 
 /**
@@ -59,8 +59,6 @@ function ttfmake_require_files() {
 		// Miscellaneous
 		get_template_directory() . '/inc/extras.php',
 		get_template_directory() . '/inc/template-tags.php',
-		// Temp
-		get_template_directory() . '/inc/customizer/logo.php',
 	);
 
 	/**
