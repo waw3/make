@@ -566,7 +566,11 @@ a {
 	text-align: center;
 }
 
-.header-layout-2 .custom-logo {
+.header-layout-2 a.custom-logo-link {
+	display: inline-block;
+}
+
+.header-layout-2 div.custom-logo {
 	display: inline-block;
 }
 
@@ -686,7 +690,21 @@ a {
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
 
-.custom-logo {
+/* Core */
+a.custom-logo-link {
+	display: block;
+	margin-bottom: 11px;
+	margin-bottom: 1.1rem;
+}
+
+img.custom-logo {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Legacy */
+div.custom-logo {
 	display: block;
 	max-width: 100%;
 	margin-bottom: 11px;
@@ -696,7 +714,7 @@ a {
 	background-size: contain;
 }
 
-.custom-logo a {
+div.custom-logo a {
 	display: block;
 	width: 100%;
 	height: 0;
@@ -706,7 +724,7 @@ a {
 	text-decoration: none;
 }
 
-.no-site-title.no-site-tagline .custom-logo {
+.no-site-title.no-site-tagline div.custom-logo {
 	margin-bottom: 0;
 }
 
@@ -993,6 +1011,10 @@ a {
 		float: right;
 		margin-bottom: 0;
 	}
+}
+
+.header-social-links ul {
+	margin-bottom: 0;
 }
 
 .header-social-links li a {
@@ -1531,6 +1553,10 @@ a {
 		font-size: 17px;
 		font-size: 1.7rem;
 	}
+}
+
+.footer-social-links ul {
+	margin-bottom: 0;
 }
 
 .infinite-scroll.neverending #site-footer {
@@ -2152,8 +2178,7 @@ img {
 	margin: 0 auto;
 }
 
-.screen-reader-text,
-.social-links li i span {
+.screen-reader-text {
 	overflow: hidden;
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
@@ -3693,6 +3718,7 @@ select {
 -------------------------------------------------------- */
 
 .ttfmake-button,
+.site-main .gform_wrapper .gform_footer input.button,
 button,
 input[type="button"],
 input[type="reset"],
@@ -3713,7 +3739,9 @@ input[type="submit"] {
 }
 
 .ttfmake-button:hover,
+.site-main .gform_wrapper .gform_footer input.button:hover,
 .ttfmake-button:focus,
+.site-main .gform_wrapper .gform_footer input.button:focus,
 button:hover,
 button:focus,
 input[type="button"]:hover,
@@ -3726,6 +3754,7 @@ input[type="submit"]:focus {
 }
 
 .ttfmake-button.color-primary-background,
+.site-main .gform_wrapper .gform_footer input.color-primary-background.button,
 button.color-primary-background,
 input[type="button"].color-primary-background,
 input[type="reset"].color-primary-background,
@@ -3734,6 +3763,7 @@ input[type="submit"].color-primary-background {
 }
 
 .ttfmake-button.color-secondary-background,
+.site-main .gform_wrapper .gform_footer input.color-secondary-background.button,
 button.color-secondary-background,
 input[type="button"].color-secondary-background,
 input[type="reset"].color-secondary-background,
@@ -3742,6 +3772,7 @@ input[type="submit"].color-secondary-background {
 }
 
 .ttfmake-button.ttfmake-success,
+.site-main .gform_wrapper .gform_footer input.ttfmake-success.button,
 button.ttfmake-success,
 input[type="button"].ttfmake-success,
 input[type="reset"].ttfmake-success,
@@ -3750,6 +3781,7 @@ input[type="submit"].ttfmake-success {
 }
 
 .ttfmake-button.ttfmake-error,
+.site-main .gform_wrapper .gform_footer input.ttfmake-error.button,
 button.ttfmake-error,
 input[type="button"].ttfmake-error,
 input[type="reset"].ttfmake-error,
@@ -3758,6 +3790,7 @@ input[type="submit"].ttfmake-error {
 }
 
 .ttfmake-button.ttfmake-important,
+.site-main .gform_wrapper .gform_footer input.ttfmake-important.button,
 button.ttfmake-important,
 input[type="button"].ttfmake-important,
 input[type="reset"].ttfmake-important,
@@ -3766,6 +3799,7 @@ input[type="submit"].ttfmake-important {
 }
 
 .ttfmake-button.ttfmake-download:after,
+.site-main .gform_wrapper .gform_footer input.ttfmake-download.button:after,
 button.ttfmake-download:after,
 input[type="button"].ttfmake-download:after,
 input[type="reset"].ttfmake-download:after,
@@ -3848,34 +3882,34 @@ input::-moz-focus-inner {
  Gravity Forms (_support.scss)
 -------------------------------------------------------- */
 
-.gform_wrapper textarea,
-.gform_wrapper input[type="date"],
-.gform_wrapper input[type="datetime"],
-.gform_wrapper input[type="datetime-local"],
-.gform_wrapper input[type="email"],
-.gform_wrapper input[type="month"],
-.gform_wrapper input[type="number"],
-.gform_wrapper input[type="password"],
-.gform_wrapper input[type="search"],
-.gform_wrapper input[type="tel"],
-.gform_wrapper input[type="text"],
-.gform_wrapper input[type="time"],
-.gform_wrapper input[type="url"],
-.gform_wrapper input[type="week"] {
+.site-main .gform_wrapper textarea,
+.site-main .gform_wrapper input[type="date"],
+.site-main .gform_wrapper input[type="datetime"],
+.site-main .gform_wrapper input[type="datetime-local"],
+.site-main .gform_wrapper input[type="email"],
+.site-main .gform_wrapper input[type="month"],
+.site-main .gform_wrapper input[type="number"],
+.site-main .gform_wrapper input[type="password"],
+.site-main .gform_wrapper input[type="search"],
+.site-main .gform_wrapper input[type="tel"],
+.site-main .gform_wrapper input[type="text"],
+.site-main .gform_wrapper input[type="time"],
+.site-main .gform_wrapper input[type="url"],
+.site-main .gform_wrapper input[type="week"] {
 	padding: 6px 8px !important;
 }
 
-.gform_wrapper .top_label .gfield_label {
+.site-main .gform_wrapper .top_label .gfield_label {
 	margin-top: 22px !important;
 }
 
-.gform_wrapper .ginput_complex label,
-.gform_wrapper .gfield_time_hour label,
-.gform_wrapper .gfield_time_minute label,
-.gform_wrapper .gfield_date_month label,
-.gform_wrapper .gfield_date_day label,
-.gform_wrapper .gfield_date_year label,
-.gform_wrapper .instruction {
+.site-main .gform_wrapper .ginput_complex label,
+.site-main .gform_wrapper .gfield_time_hour label,
+.site-main .gform_wrapper .gfield_time_minute label,
+.site-main .gform_wrapper .gfield_date_month label,
+.site-main .gform_wrapper .gfield_date_day label,
+.site-main .gform_wrapper .gfield_date_year label,
+.site-main .gform_wrapper .instruction {
 	font-size: 13px !important;
 }
 

@@ -147,7 +147,7 @@ if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
  * @param  string    $after     HTML after the text.
  * @return string               Full read more HTML.
  */
-function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
+function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $after = '</a>' ) {
 	if ( strpos( $before, '%s' ) ) {
 		$before = sprintf(
 			$before,
@@ -170,7 +170,7 @@ function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $af
 
 	// No filters, get the theme option.
 	if ( false === $more ) {
-		$more = esc_html( get_theme_mod( 'label-read-more', ttfmake_get_default( 'label-read-more' ) ) );
+		$more = make_get_thememod_value( 'label-read-more' );
 	}
 
 	return $before . $more . $after;
@@ -192,15 +192,15 @@ function ttfmake_maybe_show_site_region( $region ) {
 	}
 
 	// Get the view
-	$view = ttfmake_get_view();
+	$view = make_get_current_view();
 
 	// Get the relevant option
-	$hide_region = (bool) get_theme_mod( 'layout-' . $view . '-hide-' . $region, ttfmake_get_default( 'layout-' . $view . '-hide-' . $region ) );
+	$hide_region = make_get_thememod_value( 'layout-' . $view . '-hide-' . $region );
 
 	if ( true !== $hide_region ) {
 		get_template_part(
 			'partials/' . $region . '-layout',
-			get_theme_mod( $region . '-layout', ttfmake_get_default( $region . '-layout' ) )
+			make_get_thememod_value( $region . '-layout' )
 		);
 	}
 }
@@ -219,16 +219,16 @@ function ttfmake_get_site_header_class() {
 	$class = 'site-header';
 
 	// Layout
-	$class .= ' header-layout-' . get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) );
+	$class .= ' header-layout-' . make_get_thememod_value( 'header-layout' );
 
 	// Title
-	$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
+	$hide_site_title = make_get_thememod_value( 'hide-site-title' );
 	if ( 1 === $hide_site_title || ! get_bloginfo( 'name' ) ) {
 		$class .= ' no-site-title';
 	}
 
 	// Tagline
-	$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
+	$hide_tagline    = make_get_thememod_value( 'hide-tagline' );
 	if ( 1 === $hide_tagline || ! get_bloginfo( 'description' ) ) {
 		$class .= ' no-site-tagline';
 	}
@@ -253,62 +253,11 @@ if ( ! function_exists( 'ttfmake_maybe_show_sidebar' ) ) :
  */
 function ttfmake_maybe_show_sidebar( $location ) {
 	// Get sidebar status
-	$show_sidebar = ttfmake_has_sidebar( $location );
+	$show_sidebar = make_has_sidebar( $location );
 
 	// Output the sidebar
 	if ( true === $show_sidebar ) {
 		get_sidebar( $location );
-	}
-}
-endif;
-
-if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
-/**
- * Show the social links markup if the theme options and/or menus are configured for it.
- *
- * @since  1.0.0.
- *
- * @param  string    $region    The site region (header or footer).
- * @return void
- */
-function ttfmake_maybe_show_social_links( $region ) {
-	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
-		return;
-	}
-
-	$show_social = (bool) get_theme_mod( $region . '-show-social', ttfmake_get_default( $region . '-show-social' ) );
-
-	if ( true === $show_social ) {
-		// First look for the alternate custom menu method
-		if ( has_nav_menu( 'social' ) ) {
-			wp_nav_menu(
-				array(
-					'theme_location' => 'social',
-					'container'      => false,
-					'menu_id'        => '',
-					'menu_class'     => 'social-menu social-links ' . $region . '-social-links',
-					'depth'          => 1,
-					'fallback_cb'    => '',
-				)
-			);
-		}
-		// Then look for the Customizer theme option method
-		else {
-			$social_links = ttfmake_get_social_links();
-			if ( ! empty( $social_links ) ) { ?>
-				<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
-				<?php foreach ( $social_links as $key => $link ) : ?>
-					<li class="<?php echo esc_attr( $key ); ?>">
-						<a href="<?php echo esc_url( $link['url'] ); ?>">
-							<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>">
-								<span><?php echo esc_html( $link['title'] ); ?></span>
-							</i>
-						</a>
-					</li>
-				<?php endforeach; ?>
-				</ul>
-			<?php }
-		}
 	}
 }
 endif;
@@ -472,21 +421,3 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	return apply_filters( 'make_get_exif_data', $output, $attachment_id );
 }
 endif;
-
-/**
- * Add the Yoast SEO breadcrumb, if the plugin is activated.
- *
- * @since 1.6.4.
- *
- * @return void
- */
-function ttfmake_yoast_seo_breadcrumb() {
-	if ( function_exists( 'yoast_breadcrumb' ) ) {
-		$key    = 'layout-' . ttfmake_get_view() . '-yoast-breadcrumb';
-		$option = absint( get_theme_mod( $key, ttfmake_get_default( $key ) ) );
-
-		if ( ( 1 === $option && ! is_front_page() ) || is_404() ) {
-			yoast_breadcrumb( '<p class="yoast-seo-breadcrumb">', '</p>' );
-		}
-	}
-}

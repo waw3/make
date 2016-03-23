@@ -81,17 +81,6 @@ module.exports = function( grunt ) {
 					'src/js/libs/fitvids/jquery.fitvids.min.js': ['src/js/libs/fitvids/jquery.fitvids.js']
 				}
 			},
-			theme: {
-				files: {
-					'src/js/global.min.js': ['src/js/global.js']
-				}
-			},
-			customizer: {
-				files:{
-					'src/inc/customizer/js/customizer-preview.min.js': ['src/inc/customizer/js/customizer-preview.js'],
-					'src/inc/customizer/js/customizer-sections.min.js': ['src/inc/customizer/js/customizer-sections.js']
-				}
-			},
 			admin: {
 				files:{
 					'src/js/admin/edit-page.min.js': ['src/js/admin/edit-page.js'],
@@ -143,10 +132,8 @@ module.exports = function( grunt ) {
 					{
 						expand: true,
 						cwd: 'assets/temp/',
-						src: [
-							'google-fonts.php'
-						],
-						dest: 'src/inc/customizer'
+						src: ['google-data.php'],
+						dest: 'src/inc/font/source/'
 					}
 				]
 			}
@@ -268,7 +255,7 @@ module.exports = function( grunt ) {
 					return newObj;
 				},
 				files: {
-					'assets/temp/fontawesome.json': [ 'assets/temp/icons*.json' ]
+					'src/inc/formatting/js/icon-picker/fontawesome.json': [ 'assets/temp/icons*.json' ]
 				}
 			},
 			googlefonts: {
@@ -293,18 +280,6 @@ module.exports = function( grunt ) {
 				files: {
 					'assets/temp/googlefonts.json': [ 'assets/temp/googlefontsdata.json' ]
 				}
-			}
-		},
-		json: {
-			fontawesome: {
-				options: {
-					namespace: 'ttfmakeIconObj',
-					processName: function( filename ) {
-						return filename.toLowerCase();
-					}
-				},
-				src: [ 'assets/temp/fontawesome.json' ],
-				dest: 'src/inc/formatting/icon-picker/icons.js'
 			}
 		},
 		curl: {
@@ -405,7 +380,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'fontawesome', [
 		'yaml:fontawesome',
 		'json_massager:fontawesome',
-		'json:fontawesome',
 		'clean:assets'
 	] );
 
