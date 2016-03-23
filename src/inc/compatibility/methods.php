@@ -174,7 +174,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 */
 	public function require_deprecated_files() {
 		// Only run this in the proper hook context.
-		if ( 'makeplus_api_loaded' !== current_action() ) {
+		if ( 'make_api_loaded' !== current_action() ) {
 			return;
 		}
 
