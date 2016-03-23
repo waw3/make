@@ -138,7 +138,7 @@ if ( $this->font()->has_source( 'google' ) ) {
 // Check for deprecated filters
 foreach ( array( 'make_customizer_typography_sections' ) as $filter ) {
 	if ( has_filter( $filter ) ) {
-		$this->compatibility->deprecated_hook(
+		$this->compatibility()->deprecated_hook(
 			$filter,
 			'1.7.0',
 			__( 'To add or modify Customizer sections and controls, use the make_customizer_sections hook instead, or the core $wp_customize methods.', 'make' )
