@@ -29,29 +29,29 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 */
 	private $modes = array(
 		'full'    => array(
-			'deprecated'    => array( '1.5', '1.6', '1.7' ),
-			'hook-prefixer' => true,
-			'key-converter' => true,
+			'deprecated'   => array( '1.5', '1.6', '1.7' ),
+			'hookprefixer' => true,
+			'keyconverter' => true,
 		),
 		'1.5'     => array(
-			'deprecated'    => array( '1.6', '1.7' ),
-			'hook-prefixer' => true,
-			'key-converter' => false,
+			'deprecated'   => array( '1.6', '1.7' ),
+			'hookprefixer' => true,
+			'keyconverter' => false,
 		),
 		'1.6'     => array(
-			'deprecated'    => array( '1.7' ),
-			'hook-prefixer' => true,
-			'key-converter' => false,
+			'deprecated'   => array( '1.7' ),
+			'hookprefixer' => true,
+			'keyconverter' => false,
 		),
 		'1.7'     => array(
-			'deprecated'    => false,
-			'hook-prefixer' => false,
-			'key-converter' => false,
+			'deprecated'   => false,
+			'hookprefixer' => false,
+			'keyconverter' => false,
 		),
 		'current' => array(
-			'deprecated'    => false,
-			'hook-prefixer' => false,
-			'key-converter' => false,
+			'deprecated'   => false,
+			'hookprefixer' => false,
+			'keyconverter' => false,
 		),
 	);
 
@@ -90,16 +90,6 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		// Set the compatibility mode.
 		$this->set_mode();
-
-		// Load the hook prefixer
-		if ( true === $this->mode['hook-prefixer'] ) {
-			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $api, array( 'compatibility' => $this ) ) );
-		}
-
-		// Load the key converter
-		if ( true === $this->mode['key-converter'] ) {
-			$this->add_module( 'keyconverter', new MAKE_Compatibility_KeyConverter );
-		}
 	}
 
 	/**
@@ -114,11 +104,14 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 			return;
 		}
 
-		// Add notice if user attempts to install Make Plus as a theme
-		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
-
 		// Deprecated files
 		add_action( 'make_api_loaded', array( $this, 'require_deprecated_files' ), 0 );
+
+		// Load modules
+		add_action( 'make_api_loaded', array( $this, 'load_modules' ), 0 );
+
+		// Add notice if user attempts to install Make Plus as a theme
+		add_filter( 'upgrader_source_selection', array( $this, 'check_package' ), 9, 3 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -185,6 +178,27 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 					require_once $file;
 				}
 			}
+		}
+	}
+
+	/**
+	 * Load additional compatibility modules, depending on the mode.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param MAKE_APIInterface|null $api
+	 *
+	 * @return void
+	 */
+	public function load_modules( MAKE_APIInterface $api = null ) {
+		// Load the hook prefixer
+		if ( true === $this->mode['hookprefixer'] ) {
+			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $api ) );
+		}
+
+		// Load the key converter
+		if ( true === $this->mode['keyconverter'] ) {
+			$this->add_module( 'keyconverter', new MAKE_Compatibility_KeyConverter( $api ) );
 		}
 	}
 

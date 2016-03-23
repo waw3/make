@@ -8,7 +8,18 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Compatibility_KeyConverter implements MAKE_Util_HookInterface {
+final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
+	/**
+	 * An associative array of required modules.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @var array
+	 */
+	protected $dependencies = array(
+		'style' => 'MAKE_Style_ManagerInterface',
+	);
+
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
@@ -182,9 +193,9 @@ final class MAKE_Compatibility_KeyConverter implements MAKE_Util_HookInterface {
 	 */
 	private function convert_theme_mods_values( $old_key, $new_key, $value ) {
 		if ( 'font-header-size' === $old_key ) {
-			$percent = ttfmake_font_get_relative_sizes();
 			$h       = preg_replace( '/font-size-(h\d)/', '$1', $new_key );
-			$value   = ttfmake_get_relative_font_size( $value, $percent[$h] );
+			$percent = $this->style()->helper()->get_relative_size( $h );
+			$value   = $this->style()->helper()->get_relative_font_size( $value, $percent );
 		} else if ( 'main-content-link-underline' === $old_key ) {
 			if ( 1 == $value ) {
 				$value = 'always';
