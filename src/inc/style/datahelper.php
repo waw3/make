@@ -8,7 +8,7 @@
  *
  * @since x.x.x.
  */
-final class MAKE_Style_DataHelper extends MAKE_Util_Modules {
+class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_DataHelperInterface {
 	/**
 	 * An associative array of required modules.
 	 *

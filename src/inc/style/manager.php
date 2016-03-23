@@ -20,6 +20,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
 		'font'          => 'MAKE_Font_ManagerInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
+		'helper'        => 'MAKE_Style_DataHelperInterface',
 		'css'           => 'MAKE_Style_CSSInterface',
 	);
 
@@ -28,9 +29,6 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 
 
 	private $inline_action = 'make-css-inline';
-
-
-	private $helper = null;
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -58,20 +56,15 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Module defaults.
 		$modules = wp_parse_args( $modules, array(
-			'css' => 'MAKE_Style_CSS',
+			'helper' => 'MAKE_Style_DataHelper',
+			'css'    => 'MAKE_Style_CSS',
 		) );
 
 		// Load dependencies.
 		parent::__construct( $api, $modules );
-
-		// Load private helper module.
-		$this->helper = new MAKE_Style_DataHelper( $api );
 	}
 
 	/**
@@ -199,11 +192,6 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 */
 	public function is_loaded() {
 		return $this->loaded;
-	}
-
-
-	private function helper() {
-		return $this->helper;
 	}
 
 
