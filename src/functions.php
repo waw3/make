@@ -51,8 +51,10 @@ function ttfmake_require_files() {
 	 * Action: Fire when the Make API has finished loading.
 	 *
 	 * @since x.x.x.
+	 *
+	 * @param MAKE_API $Make
 	 */
-	do_action( 'make_api_loaded' );
+	do_action( 'make_api_loaded', $Make );
 
 	// Load other files
 	$files = array(
