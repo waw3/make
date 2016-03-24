@@ -12,6 +12,7 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
  * Load files.
  *
  * @since 1.6.1.
+ * @deprecated 1.7.0.
  *
  * @return void
  */
@@ -21,7 +22,8 @@ function ttfmake_require_files() {
 
 if ( has_filter( 'make_required_files' ) ) {
 	Make()->compatibility()->deprecated_hook(
-		'make_required_files'
+		'make_required_files',
+		'1.7.0'
 	);
 }
 
@@ -35,10 +37,28 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  * @return void
  */
 function ttfmake_setup() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', __( 'a separate setup function', 'make' ) );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>after_setup_theme</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_setup', '1.7.0', __( 'a separate setup function', 'make' ) );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_setup',
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>after_setup_theme</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_content_width' ) ) :
@@ -51,10 +71,26 @@ if ( ! function_exists( 'ttfmake_content_width' ) ) :
  * @return void
  */
 function ttfmake_content_width() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'Use the %s hook instead.', 'make' ),
+			'<code>make_content_width</code>'
+		)
+	);
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_content_width', '1.7.0' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_content_width',
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'Use the %s hook instead.', 'make' ),
+			'<code>make_content_width</code>'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_widgets_init' ) ) :
@@ -67,10 +103,18 @@ if ( ! function_exists( 'ttfmake_widgets_init' ) ) :
  * @return void
  */
 function ttfmake_widgets_init() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'register_sidebar / unregister_sidebar' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		'<code>register_sidebar()</code> / <code>unregister_sidebar()</code>'
+	);
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_widgets_init', '1.7.0', 'register_sidebar / unregister_sidebar' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_widgets_init',
+		'1.7.0',
+		'<code>register_sidebar()</code> / <code>unregister_sidebar()</code>'
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_head_early' ) ) :
@@ -88,7 +132,7 @@ function ttfmake_head_early() {
 		'1.7.0',
 		null,
 		sprintf(
-			__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			esc_html__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
 			'<code>wp_head</code>',
 			'<code>MAKE_Setup_Head</code>'
 		)
@@ -100,7 +144,7 @@ else :
 		'1.7.0',
 		null,
 		sprintf(
-			__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			esc_html__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
 			'<code>wp_head</code>',
 			'<code>MAKE_Setup_Head</code>'
 		)
@@ -117,10 +161,18 @@ if ( ! function_exists( 'ttfmake_scripts' ) ) :
  * @return void
  */
 function ttfmake_scripts() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_enqueue_script / wp_dequeue_script' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		'<code>wp_enqueue_script</code> / <code>wp_dequeue_script</code>'
+	);
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_scripts', '1.7.0', 'wp_enqueue_script / wp_dequeue_script' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_scripts',
+		'1.7.0',
+		'<code>wp_enqueue_script</code> / <code>wp_dequeue_script</code>'
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
@@ -138,10 +190,18 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
  * @return void
  */
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'wp_register_script / wp_deregister_script' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		'<code>wp_register_script</code> / <code>wp_deregister_script</code>'
+	);
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_cycle2_script_setup', '1.7.0', 'wp_register_script / wp_deregister_script' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_cycle2_script_setup',
+		'1.7.0',
+		'<code>wp_register_script</code> / <code>wp_deregister_script</code>'
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_head_late' ) ) :
@@ -204,8 +264,8 @@ endif;
  * @return bool    Whether or not the companion plugin is installed.
  */
 function ttfmake_is_plus() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_is_plus' );
-	return make_is_plus();
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->plus()->is_plus()' );
+	return Make()->plus()->is_plus();
 }
 
 /**
@@ -218,7 +278,7 @@ function ttfmake_is_plus() {
  * @return string                   The link.
  */
 function ttfmake_get_plus_link( $deprecated = '' ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->plus()->get_plus_link' );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->plus()->get_plus_link()' );
 	return Make()->plus()->get_plus_link();
 }
 
@@ -424,7 +484,7 @@ function ttfmake_embed_container( $html, $url, $attr ) {
  * @return float                     The sanitized value.
  */
 function ttfmake_sanitize_float( $value ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_float' );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_float()' );
 	return Make()->thememod()->sanitize_float( $value );
 }
 
@@ -439,11 +499,11 @@ if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
  * @return string               The sanitized string.
  */
 function ttfmake_sanitize_text( $string ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_text' );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_text()' );
 	return Make()->thememod()->sanitize_text( $string );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_text', '1.7.0', 'Make()->thememod()->sanitize_text' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_text', '1.7.0', 'Make()->thememod()->sanitize_text()' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
@@ -513,7 +573,7 @@ if ( ! function_exists( 'ttfmake_sidebar_list_enabled' ) ) :
  */
 function ttfmake_sidebar_list_enabled( $location ) {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
-	return '';
+	return array();
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_sidebar_list_enabled', '1.7.0' );
@@ -529,10 +589,26 @@ if ( ! function_exists( 'ttfmake_get_social_links' ) ) :
  * @return array    Keys are service names and the values are links.
  */
 function ttfmake_get_social_links() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'See %s.', 'make' ),
+			'<code>MAKE_SocialIcons_Manager</code>'
+		)
+	);
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_get_social_links', '1.7.0' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_get_social_links',
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'See %s.', 'make' ),
+			'<code>MAKE_SocialIcons_Manager</code>'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_pre_wp_nav_menu_social' ) ) :
@@ -547,11 +623,28 @@ if ( ! function_exists( 'ttfmake_pre_wp_nav_menu_social' ) ) :
  * @return string               Modified menu.
  */
 function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'See %s.', 'make' ),
+			'<code>MAKE_SocialIcons_Manager</code>'
+		)
+	);
+
 	return $output;
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_pre_wp_nav_menu_social', '1.7.0' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_pre_wp_nav_menu_social',
+		'1.7.0',
+		null,
+		sprintf(
+			esc_html__( 'See %s.', 'make' ),
+			'<code>MAKE_SocialIcons_Manager</code>'
+		)
+	);
 endif;
 
 /**
@@ -2052,11 +2145,11 @@ if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
  * @return string    The URL for including Google Fonts.
  */
 function ttfmake_get_google_font_uri() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->scripts()->get_google_url' );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->scripts()->get_google_url()' );
 	return Make()->scripts()->get_google_url();
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_font_uri', '1.7.0', 'Make()->scripts()->get_google_url' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_get_google_font_uri', '1.7.0', 'Make()->scripts()->get_google_url()' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_logo' ) ) :
@@ -2152,7 +2245,14 @@ class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Cont
 		parent::__construct( $manager, $id, $args );
 		$this->type = 'make_backgroundposition';
 
-		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Background_Position_Control control is deprecated. Use MAKE_Customizer_Control_BackgroundPosition instead.', 'make' ) );
+		Make()->error()->add_error(
+			'make_customizer_control_deprecated',
+			sprintf(
+				esc_html__( 'The %1$s control is deprecated. Use %2$s instead.', 'make' ),
+				'<code>TTFMAKE_Customize_Background_Position_Control</code>',
+				'<code>MAKE_Customizer_Control_BackgroundPosition</code>'
+			)
+		);
 	}
 }
 
@@ -2167,7 +2267,15 @@ class TTFMAKE_Customize_Background_Position_Control extends MAKE_Customizer_Cont
 class TTFMAKE_Customize_Image_Control extends WP_Customize_Image_Control {
 	public function __construct( WP_Customize_Manager $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
-		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Image_Control control is deprecated. Use the core WP_Customize_Image_Control instead.', 'make' ) );
+
+		Make()->error()->add_error(
+			'make_customizer_control_deprecated',
+			sprintf(
+				esc_html__( 'The %1$s control is deprecated. Use %2$s instead.', 'make' ),
+				'<code>TTFMAKE_Customize_Image_Control</code>',
+				'<code>WP_Customize_Image_Control</code>'
+			)
+		);
 	}
 }
 
@@ -2211,7 +2319,14 @@ class TTFMAKE_Customize_Misc_Control extends MAKE_Customizer_Control_Html {
 				break;
 		}
 
-		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Misc_Control control is deprecated. Use MAKE_Customizer_Control_Html instead.', 'make' ) );
+		Make()->error()->add_error(
+			'make_customizer_control_deprecated',
+			sprintf(
+				esc_html__( 'The %1$s control is deprecated. Use %2$s instead.', 'make' ),
+				'<code>TTFMAKE_Customize_Misc_Control</code>',
+				'<code>MAKE_Customizer_Control_Html</code>'
+			)
+		);
 	}
 }
 
@@ -2233,7 +2348,14 @@ class TTFMAKE_Customize_Radio_Control extends MAKE_Customizer_Control_Radio {
 		parent::__construct( $manager, $id, $args );
 		$this->type = 'make_radio';
 
-		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Radio_Control control is deprecated. Use MAKE_Customizer_Control_Radio instead.', 'make' ) );
+		Make()->error()->add_error(
+			'make_customizer_control_deprecated',
+			sprintf(
+				esc_html__( 'The %1$s control is deprecated. Use %2$s instead.', 'make' ),
+				'<code>TTFMAKE_Customize_Radio_Control</code>',
+				'<code>MAKE_Customizer_Control_Radio</code>'
+			)
+		);
 	}
 }
 
@@ -2255,7 +2377,14 @@ class TTFMAKE_Customize_Range_Control extends MAKE_Customizer_Control_Range {
 		parent::__construct( $manager, $id, $args );
 		$this->type = 'make_range';
 
-		Make()->error()->add_error( 'make_customizer_control_deprecated', __( 'The TTFMAKE_Customize_Range_Control control is deprecated. Use MAKE_Customizer_Control_Range instead.', 'make' ) );
+		Make()->error()->add_error(
+			'make_customizer_control_deprecated',
+			sprintf(
+				esc_html__( 'The %1$s control is deprecated. Use %2$s instead.', 'make' ),
+				'<code>TTFMAKE_Customize_Range_Control</code>',
+				'<code>MAKE_Customizer_Control_Range</code>'
+			)
+		);
 	}
 }
 endif;
