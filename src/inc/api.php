@@ -29,15 +29,16 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'widgets'             => 'MAKE_Setup_WidgetsInterface',
 		'scripts'             => 'MAKE_Setup_ScriptsInterface',
 		'style'               => 'MAKE_Style_ManagerInterface',
+		'builder'             => 'MAKE_Builder_SetupInterface',
 		'formatting'          => 'MAKE_Formatting_ManagerInterface',
 		'galleryslider'       => 'MAKE_GallerySlider_SetupInterface',
 		'logo'                => 'MAKE_Logo_MethodsInterface',
 		'socialicons'         => 'MAKE_SocialIcons_ManagerInterface',
 		'customizer_controls' => 'MAKE_Customizer_ControlsInterface',
 		'customizer_preview'  => 'MAKE_Customizer_PreviewInterface',
-		'setup'               => 'MAKE_Setup_MiscInterface',
-		'builder'             => 'MAKE_Builder_SetupInterface',
 		'integration'         => 'MAKE_Integration_ManagerInterface',
+		'setup'               => 'MAKE_Setup_MiscInterface',
+		'head'                => 'MAKE_Setup_HeadInterface',
 	);
 
 	/**
@@ -60,15 +61,16 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'widgets'             => 'MAKE_Setup_Widgets',
 		'scripts'             => 'MAKE_Setup_Scripts',
 		'style'               => 'MAKE_Style_Manager',
+		'builder'             => 'MAKE_Builder_Setup',
 		'formatting'          => 'MAKE_Formatting_Manager',
 		'galleryslider'       => 'MAKE_GallerySlider_Setup',
 		'logo'                => 'MAKE_Logo_Methods',
 		'socialicons'         => 'MAKE_SocialIcons_Manager',
 		'customizer_controls' => 'MAKE_Customizer_Controls',
 		'customizer_preview'  => 'MAKE_Customizer_Preview',
-		'setup'               => 'MAKE_Setup_Misc',
-		'builder'             => 'MAKE_Builder_Setup',
 		'integration'         => 'MAKE_Integration_Manager',
+		'setup'               => 'MAKE_Setup_Misc',
+		'head'                => 'MAKE_Setup_Head',
 	);
 
 	/**

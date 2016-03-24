@@ -8,6 +8,23 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 	return;
 }
 
+/**
+ * Load files.
+ *
+ * @since 1.6.1.
+ *
+ * @return void
+ */
+function ttfmake_require_files() {
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+}
+
+if ( has_filter( 'make_required_files' ) ) {
+	Make()->compatibility()->deprecated_hook(
+		'make_required_files'
+	);
+}
+
 if ( ! function_exists( 'ttfmake_setup' ) ) :
 /**
  * Sets up text domain, theme support, menus, and editor styles
@@ -56,6 +73,40 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_widgets_init', '1.7.0', 'register_sidebar / unregister_sidebar' );
 endif;
 
+if ( ! function_exists( 'ttfmake_head_early' ) ) :
+/**
+ * Add items to the top of the wp_head section of the document head.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_head_early() {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>wp_head</code>',
+			'<code>MAKE_Setup_Head</code>'
+		)
+	);
+}
+else :
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_head_early',
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>wp_head</code>',
+			'<code>MAKE_Setup_Head</code>'
+		)
+	);
+endif;
+
 if ( ! function_exists( 'ttfmake_scripts' ) ) :
 /**
  * Enqueue styles and scripts.
@@ -91,6 +142,40 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 }
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_cycle2_script_setup', '1.7.0', 'wp_register_script / wp_deregister_script' );
+endif;
+
+if ( ! function_exists( 'ttfmake_head_late' ) ) :
+/**
+ * Add additional items to the end of the wp_head section of the document head.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_head_late() {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>wp_head</code>',
+			'<code>MAKE_Setup_Head</code>'
+		)
+	);
+}
+else :
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_head_late',
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove actions from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>wp_head</code>',
+			'<code>MAKE_Setup_Head</code>'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_is_preview' ) ) :
@@ -149,6 +234,120 @@ function ttfmake_plus_styles() {
 	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
 }
 
+if ( ! function_exists( 'ttfmake_body_classes' ) ) :
+/**
+ * Adds custom classes to the array of body classes.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  array    $classes    Classes for the body element.
+ * @return array                Modified class list.
+ */
+function ttfmake_body_classes( $classes ) {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>body_class</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+
+	return $classes;
+}
+else :
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_body_classes',
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>body_class</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+endif;
+
+if ( ! function_exists( 'ttfmake_maybe_add_with_avatar_class' ) ) :
+/**
+ * Add a class to the bounding div if a post uses an avatar with the author byline.
+ *
+ * @since  1.0.11.
+ * @deprecated 1.7.0.
+ *
+ * @param  array     $classes    An array of post classes.
+ * @param  string    $class      A comma-separated list of additional classes added to the post.
+ * @param  int       $post_ID    The post ID.
+ * @return array                 The modified post class array.
+ */
+function ttfmake_maybe_add_with_avatar_class( $classes, $class, $post_ID ) {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>post_class</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+
+	return $classes;
+}
+else :
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_maybe_add_with_avatar_class',
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>post_class</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+endif;
+
+if ( ! function_exists( 'ttfmake_excerpt_more' ) ) :
+/**
+ * Modify the excerpt suffix
+ *
+ * @since 1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @param string $more
+ *
+ * @return string
+ */
+function ttfmake_excerpt_more( $more ) {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>excerpt_more</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+
+	return $more;
+}
+else :
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_excerpt_more',
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>excerpt_more</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+endif;
+
 if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
@@ -186,6 +385,34 @@ function ttfmake_wp_title( $title, $sep ) {
 else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_wp_title', '1.7.0' );
 endif;
+
+/**
+ * Add a wrapper div to the output of oembeds and the [embed] shortcode.
+ *
+ * Also enqueues FitVids, since the embed might be a video.
+ *
+ * @since 1.6.0.
+ * @deprecated 1.7.0.
+ *
+ * @param  string    $html    The generated HTML of the embed handler.
+ * @param  string    $url     The embed URL.
+ * @param  array     $attr    The attributes of the embed shortcode.
+ *
+ * @return string             The wrapped HTML.
+ */
+function ttfmake_embed_container( $html, $url, $attr ) {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'This function has been moved to %s.', 'make' ),
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+
+	return $html;
+}
 
 /**
  * Sanitize a string to ensure that it is a float number.

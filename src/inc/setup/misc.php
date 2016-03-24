@@ -19,6 +19,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	protected $dependencies = array(
 		'thememod' => 'MAKE_Settings_ThemeModInterface',
 		'widgets'  => 'MAKE_Setup_WidgetsInterface',
+		'scripts'  => 'MAKE_Setup_ScriptsInterface',
 	);
 
 	/**
@@ -50,6 +51,19 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 
 		// Content width
 		add_action( 'template_redirect', array( $this, 'content_width' ) );
+
+		// Body classes
+		add_filter( 'body_class', array( $this, 'body_classes' ) );
+
+		// Post classes
+		add_filter( 'post_class', array( $this, 'post_classes' ) );
+
+		// Excerpt more
+		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
+
+		// Embed container
+		add_filter( 'embed_handler_html', array( $this, 'embed_container' ), 10, 3 );
+		add_filter( 'embed_oembed_html' , array( $this, 'embed_container' ), 10, 3 );
 
 		// Hooking has occurred.
 		$this->hooked = true;
@@ -173,5 +187,142 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 		 * @param bool    $right        True if the current view has a right sidebar.
 		 */
 		$content_width = apply_filters( 'make_content_width', $new_width, $left, $right );
+	}
+
+	/**
+	 * Adds custom classes to the array of body classes.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  array    $classes    Classes for the body element.
+	 *
+	 * @return array                Modified class list.
+	 */
+	public function body_classes( array $classes ) {
+		// Only run this in the proper hook context.
+		if ( 'body_class' !== current_filter() ) {
+			return $classes;
+		}
+
+		// Full-width vs Boxed
+		$classes[] = make_get_thememod_value( 'general-layout' );
+
+		// Header branding position
+		if ( 'right' === make_get_thememod_value( 'header-branding-position' ) ) {
+			$classes[] = 'branding-right';
+		}
+
+		// Header Bar text position
+		if ( 'flipped' === make_get_thememod_value( 'header-bar-content-layout' ) ) {
+			$classes[] = 'header-bar-flipped';
+		}
+
+		// Left Sidebar
+		if ( true === make_has_sidebar( 'left' ) ) {
+			$classes[] = 'has-left-sidebar';
+		}
+
+		// Right Sidebar
+		if ( true === make_has_sidebar( 'right' ) ) {
+			$classes[] = 'has-right-sidebar';
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Adds custom classes to the array of post container classes.
+	 *
+	 * @since  x.x.x.
+	 *
+	 * @param  array    $classes    Classes for the post container element.
+	 *
+	 * @return array                Modified class list.
+	 */
+	public function post_classes( array $classes ) {
+		// Only run this in the proper hook context.
+		if ( 'post_class' !== current_filter() ) {
+			return $classes;
+		}
+
+		if ( ! is_admin() ) {
+			// Author avatar class
+			$author_key    = 'layout-' . make_get_current_view() . '-post-author';
+			$author_option = make_get_thememod_value( $author_key );
+
+			if ( 'avatar' === $author_option ) {
+				$classes[] = 'has-author-avatar';
+			}
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Modify the excerpt suffix
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @param string $more
+	 *
+	 * @return string
+	 */
+	public function excerpt_more( $more ) {
+		// Only run this in the proper hook context.
+		if ( 'excerpt_more' !== current_filter() ) {
+			return $more;
+		}
+
+		return ' &hellip;';
+	}
+
+	/**
+	 * Add a wrapper div to the output of oembeds and the [embed] shortcode.
+	 *
+	 * Also enqueues FitVids, since the embed might be a video.
+	 *
+	 * @since 1.6.0.
+	 *
+	 * @param  string    $html    The generated HTML of the embed handler.
+	 * @param  string    $url     The embed URL.
+	 * @param  array     $attr    The attributes of the embed shortcode.
+	 *
+	 * @return string             The wrapped HTML.
+	 */
+	public function embed_container( $html, $url, $attr ) {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_filter(), array( 'embed_handler_html', 'embed_oembed_html' ) ) ) {
+			return $html;
+		}
+
+		// Bail if this is the admin or an RSS feed
+		if ( is_admin() || is_feed() ) {
+			return $html;
+		}
+
+		if ( isset( $attr['width'] ) ) {
+			// Add FitVids as a dependency for the Frontend script
+			$this->scripts()->add_dependency( 'make-frontend', 'fitvids', 'script' );
+
+			// Get classes
+			$default_class = 'ttfmake-embed-wrapper';
+			$align_class = 'aligncenter';
+			if ( isset( $attr['make_align'] ) ) {
+				$align = trim( $attr['make_align'] );
+				if ( in_array( $align, array( 'left', 'right', 'center', 'none' ) ) ) {
+					$align_class = 'align' . $align;
+				}
+			}
+			$class = trim( "$default_class $align_class" );
+
+			// Get style
+			$style = 'max-width: ' . absint( $attr['width'] ) . 'px;';
+
+			// Build wrapper
+			$wrapper = "<div class=\"$class\" style=\"$style\">%s</div>";
+			$html = sprintf( $wrapper, $html );
+		}
+
+		return $html;
 	}
 }

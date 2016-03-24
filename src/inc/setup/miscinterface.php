@@ -8,4 +8,4 @@
  *
  * @since x.x.x.
  */
-interface MAKE_Setup_MiscInterface {}
+interface MAKE_Setup_MiscInterface extends MAKE_Util_ModulesInterface {}
