@@ -217,25 +217,37 @@ if ( ! function_exists( 'ttfmake_get_site_header_class' ) ) :
  * @return string
  */
 function ttfmake_get_site_header_class() {
+	// Collector
+	$classes = array();
+
 	// Base
-	$class = 'site-header';
+	$classes[] = 'site-header';
 
 	// Layout
-	$class .= ' header-layout-' . make_get_thememod_value( 'header-layout' );
+	$classes[] = 'header-layout-' . make_get_thememod_value( 'header-layout' );
 
 	// Title
 	$hide_site_title = make_get_thememod_value( 'hide-site-title' );
-	if ( 1 === $hide_site_title || ! get_bloginfo( 'name' ) ) {
-		$class .= ' no-site-title';
+	if ( $hide_site_title || ! get_bloginfo( 'name' ) ) {
+		$classes[] = 'no-site-title';
 	}
 
 	// Tagline
-	$hide_tagline    = make_get_thememod_value( 'hide-tagline' );
-	if ( 1 === $hide_tagline || ! get_bloginfo( 'description' ) ) {
-		$class .= ' no-site-tagline';
+	$hide_tagline = make_get_thememod_value( 'hide-tagline' );
+	if ( $hide_tagline || ! get_bloginfo( 'description' ) ) {
+		$classes[] = 'no-site-tagline';
 	}
 
-	return esc_attr( $class );
+	/**
+	 * Filter: Modify the classes applied to the site header element.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param array $classes
+	 */
+	$classes = apply_filters( 'make_site_header_class', $classes );
+
+	return implode( ' ', $classes );
 }
 endif;
 
