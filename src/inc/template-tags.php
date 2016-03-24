@@ -131,28 +131,44 @@ if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
  *
  * @param  string    $before    HTML before the text.
  * @param  string    $after     HTML after the text.
+ *
  * @return string               Full read more HTML.
  */
 function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $after = '</a>' ) {
-	if ( strpos( $before, '%s' ) ) {
+	// Add the permalink
+	if ( false !== strpos( $before, '%s' ) ) {
 		$before = sprintf(
 			$before,
 			get_permalink()
 		);
 	}
 
-	/**
-	 * Deprecated: Filter the value of the read more text.
-	 *
-	 * This filter hook has been deprecated in favor of a theme option in the Customizer. The theme option
-	 * will only be available if no filters have been added to the hook.
-	 *
-	 * @since 1.2.3.
-	 * @deprecated 1.5.0.
-	 *
-	 * @param string $read_more_text The read more text value.
-	 */
-	$more = apply_filters( 'make_read_more_text', false );
+	$more = false;
+
+	// Check for deprecated filter
+	if ( has_filter( 'make_read_more_text' ) ) {
+		Make()->compatibility()->deprecated_hook(
+			'make_read_more_text',
+			'1.5.0',
+			__( '
+				The hook has been replaced with a theme option in the Customizer.
+				The theme option will only be available if no filters have been added to the hook.
+			', 'make' )
+		);
+
+		/**
+		 * Deprecated: Filter the value of the read more text.
+		 *
+		 * This filter hook has been deprecated in favor of a theme option in the Customizer. The theme option
+		 * will only be available if no filters have been added to the hook.
+		 *
+		 * @since 1.2.3.
+		 * @deprecated 1.5.0.
+		 *
+		 * @param string $read_more_text The read more text value.
+		 */
+		$more = apply_filters( 'make_read_more_text', $more );
+	}
 
 	// No filters, get the theme option.
 	if ( false === $more ) {
