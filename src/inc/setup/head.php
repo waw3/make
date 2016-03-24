@@ -103,7 +103,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 		}
 		
 		// Google fonts
-		if ( $this->scripts()->get_google_url() ) : ?>
+		if ( ! is_customize_preview() && $this->scripts()->get_google_url() ) : ?>
 			<link rel="dns-prefetch" href="//fonts.googleapis.com" />
 	<?php endif;
 	}
