@@ -14,6 +14,7 @@ if ( ! function_exists( 'ttfmake_comment' ) ) :
  * @param  array    $comment    The current comment object.
  * @param  array    $args       The comment configuration arguments.
  * @param  mixed    $depth      Depth of the current comment.
+ *
  * @return void
  */
 function ttfmake_comment( $comment, $args, $depth ) {
@@ -247,6 +248,7 @@ function ttfmake_get_site_header_class() {
 	 */
 	$classes = apply_filters( 'make_site_header_class', $classes );
 
+	// Convert array to string and return
 	return implode( ' ', $classes );
 }
 endif;
@@ -263,6 +265,7 @@ if ( ! function_exists( 'ttfmake_maybe_show_sidebar' ) ) :
  * @since  1.0.0.
  *
  * @param  string    $location    The sidebar location (e.g., left, right).
+ *
  * @return void
  */
 function ttfmake_maybe_show_sidebar( $location ) {
@@ -283,7 +286,8 @@ if ( ! function_exists( 'ttfmake_get_exif_data' ) ) :
  * @since  1.0.0.
  *
  * @param  int       $attachment_id    The attachment ID to get data from.
- * @return string                      The EXIF data.
+ *
+ * @return string                      The EXIF data with HTML markup.
  */
 function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	// Validate attachment id
