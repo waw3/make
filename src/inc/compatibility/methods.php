@@ -81,10 +81,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
@@ -136,6 +133,8 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @return string    $mode    The mode that was set.
 	 */
 	protected function set_mode() {
+		$default_mode = 'full';
+
 		/**
 		 * Filter: Set the mode for compatibility.
 		 *
@@ -148,13 +147,14 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		 *
 		 * @param string    $mode    The compatibility mode to run the theme in.
 		 */
-		$mode = apply_filters( 'make_compatibility_mode', 'full' );
+		$mode = apply_filters( 'make_compatibility_mode', $default_mode );
 
 		if ( ! isset( $this->modes[ $mode ] ) ) {
-			$mode = 'full';
+			$mode = $default_mode;
 		}
 
 		$this->mode = $this->modes[ $mode ];
+
 		return $mode;
 	}
 
@@ -251,39 +251,48 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @param string      $function
 	 * @param string      $version
 	 * @param string|null $replacement
+	 * @param string|null $message
 	 * @param bool        $backtrace
 	 */
-	public function deprecated_function( $function, $version, $replacement = null, $backtrace = true ) {
+	public function deprecated_function( $function, $version, $replacement = null, $message = null, $backtrace = true ) {
 		/**
 		 * Fires when a deprecated function is called.
 		 *
 		 * @since x.x.x.
 		 *
 		 * @param string $function    The function that was called.
-		 * @param string $replacement The function that should have been called.
 		 * @param string $version     The version of Make that deprecated the function.
+		 * @param string $replacement The function that should have been called.
+		 * @param string $message     Explanatory text if there is no direct replacement available.
 		 */
-		do_action( 'make_deprecated_function_run', $function, $replacement, $version );
+		do_action( 'make_deprecated_function_run', $function, $version, $replacement, $message );
 
 		$error_code = 'make_deprecated_function';
-		$message = __( '<strong>%1$s</strong> is deprecated since version %2$s of Make. %3$s', 'make' );
+		$error_message = __( '<strong>%1$s</strong> is deprecated since version %2$s of Make. %3$s', 'make' );
 
-		// Add an error message.
+		// Add additional messages.
 		if ( ! is_null( $replacement ) ) {
 			$message2 = sprintf( __( 'Use <strong>%s</strong> instead.', 'make' ), $replacement );
-			$message = sprintf( $message, $function, $version, $message2 );
+		} else if ( ! is_null( $message ) ) {
+			$message2 = $message;
 		} else {
 			$message2 = __( 'No alternative is available.', 'make' );
-			$message = sprintf( $message, $function, $version, $message2 );
 		}
+
+		$error_message = sprintf(
+			$error_message,
+			$function,
+			$version,
+			$message2
+		);
 
 		// Add a backtrace.
 		if ( $backtrace ) {
-			$message .= $this->error()->generate_backtrace( array( get_class( $this ) ) );
+			$error_message .= $this->error()->generate_backtrace( array( get_class( $this ) ) );
 		}
 
 		// Add the error.
-		$this->error()->add_error( $error_code, $message );
+		$this->error()->add_error( $error_code, $error_message );
 	}
 
 	/**
@@ -304,10 +313,10 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		 * @since x.x.x.
 		 *
 		 * @param string $hook        The hook that was called.
-		 * @param string $message     Optional. A message regarding the change. Default null.
 		 * @param string $version     The version of Make that deprecated the hook.
+		 * @param string $message     Optional. A message regarding the change. Default null.
 		 */
-		do_action( 'make_deprecated_hook_run', $hook, $message, $version );
+		do_action( 'make_deprecated_hook_run', $hook, $version, $message );
 
 		$error_code = 'make_deprecated_hook';
 
@@ -361,16 +370,16 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 			);
 		}
 
-		// Add a backtrace.
-		if ( $backtrace ) {
-			$message .= $this->error()->generate_backtrace( array( get_class( $this ) ) );
-		}
-
 		$error_message = sprintf(
 			__( '<strong>%1$s</strong> was called incorrectly. %2$s', 'make' ),
 			$function,
 			$message
 		);
+
+		// Add a backtrace.
+		if ( $backtrace ) {
+			$error_message .= $this->error()->generate_backtrace( array( get_class( $this ) ) );
+		}
 
 		// Add the error.
 		$this->error()->add_error( $error_code, $error_message );
