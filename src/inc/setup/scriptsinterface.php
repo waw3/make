@@ -24,4 +24,6 @@ interface MAKE_Setup_ScriptsInterface extends MAKE_Util_ModulesInterface {
 	public function update_version( $recipient_id, $version, $type );
 
 	public function get_url( $dependency_id, $type );
+
+	public function get_google_url( $force = false );
 }

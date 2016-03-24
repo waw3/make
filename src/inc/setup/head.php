@@ -18,6 +18,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	 */
 	protected $dependencies = array(
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'scripts'       => 'MAKE_Setup_ScriptsInterface',
 	);
 
 	/**
@@ -42,8 +43,9 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 		}
 
 		// Head actions
-		add_action( 'wp_head', array( $this, 'js_detection' ), 0 );
-		add_action( 'wp_head', array( $this, 'meta_charset' ) );
+		add_action( 'wp_head', array( $this, 'meta_charset' ), 0 );
+		add_action( 'wp_head', array( $this, 'dns_prefetch' ), 1 );
+		add_action( 'wp_head', array( $this, 'js_detection' ), 1 );
 		add_action( 'wp_head', array( $this, 'meta_viewport' ) );
 		add_action( 'wp_head', array( $this, 'pingback' ) );
 		add_action( 'wp_head', array( $this, 'backcompat_icons' ) );
@@ -85,6 +87,25 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 			/* ]]> */
 		</script>
 	<?php
+	}
+
+	/**
+	 * Pre-fetch DNS for third-party assets.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @return void
+	 */
+	public function dns_prefetch() {
+		// Only run this in the proper hook context.
+		if ( 'wp_head' !== current_action() ) {
+			return;
+		}
+		
+		// Google fonts
+		if ( $this->scripts()->get_google_url() ) : ?>
+			<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<?php endif;
 	}
 
 	/**
@@ -136,7 +157,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 		}
 
 		if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
-		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+			<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif;
 	}
 
