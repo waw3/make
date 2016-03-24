@@ -495,11 +495,12 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 
 		// Look for an overriding custom menu
 		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'social' ] ) ) {
-			// Add an error message
-			$this->error()->add_error( 'make_deprecated_social_menu', __( 'Make no longer uses a custom menu to output social icons. Instead, use the interface in the Customizer under <em>General &rarr; Social Icons</em>.', 'make' ) );
-
 			$menu = wp_get_nav_menu_object( $locations[ 'social' ] );
+
 			if ( $menu && ! is_wp_error( $menu ) ) {
+				// Add an error message
+				$this->error()->add_error( 'make_deprecated_social_menu', __( 'Make no longer uses a custom menu to output social icons. Instead, use the interface in the Customizer under <em>General &rarr; Social Icons</em>.', 'make' ) );
+				
 				$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
 
 				// Set up the $menu_item variables
