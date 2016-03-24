@@ -248,11 +248,15 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * Based on _deprecated_function() in WordPress core.
 	 *
-	 * @param string      $function
-	 * @param string      $version
-	 * @param string|null $replacement
-	 * @param string|null $message
-	 * @param bool        $backtrace
+	 * @since x.x.x.
+	 *
+	 * @param string      $function    The function that was called.
+	 * @param string      $version     The version of Make that deprecated the function.
+	 * @param string|null $replacement The function that should have been called.
+	 * @param string|null $message     Explanatory text if there is no direct replacement available.
+	 * @param bool        $backtrace   True to include a backtrace in the error message.
+	 *
+	 * @return void
 	 */
 	public function deprecated_function( $function, $version, $replacement = null, $message = null, $backtrace = true ) {
 		/**
@@ -305,6 +309,8 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @param string $hook     The hook that was used.
 	 * @param string $version  The version of WordPress that deprecated the hook.
 	 * @param string $message  Optional. A message regarding the change. Default null.
+	 *
+	 * @return void
 	 */
 	public function deprecated_hook( $hook, $version, $message = null ) {
 		/**
@@ -342,10 +348,12 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * @since x.x.x.
 	 *
-	 * @param string $function The function that was called.
-	 * @param string $message  A message explaining what has been done incorrectly.
-	 * @param string $version  The version of WordPress where the message was added.
-	 * @param bool   $backtrace
+	 * @param string $function  The function that was called.
+	 * @param string $message   A message explaining what has been done incorrectly.
+	 * @param string $version   The version of WordPress where the message was added.
+	 * @param bool   $backtrace True to include a backtrace in the error message.
+	 *
+	 * @return void
 	 */
 	public function doing_it_wrong( $function, $message, $version = null, $backtrace = true ) {
 		/**
