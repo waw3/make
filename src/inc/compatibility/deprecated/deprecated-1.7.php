@@ -602,6 +602,38 @@ else :
 	Make()->compatibility()->deprecated_function( 'ttfmake_builder_banner_css', '1.7.0' );
 endif;
 
+if ( ! function_exists( 'ttfmake_category_transient_flusher' ) ) :
+/**
+ * Flush out the transients used in ttfmake_categorized_blog.
+ *
+ * @since  1.0.0.
+ * @deprecated 1.7.0.
+ *
+ * @return void
+ */
+function ttfmake_category_transient_flusher() {
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'This function has been moved to %s.', 'make' ),
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+}
+else :
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_category_transient_flusher',
+		'1.7.0',
+		null,
+		sprintf(
+			__( 'This function has been moved to %s.', 'make' ),
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+endif;
+
 if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
 /**
  * Show the social links markup if the theme options and/or menus are configured for it.

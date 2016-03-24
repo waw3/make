@@ -65,6 +65,10 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 		add_filter( 'embed_handler_html', array( $this, 'embed_container' ), 10, 3 );
 		add_filter( 'embed_oembed_html' , array( $this, 'embed_container' ), 10, 3 );
 
+		// Category transient flusher
+		add_action( 'edit_category', array( $this, 'category_transient_flusher' ) );
+		add_action( 'save_post', array( $this, 'category_transient_flusher' ) );
+
 		// Hooking has occurred.
 		$this->hooked = true;
 	}
@@ -324,5 +328,26 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Flush out the transients used in ttfmake_categorized_blog.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return void
+	 */
+	public function category_transient_flusher() {
+		// Only run this in the proper hook context.
+		if ( ! in_array( current_action(), array( 'edit_category', 'save_post' ) ) ) {
+			return;
+		}
+
+		// Bail if this is an autosave
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		delete_transient( 'make_category_count' );
 	}
 }
