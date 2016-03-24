@@ -8,4 +8,4 @@
  *
  * @since x.x.x.
  */
-interface MAKE_GallerySlider_MethodsInterface extends MAKE_Util_ModulesInterface {}
+interface MAKE_GallerySlider_SetupInterface extends MAKE_Util_ModulesInterface {}

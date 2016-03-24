@@ -10,7 +10,7 @@
  *
  * @since 1.0.0.
  */
-class MAKE_GallerySlider_Methods extends MAKE_Util_Modules implements MAKE_GallerySlider_MethodsInterface, MAKE_Util_HookInterface {
+class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_GallerySlider_SetupInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
