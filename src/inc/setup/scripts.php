@@ -18,6 +18,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 */
 	protected $dependencies = array(
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'plus'          => 'MAKE_Plus_MethodsInterface',
 		'font'          => 'MAKE_Font_ManagerInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 	);
@@ -328,7 +329,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			return;
 		}
 
-		if ( ! make_is_plus() ) {
+		if ( ! $this->plus()->is_plus() ) {
 			wp_enqueue_style(
 				'make-plus',
 				$this->get_css_directory_uri() . '/plus/plus.css',
