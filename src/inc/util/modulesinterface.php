@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Util_ModulesInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Util_ModulesInterface {
 	public function get_module( $module_name );

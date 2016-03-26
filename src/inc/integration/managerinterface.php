@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Integration_ManagerInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Integration_ManagerInterface extends MAKE_Util_ModulesInterface {
 	public function add_integration( $module_name, $module );

@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Style_CSSInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Style_CSSInterface {
 	public function add( $data );

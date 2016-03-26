@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Integration_Manager
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_Integration_ManagerInterface {
 	/**
 	 * Inject dependencies.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -42,7 +42,7 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	/**
 	 * Public version of the function to add a module.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $module_name
 	 * @param  object    $module
@@ -53,7 +53,7 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 		/**
 		 * Filter: Switch to turn off an integration.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param bool    $add_integration    True to allow the integration to be added.
 		 */
@@ -69,7 +69,7 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	/**
 	 * Wrapper function for returning the specified integration module and running its load routine.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $module_name
 	 *
@@ -82,7 +82,7 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	/**
 	 * Wrapper function for checking if an integration module exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $module_name
 	 *
@@ -95,7 +95,7 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	/**
 	 * Determine if a plugin is active from it's file path relative to the plugins directory.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $plugin_relative_path
 	 *

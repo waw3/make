@@ -6,6 +6,6 @@
 /**
  * Interface MAKE_Error_DisplayInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Error_DisplayInterface {}

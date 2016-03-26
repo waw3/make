@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_SocialIcons_ManagerInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_SocialIcons_ManagerInterface extends MAKE_Util_ModulesInterface {
 	public function add_icons( $icons, $overwrite = false );

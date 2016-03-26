@@ -8,13 +8,13 @@
  *
  * A tool for collecting Make-related error messages and outputting them all in one place.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error_CollectorInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -26,7 +26,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	/**
 	 * Switch for showing errors.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -35,7 +35,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	/**
 	 * MAKE_Error_Collector constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
@@ -47,7 +47,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 		/**
 		 * Filter: Toggle for showing Make errors.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param bool    $show_errors    True to show errors.
 		 */
@@ -72,7 +72,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	/**
 	 * Wrapper to add an error to the injected instance of WP_Error.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param        $code
 	 * @param        $message
@@ -85,7 +85,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	/**
 	 * Check if any errors have been added.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -96,7 +96,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	/**
 	 * Wrapper to get the list of error codes from the WP_Error object.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -107,7 +107,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	/**
 	 * Wrapper to get the list of error messages for a particular code from the WP_Error object.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $code
 	 *
@@ -122,7 +122,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 *
 	 * Based on wp_debug_backtrace_summary() in Core.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array  $ignore_class    An array of class names to ignore in the call stack.
 	 * @param string $output          'list' outputs an HTML ordered list. Otherwise an array.
@@ -142,7 +142,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 		/**
 		 * Filter: Change the number of steps shown in a Make Error backtrace.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param int $limit    The number of backtrace steps to show.
 		 */

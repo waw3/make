@@ -121,7 +121,7 @@
 	/**
 	 * Initialize instances of MAKE_Customizer_Control_BackgroundPosition
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 */
 	api.controlConstructor.make_backgroundposition = api.Control.extend({
 		ready: function() {
@@ -158,7 +158,7 @@
 	/**
 	 * Initialize instances of MAKE_Customizer_Control_Radio
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 */
 	api.controlConstructor.make_radio = api.Control.extend({
 		ready: function() {
@@ -187,7 +187,7 @@
 	/**
 	 * Initialize instances of MAKE_Customizer_Control_Range
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 */
 	api.controlConstructor.make_range = api.Control.extend({
 		ready: function() {
@@ -238,13 +238,13 @@
 	/**
 	 * Initialize instances of MAKE_Customizer_Control_SocialIcons
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 */
 	api.controlConstructor.make_socialicons = api.Control.extend({
 		/**
 		 * Additions to the default initialize routine.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param id
 		 * @param options
@@ -263,7 +263,7 @@
 		/**
 		 * Generate a templating function for the item sub-template.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		getItemTemplate: function() {
 			var control = this,
@@ -278,7 +278,7 @@
 		/**
 		 * Generate a templating function for the list overlay sub-template.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		getListTemplate: function() {
 			var control = this,
@@ -293,7 +293,7 @@
 		/**
 		 * Kick things off when the template has been embedded.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		ready: function() {
 			var control = this,
@@ -422,7 +422,7 @@
 		 *
 		 * @link http://stackoverflow.com/a/14042239
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param $el jQuery element set
 		 */
@@ -458,7 +458,7 @@
 		/**
 		 * Look up an icon match for the current URL in an item input.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param jQuery    $el    The item container
 		 */
@@ -485,7 +485,7 @@
 		/**
 		 * Retrieve the data for all available icons.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param function    callback
 		 */
@@ -504,7 +504,7 @@
 		/**
 		 * Update the icon classes in the item handle, or remove them.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param jQuery    $el        The item container
 		 * @param string    classes    String of class names
@@ -520,7 +520,7 @@
 		/**
 		 * Update the value field with data from all the inputs.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		updateValue: function() {
 			var control = this,

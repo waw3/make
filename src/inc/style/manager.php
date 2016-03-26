@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Style_Manager
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_ManagerInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -33,7 +33,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -42,7 +42,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -51,7 +51,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * MAKE_Style_Manager constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -70,7 +70,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -100,7 +100,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -111,7 +111,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Load data files.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -126,7 +126,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		 * This allows, for example, for filters to be added to thememod settings to change the values
 		 * before the style definitions are loaded.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		do_action( 'make_style_before_load' );
 
@@ -186,7 +186,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Check if the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -203,7 +203,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		/**
 		 * Action: Fires before the inline CSS rules are rendered and output.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		do_action( 'make_style_before_inline' );
 
@@ -248,7 +248,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		/**
 		 * Action: Fires before the CSS rules are rendered and output as a file.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 */
 		do_action( 'make_style_before_file' );
 
@@ -256,7 +256,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		 * Filter: Set whether the dynamic stylesheet will send headers telling the browser
 		 * to cache the request. Set to false to turn off these headers.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param bool    $cache_headers
 		 */
@@ -283,7 +283,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	/**
 	 * Generate a URL for accessing the dynamically-generated CSS file.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */

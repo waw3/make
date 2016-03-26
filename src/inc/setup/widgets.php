@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Setup_Widgets
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_WidgetsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -26,7 +26,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -35,7 +35,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -54,7 +54,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -74,7 +74,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		/**
 		 * Filter: Modify the wrapper markup settings for the widgets in a sidebar.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param array     $widget_defaults    The default widget markup for sidebars.
 		 * @param string    $sidebar_id         The ID of the sidebar that the widget markup will apply to.

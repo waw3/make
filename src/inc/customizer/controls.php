@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Customizer_Controls
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_Customizer_ControlsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -28,7 +28,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Array to hold the Panel definitions.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -37,7 +37,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Array to hold the Section definitions.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -46,7 +46,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Prefix string for panels, sections, and controls.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -55,7 +55,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Container for helper class.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var null
 	 */
@@ -64,7 +64,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -73,7 +73,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * MAKE_Customizer_Controls constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -92,7 +92,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -136,7 +136,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -147,7 +147,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Getter for the helper class.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return MAKE_Customizer_DataHelper|null
 	 */
@@ -158,7 +158,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Preliminary setup for Make's custom control classes.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
@@ -195,7 +195,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Load data files for defining Make's sections.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
@@ -251,7 +251,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Load data files for modifying core elements.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
@@ -282,7 +282,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Get the array of panel definitions.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -300,7 +300,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Register Customizer panels from the panel definitions array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
@@ -329,7 +329,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Add a section definition to the array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param       $section_id
 	 * @param array $data
@@ -360,7 +360,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Get the array of section/control definitions.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return mixed|void
 	 */
@@ -378,7 +378,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Register Customizer sections and controls from the section definitions array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
@@ -433,7 +433,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Register settings and controls for a section from the controls array in a section definition.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 * @param                      $section
@@ -517,7 +517,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Shortcut to programmatically determine the appropriate transport for a setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $setting_id
 	 *
@@ -544,7 +544,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Wrapper method to sanitize any setting before the Customizer sends it to the database.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param                      $value
 	 * @param WP_Customize_Setting $setting
@@ -558,7 +558,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Wrapper method to sanitize any setting after the Customizer retrieves it from the database.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param                      $value
 	 * @param WP_Customize_Setting $setting
@@ -572,7 +572,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Get an array of section objects for the specified panel.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 * @param                      $panel_id
@@ -602,7 +602,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Get an array of control objects for the specified section.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 * @param                      $section_id
@@ -634,7 +634,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * Works with Panels, Sections, and Controls.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $items
 	 *
@@ -660,7 +660,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Enqueue styles and scripts for Customizer controls.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -716,7 +716,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Render additional JS templates.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -736,7 +736,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Ajax handler for retrieving HTML markup for the list of available fonts in Typography settings.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -760,7 +760,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Ajax handler for retrieving a social icon for a URL.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -786,7 +786,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	/**
 	 * Ajax handler for retrieving all the social icon definitions.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

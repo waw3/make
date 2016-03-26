@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Compatibility_KeyConverter
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -23,7 +23,7 @@ final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -32,7 +32,7 @@ final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -50,7 +50,7 @@ final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */

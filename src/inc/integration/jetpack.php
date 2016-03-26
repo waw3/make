@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Integration_Jetpack
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -24,7 +24,7 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -33,7 +33,7 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -58,7 +58,7 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -69,7 +69,7 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	/**
 	 * Add theme support for various Jetpack features.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

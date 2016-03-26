@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Integration_YoastSEO
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -25,7 +25,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -34,7 +34,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Inject dependencies.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -54,7 +54,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -82,7 +82,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -93,7 +93,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Declare theme support for specific features.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * return void
 	 */
@@ -110,7 +110,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Add Theme Mod settings for the integration.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_Settings_ThemeMod $thememod
 	 *
@@ -141,7 +141,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Add Customizer controls.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 */
@@ -194,7 +194,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Use Yoast SEO's function to generate breadcrumb markup, if the current view calls for it.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $before
 	 * @param string $after
@@ -216,7 +216,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	/**
 	 * Replace other breadcrumbs with the Yoast SEO version, for unified breadcrumbs.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

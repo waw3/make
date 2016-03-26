@@ -10,7 +10,7 @@
  *
  * @link http://www.php-fig.org/psr/psr-4/examples/
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param string $class
  */

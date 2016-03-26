@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Layout_View
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_ViewInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -29,7 +29,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * The default view.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -38,7 +38,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -47,7 +47,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Load data files.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -92,7 +92,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		 * This action gives a developer the opportunity to add or modify views
 		 * and run additional load routines.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param MAKE_Layout_View    $view    The view object that has just finished loading.
 		 */
@@ -102,7 +102,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Check if the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -124,7 +124,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *     true
 	 * );
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $view_id
 	 * @param array  $args
@@ -196,7 +196,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Remove a view definition, if it exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $view_id
 	 *
@@ -245,7 +245,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Get an view definition array for a particular view.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $view_id
 	 *
@@ -265,7 +265,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Get a sorted array of view definitions, based on the priority property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -297,7 +297,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Check if a particular view exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $view_id
 	 *
@@ -311,7 +311,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Get the label for a particular view, if it exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $view_id
 	 *
@@ -331,7 +331,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Get the name of the callback function used to test for a particular view.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $view_id
 	 * @param string $context
@@ -357,7 +357,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Determine the current view from the callbacks of each view definition.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $context
 	 *
@@ -421,7 +421,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 * The "post" view includes the standard post along with all public custom post types and attachments that are
 	 * children of these post types.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -443,7 +443,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *
 	 * The "page" view includes the page post type and attachments that are children of that post type.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -454,7 +454,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	/**
 	 * Get the post type of a post's parent.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Post|null $post
 	 *

@@ -93,7 +93,7 @@ if ( ! function_exists( 'ttfmake_categorized_blog' ) ) :
  * Returns true if a blog has more than 1 category.
  *
  * @since 1.0.0.
- * @since x.x.x. Updated to match Twenty Sixteen's functionality.
+ * @since 1.7.0. Updated to match Twenty Sixteen's functionality.
  *
  * @return bool
  */
@@ -242,7 +242,7 @@ function ttfmake_get_site_header_class() {
 	/**
 	 * Filter: Modify the classes applied to the site header element.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $classes
 	 */
@@ -443,7 +443,7 @@ endif;
 /**
  * Get a sanitized value for a Theme Mod setting.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param        $setting_id
  * @param string $context
@@ -457,7 +457,7 @@ function make_get_thememod_value( $setting_id, $context = 'template' ) {
 /**
  * Get the default value for a Theme Mod setting.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param $setting_id
  *
@@ -470,7 +470,7 @@ function make_get_thememod_default( $setting_id ) {
 /**
  * Get the current view.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @return mixed
  */
@@ -481,7 +481,7 @@ function make_get_current_view() {
 /**
  * Check if the current view has a sidebar in the specified location (left or right).
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param $location
  *
@@ -494,7 +494,7 @@ function make_has_sidebar( $location ) {
 /**
  * Check if a custom logo has been set.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @return bool
  */
@@ -505,7 +505,7 @@ function make_has_logo() {
 /**
  * Output the markup for a custom logo.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * return void
  */
@@ -516,7 +516,7 @@ function make_logo() {
 /**
  * Check to see if social icons have been configured for display.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @return bool
  */
@@ -527,7 +527,7 @@ function make_has_socialicons() {
 /**
  * Display social icons for the site header or footer.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param $region
  *
@@ -550,7 +550,7 @@ function make_socialicons( $region ) {
 /**
  * Display a breadcrumb.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param string $before
  * @param string $after

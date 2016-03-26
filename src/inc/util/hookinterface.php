@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Util_HookInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Util_HookInterface {
 	public function hook();

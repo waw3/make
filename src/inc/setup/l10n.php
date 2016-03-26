@@ -50,7 +50,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -78,7 +78,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -100,7 +100,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */

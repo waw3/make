@@ -8,13 +8,13 @@
  *
  * Special control for managing social profile icons.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
 	 * The control type.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -23,7 +23,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
 	 * Enqueue necessary scripts for this control.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -35,7 +35,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
 	 * Add extra properties to JSON array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -55,7 +55,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
 	 * Define the JS template for the control.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -101,7 +101,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
      * Define the item sub-template for the control.
      *
-     * @since x.x.x.
+     * @since 1.7.0.
 	 *
 	 * @return void
      */
@@ -136,7 +136,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
 	 * Define the list sub-template for the control.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -170,7 +170,7 @@ class MAKE_Customizer_Control_SocialIcons extends WP_Customize_Control {
 	/**
 	 * Print additional JS templates.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

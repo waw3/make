@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Font_Source_Base
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_Font_Source_BaseInterface {
 	/**
 	 * The source ID.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -21,7 +21,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * The source's name in the UI.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -30,7 +30,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * The source's order priority. E.g. where its fonts will appear in a list of all fonts.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var int
 	 */
@@ -39,7 +39,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * The source's font data.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -48,7 +48,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * Getter for the $id property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -59,7 +59,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * Getter for the $label property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -70,7 +70,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * Getter for the $priority property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return int
 	 */
@@ -81,7 +81,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * Get the data for a particular font, or all of the source's font data.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string|null $font
 	 *
@@ -102,7 +102,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 		/**
 		 * Filter: Modify the font data from a particular source.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param array    $font_data
 		 */
@@ -112,7 +112,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * Check if this source has a particular font.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 *
@@ -128,7 +128,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	 *
 	 * 'font value' => 'font label'
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -147,7 +147,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 	/**
 	 * Get the font stack for a particular font. If no stack is available, use a default stack instead.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 * @param string $default_stack

@@ -8,7 +8,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -19,7 +19,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	/**
 	 * MAKE_Font_Source_Generic constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules

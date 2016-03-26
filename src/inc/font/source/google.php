@@ -8,7 +8,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -19,7 +19,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Array to collect the available subsets in the Google data.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -28,7 +28,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * CSS font stacks for Google's font categories.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -43,7 +43,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -52,7 +52,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * MAKE_Font_Source_Google constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -77,7 +77,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Load data files.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -95,7 +95,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Check if the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -106,7 +106,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Setter for the source's data property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $data
 	 */
@@ -117,7 +117,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Wrapper to ensure the font data is loaded before retrieving it.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 *
@@ -135,7 +135,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Append a CSS font stack to a font, based on its category. Return a default stack if the font doesn't exist.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 * @param string $default_stack
@@ -157,7 +157,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Retrieve the CSS font stack for a particular font category.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $category
 	 *
@@ -173,7 +173,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		/**
 		 * Filter: Modify the CSS font stack for a particular category of Google font.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string $stack    The CSS font stack.
 		 * @param string $category The font category.
@@ -184,7 +184,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Build the URL for loading Google fonts, given an array of fonts used in the theme and an array of subsets.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $fonts
 	 * @param array $subsets
@@ -268,7 +268,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Choose font variants to load for a given font, based on what's available.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 * @param array  $available_variants
@@ -310,7 +310,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 			 * Allow developers to alter the font variant choice.
 			 *
 			 * @since 1.2.3.
-			 * @deprecated x.x.x.
+			 * @deprecated 1.7.0.
 			 *
 			 * @param array     $variants    The list of variants for a font.
 			 * @param string    $font        The font to load variants for.
@@ -322,7 +322,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		/**
 		 * Allow developers to alter the Google font variant choice.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param array     $variants    The list of variants for a font.
 		 * @param string    $font        The font to load variants for.
@@ -334,7 +334,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Iterate through all the Google font data and build a list of unique subset options.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $font_data
 	 *
@@ -358,7 +358,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Getter for the $subsets property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -381,7 +381,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	/**
 	 * Verify that a subset choice is valid. Return a default value if it's not.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param        $value
 	 * @param string $default

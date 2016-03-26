@@ -9,13 +9,13 @@
  * A class that adds custom logo functionality.
  *
  * @since 1.0.0.
- * @since x.x.x. Renamed from TTFMAKE_Logo
+ * @since 1.7.0. Renamed from TTFMAKE_Logo
  */
 class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -49,7 +49,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -58,7 +58,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -80,7 +80,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -375,7 +375,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 		 * information and settings in the Logo interface in the Customizer won't be
 		 * reflected.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param array    $logo_information    The array of information.
 		 */
@@ -388,7 +388,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * Print CSS in the head for the logo.
 	 *
 	 * @since 1.0.0.
-	 * @since x.x.x. Added $style parameter
+	 * @since 1.7.0. Added $style parameter
 	 *
 	 * @return void
 	 */
@@ -551,7 +551,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * Refresh the logo cache after the Customizer is saved.
 	 *
 	 * @since 1.0.0.
-	 * @since x.x.x. Changed from global function to method.
+	 * @since 1.7.0. Changed from global function to method.
 	 *
 	 * @return void
 	 */

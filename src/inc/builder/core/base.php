@@ -356,7 +356,7 @@ class TTFMAKE_Builder_Base {
 		/**
 		 * Filter: Modify whether new pages default to the Builder template.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param bool $is_default
 		 */

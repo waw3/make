@@ -8,13 +8,13 @@
  *
  * A child class of MAKE_Settings_Base for defining and managing theme mod settings and their values.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Settings_ThemeModInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -28,7 +28,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * The type of settings.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -37,7 +37,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -46,7 +46,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -55,7 +55,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -78,7 +78,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -89,7 +89,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Load data files.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -113,7 +113,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		 * This action gives a developer the opportunity to add or modify setting definitions
 		 * and run additional load routines.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param MAKE_Settings_ThemeMod    $settings     The settings object that has just finished loading.
 		 */
@@ -123,7 +123,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Check if the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -134,7 +134,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Extension of parent class's add_settings method to account for compatibility message.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array      $settings
 	 * @param array      $default_props
@@ -160,7 +160,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Extension of the parent class's get_settings method to account for a deprecated filter.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $property
 	 *
@@ -198,7 +198,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Set a new value for a particular theme_mod setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to set.
 	 * @param  mixed     $value         The value to assign to the theme_mod.
@@ -222,7 +222,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Remove a particular theme_mod setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to remove.
 	 *
@@ -241,7 +241,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Get the stored value of a theme_mod, unaltered.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The name of the theme_mod to retrieve.
 	 *
@@ -260,7 +260,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Extension of the parent class's get_default method to account for a deprecated filter.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $setting_id
 	 *
@@ -295,7 +295,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Extension of the parent class's sanitize_value method to account for how the Customizer handles sanitize callbacks.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  mixed     $value         The value to sanitize.
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
@@ -334,7 +334,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		/**
 		 * Filter: Modify the choice set ID for a particular setting.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param array     $choice_set_id    The choice set for the setting.
 		 * @param string    $setting_id       The id of the setting.
@@ -375,7 +375,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Sanitize the value of a theme mod that has a choice set.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  mixed     $value      The value given to sanitize.
 	 * @param $setting_id
@@ -412,7 +412,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Sanitize the value of a theme mod with a font family choice set.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $value
 	 * @param  string    $setting_id
@@ -448,7 +448,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Add items to the array of parameters to feed into the sanitize callback.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  mixed     $value
 	 * @param  string    $callback
@@ -479,7 +479,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * Wrap setting values that are arrays in another array so that the data will remain intact
 	 * when it passes through call_user_func_array().
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $value
 	 * @param $callback
@@ -503,7 +503,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Sanitize the value of the font-subset setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $value
 	 *
@@ -529,7 +529,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Sanitize the individual items in the social icons array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $icon_data
 	 *
@@ -595,7 +595,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Convert the social icons JSON string into an array and sanitize it for storage in the database.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $json
 	 *
@@ -609,7 +609,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Sanitize the social icons array from the database for use in the Customizer.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $icon_data
 	 *
@@ -623,7 +623,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	/**
 	 * Clear values for settings that have the is_cache property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

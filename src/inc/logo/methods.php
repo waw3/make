@@ -9,13 +9,13 @@
  * Acts as a compatibility switchboard between Make's legacy custom logo settings and the Core custom logo
  * introduced in WordPress 4.5.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -27,7 +27,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * The default max width of the logo, in pixels
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var int
 	 */
@@ -36,7 +36,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -45,7 +45,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * MAKE_Logo_Methods constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
@@ -59,7 +59,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 		/**
 		 * Filter: Switch to prevent legacy logo functionality from loading.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param bool $load_legacy
 		 */
@@ -76,7 +76,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -98,7 +98,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -109,7 +109,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Test for support of the custom logo functionality introduced into Core in 4.5.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -120,7 +120,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Wrapper function to support custom logo detection either via Core or the legacy theme functionality.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -137,7 +137,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Wrapper function to support getting the custom logo markup either via Core or the legacy theme functionality.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -158,7 +158,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Getter that allows the default max width value to be filtered.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return int
 	 */
@@ -191,7 +191,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 		/**
 		 * Filter the maximum allowable width for a custom logo.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string|int    $width    The maximum width, in pixels.
 		 */
@@ -201,7 +201,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Add a style rule for the max width of the custom logo, if necessary.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_Style_ManagerInterface $style
 	 */
@@ -230,7 +230,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	 * logo first, and falls back on the regular. This helps to ensure that the largest image size becomes
 	 * the custom logo attachment.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

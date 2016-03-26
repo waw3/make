@@ -6,7 +6,7 @@
 /**
  * Class MAKE_Util_Modules
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
@@ -15,7 +15,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 * Format:
 	 * 'module name' => 'module interface or class name'
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -24,7 +24,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * Container for module objects.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -33,7 +33,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * MAKE_Util_Modules constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
@@ -50,7 +50,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * Allow modules to be accessed simply as a method with the same name.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $name
 	 * @param $arguments
@@ -68,7 +68,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * Add a module and run its hook routine.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $module_name
 	 * @param  object    $module
@@ -105,7 +105,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 * Add modules required by the dependencies array, either from the optional modules parameter or from the
 	 * api parameter.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
@@ -155,7 +155,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * Create a new instance of a class, given the class's name as a string, in a way that is compatible with PHP 5.2.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $class_name       The name of the class to create.
 	 * @param array  $instance_args    The class's __construct parameters, as an array.
@@ -174,7 +174,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * Return the specified module and run its load routine.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $module_name
 	 *
@@ -202,7 +202,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	/**
 	 * Check if a module exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $module_name
 	 *

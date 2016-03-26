@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Layout_ViewInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Layout_ViewInterface extends MAKE_Util_ModulesInterface {
 	public function add_view( $view_id, array $args = array(), $overwrite = false );

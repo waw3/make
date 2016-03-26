@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Choices_ManagerInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Choices_ManagerInterface extends MAKE_Util_ModulesInterface {
 	public function add_choice_sets( $sets, $overwrite = false );

@@ -14,7 +14,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -25,7 +25,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -34,7 +34,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -59,7 +59,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */

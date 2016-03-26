@@ -149,7 +149,7 @@ class MAKE_Style_CSS implements MAKE_Style_CSSInterface {
 	/**
 	 * Check if there are any items in the private data property array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool    True if there are items.
 	 */

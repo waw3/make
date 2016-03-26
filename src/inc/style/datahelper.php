@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Style_DataHelper
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_DataHelperInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */

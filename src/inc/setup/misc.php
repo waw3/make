@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Setup_Misc
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_MiscInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -25,7 +25,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -34,7 +34,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -76,7 +76,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -87,7 +87,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	/**
 	 * Declare theme support for various WordPress features.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -133,7 +133,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	/**
 	 * Register menu locations.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -237,7 +237,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	/**
 	 * Adds custom classes to the array of post container classes.
 	 *
-	 * @since  x.x.x.
+	 * @since  1.7.0.
 	 *
 	 * @param  array    $classes    Classes for the post container element.
 	 *

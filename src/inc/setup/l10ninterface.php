@@ -6,6 +6,6 @@
 /**
  * Interface MAKE_Setup_L10nInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Setup_L10nInterface {}

@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Font_ManagerInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Font_ManagerInterface extends MAKE_Util_ModulesInterface {
 	public function add_source( $source_id, $source );

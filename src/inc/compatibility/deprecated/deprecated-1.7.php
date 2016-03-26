@@ -2293,7 +2293,7 @@ class TTFMAKE_Customize_Misc_Control extends MAKE_Customizer_Control_Html {
 	/**
 	 * Convert the ID and args for use with MAKE_Customizer_Control_Html.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $manager
 	 * @param string               $id

@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Plus_MethodsInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Plus_MethodsInterface {
 	public function is_plus();

@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Font_Manager
  *
- * @since x.x.x
+ * @since 1.7.0
  */
 final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -24,7 +24,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -33,7 +33,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * MAKE_Font_Manager constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -55,7 +55,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Load data files.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -73,7 +73,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		 * This action gives a developer the opportunity to add or remove font sources
 		 * and run additional load routines.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param MAKE_Font_Manager    $font    The font object that has just finished loading.
 		 */
@@ -83,7 +83,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Check if the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -94,7 +94,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Add a font source as a special type of module.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string                         $source_id
 	 * @param MAKE_Font_Source_BaseInterface $source
@@ -110,7 +110,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		/**
 		 * Filter: Switch to turn off a font source.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param bool $add_source    True to allow the font source to be added.
 		 */
@@ -127,7 +127,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Get a font source module.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $source_id
 	 *
@@ -145,7 +145,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Check if a particular font source exists, based on its ID.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $source_id
 	 *
@@ -163,7 +163,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Remove a font source module, if it exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $source_id
 	 *
@@ -183,7 +183,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	/**
 	 * Return an array of font source objects, sorted by their priority property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -223,7 +223,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 *
 	 * Returns the source object, or just the source's ID.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 * @param string $return
@@ -245,7 +245,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 *
 	 * Increase the efficiency of this method by specifying the font's source.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 * @param string $source_id
@@ -281,7 +281,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 *
 	 * Increase the efficiency of this method by specifying the font's source.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $font
 	 * @param string $default
@@ -321,7 +321,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 *
 	 * If headings are set to true, extra array items will be added as separators between sources.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $source_id
 	 * @param bool   $headings
@@ -375,7 +375,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 *
 	 * Increase the efficiency of this method by specifying the font's source.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $value
 	 * @param string $source

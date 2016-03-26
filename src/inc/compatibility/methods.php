@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Compatibility_Methods
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -23,7 +23,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * The available compatibility modes.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -58,7 +58,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * The current compatibility mode.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -67,7 +67,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -76,7 +76,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * MAKE_Compatibility_Methods constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
@@ -92,7 +92,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -117,7 +117,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -128,7 +128,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Set the mode for compatibility.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string    $mode    The mode that was set.
 	 */
@@ -143,7 +143,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		 * - A minor release value, such as '1.5', will load files necessary for back compatibility with version 1.5.x.
 		 *   (Note that there are no separate modes for releases prior to 1.5.)
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string    $mode    The compatibility mode to run the theme in.
 		 */
@@ -161,7 +161,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Load back compat files for deprecated functionality based on specified version numbers.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -184,7 +184,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Load additional compatibility modules, depending on the mode.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param MAKE_APIInterface|null $api
 	 *
@@ -248,7 +248,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * Based on _deprecated_function() in WordPress core.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string      $function    The function that was called.
 	 * @param string      $version     The version of Make that deprecated the function.
@@ -262,7 +262,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		/**
 		 * Fires when a deprecated function is called.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string $function    The function that was called.
 		 * @param string $version     The version of Make that deprecated the function.
@@ -304,7 +304,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * Based on _deprecated_argument() in WordPress core.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $hook     The hook that was used.
 	 * @param string $version  The version of WordPress that deprecated the hook.
@@ -316,7 +316,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		/**
 		 * Fires when a deprecated hook has an attached function/method.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string $hook        The hook that was called.
 		 * @param string $version     The version of Make that deprecated the hook.
@@ -346,7 +346,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * Based on _doing_it_wrong() in WordPress core.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $function  The function that was called.
 	 * @param string $message   A message explaining what has been done incorrectly.
@@ -359,7 +359,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 		/**
 		 * Fires when the given function is being used incorrectly.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string $function The function that was called.
 		 * @param string $message  A message explaining what has been done incorrectly.

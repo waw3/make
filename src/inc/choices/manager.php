@@ -8,13 +8,13 @@
  *
  * An object for defining and managing choice sets.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_ManagerInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -26,7 +26,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * The collection of choice sets.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -35,7 +35,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Indicator of whether the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -44,7 +44,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Load data files.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -68,7 +68,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		 * This action gives a developer the opportunity to add or modify choice sets
 		 * and run additional load routines.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param MAKE_Choices_Manager    $choices    The choices object that has just finished loading.
 		 */
@@ -78,7 +78,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Check if the load routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -103,7 +103,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *     ),
 	 * )
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param          $sets         Array of choice sets to add.
 	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
@@ -158,7 +158,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Remove choice sets from the collection.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  array|string    $set_ids    The array of choice sets to remove, or 'all'.
 	 *
@@ -188,7 +188,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Getter for the choice sets that ensures the load routine has run first.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -203,7 +203,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Check if a choice set exists.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $set_id
 	 *
@@ -217,7 +217,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Get a particular choice set, using the set ID.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $set_id    The ID of the choice set to retrieve.
 	 *
@@ -234,7 +234,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		/**
 		 * Filter: Modify the choices in a particular choice set.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param array     $choice_set    The array of choices in the choice set.
 		 * @param string    $set_id        The ID of the choice set.
@@ -245,7 +245,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Get the label of an individual choice in a choice set.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $value     The array key representing the value of the choice.
 	 * @param  string    $set_id    The ID of the choice set.
@@ -264,7 +264,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		/**
 		 * Filter: Modify the label for a particular choice value.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string    $label     The label for the choice.
 		 * @param mixed     $choice    The value for the choice.
@@ -276,7 +276,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Determine if a value is a valid choice.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $value     The array key representing the value of the choice.
 	 * @param  string    $set_id    The ID of the choice set.
@@ -291,7 +291,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Sanitize a value from a list of allowed values in a choice set.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  mixed     $value      The value given to sanitize.
 	 * @param  string    $set_id     The ID of the choice set to search for the given value.

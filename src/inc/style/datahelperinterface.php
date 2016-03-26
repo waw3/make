@@ -6,7 +6,7 @@
 /**
  * Interface MAKE_Style_DataHelperInterface
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 interface MAKE_Style_DataHelperInterface extends MAKE_Util_ModulesInterface {
 	public function parse_font_properties( $element, $force = false );

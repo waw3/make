@@ -19,13 +19,13 @@
  * - Supply a string value for the type property, e.g. 'thememod'
  * - Update the array of required setting properties, if necessary
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Settings_BaseInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -36,7 +36,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * The collection of settings and their properties.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -45,7 +45,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * The value returned for an undefined setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var null
 	 */
@@ -54,7 +54,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * The type of settings. Should be defined in the child class.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -63,7 +63,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Required properties for each setting added to the collection.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -87,7 +87,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *     ),
 	 * )
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  array    $settings         Array of setting definitions to add.
 	 * @param  array    $default_props    Array of default properties for each setting definition.
@@ -141,7 +141,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Check an array of setting definition properties against another array of required ones.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  array    $properties    The array of properties to check.
 	 *
@@ -166,7 +166,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Remove setting definitions from the collection.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  array|string    $setting_ids    The array of settings to remove, or 'all'.
 	 *
@@ -198,7 +198,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *
 	 * If the setting definition doesn't have the specified property, it will be omitted.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $property    The property to get, or 'all'.
 	 *
@@ -225,7 +225,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *
 	 * Can also be used to check if a setting definition has a specified property.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $setting_id
 	 * @param string $property
@@ -240,7 +240,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Get a specific setting definition.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $setting_id
 	 *
@@ -264,7 +264,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 * - Should use the sanitize_value method before storing the value.
 	 * - Should return true if value was successfully stored, otherwise false.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to set.
 	 * @param  mixed     $value         The value to assign to the setting.
@@ -279,7 +279,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 * Must be defined by the child class.
 	 * - Should return true if value was successfully removed, otherwise false.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to unset.
 	 *
@@ -293,7 +293,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 * Must be defined by the child class.
 	 * - Should return the $undefined class property if the setting isn't found.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -306,7 +306,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *
 	 * This will return the default value for the setting if nothing is stored yet.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
@@ -333,7 +333,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 		/**
 		 * Filter: Modify the current value for a particular setting.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string|array    $value         The current value of the setting.
 		 * @param string          $setting_id    The id of the setting.
@@ -345,7 +345,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Get the default value of a setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 *
@@ -362,7 +362,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 		/**
 		 * Filter: Modify the default value for a particular setting.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string|array    $default_value    The default value of the setting.
 		 * @param string          $setting_id       The id of the setting.
@@ -373,7 +373,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Determine if a setting is currently set to its default value.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string        $setting_id    The ID of the setting to retrieve.
 	 * @param  mixed|null    $value         A value to compare to the default.
@@ -394,7 +394,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Get the name of the callback function used to sanitize a particular setting.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
 	 * @param  string    $context       Optional. The context in which a setting needs to be sanitized.
@@ -417,7 +417,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 		/**
 		 * Filter: Modify the name of the sanitize callback function for a particular setting.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string|array    $callback      The name of the callback function.
 		 * @param string          $setting_id    The id of the setting.
@@ -431,7 +431,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *
 	 * All settings must have a generic 'sanitize' callback. This function is only looking for extra, context-specific ones.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $setting_id
 	 * @param $context
@@ -453,7 +453,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Sanitize the value for a setting using the setting's specified callback function.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  mixed     $value         The value to sanitize.
 	 * @param  string    $setting_id    The ID of the setting to retrieve.
@@ -474,7 +474,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 				 * Some callbacks may require more than one parameter. This filter provides an opportunity
 				 * to add additional items to the array that will become the callback's parameters.
 				 *
-				 * @since x.x.x.
+				 * @since 1.7.0.
 				 *
 				 * @param array     $value         The array of parameters, initially containing only the value to be sanitized.
 				 * @param string    $callback      The callable that will accept parameters.
@@ -491,7 +491,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 		/**
 		 * Filter: Modify the sanitized value for a particular setting.
 		 *
-		 * @since x.x.x.
+		 * @since 1.7.0.
 		 *
 		 * @param string|array    $default_value    The default value of the setting.
 		 * @param string          $setting_id       The id of the setting.
@@ -582,7 +582,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *
 	 * If the given value is a URL instead of an attachment ID, this tries to find the URL's associated attachment.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param      $value
 	 * @param bool $raw
@@ -612,7 +612,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	/**
 	 * Wrapper for using the sanitize_image method with raw set to true.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $value
 	 *

@@ -42,7 +42,7 @@ $Make = new MAKE_API;
 /**
  * Action: Fire when the Make API has finished loading.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @param MAKE_API $Make
  */
@@ -54,7 +54,7 @@ require_once get_template_directory() . '/inc/template-tags.php';
 /**
  * Get the global Make API object.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  *
  * @return MAKE_API|null
  */

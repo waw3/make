@@ -6,13 +6,13 @@
 /**
  * Class MAKE_API
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -44,7 +44,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
 	 * An associative array of the default classes to use for each dependency.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -76,7 +76,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
 	 * MAKE_API constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param array $modules
 	 */
@@ -99,7 +99,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
 	 * Getter for the private defaults array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -110,7 +110,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
 	 * Return the specified module without running its load routine.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param $module_name
 	 *

@@ -8,13 +8,13 @@
  *
  * Handle the display of error messages collected by MAKE_Error_Collector.
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_DisplayInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -25,7 +25,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -34,7 +34,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -60,7 +60,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -71,7 +71,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Add a node to the Admin Bar for showing the error notification.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Admin_Bar $wp_admin_bar
 	 */
@@ -97,7 +97,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Render the CSS for the Make Errors button in the Admin Bar.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -285,7 +285,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Render the CSS for the Make Errors button in the Admin Bar when there are no errors to display.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -302,7 +302,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Render the JavaScript for handling the Make Errors button in the Admin Bar.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -339,7 +339,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Return a string showing the number of "Make errors".
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -355,7 +355,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Sanitize an error message.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param  string    $message    The message string to sanitize.
 	 * @return string                The sanitized message string.
@@ -379,7 +379,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	/**
 	 * Render the error messages within a container, include help text.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

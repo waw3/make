@@ -8,7 +8,7 @@
  *
  * JS-based control for adding arbitrary HTML to Customizer sections. Is the successor to TTFMAKE_Customize_Misc_Control
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	/**
@@ -17,7 +17,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	 * This is a hack, since the HTML control is not actually associated with any settings. It must be linked to a valid
 	 * setting before it will render, however.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var   string    The current setting name.
 	 */
@@ -26,7 +26,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	/**
 	 * The control type.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -35,7 +35,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	/**
 	 * The HTML to display with the control.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var string
 	 */
@@ -44,7 +44,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	/**
 	 * MAKE_Customizer_Control_Html constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $manager
 	 * @param string               $id
@@ -60,7 +60,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	/**
 	 * Add extra properties to JSON array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -75,7 +75,7 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	/**
 	 * Define the JS template for the control.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

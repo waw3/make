@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Setup_Head
  * 
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -24,7 +24,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -33,7 +33,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -60,7 +60,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -92,7 +92,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	/**
 	 * Pre-fetch DNS for third-party assets.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -146,7 +146,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	 * Add the pingback link to relevant views, if pingbacks are enabled.
 	 *
 	 * @since 1.0.0.
-	 * @since x.x.x. Added conditional wrapper.
+	 * @since 1.7.0. Added conditional wrapper.
 	 *
 	 * @return void
 	 */
@@ -209,7 +209,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	 * This will fire if the Compatibility module's deprecated_function method is run, which will happen
 	 * if either of the deprecated head functions have been plugged.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $function
 	 *

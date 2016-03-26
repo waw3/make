@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Integration_WooCommerce
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -23,7 +23,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -32,7 +32,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -57,7 +57,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */

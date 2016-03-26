@@ -39,7 +39,7 @@ class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	/**
 	 * MAKE_Customizer_Control_Radio constructor.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $manager
 	 * @param string               $id
@@ -68,7 +68,7 @@ class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	/**
 	 * Add extra properties to JSON array.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */
@@ -87,7 +87,7 @@ class MAKE_Customizer_Control_Radio extends WP_Customize_Control {
 	/**
 	 * Define the JS template for the control.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */

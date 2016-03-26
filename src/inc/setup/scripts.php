@@ -6,13 +6,13 @@
 /**
  * Class MAKE_Setup_Scripts
  *
- * @since x.x.x.
+ * @since 1.7.0.
  */
 final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_ScriptsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -26,7 +26,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Indicator of whether the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var bool
 	 */
@@ -35,7 +35,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Hook into WordPress.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -66,7 +66,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Check if the hook routine has been run.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return bool
 	 */
@@ -77,7 +77,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Wrapper for getting the path to the theme's CSS directory.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -88,7 +88,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Wrapper for getting the URL for the theme's CSS directory.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -99,7 +99,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Wrapper for getting the path to the theme's JS directory.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -110,7 +110,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Wrapper for getting the URL for the theme's JS directory.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return string
 	 */
@@ -121,7 +121,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Wrapper function to register style and script libraries for usage throughout the site.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -138,7 +138,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Register style libraries.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -190,7 +190,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Register JavaScript libraries.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -261,7 +261,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Enqueue styles for the front end of the site.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -319,7 +319,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Enqueue styles for the site admin.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -342,7 +342,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Add stylesheet URLs to be loaded into the Visual Editor's iframe.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -370,7 +370,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Enqueue scripts for the front end of the site.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return void
 	 */
@@ -413,7 +413,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * Looks for the file in a child theme first, then in the parent theme.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @uses locate_template()
 	 *
@@ -439,7 +439,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Return a specified style or script object.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $dependency_id The ID of the dependency object.
 	 * @param string $type          The type of dependency object. Valid options are style and script.
@@ -475,7 +475,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Check if a specified style or script object has been registered.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $dependency_id The ID of the dependency object.
 	 * @param string $type          The type of dependency object. Valid options are style and script.
@@ -489,7 +489,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Add a dependency to a specified style or script object.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $recipient_id  The ID of the object to add a dependency to.
 	 * @param string $dependency_id The ID of the object to add as a dependency.
@@ -512,7 +512,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Remove a dependency from a specified style or script object.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $recipient_id  The ID of the object to remove a dependency from.
 	 * @param string $dependency_id The ID of the dependency object to remove.
@@ -535,7 +535,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Update the version property of a specified style or script object.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $recipient_id The ID of the object to update.
 	 * @param string $version      The new version to add to the object.
@@ -556,7 +556,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Return the URL of a specified registered style or script.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $dependency_id The ID of the style or script to determine the URL of.
 	 * @param string $type          The type of dependency object. Valid options are style and script.
@@ -577,7 +577,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Restrict the characters allowed in a version string.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $version The version string to sanitize.
 	 *
@@ -590,7 +590,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Return the URL for loading the Google fonts currently used in the theme.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param bool $force   True to generate the URL from scratch, rather than preferencing a saved value in the database.
 	 *
@@ -631,7 +631,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	/**
 	 * Return data used by the FitVids.js script.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @return array
 	 */

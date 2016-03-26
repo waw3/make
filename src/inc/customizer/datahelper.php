@@ -8,7 +8,7 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 	/**
 	 * An associative array of required modules.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @var array
 	 */
@@ -21,7 +21,7 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 	/**
 	 * Generate a set of typography control definitions for a given element.
 	 *
-	 * @since x.x.x.
+	 * @since 1.7.0.
 	 *
 	 * @param string $element
 	 * @param string $label
