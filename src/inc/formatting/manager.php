@@ -40,7 +40,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -84,7 +84,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -95,7 +95,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

@@ -29,7 +29,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Inject dependencies.
@@ -76,7 +76,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		add_action( 'customize_register', array( $this, 'add_controls' ), 11 );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -87,7 +87,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

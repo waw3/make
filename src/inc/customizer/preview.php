@@ -25,7 +25,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -53,7 +53,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 		add_action( 'wp_ajax_make-font-json', array( $this, 'get_font_json_ajax' ) );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -64,7 +64,7 @@ class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customiz
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

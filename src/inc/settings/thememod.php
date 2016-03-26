@@ -41,7 +41,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Indicator of whether the load routine has been run.
@@ -72,7 +72,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		add_action( 'customize_save_after', array( $this, 'clear_thememod_cache' ) );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -83,7 +83,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

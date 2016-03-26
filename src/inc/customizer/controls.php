@@ -68,7 +68,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * MAKE_Customizer_Controls constructor.
@@ -130,7 +130,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		add_action( 'wp_ajax_make-social-icons-list', array( $this, 'get_socialicons_list_ajax' ) );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -141,7 +141,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

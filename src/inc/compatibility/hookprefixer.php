@@ -27,7 +27,7 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -46,7 +46,7 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 		add_action( 'after_setup_theme', array( $this, 'add_actions' ), 99 );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -57,7 +57,7 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

@@ -54,7 +54,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Populate the class properties.
@@ -94,7 +94,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 		add_action( 'after_setup_theme', array( $this, 'load_textdomains' ), 1 );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -105,7 +105,7 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

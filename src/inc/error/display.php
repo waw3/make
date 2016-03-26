@@ -29,7 +29,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -54,7 +54,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 		}
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -65,7 +65,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

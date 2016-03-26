@@ -27,7 +27,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -51,7 +51,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 		add_action( 'woocommerce_after_main_content', array( $this, 'after_main_content' ) );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -62,7 +62,7 @@ class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Uti
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

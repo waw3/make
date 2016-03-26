@@ -28,7 +28,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -54,7 +54,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 		add_action( 'make_deprecated_function_run', array( $this, 'backcompat_head_actions' ) );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -65,7 +65,7 @@ class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterf
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

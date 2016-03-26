@@ -29,7 +29,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -53,7 +53,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 		}
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -64,7 +64,7 @@ class MAKE_GallerySlider_Setup extends MAKE_Util_Modules implements MAKE_Gallery
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**

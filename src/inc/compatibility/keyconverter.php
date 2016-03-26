@@ -27,7 +27,7 @@ final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements
 	 *
 	 * @var bool
 	 */
-	private $hooked = false;
+	private static $hooked = false;
 
 	/**
 	 * Hook into WordPress.
@@ -44,7 +44,7 @@ final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements
 		add_action( 'after_setup_theme', array( $this, 'set_up_theme_mod_conversions' ), 11 );
 
 		// Hooking has occurred.
-		$this->hooked = true;
+		self::$hooked = true;
 	}
 
 	/**
@@ -55,7 +55,7 @@ final class MAKE_Compatibility_KeyConverter extends MAKE_Util_Modules implements
 	 * @return bool
 	 */
 	public function is_hooked() {
-		return $this->hooked;
+		return self::$hooked;
 	}
 
 	/**
