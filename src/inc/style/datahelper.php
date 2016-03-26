@@ -51,7 +51,7 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 			$this->compatibility()->deprecated_hook(
 				'make_css_font_properties',
 				'1.7.0',
-				__( 'To add dynamic CSS rules, hook into make_style_loaded instead.', 'make' )
+				esc_html__( 'To change the sanitize callback for a font setting, use the Make Settings API instead.', 'make' )
 			);
 		}
 

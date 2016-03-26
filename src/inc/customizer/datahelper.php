@@ -36,7 +36,11 @@ final class MAKE_Customizer_DataHelper extends MAKE_Util_Modules {
 				$this->compatibility()->deprecated_hook(
 					$filter,
 					'1.7.0',
-					__( 'To add or modify Customizer sections and controls, use the make_customizer_sections hook instead, or the core $wp_customize methods.', 'make' )
+					sprintf(
+						esc_html__( 'To add or modify Customizer sections and controls, use the %1$s hook instead, or the core %2$s methods.', 'make' ),
+						'<code>make_customizer_sections</code>',
+						'<code>$wp_customize</code>'
+					)
 				);
 			}
 		}

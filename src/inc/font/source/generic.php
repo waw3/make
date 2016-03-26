@@ -58,7 +58,10 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 			$this->compatibility()->deprecated_hook(
 				'make_get_standard_fonts',
 				'1.7.0',
-				__( 'To add or modify Generic Fonts, use the make_font_data_generic hook instead.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify Generic/Standard fonts, use the %s hook instead.', 'make' ),
+					'<code>make_font_data_generic</code>'
+				)
 			);
 
 			$this->data = apply_filters( 'make_get_standard_fonts', $this->data );
@@ -67,7 +70,10 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 			$this->compatibility()->deprecated_hook(
 				'make_all_fonts',
 				'1.7.0',
-				__( 'To add or modify fonts, use a hook for a specific font source instead, such as make_font_data_generic.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify fonts, use a hook for a specific font source instead, such as %s.', 'make' ),
+					'<code>make_font_data_generic</code>'
+				)
 			);
 
 			$this->data = apply_filters( 'make_all_fonts', $this->data );

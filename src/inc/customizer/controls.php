@@ -445,6 +445,14 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	private function add_section_controls( WP_Customize_Manager $wp_customize, $section, array $args, $initial_priority = 10 ) {
 		$priority = new MAKE_Util_Priority( $initial_priority, 5 );
 
+		// Check for deprecated filter.
+		if ( has_filter( 'make_customizer_control_path' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_customizer_control_path',
+				'1.7.0'
+			);
+		}
+
 		foreach ( $args as $setting_id => $definition ) {
 			// Add setting
 			if ( isset( $definition['setting'] ) && ( is_array( $definition['setting'] ) || true === $definition['setting'] ) ) {
