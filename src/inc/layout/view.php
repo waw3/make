@@ -397,7 +397,11 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 			$this->compatibility()->deprecated_hook(
 				'make_get_view',
 				'1.7.0',
-				__( 'To add or modify theme views, use Make()->view()->add_view() instead.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify theme views, use the %1$s method instead. See %2$s.', 'make' ),
+					'<code>add_view</code>',
+					'<code>MAKE_Layout_View</code>'
+				)
 			);
 
 			/**

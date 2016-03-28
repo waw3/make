@@ -188,7 +188,11 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 			$this->compatibility()->deprecated_hook(
 				'make_format_builder_format_models',
 				'1.7.0',
-				__( 'To add or modify Format Builder formats, use the add_format() method instead.', 'make' )
+				sprintf(
+					__( 'To add or modify Format Builder formats, use the %1$s method instead. See %2$s.', 'make' ),
+					'<code>add_format()</code>',
+					'<code>MAKE_Formatting_Manager</code>'
+				)
 			);
 
 			/**

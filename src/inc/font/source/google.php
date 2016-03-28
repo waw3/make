@@ -128,8 +128,32 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		if ( ! $this->is_loaded() ) {
 			$this->load();
 		}
+		
+		$data = parent::get_font_data( $font );
 
-		return parent::get_font_data( $font );
+		// Check for deprecated filters
+		if ( is_null( $font ) && has_filter( 'make_get_google_fonts' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'make_get_google_fonts',
+				'1.7.0',
+				sprintf(
+					esc_html__( 'To add or modify Google fonts, use the %s hook instead.', 'make' ),
+					'<code>make_font_data_google</code>'
+				)
+			);
+
+			/**
+			 * Allow for developers to modify the standard fonts.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param array    $fonts    The list of standard fonts.
+			 */
+			$data = apply_filters( 'make_get_google_fonts', $data );
+		}
+
+		return $data;
 	}
 
 	/**
@@ -303,7 +327,10 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 			$this->compatibility()->deprecated_hook(
 				'make_font_variants',
 				'1.7.0',
-				__( 'Use the make_font_google_variants hook instead.', 'make' )
+				sprintf(
+					__( 'Use the %s hook instead.', 'make' ),
+					'<code>make_font_google_variants</code>'
+				)
 			);
 
 			/**

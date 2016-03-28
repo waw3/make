@@ -151,7 +151,7 @@ function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $af
 		Make()->compatibility()->deprecated_hook(
 			'make_read_more_text',
 			'1.5.0',
-			__( '
+			esc_html__( '
 				The hook has been replaced with a theme option in the Customizer.
 				The theme option will only be available if no filters have been added to the hook.
 			', 'make' )

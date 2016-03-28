@@ -361,7 +361,10 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 			$this->compatibility()->deprecated_hook(
 				'make_all_font_choices',
 				'1.7.0',
-				__( 'To add or modify fonts, use a hook for a specific font source instead, such as make_font_data_generic.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify fonts, use a hook for a specific font source instead, such as %s.', 'make' ),
+					'<code>make_font_data_generic</code>'
+				)
 			);
 
 			$choices = apply_filters( 'make_all_font_choices', $choices );
@@ -389,14 +392,6 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 			$allowed_fonts = $this->get_font_choices( $source, false );
 		} else {
 			$allowed_fonts = $this->get_font_choices( null, false );
-		}
-
-		// Check for deprecated filter
-		if ( has_filter( 'make_sanitize_font_choice' ) ) {
-			$this->compatibility()->deprecated_hook(
-				'make_sanitize_font_choice',
-				'1.7.0'
-			);
 		}
 
 		// Find the choice in the font list.

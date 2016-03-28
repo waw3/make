@@ -154,7 +154,10 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 			$this->compatibility()->deprecated_hook(
 				'make_css',
 				'1.7.0',
-				__( 'To add dynamic CSS rules, hook into make_style_loaded instead.', 'make' )
+				sprintf(
+					__( 'To add dynamic CSS rules, use the %s hook instead.', 'make' ),
+					'<code>make_style_loaded</code>'
+				)
 			);
 
 			/**

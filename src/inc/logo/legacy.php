@@ -390,6 +390,8 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * @since 1.0.0.
 	 * @since 1.7.0. Added $style parameter
 	 *
+	 * @param MAKE_Style_ManagerInterface $style
+	 *
 	 * @return void
 	 */
 	public function print_logo_css( MAKE_Style_ManagerInterface $style ) {

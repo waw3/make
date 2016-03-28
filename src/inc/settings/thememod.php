@@ -178,7 +178,11 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			$this->compatibility()->deprecated_hook(
 				'make_setting_defaults',
 				'1.7.0',
-				__( 'To add or modify theme options, use the function make_update_thememod_settings() instead.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify theme settings, use the %1$s method instead. See %2$s.', 'make' ),
+					'<code>add_settings</code>',
+					'<code>MAKE_Settings_ThemeMod</code>'
+				)
 			);
 
 			/**
@@ -274,7 +278,10 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			$this->compatibility()->deprecated_hook(
 				'make_get_default',
 				'1.7.0',
-				__( 'Use make_settings_thememod_default_value instead.', 'make' )
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make' ),
+					'<code>make_settings_thememod_default_value</code>'
+				)
 			);
 
 			/**
@@ -354,7 +361,11 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			$this->compatibility()->deprecated_hook(
 				'make_setting_choices',
 				'1.7.0',
-				__( 'To add or modify theme option choices, use the function make_update_choices() instead.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify theme setting choices, use the %1$s method instead. See %2$s', 'make' ),
+					'<code>add_choice_sets</code>',
+					'<code>MAKE_Choices_Manager</code>'
+				)
 			);
 
 			/**
@@ -391,7 +402,10 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			$this->compatibility()->deprecated_hook(
 				'make_sanitize_choice',
 				'1.7.0',
-				__( 'Use make_settings_thememod_current_value instead.', 'make' )
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make' ),
+					'<code>make_settings_thememod_current_value</code>'
+				)
 			);
 
 			/**
@@ -424,11 +438,14 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		$sanitized_value = $this->font()->sanitize_font_choice( $value, null, $this->get_default( $setting_id ) );
 
 		// Check for deprecated filter.
-		if ( has_filter( 'make_sanitize_choice' ) ) {
+		if ( has_filter( 'make_sanitize_font_choice' ) ) {
 			$this->compatibility()->deprecated_hook(
 				'make_sanitize_font_choice',
 				'1.7.0',
-				__( 'Use make_settings_thememod_current_value instead.', 'make' )
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make' ),
+					'<code>make_settings_thememod_current_value</code>'
+				)
 			);
 
 			/**
@@ -515,15 +532,31 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 			return '';
 		}
 
+		$sanitized_value = $this->font()->get_source( 'google' )->sanitize_subset( $value, $this->get_default( 'font-subset' ) );
+
 		// Check for deprecated filter
 		if ( has_filter( 'make_sanitize_font_subset' ) ) {
 			$this->compatibility()->deprecated_hook(
 				'make_sanitize_font_subset',
-				'1.7.0'
+				'1.7.0',
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make' ),
+					'<code>make_settings_thememod_current_value</code>'
+				)
 			);
+
+			/**
+			 * Filter the sanitized subset choice.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param string    $value    The chosen subset value.
+			 */
+			$sanitized_value = apply_filters( 'make_sanitize_font_subset', $value );
 		}
 
-		return $this->font()->get_source( 'google' )->sanitize_subset( $value, $this->get_default( 'font-subset' ) );
+		return $sanitized_value;
 	}
 
 	/**

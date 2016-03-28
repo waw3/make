@@ -24,10 +24,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
@@ -52,31 +49,65 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 			)
 		);
+	}
+
+	/**
+	 * Extension of the parent class's get_font_data method to account for a deprecated filter.
+	 *
+	 * @since x.x.x.
+	 *
+	 * @param string|null $font
+	 *
+	 * @return array
+	 */
+	public function get_font_data( $font = null ) {
+		$data = parent::get_font_data( $font );
 
 		// Check for deprecated filters
-		if ( has_filter( 'make_get_standard_fonts' ) ) {
-			$this->compatibility()->deprecated_hook(
-				'make_get_standard_fonts',
-				'1.7.0',
-				sprintf(
-					esc_html__( 'To add or modify Generic/Standard fonts, use the %s hook instead.', 'make' ),
-					'<code>make_font_data_generic</code>'
-				)
-			);
+		if ( is_null( $font ) ) {
+			if ( has_filter( 'make_get_standard_fonts' ) ) {
+				$this->compatibility()->deprecated_hook(
+					'make_get_standard_fonts',
+					'1.7.0',
+					sprintf(
+						esc_html__( 'To add or modify Generic/Standard fonts, use the %s hook instead.', 'make' ),
+						'<code>make_font_data_generic</code>'
+					)
+				);
 
-			$this->data = apply_filters( 'make_get_standard_fonts', $this->data );
-		}
-		if ( has_filter( 'make_all_fonts' ) ) {
-			$this->compatibility()->deprecated_hook(
-				'make_all_fonts',
-				'1.7.0',
-				sprintf(
-					esc_html__( 'To add or modify fonts, use a hook for a specific font source instead, such as %s.', 'make' ),
-					'<code>make_font_data_generic</code>'
-				)
-			);
+				/**
+				 * Allow for developers to modify the standard fonts.
+				 *
+				 * @since 1.2.3.
+				 * @deprecated 1.7.0.
+				 *
+				 * @param array    $fonts    The list of standard fonts.
+				 */
+				$data = apply_filters( 'make_get_standard_fonts', $data );
+			}
 
-			$this->data = apply_filters( 'make_all_fonts', $this->data );
+			if ( has_filter( 'make_all_fonts' ) ) {
+				$this->compatibility()->deprecated_hook(
+					'make_all_fonts',
+					'1.7.0',
+					sprintf(
+						esc_html__( 'To add or modify fonts, use a hook for a specific font source instead, such as %s.', 'make' ),
+						'<code>make_font_data_generic</code>'
+					)
+				);
+
+				/**
+				 * Allow for developers to modify the full list of fonts.
+				 *
+				 * @since 1.2.3.
+				 * @deprecated 1.7.0.
+				 *
+				 * @param array    $fonts    The list of all fonts.
+				 */
+				$data = apply_filters( 'make_all_fonts', $data );
+			}
 		}
+
+		return $data;
 	}
 }

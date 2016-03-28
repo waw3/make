@@ -270,7 +270,11 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			$this->compatibility()->deprecated_hook(
 				'make_supported_social_icons',
 				'1.7.0',
-				__( 'To add or modify social icons, use the function make_update_socialicons() instead.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify the available social icons, use the %1$s method instead. See %2$s.', 'make' ),
+					'<code>add_icons</code>',
+					'<code>MAKE_SocialIcons_Manager</code>'
+				)
 			);
 
 			/**
@@ -646,7 +650,11 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			$this->compatibility()->deprecated_hook(
 				'make_social_links',
 				'1.7.0',
-				__( 'To add or modify the available social icons, use the function make_update_socialicons() instead.', 'make' )
+				sprintf(
+					esc_html__( 'To add or modify the available social icons, use the %1$s method instead. See %2$s.', 'make' ),
+					'<code>add_icons</code>',
+					'<code>MAKE_SocialIcons_Manager</code>'
+				)
 			);
 		}
 

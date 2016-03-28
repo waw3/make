@@ -131,8 +131,8 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 					$old_filter,
 					'1.2.3',
 					sprintf(
-						__( 'Use %s instead.', 'make' ),
-						$new_filter
+						esc_html__( 'Use the %s hook instead.', 'make' ),
+						"<code>$new_filter</code>"
 					)
 				);
 
@@ -191,8 +191,8 @@ final class MAKE_Compatibility_HookPrefixer extends MAKE_Util_Modules implements
 					$old_action,
 					'1.2.3',
 					sprintf(
-						__( 'Use %s instead.', 'make' ),
-						$new_action
+						esc_html__( 'Use the %s hook instead.', 'make' ),
+						"<code>$new_action</code>"
 					)
 				);
 
