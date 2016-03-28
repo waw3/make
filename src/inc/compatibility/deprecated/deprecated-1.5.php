@@ -39,11 +39,30 @@ if ( ! function_exists( 'ttfmake_body_layout_classes' ) ) :
  * @return array                Modified classes.
  */
 function ttfmake_body_layout_classes( $classes ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.5.0', 'ttfmake_body_classes' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.5.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>body_class</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
+
 	return $classes;
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_body_layout_classes', '1.5.0', 'ttfmake_body_classes' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_body_layout_classes',
+		'1.5.0',
+		null,
+		sprintf(
+			__( 'Add/remove filters from the %1$s hook instead. See %2$s.', 'make' ),
+			'<code>body_class</code>',
+			'<code>MAKE_Setup_Misc</code>'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_customizer_define_header_sections' ) ) :

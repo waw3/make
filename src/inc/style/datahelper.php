@@ -158,13 +158,14 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	/**
 	 * Return the percentage to use when calculating certain font sizes.
 	 *
-	 * TODO stop using this.
+	 * @since 1.3.0.
+	 * @since 1.7.0. Added $key parameter
 	 *
-	 * @since  1.3.0.
+	 * @param string|null $key
 	 *
 	 * @return array    The percentage value relative to another specific size
 	 */
-	public function get_relative_size( $key ) {
+	public function get_relative_size( $key = null ) {
 		/**
 		 * Filter the array of relative font sizes.
 		 *
@@ -196,7 +197,9 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 			'comment-date'    => 82,
 		) );
 
-		if ( isset( $sizes[ $key ] ) ) {
+		if ( is_null( $key ) ) {
+			return $sizes;
+		} else if ( isset( $sizes[ $key ] ) ) {
 			return $sizes[ $key ];
 		}
 

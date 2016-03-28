@@ -276,7 +276,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 
 		// Add additional messages.
 		if ( ! is_null( $replacement ) ) {
-			$message2 = sprintf( __( 'Use <strong>%s</strong> instead.', 'make' ), $replacement );
+			$message2 = sprintf( __( 'Use <code>%s</code> instead.', 'make' ), $replacement );
 		} else if ( ! is_null( $message ) ) {
 			$message2 = $message;
 		} else {
