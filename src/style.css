@@ -1828,6 +1828,8 @@ Content (_elements.scss)
 b,
 strong {
 	font-weight: bold;
+
+	-webkit-font-smoothing: antialiased;
 }
 
 dfn,
