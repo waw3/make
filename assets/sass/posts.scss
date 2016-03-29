@@ -3,6 +3,9 @@
 -------------------------------------------------------- */
 .entry-header {
 	@include rem('margin-bottom', $base);
+	.entry-meta {
+		@extend .clear;
+	}
 	.entry-thumbnail {
 		line-height: 1; //reset
 		text-align: center;
