@@ -113,7 +113,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	 *
 	 * @return bool
 	 */
-	private function custom_logo_is_supported() {
+	public function custom_logo_is_supported() {
 		return function_exists( 'has_custom_logo' ) && current_theme_supports( 'custom-logo' );
 	}
 

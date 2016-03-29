@@ -12,29 +12,48 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_ControlsInterface ) 
 $panel = $this->prefix . 'general';
 
 // Logo
-$this->add_section_definitions( 'logo', array(
-	'panel'    => $panel,
-	'title'    => __( 'Logo', 'make' ),
-	'controls' => array(
-		'logo-regular' => array(
-			'setting' => true,
-			'control' => array(
-				'control_type' => 'WP_Customize_Image_Control',
-				'label'        => __( 'Regular Logo', 'make' ),
-				'context'      => $this->prefix . 'logo-regular',
+if ( $this->logo()->custom_logo_is_supported() ) {
+	$this->add_section_definitions( 'logo', array(
+		'panel'    => $panel,
+		'title'    => __( 'Logo', 'make' ),
+		'controls' => array(
+			'logo-notice' => array(
+				'control' => array(
+					'control_type' => 'MAKE_Customizer_Control_Html',
+					'label'        => __( 'Regular & Retina Logos', 'make' ),
+					'description'  => esc_html__( '
+						These settings have been deprecated in favor of the Site Logo setting provided by WordPress core.
+						Please visit the Site Identity section to configure your site icon.
+					', 'make' ),
+				),
+			),
+		)
+	) ); // Overwrite to add additional controls to the section
+} else {
+	$this->add_section_definitions( 'logo', array(
+		'panel'    => $panel,
+		'title'    => __( 'Logo', 'make' ),
+		'controls' => array(
+			'logo-regular' => array(
+				'setting' => true,
+				'control' => array(
+					'control_type' => 'WP_Customize_Image_Control',
+					'label'        => __( 'Regular Logo', 'make' ),
+					'context'      => $this->prefix . 'logo-regular',
+				),
+			),
+			'logo-retina'  => array(
+				'setting' => true,
+				'control' => array(
+					'control_type' => 'WP_Customize_Image_Control',
+					'label'        => __( 'Retina Logo (2x)', 'make' ),
+					'description'  => esc_html__( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
+					'context'      => $this->prefix . 'logo-retina',
+				),
 			),
 		),
-		'logo-retina'  => array(
-			'setting' => true,
-			'control' => array(
-				'control_type' => 'WP_Customize_Image_Control',
-				'label'        => __( 'Retina Logo (2x)', 'make' ),
-				'description'  => __( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
-				'context'      => $this->prefix . 'logo-retina',
-			),
-		),
-	),
-) );
+	) );
+}
 
 // Deprecated Site Icon controls
 if ( function_exists( 'has_site_icon' ) ) {
@@ -44,7 +63,7 @@ if ( function_exists( 'has_site_icon' ) ) {
 				'control' => array(
 					'control_type' => 'MAKE_Customizer_Control_Html',
 					'label'        => __( 'Favicon & Apple Touch Icon', 'make' ),
-					'description'  => __( 'These options have been deprecated in favor of the Site Icon setting in WordPress core. Please visit the Site Identity section to configure your site icon.', 'make' ),
+					'description'  => __( 'These settings have been deprecated in favor of the Site Icon setting provided by WordPress core. Please visit the Site Identity section to configure your site icon.', 'make' ),
 				),
 			),
 		)

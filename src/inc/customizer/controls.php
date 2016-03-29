@@ -22,6 +22,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		'font'          => 'MAKE_Font_ManagerInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 		'scripts'       => 'MAKE_Setup_ScriptsInterface',
+		'logo'          => 'MAKE_Logo_MethodsInterface',
 		'socialicons'   => 'MAKE_SocialIcons_ManagerInterface',
 	);
 
