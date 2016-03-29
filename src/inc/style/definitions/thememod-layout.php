@@ -33,7 +33,7 @@ foreach ( array( 'blog', 'archive', 'search', 'post', 'page' ) as $view ) {
 	$key = "layout-$view-featured-images-alignment";
 	if ( ! $this->thememod()->is_default( $key ) ) {
 		$this->css()->add( array(
-			'selectors'    => array( ".$view .entry-header .entry-thumbnail" ),
+			'selectors'    => array( ".view-$view .entry-header .entry-thumbnail" ),
 			'declarations' => array(
 				'text-align' => $this->thememod()->get_value( $key ),
 			),
