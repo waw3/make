@@ -17,6 +17,7 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 * @var array
 	 */
 	protected $dependencies = array(
+		'view'     => 'MAKE_Layout_ViewInterface',
 		'thememod' => 'MAKE_Settings_ThemeModInterface',
 		'widgets'  => 'MAKE_Setup_WidgetsInterface',
 		'scripts'  => 'MAKE_Setup_ScriptsInterface',
@@ -206,6 +207,10 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 		// Only run this in the proper hook context.
 		if ( 'body_class' !== current_filter() ) {
 			return $classes;
+		}
+
+		if ( ! is_null( $view = $this->view()->get_current_view() ) ) {
+			$classes[] = 'view-' . $view;
 		}
 
 		// Full-width vs Boxed
