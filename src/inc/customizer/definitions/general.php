@@ -23,7 +23,7 @@ if ( $this->logo()->custom_logo_is_supported() ) {
 					'label'        => __( 'Regular & Retina Logos', 'make' ),
 					'description'  => esc_html__( '
 						These settings have been deprecated in favor of the Site Logo setting provided by WordPress core.
-						Please visit the Site Identity section to configure your site icon.
+						Please visit the Site Identity section to configure your site logo.
 					', 'make' ),
 				),
 			),
