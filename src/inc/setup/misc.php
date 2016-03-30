@@ -115,6 +115,9 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 			'size' => 'full',
 		) );
 
+		// Customizer: selective refresh for widgets
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
 		// HTML5
 		add_theme_support( 'html5', array(
 			'comment-list',
