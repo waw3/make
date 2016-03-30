@@ -7,6 +7,7 @@
  * Class MAKE_Admin_Notice
  *
  * @since 1.4.9.
+ * @since 1.7.0. Changed class name from TTFMAKE_Admin_Notice
  */
 final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
 	/**
@@ -140,6 +141,9 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 		);
 		$args = wp_parse_args( $args, $defaults );
 
+		// Not a one time notice
+		$args['one-time'] = false;
+
 		// Register the notice
 		if ( $id && $message ) {
 			$this->notices[ $id ] = array_merge( array( 'message' => $message ), $args );
@@ -148,6 +152,88 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 
 		// If you get to here, the registration failed.
 		return false;
+	}
+
+	/**
+	 * Register a one time admin notice.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string       $message    The content of the admin notice.
+	 * @param WP_User|null $user       The object for user who will receive the notice.
+	 * @param array        $args       Array of configuration parameters for the admin notice.
+	 *
+	 * @return bool                    True if the admin notice was successfully registered.
+	 */
+	public function register_one_time_admin_notice( $message, WP_User $user = null, $args = array() ) {
+		// Prep args
+		$defaults = array(
+			'dismiss' => true,   // Whether notice is dismissible
+			'type'    => 'info', // success, warning, error, info
+		);
+		$args = wp_parse_args( $args, $defaults );
+
+		// One time notice
+		$args['one-time'] = true;
+
+		// Sanitize message
+		$message = $this->sanitize_message( $message );
+
+		// Register the notice
+		if ( $message ) {
+			$notice = array_merge( array( 'message' => $message ), $args );
+			$id = $this->generate_one_time_admin_notice_id( $user );
+
+			$notices = get_transient( $id );
+			if ( ! is_array( $notices ) ) {
+				$notices = array();
+			}
+			$notices[] = $notice;
+
+			return set_transient( $id, $notices, MONTH_IN_SECONDS );
+		}
+
+		// If you get to here, the registration failed.
+		return false;
+	}
+
+	/**
+	 * Retrieve one time notices and delete them from the database.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param WP_User|null $user    The object for user who will receive the notices.
+	 *
+	 * @return array                An array of notices.
+	 */
+	private function get_one_time_admin_notices( WP_User $user = null ) {
+		$id = $this->generate_one_time_admin_notice_id( $user );
+
+		$notices = get_transient( $id );
+
+		if ( is_array( $notices ) ) {
+			delete_transient( $id );
+			return $notices;
+		}
+
+		return array();
+	}
+
+	/**
+	 * Generate a transient ID based on the specified user or current user.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param WP_User|null $user    The object for the user for whom to generate an ID.
+	 *
+	 * @return string               The generated ID.
+	 */
+	private function generate_one_time_admin_notice_id( WP_User $user = null ) {
+		if ( is_null( $user ) ) {
+			$user = wp_get_current_user();
+		}
+
+		return 'make-notice-' . md5( $user->user_login );
 	}
 
 	/**
@@ -164,8 +250,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 		}
 
 		// Get the array of notices that the current user has already dismissed
-		$user_id = get_current_user_id();
-		$dismissed = get_user_meta( $user_id, 'ttfmake-dismissed-notices', true );
+		$dismissed = $this->get_dismissed_notices( get_current_user_id() );
 
 		// Remove notices that don't meet requirements
 		$notices = $this->notices;
@@ -181,7 +266,55 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			}
 		}
 
+		// Look for one time notices
+		$one_time_notices = $this->get_one_time_admin_notices();
+		$notices = array_merge( $one_time_notices, $notices );
+
 		return $notices;
+	}
+
+	/**
+	 * Retrieve the stored array of dismissed notices for a user.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param int $user_id
+	 *
+	 * @return array
+	 */
+	private function get_dismissed_notices( $user_id ) {
+		$dismissed = get_user_meta( $user_id, 'make-dismissed-notices', true );
+
+		if ( ! $dismissed ) {
+			// Look for deprecated meta key
+			$dismissed = get_user_meta( $user_id, 'ttfmake-dismissed-notices', true );
+
+			if ( $dismissed ) {
+				// Add new meta entry and delete the deprecated one
+				$this->update_dismissed_notices( $user_id, $dismissed );
+				delete_user_meta( $user_id, 'ttfmake-dismissed-notices' );
+			}
+		}
+
+		if ( ! is_array( $dismissed ) ) {
+			$dismissed = array();
+		}
+
+		return $dismissed;
+	}
+
+	/**
+	 * Update the stored array of dismissed notices for a user.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param int   $user_id
+	 * @param array $notices
+	 *
+	 * @return bool
+	 */
+	private function update_dismissed_notices( $user_id, array $notices ) {
+		return update_user_meta( $user_id, 'make-dismissed-notices', $notices );
 	}
 
 	/**
@@ -257,14 +390,20 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			// Notice config
 			$id      = sanitize_key( $id );
 			$message = $this->sanitize_message( $args['message'] );
-			$dismiss = $args['dismiss'];
+			$dismiss = wp_validate_boolean( $args['dismiss'] );
 			$type    = sanitize_key( $args['type'] );
-			$nonce   = wp_create_nonce( 'ttfmake_dismiss_' . $id );
+			$onetime = wp_validate_boolean( $args['one-time'] );
 			$classes = array( 'notice', 'notice-' . $type );
+			$nonce   = ( $dismiss && ! $onetime ) ? ' data-nonce="' . esc_attr( wp_create_nonce( 'make_dismiss_' . $id ) ) . '"' : '';
 
 			// Add dismissible class
 			if ( true === $dismiss ) {
 				$classes[] = 'is-dismissible';
+			}
+
+			// Add one time class
+			if ( true === $onetime ) {
+				$classes[] = 'one-time';
 			}
 
 			// Convert classes to string
@@ -272,7 +411,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 
 			// Render
 			?>
-			<div id="ttfmake-notice-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>">
+			<div id="make-notice-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>"<?php echo $nonce; ?>>
 				<?php echo wpautop( $message ); ?>
 			</div>
 			<?php
@@ -296,12 +435,12 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			/* Make admin notices */
 			/* <![CDATA[ */
 			(function($) {
-				$('.notice').on('click', '.notice-dismiss', function(evt) {
+				$('.notice:not(.one-time)').on('click', '.notice-dismiss', function(evt) {
 					evt.preventDefault();
 
 					var $target = $(evt.target),
 						$parent = $target.parents('.notice').first(),
-						id      = $parent.attr('id').replace('ttfmake-notice-', ''),
+						id      = $parent.attr('id').replace('make-notice-', ''),
 						nonce   = $parent.data('nonce');
 
 					$.post(
@@ -342,22 +481,19 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			true !== DOING_AJAX ||
 			false === $nid ||
 			false === $nonce ||
-			! wp_verify_nonce( $nonce, 'ttfmake_dismiss_' . $nid )
+			! wp_verify_nonce( $nonce, 'make_dismiss_' . $nid )
 		) {
 			// Requirement check failed. Bail.
 			wp_die();
 		}
 
-		// Get the user's array of dismissed notices
+		// Get the array of notices that the current user has already dismissed
 		$user_id = get_current_user_id();
-		$dismissed = get_user_meta( $user_id, 'ttfmake-dismissed-notices', true );
-		if ( ! $dismissed ) {
-			$dismissed = array();
-		}
+		$dismissed = $this->get_dismissed_notices( $user_id );
 
 		// Add a new notice to the array
 		$dismissed[] = $nid;
-		$success = update_user_meta( $user_id, 'ttfmake-dismissed-notices', $dismissed );
+		$success = $this->update_dismissed_notices( $user_id, $dismissed );
 
 		// Return a success response.
 		if ( $success ) {
