@@ -98,6 +98,8 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 			return;
 		}
 
+		global $content_width;
+
 		// Automatic feed links
 		add_theme_support( 'automatic-feed-links' );
 
@@ -112,6 +114,8 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 
 		// Custom logo
 		add_theme_support( 'custom-logo', array(
+			'height'      => $content_width,
+			'width'       => $content_width,
 			'flex-height' => true,
 			'flex-width'  => true,
 		) );
