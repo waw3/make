@@ -40,10 +40,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api = null,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		/**
 		 * Filter: Toggle for showing Make errors.
 		 *
@@ -55,7 +52,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 
 		// Module defaults.
 		$modules = wp_parse_args( $modules, array(
-			'errors' => new WP_Error,
+			'errors' => 'WP_Error',
 		) );
 
 		// Only load the display module if errors should be shown.

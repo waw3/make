@@ -373,6 +373,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 				'br'  => true,
 			)
 		);
+		
 		return wp_kses( $message, $allowedtags );
 	}
 
@@ -438,8 +439,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 						<p>
 							<?php echo $this->sanitize_message( sprintf( __( '
 								This notification is only visible to users who are logged in and have the capability to
-								install themes. To hide it, set <code>WP_DEBUG</code> to <code>false</code>, or add this
-								code to your functions.php file: %s
+								install themes. To hide it completely, add this code to your functions.php file: %s
 							', 'make' ), '
 								<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>
 							' ) ); ?>
