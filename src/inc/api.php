@@ -18,10 +18,10 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	 */
 	protected $dependencies = array(
 		'l10n'                => 'MAKE_Setup_L10nInterface',
+		'notice'              => 'MAKE_Admin_NoticeInterface',
 		'error'               => 'MAKE_Error_CollectorInterface',
 		'compatibility'       => 'MAKE_Compatibility_MethodsInterface',
 		'plus'                => 'MAKE_Plus_MethodsInterface',
-		'notice'              => 'MAKE_Admin_NoticeInterface',
 		'choices'             => 'MAKE_Choices_ManagerInterface',
 		'font'                => 'MAKE_Font_ManagerInterface',
 		'view'                => 'MAKE_Layout_ViewInterface',
@@ -50,10 +50,10 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	 */
 	private $defaults = array(
 		'l10n'                => 'MAKE_Setup_L10n',
+		'notice'              => 'MAKE_Admin_Notice',
 		'error'               => 'MAKE_Error_Collector',
 		'compatibility'       => 'MAKE_Compatibility_Methods',
 		'plus'                => 'MAKE_Plus_Methods',
-		'notice'              => 'MAKE_Admin_Notice',
 		'choices'             => 'MAKE_Choices_Manager',
 		'font'                => 'MAKE_Font_Manager',
 		'view'                => 'MAKE_Layout_View',

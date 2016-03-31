@@ -17,7 +17,8 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @var array
 	 */
 	protected $dependencies = array(
-		'error' => 'MAKE_Error_CollectorInterface',
+		'error'              => 'MAKE_Error_CollectorInterface',
+		'settings_migration' => 'MAKE_Compatibility_SettingsMigrationInterface',
 	);
 
 	/**
@@ -82,6 +83,15 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 * @param array             $modules
 	 */
 	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+		if ( is_child_theme() && is_admin() ) {
+			// Module defaults.
+			$modules = wp_parse_args( $modules, array(
+				'settings_migration' => 'MAKE_Compatibility_SettingsMigration',
+			) );
+		} else {
+			unset( $this->dependencies['settings_migration'] );
+		}
+
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
