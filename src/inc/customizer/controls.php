@@ -186,11 +186,15 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		}
 
 		// Add a dummy setting for MAKE_Customize_Control_Html
-		$wp_customize->add_setting( 'make-customize-control-html', array(
-			'type'                 => 'number',
-			'default'              => 0,
-			'sanitize_callback'    => 'absint',
-		) );
+		// This is no longer needed in WP 4.5, which is also when the get_previewable_devices() method was added.
+		// TODO remove this when 4.4 support is dropped.
+		if ( ! method_exists( $wp_customize, 'get_previewable_devices' ) ) {
+			$wp_customize->add_setting( 'make-customize-control-html', array(
+				'type'                 => 'number',
+				'default'              => 0,
+				'sanitize_callback'    => 'absint',
+			) );
+		}
 	}
 
 	/**
