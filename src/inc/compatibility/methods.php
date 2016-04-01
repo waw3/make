@@ -6,9 +6,11 @@
 /**
  * Class MAKE_Compatibility_Methods
  *
+ * Methods to support compatibility issues.
+ *
  * @since 1.7.0.
  */
-class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
+final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compatibility_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -63,7 +65,7 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * @var array
 	 */
-	protected $mode = array();
+	private $mode = array();
 
 	/**
 	 * Indicator of whether the hook routine has been run.
@@ -138,24 +140,30 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	/**
 	 * Set the mode for compatibility.
 	 *
+	 * The compatibility mode determines which compatibility files and modules are loaded.
+	 *
 	 * @since 1.7.0.
 	 *
-	 * @return string    $mode    The mode that was set.
+	 * @return string $mode    The mode that was set.
 	 */
-	protected function set_mode() {
+	private function set_mode() {
 		$default_mode = 'full';
 
 		/**
 		 * Filter: Set the mode for compatibility.
 		 *
-		 * - 'full' will load all the files to enable back compatibility with deprecated code.
+		 * - 'full' will load all the files to enable back compatibility with deprecated code. (Default)
 		 * - 'current' will not load any deprecated code. Use with caution! Could result in a fatal PHP error.
 		 * - A minor release value, such as '1.5', will load files necessary for back compatibility with version 1.5.x.
-		 *   (Note that there are no separate modes for releases prior to 1.5.)
+		 *   Note that there are no separate modes for releases prior to 1.5.
+		 *
+		 * Example: If a site was originally customized with a child theme and Make 1.6.x, setting the mode to 1.6
+		 * will load files necessary to enable compatibility with changes made in 1.7.x, but will skip files for 1.5
+		 * and 1.6.
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param string    $mode    The compatibility mode to run the theme in.
+		 * @param string $mode    The compatibility mode to run the theme in.
 		 */
 		$mode = apply_filters( 'make_compatibility_mode', $default_mode );
 
@@ -213,17 +221,17 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	}
 
 	/**
-	 * Add notice if user attempts to install Make Plus as a theme.
+	 * Add a notice if the user attempts to install Make Plus as a theme.
 	 *
 	 * @since  1.1.2.
 	 *
-	 * @param  string         $source           File source location.
-	 * @param  string         $remote_source    Remove file source location.
-	 * @param  WP_Upgrader    $upgrader         WP_Upgrader instance.
+	 * @param  string      $source           File source location.
+	 * @param  string      $remote_source    Remote file source location.
+	 * @param  WP_Upgrader $upgrader         WP_Upgrader instance.
 	 *
-	 * @return WP_Error                         Error or source on success.
+	 * @return string|WP_Error               Error or source on success.
 	 */
-	public function check_package( $source, $remote_source, $upgrader ) {
+	public function check_package( $source, $remote_source, WP_Upgrader $upgrader ) {
 		// Only run this in the proper hook context.
 		if ( 'upgrader_source_selection' !== current_filter() ) {
 			return $source;
@@ -262,9 +270,9 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * @param string      $function    The function that was called.
 	 * @param string      $version     The version of Make that deprecated the function.
-	 * @param string|null $replacement The function that should have been called.
-	 * @param string|null $message     Explanatory text if there is no direct replacement available.
-	 * @param bool        $backtrace   True to include a backtrace in the error message.
+	 * @param string|null $replacement Optional. The function that should have been called.
+	 * @param string|null $message     Optional. Full error message in place of a replacement function.
+	 * @param bool        $backtrace   Optional. True to include a backtrace in the error message.
 	 *
 	 * @return void
 	 */
@@ -360,8 +368,8 @@ class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE_Compa
 	 *
 	 * @param string $function  The function that was called.
 	 * @param string $message   A message explaining what has been done incorrectly.
-	 * @param string $version   The version of WordPress where the message was added.
-	 * @param bool   $backtrace True to include a backtrace in the error message.
+	 * @param string $version   Optional. The version of WordPress where the message was added.
+	 * @param bool   $backtrace Optional. True to include a backtrace in the error message.
 	 *
 	 * @return void
 	 */
