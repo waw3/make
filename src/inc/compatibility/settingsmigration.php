@@ -5,10 +5,17 @@
 
 /**
  * Class MAKE_Compatibility_SettingsMigration
+ *
+ * Utility to copy settings from the parent theme to a child theme.
+ *
+ * Creates a page under the Appearance menu with buttons to import parent settings and restore previous child theme
+ * settings. A backup of existing child theme settings is made before copying over the parent settings.
+ *
+ * This functionality is only available when a child theme is activated.
  * 
  * @since 1.7.0.
  */
-class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules implements MAKE_Compatibility_SettingsMigrationInterface, MAKE_Util_HookInterface {
+final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules implements MAKE_Compatibility_SettingsMigrationInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -66,7 +73,7 @@ class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules implements 
 	}
 
 	/**
-	 * Add an admin notice if a child theme is activated an the parent has settings.
+	 * Add an admin notice if a child theme is activated and the parent has settings.
 	 *
 	 * @since 1.7.0.
 	 *
@@ -164,7 +171,13 @@ class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules implements 
 		<?php if ( ! empty( $parent_mods ) ) : ?>
 			<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
 				<fieldset>
-					<p><?php echo wp_kses( __( '<strong>Notice:</strong> This will modify your database!', 'make' ), array( 'strong' => true ) );?></p>
+					<p><?php
+						printf(
+							'%1$s %2$s',
+							wp_kses( __( '<strong>Notice:</strong> This will modify your database!', 'make' ), array( 'strong' => true ) ),
+							esc_html__( 'Any existing settings configured for the child theme will be overwritten.', 'make' )
+						);
+					?></p>
 					<label>
 						<input type="checkbox" name="make-settings-migration[verify]" />
 						<?php esc_html_e( 'I have backed up my database.', 'make' ); ?>
@@ -283,7 +296,7 @@ class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules implements 
 	}
 
 	/**
-	 * Routine to import parent theme settings into the child theme
+	 * Routine to import parent theme settings into the child theme.
 	 *
 	 * @since 1.7.0.
 	 *
