@@ -3,8 +3,14 @@
  * @package Make
  */
 
-
-class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customizer_PreviewInterface, MAKE_Util_HookInterface {
+/**
+ * Class MAKE_Customizer_Preview
+ *
+ * Configure the Customizer's preview pane.
+ *
+ * @since 1.7.0.
+ */
+final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Customizer_PreviewInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
