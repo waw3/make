@@ -52,17 +52,17 @@ class MAKE_Customizer_Control_Html extends WP_Customize_Control {
 	 * @param array                $args
 	 */
 	public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
-		parent::__construct( $manager, $id, $args );
-
-		// Ensure this instance maintains the proper type value.
-		$this->type = 'make_html';
-
 		// Add a dummy setting for the control
 		// This is no longer needed in WP 4.5, which is also when the get_previewable_devices() method was added.
 		// TODO remove this when 4.4 support is dropped.
 		if ( ! method_exists( $manager, 'get_previewable_devices' ) ) {
 			$this->settings = 'make-customize-control-html';
 		}
+		
+		parent::__construct( $manager, $id, $args );
+
+		// Ensure this instance maintains the proper type value.
+		$this->type = 'make_html';
 	}
 
 	/**
