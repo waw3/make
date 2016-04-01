@@ -172,7 +172,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 				'ttfmake_custom_logo_max_width',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'Use the %s hook instead.', 'make-plus' ),
+					esc_html__( 'Use the %s hook instead.', 'make' ),
 					'<code>make_logo_max_width</code>'
 				)
 			);

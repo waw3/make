@@ -346,7 +346,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 				'ttfmake_custom_logo_information',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'Use the %s hook instead.', 'make-plus' ),
+					esc_html__( 'Use the %s hook instead.', 'make' ),
 					'<code>make_logo_information</code>'
 				)
 			);
@@ -409,7 +409,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 				'ttfmake_custom_logo_max_width',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'Use the %s hook instead.', 'make-plus' ),
+					esc_html__( 'Use the %s hook instead.', 'make' ),
 					'<code>make_logo_max_width</code>'
 				)
 			);
