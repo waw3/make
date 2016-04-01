@@ -6,7 +6,7 @@
 /**
  * Class MAKE_Choices_Manager
  *
- * An object for defining and managing choice sets.
+ * Define and manage choice sets.
  *
  * @since 1.7.0.
  */
@@ -70,7 +70,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param MAKE_Choices_Manager    $choices    The choices object that has just finished loading.
+		 * @param MAKE_Choices_Manager $choices    The choices object that has just finished loading.
 		 */
 		do_action( 'make_choices_loaded', $this );
 	}
@@ -89,10 +89,9 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	/**
 	 * Add choice sets to the collection.
 	 *
-	 * Each choice set is an item in an associative array.
-	 * The item's array key is the set ID. The item value is another
-	 * associative array that contains individual choices where the key
-	 * is the HTML option value and the value is the HTML option label.
+	 * Each choice set is an item in an associative array. The item's array key is the set ID. The item value
+	 * is another associative array that contains individual choices where the key is the HTML option value and
+	 * the value is the HTML option label.
 	 *
 	 * Example:
 	 * array(
@@ -105,12 +104,12 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param          $sets         Array of choice sets to add.
-	 * @param  bool    $overwrite    True overwrites an existing choice set with the same ID.
+	 * @param array $sets         Array of choice sets to add.
+	 * @param bool  $overwrite    True overwrites an existing choice set with the same ID.
 	 *
-	 * @return bool                  True if addition was successful, false if there was an error.
+	 * @return bool               True if addition was successful, false if there was an error.
 	 */
-	public function add_choice_sets( $sets, $overwrite = false ) {
+	public function add_choice_sets( array $sets, $overwrite = false ) {
 		// Make sure we're not doing it wrong.
 		if ( 'make_choices_loaded' !== current_action() && did_action( 'make_choices_loaded' ) ) {
 			$this->compatibility()->doing_it_wrong(
@@ -122,7 +121,6 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 			return false;
 		}
 
-		$sets = (array) $sets;
 		$existing_sets = $this->choice_sets;
 		$new_sets = array();
 		$return = true;
@@ -131,13 +129,8 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		foreach ( $sets as $set_id => $choices ) {
 			$set_id = sanitize_key( $set_id );
 
-			// Choice set isn't valid.
-			if ( ! is_array( $choices ) ) {
-				$this->error()->add_error( 'make_choices_set_not_valid', sprintf( __( 'The "%s" choice set can\'t be added because it\'s not an array.', 'make' ), esc_html( $set_id ) ) );
-				$return = false;
-			}
 			// Choice set already exists, overwriting disabled.
-			else if ( isset( $existing_sets[ $set_id ] ) && true !== $overwrite ) {
+			if ( isset( $existing_sets[ $set_id ] ) && true !== $overwrite ) {
 				$this->error()->add_error( 'make_choices_set_already_exists', sprintf( __( 'The "%s" choice set can\'t be added because it already exists.', 'make' ), esc_html( $set_id ) ) );
 				$return = false;
 			}
@@ -160,13 +153,13 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param  array|string    $set_ids    The array of choice sets to remove, or 'all'.
+	 * @param array|string $set_ids    The array of choice set IDs to remove, or 'all'.
 	 *
-	 * @return bool                        True if removal was successful, false if there was an error.
+	 * @return bool                    True if removal was successful, false if there was an error.
 	 */
 	public function remove_choice_sets( $set_ids ) {
 		if ( 'all' === $set_ids ) {
-			// Clear the entire settings array.
+			// Clear the entire choice sets array.
 			$this->choice_sets = array();
 			return true;
 		}
@@ -219,9 +212,9 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param  string    $set_id    The ID of the choice set to retrieve.
+	 * @param string $set_id    The ID of the choice set to retrieve.
 	 *
-	 * @return array                The array of choices.
+	 * @return array            The array of choices.
 	 */
 	public function get_choice_set( $set_id ) {
 		$choice_set = array();
@@ -230,16 +223,8 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 			$choice_sets = $this->get_choice_sets();
 			$choice_set = $choice_sets[ $set_id ];
 		}
-
-		/**
-		 * Filter: Modify the choices in a particular choice set.
-		 *
-		 * @since 1.7.0.
-		 *
-		 * @param array     $choice_set    The array of choices in the choice set.
-		 * @param string    $set_id        The ID of the choice set.
-		 */
-		return apply_filters( 'make_choices_get_choice_set', $choice_set, $set_id );
+		
+		return $choice_set;
 	}
 
 	/**
@@ -247,10 +232,10 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param  string    $value     The array key representing the value of the choice.
-	 * @param  string    $set_id    The ID of the choice set.
+	 * @param string $value     The array key representing the value of the choice.
+	 * @param string $set_id    The ID of the choice set.
 	 *
-	 * @return string               The choice label, or empty string if not a valid choice.
+	 * @return string           The choice label, or empty string if not a valid choice.
 	 */
 	public function get_choice_label( $value, $set_id ) {
 		if ( ! $this->is_valid_choice( $value, $set_id ) ) {
@@ -261,16 +246,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 		// Get the choice set.
 		$choices = $this->get_choice_set( $set_id );
 
-		/**
-		 * Filter: Modify the label for a particular choice value.
-		 *
-		 * @since 1.7.0.
-		 *
-		 * @param string    $label     The label for the choice.
-		 * @param mixed     $choice    The value for the choice.
-		 * @param string    $set_id    The ID of the set that the choice belongs to.
-		 */
-		return apply_filters( 'make_choices_get_choice_label', $choices[ $value ], $value, $set_id );
+		return $choices[ $value ];
 	}
 
 	/**
@@ -278,10 +254,10 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param  string    $value     The array key representing the value of the choice.
-	 * @param  string    $set_id    The ID of the choice set.
+	 * @param string $value     The array key representing the value of the choice.
+	 * @param string $set_id    The ID of the choice set.
 	 *
-	 * @return bool                 True if the choice exists in the set.
+	 * @return bool             True if the choice exists in the set.
 	 */
 	public function is_valid_choice( $value, $set_id ) {
 		$choices = $this->get_choice_set( $set_id );
@@ -293,11 +269,11 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param  mixed     $value      The value given to sanitize.
-	 * @param  string    $set_id     The ID of the choice set to search for the given value.
-	 * @param  mixed     $default    The value to return if the given value is not valid.
+	 * @param mixed  $value      The value given to sanitize.
+	 * @param string $set_id     The ID of the choice set to search for the given value.
+	 * @param mixed  $default    The value to return if the given value is not valid.
 	 *
-	 * @return mixed                 The sanitized value.
+	 * @return mixed             The sanitized value.
 	 */
 	public function sanitize_choice( $value, $set_id, $default = '' ) {
 		if ( true === $this->is_valid_choice( $value, $set_id ) ) {
