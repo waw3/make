@@ -538,13 +538,19 @@ function make_socialicons( $region ) {
 		return;
 	}
 
-	if ( make_has_socialicons() && make_get_thememod_value( $region . '-show-social' ) ) {
-		?>
+	$show_icons = make_has_socialicons() && make_get_thememod_value( $region . '-show-social' );
+
+	if ( $show_icons || is_customize_preview() ) : ?>
 		<div class="<?php echo $region; ?>-social-links">
-			<?php echo Make()->socialicons()->render_icons(); ?>
+	<?php endif;
+
+	if ( $show_icons ) : ?>
+		<?php echo Make()->socialicons()->render_icons(); ?>
+	<?php endif;
+
+	if ( $show_icons || is_customize_preview() ) : ?>
 		</div>
-		<?php
-	}
+	<?php endif;
 }
 
 /**

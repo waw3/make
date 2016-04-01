@@ -521,6 +521,19 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 					$wp_customize->add_control( $control_id, $control );
 				}
 			}
+
+			// Add selective refresh, if supported
+			if ( isset( $definition['partial'] ) && isset( $wp_customize->selective_refresh ) ) {
+				$partial_id = $this->prefix . 'partial_' . $setting_id;
+
+				$defaults = array(
+					'settings' => array( $setting_id ),
+				);
+
+				$partial = wp_parse_args( $definition['partial'], $defaults );
+
+				$wp_customize->selective_refresh->add_partial( $partial_id, $partial );
+			}
 		}
 
 		// Return the final priority.
