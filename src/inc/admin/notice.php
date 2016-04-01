@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Admin_Notice
  *
+ * Register and display notices in the Admin interface.
+ *
  * @since 1.4.9.
  * @since 1.7.0. Changed class name from TTFMAKE_Admin_Notice
  */
@@ -120,6 +122,9 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	/**
 	 * Register an admin notice.
 	 *
+	 * A registered notice will be displayed in the notice section of the UI, beneath the page title,
+	 * if the conditions specified in the notice arguments are met.
+	 *
 	 * @since 1.4.9.
 	 *
 	 * @param string    $id         A unique ID string for the admin notice.
@@ -128,7 +133,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @return bool                 True if the admin notice was successfully registered.
 	 */
-	public function register_admin_notice( $id, $message, $args = array() ) {
+	public function register_admin_notice( $id, $message, array $args = array() ) {
 		// Sanitize ID
 		$id = sanitize_key( $id );
 
@@ -157,6 +162,9 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	/**
 	 * Register a one time admin notice.
 	 *
+	 * One time notices are specific to a user and are stored in the database as a transient for display
+	 * during a later page load. Once one has been displayed, it is removed from the database.
+	 *
 	 * @since 1.7.0.
 	 *
 	 * @param string       $message    The content of the admin notice.
@@ -165,7 +173,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @return bool                    True if the admin notice was successfully registered.
 	 */
-	public function register_one_time_admin_notice( $message, WP_User $user = null, $args = array() ) {
+	public function register_one_time_admin_notice( $message, WP_User $user = null, array $args = array() ) {
 		// Prep args
 		$defaults = array(
 			'dismiss' => true,   // Whether notice is dismissible
@@ -241,14 +249,15 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @since 1.4.9.
 	 *
-	 * @param  string|object    $screen    The screen to display the notices on.
-	 * @return array                       Array of notices to display on the specified screen.
+	 * @param  WP_Screen|null $screen    The screen to display the notices on.
+	 *
+	 * @return array                     Array of notices to display on the specified screen.
 	 */
-	private function get_notices( $screen = '' ) {
-		if ( ! $screen ) {
-			return array();
+	private function get_notices( WP_Screen $screen = null ) {
+		if ( is_null( $screen ) ) {
+			$screen = get_current_screen();
 		}
-
+		
 		// Get the array of notices that the current user has already dismissed
 		$dismissed = $this->get_dismissed_notices( get_current_user_id() );
 
@@ -260,7 +269,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 				||
 				! current_user_can( $args['cap'] )
 				||
-				in_array( $id, (array) $dismissed )
+				in_array( $id, $dismissed )
 			) {
 				unset( $notices[ $id ] );
 			}
@@ -363,7 +372,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 			$this->load();
 		}
 
-		$current_notices = $this->get_notices( get_current_screen() );
+		$current_notices = $this->get_notices();
 
 		if ( ! empty( $current_notices ) ) {
 			$this->render_notices( $current_notices );
