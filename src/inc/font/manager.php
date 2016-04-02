@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Font_Manager
  *
+ * Manage font options from different sources.
+ *
  * @since 1.7.0
  */
 final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerInterface {
@@ -38,10 +40,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
@@ -70,7 +69,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		/**
 		 * Action: Fires at the end of the font object's load method.
 		 *
-		 * This action gives a developer the opportunity to add or remove font sources
+		 * This action gives a developer the opportunity to add font sources
 		 * and run additional load routines.
 		 *
 		 * @since 1.7.0.
@@ -108,7 +107,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 		}
 
 		/**
-		 * Filter: Switch to turn off a font source.
+		 * Filter: Prevent a font source from being added.
 		 *
 		 * @since 1.7.0.
 		 *
@@ -131,7 +130,7 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 	 *
 	 * @param string $source_id
 	 *
-	 * @return mixed|null
+	 * @return MAKE_Font_Source_BaseInterface|null
 	 */
 	public function get_source( $source_id ) {
 		if ( $this->has_source( $source_id ) ) {
@@ -158,26 +157,6 @@ final class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_Man
 
 		$module_name = 'source_' . $source_id;
 		return parent::has_module( $module_name );
-	}
-
-	/**
-	 * Remove a font source module, if it exists.
-	 *
-	 * @since 1.7.0.
-	 *
-	 * @param string $source_id
-	 *
-	 * @return bool
-	 */
-	public function remove_source( $source_id ) {
-		if ( ! $this->has_source( $source_id ) ) {
-			$this->error()->add_error( 'make_font_source_not_valid', sprintf( __( 'The "%s" font source can\'t be removed because it doesn\'t exist.', 'make' ), $source_id ) );
-			return false;
-		}
-
-		$module_name = 'source_' . $source_id;
-		unset( $this->modules[ $module_name ] );
-		return true;
 	}
 
 	/**

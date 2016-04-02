@@ -3,7 +3,13 @@
  * @package Make
  */
 
-
+/**
+ * Class MAKE_Font_Source_Generic
+ *
+ * A font source for generic, websafe fonts.
+ *
+ * @since 1.7.0.
+ */
 final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	/**
 	 * An associative array of required modules.
@@ -52,7 +58,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	}
 
 	/**
-	 * Extension of the parent class's get_font_data method to account for a deprecated filter.
+	 * Extension of the parent class's get_font_data method to account for deprecated filters.
 	 *
 	 * @since x.x.x.
 	 *

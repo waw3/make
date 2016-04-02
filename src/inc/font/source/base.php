@@ -6,6 +6,25 @@
 /**
  * Class MAKE_Font_Source_Base
  *
+ * An object for managing fonts from a particular source.
+ *
+ * This is an abstract class, so it is unusable on its own. It must be extended by another class.
+ *
+ * The extending class should define the following properties:
+ * - $id          A string used to identify the source
+ * - $label       A string for the source's name, which will appear in font selection dropdowns.
+ * - $priority    An integer to indicate the source's order in a list. Higher = lower on the list.
+ *
+ * The extending class must also define the data for each font. Font data should include at least a label
+ * and a stack. Example:
+ *
+ * $this->data = array(
+ *     'serif' => array(
+ *         'label' => __( 'Serif', 'make' ),
+ *         'stack' => 'Georgia,Times,"Times New Roman",serif'
+ *     ),
+ * )
+ *
  * @since 1.7.0.
  */
 abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_Font_Source_BaseInterface {
@@ -104,7 +123,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param array    $font_data
+		 * @param array $font_data
 		 */
 		return apply_filters( "make_font_data_{$this->id}", $this->data );
 	}
@@ -160,7 +179,7 @@ abstract class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_F
 
 		if ( isset( $data['stack'] ) ) {
 			$stack = $data['stack'];
-		} else {
+		} else if ( is_string( $default_stack ) ) {
 			$stack = $default_stack;
 		}
 

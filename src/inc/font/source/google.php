@@ -3,8 +3,17 @@
  * @package Make
  */
 
-
-final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAKE_Util_LoadInterface {
+/**
+ * Class MAKE_Font_Source_Google
+ *
+ * A font source for Google fonts.
+ *
+ * Because the Google font data is extensive, this class makes use of MAKE_Util_LoadInterface so the data is
+ * only loaded when needed.
+ *
+ * @since 1.7.0.
+ */
+final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAKE_Font_Source_GoogleInterface, MAKE_Util_LoadInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -33,11 +42,11 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	 * @var array
 	 */
 	private $stacks = array(
-		'serif' => 'Georgia,Times,"Times New Roman",serif',
-		'sans-serif' => '"Helvetica Neue",Helvetica,Arial,sans-serif',
-		'display' => 'Copperplate,Copperplate Gothic Light,fantasy',
+		'serif'       => 'Georgia,Times,"Times New Roman",serif',
+		'sans-serif'  => '"Helvetica Neue",Helvetica,Arial,sans-serif',
+		'display'     => 'Copperplate,Copperplate Gothic Light,fantasy',
 		'handwriting' => 'Brush Script MT,cursive',
-		'monospace' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
+		'monospace'   => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 	);
 
 	/**
@@ -54,13 +63,10 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param MAKE_APIInterface $api
-	 * @param array             $modules
+	 * @param MAKE_APIInterface|null $api
+	 * @param array                  $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
@@ -168,10 +174,11 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	 */
 	public function get_font_stack( $font, $default_stack = 'sans-serif' ) {
 		$data = $this->get_font_data( $font );
+		$stack = '';
 
 		if ( isset( $data['category'] ) && $category_stack = $this->get_category_stack( $data['category'] ) ) {
 			$stack = "\"$font\"," . $category_stack;
-		} else {
+		} else if ( is_string( $default_stack ) ) {
 			$stack = $default_stack;
 		}
 
@@ -250,13 +257,14 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		 *
 		 * @since 1.2.3.
 		 *
-		 * @param string    $url    The URL to retrieve the Google Fonts.
+		 * @param string $url    The URL to retrieve the Google Fonts.
 		 */
 		return apply_filters( 'make_get_google_font_uri', $url );
 	}
 
 	/**
-	 * Build an array of data that can be converted to JSON and fed into the Web Font Loader, given an array of fonts used in the theme and an array of subsets.
+	 * Build an array of data that can be converted to JSON and fed into the Web Font Loader, given an array of fonts
+	 * used in the theme and an array of subsets.
 	 *
 	 * @param array $fonts
 	 * @param array $subsets
