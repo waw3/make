@@ -71,8 +71,8 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param        $code
-	 * @param        $message
+	 * @param string $code
+	 * @param string $message
 	 * @param string $data
 	 */
 	public function add_error( $code, $message, $data = '' ) {

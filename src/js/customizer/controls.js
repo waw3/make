@@ -550,6 +550,46 @@
 		}
 	});
 
+
+	api.sectionConstructor.make_error = api.Section.extend({
+		/**
+		 * Kick things off when the template is embedded.
+		 *
+		 * @since 1.7.0.
+		 */
+		ready: function() {
+			var section    = this,
+				$container = section.container,
+				$content   = $('#make-error-detail-container');
+
+			if ($content.length > 0) {
+				$container.html( $content.html() );
+
+				$container.on('click', '#make-show-errors', function(evt) {
+					evt.preventDefault();
+					$container.find('#make-error-detail-wrapper').addClass('make-error-detail-wrapper--active');
+				});
+
+				$container.on('click', '#make-error-detail-close', function(evt) {
+					evt.preventDefault();
+					$container.find('#make-error-detail-wrapper').removeClass('make-error-detail-wrapper--active');
+				});
+			}
+		},
+
+		/**
+		 * Override Section.isContextuallyActive method.
+		 *
+		 * @since 1.7.0.
+		 *
+		 * @returns {Boolean}
+		 */
+		isContextuallyActive: function() {
+			var $content = $('#make-error-detail-container');
+			return $content.length > 0;
+		}
+	});
+
 	/**
 	 * Visibility toggling for some controls
 	 */

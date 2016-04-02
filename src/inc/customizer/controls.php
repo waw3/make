@@ -177,6 +177,11 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 				'sanitize_callback'    => 'absint',
 			) );
 		}
+
+		// Register the error display section, if supported
+		if ( method_exists( $wp_customize, 'register_section_type' ) ) {
+			$wp_customize->register_section_type( 'MAKE_Error_Section' );
+		}
 	}
 
 	/**
