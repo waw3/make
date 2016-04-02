@@ -9,6 +9,7 @@
  * Adds TinyMCE plugins for formatting options and tools in the editor.
  *
  * @since 1.4.1.
+ * @since 1.7.0. Changed class name from TTFMAKE_Formatting
  */
 class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatting_ManagerInterface, MAKE_Util_HookInterface {
 	/**
@@ -105,8 +106,8 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param        $format_name
-	 * @param        $script_uri
+	 * @param string $format_name
+	 * @param string $script_uri
 	 * @param string $script_version
 	 *
 	 * @return bool
@@ -138,7 +139,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param $format_name
+	 * @param string $format_name
 	 *
 	 * @return bool
 	 */
@@ -215,7 +216,7 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param MAKE_Formatting_Manager    $formatting     The Formatting object.
+		 * @param MAKE_Formatting_Manager $formatting     The Formatting object.
 		 */
 		do_action( 'make_add_formats', $this );
 	}
@@ -563,7 +564,9 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 	 *
 	 * @since 1.4.1.
 	 *
-	 * @param $hook_suffix
+	 * @param string $hook_suffix
+	 *
+	 * @return void
 	 */
 	public function enqueue_admin_scripts( $hook_suffix ) {
 		// Only run this in the proper hook context.
