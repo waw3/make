@@ -80,6 +80,19 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	}
 
 	/**
+	 * Check if a particular error code has been added.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $code
+	 *
+	 * @return bool
+	 */
+	public function has_code( $code ) {
+		return in_array( $code, $this->get_codes() );
+	}
+
+	/**
 	 * Check if any errors have been added.
 	 *
 	 * @since 1.7.0.
