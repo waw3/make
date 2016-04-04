@@ -505,7 +505,12 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 
 			if ( $menu && ! is_wp_error( $menu ) ) {
 				// Add an error message
-				$this->error()->add_error( 'make_deprecated_social_menu', __( 'Make no longer uses a custom menu to output social icons. Instead, use the interface in the Customizer under <em>General &rarr; Social Icons</em>.', 'make' ) );
+				if ( ! $this->error()->has_code( 'make_deprecated_social_menu' ) ) {
+					$this->error()->add_error(
+						'make_deprecated_social_menu',
+						wp_kses( __( 'Make no longer uses a custom menu to output social icons. Instead, use the interface in the Customizer under <em>General &rarr; Social Icons</em>.', 'make' ), array( 'em' => true ) )
+					);
+				}
 				
 				$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
 
@@ -569,7 +574,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				);
 			}
 		}
-		
+
 		return $icon_data;
 	}
 
