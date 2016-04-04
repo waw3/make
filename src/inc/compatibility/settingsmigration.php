@@ -163,24 +163,25 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 		</div>
 
 		<p><?php esc_html_e( '
-			This site is currently using a child theme of Make. The parent theme has previously configured settings that
-			do not automatically carry over to the child theme.
+			This site is currently using a child theme. Any changes made in the Customizer to the Make parent theme
+			before the child theme was activated do not carry over. You can use this tool to import these settings
+			into the child theme so you don\'t have to start over again!
 		', 'make' );?></p>
 
 		<h2><?php esc_html_e( 'Import settings from the parent theme', 'make' ); ?></h2>
 		<?php if ( ! empty( $parent_mods ) ) : ?>
+			<p><?php esc_html_e( 'Use this tool to migrate your existing settings from the parent theme to your child theme.', 'make' ); ?></p>
+			<p><?php esc_html_e( 'Note that in doing this, your database will be modified. Any existing settings that have already been configured for the current theme will be overwritten.', 'make' ); ?></p>
 			<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
 				<fieldset>
-					<p><?php
-						printf(
-							'%1$s %2$s',
-							wp_kses( __( '<strong>Notice:</strong> This will modify your database!', 'make' ), array( 'strong' => true ) ),
-							esc_html__( 'Any existing settings configured for the child theme will be overwritten.', 'make' )
-						);
-					?></p>
 					<label>
 						<input type="checkbox" name="make-settings-migration[verify]" />
-						<?php esc_html_e( 'I have backed up my database.', 'make' ); ?>
+						<?php
+						printf(
+							wp_kses( __( 'I have backed up my database. (<a href="%s" target="_blank">How?</a>)', 'make' ), array( 'a' => array( 'href' => true, 'target' => true ) ) ),
+							'https://thethemefoundry.com/blog/back-up-wordpress/'
+						);
+						?>
 					</label>
 					<input type="hidden" name="action" value="make-settings-migration" />
 					<input type="hidden" name="make-settings-migration[action]" value="import" />
@@ -194,14 +195,20 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 			<p><?php esc_html_e( 'There are no parent theme settings to import.', 'make' ); ?></p>
 		<?php endif; ?>
 
-		<h2><?php esc_html_e( 'Restore previous child theme settings', 'make' ); ?></h2>
-		<?php if ( ! empty( $child_mods_backup ) ) : ?>
+		<?php if ( true||! empty( $child_mods_backup ) ) : ?>
+			<h2><?php esc_html_e( 'Restore previous theme settings', 'make' ); ?></h2>
+			<p><?php esc_html_e( 'Use this tool to restore settings that were previously overwritten when importing parent theme settings.', 'make' ); ?></p>
+			<p><?php esc_html_e( 'Note that in doing this, your database will be modified. Any existing settings that have already been configured for the current theme will be overwritten.', 'make' ); ?></p>
 			<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
 				<fieldset>
-					<p><?php echo wp_kses( __( '<strong>Notice:</strong> This will modify your database!', 'make' ), array( 'strong' => true ) );?></p>
 					<label>
 						<input type="checkbox" name="make-settings-migration[verify]" />
-						<?php esc_html_e( 'I have backed up my database.', 'make' ); ?>
+						<?php
+						printf(
+							wp_kses( __( 'I have backed up my database. (<a href="%s" target="_blank">How?</a>)', 'make' ), array( 'a' => array( 'href' => true, 'target' => true ) ) ),
+							'https://thethemefoundry.com/blog/back-up-wordpress/'
+						);
+						?>
 					</label>
 					<input type="hidden" name="action" value="make-settings-migration" />
 					<input type="hidden" name="make-settings-migration[action]" value="restore" />
@@ -211,8 +218,6 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 					<input type="submit" class="button button-primary" name="make-settings-migration[submit]" value="<?php esc_attr_e( 'Restore', 'make' ); ?>" />
 				</p>
 			</form>
-		<?php else : ?>
-			<p><?php esc_html_e( 'There is no backup of child theme settings to restore.', 'make' ); ?></p>
 		<?php endif; ?>
 	<?php
 	}
