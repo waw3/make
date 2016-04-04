@@ -8,6 +8,8 @@
  *
  * A class that adds custom logo functionality.
  *
+ * This functionality becomes obsolete with the Custom Logo option introduced in WordPress 4.5.
+ *
  * @since 1.0.0.
  * @since 1.7.0. Renamed from TTFMAKE_Logo
  */
@@ -523,6 +525,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * @param  int      $height            The image's height.
 	 * @param  int      $width_boundary    The maximum width for the image.
 	 * @param  bool     $retina            Whether or not to divide the dimensions by 2.
+	 *                                     
 	 * @return array                       Resulting height/width dimensions.
 	 */
 	private function adjust_dimensions( $width, $height, $width_boundary, $retina = false ) {

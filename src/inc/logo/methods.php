@@ -11,7 +11,7 @@
  *
  * @since 1.7.0.
  */
-class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsInterface, MAKE_Util_HookInterface {
+final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -183,7 +183,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 			 * @since 1.0.0.
 			 * @deprecated 1.7.0.
 			 *
-			 * @param string|int    $width    The maximum width, in pixels.
+			 * @param int $width    The maximum width, in pixels.
 			 */
 			$width = apply_filters( 'ttfmake_custom_logo_max_width', $width );
 		}
@@ -193,7 +193,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param string|int    $width    The maximum width, in pixels.
+		 * @param int $width    The maximum width, in pixels.
 		 */
 		return apply_filters( 'make_logo_max_width', $width );
 	}
@@ -204,6 +204,8 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	 * @since 1.7.0.
 	 *
 	 * @param MAKE_Style_ManagerInterface $style
+	 *
+	 * @return void
 	 */
 	public function set_logo_max_width( MAKE_Style_ManagerInterface $style ) {
 		// Only run this in the proper hook context.
@@ -226,7 +228,7 @@ class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_MethodsIn
 	/**
 	 * Convert the theme's legacy custom logo mods to the Core version.
 	 *
-	 * Since Core relies on one attachment for all sizes of the logo, this converted looks for a retina-sized
+	 * Since Core relies on one attachment for all sizes of the logo, this converter looks for a retina-sized
 	 * logo first, and falls back on the regular. This helps to ensure that the largest image size becomes
 	 * the custom logo attachment.
 	 *
