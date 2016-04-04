@@ -564,11 +564,12 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param array $icon_data
+	 * @param array  $icon_data
+	 * @param string $context
 	 *
 	 * @return array
 	 */
-	public function sanitize_socialicons( array $icon_data ) {
+	public function sanitize_socialicons( array $icon_data, $context = '' ) {
 		$sanitized_icon_data = array();
 
 		// Options
@@ -576,7 +577,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		foreach ( $settings as $setting_id ) {
 			$option_id = str_replace( 'social-icons-', '', $setting_id );
 			if ( isset( $icon_data[ $option_id ] ) ) {
-				$sanitized_icon_data[ $option_id ] = $this->sanitize_value( $icon_data[ $option_id ], $setting_id );
+				$sanitized_icon_data[ $option_id ] = $this->sanitize_value( $icon_data[ $option_id ], $setting_id, $context );
 			} else {
 				$sanitized_icon_data[ $option_id ] = $this->get_default( $setting_id );
 			}
@@ -592,8 +593,8 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		foreach ( $raw_items as $key => $item ) {
 			$item = wp_parse_args( (array) $item, array( 'type' => '', 'content' => '' ) );
 			$sanitized_icon_data['items'][ $key ] = array();
-			$sanitized_icon_data['items'][ $key ]['type'] = $type = $this->sanitize_value( $item['type'], 'social-icons-item-type' );
-			$sanitized_icon_data['items'][ $key ]['content'] = $this->sanitize_value( $item['content'], 'social-icons-item-content-' . $type );
+			$sanitized_icon_data['items'][ $key ]['type'] = $type = $this->sanitize_value( $item['type'], 'social-icons-item-type', $context );
+			$sanitized_icon_data['items'][ $key ]['content'] = $this->sanitize_value( $item['content'], 'social-icons-item-content-' . $type, $context );
 		}
 
 		// Email item
@@ -636,7 +637,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 */
 	public function sanitize_socialicons_from_customizer( $json ) {
 		$value = json_decode( $json, true );
-		return $this->sanitize_socialicons( $value );
+		return $this->sanitize_socialicons( $value, 'from_customizer' );
 	}
 
 	/**
@@ -649,7 +650,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 * @return bool|false|string
 	 */
 	public function sanitize_socialicons_to_customizer( array $icon_data ) {
-		$value = $this->sanitize_socialicons( $icon_data );
+		$value = $this->sanitize_socialicons( $icon_data, 'to_customizer' );
 		return wp_json_encode( $value );
 	}
 

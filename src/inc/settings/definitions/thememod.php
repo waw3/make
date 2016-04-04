@@ -639,39 +639,45 @@ if ( $this->font()->has_source( 'google' ) ) {
 // Social Icons
 $this->add_settings(
 	array(
-		'social-icons-email-toggle' => array(
+		'social-icons-email-toggle'       => array(
 			'default'            => false,
 			'sanitize'           => 'wp_validate_boolean',
 			'social_icon_option' => true,
 		),
-		'social-icons-rss-toggle' => array(
+		'social-icons-rss-toggle'         => array(
 			'default'            => true,
 			'sanitize'           => 'wp_validate_boolean',
 			'social_icon_option' => true,
 		),
-		'social-icons-new-window' => array(
+		'social-icons-new-window'         => array(
 			'default'            => false,
 			'sanitize'           => 'wp_validate_boolean',
 			'social_icon_option' => true,
 		),
-		'social-icons-item-type'  => array(
-			'default'            => 'link',
-			'sanitize'           => array( $this, 'sanitize_choice' ),
-			'choice_set_id'      => 'social-icon-type',
+		'social-icons-item-type'          => array(
+			'default'       => 'link',
+			'sanitize'      => array( $this, 'sanitize_choice' ),
+			'choice_set_id' => 'social-icon-type',
 		),
 		'social-icons-item-content-email' => array(
-			'default'            => '',
-			'sanitize'           => 'sanitize_email',
+			'default'  => '',
+			'sanitize' => 'sanitize_email',
 		),
 		'social-icons-item-content-rss'   => array(
-			'default'            => '',
-			'sanitize'           => 'esc_url',
+			'default'                  => '',
+			'sanitize'                 => 'esc_url',
+			'sanitize_from_customizer' => 'esc_url_raw',
+			'sanitize_to_customizer'   => 'esc_url',
+			'sanitize_database'        => 'esc_url_raw',
 		),
 		'social-icons-item-content-link'  => array(
-			'default'            => '',
-			'sanitize'           => 'esc_url',
+			'default'                  => '',
+			'sanitize'                 => 'esc_url',
+			'sanitize_from_customizer' => 'esc_url_raw',
+			'sanitize_to_customizer'   => 'esc_url',
+			'sanitize_database'        => 'esc_url_raw',
 		),
-		'social-icons' => array(
+		'social-icons'                    => array(
 			'default'                  => array(
 				'items'        => array(
 					array(
@@ -687,6 +693,6 @@ $this->add_settings(
 			'sanitize_from_customizer' => array( $this, 'sanitize_socialicons_from_customizer' ),
 			'sanitize_to_customizer'   => array( $this, 'sanitize_socialicons_to_customizer' ),
 			'is_array'                 => true,
-		)
+		),
 	)
 );
