@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Layout_View
  *
+ * Define and manage distinct views for the theme. Used to determine which set of layout settings to apply.
+ *
  * @since 1.7.0.
  */
 final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_ViewInterface, MAKE_Util_LoadInterface {
@@ -22,6 +24,10 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	);
 
 	/**
+	 * View bucket.
+	 *
+	 * @since 1.7.0.
+	 *
 	 * @var array
 	 */
 	private $views = array();
@@ -94,7 +100,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param MAKE_Layout_View    $view    The view object that has just finished loading.
+		 * @param MAKE_Layout_View $view    The view object that has just finished loading.
 		 */
 		do_action( 'make_view_loaded', $this );
 	}
@@ -243,7 +249,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	}
 
 	/**
-	 * Get an view definition array for a particular view.
+	 * Get a view definition array for a particular view.
 	 *
 	 * @since 1.7.0.
 	 *
