@@ -6,9 +6,11 @@
 /**
  * Class MAKE_Integration_YoastSEO
  *
+ * Modifications to better integrate Make and Yoast SEO.
+ *
  * @since 1.7.0.
  */
-class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
+final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -32,22 +34,20 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	private static $hooked = false;
 
 	/**
-	 * Inject dependencies.
+	 * MAKE_Integration_YoastSEO constructor.
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param MAKE_APIInterface $api
-	 * @param array             $modules
+	 * @param MAKE_APIInterface|null $api
+	 * @param array                  $modules
 	 */
-	public function __construct(
-		MAKE_APIInterface $api,
-		array $modules = array()
-	) {
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		// The Customizer Controls module only exists in a Customizer context.
 		if ( ! $api->has_module( 'customizer_controls' ) ) {
 			unset( $this->dependencies['customizer_controls'] );
 		}
 
+		// Load dependencies
 		parent::__construct( $api, $modules );
 	}
 
@@ -70,7 +70,7 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 		add_action( 'after_setup_theme', array( $this, 'replace_breadcrumb' ) );
 
 		// Theme Mod settings
-		add_action( 'make_settings_thememod_loaded', array( $this, 'load_thememod_definitions' ) );
+		add_action( 'make_settings_thememod_loaded', array( $this, 'add_settings' ) );
 
 		// Customizer controls
 		add_action( 'customize_register', array( $this, 'add_controls' ), 11 );
@@ -112,11 +112,11 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param MAKE_Settings_ThemeMod $thememod
+	 * @param MAKE_Settings_ThemeModInterface $thememod
 	 *
 	 * @return bool
 	 */
-	public function load_thememod_definitions( MAKE_Settings_ThemeMod $thememod ) {
+	public function add_settings( MAKE_Settings_ThemeModInterface $thememod ) {
 		// Only run this in the proper hook context.
 		if ( 'make_settings_thememod_loaded' !== current_action() ) {
 			return false;
@@ -144,6 +144,8 @@ class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_Util_H
 	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
 	 */
 	public function add_controls( WP_Customize_Manager $wp_customize ) {
 		// Only run this in the proper hook context.

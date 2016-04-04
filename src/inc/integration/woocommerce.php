@@ -6,9 +6,11 @@
 /**
  * Class MAKE_Integration_WooCommerce
  *
+ * Modifications to better integrate Make and WooCommerce.
+ *
  * @since 1.7.0.
  */
-class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
+final class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *

@@ -6,9 +6,11 @@
 /**
  * Class MAKE_Integration_Jetpack
  *
+ * Modifications to better integrate Make and Jetpack.
+ *
  * @since 1.7.0.
  */
-class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
+final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -67,7 +69,7 @@ class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_Util_Ho
 	}
 
 	/**
-	 * Add theme support for various Jetpack features.
+	 * Add theme support for Jetpack features.
 	 *
 	 * @since 1.7.0.
 	 *
