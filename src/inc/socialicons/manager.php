@@ -442,7 +442,9 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			'social-custom-rss',
 		);
 
-		$icon_data = array();
+		$icon_data = array(
+			'rss-toggle' => true,
+		);
 
 		// Populate from Customizer settings first
 		foreach ( $old_settings as $setting_id ) {
@@ -551,7 +553,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			if ( false === array_search( 'email', wp_list_pluck( $icon_data['items'], 'type' ) ) ) {
 				$icon_data['items'][] = array(
 					'type'    => 'email',
-					'content' => $this->thememod()->get_default( 'social-icons-item-email' ),
+					'content' => $this->thememod()->get_default( 'social-icons-item-content-email' ),
 				);
 			}
 		}
@@ -563,11 +565,11 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			if ( false === array_search( 'rss', wp_list_pluck( $icon_data['items'], 'type' ) ) ) {
 				$icon_data['items'][] = array(
 					'type'    => 'rss',
-					'content' => $this->thememod()->get_default( 'social-icons-item-rss' ),
+					'content' => $this->thememod()->get_default( 'social-icons-item-content-rss' ),
 				);
 			}
 		}
-
+		
 		return $icon_data;
 	}
 
@@ -726,6 +728,8 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 
 		if (
 			'social-icons' === $setting_id
+			&&
+			is_array( $value )
 			&&
 			is_array( $callback )
 			&&
