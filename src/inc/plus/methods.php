@@ -242,12 +242,12 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		<script type="application/javascript">
 			(function($) {
 				$(document).ready(function() {
-					var upgrade = $('<a class="ttfmake-customize-plus"></a>')
+					var plus = $('<a class="ttfmake-customize-plus"></a>')
 						.attr('href', '<?php echo esc_js( $this->get_plus_link() ); ?>')
 						.attr('target', '_blank')
 						.text('<?php esc_html_e( 'Upgrade to Make Plus', 'make' ); ?>')
 					;
-					$('.preview-notice').append(upgrade);
+					$('#accordion-section-themes .accordion-section-title .change-theme').before(plus);
 					// Remove accordion click event
 					$('.ttfmake-customize-plus').on('click', function(e) {
 						e.stopPropagation();
