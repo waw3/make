@@ -9,7 +9,7 @@
  * @since 1.7.0.
  */
 interface MAKE_Settings_BaseInterface extends MAKE_Util_ModulesInterface {
-	public function add_settings( $settings, $default_props = array(), $overwrite = false );
+	public function add_settings( array $settings, array $default_props = array(), $overwrite = false );
 
 	public function remove_settings( $setting_ids );
 

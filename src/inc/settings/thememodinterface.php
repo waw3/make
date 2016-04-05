@@ -16,4 +16,10 @@ interface MAKE_Settings_ThemeModInterface extends MAKE_Settings_BaseInterface {
 	public function sanitize_font_choice( $value, $setting_id );
 
 	public function sanitize_google_font_subset( $value );
+
+	public function sanitize_socialicons( array $icon_data, $context = '' );
+
+	public function sanitize_socialicons_from_customizer( $json );
+
+	public function sanitize_socialicons_to_customizer( array $icon_data );
 }

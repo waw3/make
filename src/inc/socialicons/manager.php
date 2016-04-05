@@ -723,12 +723,12 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @since 1.7.0.
 	 *
 	 * @param mixed        $value
-	 * @param array|string $callback
 	 * @param string       $setting_id
+	 * @param array|string $callback
 	 *
 	 * @return array
 	 */
-	public function not_always_an_array( $value, $callback, $setting_id ) {
+	public function not_always_an_array( $value, $setting_id, $callback ) {
 		// Only run this in the proper hook context.
 		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
 			return $value;

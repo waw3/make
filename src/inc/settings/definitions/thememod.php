@@ -244,7 +244,6 @@ $this->add_settings(
 		'default'                  => '',
 		'sanitize'                 => 'esc_url',
 		'sanitize_from_customizer' => 'esc_url_raw',
-		'sanitize_to_customizer'   => 'esc_url',
 		'sanitize_database'        => 'esc_url_raw',
 		'sanitize_style'           => 'esc_url_raw',
 		'is_style'                 => true,
@@ -263,7 +262,6 @@ $this->add_settings(
 		'default'                  => '',
 		'sanitize'                 => 'esc_url',
 		'sanitize_from_customizer' => 'esc_url_raw',
-		'sanitize_to_customizer'   => 'esc_url',
 		'sanitize_database'        => 'esc_url_raw',
 		'is_style'                 => true,
 	)
@@ -667,14 +665,12 @@ $this->add_settings(
 			'default'                  => '',
 			'sanitize'                 => 'esc_url',
 			'sanitize_from_customizer' => 'esc_url_raw',
-			'sanitize_to_customizer'   => 'esc_url',
 			'sanitize_database'        => 'esc_url_raw',
 		),
 		'social-icons-item-content-link'  => array(
 			'default'                  => '',
 			'sanitize'                 => 'esc_url',
 			'sanitize_from_customizer' => 'esc_url_raw',
-			'sanitize_to_customizer'   => 'esc_url',
 			'sanitize_database'        => 'esc_url_raw',
 		),
 		'social-icons'                    => array(
