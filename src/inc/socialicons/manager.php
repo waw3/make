@@ -154,7 +154,10 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 		if ( "make_socialicons_loaded" !== current_action() && did_action( "make_socialicons_loaded" ) ) {
 			$this->compatibility()->doing_it_wrong(
 				__FUNCTION__,
-				__( 'This function should only be called during or before the <code>make_socialicons_loaded</code> action.', 'make' ),
+				sprintf(
+					esc_html__( 'This function should only be called during or before the %s action.', 'make' ),
+					'<code>make_socialicons_loaded</code>'
+				),
 				'1.7.0'
 			);
 
