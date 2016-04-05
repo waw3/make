@@ -3,6 +3,11 @@
  * @package Make
  */
 
+/**
+ * Class MAKE_Plus_Methods
+ *
+ * @since 1.7.0.
+ */
 final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_HookInterface {
 	/**
 	 * Whether Make Plus is installed and active.
@@ -117,7 +122,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		 *
 		 * @since 1.2.3.
 		 *
-		 * @param bool    $is_plus    True if Make Plus is active.
+		 * @param bool $is_plus    True if Make Plus is active.
 		 */
 		$this->plus = apply_filters( 'make_is_plus', $is_plus );
 
@@ -136,11 +141,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	}
 
 	/**
-	 * Generate a link to the Make info page.
+	 * Generate a link to the Make Plus info page.
 	 *
-	 * @since  1.0.6.
+	 * @since 1.0.6.
 	 *
-	 * @return string                   The link.
+	 * @return string
 	 */
 	public function get_plus_link() {
 		return 'https://thethemefoundry.com/make-buy/';
@@ -151,7 +156,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @return null
+	 * @return string|null
 	 */
 	public function get_plus_version() {
 		$version = null;
@@ -206,7 +211,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param $classes
+	 * @param string $classes
 	 *
 	 * @return string
 	 */
@@ -259,11 +264,13 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	}
 
 	/**
-	 * Display information about Style Kits, Typekit, and White Label in the Customizer.
+	 * Display information about Typekit and White Label in the Customizer.
 	 *
 	 * @since 1.7.0.
 	 *
 	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
 	 */
 	public function customizer_add_section_info( WP_Customize_Manager $wp_customize ) {
 		// Only run this in the proper hook context.
@@ -285,10 +292,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),
-				sprintf(
-					__( 'Upgrade to %1$s', 'make' ),
-					'Make Plus'
-				)
+				esc_html__( 'Upgrade to Make Plus.', 'make' )
 			),
 		) ) );
 
@@ -306,10 +310,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),
-				sprintf(
-					__( 'Upgrade to %1$s', 'make' ),
-					'Make Plus'
-				)
+				esc_html__( 'Upgrade to Make Plus.', 'make' )
 			),
 		) ) );
 	}
@@ -350,7 +351,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	/**
 	 * Add a metabox to each qualified post type edit screen.
 	 *
-	 * @since  1.0.6.
+	 * @since 1.0.6.
 	 *
 	 * @return void
 	 */
@@ -370,13 +371,13 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		$post_types[] = 'post';
 		$post_types[] = 'page';
 
-		// Add the metabox for each type
-		foreach ( $post_types as $type ) {
+		// Add the metabox if compatible with the current post type
+		if ( in_array( get_post_type(), $post_types ) ) {
 			add_meta_box(
 				'ttfmake-plus-metabox',
 				esc_html__( 'Layout Settings', 'make' ),
 				array( $this, 'perpage_render_metabox' ),
-				$type,
+				get_post_type(),
 				'side',
 				'default'
 			);
@@ -388,7 +389,8 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.0.6.
 	 *
-	 * @param  WP_Post    $post    The current post object.
+	 * @param WP_Post $post    The current post object.
+	 *
 	 * @return void
 	 */
 	public function perpage_render_metabox( WP_Post $post ) {
@@ -403,10 +405,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),
-				sprintf(
-					esc_html__( 'Upgrade to %s.', 'make' ),
-					'Make Plus'
-				)
+				esc_html__( 'Upgrade to Make Plus.', 'make' )
 			)
 		);
 		echo '</p>';
@@ -465,14 +464,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 				<em>
 					<?php
 					printf(
-						esc_html__( '%s and convert any column into an area for widgets.', 'make' ),
+						esc_html__( 'Convert any column into an area for widgets. %s', 'make' ),
 						sprintf(
 							'<a href="%1$s" target="_blank">%2$s</a>',
 							esc_url( $this->get_plus_link() ),
-							sprintf(
-								esc_html__( 'Upgrade to %s', 'make' ),
-								'Make Plus'
-							)
+							esc_html__( 'Upgrade to Make Plus.', 'make' )
 						)
 					);
 					?>
