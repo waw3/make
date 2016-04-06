@@ -146,7 +146,8 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	 *
 	 * @return bool                True if all required properties are present.
 	 */
-	protected function has_required_properties( array $properties ) {
+	protected function has_required_properties( $properties ) {
+		$properties = (array) $properties;
 		$required_properties = $this->required_properties;
 		$existing_properties = array_keys( $properties );
 
@@ -162,7 +163,7 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 	}
 
 	/**
-	 * Remove setting definitions from the collection.
+	 * Remove one or more setting definitions from the collection.
 	 *
 	 * @since 1.7.0.
 	 *
