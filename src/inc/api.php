@@ -6,6 +6,10 @@
 /**
  * Class MAKE_API
  *
+ * Class to manage and provide access to all of the modules that make up the Make API.
+ * 
+ * Access this class via the global Make() function.
+ *
  * @since 1.7.0.
  */
 class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
@@ -114,7 +118,7 @@ class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param $module_name
+	 * @param string $module_name
 	 *
 	 * @return null
 	 */

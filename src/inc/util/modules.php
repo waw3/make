@@ -22,6 +22,9 @@
  *   that are also in the dependencies array will be considered. Modules in this array will be preferenced over modules
  *   of the same name in the $api instance.
  *
+ * This class uses the __call() magic method to allow access to each of its modules via a method of the same name. So
+ * for example, to access the 'error' module, you can use $this->error() instead of $this->get_module( 'error' ).
+ *
  * @since 1.7.0.
  */
 abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
