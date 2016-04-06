@@ -15,7 +15,7 @@ interface MAKE_Style_DataHelperInterface extends MAKE_Util_ModulesInterface {
 
 	public function hex_to_rgb( $value );
 
-	public function get_relative_size( $key );
+	public function get_relative_size( $key = null );
 
 	public function get_relative_font_size( $value, $percentage );
 
