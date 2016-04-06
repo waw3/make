@@ -30,9 +30,9 @@ if ( version_compare( $wp_version, TTFMAKE_MIN_WP_VERSION, '<' ) ) {
 }
 
 // Notice of upcoming drop of support for 4.2
-if ( version_compare( $wp_version, '4.2', '<=' ) ) {
+if ( version_compare( $wp_version, '4.3', '<' ) ) {
 	$this->register_admin_notice(
-		'make-wp-lte-42',
+		'make-wp-lt-43',
 		sprintf(
 			__( 'Make will soon be dropping support for WordPress version 4.2. Your current version is %1$s. Please <a href="%2$s">update WordPress</a> to ensure full compatibility.', 'make' ),
 			esc_html( $wp_version ),
