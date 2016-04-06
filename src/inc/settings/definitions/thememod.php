@@ -280,6 +280,7 @@ $this->add_settings(
 		'default'       => 'center',
 		'sanitize'      => array( Make()->sanitize(), 'sanitize_choice' ),
 		'choice_set_id' => 'alignment-horizontal-3',
+		'is_style'      => true,
 	)
 );
 

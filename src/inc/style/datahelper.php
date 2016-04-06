@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Style_DataHelper
  *
+ * Methods to help process the data loaded to generate style rules.
+ *
  * @since 1.7.0.
  */
 class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_DataHelperInterface {
@@ -28,10 +30,10 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 *
 	 * @since  1.3.0.
 	 *
-	 * @param  string    $element    The element to parse the options for.
-	 * @param  bool      $force      True to include properties that have default values.
+	 * @param string $element    The element to parse the options for.
+	 * @param bool   $force      True to include properties that have default values.
 	 *
-	 * @return array                 An array of non-default CSS declarations.
+	 * @return array             An array of CSS declarations.
 	 */
 	public function parse_font_properties( $element, $force = false ) {
 		// Font properties.
@@ -92,10 +94,10 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 *
 	 * @since 1.5.0.
 	 *
-	 * @param  string    $element      The element to look up in the theme options.
-	 * @param  array     $selectors    The base selectors to use for the rule.
+	 * @param string $element      The element to look up in the theme options.
+	 * @param array  $selectors    The base selectors to use for the rule.
 	 *
-	 * @return array                   A CSS rule definition array.
+	 * @return array               A CSS rule definition array.
 	 */
 	public function parse_link_underline( $element, $selectors ) {
 		$setting_id = 'link-underline-' . $element;
@@ -119,7 +121,7 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 
 			// Return CSS rule array
 			return array(
-				'selectors' => $parsed_selectors,
+				'selectors'    => $parsed_selectors,
 				'declarations' => $declarations,
 			);
 		}
@@ -134,8 +136,9 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 *
 	 * @since 1.5.0.
 	 *
-	 * @param  $value
-	 * @return bool|string
+	 * @param string $value
+	 *
+	 * @return string
 	 */
 	public function hex_to_rgb( $value ) {
 		$hex = sanitize_hex_color_no_hash( $value );
@@ -149,7 +152,7 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 			$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
 			$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
 		} else {
-			return false;
+			return '';
 		}
 
 		return "$r, $g, $b";
@@ -161,9 +164,9 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 * @since 1.3.0.
 	 * @since 1.7.0. Added $key parameter
 	 *
-	 * @param string|null $key
+	 * @param string|null $key    The relative size to return, or the array of relative sizes.
 	 *
-	 * @return array    The percentage value relative to another specific size
+	 * @return array|int          The percentage value relative to another specific size
 	 */
 	public function get_relative_size( $key = null ) {
 		/**
@@ -174,7 +177,7 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 		 *
 		 * @since 1.0.0.
 		 *
-		 * @param array    $sizes    The array of relative sizes.
+		 * @param array $sizes    The array of relative sizes.
 		 */
 		$sizes = apply_filters( 'make_font_relative_size', array(
 			// Relative to navigation font size
@@ -211,10 +214,10 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  mixed    $value         The value to base the final value on.
-	 * @param  mixed    $percentage    The percentage of change.
+	 * @param mixed $value         The value to base the final value on.
+	 * @param mixed $percentage    The percentage of change.
 	 *
-	 * @return float                   The converted value.
+	 * @return float               The converted value.
 	 */
 	public function get_relative_font_size( $value, $percentage ) {
 		return round( (float) $value * ( $percentage / 100 ) );
@@ -225,9 +228,9 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  mixed    $px      The value to convert.
+	 * @param mixed $px      The value to convert.
 	 *
-	 * @return float             The converted value.
+	 * @return float         The converted value.
 	 */
 	public function convert_px_to_rem( $px ) {
 		return (float) $px / 10;
