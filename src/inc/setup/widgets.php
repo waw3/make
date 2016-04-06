@@ -120,7 +120,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 			$sidebar_args = array(
 				'id'          => $sidebar_id,
 				'name'        => $sidebar_name,
-				'description' => ( is_admin() ) ? esc_html( $this->get_sidebar_description( $sidebar_id ) ) : '', // The sidebar description isn't needed for the front end.
+				'description' => ( is_admin() ) ? $this->get_sidebar_description( $sidebar_id ) : '', // The sidebar description isn't needed for the front end.
 			);
 
 			register_sidebar( $sidebar_args + $this->get_widget_display_args( $sidebar_id ) );
@@ -145,7 +145,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 			$column_count = $this->thememod()->get_value( 'footer-widget-areas' );
 
 			if ( $column > $column_count ) {
-				$description = wp_kses( __( 'This widget area is currently disabled. Enable it in the <em>Footer</em> section of the <em>Layout</em> panel in the Customizer.', 'make' ), array( 'em' => true ) );
+				$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the "Layout" panel in the Customizer.', 'make' );
 			}
 		}
 		// Other sidebars
@@ -156,12 +156,12 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 
 			// Not enabled anywhere
 			if ( empty( $enabled_views ) ) {
-				$description = wp_kses( __( 'This widget area is currently disabled. Enable it in the <em>Layout</em> panel of the Customizer.', 'make' ), array( 'em' => true ) );
+				$description = __( 'This widget area is currently disabled. Enable it in the "Layout" panel of the Customizer.', 'make' );
 			}
 			// List enabled views
 			else {
 				$description = sprintf(
-					wp_kses( __( 'This widget area is currently enabled for the following views: %s. Change this in the <em>Layout</em> panel of the Customizer.', 'make' ), array( 'em' => true ) ),
+					__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" panel of the Customizer.', 'make' ),
 					implode( _x( ', ', 'list item separator', 'make' ), $enabled_views )
 				);
 			}
