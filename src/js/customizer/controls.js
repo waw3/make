@@ -12,6 +12,15 @@
 	var api = wp.customize,
 		Make;
 
+	/**
+	 * MakeControls
+	 *
+	 * Starts with the following data properties added via script localization:
+	 * - ajaxurl
+	 * - fontsettings
+	 * - l10n
+	 */
+
 	// Setup
 	Make = $.extend(MakeControls, {
 		cache: {
@@ -24,6 +33,7 @@
 		sendRequest: function(data, callback) {
 			var self = this;
 
+			// Allow additional data to be added to Ajax requests
 			if ('undefined' !== typeof data.action && 'object' === typeof self.cache.ajax[data.action]) {
 				data = $.extend(data, self.cache.ajax[data.action]);
 			}
@@ -550,7 +560,11 @@
 		}
 	});
 
-
+	/**
+	 * Initialize the section for displaying Make errors
+	 *
+	 * @since 1.7.0.
+	 */
 	api.sectionConstructor.make_error = api.Section.extend({
 		/**
 		 * Kick things off when the template is embedded.
@@ -585,8 +599,7 @@
 		 * @returns {Boolean}
 		 */
 		isContextuallyActive: function() {
-			var $content = $('#make-error-detail-container');
-			return $content.length > 0;
+			return $('#make-error-detail-container').length > 0;
 		}
 	});
 
