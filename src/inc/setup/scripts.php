@@ -148,9 +148,9 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// Chosen
 		wp_register_style(
 			'chosen',
-			$this->get_css_directory_uri() . '/libs/chosen/chosen.css',
+			$this->get_css_directory_uri() . '/libs/chosen/chosen.min.css',
 			array(),
-			'1.5.0'
+			'1.5.1'
 		);
 
 		// Editor styles
@@ -202,7 +202,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			'chosen',
 			$this->get_js_directory_uri() . '/libs/chosen/chosen.jquery.min.js',
 			array( 'jquery' ),
-			'1.4.2',
+			'1.5.1',
 			true
 		);
 
@@ -247,9 +247,9 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// FitVids
 		wp_register_script(
 			'fitvids',
-			$this->get_js_directory_uri() . '/libs/fitvids/jquery.fitvids.min.js',
+			$this->get_js_directory_uri() . '/libs/fitvids/jquery.fitvids.js',
 			array( 'jquery' ),
-			'1.1',
+			'1.1-d028a22',
 			true
 		);
 
