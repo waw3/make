@@ -89,7 +89,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		 * @param array  $widget_args    The default widget markup for sidebars.
 		 * @param string $sidebar_id     The ID of the sidebar that the widget markup will apply to.
 		 */
-		return apply_filters( 'make_widget_display_defaults', $widget_args, $sidebar_id );
+		return apply_filters( 'make_widget_display_args', $widget_args, $sidebar_id );
 	}
 
 	/**
