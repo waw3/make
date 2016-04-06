@@ -66,10 +66,11 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 * @since 1.7.0.
 	 *
 	 * @param string $name
+	 * @param array  $arguments
 	 *
 	 * @return mixed|bool
 	 */
-	public function __call( $name ) {
+	public function __call( $name, $arguments ) {
 		if ( $this->has_module( $name ) ) {
 			return $this->get_module( $name );
 		} else {
