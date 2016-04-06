@@ -5,10 +5,12 @@
 
 /**
  * Class MAKE_Setup_Head
+ *
+ * Set up the contents of the document head.
  * 
  * @since 1.7.0.
  */
-class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterface, MAKE_Util_HookInterface {
+final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_HeadInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *

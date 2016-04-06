@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Setup_Widgets
  *
+ * Methods for setting up sidebars and widgets.
+ *
  * @since 1.7.0.
  */
 final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_WidgetsInterface, MAKE_Util_HookInterface {
@@ -44,7 +46,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 			return;
 		}
 
-		//
+		// Register sidebars
 		add_action( 'widgets_init', array( $this, 'register_sidebars' ) );
 
 		// Hooking has occurred.
@@ -62,9 +64,17 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		return self::$hooked;
 	}
 
-
-	public function get_widget_display_defaults( $sidebar_id ) {
-		$widget_defaults = array(
+	/**
+	 * Get the widget HTML markup parameters for a particular sidebar.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $sidebar_id
+	 *
+	 * @return array
+	 */
+	public function get_widget_display_args( $sidebar_id ) {
+		$widget_args = array(
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h4 class="widget-title">',
@@ -72,24 +82,30 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		);
 
 		/**
-		 * Filter: Modify the wrapper markup settings for the widgets in a sidebar.
+		 * Filter: Modify the wrapper markup parameters for the widgets in a particular sidebar.
 		 *
 		 * @since 1.7.0.
 		 *
-		 * @param array     $widget_defaults    The default widget markup for sidebars.
-		 * @param string    $sidebar_id         The ID of the sidebar that the widget markup will apply to.
+		 * @param array  $widget_args    The default widget markup for sidebars.
+		 * @param string $sidebar_id     The ID of the sidebar that the widget markup will apply to.
 		 */
-		return apply_filters( 'make_widget_display_defaults', $widget_defaults, $sidebar_id );
+		return apply_filters( 'make_widget_display_defaults', $widget_args, $sidebar_id );
 	}
 
-
+	/**
+	 * Register the theme's sidebars.
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @return void
+	 */
 	public function register_sidebars() {
 		// Only run this in the proper hook context.
 		if ( 'widgets_init' !== current_action() ) {
 			return;
 		}
 
-		//
+		// Sidebar IDs and labels
 		$sidebars = array(
 			'sidebar-left'  => __( 'Left Sidebar', 'make' ),
 			'sidebar-right' => __( 'Right Sidebar', 'make' ),
@@ -99,19 +115,27 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 			'footer-4'      => __( 'Footer 4', 'make' ),
 		);
 
-		//
+		// Register each sidebar
 		foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
-			$args = array(
-				'id' => $sidebar_id,
-				'name' => $sidebar_name,
-				'description' => esc_html( $this->get_sidebar_description( $sidebar_id ) ),
+			$sidebar_args = array(
+				'id'          => $sidebar_id,
+				'name'        => $sidebar_name,
+				'description' => ( is_admin() ) ? esc_html( $this->get_sidebar_description( $sidebar_id ) ) : '', // The sidebar description isn't needed for the front end.
 			);
 
-			register_sidebar( $args + $this->get_widget_display_defaults( $sidebar_id ) );
+			register_sidebar( $sidebar_args + $this->get_widget_display_args( $sidebar_id ) );
 		}
 	}
 
-
+	/**
+	 * Generate a description for a sidebar based on where it is set to be displayed.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $sidebar_id
+	 *
+	 * @return string
+	 */
 	private function get_sidebar_description( $sidebar_id ) {
 		$description = '';
 
@@ -121,7 +145,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 			$column_count = $this->thememod()->get_value( 'footer-widget-areas' );
 
 			if ( $column > $column_count ) {
-				$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the "Layout" panel in the Customizer.', 'make' );
+				$description = wp_kses( __( 'This widget area is currently disabled. Enable it in the <em>Footer</em> section of the <em>Layout</em> panel in the Customizer.', 'make' ), array( 'em' => true ) );
 			}
 		}
 		// Other sidebars
@@ -132,12 +156,12 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 
 			// Not enabled anywhere
 			if ( empty( $enabled_views ) ) {
-				$description = __( 'This widget area is currently disabled. Enable it in the "Layout" panel of the Customizer.', 'make' );
+				$description = wp_kses( __( 'This widget area is currently disabled. Enable it in the <em>Layout</em> panel of the Customizer.', 'make' ), array( 'em' => true ) );
 			}
 			// List enabled views
 			else {
 				$description = sprintf(
-					__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" panel of the Customizer.', 'make' ),
+					wp_kses( __( 'This widget area is currently enabled for the following views: %s. Change this in the <em>Layout</em> panel of the Customizer.', 'make' ), array( 'em' => true ) ),
 					implode( _x( ', ', 'list item separator', 'make' ), $enabled_views )
 				);
 			}
@@ -146,7 +170,15 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		return $description;
 	}
 
-
+	/**
+	 * Get an array of view names where a particular sidebar is enabled.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $location    'right' or 'left'
+	 *
+	 * @return array
+	 */
 	private function get_enabled_view_labels( $location ) {
 		$enabled_views = array();
 
@@ -170,7 +202,15 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		return $enabled_views;
 	}
 
-
+	/**
+	 * Determine if a particular sidebar is enabled in the current view.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $location
+	 *
+	 * @return bool
+	 */
 	public function has_sidebar( $location ) {
 		// Get the view
 		$view = $this->view()->get_current_view();

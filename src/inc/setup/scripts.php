@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Setup_Scripts
  *
+ * Methods for managing and enqueueing script and style assets.
+ *
  * @since 1.7.0.
  */
 final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_ScriptsInterface, MAKE_Util_HookInterface {
@@ -275,11 +277,11 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
 		if ( is_child_theme() && defined( 'TTFMAKE_CHILD_VERSION' ) && version_compare( TTFMAKE_CHILD_VERSION, '1.1.0', '>=' ) ) {
 			/**
-			 * Toggle for loading the parent stylesheet along with the child one.
+			 * Filter: Toggle whether the parent stylesheet loads along with the child one.
 			 *
 			 * @since 1.6.0.
 			 *
-			 * @param bool    $enqueue    True enqueues the parent stylesheet.
+			 * @param bool $enqueue    True enqueues the parent stylesheet.
 			 */
 			if ( true === apply_filters( 'make_enqueue_parent_stylesheet', true ) ) {
 				wp_enqueue_style(
@@ -406,8 +408,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			wp_enqueue_script( 'comment-reply' );
 		}
 	}
-
-
+	
 	/**
 	 * Get the URL of a theme file.
 	 *
@@ -417,9 +418,9 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @uses locate_template()
 	 *
-	 * @param  string|array    $file_names    File(s) to search for, in order.
+	 * @param string|array $file_names    File(s) to search for, in order.
 	 *
-	 * @return string                         The file URL if one is located.
+	 * @return string                     The file URL if one is located.
 	 */
 	public function get_located_file_url( $file_names ) {
 		$url = '';
@@ -433,7 +434,18 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 			}
 		}
 
-		return $url;
+		/**
+		 * Filter: Modify the URL the theme will use to attempt to access a particular file.
+		 *
+		 * This can be used to set the URL for a file if the get_located_file_url() method is not
+		 * determining the correct URL.
+		 *
+		 * @since 1.7.0.
+		 *
+		 * @param string       $url
+		 * @param string|array $file_names
+		 */
+		return apply_filters( 'make_located_file_url', $url, $file_names );
 	}
 
 	/**
@@ -629,7 +641,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	}
 
 	/**
-	 * Return data used by the FitVids.js script.
+	 * Generate a string of jQuery selectors used by the FitVids.js script.
 	 *
 	 * @since 1.7.0.
 	 *
@@ -641,7 +653,7 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 		 *
 		 * @since 1.2.3.
 		 *
-		 * @param array    $selector_array    The selectors used by FitVids.
+		 * @param array $selector_array    The selectors used by FitVids.
 		 */
 		$selector_array = apply_filters( 'make_fitvids_custom_selectors', array(
 			"iframe[src*='www.viddler.com']",
