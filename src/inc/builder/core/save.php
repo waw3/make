@@ -547,7 +547,7 @@ class TTFMAKE_Builder_Save {
 		 * @param array    $current_section    The data for the current section.
 		 * @param array    $sections           The list of all sections.
 		 */
-		return apply_filters( 'make_get_next_section_data', $prev_section, $current_section, $sections );
+		return apply_filters( 'make_get_prev_section_data', $prev_section, $current_section, $sections );
 	}
 
 	/**
