@@ -1,13 +1,39 @@
-## 1.6.7
+=== Make ===
 
+Contributors: thethemefoundry
+Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
+
+Requires at least: 4.2
+Tested up to: 4.5
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+A free drag and drop WordPress theme for business websites.
+
+== Description ==
+
+Build a website that means business. With Make’s powerful drag and drop page builder and hundreds of Customizer options, you can effortlessly brand your site without touching a line of code. Add full-width banners, columns, and galleries to showcase your best work. The intuitive builder delivers clean, lean code — not shortcodes — so you can trust your content remains portable. Make lets you control page layout options, including sidebar display, on all your posts and pages. Choose from hundreds of Google Fonts and upload custom backgrounds everywhere. Built on a fully responsive grid, Make renders as beautifully on tablets and phone screens as it does on desktop. Make scales with your business and is fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and others. For documentation on the page builder and getting started with Make, see: https://thethemefoundry.com/make-help/
+
+== Installation ==
+
+1. In your admin panel, go to Appearance > Themes and click the Add New button.
+2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
+3. Click Activate to use your new theme right away.
+
+== Frequently Asked Questions ==
+
+Please see the Make documentation: https://thethemefoundry.com/make-help/
+
+== Changelog ==
+
+= 1.6.7 - December 17 2015 =
 * Bug fix: Builder content would lose paragraphs and line breaks in some situations when switching between editors.
 * Improved: Better styling of the WooCommerce cart page on narrow screens < 480px wide.
 * Updated: Font Awesome icon library updated to version 4.5.0.
 * Updated: The latest list of Google fonts.
 * Changed: Make now only supports WordPress 4.2 and higher.
 
-## 1.6.6
-
+= 1.6.6 - December 8 2015 =
 * Updated: Styles in the Builder and Customizer are now compatible with WordPress 4.4.
 * Improved: Range slider options in the Customizer now perform better.
 * Fixed: Some font family options didn't work correctly if the Global body font was not set to the default.
@@ -15,8 +41,7 @@
 * Fixed: The Button format wrapped awkwardly to the next line if too long.
 * Fixed: Builder script now requires WP's media views script as a dependency.
 
-## 1.6.5
-
+= 1.6.5 - October 23 2015 =
 * Improved: Site title and tagline are now treated as screen reader text when hidden (instead of removed) for better accessibility.
 * Improved: Better handling of admin notices.
 * Updated: Larger theme screenshot.
@@ -24,15 +49,13 @@
 * Bug fix: Don't show Yoast SEO's breadcrumb on a static front page (since it is only "Home").
 * Changed: Added a notice that Make will soon drop support for WP 4.0 and 4.1.
 
-## 1.6.4
-
+= 1.6.4 - August 31 2015 =
 * New feature: Support for Yoast SEO's breadcrumb functionality.
   * Choose which views display the breadcrumb in the Customizer's Layout panel.
 * Improved: Better responsive layout for the WooCommerce product grid, as well as cart and checkout pages.
 * Bug fix: The Detail color option was not correctly setting the color for post categories and tags.
 
-## 1.6.3
-
+= 1.6.3 - August 18 2015 =
 * Improved: Reduced the top margin on the Gallery Slider when it is displaying the navigation dots.
 * Improved: Better translation strings and notes in the EXIF template tag.
 * Updated: The latest list of Google fonts. Added Tamil and Thai font subset options.
@@ -42,13 +65,11 @@
 * Bug fix: FitVids was not successfully getting added as a script dependency. This caused some embedded videos to not scale correctly.
 * Bug fix: Builder sections receiving focus due to an anchor tag were outlined in blue in Webkit browsers.
 
-## 1.6.2.1
-
+= 1.6.2.1 - August 4 2015 =
 * Bug fix: Undefined function fatal error.
 * Bug fix: Customizer control classes will now attempt to autoload if they have not been defined yet.
 
-## 1.6.2
-
+= 1.6.2 - July 31 2015 =
 * Updated: Ensure compatibility with upcoming 4.3 version of WordPress:
   * Deprecate Make's Favicon and Apple Touch Icon options in favor of the new Site Icon option.
   * Adjust styling of Customizer sections.
@@ -65,8 +86,7 @@
 * Bux fix: The `make_sanitize_text_allowed_tags` filter was not applied correctly.
 * Bug fix: In rare cases, some WooCommerce pages were not rendering correctly if they used the Builder template.
 
-## 1.6.1
-
+= 1.6.1 - June 19 2015 =
 * New feature: All default sections now have background image and background color options.
 * Improved: Cycle2 slider script only loads when content requires it.
 * Bug fix: H1 typography settings no longer affect the site title (which has its own typography settings).
@@ -74,8 +94,7 @@
 * New filter: `make_required_files` modifies the list of theme files to load.
 * Changed: Prevent Make from activating if WordPress version is less than 4.0.
 
-## 1.6.0
-
+= 1.6.0 - June 2 2015 =
 * Improved: Video embeds can now be set to specific widths and alignments while still behaving responsively on narrow screens.
 * Improved: Make now enqueues the parent stylesheet if the child theme is version 1.1 or higher (instead of relying on a CSS @import statement).
 * Improved: Several minor Builder UI tweaks.
@@ -87,8 +106,7 @@
 * Changed: Make now only supports WordPress 4.0 and higher.
 * Changed: New theme screenshot. CC0 compatible.
 
-## 1.5.2
-
+= 1.5.2 - April 20 2015 =
 * Added options for Arabic and Hebrew in Google Fonts character subsets.
 * Fixed url encoding issues with Google Fonts URL.
 * Fixed issue causing Format Builder's button URL to not update correctly.
@@ -98,16 +116,14 @@
 * Updated Google Fonts.
 * Updated Dutch translation. Props @LeoOosterloo.
 
-## 1.5.1
-
+= 1.5.1 - February 27 2015 =
 * Added Customizer options to remove header and footer boundary padding.
 * Added style support for the new official Twitter plugin.
 * Fixed broken mailto link for email icon in header/footer social icons.
 * Fixed extra space added below footer in Chrome browsers.
 * Added a notice that Make will drop support for WP 3.9 soon.
 
-## 1.5.0
-
+= 1.5.0 - February 16 2015 =
 * Customizer overhaul
   * Added new typography options: line height, font weight, font style, letter spacing, word spacing, link underlining.
   * Added new typography option elements: widget title (separate from widget body), footer widget title, footer widget body.
@@ -135,8 +151,7 @@
 * Added Russian translation.
 * Updated Dutch translation.
 
-## 1.4.9
-
+= 1.4.9 - January 26 2015 =
 * Fixed bug that displayed page duplication info on custom post type screens.
 * Fixed undefined function error in WP versions less than 4.0.
 * Fixed doubled content in document title tag.
@@ -144,8 +159,7 @@
 * Added a notice when Make is installed on a site running a WordPress version older than 3.9.
 * Added notices for when an older version of Make Plus is installed.
 
-## 1.4.8
-
+= 1.4.8 - January 12 2015 =
 * Fixed bug preventing Builder section duplication in some cases
 * Fixed line breaks in post comment count in Webkit browsers
 * Fixed content editor in Builder overlay resizable
@@ -154,21 +168,18 @@
 * Added theme support for title tag
 * Added Russian translation
 
-## 1.4.7
-
+= 1.4.7 - December 22 2014 =
 * Fixed bug where Customizer's font-family options weren't showing correct selected choice
 * Fixed issue with the custom logo not appearing correctly in some server environments
 * Added additional inline documentation for some action and filter hooks
 * Added Estonian translation
 
-## 1.4.6
-
+= 1.4.6 - December 12 2014 =
 * Fixed several small compatibility issues in WordPress 4.1
 * Fixed error thrown by Format Builder on some admin screens
 * Fixed entry date layout issue in Chrome caused by excess whitespace in HTML
 
-## 1.4.5
-
+= 1.4.5 - December 1 2014 =
 * Fixed raw CSS appearing in rich snippet content in some situations
 * Fixed post meta alignment issues
 * Fixed blurry Page Builder overlays in Safari
@@ -176,43 +187,35 @@
 * Updated documentation links
 * Updated Dutch translation
 
-## 1.4.4
-
+= 1.4.4 - November 7 2014 =
 * Fixed inaccessible Attachment Display Settings panel when editing pages
 * Added Dutch translation
 
-## 1.4.3
-
+= 1.4.3 - October 23 2014 =
 * Improved text sanitization in some instances to allow more HTML tags and attributes
 * Fixed incorrect text color being applied to Header Bar menu items
 * Other minor code improvements
 
-## 1.4.2
-
+= 1.4.2 - October 6 2014 =
 * Fixed Column configuration data not saving correctly in the Page Builder
 
-## 1.4.1
-
+= 1.4.1 - September 30 2014 =
 * Added the Format Builder tool to the Visual Editor
 * Added the Insert Icon button to the Visual Editor
 * Removed old button, alert, and list formatting options in favor of the Format Builder
 * Fixed minor issues with the Page Builder
 * Updated German translations
 
-## 1.4.0
-
+= 1.4.0 - September 23 2014 =
 * Updated Page Builder interface to improve performance, reduce clutter and better match WordPress' flat design
 
-## 1.3.2
-
+= 1.3.2 - September 9 2014 =
 * Fixed fatal error in PHP 5.2.
 
-## 1.3.1
-
+= 1.3.1 - September 8 2014 =
 * Fixed fatal error in PHP 5.2.
 
-## 1.3.0
-
+= 1.3.0 - September 3 2014 =
 * Added support for WordPress 4.0 and Customizer panels
 * Updated organization of Customizer options to utilize panels
 * Added individual font family and size options for each header level (H1 - H6)
@@ -223,19 +226,16 @@
 * Fixed post navigation arrow orientation
 * Fixed theme name in German translation
 
-## 1.2.2
-
+= 1.2.2 - August 14 2014 =
 * Fixed a bug that caused some style and script assets to not load correctly on some web host configurations
 
-## 1.2.1
-
+= 1.2.1 - August 12 2014 =
 * Fixed issue where Page Builder was hidden in certain situations when adding a new page
 * Updated theme screenshot with CC0-compatible image
 * Added missing text domain strings
 * Removed query string parameters from Make Plus links
 
-## 1.2.0
-
+= 1.2.0 - August 9 2014 =
 * Added ability to override some auxiliary stylesheets and scripts in child theme
 * Added ability for CPTs to use the builder
 * Added a "Maintain aspect ratio" option for banner sections for better responsive control
@@ -252,22 +252,19 @@
 * Improved the responsiveness of banner sections
 * Improved consistency of textdomain handling
 
-## 1.1.1
-
+= 1.1.1 - July 9 2014 =
 * Added Japanese translations
 * Added license information file
 * Fixed an incorrect label in the Customizer
 * Fixed issue where footer text was double sanitized
 * Fixed issue with dropdown menus being unreachable on an iPad
 
-## 1.1.0
-
+= 1.1.0 - June 24 2014 =
 * Added control for showing comment count
 * Added controls for positioning author, date, and comment count
 * Added control for aligning featured images
 
-## 1.0.11
-
+= 1.0.11 - June 24 2014 =
 * Improved messaging about Make Plus
 * Improved sorting of footer links in builder sections
 * Fixed ID sanitization bugs where ID values were greater than the maximum allowed integer value
@@ -277,27 +274,23 @@
 * Added a notice about sidebars not being available on builder template pages
 * Added more social icons
 
-## 1.0.10
-
+= 1.0.10 - June 10 2014 =
 * Improved consistency in styling between custom menus and default menus
 * Improved JetPack share button styling
 * Fixed an issue with dynamically added TinyMCE instances affecting already added instances
 * Added link to social menu support documentation
 
-## 1.0.9
-
+= 1.0.9 - June 7 2014 =
 * Fixed PHP notice edge case when $post object is not set when saving post
 * Fixed issue of white font not showing on TinyMCE background
 * Updated Font Awesome to 4.1.0
 
-## 1.0.8
-
+= 1.0.8 - June 4 2014 =
 * Removed Make Plus information from the admin bar
 * Added Make Plus information to the Customizer
 * Improved aspects of the builder to prepare for additional premium features
 
-## 1.0.7
-
+= 1.0.7 - May 31 2014 =
 * Fixed bug that prevented default font from showing in the editor styles
 * Fixed Photon conflict that rendered custom logo functionality unusable
 * Added filter builder section footer action links
@@ -305,14 +298,12 @@
 * Added information about Style Kits, Easy Digital Downloads, and Page Duplicator
 * Added German and Finnish translations
 
-## 1.0.6
-
+= 1.0.6 - May 22 2014 =
 * Added Make Plus information
 * Fixed bug with images not displaying properly when aspect ratio was set to none in the Gallery section
 * Removed sanitization of Customizer description section as these never receive user input
 
-## 1.0.5
-
+= 1.0.5 - May 20 2014 =
 * Improved styling of widgets
 * Improved whitespacing in the builder interface
 * Improved language in builder
@@ -322,8 +313,7 @@
 * Added filter for showing/hiding footer credit
 * Added styling for WooCommerce product tag cloud
 
-## 1.0.4
-
+= 1.0.4 - May 16 2014 =
 * Improved banner slide image position
 * Added underline for footer link
 * Added function to determine if companion plugin is installed
@@ -339,19 +329,16 @@
   * Improved timing of events to prevent unfortunate code loading issues
   * Fixed bug with determining next/prev section that could cause a fatal error
 
-## 1.0.3
-
+= 1.0.3 - May 13 2014 =
 * Improved tagline to be more readable
 * Improved CSS code styling without any functional changes
 
-## 1.0.2
-
+= 1.0.2 - May 2 2014 =
 * Removed RTL stylesheet as it was just a placeholder
 * Improved testimonial display in the TinyMCE editor
 * Fixed bug with broken narrow menu when using default menu
 
-## 1.0.1
-
+= 1.0.1 - May 2 2014 =
 * Improved builder section descriptions
 * Improved compatibility for JetPack "component" plugins
 * Improved margin below widgets in narrow view
@@ -359,6 +346,17 @@
 * Fixed bug with overlay in gallery section
 * Fixed bug with secondary color being applied to responsive menus
 
-## 1.0.0
-
+= 1.0.0 - May 1 2014 =
 * Initial release
+
+== Credits ==
+
+The following third party resources are included in this theme. Each resource uses a GPL compatible license that is
+listed below.
+
+* Chosen      - MIT license (https://github.com/harvesthq/chosen/blob/master/LICENSE.md)
+* Cycle2      - Dual MIT license (http://malsup.github.com/mit-license.txt) and GPL (http://malsup.github.com/gpl-license-v2.txt)
+* Fitvids     - WTFPL (http://sam.zoy.org/wtfpl/)
+* FontAwesome - MIT license (http://opensource.org/licenses/mit-license.html)
+* Noneditable - LGPL (http://www.tinymce.com/license)
+* Screenshot  - CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
