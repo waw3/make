@@ -13,15 +13,6 @@ define( 'TTFMAKE_VERSION', '1.7.0-beta1' );
  */
 define( 'TTFMAKE_MIN_WP_VERSION', '4.2' );
 
-/**
- * The suffix to use for scripts.
- */
-if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
-	define( 'TTFMAKE_SUFFIX', '' );
-} else {
-	define( 'TTFMAKE_SUFFIX', '.min' );
-}
-
 // Activation
 require_once get_template_directory() . '/inc/activation.php';
 

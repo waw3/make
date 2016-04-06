@@ -9,6 +9,13 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Compatibility_MethodsInterface 
 }
 
 /**
+ * The suffix to use for scripts.
+ *
+ * @deprecated 1.7.0.
+ */
+define( 'TTFMAKE_SUFFIX', '' );
+
+/**
  * Load files.
  *
  * @since 1.6.1.
