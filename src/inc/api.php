@@ -12,7 +12,7 @@
  *
  * @since 1.7.0.
  */
-class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
+final class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 	/**
 	 * An associative array of required modules.
 	 *
