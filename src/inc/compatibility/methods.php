@@ -81,8 +81,8 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 *
 	 * @since 1.7.0.
 	 *
-	 * @param MAKE_APIInterface $api
-	 * @param array             $modules
+	 * @param MAKE_APIInterface|null $api
+	 * @param array                  $modules
 	 */
 	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
 		if ( is_child_theme() && is_admin() ) {
