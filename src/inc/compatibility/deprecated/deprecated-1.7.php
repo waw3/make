@@ -488,8 +488,8 @@ function ttfmake_embed_container( $html, $url, $attr ) {
  * @return float                     The sanitized value.
  */
 function ttfmake_sanitize_float( $value ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_float()' );
-	return Make()->thememod()->sanitize_float( $value );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->sanitize()->sanitize_float()' );
+	return Make()->sanitize()->sanitize_float( $value );
 }
 
 if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
@@ -503,11 +503,11 @@ if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
  * @return string               The sanitized string.
  */
 function ttfmake_sanitize_text( $string ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_text()' );
-	return Make()->thememod()->sanitize_text( $string );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->sanitize()->sanitize_text()' );
+	return Make()->sanitize()->sanitize_text( $string );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_text', '1.7.0', 'Make()->thememod()->sanitize_text()' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_text', '1.7.0', 'Make()->sanitize()->sanitize_text()' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
@@ -1093,11 +1093,11 @@ if ( ! function_exists( 'ttfmake_sanitize_choice' ) ) :
  * @return mixed                The sanitized value.
  */
 function ttfmake_sanitize_choice( $value, $setting ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_choice' );
-	return Make()->thememod()->sanitize_choice( $value, $setting );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->sanitize()->sanitize_choice' );
+	return Make()->sanitize()->sanitize_choice( $value, $setting );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_choice', '1.7.0', 'Make()->thememod()->sanitize_choice' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_choice', '1.7.0', 'Make()->sanitize()->sanitize_choice' );
 endif;
 
 if ( ! function_exists( 'ttfmake_edit_page_script' ) ) :
@@ -2146,11 +2146,11 @@ if ( ! function_exists( 'ttfmake_sanitize_font_choice' ) ) :
  * @return string              The sanitized font choice.
  */
 function ttfmake_sanitize_font_choice( $value ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0' );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->sanitize()->sanitize_font_choice()' );
 	return $value;
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_choice', '1.7.0' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_choice', '1.7.0', 'Make()->sanitize()->sanitize_font_choice()' );
 endif;
 
 if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
@@ -2164,11 +2164,11 @@ if ( ! function_exists( 'ttfmake_sanitize_font_subset' ) ) :
  * @return array               The sanitized value.
  */
 function ttfmake_sanitize_font_subset( $value ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->sanitize_google_font_subset()' );
-	return Make()->thememod()->sanitize_google_font_subset( $value );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->sanitize()->sanitize_google_font_subset()' );
+	return Make()->sanitize()->sanitize_google_font_subset( $value );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_subset', '1.7.0', 'Make()->thememod()->sanitize_google_font_subset()' );
+	Make()->compatibility()->deprecated_function( 'ttfmake_sanitize_font_subset', '1.7.0', 'Make()->sanitize()->sanitize_google_font_subset()' );
 endif;
 
 if ( ! function_exists( 'ttfmake_get_all_fonts' ) ) :

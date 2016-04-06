@@ -21,6 +21,7 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 	 */
 	protected $dependencies = array(
 		'thememod' => 'MAKE_Settings_ThemeModInterface',
+		'sanitize' => 'MAKE_Settings_SanitizeInterface',
 		'legacy'   => 'MAKE_Logo_LegacyInterface',
 	);
 
@@ -255,9 +256,9 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 		$logo_value = '';
 
 		if ( false !== $retina = get_theme_mod( 'logo-retina', false ) ) {
-			$logo_value = $this->thememod()->sanitize_image( $retina, true );
+			$logo_value = $this->sanitize()->sanitize_image( $retina, true );
 		} else if ( false !== $regular = get_theme_mod( 'logo-regular', false ) ) {
-			$logo_value = $this->thememod()->sanitize_image( $regular, true );
+			$logo_value = $this->sanitize()->sanitize_image( $regular, true );
 		}
 
 		if ( is_int( $logo_value ) && $logo_value > 0 ) {

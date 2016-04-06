@@ -613,10 +613,16 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @param bool $raw
+	 *
 	 * @return array
 	 */
-	public function get_icon_data() {
-		return $this->thememod()->get_value( 'social-icons' );
+	private function get_icon_data( $raw = false ) {
+		if ( $raw ) {
+			return $this->thememod()->get_raw_value( 'social-icons' );
+		} else {
+			return $this->thememod()->get_value( 'social-icons' );
+		}
 	}
 
 	/**
@@ -627,7 +633,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @return bool
 	 */
 	public function has_icon_data() {
-		$icon_data = $this->get_icon_data();
+		$icon_data = $this->get_icon_data( true );
 		return ( isset( $icon_data['items'] ) && ! empty( $icon_data['items'] ) );
 	}
 
@@ -741,7 +747,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 			&&
 			is_array( $callback )
 			&&
-		    $callback[0] instanceof MAKE_Settings_ThemeModInterface
+		    $callback[0] instanceof MAKE_Settings_SanitizeInterface
 			&&
 		    $callback[1] === 'sanitize_socialicons_from_customizer'
 		) {
