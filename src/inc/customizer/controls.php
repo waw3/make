@@ -54,7 +54,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @var string
 	 */
-	private $prefix = 'make_';
+	private $prefix = 'ttfmake_';
 
 	/**
 	 * Indicator of whether the hook routine has been run.

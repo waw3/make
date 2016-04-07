@@ -274,7 +274,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 .make-socialicons-buttons {
 	text-align: right;
 }
-#add-icon_make_social-icons:before {
+#add-icon_ttfmake_social-icons:before {
 	content: "\f132";
 	display: inline-block;
 	position: relative;
@@ -287,7 +287,7 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-#list-icons_make_social-icons {
+#list-icons_ttfmake_social-icons {
 	line-height: 26px;
 	margin-right: 10px;
 }
