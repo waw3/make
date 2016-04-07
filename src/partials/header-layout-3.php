@@ -25,7 +25,6 @@ $header_bar_menu = wp_nav_menu( array(
 	) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
-			<a class="skip-link screen-reader-text" href="#site-content"><?php esc_html_e( 'Skip to content', 'make' ); ?></a>
 			<?php // Social links
 			make_socialicons( 'header' ); ?>
 			<?php // Header text; shown only if there is no header menu

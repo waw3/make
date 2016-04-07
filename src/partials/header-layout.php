@@ -27,7 +27,6 @@ $header_bar_menu = wp_nav_menu( array(
 	) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
-			<a class="skip-link screen-reader-text" href="#site-content"><?php esc_html_e( 'Skip to content', 'make' ); ?></a>
 			<?php // Search form
 			if ( make_get_thememod_value( 'header-show-search' ) ) :
 				get_search_form();
