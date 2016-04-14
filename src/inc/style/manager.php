@@ -239,7 +239,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 
 			echo stripslashes( wp_filter_nohtml_kses( $this->css()->build() ) );
 
-			echo "\n</style>\n<!-- End Make Inline Custom CSS -->\n";
+			echo "\n</style>\n<!-- End Make Inline CSS -->\n";
 		}
 	}
 
