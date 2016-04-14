@@ -706,7 +706,7 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				?>
 				<li class="make-social-icon">
 					<a href="<?php echo esc_attr( $content ); ?>"<?php if ( true === $icon_data['new-window'] ) : ?> target="_blank"<?php endif; ?>>
-						<i class="<?php echo esc_attr( $class ); ?>"></i>
+						<i class="<?php echo esc_attr( $class ); ?>" aria-hidden="true"></i>
 						<span class="screen-reader-text"><?php echo esc_attr( $title ); ?></span>
 					</a>
 				</li>

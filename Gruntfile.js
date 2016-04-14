@@ -255,7 +255,7 @@ module.exports = function( grunt ) {
 					return newObj;
 				},
 				files: {
-					'src/inc/formatting/js/icon-picker/fontawesome.json': [ 'assets/temp/icons*.json' ]
+					'src/js/formatting/icon-picker/fontawesome.json': [ 'assets/temp/icons*.json' ]
 				}
 			},
 			googlefonts: {
