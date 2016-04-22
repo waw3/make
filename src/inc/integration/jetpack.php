@@ -53,6 +53,9 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 		// Remove default sharing buttons location
 		add_action( 'loop_start', array( $this, 'remove_sharing' ) );
 
+		// Backcompat with old head actions
+		add_action( 'make_deprecated_function_run', array( $this, 'backcompat_infinite_scroll_callbacks' ) );
+
 		// Hooking has occurred.
 		self::$hooked = true;
 	}
@@ -85,10 +88,46 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 		add_theme_support( 'infinite-scroll', array(
 			'container'       => 'site-main',
 			'footer'          => 'site-footer',
-			'footer_callback' => array( $this, 'infinite_scroll_footer_callback' ),
+			'footer_callback' => $this->get_infinite_scroll_footer_callback(),
 			'footer_widgets'  => array( 'footer-1', 'footer-2', 'footer-3', 'footer-4' ),
-			'render'          => array( $this, 'infinite_scroll_render' )
+			'render'          => $this->get_infinite_scroll_render_callback(),
 		) );
+	}
+
+	/**
+	 * Get the callback to use for Infinite Scroll's 'footer_callback' parameter.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @return array|string
+	 */
+	private function get_infinite_scroll_footer_callback() {
+		/**
+		 * Filter: Change the callback used to render the Infinite Scroll footer.
+		 *
+		 * @since 1.7.0.
+		 *
+		 * @param array|string $callback
+		 */
+		return apply_filters( 'make_jetpack_infinite_scroll_footer_callback', array( $this, 'infinite_scroll_footer_callback' ) );
+	}
+
+	/**
+	 * Get the callback to use for Infinite Scroll's 'render' parameter.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @return array|string
+	 */
+	private function get_infinite_scroll_render_callback() {
+		/**
+		 * Filter: Change the callback used to render posts retrieved by Infinite Scroll.
+		 *
+		 * @since 1.7.0.
+		 *
+		 * @param array|string $callback
+		 */
+		return apply_filters( 'make_jetpack_infinite_scroll_render_callback', array( $this, 'infinite_scroll_render' ) );
 	}
 
 	/**
@@ -124,15 +163,10 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 			return false;
 		}
 
-		// Get the view
-		$view = $this->view()->get_current_view();
-
-		// Get the relevant options
-		$hide_footer  = $this->thememod()->get_value( 'layout-' . $view . '-hide-footer' );
 		$widget_areas = $this->thememod()->get_value( 'footer-widget-areas' );
 
 		// No widget areas are visible
-		if ( true === $hide_footer || $widget_areas < 1 ) {
+		if ( $widget_areas < 1 ) {
 			return false;
 		}
 
@@ -176,5 +210,73 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 		if ( class_exists( 'Jetpack_Likes' ) ) {
 			remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
 		}
+	}
+
+	/**
+	 * Backcompat for deprecated pluggable callbacks.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $function
+	 *
+	 * @return void
+	 */
+	public function backcompat_infinite_scroll_callbacks( $function ) {
+		// Only run this in the proper hook context.
+		if ( 'make_deprecated_function_run' !== current_action() ) {
+			return;
+		}
+
+		// Don't bother if this is happening during after_setup_theme already.
+		if ( doing_action( 'after_setup_theme' ) || did_action( 'after_setup_theme' ) ) {
+			return;
+		}
+
+		// Footer
+		if ( 'ttfmake_jetpack_infinite_scroll_footer_callback' === $function ) {
+			add_filter( 'make_jetpack_infinite_scroll_footer_callback', array( $this, 'backcompat_infinite_scroll_footer_callback' ) );
+		}
+		// Render
+		else if ( 'ttfmake_jetpack_infinite_scroll_render' === $function ) {
+			add_filter( 'make_jetpack_infinite_scroll_render_callback', array( $this, 'backcompat_infinite_scroll_render_callback' ) );
+		}
+	}
+
+	/**
+	 * Set the Infinite Scroll footer callback to the old, deprecated function as a backcompat measure.
+	 *
+	 * @since 1.7.0.
+	 * @see $this->backcompat_infinite_scroll_callbacks()
+	 *
+	 * @param array|string $callback
+	 *
+	 * @return string
+	 */
+	public function backcompat_infinite_scroll_footer_callback( $callback ) {
+		// Only run this in the proper hook context.
+		if ( 'make_jetpack_infinite_scroll_footer_callback' !== current_filter() ) {
+			return $callback;
+		}
+
+		return 'ttfmake_jetpack_infinite_scroll_footer_callback';
+	}
+
+	/**
+	 * Set the Infinite Scroll render callback to the old, deprecated function as a backcompat measure.
+	 *
+	 * @since 1.7.0.
+	 * @see $this->backcompat_infinite_scroll_callbacks()
+	 *
+	 * @param array|string $callback
+	 *
+	 * @return string
+	 */
+	public function backcompat_infinite_scroll_render_callback( $callback ) {
+		// Only run this in the proper hook context.
+		if ( 'make_jetpack_infinite_scroll_render_callback' !== current_filter() ) {
+			return $callback;
+		}
+
+		return 'ttfmake_jetpack_infinite_scroll_render';
 	}
 }

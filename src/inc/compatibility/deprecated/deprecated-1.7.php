@@ -1174,6 +1174,8 @@ function ttfmake_jetpack_infinite_scroll_footer_callback() {
 			'<code>MAKE_Integration_Jetpack</code>'
 		)
 	);
+
+	Make()->integration()->get_integration( 'jetpack' )->infinite_scroll_footer_callback();
 }
 else :
 	Make()->compatibility()->deprecated_function(
@@ -1240,6 +1242,8 @@ function ttfmake_jetpack_infinite_scroll_render() {
 			'<code>MAKE_Integration_Jetpack</code>'
 		)
 	);
+
+	Make()->integration()->get_integration( 'jetpack' )->infinite_scroll_render();
 }
 else :
 	Make()->compatibility()->deprecated_function(
