@@ -49,6 +49,9 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		// Register sidebars
 		add_action( 'widgets_init', array( $this, 'register_sidebars' ) );
 
+		// Backcompat with old function
+		add_action( 'make_deprecated_function_run', array( $this, 'backcompat_widgets_init' ) );
+
 		// Hooking has occurred.
 		self::$hooked = true;
 	}
@@ -234,5 +237,34 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 		 * @param string    $view           The view name.
 		 */
 		return apply_filters( 'make_has_sidebar', $has_sidebar, $location, $view );
+	}
+
+	/**
+	 * Backcompat for the deprecated pluggable ttfmake_widgets_init() function.
+	 *
+	 * This will fire if the Compatibility module's deprecated_function method is run, which will happen
+	 * if ttfmake_widgets_init() has been plugged.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $function
+	 *
+	 * @return void
+	 */
+	public function backcompat_widgets_init( $function ) {
+		// Only run this in the proper hook context.
+		if ( 'make_deprecated_function_run' !== current_action() ) {
+			return;
+		}
+
+		// Don't bother if this is happening during widgets_init already.
+		if ( doing_action( 'widgets_init' ) || did_action( 'widgets_init' ) ) {
+			return;
+		}
+
+		if ( 'ttfmake_widgets_init' === $function && false === has_action( 'widgets_init', 'ttfmake_widgets_init' ) ) {
+			remove_action( 'widgets_init', array( $this, 'register_sidebars' ) );
+			add_action( 'widgets_init', 'ttfmake_widgets_init' );
+		}
 	}
 }
