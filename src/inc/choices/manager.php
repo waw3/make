@@ -110,20 +110,6 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 * @return bool               True if addition was successful, false if there was an error.
 	 */
 	public function add_choice_sets( array $sets, $overwrite = false ) {
-		// Make sure we're not doing it wrong.
-		if ( 'make_choices_loaded' !== current_action() && did_action( 'make_choices_loaded' ) ) {
-			$this->compatibility()->doing_it_wrong(
-				__FUNCTION__,
-				sprintf(
-					esc_html__( 'This function should only be called during or before the %s action.', 'make' ),
-					'<code>make_choices_loaded</code>'
-				),
-				'1.7.0'
-			);
-
-			return false;
-		}
-
 		$existing_sets = $this->choice_sets;
 		$new_sets = array();
 		$return = true;

@@ -152,20 +152,6 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @return bool
 	 */
 	public function add_icons( array $icons, $overwrite = false ) {
-		// Make sure we're not doing it wrong.
-		if ( "make_socialicons_loaded" !== current_action() && did_action( "make_socialicons_loaded" ) ) {
-			$this->compatibility()->doing_it_wrong(
-				__FUNCTION__,
-				sprintf(
-					esc_html__( 'This function should only be called during or before the %s action.', 'make' ),
-					'<code>make_socialicons_loaded</code>'
-				),
-				'1.7.0'
-			);
-
-			return false;
-		}
-
 		$existing_icons = $this->icons;
 		$new_icons = array();
 		$return = true;
