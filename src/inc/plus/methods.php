@@ -283,11 +283,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			'panel'       => 'make_typography',
 			'title'       => __( 'Typekit', 'make' ),
 			'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ),
-			'priority'    => $wp_customize->get_section( 'make_font-google' )->priority + 2
+			'priority'    => $wp_customize->get_section( 'ttfmake_font-google' )->priority + 2
 		) );
 
 		// Add control for Typekit
-		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'make_font-typekit-update-text', array(
+		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'ttfmake_font-typekit-update-text', array(
 			'section'     => 'make_font-typekit',
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
@@ -301,7 +301,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 			'panel'       => 'make_general',
 			'title'       => __( 'White Label', 'make' ),
 			'description' => __( 'Want to remove the theme byline from your website&#8217;s footer?', 'make' ),
-			'priority'    => $wp_customize->get_section( 'make_social' )->priority + 2
+			'priority'    => $wp_customize->get_section( 'ttfmake_social' )->priority + 2
 		) );
 
 		// Add control for White Label
