@@ -182,6 +182,56 @@ function make_update_choice_set( $set_id, $choices ) {
 }
 
 /**
+ * Add one or more fonts, under their own heading, to the list of available fonts in the
+ * Customizer's Font Family dropdowns.
+ *
+ * A font source consists of a unique ID, a public label, an optional priority, and an associative array of data for the
+ * actual fonts that the source contains. Each font in the data array is represented by an array item whose key is the
+ * font's setting value and whose value is an array of properties. The required properties are a label and a font stack.
+ * 
+ *     $id = 'epic';
+ *     $label = __( 'Literally Epic Fonts', 'make-child' );
+ *     $priority = 1;
+ *     $data = array(
+ *         'Comic Papyrus' => array(
+ *             'label' => __( 'Comic Papyrus', 'make-child' ),
+ *             'stack' => '"Comic Papyrus", "Comic Sans", "Papyrus", sans-serif',
+ *         ),
+ *         'Wing Dings 98' => array(
+ *             'label' => __( 'Wing Dings 98', 'make-child' ),
+ *             'stack' => '"Wing Dings 98", sans-serif',
+ *         ),
+ *     );
+ * 
+ * @since 1.7.0.
+ * 
+ * @param string $id          A unique string to identify the source.
+ * @param string $label       The public name of the font source.
+ * @param array  $data        The array of fonts to add and their properties.
+ * @param int    $priority    Optional. The order this source should appear in the list of all available fonts.
+ *                            Higher number = further down the list.
+ *
+ * @return bool    True if the font source was successfully added.
+ */
+function make_add_font_source( $id, $label, $data = array(), $priority = 10 ) {
+	// Make sure we're not doing it wrong.
+	if ( 'make_font_loaded' !== current_action() ) {
+		Make()->compatibility()->doing_it_wrong(
+			__FUNCTION__,
+			sprintf(
+				esc_html__( 'This function should only be called during the %s action.', 'make' ),
+				'<code>make_font_loaded</code>'
+			),
+			'1.7.0'
+		);
+	}
+
+	$source = new MAKE_Font_Source_Base( $id, $label, $data, $priority );
+
+	return Make()->font()->add_source( $id, $source );
+}
+
+/**
  * Add or update a view definition.
  *
  * Make uses "views" to determine which layout settings to apply to a given page load.
