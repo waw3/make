@@ -20,6 +20,8 @@ interface MAKE_Settings_SanitizeInterface extends MAKE_Util_ModulesInterface {
 	public function sanitize_choice( $value, $setting_id );
 
 	public function sanitize_font_choice( $value, $setting_id );
+	
+	public function sanitize_font_stack_cache( $value );
 
 	public function sanitize_google_font_subset( $value );
 

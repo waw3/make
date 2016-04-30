@@ -31,29 +31,27 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	 * @param array             $modules
 	 */
 	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
-		// Load dependencies.
-		parent::__construct( $api, $modules );
-
-		// Set the ID.
-		$this->id = 'generic';
-
-		// Set the label.
-		$this->label = __( 'Generic Fonts', 'make' );
-
-		// Set the font data.
-		$this->data = array(
-			'serif' => array(
-				'label' => __( 'Serif', 'make' ),
-				'stack' => 'Georgia,Times,"Times New Roman",serif'
+		// Parent constructor.
+		parent::__construct(
+			'generic',
+			__( 'Generic Fonts', 'make' ),
+			array(
+				'serif' => array(
+					'label' => __( 'Serif', 'make' ),
+					'stack' => 'Georgia,Times,"Times New Roman",serif'
+				),
+				'sans-serif' => array(
+					'label' => __( 'Sans Serif', 'make' ),
+					'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
+				),
+				'monospace' => array(
+					'label' => __( 'Monospaced', 'make' ),
+					'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
+				),
 			),
-			'sans-serif' => array(
-				'label' => __( 'Sans Serif', 'make' ),
-				'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
-			),
-			'monospace' => array(
-				'label' => __( 'Monospaced', 'make' ),
-				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
-			)
+			10,
+			$api,
+			$modules
 		);
 	}
 

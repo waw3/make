@@ -13,6 +13,8 @@ interface MAKE_Style_DataHelperInterface extends MAKE_Util_ModulesInterface {
 
 	public function parse_link_underline( $element, $selectors );
 
+	public function get_cached_font_stack( $font );
+
 	public function hex_to_rgb( $value );
 
 	public function get_relative_size( $key = null );

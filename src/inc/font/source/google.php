@@ -67,17 +67,15 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	 * @param array                  $modules
 	 */
 	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
-		// Load dependencies.
-		parent::__construct( $api, $modules );
-
-		// Set the ID.
-		$this->id = 'google';
-
-		// Set the label.
-		$this->label = __( 'Google Fonts', 'make' );
-
-		// Set the priority.
-		$this->priority = 20;
+		// Parent constructor.
+		parent::__construct(
+			'google',
+			__( 'Google Fonts', 'make' ),
+			array(), // Data is loaded separately when needed.
+			20,
+			$api,
+			$modules
+		);
 	}
 
 	/**
@@ -176,10 +174,13 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 		$data = $this->get_font_data( $font );
 		$stack = '';
 
+		// Use stack for font's category
 		if ( isset( $data['category'] ) && $category_stack = $this->get_category_stack( $data['category'] ) ) {
 			$stack = "\"$font\"," . $category_stack;
-		} else if ( is_string( $default_stack ) ) {
-			$stack = $default_stack;
+		}
+		// No available category, use default stack
+		else if ( is_string( $default_stack ) ) {
+			$stack = "\"$font\"," . $default_stack;
 		}
 
 		return $stack;

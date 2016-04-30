@@ -615,6 +615,18 @@ $this->add_settings(
 	)
 );
 
+// Misc
+$this->add_settings(
+	array(
+		'font-stack-cache' => array(
+			'default'  => array(),
+			'sanitize' => array( Make()->sanitize(), 'sanitize_font_stack_cache' ),
+			'is_cache' => true,
+			'is_array' => true,
+		),
+	)
+);
+
 // Google fonts
 if ( $this->font()->has_source( 'google' ) ) {
 	$this->add_settings(
