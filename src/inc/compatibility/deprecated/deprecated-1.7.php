@@ -533,7 +533,19 @@ function ttfmake_get_view() {
 	return make_get_current_view();
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_get_view', '1.7.0', 'make_get_current_view' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_get_view',
+		'1.7.0',
+		null,
+		sprintf(
+			wp_kses(
+				__( 'To add or modify theme views, use the %1$s function instead. See the <a href="%2$s" target="_blank">View API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'<code>make_update_view_definition()</code>',
+			'https://thethemefoundry.com/docs/make-docs/code/apis/view-api/'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_has_sidebar' ) ) :

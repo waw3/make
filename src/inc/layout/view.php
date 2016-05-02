@@ -393,9 +393,12 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 				'make_get_view',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify theme views, use the %1$s method instead. See %2$s.', 'make' ),
-					'<code>add_view</code>',
-					'<code>MAKE_Layout_View</code>'
+					wp_kses(
+						__( 'To add or modify theme views, use the %1$s function instead. See the <a href="%2$s" target="_blank">View API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_update_view_definition()</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/view-api/'
 				)
 			);
 
