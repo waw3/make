@@ -1081,11 +1081,23 @@ if ( ! function_exists( 'ttfmake_get_choices' ) ) :
  * @return array                        The options for the setting.
  */
 function ttfmake_get_choices( $setting ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_choice_set' );
+	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->thememod()->get_choice_set()' );
 	return Make()->thememod()->get_choice_set( $setting );
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_get_choices', '1.7.0', 'Make()->thememod()->get_choice_set' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_get_choices',
+		'1.7.0',
+		null,
+		sprintf(
+			wp_kses(
+				__( 'To add or modify setting choices, use the %1$s function instead. See the <a href="%2$s" target="_blank">Choices API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'<code>make_update_choice_set</code>',
+			'https://thethemefoundry.com/docs/make-docs/code/apis/choices-api/'
+		)
+	);
 endif;
 
 if ( ! function_exists( 'ttfmake_sanitize_choice' ) ) :

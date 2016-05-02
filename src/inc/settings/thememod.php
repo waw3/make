@@ -326,16 +326,20 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 				'make_setting_choices',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify theme setting choices, use the %1$s method instead. See %2$s', 'make' ),
-					'<code>add_choice_sets</code>',
-					'<code>MAKE_Choices_Manager</code>'
+					wp_kses(
+						__( 'To add or modify setting choices, use the %1$s function instead. See the <a href="%2$s" target="_blank">Choices API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_update_choice_set</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/choices-api/'
 				)
 			);
 
 			/**
-			 * Deprecated: Filter the setting choices.
+			 * Filter the setting choices.
 			 *
 			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
 			 *
 			 * @param array     $choices       The choices for the setting.
 			 * @param string    $setting_id    The setting name.

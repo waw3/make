@@ -19,8 +19,7 @@ class MAKE_Choices_Manager extends MAKE_Util_Modules implements MAKE_Choices_Man
 	 * @var array
 	 */
 	protected $dependencies = array(
-		'error'         => 'MAKE_Error_CollectorInterface',
-		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
+		'error' => 'MAKE_Error_CollectorInterface',
 	);
 
 	/**
