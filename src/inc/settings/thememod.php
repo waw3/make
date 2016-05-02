@@ -132,35 +132,6 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	}
 
 	/**
-	 * Extension of parent class's add_settings method to account for compatibility message.
-	 *
-	 * @since 1.7.0.
-	 *
-	 * @param array      $settings
-	 * @param array      $default_props
-	 * @param bool|false $overwrite
-	 *
-	 * @return bool
-	 */
-	public function add_settings( array $settings, array $default_props = array(), $overwrite = false ) {
-		// Make sure we're not doing it wrong.
-		if ( "make_settings_{$this->type}_loaded" !== current_action() && did_action( "make_settings_{$this->type}_loaded" ) ) {
-			$this->compatibility()->doing_it_wrong(
-				__FUNCTION__,
-				sprintf(
-					esc_html__( 'This function should only be called during or before the %s action.', 'make' ),
-					'<code>make_settings_thememod_loaded</code>'
-				),
-				'1.7.0'
-			);
-
-			return false;
-		}
-
-		return parent::add_settings( $settings, $default_props, $overwrite );
-	}
-
-	/**
 	 * Extension of the parent class's get_settings method to account for a deprecated filter.
 	 *
 	 * @since 1.7.0.

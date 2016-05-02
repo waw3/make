@@ -728,7 +728,14 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		global $wp_customize;
 
 		// Social Icons
-		$control = new MAKE_Customizer_Control_SocialIcons( $wp_customize, 'temp', array() );
+		$control = new MAKE_Customizer_Control_SocialIcons(
+			$wp_customize,
+			'temp',
+			array(
+				// TODO modify this when 4.4 support is dropped.
+				'settings' => ( ! method_exists( $wp_customize, 'get_previewable_devices' ) ) ? 'make-customize-control-html' : array()
+			)
+		);
 		$control->print_sub_templates();
 	}
 

@@ -90,7 +90,7 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 		add_action( 'make_style_loaded', array( $this, 'set_logo_max_width' ) );
 
 		// Logo conversion
-		add_action( 'after_setup_theme', array( $this, 'convert_old_logo_settings' ) );
+		add_action( 'after_setup_theme', array( $this, 'convert_old_logo_settings' ), 30 );
 
 		// Hooking has occurred.
 		self::$hooked = true;

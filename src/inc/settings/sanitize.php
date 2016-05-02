@@ -202,6 +202,19 @@ final class MAKE_Settings_Sanitize extends MAKE_Util_Modules implements MAKE_Set
 	}
 
 	/**
+	 * Sanitize an array of font name/stack pairs.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param array $value
+	 *
+	 * @return array
+	 */
+	public function sanitize_font_stack_cache( $value ) {
+		return array_filter( (array) $value, 'wp_strip_all_tags' );
+	}
+
+	/**
 	 * Sanitize the value of the font-subset setting.
 	 *
 	 * @since 1.7.0.

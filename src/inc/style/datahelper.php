@@ -53,7 +53,10 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 			$this->compatibility()->deprecated_hook(
 				'make_css_font_properties',
 				'1.7.0',
-				esc_html__( 'To change the sanitize callback for a font setting, use the Make Settings API instead.', 'make' )
+				sprintf(
+					esc_html__( 'To change the sanitize callback for a font setting, use the %s function instead.', 'make' ),
+					'<code>make_update_thememod_setting_definition</code>'
+				)
 			);
 		}
 
@@ -68,7 +71,7 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 				if ( true === $force || ( ! $this->thememod()->is_default( $setting_id ) ) ) {
 					switch ( $property ) {
 						case 'font-family' :
-							$declarations[ $property ] = $this->font()->get_font_stack( $sanitized_value );
+							$declarations[ $property ] = $this->get_cached_font_stack( $sanitized_value );
 							break;
 						case 'font-size' :
 							$declarations[ $property . '-px' ]  = $sanitized_value . 'px';
@@ -127,6 +130,32 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 		}
 
 		return array();
+	}
+
+	/**
+	 * Try to retrieve a cached font stack value before loading the font source.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param string $font
+	 *
+	 * @return string
+	 */
+	public function get_cached_font_stack( $font ) {
+		// Check the cache first.
+		$cache = $this->thememod()->get_value( 'font-stack-cache' );
+		if ( isset( $cache[ $font ] ) ) {
+			return $cache[ $font ];
+		}
+
+		// No cached value. Get the stack.
+		$stack = $this->font()->get_font_stack( $font );
+
+		// Store stack in the cache.
+		$cache[ $font ] = $stack;
+		$this->thememod()->set_value( 'font-stack-cache', $cache );
+
+		return $stack;
 	}
 
 	/**
