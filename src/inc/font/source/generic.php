@@ -73,8 +73,12 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 				'make_get_standard_fonts',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify Generic/Standard fonts, use the %s hook instead.', 'make' ),
-					'<code>make_font_data_generic</code>'
+					wp_kses(
+						__( 'To modify Standard fonts, use the %1$s filter hook instead. See the <a href="%2$s" target="_blank">Font API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_font_data_generic</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/font-api/'
 				)
 			);
 
@@ -94,8 +98,13 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 				'make_all_fonts',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify fonts, use a hook for a specific font source instead, such as %s.', 'make' ),
-					'<code>make_font_data_generic</code>'
+					wp_kses(
+						__( 'To add fonts, use the %1$s function. To modify existing fonts, use a filter hook for a specific font source, such as %2$s. See the <a href="%3$s" target="_blank">Font API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_add_font_source()</code>',
+					'<code>make_font_data_google</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/font-api/'
 				)
 			);
 

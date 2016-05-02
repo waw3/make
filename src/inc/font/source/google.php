@@ -141,8 +141,12 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 				'make_get_google_fonts',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify Google fonts, use the %s hook instead.', 'make' ),
-					'<code>make_font_data_google</code>'
+					wp_kses(
+						__( 'To modify Google fonts, use the %1$s filter hook instead. See the <a href="%2$s" target="_blank">Font API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_font_data_google</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/font-api/'
 				)
 			);
 

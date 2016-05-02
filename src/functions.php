@@ -82,6 +82,8 @@ function Make() {
  * In order to ensure that all choice sets have been added and updated before they are used by the theme, this function
  * should only be called during the `make_choices_loaded` action.
  *
+ * @link https://thethemefoundry.com/docs/make-docs/code/apis/choices-api/
+ *
  * @since 1.7.0.
  *
  * @param string $set_id     A unique string to identify the choice set.
@@ -131,6 +133,8 @@ function make_update_choice_set( $set_id, $choices ) {
  *             'stack' => '"Wing Dings 98", sans-serif',
  *         ),
  *     );
+ *
+ * @link https://thethemefoundry.com/docs/make-docs/code/apis/font-api/
  *
  * @since 1.7.0.
  *

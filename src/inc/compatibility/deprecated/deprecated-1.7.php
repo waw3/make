@@ -1094,7 +1094,7 @@ else :
 				__( 'To add or modify setting choices, use the %1$s function instead. See the <a href="%2$s" target="_blank">Choices API documentation</a>.', 'make' ),
 				array( 'a' => array( 'href' => true, 'target' => true ) )
 			),
-			'<code>make_update_choice_set</code>',
+			'<code>make_update_choice_set()</code>',
 			'https://thethemefoundry.com/docs/make-docs/code/apis/choices-api/'
 		)
 	);
