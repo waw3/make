@@ -31,7 +31,7 @@ class MAKE_Error_Section extends WP_Customize_Section {
 		?>
 		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
 			<h3 class="accordion-section-title">
-				<?php esc_html_e( 'No Make Errors', 'make' ); ?>
+				<?php esc_html_e( 'No Make Notices', 'make' ); ?>
 			</h3>
 		</li>
 	<?php

@@ -396,13 +396,13 @@ li.customize-control.customize-control-make_range .ui-slider-handle:hover {
 	cursor: default;
 	margin: 15px 0;
 	padding-right: 100px;
-	color: red;
+	color: #ffb900;
 }
 #customize-theme-controls .control-section-make_error .accordion-section-title:after {
 	content: "";
 }
 #customize-theme-controls .control-section-make_error:hover > .accordion-section-title {
-	color: red;
+	color: #ffb900;
 	background: #ffffff;
 }
 #customize-theme-controls .control-section-make_error .accordion-section-title .button {

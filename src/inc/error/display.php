@@ -132,7 +132,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 			}
 			#wpadminbar #wp-admin-bar-make-errors {
 				display: list-item;
-				background-color: red;
+				background-color: #ffb900;
 			}
 			#wpadminbar #wp-admin-bar-make-errors > .ab-item .ab-icon:before {
 				content: "\f534";
@@ -434,7 +434,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 			<h3 class="accordion-section-title">
 				<?php echo $this->get_errors_title(); ?>
 				<button id="make-show-errors" type="button" class="button" tabindex="0">
-					<?php esc_html_e( 'Show errors', 'make' ); ?>
+					<?php esc_html_e( 'Show notices', 'make' ); ?>
 				</button>
 			</h3>
 			<div id="make-error-detail-wrapper">
@@ -455,7 +455,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 		// Get the error message count.
 		$error_count = count( $this->error()->get_messages() );
 		return sprintf(
-			esc_html( _n( '%s Make Error', '%s Make Errors', $error_count, 'make' ) ),
+			esc_html( _n( '%s Make Notice', '%s Make Notices', $error_count, 'make' ) ),
 			number_format_i18n( $error_count )
 		);
 	}
@@ -504,32 +504,31 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 			</div>
 			<div class="make-error-detail-body">
 				<div class="callout-warning">
-					<p><strong><?php esc_html_e( 'What is a Make error?', 'make' ); ?></strong></p>
+					<p><strong><?php esc_html_e( 'What is a Make notice?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( __( '
-							Make errors occur when Make\'s functionality is used incorrectly. Often these errors are
-							caused by code in a child theme or plugin that extends the theme. The messages below help
-							you to identify the cause of the errors so they can be fixed.
+							Make notices occur when Make\'s functionality is used incorrectly. Often these notices are
+							triggered by code errors in a child theme or plugin that extends the theme. The notice
+							messages help you to identify the cause of the errors so they can be fixed.
 						', 'make' ) ); ?>
 					</p>
-					<p><strong><?php esc_html_e( 'Is it important to fix these errors?', 'make' ); ?></strong></p>
+					<p><strong><?php esc_html_e( 'Is it important to fix these notices?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( __( '
-							Absolutely! These errors may indicate that some part of your site is not working correctly.
+							Absolutely! These notices may indicate that some part of your site is not working correctly.
 							We don\'t want that.
 						', 'make' ) ); ?>
 					</p>
-					<p><strong><?php esc_html_e( 'How do I fix a Make error?', 'make' ); ?></strong></p>
+					<p><strong><?php esc_html_e( 'How do I fix a Make notice?', 'make' ); ?></strong></p>
 					<p>
-						<?php echo $this->sanitize_message( __( '
+						<?php echo $this->sanitize_message( sprintf( __( '
 							Check to see if your child theme or plugin has an update available, as a new version may
 							include changes that fix the errors. If it is caused by custom code, you will need to modify
-							the code to fix the errors. Check our article about
-							<a href="https://thethemefoundry.com/make-help/" target="_blank">dealing with Make Errors</a>
-							to learn more.
-						', 'make' ) ); ?>
+							the code to fix the errors. Check out our article about <a href="%s" target="_blank">dealing
+							with Make Notices</a> to learn more.
+						', 'make' ), 'https://thethemefoundry.com/docs/make-docs/guides/make-notices/' ) ); ?>
 					</p>
-					<p><strong><?php esc_html_e( 'How can I hide this notification in the Admin Bar?', 'make' ); ?></strong></p>
+					<p><strong><?php esc_html_e( 'How can I hide this notification?', 'make' ); ?></strong></p>
 					<p>
 						<?php echo $this->sanitize_message( sprintf( __( '
 							This notification is only visible to users who are logged in and have the capability to
