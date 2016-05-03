@@ -22,7 +22,6 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		'error'         => 'MAKE_Error_CollectorInterface',
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
 		'choices'       => 'MAKE_Choices_ManagerInterface',
-		'font'          => 'MAKE_Font_ManagerInterface',
 	);
 
 	/**
@@ -153,9 +152,12 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 				'make_setting_defaults',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify theme settings, use the %1$s method instead. See %2$s.', 'make' ),
-					'<code>add_settings</code>',
-					'<code>MAKE_Settings_ThemeMod</code>'
+					wp_kses(
+						__( 'To add or modify theme settings, use the %1$s function instead. See the <a href="%2$s" target="_blank">Theme Settings API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_update_thememod_setting_definition()</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/theme-settings-api/'
 				)
 			);
 
@@ -254,8 +256,12 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 				'make_get_default',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'Use the %s hook instead.', 'make' ),
-					'<code>make_settings_thememod_default_value</code>'
+					wp_kses(
+						__( 'To add or modify theme settings, use the %1$s function instead. See the <a href="%2$s" target="_blank">Theme Settings API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_update_thememod_setting_definition()</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/theme-settings-api/'
 				)
 			);
 

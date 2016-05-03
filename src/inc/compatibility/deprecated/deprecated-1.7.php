@@ -1075,7 +1075,12 @@ if ( ! function_exists( 'ttfmake_get_default' ) ) :
  * @return mixed                Default value if found; false if not found.
  */
 function ttfmake_get_default( $option ) {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'make_get_thememod_default' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		'make_get_thememod_default'
+	);
+
 	return make_get_thememod_default( $option );
 }
 else :
