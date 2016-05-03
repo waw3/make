@@ -22,6 +22,7 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 		'error'         => 'MAKE_Error_CollectorInterface',
 		'compatibility' => 'MAKE_Compatibility_MethodsInterface',
 		'choices'       => 'MAKE_Choices_ManagerInterface',
+		'font'          => 'MAKE_Font_ManagerInterface',
 	);
 
 	/**
