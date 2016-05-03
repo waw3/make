@@ -1438,11 +1438,36 @@ if ( ! function_exists( 'ttfmake_get_css' ) ) :
  * @return TTFMAKE_CSS    The one TTFMAKE_CSS object.
  */
 function ttfmake_get_css() {
-	Make()->compatibility()->deprecated_function( __FUNCTION__, '1.7.0', 'Make()->style()->css()' );
+	Make()->compatibility()->deprecated_function(
+		__FUNCTION__,
+		'1.7.0',
+		null,
+		sprintf(
+			wp_kses(
+				__( 'To add a style rule, use the %1$s function. See the <a href="%2$s" target="_blank">Style API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'<code>make_add_style_rule()</code>',
+			'https://thethemefoundry.com/docs/make-docs/code/apis/style-api/'
+		)
+	);
+
 	return Make()->style()->css();
 }
 else :
-	Make()->compatibility()->deprecated_function( 'ttfmake_get_css', '1.7.0', 'Make()->style()->css()' );
+	Make()->compatibility()->deprecated_function(
+		'ttfmake_get_css',
+		'1.7.0',
+		null,
+		sprintf(
+			wp_kses(
+				__( 'To add a style rule, use the %1$s function. See the <a href="%2$s" target="_blank">Style API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'<code>make_add_style_rule()</code>',
+			'https://thethemefoundry.com/docs/make-docs/code/apis/style-api/'
+		)
+	);
 endif;
 
 /**
