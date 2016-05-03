@@ -75,13 +75,11 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 *
 	 * @since 1.0.0.
 	 *
+	 * @hooked action wp_head
+	 *
 	 * @return void
 	 */
 	public function js_detection() {
-		// Only run this in the proper hook context.
-		if ( 'wp_head' !== current_action() ) {
-			return;
-		}
 		?>
 		<script type="text/javascript">
 			/* <![CDATA[ */
@@ -96,14 +94,11 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_head
+	 *
 	 * @return void
 	 */
 	public function dns_prefetch() {
-		// Only run this in the proper hook context.
-		if ( 'wp_head' !== current_action() ) {
-			return;
-		}
-		
 		// Google fonts
 		if ( ! is_customize_preview() && $this->scripts()->get_google_url() ) : ?>
 			<link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -115,13 +110,11 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 *
 	 * @since 1.0.0.
 	 *
+	 * @hooked action wp_head
+	 *
 	 * @return void
 	 */
 	public function meta_charset() {
-		// Only run this in the proper hook context.
-		if ( 'wp_head' !== current_action() ) {
-			return;
-		}
 		?>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<?php
@@ -132,13 +125,11 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 *
 	 * @since 1.0.0.
 	 *
+	 * @hooked action wp_head
+	 *
 	 * @return void
 	 */
 	public function meta_viewport() {
-		// Only run this in the proper hook context.
-		if ( 'wp_head' !== current_action() ) {
-			return;
-		}
 		?>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php
@@ -150,14 +141,11 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 * @since 1.0.0.
 	 * @since 1.7.0. Added conditional wrapper.
 	 *
+	 * @hooked action wp_head
+	 *
 	 * @return void
 	 */
 	public function pingback() {
-		// Only run this in the proper hook context.
-		if ( 'wp_head' !== current_action() ) {
-			return;
-		}
-
 		if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 			<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif;
@@ -171,14 +159,11 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 *
 	 * @since 1.6.2.
 	 *
+	 * @hooked action wp_head
+	 *
 	 * @return void
 	 */
 	public function backcompat_icons() {
-		// Only run this in the proper hook context.
-		if ( 'wp_head' !== current_action() ) {
-			return;
-		}
-
 		// Core Site Icon option overrides Make's deprecated Favicon and Apple Touch Icon settings
 		if ( false === get_option( 'site_icon', false ) ) :
 			// Favicon
@@ -213,16 +198,13 @@ final class MAKE_Setup_Head extends MAKE_Util_Modules implements MAKE_Setup_Head
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_deprecated_function_run
+	 *
 	 * @param string $function
 	 *
 	 * @return void
 	 */
 	public function backcompat_head_actions( $function ) {
-		// Only run this in the proper hook context.
-		if ( 'make_deprecated_function_run' !== current_action() ) {
-			return;
-		}
-
 		// Don't bother if this is happening during wp_head already.
 		if ( doing_action( 'wp_head' ) || did_action( 'wp_head' ) ) {
 			return;

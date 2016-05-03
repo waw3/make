@@ -153,17 +153,14 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	 *
 	 * @since 1.6.2.
 	 *
+	 * @hooked filter load_textdomain_mofile
+	 *
 	 * @param string $mofile
 	 * @param string $domain
 	 *
 	 * @return string
 	 */
 	public function mofile_path( $mofile, $domain ) {
-		// Only run this in the proper hook context.
-		if ( 'load_textdomain_mofile' !== current_filter() ) {
-			return $mofile;
-		}
-
 		if ( in_array( $domain, array( $this->domain, $this->child_domain ) ) ) {
 			$locale = get_locale();
 
@@ -186,14 +183,11 @@ final class MAKE_Setup_L10n implements MAKE_Setup_L10nInterface, MAKE_Util_HookI
 	 *
 	 * @since 1.6.2.
 	 *
+	 * @hooked action after_setup_theme
+	 *
 	 * @return bool    True if all relevant text domains successfully loaded a .mo file. Otherwise false.
 	 */
 	public function load_textdomains() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return false;
-		}
-
 		// Array to collect results of load commands.
 		$success = array();
 

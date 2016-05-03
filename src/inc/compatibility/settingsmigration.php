@@ -77,16 +77,13 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_notice_loaded
+	 *
 	 * @param MAKE_Admin_NoticeInterface $notice
 	 *
 	 * @return bool
 	 */
 	public function admin_notice( MAKE_Admin_NoticeInterface $notice ) {
-		// Only run this in the proper hook context.
-		if ( 'make_notice_loaded' !== current_action() ) {
-			return false;
-		}
-
 		// Theme mods
 		$parent_mods = get_option( 'theme_mods_' . get_template(), array() );
 
@@ -115,14 +112,11 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action admin_menu
+	 *
 	 * @return void
 	 */
 	public function add_page() {
-		// Only run this in the proper hook context.
-		if ( 'admin_menu' !== current_action() ) {
-			return;
-		}
-
 		// Don't add the page if this isn't a child theme.
 		if ( ! is_child_theme() ) {
 			return;
@@ -142,14 +136,11 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action appearance_page_make-settings-migration
+	 *
 	 * @return void
 	 */
 	public function page_content() {
-		// Only run this in the proper hook context.
-		if ( 'appearance_page_make-settings-migration' !== current_action() ) {
-			return;
-		}
-
 		// Theme mods
 		$parent_mods = get_option( 'theme_mods_' . get_template(), array() );
 
@@ -227,14 +218,11 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action admin_post_make-settings-migration
+	 *
 	 * @return void
 	 */
 	public function admin_post() {
-		// Only run this in the proper hook context.
-		if ( 'admin_post_make-settings-migration' !== current_action() ) {
-			return;
-		}
-
 		// Process form submissions
 		if ( isset( $_POST['make-settings-migration'] ) ) {
 			$args = $_POST['make-settings-migration'];

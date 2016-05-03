@@ -577,16 +577,13 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked filter theme_mod_social-icons
+	 *
 	 * @param array $value
 	 *
 	 * @return array
 	 */
 	public function filter_theme_mod( $value ) {
-		// Only run this in the proper hook context.
-		if ( 'theme_mod_social-icons' !== current_filter() ) {
-			return $value;
-		}
-
 		$all_mods = get_theme_mods();
 
 		if ( ! isset( $all_mods['social-icons'] ) ) {
@@ -722,6 +719,8 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked filter make_settings_thememod_sanitize_callback_parameters
+	 *
 	 * @param mixed        $value
 	 * @param string       $setting_id
 	 * @param array|string $callback
@@ -729,11 +728,6 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 	 * @return array
 	 */
 	public function not_always_an_array( $value, $setting_id, $callback ) {
-		// Only run this in the proper hook context.
-		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
-			return $value;
-		}
-
 		if (
 			'social-icons' === $setting_id
 			&&

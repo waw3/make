@@ -95,14 +95,11 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action after_setup_theme
+	 *
 	 * return void
 	 */
 	public function theme_support() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return;
-		}
-
 		// Yoast SEO breadcrumbs
 		add_theme_support( 'yoast-seo-breadcrumbs' );
 	}
@@ -112,16 +109,13 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_settings_thememod_loaded
+	 *
 	 * @param MAKE_Settings_ThemeModInterface $thememod
 	 *
 	 * @return bool
 	 */
 	public function add_settings( MAKE_Settings_ThemeModInterface $thememod ) {
-		// Only run this in the proper hook context.
-		if ( 'make_settings_thememod_loaded' !== current_action() ) {
-			return false;
-		}
-
 		// Integration settings
 		return $thememod->add_settings(
 			array_fill_keys( array(
@@ -143,16 +137,13 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function add_controls( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		// Views that can have breadcrumbs
 		$views = array(
 			'blog',

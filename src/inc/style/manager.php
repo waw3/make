@@ -248,12 +248,15 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_ajax_make-css-inline
+	 * @hooked action wp_ajax_nopriv_make-css-inline
+	 *
 	 * @return void
 	 */
 	public function get_styles_as_inline_ajax() {
-		// Only run this in the proper hook context.
+		// Only run this during an Ajax request.
 		if ( ! in_array( current_action(), array( 'wp_ajax_' . $this->inline_action, 'wp_ajax_nopriv_' . $this->inline_action ) ) ) {
-			wp_die();
+			return;
 		}
 		
 		$this->get_styles_as_inline();
@@ -267,12 +270,15 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 * 
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_ajax_make-css
+	 * @hooked action wp_ajax_nopriv_make-css
+	 *
 	 * @return void
 	 */
 	public function get_styles_as_file() {
-		// Only run this in the proper hook context.
+		// Only run this during an Ajax request.
 		if ( ! in_array( current_action(), array( 'wp_ajax_' . $this->file_action, 'wp_ajax_nopriv_' . $this->file_action ) ) ) {
-			wp_die();
+			return;
 		}
 
 		if ( ! $this->is_loaded() ) {

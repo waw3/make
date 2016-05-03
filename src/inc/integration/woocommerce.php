@@ -73,16 +73,13 @@ final class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MA
 	/**
 	 * Add theme support and remove default action hooks so we can replace them with our own.
 	 *
-	 * @since  1.0.0.
+	 * @since 1.0.0.
+	 *
+	 * @hooked action after_setup_theme
 	 *
 	 * @return void
 	 */
 	function setup() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return;
-		}
-
 		// Theme support
 		add_theme_support( 'woocommerce' );
 
@@ -97,16 +94,13 @@ final class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MA
 	/**
 	 * Markup to show before the main WooCommerce content.
 	 *
-	 * @since  1.0.0.
+	 * @since 1.0.0.
+	 *
+	 * @hooked action woocommerce_before_main_content
 	 *
 	 * @return void
 	 */
 	function before_main_content() {
-		// Only run this in the proper hook context.
-		if ( 'woocommerce_before_main_content' !== current_action() ) {
-			return;
-		}
-
 		// Left sidebar
 		ttfmake_maybe_show_sidebar( 'left' );
 
@@ -119,16 +113,13 @@ final class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MA
 	/**
 	 * Markup to show after the main WooCommerce content
 	 *
-	 * @since  1.0.0.
+	 * @since 1.0.0.
+	 *
+	 * @hooked action woocommerce_after_main_content
 	 *
 	 * @return void
 	 */
 	function after_main_content() {
-		// Only run this in the proper hook context.
-		if ( 'woocommerce_after_main_content' !== current_action() ) {
-			return;
-		}
-
 		// End content wrapper
 		?>
 		</main>
@@ -145,16 +136,13 @@ final class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MA
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_deprecated_function_run
+	 *
 	 * @param string $function
 	 *
 	 * @return void
 	 */
 	public function backcompat_main_content_actions( $function ) {
-		// Only run this in the proper hook context.
-		if ( 'make_deprecated_function_run' !== current_action() ) {
-			return;
-		}
-
 		// Don't bother if this is happening during woocommerce_before_main_content already.
 		if ( doing_action( 'woocommerce_before_main_content' ) || did_action( 'woocommerce_before_main_content' ) ) {
 			return;

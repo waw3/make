@@ -143,16 +143,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function setup_control_types( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		// The control types with JS templates
 		$types = array(
 			'MAKE_Customizer_Control_BackgroundPosition',
@@ -189,16 +186,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function load_definitions( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		// Panel definitions.
 		$this->panel_definitions = array(
 			'general'           => array(
@@ -245,16 +239,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function load_mods( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		$file_bases = array(
 			'background',
 			'navigation',
@@ -294,16 +285,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function add_panels( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		$priority = new MAKE_Util_Priority( 1000, 100 );
 
 		// Add panels.
@@ -372,16 +360,13 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function add_sections( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		// Bucket so each panel can have its own priority class.
 		$priority = array();
 
@@ -661,14 +646,11 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_controls_enqueue_scripts
+	 *
 	 * @return void
 	 */
 	public function enqueue_control_scripts() {
-		// Only run this in the proper hook context.
-		if ( 'customize_controls_enqueue_scripts' !== current_action() ) {
-			return;
-		}
-
 		// jQuery UI styles are for our custom Range and Buttonset controls.
 		wp_enqueue_style( 'make-jquery-ui-custom' );
 
@@ -717,14 +699,11 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_controls_print_footer_scripts
+	 *
 	 * @return void
 	 */
 	public function render_templates() {
-		// Only run this in the proper hook context.
-		if ( 'customize_controls_print_footer_scripts' !== current_action() ) {
-			return;
-		}
-
 		global $wp_customize;
 
 		// Social Icons
@@ -744,12 +723,14 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_ajax_make-font-choices
+	 *
 	 * @return void
 	 */
 	public function get_font_choices_ajax() {
-		// Only run this in the proper hook context.
+		// Only run this during an Ajax request.
 		if ( 'wp_ajax_make-font-choices' !== current_action() ) {
-			wp_die();
+			return;
 		}
 
 		$choices = $this->font()->get_font_choices();
@@ -768,12 +749,14 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_ajax_make-social-icons
+	 *
 	 * @return void
 	 */
 	public function get_socialicons_ajax() {
-		// Only run this in the proper hook context.
+		// Only run this during an Ajax request.
 		if ( 'wp_ajax_make-social-icons' !== current_action() ) {
-			wp_die();
+			return;
 		}
 
 		if ( ! isset( $_POST['type'] ) || ! isset( $_POST['content'] ) ) {
@@ -794,12 +777,14 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_ajax_make-social-icons-list
+	 *
 	 * @return void
 	 */
 	public function get_socialicons_list_ajax() {
-		// Only run this in the proper hook context.
+		// Only run this during an Ajax request.
 		if ( 'wp_ajax_make-social-icons-list' !== current_action() ) {
-			wp_die();
+			return;
 		}
 
 		wp_send_json_success( $this->socialicons()->get_icons() );

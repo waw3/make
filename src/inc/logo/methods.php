@@ -204,16 +204,13 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_style_loaded
+	 *
 	 * @param MAKE_Style_ManagerInterface $style
 	 *
 	 * @return void
 	 */
 	public function set_logo_max_width( MAKE_Style_ManagerInterface $style ) {
-		// Only run this in the proper hook context.
-		if ( 'make_style_loaded' !== current_action() ) {
-			return;
-		}
-
 		$max_width = absint( $this->get_logo_max_width() );
 
 		if ( $this->custom_logo_is_supported() && $this->has_logo() && $this->default_max_width !== $max_width ) {
@@ -235,14 +232,11 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action after_setup_theme
+	 *
 	 * @return void
 	 */
 	public function convert_old_logo_settings() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return;
-		}
-
 		// Don't bother if the Core custom logo isn't supported
 		if ( ! $this->custom_logo_is_supported() ) {
 			return;

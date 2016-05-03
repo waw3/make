@@ -125,14 +125,14 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_enqueue_scripts
+	 * @hooked action admin_enqueue_scripts
+	 * @hooked action customize_controls_enqueue_scripts
+	 * @hooked action customize_preview_init
+	 *
 	 * @return void
 	 */
 	public function register_libs() {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'wp_enqueue_scripts', 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts', 'customize_preview_init', 'login_enqueue_scripts' ) ) ) {
-			return;
-		}
-
 		$this->register_style_libs();
 		$this->register_script_libs();
 	}
@@ -265,14 +265,11 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_enqueue_scripts
+	 *
 	 * @return void
 	 */
 	public function enqueue_frontend_styles() {
-		// Only run this in the proper hook context.
-		if ( 'wp_enqueue_scripts' !== current_action() ) {
-			return;
-		}
-
 		// Parent stylesheet, if child theme is active
 		// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
 		if ( is_child_theme() && defined( 'TTFMAKE_CHILD_VERSION' ) && version_compare( TTFMAKE_CHILD_VERSION, '1.1.0', '>=' ) ) {
@@ -323,14 +320,12 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action admin_enqueue_scripts
+	 * @hooked action customize_controls_enqueue_scripts
+	 *
 	 * @return void
 	 */
 	public function enqueue_admin_styles() {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'admin_enqueue_scripts', 'customize_controls_enqueue_scripts' ) ) ) {
-			return;
-		}
-
 		if ( ! $this->plus()->is_plus() ) {
 			wp_enqueue_style(
 				'make-plus',
@@ -346,14 +341,11 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action admin_enqueue_scripts
+	 *
 	 * @return void
 	 */
 	public function add_editor_styles() {
-		// Only run this in the proper hook context.
-		if ( 'admin_enqueue_scripts' !== current_action() ) {
-			return;
-		}
-
 		$editor_styles = array();
 
 		foreach ( array(
@@ -374,14 +366,11 @@ final class MAKE_Setup_Scripts extends MAKE_Util_Modules implements MAKE_Setup_S
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action wp_enqueue_scripts
+	 *
 	 * @return void
 	 */
 	public function enqueue_frontend_scripts() {
-		// Only run this in the proper hook context.
-		if ( 'wp_enqueue_scripts' !== current_action() ) {
-			return;
-		}
-
 		// Main script
 		wp_enqueue_script(
 			'make-frontend',

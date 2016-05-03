@@ -92,14 +92,11 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action after_setup_theme
+	 *
 	 * @return void
 	 */
 	public function theme_support() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return;
-		}
-
 		global $content_width;
 
 		// Automatic feed links
@@ -146,14 +143,11 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action after_setup_theme
+	 *
 	 * @return void
 	 */
 	public function menu_locations() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return;
-		}
-
 		register_nav_menus( array(
 			'primary'    => __( 'Primary Navigation', 'make' ),
 			'header-bar' => __( 'Header Bar Navigation', 'make' ),
@@ -165,14 +159,11 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since 1.0.0.
 	 *
+	 * @hooked action template_redirect
+	 *
 	 * @return void
 	 */
 	public function content_width() {
-		// Only run this in the proper hook context.
-		if ( 'template_redirect' !== current_action() ) {
-			return;
-		}
-
 		global $content_width;
 
 		$new_width = $content_width;
@@ -209,16 +200,13 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since  1.0.0.
 	 *
+	 * @hooked filter body_class
+	 *
 	 * @param array $classes    Classes for the body element.
 	 *
 	 * @return array            Modified class list.
 	 */
 	public function body_classes( array $classes ) {
-		// Only run this in the proper hook context.
-		if ( 'body_class' !== current_filter() ) {
-			return $classes;
-		}
-
 		// Current view
 		if ( ! is_null( $view = $this->view()->get_current_view() ) ) {
 			$classes[] = 'view-' . $view;
@@ -255,16 +243,13 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since  1.7.0.
 	 *
+	 * @hooked filter post_class
+	 *
 	 * @param array $classes    Classes for the post container element.
 	 *
 	 * @return array            Modified class list.
 	 */
 	public function post_classes( array $classes ) {
-		// Only run this in the proper hook context.
-		if ( 'post_class' !== current_filter() ) {
-			return $classes;
-		}
-
 		if ( ! is_admin() ) {
 			// Author avatar class
 			$author_key    = 'layout-' . make_get_current_view() . '-post-author';
@@ -283,16 +268,11 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since 1.0.0.
 	 *
-	 * @param string $more
+	 * @hooked filter excerpt_more
 	 *
 	 * @return string
 	 */
-	public function excerpt_more( $more ) {
-		// Only run this in the proper hook context.
-		if ( 'excerpt_more' !== current_filter() ) {
-			return $more;
-		}
-
+	public function excerpt_more() {
 		return ' &hellip;';
 	}
 
@@ -303,6 +283,9 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since 1.6.0.
 	 *
+	 * @hooked filter embed_handler_html
+	 * @hooked filter embed_oembed_html
+	 *
 	 * @param string $html    The generated HTML of the embed handler.
 	 * @param string $url     The embed URL.
 	 * @param array  $attr    The attributes of the embed shortcode.
@@ -310,11 +293,6 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 * @return string         The wrapped HTML.
 	 */
 	public function embed_container( $html, $url, $attr ) {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_filter(), array( 'embed_handler_html', 'embed_oembed_html' ) ) ) {
-			return $html;
-		}
-
 		// Bail if this is the admin or an RSS feed
 		if ( is_admin() || is_feed() ) {
 			return $html;
@@ -351,14 +329,12 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 	 *
 	 * @since 1.0.0.
 	 *
+	 * @hooked action edit_category
+	 * @hooked action save_post
+	 *
 	 * @return void
 	 */
 	public function category_transient_flusher() {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'edit_category', 'save_post' ) ) ) {
-			return;
-		}
-
 		// Bail if this is an autosave
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;

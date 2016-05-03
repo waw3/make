@@ -359,14 +359,11 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @since 1.4.9.
 	 *
+	 * @hooked action admin_notices
+	 *
 	 * @return void
 	 */
 	public function admin_notices() {
-		// Only run this in the proper hook context.
-		if ( 'admin_notices' !== current_action() ) {
-			return;
-		}
-
 		// Make sure files are loaded first.
 		if ( ! $this->is_loaded() ) {
 			$this->load();
@@ -432,13 +429,11 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @since 1.4.9.
 	 *
+	 * @hooked action admin_print_footer_scripts
+	 *
 	 * @return void
 	 */
 	public function print_admin_notices_js() {
-		// Only run this in the proper hook context.
-		if ( 'admin_print_footer_scripts' !== current_action() ) {
-			return;
-		}
 		?>
 		<script type="application/javascript">
 			/* Make admin notices */
@@ -472,10 +467,12 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @since 1.4.9.
 	 *
+	 * @hooked action wp_ajax_make_hide_notice
+	 *
 	 * @return void
 	 */
 	public function handle_ajax() {
-		// Only run this in the proper hook context.
+		// Only run this during an Ajax request.
 		if ( 'wp_ajax_make_hide_notice' !== current_action() ) {
 			return;
 		}

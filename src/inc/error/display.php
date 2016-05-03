@@ -77,14 +77,11 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action admin_bar_menu
+	 *
 	 * @param WP_Admin_Bar $wp_admin_bar
 	 */
 	public function admin_bar( WP_Admin_Bar $wp_admin_bar ) {
-		// Only run this in the proper hook context.
-		if ( 'admin_bar_menu' !== current_action() ) {
-			return;
-		}
-
 		$wp_admin_bar->add_menu( array(
 			'id'     => 'make-errors',
 			'title'  => '',
@@ -315,14 +312,12 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action admin_footer
+	 * @hooked action wp_footer
+	 *
 	 * @return void
 	 */
 	public function render_adminbar_errors() {
-		// Only run this in the proper hook context.
-		if ( ! in_array( current_action(), array( 'admin_footer', 'wp_footer' ) ) ) {
-			return;
-		}
-
 		// Bail if this is in the Customizer preview pane.
 		if ( is_customize_preview() ) {
 			return;
@@ -390,16 +385,13 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function add_section( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		// Create a section instance
 		$section = new MAKE_Error_Section(
 			$wp_customize,
@@ -417,14 +409,11 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_controls_print_footer_scripts
+	 *
 	 * @return void
 	 */
 	public function render_customizer_errors() {
-		// Only run this in the proper hook context.
-		if ( 'customize_controls_print_footer_scripts' !== current_action() ) {
-			return;
-		}
-
 		// Bail if there aren't any errors.
 		if ( ! $this->error()->has_errors() ) {
 			return;

@@ -392,16 +392,13 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * @since 1.0.0.
 	 * @since 1.7.0. Added $style parameter
 	 *
+	 * @hooked action make_style_loaded
+	 *
 	 * @param MAKE_Style_ManagerInterface $style
 	 *
 	 * @return void
 	 */
 	public function print_logo_css( MAKE_Style_ManagerInterface $style ) {
-		// Only run this in the proper hook context.
-		if ( 'make_style_loaded' !== current_action() ) {
-			return;
-		}
-
 		// Max logo width
 		$size = 960;
 
@@ -558,14 +555,11 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * @since 1.0.0.
 	 * @since 1.7.0. Changed from global function to method.
 	 *
+	 * @hooked action customize_save_after
+	 *
 	 * @return void
 	 */
 	public function refresh_logo_cache() {
-		// Only run this in the proper hook context.
-		if ( 'customize_save_after' !== current_action() ) {
-			return;
-		}
-
 		$this->get_logo_information( true );
 	}
 }

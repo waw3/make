@@ -100,14 +100,11 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	 *
 	 * @since 1.0.0.
 	 *
+	 * @hooked action widgets_init
+	 *
 	 * @return void
 	 */
 	public function register_sidebars() {
-		// Only run this in the proper hook context.
-		if ( 'widgets_init' !== current_action() ) {
-			return;
-		}
-
 		// Sidebar IDs and labels
 		$sidebars = array(
 			'sidebar-left'  => __( 'Left Sidebar', 'make' ),
@@ -247,16 +244,13 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_deprecated_function_run
+	 *
 	 * @param string $function
 	 *
 	 * @return void
 	 */
 	public function backcompat_widgets_init( $function ) {
-		// Only run this in the proper hook context.
-		if ( 'make_deprecated_function_run' !== current_action() ) {
-			return;
-		}
-
 		// Don't bother if this is happening during widgets_init already.
 		if ( doing_action( 'widgets_init' ) || did_action( 'widgets_init' ) ) {
 			return;

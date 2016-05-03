@@ -181,14 +181,11 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_api_loaded
+	 *
 	 * @return void
 	 */
 	public function require_deprecated_files() {
-		// Only run this in the proper hook context.
-		if ( 'make_api_loaded' !== current_action() ) {
-			return;
-		}
-
 		if ( isset( $this->mode['deprecated'] ) && is_array( $this->mode['deprecated'] ) ) {
 			foreach ( $this->mode['deprecated'] as $version ) {
 				$file = dirname( __FILE__ ) . '/deprecated/deprecated-' . $version . '.php';
@@ -225,6 +222,8 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 *
 	 * @since  1.1.2.
 	 *
+	 * @hooked filter upgrader_source_selection
+	 *
 	 * @param  string      $source           File source location.
 	 * @param  string      $remote_source    Remote file source location.
 	 * @param  WP_Upgrader $upgrader         WP_Upgrader instance.
@@ -232,11 +231,6 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 * @return string|WP_Error               Error or source on success.
 	 */
 	public function check_package( $source, $remote_source, WP_Upgrader $upgrader ) {
-		// Only run this in the proper hook context.
-		if ( 'upgrader_source_selection' !== current_filter() ) {
-			return $source;
-		}
-
 		global $wp_filesystem;
 
 		if ( ! isset( $_GET['action'] ) || 'upload-theme' !== $_GET['action'] ) {

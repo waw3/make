@@ -363,17 +363,14 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked filter make_settings_thememod_sanitize_callback_parameters
+	 *
 	 * @param  mixed  $value
 	 * @param  string $setting_id
 	 *
 	 * @return array
 	 */
 	public function add_sanitize_choice_parameters( $value, $setting_id ) {
-		// Only run this in the proper hook context.
-		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
-			return $value;
-		}
-
 		$choice_settings = array_merge(
 			array_keys( $this->get_settings( 'choice_set_id' ), true ),
 			array_keys( $this->get_settings( 'is_font' ), true )
@@ -393,17 +390,14 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked filter make_settings_thememod_sanitize_callback_parameters
+	 *
 	 * @param mixed  $value
 	 * @param string $setting_id
 	 *
 	 * @return array
 	 */
 	public function wrap_array_values( $value, $setting_id ) {
-		// Only run this in the proper hook context.
-		if ( 'make_settings_thememod_sanitize_callback_parameters' !== current_filter() ) {
-			return $value;
-		}
-
 		if ( in_array( $setting_id, array_keys( $this->get_settings( 'is_array' ), true ) ) ) {
 			$value = array( $value );
 		}
@@ -416,14 +410,11 @@ final class MAKE_Settings_ThemeMod extends MAKE_Settings_Base implements MAKE_Se
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_save_after
+	 *
 	 * @return void
 	 */
 	public function clear_thememod_cache() {
-		// Only run this in the proper hook context.
-		if ( 'customize_save_after' !== current_action() ) {
-			return;
-		}
-
 		$cache_settings = array_keys( $this->get_settings( 'is_cache' ), true );
 
 		foreach ( $cache_settings as $setting_id ) {

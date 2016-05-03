@@ -76,14 +76,11 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action after_setup_theme
+	 *
 	 * @return void
 	 */
 	public function theme_support() {
-		// Only run this in the proper hook context.
-		if ( 'after_setup_theme' !== current_action() ) {
-			return;
-		}
-
 		// Infinite Scroll
 		add_theme_support( 'infinite-scroll', array(
 			'container'       => 'site-main',
@@ -153,16 +150,13 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 	/**
 	 * Determine whether any footer widgets are actually showing.
 	 *
-	 * @since  1.0.0.
+	 * @since 1.0.0.
+	 *
+	 * @hooked filter infinite_scroll_has_footer_widgets
 	 *
 	 * @return bool    Whether or not infinite scroll has footer widgets.
 	 */
 	public function infinite_scroll_has_footer_widgets() {
-		// Only run this in the proper hook context.
-		if ( 'infinite_scroll_has_footer_widgets' !== current_filter() ) {
-			return false;
-		}
-
 		$widget_areas = $this->thememod()->get_value( 'footer-widget-areas' );
 
 		// No widget areas are visible
@@ -217,16 +211,13 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_deprecated_function_run
+	 *
 	 * @param string $function
 	 *
 	 * @return void
 	 */
 	public function backcompat_infinite_scroll_callbacks( $function ) {
-		// Only run this in the proper hook context.
-		if ( 'make_deprecated_function_run' !== current_action() ) {
-			return;
-		}
-
 		// Don't bother if this is happening during after_setup_theme already.
 		if ( doing_action( 'after_setup_theme' ) || did_action( 'after_setup_theme' ) ) {
 			return;
@@ -248,16 +239,11 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 	 * @since 1.7.0.
 	 * @see $this->backcompat_infinite_scroll_callbacks()
 	 *
-	 * @param array|string $callback
+	 * @hooked filter make_jetpack_infinite_scroll_footer_callback
 	 *
 	 * @return string
 	 */
-	public function backcompat_infinite_scroll_footer_callback( $callback ) {
-		// Only run this in the proper hook context.
-		if ( 'make_jetpack_infinite_scroll_footer_callback' !== current_filter() ) {
-			return $callback;
-		}
-
+	public function backcompat_infinite_scroll_footer_callback() {
 		return 'ttfmake_jetpack_infinite_scroll_footer_callback';
 	}
 
@@ -267,16 +253,11 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 	 * @since 1.7.0.
 	 * @see $this->backcompat_infinite_scroll_callbacks()
 	 *
-	 * @param array|string $callback
+	 * @hooked filter make_jetpack_infinite_scroll_render_callback
 	 *
 	 * @return string
 	 */
-	public function backcompat_infinite_scroll_render_callback( $callback ) {
-		// Only run this in the proper hook context.
-		if ( 'make_jetpack_infinite_scroll_render_callback' !== current_filter() ) {
-			return $callback;
-		}
-
+	public function backcompat_infinite_scroll_render_callback() {
 		return 'ttfmake_jetpack_infinite_scroll_render';
 	}
 }

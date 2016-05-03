@@ -177,14 +177,13 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_notice_loaded
+	 *
 	 * @param MAKE_Admin_NoticeInterface $notice
+	 *
+	 * @return void
 	 */
 	public function admin_notices( MAKE_Admin_NoticeInterface $notice ) {
-		// Only run this in the proper hook context.
-		if ( 'make_notice_loaded' !== current_action() ) {
-			return;
-		}
-
 		// Notice to help with potential update issues with Make Plus
 		if ( true === $this->is_plus() && version_compare( $this->get_plus_version(), '1.4.7', '<=' ) ) {
 			$notice->register_admin_notice(
@@ -211,16 +210,13 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked filter admin_body_class
+	 *
 	 * @param string $classes
 	 *
 	 * @return string
 	 */
 	public function admin_body_classes( $classes ) {
-		// Only run this in the proper hook context.
-		if ( 'admin_body_class' !== current_filter() ) {
-			return $classes;
-		}
-
 		if ( $this->is_plus() ) {
 			$classes .= ' make-plus-enabled';
 		} else {
@@ -235,14 +231,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_controls_print_footer_scripts
+	 *
 	 * @return void
 	 */
 	public function customizer_add_header_info() {
-		// Only run this in the proper hook context.
-		if ( 'customize_controls_print_footer_scripts' !== current_action() ) {
-			return;
-		}
-
 		?>
 		<script type="application/javascript">
 			(function($) {
@@ -268,16 +261,13 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action customize_register
+	 *
 	 * @param WP_Customize_Manager $wp_customize
 	 *
 	 * @return void
 	 */
 	public function customizer_add_section_info( WP_Customize_Manager $wp_customize ) {
-		// Only run this in the proper hook context.
-		if ( 'customize_register' !== current_action() ) {
-			return;
-		}
-
 		// Add section for Typekit
 		$wp_customize->add_section( 'make_font-typekit', array(
 			'panel'       => 'make_typography',
@@ -320,15 +310,13 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since  1.1.0.
 	 *
+	 * @hooked action post_submitbox_misc_actions
+	 *
 	 * @return void
 	 */
 	public function duplicate_add_info() {
-		// Only run this in the proper hook context.
-		if ( 'post_submitbox_misc_actions' !== current_action() ) {
-			return;
-		}
-
 		global $typenow;
+
 		if ( 'page' === $typenow ) : ?>
 			<div class="misc-pub-section ttfmake-duplicator">
 				<p style="font-style:italic;margin:0 0 7px 3px;">
@@ -353,14 +341,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.0.6.
 	 *
+	 * @hooked action add_meta_boxes
+	 *
 	 * @return void
 	 */
 	public function perpage_add_info() {
-		// Only run this in the proper hook context.
-		if ( 'add_meta_boxes' !== current_action() ) {
-			return;
-		}
-
 		// Post types
 		$post_types = get_post_types(
 			array(
@@ -416,14 +401,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_after_builder_menu
+	 *
 	 * @return void
 	 */
 	public function sections_add_info() {
-		// Only run this in the proper hook context.
-		if ( 'make_after_builder_menu' !== current_action() ) {
-			return;
-		}
-
 		?>
 		<li id="ttfmake-menu-list-item-link-plus" class="ttfmake-menu-list-item">
 			<div>
@@ -450,14 +432,11 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 *
 	 * @since 1.7.0.
 	 *
+	 * @hooked action make_section_text_before_columns_select
+	 *
 	 * @return void
 	 */
 	public function widgetarea_add_info() {
-		// Only run this in the proper hook context.
-		if ( 'make_section_text_before_columns_select' !== current_action() ) {
-			return;
-		}
-
 		?>
 		<div class="ttfmake-plus-info">
 			<p>
