@@ -261,9 +261,12 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				'make_supported_social_icons',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify the available social icons, use the %1$s method instead. See %2$s.', 'make' ),
-					'<code>add_icons</code>',
-					'<code>MAKE_SocialIcons_Manager</code>'
+					wp_kses(
+						__( 'To add or modify social icons, use the %1$s function instead. See the <a href="%2$s" target="_blank">Social Icons API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_update_socialicon_definition()</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/social-icons-api/'
 				)
 			);
 
@@ -655,9 +658,12 @@ class MAKE_SocialIcons_Manager extends MAKE_Util_Modules implements MAKE_SocialI
 				'make_social_links',
 				'1.7.0',
 				sprintf(
-					esc_html__( 'To add or modify the available social icons, use the %1$s method instead. See %2$s.', 'make' ),
-					'<code>add_icons</code>',
-					'<code>MAKE_SocialIcons_Manager</code>'
+					wp_kses(
+						__( 'To add or modify social icons, use the %1$s function instead. See the <a href="%2$s" target="_blank">Social Icons API documentation</a>.', 'make' ),
+						array( 'a' => array( 'href' => true, 'target' => true ) )
+					),
+					'<code>make_update_socialicon_definition()</code>',
+					'https://thethemefoundry.com/docs/make-docs/code/apis/social-icons-api/'
 				)
 			);
 		}

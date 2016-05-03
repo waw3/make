@@ -617,8 +617,11 @@ function ttfmake_get_social_links() {
 		'1.7.0',
 		null,
 		sprintf(
-			esc_html__( 'See %s.', 'make' ),
-			'<code>MAKE_SocialIcons_Manager</code>'
+			wp_kses(
+				__( 'See the <a href="%s" target="_blank">Social Icons API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'https://thethemefoundry.com/docs/make-docs/code/apis/social-icons-api/'
 		)
 	);
 }
@@ -628,8 +631,12 @@ else :
 		'1.7.0',
 		null,
 		sprintf(
-			esc_html__( 'See %s.', 'make' ),
-			'<code>MAKE_SocialIcons_Manager</code>'
+			wp_kses(
+				__( 'To add or modify social icons, use the %1$s function instead. See the <a href="%2$s" target="_blank">Social Icons API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'<code>make_update_socialicon_definition()</code>',
+			'https://thethemefoundry.com/docs/make-docs/code/apis/social-icons-api/'
 		)
 	);
 endif;
@@ -651,8 +658,11 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'1.7.0',
 		null,
 		sprintf(
-			esc_html__( 'See %s.', 'make' ),
-			'<code>MAKE_SocialIcons_Manager</code>'
+			wp_kses(
+				__( 'See the <a href="%s" target="_blank">Social Icons API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'https://thethemefoundry.com/docs/make-docs/code/apis/social-icons-api/'
 		)
 	);
 
@@ -664,8 +674,12 @@ else :
 		'1.7.0',
 		null,
 		sprintf(
-			esc_html__( 'See %s.', 'make' ),
-			'<code>MAKE_SocialIcons_Manager</code>'
+			wp_kses(
+				__( 'To add or modify social icons, use the %1$s function instead. See the <a href="%2$s" target="_blank">Social Icons API documentation</a>.', 'make' ),
+				array( 'a' => array( 'href' => true, 'target' => true ) )
+			),
+			'<code>make_update_socialicon_definition()</code>',
+			'https://thethemefoundry.com/docs/make-docs/code/apis/social-icons-api/'
 		)
 	);
 endif;
