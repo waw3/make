@@ -224,7 +224,7 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 				$path          = trailingslashit( $wp_upload_dir['basedir'] ) . get_post_meta( $attachment_id, '_wp_attached_file', true );
 
 				// Sometimes, WordPress just doesn't have the metadata available. If not, get the image size
-				if ( is_readable( $path ) ) {
+				if ( is_file( $path ) && is_readable( $path ) ) {
 					$getimagesize = getimagesize( $path );
 
 					if ( false !== $getimagesize && isset( $getimagesize[0] ) && isset( $getimagesize[1] ) ) {
@@ -399,6 +399,11 @@ class MAKE_Logo_Legacy extends MAKE_Util_Modules implements MAKE_Logo_LegacyInte
 	 * @return void
 	 */
 	public function print_logo_css( MAKE_Style_ManagerInterface $style ) {
+		// Is this necessary?
+		if ( ! $this->has_logo() ) {
+			return;
+		}
+
 		// Max logo width
 		$size = 960;
 
