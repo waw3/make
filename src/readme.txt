@@ -39,13 +39,14 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 * Improved: Google Fonts DNS is now pre-fetched when fonts are being used.
 * Improved: Added theme support for partial widget refresh in the Customizer.
 * New feature: Modify the search field label via the Customizer.
+* New feature: Swedish translation. Props Erik Holmquist.
 * Changed: Section title template now uses WP's the_archive_title() template tag.
 * Changed: The default content width is now 960 instead of 620.
 * Bux fix: PHP error messages on image attachment pages.
 * Bux fix: Prevent the getimagesize read error that periodically appeared in some situations.
 * Updated: Font Awesome icon library updated to version 4.6.1.
 * Updated: The latest list of Google fonts.
-* New feature: Swedish translation. Props Erik Holmquist.
+* Changed: Added a notice that Make will soon drop support for WP 4.2 and 4.3.
 
 = 1.6.7 - December 17 2015 =
 * Bug fix: Builder content would lose paragraphs and line breaks in some situations when switching between editors.
