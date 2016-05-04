@@ -29,8 +29,9 @@ $d3 = preg_replace( "/\t+=>\t+/", ' => ', $d3 );
 $d3 = preg_replace( "/array\t+\(/", 'array(', $d3 );
 $d3 = preg_replace( "/(\w+)\t/", '\1 ', $d3 );
 $d3 = preg_replace( "/(\d+) => '/", "'", $d3 );
-$d3 = str_replace( "\t\t\t\t", "\t\t\t", $d3 );
-$d3 = str_replace( "\t\t\t\t\t", "\t\t\t\t", $d3 );
+$d3 = str_replace( "\t\t", "\t", $d3 );
+$d3 = str_replace( "\t\t\t\t", "\t\t", $d3 );
+$d3 = str_replace( "\t\t\t\t\t", "\t\t\t", $d3 );
 
 // Get timestamp
 $date = date( 'c', time() );
@@ -42,27 +43,15 @@ $file = <<<EOD
  * @package Make
  */
 
-if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
-/**
- * Return an array of all available Google Fonts.
- *
- * Updated: {$date}
- *
- * @since  1.0.0.
- *
- * @return array    All Google Fonts.
- */
-function ttfmake_get_google_fonts() {
-	/**
-	 * Allow developers to modify the allowed Google fonts.
-	 *
-	 * @since 1.2.3.
-	 *
-	 * @param array    \$fonts    The list of Google fonts with variants and subsets.
-	 */
-	return apply_filters( 'make_get_google_fonts', {$d3} );
+// Updated: {$date}
+
+// Bail if this isn't being included inside of MAKE_Font_Source_Google.
+if ( ! isset( \$this ) || ! \$this instanceof MAKE_Font_Source_Google ) {
+	return;
 }
-endif;
+
+// Import the data.
+\$this->load_font_data( {$d3} );
 EOD;
 
 // Check for destination
@@ -71,7 +60,7 @@ if ( ! file_exists( $dest_dir ) ) {
 }
 
 // Create/overwrite the file
-file_put_contents( $dest_dir . 'google-fonts.php', $file );
+file_put_contents( $dest_dir . 'google-data.php', $file );
 
 // Done.
 exit();

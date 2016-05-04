@@ -16,7 +16,7 @@
 /*---------------------------------------------------------
  Gravity Forms (_support.scss)
 -------------------------------------------------------- */
-.gform_wrapper {
+.site-main .gform_wrapper {
 	textarea,
 	input[type="date"],
 	input[type="datetime"],
@@ -44,6 +44,9 @@
 	.gfield_date_year label,
 	.instruction {
 		font-size: 13px !important;
+	}
+	.gform_footer input.button {
+		@extend .ttfmake-button;
 	}
 }
 /*---------------------------------------------------------
