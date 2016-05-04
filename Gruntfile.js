@@ -78,7 +78,7 @@ module.exports = function( grunt ) {
 				files: {
 					// Cycle2 source filename already has '.min' because of concat
 					'src/js/libs/cycle2/jquery.cycle2.min.js': ['src/js/libs/cycle2/jquery.cycle2.min.js'],
-					'src/js/libs/fitvids/jquery.fitvids.min.js': ['src/js/libs/fitvids/jquery.fitvids.js']
+					//'src/js/libs/fitvids/jquery.fitvids.min.js': ['src/js/libs/fitvids/jquery.fitvids.js']
 				}
 			},
 			admin: {
@@ -206,7 +206,7 @@ module.exports = function( grunt ) {
 			}
 		},
 		other: {
-			changelog: 'src/changelog.md'
+			changelog: 'src/readme.txt'
 		},
 		yaml: {
 			fontawesome: {
@@ -333,7 +333,12 @@ module.exports = function( grunt ) {
 	} );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'sass', 'wpcss:style', 'concat', 'uglify' ] );
+	grunt.registerTask( 'default', [
+		'sass',
+		'wpcss:style',
+		'concat',
+		'uglify:libs'
+	] );
 
 	// Bump the version to the specified value; e.g., "grunt bumpto:patch"
 	grunt.registerTask( 'bumpto', function( releaseType ) {
@@ -352,7 +357,7 @@ module.exports = function( grunt ) {
 		var semver = require( 'semver' ),
 			changelog,
 			newVersion = semver.inc( grunt.config.get( 'pkg' ).version, releaseType),
-			regex = new RegExp( '^## ' + newVersion, 'gm' ); // Match the version number (e.g., "# 1.2.3")
+			regex = new RegExp( '^= ' + newVersion, 'gm' ); // Match the version number (e.g., "= 1.2.3")
 
 		if ( 'minor' !== releaseType && 'major' !== releaseType && 'patch' !== releaseType ) {
 			grunt.log.writeln().fail( 'Please choose a valid version type (minor, major, or patch)' );

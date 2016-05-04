@@ -4,7 +4,7 @@ Contributors: thethemefoundry
 Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
 
 Requires at least: 4.2
-Tested up to: 4.5
+Tested up to: 4.5.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,28 @@ Build a website that means business. With Make’s powerful drag and drop page b
 Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
+
+= 1.7.0 - May 4 2016 =
+* Changed: Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
+  * See the beta announcement for a complete list: https://thethemefoundry.com/blog/make-1-7-beta-1/
+* Improved: Instant style previews in the Customizer.
+* Improved: New interface for managing Social Icons.
+* Improved: Support for the Custom Logo functionality introduced in WordPress 4.5.
+* New feature: Color and typography settings for buttons.
+* New feature: One-click migration of theme settings from parent to child theme.
+* Improved: Yoast SEO breadcrumb now available for the Posts page.
+* Improved: Gallery slider waits for all images to load before fully initializing.
+* Improved: Google Fonts DNS is now pre-fetched when fonts are being used.
+* Improved: Added theme support for partial widget refresh in the Customizer.
+* New feature: Modify the search field label via the Customizer.
+* New feature: Swedish translation. Props Erik Holmquist.
+* Changed: Section title template now uses WP's the_archive_title() template tag.
+* Changed: The default content width is now 960 instead of 620.
+* Bux fix: PHP error messages on image attachment pages.
+* Bux fix: Prevent the getimagesize read error that periodically appeared in some situations.
+* Updated: Font Awesome icon library updated to version 4.6.1.
+* Updated: The latest list of Google fonts.
+* Changed: Added a notice that Make will soon drop support for WP 4.2 and 4.3.
 
 = 1.6.7 - December 17 2015 =
 * Bug fix: Builder content would lose paragraphs and line breaks in some situations when switching between editors.
@@ -348,6 +370,12 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 = 1.0.0 - May 1 2014 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 1.7.0 =
+Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
+See the beta announcement for a complete list: https://thethemefoundry.com/blog/make-1-7-beta-1/
 
 == Credits ==
 

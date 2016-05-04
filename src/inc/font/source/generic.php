@@ -120,8 +120,12 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 		}
 
 		// Return data for a specific font.
-		if ( ! is_null( $font ) && isset( $data[ $font ] ) ) {
-			$data = $data[ $font ];
+		if ( ! is_null( $font ) ) {
+			if ( isset( $data[ $font ] ) ) {
+				return $data[ $font ];
+			} else {
+				return array();
+			}
 		}
 
 		return $data;
