@@ -371,6 +371,12 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 = 1.0.0 - May 1 2014 =
 * Initial release
 
+== Upgrade Notice ==
+
+= 1.7.0 =
+Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
+See the beta announcement for a complete list: https://thethemefoundry.com/blog/make-1-7-beta-1/
+
 == Credits ==
 
 The following third party resources are included in this theme. Each resource uses a GPL compatible license that is
