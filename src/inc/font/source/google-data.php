@@ -3,7 +3,7 @@
  * @package Make
  */
 
-// Updated: 2016-01-26T20:46:23+00:00
+// Updated: 2016-05-04T00:19:47+00:00
 
 // Bail if this isn't being included inside of MAKE_Font_Source_Google.
 if ( ! isset( $this ) || ! $this instanceof MAKE_Font_Source_Google ) {
@@ -473,6 +473,7 @@ $this->load_font_data( array(
 			'cyrillic-ext',
 			'latin',
 			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -1521,6 +1522,7 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'display',
 	),
@@ -2490,6 +2492,7 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'display',
 	),
@@ -4895,6 +4898,7 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'cyrillic',
+			'cyrillic-ext',
 			'latin',
 			'latin-ext',
 		),
@@ -6573,17 +6577,27 @@ $this->load_font_data( array(
 		'label' => 'Raleway',
 		'variants' => array(
 			'100',
+			'100italic',
 			'200',
+			'200italic',
 			'300',
+			'300italic',
 			'500',
+			'500italic',
 			'600',
+			'600italic',
 			'700',
+			'700italic',
 			'800',
+			'800italic',
 			'900',
+			'900italic',
+			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'sans-serif',
 	),
@@ -7159,6 +7173,7 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'display',
 	),
