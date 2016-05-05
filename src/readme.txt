@@ -26,6 +26,13 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.1 - May 5 2016 =
+* Improved: Better detection for plugin integrations.
+* Bug fix: Paragraph tags were getting stripped out on Builder pages in some cases.
+* Bug fix: Typography style settings were not loading correctly into the content editor window.
+* Bug fix: Breadcrumb toggles in the Layout panel were missing.
+* Bug fix: Links in Make notices were having their href attributes stripped out.
+
 = 1.7.0 - May 4 2016 =
 * Changed: Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
   * See the beta announcement for a complete list: https://thethemefoundry.com/blog/make-1-7-beta-1/
