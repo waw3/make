@@ -174,7 +174,7 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 			) );
 
 			// Breadcrumb control
-			$wp_customize->add_control( 'make_' . $setting_id, array(
+			$wp_customize->add_control( 'ttfmake_' . $setting_id, array(
 				'settings' => $setting_id,
 				'section'  => $section_id,
 				'priority' => $last_priority + 2,
