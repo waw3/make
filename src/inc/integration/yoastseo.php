@@ -154,7 +154,7 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 		);
 
 		foreach ( $views as $view ) {
-			$section_id = 'make_layout-' . $view;
+			$section_id = 'ttfmake_layout-' . $view;
 			$setting_id = 'layout-' . $view . '-yoast-breadcrumb';
 			$section_controls = $this->customizer_controls()->get_section_controls( $wp_customize, $section_id );
 			$last_priority = $this->customizer_controls()->get_last_priority( $section_controls );
@@ -174,7 +174,7 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 			) );
 
 			// Breadcrumb control
-			$wp_customize->add_control( 'make_' . $setting_id, array(
+			$wp_customize->add_control( 'ttfmake_' . $setting_id, array(
 				'settings' => $setting_id,
 				'section'  => $section_id,
 				'priority' => $last_priority + 2,

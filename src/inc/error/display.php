@@ -462,6 +462,7 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 			wp_kses_allowed_html(),
 			array(
 				'a'   => array(
+					'href' => true,
 					'target' => true,
 				),
 				'ol'  => true,

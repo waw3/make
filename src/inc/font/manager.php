@@ -351,6 +351,14 @@ class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerIn
 				)
 			);
 
+			/**
+			 * Filter the list of font choices.
+			 *
+			 * @since 1.0.0.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param array $choices
+			 */
 			$choices = apply_filters( 'make_all_font_choices', $choices );
 		}
 
