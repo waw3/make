@@ -298,7 +298,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		header( 'Content-type: text/css' );
 
 		// Echo the rules.
-		echo wp_filter_nohtml_kses( $this->css()->build() );
+		echo stripslashes( wp_filter_nohtml_kses( $this->css()->build() ) );
 
 		// End the Ajax response.
 		wp_die();
@@ -325,6 +325,10 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 * @return string                Modified list of stylesheets.
 	 */
 	function mce_css( $stylesheets ) {
+		if ( ! $this->is_loaded() ) {
+			$this->load();
+		}
+
 		if ( $this->css()->has_rules() ) {
 			$stylesheets .= ',' . $this->get_file_url();
 		}
