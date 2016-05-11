@@ -188,7 +188,7 @@ a {
 -------------------------------------------------------- */
 /* Core */
 a.custom-logo-link {
-	display: block;
+	display: inline-block;
 	@include rem('margin-bottom', $base/2);
 }
 img.custom-logo {
