@@ -26,6 +26,9 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.2 - May 11 2016 =
+* Bug fix: Display issues with the custom logo.
+
 = 1.7.1 - May 5 2016 =
 * Improved: Better detection for plugin integrations.
 * Bug fix: Paragraph tags were getting stripped out on Builder pages in some cases.
@@ -379,6 +382,9 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.7.2 =
+Fixes display issues with the custom logo.
 
 = 1.7.0 =
 Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
