@@ -188,13 +188,12 @@ a {
 -------------------------------------------------------- */
 /* Core */
 a.custom-logo-link {
-	display: block;
+	display: inline-block;
 	@include rem('margin-bottom', $base/2);
 }
 img.custom-logo {
 	height: auto;
 	max-width: 100%;
-	width: 100%;
 }
 /* Legacy */
 div.custom-logo {
