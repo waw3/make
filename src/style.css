@@ -697,6 +697,7 @@ a {
 /* Core */
 a.custom-logo-link {
 	display: inline-block;
+	max-width: 100%;
 	margin-bottom: 11px;
 	margin-bottom: 1.1rem;
 }

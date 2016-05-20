@@ -189,6 +189,7 @@ a {
 /* Core */
 a.custom-logo-link {
 	display: inline-block;
+	max-width: 100%;
 	@include rem('margin-bottom', $base/2);
 }
 img.custom-logo {
