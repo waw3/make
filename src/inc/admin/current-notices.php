@@ -51,7 +51,7 @@ if ( version_compare( $wp_version, '4.4', '<' ) ) {
 $this->register_admin_notice(
 	'make-page-builder-welcome',
 	sprintf(
-		__( 'Welcome to the page builder. Learn to <a href="%s" target="_blank">add, edit and arrange sections</a>.', 'make' ),
+		__( 'This is the page builder. Learn to <a href="%s" target="_blank">add, edit and arrange sections</a>.', 'make' ),
 		'https://thethemefoundry.com/docs/make-docs/page-builder/managing-sections/'
 	),
 	array(
@@ -78,7 +78,7 @@ $this->register_admin_notice(
 $this->register_admin_notice(
 	'make-dashboard-simple-start',
 	sprintf(
-		__( 'Welcome to Make. Learn all there is to getting started with our <a href="%s" target="_blank">Simple Start Handbook</a>.', 'make' ),
+		__( 'Welcome to Make! Get up and running with our <a href="%s" target="_blank">Simple Start Handbook</a>.', 'make' ),
 		'https://thethemefoundry.com/docs/make-docs/simple-start-handbook/'
 	),
 	array(
