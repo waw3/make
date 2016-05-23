@@ -1513,17 +1513,6 @@ div.custom-logo a {
 	text-decoration: none;
 }
 
-.site-footer .site-info .theme-by,
-.site-footer .site-info a .theme-by {
-	padding: 0 4px;
-	padding: 0 0.4rem;
-	font-weight: normal;
-	font-style: italic;
-	letter-spacing: 1px;
-	letter-spacing: 0.1rem;
-	text-transform: lowercase;
-}
-
 .footer-widget-container {
 	float: left;
 	width: 100%;

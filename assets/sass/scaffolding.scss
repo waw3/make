@@ -717,13 +717,6 @@ div.custom-logo {
 				text-decoration: none; //reset
 			}
 		}
-		.theme-by {
-			font-weight: normal;
-			font-style: italic;
-			text-transform: lowercase;
-			@include rem('padding', 0 4px);
-			@include rem('letter-spacing', 1px);
-		}
 	}
 }
 .footer-widget-container {
