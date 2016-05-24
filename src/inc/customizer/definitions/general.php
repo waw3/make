@@ -116,7 +116,6 @@ $this->add_section_definitions( 'labels', array(
 			),
 			'control' => array(
 				'label'       => __( 'Mobile Menu Label', 'make' ),
-				'description' => __( 'Resize your browser window to preview the mobile menu label.', 'make' ),
 				'type'        => 'text',
 			),
 		),

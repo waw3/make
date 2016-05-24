@@ -200,6 +200,19 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 					'type'    => 'warning',
 				)
 			);
+		} else if ( true === $this->is_plus() && version_compare( $this->get_plus_version(), '1.7.0', '<' ) ) {
+			$notice->register_admin_notice(
+				'make-plus-lt-170',
+				sprintf(
+					__( 'The current version of the Make theme is only fully compatible with version 1.7.0 or higher of the Make Plus plugin. Please update Make Plus to the latest version.', 'make' )
+				),
+				array(
+					'cap'     => 'update_plugins',
+					'dismiss' => true,
+					'screen'  => array( 'dashboard', 'update-core.php', 'plugins.php' ),
+					'type'    => 'warning',
+				)
+			);
 		}
 	}
 
