@@ -4,7 +4,7 @@ Contributors: thethemefoundry
 Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
 
 Requires at least: 4.2
-Tested up to: 4.5.1
+Tested up to: 4.5.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,11 @@ Build a website that means business. With Make’s powerful drag and drop page b
 Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
+
+= 1.7.3 - May 23 2016 =
+* Bug fix: Display issue with the custom logo in Internet Explorer.
+* Changed: Wording changes in various parts of the UI.
+* Changed: Added notice that will appear for Make Plus users when they have an older version of the plugin installed.
 
 = 1.7.2 - May 11 2016 =
 * Bug fix: Display issues with the custom logo.
@@ -383,8 +388,8 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Upgrade Notice ==
 
-= 1.7.2 =
-Fixes display issues with the custom logo.
+= 1.7.3 =
+Fixes a display issue in IE with the custom logo.
 
 = 1.7.0 =
 Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
