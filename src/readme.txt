@@ -26,6 +26,12 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.4 - June 7 2016 =
+* Changed: Make now only supports WordPress 4.4 and higher.
+* Bug fix: Current menu item font weight was not applied correctly.
+* Bug fix: Some style settings were not updated correctly in the Customizer preview pane.
+* New filter: `make_entry_thumbnail_size` modifies the image size used for post featured images.
+
 = 1.7.3 - May 23 2016 =
 * Bug fix: Display issue with the custom logo in Internet Explorer.
 * Changed: Wording changes in various parts of the UI.
@@ -388,8 +394,8 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Upgrade Notice ==
 
-= 1.7.3 =
-Fixes a display issue in IE with the custom logo.
+= 1.7.4 =
+Dropped support for WP versions less than 4.4. Bug fixes.
 
 = 1.7.0 =
 Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.
