@@ -29,24 +29,6 @@ if ( version_compare( $wp_version, TTFMAKE_MIN_WP_VERSION, '<' ) ) {
 	);
 }
 
-// Notice of upcoming drop of support for 4.2 and 4.3
-if ( version_compare( $wp_version, '4.4', '<' ) ) {
-	$this->register_admin_notice(
-		'make-wp-lt-44',
-		sprintf(
-			__( 'Make will soon be dropping support for WordPress versions 4.2 and 4.3. Your current version is %1$s. Please <a href="%2$s">update WordPress</a> to ensure full compatibility.', 'make' ),
-			esc_html( $wp_version ),
-			admin_url( 'update-core.php' )
-		),
-		array(
-			'cap'     => 'update_core',
-			'dismiss' => true,
-			'screen'  => array( 'dashboard', 'themes', 'update-core.php' ),
-			'type'    => 'warning',
-		)
-	);
-}
-
 // Help notices
 $this->register_admin_notice(
 	'make-page-builder-welcome',
@@ -61,20 +43,22 @@ $this->register_admin_notice(
 		'type'    => 'info',
 	)
 );
-$this->register_admin_notice(
-	'make-themes-child-theme-intro',
-	sprintf(
-		__( 'Looking to take Make even further? Learn to <a href="%1$s" target="_blank">install a child theme</a> and <a href="%2$s" target="_blank">apply custom code</a>.', 'make' ),
-		'https://thethemefoundry.com/docs/make-docs/code/installing-child-theme/',
-		'https://thethemefoundry.com/docs/make-docs/code/custom-css/'
-	),
-	array(
-		'cap'     => 'switch_themes',
-		'dismiss' => true,
-		'screen'  => array( 'theme-editor' ),
-		'type'    => 'info',
-	)
-);
+if ( ! is_child_theme() ) {
+	$this->register_admin_notice(
+		'make-themes-child-theme-intro',
+		sprintf(
+			__( 'Looking to take Make even further? Learn to <a href="%1$s" target="_blank">install a child theme</a> and <a href="%2$s" target="_blank">apply custom code</a>.', 'make' ),
+			'https://thethemefoundry.com/docs/make-docs/code/installing-child-theme/',
+			'https://thethemefoundry.com/docs/make-docs/code/custom-css/'
+		),
+		array(
+			'cap'     => 'switch_themes',
+			'dismiss' => true,
+			'screen'  => array( 'theme-editor' ),
+			'type'    => 'info',
+		)
+	);
+}
 $this->register_admin_notice(
 	'make-dashboard-simple-start',
 	sprintf(

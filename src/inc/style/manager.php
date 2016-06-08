@@ -237,7 +237,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		if ( $this->css()->has_rules() ) {
 			echo "\n<!-- Begin Make Inline CSS -->\n<style type=\"text/css\">\n";
 
-			echo stripslashes( wp_filter_nohtml_kses( $this->css()->build() ) );
+			echo stripslashes( wp_strip_all_tags( $this->css()->build() ) );
 
 			echo "\n</style>\n<!-- End Make Inline CSS -->\n";
 		}
@@ -298,7 +298,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 		header( 'Content-type: text/css' );
 
 		// Echo the rules.
-		echo stripslashes( wp_filter_nohtml_kses( $this->css()->build() ) );
+		echo stripslashes( wp_strip_all_tags( $this->css()->build() ) );
 
 		// End the Ajax response.
 		wp_die();

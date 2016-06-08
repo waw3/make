@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.7.3\n"
+"Project-Id-Version: Make 1.7.4\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2016-05-24 01:57:56+00:00\n"
+"POT-Creation-Date: 2016-06-08 00:31:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -89,27 +89,20 @@ msgid ""
 "compatibility."
 msgstr ""
 
-#: inc/admin/current-notices.php:37
-msgid ""
-"Make will soon be dropping support for WordPress versions 4.2 and 4.3. Your "
-"current version is %1$s. Please <a href=\"%2$s\">update WordPress</a> to "
-"ensure full compatibility."
-msgstr ""
-
-#: inc/admin/current-notices.php:54
+#: inc/admin/current-notices.php:36
 msgid ""
 "This is the page builder. Learn to <a href=\"%s\" target=\"_blank\">add, "
 "edit and arrange sections</a>."
 msgstr ""
 
-#: inc/admin/current-notices.php:67
+#: inc/admin/current-notices.php:50
 msgid ""
 "Looking to take Make even further? Learn to <a href=\"%1$s\" "
 "target=\"_blank\">install a child theme</a> and <a href=\"%2$s\" "
 "target=\"_blank\">apply custom code</a>."
 msgstr ""
 
-#: inc/admin/current-notices.php:81
+#: inc/admin/current-notices.php:65
 msgid ""
 "Welcome to Make! Get up and running with our <a href=\"%s\" "
 "target=\"_blank\">Simple Start Handbook</a>."
@@ -749,7 +742,7 @@ msgid "Use methods from %s instead."
 msgstr ""
 
 #: inc/compatibility/deprecated/deprecated-1.7.php:2211
-#: inc/customizer/controls.php:684
+#: inc/customizer/controls.php:678
 msgid "Loading&hellip;"
 msgstr ""
 
@@ -984,18 +977,18 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: inc/customizer/controls.php:325
+#: inc/customizer/controls.php:324
 msgid "The \"%s\" section can't be added because it already exists."
 msgstr ""
 
-#: inc/customizer/controls.php:685
+#: inc/customizer/controls.php:679
 msgid "No matching fonts"
 msgstr ""
 
 #: inc/customizer/datahelper.php:46
 #: inc/customizer/definitions/background-images.php:77
 #: inc/customizer/definitions/color.php:583
-#: inc/customizer/definitions/general.php:182
+#: inc/customizer/definitions/general.php:143
 #: inc/customizer/definitions/layout.php:466
 #: inc/customizer/definitions/typography.php:145
 msgid ""
@@ -1332,16 +1325,16 @@ msgstr ""
 msgid "Footer Text Color"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:18
-#: inc/customizer/definitions/general.php:35
+#: inc/customizer/definitions/general.php:19
+#: inc/customizer/definitions/general.php:36
 msgid "Logo"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:23
+#: inc/customizer/definitions/general.php:24
 msgid "Regular & Retina Logos"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:24
+#: inc/customizer/definitions/general.php:25
 msgid ""
 "\n"
 "\t\t\t\t\t\tThese settings have been deprecated in favor of the Site Logo "
@@ -1351,74 +1344,43 @@ msgid ""
 "\t\t\t\t\t"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:41
+#: inc/customizer/definitions/general.php:42
 msgid "Regular Logo"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:49
+#: inc/customizer/definitions/general.php:50
 msgid "Retina Logo (2x)"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:50
+#: inc/customizer/definitions/general.php:51
 msgid "The Retina Logo should be twice the size of the Regular Logo."
 msgstr ""
 
-#: inc/customizer/definitions/general.php:65
-msgid "Favicon & Apple Touch Icon"
-msgstr ""
-
-#: inc/customizer/definitions/general.php:66
-msgid ""
-"These settings have been deprecated in favor of the Site Icon setting "
-"provided by WordPress core. Please visit the Site Identity section to "
-"configure your site icon."
-msgstr ""
-
-#: inc/customizer/definitions/general.php:78
-msgid "Favicon"
-msgstr ""
-
-#: inc/customizer/definitions/general.php:79
-msgid ""
-"File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal "
-"dimensions: <strong>32px x 32px</strong>."
-msgstr ""
-
-#: inc/customizer/definitions/general.php:88
-msgid "Apple Touch Icon"
-msgstr ""
-
-#: inc/customizer/definitions/general.php:89
-msgid ""
-"File must be <strong>.png</strong> format. Optimal dimensions: "
-"<strong>152px x 152px</strong>."
-msgstr ""
-
-#: inc/customizer/definitions/general.php:101
+#: inc/customizer/definitions/general.php:62
 msgid "Labels"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:108
+#: inc/customizer/definitions/general.php:69
 msgid "Search Field Label"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:118
+#: inc/customizer/definitions/general.php:79
 msgid "Mobile Menu Label"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:127
+#: inc/customizer/definitions/general.php:88
 msgid "Sticky Label"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:145
+#: inc/customizer/definitions/general.php:106
 msgid "Read More Label"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:156
+#: inc/customizer/definitions/general.php:117
 msgid "Social Icons"
 msgstr ""
 
-#: inc/customizer/definitions/general.php:164
+#: inc/customizer/definitions/general.php:125
 msgid ""
 "Add a link to each of your social profiles and we&#8217;ll add the icon to "
 "match — it&#8217;s that simple. Drag and drop to rearrange."
@@ -1691,12 +1653,6 @@ msgstr ""
 
 #: inc/customizer/mods/background.php:33
 msgid "Site"
-msgstr ""
-
-#: inc/customizer/mods/navigation.php:45
-msgid ""
-"Select which menu appears in each location. You can edit your menu content "
-"on the Menus screen in the Appearance section."
 msgstr ""
 
 #: inc/customizer/mods/site-title-tagline.php:33
@@ -2227,6 +2183,14 @@ msgstr ""
 msgid ""
 "To add or modify theme settings, use the %1$s function instead. See the <a "
 "href=\"%2$s\" target=\"_blank\">Theme Settings API documentation</a>."
+msgstr ""
+
+#: inc/setup/head.php:197
+msgid ""
+"This site is using the old Favicon and Apple Touch Icon settings, which "
+"were deprecated in version 1.6.2. Go to <em>General &rarr; Site "
+"Identity</em> in the Customizer to switch to the new, improved Site Icon "
+"setting."
 msgstr ""
 
 #: inc/setup/misc.php:152

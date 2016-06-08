@@ -248,7 +248,6 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	public function load_mods( WP_Customize_Manager $wp_customize ) {
 		$file_bases = array(
 			'background',
-			'navigation',
 			'site-title-tagline',
 			'static-front-page',
 			'widgets',
@@ -654,15 +653,10 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		// jQuery UI styles are for our custom Range and Buttonset controls.
 		wp_enqueue_style( 'make-jquery-ui-custom' );
 
-		// Custom styling depends on version of WP
-		// Nav menu panel was introduced in 4.3
-		$suffix = '';
-		if ( ! class_exists( 'WP_Customize_Nav_Menus' ) ) {
-			$suffix = '-legacy';
-		}
+		// Styles
 		wp_enqueue_style(
 			'make-customizer-controls',
-			$this->scripts()->get_css_directory_uri() . "/customizer/controls{$suffix}.css",
+			$this->scripts()->get_css_directory_uri() . '/customizer/controls.css',
 			array( 'make-jquery-ui-custom', 'chosen' ),
 			TTFMAKE_VERSION
 		);

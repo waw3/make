@@ -569,6 +569,40 @@ function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after =
 	}
 }
 
+/**
+ * Determine which image size to use to display a post's featured image.
+ *
+ * @since 1.7.4.
+ *
+ * @param string $layout_setting
+ *
+ * @return string
+ */
+function make_get_entry_thumbnail_size( $layout_setting = 'none' ) {
+	// Currently viewing an attachment
+	if ( is_attachment() ) {
+		$size = 'full';
+	}
+	// Currently viewing some other post type
+	else {
+		if ( 'post-header' === $layout_setting ) {
+			$size = 'large';
+		} else {
+			$size = ( is_singular() ) ? 'medium' : 'thumbnail';
+		}
+	}
+
+	/**
+	 * Filter: Modify the image size used to display a post's featured image (post thumbnail)
+	 *
+	 * @since 1.7.4.
+	 *
+	 * @param string $size              The ID of the image size to use.
+	 * @param string $layout_setting    The value of the featured image layout setting for the current view.
+	 */
+	return apply_filters( 'make_entry_thumbnail_size', $size, $layout_setting );
+}
+
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
  * Sanitizes a hex color.

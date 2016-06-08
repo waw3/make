@@ -12,6 +12,7 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_ControlsInterface ) 
 $panel = $this->prefix . 'general';
 
 // Logo
+// TODO remove this when WP 4.5 is no longer supported
 if ( $this->logo()->custom_logo_is_supported() ) {
 	$this->add_section_definitions( 'logo', array(
 		'panel'    => $panel,
@@ -53,46 +54,6 @@ if ( $this->logo()->custom_logo_is_supported() ) {
 			),
 		),
 	) );
-}
-
-// Deprecated Site Icon controls
-if ( function_exists( 'has_site_icon' ) ) {
-	$this->add_section_definitions( 'logo', array(
-		'controls' => array(
-			'logo-icons-notice' => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Html',
-					'label'        => __( 'Favicon & Apple Touch Icon', 'make' ),
-					'description'  => __( 'These settings have been deprecated in favor of the Site Icon setting provided by WordPress core. Please visit the Site Identity section to configure your site icon.', 'make' ),
-				),
-			),
-		)
-	), true ); // Overwrite to add additional controls to the section
-} else {
-	$this->add_section_definitions( 'logo', array(
-		'controls' => array(
-			'logo-favicon'     => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'WP_Customize_Image_Control',
-					'label'        => __( 'Favicon', 'make' ),
-					'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
-					'context'      => $this->prefix . 'logo-favicon',
-					'extensions'   => array( 'png', 'ico' ),
-				),
-			),
-			'logo-apple-touch' => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'WP_Customize_Image_Control',
-					'label'        => __( 'Apple Touch Icon', 'make' ),
-					'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
-					'context'      => $this->prefix . 'logo-apple-touch',
-					'extensions'   => array( 'png' ),
-				),
-			),
-		)
-	), true ); // Overwrite to add additional controls to the section
 }
 
 // Labels

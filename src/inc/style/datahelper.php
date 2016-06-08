@@ -99,14 +99,15 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 	 *
 	 * @param string $element      The element to look up in the theme options.
 	 * @param array  $selectors    The base selectors to use for the rule.
+	 * @param bool   $force        True to include properties that have default values.
 	 *
 	 * @return array               A CSS rule definition array.
 	 */
-	public function parse_link_underline( $element, $selectors ) {
+	public function parse_link_underline( $element, $selectors, $force = false ) {
 		$setting_id = 'link-underline-' . $element;
 		$sanitized_value = $this->thememod()->get_value( $setting_id, 'style' );
 
-		if ( ! $this->thememod()->is_default( $setting_id ) ) {
+		if ( $force || ! $this->thememod()->is_default( $setting_id ) ) {
 			// Declarations
 			$declarations = array( 'text-decoration' => 'underline' );
 			if ( 'never' === $sanitized_value ) {
