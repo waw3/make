@@ -113,7 +113,7 @@ final class MAKE_Integration_WPRetina2x extends MAKE_Util_Modules implements MAK
 				array(
 					'section'  => $logo_control->section,
 					'priority' => $logo_control->priority + 1,
-					'html'     => '<p class="description">' . esc_html__( 'It looks like you have the WP Retina 2x plugin activated. So Make can display your logo at the correct size, be sure to upload an image that is twice the width you want it to display at.', 'make' ) . '</p>',
+					'html'     => '<p class="description">' . esc_html__( 'It looks like you have the WP Retina 2x plugin activated. Make sure you upload a logo image that is 200% the width you want.', 'make' ) . '</p>',
 				)
 			) );
 		}
