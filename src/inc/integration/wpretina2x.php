@@ -111,9 +111,9 @@ final class MAKE_Integration_WPRetina2x extends MAKE_Util_Modules implements MAK
 				$wp_customize,
 				'ttfmake_custom-logo-blurb',
 				array(
-					'section'  => $logo_control->section,
-					'priority' => $logo_control->priority + 1,
-					'html'     => '<p class="description">' . esc_html__( 'It looks like you have the WP Retina 2x plugin activated. Make sure you upload a logo image that is 200% the width you want.', 'make' ) . '</p>',
+					'section'     => $logo_control->section,
+					'priority'    => $logo_control->priority + 1,
+					'description' => esc_html__( 'It looks like you\'ve activated WP Retina 2x. Make sure you upload a logo image that is 200% the width you want.', 'make' ),
 				)
 			) );
 		}
