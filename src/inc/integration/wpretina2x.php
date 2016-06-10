@@ -45,6 +45,8 @@ final class MAKE_Integration_WPRetina2x extends MAKE_Util_Modules implements MAK
 
 		add_filter( 'make_logo_max_width', array( $this, 'set_max_width' ) );
 
+		add_action( 'customize_register', array( $this, 'add_controls' ), 50 );
+
 		// Hooking has occurred.
 		self::$hooked = true;
 	}
@@ -64,6 +66,8 @@ final class MAKE_Integration_WPRetina2x extends MAKE_Util_Modules implements MAK
 	 * Set the max width of the logo to half the full size image width.
 	 *
 	 * @since 1.7.5.
+	 *
+	 * @hooked filter make_logo_max_width
 	 *
 	 * @param int $width
 	 *
@@ -86,5 +90,32 @@ final class MAKE_Integration_WPRetina2x extends MAKE_Util_Modules implements MAK
 		}
 
 		return $width;
+	}
+
+	/**
+	 * Add controls to the Customizer interface.
+	 *
+	 * @since 1.7.5.
+	 *
+	 * @hooked action customize_register
+	 *
+	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
+	 */
+	public function add_controls( WP_Customize_Manager $wp_customize ) {
+		$logo_control = $wp_customize->get_control( 'custom_logo' );
+
+		if ( $logo_control instanceof WP_Customize_Control ) {
+			$wp_customize->add_control( new MAKE_Customizer_Control_Html(
+				$wp_customize,
+				'ttfmake_custom-logo-blurb',
+				array(
+					'section'  => $logo_control->section,
+					'priority' => $logo_control->priority + 1,
+					'html'     => '<p class="description">' . esc_html__( 'It looks like you have the WP Retina 2x plugin activated. So Make can display your logo at the correct size, be sure to upload an image that is twice the width you want it to display at.', 'make' ) . '</p>',
+				)
+			) );
+		}
 	}
 }
