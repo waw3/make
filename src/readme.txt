@@ -29,6 +29,7 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 = 1.7.5 - June 22 2016 =
 * Improved: Better integration with the WP Retina 2x plugin for improved retina logos.
 * Bug fix: Layout view algorithm was reverting to 'post' view when nothing matched.
+* Updated: The latest list of Google fonts.
 
 = 1.7.4 - June 7 2016 =
 * Changed: Make now only supports WordPress 4.4 and higher.
