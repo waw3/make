@@ -64,7 +64,8 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_print_styles-post.php', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_print_styles-post-new.php', array( $this, 'admin_print_styles' ) );
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
-		add_action( 'admin_footer', array( $this, 'print_templates' ) );
+		add_action( 'admin_print_footer_scripts', array( $this, 'print_templates' ) );
+		add_action( 'admin_print_footer_scripts', array( $this, 'print_data' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
 	}
 
@@ -568,6 +569,40 @@ class TTFMAKE_Builder_Base {
 				</div>
 			</script>
 		<?php
+	}
+
+	/**
+	 * Print out the existing section data.
+	 *
+	 * @since 1.7.6.
+	 *
+	 * @return void
+	 */
+	public function print_data() {
+		global $hook_suffix, $typenow;
+
+		// Only show when adding/editing pages
+		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
+			return;
+		}
+
+		$section_data = ttfmake_get_section_data( get_post()->ID );
+		$i = 0;
+		$n = count( $section_data );
+
+		?>
+		<script type="text/javascript">
+			var MakeSectionData = {
+				<?php foreach ( $section_data as $id => $data ) :
+					$i++;
+					// Add a comma and linebreak between each section object.
+					$end = ( $i == $n ) ? "\n" : ",\n";
+					?>
+					"<?php echo $id ?>":<?php echo wp_json_encode( $data ) . $end; ?>
+				<?php endforeach; ?>
+			};
+		</script>
+	<?php
 	}
 
 	/**
