@@ -65,7 +65,7 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_print_styles-post-new.php', array( $this, 'admin_print_styles' ) );
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 		add_action( 'admin_print_footer_scripts', array( $this, 'print_templates' ) );
-		add_action( 'admin_print_footer_scripts', array( $this, 'print_data' ) );
+		add_action( 'admin_print_footer_scripts', array( $this, 'print_data' ), 1 ); // Print before Builder scripts
 		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
 	}
 
@@ -209,7 +209,7 @@ class TTFMAKE_Builder_Base {
 
 			if ( isset( $registered_sections[ $section['section-type'] ]['display_template'] ) ) {
 				// Print the saved section
-				$this->load_section( $registered_sections[ $section['section-type'] ], $section );
+	//			$this->load_section( $registered_sections[ $section['section-type'] ], $section );
 			}
 		}
 
@@ -248,6 +248,7 @@ class TTFMAKE_Builder_Base {
 		// Dependencies regardless of min/full scripts
 		$dependencies = array(
 			'wplink',
+			'wp-util',
 			'utils',
 			'media-views',
 			'wp-color-picker',
@@ -317,10 +318,16 @@ class TTFMAKE_Builder_Base {
 			)
 		);
 
+		// Compile the URLs for the script dependencies
+		$dep_urls = array();
+		foreach ( $dependencies as $dep_id ) {
+			$dep_urls[] = Make()->scripts()->get_url( $dep_id, 'script' );
+		}
+
 		wp_enqueue_script(
 			'ttfmake-builder',
 			Make()->scripts()->get_js_directory_uri() . '/builder/core/app.js',
-			$dependencies,
+			array(),
 			TTFMAKE_VERSION,
 			true
 		);
@@ -330,6 +337,7 @@ class TTFMAKE_Builder_Base {
 			'pageID'        => get_the_ID(),
 			'postRefresh'   => true,
 			'confirmString' => esc_html__( 'Delete the section?', 'make' ),
+			'dependencies'  => $dep_urls
 		);
 
 		wp_localize_script(

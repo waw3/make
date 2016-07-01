@@ -45,7 +45,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			// Create view
 			view = new oneApp[viewName]({
-				model: section
+				model: section,
+				existingSection: section.get('existingSection')
 			});
 
 			// Append view
@@ -55,7 +56,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			$oneApp.trigger('afterSectionViewAdded', view);
 
 			// Scroll to added view and focus first input
-			oneApp.scrollToAddedView(view);
+			if (! view.existingSection) {
+				oneApp.scrollToAddedView(view);
+			}
 
 			oneApp.sections.toggleStageClass();
 			oneApp.addOrderValue(section.get('id'), oneApp.cache.$sectionOrder);

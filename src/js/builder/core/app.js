@@ -1,11 +1,11 @@
 /*global jQuery, tinyMCE, switchEditors */
-var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
+var oneApp = oneApp || {},
+	ttfMakeFrames = ttfMakeFrames || [],
+	MakeSectionData = MakeSectionData || {},
+	ttfmakeBuilderData = ttfmakeBuilderData || {};
 
-(function ($, oneApp, ttfMakeFrames) {
+(function ($, oneApp, ttfMakeFrames, MakeSectionData, ttfmakeBuilderData) {
 	'use strict';
-
-	// Kickoff Backbone App
-	new oneApp.MenuView();
 
 	oneApp.options = {
 		openSpeed : 400,
@@ -89,7 +89,21 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		oneApp.setOrder(currentOrderArray, $input);
 	};
 
-	oneApp.initViews = function () {
+	oneApp.initViews = function() {
+		_.each(MakeSectionData, function(data, id, sections) {
+			var sectionModel, modelViewName, view, viewName;
+
+			data.sectionType = data['section-type'];
+			data.existingSection = true;
+
+			// Build the model
+			sectionModel = new oneApp.SectionModel(data);
+
+			// Create view
+			oneApp.sections.create(sectionModel);
+		});
+
+		/*
 		$('.ttfmake-section').each(function () {
 			var $section = $(this),
 				idAttr = $section.attr('id'),
@@ -114,6 +128,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 				serverRendered: true
 			});
 		});
+		*/
 	};
 
 	oneApp.scrollToAddedView = function (view) {
@@ -260,36 +275,6 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		});
 	};
 
-	// Initialize color pickers
-	$oneApp.on('viewInit afterSectionViewAdded', function(evt, view) {
-		var $selector;
-		view = view || '';
-
-		if (view.$el) {
-			$selector = $('.ttfmake-configuration-color-picker', view.$el);
-		} else {
-			$selector = $('.ttfmake-configuration-color-picker');
-		}
-
-		$selector.wpColorPicker();
-	});
-
-	$('body').on('click', '.ttfmake-remove-image-from-modal', function(evt){
-		evt.preventDefault();
-
-		var $parent = oneApp.$currentPlaceholder.parents('.ttfmake-uploader'),
-			$input = $('.ttfmake-media-uploader-value', $parent);
-
-		// Remove the image
-		oneApp.$currentPlaceholder.css('background-image', '');
-		$parent.removeClass('ttfmake-has-image-set');
-
-		// Remove the value from the input
-		$input.removeAttr('value');
-
-		wp.media.frames.frame.close();
-	});
-
 	wp.media.view.Sidebar = wp.media.view.Sidebar.extend({
 		render: function() {
 			this.$el.html( wp.media.template( 'ttfmake-remove-image' ) );
@@ -300,7 +285,68 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 	// Leaving function to avoid errors if 3rd party code uses it. Deprecated in 1.4.0.
 	oneApp.initAllEditors = function(id, model) {};
 
-	oneApp.initSortables();
-	oneApp.initViews();
-	oneApp.triggerInitFrames();
-})(jQuery, oneApp, ttfMakeFrames);
+	/**
+	 * Load multiple scripts using promises so a callback can be used
+	 * when all the loading is complete.
+	 *
+	 * @link http://stackoverflow.com/a/11803418
+	 *
+	 * @since 1.7.6.
+	 *
+	 * @param paths
+	 * @returns {*|$.Deferred.promise}
+	 */
+	oneApp.getMultiScripts = function(paths) {
+		var _arr = $.map(paths, function(path) {
+			return $.getScript(path);
+		});
+
+		_arr.push($.Deferred(function(deferred){
+			$(deferred.resolve);
+		}));
+
+		return $.when.apply($, _arr);
+	};
+
+	oneApp.getMultiScripts(ttfmakeBuilderData.dependencies).done(function() {
+		// Kickoff Backbone App
+		new oneApp.MenuView();
+
+		// Initialize color pickers
+		$oneApp.on('viewInit afterSectionViewAdded', function(evt, view) {
+			var $selector;
+			view = view || '';
+
+			if (view.$el) {
+				$selector = $('.ttfmake-configuration-color-picker', view.$el);
+			} else {
+				$selector = $('.ttfmake-configuration-color-picker');
+			}
+
+			$selector.wpColorPicker();
+		});
+
+		// Bind remove image event
+		$('body').on('click', '.ttfmake-remove-image-from-modal', function(evt){
+			evt.preventDefault();
+
+			var $parent = oneApp.$currentPlaceholder.parents('.ttfmake-uploader'),
+				$input = $('.ttfmake-media-uploader-value', $parent);
+
+			// Remove the image
+			oneApp.$currentPlaceholder.css('background-image', '');
+			$parent.removeClass('ttfmake-has-image-set');
+
+			// Remove the value from the input
+			$input.removeAttr('value');
+
+			wp.media.frames.frame.close();
+		});
+
+		// Fire other initializers
+		oneApp.initSortables();
+		oneApp.initViews();
+		oneApp.triggerInitFrames();
+	});
+
+})(jQuery, oneApp, ttfMakeFrames, MakeSectionData, ttfmakeBuilderData);

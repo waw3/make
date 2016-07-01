@@ -11,6 +11,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		$titleInput: '',
 		$titlePipe: '',
 		serverRendered: false,
+		existingSection: false,
 		$document: $(window.document),
 		$scrollHandle: $('html, body'),
 
