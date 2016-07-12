@@ -1847,8 +1847,7 @@ address {
 }
 
 hr {
-	height: 1px;
-	margin-bottom: 22px;
+	margin: 44px 0;
 	border: 0;
 	border-top: 1px solid #eaecee;
 }
