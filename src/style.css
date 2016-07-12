@@ -1673,8 +1673,9 @@ blockquote p {
 }
 
 blockquote cite {
-	margin-bottom: 22px;
-	margin-bottom: 2.2rem;
+	display: block;
+	margin: 22px 0;
+	margin: 2.2rem 0;
 	font-size: 13px;
 	font-size: 1.3rem;
 	font-style: normal;

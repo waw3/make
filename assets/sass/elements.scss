@@ -56,8 +56,9 @@ blockquote {
 		@include rem('font-size', 24px);
 	}
 	cite {
+		display: block;
 		font-style: normal; //reset
-		@include rem('margin-bottom', $base);
+		@include rem('margin', $base 0);
 		@include rem('font-size', 13px);
 		&:before {
 			content: "\2014";
