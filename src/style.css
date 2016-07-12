@@ -2793,6 +2793,13 @@ div.wp-video-shortcode {
 	z-index: 2;
 }
 
+.search article.post,
+.search article.page {
+	margin: 22px 0;
+	padding: 22px 0;
+	border-bottom: 1px solid #eaecee;
+}
+
 
 /*---------------------------------------------------------
  Text section (_pages.scss)

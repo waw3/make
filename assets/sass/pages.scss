@@ -75,6 +75,15 @@
 	position: relative;
 	z-index: 2;
 }
+.search {
+	article.post,
+	article.page {
+		margin: $base 0;
+		padding: $base 0;
+		border-bottom: 1px solid $d;
+	}
+
+}
 /*---------------------------------------------------------
  Text section (_pages.scss)
 -------------------------------------------------------- */
