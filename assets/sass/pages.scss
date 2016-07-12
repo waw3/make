@@ -169,7 +169,6 @@
 	overflow: hidden;
 	color: $a;
 	line-height: 1.35;
-	text-shadow: 1px 0 8px rgba(0,0,0,0.15);
 	@include rem('padding', $base/2 $gut);
 	@include rem('font-size', 15px);
 	-webkit-transform-style: preserve-3d;

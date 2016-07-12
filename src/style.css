@@ -2685,7 +2685,6 @@ div.wp-video-shortcode {
 	left: 16px;
 	left: 1.6rem;
 	color: #eaecee;
-	text-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
 	text-align: left;
 }
 
@@ -2912,7 +2911,6 @@ div.wp-video-shortcode {
 	padding: 11px 32px;
 	padding: 1.1rem 3.2rem;
 	color: #fff;
-	text-shadow: 1px 0 8px rgba(0, 0, 0, 0.15);
 	font-size: 15px;
 	font-size: 1.5rem;
 	line-height: 1.35;
