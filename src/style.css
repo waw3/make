@@ -3470,6 +3470,10 @@ div.wp-video-shortcode {
 	content: "\2013  ";
 }
 
+.widget_recent_entries .post-date {
+	display: block;
+}
+
 
 /*---------------------------------------------------------
  10. Comments (_comments.scss)
