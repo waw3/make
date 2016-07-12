@@ -1121,6 +1121,11 @@ div.custom-logo a {
 	}
 }
 
+.site-navigation .menu .sub-menu li:last-child a,
+.site-navigation .nav-menu .sub-menu li:last-child a {
+	border-bottom: none;
+}
+
 .site-navigation .menu .sub-menu,
 .site-navigation .menu .children,
 .site-navigation .nav-menu .sub-menu,

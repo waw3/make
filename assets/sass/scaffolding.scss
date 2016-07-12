@@ -467,6 +467,9 @@ div.custom-logo {
 				text-decoration: none;
 			}
 		}
+		.sub-menu li:last-child a {
+			border-bottom: none;
+		}
 		.sub-menu,
 		.children {
 			padding: 0; //reset
