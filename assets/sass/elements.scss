@@ -112,16 +112,13 @@ var {
 	font-family: $mono;
 	background-color: $d;
 	@include rem('padding', 4px 6px);
-	@include border-radius;
 }
 pre {
 	overflow: auto;
-	white-space: pre-wrap;
 	max-width: 100%;
 	line-height: 1.7;
 	@include rem('margin', $base 0);
 	@include rem('padding', $base*1.5);
-	@extend .break;
 }
 pre code {
 	padding: 0;

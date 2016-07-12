@@ -400,8 +400,7 @@ h2,
 h3,
 h4,
 h5,
-h6,
-pre {
+h6 {
 	word-wrap: break-word;
 	word-break: break-word;
 }
@@ -1747,9 +1746,6 @@ samp,
 var {
 	padding: 4px 6px;
 	padding: 0.4rem 0.6rem;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 	background-color: #eaecee;
 	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 }
@@ -1762,7 +1758,6 @@ pre {
 	padding: 33px;
 	padding: 3.3rem;
 	line-height: 1.7;
-	white-space: pre-wrap;
 }
 
 pre code {
