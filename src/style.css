@@ -3429,10 +3429,7 @@ div.wp-video-shortcode {
 	margin-bottom: 0.5rem;
 	padding: 8px;
 	padding: 0.8rem;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	background-color: #eaecee;
+	border: 1px solid #eaecee;
 	text-decoration: none;
 }
 

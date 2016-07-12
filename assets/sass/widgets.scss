@@ -65,11 +65,10 @@
 .widget_tag_cloud a,
 .widget_product_tag_cloud a {
 	display:  inline-block;
-	background-color: $d;
+	border: 1px solid $d;
 	text-decoration: none; //reset
 	@include rem('margin-bottom', 5px);
 	@include rem('padding', 8px);
-	@include border-radius;
 }
 .widget_calendar table {
 	margin-top: 0; //reset
