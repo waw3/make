@@ -154,6 +154,9 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-secondary' ) )
 		'selectors'    => array(
 			'.comment-body',
 			'.post',
+			'.page',
+			'.search article.post',
+			'.search article.page',
 			'.widget li',
 		),
 		'declarations' => array(
