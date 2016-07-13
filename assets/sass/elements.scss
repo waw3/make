@@ -56,8 +56,9 @@ blockquote {
 		@include rem('font-size', 24px);
 	}
 	cite {
+		display: block;
 		font-style: normal; //reset
-		@include rem('margin-bottom', $base);
+		@include rem('margin', $base 0);
 		@include rem('font-size', 13px);
 		&:before {
 			content: "\2014";
@@ -112,16 +113,13 @@ var {
 	font-family: $mono;
 	background-color: $d;
 	@include rem('padding', 4px 6px);
-	@include border-radius;
 }
 pre {
 	overflow: auto;
-	white-space: pre-wrap;
 	max-width: 100%;
 	line-height: 1.7;
 	@include rem('margin', $base 0);
 	@include rem('padding', $base*1.5);
-	@extend .break;
 }
 pre code {
 	padding: 0;
@@ -186,8 +184,7 @@ address {
 hr {
 	border: 0; //reset
 	border-top: 1px solid $d;
-	height: 1px;
-	margin-bottom: $base;
+	margin: $base*2 0;
 	// Deprecated in 1.4.1
 	&.ttfmake-line-dashed {
 		border-top: 1px dashed $d;

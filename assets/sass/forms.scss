@@ -46,9 +46,9 @@ input[type="submit"] {
 	background: $b;
 	cursor: pointer;
 	display: inline-block;
-	@include rem('padding', 10px 14px);
+	@include rem('padding', 10px 18px);
 	@include rem('font-size', 13px);
-	@include border-radius;
+	@include border-radius(100px);
 	text-decoration: none;
 	&:hover,
 	&:focus {
