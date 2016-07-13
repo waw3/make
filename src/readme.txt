@@ -26,6 +26,10 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.6 - July 13 2016 =
+* Improved: Minor stylesheet changes and enhancements. See the complete diff here: https://github.com/thethemefoundry/make/commit/3821a67298b484d142514f6f9bbcaade85cc0071#diff-8
+* New filter: `make_builder_get_gallery_item_onclick` modifies the onclick attribute of Gallery section items.
+
 = 1.7.5 - June 22 2016 =
 * Improved: Better integration with the WP Retina 2x plugin for improved retina logos.
 * Bug fix: Layout view algorithm was reverting to 'post' view when nothing matched.
@@ -399,8 +403,8 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Upgrade Notice ==
 
-= 1.7.5 =
-Better integration with the WP Retina 2x plugin. Bug fixes.
+= 1.7.6 =
+Minor changes and improvements to the stylesheet.
 
 = 1.7.0 =
 Big under-the-hood changes to the code for improved efficiency and maintainability. Many functions and hooks have been deprecated.

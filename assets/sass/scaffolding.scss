@@ -467,6 +467,9 @@ div.custom-logo {
 				text-decoration: none;
 			}
 		}
+		.sub-menu li:last-child a {
+			border-bottom: none;
+		}
 		.sub-menu,
 		.children {
 			padding: 0; //reset
@@ -709,7 +712,6 @@ div.custom-logo {
 			@include rem('font-size', 13px);
 		}
 		color: inherit;
-		font-weight: bold;
 		@include rem('font-size', 12px);
 		a {
 			text-decoration: underline;

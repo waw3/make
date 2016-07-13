@@ -282,7 +282,6 @@
 		z-index: 10;
 		color: $d;
 		text-align: left;
-		text-shadow: 1px 0 3px rgba(0,0,0,0.15);
 		@include rem('left', $gut/2);
 		@include rem('right', $gut/2);
 		@include rem('bottom', $base);
