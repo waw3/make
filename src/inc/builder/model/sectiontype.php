@@ -59,7 +59,7 @@ class MAKE_Builder_Model_SectionType {
 	}
 
 
-	public function create_instance( $data ) {
+	public function create_instance( $data = array() ) {
 		// New settings instance
 		$instance = new MAKE_Builder_Model_SectionInstance();
 
