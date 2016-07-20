@@ -18,6 +18,7 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 */
 	protected $dependencies = array(
 		'error'    => 'MAKE_Error_CollectorInterface',
+		'scripts'  => 'MAKE_Setup_ScriptsInterface',
 		'ui'       => 'MAKE_Builder_UI_Setup',
 		'frontend' => 'MAKE_Builder_FrontEnd_Setup',
 	);
@@ -108,7 +109,11 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 			return;
 		}
 
-
+		// Load the Builder definitions
+		$file = dirname( __FILE__ ) . '/definitions/sections.php';
+		if ( is_readable( $file ) ) {
+			include $file;
+		}
 
 		// Loading has occurred.
 		$this->loaded = true;
@@ -226,4 +231,12 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 
 		return null;
 	}
+
+
+	public function get_sorted_section_types() {
+
+	}
+
+
+
 }

@@ -85,10 +85,34 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @param $box
 	 */
 	public function render_builder( $object, $box ) {
+
+
 		echo "<pre>";
 
 		var_dump( $box );
 
 		echo "</pre>";
+	}
+
+
+	public function print_ui_templates() {
+
+		?>
+
+		<script type="text/html" id="tmpl-make-builder-menu-item">
+			<a href="#" title="{{{{ data.description }}}}" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-{{{ data.id }}}" data-section="{{{ data.id }}}">
+				<li class="ttfmake-menu-list-item">
+					<div class="ttfmake-menu-list-item-link-icon-wrapper clear">
+						<span class="ttfmake-menu-list-item-link-icon"></span>
+						<div class="section-type-description">
+							<h4>{{ data.label }}</h4>
+						</div>
+					</div>
+				</li>
+			</a>
+		</script>
+
+	<?php
+
 	}
 }
