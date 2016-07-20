@@ -17,6 +17,12 @@ $this->add_choice_sets( array(
 		3 => __( '3', 'make' ),
 		4 => __( '4', 'make' )
 	),
+	'1-4' => array(
+		1 => __( '1', 'make' ),
+		2 => __( '2', 'make' ),
+		3 => __( '3', 'make' ),
+		4 => __( '4', 'make' )
+	),
 	'alignment-horizontal-2' => array(
 		'left'  => __( 'Left', 'make' ),
 		'right' => __( 'Right', 'make' )
@@ -51,6 +57,10 @@ $this->add_choice_sets( array(
 		'auto'    => __( 'Auto', 'make' ),
 		'cover'   => __( 'Cover', 'make' ),
 		'contain' => __( 'Contain', 'make' )
+	),
+	'builder-section-background-style' => array(
+		'tile'  => __( 'Tile', 'make' ),
+		'cover' => __( 'Cover', 'make' ),
 	),
 	'comment-count' => array(
 		'icon' => __( 'With icon', 'make' ),
