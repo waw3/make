@@ -475,11 +475,12 @@ abstract class MAKE_Settings_Base extends MAKE_Util_Modules implements MAKE_Sett
 				 *
 				 * @since 1.7.0.
 				 *
-				 * @param array  $value         The array of parameters, initially containing only the value to be sanitized.
-				 * @param string $setting_id    The id of the setting being sanitized.
-				 * @param string $callback      The callable that will accept parameters.
+				 * @param array                       $value                 The array of parameters, initially containing only the value to be sanitized.
+				 * @param string                      $setting_id            The id of the setting being sanitized.
+				 * @param string                      $callback              The callable that will accept parameters.
+				 * @param MAKE_Settings_BaseInterface $settings_instance     The Settings object that is calling the sanitize_value method.
 				 */
-				$prepared_value = apply_filters( "make_settings_{$this->type}_sanitize_callback_parameters", (array) $value, $setting_id, $callback );
+				$prepared_value = apply_filters( "make_settings_{$this->type}_sanitize_callback_parameters", (array) $value, $setting_id, $callback, $this );
 
 				// Run the callback
 				$sanitized_value = call_user_func_array( $callback, $prepared_value );
