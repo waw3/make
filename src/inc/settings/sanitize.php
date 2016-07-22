@@ -123,6 +123,156 @@ final class MAKE_Settings_Sanitize extends MAKE_Util_Modules implements MAKE_Set
 	}
 
 	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	public function sanitize_title_for_frontend( $value ) {
+		/**
+		 *
+		 */
+		return apply_filters( 'make_builder_section_title_frontend', $value );
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	public function sanitize_title_for_ui( $value ) {
+		/**
+		 *
+		 */
+		return apply_filters( 'make_builder_section_title_ui', $value );
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param mixed                                       $value
+	 * @param string                                      $setting_id
+	 * @param MAKE_Builder_Model_SectionInstanceInterface $section_instance
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_builder_section_choice( $value, $setting_id, MAKE_Builder_Model_SectionInstanceInterface $section_instance ) {
+		// Get the choice set ID.
+		$choice_set_id = null;
+		if ( $section_instance->setting_exists( $setting_id, 'choice_set_id' ) ) {
+			$setting = $section_instance->get_setting( $setting_id );
+			$choice_set_id = sanitize_key( $setting['choice_set_id'] );
+		}
+
+		// Sanitize the value.
+		$sanitized_value = $this->choices()->sanitize_choice(
+			$value,
+			$choice_set_id,
+			$section_instance->get_default( $setting_id )
+		);
+
+		return $sanitized_value;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $content
+	 *
+	 * @return string
+	 */
+	public function sanitize_builder_section_content_for_frontend( $content ) {
+		// Check for deprecated filter.
+		if ( has_filter( 'ttfmake_the_builder_content' ) ) {
+			$this->compatibility()->deprecated_hook(
+				'ttfmake_the_builder_content',
+				'1.7.0',
+				sprintf(
+					esc_html__( 'Use the %s hook instead.', 'make' ),
+					'<code>make_the_builder_content</code>'
+				)
+			);
+
+			/**
+			 * Filter the content used for "post_content" when the builder is used to generate content.
+			 *
+			 * @since 1.2.3.
+			 * @deprecated 1.7.0.
+			 *
+			 * @param string    $content    The post content.
+			 */
+			$content = apply_filters( 'ttfmake_the_builder_content', $content );
+		}
+
+		/**
+		 * Filter the content used for "post_content" when the builder is used to generate content.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param string    $content    The post content.
+		 */
+		$content = apply_filters( 'make_the_builder_content', $content );
+		$content = str_replace( ']]>', ']]&gt;', $content );
+
+		return $content;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $content
+	 *
+	 * @return string
+	 */
+	public function sanitize_builder_section_content_for_db( $content ) {
+		$post_id = ( get_post() ) ? get_the_ID() : 0;
+
+		$sanitized_content = sanitize_post_field(
+			'post_content',
+			$content,
+			$post_id,
+			'db'
+		);
+
+		return $sanitized_content;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $content
+	 *
+	 * @return string
+	 */
+	public function sanitize_builder_section_content_for_ui( $content ) {
+		$post_id = ( get_post() ) ? get_the_ID() : 0;
+
+		$sanitized_content = sanitize_post_field(
+			'post_content',
+			$content,
+			$post_id,
+			'edit'
+		);
+
+		return $sanitized_content;
+	}
+
+	/**
 	 * Sanitize the value of a theme mod that has a choice set.
 	 *
 	 * @since 1.7.0.
@@ -134,7 +284,11 @@ final class MAKE_Settings_Sanitize extends MAKE_Util_Modules implements MAKE_Set
 	 */
 	public function sanitize_choice( $value, $setting_id ) {
 		// Sanitize the value.
-		$sanitized_value = $this->choices()->sanitize_choice( $value, $this->thememod()->get_choice_set( $setting_id, true ), $this->thememod()->get_default( $setting_id ) );
+		$sanitized_value = $this->choices()->sanitize_choice(
+			$value,
+			$this->thememod()->get_choice_set( $setting_id, true ),
+			$this->thememod()->get_default( $setting_id )
+		);
 
 		// Check for deprecated filter.
 		if ( has_filter( 'make_sanitize_choice' ) ) {
