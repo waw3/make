@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Builder_UI_Setup
  *
+ *
+ *
  * @since 1.8.0.
  */
 class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookInterface {
@@ -60,7 +62,11 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	}
 
 	/**
-	 * @param $post_type
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $post_type
 	 *
 	 * @return void
 	 */
@@ -81,8 +87,14 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	}
 
 	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
 	 * @param $object
 	 * @param $box
+	 *
+	 * @return void
 	 */
 	public function render_builder( $object, $box ) {
 
@@ -94,7 +106,9 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		echo "</pre>";
 	}
 
-
+	/**
+	 *
+	 */
 	public function print_ui_templates() {
 
 		?>

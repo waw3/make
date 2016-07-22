@@ -3,33 +3,93 @@
  * @package Make
  */
 
-
-class MAKE_Builder_Model_SectionType {
-
+/**
+ * Class MAKE_Builder_Model_SectionType
+ *
+ *
+ *
+ * @since 1.8.0.
+ */
+class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeInterface {
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var string
+	 */
 	public $type = '';
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var string
+	 */
 	public $label = '';
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var string
+	 */
 	public $description = '';
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var string
+	 */
 	public $icon_url = '';
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var int
+	 */
 	public $priority = 10;
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var array
+	 */
 	public $settings = array();
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var array
+	 */
 	public $ui = array();
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var string|array
+	 */
 	public $frontend_callback = null;
-	
 
+	/**
+	 * MAKE_Builder_Model_SectionType constructor.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param array $args
+	 */
 	public function __construct( array $args ) {
 		$this->type = sanitize_key( $args['id'] );
 		$this->label = wp_strip_all_tags( $args['label'] );
@@ -50,7 +110,13 @@ class MAKE_Builder_Model_SectionType {
 		}
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return array
+	 */
 	protected function get_default_setting_definitions() {
 		return array(
 			'id' => 0,
@@ -58,7 +124,15 @@ class MAKE_Builder_Model_SectionType {
 		);
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param array $data
+	 *
+	 * @return MAKE_Builder_Model_SectionInstance
+	 */
 	public function create_instance( $data = array() ) {
 		// New settings instance
 		$instance = new MAKE_Builder_Model_SectionInstance();

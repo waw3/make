@@ -6,6 +6,8 @@
 /**
  * Class MAKE_Builder_Setup
  *
+ *
+ *
  * @since 1.7.0.
  */
 class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_SetupInterface, MAKE_Util_HookInterface, MAKE_Util_LoadInterface {
@@ -18,6 +20,7 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 */
 	protected $dependencies = array(
 		'error'    => 'MAKE_Error_CollectorInterface',
+		'sanitize' => 'MAKE_Settings_SanitizeInterface',
 		'scripts'  => 'MAKE_Setup_ScriptsInterface',
 		'ui'       => 'MAKE_Builder_UI_Setup',
 		'frontend' => 'MAKE_Builder_FrontEnd_Setup',
@@ -80,7 +83,20 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 			return;
 		}
 
+		//
+		add_filter( 'make_builder_section_title_frontend', 'wptexturize' );
+		add_filter( 'make_builder_section_title_frontend', 'convert_chars' );
+		add_filter( 'make_builder_section_title_frontend', 'trim' );
 
+		//
+		add_filter( 'make_builder_section_title_ui', 'trim' );
+
+		//
+		add_filter( 'make_the_builder_content', 'wpautop' );
+		add_filter( 'make_the_builder_content', 'shortcode_unautop' );
+
+		//
+		add_filter( 'make_settings_buildersection_sanitize_callback_parameters', array( $this, 'add_sanitize_choice_parameters' ), 10, 4 );
 
 		// Hooking has occurred.
 		self::$hooked = true;
@@ -237,6 +253,30 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 
 	}
 
+	/**
+	 * Add items to the array of parameters to feed into the sanitize callback.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @hooked filter make_settings_buildersection_sanitize_callback_parameters
+	 *
+	 * @param mixed                       $value
+	 * @param string                      $setting_id
+	 * @param string                      $callback
+	 * @param MAKE_Settings_BaseInterface $settings_instance
+	 *
+	 * @return array
+	 */
+	public function add_sanitize_choice_parameters( $value, $setting_id, $callback, MAKE_Settings_BaseInterface $settings_instance ) {
+		$choice_settings = array_keys( $this->get_settings( 'choice_set_id' ), true );
 
+		if ( in_array( $setting_id, $choice_settings ) ) {
+			$value = (array) $value;
+			$value[] = $setting_id;
+			$value[] = $settings_instance;
+		}
+
+		return $value;
+	}
 
 }
