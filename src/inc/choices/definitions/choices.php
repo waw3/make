@@ -62,6 +62,10 @@ $this->add_choice_sets( array(
 		'tile'  => __( 'Tile', 'make' ),
 		'cover' => __( 'Cover', 'make' ),
 	),
+	'builder-section-state' => array(
+		'open'   => __( 'Open', 'make' ),
+		'closed' => __( 'Closed', 'make' ),
+	),
 	'builder-banner-alignment' => array(
 		'none'  => __( 'None', 'make' ),
 		'left'  => __( 'Left', 'make' ),
