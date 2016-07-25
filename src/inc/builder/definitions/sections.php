@@ -53,6 +53,11 @@ $this->register_section_type(
 		'description' => esc_html__( 'Create rearrangeable columns of content and images.', 'make' ),
 		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/sections/images/text.png',
 		'priority'    => 10,
+		'items'       => array(
+			'can_add'    => false,
+			'can_remove' => false,
+			'start_with' => 4,
+		),
 		'settings'    => array_merge(
 			$settings_title,
 			array(
@@ -72,8 +77,9 @@ $this->register_section_type(
 $this->register_section_type(
 	'text-column',
 	array(
-		'label'       => esc_html__( 'Column', 'make' ),
-		'settings'    => array_merge(
+		'label'    => esc_html__( 'Column', 'make' ),
+		'parent'   => 'text',
+		'settings' => array_merge(
 			$settings_title,
 			array(
 				'image-link' => array(
@@ -88,7 +94,7 @@ $this->register_section_type(
 			),
 			$settings_content
 		),
-		'ui'          => array(),
+		'ui'       => array(),
 	)
 );
 
@@ -100,6 +106,7 @@ $this->register_section_type(
 		'description' => esc_html__( 'Display multiple types of content in a banner or a slider.', 'make' ),
 		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/sections/images/banner.png',
 		'priority'    => 30,
+		'items'       => true,
 		'settings'    => array_merge(
 			$settings_title,
 			array(
@@ -144,8 +151,9 @@ $this->register_section_type(
 $this->register_section_type(
 	'banner-slide',
 	array(
-		'label'       => esc_html__( 'Banner Slide', 'make' ),
-		'settings'    => array_merge(
+		'label'    => esc_html__( 'Banner Slide', 'make' ),
+		'parent'   => 'banner',
+		'settings' => array_merge(
 			$settings_content,
 			array(
 				'background-color' => array(
@@ -167,7 +175,7 @@ $this->register_section_type(
 				),
 			)
 		),
-		'ui'          => array(),
+		'ui'       => array(),
 	)
 );
 
@@ -179,6 +187,7 @@ $this->register_section_type(
 		'description' => esc_html__( 'Display your images in various grid combinations.', 'make' ),
 		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/sections/images/gallery.png',
 		'priority'    => 40,
+		'items'       => true,
 		'settings'    => array_merge(
 			$settings_title,
 			array(
@@ -213,8 +222,9 @@ $this->register_section_type(
 $this->register_section_type(
 	'gallery-item',
 	array(
-		'label'       => esc_html__( 'Gallery Item', 'make' ),
-		'settings'    => array_merge(
+		'label'    => esc_html__( 'Gallery Item', 'make' ),
+		'parent'   => 'gallery',
+		'settings' => array_merge(
 			$settings_title,
 			array(
 				'link'        => array(
@@ -234,6 +244,6 @@ $this->register_section_type(
 				),
 			)
 		),
-		'ui'          => array(),
+		'ui'       => array(),
 	)
 );

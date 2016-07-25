@@ -42,12 +42,25 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 *
 	 * @var bool
 	 */
-	protected $loaded = false;
+	private $loaded = false;
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var array
+	 */
 	private $section_types = array();
 
-
+	/**
+	 * MAKE_Builder_Setup constructor.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param MAKE_APIInterface $api
+	 * @param array             $modules
+	 */
 	public function __construct( MAKE_APIInterface $api, array $modules = array() ) {
 		//
 		if ( is_admin() ) {
@@ -151,7 +164,13 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		return $this->loaded;
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return array
+	 */
 	private function get_default_builder_args() {
 		return array(
 			'actions' => array(
@@ -161,8 +180,17 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 			),
 		);
 	}
-	
-	
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $post_type
+	 * @param array  $args
+	 *
+	 * @return void
+	 */
 	public function register_builder( $post_type, array $args ) {
 		//
 		$args = wp_parse_args( $args, $this->get_default_builder_args() );
@@ -171,22 +199,52 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		add_post_type_support( $post_type, 'make-builder', $args );
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $section_type
+	 *
+	 * @return array
+	 */
 	private function get_default_section_type_args( $section_type ) {
 		return array(
-			'label' => ucwords( preg_replace( '/[\-_]+/', ' ', $section_type ) ),
+			'label'       => ucwords( preg_replace( '/[\-_]+/', ' ', $section_type ) ),
 			'description' => '',
-			'icon_url' => '',
-			'priority' => 10,
+			'icon_url'    => '',
+			'priority'    => 10,
+			'parent'      => false,
+			'items'       => false,
+			'settings'    => array(),
+			'ui'          => array(),
 		);
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $section_type
+	 *
+	 * @return bool
+	 */
 	public function section_type_exists( $section_type ) {
 		return isset( $this->section_types[ $section_type ] );
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $section_type
+	 * @param array  $args
+	 * @param bool   $overwrite
+	 *
+	 * @return bool
+	 */
 	public function register_section_type( $section_type, $args, $overwrite = false ) {
 		//
 		if ( $this->section_type_exists( $section_type ) && true !== $overwrite ) {
@@ -220,6 +278,16 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 
 				// Dynamically generate a new class instance
 				$this->section_types[ $section_type ] = $reflection->newInstanceArgs( array( $args ) );
+			} else {
+				$this->error()->add_error(
+					'make_builder_invalid_section_model',
+					sprintf(
+						esc_html__( 'The &ldquo;%s&rdquo; section model is invalid.', 'make' ),
+						esc_html( $section_type )
+					)
+				);
+
+				return false;
 			}
 		} else {
 			$this->section_types[ $section_type ] = new MAKE_Builder_Model_SectionType( $args );
@@ -228,7 +296,15 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		return true;
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $section_type
+	 *
+	 * @return bool
+	 */
 	public function unregister_section_type( $section_type ) {
 		if ( $this->section_type_exists( $section_type ) ) {
 			unset( $this->section_types[ $section_type ] );
@@ -239,7 +315,15 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		return false;
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $section_type
+	 *
+	 * @return object|null
+	 */
 	public function get_section_type( $section_type ) {
 		if ( $this->section_type_exists( $section_type ) ) {
 			return $this->section_types[ $section_type ];
