@@ -19,6 +19,7 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @var array
 	 */
 	protected $dependencies = array(
+		'scripts' => 'MAKE_Setup_ScriptsInterface',
 		'builder' => 'MAKE_Builder_SetupInterface',
 	);
 
@@ -43,8 +44,12 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 			return;
 		}
 
-		//
+		// The Builder metabox
 		add_action( 'add_meta_boxes', array( $this, 'add_builder_metabox' ) );
+
+		// Styles and scripts
+		add_action( 'admin_enqueue_scripts', array( $this, 'prep_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ), 20 );
 
 		// Hooking has occurred.
 		self::$hooked = true;
@@ -66,6 +71,8 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 *
 	 * @since 1.8.0.
 	 *
+	 * @hooked action add_meta_boxes
+	 *
 	 * @param string $post_type
 	 *
 	 * @return void
@@ -79,7 +86,7 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 			$data = get_all_post_type_supports( $post_type );
 
 			add_meta_box(
-				'make-builder',
+				'ttfmake-builder',
 				esc_html__( 'Page Builder', 'make' ),
 				array( $this, 'render_builder' ),
 				$post_type,
@@ -121,13 +128,122 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	<?php
 	}
 
+
+	public function prep_scripts() {
+		// Initializer
+		wp_register_script(
+			'make-builder-ui-init',
+			$this->scripts()->get_js_directory_uri() . '/builder/ui/init.js',
+			array(
+				'jquery',
+				'backbone',
+				'underscore',
+				'utils',
+				'wp-util',
+			),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		// Other Builder script handles (the initializer will load these)
+		// Naming convention defines path to script file
+		$script_handles = array(
+			'make-builder-ui-view-menu',
+			'make-builder-ui-view-menuitem',
+			//'frappe',
+		);
+
+		// Register each script, based on the handle
+		foreach ( $script_handles as $handle ) {
+			// Check if the script is already registered (e.g. by a plugin)
+			if ( $this->scripts()->is_registered( $handle, 'script' ) ) {
+				continue;
+			}
+
+			// Get the URL for the script
+			// Trim the prefix
+			$str = $handle;
+			$prefix = 'make-';
+			if ( substr( $str, 0, strlen( $prefix ) ) == $prefix ) {
+				$str = substr( $str , strlen( $prefix ) );
+			}
+			// Convert the name to the path
+			$relative_url = str_replace( '-', '/', $str ) . '.js';
+			// Check for a child theme version
+			$absolute_url = $this->scripts()->get_located_file_url( array( $relative_url, 'js/' . $relative_url ) );
+
+			// Register the script
+			if ( $absolute_url ) {
+				wp_register_script(
+					$handle,
+					$absolute_url,
+					array(),
+					TTFMAKE_VERSION,
+					true
+				);
+			}
+		}
+
+		// Script URLs to pass to the initializer
+		$script_urls = array();
+		foreach ( $script_handles as $handle ) {
+			if ( $this->scripts()->is_registered( $handle, 'script' ) ) {
+				$script_urls[] = $this->scripts()->get_url( $handle, 'script' );
+			} else {
+				$script_urls[] = 'Invalid script';
+			}
+		}
+
+		// Builder data
+		$data = array(
+			'menu' => array(
+				'items' => $this->builder()->get_top_level_section_types(),
+			),
+		);
+
+		// Add initial data
+		wp_localize_script(
+			'make-builder-ui-init',
+			'MakeBuilder',
+			array(
+				'scripts' => $script_urls,
+				'data' => $data,
+				'l10n' => array(
+					'loading' => __( 'Loading', 'make' ),
+					'loadFailure' => __( 'The Builder failed to load.', 'make' ),
+				),
+			)
+		);
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return void
+	 */
+	public function enqueue() {
+		// Styles
+		wp_enqueue_style(
+			'make-builder-ui',
+			$this->scripts()->get_css_directory_uri() . '/builder/ui/builder.css',
+			array(),
+			TTFMAKE_VERSION,
+			'screen'
+		);
+
+		// Scripts
+		wp_enqueue_script( 'make-builder-ui-init' );
+	}
+
 	/**
 	 *
 	 */
-	public function print_ui_templates() {
+	public function print_templates() {
 
+		// Menu item
 		?>
-
 		<script type="text/html" id="tmpl-make-builder-menu-item">
 			<a href="#" title="{{{{ data.description }}}}" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-{{{ data.id }}}" data-section="{{{ data.id }}}">
 				<li class="ttfmake-menu-list-item">
@@ -140,7 +256,6 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 				</li>
 			</a>
 		</script>
-
 	<?php
 
 	}

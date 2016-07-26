@@ -51,7 +51,7 @@ $this->register_section_type(
 	array(
 		'label'       => esc_html__( 'Columns', 'make' ),
 		'description' => esc_html__( 'Create rearrangeable columns of content and images.', 'make' ),
-		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/sections/images/text.png',
+		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/ui/images/text.png',
 		'priority'    => 10,
 		'items'       => array(
 			'can_add'    => false,
@@ -104,7 +104,7 @@ $this->register_section_type(
 	array(
 		'label'       => esc_html__( 'Banner', 'make' ),
 		'description' => esc_html__( 'Display multiple types of content in a banner or a slider.', 'make' ),
-		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/sections/images/banner.png',
+		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/ui/images/banner.png',
 		'priority'    => 30,
 		'items'       => true,
 		'settings'    => array_merge(
@@ -185,7 +185,7 @@ $this->register_section_type(
 	array(
 		'label'       => esc_html__( 'gallery', 'make' ),
 		'description' => esc_html__( 'Display your images in various grid combinations.', 'make' ),
-		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/sections/images/gallery.png',
+		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/ui/images/gallery.png',
 		'priority'    => 40,
 		'items'       => true,
 		'settings'    => array_merge(
