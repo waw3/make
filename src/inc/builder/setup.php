@@ -22,8 +22,6 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		'error'    => 'MAKE_Error_CollectorInterface',
 		'sanitize' => 'MAKE_Settings_SanitizeInterface',
 		'scripts'  => 'MAKE_Setup_ScriptsInterface',
-		'ui'       => 'MAKE_Builder_UI_Setup',
-		'frontend' => 'MAKE_Builder_FrontEnd_Setup',
 	);
 
 	/**
@@ -62,26 +60,24 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 * @param array             $modules
 	 */
 	public function __construct( MAKE_APIInterface $api, array $modules = array() ) {
-		//
-		if ( is_admin() ) {
-			$modules = wp_parse_args( $modules, array(
-				'ui' => 'MAKE_Builder_UI_Setup'
-			) );
-
-			unset( $this->dependencies['frontend'] );
-		}
-
-		//
-		else {
-			$modules = wp_parse_args( $modules, array(
-				'frontend' => 'MAKE_Builder_FrontEnd_Setup'
-			) );
-
-			unset( $this->dependencies['ui'] );
-		}
-
-		//
+		// Load dependencies
 		parent::__construct( $api, $modules );
+
+		// UI module
+		if ( is_admin() ) {
+			$this->add_module(
+				'ui',
+				new MAKE_Builder_UI_Setup( $api, array( 'builder' => $this ) )
+			);
+		}
+
+		// Front end module
+		else {
+			$this->add_module(
+				'frontend',
+				new MAKE_Builder_FrontEnd_Setup( $api, array( 'builder' => $this ) )
+			);
+		}
 	}
 
 	/**
@@ -139,9 +135,15 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		}
 
 		// Load the Builder definitions
-		$file = dirname( __FILE__ ) . '/definitions/sections.php';
-		if ( is_readable( $file ) ) {
-			include $file;
+		$slugs = array(
+			'post-types',
+			'sections',
+		);
+		foreach ( $slugs as $slug ) {
+			$file = dirname( __FILE__ ) . "/definitions/$slug.php";
+			if ( is_readable( $file ) ) {
+				include $file;
+			}
 		}
 
 		// Loading has occurred.
@@ -191,7 +193,7 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 *
 	 * @return void
 	 */
-	public function register_builder( $post_type, array $args ) {
+	public function register_builder( $post_type, array $args = array() ) {
 		//
 		$args = wp_parse_args( $args, $this->get_default_builder_args() );
 
@@ -325,16 +327,92 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 * @return object|null
 	 */
 	public function get_section_type( $section_type ) {
+		// Exists
 		if ( $this->section_type_exists( $section_type ) ) {
 			return $this->section_types[ $section_type ];
 		}
 
+		// Doesn't exist
+		$this->error()->add_error(
+			'make_builder_invalid_section_type',
+			sprintf(
+				esc_html__( 'The %s section type doesn\'t exist.', 'make' ),
+				'<code>' . esc_html( $section_type ) . '</code>'
+			)
+		);
+
 		return null;
 	}
 
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return array
+	 */
+	public function get_top_level_section_types() {
+		$top_level_section_types = array_filter( $this->section_types, array( $this, 'callback_filter_top_level_section_types' ) );
+		uasort( $top_level_section_types, array( $this, 'callback_sort_section_types' ) );
 
-	public function get_sorted_section_types() {
+		return $top_level_section_types;
+	}
 
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $parent_section_type    The parent section type.
+	 *
+	 * @return array
+	 */
+	public function get_child_section_types( $parent_section_type ) {
+		$parent = $this->get_section_type( $parent_section_type );
+		$child_section_types = array();
+
+		if ( ! is_null( $parent ) && false === $parent->parent && false !== $parent->items ) {
+			foreach ( $this->section_types as $type => $object ) {
+				if ( $parent_section_type === $object->parent ) {
+					$child_section_types[ $type ] = $object;
+				}
+			}
+
+			uasort( $child_section_types, array( $this, 'callback_sort_section_types' ) );
+		}
+
+		return $child_section_types;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param MAKE_Builder_Model_SectionTypeInterface $a
+	 * @param MAKE_Builder_Model_SectionTypeInterface $b
+	 *
+	 * @return int
+	 */
+	private function callback_sort_section_types( MAKE_Builder_Model_SectionTypeInterface $a, MAKE_Builder_Model_SectionTypeInterface $b ) {
+		if ( $a->priority == $b->priority ) {
+			return 0;
+		}
+
+		return ( $a->priority < $b->priority ) ? -1 : 1;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param MAKE_Builder_Model_SectionTypeInterface $object
+	 *
+	 * @return bool
+	 */
+	private function callback_filter_top_level_section_types( MAKE_Builder_Model_SectionTypeInterface $object ) {
+		return false === $object->parent;
 	}
 
 	/**
@@ -362,5 +440,4 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 
 		return $value;
 	}
-
 }

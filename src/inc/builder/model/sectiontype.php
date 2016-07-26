@@ -109,7 +109,7 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	 * @param array $args
 	 */
 	public function __construct( array $args ) {
-		$this->type = sanitize_key( $args['id'] );
+		$this->type = sanitize_key( $args['type'] );
 		$this->label = wp_strip_all_tags( $args['label'] );
 		$this->description = wp_strip_all_tags( $args['description'] );
 		$this->icon_url = esc_url( $args['icon_url'] );

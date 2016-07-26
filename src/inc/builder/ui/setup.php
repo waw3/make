@@ -19,7 +19,7 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @var array
 	 */
 	protected $dependencies = array(
-
+		'builder' => 'MAKE_Builder_SetupInterface',
 	);
 
 	/**
@@ -71,6 +71,10 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @return void
 	 */
 	public function add_builder_metabox( $post_type ) {
+		// Make sure the Builder has loaded data.
+		$this->builder();
+
+		// Check post type support
 		if ( post_type_supports( $post_type, 'make-builder' ) ) {
 			$data = get_all_post_type_supports( $post_type );
 
@@ -97,13 +101,24 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @return void
 	 */
 	public function render_builder( $object, $box ) {
-
-
-		echo "<pre>";
-
-		var_dump( $box );
-
-		echo "</pre>";
+		// The menu
+		$menu_class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' : 'opened';
+		?>
+		<div class="ttfmake-menu ttfmake-menu-<?php echo $menu_class; ?>" id="ttfmake-menu">
+			<div class="ttfmake-menu-pane">
+				<ul class="ttfmake-menu-list"></ul>
+			</div>
+		</div>
+	<?php
+		// The stage
+		?>
+		<div class="ttfmake-stage ttfmake-stage-closed" id="ttfmake-stage"></div>
+	<?php
+		// Other inputs
+		?>
+		<input type="hidden" value="" name="ttfmake-section-order" id="ttfmake-section-order" />
+		<?php wp_nonce_field( 'save', 'ttfmake-builder-nonce' ); ?>
+	<?php
 	}
 
 	/**
