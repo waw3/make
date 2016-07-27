@@ -83,11 +83,15 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 
 		// Check post type support
 		if ( post_type_supports( $post_type, 'make-builder' ) ) {
+			$labels = get_post_type_labels( get_post_type_object( $post_type ) );
 			$data = get_all_post_type_supports( $post_type );
 
 			add_meta_box(
 				'ttfmake-builder',
-				esc_html__( 'Page Builder', 'make' ),
+				sprintf(
+					esc_html__( '%s Builder', 'make' ),
+					esc_html( $labels->singular_name )
+				),
 				array( $this, 'render_builder' ),
 				$post_type,
 				'normal',
@@ -128,9 +132,17 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	<?php
 	}
 
-
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return void
+	 */
 	public function prep_scripts() {
-		// Initializer
+		global $pagenow, $typenow;
+
+		// The initializer script
 		wp_register_script(
 			'make-builder-ui-init',
 			$this->scripts()->get_js_directory_uri() . '/builder/ui/init.js',
@@ -144,6 +156,26 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 			TTFMAKE_VERSION,
 			true
 		);
+
+		// Container for script data to pass to the initializer
+		$script_data = array();
+
+		// Environment data
+		$script_data['environment'] = array(
+			'type'            => $typenow,
+			'screenID'        => $pagenow,
+			'defaultTemplate' => 'default',
+			'builderTemplate' => 'template-builder.php',
+		);
+
+		/**
+		 * Filter: Modify whether new pages/posts default to the Builder.
+		 *
+		 * @since 1.7.0.
+		 *
+		 * @param bool $is_default
+		 */
+		$script_data['environment']['initialState'] = apply_filters( 'make_builder_is_default', true );
 
 		// Other Builder script handles (the initializer will load these)
 		// Naming convention defines path to script file
@@ -185,34 +217,33 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		}
 
 		// Script URLs to pass to the initializer
-		$script_urls = array();
+		$script_data['scripts'] = array();
 		foreach ( $script_handles as $handle ) {
 			if ( $this->scripts()->is_registered( $handle, 'script' ) ) {
-				$script_urls[] = $this->scripts()->get_url( $handle, 'script' );
+				$script_data['scripts'][] = $this->scripts()->get_url( $handle, 'script' );
 			} else {
-				$script_urls[] = 'Invalid script';
+				$script_data['scripts'][] = 'Invalid script';
 			}
 		}
 
-		// Builder data
-		$data = array(
+		// Builder data to pass to the initializer
+		$script_data['data'] = array(
 			'menu' => array(
 				'items' => $this->builder()->get_top_level_section_types(),
 			),
 		);
 
-		// Add initial data
+		// Localization strings
+		$script_data['l10n'] = array(
+			'loading' => __( 'Loading', 'make' ),
+			'loadFailure' => __( 'The Builder failed to load.', 'make' ),
+		);
+
+		// Add script data to initializer
 		wp_localize_script(
 			'make-builder-ui-init',
 			'MakeBuilder',
-			array(
-				'scripts' => $script_urls,
-				'data' => $data,
-				'l10n' => array(
-					'loading' => __( 'Loading', 'make' ),
-					'loadFailure' => __( 'The Builder failed to load.', 'make' ),
-				),
-			)
+			$script_data
 		);
 	}
 
