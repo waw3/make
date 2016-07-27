@@ -112,6 +112,10 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @return void
 	 */
 	public function render_builder( $object, $box ) {
+		// Messages
+		?>
+		<div id="ttfmake-builder-message"></div>
+	<?php
 		// The menu
 		$menu_class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' : 'opened';
 		?>

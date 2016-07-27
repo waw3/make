@@ -56,6 +56,9 @@ var MakeBuilder = MakeBuilder || {};
 			this.$editor = this.$('#postdivrich');
 			this.$welcome = this.$('#make-notice-make-page-builder-welcome');
 
+			// Misc elements
+			this.$message = this.$('#ttfmake-builder-message');
+
 			// Listeners
 			this.listenTo(this.model, "change:state", this.updateScreen);
 
@@ -181,8 +184,8 @@ var MakeBuilder = MakeBuilder || {};
 		 * @since 1.8.0.
 		 */
 		startLoading: function() {
-			var $loading = $('<span id="make-builder-loading">').text(MakeBuilder.l10n.loading);
-			this.$builder.find('.inside').prepend($loading);
+			var $loading = $('<div id="make-builder-loading">').text(MakeBuilder.l10n.loading);
+			this.$message.prepend($loading);
 		},
 
 		/**
@@ -191,7 +194,7 @@ var MakeBuilder = MakeBuilder || {};
 		 * @since 1.8.0.
 		 */
 		stopLoading: function() {
-			this.$builder.find('#make-builder-loading').remove();
+			this.$message.find('#make-builder-loading').remove();
 		},
 
 		/**
