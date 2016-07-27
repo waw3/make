@@ -160,14 +160,6 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		// Container for script data to pass to the initializer
 		$script_data = array();
 
-		// Environment data
-		$script_data['environment'] = array(
-			'type'            => $typenow,
-			'screenID'        => $pagenow,
-			'defaultTemplate' => 'default',
-			'builderTemplate' => 'template-builder.php',
-		);
-
 		/**
 		 * Filter: Modify whether new pages/posts default to the Builder.
 		 *
@@ -175,15 +167,37 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		 *
 		 * @param bool $is_default
 		 */
-		$script_data['environment']['initialState'] = apply_filters( 'make_builder_is_default', true );
+		$is_default = apply_filters( 'make_builder_is_default', true );
+
+		// Environment data
+		$script_data['environment'] = array(
+			'state'           => ( $is_default ) ? 'active' : 'inactive',
+			'type'            => $typenow,
+			'screenID'        => $pagenow,
+			'defaultTemplate' => 'default',
+			'builderTemplate' => 'template-builder.php',
+		);
 
 		// Other Builder script handles (the initializer will load these)
 		// Naming convention defines path to script file
 		$script_handles = array(
 			'make-builder-ui-view-menu',
 			'make-builder-ui-view-menuitem',
-			//'frappe',
 		);
+
+		/**
+		 * Filter: Modify the array of dependency handles for the Builder's JS.
+		 *
+		 * Each item in this array should be the handle for a registered script.
+		 *
+		 * Note that these scripts will be lazy loaded by the Builder app rather than enqueued.
+		 * Third party libraries should not be added to this array.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array $dependencies    The array of dependency handles.
+		 */
+		$script_handles = apply_filters( 'make_builder_js_dependencies', $script_handles );
 
 		// Register each script, based on the handle
 		foreach ( $script_handles as $handle ) {

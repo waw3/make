@@ -21,20 +21,8 @@ var MakeBuilder = MakeBuilder || {};
 	 */
 	MakeBuilder.model.Screen = Backbone.Model.extend({
 		defaults: {
-			"state" : "inactive",
-			"loaded": false
-		},
-
-		/**
-		 * Processes data from MakeBuilder.environment
-		 *
-		 * @since 1.8.0.
-		 */
-		initialize: function(data) {
-			// Show the page builder by default for new posts/pages if the make_builder_is_default filter is set to true
-			if ('post-new.php' === data.screenID && true === data.initialState) {
-				this.set('state', 'active');
-			}
+			state : 'inactive',
+			loaded: false
 		},
 
 		// Disable unused methods
@@ -72,7 +60,7 @@ var MakeBuilder = MakeBuilder || {};
 			this.listenTo(this.model, "change:state", this.updateScreen);
 
 			// Initial screen update
-			this.updateScreen();
+			this.model.trigger('change:state');
 		},
 
 		/**
@@ -124,6 +112,7 @@ var MakeBuilder = MakeBuilder || {};
 					break;
 
 				case 'inactive':
+				default:
 					this.toggleBuilder(state);
 					break;
 			}
