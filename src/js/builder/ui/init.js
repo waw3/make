@@ -10,15 +10,23 @@ var MakeBuilder = MakeBuilder || {};
 	'use strict';
 
 	MakeBuilder = $.extend(MakeBuilder, {
-
+		/**
+		 *
+		 *
+		 * @since 1.8.0.
+		 */
 		cache: {
 			$document: $(document),
-			$builder: $('#ttfmake-builder'),
-			$menu: $('#ttfmake-menu'),
-			$stage: $('#ttfmake-stage')
+			$builder : $('#ttfmake-builder'),
+			$menu    : $('#ttfmake-menu'),
+			$stage   : $('#ttfmake-stage')
 		},
 
-
+		/**
+		 *
+		 *
+		 * @since 1.8.0.
+		 */
 		init: function() {
 			var self = this;
 
@@ -38,7 +46,11 @@ var MakeBuilder = MakeBuilder || {};
 			});
 		},
 
-
+		/**
+		 *
+		 *
+		 * @since 1.8.0.
+		 */
 		startLoading: function() {
 			var self = this,
 				$loading = $('<span id="make-builder-loading">').text(self.l10n.loading);
@@ -46,14 +58,24 @@ var MakeBuilder = MakeBuilder || {};
 			self.cache.$builder.find('.inside').prepend($loading);
 		},
 
-
+		/**
+		 *
+		 *
+		 * @since 1.8.0.
+		 */
 		stopLoading: function() {
 			var self = this;
 
 			self.cache.$builder.find('#make-builder-loading').remove();
 		},
 
-
+		/**
+		 *
+		 *
+		 * @since 1.8.0.
+		 *
+		 * @param self
+		 */
 		loadSuccess: function(self) {
 			// Remove loading indicator
 			self.stopLoading();
@@ -61,7 +83,13 @@ var MakeBuilder = MakeBuilder || {};
 
 		},
 
-
+		/**
+		 *
+		 *
+		 * @since 1.8.0.
+		 *
+		 * @param self
+		 */
 		loadFailure: function(self) {
 			var $message = $('<span>').text(self.l10n.loadFailure);
 
@@ -101,7 +129,7 @@ var MakeBuilder = MakeBuilder || {};
 		 * Asynchronously load a script from a URL. Unlike $.getScript, this allows a cached
 		 * version of the script to be retrieved.
 		 *
-		 * @link https://api.jquery.com/jquery.getscript/
+		 * @link https://github.com/jquery/jquery/blob/373607aa78ce35de10ca12e5bc693a7e375336f9/src/ajax.js#L815-L839
 		 *
 		 * @since 1.8.0.
 		 *
