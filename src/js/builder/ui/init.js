@@ -55,21 +55,20 @@ var MakeBuilder = MakeBuilder || {};
 
 
 		loadSuccess: function(self) {
-			console.log('DONE');
-
 			// Remove loading indicator
 			self.stopLoading();
+
+
 		},
 
 
 		loadFailure: function(self) {
-			console.log('FAIL');
-
 			var $message = $('<span>').text(self.l10n.loadFailure);
 
 			// Remove loading indicator
 			self.stopLoading();
 
+			// Display message
 			self.cache.$builder.find('.inside').prepend($message);
 		},
 
@@ -87,8 +86,7 @@ var MakeBuilder = MakeBuilder || {};
 		getMultipleScripts: function(paths) {
 			var self = this,
 				promises = $.map(paths, function(path) {
-					//return self.getCachableScript(path);
-					return $.getScript(path);
+					return self.getCachableScript(path);
 				});
 
 			// Make sure there is at least one promise
@@ -111,14 +109,15 @@ var MakeBuilder = MakeBuilder || {};
 		 * @param {object} args
 		 * @returns {*|$.Deferred.promise}
 		 */
-		getCachableScript: function(url, args) {
-			 $.extend(args || {}, {
-				url: url,
-				cache: true,
-				dataType: 'script'
-			});
+		getCachableScript: function(url) {
+			var args = {
+					url: url,
+					type: "get",
+					cache: true,
+					dataType: "script"
+				};
 
-			return $.ajax(args);
+			return $.ajax( $.extend(args, $.isPlainObject(url) && url) );
 		}
 	});
 
