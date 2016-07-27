@@ -138,6 +138,9 @@ var MakeBuilder = MakeBuilder || {};
 					this.$posttoggle.prop('checked', true);
 					this.$screenoption.prop('checked', true).triggerHandler('click');
 
+					if (this.$builder.is(':hidden')) {
+						this.$builder.show();
+					}
 					break;
 
 				case 'inactive':
@@ -146,7 +149,7 @@ var MakeBuilder = MakeBuilder || {};
 					this.$screenoption.prop('checked', false).triggerHandler('click');
 
 					this.$editor.show();
-					$(window).trigger('scroll'); // Fix editor layout issues
+					$(window).trigger('scroll'); // Attempt to fix editor layout issues
 					this.$welcome.hide();
 
 					break;
