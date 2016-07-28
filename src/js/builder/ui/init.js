@@ -1,5 +1,5 @@
 /**
- *
+ * @package Make
  */
 
 /* global jQuery, Backbone, _, wp, MakeBuilder */

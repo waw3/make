@@ -120,9 +120,8 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		<div id="ttfmake-builder-message"></div>
 	<?php
 		// The menu
-		$menu_class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' : 'opened';
 		?>
-		<div class="ttfmake-menu ttfmake-menu-<?php echo $menu_class; ?>" id="ttfmake-menu">
+		<div id="ttfmake-menu" class="ttfmake-menu">
 			<div class="ttfmake-menu-pane">
 				<ul class="ttfmake-menu-list"></ul>
 			</div>
@@ -130,11 +129,11 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	<?php
 		// The stage
 		?>
-		<div class="ttfmake-stage ttfmake-stage-closed" id="ttfmake-stage"></div>
+		<div id="ttfmake-stage" class="ttfmake-stage ttfmake-stage-closed"></div>
 	<?php
 		// Other inputs
 		?>
-		<input type="hidden" value="" name="ttfmake-section-order" id="ttfmake-section-order" />
+		<input type="text" id="ttfmake-section-order" name="ttfmake-section-order" value="" />
 		<?php wp_nonce_field( 'save', 'ttfmake-builder-nonce' ); ?>
 	<?php
 	}
@@ -157,8 +156,13 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 				'jquery',
 				'backbone',
 				'underscore',
+				'jquery-ui-sortable',
+				'jquery-effects-core',
+				'media-views',
+				'wp-color-picker',
 				'utils',
 				'wp-util',
+				'wplink',
 			),
 			TTFMAKE_VERSION,
 			true
@@ -190,9 +194,14 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		$script_handles = array(
 			'make-builder-ui-model-menu',
 			'make-builder-ui-model-menuitem',
+			'make-builder-ui-model-stage',
+			'make-builder-ui-model-section',
 			'make-builder-ui-collection-menuitems',
+			'make-builder-ui-collection-sections',
 			'make-builder-ui-view-menu',
 			'make-builder-ui-view-menuitem',
+			'make-builder-ui-view-stage',
+			'make-builder-ui-view-section',
 		);
 
 		/**
