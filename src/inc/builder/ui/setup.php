@@ -51,6 +51,9 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		add_action( 'admin_enqueue_scripts', array( $this, 'prep_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ), 20 );
 
+		// Templates
+		add_action( 'admin_print_footer_scripts', array( $this, 'print_templates' ) );
+
 		// Hooking has occurred.
 		self::$hooked = true;
 	}
@@ -185,6 +188,9 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		// Other Builder script handles (the initializer will load these)
 		// Naming convention defines path to script file
 		$script_handles = array(
+			'make-builder-ui-model-menu',
+			'make-builder-ui-model-menuitem',
+			'make-builder-ui-collection-menuitems',
 			'make-builder-ui-view-menu',
 			'make-builder-ui-view-menuitem',
 		);
@@ -293,13 +299,13 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 
 		// Menu item
 		?>
-		<script type="text/html" id="tmpl-make-builder-menu-item">
-			<a href="#" title="{{{{ data.description }}}}" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-{{{ data.id }}}" data-section="{{{ data.id }}}">
+		<script type="text/html" id="tmpl-make-builder-menuitem">
+			<a href="#" title="{{ data.description }}" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-{{ data.type }}" data-section="{{ data.type }}">
 				<li class="ttfmake-menu-list-item">
-					<div class="ttfmake-menu-list-item-link-icon-wrapper clear">
+					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="background-image: url({{ data.icon_url }});">
 						<span class="ttfmake-menu-list-item-link-icon"></span>
 						<div class="section-type-description">
-							<h4>{{ data.label }}</h4>
+							<h4>{{{ data.label }}}</h4>
 						</div>
 					</div>
 				</li>

@@ -183,7 +183,7 @@ $this->register_section_type(
 $this->register_section_type(
 	'gallery',
 	array(
-		'label'       => esc_html__( 'gallery', 'make' ),
+		'label'       => esc_html__( 'Gallery', 'make' ),
 		'description' => esc_html__( 'Display your images in various grid combinations.', 'make' ),
 		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/ui/images/gallery.png',
 		'priority'    => 40,

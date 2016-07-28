@@ -11,24 +11,32 @@ var MakeBuilder = MakeBuilder || {};
 
 	// Ensure property existence
 	MakeBuilder.model = MakeBuilder.model || {};
+	MakeBuilder.collection = MakeBuilder.collection || {};
 	MakeBuilder.view = MakeBuilder.view || {};
 	MakeBuilder.app = MakeBuilder.app || {};
+
+	/**
+	 * A base model with common properties and methods for other models to extend.
+	 *
+	 * @since 1.8.0.
+	 */
+	MakeBuilder.model.Base = Backbone.Model.extend({
+		// Disable unused methods
+		fetch: function() {},
+		save: function() {},
+		sync: function() {}
+	});
 
 	/**
 	 * The Screen model contains data about the state of the Edit screen.
 	 *
 	 * @since 1.8.0.
 	 */
-	MakeBuilder.model.Screen = Backbone.Model.extend({
+	MakeBuilder.model.Screen = MakeBuilder.model.Base.extend({
 		defaults: {
 			state : 'inactive',
 			loaded: false
-		},
-
-		// Disable unused methods
-		fetch: function() {},
-		save: function() {},
-		sync: function() {}
+		}
 	});
 
 	/**
@@ -209,7 +217,10 @@ var MakeBuilder = MakeBuilder || {};
 			// Remove loading indicator
 			this.stopLoading();
 
-
+			MakeBuilder.app.menu = new MakeBuilder.view.Menu({
+				model: new MakeBuilder.model.Menu(MakeBuilder.data.menu),
+				collection: new MakeBuilder.collection.MenuItems
+			});
 		},
 
 		/**
