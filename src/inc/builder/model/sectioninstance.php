@@ -12,15 +12,6 @@
  */
 class MAKE_Builder_Model_SectionInstance extends MAKE_Settings_Base implements MAKE_Builder_Model_SectionInstanceInterface {
 	/**
-	 * An associative array of required modules.
-	 *
-	 * @since 1.7.0.
-	 *
-	 * @var array
-	 */
-	protected $dependencies = array();
-
-	/**
 	 * The type of settings. Should be defined in the child class.
 	 *
 	 * @since 1.7.0.
@@ -37,6 +28,20 @@ class MAKE_Builder_Model_SectionInstance extends MAKE_Settings_Base implements M
 	 * @var array
 	 */
 	private $values = array();
+
+	/**
+	 * MAKE_Builder_Model_SectionInstance constructor.
+	 *
+	 * @param MAKE_APIInterface|null $api
+	 * @param array                  $modules
+	 */
+	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+		// Make sure parent class dependencies are available.
+		$modules = wp_parse_args( $modules, array( 'error' => Make()->error() ) );
+
+		// Load dependencies
+		parent::__construct( $api, $modules );
+	}
 
 	/**
 	 *

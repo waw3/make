@@ -19,9 +19,10 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 * @var array
 	 */
 	protected $dependencies = array(
-		'error'    => 'MAKE_Error_CollectorInterface',
-		'sanitize' => 'MAKE_Settings_SanitizeInterface',
-		'scripts'  => 'MAKE_Setup_ScriptsInterface',
+		'error'            => 'MAKE_Error_CollectorInterface',
+		'sanitize'         => 'MAKE_Settings_SanitizeInterface',
+		'scripts'          => 'MAKE_Setup_ScriptsInterface',
+		'builder_settings' => 'MAKE_Builder_SettingsInterface',
 	);
 
 	/**
@@ -60,6 +61,11 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 * @param array             $modules
 	 */
 	public function __construct( MAKE_APIInterface $api, array $modules = array() ) {
+		// Module defaults.
+		$modules = wp_parse_args( $modules, array(
+			'builder_settings' => 'MAKE_Builder_Settings',
+		) );
+
 		// Load dependencies
 		parent::__construct( $api, $modules );
 
