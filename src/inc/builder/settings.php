@@ -144,7 +144,7 @@ class MAKE_Builder_Settings extends MAKE_Settings_Base implements MAKE_Builder_S
 			return $value;
 		}
 
-		if ( $this->setting_exists( $setting_id ) ) {
+		if ( $this->setting_exists( $setting_id ) && metadata_exists( 'post', $this->post_id, $this->prefix . $setting_id ) ) {
 			// Section
 			if ( $this->is_section( $setting_id ) ) {
 				$value = get_post_meta( $this->post_id, $this->prefix . $setting_id, false );
@@ -156,6 +156,60 @@ class MAKE_Builder_Settings extends MAKE_Settings_Base implements MAKE_Builder_S
 		}
 
 		return $value;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $setting_id
+	 * @param string $context
+	 *
+	 * @return mixed|null
+	 */
+	public function get_value( $setting_id, $context = '' ) {
+		$value = $this->undefined;
+
+		if ( ! $this->post_id ) {
+			return $value;
+		}
+
+		if ( $this->setting_exists( $setting_id ) ) {
+			$raw_value = $this->get_raw_value( $setting_id );
+
+			// Sanitize the raw value.
+			if ( $this->undefined !== $raw_value ) {
+				// Section
+				if ( $this->is_section( $setting_id ) ) {
+					$value = array();
+
+					foreach ( $raw_value as $section ) {
+						$value[] = $this->sanitize_value( $section, $setting_id, $context );
+					}
+				}
+				// Other setting
+				else {
+					$value = $this->sanitize_value( $raw_value, $setting_id, $context );
+				}
+			}
+
+			// Use the default if the value is still undefined.
+			if ( $this->undefined === $value ) {
+				$value = $this->get_default( $setting_id );
+			}
+		}
+
+		/**
+		 * Filter: Modify the current value for a particular setting.
+		 *
+		 * @since 1.8.0.
+		 *
+		 * @param mixed  $value         The current value of the setting.
+		 * @param string $setting_id    The id of the setting.
+		 * @param string $context       Optional. The context in which a setting needs to be sanitized.
+		 */
+		return apply_filters( "make_settings_{$this->type}_current_value", $value, $setting_id, $context );
 	}
 
 	/**
