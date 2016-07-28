@@ -47,7 +47,7 @@ var MakeBuilder = MakeBuilder || {};
 			// Create a menu item view for each model in the collection
 			this.collection.each(function(item) {
 				var menuItem = new MakeBuilder.view.MenuItem({ model: item });
-				self.$list.append(menuItem.$el.html());
+				self.$list.append(menuItem.$el);
 			});
 
 			return this;

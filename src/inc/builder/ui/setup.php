@@ -301,14 +301,14 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 		?>
 		<script type="text/html" id="tmpl-make-builder-menuitem">
 			<a href="#" title="{{ data.description }}" class="ttfmake-menu-list-item-link" id="ttfmake-menu-list-item-link-{{ data.type }}" data-section="{{ data.type }}">
-				<li class="ttfmake-menu-list-item">
+				<div class="ttfmake-menu-list-item">
 					<div class="ttfmake-menu-list-item-link-icon-wrapper clear" style="background-image: url({{ data.icon_url }});">
 						<span class="ttfmake-menu-list-item-link-icon"></span>
 						<div class="section-type-description">
 							<h4>{{{ data.label }}}</h4>
 						</div>
 					</div>
-				</li>
+				</div>
 			</a>
 		</script>
 	<?php
