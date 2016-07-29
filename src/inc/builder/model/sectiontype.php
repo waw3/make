@@ -165,10 +165,20 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 				'default'  => 0,
 				'sanitize' => 'absint',
 			),
+			'type'  => array(
+				'default'       => $this->type,
+				'sanitize'      => array( Make()->sanitize(), 'sanitize_builder_section_choice' ),
+				'choice_set_id' => 'builder-section-type',
+			),
 			'state' => array(
 				'default'       => 'open',
 				'sanitize'      => array( Make()->sanitize(), 'sanitize_builder_section_choice' ),
 				'choice_set_id' => 'builder-section-state',
+			),
+			'items' => array(
+				'default' => array(),
+				'sanitize' => '',
+				'is_array' => true,
 			),
 		);
 	}
