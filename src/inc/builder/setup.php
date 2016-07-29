@@ -98,20 +98,14 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 			return;
 		}
 
-		//
-		add_filter( 'make_builder_section_title_frontend', 'wptexturize' );
-		add_filter( 'make_builder_section_title_frontend', 'convert_chars' );
-		add_filter( 'make_builder_section_title_frontend', 'trim' );
 
-		//
-		add_filter( 'make_builder_section_title_ui', 'trim' );
 
-		//
-		add_filter( 'make_the_builder_content', 'wpautop' );
-		add_filter( 'make_the_builder_content', 'shortcode_unautop' );
+		// Choice sets
+		add_action( 'make_choices_loaded', array( $this, 'add_choice_sets' ) );
 
-		//
+		// Add filter to adjust sanitize callback parameters.
 		add_filter( 'make_settings_buildersection_sanitize_callback_parameters', array( $this, 'add_sanitize_choice_parameters' ), 10, 4 );
+		add_filter( 'make_settings_buildersection_sanitize_callback_parameters', array( $this, 'wrap_array_values' ), 10, 2 );
 
 		// Hooking has occurred.
 		self::$hooked = true;
@@ -422,6 +416,56 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	}
 
 	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @hooked action make_choices_loaded
+	 *
+	 * @param MAKE_Choices_ManagerInterface $choices
+	 *
+	 * @return mixed
+	 */
+	public function add_choice_sets( MAKE_Choices_ManagerInterface $choices ) {
+		return $choices->add_choice_sets( array(
+			'builder-section-background-style' => array(
+				'tile'  => __( 'Tile', 'make' ),
+				'cover' => __( 'Cover', 'make' ),
+			),
+			'builder-section-type' => wp_list_pluck( $this->section_types, 'label', 'type' ),
+			'builder-section-state' => array(
+				'open'   => __( 'Open', 'make' ),
+				'closed' => __( 'Closed', 'make' ),
+			),
+			'builder-banner-alignment' => array(
+				'none'  => __( 'None', 'make' ),
+				'left'  => __( 'Left', 'make' ),
+				'right' => __( 'Right', 'make' ),
+			),
+			'builder-banner-responsive' => array(
+				'balanced' => __( 'Default', 'make' ),
+				'aspect'   => __( 'Aspect', 'make' ),
+			),
+			'builder-banner-transition' => array(
+				'scrollHorz' => __( 'Slide horizontal', 'make' ),
+				'fade'       => __( 'Fade', 'make' ),
+				'none'       => __( 'None', 'make' ),
+			),
+			'builder-gallery-aspect' => array(
+				'square'    => __( 'Square', 'make' ),
+				'landscape' => __( 'Landscape', 'make' ),
+				'portrait'  => __( 'Portrait', 'make' ),
+				'none'      => __( 'None', 'make' ),
+			),
+			'builder-gallery-captions' => array(
+				'reveal'  => __( 'Reveal', 'make' ),
+				'overlay' => __( 'Overlay', 'make' ),
+				'none'    => __( 'None', 'make' ),
+			),
+		) );
+	}
+
+	/**
 	 * Add items to the array of parameters to feed into the sanitize callback.
 	 *
 	 * @since 1.8.0.
@@ -436,12 +480,33 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 * @return array
 	 */
 	public function add_sanitize_choice_parameters( $value, $setting_id, $callback, MAKE_Settings_BaseInterface $settings_instance ) {
-		$choice_settings = array_keys( $this->get_settings( 'choice_set_id' ), true );
-
-		if ( in_array( $setting_id, $choice_settings ) ) {
+		if ( $settings_instance->setting_exists( $setting_id, 'choice_set_id' ) ) {
 			$value = (array) $value;
 			$value[] = $setting_id;
 			$value[] = $settings_instance;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Wrap setting values that are arrays in another array so that the data will remain intact
+	 * when it passes through call_user_func_array().
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @hooked filter make_settings_buildersection_sanitize_callback_parameters
+	 *
+	 * @param mixed                       $value
+	 * @param string                      $setting_id
+	 * @param string                      $callback
+	 * @param MAKE_Settings_BaseInterface $settings_instance
+	 *
+	 * @return array
+	 */
+	public function wrap_array_values( $value, $setting_id, $callback, MAKE_Settings_BaseInterface $settings_instance ) {
+		if ( $settings_instance->setting_exists( $setting_id, 'in_array' ) ) {
+			$value = array( $value );
 		}
 
 		return $value;

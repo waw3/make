@@ -58,39 +58,6 @@ $this->add_choice_sets( array(
 		'cover'   => __( 'Cover', 'make' ),
 		'contain' => __( 'Contain', 'make' )
 	),
-	'builder-section-background-style' => array(
-		'tile'  => __( 'Tile', 'make' ),
-		'cover' => __( 'Cover', 'make' ),
-	),
-	'builder-section-state' => array(
-		'open'   => __( 'Open', 'make' ),
-		'closed' => __( 'Closed', 'make' ),
-	),
-	'builder-banner-alignment' => array(
-		'none'  => __( 'None', 'make' ),
-		'left'  => __( 'Left', 'make' ),
-		'right' => __( 'Right', 'make' ),
-	),
-	'builder-banner-responsive' => array(
-		'balanced' => __( 'Default', 'make' ),
-		'aspect'   => __( 'Aspect', 'make' ),
-	),
-	'builder-banner-transition' => array(
-		'scrollHorz' => __( 'Slide horizontal', 'make' ),
-		'fade'       => __( 'Fade', 'make' ),
-		'none'       => __( 'None', 'make' ),
-	),
-	'builder-gallery-aspect' => array(
-		'square'    => __( 'Square', 'make' ),
-		'landscape' => __( 'Landscape', 'make' ),
-		'portrait'  => __( 'Portrait', 'make' ),
-		'none'      => __( 'None', 'make' ),
-	),
-	'builder-gallery-captions' => array(
-		'reveal'  => __( 'Reveal', 'make' ),
-		'overlay' => __( 'Overlay', 'make' ),
-		'none'    => __( 'None', 'make' ),
-	),
 	'color-scheme-2' => array(
 		'light' => __( 'Light', 'make' ),
 		'dark'  => __( 'Dark', 'make' ),
