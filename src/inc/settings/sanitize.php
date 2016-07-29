@@ -10,7 +10,7 @@
  *
  * @since 1.7.0.
  */
-final class MAKE_Settings_Sanitize extends MAKE_Util_Modules implements MAKE_Settings_SanitizeInterface {
+final class MAKE_Settings_Sanitize extends MAKE_Util_Modules implements MAKE_Settings_SanitizeInterface, MAKE_Util_HookInterface {
 	/**
 	 * An associative array of required modules.
 	 *
@@ -24,6 +24,54 @@ final class MAKE_Settings_Sanitize extends MAKE_Util_Modules implements MAKE_Set
 		'font'          => 'MAKE_Font_ManagerInterface',
 		'thememod'      => 'MAKE_Settings_ThemeModInterface',
 	);
+
+	/**
+	 * Indicator of whether the hook routine has been run.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @var bool
+	 */
+	private static $hooked = false;
+
+	/**
+	 * Hook into WordPress.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @return void
+	 */
+	public function hook() {
+		if ( $this->is_hooked() ) {
+			return;
+		}
+
+		// Filters for sanitize_title_for_frontend
+		add_filter( 'make_builder_section_title_frontend', 'wptexturize' );
+		add_filter( 'make_builder_section_title_frontend', 'convert_chars' );
+		add_filter( 'make_builder_section_title_frontend', 'trim' );
+
+		// Filters for sanitize_title_for_ui
+		add_filter( 'make_builder_section_title_ui', 'trim' );
+
+		// Filters for sanitize_builder_section_content_for_frontend
+		add_filter( 'make_the_builder_content', 'wpautop' );
+		add_filter( 'make_the_builder_content', 'shortcode_unautop' );
+
+		// Hooking has occurred.
+		self::$hooked = true;
+	}
+
+	/**
+	 * Check if the hook routine has been run.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @return bool
+	 */
+	public function is_hooked() {
+		return self::$hooked;
+	}
 
 	/**
 	 * Sanitize a string to ensure that it is a float number.
