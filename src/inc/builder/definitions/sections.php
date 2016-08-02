@@ -45,6 +45,9 @@ $settings_background = array(
 	),
 );
 
+// Control prioritizer
+$control_priority = new MAKE_Util_Priority( 10, 10 );
+
 // Columns section
 $this->register_section_type(
 	'text',
@@ -61,7 +64,7 @@ $this->register_section_type(
 		'settings'    => array_merge(
 			$settings_title,
 			array(
-				'columns-number'   => array(
+				'columns-number' => array(
 					'default'       => 3,
 					'sanitize'      => array( $this->sanitize(), 'sanitize_builder_section_choice' ),
 					'choice_set_id' => '1-4'
@@ -69,9 +72,77 @@ $this->register_section_type(
 			),
 			$settings_background
 		),
-		'ui'          => array(),
+		'ui'          => array(
+			'buttons'  => array(
+				array(
+					'label'   => __( 'Configure section', 'make' ),
+					'priority' => 10,
+					'action'  => 'click:openOverlay',
+					'overlay' => 'config',
+				),
+			),
+			'elements' => array(
+				array(
+					'type'     => 'stage',
+					'priority' => 10,
+					'setting'  => '',
+				),
+				array(
+					'type'     => 'overlay',
+					'label'    => __( 'Configuration', 'make' ),
+					'priority' => 20,
+					'name'     => 'config',
+					'controls' => array(
+						array(
+							'type'     => 'title',
+							'label'    => __( 'Enter section title', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'title',
+						),
+						array(
+							'type'     => 'select',
+							'label'    => __( 'Columns', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'columns-number',
+						),
+						array(
+							'type'     => 'image',
+							'label'    => __( 'Background image', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'background-image',
+						),
+						array(
+							'type'     => 'checkbox',
+							'label'    => __( 'Darken background to improve readability', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'darken',
+						),
+						array(
+							'type'     => 'checkbox',
+							'label'    => __( 'Darken background to improve readability', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'darken',
+						),
+						array(
+							'type'     => 'select',
+							'label'    => __( 'Background style', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'background-style',
+						),
+						array(
+							'type'     => 'color',
+							'label'    => __( 'Background color', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'background-color',
+						),
+					),
+				),
+			),
+		),
 	)
 );
+
+$control_priority->reboot();
 
 // Column
 $this->register_section_type(
@@ -94,9 +165,59 @@ $this->register_section_type(
 			),
 			$settings_content
 		),
-		'ui'       => array(),
+		'ui'       => array(
+			'buttons' => array(
+				array(
+					'label'   => __( 'Configure column', 'make' ),
+					'priority' => 10,
+					'action'  => 'click:openOverlay',
+					'overlay' => 'config',
+				),
+				array(
+					'label'   => __( 'Edit content', 'make' ),
+					'priority' => 20,
+					'action'  => 'click:openOverlay',
+					'overlay' => 'content',
+				),
+			),
+			'elements' => array(
+				array(
+					'type'     => 'image',
+					'priority' => 10,
+					'setting'  => 'image-id',
+				),
+				array(
+					'type'     => 'content',
+					'priority' => 20,
+					'name'     => 'content',
+					'setting'  => 'content',
+				),
+				array(
+					'type'     => 'overlay',
+					'label'    => __( 'Configuration', 'make' ),
+					'priority' => 30,
+					'name'     => 'config',
+					'controls' => array(
+						array(
+							'type'     => 'title',
+							'label'    => __( 'Enter column title', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'title',
+						),
+						array(
+							'type'     => 'text',
+							'label'    => __( 'Image link URL', 'make' ),
+							'priority' => $control_priority->add(),
+							'setting'  => 'image-link',
+						),
+					),
+				),
+			),
+		),
 	)
 );
+
+$control_priority->reboot();
 
 // Banner section
 $this->register_section_type(
