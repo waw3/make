@@ -525,7 +525,7 @@ class MAKE_Util_HTMLAttributes {
 		}
 
 		if ( $value ) {
-			return $name . '="' . $value . '"';
+			return $name . '="' . esc_attr( $value ) . '"';
 		}
 
 		return '';
