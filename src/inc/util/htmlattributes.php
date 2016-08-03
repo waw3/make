@@ -44,13 +44,15 @@ class MAKE_Util_HTMLAttributes {
 	 * @param string       $name     The attribute name.
 	 * @param string|array $value    The attribute value.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function add_one( $name, $value ) {
 		switch ( true ) {
 			case 'class' === $name :
 				$this->initialize_att( 'class' );
-				$value = explode( ' ', $value );
+				if ( ! is_array( $value ) ) {
+					$value = explode( ' ', $value );
+				}
 				if ( $value ) {
 					$value = array_map( 'strval', $value );
 					$value = array_map( 'trim', $value );
@@ -87,6 +89,32 @@ class MAKE_Util_HTMLAttributes {
 	}
 
 	/**
+	 * Convenience method to add one or more classes to the class attribute.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string|array $value    The class or classes to add.
+	 *
+	 * @return MAKE_Util_HTMLAttributes
+	 */
+	public function add_class( $value ) {
+		return $this->add_one( 'class', $value );
+	}
+
+	/**
+	 * Convenience method to add one or more style rules to the style attribute.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string|array $value    The style rule or rules to add.
+	 *
+	 * @return MAKE_Util_HTMLAttributes
+	 */
+	public function add_style( $value ) {
+		return $this->add_one( 'style', $value );
+	}
+
+	/**
 	 * Add a data attribute to storage.
 	 *
 	 * This is a convenience method for handling a data attribute.
@@ -96,7 +124,7 @@ class MAKE_Util_HTMLAttributes {
 	 * @param string $name     The attribute name, with or without the `data-` prefix.
 	 * @param string $value    The attribute value.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function add_data( $name, $value ) {
 		return $this->add_one( 'data', array( $name => $value ) );
@@ -111,7 +139,7 @@ class MAKE_Util_HTMLAttributes {
 	 *
 	 * @param array $attributes    An associative array of name => value pairs.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function add( array $attributes ) {
 		foreach ( $attributes as $name => $value ) {
@@ -129,7 +157,7 @@ class MAKE_Util_HTMLAttributes {
 	 * @param string $name     The attribute name.
 	 * @param bool   $array    True if the initial value should be an array.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	protected function initialize_att( $name, $array = true ) {
 		if ( ! $this->has_att( $name ) ) {
@@ -247,7 +275,7 @@ class MAKE_Util_HTMLAttributes {
 	 *
 	 * @since 1.8.0.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function remove_all() {
 		$this->attributes = array();
@@ -262,7 +290,7 @@ class MAKE_Util_HTMLAttributes {
 	 *
 	 * @param string $name    The attribute name.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function remove_att( $name ) {
 		if ( $this->has_att( $name ) ) {
@@ -270,6 +298,32 @@ class MAKE_Util_HTMLAttributes {
 		}
 
 		return $this;
+	}
+
+	/**
+	 * Convenience method to remove a class from the class attribute.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $value    The class to remove.
+	 *
+	 * @return MAKE_Util_HTMLAttributes
+	 */
+	public function remove_class( $value ) {
+		return $this->remove_one( 'class', $value );
+	}
+
+	/**
+	 * Convenience method to remove a style property from the style attribute.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $value    The style property to remove.
+	 *
+	 * @return MAKE_Util_HTMLAttributes
+	 */
+	public function remove_style( $value ) {
+		return $this->remove_one( 'style', $value );
 	}
 
 	/**
@@ -281,7 +335,7 @@ class MAKE_Util_HTMLAttributes {
 	 *
 	 * @param string $name    The attribute name, with or without the `data-` prefix.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function remove_data( $name = '' ) {
 		if ( ! $name ) {
@@ -310,7 +364,7 @@ class MAKE_Util_HTMLAttributes {
 	 * @param string $name     The attribute name.
 	 * @param string $value    The value to remove.
 	 *
-	 * @return $this    Make the method chainable.
+	 * @return MAKE_Util_HTMLAttributes
 	 */
 	public function remove_one( $name, $value = '' ) {
 		if ( $this->has_att( $name ) ) {
