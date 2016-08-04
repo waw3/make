@@ -565,15 +565,23 @@ class MAKE_Util_HTMLAttributes {
 	 *
 	 * @since 1.8.0.
 	 *
+	 * @param bool $leading_space    True to add a space before the attributes.
+	 *
 	 * @return string
 	 */
-	public function render() {
+	public function render( $leading_space = true ) {
 		$rendered_atts = array();
 
 		foreach ( array_keys( $this->get() ) as $name ) {
 			$rendered_atts[] = $this->render_att( $name );
 		}
 
-		return implode( ' ', $rendered_atts );
+		$output = implode( ' ', $rendered_atts );
+
+		if ( $leading_space ) {
+			$output = ' ' . $output;
+		}
+
+		return $output;
 	}
 }

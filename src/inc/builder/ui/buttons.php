@@ -46,7 +46,7 @@ class MAKE_Builder_UI_Buttons {
 		}
 
 		// Begin rendering
-		$output = '<button ' . $button_atts->render() . '>';
+		$output = '<button' . $button_atts->render() . '>';
 		if ( isset( $args['label'] ) ){
 			$output .= '<span class="screen-reader-text">' . esc_html( $args['label'] ) . '</span>';
 		}
@@ -80,7 +80,7 @@ class MAKE_Builder_UI_Buttons {
 		}
 
 		// Begin rendering
-		$output = '<button ' . $button_atts->render() . '>';
+		$output = '<button' . $button_atts->render() . '>';
 		$output .= '<span class="screen-reader-text">' . esc_html__( 'Click to toggle section', 'make' ) . '</span>';
 		$output .= '<span class="toggle-indicator" aria-hidden="true"></span>';
 		$output .= '</button>';
