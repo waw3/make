@@ -81,7 +81,7 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 	 * @return void
 	 */
 	public function add_builder_metabox( $post_type ) {
-		// Make sure the Builder has loaded data.
+		// Make sure the Builder data has loaded.
 		$this->builder();
 
 		// Check post type support
@@ -303,9 +303,30 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 
 	/**
 	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return array
+	 */
+	private function get_section_ui_templates() {
+		$section_types = $this->builder()->get_all_section_types();
+		$section_ui_templates = array();
+
+		foreach ( $section_types as $section_type ) {
+			$section_ui_templates[ $section_type->type ] = $section_type->create_ui_template();
+		}
+
+		return $section_ui_templates;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return void
 	 */
 	public function print_templates() {
-
 		// Menu item
 		?>
 		<script type="text/html" id="tmpl-make-builder-menuitem">
@@ -321,6 +342,14 @@ class MAKE_Builder_UI_Setup extends MAKE_Util_Modules implements MAKE_Util_HookI
 			</a>
 		</script>
 	<?php
-
+		// Sections
+		$section_templates = $this->get_section_ui_templates();
+		foreach ( $section_templates as $section_type => $section_template ) {
+			?>
+			<script type="text/html" id="tmpl-make-builder-<?php echo esc_attr( $section_type ); ?>">
+				<?php $section_template->render(); ?>
+			</script>
+		<?php
+		}
 	}
 }

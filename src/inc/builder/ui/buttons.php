@@ -10,7 +10,22 @@
  *
  * @since 1.8.0.
  */
-class MAKE_Builder_UI_Buttons {
+class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
+	/**
+	 * Default args that will be parsed into the $args parameter when a render method is called.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var array
+	 */
+	protected $default_args = array(
+		'label'      => '',
+		'action'     => false,
+		'overlay'    => false,
+		'open'       => true,
+		'attributes' => array(),
+	);
+
 	/**
 	 * Render a section button.
 	 *
@@ -19,72 +34,87 @@ class MAKE_Builder_UI_Buttons {
 	 * @param string $button_id
 	 * @param array  $args
 	 *
-	 * @return string
+	 * @return void
 	 */
-	public function render_button( $button_id, array $args = array() ) {
+	public function render_sectionbutton( $button_id, array $args ) {
 		$button_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
-				'make-builder-section-button',
-				'make-builder-section-button-' . $button_id,
+				'make-sectionbutton',
+				'make-sectionbutton-' . $button_id,
+			),
+			'data'  => array(
+				'type'      => 'sectionbutton',
+				'button-id' => $button_id,
 			),
 			'type'  => 'button'
 		) );
 
 		// Action
-		if ( isset( $args['action'] ) ) {
+		if ( $args['action'] ) {
 			$button_atts->add_data( 'action', $args['action'] );
 		}
 
 		// Overlay
-		if ( isset( $args['overlay'] ) ) {
+		if ( $args['overlay'] ) {
 			$button_atts->add_data( 'overlay', $args['overlay'] );
 		}
 
 		// Other attributes
-		if ( isset( $args['atts'] ) ) {
-			$button_atts->add( $args['atts'] );
-		}
+		$button_atts->add( $args['attributes'] );
 
-		// Begin rendering
-		$output = '<button' . $button_atts->render() . '>';
-		if ( isset( $args['label'] ) ){
-			$output .= '<span class="screen-reader-text">' . esc_html( $args['label'] ) . '</span>';
-		}
-		$output .= '<span class="make-builder-section-button-icon" aria-hidden="true">' . esc_html( $args['label'] ) . '</span>';
-		$output .= '</button>';
-
-		return $output;
+		// Begin output
+		?>
+		<button<?php echo $button_atts->render(); ?>>
+			<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
+			<span class="make-sectionbutton-icon" aria-hidden="true"></span>
+		</button>
+	<?php
 	}
 
 	/**
-	 * Render the section toggle button.
+	 * Render a section toggle button.
 	 *
 	 * @since 1.8.0.
 	 *
-	 * @param bool $open
+	 * @param string $button_id
+	 * @param array  $args
 	 *
-	 * @return string
+	 * @return void
 	 */
-	public function render_section_toggle( $open = true ) {
+	public function render_sectiontoggle( $button_id, array $args ) {
 		$button_atts = new MAKE_Util_HTMLAttributes( array(
 			'class'         => array(
-				'make-builder-section-toggle',
+				'make-sectiontoggle',
+				'make-sectiontoggle-' . $button_id,
+			),
+			'data'          => array(
+				'type'      => 'sectiontoggle',
+				'button-id' => $button_id,
+				'action'    => 'toggleSection',
 			),
 			'type'          => 'button',
 			'aria-expanded' => 'true',
 		) );
 
+		// Label
+		if ( ! $args['label'] ) {
+			$args['label'] = esc_html__( 'Click to toggle section', 'make' );
+		}
+
 		// State
-		if ( ! $open ) {
+		if ( ! $args['open'] ) {
 			$button_atts->add_one( 'aria-expanded', 'false' );
 		}
 
-		// Begin rendering
-		$output = '<button' . $button_atts->render() . '>';
-		$output .= '<span class="screen-reader-text">' . esc_html__( 'Click to toggle section', 'make' ) . '</span>';
-		$output .= '<span class="toggle-indicator" aria-hidden="true"></span>';
-		$output .= '</button>';
+		// Other attributes
+		$button_atts->add( $args['attributes'] );
 
-		return $output;
+		// Begin output
+		?>
+		<button<?php echo $button_atts->render(); ?>>
+			<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
+			<span class="toggle-indicator" aria-hidden="true"></span>
+		</button>
+	<?php
 	}
 }
