@@ -216,6 +216,7 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 			'description' => '',
 			'icon_url'    => '',
 			'priority'    => 10,
+			'collapsible' => true,
 			'parent'      => false,
 			'items'       => false,
 			'settings'    => array(),
@@ -342,6 +343,20 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		);
 
 		return null;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return array
+	 */
+	public function get_all_section_types() {
+		$all_section_types = $this->section_types;
+		uasort( $all_section_types, array( $this, 'callback_sort_section_types' ) );
+
+		return $all_section_types;
 	}
 
 	/**
