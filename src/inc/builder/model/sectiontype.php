@@ -61,6 +61,15 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	 *
 	 * @since 1.8.0.
 	 *
+	 * @var bool
+	 */
+	public $collapsible = true;
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
 	 * @var bool|string
 	 */
 	public $parent = false;
@@ -114,6 +123,7 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 		$this->description = wp_strip_all_tags( $args['description'] );
 		$this->icon_url = esc_url( $args['icon_url'] );
 		$this->priority = absint( $args['priority'] );
+		$this->collapsible = wp_validate_boolean( $args['collapsible'] );
 
 		// Parent
 		if ( false !== $args['parent'] ) {
@@ -130,9 +140,7 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 		$this->settings = wp_parse_args( (array) $args['settings'], $this->get_default_setting_definitions() );
 		
 		// Section UI components
-		if ( isset( $args['ui'] ) && is_array( $args['ui'] ) ) {
-			$this->ui = $args['ui'];
-		}
+		$this->ui = wp_parse_args( (array) $args['ui'], $this->get_default_ui_definitions() );
 	}
 
 	/**
@@ -188,6 +196,21 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	 *
 	 * @since 1.8.0.
 	 *
+	 * @return array
+	 */
+	protected function get_default_ui_definitions() {
+		return array(
+			'buttons'  => array(),
+			'elements' => array(),
+			'controls' => array(),
+		);
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
 	 * @param array $data
 	 *
 	 * @return MAKE_Builder_Model_SectionInstance
@@ -203,5 +226,51 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 		$instance->set_values( $data );
 
 		return $instance;
+	}
+
+	/**
+	 *
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return MAKE_Builder_Model_SectionUITemplate
+	 */
+	public function create_ui_template() {
+		// New template instance
+		$template = new MAKE_Builder_Model_SectionUITemplate();
+
+		// Set properties
+		$template->type = $this->type;
+		$template->label = $this->label;
+		$template->collapsible = $this->collapsible;
+		$template->parent = $this->parent;
+		$template->items = $this->items;
+
+		// Add buttons
+		foreach ( (array) $this->ui['buttons'] as $button_id => $button_args ) {
+			$template->add_button( $button_id, $button_args );
+		}
+
+		// Add elements
+		foreach ( (array) $this->ui['elements'] as $element_id => $element_args ) {
+			$template->add_element( $element_id, $element_args );
+		}
+
+		// Add controls
+		foreach ( (array) $this->ui['controls'] as $control_id => $control_args ) {
+			$template->add_control( $control_id, $control_args );
+		}
+
+		/**
+		 *
+		 */
+		do_action( 'make_builder_ui_template', $template );
+
+		/**
+		 *
+		 */
+		do_action( 'make_builder_ui_template_' . $this->type, $template );
+
+		return $template;
 	}
 }
