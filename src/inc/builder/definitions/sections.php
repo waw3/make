@@ -45,9 +45,6 @@ $settings_background = array(
 	),
 );
 
-// Control prioritizer
-$control_priority = new MAKE_Util_Priority( 10, 10 );
-
 // Columns section
 $this->register_section_type(
 	'text',
@@ -74,81 +71,76 @@ $this->register_section_type(
 		),
 		'ui'          => array(
 			'buttons'  => array(
-				array(
+				'config' => array(
 					'label'   => __( 'Configure section', 'make' ),
-					'priority' => 10,
 					'action'  => 'click:openOverlay',
-					'overlay' => 'config',
+					'overlay' => 'config-overlay',
 				),
 			),
 			'elements' => array(
-				array(
+				'column-stage' => array(
 					'type'     => 'stage',
-					'priority' => 10,
-					'setting'  => '',
+					'setting'  => 'items',
 				),
-				array(
+				'config-overlay' => array(
 					'type'     => 'overlay',
 					'label'    => __( 'Configuration', 'make' ),
-					'priority' => 20,
-					'name'     => 'config',
-					'controls' => array(
-						array(
-							'type'     => 'title',
-							'label'    => __( 'Enter section title', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'title',
-						),
-						array(
-							'type'     => 'select',
-							'label'    => __( 'Columns', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'columns-number',
-						),
-						array(
-							'type'     => 'image',
-							'label'    => __( 'Background image', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'background-image',
-						),
-						array(
-							'type'     => 'checkbox',
-							'label'    => __( 'Darken background to improve readability', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'darken',
-						),
-						array(
-							'type'     => 'checkbox',
-							'label'    => __( 'Darken background to improve readability', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'darken',
-						),
-						array(
-							'type'     => 'select',
-							'label'    => __( 'Background style', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'background-style',
-						),
-						array(
-							'type'     => 'color',
-							'label'    => __( 'Background color', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'background-color',
-						),
-					),
+				),
+			),
+			'controls' => array(
+				'items'            => array(
+					'type'    => 'hidden',
+					'setting' => 'items',
+					'element' => 'column-stage',
+				),
+				'title'            => array(
+					'type'    => 'title',
+					'label'   => __( 'Enter section title', 'make' ),
+					'setting' => 'title',
+					'element' => 'config-overlay',
+				),
+				'columns-number'   => array(
+					'type'    => 'select',
+					'label'   => __( 'Columns', 'make' ),
+					'action'  => 'update:updateColumns',
+					'setting' => 'columns-number',
+					'element' => 'config-overlay',
+				),
+				'background-image' => array(
+					'type'    => 'image',
+					'label'   => __( 'Background image', 'make' ),
+					'setting' => 'background-image',
+					'element' => 'config-overlay',
+				),
+				'darken'           => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Darken background to improve readability', 'make' ),
+					'setting' => 'darken',
+					'element' => 'config-overlay',
+				),
+				'background-style' => array(
+					'type'    => 'select',
+					'label'   => __( 'Background style', 'make' ),
+					'setting' => 'background-style',
+					'element' => 'config-overlay',
+				),
+				'background-color' => array(
+					'type'    => 'color',
+					'label'   => __( 'Background color', 'make' ),
+					'setting' => 'background-color',
+					'element' => 'config-overlay',
 				),
 			),
 		),
 	)
 );
 
-$control_priority->reboot();
-
 // Column
 $this->register_section_type(
 	'text-column',
 	array(
 		'label'    => esc_html__( 'Column', 'make' ),
+		'priority' => 15,
 		'parent'   => 'text',
 		'settings' => array_merge(
 			$settings_title,
@@ -167,57 +159,52 @@ $this->register_section_type(
 		),
 		'ui'       => array(
 			'buttons' => array(
-				array(
+				'config' => array(
 					'label'   => __( 'Configure column', 'make' ),
-					'priority' => 10,
 					'action'  => 'click:openOverlay',
-					'overlay' => 'config',
+					'overlay' => 'config-overlay',
 				),
-				array(
+				'content' => array(
 					'label'   => __( 'Edit content', 'make' ),
-					'priority' => 20,
 					'action'  => 'click:openOverlay',
-					'overlay' => 'content',
+					'overlay' => 'content-overlay',
 				),
 			),
 			'elements' => array(
-				array(
+				'image' => array(
 					'type'     => 'image',
-					'priority' => 10,
 					'setting'  => 'image-id',
 				),
-				array(
+				'preview' => array(
+					'type'     => 'preview',
+					'content'  => 'content',
+				),
+				'content-overlay' => array(
 					'type'     => 'content',
-					'priority' => 20,
-					'name'     => 'content',
 					'setting'  => 'content',
 				),
-				array(
+				'config-overlay' => array(
 					'type'     => 'overlay',
 					'label'    => __( 'Configuration', 'make' ),
-					'priority' => 30,
-					'name'     => 'config',
-					'controls' => array(
-						array(
-							'type'     => 'title',
-							'label'    => __( 'Enter column title', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'title',
-						),
-						array(
-							'type'     => 'text',
-							'label'    => __( 'Image link URL', 'make' ),
-							'priority' => $control_priority->add(),
-							'setting'  => 'image-link',
-						),
-					),
+				),
+			),
+			'controls' => array(
+				'title'      => array(
+					'type'    => 'title',
+					'label'   => __( 'Enter column title', 'make' ),
+					'setting' => 'title',
+					'element' => 'config-overlay',
+				),
+				'image-link' => array(
+					'type'    => 'text',
+					'label'   => __( 'Image link URL', 'make' ),
+					'setting' => 'image-link',
+					'element' => 'config-overlay',
 				),
 			),
 		),
 	)
 );
-
-$control_priority->reboot();
 
 // Banner section
 $this->register_section_type(
@@ -226,7 +213,7 @@ $this->register_section_type(
 		'label'       => esc_html__( 'Banner', 'make' ),
 		'description' => esc_html__( 'Display multiple types of content in a banner or a slider.', 'make' ),
 		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/ui/images/banner.png',
-		'priority'    => 30,
+		'priority'    => 20,
 		'items'       => true,
 		'settings'    => array_merge(
 			$settings_title,
@@ -273,6 +260,7 @@ $this->register_section_type(
 	'banner-slide',
 	array(
 		'label'    => esc_html__( 'Banner Slide', 'make' ),
+		'priority' => 25,
 		'parent'   => 'banner',
 		'settings' => array_merge(
 			$settings_content,
@@ -307,7 +295,7 @@ $this->register_section_type(
 		'label'       => esc_html__( 'Gallery', 'make' ),
 		'description' => esc_html__( 'Display your images in various grid combinations.', 'make' ),
 		'icon_url'    => $this->scripts()->get_css_directory_uri() . '/builder/ui/images/gallery.png',
-		'priority'    => 40,
+		'priority'    => 30,
 		'items'       => true,
 		'settings'    => array_merge(
 			$settings_title,
@@ -344,6 +332,7 @@ $this->register_section_type(
 	'gallery-item',
 	array(
 		'label'    => esc_html__( 'Gallery Item', 'make' ),
+		'priority' => 35,
 		'parent'   => 'gallery',
 		'settings' => array_merge(
 			$settings_title,
