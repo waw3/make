@@ -25,6 +25,15 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	);
 
 	/**
+	 * Holds an instance of MAKE_Builder_UI_Buttons
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @var MAKE_Builder_UI_Buttons|null
+	 */
+	protected $buttons = null;
+
+	/**
 	 * Holds an instance of MAKE_Builder_UI_Controls
 	 *
 	 * @since 1.8.0.
@@ -32,6 +41,21 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @var MAKE_Builder_UI_Controls|null
 	 */
 	protected $controls = null;
+
+	/**
+	 * Gets the instance of MAKE_Builder_UI_Buttons
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @return MAKE_Builder_UI_Buttons
+	 */
+	protected function buttons() {
+		if ( is_null( $this->buttons ) ) {
+			$this->buttons = new MAKE_Builder_UI_Buttons();
+		}
+
+		return $this->buttons;
+	}
 
 	/**
 	 * Gets the instance of MAKE_Builder_UI_Controls
@@ -56,7 +80,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @param string $element_id
 	 * @param array  $args
 	 *
-	 * @return void
+	 * @return $this
 	 */
 	protected function render_stage( $element_id, array $args ) {
 		// Stage attributes
@@ -90,6 +114,8 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<?php endif; ?>
 		</div>
 	<?php
+
+		return $this;
 	}
 
 	/**
@@ -100,7 +126,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @param string $element_id
 	 * @param array  $args
 	 *
-	 * @return void
+	 * @return $this
 	 */
 	protected function render_overlay( $element_id, array $args ) {
 		$overlay_atts = new MAKE_Util_HTMLAttributes( array(
@@ -117,21 +143,6 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		// Other attributes
 		$overlay_atts->add( $args['attributes'] );
 
-		// Close button
-		$button_atts = new MAKE_Util_HTMLAttributes( array(
-			'class'       => array(
-				'make-overlaybutton',
-				'make-overlaybutton-header',
-			),
-			'data'        => array(
-				'type'      => 'overlaybutton',
-				'action'    => 'closeOverlay',
-				'button-id' => 'overlay-close',
-			),
-			'type'        => 'button',
-			'aria-hidden' => 'true',
-		) );
-
 		// Begin output
 		?>
 		<div<?php echo $overlay_atts->render(); ?>>
@@ -139,7 +150,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 				<div class="make-overlay-header">
 					<div class="make-overlay-header-inner">
 						<div class="make-overlay-label"><?php echo esc_html( $args['label'] ); ?></div>
-						<button<?php echo $button_atts->render(); ?>><?php esc_html_e( 'Done', 'make' ); ?></button>
+						<?php $this->buttons()->render( 'overlaybutton', 'close', array( 'action' => 'click:closeOverlay' ) ); ?>
 					</div>
 				</div>
 			<?php if ( is_array( $args['controls'] ) ) : ?>
@@ -152,6 +163,8 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 			</div>
 		</div>
 	<?php
+
+		return $this;
 	}
 
 
@@ -171,29 +184,20 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		// Other attributes
 		$preview_atts->add( $args['attributes'] );
 
-		$editcontent_atts = new MAKE_Util_HTMLAttributes( array(
-			'class' => array(
-				'edit-content-link',
-			),
-			'data' => array(
-				'textarea' => '',
-				'iframe'   => '',
-			),
-			'href' => '#'
-		) );
-
-
+		// Begin output
 		?>
 		<div class="make-preview-container">
 			<div<?php echo $preview_atts->render(); ?>>
 				<div class="make-iframe-overlay">
-					<a<?php echo $editcontent_atts->render(); ?>>
-						<span class="screen-reader-text">
-							<?php esc_html_e( 'Edit content', 'make' ); ?>
-						</span>
-					</a>
+					<?php
+					$this->buttons()->render( 'button', 'edit-content', array(
+						'label'       => esc_html__( 'Edit content', 'make' ),
+						'action'      => 'click:editContent',
+						'label_class' => 'screen-reader-text',
+					) );
+					?>
 				</div>
-				<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>" scrolling="no"></iframe>
+				<iframe width="100%" height="300" id="<?php echo esc_attr( $element_id ); ?>" scrolling="no"></iframe>
 			</div>
 		<?php if ( is_array( $args['controls'] ) ) : ?>
 			<div class="make-preview-controls">
@@ -209,7 +213,10 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 
 	protected function render_uploader( $element_id, $args ) {
 		$uploader_atts = new MAKE_Util_HTMLAttributes( array(
-
+			'class' => array(
+				'make-uploader',
+				'make-uploader-' . $element_id,
+			),
 		) );
 
 		// Other attributes
@@ -219,7 +226,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
 			<div data-title="<?php echo esc_attr( $title ); ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
 		<?php if ( is_array( $args['controls'] ) ) : ?>
-			<div class="make-preview-controls">
+			<div class="make-uploader-controls">
 				<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
 					<?php echo $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
 				<?php endforeach; ?>

@@ -19,12 +19,97 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @var array
 	 */
 	protected $default_args = array(
+		'icon'       => '',
 		'label'      => '',
+		'attributes' => array(),
 		'action'     => false,
 		'overlay'    => false,
 		'open'       => true,
-		'attributes' => array(),
 	);
+
+	/**
+	 * Render a button.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $button_id
+	 * @param array  $args
+	 *
+	 * @return $this
+	 */
+	public function render_button( $button_id, array $args ) {
+		$button_atts = new MAKE_Util_HTMLAttributes( array(
+			'class' => array(
+				'make-button',
+				'make-button-' . $button_id,
+			),
+			'data'  => array(
+				'button-id' => $button_id,
+			),
+			'type'  => 'button'
+		) );
+
+		// Action
+		if ( $args['action'] ) {
+			$button_args['attributes']['data']['action'] = $args['action'];
+		}
+
+		// Overlay
+		if ( $args['overlay'] ) {
+			$button_args['attributes']['data']['overlay'] = $args['overlay'];
+
+			// Default action for a button connected to an overlay
+			if ( ! $args['action'] ) {
+				$button_args['attributes']['data']['action'] = 'click:openOverlay';
+			}
+		}
+
+		// Other attributes
+		$button_atts->add( $args['attributes'] );
+
+		// Icon
+		$icon = '';
+		if ( $args['icon'] ) {
+			$icon_atts = new MAKE_Util_HTMLAttributes( array(
+				'class'       => array(
+					'make-button-icon',
+					'make-button-icon-' . $args['icon'],
+				),
+				'aria-hidden' => 'true'
+			) );
+
+			if ( isset( $args['icon_class'] ) ) {
+				$icon_atts->add_class( $args['icon_class'] );
+			}
+
+			$icon = '<span' . $icon_atts->render() . '></span>';
+		}
+
+		// Label
+		$label = '';
+		if ( $args['label'] ) {
+			$label_atts = new MAKE_Util_HTMLAttributes( array(
+				'class' => array(
+					'make-button-label',
+				),
+			) );
+
+			if ( isset( $args['label_class'] ) ) {
+				$label_atts->add_class( $args['label_class'] );
+			}
+
+			$label = '<span' . $label_atts->render() . '>' . esc_html( $args['label'] ) . '</span>';
+		}
+
+		// Begin output
+		?>
+		<button<?php echo $button_atts->render(); ?>>
+			<?php echo $icon; ?><?php echo $label; ?>
+		</button>
+	<?php
+
+		return $this;
+	}
 
 	/**
 	 * Render a section button.
@@ -34,41 +119,27 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @param string $button_id
 	 * @param array  $args
 	 *
-	 * @return void
+	 * @return $this
 	 */
 	public function render_sectionbutton( $button_id, array $args ) {
-		$button_atts = new MAKE_Util_HTMLAttributes( array(
-			'class' => array(
-				'make-sectionbutton',
-				'make-sectionbutton-' . $button_id,
+		$button_args = array(
+			'attributes'  => array(
+				'class' => array(
+					'make-button-sectionbutton',
+				),
+				'data'  => array(
+					'type' => 'sectionbutton',
+				),
 			),
-			'data'  => array(
-				'type'      => 'sectionbutton',
-				'button-id' => $button_id,
-			),
-			'type'  => 'button'
-		) );
+			'label_class' => 'screen-reader-text',
+		);
 
-		// Action
-		if ( $args['action'] ) {
-			$button_atts->add_data( 'action', $args['action'] );
-		}
-
-		// Overlay
-		if ( $args['overlay'] ) {
-			$button_atts->add_data( 'overlay', $args['overlay'] );
-		}
-
-		// Other attributes
-		$button_atts->add( $args['attributes'] );
+		$button_args = array_merge_recursive( $button_args, $args );
 
 		// Begin output
-		?>
-		<button<?php echo $button_atts->render(); ?>>
-			<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-			<span class="make-sectionbutton-icon" aria-hidden="true"></span>
-		</button>
-	<?php
+		$this->render( 'button', $button_id, $button_args );
+
+		return $this;
 	}
 
 	/**
@@ -79,42 +150,66 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @param string $button_id
 	 * @param array  $args
 	 *
-	 * @return void
+	 * @return $this
 	 */
-	public function render_sectiontoggle( $button_id, array $args ) {
-		$button_atts = new MAKE_Util_HTMLAttributes( array(
-			'class'         => array(
-				'make-sectiontoggle',
-				'make-sectiontoggle-' . $button_id,
+	public function render_sectiontoggle( $button_id, array $args = array() ) {
+		$button_args = array(
+			'icon'        => 'toggle-indicator',
+			'label'       => esc_html__( 'Click to toggle section', 'make' ),
+			'action'      => 'click:toggleSection',
+			'attributes'  => array(
+				'class'         => array(
+					'make-button-sectiontoggle',
+				),
+				'data'          => array(
+					'type'   => 'sectiontoggle',
+				),
+				'aria-expanded' => 'true'
 			),
-			'data'          => array(
-				'type'      => 'sectiontoggle',
-				'button-id' => $button_id,
-				'action'    => 'toggleSection',
-			),
-			'type'          => 'button',
-			'aria-expanded' => 'true',
-		) );
-
-		// Label
-		if ( ! $args['label'] ) {
-			$args['label'] = esc_html__( 'Click to toggle section', 'make' );
-		}
+			'label_class' => 'screen-reader-text',
+		);
 
 		// State
 		if ( ! $args['open'] ) {
-			$button_atts->add_one( 'aria-expanded', 'false' );
+			$button_args['attributes']['aria-expanded'] = 'false';
 		}
 
-		// Other attributes
-		$button_atts->add( $args['attributes'] );
+		$button_args = array_merge_recursive( $button_args, $args );
 
 		// Begin output
-		?>
-		<button<?php echo $button_atts->render(); ?>>
-			<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-			<span class="toggle-indicator" aria-hidden="true"></span>
-		</button>
-	<?php
+		$this->render( 'button', $button_id, $button_args );
+
+		return $this;
+	}
+
+	/**
+	 * Render a button for an overlay header.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $button_id
+	 * @param array  $args
+	 *
+	 * @return $this
+	 */
+	public function render_overlaybutton( $button_id, array $args = array() ) {
+		$button_args = array(
+			'label'      => esc_html__( 'Done', 'make' ),
+			'attributes' => array(
+				'class' => array(
+					'make-button-overlaybutton',
+				),
+				'data'  => array(
+					'type' => 'overlaybutton',
+				),
+			),
+		);
+
+		$button_args = array_merge_recursive( $button_args, $args );
+
+		// Begin output
+		$this->render( 'button', $button_id, $button_args );
+
+		return $this;
 	}
 }

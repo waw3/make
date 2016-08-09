@@ -73,7 +73,6 @@ $this->register_section_type(
 			'buttons'  => array(
 				'config' => array(
 					'label'   => __( 'Configure section', 'make' ),
-					'action'  => 'click:openOverlay',
 					'overlay' => 'config-overlay',
 				),
 			),
@@ -161,12 +160,10 @@ $this->register_section_type(
 			'buttons' => array(
 				'config' => array(
 					'label'   => __( 'Configure column', 'make' ),
-					'action'  => 'click:openOverlay',
 					'overlay' => 'config-overlay',
 				),
 				'content' => array(
 					'label'   => __( 'Edit content', 'make' ),
-					'action'  => 'click:openOverlay',
 					'overlay' => 'content-overlay',
 				),
 			),
