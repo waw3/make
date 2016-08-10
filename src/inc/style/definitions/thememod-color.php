@@ -300,7 +300,11 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-button-text' )
 	) );
 }
 // Button Text Hover/Focus Color
-if ( $is_style_preview || ( ! $this->thememod()->is_default( 'color-button-text-hover' ) && $this->thememod()->get_value( 'color-button-text-hover' ) !== $this->thememod()->get_value( 'color-button-text' ) ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-button-text-hover' ) )
+	||
+	( ! $this->thememod()->is_default( 'color-button-text-hover' ) && $this->thememod()->get_value( 'color-button-text-hover' ) !== $this->thememod()->get_value( 'color-button-text' ) )
+) {
 	$this->css()->add( array(
 		'selectors'    => array(
 			'button:hover', 'button:focus',
@@ -332,7 +336,11 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-button-backgro
 	) );
 }
 // Button Background Hover/Focus Color
-if ( $is_style_preview || ( ! $this->thememod()->is_default( 'color-button-background-hover' ) && $this->thememod()->get_value( 'color-button-background-hover' ) !== $this->thememod()->get_value( 'color-button-background' ) ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-button-background-hover' ) )
+	||
+	( ! $this->thememod()->is_default( 'color-button-background-hover' ) && $this->thememod()->get_value( 'color-button-background-hover' ) !== $this->thememod()->get_value( 'color-button-background' ) )
+) {
 	$this->css()->add( array(
 		'selectors'    => array(
 			'button:hover', 'button:focus',
@@ -401,7 +409,11 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'header-background-co
  */
 
 // Site title
-if ( $is_style_preview || ( ! $this->thememod()->is_default( 'color-site-title' ) && $this->thememod()->get_value( 'header-text-color' ) !== $this->thememod()->get_value( 'color-site-title' ) ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-site-title' ) )
+	||
+	( ! $this->thememod()->is_default( 'color-site-title' ) && $this->thememod()->get_value( 'header-text-color' ) !== $this->thememod()->get_value( 'color-site-title' ) )
+) {
 	$this->css()->add( array(
 		'selectors'    => array(
 			'.site-header .site-title',
@@ -414,7 +426,11 @@ if ( $is_style_preview || ( ! $this->thememod()->is_default( 'color-site-title' 
 }
 
 // Tagline
-if ( $is_style_preview || ( ! $this->thememod()->is_default( 'color-site-tagline' ) && $this->thememod()->get_value( 'header-text-color' ) !== $this->thememod()->get_value( 'color-site-tagline' ) ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-site-tagline' ) )
+	||
+	( ! $this->thememod()->is_default( 'color-site-tagline' ) && $this->thememod()->get_value( 'header-text-color' ) !== $this->thememod()->get_value( 'color-site-tagline' ) )
+) {
 	$this->css()->add( array(
 		'selectors'    => array( '.site-header .site-description' ),
 		'declarations' => array(
@@ -428,9 +444,13 @@ if ( $is_style_preview || ( ! $this->thememod()->is_default( 'color-site-tagline
  */
 
 // Menu Item Text
-if ( $is_style_preview || ! $this->thememod()->is_default( 'color-nav-text' ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-nav-text' ) )
+	||
+	! $this->thememod()->is_default( 'color-nav-text' )
+) {
 	$this->css()->add( array(
-		'selectors'    => array( '.site-navigation .menu li a' ),
+		'selectors'    => array( '.site-header .site-navigation .menu li a' ),
 		'declarations' => array(
 			'color' => $this->thememod()->get_value( 'color-nav-text' )
 		)
@@ -438,11 +458,15 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-nav-text' ) ) 
 }
 
 // Menu Item Text hover
-if ( $is_style_preview || ! $this->thememod()->is_default( 'color-nav-text-hover' ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-nav-text-hover' ) )
+	||
+	! $this->thememod()->is_default( 'color-nav-text-hover' )
+) {
 	$this->css()->add( array(
 		'selectors'    => array(
-			'.site-navigation .menu li a:hover',
-			'.site-navigation .menu li a:focus',
+			'.site-header .site-navigation .menu li a:hover',
+			'.site-header .site-navigation .menu li a:focus',
 		),
 		'declarations' => array(
 			'color' => $this->thememod()->get_value( 'color-nav-text-hover' )
@@ -451,7 +475,11 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-nav-text-hover
 }
 
 // Sub-Menu Item Text
-if ( $is_style_preview || ! $this->thememod()->is_default( 'color-subnav-text' ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-subnav-text' ) )
+	||
+	! $this->thememod()->is_default( 'color-subnav-text' )
+) {
 	$this->css()->add( array(
 		'selectors'    => array(
 			'.site-navigation ul.menu ul a',
@@ -467,7 +495,11 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-subnav-text' )
 }
 
 // Sub-Menu Item Text hover
-if ( $is_style_preview || ! $this->thememod()->is_default( 'color-subnav-text-hover' ) ) {
+if (
+	( $is_style_preview && $this->thememod()->get_value( 'color-subnav-text-hover' ) )
+	||
+	! $this->thememod()->is_default( 'color-subnav-text-hover' )
+) {
 	$this->css()->add( array(
 		'selectors'    => array(
 			'.site-navigation ul.menu ul a:hover',
