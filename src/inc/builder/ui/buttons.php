@@ -37,7 +37,7 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 *
 	 * @return $this
 	 */
-	public function render_button( $button_id, array $args ) {
+	protected function render_button( $button_id, array $args ) {
 		$button_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
 				'make-button',
@@ -121,14 +121,14 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 *
 	 * @return $this
 	 */
-	public function render_sectionbutton( $button_id, array $args ) {
+	protected function render_sectionbutton( $button_id, array $args ) {
 		$button_args = array(
 			'attributes'  => array(
 				'class' => array(
 					'make-button-sectionbutton',
 				),
 				'data'  => array(
-					'type' => 'sectionbutton',
+					'button-type' => 'sectionbutton',
 				),
 			),
 			'label_class' => 'screen-reader-text',
@@ -152,7 +152,7 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 *
 	 * @return $this
 	 */
-	public function render_sectiontoggle( $button_id, array $args = array() ) {
+	protected function render_sectiontoggle( $button_id, array $args = array() ) {
 		$button_args = array(
 			'icon'        => 'toggle-indicator',
 			'label'       => esc_html__( 'Click to toggle section', 'make' ),
@@ -162,7 +162,7 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 					'make-button-sectiontoggle',
 				),
 				'data'          => array(
-					'type'   => 'sectiontoggle',
+					'button-type' => 'sectiontoggle',
 				),
 				'aria-expanded' => 'true'
 			),
@@ -192,7 +192,7 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 *
 	 * @return $this
 	 */
-	public function render_overlaybutton( $button_id, array $args = array() ) {
+	protected function render_overlaybutton( $button_id, array $args = array() ) {
 		$button_args = array(
 			'label'      => esc_html__( 'Done', 'make' ),
 			'attributes' => array(
@@ -200,7 +200,7 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 					'make-button-overlaybutton',
 				),
 				'data'  => array(
-					'type' => 'overlaybutton',
+					'button-type' => 'overlaybutton',
 				),
 			),
 		);

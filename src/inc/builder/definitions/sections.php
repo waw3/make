@@ -79,7 +79,6 @@ $this->register_section_type(
 			'elements' => array(
 				'column-stage' => array(
 					'type'     => 'stage',
-					'setting'  => 'items',
 				),
 				'config-overlay' => array(
 					'type'     => 'overlay',
@@ -169,16 +168,12 @@ $this->register_section_type(
 			),
 			'elements' => array(
 				'image' => array(
-					'type'     => 'image',
+					'type'     => 'uploader',
 					'setting'  => 'image-id',
 				),
 				'preview' => array(
-					'type'     => 'preview',
+					'type'     => 'contentpreview',
 					'content'  => 'content',
-				),
-				'content-overlay' => array(
-					'type'     => 'content',
-					'setting'  => 'content',
 				),
 				'config-overlay' => array(
 					'type'     => 'overlay',
@@ -186,6 +181,16 @@ $this->register_section_type(
 				),
 			),
 			'controls' => array(
+				'image-id'   => array(
+					'type'    => 'hidden',
+					'setting' => 'image-id',
+					'element' => 'image',
+				),
+				'content'    => array(
+					'type'    => 'textarea',
+					'setting' => 'content',
+					'element' => '',
+				),
 				'title'      => array(
 					'type'    => 'title',
 					'label'   => __( 'Enter column title', 'make' ),

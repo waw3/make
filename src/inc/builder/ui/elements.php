@@ -20,8 +20,9 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 */
 	protected $default_args = array(
 		'label'      => '',
-		'controls'   => array(),
 		'attributes' => array(),
+		'controls'   => array(),
+		'content'    => '',
 	);
 
 	/**
@@ -91,8 +92,8 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 				'make-columns-{{ data.columns }}',
 			),
 			'data'  => array(
-				'type'       => 'stage',
-				'element-id' => $element_id,
+				'element-type' => 'stage',
+				'element-id'   => $element_id,
 			),
 		) );
 
@@ -135,8 +136,8 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 				'make-overlay-' . $element_id,
 			),
 			'data'  => array(
-				'type'       => 'overlay',
-				'element-id' => $element_id,
+				'element-type' => 'overlay',
+				'element-id'   => $element_id,
 			),
 		) );
 
@@ -167,17 +168,26 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		return $this;
 	}
 
-
-	protected function render_content( $element_id, $args ) {
-
-	}
-
-
-	protected function render_preview( $element_id, $args ) {
+	/**
+	 * Render a content preview frame.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $element_id
+	 * @param array  $args
+	 *
+	 * @return $this
+	 */
+	protected function render_contentpreview( $element_id, array $args ) {
 		$preview_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
-				'make-preview',
-				'make-preview-' . $element_id,
+				'make-contentpreview',
+				'make-contentpreview-' . $element_id,
+			),
+			'data'  => array(
+				'element-type' => 'contentpreview',
+				'element-id'   => $element_id,
+				'content'      => $args['content'],
 			),
 		) );
 
@@ -186,7 +196,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 
 		// Begin output
 		?>
-		<div class="make-preview-container">
+		<div class="make-contentpreview-container">
 			<div<?php echo $preview_atts->render(); ?>>
 				<div class="make-iframe-overlay">
 					<?php
@@ -200,7 +210,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 				<iframe width="100%" height="300" id="<?php echo esc_attr( $element_id ); ?>" scrolling="no"></iframe>
 			</div>
 		<?php if ( is_array( $args['controls'] ) ) : ?>
-			<div class="make-preview-controls">
+			<div class="make-contentpreview-controls">
 				<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
 					<?php echo $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
 				<?php endforeach; ?>
@@ -208,14 +218,29 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<?php endif; ?>
 		</div>
 	<?php
+
+		return $this;
 	}
 
-
-	protected function render_uploader( $element_id, $args ) {
+	/**
+	 * Render a file uploader/previewer.
+	 *
+	 * @since 1.8.0.
+	 *
+	 * @param string $element_id
+	 * @param array  $args
+	 *
+	 * @return $this
+	 */
+	protected function render_uploader( $element_id, array $args ) {
 		$uploader_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
 				'make-uploader',
 				'make-uploader-' . $element_id,
+			),
+			'data'  => array(
+				'element-type' => 'uploader',
+				'element-id'   => $element_id,
 			),
 		) );
 
@@ -223,8 +248,10 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		$uploader_atts->add( $args['attributes'] );
 
 		?>
-		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
-			<div data-title="<?php echo esc_attr( $title ); ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
+		<div class="make-uploader-container">
+			<div<?php echo $uploader_atts->render(); ?>>
+				<div data-title="<?php echo esc_attr( $title ); ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
+			</div>
 		<?php if ( is_array( $args['controls'] ) ) : ?>
 			<div class="make-uploader-controls">
 				<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
@@ -234,5 +261,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<?php endif; ?>
 		</div>
 	<?php
+
+		return $this;
 	}
 }
