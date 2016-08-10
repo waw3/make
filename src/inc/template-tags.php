@@ -558,13 +558,39 @@ function make_socialicons( $region ) {
  *
  * @since 1.7.0.
  *
- * @param string $before
- * @param string $after
+ * @param string $before    String before the breadcrumb. The '%s' placeholder will be replaced with a wrapper class if present.
+ * @param string $after     String after the breadcrumb.
  *
  * @return void
  */
-function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after = '</p>' ) {
+function make_breadcrumb( $before = '<p class="%s">', $after = '</p>' ) {
+	/**
+	 * Filter: Modify the output for the breadcrumb.
+	 *
+	 * @since 1.7.8.
+	 *
+	 * @param string $output    Will be used as the breadcrumb string if not false.
+	 * @param string $before    String before the breadcrumb. The '%s' placeholder will be replaced with a wrapper class if present.
+	 * @param string $after     String after the breadcrumb.
+	 */
+	$output = apply_filters( 'make_breadcrumb', false, $before, $after );
+
+	// Check if the output has been filtered.
+	if ( $output ) {
+		echo $output;
+
+		return;
+	}
+
+	// Yoast SEO
 	if ( Make()->integration()->has_integration( 'yoastseo' ) ) {
+		if ( false !== strpos( $before, '%s' ) ) {
+			$before = sprintf(
+				$before,
+				'yoast-seo-breadcrumb'
+			);
+		}
+
 		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
 	}
 }
