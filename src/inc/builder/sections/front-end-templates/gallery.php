@@ -18,7 +18,7 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 	<?php endif; ?>
 	<div class="builder-section-content">
 		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) : $i++; ?>
-		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $i ) ); ?>"<?php echo esc_attr( ttfmake_builder_get_gallery_item_onclick( $item['link'], $ttfmake_section_data, $i ) ); ?>>
+		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $i ) ); ?>"<?php echo ttfmake_builder_get_gallery_item_onclick( $item['link'], $ttfmake_section_data, $i ); ?>>
 			<?php $image = ttfmake_builder_get_gallery_item_image( $item, $aspect ); ?>
 			<?php if ( '' !== $image ) : ?>
 				<?php echo $image; ?>
