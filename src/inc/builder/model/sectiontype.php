@@ -178,13 +178,17 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 				'sanitize'      => array( Make()->sanitize(), 'sanitize_builder_section_choice' ),
 				'choice_set_id' => 'builder-section-type',
 			),
+			'label' => array(
+				'default'  => '',
+				'sanitize' => 'sanitize_text_field',
+			),
 			'state' => array(
 				'default'       => 'open',
 				'sanitize'      => array( Make()->sanitize(), 'sanitize_builder_section_choice' ),
 				'choice_set_id' => 'builder-section-state',
 			),
 			'items' => array(
-				'default' => array(),
+				'default'  => array(),
 				'sanitize' => '',
 				'is_array' => true,
 			),
