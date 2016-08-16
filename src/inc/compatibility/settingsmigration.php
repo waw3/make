@@ -176,7 +176,7 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 					</label>
 					<input type="hidden" name="action" value="make-settings-migration" />
 					<input type="hidden" name="make-settings-migration[action]" value="import" />
-					<?php wp_nonce_field( 'import', 'make-settings-migration[nonce]' ); ?>
+					<?php wp_nonce_field( 'import', 'make-settings-migration-nonce' ); ?>
 				</fieldset>
 				<p class="submit">
 					<input type="submit" class="button button-primary" name="make-settings-migration[submit]" value="<?php esc_attr_e( 'Import', 'make' ); ?>" />
@@ -203,7 +203,7 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 					</label>
 					<input type="hidden" name="action" value="make-settings-migration" />
 					<input type="hidden" name="make-settings-migration[action]" value="restore" />
-					<?php wp_nonce_field( 'restore', 'make-settings-migration[nonce]' ); ?>
+					<?php wp_nonce_field( 'restore', 'make-settings-migration-nonce' ); ?>
 				</fieldset>
 				<p class="submit">
 					<input type="submit" class="button button-primary" name="make-settings-migration[submit]" value="<?php esc_attr_e( 'Restore', 'make' ); ?>" />
@@ -227,6 +227,9 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 		if ( isset( $_POST['make-settings-migration'] ) ) {
 			$args = $_POST['make-settings-migration'];
 
+			// Validate referer and nonce.
+			check_admin_referer( $args['action'], 'make-settings-migration-nonce' );
+
 			// User verifies database backup
 			if ( ! isset( $args['verify'] ) ) {
 				$this->notice()->register_one_time_admin_notice(
@@ -247,20 +250,6 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 					sprintf(
 						'%1$s %2$s',
 						esc_html__( 'Invalid action.', 'make' ),
-						esc_html__( 'No settings migration has taken place.', 'make' )
-					),
-					wp_get_current_user(),
-					array(
-						'type' => 'error'
-					)
-				);
-			}
-			// Validate nonce
-			else if ( ! isset( $args['nonce'] ) || ! wp_verify_nonce( $args['nonce'], $args['action'] ) ) {
-				$this->notice()->register_one_time_admin_notice(
-					sprintf(
-						'%1$s %2$s',
-						esc_html__( 'Cheatin&#8217; uh?', 'make' ),
 						esc_html__( 'No settings migration has taken place.', 'make' )
 					),
 					wp_get_current_user(),
