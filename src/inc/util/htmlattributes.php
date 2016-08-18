@@ -137,13 +137,21 @@ class MAKE_Util_HTMLAttributes implements MAKE_Util_HTMLAttributesInterface {
 	 *
 	 * @since 1.8.0.
 	 *
-	 * @param array $attributes    An associative array of name => value pairs.
+	 * @param array|MAKE_Util_HTMLAttributes $attributes    An associative array of name => value pairs.
 	 *
 	 * @return MAKE_Util_HTMLAttributes
 	 */
-	public function add( array $attributes ) {
-		foreach ( $attributes as $name => $value ) {
-			$this->add_one( $name, $value );
+	public function add( $attributes ) {
+		// Input is an existing instance of the class
+		if ( $attributes instanceof MAKE_Util_HTMLAttributesInterface ) {
+			// Get the attributes array from the object.
+			$attributes = $attributes->get();
+		}
+
+		if ( is_array( $attributes ) ) {
+			foreach ( $attributes as $name => $value ) {
+				$this->add_one( $name, $value );
+			}
 		}
 
 		return $this;
