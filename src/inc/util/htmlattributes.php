@@ -10,7 +10,7 @@
  *
  * @since 1.8.0.
  */
-class MAKE_Util_HTMLAttributes {
+class MAKE_Util_HTMLAttributes implements MAKE_Util_HTMLAttributesInterface {
 	/**
 	 * Attribute name/value storage.
 	 *
