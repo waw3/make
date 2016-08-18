@@ -63,7 +63,7 @@ class MAKE_Util_HTMLAttributes implements MAKE_Util_HTMLAttributesInterface {
 
 			case 'style' === $name :
 				$this->initialize_att( 'style' );
-				$this->attributes['style'] = array_merge_recursive( $this->attributes['style'], $this->parse_style( $value ) );
+				$this->attributes['style'] = array_merge( $this->attributes['style'], $this->parse_style( $value ) );
 				break;
 
 			case 'data' === $name :
@@ -71,7 +71,7 @@ class MAKE_Util_HTMLAttributes implements MAKE_Util_HTMLAttributesInterface {
 					$this->initialize_att( 'data' );
 					$keys = array_map( array( $this, 'trim_data_name' ), array_keys( $value ) );
 					$value = array_map( 'strval', $value );
-					$this->attributes['data'] = array_merge_recursive( $this->attributes['data'], array_combine( $keys, $value ) );
+					$this->attributes['data'] = array_merge( $this->attributes['data'], array_combine( $keys, $value ) );
 				}
 				break;
 
