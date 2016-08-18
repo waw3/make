@@ -95,21 +95,33 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_checkbox( $control_id, array $args ) {
-		$input_args = array(
-			'attributes' => array(
-				'data' => array(
-					'control-type' => 'checkbox',
-				),
+		// Initial attributes
+		$input_atts = new MAKE_Util_HTMLAttributes( array(
+			'data' => array(
+				'control-type' => 'checkbox',
 			),
-			'input_type' => 'checkbox'
+		) );
+
+		// Merge with submitted attributes
+		$input_atts->add( $args['attributes'] );
+		unset( $args['attributes'] );
+
+		// Compile the args
+		$input_args = wp_parse_args(
+			array_diff_assoc( $args, $this->default_args ),
+			array(
+				'attributes' => $input_atts,
+				'input_type' => 'checkbox'
+			)
 		);
 
 		// Checked
-		if ( $args['setting'] ) {
-			$input_args['attributes']['checked'] = '<# if (true == data.' . $args['setting'] . ') { #>checked<# } #>';
+		if ( $input_args['setting'] ) {
+			$input_args['attributes']->add_one(
+				'checked',
+				'<# if (true == data.' . $args['setting'] . ') { #>checked<# } #>'
+			);
 		}
-
-		$input_args = array_merge_recursive( $input_args, $args );
 
 		// Begin output
 		$this->render( 'input', $control_id, $input_args );
@@ -128,16 +140,25 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_hidden( $control_id, array $args ) {
-		$input_args = array(
-			'attributes' => array(
-				'data' => array(
-					'control-type' => 'hidden',
-				),
+		// Initial attributes
+		$input_atts = new MAKE_Util_HTMLAttributes( array(
+			'data' => array(
+				'control-type' => 'hidden',
 			),
-			'input_type' => 'hidden'
-		);
+		) );
 
-		$input_args = array_merge_recursive( $input_args, $args );
+		// Merge with submitted attributes
+		$input_atts->add( $args['attributes'] );
+		unset( $args['attributes'] );
+
+		// Compile the args
+		$input_args = wp_parse_args(
+			array_diff_assoc( $args, $this->default_args ),
+			array(
+				'attributes' => $input_atts,
+				'input_type' => 'hidden'
+			)
+		);
 
 		// Begin output
 		$this->render( 'input', $control_id, $input_args );
@@ -156,15 +177,24 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_colorpicker( $control_id, array $args ) {
-		$input_args = array(
-			'attributes' => array(
-				'data' => array(
-					'control-type' => 'colorpicker',
-				),
+		// Initial attributes
+		$input_atts = new MAKE_Util_HTMLAttributes( array(
+			'data' => array(
+				'control-type' => 'colorpicker',
 			),
-		);
+		) );
 
-		$input_args = array_merge_recursive( $input_args, $args );
+		// Merge with submitted attributes
+		$input_atts->add( $args['attributes'] );
+		unset( $args['attributes'] );
+
+		// Compile the args
+		$input_args = wp_parse_args(
+			array_diff_assoc( $args, $this->default_args ),
+			array(
+				'attributes' => $input_atts,
+			)
+		);
 
 		// Begin output
 		$this->render( 'input', $control_id, $input_args );

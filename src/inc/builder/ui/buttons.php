@@ -73,7 +73,9 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 			$icon_atts = new MAKE_Util_HTMLAttributes( array(
 				'class'       => array(
 					'make-button-icon',
-					'make-button-icon-' . $args['icon'],
+				),
+				'data'        => array(
+					'icon' => $args['icon'],
 				),
 				'aria-hidden' => 'true'
 			) );
@@ -122,19 +124,28 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_sectionbutton( $button_id, array $args ) {
-		$button_args = array(
-			'attributes'  => array(
-				'class' => array(
-					'make-button-sectionbutton',
-				),
-				'data'  => array(
-					'button-type' => 'sectionbutton',
-				),
+		// Initial attributes
+		$button_atts = new MAKE_Util_HTMLAttributes( array(
+			'class' => array(
+				'make-button-sectionbutton',
 			),
-			'label_class' => 'screen-reader-text',
-		);
+			'data'  => array(
+				'button-type' => 'sectionbutton',
+			),
+		) );
 
-		$button_args = array_merge_recursive( $button_args, $args );
+		// Merge with submitted attributes
+		$button_atts->add( $args['attributes'] );
+		unset( $args['attributes'] );
+
+		// Compile the args
+		$button_args = wp_parse_args(
+			array_diff_assoc( $args, $this->default_args ),
+			array(
+				'attributes'  => $button_atts,
+				'label_class' => 'screen-reader-text',
+			)
+		);
 
 		// Begin output
 		$this->render( 'button', $button_id, $button_args );
@@ -153,28 +164,37 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_sectiontoggle( $button_id, array $args = array() ) {
-		$button_args = array(
-			'icon'        => 'toggle-indicator',
-			'label'       => esc_html__( 'Click to toggle section', 'make' ),
-			'action'      => 'click:toggleSection',
-			'attributes'  => array(
-				'class'         => array(
-					'make-button-sectiontoggle',
-				),
-				'data'          => array(
-					'button-type' => 'sectiontoggle',
-				),
-				'aria-expanded' => 'true'
+		// Initial attributes
+		$button_atts = new MAKE_Util_HTMLAttributes( array(
+			'class'         => array(
+				'make-button-sectiontoggle',
 			),
-			'label_class' => 'screen-reader-text',
+			'data'          => array(
+				'button-type' => 'sectiontoggle',
+			),
+			'aria-expanded' => 'true',
+		) );
+
+		// Merge with submitted attributes
+		$button_atts->add( $args['attributes'] );
+		unset( $args['attributes'] );
+
+		// Compile the args
+		$button_args = wp_parse_args(
+			array_diff_assoc( $args, $this->default_args ),
+			array(
+				'icon'        => 'toggle-indicator',
+				'label'       => esc_html__( 'Click to toggle section', 'make' ),
+				'action'      => 'click:toggleSection',
+				'attributes'  => $button_atts,
+				'label_class' => 'screen-reader-text',
+			)
 		);
 
 		// State
 		if ( ! $args['open'] ) {
-			$button_args['attributes']['aria-expanded'] = 'false';
+			$button_args['attributes']->add_one( 'aria-expanded', 'false' );
 		}
-
-		$button_args = array_merge_recursive( $button_args, $args );
 
 		// Begin output
 		$this->render( 'button', $button_id, $button_args );
@@ -193,19 +213,28 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_overlaybutton( $button_id, array $args = array() ) {
-		$button_args = array(
-			'label'      => esc_html__( 'Done', 'make' ),
-			'attributes' => array(
-				'class' => array(
-					'make-button-overlaybutton',
-				),
-				'data'  => array(
-					'button-type' => 'overlaybutton',
-				),
+		// Initial attributes
+		$button_atts = new MAKE_Util_HTMLAttributes( array(
+			'class' => array(
+				'make-button-overlaybutton',
 			),
-		);
+			'data'  => array(
+				'button-type' => 'overlaybutton',
+			),
+		) );
 
-		$button_args = array_merge_recursive( $button_args, $args );
+		// Merge with submitted attributes
+		$button_atts->add( $args['attributes'] );
+		unset( $args['attributes'] );
+
+		// Compile the args
+		$button_args = wp_parse_args(
+			array_diff_assoc( $args, $this->default_args ),
+			array(
+				'label'      => esc_html__( 'Done', 'make' ),
+				'attributes' => $button_atts,
+			)
+		);
 
 		// Begin output
 		$this->render( 'button', $button_id, $button_args );
