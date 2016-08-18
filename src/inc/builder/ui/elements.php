@@ -109,7 +109,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<?php if ( is_array( $args['controls'] ) ) : ?>
 			<div class="make-stage-controls">
 			<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
-				<?php echo $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
+				<?php $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
 			<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
@@ -156,8 +156,8 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 				</div>
 			<?php if ( is_array( $args['controls'] ) ) : ?>
 				<div class="make-overlay-controls">
-					<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
-						<?php echo $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
+					<?php foreach ( $args['controls'] as $control_id => $control_args ) : ?>
+						<?php $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
@@ -212,7 +212,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<?php if ( is_array( $args['controls'] ) ) : ?>
 			<div class="make-contentpreview-controls">
 				<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
-					<?php echo $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
+					<?php $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
@@ -255,7 +255,7 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 		<?php if ( is_array( $args['controls'] ) ) : ?>
 			<div class="make-uploader-controls">
 				<?php  foreach ( $args['controls'] as $control_id => $control_args ) : ?>
-					<?php echo $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
+					<?php $this->controls()->render( $control_args['type'], $control_id, $control_args ); ?>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>

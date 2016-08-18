@@ -103,7 +103,7 @@ abstract class MAKE_Builder_UI_Base {
 			// Ensure required args are present
 			$args = wp_parse_args( $args, $this->default_args );
 
-			return call_user_func_array( $callback, array( $item_id, $args ) );
+			call_user_func_array( $callback, array( $item_id, $args ) );
 		}
 
 		return '';
