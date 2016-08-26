@@ -239,7 +239,7 @@ function ttfmake_builder_get_gallery_item_onclick( $link, $ttfmake_section_data,
 	}
 
 	/**
-	 * Filter the class used for a gallery item.
+	 * Filter the onclick attribute for a gallery item.
 	 *
 	 * @since 1.7.6.
 	 *
