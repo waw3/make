@@ -212,15 +212,16 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 */
 	private function get_default_section_type_args( $section_type ) {
 		return array(
-			'label'       => ucwords( preg_replace( '/[\-_]+/', ' ', $section_type ) ),
-			'description' => '',
-			'icon_url'    => '',
-			'priority'    => 10,
-			'collapsible' => true,
-			'parent'      => false,
-			'items'       => false,
-			'settings'    => array(),
-			'ui'          => array(),
+			'label'             => ucwords( preg_replace( '/[\-_]+/', ' ', $section_type ) ),
+			'description'       => '',
+			'icon_url'          => '',
+			'priority'          => 10,
+			'collapsible'       => true,
+			'parent'            => false,
+			'items'             => false,
+			'settings'          => array(),
+			'ui'                => array(),
+			'frontend_callback' => null,
 		);
 	}
 

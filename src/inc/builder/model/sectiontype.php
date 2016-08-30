@@ -137,10 +137,15 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 		}
 
 		// Section setting definitions
-		$this->settings = wp_parse_args( (array) $args['settings'], $this->get_default_setting_definitions() );
+		$this->settings = (array) $args['settings'];
 		
 		// Section UI components
-		$this->ui = wp_parse_args( (array) $args['ui'], $this->get_default_ui_definitions() );
+		$this->ui = (array) $args['ui'];
+
+		// Front end callback
+		if ( is_callable( $args['frontend_callback'] ) ) {
+			$this->frontend_callback = $args['frontend_callback'];
+		}
 	}
 
 	/**
@@ -167,7 +172,7 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	 *
 	 * @return array
 	 */
-	protected function get_default_setting_definitions() {
+	protected function get_shared_setting_definitions() {
 		return array(
 			'id'    => array(
 				'default'  => 0,
@@ -200,21 +205,6 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	 *
 	 * @since 1.8.0.
 	 *
-	 * @return array
-	 */
-	protected function get_default_ui_definitions() {
-		return array(
-			'buttons'  => array(),
-			'elements' => array(),
-			'controls' => array(),
-		);
-	}
-
-	/**
-	 *
-	 *
-	 * @since 1.8.0.
-	 *
 	 * @param array $data
 	 *
 	 * @return MAKE_Builder_Model_SectionInstance
@@ -223,8 +213,12 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 		// New settings instance
 		$instance = new MAKE_Builder_Model_SectionInstance();
 
-		// Add setting definitions
-		$instance->add_settings( $this->settings );
+		// Add shared setting definitions
+		$instance->add_settings( $this->get_shared_setting_definitions() );
+
+		// Add section setting definitions
+		// Enable overwrite so shared definitions can be overwritten
+		$instance->add_settings( $this->settings, array(), true );
 
 		// Set existing values
 		$instance->set_values( $data );
@@ -233,7 +227,7 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	}
 
 	/**
-	 *
+	 * Generate a SectionUITemplate class instance.
 	 *
 	 * @since 1.8.0.
 	 *
@@ -241,40 +235,15 @@ class MAKE_Builder_Model_SectionType implements MAKE_Builder_Model_SectionTypeIn
 	 */
 	public function create_ui_template() {
 		// New template instance
-		$template = new MAKE_Builder_Model_SectionUITemplate();
-
-		// Set properties
-		$template->type = $this->type;
-		$template->label = $this->label;
-		$template->collapsible = $this->collapsible;
-		$template->parent = $this->parent;
-		$template->items = $this->items;
-
-		// Add buttons
-		foreach ( (array) $this->ui['buttons'] as $button_id => $button_args ) {
-			$template->add_button( $button_id, $button_args );
-		}
-
-		// Add elements
-		foreach ( (array) $this->ui['elements'] as $element_id => $element_args ) {
-			$template->add_element( $element_id, $element_args );
-		}
-
-		// Add controls
-		foreach ( (array) $this->ui['controls'] as $control_id => $control_args ) {
-			$template->add_control( $control_id, $control_args );
-		}
-
-		/**
-		 *
-		 */
-		do_action( 'make_builder_ui_template', $template );
-
-		/**
-		 *
-		 */
-		do_action( 'make_builder_ui_template_' . $this->type, $template );
-
-		return $template;
+		return new MAKE_Builder_Model_SectionUITemplate(
+			array(
+				'type'        => $this->type,
+				'label'       => $this->label,
+				'collapsible' => $this->collapsible,
+				'parent'      => $this->parent,
+				'items'       => $this->items,
+			),
+			$this->ui
+		);
 	}
 }

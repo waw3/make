@@ -39,20 +39,6 @@ class MAKE_Builder_Settings extends MAKE_Settings_Base implements MAKE_Builder_S
 	private $prefix = '_make-builder-';
 
 	/**
-	 * MAKE_Builder_Settings constructor.
-	 *
-	 * @param MAKE_APIInterface|null $api
-	 * @param array                  $modules
-	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
-		// Make sure parent class dependencies are available.
-		$modules = wp_parse_args( $modules, array( 'error' => Make()->error() ) );
-
-		// Load dependencies
-		parent::__construct( $api, $modules );
-	}
-
-	/**
 	 *
 	 *
 	 * @since 1.8.0.

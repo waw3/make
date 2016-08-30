@@ -137,10 +137,11 @@ $this->register_section_type(
 $this->register_section_type(
 	'text-column',
 	array(
-		'label'    => esc_html__( 'Column', 'make' ),
-		'priority' => 15,
-		'parent'   => 'text',
-		'settings' => array_merge(
+		'label'       => esc_html__( 'Column', 'make' ),
+		'priority'    => 15,
+		'collapsible' => false,
+		'parent'      => 'text',
+		'settings'    => array_merge(
 			$settings_title,
 			array(
 				'image-link' => array(
@@ -155,9 +156,9 @@ $this->register_section_type(
 			),
 			$settings_content
 		),
-		'ui'       => array(
-			'buttons' => array(
-				'config' => array(
+		'ui'          => array(
+			'buttons'  => array(
+				'config'  => array(
 					'label'   => __( 'Configure column', 'make' ),
 					'overlay' => 'config-overlay',
 				),
@@ -167,17 +168,17 @@ $this->register_section_type(
 				),
 			),
 			'elements' => array(
-				'image' => array(
-					'type'     => 'uploader',
-					'setting'  => 'image-id',
+				'image'          => array(
+					'type'    => 'uploader',
+					'setting' => 'image-id',
 				),
-				'preview' => array(
-					'type'     => 'contentpreview',
-					'content'  => 'content',
+				'preview'        => array(
+					'type'    => 'contentpreview',
+					'content' => 'content',
 				),
 				'config-overlay' => array(
-					'type'     => 'overlay',
-					'label'    => __( 'Configuration', 'make' ),
+					'type'  => 'overlay',
+					'label' => __( 'Configuration', 'make' ),
 				),
 			),
 			'controls' => array(
