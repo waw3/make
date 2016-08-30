@@ -22,6 +22,7 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 		'label'       => '',
 		'description' => '',
 		'attributes'  => array(),
+		'element'     => '',
 		'input_type'  => 'text',
 		'setting'     => false,
 		'choices'     => array(),
@@ -38,6 +39,9 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_input( $control_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		$setting = $args['setting'];
 
 		// Input attributes
@@ -103,17 +107,19 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 		) );
 
 		// Merge with submitted attributes
-		$input_atts->add( $args['attributes'] );
-		unset( $args['attributes'] );
+		if ( isset( $args['attributes'] ) ) {
+			$input_atts->add( $args['attributes'] );
+		}
+		$args['attributes'] = $input_atts;
 
 		// Compile the args
 		$input_args = wp_parse_args(
-			array_diff_assoc( $args, $this->default_args ),
+			$args,
 			array(
-				'attributes' => $input_atts,
 				'input_type' => 'checkbox'
 			)
 		);
+		$input_args = wp_parse_args( $input_args, $this->default_args );
 
 		// Checked
 		if ( $input_args['setting'] ) {
@@ -148,17 +154,19 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 		) );
 
 		// Merge with submitted attributes
-		$input_atts->add( $args['attributes'] );
-		unset( $args['attributes'] );
+		if ( isset( $args['attributes'] ) ) {
+			$input_atts->add( $args['attributes'] );
+		}
+		$args['attributes'] = $input_atts;
 
 		// Compile the args
 		$input_args = wp_parse_args(
-			array_diff_assoc( $args, $this->default_args ),
+			$args,
 			array(
-				'attributes' => $input_atts,
 				'input_type' => 'hidden'
 			)
 		);
+		$input_args = wp_parse_args( $input_args, $this->default_args );
 
 		// Begin output
 		$this->render( 'input', $control_id, $input_args );
@@ -185,16 +193,13 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 		) );
 
 		// Merge with submitted attributes
-		$input_atts->add( $args['attributes'] );
-		unset( $args['attributes'] );
+		if ( isset( $args['attributes'] ) ) {
+			$input_atts->add( $args['attributes'] );
+		}
+		$args['attributes'] = $input_atts;
 
 		// Compile the args
-		$input_args = wp_parse_args(
-			array_diff_assoc( $args, $this->default_args ),
-			array(
-				'attributes' => $input_atts,
-			)
-		);
+		$input_args = wp_parse_args( $args, $this->default_args );
 
 		// Begin output
 		$this->render( 'input', $control_id, $input_args );
@@ -204,6 +209,9 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 
 
 	protected function render_uploader( $control_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 
 	}
 
@@ -218,6 +226,9 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_select( $control_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		// Bail if there are no choices
 		if ( empty( $args['choices'] ) ) {
 			return $this;
@@ -272,6 +283,9 @@ class MAKE_Builder_UI_Controls extends MAKE_Builder_UI_Base {
 
 
 	protected function render_textarea( $control_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		$setting = $args['setting'];
 
 		$textarea_atts = new MAKE_Util_HTMLAttributes( array(

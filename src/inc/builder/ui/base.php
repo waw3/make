@@ -100,8 +100,6 @@ abstract class MAKE_Builder_UI_Base {
 		if ( $this->can_render( $type ) ) {
 			// Get the callback
 			$callback = $this->get_render_callback( $type );
-			// Ensure required args are present
-			$args = wp_parse_args( $args, $this->default_args );
 
 			call_user_func_array( $callback, array( $item_id, $args ) );
 		}

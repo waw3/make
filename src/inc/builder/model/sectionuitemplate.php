@@ -10,18 +10,7 @@
  *
  * @since 1.8.0.
  */
-class MAKE_Builder_Model_SectionUITemplate extends MAKE_Util_Modules implements MAKE_Builder_Model_SectionUITemplateInterface {
-	/**
-	 * An associative array of required modules.
-	 *
-	 * @since 1.7.0.
-	 *
-	 * @var array
-	 */
-	protected $dependencies = array(
-		'error' => 'MAKE_Error_CollectorInterface',
-	);
-
+class MAKE_Builder_Model_SectionUITemplate implements MAKE_Builder_Model_SectionUITemplateInterface {
 	/**
 	 *
 	 *
@@ -121,18 +110,86 @@ class MAKE_Builder_Model_SectionUITemplate extends MAKE_Util_Modules implements 
 	 */
 	protected $controls = null;
 
-	/**
-	 * MAKE_Builder_Model_SectionUITemplate constructor.
-	 *
-	 * @param MAKE_APIInterface|null $api
-	 * @param array                  $modules
-	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
-		// Make sure dependencies are available.
-		$modules = wp_parse_args( $modules, array( 'error' => Make()->error() ) );
 
-		// Load dependencies
-		parent::__construct( $api, $modules );
+	public function __construct( $args = array(), $ui = array() ) {
+		// Handle args
+		$arg_defaults = array(
+			'type'        => '',
+			'label'       => '',
+			'collapsible' => true,
+			'parent'      => false,
+			'items'       => false,
+		);
+		$args = wp_parse_args( $args, $arg_defaults );
+
+		$this->type = $args['type'];
+		$this->label = $args['label'];
+		$this->collapsible = $args['collapsible'];
+		$this->parent = $args['parent'];
+		$this->items = $args['items'];
+
+		// Handle UI
+		$ui_defaults = array(
+			'buttons'  => array(),
+			'elements' => array(),
+			'controls' => array(),
+		);
+		$ui = wp_parse_args( $ui, $ui_defaults );
+
+		// Add buttons
+		foreach ( (array) $ui['buttons'] as $button_id => $button_args ) {
+			$this->add_button( $button_id, $button_args );
+		}
+
+		// Add elements
+		foreach ( (array) $ui['elements'] as $element_id => $element_args ) {
+			$this->add_element( $element_id, $element_args );
+		}
+
+		// Add controls
+		foreach ( (array) $ui['controls'] as $control_id => $control_args ) {
+			$this->add_control( $control_id, $control_args );
+		}
+
+		/**
+		 *
+		 */
+		do_action( 'make_builder_section_ui_template', $this );
+
+		/**
+		 *
+		 */
+		do_action( 'make_builder_section_ui_template_' . $this->type, $this );
+	}
+
+
+	protected function get_definitions( $type ) {
+		$definitions = array();
+
+		switch ( $type ) {
+			case 'button' :
+				$definitions = $this->button_definitions;
+				break;
+			case 'element' :
+				$definitions = $this->element_definitions;
+				break;
+			case 'control' :
+				$definitions = $this->control_definitions;
+				break;
+		}
+
+		uasort( $definitions, array( $this, 'sort_priority' ) );
+
+		return $definitions;
+	}
+
+
+	protected function sort_priority( $a, $b ) {
+		if ( $a['priority'] === $b['priority'] ) {
+			return 0;
+		}
+
+		return ( $a['priority'] < $b['priority'] ) ? -1 : 1;
 	}
 
 	/**
@@ -286,10 +343,21 @@ class MAKE_Builder_Model_SectionUITemplate extends MAKE_Util_Modules implements 
 	}
 
 
-	protected function get_element_controls( $element_id ) {
-		$plucked = wp_list_pluck( $this->control_definitions, 'element' );
+	public function is_top_level_section() {
+		return ! $this->parent;
+	}
 
-		return array_keys( $plucked, $element_id );
+
+	protected function get_element_controls( $element_id ) {
+		$all_control_definitions = $this->get_definitions( 'control' );
+		$control_ids = array_keys( wp_list_pluck( $all_control_definitions, 'element' ), $element_id );
+		$element_control_definitions = array();
+
+		foreach ( $control_ids as $id ) {
+			$element_control_definitions[ $id ] = $all_control_definitions[ $id ];
+		}
+
+		return $element_control_definitions;
 	}
 
 
@@ -302,37 +370,104 @@ class MAKE_Builder_Model_SectionUITemplate extends MAKE_Util_Modules implements 
 			),
 			'data'  => array(
 				'section-id'   => '{{ data.id }}',
-				'section-type' => '{{ data.type }}',
+				'section-type' => $this->type,
 			),
 		) );
+
 		?>
 		<div<?php echo $section_atts->render(); ?>>
-			<div class="make-section-header">
-				<label for="label-{{ data.id }}">
-					<?php
-					// The label input
-					$this->controls()->render( 'input', 'label', array(
-						'attributes' => array(
-							'placeholder' => esc_html__( 'Add a label', 'make' )
-						),
-						'setting' => 'label',
-					) );
-					?>
-					<?php
-					// The section type label
-					echo $this->label; ?>
-				</label>
-				<div class="make-section-header-buttons">
-					<?php  ?>
-				</div>
-			</div>
-			<div class="clear"></div>
-			<div class="make-section-body">
+			<?php $this->render_header(); ?>
 
-			</div>
+			<?php if ( $this->is_top_level_section() ) : ?>
+				<div class="clear"></div>
+			<?php endif; ?>
+
+			<?php if ( count( $this->get_definitions( 'element' ) ) ) : ?>
+				<div class="make-section-body">
+					<?php
+					foreach ( $this->get_definitions( 'element' ) as $element_id => $element_args ) :
+						$element_args['controls'] = $this->get_element_controls( $element_id );
+						$this->elements()->render( $element_args['type'], $element_id, $element_args );
+					endforeach;
+					?>
+				</div>
+			<?php endif; ?>
+
+			<div class="clear"></div>
+
+			<?php $this->render_footer(); ?>
 		</div>
 	<?php
 
 		return $this;
+	}
+
+
+	protected function render_header() {
+		?>
+		<div class="make-section-header">
+	<?php
+		// Top level section
+		if ( $this->is_top_level_section() ) : ?>
+			<label for="label-{{ data.id }}">
+				<?php
+				// The label input
+				$this->controls()->render( 'input', 'label', array(
+					'attributes' => array(
+						'placeholder' => esc_html__( 'Add a label', 'make' )
+					),
+					'setting' => 'label',
+				) );
+				?>
+				<?php
+				// The section type label
+				echo $this->label; ?>
+			</label>
+	<?php
+		// Child section
+		else : ?>
+			<div class="make-sortable-handle">
+				<span class="screen-reader-text">
+					<?php esc_html_e( 'Drag-and-drop this column into place.', 'make' ); ?>
+				</span>
+			</div>
+	<?php
+		endif;
+		?>
+		<?php if ( count( $this->get_definitions( 'button' ) ) || $this->collapsible ) : ?>
+			<div class="make-section-header-buttons">
+				<?php foreach ( $this->get_definitions( 'button' ) as $button_id => $args ) : ?>
+					<?php $this->buttons()->render( 'sectionbutton', $button_id, $args ); ?>
+				<?php endforeach; ?>
+				<?php if ( $this->collapsible ) : ?>
+					<?php
+					$this->buttons()->render( 'sectiontoggle', 'toggle' );
+					?>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		</div>
+	<?php
+	}
+
+
+	protected function render_footer() {
+		?>
+		<div class="make-section-footer">
+			<?php
+			// Section state
+			$this->controls()->render( 'hidden', 'state', array(
+				'setting' => 'state',
+			) );
+
+			// Section JSON
+			$this->controls->render( 'textarea', 'json', array(
+				'attributes' => array(
+					'name' => 'make-section[]'
+				),
+			) );
+			?>
+		</div>
+	<?php
 	}
 }

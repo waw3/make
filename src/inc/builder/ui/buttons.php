@@ -38,6 +38,9 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_button( $button_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		$button_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
 				'make-button',
@@ -135,17 +138,19 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 		) );
 
 		// Merge with submitted attributes
-		$button_atts->add( $args['attributes'] );
-		unset( $args['attributes'] );
+		if ( isset( $args['attributes'] ) ) {
+			$button_atts->add( $args['attributes'] );
+		}
+		$args['attributes'] = $button_atts;
 
 		// Compile the args
 		$button_args = wp_parse_args(
-			array_diff_assoc( $args, $this->default_args ),
+			$args,
 			array(
-				'attributes'  => $button_atts,
 				'label_class' => 'screen-reader-text',
 			)
 		);
+		$button_args = wp_parse_args( $button_args, $this->default_args );
 
 		// Begin output
 		$this->render( 'button', $button_id, $button_args );
@@ -176,23 +181,25 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 		) );
 
 		// Merge with submitted attributes
-		$button_atts->add( $args['attributes'] );
-		unset( $args['attributes'] );
+		if ( isset( $args['attributes'] ) ) {
+			$button_atts->add( $args['attributes'] );
+		}
+		$args['attributes'] = $button_atts;
 
 		// Compile the args
 		$button_args = wp_parse_args(
-			array_diff_assoc( $args, $this->default_args ),
+			$args,
 			array(
 				'icon'        => 'toggle-indicator',
 				'label'       => esc_html__( 'Click to toggle section', 'make' ),
 				'action'      => 'click:toggleSection',
-				'attributes'  => $button_atts,
 				'label_class' => 'screen-reader-text',
 			)
 		);
+		$button_args = wp_parse_args( $button_args, $this->default_args );
 
 		// State
-		if ( ! $args['open'] ) {
+		if ( ! $button_args['open'] ) {
 			$button_args['attributes']->add_one( 'aria-expanded', 'false' );
 		}
 
@@ -224,17 +231,19 @@ class MAKE_Builder_UI_Buttons extends MAKE_Builder_UI_Base {
 		) );
 
 		// Merge with submitted attributes
-		$button_atts->add( $args['attributes'] );
-		unset( $args['attributes'] );
+		if ( isset( $args['attributes'] ) ) {
+			$button_atts->add( $args['attributes'] );
+		}
+		$args['attributes'] = $button_atts;
 
 		// Compile the args
 		$button_args = wp_parse_args(
-			array_diff_assoc( $args, $this->default_args ),
+			$args,
 			array(
 				'label'      => esc_html__( 'Done', 'make' ),
-				'attributes' => $button_atts,
 			)
 		);
+		$button_args = wp_parse_args( $button_args, $this->default_args );
 
 		// Begin output
 		$this->render( 'button', $button_id, $button_args );

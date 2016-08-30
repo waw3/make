@@ -84,6 +84,9 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_stage( $element_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		// Stage attributes
 		$stage_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
@@ -130,6 +133,9 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_overlay( $element_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		$overlay_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
 				'make-overlay',
@@ -179,6 +185,9 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_contentpreview( $element_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		$preview_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
 				'make-contentpreview',
@@ -233,6 +242,9 @@ class MAKE_Builder_UI_Elements extends MAKE_Builder_UI_Base {
 	 * @return $this
 	 */
 	protected function render_uploader( $element_id, array $args ) {
+		// Combine args with defaults
+		$args = wp_parse_args( $args, $this->default_args );
+
 		$uploader_atts = new MAKE_Util_HTMLAttributes( array(
 			'class' => array(
 				'make-uploader',
