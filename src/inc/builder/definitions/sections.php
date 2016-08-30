@@ -254,7 +254,105 @@ $this->register_section_type(
 			),
 			$settings_background
 		),
-		'ui'          => array(),
+		'ui'          => array(
+			'buttons'  => array(
+				'config' => array(
+					'label'   => __( 'Configure section', 'make' ),
+					'overlay' => 'config-overlay',
+				),
+			),
+			'elements' => array(
+				'banner-stage' => array(
+					'type'     => 'stage',
+				),
+				'config-overlay' => array(
+					'type'     => 'overlay',
+					'label'    => __( 'Configuration', 'make' ),
+				),
+			),
+			'controls' => array(
+				'items'            => array(
+					'type'    => 'hidden',
+					'setting' => 'items',
+					'element' => 'banner-stage',
+				),
+				'title'            => array(
+					'type'    => 'title',
+					'label'   => __( 'Enter section title', 'make' ),
+					'setting' => 'title',
+					'element' => 'config-overlay',
+				),
+				'hide-arrows' => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Hide navigation arrows', 'make' ),
+					'setting' => 'hide-arrows',
+					'element' => 'config-overlay',
+				),
+				'hide-dots'   => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Hide navigation dots', 'make' ),
+					'setting' => 'hide-dots',
+					'element' => 'config-overlay',
+				),
+				'autoplay'    => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Autoplay slideshow', 'make' ),
+					'setting' => 'autoplay',
+					'element' => 'config-overlay',
+				),
+				'delay'       => array(
+					'type'    => 'input',
+					'input_type' => 'number',
+					'label'   => __( 'Time between slides (ms)', 'make' ),
+					'setting' => 'delay',
+					'element' => 'config-overlay',
+				),
+				'transition'  => array(
+					'type'    => 'select',
+					'label'   => __( 'Transition effect', 'make' ),
+					'setting' => 'transition',
+					'element' => 'config-overlay',
+				),
+				'height'      => array(
+					'type'    => 'input',
+					'input_type' => 'number',
+					'label'   => __( 'Section height (px)', 'make' ),
+					'setting' => 'height',
+					'element' => 'config-overlay',
+				),
+				'responsive'  => array(
+					'type'    => 'select',
+					'label'   => __( 'Responsive behavior', 'make' ),
+					'description' => __( 'Choose how the Banner will respond to varying screen widths. Default is ideal for large amounts of written content, while Aspect is better for showing your images.', 'make' ),
+					'setting' => 'responsive',
+					'element' => 'config-overlay',
+				),
+				'background-image' => array(
+					'type'    => 'image',
+					'label'   => __( 'Background image', 'make' ),
+					'setting' => 'background-image',
+					'element' => 'config-overlay',
+				),
+				'darken'           => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Darken background to improve readability', 'make' ),
+					'setting' => 'darken',
+					'element' => 'config-overlay',
+				),
+				'background-style' => array(
+					'type'    => 'select',
+					'label'   => __( 'Background style', 'make' ),
+					'setting' => 'background-style',
+					'element' => 'config-overlay',
+				),
+				'background-color' => array(
+					'type'    => 'color',
+					'label'   => __( 'Background color', 'make' ),
+					'setting' => 'background-color',
+					'element' => 'config-overlay',
+				),
+			),
+		),
 	)
 );
 
@@ -287,7 +385,58 @@ $this->register_section_type(
 				),
 			)
 		),
-		'ui'       => array(),
+		'ui'       => array(
+			'buttons'  => array(
+				'config'  => array(
+					'label'   => __( 'Configure slide', 'make' ),
+					'overlay' => 'config-overlay',
+				),
+				'content' => array(
+					'label'   => __( 'Edit content', 'make' ),
+					'overlay' => 'content-overlay',
+				),
+			),
+			'elements' => array(
+				'image'          => array(
+					'type'    => 'uploader',
+					'setting' => 'image-id',
+				),
+				'config-overlay' => array(
+					'type'  => 'overlay',
+					'label' => __( 'Configuration', 'make' ),
+				),
+			),
+			'controls' => array(
+				'content'    => array(
+					'type'    => 'textarea',
+					'setting' => 'content',
+					'element' => '',
+				),
+				'background-color' => array(
+					'type'    => 'color',
+					'label'   => __( 'Background color', 'make' ),
+					'setting' => 'background-color',
+					'element' => 'config-overlay',
+				),
+				'darken'           => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Darken background to improve readability', 'make' ),
+					'setting' => 'darken',
+					'element' => 'config-overlay',
+				),
+				'image-id'   => array(
+					'type'    => 'hidden',
+					'setting' => 'image-id',
+					'element' => 'image',
+				),
+				'alignment'        => array(
+					'type'    => 'select',
+					'label'   => __( 'Content position', 'make' ),
+					'setting' => 'alignment',
+					'element' => 'config-overlay',
+				),
+			),
+		),
 	)
 );
 
@@ -326,7 +475,85 @@ $this->register_section_type(
 			),
 			$settings_background
 		),
-		'ui'          => array(),
+		'ui'          => array(
+			'buttons'  => array(
+				'config' => array(
+					'label'   => __( 'Configure section', 'make' ),
+					'overlay' => 'config-overlay',
+				),
+			),
+			'elements' => array(
+				'gallery-stage' => array(
+					'type'     => 'stage',
+				),
+				'config-overlay' => array(
+					'type'     => 'overlay',
+					'label'    => __( 'Configuration', 'make' ),
+				),
+			),
+			'controls' => array(
+				'items'            => array(
+					'type'    => 'hidden',
+					'setting' => 'items',
+					'element' => 'gallery-stage',
+				),
+				'title'            => array(
+					'type'    => 'title',
+					'label'   => __( 'Enter section title', 'make' ),
+					'setting' => 'title',
+					'element' => 'config-overlay',
+				),
+				'columns'   => array(
+					'type'    => 'select',
+					'label'   => __( 'Columns', 'make' ),
+					'action'  => 'update:updateColumns',
+					'setting' => 'columns',
+					'element' => 'config-overlay',
+				),
+				'aspect'        => array(
+					'type'    => 'select',
+					'label'   => __( 'Aspect ratio', 'make' ),
+					'setting' => 'aspect',
+					'element' => 'config-overlay',
+				),
+				'captions'      => array(
+					'type'    => 'select',
+					'label'   => __( 'Caption style', 'make' ),
+					'setting' => 'captions',
+					'element' => 'config-overlay',
+				),
+				'caption-color' => array(
+					'type'    => 'select',
+					'label'   => __( 'Caption color', 'make' ),
+					'setting' => 'caption-color',
+					'element' => 'config-overlay',
+				),
+				'background-image' => array(
+					'type'    => 'image',
+					'label'   => __( 'Background image', 'make' ),
+					'setting' => 'background-image',
+					'element' => 'config-overlay',
+				),
+				'darken'           => array(
+					'type'    => 'checkbox',
+					'label'   => __( 'Darken background to improve readability', 'make' ),
+					'setting' => 'darken',
+					'element' => 'config-overlay',
+				),
+				'background-style' => array(
+					'type'    => 'select',
+					'label'   => __( 'Background style', 'make' ),
+					'setting' => 'background-style',
+					'element' => 'config-overlay',
+				),
+				'background-color' => array(
+					'type'    => 'color',
+					'label'   => __( 'Background color', 'make' ),
+					'setting' => 'background-color',
+					'element' => 'config-overlay',
+				),
+			),
+		),
 	)
 );
 
@@ -357,6 +584,47 @@ $this->register_section_type(
 				),
 			)
 		),
-		'ui'       => array(),
+		'ui'       => array(
+			'buttons'  => array(
+				'config'  => array(
+					'label'   => __( 'Configure item', 'make' ),
+					'overlay' => 'config-overlay',
+				),
+				'content' => array(
+					'label'   => __( 'Edit content', 'make' ),
+					'overlay' => 'content-overlay',
+				),
+			),
+			'elements' => array(
+				'image'          => array(
+					'type'    => 'uploader',
+					'setting' => 'image-id',
+				),
+				'config-overlay' => array(
+					'type'  => 'overlay',
+					'label' => __( 'Configuration', 'make' ),
+				),
+			),
+			'controls' => array(
+				'description'    => array(
+					'type'    => 'textarea',
+					'setting' => 'description',
+					'element' => '',
+				),
+				'title'      => array(
+					'type'    => 'title',
+					'label'   => __( 'Enter item title', 'make' ),
+					'setting' => 'title',
+					'element' => 'config-overlay',
+				),
+				'link'       => array(
+					'type'    => 'input',
+					'input_type' => 'url',
+					'label'   => __( 'Item link URL', 'make' ),
+					'setting' => 'link',
+					'element' => 'config-overlay',
+				),
+			),
+		),
 	)
 );
