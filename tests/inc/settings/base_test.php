@@ -156,7 +156,7 @@ class TEST_Settings_Base extends WP_UnitTestCase {
 				'sanitize' => 'sanitize2',
 			)
 		);
-		$this->assertTrue( $instance->add_settings( $new_setting, null, true ) );
+		$this->assertTrue( $instance->add_settings( $new_setting, array(), true ) );
 		$this->assertArraySubset( array(
 			'test1' => array(
 				'default'  => 'default2',
