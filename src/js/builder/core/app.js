@@ -152,7 +152,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		$('#' + textAreaID).val(oneApp.getMakeContent());
 
 		// update section JSON with new content
-        oneApp.updateSectionJSON();
+		oneApp.updateSectionJSON();
 	};
 
 	oneApp.getMakeContent = function () {
@@ -206,13 +206,13 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 			return '';
 		}
 	};
-	
+
 	oneApp.setActiveSectionID = function(sectionID) {
 		if (sectionID) {
 			oneApp.activeSectionID = sectionID;
-		}	
+		}
 	};
-	
+
 	oneApp.getActiveSectionID = function() {
 		if (oneApp.hasOwnProperty('activeSectionID')) {
 			return oneApp.activeSectionID;
@@ -286,13 +286,13 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		if (oneApp.hasOwnProperty('activeSectionID')) {
 			var sectionID = oneApp.activeSectionID;
 			var serialized = $('[name*="ttfmake-section['+sectionID+']"]').serializeJSON();
-			
+
 			var serializedTtfMakeSectionContent = serialized['ttfmake-section'][sectionID];
 			var serializedCleaned = serializedTtfMakeSectionContent;
-			
+
 			$('[name="ttfmake-section-json['+sectionID+']"]').val(JSON.stringify(serializedCleaned));
 		}
-		
+
 		return false;
 	};
 
