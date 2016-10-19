@@ -34,7 +34,7 @@ var oneApp = oneApp || {};
 
 			oneApp.removeOrderValue(this.model.get('id'), $orderInput);
 
-   			// Fade and slide out the section, then cleanup view
+			// Fade and slide out the section, then cleanup view
 			this.$el.animate({
 				opacity: 'toggle',
 				height: 'toggle'
