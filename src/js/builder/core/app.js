@@ -152,7 +152,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		$('#' + textAreaID).val(oneApp.getMakeContent());
 
 		// update section JSON with new content
-    oneApp.updateSectionJSON();
+        oneApp.updateSectionJSON();
 	};
 
 	oneApp.getMakeContent = function () {
