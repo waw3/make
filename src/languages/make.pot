@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.7.7\n"
+"Project-Id-Version: Make 1.7.8\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
 "POT-Creation-Date: 2016-07-15 17:15:00+00:00\n"
 "MIME-Version: 1.0\n"
