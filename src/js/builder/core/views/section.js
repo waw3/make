@@ -197,7 +197,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var $target = $(evt.target),
 				iframeID = ($target.attr('data-iframe')) ? $target.attr('data-iframe') : '',
 				textAreaID = $target.attr('data-textarea');
-			
+
 			oneApp.setActiveSectionID(this.model.get('id'));
 			oneApp.setMakeContentFromTextArea(iframeID, textAreaID);
 		},
@@ -216,7 +216,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				self.setSize($overlay, $wrapper);
 				$overlay.find('input,select').filter(':first').focus();
 			});
-			
+
 			oneApp.setActiveSectionID(self.model.get('id'));
 
 			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
@@ -248,8 +248,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			$overlay.hide();
 
-            oneApp.setActiveSectionID(this.model.get('id'));
-            oneApp.updateSectionJSON();
+			oneApp.setActiveSectionID(this.model.get('id'));
+			oneApp.updateSectionJSON();
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);
