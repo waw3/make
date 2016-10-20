@@ -2,3 +2,4 @@ node_modules
 .sass-cache
 dist
 tests/bootstrap-custom.php
+.DS_Store
