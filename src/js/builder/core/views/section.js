@@ -37,7 +37,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
 				escape     : /\{\{([^\}]+?)\}\}(?!\})/g
 			};
-			this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html());
+			// this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html());
+			this.template = _.template(ttfMakeSectionTemplates[this.model.get('sectionType')]);
 		},
 
 		render: function () {
