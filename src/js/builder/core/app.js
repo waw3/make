@@ -371,14 +371,18 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 	 * Attach an event to 'Update' post/page submit to store all the ttfmake-section[] array fields to a single hidden input containing these fields serialized in JSON. Then remove the fields to prevent those from being submitted.
 	 */
 	$('form#post').on('submit', function(e) {
-		var $target        = $(e.target);
-		var $sectionInputs = $target.find('[name^="ttfmake-section["]');
-
-    // Set ttfmake-section[] array fields to disabled and remove name for those to prevent them from being submitted
-		$sectionInputs.attr({
-			'name': '',
-			'disabled': 'true'
-		});
+		var $target					= $(e.target);
+		var $sectionInputs	= $target.find('[name^="ttfmake-section["]');
+		var $wpPreviewInput = $('input[name=wp-preview]');
+		
+		// Only disable inputs when form is actually submitted so it's not triggered on Preview
+		if ($wpPreviewInput.val() !== 'dopreview') {
+			// Set ttfmake-section[] array fields to disabled and remove name for those to prevent them from being submitted
+			$sectionInputs.attr({
+				'name': '',
+				'disabled': 'true'
+			});
+		}
 	});
 
 	wp.media.view.Sidebar = wp.media.view.Sidebar.extend({
