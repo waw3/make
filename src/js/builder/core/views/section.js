@@ -18,7 +18,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-section-toggle': 'toggleSection',
 			'click .ttfmake-section-remove': 'removeSection',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
-			'click .ttfmake-media-uploader-add': 'initUploader',
+			'click .ttfmake-media-uploader-add': 'onMediaOpen',
 			'click .edit-content-link': 'openTinyMCEOverlay',
 			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 			'click .ttfmake-overlay-close': 'closeConfigurationOverlay'
@@ -51,6 +51,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					self.render();
 				}
 			});
+
+			this.on('mediaSelected', this.onMediaSelected, this);
 		},
 
 		render: function () {
@@ -132,36 +134,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}
 		},
 
-		initUploader: function (evt) {
-			evt.preventDefault();
-
-			var $this = $(evt.target),
-				$parent = $this.parents('.ttfmake-uploader'),
-				$placeholder = $('.ttfmake-media-uploader-placeholder', $parent),
-				$input = $('.ttfmake-media-uploader-value', $parent),
-				$remove = $('.ttfmake-media-uploader-remove', $parent),
-				$add = $('.ttfmake-media-uploader-set-link', $parent),
-				frame = frame || {},
-				props, image;
-
-			oneApp.$currentPlaceholder = $placeholder;
-			oneApp.setActiveSectionID(this.model.get('id'));
-
-			// If the media frame already exists, reopen it.
-			if ('function' === typeof frame.open) {
-				frame.open();
-				return;
-			}
-
-			// Create the media frame.
-			frame = wp.media.frames.frame = wp.media({
-				title: $this.data('title'),
-				className: 'media-frame ttfmake-builder-uploader',
-				button: {
-					text: $this.data('buttonText')
-				},
-				multiple: false
-			});
+		onMediaOpen: function(e) {
+			e.preventDefault();
 
 			// When an image is selected, run a callback.
 			frame.on('select', function () {
@@ -194,8 +168,11 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				oneApp.updateSectionJSON();
 			});
 
-			// Finally, open the modal
-			frame.open();
+			oneApp.initUploader(this);
+		},
+
+		onMediaSelected: function(attachment) {
+			this.model.set('background-image', {'image-id': attachment.id, 'image-url': attachment.url});
 		},
 
 		openTinyMCEOverlay: function (evt) {
