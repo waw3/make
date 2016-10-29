@@ -45,12 +45,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var self = this;
 
 			this.model.bind('change', function() {
-				if (!self.model.hasChanged('section-json')) {
-					self.model.saveData();
+				if (!this.model.hasChanged('section-json')) {
+					this.model.saveData();
 				} else {
-					self.render();
+					$('[name="ttfmake-section-json"]', this.$el).val(this.model.get('section-json'));
 				}
-			});
+			}, this);
 
 			this.on('mediaSelected', this.onMediaSelected, this);
 		},
