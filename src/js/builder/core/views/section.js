@@ -21,7 +21,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-media-uploader-add': 'onMediaOpen',
 			'click .edit-content-link': 'openTinyMCEOverlay',
 			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
-			'click .ttfmake-overlay-close': 'closeConfigurationOverlay'
+			'click .ttfmake-overlay-close': 'closeConfigurationOverlay',
+			'mediaSelected': 'onMediaSelected',
 		},
 
 		initialize: function (options) {
@@ -44,8 +45,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				console.log(this.model.toJSON());
 				$('[name^="ttfmake-section-json"]', this.$el).val(JSON.stringify(this.model.toJSON()));
 			}, this);
-
-			this.on('mediaSelected', this.onMediaSelected, this);
 		},
 
 		render: function () {
@@ -129,43 +128,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		onMediaOpen: function(e) {
 			e.preventDefault();
-
-			// When an image is selected, run a callback.
-			frame.on('select', function () {
-				// We set multiple to false so only get one image from the uploader
-				var attachment = frame.state().get('selection').first().toJSON();
-
-				// Remove the attachment caption
-				attachment.caption = '';
-
-				// Build the image
-				props = wp.media.string.props(
-					{},
-					attachment
-				);
-
-				// Show the image
-				$placeholder.css('background-image', 'url(' + attachment.url + ')');
-				$parent.addClass('ttfmake-has-image-set');
-
-				// Record the chosen value
-				$input.val(attachment.id);
-
-				// Hide the link to set the image
-				$add.hide();
-
-				// Show the remove link
-				$remove.show();
-
-				// Save model data on image select
-				oneApp.updateSectionJSON();
-			});
-
 			oneApp.initUploader(this);
 		},
 
-		onMediaSelected: function(attachment) {
-			this.model.set('background-image', {'image-id': attachment.id, 'image-url': attachment.url});
+		onMediaSelected: function(e, attachment) {
+			this.model.set('background-image', attachment.id);
+			this.model.set('background-image-url', attachment.url);
 		},
 
 		openTinyMCEOverlay: function (evt) {
