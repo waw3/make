@@ -303,10 +303,46 @@ class TTFMAKE_Section_Definitions {
 					'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
 					'default' => '',
 				),
+
+				'item' => $this->get_banner_slide_defaults(),
 			)
 		);
 
 		add_filter( 'make_get_section_data', array ( $this, 'get_banner_section_data' ), 1 );
+	}
+
+	private function get_banner_slide_defaults() {
+		$inputs = array(
+			100 => array(
+				'type'    => 'select',
+				'name'    => 'alignment',
+				'label'   => __( 'Content position', 'make' ),
+				'default' => 'none',
+				'options' => array(
+					'none'  => __( 'None', 'make' ),
+					'left'  => __( 'Left', 'make' ),
+					'right' => __( 'Right', 'make' ),
+				),
+			),
+			200 => array(
+				'type'    => 'checkbox',
+				'label'   => __( 'Darken background to improve readability', 'make' ),
+				'name'    => 'darken',
+				'default' => 0
+			),
+			300 => array(
+				'type'    => 'color',
+				'label'   => __( 'Background color', 'make' ),
+				'name'    => 'background-color',
+				'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
+				'default' => '',
+			),
+		);
+
+		$inputs = apply_filters( 'make_banner_slide_configuration', $inputs );
+		ksort( $inputs, SORT_NUMERIC );
+
+		return $inputs;
 	}
 
 	/**
@@ -345,8 +381,8 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['banner-slide-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
 		}
 
-		if ( isset( $data['background-image']['image-id'] ) ) {
-			$clean_data['background-image'] = ttfmake_sanitize_image_id( $data['background-image']['image-id'] );
+		if ( isset( $data['background-image'] ) ) {
+			$clean_data['background-image'] = ttfmake_sanitize_image_id( $data['background-image'] );
 		}
 
 		if ( isset( $data['darken'] ) && (int) $data['darken'] == 1 ) {
@@ -402,10 +438,10 @@ class TTFMAKE_Section_Definitions {
 
 	public function get_banner_section_data( $ordered_data ) {
 		foreach ( $ordered_data as $section_id => $section ) {
-			if ( isset( $section['background-image']['image-id'] ) ) {
-				$image_id = $ordered_data['background-image']['image-id'];
+			if ( isset( $section['background-image'] ) ) {
+				$image_id = intval( $section['background-image'] );
 				$image = ttfmake_get_image_src( $image_id, 'large' );
-				$ordered_data[$section_id]['image-url'] = $image[0];
+				$ordered_data[$section_id]['background-image-url'] = $image[0];
 			}
 
 			if ( isset( $section['banner-slides'] ) && is_array( $section['banner-slides'] ) ) {
@@ -419,7 +455,6 @@ class TTFMAKE_Section_Definitions {
 			}
 		}
 
-		print_r ( $ordered_data );
 		return $ordered_data;
 	}
 

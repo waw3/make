@@ -11,6 +11,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				'click .ttfmake-add-slide' : 'addSlide',
 				'model-slide-change': 'onSlideChange',
 				'change .ttfmake-configuration-overlay input[type=text]' : 'updateInputField',
+				'keyup .ttfmake-configuration-overlay input[type=text]' : 'updateInputField',
 				'change .ttfmake-configuration-overlay input[type=checkbox]' : 'updateCheckbox',
 				'change .ttfmake-configuration-overlay select': 'updateSelectField'
 			});
@@ -63,24 +64,25 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		addSlide: function (evt, params) {
 			evt.preventDefault();
 
-			var view, html, model;
-
-			model = new oneApp.BannerSlideModel({
+			var slideModelDefaults = ttfMakeSectionDefaults['banner-item'] || {};
+			var slideModelAttributes = _(slideModelDefaults).extend({
 				id: new Date().getTime(),
 				parentID: this.getParentID()
 			});
 
+			var slideModel = new oneApp.BannerSlideModel(slideModelAttributes);
+
 			var slides = this.model.get('banner-slides');
-			slides.push(model);
+			slides.push(slideModel);
 			this.model.set('banner-slides', slides);
 
 			// Create view
-			view = new oneApp.BannerSlideView({
-				model: model
+			var view = new oneApp.BannerSlideView({
+				model: slideModel
 			});
 
 			// Append view
-			html = view.render().el;
+			var html = view.render().el;
 			$('.ttfmake-banner-slides-stage', this.$el).append(html);
 
 			// Only scroll and focus if not triggered by the pseudo event
