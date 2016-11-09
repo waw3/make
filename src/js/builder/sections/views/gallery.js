@@ -87,7 +87,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				model: itemModel
 			});
 
-			var html = itemView.render().el;
+			var html = itemView.render().$el.html();
 			$('.ttfmake-gallery-items-stage', this.$el).append(html);
 
 			// Store view
@@ -135,13 +135,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var items = this.model.get('gallery-items');
 			this.model.set('gallery-items', _(items).without(itemView.model));
 		},
-
-		// getParentID: function() {
-		// 	var idAttr = this.$el.attr('id'),
-		// 		id = idAttr.replace('ttfmake-section-', '');
-
-		// 	return parseInt(id, 10);
-		// },
 
 		initializeSortables: function() {
 			var $selector = $('.ttfmake-gallery-items-stage', this.$el);
