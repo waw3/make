@@ -118,6 +118,9 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 				el: $('#' + idAttr),
 				serverRendered: true
 			});
+
+			// Update section json
+			oneApp.updateSectionJSON(id);
 		});
 	};
 
