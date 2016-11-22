@@ -205,12 +205,6 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		return content.replace(/^(<p>)?(\[.*\])(<\/p>)?$/gm, '<div class="shortcode-wrapper">$2</div>');
 	};
 
-	oneApp.triggerInitFrames = function() {
-		$(document).ready(function(){
-			oneApp.initFrames();
-		});
-	};
-
 	oneApp.initUploader = function (view) {
 		var $uploader = $('.ttfmake-uploader', view.$el),
 				$placeholder = $('.ttfmake-media-uploader-placeholder:last', view.$el),
@@ -364,6 +358,6 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 	$(document).ready(function() {
 		oneApp.initSortables();
 		oneApp.initViews();
-		oneApp.triggerInitFrames();
+		oneApp.initFrames();
 	})
 })(jQuery, oneApp, ttfMakeFrames);
