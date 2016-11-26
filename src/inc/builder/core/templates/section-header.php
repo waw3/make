@@ -15,13 +15,12 @@ $links = array(
 );
 
 if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
-	$id = ( true === $ttfmake_is_js_template ) ? '{{{ id }}}' : esc_attr( $ttfmake_section_data['data']['id'] );
 	$links[25] = array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-configure ttfmake-overlay-open',
 		'label' => __( 'Configure section', 'make' ),
 		'title' => __( 'Configure section', 'make' ),
-		'other' => 'data-overlay="#ttfmake-overlay-' . $id . '"'
+		'other' => 'data-overlay="#ttfmake-overlay-{{ id }}"'
 	);
 }
 
@@ -88,4 +87,4 @@ ksort( $links );
 	</div>
 	<div class="clear"></div>
 	<div class="ttfmake-section-body">
-		<input type="hidden" value="<?php echo $ttfmake_section_data['section']['id']; ?>" name="<?php echo ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template ); ?>[section-type]" />
+		<input type="hidden" value="<?php echo $ttfmake_section_data['section']['id']; ?>" name="<?php echo ttfmake_get_section_name( $ttfmake_section_data, true ); ?>[section-type]" />

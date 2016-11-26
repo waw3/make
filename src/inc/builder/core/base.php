@@ -216,6 +216,7 @@ class TTFMAKE_Builder_Base {
 		// Add the sort input
 		$section_order = get_post_meta( $post_local->ID, '_ttfmake-section-ids', true );
 
+		// Handle legacy section order, if present
 		if ( ! empty( $section_order ) ) {
 			$ordered_sections = array();
 
@@ -226,11 +227,25 @@ class TTFMAKE_Builder_Base {
 			$section_data = $ordered_sections;
 		}
 
-		// $section_order = ( ! empty( $section_order ) ) ? implode( ',', $section_order ) : '';
-		// echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttfmake-section-order" id="ttfmake-section-order" />';
-
+		// Expose section defaults to JS
+		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionDefaults', ttfmake_get_section_definitions()->get_section_defaults() );
 		// Expose saved sections data to JS
-		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionData', $section_data );
+		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionData', ttfmake_get_section_json_data( $section_data ) );
+
+		// Fetch templates
+		$templates = array();
+		foreach ( ttfmake_get_sections() as $section ) {
+			$template = $this->load_section( $section, array(), true );
+
+			if ( !is_array( $template ) ) {
+				$templates[$section['id']] = $template;
+			} else {
+				$templates = array_merge( $templates, $template );
+			}
+		}
+
+		// Expose section template strings to JS
+		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionTemplates', $templates );
 	}
 
 	/**
@@ -519,7 +534,7 @@ class TTFMAKE_Builder_Base {
 		<?php if ( true !== $ttfmake_is_js_template && true === $iframe ) : ?>
 		<script type="text/javascript">
 			var ttfMakeFrames = ttfMakeFrames || [];
-			ttfMakeFrames.push('<?php echo esc_js( $id ); ?>');
+			ttfMakeFrames.push('<?php echo $id; ?>');
 		</script>
 		<?php endif;
 	}
@@ -546,18 +561,23 @@ class TTFMAKE_Builder_Base {
 			'section' => $section,
 		);
 
-		// Include the template
-		$template = ttfmake_load_section_template(
-			$ttfmake_section_data['section']['builder_template'],
-			$ttfmake_section_data['section']['path'],
-			$return
-		);
+		$templates = $ttfmake_section_data['section']['builder_template'];
+		$path = $ttfmake_section_data['section']['path'];
+
+		if ( !is_array( $templates ) ) {
+			$templates = array ( $templates );
+		}
+
+		foreach ( $templates as $key => $template ) {
+			// Include the template
+			$templates[$key] = ttfmake_load_section_template( $template, $path, $return );
+		}
 
 		// Destroy the variable as a good citizen does
 		unset( $GLOBALS['ttfmake_section_data'] );
 
 		if ( $return ) {
-			return $template;
+			return count( $templates ) == 1 ? $templates[0]: $templates;
 		}
 	}
 
@@ -569,55 +589,12 @@ class TTFMAKE_Builder_Base {
 	 * @return void
 	 */
 	public function print_templates() {
-		global $hook_suffix, $typenow, $ttfmake_is_js_template;
-		$ttfmake_is_js_template = true;
+		global $hook_suffix, $typenow;
 
 		// Only show when adding/editing pages
 		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
 			return;
 		}
-
-		// Print the templates
-		$templates = array();
-		$section_defaults = array();
-
-		foreach ( ttfmake_get_sections() as $section ) {
-			$html = $this->load_section( $section, array(), true );
-
-			// Check if the template is a simple or a parent + child one
-			if ( is_string( $html) ) {
-				$templates[$section['id']] = $html;
-			} else {
-				$templates[$section['id']] = $html[0];
-				$templates[$section['id'] . '-item'] = $html[1];
-			}
-
-			$section_field_defaults = array();
-
-			foreach ( $section['config'] as $key => $section_field ) {
-				if ('item' !== $key) {
-					$section_default = array_key_exists('default', $section_field ) ? $section_field['default']: '';
-					$section_field_defaults[$section_field['name']] = $section_default;
-				} else {
-					$section_item_defaults = array();
-
-					foreach ( $section['config']['item'] as $item_field ) {
-						$item_default = array_key_exists('default', $item_field ) ? $item_field['default']: '';
-						$section_item_defaults[$item_field['name']] = $item_default;
-					}
-
-					$section_defaults[$section['id'] . '-item'] = $section_item_defaults;
-				}
-			}
-
-			$section_defaults[$section['id']] = $section_field_defaults;
-		}
-
-		// Expose section template strings to JS
-		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionTemplates', $templates );
-		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionDefaults', $section_defaults );
-
-		unset( $GLOBALS['ttfmake_is_js_template'] );
 
 		// Load the overlay for TinyMCE
 		get_template_part( '/inc/builder/core/templates/overlay', 'tinymce' );
@@ -856,14 +833,6 @@ if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
  * @param  boolean   $return  Specifies if the template should be included or returned as string.
  */
 function ttfmake_load_section_template( $slug, $path, $return = false ) {
-	// Handle [section, item] template definition
-	if ( is_array( $slug ) ) {
-		return array(
-			ttfmake_load_section_template( $slug[0], $path, $return ),
-			ttfmake_load_section_template( $slug[1], $path, $return )
-		);
-	}
-
 	$templates = array(
 		$slug . '.php',
 		trailingslashit( $path ) . $slug . '.php'
@@ -942,7 +911,7 @@ if ( ! function_exists( 'ttfmake_get_section_name' ) ) :
  * @return string                       The name of the section.
  */
 function ttfmake_get_section_name( $data, $is_js_template ) {
-	$name = 'ttfmake-section';
+	$name = 'ttfmake-section[{{ id }}]';
 
 	if ( $is_js_template ) {
 		$name .= '[{{{ id }}}]';
@@ -1092,5 +1061,15 @@ if ( ! function_exists( 'ttfmake_register_placeholder_image' ) ) :
 function ttfmake_register_placeholder_image( $id, $data ) {
 	global $ttfmake_placeholder_images;
 	$ttfmake_placeholder_images[ $id ] = $data;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_section_json' ) ) :
+function ttfmake_get_section_json_data( $data = array() ) {
+	foreach ($data as $s => $section) {
+		$data[$s] = apply_filters( 'make_get_section_json', $section, $section['section-type'] );
+	}
+
+	return $data;
 }
 endif;
