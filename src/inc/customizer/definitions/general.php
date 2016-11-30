@@ -79,6 +79,12 @@ $this->add_section_definitions( 'labels', array(
 				'label'       => __( 'Mobile Menu Label', 'make' ),
 				'type'        => 'text',
 			),
+			'partial' => array(
+				'selector' => '.menu-toggle',
+				'render_callback' => function() {
+					return make_get_thememod_value( 'navigation-mobile-label' );
+				}
+			)
 		),
 		'general-sticky-label'    => array(
 			'setting' => array(
@@ -88,6 +94,12 @@ $this->add_section_definitions( 'labels', array(
 				'label' => __( 'Sticky Label', 'make' ),
 				'type'  => 'text',
 			),
+			'partial' => array(
+				'selector' => '.sticky-post-label',
+				'render_callback' => function() {
+					return make_get_thememod_value( 'general-sticky-label' );
+				}
+			)
 		),
 	),
 ) );
@@ -106,6 +118,12 @@ if ( false === apply_filters( 'make_read_more_text', false ) ) {
 					'label' => __( 'Read More Label', 'make' ),
 					'type'  => 'text',
 				),
+				'partial' => array(
+					'selector' => '.more-link',
+					'render_callback' => function() {
+						return make_get_thememod_value( 'label-read-more' );					
+					}
+				)
 			)
 		)
 	), true ); // Overwrite to add additional controls to the section
