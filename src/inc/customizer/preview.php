@@ -94,10 +94,20 @@ final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Cu
 		) );
 
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+
+		$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+    		'selector' => '.site-title a',
+    		'render_callback' => array( $this, 'show_blogdescription' ),
+		) );
+
 	}
 
 	public function show_blogname() {
 		bloginfo('name');
+	}
+
+	public function show_blogdescription() {
+		bloginfo('description');
 	}
 
 	/**
