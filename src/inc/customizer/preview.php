@@ -87,7 +87,17 @@ final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Cu
 	public function setting_mods( WP_Customize_Manager $wp_customize ) {
 		// Change transport for some core settings
 		$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
+
+		$wp_customize->selective_refresh->add_partial( 'blogname', array(
+    		'selector' => '.site-title a',
+    		'render_callback' => array( $this, 'show_blogname' ),
+		) );
+
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+	}
+
+	public function show_blogname() {
+		bloginfo('name');
 	}
 
 	/**
