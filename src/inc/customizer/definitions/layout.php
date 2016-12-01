@@ -403,12 +403,54 @@ foreach ( $views as $view => $label ) {
 			),
 		),
 		$prefix . 'post-author'               => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage'
+			),
 			'control' => array(
 				'label'   => __( 'Style', 'make' ),
 				'type'    => 'select',
 				'choices' => $this->thememod()->get_choice_set( $prefix . 'post-author' ),
 			),
+			'partial' => array(
+				'selector' => '.' . $view . ' .entry-author',
+				'render_callback' => function() {
+					$post_author_value = make_get_thememod_value( 'layout-' . make_get_current_view() . '-post-author' );
+
+					if ( !$post_author_value || $post_author_value == 'none' ) {
+						return;
+					}
+
+					global $post;
+
+					if ( $post_author_value == 'avatar' ) {
+						?>
+						<div class="entry-author-avatar">
+							<?php
+							printf(
+								'<a class="vcard" href="%1$s">%2$s</a>',
+								esc_url( get_author_posts_url( $post->post_author ) ),
+								get_avatar( $post->post_author )
+							);
+							?>
+						</div>
+					<?php
+					} ?>
+					<div class="entry-author-byline">
+						<?php
+						printf(
+							// Translators: this string is an attribution of a post author. e.g. by Ernest Hemingway
+							esc_html__( 'by %s', 'make' ),
+							sprintf(
+								'<a class="vcard fn" href="%1$s">%2$s</a>',
+								esc_url( get_author_posts_url( $post->post_author ) ),
+								esc_html( get_the_author_meta( 'display_name', $post->post_author ) )
+							)
+						);
+						?>
+					</div>
+					<?php
+				}
+			)
 		),
 		$prefix . 'post-author-location'      => array(
 			'setting' => true,
