@@ -320,9 +320,14 @@ foreach ( $views as $view => $label ) {
 
 						$thumbnail_html = get_the_post_thumbnail( get_the_ID(), $thumbnail_size );
 
-						if ( ! is_singular() ) : ?><a href="<?php the_permalink(); ?>" rel="bookmark"><?php endif; ?>
-							<?php echo $thumbnail_html; ?>
+						if ( ! is_singular() ) : ?>
+							<a href="<?php the_permalink(); ?>" rel="bookmark">
+						<?php endif; ?>
+						
+						<?php echo $thumbnail_html; ?>
+						
 						<?php if ( ! is_singular() ) : ?></a><?php endif; ?>
+
 						<?php if ( is_singular() && has_excerpt( $thumbnail_id ) ) : ?>
 						<figcaption class="entry-thumbnail-caption">
 							<?php echo Make()->sanitize()->sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
