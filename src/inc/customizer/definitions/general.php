@@ -69,6 +69,12 @@ $this->add_section_definitions( 'labels', array(
 				'label' => __( 'Search Field Label', 'make' ),
 				'type'  => 'text',
 			),
+			'partial' => array(
+				'selector' => '.search-form .search-field',
+				'render_callback' => function() {
+					return make_get_thememod_value( 'label-search-field');
+				}
+			)
 		),
 		'navigation-mobile-label' => array(
 			'setting' => array(

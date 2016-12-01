@@ -187,11 +187,19 @@ $this->add_section_definitions( 'footer', array(
 			),
 		),
 		'footer-text'             => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage'
+			),
 			'control' => array(
 				'label' => __( 'Footer Text', 'make' ),
 				'type'  => 'text',
 			),
+			'partial' => array(
+				'selector' => '.footer-text',
+				'render_callback' => function() {
+					return make_get_thememod_value( 'footer-text' );
+				}
+			)
 		),
 		'footer-options-heading'  => array(
 			'control' => array(
