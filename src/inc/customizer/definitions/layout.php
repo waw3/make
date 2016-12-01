@@ -301,12 +301,37 @@ foreach ( $views as $view => $label ) {
 			),
 		),
 		$prefix . 'featured-images'           => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage'
+			),
 			'control' => array(
 				'label'   => __( 'Location', 'make' ),
 				'type'    => 'select',
 				'choices' => $this->thememod()->get_choice_set( $prefix . 'featured-images' ),
 			),
+			'partial' => array(
+				'selector' => '.blog .entry-thumbnail, .single .entry-thumbnail, .archive .entry-thumbnail, .search .entry-thumbnail',
+				'render_callback' => function() {
+					$thumb_option = make_get_thememod_value( 'layout-' . make_get_current_view() . '-featured-images' );
+
+					if( $thumb_option != 'none' ) {
+						$thumbnail_id = get_post_thumbnail_id();
+						$thumbnail_size = make_get_entry_thumbnail_size( $thumb_option );
+
+						$thumbnail_html = get_the_post_thumbnail( get_the_ID(), $thumbnail_size );
+
+						if ( ! is_singular() ) : ?><a href="<?php the_permalink(); ?>" rel="bookmark"><?php endif; ?>
+							<?php echo $thumbnail_html; ?>
+						<?php if ( ! is_singular() ) : ?></a><?php endif; ?>
+						<?php if ( is_singular() && has_excerpt( $thumbnail_id ) ) : ?>
+						<figcaption class="entry-thumbnail-caption">
+							<?php echo Make()->sanitize()->sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
+						</figcaption>
+						<?php endif; ?>
+					<?php
+					}
+				}
+			)
 		),
 		$prefix . 'featured-images-alignment' => array(
 			'setting' => true,
