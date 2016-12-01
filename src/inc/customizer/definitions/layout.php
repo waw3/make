@@ -300,7 +300,7 @@ foreach ( $views as $view => $label ) {
 				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Featured Images', 'make' ) . '</h4>',
 			),
 		),
-		$prefix . 'featured-images'           => array(
+		$prefix . 'featured-images'          => array(
 			'setting' => array(
 				'transport' => 'postMessage'
 			),
@@ -310,7 +310,7 @@ foreach ( $views as $view => $label ) {
 				'choices' => $this->thememod()->get_choice_set( $prefix . 'featured-images' ),
 			),
 			'partial' => array(
-				'selector' => '.blog .entry-thumbnail, .single .entry-thumbnail, .archive .entry-thumbnail, .search .entry-thumbnail',
+				'selector' => '.' . $view . ' .entry-thumbnail',
 				'render_callback' => function() {
 					$thumb_option = make_get_thememod_value( 'layout-' . make_get_current_view() . '-featured-images' );
 
@@ -323,10 +323,12 @@ foreach ( $views as $view => $label ) {
 						if ( ! is_singular() ) : ?>
 							<a href="<?php the_permalink(); ?>" rel="bookmark">
 						<?php endif; ?>
-						
+							
 						<?php echo $thumbnail_html; ?>
-						
-						<?php if ( ! is_singular() ) : ?></a><?php endif; ?>
+
+						<?php if ( ! is_singular() ) : ?>
+							</a>
+						<?php endif; ?>
 
 						<?php if ( is_singular() && has_excerpt( $thumbnail_id ) ) : ?>
 						<figcaption class="entry-thumbnail-caption">
@@ -351,15 +353,39 @@ foreach ( $views as $view => $label ) {
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Html',
 				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Post Date', 'make' ) . '</h4>',
-			),
+			)
 		),
 		$prefix . 'post-date'                 => array(
-			'setting' => true,
+			'setting' => array(
+				'transport' => 'postMessage'
+			),
 			'control' => array(
 				'label'   => __( 'Style', 'make' ),
 				'type'    => 'select',
 				'choices' => $this->thememod()->get_choice_set( $prefix . 'post-date' ),
 			),
+			'partial' => array(
+				'selector' => '.' . $view . ' .entry-date',
+				'render_callback' => function() {
+					$date_option = make_get_thememod_value( 'layout-' . make_get_current_view() . '-post-date' );
+					$date_string = '';
+
+					if ( $date_option != 'none' ) {
+						// Get date string
+						$date_string = get_the_date();
+
+						if ( $date_option == 'relative' ) {
+							$date_string = sprintf(
+								// Translators: this string indicates an amount of passed time. e.g. 5 minutes ago
+								__( '%s ago', 'make' ),
+								human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) )
+							);
+						}
+
+						return $date_string;
+					}
+				}
+			)
 		),
 		$prefix . 'post-date-location'        => array(
 			'setting' => true,
