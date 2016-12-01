@@ -492,18 +492,38 @@ foreach ( $views as $view => $label ) {
 				),
 			),
 			$prefix . 'show-categories' => array(
-				'setting' => true,
+				'setting' => array(
+					'transport' => 'postMessage'
+				),
 				'control' => array(
 					'label' => __( 'Show categories', 'make' ),
 					'type'  => 'checkbox',
 				),
+				'partial' => array(
+					'selector' => '.post-categories',
+					'render_callback' => function() {
+						if ( make_get_thememod_value( 'layout-' . make_get_current_view() . '-show-categories' ) ) {
+							return get_the_category_list();
+						}
+					}
+				)
 			),
 			$prefix . 'show-tags'       => array(
-				'setting' => true,
+				'setting' => array(
+					'transport' => 'postMessage'
+				),
 				'control' => array(
 					'label' => __( 'Show tags', 'make' ),
 					'type'  => 'checkbox',
 				),
+				'partial' => array(
+					'selector' => '.post-tags',
+					'render_callback' => function() {
+						if ( make_get_thememod_value( 'layout-' . make_get_current_view() . '-show-tags' ) ) {
+							return get_the_tag_list( '<ul class="post-tags"><li>', "</li>\n<li>", '</li></ul>' );
+						}
+					}
+				)
 			),
 		) );
 	}
