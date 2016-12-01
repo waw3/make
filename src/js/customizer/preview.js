@@ -157,6 +157,38 @@
 		}
 	});
 
+	// Featured images preview
+	Make = $.extend(Make, {
+		previewFeaturedImage: function($thumbnail, to) {
+			var $thumbnail = $('.entry-thumbnail');
+
+			$thumbnail.each(function() {
+				var $this = $(this);
+				var $entryTitle = $this.parent().prev('.entry-header').find('.entry-title');
+
+				if (!$entryTitle.length) {
+					$entryTitle = $this.next('.entry-title');
+				}
+
+				if (!$entryTitle.length) {
+					$entryTitle = $this.prev('.entry-title');
+				}
+
+				// reset class
+				$this.attr('class', 'entry-thumbnail');
+
+				if (to === 'post-header') {
+					$entryTitle.before($this);
+				} else if ( to === 'thumbnail') {
+					$entryTitle.after($this);
+				}
+
+				// add thumbnail specific class e.g. 'post-header'
+				$this.addClass(to);
+			});
+		}
+	});
+
 	$(document).ready(function() {
 		Make.initStyles();
 		Make.initFontLoader();
@@ -220,6 +252,38 @@
 			} else {
 				$tagline.removeClass('screen-reader-text');
 			}
+		});
+	});
+
+	api('layout-blog-featured-images', function(value) {
+		value.bind(function(to) {
+			var $thumbnail = $('.entry-thumbnail');
+
+			Make.previewFeaturedImage($thumbnail, to);
+		});
+	});
+
+	api('layout-post-featured-images', function(value) {
+		value.bind(function(to) {
+			var $thumbnail = $('.entry-thumbnail');
+
+			Make.previewFeaturedImage($thumbnail, to);
+		});
+	});
+
+	api('layout-archive-featured-images', function(value) {
+		value.bind(function(to) {
+			var $thumbnail = $('.entry-thumbnail');
+
+			Make.previewFeaturedImage($thumbnail, to);
+		});
+	});
+
+	api('layout-search-featured-images', function(value) {
+		value.bind(function(to) {
+			var $thumbnail = $('.entry-thumbnail');
+
+			Make.previewFeaturedImage($thumbnail, to);
 		});
 	});
 
