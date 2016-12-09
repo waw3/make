@@ -26,6 +26,9 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.13 - December 9 2016 =
+* Hotfix: Some templates were being parsed with default templateSettings, breaking functionality of the builder.
+
 = 1.7.12 - December 9 2016 =
 * Updated: Pass Underscore template settings to _.template, stop using _.templateSettings.
 
