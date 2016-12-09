@@ -32,12 +32,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Allow custom init functions
 			$oneApp.trigger('viewInit', this);
 
-			var templateSettings = {
-				evaluate   : /<#([\s\S]+?)#>/g,
-				interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
-				escape     : /\{\{([^\}]+?)\}\}(?!\})/g
-			};
-			this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html(), templateSettings);
+			this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html(), oneApp.templateSettings);
 		},
 
 		render: function () {
