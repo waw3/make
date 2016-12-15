@@ -1,49 +1,138 @@
 /* global jQuery, _ */
-var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+var oneApp = oneApp || {};
 
-(function (window, $, _, oneApp, $oneApp) {
+(function (window, $, _, oneApp) {
 	'use strict';
 
-	oneApp.GalleryView = oneApp.SectionView.extend({
+	oneApp.views = oneApp.views || {}
+
+	oneApp.views.gallery = oneApp.views.section.extend({
+		itemViews: [],
+
 		events: function() {
-			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'click .ttfmake-gallery-add-item' : 'addGalleryItem',
-				'change .ttfmake-gallery-columns' : 'handleColumns'
+			return _.extend({}, oneApp.views.section.prototype.events, {
+				'change .ttfmake-gallery-columns' : 'handleColumns',
+				'view-ready': 'onViewReady',
+				'click .ttfmake-gallery-add-item' : 'onItemAdd',
+				'model-item-change': 'onItemChange',
+				'item-sort': 'onItemSort',
+				'item-remove': 'onItemRemove',
 			});
 		},
 
-		addGalleryItem : function (evt, params) {
-			evt.preventDefault();
+		render: function () {
+			oneApp.views.section.prototype.render.apply(this, arguments);
 
-			var view, html;
+			var items = this.model.get('gallery-items'),
+					self = this;
 
-			// Create view
-			view = new oneApp.GalleryItemView({
-				model: new oneApp.GalleryItemModel({
-					id: new Date().getTime(),
-					parentID: this.getParentID()
-				})
-			});
-
-			// Append view
-			html = view.render().el;
-			$('.ttfmake-gallery-items-stage', this.$el).append(html);
-
-			// Only scroll and focus if not triggered by the pseudo event
-			if ( ! params ) {
-				// Scroll to added view and focus first input
-				oneApp.scrollToAddedView(view);
+			if (items.length == 0) {
+				var $addButton = $('.ttfmake-gallery-add-item', this.$el);
+				$addButton.trigger('click', true);
+				$addButton.trigger('click', true);
+				$addButton.trigger('click', true);
+				return this;
 			}
 
-			// Add the section value to the sortable order
-			oneApp.addOrderValue(view.model.get('id'), $('.ttfmake-gallery-item-order', $(view.$el).parents('.ttfmake-gallery-items')));
+			_(items).each(function (itemModel) {
+				var itemView = self.addItem(itemModel);
+			});
+
+			return this;
 		},
 
-		getParentID: function() {
-			var idAttr = this.$el.attr('id'),
-				id = idAttr.replace('ttfmake-section-', '');
+		onViewReady: function(e) {
+			e.stopPropagation();
 
-			return parseInt(id, 10);
+			this.initializeSortables();
+			oneApp.builder.initColorPicker(this);
+		},
+
+		addItem: function(itemModel) {
+			// Create view
+			var itemView = new oneApp.views['gallery-item']({
+				model: itemModel
+			});
+
+			var html = itemView.render().el;
+			$('.ttfmake-gallery-items-stage', this.$el).append(html);
+
+			// Store view
+			this.itemViews.push(itemView);
+
+			return itemView;
+		},
+
+		onItemAdd : function (e, pseudo) {
+			e.preventDefault();
+
+			var itemModelDefaults = ttfMakeSectionDefaults['gallery-item'] || {};
+			var itemModelAttributes = _(itemModelDefaults).extend({
+				id: new Date().getTime().toString(),
+				parentID: this.model.id
+			});
+			var itemModel = new oneApp.models['gallery-item'](itemModelAttributes);
+			var itemView = this.addItem(itemModel);
+			itemView.$el.trigger('view-ready');
+
+			var items = this.model.get('gallery-items');
+			items.push(itemModel);
+			this.model.set('gallery-items', items);
+			this.model.trigger('change');
+
+			if (!pseudo) {
+				oneApp.builder.scrollToSectionView(itemView);
+			}
+		},
+
+		onItemSort: function(e, ids) {
+			e.stopPropagation();
+
+			var items = _(this.model.get('gallery-items'));
+			var sortedItems = _(ids).map(function(id) {
+				return items.find(function(item) {
+					return item.id.toString() == id.toString()
+				});
+			});
+
+			this.model.set('gallery-items', sortedItems);
+		},
+
+		onItemChange: function() {
+			this.model.trigger('change');
+		},
+
+		onItemRemove: function(e, itemView) {
+			var items = this.model.get('gallery-items');
+			this.model.set('gallery-items', _(items).without(itemView.model));
+		},
+
+		initializeSortables: function() {
+			var $selector = $('.ttfmake-gallery-items-stage', this.$el);
+			var self = this;
+
+			$selector.sortable({
+				handle: '.ttfmake-sortable-handle',
+				placeholder: 'sortable-placeholder',
+				distance: 2,
+				tolerance: 'pointer',
+				start: function (event, ui) {
+					// Set the height of the placeholder to that of the sorted item
+					var $item = $(ui.item.get(0)),
+						$stage = $item.parents('.ttfmake-gallery-items-stage');
+
+					$('.sortable-placeholder', $stage)
+						.height(parseInt($item.height(), 10) - 2); // -2 to account for placeholder border
+				},
+				stop: function (event, ui) {
+					var $item = $(ui.item.get(0)),
+						$stage = $item.parents('.ttfmake-gallery-items'),
+						$orderInput = $('.ttfmake-gallery-item-order', $stage);
+
+					var ids = $(this).sortable('toArray', {attribute: 'data-id'});
+					self.$el.trigger('item-sort', [ids]);
+				}
+			});
 		},
 
 		handleColumns : function (evt) {
@@ -56,116 +145,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			$stage.addClass('ttfmake-gallery-columns-' + parseInt(columns, 10));
 		}
 	});
-
-	// Makes gallery items sortable
-	oneApp.initializeGalleryItemSortables = function(view) {
-		var $selector;
-		view = view || '';
-
-		if (view.$el) {
-			$selector = $('.ttfmake-gallery-items-stage', view.$el);
-		} else {
-			$selector = $('.ttfmake-gallery-items-stage');
-		}
-
-		$selector.sortable({
-			handle: '.ttfmake-sortable-handle',
-			placeholder: 'sortable-placeholder',
-			distance: 2,
-			tolerance: 'pointer',
-			start: function (event, ui) {
-				// Set the height of the placeholder to that of the sorted item
-				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttfmake-gallery-items-stage');
-
-				$('.sortable-placeholder', $stage)
-					.height(parseInt($item.height(), 10) - 2); // -2 to account for placeholder border
-			},
-			stop: function (event, ui) {
-				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttfmake-gallery-items'),
-					$orderInput = $('.ttfmake-gallery-item-order', $stage);
-
-				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
-			}
-		});
-	};
-
-	// Initialize the color picker
-	oneApp.initializeGalleryItemColorPicker = function (view) {
-		var $selector;
-		view = view || '';
-
-		if (view.$el) {
-			$selector = $('.ttfmake-gallery-background-color', view.$el);
-		} else {
-			$selector = $('.ttfmake-gallery-background-color');
-		}
-
-		$selector.wpColorPicker();
-	};
-
-	// Initialize the sortables
-	$oneApp.on('afterSectionViewAdded', function(evt, view) {
-		if ('gallery' === view.model.get('sectionType')) {
-			// Add 3 initial gallery item
-			var $addButton = $('.ttfmake-gallery-add-item', view.$el);
-			$addButton.trigger('click', {type: 'pseudo'});
-			$addButton.trigger('click', {type: 'pseudo'});
-			$addButton.trigger('click', {type: 'pseudo'});
-
-			// Initialize the sortables and picker
-			oneApp.initializeGalleryItemSortables();
-			oneApp.initializeGalleryItemColorPicker(view);
-		}
-	});
-
-	// Initialize available gallery items
-	oneApp.initGalleryItemViews = function ($el) {
-		$el = $el || '';
-		var $items = ('' === $el) ? $('.ttfmake-gallery-item') : $('.ttfmake-gallery-item', $el);
-
-		$items.each(function () {
-			var $item = $(this),
-				idAttr = $item.attr('id'),
-				id = $item.attr('data-id'),
-				$section = $item.parents('.ttfmake-section'),
-				parentID = $section.attr('data-id'),
-				model;
-
-			// Build the model
-			model = new oneApp.GalleryItemModel({
-				id: id,
-				parentID: parentID
-			});
-
-			// Build the view
-			new oneApp.GalleryItemView({
-				model: model,
-				el: $('#' + idAttr),
-				serverRendered: true
-			});
-		});
-
-		oneApp.initializeGalleryItemSortables();
-		oneApp.initializeGalleryItemColorPicker();
-	};
-
-	// Set the classes for the elements
-	oneApp.setClearClasses = function ($el) {
-		var columns = $('.ttfmake-gallery-columns', $el).val(),
-			$items = $('.ttfmake-gallery-item', $el);
-
-		$items.each(function(index, item){
-			var $item = $(item);
-			if (0 !== index && 0 === index % columns) {
-				$item.addClass('clear');
-			} else {
-				$item.removeClass('clear');
-			}
-		});
-	};
-
-	// Initialize the views when the app starts up
-	oneApp.initGalleryItemViews();
-})(window, jQuery, _, oneApp, $oneApp);
+})(window, jQuery, _, oneApp);

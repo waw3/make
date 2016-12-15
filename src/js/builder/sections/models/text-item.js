@@ -6,9 +6,10 @@ var oneApp = oneApp || {};
 
 	oneApp.models = oneApp.models || {};
 
-	oneApp.models.section = Backbone.Model.extend({
+	oneApp.models['text-item'] = Backbone.Model.extend({
 		defaults: {
-			'section-type': ''
-		},
+			id: '',
+			parentID: '',
+		}
 	});
 })(window, Backbone, jQuery, _, oneApp);

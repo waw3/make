@@ -3,17 +3,13 @@
  * @package Make
  */
 
-global $ttfmake_section_data, $ttfmake_is_js_template;
+global $ttfmake_section_data, $ttfmake_overlay_id;
+
+$ttfmake_overlay_id = 'ttfmake-overlay-{{ id }}';
 ?>
 
-	<?php if ( ! empty( $ttfmake_section_data['section']['config'] ) ) : ?>
-		<?php global $ttfmake_overlay_id; $id = ( true === $ttfmake_is_js_template ) ? '{{{ id }}}' : esc_attr( $ttfmake_section_data['data']['id'] ); $ttfmake_overlay_id = 'ttfmake-overlay-' . $id; ?>
-        <?php get_template_part( '/inc/builder/core/templates/overlay', 'configuration' ); ?>
+	<?php get_template_part( '/inc/builder/core/templates/overlay', 'configuration' ); ?>
 
-        <textarea name="ttfmake-section-json[<?php echo $id; ?>]" style="display: none;"><?php echo ttfmake_encode_section_json( $ttfmake_section_data['data'] ); ?></textarea>
-    <?php endif; ?>
+    <textarea name="ttfmake-section-json[{{ id }}]" style="display: none;">{{ JSON.stringify(toJSON()) }}</textarea>
 
-	</div>
-<?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
 </div>
-<?php endif; ?>

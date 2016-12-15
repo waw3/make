@@ -4,41 +4,46 @@ var oneApp = oneApp || {};
 (function (window, Backbone, $, _, oneApp) {
 	'use strict';
 
-	oneApp.GalleryItemView = Backbone.View.extend({
-		template: '',
-		className: 'ttfmake-gallery-item',
+	oneApp.views = oneApp.views || {}
 
-		events: {
-			'click .ttfmake-gallery-item-remove': 'removeItem'
+	oneApp.views['gallery-item'] = oneApp.views.item.extend({
+		events: function() {
+			return _.extend({}, oneApp.views.item.prototype.events, {
+				'click .ttfmake-gallery-item-remove': 'onItemRemove',
+				'overlayClose': 'onOverlayClose',
+			});
 		},
 
 		initialize: function (options) {
-			this.model = options.model;
-			this.idAttr = 'ttfmake-gallery-item-' + this.model.get('id');
-			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-			this.template = _.template($('#tmpl-ttfmake-gallery-item').html(), oneApp.templateSettings);
+			this.template = _.template(ttfMakeSectionTemplates['gallery-item']);
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.model.toJSON()))
-				.attr('id', this.idAttr)
-				.attr('data-id', this.model.get('id'));
+			var html = this.template(this.model)
+			this.setElement(html);
+
 			return this;
 		},
 
-		removeItem: function (evt) {
+		onOverlayClose: function(e, textarea) {
+			e.stopPropagation();
+
+			this.model.set('description', $(textarea).val());
+			this.$el.trigger('model-item-change');
+		},
+
+		onItemRemove: function (evt) {
 			evt.preventDefault();
 
 			var $stage = this.$el.parents('.ttfmake-gallery-items'),
 				$orderInput = $('.ttfmake-gallery-item-order', $stage);
 
-			oneApp.removeOrderValue(this.model.get('id'), $orderInput);
-
 			// Fade and slide out the section, then cleanup view
 			this.$el.animate({
 				opacity: 'toggle',
 				height: 'toggle'
-			}, oneApp.options.closeSpeed, function() {
+			}, oneApp.builder.options.closeSpeed, function() {
+				this.$el.trigger('item-remove', this);
 				this.remove();
 			}.bind(this));
 		}
