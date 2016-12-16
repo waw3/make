@@ -297,15 +297,9 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		initUploader: function (view, placeholder) {
 			this.$currentPlaceholder = $(placeholder);
 
-			// If the media frame already exists, reopen it.
-			if (window.frame && 'function' === typeof window.frame.open) {
-				window.frame.open();
-				return;
-			}
-
 			// Create the media frame.
 			window.frame = wp.media.frames.frame = wp.media({
-				title: view.$el.data('title'),
+				title: this.$currentPlaceholder.data('title'),
 				className: 'media-frame ttfmake-builder-uploader',
 				multiple: false
 			});
