@@ -54,6 +54,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 
 			var self = this;
 			$('body').on('click', '.ttfmake-remove-image-from-modal', function(e) {
+				e.preventDefault();
 				self.$stage.trigger('uploader-image-removed')
 			});
 
