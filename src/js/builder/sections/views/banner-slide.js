@@ -18,7 +18,7 @@ var oneApp = oneApp || {};
 		},
 
 		initialize: function (options) {
-			this.template = _.template(ttfMakeSectionTemplates['banner-slide']);
+			this.template = _.template(ttfMakeSectionTemplates['banner-slide'], oneApp.builder.templateSettings);
 		},
 
 		render: function () {

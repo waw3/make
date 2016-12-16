@@ -33,17 +33,7 @@ var oneApp = oneApp || {};
 		},
 
 		initialize: function (options) {
-			this.model = options.model;
-			this.idAttr = 'ttfmake-section-' + this.model.get('id');
-			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-
-			_.templateSettings = {
-				evaluate   : /<#([\s\S]+?)#>/g,
-				interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
-				escape     : /\{\{([^\}]+?)\}\}(?!\})/g
-			};
-
-			this.template = _.template(ttfMakeSectionTemplates[this.model.get('section-type')]);
+			this.template = _.template(ttfMakeSectionTemplates[this.model.get('section-type')], oneApp.builder.templateSettings);
 
 			this.model.bind('change', function() {
 				$('[name^="ttfmake-section-json"]', this.$el).val(JSON.stringify(this.model.toJSON()));

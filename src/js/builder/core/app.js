@@ -27,6 +27,12 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 			'uploader-image-removed': 'onUploaderFrameRemoveImage'
 		},
 
+		templateSettings: {
+			evaluate: /<#([\s\S]+?)#>/g,
+			interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
+			escape: /\{\{([^\}]+?)\}\}(?!\})/g
+		},
+
 		initialize: function(options) {
 			Backbone.View.prototype.initialize.apply(this, arguments);
 		},
