@@ -110,12 +110,25 @@ class MAKE_Builder_Sections_Columns_Definition {
 
 	public function get_defaults() {
 		return array(
+			'label' => '',
+			'state' => 'open',
 			'title' => '',
+			'image-link' => '',
 			'columns-number' => 3,
 			'background-image' => '',
 			'darken' => 0,
 			'background-style' => 'tile',
-			'background-color' => ''
+			'background-color' => '',
+			'background-image' => '',
+			'background-style' => '',
+			'columns-number' => 3,
+			'columns' => array(
+				1 => array(),
+				2 => array(),
+				3 => array(),
+				4 => array()
+			),
+			'columns-order' => array('1','2','3','4')
 		);
 	}
 

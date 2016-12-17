@@ -9,7 +9,7 @@ var oneApp = oneApp || {};
 	oneApp.models['text-item'] = Backbone.Model.extend({
 		defaults: {
 			id: '',
-			parentID: '',
+			parentID: ''
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp);
