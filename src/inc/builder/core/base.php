@@ -904,12 +904,6 @@ if ( ! function_exists( 'ttfmake_get_section_name' ) ) :
 function ttfmake_get_section_name( $data, $is_js_template = true ) {
 	$name = 'ttfmake-section[{{ id }}]';
 
-	// if ( $is_js_template ) {
-	// 	$name .= '[{{{ id }}}]';
-	// } else {
-	// 	$name .= '[' . $data['data']['id'] . ']';
-	// }
-
 	/**
 	 * Alter section name.
 	 *
