@@ -124,8 +124,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 				2 => array(),
 				3 => array(),
 				4 => array()
-			),
-			'columns-order' => array('1','2','3','4')
+			)
 		);
 	}
 
