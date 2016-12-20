@@ -407,8 +407,8 @@ function ttfmake_builder_get_text_style( $ttfmake_section_data ) {
 	// Background image
 	if ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) ) {
 		$image_src = ttfmake_get_image_src( $ttfmake_section_data['background-image'], 'full' );
-		if ( isset( $image_src[0] ) ) {
-			$text_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
+		if ( isset( $image_src ) ) {
+			$text_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
 		}
 	}
 
