@@ -9,7 +9,8 @@ var oneApp = oneApp || {};
 	oneApp.models.text = oneApp.models.section.extend({
 		defaults: {
 			'id': '',
-			'section-type': 'text'
+			'section-type': 'text',
+			'columns-order': ['1','2','3','4']
 		},
 
 		toJSON: function() {

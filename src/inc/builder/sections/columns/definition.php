@@ -159,7 +159,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 						$column_position = intval($column_position);
 						$ordered_items[$index+1] = $data['columns'][$column_position];
 
-						if ( array_key_exists('sidebar-label', $ordered_items[$index+1]) && !array_key_exists('widget-area-id', $ordered_items[$index+1]) ) {
+						if ( array_key_exists('sidebar-label', $ordered_items[$index+1]) && $ordered_items[$index+1]['sidebar-label'] != '' && !array_key_exists('widget-area-id', $ordered_items[$index+1]) ) {
 							$page_id = get_the_ID();
 							$ordered_items[$index+1]['widget-area-id'] = 'ttfmp-' . $page_id . '-' . $data['id'] . '-' . $column_position;
 						}
