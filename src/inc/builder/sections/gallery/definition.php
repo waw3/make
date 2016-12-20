@@ -216,10 +216,7 @@ class MAKE_Builder_Sections_Gallery_Definition {
 
 	public function get_section_json( $data, $type ) {
 		if ( $type == 'gallery' ) {
-			if ( isset( $data['background-image'] ) && ( $image_id = intval( $data['background-image'] ) ) > 0 ) {
-				$image = ttfmake_get_image_src( $image_id, 'large' );
-				$data['background-image-url'] = $image[0];
-			}
+			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
 				foreach ( $data['gallery-items'] as $s => $item ) {
@@ -227,10 +224,7 @@ class MAKE_Builder_Sections_Gallery_Definition {
 					$id = isset( $item['id'] ) ? $item['id']: $s;
 					$data['gallery-items'][$s]['id'] = $id;
 
-					if ( isset( $item['image-id'] ) && ( $image_id = intval( $item['image-id'] ) ) > 0  ) {
-						$image = ttfmake_get_image_src( $image_id, 'large' );
-						$data['gallery-items'][$s]['image-url'] = $image[0];
-					}
+					$data['gallery-items'][$s]['image-url'] = ttfmake_get_image_src( $item['image-id'], 'large' );
 				}
 
 				if ( isset( $data['gallery-item-order'] ) ) {
