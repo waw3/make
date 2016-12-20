@@ -110,7 +110,6 @@ class MAKE_Builder_Sections_Columns_Definition {
 
 	public function get_defaults() {
 		return array(
-			'label' => '',
 			'state' => 'open',
 			'title' => '',
 			'image-link' => '',
@@ -119,8 +118,6 @@ class MAKE_Builder_Sections_Columns_Definition {
 			'darken' => 0,
 			'background-style' => 'tile',
 			'background-color' => '',
-			'background-image' => '',
-			'background-style' => '',
 			'columns-number' => 3,
 			'columns' => array(
 				1 => array(),
