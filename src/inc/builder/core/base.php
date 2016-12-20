@@ -973,7 +973,7 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		$image = wp_get_attachment_image_src( $image_id, $size );
 
 		if ( false !== $image && isset( $image[0] ) ) {
-			$src = $image;
+			$src = $image[0];
 		}
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );

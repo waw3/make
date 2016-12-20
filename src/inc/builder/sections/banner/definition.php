@@ -216,7 +216,8 @@ class MAKE_Builder_Sections_Banner_Definition {
 			'alignment' => 'none',
 			'darken' => 0,
 			'background-color' => '',
-			'content' => ''
+			'content' => '',
+			'image-id' => '',
 		);
 	}
 
@@ -237,22 +238,19 @@ class MAKE_Builder_Sections_Banner_Definition {
 	}
 
 	public function get_section_json( $data, $type ) {
+		$data = wp_parse_args( $data, $this->get_defaults() );
+
 		if ( $type == 'banner' ) {
-			if ( isset( $data['background-image'] ) && ( $image_id = intval( $data['background-image'] ) ) > 0 ) {
-				$image = ttfmake_get_image_src( $image_id, 'large' );
-				$data['background-image-url'] = $image[0];
-			}
+			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
 				foreach ( $data['banner-slides'] as $s => $slide ) {
+					$slide = wp_parse_args( $slide, $this->get_slide_defaults() );
+
 					// Handle legacy data layout
 					$id = isset( $slide['id'] ) ? $slide['id']: $s;
 					$data['banner-slides'][$s]['id'] = $id;
-
-					if ( isset( $slide['image-id'] ) && ( $image_id = intval( $slide['image-id'] ) ) > 0 ) {
-						$image = ttfmake_get_image_src( $image_id, 'large' );
-						$data['banner-slides'][$s]['image-url'] = $image[0];
-					}
+					$data['banner-slides'][$s]['image-url'] = ttfmake_get_image_src( $slide['image-id'], 'large' );
 				}
 
 				if ( isset( $data['banner-slide-order'] ) ) {
