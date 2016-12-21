@@ -128,6 +128,18 @@ class MAKE_Builder_Sections_Columns_Definition {
 		);
 	}
 
+	public function get_column_defaults() {
+		return array(
+			'title' => '',
+			'image-id' => '',
+			'image-link' => '',
+			'image-url' => '',
+			'size' => '',
+			'content' => '',
+			'sidebar-label' => ''
+		);
+	}
+
 	/**
 	 * Add new section defaults.
 	 *
@@ -144,9 +156,9 @@ class MAKE_Builder_Sections_Columns_Definition {
 	}
 
 	public function get_section_json( $data, $type ) {
-		$data = wp_parse_args( $data, $this->get_defaults() );
-
 		if ( $type == 'text' ) {
+			$data = wp_parse_args( $data, $this->get_defaults() );
+			
 			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
@@ -168,6 +180,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 				}
 
 				foreach ( $data['columns'] as $s => $column ) {
+					$column = wp_parse_args( $column, $this->get_column_defaults() );
+
 					// Handle legacy data layout
 					$id = isset( $column['id'] ) ? $column['id']: $s;
 					$data['columns'][$s]['id'] = $id;
