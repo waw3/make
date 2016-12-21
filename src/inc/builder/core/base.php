@@ -1049,12 +1049,17 @@ function ttfmake_register_placeholder_image( $id, $data ) {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_get_section_json' ) ) :
-function ttfmake_get_section_json_data( $data = array() ) {
-	foreach ($data as $s => $section) {
-		$data[$s] = apply_filters( 'make_get_section_json', $section, $section['section-type'] );
-	}
+if ( ! function_exists( 'ttfmake_get_section_json_data' ) ) :
+	/**
+	 * #ADD DOCS#
+	 *
+	 * @return array
+	 */
+	function ttfmake_get_section_json_data( $data = array() ) {
+		foreach ($data as $s => $section) {
+			$data[$s] = apply_filters( 'make_get_section_json', $section, $section['section-type'] );
+		}
 
-	return $data;
-}
+		return $data;
+	}
 endif;
