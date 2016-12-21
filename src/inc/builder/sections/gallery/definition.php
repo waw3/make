@@ -216,14 +216,16 @@ class MAKE_Builder_Sections_Gallery_Definition {
 
 	public function get_section_json( $data, $type ) {
 		if ( $type == 'gallery' ) {
+			$data = wp_parse_args( $data, $this->get_defaults() );
 			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
 				foreach ( $data['gallery-items'] as $s => $item ) {
+					$item = wp_parse_args( $item, $this->get_item_defaults() );
+
 					// Handle legacy data layout
 					$id = isset( $item['id'] ) ? $item['id']: $s;
 					$data['gallery-items'][$s]['id'] = $id;
-
 					$data['gallery-items'][$s]['image-url'] = ttfmake_get_image_src( $item['image-id'], 'large' );
 				}
 

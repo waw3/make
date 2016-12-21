@@ -238,9 +238,8 @@ class MAKE_Builder_Sections_Banner_Definition {
 	}
 
 	public function get_section_json( $data, $type ) {
-		$data = wp_parse_args( $data, $this->get_defaults() );
-
 		if ( $type == 'banner' ) {
+			$data = wp_parse_args( $data, $this->get_defaults() );
 			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
