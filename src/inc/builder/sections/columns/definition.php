@@ -108,6 +108,11 @@ class MAKE_Builder_Sections_Columns_Definition {
 		);
 	}
 
+	/**
+	 * Get default values for columns section
+	 *
+	 * @return array
+	 */
 	public function get_defaults() {
 		return array(
 			'state' => 'open',
@@ -128,6 +133,11 @@ class MAKE_Builder_Sections_Columns_Definition {
 		);
 	}
 
+	/**
+	 * Get default values for column
+	 *
+	 * @return array
+	 */
 	public function get_column_defaults() {
 		return array(
 			'title' => '',
@@ -155,10 +165,18 @@ class MAKE_Builder_Sections_Columns_Definition {
 		return $defaults;
 	}
 
+	/**
+	 * Add a json representation of section data
+	 *
+	 * @param array  $data	Section data.
+	 * @param string $type	Section type, e.g. 'text'.
+	 *
+	 * @return array
+	 */
 	public function get_section_json( $data, $type ) {
 		if ( $type == 'text' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
-			
+
 			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
@@ -284,6 +302,11 @@ class MAKE_Builder_Sections_Columns_Definition {
 		return $clean_data;
 	}
 
+	/**
+	 * Add JS dependencies for section
+	 *
+	 * @return array
+	 */
 	public function add_js_dependencies( $deps ) {
 		if ( ! is_array( $deps ) ) {
 			$deps = array();
