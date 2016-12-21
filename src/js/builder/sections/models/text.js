@@ -25,6 +25,8 @@ var oneApp = oneApp || {};
 				}
 			});
 
+			console.log(json);
+
 			return json;
 		},
 
@@ -49,11 +51,7 @@ var oneApp = oneApp || {};
 					}
 				});
 
-				if (columns.hasOwnProperty('attributes')) {
-					orderedColumns[intIndex] = desiredColumn.attributes;
-				} else {
-					orderedColumns[intIndex] = desiredColumn;
-				}
+				orderedColumns[intIndex] = desiredColumn;
 			});
 
 			this.set('columns', orderedColumns);
