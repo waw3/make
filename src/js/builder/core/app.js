@@ -94,14 +94,20 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 			this.sections.reset(sortedSections);
 		},
 
-		addSectionView: function (section) {
+		addSectionView: function (section, previousSection) {
 			var viewClass = oneApp.views[section.get('section-type')];
 			var view = new viewClass({
 				model: section
 			});
 
 			var html = view.render().el;
-			this.$stage.append(html);
+
+			if (typeof previousSection !== 'undefined') {
+				previousSection.$el.append(html);
+			} else {
+				this.$stage.append(html);
+			}
+			
 			view.$el.trigger('view-ready');
 
 			return view;
