@@ -103,11 +103,11 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 			var html = view.render().el;
 
 			if (typeof previousSection !== 'undefined') {
-				previousSection.$el.append(html);
+				previousSection.$el.after(html);
 			} else {
 				this.$stage.append(html);
 			}
-			
+
 			view.$el.trigger('view-ready');
 
 			return view;
