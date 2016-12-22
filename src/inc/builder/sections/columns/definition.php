@@ -111,6 +111,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 	/**
 	 * Get default values for columns section
 	 *
+	 * @since 1.8
+	 *
 	 * @return array
 	 */
 	public function get_defaults() {
@@ -135,6 +137,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 
 	/**
 	 * Get default values for column
+	 *
+	 * @since 1.8
 	 *
 	 * @return array
 	 */
@@ -167,6 +171,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 
 	/**
 	 * Add a json representation of section data
+	 *
+	 * @since 1.8
 	 *
 	 * @param array  $data	Section data.
 	 * @param string $type	Section type, e.g. 'text'.
@@ -303,7 +309,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 	}
 
 	/**
-	 * Add JS dependencies for section
+	 * Add JS dependencies for the section
 	 *
 	 * @return array
 	 */

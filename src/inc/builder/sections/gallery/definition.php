@@ -175,6 +175,13 @@ class MAKE_Builder_Sections_Gallery_Definition {
 		return $inputs;
 	}
 
+	/**
+	 * Get default values for gallery section
+	 *
+	 * @since 1.8
+	 *
+	 * @return array
+	 */
 	public function get_defaults() {
 		return array(
 			'title' => '',
@@ -189,6 +196,13 @@ class MAKE_Builder_Sections_Gallery_Definition {
 		);
 	}
 
+	/**
+	 * Get default values for gallery item
+	 *
+	 * @since 1.8
+	 *
+	 * @return array
+	 */
 	public function get_item_defaults() {
 		return array(
 			'title' => '',
@@ -214,6 +228,16 @@ class MAKE_Builder_Sections_Gallery_Definition {
 		return $defaults;
 	}
 
+	/**
+	 * Add a json representation of section data
+	 *
+	 * @since 1.8
+	 *
+	 * @param array  $data	Section data.
+	 * @param string $type	Section type, e.g. 'gallery'.
+	 *
+	 * @return array
+	 */
 	public function get_section_json( $data, $type ) {
 		if ( $type == 'gallery' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
@@ -337,6 +361,11 @@ class MAKE_Builder_Sections_Gallery_Definition {
 		return $clean_data;
 	}
 
+	/**
+	 * Add JS dependencies for the section
+	 *
+	 * @return array
+	 */
 	public function add_js_dependencies( $deps ) {
 		if ( ! is_array( $deps ) ) {
 			$deps = array();

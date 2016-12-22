@@ -194,6 +194,13 @@ class MAKE_Builder_Sections_Banner_Definition {
 		return $inputs;
 	}
 
+	/**
+	 * Get default values for banner section
+	 *
+	 * @since 1.8
+	 *
+	 * @return array
+	 */
 	public function get_defaults() {
 		return array(
 			'title' => '',
@@ -211,6 +218,13 @@ class MAKE_Builder_Sections_Banner_Definition {
 		);
 	}
 
+	/**
+	 * Get default values for banner slide
+	 *
+	 * @since 1.8
+	 *
+	 * @return array
+	 */
 	public function get_slide_defaults() {
 		return array(
 			'alignment' => 'none',
@@ -237,6 +251,16 @@ class MAKE_Builder_Sections_Banner_Definition {
 		return $defaults;
 	}
 
+	/**
+	 * Add a json representation of section data
+	 *
+	 * @since 1.8
+	 *
+	 * @param array  $data	Section data.
+	 * @param string $type	Section type, e.g. 'banner'.
+	 *
+	 * @return array
+	 */
 	public function get_section_json( $data, $type ) {
 		if ( $type == 'banner' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
@@ -355,6 +379,11 @@ class MAKE_Builder_Sections_Banner_Definition {
 		return $clean_data;
 	}
 
+	/**
+	 * Add JS dependencies for the section
+	 *
+	 * @return array
+	 */
 	public function add_js_dependencies( $deps ) {
 		if ( ! is_array( $deps ) ) {
 			$deps = array();
