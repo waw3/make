@@ -1051,13 +1051,28 @@ endif;
 
 if ( ! function_exists( 'ttfmake_get_section_json_data' ) ) :
 	/**
-	 * #ADD DOCS#
+	 * Filters the json representation of saved sections.
 	 *
-	 * @return array
+	 * This filters allows for dynamically altering json section data
+	 * before it gets passed to client.
+	 *
+	 * @since 1.8.0
+	 *
+	 * @param array    $data    The array of sections being jsonified.
 	 */
 	function ttfmake_get_section_json_data( $data = array() ) {
 		foreach ($data as $s => $section) {
-			$data[$s] = apply_filters( 'make_get_section_json', $section, $section['section-type'] );
+			/**
+			 * Filters the json representation of a single section.
+			 *
+			 * This filters allows for dynamically altering this section
+			 * json representation.
+			 *
+			 * @since 1.8.0
+			 *
+			 * @param array    $section    The section being jsonified.
+			 */
+			$data[$s] = apply_filters( 'make_get_section_json', $section );
 		}
 
 		return $data;

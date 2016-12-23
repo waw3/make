@@ -53,7 +53,7 @@ class MAKE_Builder_Sections_Banner_Definition {
 		);
 
 		add_filter( 'make_section_defaults', array( $this, 'section_defaults' ) );
-		add_filter( 'make_get_section_json', array ( $this, 'get_section_json' ), 10, 2 );
+		add_filter( 'make_get_section_json', array ( $this, 'get_section_json' ), 10, 1 );
 		add_filter( 'make_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 	}
 
@@ -236,13 +236,15 @@ class MAKE_Builder_Sections_Banner_Definition {
 	}
 
 	/**
-	 * Add new section defaults.
+	 * Extract the setting defaults and add them to Make's section defaults system.
+	 *
+	 * @since 1.6.0.
 	 *
 	 * @hooked filter make_section_defaults
 	 *
-	 * @param array $defaults    The default section defaults.
+	 * @param array $defaults    The existing array of section defaults.
 	 *
-	 * @return array             The augmented section defaults.
+	 * @return array             The modified array of section defaults.
 	 */
 	public function section_defaults( $defaults ) {
 		$defaults['banner'] = $this->get_defaults();
@@ -252,17 +254,18 @@ class MAKE_Builder_Sections_Banner_Definition {
 	}
 
 	/**
-	 * Add a json representation of section data
+	 * Filter the json representation of this section.
 	 *
-	 * @since 1.8
+	 * @since 1.8.0.
 	 *
-	 * @param array  $data	Section data.
-	 * @param string $type	Section type, e.g. 'banner'.
+	 * @hooked filter make_get_section_json
 	 *
-	 * @return array
+	 * @param array $defaults    The array of data for this section.
+	 *
+	 * @return array             The modified array to be jsonified.
 	 */
-	public function get_section_json( $data, $type ) {
-		if ( $type == 'banner' ) {
+	public function get_section_json( $data ) {
+		if ( $data['section-type'] == 'banner' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
 			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
