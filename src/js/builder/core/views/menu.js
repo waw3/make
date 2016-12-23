@@ -15,7 +15,6 @@ var oneApp = oneApp || {};
 
 		events: {
 			'click .ttfmake-menu-list-item-link': 'onSectionAdd',
-			// 'section-sort': 'onSectionSort',
 		},
 
 		onSectionAdd: function (e) {

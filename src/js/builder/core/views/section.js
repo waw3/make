@@ -150,8 +150,6 @@ var oneApp = oneApp || {};
 			});
 
 			oneApp.builder.initColorPicker(this);
-
-			// $oneApp.trigger('ttfOverlayOpened', [this.model.get('section-type'), $overlay]);
 		},
 
 		onColorPickerChange: function(evt, data) {
