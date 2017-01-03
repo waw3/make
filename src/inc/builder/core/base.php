@@ -475,7 +475,7 @@ class TTFMAKE_Builder_Base {
 	 * @param  int       $image_id          ID of the current image.
 	 * @param  string    $title             Title for the media modal.
      * @param  string    $field_name        The name of the image field.
-     * @param  string	 $field_name_path	The second part of the name. E.g. `[1][textarea]` for `columns[1][textarea]`.
+     * @param  string	 $field_name_path	The second part of the name (if applicable). E.g. `[1][textarea]` for `columns[1][textarea]`.
 	 * @return string                       Either return the string or echo it.
 	 */
 	public function add_uploader( $section_name, $image_id = 0, $title = '', $field_name = 'background-image-url', $field_name_path = '' ) {
@@ -498,7 +498,7 @@ class TTFMAKE_Builder_Base {
 	 *
 	 * @param  string    $id					The unique ID to identify the different areas.
 	 * @param  string    $textarea_name			The name of the textarea.
-	 * @param  string	 $textarea_name_path	The second part of the name. E.g. `[1][textarea]` for `columns[1][textarea]`.
+	 * @param  string	 $textarea_name_path	The second part of the name (if applicable). E.g. `[1][textarea]` for `columns[1][textarea]`.
 	 * @param  string    $content				The content for the text area.
 	 * @param  bool      $iframe				Whether or not to add an iframe to preview content.
 	 * @return void
