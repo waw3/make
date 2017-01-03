@@ -183,9 +183,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 	 * @return array             The modified array to be jsonified.
 	 */
 	public function get_section_json( $data ) {
-		if ( $type['section-type'] == 'text' ) {
+		if ( $data['section-type'] == 'text' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
-
 			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
