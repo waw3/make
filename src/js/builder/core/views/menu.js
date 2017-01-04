@@ -1,64 +1,28 @@
 /* global Backbone, jQuery, _, ttfmakeBuilderData, setUserSetting, deleteUserSetting */
-var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+var oneApp = oneApp || {};
 
-(function (window, Backbone, $, _, oneApp, $oneApp) {
+(function (window, Backbone, $, _, oneApp) {
 	'use strict';
 
-	oneApp.MenuView = Backbone.View.extend({
+	oneApp.views = oneApp.views || {};
+
+	oneApp.views.menu = Backbone.View.extend({
 		el: '#ttfmake-menu',
-
 		$stage: $('#ttfmake-stage'),
-
 		$document: $(window.document),
-
 		$scrollHandle: $('html, body'),
-
 		$pane: $('.ttfmake-menu-pane'),
 
-		initialize: function () {
-			this.listenTo(oneApp.sections, 'add', this.addOne);
-		},
-
 		events: {
-			'click .ttfmake-menu-list-item-link': 'addSection'
+			'click .ttfmake-menu-list-item-link': 'onSectionAdd',
 		},
 
-		addSection: function (evt) {
-			evt.preventDefault();
+		onSectionAdd: function (e) {
+			e.preventDefault();
+			e.stopPropagation();
 
-			var $evt = $(evt),
-				$target = $($evt.get(0).currentTarget),
-				sectionType = $target.attr('data-section').replace(/\W/g, ''); // Get and sanitize section
-
-			// Add a new model to the collection with the specified section type
-			oneApp.sections.create({
-				sectionType: sectionType,
-				id: new Date().getTime()
-			});
-		},
-
-		addOne: function (section) {
-			// Ensure that a view exists for the section, otherwise show the generic view
-			var modelViewName = section.get('viewName') + 'View',
-				viewName = (true === oneApp.hasOwnProperty(modelViewName)) ? modelViewName : 'SectionView',
-				view, html;
-
-			// Create view
-			view = new oneApp[viewName]({
-				model: section
-			});
-
-			// Append view
-			html = view.render().el;
-			this.$stage.append(html);
-
-			$oneApp.trigger('afterSectionViewAdded', view);
-
-			// Scroll to added view and focus first input
-			oneApp.scrollToAddedView(view);
-
-			oneApp.sections.toggleStageClass();
-			oneApp.addOrderValue(section.get('id'), oneApp.cache.$sectionOrder);
+			var sectionType = $(e.currentTarget).data('section');
+			this.$el.trigger('section-created', sectionType);
 		},
 
 		menuToggle: function(evt) {
@@ -80,7 +44,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Close it up
 			} else {
 				this.$pane.slideUp({
-					duration: oneApp.options.closeSpeed,
+					duration: oneApp.builder.options.closeSpeed,
 					easing: 'easeInOutQuad',
 					complete: function() {
 						setUserSetting( key, 'c' );
@@ -90,4 +54,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}
 		}
 	});
-})(window, Backbone, jQuery, _, oneApp, $oneApp);
+})(window, Backbone, jQuery, _, oneApp);

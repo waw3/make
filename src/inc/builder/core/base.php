@@ -179,24 +179,28 @@ class TTFMAKE_Builder_Base {
 					),
 					'columns'        => array(
 						1 => array(
+							'id'	   => '',
 							'title'    => '',
 							'image-id' => 0,
 							'content'  => $content,
 							''
 						),
 						2 => array(
+							'id'	   => '',
 							'title'    => '',
 							'image-id' => 0,
 							'content'  => '',
 							''
 						),
 						3 => array(
+							'id'	   => '',
 							'title'    => '',
 							'image-id' => 0,
 							'content'  => '',
 							''
 						),
 						4 => array(
+							'id'	   => '',
 							'title'    => '',
 							'image-id' => 0,
 							'content'  => '',
@@ -205,19 +209,43 @@ class TTFMAKE_Builder_Base {
 					)
 				);
 			}
-
-			if ( isset( $registered_sections[ $section['section-type'] ]['display_template'] ) ) {
-				// Print the saved section
-				$this->load_section( $registered_sections[ $section['section-type'] ], $section );
-			}
 		}
 
 		get_template_part( 'inc/builder/core/templates/stage', 'footer' );
 
 		// Add the sort input
 		$section_order = get_post_meta( $post_local->ID, '_ttfmake-section-ids', true );
-		$section_order = ( ! empty( $section_order ) ) ? implode( ',', $section_order ) : '';
-		echo '<input type="hidden" value="' . esc_attr( $section_order ) . '" name="ttfmake-section-order" id="ttfmake-section-order" />';
+
+		// Handle legacy section order, if present
+		if ( ! empty( $section_order ) ) {
+			$ordered_sections = array();
+
+			foreach ( $section_order as $section_id ) {
+				array_push( $ordered_sections, $section_data[$section_id] );
+			}
+
+			$section_data = $ordered_sections;
+		}
+
+		// Expose section defaults to JS
+		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionDefaults', ttfmake_get_section_definitions()->get_section_defaults() );
+		// Expose saved sections data to JS
+		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionData', ttfmake_get_section_json_data( $section_data ) );
+
+		// Fetch templates
+		$templates = array();
+		foreach ( ttfmake_get_sections() as $section ) {
+			$template = $this->load_section( $section, array(), true );
+
+			if ( !is_array( $template ) ) {
+				$templates[$section['id']] = $template;
+			} else {
+				$templates = array_merge( $templates, $template );
+			}
+		}
+
+		// Expose section template strings to JS
+		wp_localize_script( 'ttfmake-builder', 'ttfMakeSectionTemplates', $templates );
 	}
 
 	/**
@@ -253,14 +281,6 @@ class TTFMAKE_Builder_Base {
 			'jquery-effects-core',
 			'jquery-ui-sortable',
 			'backbone',
-		);
-
-		wp_register_script(
-			'ttfmake-builder/js/libs/serializejson/jquery.serializejson.min.js',
-			Make()->scripts()->get_js_directory_uri() . '/builder/libs/serializejson/jquery.serializejson.min.js',
-			array(),
-			TTFMAKE_VERSION,
-			true
 		);
 
 		wp_register_script(
@@ -315,7 +335,6 @@ class TTFMAKE_Builder_Base {
 			array_merge(
 				$dependencies,
 				array(
-					'ttfmake-builder/js/libs/serializejson/jquery.serializejson.min.js',
 					'ttfmake-builder/js/models/section.js',
 					'ttfmake-builder/js/collections/sections.js',
 					'ttfmake-builder/js/views/menu.js',
@@ -452,19 +471,20 @@ class TTFMAKE_Builder_Base {
 	 *
 	 * @since  1.0.0.
 	 *
-	 * @param  string    $section_name    Name of the current section.
-	 * @param  int       $image_id        ID of the current image.
-	 * @param  string    $title           Title for the media modal.
-	 * @return string                     Either return the string or echo it.
+	 * @param  string    $section_name      Name of the current section.
+	 * @param  int       $image_id          ID of the current image.
+	 * @param  string    $title             Title for the media modal.
+     * @param  string    $field_name        The name of the image field.
+     * @param  string	 $field_name_path	The second part of the name (if applicable). E.g. `[1][textarea]` for `columns[1][textarea]`.
+	 * @return string                       Either return the string or echo it.
 	 */
-	public function add_uploader( $section_name, $image_id = 0, $title = '' ) {
+	public function add_uploader( $section_name, $image_id = 0, $title = '', $field_name = 'background-image-url', $field_name_path = '' ) {
 		$image = ttfmake_get_image_src( $image_id, 'large' );
 		$title = ( ! empty( $title ) ) ? $title : esc_html__( 'Set image', 'make' );
 		ob_start();
-		?>
-		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
-			<div data-title="<?php echo esc_attr( $title ); ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
-			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
+?>
+	<div class="ttfmake-uploader{{ get('<?php echo $field_name; ?>')<?php echo $field_name_path; ?> && ' ttfmake-has-image-set' || '' }}">
+	<div data-title="<?php echo $title; ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add" style="background-image: url({{ get('<?php echo $field_name; ?>')<?php echo $field_name_path; ?> }});"></div>
 		</div>
 	<?php
 		$output = ob_get_clean();
@@ -476,16 +496,18 @@ class TTFMAKE_Builder_Base {
 	 *
 	 * @since  1.4.0.
 	 *
-	 * @param  string    $id               The unique ID to identify the different areas.
-	 * @param  string    $textarea_name    The name of the textarea.
-	 * @param  string    $content          The content for the text area.
-	 * @param  bool      $iframe           Whether or not to add an iframe to preview content.
+	 * @param  string    $id					The unique ID to identify the different areas.
+	 * @param  string    $textarea_name			The name of the textarea.
+	 * @param  string	 $textarea_name_path	The second part of the name (if applicable). E.g. `[1][textarea]` for `columns[1][textarea]`.
+	 * @param  string    $content				The content for the text area.
+	 * @param  bool      $iframe				Whether or not to add an iframe to preview content.
 	 * @return void
 	 */
-	public function add_frame( $id, $textarea_name, $content = '', $iframe = true ) {
+	public function add_frame( $id, $textarea_name, $textarea_name_path = '', $content = '', $iframe = true ) {
 		global $ttfmake_is_js_template;
 		$iframe_id   = 'ttfmake-iframe-' . $id;
 		$textarea_id = 'ttfmake-content-' . $id;
+		$textarea_attr_name = 'ttfmake-section[' .$id. '][' .$textarea_name. ']';
 	?>
 		<?php if ( true === $iframe ) : ?>
 		<div class="ttfmake-iframe-wrapper">
@@ -500,12 +522,12 @@ class TTFMAKE_Builder_Base {
 		</div>
 		<?php endif; ?>
 
-		<textarea id="<?php echo esc_attr( $textarea_id ); ?>" name="<?php echo esc_attr( $textarea_name ); ?>" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
+		<textarea id="<?php echo esc_attr( $textarea_id ); ?>" name="<?php echo esc_attr( $textarea_attr_name ); ?>" data-model-attr="<?php echo esc_attr( $textarea_name ); ?>" style="display:none;">{{ get('<?php echo esc_attr( $textarea_name ); ?>')<?php echo $textarea_name_path; ?> }}</textarea>
 
 		<?php if ( true !== $ttfmake_is_js_template && true === $iframe ) : ?>
 		<script type="text/javascript">
 			var ttfMakeFrames = ttfMakeFrames || [];
-			ttfMakeFrames.push('<?php echo esc_js( $id ); ?>');
+			ttfMakeFrames.push('<?php echo $id; ?>');
 		</script>
 		<?php endif;
 	}
@@ -517,9 +539,10 @@ class TTFMAKE_Builder_Base {
 	 *
 	 * @param  string    $section     The section data.
 	 * @param  array     $data        The data payload to inject into the section.
+	 * @param  boolean   $return      Specifies if the template should be included or returned as string.
 	 * @return void
 	 */
-	public function load_section( $section, $data = array() ) {
+	public function load_section( $section, $data = array(), $return = false ) {
 		if ( ! isset( $section['id'] ) ) {
 			return;
 		}
@@ -531,14 +554,24 @@ class TTFMAKE_Builder_Base {
 			'section' => $section,
 		);
 
-		// Include the template
-		ttfmake_load_section_template(
-			$ttfmake_section_data['section']['builder_template'],
-			$ttfmake_section_data['section']['path']
-		);
+		$templates = $ttfmake_section_data['section']['builder_template'];
+		$path = $ttfmake_section_data['section']['path'];
+
+		if ( !is_array( $templates ) ) {
+			$templates = array ( $templates );
+		}
+
+		foreach ( $templates as $key => $template ) {
+			// Include the template
+			$templates[$key] = ttfmake_load_section_template( $template, $path, $return );
+		}
 
 		// Destroy the variable as a good citizen does
 		unset( $GLOBALS['ttfmake_section_data'] );
+
+		if ( $return ) {
+			return count( $templates ) == 1 ? $templates[0]: $templates;
+		}
 	}
 
 	/**
@@ -549,27 +582,12 @@ class TTFMAKE_Builder_Base {
 	 * @return void
 	 */
 	public function print_templates() {
-		global $hook_suffix, $typenow, $ttfmake_is_js_template;
-		$ttfmake_is_js_template = true;
+		global $hook_suffix, $typenow;
 
 		// Only show when adding/editing pages
 		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
 			return;
 		}
-
-		// Print the templates
-		foreach ( ttfmake_get_sections() as $section ) : ?>
-			<script type="text/html" id="tmpl-ttfmake-<?php echo esc_attr( $section['id'] ); ?>">
-			<?php
-			ob_start();
-			$this->load_section( $section, array() );
-			$html = ob_get_clean();
-			echo $html;
-			?>
-		</script>
-		<?php endforeach;
-
-		unset( $GLOBALS['ttfmake_is_js_template'] );
 
 		// Load the overlay for TinyMCE
 		get_template_part( '/inc/builder/core/templates/overlay', 'tinymce' );
@@ -805,8 +823,9 @@ if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
  * @param  string    $slug    The relative path and filename (w/out suffix) required to substitute the template in a child theme.
  * @param  string    $path    An optional path extension to point to the template in the parent theme or a plugin.
  * @return string             The template filename if one is located.
+ * @param  boolean   $return  Specifies if the template should be included or returned as string.
  */
-function ttfmake_load_section_template( $slug, $path ) {
+function ttfmake_load_section_template( $slug, $path, $return = false ) {
 	$templates = array(
 		$slug . '.php',
 		trailingslashit( $path ) . $slug . '.php'
@@ -825,8 +844,16 @@ function ttfmake_load_section_template( $slug, $path ) {
 
 	if ( '' === $located = locate_template( $templates, true, false ) ) {
 		if ( isset( $templates[1] ) && file_exists( $templates[1] ) ) {
+			if ( $return ) {
+				ob_start();
+			}
+
 			require( $templates[1] );
 			$located = $templates[1];
+
+			if ( $return ) {
+				$located = ob_get_clean();
+			}
 		}
 	}
 
@@ -876,14 +903,8 @@ if ( ! function_exists( 'ttfmake_get_section_name' ) ) :
  * @param  array     $is_js_template    Whether a JS template is being printed or not.
  * @return string                       The name of the section.
  */
-function ttfmake_get_section_name( $data, $is_js_template ) {
-	$name = 'ttfmake-section';
-
-	if ( $is_js_template ) {
-		$name .= '[{{{ id }}}]';
-	} else {
-		$name .= '[' . $data['data']['id'] . ']';
-	}
+function ttfmake_get_section_name( $data, $is_js_template = true ) {
+	$name = 'ttfmake-section[{{ id }}]';
 
 	/**
 	 * Alter section name.
@@ -894,7 +915,7 @@ function ttfmake_get_section_name( $data, $is_js_template ) {
 	 * @param array     $data              The section data.
 	 * @param bool      $is_js_template    Whether or not this is in the context of a JS template.
 	 */
-	return apply_filters( 'make_get_section_name', $name, $data, $is_js_template );
+	return apply_filters( 'make_get_section_name', $name, $data, true );
 }
 endif;
 
@@ -954,7 +975,7 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		$image = wp_get_attachment_image_src( $image_id, $size );
 
 		if ( false !== $image && isset( $image[0] ) ) {
-			$src = $image;
+			$src = $image[0];
 		}
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );
@@ -1030,39 +1051,32 @@ function ttfmake_register_placeholder_image( $id, $data ) {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_encode_section_json' ) ) :
-/**
- * Encodes a section data as json
- *
- * @since  1.7.8.
- *
- * @param  array    $section_data    The section configuration data.
- * @return void
- */
-function ttfmake_encode_section_json( $section_data ) {
-	// Section background images
-	if ( array_key_exists( 'background-image', $section_data ) ) {
-		$image_id = $section_data['background-image'];
-		$section_data['background-image'] = array( 'image-id' => $image_id );
-	}
+if ( ! function_exists( 'ttfmake_get_section_json_data' ) ) :
+	/**
+	 * Filters the json representation of saved sections.
+	 *
+	 * This filters allows for dynamically altering json section data
+	 * before it gets passed to client.
+	 *
+	 * @since 1.8.0
+	 *
+	 * @param array    $data    The array of sections being jsonified.
+	 */
+	function ttfmake_get_section_json_data( $data = array() ) {
+		foreach ($data as $s => $section) {
+			/**
+			 * Filters the json representation of a single section.
+			 *
+			 * This filters allows for dynamically altering this section
+			 * json representation.
+			 *
+			 * @since 1.8.0
+			 *
+			 * @param array    $section    The section being jsonified.
+			 */
+			$data[$s] = apply_filters( 'make_get_section_json', $section );
+		}
 
-	// Ordering
-	if ( array_key_exists( 'item-order', $section_data ) && is_array( $section_data['item-order'] ) ) {
-		$section_data['item-order'] = implode( ',', $section_data['item-order'] );
+		return $data;
 	}
-
-	if ( array_key_exists( 'columns-order', $section_data ) && is_array( $section_data['columns-order'] ) ) {
-		$section_data['columns-order'] = implode( ',', $section_data['columns-order'] );
-	}
-
-	if ( array_key_exists( 'banner-slide-order', $section_data ) && is_array( $section_data['banner-slide-order'] ) ) {
-		$section_data['banner-slide-order'] = implode( ',', $section_data['banner-slide-order'] );
-	}
-
-	if ( array_key_exists( 'gallery-item-order', $section_data ) && is_array( $section_data['gallery-item-order'] ) ) {
-		$section_data['gallery-item-order'] = implode( ',', $section_data['gallery-item-order'] );
-	}
-
-	return json_encode( $section_data );
-}
 endif;

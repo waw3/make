@@ -15,13 +15,12 @@ $links = array(
 );
 
 if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
-	$id = ( true === $ttfmake_is_js_template ) ? '{{{ id }}}' : esc_attr( $ttfmake_section_data['data']['id'] );
 	$links[25] = array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-configure ttfmake-overlay-open',
 		'label' => __( 'Configure section', 'make' ),
 		'title' => __( 'Configure section', 'make' ),
-		'other' => 'data-overlay="#ttfmake-overlay-' . $id . '"'
+		'other' => 'data-overlay="#ttfmake-overlay-{{ id }}"'
 	);
 }
 
@@ -47,9 +46,7 @@ $links = apply_filters( 'make_builder_section_links', $links );
 ksort( $links );
 ?>
 
-<?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
-<div class="ttfmake-section <?php if ( isset( $ttfmake_section_data['data']['state'] ) && 'open' === $ttfmake_section_data['data']['state'] ) echo 'ttfmake-section-open'; ?> ttfmake-section-<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>" id="<?php echo 'ttfmake-section-' . esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>">
-<?php endif; ?>
+<div class="ttfmake-section{{ get('state') == 'open' && ' ttfmake-section-open' || ''}} ttfmake-section-{{ get('id') }}" id="ttfmake-section-{{ get('id') }}" data-id="{{ get('id') }}" data-section-type="{{ get('section-type') }}">
 	<?php
 	/**
 	 * Execute code before the section header is displayed.
@@ -59,9 +56,8 @@ ksort( $links );
 	do_action( 'make_before_section_header' );
 	?>
 	<div class="ttfmake-section-header">
-		<?php $header_title = ( isset( $ttfmake_section_data['data']['label'] ) ) ? $ttfmake_section_data['data']['label'] : ''; ?>
 		<h3>
-			<span class="ttfmake-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttfmake_section_data['section']['label'] ) ); ?></em>
+			<span class="ttfmake-section-header-title">{{ get('title') }}</span><em><?php echo ( esc_html( $ttfmake_section_data['section']['label'] ) ); ?></em>
 		</h3>
 		<div class="ttf-make-section-header-button-wrapper">
 			<?php foreach ( $links as $link ) : ?>
@@ -91,4 +87,4 @@ ksort( $links );
 	</div>
 	<div class="clear"></div>
 	<div class="ttfmake-section-body">
-		<input type="hidden" value="<?php echo $ttfmake_section_data['section']['id']; ?>" name="<?php echo ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template ); ?>[section-type]" />
+		<input type="hidden" value="<?php echo $ttfmake_section_data['section']['id']; ?>" name="<?php echo ttfmake_get_section_name( $ttfmake_section_data, true ); ?>[section-type]" />
