@@ -4,24 +4,23 @@ var oneApp = oneApp || {};
 (function (window, Backbone, $, _, oneApp) {
 	'use strict';
 
-	var Sections = Backbone.Collection.extend({
-		model: oneApp.SectionModel,
+	oneApp.collections = oneApp.collections || {};
 
-		$stage: $('#ttfmake-stage'),
+	oneApp.collections.section = Backbone.Collection.extend({
+		model: function(sectionType) {
+			return oneApp.models[sectionType];
+		},
 
-		toggleStageClass: function() {
-			var sections = $('.ttfmake-section', this.$stage).length;
+		parse: function(data) {
+			var models = _(data).map(function(sectionData) {
+					var sectionType = sectionData['section-type'];
+					var modelClass = oneApp.models[sectionType];
+					var sectionModel = new modelClass(sectionData, {parse: true});
 
-			if (sections > 0) {
-				this.$stage.removeClass('ttfmake-stage-closed');
-			} else {
-				this.$stage.addClass('ttfmake-stage-closed');
-				$('html, body').animate({
-					scrollTop: $('#ttfmake-menu').offset().top
-				}, oneApp.options.closeSpeed);
-			}
+					return sectionModel;
+			});
+
+			return models;
 		}
 	});
-
-	oneApp.sections = new Sections();
 })(window, Backbone, jQuery, _, oneApp);

@@ -1,15 +1,99 @@
 /* global jQuery, _ */
-var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+var oneApp = oneApp || {};
 
-(function (window, $, _, oneApp, $oneApp) {
+(function (window, $, _, oneApp) {
 	'use strict';
 
-	oneApp.TextView = oneApp.SectionView.extend({
+	oneApp.views = oneApp.views || {}
+
+	oneApp.views.text = oneApp.views.section.extend({
+		itemViews: [],
+
 		events: function() {
-			return _.extend({}, oneApp.SectionView.prototype.events, {
+			return _.extend({}, oneApp.views.section.prototype.events, {
 				'change .ttfmake-text-columns' : 'handleColumns',
-				'mouseup .ttfmake-text-column' : 'updateJSONOnSlide'
+				'mouseup .ttfmake-text-column' : 'updateJSONOnSlide',
+				'model-item-change': 'onTextItemChange',
+				'columns-sort': 'onColumnsSort',
+				'view-ready': 'onViewReady'
 			});
+		},
+
+		render: function() {
+			var modelColumns = _(this.model.get('columns'));
+			var dataColumns = _(modelColumns).clone();
+
+			oneApp.views.section.prototype.render.apply(this, arguments);
+
+			var self = this;
+
+			_(modelColumns).each(function(columnModel, index) {
+				var ourIndex = parseInt(index, 10);
+
+				var textItemModelDefaults = {
+					'id': '',
+					'parentID': '',
+					'image-link': '',
+					'image-id': '',
+					'image-url': '',
+					'title': '',
+					'content': '',
+					'size': ''
+				};
+
+				var textItemModelAttributes = _(textItemModelDefaults).extend({
+					id: new Date().getTime(),
+					parentID: self.model.get('id')
+				});
+
+				// extend TextItemModel attributes with actual model data
+				textItemModelAttributes = _(textItemModelAttributes).extend(columnModel);
+
+				var textItemModel = new oneApp.models['text-item'](textItemModelAttributes);
+				var textItemElSelector = '.ttfmake-text-column[data-id='+ourIndex+']';
+
+				dataColumns[ourIndex] = textItemModel;
+
+				// create view
+				var itemView = new oneApp.views['text-item']({
+					model: textItemModel,
+					elSelector: textItemElSelector
+				});
+
+				// set view element and render
+				itemView.setElement(self.$(textItemElSelector)).render();
+
+				self.itemViews.push(itemView);
+			});
+
+			self.model.set('columns', dataColumns);
+
+			return this;
+		},
+
+		onViewReady: function(e) {
+			e.stopPropagation();
+
+			this.initializeColumnsSortables();
+			this.initFrames();
+		},
+
+		initFrames: function(e) {
+			var link = oneApp.builder.getFrameHeadLinks();
+
+			$('iframe', this.$el).each(function() {
+				var $this = $(this);
+
+				var id = $this.attr('id').replace('ttfmake-iframe-', '');
+
+				oneApp.builder.initFrame(id, link);
+			});
+		},
+
+		onColumnsSort: function(e, ids) {
+			e.stopPropagation();
+
+			this.model.updateOrder(ids);
 		},
 
 		handleColumns : function (evt) {
@@ -22,111 +106,75 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			$stage.addClass('ttfmake-text-columns-' + parseInt(columns, 10));
 		},
 
-		updateJSONOnSlide: function(evt) {
-			if (typeof makePlusPluginInfo !== 'undefined') {
-				oneApp.setActiveSectionID(this.model.get('id'));
-				oneApp.updateSectionJSON();
-			}
-		}
-	});
+		onTextItemChange: function(evt) {
+			this.model.trigger('change');
+		},
 
-	// Makes gallery items sortable
-	oneApp.initializeTextColumnSortables = function(view) {
-		var $selector;
-		view = view || '';
+		initializeColumnsSortables: function() {
+			var $sortableSelector = $('.ttfmake-text-columns-stage', this.$el);
+			var self = this;
 
-		if (view.$el) {
-			$selector = $('.ttfmake-text-columns-stage', view.$el);
-		} else {
-			$selector = $('.ttfmake-text-columns-stage');
-		}
+			$sortableSelector.sortable({
+				handle: '.ttfmake-sortable-handle',
+				placeholder: 'sortable-placeholder',
+				items: '.ttfmake-text-column',
+				forcePlaceholderSizeType: true,
+				distance: 2,
+				zIndex: 99999,
+				tolerance: 'pointer',
+				create: function() {
+					self.$el.trigger('columns-sortable-init');
+				},
+				start: function(event, ui) {
+					var $item = $(ui.item.get(0)),
+						$stage = $item.parents('.ttfmake-text-columns-stage');
 
-		$selector.sortable({
-			handle: '.ttfmake-sortable-handle',
-			placeholder: 'sortable-placeholder',
-			forcePlaceholderSizeType: true,
-			distance: 2,
-			tolerance: 'pointer',
-			zIndex: 99999,
-			start: function (event, ui) {
-				// Set the height of the placeholder to that of the sorted item
-				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttfmake-text-columns-stage'),
-					addClass = '';
+					/**
+					 * Make Plus feature from here
+					 */
+					var addClass;
 
-				// If text item, potentially add class to stage
-				if ($item.hasClass('ttfmake-text-column')) {
-					if ($item.hasClass('ttfmake-column-width-two-thirds')) {
-						addClass = 'current-item-two-thirds';
-					} else if ($item.hasClass('ttfmake-column-width-one-third')) {
-						addClass = 'current-item-one-third';
-					} else if ($item.hasClass('ttfmake-column-width-one-fourth')) {
-						addClass = 'current-item-one-fourth';
-					} else if ($item.hasClass('ttfmake-column-width-three-fourths')) {
-						addClass = 'current-item-three-fourths';
-					} else if ($item.hasClass('ttfmake-column-width-one-half')) {
-						addClass = 'current-item-one-half';
+					// If text item, potentially add class to stage
+					if ($item.hasClass('ttfmake-text-column')) {
+						if ($item.hasClass('ttfmake-column-width-two-thirds')) {
+							addClass = 'current-item-two-thirds';
+						} else if ($item.hasClass('ttfmake-column-width-one-third')) {
+							addClass = 'current-item-one-third';
+						} else if ($item.hasClass('ttfmake-column-width-one-fourth')) {
+							addClass = 'current-item-one-fourth';
+						} else if ($item.hasClass('ttfmake-column-width-three-fourths')) {
+							addClass = 'current-item-three-fourths';
+						} else if ($item.hasClass('ttfmake-column-width-one-half')) {
+							addClass = 'current-item-one-half';
+						}
+
+						$stage.addClass(addClass);
 					}
 
-					$stage.addClass(addClass);
-				}
-
-				$('.sortable-placeholder', $stage)
-					.height(parseInt($item.height(), 10) - 2) // -2 to account for placeholder border
-					.css({
+					$('.sortable-placeholder', $stage).height($item.height()).css({
 						'flex': $item.css('flex'),
 						'-webkit-flex': $item.css('-webkit-flex')
 					});
-			},
-			stop: function (event, ui) {
-				var $item = $(ui.item.get(0)),
-					$section = $item.parents('.ttfmake-section'),
-					$stage = $('.ttfmake-section-body', $section),
-					$columnsStage = $item.parents('.ttfmake-text-columns-stage'),
-					$orderInput = $('.ttfmake-text-columns-order', $stage),
-					id = $section.attr('data-id'),
-					column = $item.attr('data-id'),
-					i;
+				},
+				stop: function(event, ui) {
+					var $item = $(ui.item.get(0)),
+						$stage = $item.parents('.ttfmake-text-columns-stage');
 
-				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
+					var i = 1;
 
-				// Label the columns according to the position they are in
-				i = 1;
-				$('.ttfmake-text-column', $stage).each(function(){
-					$(this)
-						.removeClass('ttfmake-text-column-position-1 ttfmake-text-column-position-2 ttfmake-text-column-position-3 ttfmake-text-column-position-4')
-						.addClass('ttfmake-text-column-position-' + i);
-					i++;
-				});
+					$('.ttfmake-text-column', $stage).each(function() {
+						$(this).removeClass('ttfmake-text-column-position-1 ttfmake-text-column-position-2 ttfmake-text-column-position-3 ttfmake-text-column-position-4')
+							.addClass('ttfmake-text-column-position-' + i);
+						i++;
+					});
 
-				// Remove the temporary classes from stage
-				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-three-fourths current-item-one-half');
+					var ids = $(this).sortable('toArray', {attribute: 'data-model-id'});
 
-				setTimeout(function() {
-					oneApp.initFrame(id + '-' + column);
-				}, 100);
-			}
-		});
-	};
+					self.initFrames();
 
-	// Initialize the sortables
-	$oneApp.on('afterSectionViewAdded', function(evt, view) {
-		if ('text' === view.model.get('sectionType')) {
-			oneApp.initializeTextColumnSortables(view);
-
-			// Initialize the iframes
-			var $frames = $('iframe', view.$el),
-				link = oneApp.getFrameHeadLinks(),
-				id, $this;
-
-			$.each($frames, function() {
-				$this = $(this);
-				id = $this.attr('id').replace('ttfmake-iframe-', '');
-				oneApp.initFrame(id, link);
+					self.$el.trigger('columns-sort', [ids]);
+				}
 			});
 		}
 	});
-
-	// Initialize sortables for current columns
-	oneApp.initializeTextColumnSortables();
-})(window, jQuery, _, oneApp, $oneApp);
+})(window, jQuery, _, oneApp);

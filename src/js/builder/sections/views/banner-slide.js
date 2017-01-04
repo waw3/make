@@ -4,42 +4,60 @@ var oneApp = oneApp || {};
 (function (window, Backbone, $, _, oneApp) {
 	'use strict';
 
-	oneApp.BannerSlideView = Backbone.View.extend({
-		template: '',
-		className: 'ttfmake-banner-slide ttfmake-banner-slide-open',
+	oneApp.views = oneApp.views || {}
 
-		events: {
-			'click .ttfmake-banner-slide-remove': 'removeItem',
-			'click .ttfmake-banner-slide-toggle': 'toggleSection'
+	oneApp.views['banner-slide'] = oneApp.views.item.extend({
+		events: function() {
+			return _.extend({}, oneApp.views.item.prototype.events, {
+				'click .ttfmake-banner-slide-remove': 'onSlideRemove',
+				'click .ttfmake-banner-slide-toggle': 'toggleSection',
+				'overlayClose': 'onOverlayClose',
+				'color-picker-change': 'onColorPickerChange',
+				'view-ready': 'onViewReady',
+			});
 		},
 
 		initialize: function (options) {
-			this.model = options.model;
-			this.idAttr = 'ttfmake-banner-slide-' + this.model.get('id');
-			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-			this.template = _.template($('#tmpl-ttfmake-banner-slide').html(), oneApp.templateSettings);
+			this.template = _.template(ttfMakeSectionTemplates['banner-slide'], oneApp.builder.templateSettings);
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.model.toJSON()))
-				.attr('id', this.idAttr)
-				.attr('data-id', this.model.get('id'));
+			var html = this.template(this.model)
+			this.setElement(html);
+
 			return this;
 		},
 
-		removeItem: function (evt) {
+		onViewReady: function(e) {
+			e.stopPropagation();
+			oneApp.builder.initColorPicker(this);
+		},
+
+		onOverlayClose: function(e, textarea) {
+			e.stopPropagation();
+
+			this.model.set('content', $(textarea).val());
+			this.$el.trigger('model-item-change');
+		},
+
+		onColorPickerChange: function(e, data) {
+			e.stopPropagation();
+
+			this.model.set(data.modelAttr, data.color);
+			this.$el.trigger('model-item-change');
+		},
+
+		onSlideRemove: function (evt) {
 			evt.preventDefault();
 
-			var $stage = this.$el.parents('.ttfmake-banner-slides'),
-				$orderInput = $('.ttfmake-banner-slide-order', $stage);
-
-			oneApp.removeOrderValue(this.model.get('id'), $orderInput);
+			var $stage = this.$el.parents('.ttfmake-banner-slides');
 
 			// Fade and slide out the section, then cleanup view
 			this.$el.animate({
 				opacity: 'toggle',
 				height: 'toggle'
-			}, oneApp.options.closeSpeed, function() {
+			}, oneApp.builder.options.closeSpeed, function() {
+				this.$el.trigger('slide-remove', this);
 				this.remove();
 			}.bind(this));
 		},
@@ -53,12 +71,12 @@ var oneApp = oneApp || {};
 				$input = $('.ttfmake-banner-slide-state', this.$el);
 
 			if ($section.hasClass('ttfmake-banner-slide-open')) {
-				$sectionBody.slideUp(oneApp.options.closeSpeed, function() {
+				$sectionBody.slideUp(oneApp.builder.options.closeSpeed, function() {
 					$section.removeClass('ttfmake-banner-slide-open');
 					$input.val('closed');
 				});
 			} else {
-				$sectionBody.slideDown(oneApp.options.openSpeed, function() {
+				$sectionBody.slideDown(oneApp.builder.options.openSpeed, function() {
 					$section.addClass('ttfmake-banner-slide-open');
 					$input.val('open');
 				});

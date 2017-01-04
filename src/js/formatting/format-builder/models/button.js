@@ -11,7 +11,8 @@ var MakeFormatBuilder = MakeFormatBuilder || {};
 	 */
 	builder.definitions.button = {
 		inline: 'a',
-		classes: 'ttfmake-button'
+		classes: 'ttfmake-button',
+		selector: 'a',
 	};
 
 	/**
@@ -78,13 +79,18 @@ var MakeFormatBuilder = MakeFormatBuilder || {};
 		 */
 		initialize: function() {
 			var node = builder.getParentNode(builder.nodes.button);
+			var $currentNode = $(builder.currentSelection.getNode());
 
 			// Create a new element ID.
 			this.set('id', this.createID());
 
 			// Check to see if we're updating an existing format.
 			if (true === this.get('update')) {
+				// Formatted button
 				this.parseAttributes(node);
+			} else if (true === $currentNode.is('a')) {
+				// Plain anchor tag
+				this.set('url', $currentNode.attr('href') || '#');
 			}
 		},
 
