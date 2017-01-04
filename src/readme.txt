@@ -26,6 +26,23 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.8.0 - January 4 2017 =
+* Improved: Make builder application was rewritten as a Backbone based Javascript application.
+* Improved: Make builder GUI is now based on Backbone views, with better event management and faster rendering times.
+* Improved: Builder templates are now Underscore template strings stored in a Javascript object. No template script tags are being rendered in DOM anymore.
+* Improved: Section data is now handled as an array of json strings. This greatly increases the maximum amount of storable sections.
+* Updated: `add_section` `$path` parameter now accepts a hash of key => path. An optional `$custom` parameter has been added which allows for custom attributes to be appended to the section.
+* Changed: `ttfmake_add_section` was updated to reflect changes to `add_section`.
+* New feature: builder section defaults are now available as a Javascript object, `ttfMakeSectionDefaults`.
+* New feature: builder section saved data is now available as a Javascript object, `ttfMakeSectionData`.
+* New feature: builder section templates are now available as a Javascript object, `ttfMakeSectionTemplates`.
+* Improved: `load_section` now accepts an optional `$return` parameter. If true, the function now returns the template as a string.
+* Changed: `ttfmake_load_section_template` was updated to reflect changes to `load_section`.
+* Improved: `ttfmake_get_image_src` now returns the image url, if found.
+* New filter: `make_get_section_json` allows for decorating a section JSON representation.
+* New feature: Make core builder application parts are now better scoped and available in the Javascript object `oneApp`.
+* Improved: Folder and file organization has been updated to better split Make core section components.
+
 = 1.7.13 - December 9 2016 =
 * Hotfix: Some templates were being parsed with default templateSettings, breaking functionality of the builder.
 
