@@ -26,6 +26,10 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.8.1 - January 5 2017 =
+* Changed: added notice about Make being compatible only with Plus >= 1.8.0
+* Improved: pass the view object along with `view-ready` event.
+
 = 1.8.0 - January 4 2017 =
 * Improved: Make builder application was rewritten as a Backbone based Javascript application.
 * Improved: Make builder GUI is now based on Backbone views, with better event management and faster rendering times.
@@ -441,6 +445,12 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.8.1 =
+Support changes for Make Plus 1.8.0
+
+= 1.8.0 =
+Refactored big parts of builder and components to support future development and overcome server limitations.
 
 = 1.7.7 =
 Fixed a bug that was causing Gallery section item links to not work.
