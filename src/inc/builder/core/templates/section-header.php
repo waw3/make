@@ -46,7 +46,7 @@ $links = apply_filters( 'make_builder_section_links', $links );
 ksort( $links );
 ?>
 
-<div class="ttfmake-section{{ get('state') == 'open' && ' ttfmake-section-open' || ''}} ttfmake-section-{{ get('id') }}" id="ttfmake-section-{{ get('id') }}" data-id="{{ get('id') }}" data-section-type="{{ get('section-type') }}">
+<div class="ttfmake-section{{ get('state') == 'open' && ' ttfmake-section-open' || ''}} ttfmake-section-{{ get('section-type') }}" id="ttfmake-section-{{ get('id') }}" data-id="{{ get('id') }}" data-section-type="{{ get('section-type') }}">
 	<?php
 	/**
 	 * Execute code before the section header is displayed.

@@ -108,7 +108,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 				this.$stage.append(html);
 			}
 
-			view.$el.trigger('view-ready');
+			view.$el.trigger('view-ready', view);
 
 			return view;
 		},
