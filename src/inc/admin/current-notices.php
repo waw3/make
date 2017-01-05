@@ -72,3 +72,17 @@ $this->register_admin_notice(
 		'type'    => 'info',
 	)
 );
+
+// Notice of Make 1.8 not being compatible with Make Plus older than 1.8
+if ( version_compare( TTFMAKE_VERSION, '1.8.0', '>=' ) && version_compare( Make()->plus()->get_plus_version(), '1.8.0', '<' ) ) {
+	$this->register_admin_notice(
+		'make-makeplus-18-compatibility',
+		__( 'The latest version of Make isn’t compatible with version of Make Plus you’re using. Please update Make Plus.', 'make-plus' ),
+		array(
+			'cap'     => 'install_plugins',
+			'dismiss' => false,
+			'screen'  => array( 'dashboard', 'themes', 'plugins' ),
+			'type'    => 'error',
+		)
+	);
+}
