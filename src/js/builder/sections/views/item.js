@@ -41,8 +41,9 @@ var oneApp = oneApp || {};
 						this.model.set(modelAttrName, 1);
 					} else {
 						this.model.set(modelAttrName, 0);
-						this.$el.trigger('model-item-change');
 					}
+
+					this.$el.trigger('model-item-change');
 				}
 			},
 
