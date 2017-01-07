@@ -185,7 +185,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 	public function get_section_json( $data ) {
 		if ( $data['section-type'] == 'text' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
-			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
+			$image = ttfmake_get_image_src( $data['background-image'], 'large' );
+			$data['background-image-url'] = $image[0];
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
 				if ( isset( $data['columns-order'] ) ) {
@@ -211,8 +212,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 					// Handle legacy data layout
 					$id = isset( $column['id'] ) ? $column['id']: $s;
 					$data['columns'][$s]['id'] = $id;
-
-					$data['columns'][$s]['image-url'] = ttfmake_get_image_src( $column['image-id'], 'large' );
+					$column_image = ttfmake_get_image_src( $column['image-id'], 'large' );
+					$data['columns'][$s]['image-url'] = $column_image[0];
 				}
 			}
 		}
@@ -284,8 +285,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 
 					$image = ttfmake_get_image_src( $item['image-id'], 'large' );
 
-					if( isset( $image ) ) {
-						$clean_data['columns'][ $id ]['image-url'] = $image;
+					if( isset( $image[0] ) ) {
+						$clean_data['columns'][ $id ]['image-url'] = $image[0];
 					}
 				}
 
