@@ -268,7 +268,10 @@ class MAKE_Builder_Sections_Banner_Definition {
 		if ( $data['section-type'] == 'banner' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
 			$image = ttfmake_get_image_src( $data['background-image'], 'large' );
-			$data['background-image-url'] = $image[0];
+
+			if ( isset( $image[0] ) ) {
+				$data['background-image-url'] = $image[0];
+			}
 
 			if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
 				foreach ( $data['banner-slides'] as $s => $slide ) {
@@ -278,7 +281,10 @@ class MAKE_Builder_Sections_Banner_Definition {
 					$id = isset( $slide['id'] ) ? $slide['id']: $s;
 					$data['banner-slides'][$s]['id'] = $id;
 					$slide_image = ttfmake_get_image_src( $slide['image-id'], 'large' );
-					$data['banner-slides'][$s]['image-url'] = $slide_image[0];
+
+					if ( isset( $slide_image[0] ) ) {
+						$data['banner-slides'][$s]['image-url'] = $slide_image[0];
+					}
 				}
 
 				if ( isset( $data['banner-slide-order'] ) ) {

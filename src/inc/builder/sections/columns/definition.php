@@ -186,7 +186,10 @@ class MAKE_Builder_Sections_Columns_Definition {
 		if ( $data['section-type'] == 'text' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
 			$image = ttfmake_get_image_src( $data['background-image'], 'large' );
-			$data['background-image-url'] = $image[0];
+
+			if ( isset( $image[0] ) ) {
+				$data['background-image-url'] = $image[0];
+			}
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
 				if ( isset( $data['columns-order'] ) ) {
@@ -213,7 +216,10 @@ class MAKE_Builder_Sections_Columns_Definition {
 					$id = isset( $column['id'] ) ? $column['id']: $s;
 					$data['columns'][$s]['id'] = $id;
 					$column_image = ttfmake_get_image_src( $column['image-id'], 'large' );
-					$data['columns'][$s]['image-url'] = $column_image[0];
+
+					if ( isset( $column_image[0] ) ) {
+						$data['columns'][$s]['image-url'] = $column_image[0];
+					}
 				}
 			}
 		}
