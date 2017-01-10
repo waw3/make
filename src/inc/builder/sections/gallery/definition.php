@@ -244,7 +244,11 @@ class MAKE_Builder_Sections_Gallery_Definition {
 	public function get_section_json( $data ) {
 		if ( $data['section-type'] == 'gallery' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
-			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
+			$image = ttfmake_get_image_src( $data['background-image'], 'large' );
+
+			if ( isset( $image[0] ) ) {
+				$data['background-image-url'] = $image[0];
+			}
 
 			if ( isset( $data['gallery-items'] ) && is_array( $data['gallery-items'] ) ) {
 				foreach ( $data['gallery-items'] as $s => $item ) {
@@ -253,7 +257,11 @@ class MAKE_Builder_Sections_Gallery_Definition {
 					// Handle legacy data layout
 					$id = isset( $item['id'] ) ? $item['id']: $s;
 					$data['gallery-items'][$s]['id'] = $id;
-					$data['gallery-items'][$s]['image-url'] = ttfmake_get_image_src( $item['image-id'], 'large' );
+					$item_image = ttfmake_get_image_src( $item['image-id'], 'large' );
+
+					if( isset( $item_image[0] ) ) {
+						$data['gallery-items'][$s]['image-url'] = $item_image[0];
+					}
 				}
 
 				if ( isset( $data['gallery-item-order'] ) ) {

@@ -3,7 +3,7 @@
  * @package Make
  */
 
-// Updated: 2017-01-05T13:46:38+00:00
+// Updated: 2017-01-10T10:48:57+00:00
 
 // Bail if this isn't being included inside of MAKE_Font_Source_Google.
 if ( ! isset( $this ) || ! $this instanceof MAKE_Font_Source_Google ) {
@@ -6855,6 +6855,18 @@ $this->load_font_data( array(
 			'vietnamese',
 		),
 		'category' => 'handwriting',
+	),
+	'Padauk' => array(
+		'label' => 'Padauk',
+		'variants' => array(
+			'700',
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'myanmar',
+		),
+		'category' => 'sans-serif',
 	),
 	'Palanquin' => array(
 		'label' => 'Palanquin',

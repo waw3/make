@@ -267,7 +267,11 @@ class MAKE_Builder_Sections_Banner_Definition {
 	public function get_section_json( $data ) {
 		if ( $data['section-type'] == 'banner' ) {
 			$data = wp_parse_args( $data, $this->get_defaults() );
-			$data['background-image-url'] = ttfmake_get_image_src( $data['background-image'], 'large' );
+			$image = ttfmake_get_image_src( $data['background-image'], 'large' );
+
+			if ( isset( $image[0] ) ) {
+				$data['background-image-url'] = $image[0];
+			}
 
 			if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
 				foreach ( $data['banner-slides'] as $s => $slide ) {
@@ -276,7 +280,11 @@ class MAKE_Builder_Sections_Banner_Definition {
 					// Handle legacy data layout
 					$id = isset( $slide['id'] ) ? $slide['id']: $s;
 					$data['banner-slides'][$s]['id'] = $id;
-					$data['banner-slides'][$s]['image-url'] = ttfmake_get_image_src( $slide['image-id'], 'large' );
+					$slide_image = ttfmake_get_image_src( $slide['image-id'], 'large' );
+
+					if ( isset( $slide_image[0] ) ) {
+						$data['banner-slides'][$s]['image-url'] = $slide_image[0];
+					}
 				}
 
 				if ( isset( $data['banner-slide-order'] ) ) {
