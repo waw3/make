@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.8.1\n"
+"Project-Id-Version: Make 1.8.2\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2017-01-05 13:45:24+00:00\n"
+"POT-Creation-Date: 2017-01-10 10:48:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: inc/admin/current-notices.php:80
 msgid ""
-"The latest version of Make isn’t compatible with version of Make Plus "
+"The latest version of Make isn’t compatible with the version of Make Plus "
 "you’re using. Please update Make Plus."
 msgstr ""
 

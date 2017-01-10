@@ -26,6 +26,13 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.8.2 - January 10 2017 =
+* Bug fix: issue with notices incorrectly displaying when Make Plus wasn't installed.
+* Bug fix: Banner sections "Darken background to improve readability" setting.
+* Bug fix: error with Gallery images when "Aspect Ratio" was set to "None".
+* Bug fix: Posts List "Type" field wasn't updating "From" dropdown with the correct data.
+* Improved: Minor fixes and cleanup to Columns template file.
+
 = 1.8.1 - January 5 2017 =
 * Changed: added notice about Make being compatible only with Plus >= 1.8.0
 * Improved: pass the view object along with `view-ready` event.
@@ -445,6 +452,9 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+Bug fixes for a number of small glitches introduced in 1.8.0.
 
 = 1.8.1 =
 Support changes for Make Plus 1.8.0
