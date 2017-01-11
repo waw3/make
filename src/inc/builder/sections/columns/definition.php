@@ -130,15 +130,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 			'background-image' => '',
 			'darken' => 0,
 			'background-style' => 'tile',
-			'background-color' => '',
-			'full-width' => 0,
-			'columns-number' => 3,
-			'columns' => array(
-				1 => array(),
-				2 => array(),
-				3 => array(),
-				4 => array()
-			)
+			'background-color' => ''
 		);
 	}
 
@@ -174,6 +166,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 	 */
 	public function section_defaults( $defaults ) {
 		$defaults['text'] = $this->get_defaults();
+		$defaults['text-item'] = $this->get_column_defaults();
 
 		return $defaults;
 	}
