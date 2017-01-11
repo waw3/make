@@ -82,6 +82,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 					2 => 2,
 					3 => 3,
 					4 => 4,
+					5 => 5,
+					6 => 6
 				),
 			),
 			400 => array(
@@ -198,8 +200,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 				if ( isset( $data['columns-order'] ) ) {
 					$ordered_items = array();
 
-					foreach ( $data['columns-order'] as $index => $column_position ) {
-						array_push($ordered_items, $data['columns'][$column_position]);
+					foreach ( $data['columns-order'] as $item_id ) {
+						array_push($ordered_items, $data['columns'][$index]);
 						/*$column_position = intval($column_position);
 						$ordered_items[$index+1] = $data['columns'][$column_position];
 
@@ -241,7 +243,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 		$clean_data = array();
 
 		if ( isset( $data['columns-number'] ) ) {
-			if ( in_array( $data['columns-number'], range( 1, 4 ) ) ) {
+			if ( in_array( $data['columns-number'], range( 1, 6 ) ) ) {
 				$clean_data['columns-number'] = $data['columns-number'];
 			}
 		}
