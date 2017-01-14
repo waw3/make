@@ -155,7 +155,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 			'size' => '',
 			'content' => '',
 			'sidebar-label' => '',
-			'widget-area-id' => ''
+			'widget-area-id' => '',
+			'widgets' => ''
 		);
 	}
 
