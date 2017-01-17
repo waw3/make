@@ -200,7 +200,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 			}
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
-				// back compat
+				// back compatibility
 				if ( isset( $data['columns-order'] ) ) {
 					$ordered_items = array();
 
@@ -228,7 +228,11 @@ class MAKE_Builder_Sections_Columns_Definition {
 					$data['columns'][$s]['id'] = $id;
 					$column_image = ttfmake_get_image_src( $column['image-id'], 'large' );
 
-					$data['columns'][$s]['image-url'] = ttfmake_get_image_src( $column['image-id'], 'large' );
+					$column_image = ttfmake_get_image_src( $column['image-id'], 'large' );
+
+					if ( isset( $column_image[0] ) ) {
+						$data['columns'][$s]['image-url'] = $column_image[0];
+					}
 
 					if ( isset( $column['sidebar-label'] ) && !empty( $column['sidebar-label'] ) && empty( $column['widget-area-id'] ) ) {
 						$data['columns'][$s]['widget-area-id'] = 'ttfmp-' . get_the_ID() . '-' . $data['id'] . '-' . $column['id'];
