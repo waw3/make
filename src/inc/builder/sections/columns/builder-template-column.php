@@ -135,7 +135,7 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 ?>
 	<div class="ttfmake-configuration-overlay-input-wrap">
 		<label for="image-link"><?php echo __( 'Image link URL', 'make' ); ?></label>
-		<input type="text" name="image-link" id="image-link" value="{{ get('image-link') }}" data-model-attr="image-link">';
+		<input type="text" name="image-link" id="image-link" value="{{ get('image-link') }}" data-model-attr="image-link">
 	</div>
 
 	<?php get_template_part( '/inc/builder/core/templates/overlay', 'footer' ); ?>
