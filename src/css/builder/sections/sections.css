@@ -5,7 +5,7 @@
 	margin-bottom: 0; /*reset*/
 	padding-right: 0;
 }
-.ttfmake-section-text .ttfmake-media-uploader-placeholder {
+.ttfmake-section-text .ttfmake-text-column .ttfmake-media-uploader-placeholder {
 	border-bottom: 0; /*reset*/
 }
 .ttfmake-section-text .ttfmake-section-body,
