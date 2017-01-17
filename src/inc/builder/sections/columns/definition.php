@@ -135,7 +135,8 @@ class MAKE_Builder_Sections_Columns_Definition {
 			'background-image' => '',
 			'darken' => 0,
 			'background-style' => 'tile',
-			'background-color' => ''
+			'background-color' => '',
+			'full-width' => 0
 		);
 	}
 
