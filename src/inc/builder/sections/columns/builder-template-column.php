@@ -8,8 +8,8 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 ?>
 <?php
 	$column_name = $section_name . '[columns][{{ get("id") }}]';
-	$iframe_id = $overlay_id;
-	$textarea_id = $overlay_id;
+	$iframe_id = 'ttfmake-iframe-'. $combined_id;
+	$textarea_id = 'ttfmake-content-'. $combined_id;
 	$link        = '{{ get("image-link") }}';
 	$image_id    = '{{ get("image-id") }}';
 	$title       = '{{ get("title") }}';
@@ -28,7 +28,7 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 			'href'               => '#',
 			'class'              => 'edit-content-link edit-text-column-link {{ (get("content")) ? "item-has-content" : "" }}',
 			'title'              => __( 'Edit content', 'make' ),
-			'other-a-attributes' => 'data-textarea="' . $section_name . '" data-iframe="' . $iframe_id . '"',
+			'other-a-attributes' => 'data-textarea="' . $textarea_id . '" data-iframe="' . $iframe_id . '"',
 		),
 	);
 
