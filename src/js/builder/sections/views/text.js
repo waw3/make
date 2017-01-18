@@ -48,6 +48,9 @@ var oneApp = oneApp || {};
 
 			this.itemViews.push(columnView);
 
+			var columns = parseInt($('.ttfmake-text-column', this.$el).length, 10);
+			columnView.$el.addClass('ttfmake-text-column-position-'+columns);
+
 			return columnView;
 		},
 
@@ -173,11 +176,6 @@ var oneApp = oneApp || {};
 
 						$stage.addClass(addClass);
 					}
-
-					$('.sortable-placeholder', $stage).height($item.height()).css({
-						'flex': $item.css('flex'),
-						'-webkit-flex': $item.css('-webkit-flex')
-					});
 				},
 				stop: function(event, ui) {
 					var $item = $(ui.item.get(0)),
@@ -185,9 +183,10 @@ var oneApp = oneApp || {};
 
 					var i = 1;
 
-					$('.ttfmake-text-column', $stage).each(function() {
-						$(this).removeClass('ttfmake-text-column-position-1 ttfmake-text-column-position-2 ttfmake-text-column-position-3 ttfmake-text-column-position-4')
-							.addClass('ttfmake-text-column-position-' + i);
+					$('.ttfmake-text-column', $stage).each(function(index) {
+						var columnIndex = parseInt(index, 10) + 1;
+						$(this).removeClass('ttfmake-text-column-position-1 ttfmake-text-column-position-2 ttfmake-text-column-position-3 ttfmake-text-column-position-4 ttfmake-text-column-position-5 ttfmake-text-column-position-6')
+							.addClass('ttfmake-text-column-position-' + columnIndex);
 						i++;
 					});
 

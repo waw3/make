@@ -66,9 +66,11 @@
 /*---------------------------------------------------------
  Text: One column (sections.css)
 -------------------------------------------------------- */
-.ttfmake-text-columns-1 .ttfmake-text-column:nth-child(2),
-.ttfmake-text-columns-1 .ttfmake-text-column:nth-child(3),
-.ttfmake-text-columns-1 .ttfmake-text-column:nth-child(4) {
+.ttfmake-text-columns-1 .ttfmake-text-column-position-2,
+.ttfmake-text-columns-1 .ttfmake-text-column-position-3,
+.ttfmake-text-columns-1 .ttfmake-text-column-position-4,
+.ttfmake-text-columns-1 .ttfmake-text-column-position-5,
+.ttfmake-text-columns-1 .ttfmake-text-column-position-6 {
 	display: none;
 	width: 0%;
 }
@@ -81,19 +83,19 @@
 /*---------------------------------------------------------
  Text: Two column (sections.css)
 -------------------------------------------------------- */
-.ttfmake-text-columns-2 .ttfmake-text-column:nth-child(3),
-.ttfmake-text-columns-2 .ttfmake-text-column:nth-child(4),
-.ttfmake-text-columns-2 .ttfmake-text-column:nth-child(5),
-.ttfmake-text-columns-2 .ttfmake-text-column:nth-child(6) {
+.ttfmake-text-columns-2 .ttfmake-text-column-position-3,
+.ttfmake-text-columns-2 .ttfmake-text-column-position-4,
+.ttfmake-text-columns-2 .ttfmake-text-column-position-5,
+.ttfmake-text-columns-2 .ttfmake-text-column-position-6 {
 	display: none;
 	width: 0%;
 }
 /*---------------------------------------------------------
  Text: Three column (sections.css)
 -------------------------------------------------------- */
-.ttfmake-text-columns-3 .ttfmake-text-column:nth-child(4),
-.ttfmake-text-columns-3 .ttfmake-text-column:nth-child(5),
-.ttfmake-text-columns-3 .ttfmake-text-column:nth-child(6) {
+.ttfmake-text-columns-3 .ttfmake-text-column-position-4,
+.ttfmake-text-columns-3 .ttfmake-text-column-position-5,
+.ttfmake-text-columns-3 .ttfmake-text-column-position-6 {
 	display: none;
 	width: 0%;
 }
@@ -111,15 +113,15 @@
 /*---------------------------------------------------------
  Text: Four column (sections.css)
 -------------------------------------------------------- */
-.ttfmake-text-columns-4 .ttfmake-text-column:nth-child(5),
-.ttfmake-text-columns-4 .ttfmake-text-column:nth-child(6) {
+.ttfmake-text-columns-4 .ttfmake-text-column-position-5,
+.ttfmake-text-columns-4 .ttfmake-text-column-position-6 {
 	display: none;
 	width: 0%;
 }
 /*---------------------------------------------------------
  Text: Five column (sections.css)
 -------------------------------------------------------- */
-.ttfmake-text-columns-5 .ttfmake-text-column:nth-child(6) {
+.ttfmake-text-columns-5 .ttfmake-text-column-position-6 {
 	display: none;
 	width: 0%;
 }

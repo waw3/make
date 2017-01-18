@@ -52,10 +52,10 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 	 * @param int       $i                       The column number.
 	 * @param array     $ttfmake_section_data    The array of data for the section.
 	 */
-	$column_classes = apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-', $ttfmake_section_data );
+	$column_classes = apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column', $ttfmake_section_data );
 ?>
 
-<div class="ttfmake-text-column ttfmake-text-column-position-{{ get('column-position') }} {{ (get('size')) ? ' ttfmake-column-width-'+get('size') : '' }}" data-id="{{ get('id') }}">
+<div class="ttfmake-text-column{{ (get('size')) ? ' ttfmake-column-width-'+get('size') : '' }}" data-id="{{ get('id') }}">
 	<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
 		<div class="sortable-background column-sortable-background"></div>
 	</div>
