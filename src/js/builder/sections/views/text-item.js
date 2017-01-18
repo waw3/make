@@ -15,7 +15,8 @@ var oneApp = oneApp || {};
 			return _.extend({}, oneApp.views.item.prototype.events, {
 				'click .ttfmake-media-uploader-add': 'onMediaOpen',
 				'view-ready': 'onViewReady',
-				'overlayClose': 'onOverlayClose'
+				'overlayClose': 'onOverlayClose',
+				'click .edit-content-link': 'onContentEdit',
 			});
 		},
 
@@ -40,6 +41,14 @@ var oneApp = oneApp || {};
 
 			this.model.set('content', $(textarea).val());
 			this.$el.trigger('model-item-change');
+		},
+
+		onContentEdit: function(e) {
+			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
+
+			var $overlay = oneApp.builder.tinymceOverlay.$el;
+			var $button = $('.ttfmake-overlay-close', $overlay);
+			$button.text('Add to column');
 		},
 
 		onColorPickerChange: function(e, data) {

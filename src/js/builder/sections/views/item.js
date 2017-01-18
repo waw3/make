@@ -82,13 +82,16 @@ var oneApp = oneApp || {};
 			onContentEdit: function(e) {
 				e.preventDefault();
 
-				oneApp.builder.tinymceOverlay.open(this);
-
-				var $target = $(e.target),
-					iframeID = ($target.attr('data-iframe')) ? $target.attr('data-iframe') : '',
-					textAreaID = $target.attr('data-textarea');
+				var $target = $(e.target);
+				var iframeID = ($target.attr('data-iframe')) ? $target.attr('data-iframe') : '';
+				var textAreaID = $target.attr('data-textarea');
+				var $overlay = oneApp.builder.tinymceOverlay.$el;
+				var $button = $('.ttfmake-overlay-close', $overlay);
 
 				oneApp.builder.setMakeContentFromTextArea(iframeID, textAreaID);
+				$button.text($button.data('original-text'));
+
+				oneApp.builder.tinymceOverlay.open(this);
 			}
 		});
 })(window, Backbone, jQuery, _, oneApp);

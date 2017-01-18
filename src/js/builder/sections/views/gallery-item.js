@@ -11,6 +11,7 @@ var oneApp = oneApp || {};
 			return _.extend({}, oneApp.views.item.prototype.events, {
 				'click .ttfmake-gallery-item-remove': 'onItemRemove',
 				'overlayClose': 'onOverlayClose',
+				'click .edit-content-link': 'onContentEdit',
 			});
 		},
 
@@ -30,6 +31,14 @@ var oneApp = oneApp || {};
 
 			this.model.set('description', $(textarea).val());
 			this.$el.trigger('model-item-change');
+		},
+
+		onContentEdit: function(e) {
+			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
+
+			var $overlay = oneApp.builder.tinymceOverlay.$el;
+			var $button = $('.ttfmake-overlay-close', $overlay);
+			$button.text('Add to item');
 		},
 
 		onItemRemove: function (evt) {
