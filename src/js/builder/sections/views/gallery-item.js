@@ -38,7 +38,7 @@ var oneApp = oneApp || {};
 
 			var $overlay = oneApp.builder.tinymceOverlay.$el;
 			var $button = $('.ttfmake-overlay-close', $overlay);
-			$button.text('Add to item');
+			$button.text('Update item');
 		},
 
 		onItemRemove: function (evt) {

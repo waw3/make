@@ -46,7 +46,7 @@ var oneApp = oneApp || {};
 
 			var $overlay = oneApp.builder.tinymceOverlay.$el;
 			var $button = $('.ttfmake-overlay-close', $overlay);
-			$button.text('Add to slide');
+			$button.text('Update slide');
 		},
 
 		onColorPickerChange: function(e, data) {
