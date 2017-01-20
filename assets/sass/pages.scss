@@ -40,6 +40,12 @@
 		margin: 0 auto;
 		@include rem('padding', 0 $gut);
 	}
+
+	&.builder-section-full-width {
+		.builder-section-content {
+			max-width: 100%;
+		}
+	}
 }
 .builder-section {
 	@include rem('margin-bottom', $base*2);
@@ -115,6 +121,12 @@
 	}
 	.builder-text-columns-4 .builder-text-column {
 		width: percentage( ( $width - ( $gut*3 ) ) / ( $width*4 ) );
+	}
+	.builder-text-columns-5 .builder-text-column {
+		width: percentage( ( $width - ( $gut*4 ) ) / ( $width*5 ) );
+	}
+	.builder-text-columns-6 .builder-text-column {
+		width: percentage( ( $width - ( $gut*5 ) ) / ( $width*6 ) );
 	}
 }
 .builder-text-image {
@@ -210,7 +222,6 @@
 .builder-banner-inner-content {
 position: relative;
 	top: 50%;
-	display: inline-block;
 	vertical-align: middle;
 	max-width: 100%;
 	width: 100%;
