@@ -637,6 +637,7 @@
 	width: 100%;
 }
 .ttfmake-overlay-footer {
+	background-color: #fcfcfc;
 	text-align: right;
     padding: 15px;
 }
