@@ -12,6 +12,7 @@ var oneApp = oneApp || {};
 				'click .ttfmake-banner-slide-remove': 'onSlideRemove',
 				'click .ttfmake-banner-slide-toggle': 'toggleSection',
 				'overlayClose': 'onOverlayClose',
+				'click .edit-content-link': 'onContentEdit',
 				'color-picker-change': 'onColorPickerChange',
 				'view-ready': 'onViewReady',
 			});
@@ -38,6 +39,14 @@ var oneApp = oneApp || {};
 
 			this.model.set('content', $(textarea).val());
 			this.$el.trigger('model-item-change');
+		},
+
+		onContentEdit: function(e) {
+			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
+
+			var $overlay = oneApp.builder.tinymceOverlay.$el;
+			var $button = $('.ttfmake-overlay-close', $overlay);
+			$button.text('Update slide');
 		},
 
 		onColorPickerChange: function(e, data) {

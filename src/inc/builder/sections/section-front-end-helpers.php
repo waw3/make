@@ -113,6 +113,13 @@ function ttfmake_builder_get_gallery_class( $ttfmake_section_data, $sections ) {
 		$gallery_class .= ' has-background';
 	}
 
+	// Full width
+	$full_width = isset( $ttfmake_section_data['full-width'] ) && 0 !== absint( $ttfmake_section_data['full-width'] );
+
+	if ( true === $full_width ) {
+		$gallery_class .= ' builder-section-full-width';
+	}
+
 	/**
 	 * Filter the class applied to a gallery.
 	 *
@@ -320,13 +327,24 @@ function ttfmake_builder_get_text_array( $ttfmake_section_data ) {
 	}
 
 	$columns_array = array();
-	if ( ! empty( $columns_order ) && ! empty( $columns_data ) ) {
-		$count = 0;
-		foreach ( $columns_order as $order => $key ) {
-			$columns_array[$order] = $columns_data[$key];
-			$count++;
-			if ( $count >= $columns_number ) {
-				break;
+	if( ! empty( $columns_data ) ) {
+		if ( ! empty( $columns_order ) ) {
+			$count = 0;
+			foreach ( $columns_order as $order => $key ) {
+				$columns_array[$order] = $columns_data[$key];
+				$count++;
+				if ( $count >= $columns_number ) {
+					break;
+				}
+			}
+		} else {
+			$count = 0;
+			foreach ( $columns_data as $column ) {
+				array_push($columns_array, $column);
+				$count++;
+				if ( $count >= $columns_number ) {
+					break;
+				}
 			}
 		}
 	}
@@ -370,6 +388,13 @@ function ttfmake_builder_get_text_class( $ttfmake_section_data, $sections ) {
 	$bg_image = ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) );
 	if ( true === $bg_color || true === $bg_image ) {
 		$text_class .= ' has-background';
+	}
+
+	// Full width
+	$full_width = isset( $ttfmake_section_data['full-width'] ) && 0 !== absint( $ttfmake_section_data['full-width'] );
+
+	if ( true === $full_width ) {
+		$text_class .= ' builder-section-full-width';
 	}
 
 	/**

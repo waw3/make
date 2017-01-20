@@ -160,14 +160,13 @@ var oneApp = oneApp || {};
 
 		setSize: function($overlay, $wrapper) {
 			var $body = $('.ttfmake-overlay-body', $wrapper),
-				bodyHeight = $body.height(),
+				bodyHeight = $body.outerHeight(),
 				wrapperHeight;
 
 			wrapperHeight =
 				parseInt(bodyHeight, 10) + // Body height
-					20 + // Bottom padding
-					30 + // Button height
-					37; // Header height
+					50 + // Header height
+					60; // Footer height
 
 			$wrapper
 				.height(wrapperHeight)

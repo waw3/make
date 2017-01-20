@@ -26,6 +26,13 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.8.3 - January 20 2017 =
+* Improved: Increased the maximum number of columns in Columns sections from four to six.
+* New feature: Added an option so builder sections can now be set to span the full width of your page.
+* Updated: Font Awesome 4.7.
+* Improved: Overhauled builder overlay styles to match core WordPress.
+* Bug fix: Fixed an issue in the Banner section causing misplaced content.
+
 = 1.8.2 - January 10 2017 =
 * Bug fix: issue with notices incorrectly displaying when Make Plus wasn't installed.
 * Bug fix: Banner sections "Darken background to improve readability" setting.

@@ -41,7 +41,10 @@ class MAKE_Builder_Sections_Columns_Definition {
 			Make()->scripts()->get_css_directory_uri() . '/builder/sections/images/text.png',
 			__( 'Create rearrangeable columns of content and images.', 'make' ),
 			array( $this, 'save' ),
-			'sections/columns/builder-template',
+			array (
+				'text' => 'sections/columns/builder-template',
+				'text-item' => 'sections/columns/builder-template-column'
+			),
 			'sections/columns/frontend-template',
 			100,
 			get_template_directory() . '/inc/builder/',
@@ -63,6 +66,12 @@ class MAKE_Builder_Sections_Columns_Definition {
 				'default' => ttfmake_get_section_default( 'title', 'text' ),
 			),
 			200 => array(
+				'type'    => 'checkbox',
+				'label'   => __( 'Full width', 'make' ),
+				'name'    => 'full-width',
+				'default' => ttfmake_get_section_default( 'full-width', 'text' ),
+			),
+			300 => array(
 				'type'    => 'select',
 				'name'    => 'columns-number',
 				'class'   => 'ttfmake-text-columns',
@@ -73,22 +82,24 @@ class MAKE_Builder_Sections_Columns_Definition {
 					2 => 2,
 					3 => 3,
 					4 => 4,
+					5 => 5,
+					6 => 6
 				),
 			),
-			300 => array(
+			400 => array(
 				'type'  => 'image',
 				'name'  => 'background-image',
 				'label' => __( 'Background image', 'make' ),
 				'class' => 'ttfmake-configuration-media',
 				'default' => ttfmake_get_section_default( 'background-image', 'text' ),
 			),
-			400 => array(
+			500 => array(
 				'type'    => 'checkbox',
 				'label'   => __( 'Darken background to improve readability', 'make' ),
 				'name'    => 'darken',
 				'default' => ttfmake_get_section_default( 'darken', 'text' ),
 			),
-			500 => array(
+			600 => array(
 				'type'    => 'select',
 				'name'    => 'background-style',
 				'label'   => __( 'Background style', 'make' ),
@@ -98,7 +109,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 					'cover' => __( 'Cover', 'make' ),
 				),
 			),
-			600 => array(
+			700 => array(
 				'type'    => 'color',
 				'label'   => __( 'Background color', 'make' ),
 				'name'    => 'background-color',
@@ -125,13 +136,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 			'darken' => 0,
 			'background-style' => 'tile',
 			'background-color' => '',
-			'columns-number' => 3,
-			'columns' => array(
-				1 => array(),
-				2 => array(),
-				3 => array(),
-				4 => array()
-			)
+			'full-width' => 0
 		);
 	}
 
@@ -150,7 +155,9 @@ class MAKE_Builder_Sections_Columns_Definition {
 			'image-url' => '',
 			'size' => '',
 			'content' => '',
-			'sidebar-label' => ''
+			'sidebar-label' => '',
+			'widget-area-id' => '',
+			'widgets' => ''
 		);
 	}
 
@@ -167,6 +174,7 @@ class MAKE_Builder_Sections_Columns_Definition {
 	 */
 	public function section_defaults( $defaults ) {
 		$defaults['text'] = $this->get_defaults();
+		$defaults['text-item'] = $this->get_column_defaults();
 
 		return $defaults;
 	}
@@ -192,16 +200,19 @@ class MAKE_Builder_Sections_Columns_Definition {
 			}
 
 			if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
+				// back compatibility
 				if ( isset( $data['columns-order'] ) ) {
 					$ordered_items = array();
 
-					foreach ( $data['columns-order'] as $index => $column_position ) {
-						$column_position = intval($column_position);
-						$ordered_items[$index+1] = $data['columns'][$column_position];
+					foreach ( $data['columns-order'] as $index => $item_id ) {
+						array_push($ordered_items, $data['columns'][$index+1]);
 
-						if ( array_key_exists('sidebar-label', $ordered_items[$index+1]) && $ordered_items[$index+1]['sidebar-label'] != '' && !array_key_exists('widget-area-id', $ordered_items[$index+1]) ) {
+						if ( array_key_exists('sidebar-label', $ordered_items[$index]) && $ordered_items[$index]['sidebar-label'] != '' && empty($ordered_items[$index]['widget-area-id']) ) {
+							$old_index = $index + 1; // index started at 1 before
+
 							$page_id = get_the_ID();
-							$ordered_items[$index+1]['widget-area-id'] = 'ttfmp-' . $page_id . '-' . $data['id'] . '-' . $column_position;
+
+							$ordered_items[$index]['widget-area-id'] = 'ttfmp-' . $page_id . '-' . $data['id'] . '-' . $old_index;
 						}
 					}
 
@@ -217,8 +228,14 @@ class MAKE_Builder_Sections_Columns_Definition {
 					$data['columns'][$s]['id'] = $id;
 					$column_image = ttfmake_get_image_src( $column['image-id'], 'large' );
 
+					$column_image = ttfmake_get_image_src( $column['image-id'], 'large' );
+
 					if ( isset( $column_image[0] ) ) {
 						$data['columns'][$s]['image-url'] = $column_image[0];
+					}
+
+					if ( isset( $column['sidebar-label'] ) && !empty( $column['sidebar-label'] ) && empty( $column['widget-area-id'] ) ) {
+						$data['columns'][$s]['widget-area-id'] = 'ttfmp-' . get_the_ID() . '-' . $data['id'] . '-' . $column['id'];
 					}
 				}
 			}
@@ -237,16 +254,12 @@ class MAKE_Builder_Sections_Columns_Definition {
 		$clean_data = array();
 
 		if ( isset( $data['columns-number'] ) ) {
-			if ( in_array( $data['columns-number'], range( 1, 4 ) ) ) {
+			if ( in_array( $data['columns-number'], range( 1, 6 ) ) ) {
 				$clean_data['columns-number'] = $data['columns-number'];
 			}
 		}
 
 		$clean_data['title'] = $clean_data['label'] = ( isset( $data['title'] ) ) ? apply_filters( 'title_save_pre', $data['title'] ) : '';
-
-		if ( isset( $data['columns-order'] ) ) {
-			$clean_data['columns-order'] = $data['columns-order'];
-		}
 
 		if ( isset( $data['background-image'] ) ) {
 			$clean_data['background-image'] = ttfmake_sanitize_image_id( $data['background-image'] );
@@ -266,6 +279,12 @@ class MAKE_Builder_Sections_Columns_Definition {
 			if ( in_array( $data['background-style'], array( 'tile', 'cover' ) ) ) {
 				$clean_data['background-style'] = $data['background-style'];
 			}
+		}
+
+		if ( isset( $data['full-width'] ) && $data['full-width'] == 1 ) {
+			$clean_data['full-width'] = 1;
+		} else {
+			$clean_data['full-width'] = 0;
 		}
 
 		if ( isset( $data['columns'] ) && is_array( $data['columns'] ) ) {
@@ -306,10 +325,6 @@ class MAKE_Builder_Sections_Columns_Definition {
 
 				if ( isset( $item['sidebar-label'] ) ) {
 					$clean_data['columns'][ $id ]['sidebar-label'] = $item['sidebar-label'];
-				}
-
-				if ( isset( $item['widget-area-id'] ) ) {
-					$clean_data['columns'][ $id ]['widget-area-id'] = $item['widget-area-id'];
 				}
 			}
 		}
