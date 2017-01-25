@@ -24,11 +24,14 @@ $darken   = ( isset( $ttfmake_section_data[ 'darken' ] ) ) ? absint( $ttfmake_se
 			endif;
 			?>
 		<div class="builder-text-column builder-text-column-<?php echo $i; ?>" id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>-column-<?php echo $i; ?>">
-			<?php $image_html =  ttfmake_get_image( $column['image-id'], 'large' ); ?>
-			<?php if ( isset( $image_html ) && !empty( $image_html ) ) : ?>
-			<figure class="builder-text-image">
-				<?php echo $link_front . $image_html . $link_back; ?>
-			</figure>
+			<?php if ( isset( $column['image-id'] ) && !empty( $column['image-id'] ) ):
+				$image_html =  ttfmake_get_image( $column['image-id'], 'large' );
+			?>
+				<?php if ( isset( $image_html ) && !empty( $image_html ) ) : ?>
+				<figure class="builder-text-image">
+					<?php echo $link_front . $image_html . $link_back; ?>
+				</figure>
+				<?php endif; ?>
 			<?php endif; ?>
 			<?php if ( '' !== $column['title'] ) : ?>
 			<h3 class="builder-text-title">
