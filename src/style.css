@@ -674,6 +674,7 @@ div.custom-logo {
       .site-navigation .menu li a,
       .site-navigation .nav-menu li a {
         display: block;
+        font-family: "Open Sans", Helvetica, Arial, sans-serif;
         font-weight: normal;
         color: #171717;
         line-height: 1.8;
