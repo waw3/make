@@ -10,6 +10,7 @@ html {
 body {
 	background-color: $e;
 	text-rendering: optimizeLegibility;
+	zoom: 1;
 	@include rem('font-size', 17px);
 	&.boxed {
 		.site-wrapper {
