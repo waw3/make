@@ -240,9 +240,9 @@ function ttfmake_builder_get_gallery_item_onclick( $link, $ttfmake_section_data,
 		return '';
 	}
 
-	$onclick = ' onclick="return false;"';
+	$onclick = '';
 	if ( '' !== $link ) {
-		$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $link ) ) . '\';"';
+		$onclick = ' onclick="event.preventDefault(); window.location.href = \'' . esc_js( esc_url( $link ) ) . '\';"';
 	}
 
 	/**
