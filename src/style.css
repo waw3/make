@@ -869,8 +869,8 @@ div.custom-logo {
     padding-right: 0.6rem; }
 
 .menu-toggle,
-.site-navigation.toggled .nav-menu,
-.site-navigation.toggled .menu {
+.site-navigation .nav-menu.toggled,
+.site-navigation .menu.toggled {
   display: block; }
 
 .site-navigation .menu {
@@ -878,6 +878,10 @@ div.custom-logo {
   @media screen and (min-width: 800px) {
     .site-navigation .menu {
       display: block; } }
+
+@media screen and (min-width: 800px) {
+  .site-navigation .menu ~ .menu-mobile {
+    display: none; } }
 
 @media screen and (min-width: 800px) {
   .site-navigation ul {
