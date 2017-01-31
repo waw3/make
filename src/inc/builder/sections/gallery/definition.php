@@ -173,6 +173,12 @@ class MAKE_Builder_Sections_Gallery_Definition {
 				'label'   => __( 'Item link URL', 'make' ),
 				'default' => ttfmake_get_section_default( 'link', 'gallery-item' ),
 			),
+			300 => array(
+				'type'    => 'checkbox',
+				'name'    => 'open-new-tab',
+				'label'   => __( 'Open link in a new tab', 'make' ),
+				'default' => ttfmake_get_section_default( 'open-new-tab', 'gallery-item' ),
+			),
 		) );
 
 		// Sort the config in case 3rd party code added another input
@@ -216,6 +222,7 @@ class MAKE_Builder_Sections_Gallery_Definition {
 			'link' => '',
 			'description' => '',
 			'image-id' => '',
+			'open-new-tab' => 0
 		);
 	}
 
@@ -376,6 +383,16 @@ class MAKE_Builder_Sections_Gallery_Definition {
 
 				if ( isset( $item['image-id'] ) ) {
 					$clean_item_data['image-id'] = ttfmake_sanitize_image_id( $item['image-id'] );
+				}
+
+				if ( isset( $item['image-id'] ) ) {
+					$clean_item_data['image-id'] = ttfmake_sanitize_image_id( $item['image-id'] );
+				}
+
+				if ( isset( $item['open-new-tab'] ) && $item['open-new-tab'] == 1 ) {
+					$clean_item_data['open-new-tab'] = 1;
+				} else {
+					$clean_item_data['open-new-tab'] = 0;
 				}
 
 				array_push( $clean_data['gallery-items'], $clean_item_data );
