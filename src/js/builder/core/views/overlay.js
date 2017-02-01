@@ -24,7 +24,6 @@ var oneApp = oneApp || {};
 			this.caller = view;
 			this.$el.css('display', 'table');
 			$('body').addClass('modal-open');
-			$('body').one('keydown', _.bind(this.onKeyDown, this));
 		},
 
 		close: function(apply) {
@@ -39,10 +38,6 @@ var oneApp = oneApp || {};
 
 		onDiscard: function(e) {
 			e.preventDefault();
-			this.close(false);
-		},
-
-		onKeyDown: function() {
 			this.close(false);
 		},
 
@@ -65,8 +60,9 @@ var oneApp = oneApp || {};
 			if (oneApp.builder.isVisualActive()) {
 				focusOn = tinyMCE.get('make');
 
-				// Trap keypresses in the editor content area
-				focusOn.on('keydown', _.bind(this.onEditorKeyDown, this));
+				// Trap keypresses in the editor content area.
+				// No need to .off this handler later.
+				focusOn.on('keydown', _.bind(this.onKeyDown, this));
 			}
 
 			focusOn.focus();
@@ -110,8 +106,10 @@ var oneApp = oneApp || {};
 			}
 		},
 
-		onEditorKeyDown: function() {
-			this.close(false);
+		onKeyDown: function(e) {
+			if (27 == e.keyCode) {
+				this.close(false);
+			}
 		}
 	});
 
@@ -137,10 +135,11 @@ var oneApp = oneApp || {};
 			this.render($overlay);
 			oneApp.views.overlay.prototype.open.apply(this, arguments);
 			this.$overlay = $overlay;
+			$overlay.find('input, select').filter(':first').focus();
 
 			$('.wp-color-result', $overlay).click().off('click');
 			$( 'body' ).off( 'click.wpcolorpicker' );
-			$overlay.find('input, select').filter(':first').focus();
+			$('body').on('keydown', {self: this}, this.onKeyDown);
 		},
 
 		render: function($overlay) {
@@ -155,6 +154,7 @@ var oneApp = oneApp || {};
 
 		close: function(apply) {
 			oneApp.views.overlay.prototype.close.apply(this, arguments);
+
 			var changeset = {};
 
 			// Reset color picker inputs
@@ -174,6 +174,8 @@ var oneApp = oneApp || {};
 				$('.ttfmake-overlay-header', this.$overlay).after($('.ttfmake-overlay-body', this.$el));
 				changeset = this.model.attributes;
 			}
+
+			$('body').off('keydown', this.onKeyDown);
 
 			this.caller.$el.trigger('overlay-close', changeset);
 			this.remove();
@@ -230,6 +232,12 @@ var oneApp = oneApp || {};
 		onColorPickerChange: function(e, data) {
 			if (data) {
 				this.model.set(data.modelAttr, data.color);
+			}
+		},
+
+		onKeyDown: function(e) {
+			if (27 == e.keyCode) {
+				e.data.self.close(false);
 			}
 		},
 	});
