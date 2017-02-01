@@ -13,9 +13,6 @@ var oneApp = oneApp || {};
 
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
-				'click .ttfmake-media-uploader-add': 'onMediaOpen',
-				'view-ready': 'onViewReady',
-				'overlayClose': 'onOverlayClose',
 				'click .edit-content-link': 'onContentEdit',
 			});
 		},
@@ -31,18 +28,6 @@ var oneApp = oneApp || {};
 			return this;
 		},
 
-		onViewReady: function(e) {
-			e.stopPropagation();
-			oneApp.builder.initColorPicker(this);
-		},
-
-		onOverlayClose: function(e, textarea) {
-			e.stopPropagation();
-
-			this.model.set('content', $(textarea).val());
-			this.$el.trigger('model-item-change');
-		},
-
 		onContentEdit: function(e) {
 			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
 
@@ -50,12 +35,5 @@ var oneApp = oneApp || {};
 			var $button = $('.ttfmake-overlay-close', $overlay);
 			$button.text('Update column');
 		},
-
-		onColorPickerChange: function(e, data) {
-			e.stopPropagation();
-
-			this.model.set(data.modelAttr, data.color);
-			this.$el.trigger('model-item-change');
-		}
 	});
 })(window, Backbone, jQuery, _, oneApp);

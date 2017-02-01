@@ -16,7 +16,6 @@ var oneApp = oneApp || {};
 				'view-ready': 'onViewReady',
 				'item-sort': 'onSlideSort',
 				'slide-remove': 'onSlideRemove',
-				'color-picker-change': 'onColorPickerChange'
 			});
 		},
 
@@ -40,7 +39,6 @@ var oneApp = oneApp || {};
 
 		onViewReady: function(e) {
 			this.initializeSortables();
-			oneApp.builder.initColorPicker(this);
 
 			_(this.itemViews).each(function(slideView) {
 				slideView.$el.trigger('view-ready');
@@ -105,10 +103,6 @@ var oneApp = oneApp || {};
 			if (!pseudo) {
 				oneApp.builder.scrollToSectionView(slideView);
 			}
-		},
-
-		onColorPickerChange: function(e, data) {
-			this.model.set(data.modelAttr, data.color);
 		},
 
 		getParentID: function() {

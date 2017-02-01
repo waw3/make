@@ -43,9 +43,7 @@ var oneApp = oneApp || {};
 
 		onViewReady: function(e) {
 			e.stopPropagation();
-
 			this.initializeSortables();
-			oneApp.builder.initColorPicker(this);
 		},
 
 		addItem: function(itemModel) {
