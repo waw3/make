@@ -6,7 +6,7 @@ var oneApp = oneApp || {};
 
 	oneApp.views = oneApp.views || {};
 
-	// Base overlay view
+	// Base overlay
 	oneApp.views.overlay = Backbone.View.extend({
 		caller: null,
 
@@ -48,7 +48,7 @@ var oneApp = oneApp || {};
 		}
 	});
 
-	// Content editor overlay view
+	// Content editor overlay
 	oneApp.views['tinymce-overlay'] = oneApp.views.overlay.extend({
 		open: function(view) {
 			oneApp.views.overlay.prototype.open.apply(this, arguments)
@@ -113,7 +113,7 @@ var oneApp = oneApp || {};
 		}
 	});
 
-	// Columns configuration view
+	// Section settings overlay
 	oneApp.views.settings = oneApp.views.overlay.extend({
 		$overlay: null,
 		$colorPickers: null,
@@ -145,10 +145,12 @@ var oneApp = oneApp || {};
 		render: function($overlay) {
 			this.$el.remove();
 			var $el = $overlay.clone();
+
+			this.applyDOMChanges($overlay, $el);
 			$el.removeAttr('id');
 			$('body').append($el);
-			this.setElement($el);
 
+			this.setElement($el);
 			this.$colorPickers = oneApp.builder.initColorPicker(this);
 		},
 
@@ -170,15 +172,35 @@ var oneApp = oneApp || {};
 			}
 
 			if (apply) {
-				$('.ttfmake-overlay-body', this.$overlay).remove();
-				$('.ttfmake-overlay-header', this.$overlay).after($('.ttfmake-overlay-body', this.$el));
+				this.applyDOMChanges(this.$el, this.$overlay);
 				changeset = this.model.attributes;
 			}
 
 			$('body').off('keydown', this.onKeyDown);
-
 			this.caller.$el.trigger('overlay-close', changeset);
 			this.remove();
+		},
+
+		applyDOMChanges: function($source, $destination) {
+			// Input fields
+			var $sourceInputs = $('[data-model-attr]', $source);
+
+			$sourceInputs.each(function() {
+				var $this = $(this);
+				var modelAttr = $this.data('model-attr');
+				var $destinationInput =  $('[data-model-attr="' + modelAttr + '"]', $destination);
+
+				if ($this.is(':checkbox')) {
+					$destinationInput.prop('checked', $this.is(':checked'));
+				} else {
+					$destinationInput.val($this.val());
+				}
+			});
+
+			// Background images
+			var $sourcePlaceholder = $('.ttfmake-configuration-media-wrap', $source);
+			var $destinationPlaceholder = $('.ttfmake-configuration-media-wrap', $destination);
+			$destinationPlaceholder.html($sourcePlaceholder.html());
 		},
 
 		updateInputField: function(e) {
