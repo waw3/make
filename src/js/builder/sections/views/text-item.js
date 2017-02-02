@@ -17,6 +17,7 @@ var oneApp = oneApp || {};
 				'view-ready': 'onViewReady',
 				'overlayClose': 'onOverlayClose',
 				'click .edit-content-link': 'onContentEdit',
+				'click .ttfmake-text-column-remove': 'onColumnRemove'
 			});
 		},
 
@@ -41,6 +42,20 @@ var oneApp = oneApp || {};
 
 			this.model.set('content', $(textarea).val());
 			this.$el.trigger('model-item-change');
+		},
+
+		onColumnRemove: function(evt) {
+			evt.preventDefault();
+
+			var $stage = this.$el.parents('.ttfmake-text-columns-stage');
+
+			this.$el.animate({
+				opacity: 'toggle',
+				height: 'toggle'
+			}, oneApp.builder.options.closeSpeed, function() {
+				this.$el.trigger('column-remove', this);
+				this.remove();
+			}.bind(this));
 		},
 
 		onContentEdit: function(e) {

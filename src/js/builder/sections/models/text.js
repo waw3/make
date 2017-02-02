@@ -7,10 +7,12 @@ var oneApp = oneApp || {};
 	oneApp.models = oneApp.models || {};
 
 	oneApp.models.text = oneApp.models.section.extend({
-		defaults: {
-			'id': '',
-			'section-type': 'text',
-			'columns': []
+		defaults: function() {
+			return {
+				'id': '',
+				'section-type': 'text',
+				'columns': []
+			}
 		},
 
 		parse: function(data) {
