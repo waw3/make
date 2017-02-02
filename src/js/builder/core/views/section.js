@@ -10,8 +10,6 @@ var oneApp = oneApp || {};
 		template: '',
 		className: 'ttfmake-section',
 		$headerTitle: '',
-		$titleInput: '',
-		$titlePipe: '',
 		serverRendered: false,
 		$document: $(window.document),
 		$scrollHandle: $('html, body'),
@@ -19,7 +17,6 @@ var oneApp = oneApp || {};
 		events: {
 			'click .ttfmake-section-toggle': 'toggleSection',
 			'click .ttfmake-section-remove': 'removeSection',
-			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'onMediaAdd',
 			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 			'overlay-close': 'onOverlayClose',
@@ -38,6 +35,7 @@ var oneApp = oneApp || {};
 		render: function () {
 			var html = this.template(this.model);
 			this.setElement(html);
+			this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
 
 			return this;
 		},
@@ -84,32 +82,6 @@ var oneApp = oneApp || {};
 			}.bind(this));
 		},
 
-		constructHeader: function (evt) {
-			if ('' === this.$headerTitle) {
-				this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
-			}
-
-			if ('' === this.$titleInput) {
-				this.$titleInput = $('.ttfmake-section-header-title-input', this.$el);
-			}
-
-			if ('' === this.$titlePipe) {
-				this.$titlePipe = $('.ttfmake-section-header-pipe', this.$el);
-			}
-
-			var input = this.$titleInput.val();
-
-			// Set the input
-			this.$headerTitle.html(_.escape(input));
-
-			// Hide or show the pipe depending on what content is available
-			if ('' === input) {
-				this.$titlePipe.addClass('ttfmake-section-header-pipe-hidden');
-			} else {
-				this.$titlePipe.removeClass('ttfmake-section-header-pipe-hidden');
-			}
-		},
-
 		onMediaAdd: function(e) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -139,6 +111,10 @@ var oneApp = oneApp || {};
 
 		onOverlayClose: function(e, changeset) {
 			e.stopPropagation();
+
+			if ('title' in changeset) {
+				this.$headerTitle.html(_.escape(changeset['title']));
+			}
 
 			this.model.set(changeset);
 		},
