@@ -14,8 +14,12 @@ var oneApp = oneApp || {};
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
 				'click .edit-content-link': 'onContentEdit',
+<<<<<<< HEAD
 				'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 				'overlay-open': 'onOverlayOpen',
+=======
+				'click .ttfmake-text-column-remove': 'onColumnRemove'
+>>>>>>> 6b5ad0b... Make rows work as gallery items.
 			});
 		},
 
@@ -33,7 +37,29 @@ var oneApp = oneApp || {};
 		onOverlayOpen: function (e, $overlay) {
 			e.stopPropagation();
 
+<<<<<<< HEAD
 			var $button = $('.ttfmake-overlay-close-update', $overlay);
+=======
+		onColumnRemove: function(evt) {
+			evt.preventDefault();
+
+			var $stage = this.$el.parents('.ttfmake-text-columns-stage');
+
+			this.$el.animate({
+				opacity: 'toggle',
+				height: 'toggle'
+			}, oneApp.builder.options.closeSpeed, function() {
+				this.$el.trigger('column-remove', this);
+				this.remove();
+			}.bind(this));
+		},
+
+		onContentEdit: function(e) {
+			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
+
+			var $overlay = oneApp.builder.tinymceOverlay.$el;
+			var $button = $('.ttfmake-overlay-close', $overlay);
+>>>>>>> 6b5ad0b... Make rows work as gallery items.
 			$button.text('Update column');
 		}
 	});
