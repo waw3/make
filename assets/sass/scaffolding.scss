@@ -609,13 +609,13 @@ div.custom-logo {
 .site-navigation .menu.toggled {
 	display: block;
 }
-.site-navigation .menu {
+.site-navigation .menu.menu-desktop {
 	@include for(medium-screens) {
 		display: block;
 	}
 	display: none;
 }
-.site-navigation .menu ~ .menu-mobile {
+.site-navigation .menu.menu-mobile {
 	@include for(medium-screens) {
 		display: none;
 	}
