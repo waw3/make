@@ -64,7 +64,7 @@ $header_bar_menu = wp_nav_menu( array(
 			endif; ?>
 
 			<nav id="site-navigation" class="site-navigation" role="navigation">
-				<?php get_template_part( 'partials/site-navigation' ); ?>
+				<?php get_template_part( 'partials/header', 'navigation' ); ?>
 			</nav>
 		</div>
 	</div>
