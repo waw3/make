@@ -66,11 +66,12 @@ var oneApp = oneApp || {};
 			}
 
 			focusOn.focus();
-			view.$el.trigger('overlayOpen');
+			view.$el.trigger('overlay-open', this.$el);
 		},
 
 		close: function(apply) {
 			var editor = tinyMCE.get('make');
+
 			if (editor) {
 				editor.off('keydown');
 			}
@@ -140,6 +141,8 @@ var oneApp = oneApp || {};
 			$('.wp-color-result', $overlay).click().off('click');
 			$( 'body' ).off( 'click.wpcolorpicker' );
 			$('body').on('keydown', {self: this}, this.onKeyDown);
+
+			view.$el.trigger('overlay-open', this.$el);
 		},
 
 		render: function($overlay) {

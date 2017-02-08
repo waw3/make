@@ -10,7 +10,7 @@ var oneApp = oneApp || {};
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
 				'click .ttfmake-banner-slide-remove': 'onSlideRemove',
-				'click .edit-content-link': 'onContentEdit',
+				'overlay-open': 'onOverlayOpen',
 			});
 		},
 
@@ -23,14 +23,6 @@ var oneApp = oneApp || {};
 			this.setElement(html);
 
 			return this;
-		},
-
-		onContentEdit: function(e) {
-			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
-
-			var $overlay = oneApp.builder.tinymceOverlay.$el;
-			var $button = $('.ttfmake-overlay-close-update', $overlay);
-			$button.text('Update slide');
 		},
 
 		onSlideRemove: function (evt) {
@@ -46,6 +38,11 @@ var oneApp = oneApp || {};
 				this.$el.trigger('slide-remove', this);
 				this.remove();
 			}.bind(this));
+		},
+
+		onOverlayOpen: function (e, $overlay) {
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update slide');
 		},
 	});
 })(window, Backbone, jQuery, _, oneApp);

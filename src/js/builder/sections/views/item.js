@@ -68,11 +68,8 @@ var oneApp = oneApp || {};
 				var iframeID = ($target.attr('data-iframe')) ? $target.attr('data-iframe') : '';
 				var textAreaID = $target.attr('data-textarea');
 				var $overlay = oneApp.builder.tinymceOverlay.$el;
-				var $button = $('.ttfmake-overlay-close', $overlay);
 
 				oneApp.builder.setMakeContentFromTextArea(iframeID, textAreaID);
-				$button.text($button.data('original-text'));
-
 				oneApp.builder.tinymceOverlay.open(this);
 			}
 		});
