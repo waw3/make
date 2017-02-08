@@ -32,7 +32,7 @@ var oneApp = oneApp || {};
 			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
 
 			var $overlay = oneApp.builder.tinymceOverlay.$el;
-			var $button = $('.ttfmake-overlay-close', $overlay);
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
 			$button.text('Update column');
 		},
 	});
