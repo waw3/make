@@ -92,6 +92,7 @@ var oneApp = oneApp || {};
 			}
 
 			this.caller.$el.trigger('overlay-close', this.model.attributes);
+			$('body').trigger('scroll');
 		},
 
 		toggleHasContent: function(textareaID) {
