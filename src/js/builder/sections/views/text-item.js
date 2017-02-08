@@ -14,6 +14,8 @@ var oneApp = oneApp || {};
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
 				'click .edit-content-link': 'onContentEdit',
+				'click .ttfmake-overlay-open': 'openConfigurationOverlay',
+				'overlay-open': 'onOverlayOpen',
 			});
 		},
 
@@ -28,12 +30,9 @@ var oneApp = oneApp || {};
 			return this;
 		},
 
-		onContentEdit: function(e) {
-			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
-
-			var $overlay = oneApp.builder.tinymceOverlay.$el;
+		onOverlayOpen: function (e, $overlay) {
 			var $button = $('.ttfmake-overlay-close-update', $overlay);
 			$button.text('Update column');
-		},
+		}
 	});
 })(window, Backbone, jQuery, _, oneApp);
