@@ -31,6 +31,8 @@ var oneApp = oneApp || {};
 		},
 
 		onOverlayOpen: function (e, $overlay) {
+			e.stopPropagation();
+
 			var $button = $('.ttfmake-overlay-close-update', $overlay);
 			$button.text('Update column');
 		}

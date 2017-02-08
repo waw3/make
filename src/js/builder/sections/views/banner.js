@@ -16,6 +16,7 @@ var oneApp = oneApp || {};
 				'view-ready': 'onViewReady',
 				'item-sort': 'onSlideSort',
 				'slide-remove': 'onSlideRemove',
+				'overlay-open': 'onOverlayOpen',
 			});
 		},
 
@@ -138,6 +139,11 @@ var oneApp = oneApp || {};
 					self.$el.trigger('item-sort', [ids]);
 				}
 			});
-		}
+		},
+
+		onOverlayOpen: function(e, $overlay) {
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update banner settings');
+		},
 	});
 })(window, jQuery, _, oneApp);
