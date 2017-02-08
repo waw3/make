@@ -15,7 +15,8 @@ var oneApp = oneApp || {};
 				'mouseup .ttfmake-text-column' : 'updateJSONOnSlide',
 				'model-item-change': 'onTextItemChange',
 				'columns-sort': 'onColumnsSort',
-				'view-ready': 'onViewReady'
+				'view-ready': 'onViewReady',
+				'overlay-open': 'onOverlayOpen',
 			});
 		},
 
@@ -194,6 +195,11 @@ var oneApp = oneApp || {};
 					self.$el.trigger('columns-sort', [ids]);
 				}
 			});
-		}
+		},
+
+		onOverlayOpen: function(e, $overlay) {
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update columns settings');
+		},
 	});
 })(window, jQuery, _, oneApp);
