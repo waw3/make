@@ -81,6 +81,8 @@ var oneApp = oneApp || {};
 		},
 
 		addColumns: function(number) {
+			var self = this;
+
 			if (typeof number === 'undefined') {
 				number = 1;
 			}
@@ -104,7 +106,9 @@ var oneApp = oneApp || {};
 				this.model.trigger('change');
 			}
 
-			this.initFrames();
+			setTimeout(function() {
+				self.initFrames();
+			}, 100);
 		},
 
 		handleColumnsClasses: function() {
