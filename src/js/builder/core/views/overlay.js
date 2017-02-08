@@ -135,9 +135,8 @@ var oneApp = oneApp || {};
 		open: function(view, $overlay) {
 			this.render($overlay);
 			oneApp.views.overlay.prototype.open.apply(this, arguments);
-			this.$overlay = $overlay;
-			$overlay.find('input, select').filter(':first').focus();
 
+			$('input, select', this.$el).first().focus();
 			$('.wp-color-result', $overlay).click().off('click');
 			$( 'body' ).off( 'click.wpcolorpicker' );
 			$('body').on('keydown', {self: this}, this.onKeyDown);
