@@ -5,6 +5,8 @@
 
 // Header Options
 $subheader_class = ( make_get_thememod_value( 'header-show-social' ) || make_get_thememod_value( 'header-show-search' ) ) ? ' right-content' : '';
+$mobile_menu = make_get_thememod_value( 'mobile-menu' );
+
 $header_bar_menu = wp_nav_menu( array(
 	'theme_location'  => 'header-bar',
 	'container_class' => 'header-bar-menu',
@@ -39,7 +41,14 @@ $header_bar_menu = wp_nav_menu( array(
 				<?php echo make_get_thememod_value( 'header-text' ); ?>
 				</span>
 			<?php endif; ?>
-			<?php echo $header_bar_menu; ?>
+			<?php if ( ! empty( $header_bar_menu ) ): ?>
+				<nav class="site-navigation" role="navigation">
+					<?php if ( 'header-bar' === $mobile_menu ): ?>
+						<span class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></span>
+					<?php endif;?>
+					<?php echo $header_bar_menu; ?>
+				</nav>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php endif; ?>
@@ -65,7 +74,9 @@ $header_bar_menu = wp_nav_menu( array(
 			</div>
 
 			<nav id="site-navigation" class="site-navigation" role="navigation">
-				<span class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></span>
+				<?php if ( 'primary' === $mobile_menu ): ?>
+						<span class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></span>
+					<?php endif;?>
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'primary'

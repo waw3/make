@@ -588,6 +588,15 @@ div.custom-logo {
 		}
 	}
 }
+.header-bar {
+	.site-navigation {
+		li {
+			a {
+				color: #ffffff;
+			}
+		}
+	}
+}
 .menu-toggle {
 	color: $a;
 	text-align: left;
@@ -606,10 +615,11 @@ div.custom-logo {
 }
 .menu-toggle,
 .site-navigation.toggled .nav-menu,
-.site-navigation.toggled .menu {
+.site-navigation.toggled .menu,
+.site-navigation.toggled .menu-toggle ~ div .menu {
 	display: block;
 }
-.site-navigation .menu {
+.site-navigation .menu-toggle ~ div .menu {
 	@include for(medium-screens) {
 		display: block;
 	}
