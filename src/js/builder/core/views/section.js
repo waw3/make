@@ -10,8 +10,6 @@ var oneApp = oneApp || {};
 		template: '',
 		className: 'ttfmake-section',
 		$headerTitle: '',
-		$titleInput: '',
-		$titlePipe: '',
 		serverRendered: false,
 		$document: $(window.document),
 		$scrollHandle: $('html, body'),
@@ -19,17 +17,11 @@ var oneApp = oneApp || {};
 		events: {
 			'click .ttfmake-section-toggle': 'toggleSection',
 			'click .ttfmake-section-remove': 'removeSection',
-			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'onMediaAdd',
-			'color-picker-change': 'onColorPickerChange',
 			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
-			'click .ttfmake-overlay-close': 'closeConfigurationOverlay',
+			'overlay-close': 'onOverlayClose',
 			'mediaSelected': 'onMediaSelected',
 			'mediaRemoved': 'onMediaRemoved',
-			'change .ttfmake-configuration-overlay input[type=text]' : 'updateInputField',
-			'keyup .ttfmake-configuration-overlay input[type=text]' : 'updateInputField',
-			'change .ttfmake-configuration-overlay input[type=checkbox]' : 'updateCheckbox',
-			'change .ttfmake-configuration-overlay select': 'updateSelectField',
 		},
 
 		initialize: function (options) {
@@ -43,6 +35,7 @@ var oneApp = oneApp || {};
 		render: function () {
 			var html = this.template(this.model);
 			this.setElement(html);
+			this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
 
 			return this;
 		},
@@ -89,32 +82,6 @@ var oneApp = oneApp || {};
 			}.bind(this));
 		},
 
-		constructHeader: function (evt) {
-			if ('' === this.$headerTitle) {
-				this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
-			}
-
-			if ('' === this.$titleInput) {
-				this.$titleInput = $('.ttfmake-section-header-title-input', this.$el);
-			}
-
-			if ('' === this.$titlePipe) {
-				this.$titlePipe = $('.ttfmake-section-header-pipe', this.$el);
-			}
-
-			var input = this.$titleInput.val();
-
-			// Set the input
-			this.$headerTitle.html(_.escape(input));
-
-			// Hide or show the pipe depending on what content is available
-			if ('' === input) {
-				this.$titlePipe.addClass('ttfmake-section-header-pipe-hidden');
-			} else {
-				this.$titlePipe.removeClass('ttfmake-section-header-pipe-hidden');
-			}
-		},
-
 		onMediaAdd: function(e) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -134,45 +101,22 @@ var oneApp = oneApp || {};
 			this.model.unset('background-image-url');
 		},
 
-		openConfigurationOverlay: function (evt) {
-			evt.preventDefault();
+		openConfigurationOverlay: function (e) {
+			e.preventDefault();
 
-			var self = this,
-				$this = $(evt.target),
-				$overlay = $($this.attr('data-overlay')),
-				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
-
-			$overlay.show(1, function() {
-				$('.wp-color-result', $overlay).click().off('click');
-				$( 'body' ).off( 'click.wpcolorpicker' );
-				self.setSize($overlay, $wrapper);
-				$overlay.find('input,select').filter(':first').focus();
-			});
-
-			oneApp.builder.initColorPicker(this);
+			var $this = $(e.target);
+			var $overlay = $($this.attr('data-overlay'));
+			oneApp.builder.settingsOverlay.open(this, $overlay);
 		},
 
-		onColorPickerChange: function(evt, data) {
-			if (data) {
-				this.model.set(data.modelAttr, data.color);
+		onOverlayClose: function(e, changeset) {
+			e.stopPropagation();
+
+			if ('title' in changeset) {
+				this.$headerTitle.html(_.escape(changeset['title']));
 			}
-		},
 
-		setSize: function($overlay, $wrapper) {
-			var $body = $('.ttfmake-overlay-body', $wrapper),
-				bodyHeight = $body.outerHeight(),
-				wrapperHeight;
-
-			wrapperHeight =
-				parseInt(bodyHeight, 10) + // Body height
-					50 + // Header height
-					60; // Footer height
-
-			$wrapper
-				.height(wrapperHeight)
-				.css({
-					'margin-top': -1 * parseInt(wrapperHeight/2, 10) + 'px'
-				})
+			this.model.set(changeset);
 		},
 
 		closeConfigurationOverlay: function (evt) {
@@ -183,36 +127,5 @@ var oneApp = oneApp || {};
 
 			$overlay.hide();
 		},
-
-		updateInputField: function(evt) {
-			var $input				= $(evt.target);
-			var modelAttrName = $input.attr('data-model-attr');
-
-			if (typeof modelAttrName !== 'undefined') {
-				this.model.set(modelAttrName, $input.val());
-			}
-		},
-
-		updateCheckbox: function(evt) {
-			var $checkbox = $(evt.target);
-			var modelAttrName = $checkbox.attr('data-model-attr');
-
-			if (typeof modelAttrName !== 'undefined') {
-				if ($checkbox.is(':checked')) {
-					this.model.set(modelAttrName, 1);
-				} else {
-					this.model.set(modelAttrName, 0);
-				}
-			}
-		},
-
-		updateSelectField: function(evt) {
-			var $select = $(evt.target);
-			var modelAttrName = $select.attr('data-model-attr');
-
-			if (typeof modelAttrName !== 'undefined') {
-				this.model.set(modelAttrName, $select.val());
-			}
-		}
 	});
 })(window, Backbone, jQuery, _, oneApp);

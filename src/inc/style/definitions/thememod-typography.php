@@ -62,7 +62,7 @@ if ( ! empty( $declarations ) ) {
  * H1
  */
 $element = 'h1';
-$selectors = array( 'h1:not(.site-title)', 'h1:not(.site-title) a', '.font-header' );
+$selectors = array( 'h1:not(.site-title)', 'h1:not(.site-title) a', '.font-header', '.entry-title' );
 $declarations = $this->helper()->parse_font_properties( $element, $is_style_preview );
 if ( ! empty( $declarations ) ) {
 	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
@@ -186,7 +186,7 @@ if ( ! empty( $link_rule ) ) {
  */
 $menu_items_customized = false;
 $element = 'nav';
-$selectors = array( '.site-navigation .menu li a', '.font-nav' );
+$selectors = array( '.site-navigation .menu li a', '.font-nav', '.menu-toggle' );
 $declarations = $this->helper()->parse_font_properties( $element, $is_style_preview );
 if ( ! empty( $declarations ) ) {
 	$this->css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );

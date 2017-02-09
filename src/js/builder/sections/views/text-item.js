@@ -13,10 +13,9 @@ var oneApp = oneApp || {};
 
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
-				'click .ttfmake-media-uploader-add': 'onMediaOpen',
-				'view-ready': 'onViewReady',
-				'overlayClose': 'onOverlayClose',
 				'click .edit-content-link': 'onContentEdit',
+				'click .ttfmake-overlay-open': 'openConfigurationOverlay',
+				'overlay-open': 'onOverlayOpen',
 				'click .ttfmake-text-column-remove': 'onColumnRemove'
 			});
 		},
@@ -30,18 +29,6 @@ var oneApp = oneApp || {};
 			this.setElement(html);
 
 			return this;
-		},
-
-		onViewReady: function(e) {
-			e.stopPropagation();
-			oneApp.builder.initColorPicker(this);
-		},
-
-		onOverlayClose: function(e, textarea) {
-			e.stopPropagation();
-
-			this.model.set('content', $(textarea).val());
-			this.$el.trigger('model-item-change');
 		},
 
 		onColumnRemove: function(evt) {
@@ -58,19 +45,11 @@ var oneApp = oneApp || {};
 			}.bind(this));
 		},
 
-		onContentEdit: function(e) {
-			oneApp.views.item.prototype.onContentEdit.apply(this, arguments);
-
-			var $overlay = oneApp.builder.tinymceOverlay.$el;
-			var $button = $('.ttfmake-overlay-close', $overlay);
-			$button.text('Update column');
-		},
-
-		onColorPickerChange: function(e, data) {
+		onOverlayOpen: function (e, $overlay) {
 			e.stopPropagation();
 
-			this.model.set(data.modelAttr, data.color);
-			this.$el.trigger('model-item-change');
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update column');
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp);

@@ -11,6 +11,7 @@ var oneApp = oneApp || {};
 			return {
 				'id': '',
 				'section-type': 'text',
+				'state': 'open',
 				'columns': []
 			}
 		},

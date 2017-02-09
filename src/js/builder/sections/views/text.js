@@ -11,13 +11,15 @@ var oneApp = oneApp || {};
 
 		events: function() {
 			return _.extend({}, oneApp.views.section.prototype.events, {
-				'change .ttfmake-text-columns' : 'handleColumns',
+				'columns-number-change' : 'onColumnsNumberChange',
 				'mouseup .ttfmake-text-column' : 'updateJSONOnSlide',
 				'model-item-change': 'onTextItemChange',
 				'columns-sort': 'onColumnsSort',
 				'view-ready': 'onViewReady',
 				'column-remove': 'onColumnRemove',
-				'click .ttfmake-text-columns-add-column-link': 'handleColumnAddLink'
+				'click .ttfmake-text-columns-add-column-link': 'handleColumnAddLink',
+				'overlay-open': 'onOverlayOpen',
+				'overlay-close': 'onOverlayClose'
 			});
 		},
 
@@ -157,10 +159,8 @@ var oneApp = oneApp || {};
 			this.$el.trigger('columns-sorted');
 		},
 
-		handleColumns : function (evt) {
-			evt.preventDefault();
-
-			var columns = parseInt($(evt.target).val(), 10),
+		onColumnsNumberChange: function() {
+			var columns = this.model.get('columns-number'),
 				$stage = $('.ttfmake-text-columns-stage', this.$el);
 
 			var numberOfColumnsToCreate = columns - this.model.get('columns').length;
@@ -255,6 +255,21 @@ var oneApp = oneApp || {};
 					self.$el.trigger('columns-sort', [ids]);
 				}
 			});
+		},
+
+		onOverlayOpen: function(e, $overlay) {
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update columns settings');
+		},
+
+		onOverlayClose: function(e, changeset) {
+			e.stopPropagation();
+
+			this.model.set(changeset);
+
+			if ('columns-number' in changeset) {
+				this.$el.trigger('columns-number-change');
+			}
 		}
 	});
 })(window, jQuery, _, oneApp);

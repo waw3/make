@@ -65,12 +65,7 @@ $header_bar_menu = wp_nav_menu( array(
 			</div>
 
 			<nav id="site-navigation" class="site-navigation" role="navigation">
-				<span class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></span>
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'primary'
-				) );
-				?>
+				<?php get_template_part( 'partials/header', 'navigation' ); ?>
 			</nav>
 		</div>
 	</div>
