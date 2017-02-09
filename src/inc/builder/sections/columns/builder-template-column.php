@@ -19,7 +19,7 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 		100 => array(
 			'label'              => __( 'Configure column', 'make' ),
 			'href'               => '#',
-			'class'              => 'configure-column-link ttfmake-overlay-open',
+			'class'              => 'ttfmake-overlay-open',
 			'title'              => __( 'Configure column', 'make' ),
 			'other-a-attributes' => ' data-overlay="#' . $overlay_id .'"',
 		),
@@ -77,16 +77,18 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 	do_action( 'make_section_text_before_column', $ttfmake_section_data );
 	?>
 
-	<?php foreach ( $column_buttons as $button ) : ?>
-		<a href="<?php echo esc_url( $button['href'] ); ?>" class="column-buttons <?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
-			<span>
-				<?php echo esc_html( $button['label'] ); ?>
-			</span>
-		</a>
-	<?php endforeach; ?>
+	<ul class="column-context-menu" style="display: none">
+		<?php foreach ( $column_buttons as $button ) : ?>
+			<li>
+				<a href="<?php echo esc_url( $button['href'] ); ?>" class="<?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
+					<?php echo esc_html( $button['label'] ); ?>
+				</a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
 
 	<?php echo ttfmake_get_builder_base()->add_uploader( $column_name, 0, __( 'Set image', 'make' ), 'image-url' ); ?>
-	<?php ttfmake_get_builder_base()->add_frame( $combined_id, 'content', '', $content ); ?>
+	<?php ttfmake_get_builder_base()->add_frame( $combined_id, 'content', '', $content, true, true ); ?>
 
 	<?php
 	/**

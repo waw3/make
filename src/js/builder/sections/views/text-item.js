@@ -13,11 +13,27 @@ var oneApp = oneApp || {};
 
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
+				'click > *': 'handleClick',
 				'click .edit-content-link': 'onContentEdit',
 				'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 				'overlay-open': 'onOverlayOpen',
 				'click .ttfmake-text-column-remove': 'onColumnRemove'
 			});
+		},
+
+		handleClick: function(e) {
+			e.preventDefault();
+
+			console.log(e);
+
+			$('.column-context-menu').hide();
+
+			var $contextMenu = this.$el.find('.column-context-menu');
+
+			$contextMenu.css({
+				'top': e.offsetY,
+				'left': e.offsetX + 20
+			}).show();
 		},
 
 		initialize: function (options) {

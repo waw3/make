@@ -501,9 +501,10 @@ class TTFMAKE_Builder_Base {
 	 * @param  string	 $textarea_name_path	The second part of the name (if applicable). E.g. `[1][textarea]` for `columns[1][textarea]`.
 	 * @param  string    $content				The content for the text area.
 	 * @param  bool      $iframe				Whether or not to add an iframe to preview content.
+	 * @param  bool 	 $skip_link
 	 * @return void
 	 */
-	public function add_frame( $id, $textarea_name, $textarea_name_path = '', $content = '', $iframe = true ) {
+	public function add_frame( $id, $textarea_name, $textarea_name_path = '', $content = '', $iframe = true, $skip_link = false ) {
 		global $ttfmake_is_js_template;
 		$iframe_id   = 'ttfmake-iframe-' . $id;
 		$textarea_id = 'ttfmake-content-' . $id;
@@ -512,11 +513,13 @@ class TTFMAKE_Builder_Base {
 		<?php if ( true === $iframe ) : ?>
 		<div class="ttfmake-iframe-wrapper">
 			<div class="ttfmake-iframe-overlay">
+				<?php if ( !$skip_link ) { ?>
 				<a href="#" class="edit-content-link" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
 					<span class="screen-reader-text">
 						<?php esc_html_e( 'Edit content', 'make' ); ?>
 					</span>
 				</a>
+				<?php } ?>
 			</div>
 			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>" scrolling="no"></iframe>
 		</div>

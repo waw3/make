@@ -78,6 +78,25 @@
     margin-bottom: 1em;
   }
 }
+.column-context-menu {
+	position: absolute;
+	z-index: 5;
+	display: none;
+	padding: 20px;
+	background-color: #eee;
+}
+.column-context-menu li {
+	display: block;
+	margin-bottom: 15px;
+	background-color: #eee;
+}
+.column-context-menu li:last-child {
+	margin-bottom: 0;
+}
+.column-context-menu li a {
+	border: 0;
+	background: transparent;
+}
 /*---------------------------------------------------------
  Text: One column (sections.css)
 -------------------------------------------------------- */
@@ -391,20 +410,16 @@
 	color: #1bc865;
 }
 .edit-content-link.item-has-content.edit-gallery-item-link:before,
-.edit-content-link.item-has-content.edit-banner-slide-link:before,
-.edit-content-link.item-has-content.edit-text-column-link:before {
+.edit-content-link.item-has-content.edit-banner-slide-link:before {
 	content: "\f214";
 }
 .edit-gallery-item-link,
 .remove-gallery-item-link,
 .edit-banner-slide-link,
 .remove-banner-slide-link,
-.edit-text-column-link,
 .configure-gallery-item-link,
 .configure-banner-slide-link,
-.configure-column-link,
-.remove-widget-link,
-.remove-text-column-link {
+.remove-widget-link {
 	display: inline-block;
 	position: absolute;
 	clear: both;
@@ -418,24 +433,6 @@
 	color: #aaaaaa;
 	text-decoration: none;  /*reset*/
 	outline: none !important;
-}
-.edit-text-column-link,
-.configure-column-link,
-.remove-widget-link {
-	top: 0; /*reset*/
-}
-.configure-column-link {
-  right: 135px;
-}
-.edit-text-column-link {
-  right: 90px;
-}
-.remove-text-column-link {
-  right: 10px;
-}
-.make-plus-enabled .remove-text-column-link {
-  top: 0;
-  right: 0;
 }
 .remove-gallery-item-link,
 .remove-banner-slide-link,
@@ -458,47 +455,38 @@
 .remove-gallery-item-link:hover,
 .edit-banner-slide-link:hover,
 .remove-banner-slide-link:hover,
-.edit-text-column-link:hover,
 .configure-gallery-item-link:hover,
 .configure-banner-slide-link:hover,
-.configure-column-link:hover,
-.remove-widget-link:hover,
-.remove-text-column-link:hover {
+.remove-widget-link:hover {
 	color: #222222;
 }
 .edit-gallery-item-link span,
 .remove-gallery-item-link span,
 .edit-banner-slide-link span,
 .remove-banner-slide-link span,
-.edit-text-column-link span,
 .configure-gallery-item-link span,
 .configure-banner-slide-link span,
-.configure-column-link span,
-.remove-widget-link span,
-.remove-text-column-link span {
+.remove-widget-link span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
 	overflow: hidden;
 }
 .edit-gallery-item-link:before,
-.edit-banner-slide-link:before,
-.edit-text-column-link:before {
+.edit-banner-slide-link:before {
 	content: "\f464";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
 }
 .remove-gallery-item-link:before,
 .remove-banner-slide-link:before,
-.remove-widget-link:before,
-.remove-text-column-link:before {
+.remove-widget-link:before {
 	content: "\f182";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
 }
 .configure-gallery-item-link:before,
-.configure-banner-slide-link:before,
-.configure-column-link:before {
+.configure-banner-slide-link:before {
 	content: "\f111";
 	font: 400 20px/39px dashicons;
 	speak: none; /*reset*/
@@ -512,15 +500,4 @@
 .ttfmp-import-message-hide,
 .ttfmake-default-active .ttfmp-import-message {
 	display: none;
-}
-/*---------------------------------------------------------
- Make Plus disabled (sections.css)
--------------------------------------------------------- */
-.make-plus-disabled .edit-text-column-link {
-	top: 20px;
-	right: 55px;
-}
-.make-plus-disabled .configure-column-link {
-	top: 20px;
-	right: 100px;
 }
