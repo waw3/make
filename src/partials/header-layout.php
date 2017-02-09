@@ -79,7 +79,8 @@ $header_bar_menu = wp_nav_menu( array(
 					<?php endif;?>
 				<?php
 				wp_nav_menu( array(
-					'theme_location' => 'primary'
+					'theme_location' => 'primary',
+					'fallback_cb'     => false,
 				) );
 				?>
 			</nav>
