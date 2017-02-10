@@ -13,7 +13,7 @@ var oneApp = oneApp || {};
 
 		events: function() {
 			return _.extend({}, oneApp.views.item.prototype.events, {
-				'click > *': 'handleClick',
+				'click': 'handleClick',
 				'click .edit-content-link': 'onContentEdit',
 				'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 				'overlay-open': 'onOverlayOpen',
@@ -23,17 +23,26 @@ var oneApp = oneApp || {};
 
 		handleClick: function(e) {
 			e.preventDefault();
-
-			console.log(e);
+			e.stopPropagation();
 
 			$('.column-context-menu').hide();
 
 			var $contextMenu = this.$el.find('.column-context-menu');
 
-			$contextMenu.css({
-				'top': e.offsetY,
-				'left': e.offsetX + 20
-			}).show();
+			if (e.srcElement.offsetParent.className !== 'column-context-menu') {
+				$contextMenu.css({
+					'top': e.pageY - this.$el.offset().top,
+					'left': e.pageX - this.$el.offset().left
+				}).show();
+
+				$contextMenu.find('a').on('click', function() {
+					$contextMenu.hide();
+				});
+			}
+
+			$('body').click(function() {
+				$contextMenu.hide();
+			});
 		},
 
 		initialize: function (options) {
