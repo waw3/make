@@ -291,7 +291,7 @@ div.custom-logo {
 		}
 		@include rem('padding-top', $base/2);
 	}
-	.menu {
+	ul:not(.mobile-menu) .menu {
 		@include for(large-screens) {
 			.header-bar-flipped & {
 				float: right;
@@ -317,6 +317,51 @@ div.custom-logo {
 		a {
 			font-weight: normal; //reset
 			@include rem('font-size', 13px);
+		}
+	}
+}
+.header-bar .mobile-menu {
+	.menu,
+	.nav-menu {
+		padding-left: 0; //reset
+		ul,
+		ol {
+			margin-left: 0; //reset
+		}
+		li {
+			text-align: left; //reset
+			list-style: none; //reset
+			a {
+				display: block;
+				font-family: $sans;
+				font-weight: normal; //reset
+				color: $a;
+				line-height: 1.8;
+				border-bottom: $rule;
+				@include rem('padding', $base/2 0);
+				@include rem('font-size', 14px);
+				text-decoration: none;
+			}
+		}
+		.sub-menu li:last-child a {
+			border-bottom: none;
+		}
+		.sub-menu,
+		.children {
+			padding: 0; //reset
+			text-align: left;
+			li a {
+				@include rem('padding-left', $gut/2);
+				&:before {
+					content: "\2013  ";
+				}
+			}
+		}
+		.current_page_item,
+		.current-menu-item {
+			> a {
+				font-weight: bold;
+			}
 		}
 	}
 }
@@ -586,6 +631,117 @@ div.custom-logo {
 			height: inherit;
 			width: inherit;
 		}
+	}
+}
+.site-navigation .desktop-menu {
+	.menu,
+	.nav-menu {
+		padding-left: 0; //reset
+		ul,
+		ol {
+			margin-left: 0; //reset
+		}
+		li {
+			display: inline-block;
+			position: relative;
+			a {
+				line-height: 1.4;
+				border-bottom: 0; //reset
+				@include rem('padding', $base/2 $gut/2);
+			}
+		}
+
+		.sub-menu,
+		.children {
+			position: absolute;
+			display: none;
+			z-index: 99999;
+			overflow: hidden;
+			background-color: $d;
+			li {
+				width: 100%;
+				&:first-of-type a {
+					@include rem('padding', 15px $gut/2);
+				}
+			}
+			a {
+				border-bottom: 1px solid $e;
+				@include rem('padding', 15px $gut/2);
+				@include rem('font-size', 13px);
+				&:after {
+					content: none; //reset
+				}
+			}
+			.page_item_has_children a:after,
+			.menu-item-has-children a:after {
+				content: "  \f054";
+				position: relative;
+				float: right;
+				font-family: FontAwesome;
+				font-weight: normal; //reset
+				@include rem('top', 4px);
+				@include rem('font-size', 10px);
+			}
+			.sub-menu,
+			.children {
+				li:not(.menu-item-has-children) a:after,
+				li:not(.page_item_has_children) a:after {
+					content: none; //reset
+				}
+			}
+			li {
+				padding-left: 0; //reset
+				a:before {
+					content: none; //reset
+				}
+			}
+			ul {
+				top: 0; //reset
+				left: 100%;
+			}
+		}
+		.current_page_item,
+		.current_page_ancestor,
+		.current-menu-item,
+		.current-menu-ancestor {
+			> a {
+				font-weight: bold;
+			}
+		}
+	}
+	.page_item_has_children a:after,
+	.menu-item-has-children a:after {
+		content: "  \f078";
+		font-family: FontAwesome;
+		font-weight: normal; //reset
+		color: $e;
+		@include rem('padding-left', 2px);
+		@include rem('font-size', 10px);
+		position: relative;
+		top: -1px;
+	}
+	ul.menu ul a,
+	.menu ul ul a {
+		margin: 0; //reset
+		min-width: 180px;
+		max-width: 250px;
+		&:hover,
+		&:focus {
+			color: $a;
+			background-color: $c;
+			&:after {
+				color: $a;
+			}
+		}
+	}
+	ul.menu li:hover > ul,
+	.menu ul li:hover > ul,
+	ul.menu .focus > ul,
+	.menu .focus > ul {
+		display: block;
+		overflow: inherit;
+		height: inherit;
+		width: inherit;
 	}
 }
 .header-bar {
