@@ -1625,6 +1625,11 @@ div.custom-logo a {
 	}
 }
 
+.header-bar .menu-toggle {
+	padding-right: 0;
+	padding-left: 0;
+}
+
 @media screen and (min-width: 800px) {
 	.site-navigation ul {
 		display: none;

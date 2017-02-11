@@ -6,7 +6,7 @@
 // Header Options
 $subheader_class = ( make_get_thememod_value( 'header-show-social' ) || make_get_thememod_value( 'header-show-search' ) ) ? ' right-content' : '';
 $mobile_menu = make_get_thememod_value( 'mobile-menu' );
-$header_menu_container_class = 'header-bar-menu' . ( 'header-bar' === $mobile_menu ? ' mobile-menu': 'desktop-menu' );
+$header_menu_container_class = 'header-bar-menu' . ( 'header-bar' === $mobile_menu ? ' mobile-menu': ' desktop-menu' );
 
 $header_bar_menu = wp_nav_menu( array(
 	'theme_location'  => 'header-bar',

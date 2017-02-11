@@ -781,6 +781,10 @@ div.custom-logo {
 	}
 	display: none;
 }
+.header-bar .menu-toggle {
+	padding-left: 0;
+	padding-right: 0;
+}
 @include for(medium-screens) {
 	.site-navigation ul {
 		display: none;
