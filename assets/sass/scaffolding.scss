@@ -10,7 +10,6 @@ html {
 body {
 	background-color: $e;
 	text-rendering: optimizeLegibility;
-	zoom: 1;
 	@include rem('font-size', 17px);
 	&.boxed {
 		.site-wrapper {
@@ -291,14 +290,13 @@ div.custom-logo {
 		}
 		@include rem('padding-top', $base/2);
 	}
-	:not(.mobile-menu) > ul.menu {
+	.menu {
 		@include for(large-screens) {
 			.header-bar-flipped & {
 				float: right;
 			}
 			float: left;
 			text-align: left;
-			margin: 0.8em 0;
 		}
 		@include for(medium-screens) {
 			text-align: left;
@@ -321,56 +319,11 @@ div.custom-logo {
 		}
 	}
 }
-.header-bar .mobile-menu {
-	.menu,
-	.nav-menu {
-		padding-left: 0; //reset
-		ul,
-		ol {
-			margin-left: 0; //reset
-		}
-		li {
-			text-align: left; //reset
-			list-style: none; //reset
-			a {
-				display: block;
-				font-family: $sans;
-				font-weight: normal; //reset
-				color: $a;
-				line-height: 1.8;
-				border-bottom: $rule;
-				@include rem('padding', $base/2 0);
-				@include rem('font-size', 14px);
-				text-decoration: none;
-			}
-		}
-		.sub-menu li:last-child a {
-			border-bottom: none;
-		}
-		.sub-menu,
-		.children {
-			padding: 0; //reset
-			text-align: left;
-			li a {
-				@include rem('padding-left', $gut/2);
-				&:before {
-					content: "\2013  ";
-				}
-			}
-		}
-		.current_page_item,
-		.current-menu-item {
-			> a {
-				font-weight: bold;
-			}
-		}
-	}
-}
 .header-text {
 	@include for(large-screens) {
 		float: left;
 		@include rem('margin-top', 2px);
-		// @include rem('padding', $base/2 0);
+		@include rem('padding', $base/2 0);
 	}
 	@include for(medium-screens) {
 		text-align: left;
@@ -482,10 +435,6 @@ div.custom-logo {
 			text-align: right;
 		}
 	}
-	.header-bar & {
-		float: left;
-		max-width: 100%;
-	}
 	margin-bottom: 0; //reset
 	@include no-select;
 	.menu,
@@ -509,7 +458,6 @@ div.custom-logo {
 					@include rem('padding', $base/2 $gut/2);
 				}
 				display: block;
-				font-family: $sans;
 				font-weight: normal; //reset
 				color: $b;
 				line-height: 1.8;
@@ -638,136 +586,6 @@ div.custom-logo {
 		}
 	}
 }
-.site-navigation .desktop-menu {
-	.menu,
-	.nav-menu {
-		padding-left: 0; //reset
-		ul,
-		ol {
-			margin-left: 0; //reset
-		}
-		li {
-			display: inline-block;
-			position: relative;
-			a {
-				line-height: 1.4;
-				border-bottom: 0; //reset
-				@include rem('padding', $base/2 $gut/2);
-			}
-		}
-
-		.sub-menu,
-		.children {
-			position: absolute;
-			display: none;
-			z-index: 99999;
-			overflow: hidden;
-			background-color: $d;
-			li {
-				width: 100%;
-				&:first-of-type a {
-					@include rem('padding', 15px $gut/2);
-				}
-			}
-			a {
-				border-bottom: 1px solid $e;
-				@include rem('padding', 15px $gut/2);
-				@include rem('font-size', 13px);
-				&:after {
-					content: none; //reset
-				}
-			}
-			.page_item_has_children a:after,
-			.menu-item-has-children a:after {
-				content: "  \f054";
-				position: relative;
-				float: right;
-				font-family: FontAwesome;
-				font-weight: normal; //reset
-				@include rem('top', 4px);
-				@include rem('font-size', 10px);
-			}
-			.sub-menu,
-			.children {
-				li:not(.menu-item-has-children) a:after,
-				li:not(.page_item_has_children) a:after {
-					content: none; //reset
-				}
-			}
-			li {
-				padding-left: 0; //reset
-				a:before {
-					content: none; //reset
-				}
-			}
-			ul {
-				top: 0; //reset
-				left: 100%;
-			}
-		}
-		.current_page_item,
-		.current_page_ancestor,
-		.current-menu-item,
-		.current-menu-ancestor {
-			> a {
-				font-weight: bold;
-			}
-		}
-	}
-	.page_item_has_children a:after,
-	.menu-item-has-children a:after {
-		content: "  \f078";
-		font-family: FontAwesome;
-		font-weight: normal; //reset
-		color: $e;
-		@include rem('padding-left', 2px);
-		@include rem('font-size', 10px);
-		position: relative;
-		top: -1px;
-	}
-	ul.menu ul a,
-	.menu ul ul a {
-		margin: 0; //reset
-		min-width: 180px;
-		max-width: 250px;
-		&:hover,
-		&:focus {
-			color: $a;
-			background-color: $c;
-			&:after {
-				color: $a;
-			}
-		}
-	}
-	.header-bar & {
-		.menu,
-		.nav-menu {
-			li {
-				a {
-					padding: 0;
-				}
-			}
-		}
-	}
-	ul.menu li:hover > ul,
-	.menu ul li:hover > ul,
-	ul.menu .focus > ul,
-	.menu .focus > ul {
-		display: block;
-		overflow: inherit;
-		height: inherit;
-		width: inherit;
-	}
-}
-.header-bar {
-	.site-navigation {
-		li {
-			a {
-				color: #ffffff;
-			}
-		}
-	}
-}
 .menu-toggle {
 	color: $a;
 	text-align: left;
@@ -786,19 +604,14 @@ div.custom-logo {
 }
 .menu-toggle,
 .site-navigation.toggled .nav-menu,
-.site-navigation.toggled .menu,
-.site-navigation.toggled .menu-toggle ~ div .menu {
+.site-navigation.toggled .menu {
 	display: block;
 }
-.site-navigation .menu-toggle ~ div .menu {
+.site-navigation .menu {
 	@include for(medium-screens) {
 		display: block;
 	}
 	display: none;
-}
-.header-bar .menu-toggle {
-	padding-left: 0;
-	padding-right: 0;
 }
 @include for(medium-screens) {
 	.site-navigation ul {
