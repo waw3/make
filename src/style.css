@@ -936,6 +936,7 @@ div.custom-logo a {
 	}
 
 	.header-navigation .mobile-menu ul.menu li a {
+		padding: 0;
 		border-bottom: none;
 		font-size: 13px;
 		font-size: 1.3rem;
@@ -1388,6 +1389,201 @@ div.custom-logo a {
 		width: inherit;
 		height: inherit;
 	}
+}
+
+.site-navigation .desktop-menu .menu,
+.site-navigation .desktop-menu .nav-menu {
+	display: block;
+	padding-left: 0;
+}
+
+.site-navigation .desktop-menu .menu ul,
+.site-navigation .desktop-menu .menu ol,
+.site-navigation .desktop-menu .nav-menu ul,
+.site-navigation .desktop-menu .nav-menu ol {
+	margin-left: 0;
+}
+
+.site-navigation .desktop-menu .menu li,
+.site-navigation .desktop-menu .nav-menu li {
+	display: inline-block;
+	position: relative;
+}
+
+.site-navigation .desktop-menu .menu li a,
+.site-navigation .desktop-menu .nav-menu li a {
+	padding: 11px 16px;
+	padding: 1.1rem 1.6rem;
+	border-bottom: 0;
+	line-height: 1.4;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu,
+.site-navigation .desktop-menu .menu .children,
+.site-navigation .desktop-menu .nav-menu .sub-menu,
+.site-navigation .desktop-menu .nav-menu .children {
+	display: none;
+	overflow: hidden;
+	position: absolute;
+	z-index: 99999;
+	background-color: #eaecee;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li,
+.site-navigation .desktop-menu .menu .children li,
+.site-navigation .desktop-menu .nav-menu .sub-menu li,
+.site-navigation .desktop-menu .nav-menu .children li {
+	width: 100%;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li:first-of-type a,
+.site-navigation .desktop-menu .menu .children li:first-of-type a,
+.site-navigation .desktop-menu .nav-menu .sub-menu li:first-of-type a,
+.site-navigation .desktop-menu .nav-menu .children li:first-of-type a {
+	padding: 15px 16px;
+	padding: 1.5rem 1.6rem;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu a,
+.site-navigation .desktop-menu .menu .children a,
+.site-navigation .desktop-menu .nav-menu .sub-menu a,
+.site-navigation .desktop-menu .nav-menu .children a {
+	padding: 15px 16px;
+	padding: 1.5rem 1.6rem;
+	border-bottom: 1px solid #b9bcbf;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu a:after,
+.site-navigation .desktop-menu .menu .children a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu a:after,
+.site-navigation .desktop-menu .nav-menu .children a:after {
+	content: none;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu .page_item_has_children a:after,
+.site-navigation .desktop-menu .menu .sub-menu .menu-item-has-children a:after,
+.site-navigation .desktop-menu .menu .children .page_item_has_children a:after,
+.site-navigation .desktop-menu .menu .children .menu-item-has-children a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .page_item_has_children a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .menu-item-has-children a:after,
+.site-navigation .desktop-menu .nav-menu .children .page_item_has_children a:after,
+.site-navigation .desktop-menu .nav-menu .children .menu-item-has-children a:after {
+	float: right;
+	position: relative;
+	top: 4px;
+	top: 0.4rem;
+	font-family: FontAwesome;
+	font-size: 10px;
+	font-size: 1rem;
+	font-weight: normal;
+	content: "  \f054";
+}
+
+.site-navigation .desktop-menu .menu .sub-menu .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .sub-menu .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .menu .sub-menu .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .sub-menu .children li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .menu .children .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .children .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .menu .children .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .children .children li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .children li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .children li:not(.page_item_has_children) a:after {
+	content: none;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li,
+.site-navigation .desktop-menu .menu .children li,
+.site-navigation .desktop-menu .nav-menu .sub-menu li,
+.site-navigation .desktop-menu .nav-menu .children li {
+	padding-left: 0;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li a:before,
+.site-navigation .desktop-menu .menu .children li a:before,
+.site-navigation .desktop-menu .nav-menu .sub-menu li a:before,
+.site-navigation .desktop-menu .nav-menu .children li a:before {
+	content: none;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu ul,
+.site-navigation .desktop-menu .menu .children ul,
+.site-navigation .desktop-menu .nav-menu .sub-menu ul,
+.site-navigation .desktop-menu .nav-menu .children ul {
+	top: 0;
+	left: 100%;
+}
+
+.site-navigation .desktop-menu .menu .current_page_item > a,
+.site-navigation .desktop-menu .menu .current_page_ancestor > a,
+.site-navigation .desktop-menu .menu .current-menu-item > a,
+.site-navigation .desktop-menu .menu .current-menu-ancestor > a,
+.site-navigation .desktop-menu .nav-menu .current_page_item > a,
+.site-navigation .desktop-menu .nav-menu .current_page_ancestor > a,
+.site-navigation .desktop-menu .nav-menu .current-menu-item > a,
+.site-navigation .desktop-menu .nav-menu .current-menu-ancestor > a {
+	font-weight: bold;
+}
+
+.site-navigation .desktop-menu .menu .current_page_item > a,
+.site-navigation .desktop-menu .menu .current-menu-item > a,
+.site-navigation .desktop-menu .nav-menu .current_page_item > a,
+.site-navigation .desktop-menu .nav-menu .current-menu-item > a {
+	font-weight: bold;
+}
+
+.site-navigation .page_item_has_children a:after,
+.site-navigation .menu-item-has-children a:after {
+	position: relative;
+	top: -1px;
+	padding-left: 2px;
+	padding-left: 0.2rem;
+	color: #b9bcbf;
+	font-family: FontAwesome;
+	font-size: 10px;
+	font-size: 1rem;
+	font-weight: normal;
+	content: "  \f078";
+}
+
+.site-navigation ul.menu ul a,
+.site-navigation .menu ul ul a {
+	min-width: 180px;
+	max-width: 250px;
+	margin: 0;
+}
+
+.site-navigation ul.menu ul a:hover,
+.site-navigation ul.menu ul a:focus,
+.site-navigation .menu ul ul a:hover,
+.site-navigation .menu ul ul a:focus {
+	color: #fff;
+	background-color: #3070d1;
+}
+
+.site-navigation ul.menu ul a:hover:after,
+.site-navigation ul.menu ul a:focus:after,
+.site-navigation .menu ul ul a:hover:after,
+.site-navigation .menu ul ul a:focus:after {
+	color: #fff;
+}
+
+.site-navigation .desktop-menu ul.menu li:hover > ul,
+.site-navigation .desktop-menu .menu ul li:hover > ul,
+.site-navigation .desktop-menu ul.menu .focus > ul,
+.site-navigation .desktop-menu .menu .focus > ul {
+	display: block;
+	overflow: inherit;
+	width: inherit;
+	height: inherit;
 }
 
 .menu-toggle {
