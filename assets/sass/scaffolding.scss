@@ -304,7 +304,8 @@ div.custom-logo {
 		padding: 0; //reset
 		list-style: none; //reset
 		text-align: center;
-		@include rem('margin', $base/2 0 $base);
+		// @include rem('margin', $base/2 0 $base);
+		margin: 0.8em 0;
 		li {
 			display: inline-block;
 			text-align: left;
@@ -318,6 +319,9 @@ div.custom-logo {
 			@include rem('font-size', 13px);
 		}
 	}
+}
+.header-navigation .mobile-menu {
+	min-height: 5px;
 }
 .header-navigation .mobile-menu ul.menu {
 	@include for(medium-screens) {
@@ -352,8 +356,8 @@ div.custom-logo {
 	@include for(medium-screens) {
 		padding: 0; //reset
 		list-style: none; //reset
-		text-align: center;
-		@include rem('margin', $base/2 0 $base);
+		text-align: left;
+		margin: 0.8em 0;
 
 		li {
 			display: inline-block;
@@ -725,32 +729,34 @@ div.custom-logo {
 			}
 		}
 	}
-	.page_item_has_children a:after,
-	.menu-item-has-children a:after {
-		content: "  \f078";
-		font-family: FontAwesome;
-		font-weight: normal; //reset
-		color: $e;
-		@include rem('padding-left', 2px);
-		@include rem('font-size', 10px);
-		position: relative;
-		top: -1px;
-	}
-	ul.menu ul a,
-	.menu ul ul a {
-		margin: 0; //reset
-		min-width: 180px;
-		max-width: 250px;
-		&:hover,
-		&:focus {
-			color: $a;
-			background-color: $c;
-			&:after {
+	@include for(medium-screens) {
+		.page_item_has_children a:after,
+		.menu-item-has-children a:after {
+			content: "  \f078";
+			font-family: FontAwesome;
+			font-weight: normal; //reset
+			color: $e;
+			@include rem('padding-left', 2px);
+			@include rem('font-size', 10px);
+			position: relative;
+			top: -1px;
+		}
+
+		ul.menu ul a,
+		.menu ul ul a {
+			margin: 0; //reset
+			min-width: 180px;
+			max-width: 250px;
+			&:hover,
+			&:focus {
 				color: $a;
+				background-color: $c;
+				&:after {
+					color: $a;
+				}
 			}
 		}
 	}
-
 	.desktop-menu {
 		ul.menu li:hover > ul,
 		.menu ul li:hover > ul,
@@ -778,6 +784,9 @@ div.custom-logo {
 		font-family: FontAwesome;
 		@include rem('padding-right', 6px);
 	}
+}
+.header-navigation .menu-toggle {
+	margin-top: 0;
 }
 .menu-toggle,
 .site-navigation.toggled .nav-menu,

@@ -85,7 +85,7 @@ $this->add_choice_sets( array(
 	'header-layout' => array(
 		1  => __( 'Traditional', 'make' ),
 		2  => __( 'Centered', 'make' ),
-		3  => __( 'Navigation Below', 'make' ),
+		3  => __( 'Navigation Below (Primary)', 'make' ),
 	),
 	'link-underline' => array(
 		'always' => __( 'Always', 'make' ),
