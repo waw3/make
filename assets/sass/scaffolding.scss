@@ -319,6 +319,63 @@ div.custom-logo {
 		}
 	}
 }
+.header-navigation .mobile-menu ul.menu {
+	@include for(medium-screens) {
+		display: block;
+	}
+	display: none;
+	padding: 0; //reset
+	margin: 0;
+
+	li {
+		list-style: none; //reset
+		text-align: left;
+		display: block;
+
+		a {
+			display: block;
+			font-weight: normal; //reset
+			color: $a;
+			line-height: 1.8;
+			border-bottom: 1px solid $a;
+			@include rem('padding', $base/2 0);
+			@include rem('font-size', 14px);
+			text-decoration: none;
+		}
+
+		&:last-child a {
+			border-bottom: none;
+		}
+	}
+}
+
+.header-navigation .mobile-menu ul.menu {
+	@include for(medium-screens) {
+		padding: 0; //reset
+		list-style: none; //reset
+		text-align: center;
+		@include rem('margin', $base/2 0 $base);
+
+		li {
+			display: inline-block;
+			text-align: left;
+			@include rem('padding-right', $gut/2);
+			&:last-of-type {
+				padding-right: 0; //reset
+			}
+
+			a {
+				font-weight: normal; //reset
+				@include rem('font-size', 13px);
+				border-bottom: none;
+			}
+		}
+	}
+}
+
+.header-navigation.toggled .mobile-menu ul.menu {
+	display: block;
+}
 .header-text {
 	@include for(large-screens) {
 		float: left;
