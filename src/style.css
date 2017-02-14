@@ -839,7 +839,7 @@ div.custom-logo a {
 	}
 }
 
-.header-bar ul:not(.mobile-menu) .menu {
+.header-bar :not(.mobile-menu) > ul.menu {
 	margin: 11px 0 22px;
 	margin: 1.1rem 0 2.2rem;
 	padding: 0;
@@ -848,35 +848,35 @@ div.custom-logo a {
 }
 
 @media screen and (min-width: 1100px) {
-	.header-bar ul:not(.mobile-menu) .menu {
+	.header-bar :not(.mobile-menu) > ul.menu {
 		float: left;
-		margin: 0.55em 0;
+		margin: 0.8em 0;
 		text-align: left;
 	}
 
-	.header-bar-flipped .header-bar ul:not(.mobile-menu) .menu {
+	.header-bar-flipped .header-bar :not(.mobile-menu) > ul.menu {
 		float: right;
 	}
 }
 
 @media screen and (min-width: 800px) {
-	.header-bar ul:not(.mobile-menu) .menu {
+	.header-bar :not(.mobile-menu) > ul.menu {
 		text-align: left;
 	}
 }
 
-.header-bar ul:not(.mobile-menu) .menu li {
+.header-bar :not(.mobile-menu) > ul.menu li {
 	display: inline-block;
 	padding-right: 16px;
 	padding-right: 1.6rem;
 	text-align: left;
 }
 
-.header-bar ul:not(.mobile-menu) .menu li:last-of-type {
+.header-bar :not(.mobile-menu) > ul.menu li:last-of-type {
 	padding-right: 0;
 }
 
-.header-bar ul:not(.mobile-menu) .menu a {
+.header-bar :not(.mobile-menu) > ul.menu a {
 	font-size: 13px;
 	font-size: 1.3rem;
 	font-weight: normal;
@@ -1137,6 +1137,11 @@ div.custom-logo a {
 		float: right;
 		text-align: right;
 	}
+}
+
+.header-bar .site-navigation {
+	float: left;
+	max-width: 100%;
 }
 
 .site-navigation .menu,
@@ -1567,6 +1572,11 @@ div.custom-logo a {
 .site-navigation .desktop-menu .menu ul ul a:hover:after,
 .site-navigation .desktop-menu .menu ul ul a:focus:after {
 	color: #fff;
+}
+
+.header-bar .site-navigation .desktop-menu .menu li a,
+.header-bar .site-navigation .desktop-menu .nav-menu li a {
+	padding: 0;
 }
 
 .site-navigation .desktop-menu ul.menu li:hover > ul,

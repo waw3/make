@@ -291,14 +291,14 @@ div.custom-logo {
 		}
 		@include rem('padding-top', $base/2);
 	}
-	ul:not(.mobile-menu) .menu {
+	:not(.mobile-menu) > ul.menu {
 		@include for(large-screens) {
 			.header-bar-flipped & {
 				float: right;
 			}
 			float: left;
 			text-align: left;
-			margin: 0.55em 0;
+			margin: 0.8em 0;
 		}
 		@include for(medium-screens) {
 			text-align: left;
@@ -481,6 +481,10 @@ div.custom-logo {
 			float: right;
 			text-align: right;
 		}
+	}
+	.header-bar & {
+		float: left;
+		max-width: 100%;
 	}
 	margin-bottom: 0; //reset
 	@include no-select;
@@ -732,6 +736,16 @@ div.custom-logo {
 			background-color: $c;
 			&:after {
 				color: $a;
+			}
+		}
+	}
+	.header-bar & {
+		.menu,
+		.nav-menu {
+			li {
+				a {
+					padding: 0;
+				}
 			}
 		}
 	}
