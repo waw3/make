@@ -369,7 +369,7 @@ div.custom-logo {
 	@include for(large-screens) {
 		float: left;
 		@include rem('margin-top', 2px);
-		@include rem('padding', $base/2 0);
+		// @include rem('padding', $base/2 0);
 	}
 	@include for(medium-screens) {
 		text-align: left;
