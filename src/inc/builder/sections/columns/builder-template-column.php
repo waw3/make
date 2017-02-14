@@ -77,7 +77,7 @@ $overlay_id  = "ttfmake-overlay-" . $combined_id;
 	do_action( 'make_section_text_before_column', $ttfmake_section_data );
 	?>
 
-	<ul class="column-context-menu" style="display: none">
+	<ul class="column-context-menu">
 		<?php foreach ( $column_buttons as $button ) : ?>
 			<li>
 				<a href="<?php echo esc_url( $button['href'] ); ?>" class="<?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>

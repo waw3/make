@@ -25,23 +25,20 @@ var oneApp = oneApp || {};
 			e.preventDefault();
 			e.stopPropagation();
 
-			$('.column-context-menu').hide();
+			$('.column-context-menu').removeClass('show');
 
 			var $contextMenu = this.$el.find('.column-context-menu');
 
 			if (e.srcElement.offsetParent.className !== 'column-context-menu') {
-				$contextMenu.css({
-					'top': e.pageY - this.$el.offset().top,
-					'left': e.pageX - this.$el.offset().left
-				}).show();
+				$contextMenu.addClass('show');
 
 				$contextMenu.find('a').on('click', function() {
-					$contextMenu.hide();
+					$contextMenu.removeClass('show');
 				});
 			}
 
 			$('body').click(function() {
-				$contextMenu.hide();
+				$contextMenu.removeClass('show');
 			});
 		},
 
