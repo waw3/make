@@ -16,7 +16,9 @@ var oneApp = oneApp || {};
 				'click .edit-content-link': 'onContentEdit',
 				'click .ttfmake-overlay-open': 'openConfigurationOverlay',
 				'overlay-open': 'onOverlayOpen',
-				'click .ttfmake-text-column-remove': 'onColumnRemove'
+				'click .ttfmake-text-column-remove': 'onColumnRemove',
+				'click .configure-button': 'toggleConfigureDropdown',
+				'click .configure-options a': 'onOptionClick'
 			});
 		},
 
@@ -31,8 +33,38 @@ var oneApp = oneApp || {};
 			return this;
 		},
 
+		toggleConfigureDropdown: function(evt) {
+			var $cogLink;
+
+			if (typeof evt !== 'undefined') {
+				evt.preventDefault();
+				evt.stopPropagation();
+				$cogLink = $(evt.target);
+			} else {
+				$cogLink = this.$el.find('.configure-button');
+			}
+			
+			var $configureOptions = this.$el.find('.configure-options');
+
+			if ($configureOptions.is(':visible')) {
+				$cogLink.removeClass('active');
+			} else {
+				$cogLink.addClass('active');
+			}
+
+			$configureOptions.toggle();
+		},
+
+		onOptionClick: function(evt) {
+			this.toggleConfigureDropdown();
+		},
+
 		onColumnRemove: function(evt) {
 			evt.preventDefault();
+
+			if (!confirm('Are you sure you want to remove this column?')) {
+				return;
+			}
 
 			var $stage = this.$el.parents('.ttfmake-text-columns-stage');
 
