@@ -652,6 +652,7 @@ div.custom-logo {
 	.desktop-menu .nav-menu {
 		display: block;
 		padding-left: 0; //reset
+		margin-bottom: 0;
 		ul,
 		ol {
 			margin-left: 0; //reset
@@ -729,7 +730,7 @@ div.custom-logo {
 			}
 		}
 	}
-	@include for(medium-screens) {
+	.desktop-menu {
 		.page_item_has_children a:after,
 		.menu-item-has-children a:after {
 			content: "  \f078";
@@ -741,7 +742,8 @@ div.custom-logo {
 			position: relative;
 			top: -1px;
 		}
-
+	}
+	.desktop-menu {
 		ul.menu ul a,
 		.menu ul ul a {
 			margin: 0; //reset

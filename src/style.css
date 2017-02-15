@@ -1396,6 +1396,7 @@ div.custom-logo a {
 .site-navigation .desktop-menu .menu,
 .site-navigation .desktop-menu .nav-menu {
 	display: block;
+	margin-bottom: 0;
 	padding-left: 0;
 }
 
@@ -1542,42 +1543,40 @@ div.custom-logo a {
 	font-weight: bold;
 }
 
-@media screen and (min-width: 800px) {
-	.site-navigation .page_item_has_children a:after,
-	.site-navigation .menu-item-has-children a:after {
-		position: relative;
-		top: -1px;
-		padding-left: 2px;
-		padding-left: 0.2rem;
-		color: #b9bcbf;
-		font-family: FontAwesome;
-		font-size: 10px;
-		font-size: 1rem;
-		font-weight: normal;
-		content: "  \f078";
-	}
+.site-navigation .desktop-menu .page_item_has_children a:after,
+.site-navigation .desktop-menu .menu-item-has-children a:after {
+	position: relative;
+	top: -1px;
+	padding-left: 2px;
+	padding-left: 0.2rem;
+	color: #b9bcbf;
+	font-family: FontAwesome;
+	font-size: 10px;
+	font-size: 1rem;
+	font-weight: normal;
+	content: "  \f078";
+}
 
-	.site-navigation ul.menu ul a,
-	.site-navigation .menu ul ul a {
-		min-width: 180px;
-		max-width: 250px;
-		margin: 0;
-	}
+.site-navigation .desktop-menu ul.menu ul a,
+.site-navigation .desktop-menu .menu ul ul a {
+	min-width: 180px;
+	max-width: 250px;
+	margin: 0;
+}
 
-	.site-navigation ul.menu ul a:hover,
-	.site-navigation ul.menu ul a:focus,
-	.site-navigation .menu ul ul a:hover,
-	.site-navigation .menu ul ul a:focus {
-		color: #fff;
-		background-color: #3070d1;
-	}
+.site-navigation .desktop-menu ul.menu ul a:hover,
+.site-navigation .desktop-menu ul.menu ul a:focus,
+.site-navigation .desktop-menu .menu ul ul a:hover,
+.site-navigation .desktop-menu .menu ul ul a:focus {
+	color: #fff;
+	background-color: #3070d1;
+}
 
-	.site-navigation ul.menu ul a:hover:after,
-	.site-navigation ul.menu ul a:focus:after,
-	.site-navigation .menu ul ul a:hover:after,
-	.site-navigation .menu ul ul a:focus:after {
-		color: #fff;
-	}
+.site-navigation .desktop-menu ul.menu ul a:hover:after,
+.site-navigation .desktop-menu ul.menu ul a:focus:after,
+.site-navigation .desktop-menu .menu ul ul a:hover:after,
+.site-navigation .desktop-menu .menu ul ul a:focus:after {
+	color: #fff;
 }
 
 .site-navigation .desktop-menu ul.menu li:hover > ul,
