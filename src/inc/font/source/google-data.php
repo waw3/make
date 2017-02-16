@@ -3,7 +3,7 @@
  * @package Make
  */
 
-// Updated: 2017-01-20T08:03:27+00:00
+// Updated: 2017-02-16T10:54:32+00:00
 
 // Bail if this isn't being included inside of MAKE_Font_Source_Google.
 if ( ! isset( $this ) || ! $this instanceof MAKE_Font_Source_Google ) {
@@ -1041,6 +1041,17 @@ $this->load_font_data( array(
 		),
 		'category' => 'handwriting',
 	),
+	'Bahiana' => array(
+		'label' => 'Bahiana',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+		),
+		'category' => 'display',
+	),
 	'Baloo' => array(
 		'label' => 'Baloo',
 		'variants' => array(
@@ -1164,6 +1175,17 @@ $this->load_font_data( array(
 			'latin',
 			'latin-ext',
 			'vietnamese',
+		),
+		'category' => 'display',
+	),
+	'Barrio' => array(
+		'label' => 'Barrio',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
 		),
 		'category' => 'display',
 	),
@@ -2042,6 +2064,10 @@ $this->load_font_data( array(
 	'Chivo' => array(
 		'label' => 'Chivo',
 		'variants' => array(
+			'300',
+			'300italic',
+			'700',
+			'700italic',
 			'900',
 			'900italic',
 			'italic',
@@ -2049,6 +2075,7 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'sans-serif',
 	),
@@ -2169,6 +2196,7 @@ $this->load_font_data( array(
 		'subsets' => array(
 			'cyrillic',
 			'cyrillic-ext',
+			'greek',
 			'latin',
 			'latin-ext',
 			'vietnamese',
@@ -6114,22 +6142,58 @@ $this->load_font_data( array(
 	'Montserrat' => array(
 		'label' => 'Montserrat',
 		'variants' => array(
+			'100',
+			'100italic',
+			'200',
+			'200italic',
+			'300',
+			'300italic',
+			'500',
+			'500italic',
+			'600',
+			'600italic',
 			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
+			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
 	'Montserrat Alternates' => array(
 		'label' => 'Montserrat Alternates',
 		'variants' => array(
+			'100',
+			'100italic',
+			'200',
+			'200italic',
+			'300',
+			'300italic',
+			'500',
+			'500italic',
+			'600',
+			'600italic',
 			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
+			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -6804,13 +6868,18 @@ $this->load_font_data( array(
 	'Oswald' => array(
 		'label' => 'Oswald',
 		'variants' => array(
+			'200',
 			'300',
+			'500',
+			'600',
 			'700',
 			'regular',
 		),
 		'subsets' => array(
+			'cyrillic',
 			'latin',
 			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -7068,6 +7137,20 @@ $this->load_font_data( array(
 			'latin-ext',
 		),
 		'category' => 'sans-serif',
+	),
+	'Pangolin' => array(
+		'label' => 'Pangolin',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'cyrillic',
+			'cyrillic-ext',
+			'latin',
+			'latin-ext',
+			'vietnamese',
+		),
+		'category' => 'handwriting',
 	),
 	'Paprika' => array(
 		'label' => 'Paprika',
@@ -7370,13 +7453,18 @@ $this->load_font_data( array(
 	'Podkova' => array(
 		'label' => 'Podkova',
 		'variants' => array(
+			'500',
+			'600',
 			'700',
+			'800',
 			'regular',
 		),
 		'subsets' => array(
 			'cyrillic',
 			'cyrillic-ext',
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'serif',
 	),
@@ -8163,11 +8251,20 @@ $this->load_font_data( array(
 	'Rokkitt' => array(
 		'label' => 'Rokkitt',
 		'variants' => array(
+			'100',
+			'200',
+			'300',
+			'500',
+			'600',
 			'700',
+			'800',
+			'900',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'serif',
 	),
@@ -8446,15 +8543,23 @@ $this->load_font_data( array(
 		),
 		'category' => 'display',
 	),
-	'Sansita One' => array(
-		'label' => 'Sansita One',
+	'Sansita' => array(
+		'label' => 'Sansita',
 		'variants' => array(
+			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
+			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
-		'category' => 'display',
+		'category' => 'sans-serif',
 	),
 	'Sarala' => array(
 		'label' => 'Sarala',
@@ -9728,10 +9833,14 @@ $this->load_font_data( array(
 	'Unna' => array(
 		'label' => 'Unna',
 		'variants' => array(
+			'700',
+			'700italic',
+			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'serif',
 	),

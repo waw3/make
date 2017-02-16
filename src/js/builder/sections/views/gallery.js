@@ -17,6 +17,7 @@ var oneApp = oneApp || {};
 				'model-item-change': 'onItemChange',
 				'item-sort': 'onItemSort',
 				'item-remove': 'onItemRemove',
+				'overlay-open': 'onOverlayOpen',
 			});
 		},
 
@@ -43,9 +44,7 @@ var oneApp = oneApp || {};
 
 		onViewReady: function(e) {
 			e.stopPropagation();
-
 			this.initializeSortables();
-			oneApp.builder.initColorPicker(this);
 		},
 
 		addItem: function(itemModel) {
@@ -143,6 +142,11 @@ var oneApp = oneApp || {};
 
 			$stage.removeClass('ttfmake-gallery-columns-1 ttfmake-gallery-columns-2 ttfmake-gallery-columns-3 ttfmake-gallery-columns-4');
 			$stage.addClass('ttfmake-gallery-columns-' + parseInt(columns, 10));
-		}
+		},
+
+		onOverlayOpen: function(e, $overlay) {
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update gallery settings');
+		},
 	});
 })(window, jQuery, _, oneApp);
