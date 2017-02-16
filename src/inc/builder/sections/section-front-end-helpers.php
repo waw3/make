@@ -240,10 +240,15 @@ function ttfmake_builder_get_gallery_item_onclick( $link, $ttfmake_section_data,
 		return '';
 	}
 
-	$onclick = ' onclick="return false;"';
-	if ( '' !== $link ) {
-		$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $link ) ) . '\';"';
+	if ( '' === $link ) {
+		return '';
 	}
+
+	$item = $ttfmake_section_data['gallery-items'][$i - 1];
+	$external = isset( $item['open-new-tab'] ) && $item['open-new-tab'] === 1;
+	$url = esc_js( esc_url( $link ) );
+	$open_function = $external ? 'window.open(\'' . $url . '\')': 'window.location.href = \'' . $url . '\'';
+	$onclick = ' onclick="event.preventDefault(); '. $open_function . ';"';
 
 	/**
 	 * Filter the class used for a gallery item.

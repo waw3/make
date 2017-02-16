@@ -83,13 +83,13 @@ var MakeFrontEnd = MakeFrontEnd || {};
 		navigationInit: function() {
 			var container, button, menu, links, subMenus;
 
-			container = document.getElementById( 'site-navigation' );
-			if ( ! container ) {
+			button = document.getElementsByClassName( 'menu-toggle' )[0];
+			if ( 'undefined' === typeof button ) {
 				return;
 			}
 
-			button = container.getElementsByTagName( 'span' )[0];
-			if ( 'undefined' === typeof button ) {
+			container = button.parentElement;
+			if ( ! container ) {
 				return;
 			}
 

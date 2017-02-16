@@ -16,7 +16,7 @@ var oneApp = oneApp || {};
 				'view-ready': 'onViewReady',
 				'item-sort': 'onSlideSort',
 				'slide-remove': 'onSlideRemove',
-				'color-picker-change': 'onColorPickerChange'
+				'overlay-open': 'onOverlayOpen',
 			});
 		},
 
@@ -40,7 +40,6 @@ var oneApp = oneApp || {};
 
 		onViewReady: function(e) {
 			this.initializeSortables();
-			oneApp.builder.initColorPicker(this);
 
 			_(this.itemViews).each(function(slideView) {
 				slideView.$el.trigger('view-ready');
@@ -107,10 +106,6 @@ var oneApp = oneApp || {};
 			}
 		},
 
-		onColorPickerChange: function(e, data) {
-			this.model.set(data.modelAttr, data.color);
-		},
-
 		getParentID: function() {
 			var idAttr = this.$el.attr('id'),
 				id = idAttr.replace('ttfmake-section-', '');
@@ -144,6 +139,11 @@ var oneApp = oneApp || {};
 					self.$el.trigger('item-sort', [ids]);
 				}
 			});
-		}
+		},
+
+		onOverlayOpen: function(e, $overlay) {
+			var $button = $('.ttfmake-overlay-close-update', $overlay);
+			$button.text('Update banner settings');
+		},
 	});
 })(window, jQuery, _, oneApp);

@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.8.3\n"
+"Project-Id-Version: Make 1.8.4\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2017-01-20 08:02:55+00:00\n"
+"POT-Creation-Date: 2017-02-16 10:54:06+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -163,7 +163,7 @@ msgstr ""
 msgid "Update changes"
 msgstr ""
 
-#: inc/builder/core/templates/overlay-header.php:6
+#: inc/builder/core/templates/overlay-header.php:7
 msgid "Configuration"
 msgstr ""
 
@@ -462,6 +462,10 @@ msgstr ""
 msgid "Item link URL"
 msgstr ""
 
+#: inc/builder/sections/gallery/definition.php:179
+msgid "Open link in a new tab"
+msgstr ""
+
 #: inc/choices/definitions/choices.php:26
 #: inc/choices/definitions/choices.php:34
 msgid "Center"
@@ -572,7 +576,7 @@ msgid "Flipped"
 msgstr ""
 
 #: inc/choices/definitions/choices.php:88
-msgid "Navigation Below"
+msgid "Navigation Below (Primary)"
 msgstr ""
 
 #: inc/choices/definitions/choices.php:91
@@ -753,7 +757,7 @@ msgid "Use methods from %s instead."
 msgstr ""
 
 #: inc/compatibility/deprecated/deprecated-1.7.php:2211
-#: inc/customizer/controls.php:678
+#: inc/customizer/controls.php:680
 msgid "Loading&hellip;"
 msgstr ""
 
@@ -967,32 +971,32 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: inc/customizer/controls.php:199
+#: inc/customizer/controls.php:200
 msgid "General"
 msgstr ""
 
-#: inc/customizer/controls.php:203
+#: inc/customizer/controls.php:204
 msgid "Typography"
 msgstr ""
 
-#: inc/customizer/controls.php:207
+#: inc/customizer/controls.php:208
 msgid "Color"
 msgstr ""
 
-#: inc/customizer/controls.php:211
+#: inc/customizer/controls.php:212
 msgid "Background Images"
 msgstr ""
 
-#: inc/customizer/controls.php:215 inc/customizer/definitions/layout.php:41
+#: inc/customizer/controls.php:216 inc/customizer/definitions/layout.php:41
 #: inc/customizer/definitions/layout.php:159
 msgid "Layout"
 msgstr ""
 
-#: inc/customizer/controls.php:324
+#: inc/customizer/controls.php:326
 msgid "The \"%s\" section can't be added because it already exists."
 msgstr ""
 
-#: inc/customizer/controls.php:679
+#: inc/customizer/controls.php:681
 msgid "No matching fonts"
 msgstr ""
 
@@ -1664,6 +1668,10 @@ msgstr ""
 
 #: inc/customizer/mods/background.php:33
 msgid "Site"
+msgstr ""
+
+#: inc/customizer/mods/menu.php:29
+msgid "Mobile Menu"
 msgstr ""
 
 #: inc/customizer/mods/site-title-tagline.php:33

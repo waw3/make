@@ -26,6 +26,19 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.8.4 - February 16 2017 =
+* New feature: Added an option to open Gallery item links in a new tab.
+* New feature: Added option to configure what menu turns into a mobile menu.
+* New feature: Added option for closing the configuration overlay without applying changes.
+* New feature: Added button and keyboard shortcut for closing the configuration overlay.
+* New feature: Added contextual labels to configuration overlay buttons.
+* Improved: Removed a limitation preventing HTML links inside Gallery items content.
+* Bug fix: Added missing default font to mobile menu toggles.
+* Bug fix: Removed PHP notice caused by missing image fields in Columns section.
+* Bug fix: Fixed a bug preventing titles from inheriting customizer typography settings.
+* Bug fix: Fixed CSS rules preventing typography and color settings from correctly applying to mobile menus.
+* Bug fix: Fixed a bug resulting in content duplication when creating multiple Columns sections.
+
 = 1.8.3 - January 20 2017 =
 * Improved: Increased the maximum number of columns in Columns sections from four to six.
 * New feature: Added an option so builder sections can now be set to span the full width of your page.
